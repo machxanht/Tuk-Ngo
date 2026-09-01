@@ -39,8 +39,8 @@ export const CrewKinematicsStudio: React.FC = () => {
           </div>
         </div>
 
-        {/* Phase Selection Tabs */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+        {/* Phase Selection Tabs (5 Authentic Phases) */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2">
           {STROKE_PHASES.map((phase) => {
             const isSelected = phase.phaseIndex === selectedPhase;
             return (
@@ -58,9 +58,9 @@ export const CrewKinematicsStudio: React.FC = () => {
                   <span className={isSelected ? 'text-sky-400 font-bold' : 'text-slate-400'}>
                     Pha 0{phase.phaseIndex}
                   </span>
-                  <span className="text-[10px] text-slate-400">{phase.timePercentage}</span>
+                  <span className="text-[10px] text-slate-400">{phase.timePercentage.split(' ')[0]}</span>
                 </div>
-                <div className="font-bold text-xs text-white truncate">{phase.vietnameseName}</div>
+                <div className="font-bold text-xs text-white truncate">{phase.vietnameseName.split(':')[1] || phase.vietnameseName}</div>
                 <div className="text-[11px] text-slate-400 truncate">{phase.phaseName}</div>
               </button>
             );
@@ -153,6 +153,96 @@ export const CrewKinematicsStudio: React.FC = () => {
               </div>
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* Official Animation Reference Document & Source URLs Panel */}
+      <div className="p-5 rounded-2xl bg-slate-900 border border-slate-800 shadow-xl space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+          <div className="flex items-center gap-2">
+            <Award className="w-5 h-5 text-amber-400" />
+            <div>
+              <h3 className="text-base font-bold text-white font-serif">
+                Hồ sơ tham chiếu động học & Nguồn đối chiếu bắt buộc
+              </h3>
+              <p className="text-xs text-slate-400 font-mono">
+                Tệp lưu trữ: <code className="text-sky-400">docs/tum-nup-2/rowing-animation-reference.md</code>
+              </p>
+            </div>
+          </div>
+          <span className="px-2.5 py-1 rounded bg-slate-950 text-slate-300 border border-slate-800 text-[11px] font-mono">
+            Ưu tiên: Video/Frame thật → Ảnh thật → Tài liệu
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+          <a
+            href="https://baosoctrang.org.vn/multimedia/202411/media-ghe-ngo-chua-tum-nup-vo-dich-ca-nam-va-nu-f8b6c2a/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-3 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-sky-500/50 transition group flex flex-col justify-between space-y-2"
+          >
+            <div>
+              <div className="flex items-center justify-between font-mono text-[10px] text-sky-400 mb-1">
+                <span>[NGUỒN 1 — THI ĐẤU 2024]</span>
+                <span className="group-hover:translate-x-0.5 transition">↗</span>
+              </div>
+              <strong className="text-white block">Tum Núp 2 — Video & Báo ảnh Vô địch 2024</strong>
+              <p className="text-slate-400 text-[11px] mt-0.5">Báo Sóc Trăng — Phân tích từng frame chung kết nam 1.200m</p>
+            </div>
+            <span className="text-slate-500 text-[10px] truncate font-mono">baosoctrang.org.vn/multimedia/202411/media-ghe-ngo-chua-tum-nup-vo-dich...</span>
+          </a>
+
+          <a
+            href="https://baosoctrang.org.vn/van-hoa-the-thao-du-lich/202411/oi-ghe-ngo-nam-nu-chua-tum-nup-quyet-tam-giu-vung-ngoi-vo-ich-bab3c5d/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-3 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-sky-500/50 transition group flex flex-col justify-between space-y-2"
+          >
+            <div>
+              <div className="flex items-center justify-between font-mono text-[10px] text-sky-400 mb-1">
+                <span>[NGUỒN 2 — TẬP LUYỆN]</span>
+                <span className="group-hover:translate-x-0.5 transition">↗</span>
+              </div>
+              <strong className="text-white block">Tum Núp — Phim phóng sự tập luyện cạn & dưới nước</strong>
+              <p className="text-slate-400 text-[11px] mt-0.5">Báo Sóc Trăng — Tư thế ngồi giàn giằng, thế tay tì be ghe, còi dẫn nhịp</p>
+            </div>
+            <span className="text-slate-500 text-[10px] truncate font-mono">baosoctrang.org.vn/van-hoa-the-thao-du-lich/202411/oi-ghe-ngo-nam-nu...</span>
+          </a>
+
+          <a
+            href="https://duaghengo.cantho.gov.vn/160_video-clips-60.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-3 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-sky-500/50 transition group flex flex-col justify-between space-y-2"
+          >
+            <div>
+              <div className="flex items-center justify-between font-mono text-[10px] text-sky-400 mb-1">
+                <span>[NGUỒN 3 — KHO VIDEO]</span>
+                <span className="group-hover:translate-x-0.5 transition">↗</span>
+              </div>
+              <strong className="text-white block">Kho video đua ghe Ngo Cần Thơ & ĐBSCL</strong>
+              <p className="text-slate-400 text-[11px] mt-0.5">Cổng TTĐT Đua Ghe Ngo — Tư liệu video góc quay truyền hình sông nước</p>
+            </div>
+            <span className="text-slate-500 text-[10px] truncate font-mono">duaghengo.cantho.gov.vn/160_video-clips-60.html</span>
+          </a>
+
+          <a
+            href="https://vnanet.vn/vi/anh/anh-thoi-su-trong-nuoc-1014/trao-thuong-giai-dua-ghe-ngo-tinh-soc-trang-nam-2024-7706595.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-3 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-sky-500/50 transition group flex flex-col justify-between space-y-2"
+          >
+            <div>
+              <div className="flex items-center justify-between font-mono text-[10px] text-sky-400 mb-1">
+                <span>[NGUỒN 4 — BỘ ẢNH TTXVN]</span>
+                <span className="group-hover:translate-x-0.5 transition">↗</span>
+              </div>
+              <strong className="text-white block">Ảnh Giải Đua Ghe Ngo Tỉnh Sóc Trăng 2024 (TTXVN)</strong>
+              <p className="text-slate-400 text-[11px] mt-0.5">Thông tấn xã Việt Nam — Độ nét cao kiểm tra trang phục, dầm và thế ngồi</p>
+            </div>
+            <span className="text-slate-500 text-[10px] truncate font-mono">vnanet.vn/vi/anh/anh-thoi-su-trong-nuoc-1014/trao-thuong-giai-dua...</span>
+          </a>
         </div>
       </div>
     </div>

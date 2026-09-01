@@ -281,46 +281,57 @@ export const STROKE_PHASES: StrokePhase[] = [
   {
     phaseIndex: 1,
     phaseName: "Catch Phase",
-    vietnameseName: "Pha Cắm Dầm (Bắt Nước)",
+    vietnameseName: "Pha 1: Vào nước / Cắm dầm (Catch)",
     timePercentage: "0% - 15% (0.00s - 0.08s)",
-    paddleAngleDeg: -35,
-    bladeDepthM: 0.45,
-    torsoAngleDeg: 42,
-    forceVector: "0.0N Forward, 450N Downward Entry",
-    description: "Athletes lunge forward with full core extension; blade enters water cleanly at forward acute angle with zero hesitation."
+    paddleAngleDeg: 24,
+    bladeDepthM: 0.18,
+    torsoAngleDeg: 34,
+    forceVector: "450N Cắm sâu đón lực cản nước",
+    description: "Dầm cắm ngập hoàn toàn dưới mặt nước (-18cm), góc tới +24°, thân người chồm gập sâu +34° đón lực căng cơ xô."
   },
   {
     phaseIndex: 2,
     phaseName: "Drive / Power Phase",
-    vietnameseName: "Pha Kéo Dầm (Gạt Nước / Sinh Lực)",
-    timePercentage: "15% - 60% (0.08s - 0.32s)",
-    paddleAngleDeg: 10,
-    bladeDepthM: 0.55,
-    torsoAngleDeg: -15,
-    forceVector: "1,200N Propulsive Thrust per pair",
-    description: "Explosive abdominal and lat contraction; rowers pry water backwards using foot chocks while pulling paddle shaft past hip."
+    vietnameseName: "Pha 2: Kéo dầm / Phát lực (Drive)",
+    timePercentage: "15% - 55% (0.08s - 0.30s)",
+    paddleAngleDeg: -27.5,
+    bladeDepthM: 0.18,
+    torsoAngleDeg: -13,
+    forceVector: "1,450N Lực đẩy tối đa mỗi cặp",
+    description: "Pha phát lực chính: Quét dầm từ +24° về -27.5°, thân ngửa dồn lực từ +34° về -13°, nẹp be ghe làm điểm tì đòn bẩy cấp 1."
   },
   {
     phaseIndex: 3,
-    phaseName: "Extraction / Release Phase",
-    vietnameseName: "Pha Rút Dầm (Thoát Nước)",
-    timePercentage: "60% - 75% (0.32s - 0.40s)",
-    paddleAngleDeg: 38,
-    bladeDepthM: 0.05,
-    torsoAngleDeg: -10,
-    forceVector: "30N Upward Lift",
-    description: "Quick flick of lower wrist feathers the blade slicing upward out of water with minimal drag spray."
+    phaseName: "Finish / Release Phase",
+    vietnameseName: "Pha 3: Kết thúc lực (Finish)",
+    timePercentage: "55% - 65% (0.30s - 0.36s)",
+    paddleAngleDeg: -24,
+    bladeDepthM: 0.04,
+    torsoAngleDeg: -13,
+    forceVector: "180N Khóa lực lưng & đùi",
+    description: "Dầm quét hết biên độ ngang hông VĐV, thân người khóa cứng thế tấn sau, chuyển hóa hoàn toàn động năng vào thân ghe."
   },
   {
     phaseIndex: 4,
-    phaseName: "Air Recovery Phase",
-    vietnameseName: "Pha Vung Dầm (Hồi Vị)",
-    timePercentage: "75% - 100% (0.40s - 0.52s)",
-    paddleAngleDeg: -20,
-    bladeDepthM: -0.25,
-    torsoAngleDeg: 25,
-    forceVector: "0.0N (Aerodynamic feathering)",
-    description: "Blades skim low over water surface in synchronized arc as athletes spring forward to recharge for next catch."
+    phaseName: "Extraction Phase",
+    vietnameseName: "Pha 4: Rút mái chèo (Extraction)",
+    timePercentage: "65% - 78% (0.36s - 0.43s)",
+    paddleAngleDeg: -11.5,
+    bladeDepthM: -0.18,
+    torsoAngleDeg: 0,
+    forceVector: "50N Nhấc bổng thoát nước",
+    description: "Khuỷu tay ngoài nhấc nhanh, cổ tay trong xoay nhẹ đưa lá dầm vọt lên khỏi mặt nước (+18cm), xoay lướt gió giảm sức cản."
+  },
+  {
+    phaseIndex: 5,
+    phaseName: "Recovery Phase",
+    vietnameseName: "Pha 5: Vươn vị / Hồi vị (Recovery)",
+    timePercentage: "78% - 100% (0.43s - 0.55s)",
+    paddleAngleDeg: 24,
+    bladeDepthM: -0.18,
+    torsoAngleDeg: 34,
+    forceVector: "0.0N (Hồi phục cơ xô 0.12s)",
+    description: "Thân người và hai tay vươn mượt mà về trước theo quỹ đạo dạng Cosine, dầm lướt song song mặt nước chuẩn bị nhịp cắm mới."
   }
 ];
 
