@@ -1,40 +1,31 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import * as THREE from 'three';
-import { TECHNICAL_SECTIONS, COLOR_PALETTE, CREW_ROSTER } from '../data/technicalReferenceData';
 import { CrewFormationModal } from './CrewFormationModal';
-import { RowingKinematicsController } from './RowingKinematicsController';
 import {
   calculateStrokeKinematics,
   getGlobalStrokePhase,
-  STROKE_PHASES,
-  StrokePhaseInfo,
 } from '../utils/rowingKinematics';
 import {
-  Camera,
-  Layers,
-  Play,
-  Pause,
-  Eye,
-  EyeOff,
-  Maximize2,
   RotateCcw,
-  Crosshair,
-  Sparkles,
-  Sliders,
-  SlidersHorizontal,
-  Shield,
-  Anchor,
-  Users,
-  ChevronDown,
-  ChevronUp,
-  X,
-  Info,
   ZoomIn,
   ZoomOut,
+  Compass,
+  Settings2,
+  Camera,
+  Play,
+  Pause,
+  Check,
+  ChevronDown,
+  Layers,
+  Users,
+  Grid,
+  Ruler,
+  Scissors,
+  Eye,
   Waves,
-  Activity,
+  Sparkles,
   MapPin,
-  Gauge,
+  X,
 } from 'lucide-react';
 
 interface Interactive3DBlueprintProps {
@@ -42,55 +33,57 @@ interface Interactive3DBlueprintProps {
   onSelectSection?: (sectionId: number) => void;
 }
 
-type ViewAngle = '3D_ORBIT' | 'TOP' | 'SIDE' | 'FRONT' | 'REAR';
-type RenderMode = 'REALISTIC_PBR' | 'BLUEPRINT_CAD' | 'STRUCTURAL_KEM' | 'CREW_MATRIX';
+type ViewAngle = '3/4' | 'TOP' | 'SIDE' | 'CLOSE_UP_BOW' | 'CLOSE_UP_STERN';
+type RenderMode = 'REALISTIC_PBR' | 'BLUEPRINT_CAD' | 'STRUCTURAL_KEM';
 
-export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
-  activeSectionId,
-  onSelectSection,
-}) => {
+export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = () => {
   const mountRef = useRef<HTMLDivElement>(null);
-  const [viewAngle, setViewAngle] = useState<ViewAngle>('3D_ORBIT');
+
+  // View & Render State (5 Validation Inspection Modes: 3/4, TOP, SIDE, CLOSE-UP MŨI, CLOSE-UP ĐUÔI)
+  const [viewAngle, setViewAngle] = useState<ViewAngle>('3/4');
   const [renderMode, setRenderMode] = useState<RenderMode>('REALISTIC_PBR');
-  const [isPlaying, setIsPlaying] = useState<boolean>(true); // Start active for instant live demonstration
-  const [strokeCadenceSPM, setStrokeCadenceSPM] = useState<number>(105);
-  const [globalCycleProgress, setGlobalCycleProgress] = useState<number>(0.0);
-  const [currentPhase, setCurrentPhase] = useState<StrokePhaseInfo>(STROKE_PHASES[0]);
-  const [phaseProgress, setPhaseProgress] = useState<number>(0.0);
+  const [isAutoRotating, setIsAutoRotating] = useState<boolean>(false);
+
+  // Feature Toggles (Under "⚙ Hiển thị")
+  const [showCrew, setShowCrew] = useState<boolean>(true);
+  const [showGrid, setShowGrid] = useState<boolean>(false);
+  const [showDimensions, setShowDimensions] = useState<boolean>(false);
+  const [showSlicePlane, setShowSlicePlane] = useState<boolean>(false);
   const [stationSliceMeters, setStationSliceMeters] = useState<number>(15.1);
   const [showWater, setShowWater] = useState<boolean>(true);
-  const [showDimensions, setShowDimensions] = useState<boolean>(true);
-  const [showCrew, setShowCrew] = useState<boolean>(true);
-  const [showWake, setShowWake] = useState<boolean>(true);
-  const [showSpecsHUD, setShowSpecsHUD] = useState<boolean>(true);
-  const [isDetailsModalOpen, setIsDetailsModalOpen] = useState<boolean>(false);
+
+  // Dropdown Popovers
+  const [isViewMenuOpen, setIsViewMenuOpen] = useState<boolean>(false);
+  const [isDisplayMenuOpen, setIsDisplayMenuOpen] = useState<boolean>(false);
   const [isCrewFormationOpen, setIsCrewFormationOpen] = useState<boolean>(false);
 
-  // References for live animation loop without state recreation lag
+  // Animation State
+  const [isPlaying, setIsPlaying] = useState<boolean>(true);
+  const strokeCadenceSPM = 105;
+
+  // Refs for Animation Loop
   const isPlayingRef = useRef<boolean>(isPlaying);
+  const isAutoRotatingRef = useRef<boolean>(isAutoRotating);
   const cadenceRef = useRef<number>(strokeCadenceSPM);
   const manualProgressRef = useRef<number>(0.0);
   const accumulatedCycleRef = useRef<number>(0.0);
   const lastTimestampRef = useRef<number>(0);
-  const frameCountRef = useRef<number>(0);
 
   useEffect(() => {
     isPlayingRef.current = isPlaying;
   }, [isPlaying]);
 
   useEffect(() => {
-    cadenceRef.current = strokeCadenceSPM;
-  }, [strokeCadenceSPM]);
+    isAutoRotatingRef.current = isAutoRotating;
+  }, [isAutoRotating]);
 
-  // References for Three.js instances
+  // Three.js Core Refs
   const sceneRef = useRef<THREE.Scene | null>(null);
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
   const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
   const orthoCameraRef = useRef<THREE.OrthographicCamera | null>(null);
   const activeCameraTypeRef = useRef<'PERSPECTIVE' | 'ORTHO'>('PERSPECTIVE');
   const boatGroupRef = useRef<THREE.Group | null>(null);
-  const hullOuterMeshRef = useRef<THREE.Mesh | null>(null);
-  const hullInnerMeshRef = useRef<THREE.Mesh | null>(null);
   const paddlesGroupRef = useRef<THREE.Group | null>(null);
   const crewGroupRef = useRef<THREE.Group | null>(null);
   const kemGroupRef = useRef<THREE.Group | null>(null);
@@ -98,10 +91,18 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
   const thwartsGroupRef = useRef<THREE.Group | null>(null);
   const waterMeshRef = useRef<THREE.Mesh | null>(null);
   const wakeGroupRef = useRef<THREE.Group | null>(null);
+  const gridHelperRef = useRef<THREE.GridHelper | null>(null);
   const slicePlaneRef = useRef<THREE.Mesh | null>(null);
+  const dimensionsGroupRef = useRef<THREE.Group | null>(null);
   const animationFrameRef = useRef<number>(0);
+
+  // Interaction Refs
   const isMouseDownRef = useRef<boolean>(false);
+  const isRightMouseDownRef = useRef<boolean>(false);
   const mousePrevRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
+  const touchStartDistRef = useRef<number>(0);
+  const touchPrevRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
+
   const cameraOrbitRef = useRef<{ radius: number; theta: number; phi: number; target: THREE.Vector3 }>({
     radius: 32,
     theta: Math.PI / 4.2,
@@ -109,22 +110,33 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
     target: new THREE.Vector3(0, 0.4, 0),
   });
 
+  // Physical Metric Dimensions
+  const BOAT_LENGTH = 30.20;
+  const BOAT_MAX_BEAM = 1.16;
+  const BOAT_MID_DEPTH = 0.48;
+  const PROW_RISE = 1.38;
+  const STERN_RISE = 1.52;
+  const FLARE_ANGLE = 0.22;
+
+  // 1. Zoom Control
   const handleZoom = (delta: number) => {
     if (activeCameraTypeRef.current === 'PERSPECTIVE' && cameraRef.current) {
-      cameraOrbitRef.current.radius = Math.max(8, Math.min(65, cameraOrbitRef.current.radius + delta));
+      cameraOrbitRef.current.radius = Math.max(2.5, Math.min(65, cameraOrbitRef.current.radius + delta));
       const { radius, theta, phi, target } = cameraOrbitRef.current;
       cameraRef.current.position.x = target.x + radius * Math.sin(phi) * Math.cos(theta);
       cameraRef.current.position.y = target.y + radius * Math.cos(phi);
       cameraRef.current.position.z = target.z + radius * Math.sin(phi) * Math.sin(theta);
       cameraRef.current.lookAt(target);
     } else if (orthoCameraRef.current) {
-      orthoCameraRef.current.zoom = Math.max(10, Math.min(90, orthoCameraRef.current.zoom * (delta < 0 ? 1.25 : 0.8)));
+      orthoCameraRef.current.zoom = Math.max(0.6, Math.min(12, orthoCameraRef.current.zoom * (delta < 0 ? 1.25 : 0.8)));
       orthoCameraRef.current.updateProjectionMatrix();
     }
   };
 
+  // 2. Reset View Control
   const handleResetView = () => {
-    setViewAngle('3D_ORBIT');
+    setViewAngle('3/4');
+    setIsAutoRotating(false);
     cameraOrbitRef.current = {
       radius: 32,
       theta: Math.PI / 4.2,
@@ -140,15 +152,35 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
     }
   };
 
-  // Physical Metric Dimensions (Verified from Tum Núp 2 Sóc Trăng 2024 Reference)
-  const BOAT_LENGTH = 30.20; // meters (LOA)
-  const BOAT_MAX_BEAM = 1.16; // meters (Max width at midship)
-  const BOAT_MID_DEPTH = 0.48; // meters (Keel bottom to sheer line)
-  const PROW_RISE = 1.38; // meters (Prow tip rise above baseline)
-  const STERN_RISE = 1.52; // meters (Stern fin rise above baseline)
-  const DEADRISE_ANGLE = 0.15; // radians (~8.6 degrees shallow U-bottom)
-  const FLARE_ANGLE = 0.22; // radians (~12.6 degrees gunwale outward flare)
+  // Helper: Create 3D Dimension Canvas Sprite
+  const createDimensionSprite = (text: string, bgColor = 'rgba(15, 23, 42, 0.85)', textColor = '#38bdf8') => {
+    const canvas = document.createElement('canvas');
+    canvas.width = 256;
+    canvas.height = 64;
+    const ctx = canvas.getContext('2d');
+    if (ctx) {
+      ctx.fillStyle = bgColor;
+      ctx.roundRect(4, 4, 248, 56, 12);
+      ctx.fill();
+      ctx.strokeStyle = '#38bdf8';
+      ctx.lineWidth = 2;
+      ctx.stroke();
 
+      ctx.fillStyle = textColor;
+      ctx.font = 'bold 22px monospace';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(text, 128, 32);
+    }
+
+    const texture = new THREE.CanvasTexture(canvas);
+    const spriteMat = new THREE.SpriteMaterial({ map: texture, transparent: true });
+    const sprite = new THREE.Sprite(spriteMat);
+    sprite.scale.set(2.4, 0.6, 1);
+    return sprite;
+  };
+
+  // Main Three.js Initialization Effect
   useEffect(() => {
     if (!mountRef.current) return;
     const container = mountRef.current;
@@ -162,7 +194,7 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
 
     // 2. CAMERAS
     const aspect = width / height;
-    const camera = new THREE.PerspectiveCamera(42, aspect, 0.1, 250);
+    const camera = new THREE.PerspectiveCamera(40, aspect, 0.1, 300);
     cameraRef.current = camera;
 
     const frustumSize = 34;
@@ -172,7 +204,7 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
       frustumSize / 2,
       -frustumSize / 2,
       0.1,
-      250
+      300
     );
     orthoCameraRef.current = orthoCamera;
 
@@ -188,8 +220,8 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
     container.appendChild(renderer.domElement);
     rendererRef.current = renderer;
 
-    // 4. LIGHTING SYSTEM (Maspéro daylight sunshine + alluvial bounce)
-    const ambientLight = new THREE.AmbientLight(0xfff8ed, 0.75);
+    // 4. LIGHTING SYSTEM
+    const ambientLight = new THREE.AmbientLight(0xfff8ed, 0.8);
     scene.add(ambientLight);
 
     const sunLight = new THREE.DirectionalLight(0xfffae8, 1.6);
@@ -206,7 +238,6 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
     sunLight.shadow.camera.bottom = -20;
     scene.add(sunLight);
 
-    // Sky & River fill bounce
     const skyFill = new THREE.DirectionalLight(0x7dd3fc, 0.5);
     skyFill.position.set(-15, 15, -15);
     scene.add(skyFill);
@@ -218,6 +249,8 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
     // 5. GRID / CAD PLANE
     const gridHelper = new THREE.GridHelper(52, 52, 0x38bdf8, 0x1e293b);
     gridHelper.position.y = -0.28;
+    gridHelper.visible = showGrid;
+    gridHelperRef.current = gridHelper;
     scene.add(gridHelper);
 
     // 6. BUILD HIGH-FIDELITY NGO BOAT SYSTEM
@@ -225,43 +258,44 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
     boatGroupRef.current = boatGroup;
     scene.add(boatGroup);
 
-    // BUILD DUAL-LAYER SHELL HULL (Outer + Inner Hollow Dugout Cavity + Khmer Prow/Stern)
+    // Build Dual-Layer Shell Hull
     buildAuthenticHull(boatGroup, renderMode);
 
-    // BUILD 48 INTERNAL RIBS (Cong Ghe)
+    // Build 48 Internal Ribs (Cong Ghe)
     const ribsGroup = new THREE.Group();
     ribsGroupRef.current = ribsGroup;
     buildTransverseRibs(ribsGroup, renderMode);
     boatGroup.add(ribsGroup);
 
-    // BUILD 26 SEATING THWARTS (Đòn Ngồi)
+    // Build 26 Seating Thwarts (Đòn Ngồi)
     const thwartsGroup = new THREE.Group();
     thwartsGroupRef.current = thwartsGroup;
     buildSeatingThwarts(thwartsGroup, renderMode);
     boatGroup.add(thwartsGroup);
 
-    // BUILD MASTER KÈM SPRING TRUSS (Cây Kềm Suốt + 5 Trụ Kềm + Cáp néo tăng đơ)
+    // Build Master Kèm Spring Truss
     const kemGroup = new THREE.Group();
     kemGroupRef.current = kemGroup;
     buildMasterKemTruss(kemGroup, renderMode);
     boatGroup.add(kemGroup);
 
-    // BUILD 50 RACING PADDLES + 3 STEERING OARS (Dầm bơi lá muỗng & Dầm lái 3m)
+    // Build 50 Racing Paddles + 3 Steering Oars
     const paddlesGroup = new THREE.Group();
     paddlesGroupRef.current = paddlesGroup;
     buildAuthenticPaddles(paddlesGroup, renderMode);
     boatGroup.add(paddlesGroup);
 
-    // BUILD FULL 55-ATHLETE ROSTER (Chỉ huy mũi, Chỉ huy còi giữa, 50 VĐV chèo, 3 Tài công lái)
+    // Build 55-Athlete Crew
     const crewGroup = new THREE.Group();
     crewGroupRef.current = crewGroup;
     buildAuthenticCrew(crewGroup, renderMode);
+    crewGroup.visible = showCrew;
     boatGroup.add(crewGroup);
 
-    // BUILD MASPERO RIVER WATER SURFACE & WAKE
+    // Build Maspéro Water Surface & Wake
     const waterGeo = new THREE.PlaneGeometry(64, 22, 48, 24);
     const waterMat = new THREE.MeshStandardMaterial({
-      color: 0x85583e, // Maspero Mud Brown
+      color: 0x85583e,
       roughness: 0.12,
       metalness: 0.28,
       transparent: true,
@@ -270,67 +304,127 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
     const waterMesh = new THREE.Mesh(waterGeo, waterMat);
     waterMesh.rotation.x = -Math.PI / 2;
     waterMesh.position.y = 0.0;
+    waterMesh.visible = showWater;
     waterMeshRef.current = waterMesh;
     scene.add(waterMesh);
 
-    // BUILD WATER WAKE & SPRAY EFFECT GROUP
     const wakeGroup = new THREE.Group();
     wakeGroupRef.current = wakeGroup;
     buildWakeAndSplashes(wakeGroup);
+    wakeGroup.visible = showWater;
     boatGroup.add(wakeGroup);
 
-    // BUILD STATION SLICE PLANE INDICATOR
-    const sliceGeo = new THREE.PlaneGeometry(3.2, 3.2);
+    // Build Station Slice Plane Indicator
+    const sliceGeo = new THREE.PlaneGeometry(3.4, 3.4);
     const sliceMat = new THREE.MeshBasicMaterial({
       color: 0xf43f5e,
       wireframe: true,
       transparent: true,
-      opacity: 0.45,
+      opacity: 0.55,
       side: THREE.DoubleSide,
     });
     const slicePlane = new THREE.Mesh(sliceGeo, sliceMat);
     slicePlane.position.x = stationSliceMeters - BOAT_LENGTH / 2;
     slicePlane.position.y = 0.5;
+    slicePlane.visible = showSlicePlane;
     slicePlaneRef.current = slicePlane;
     scene.add(slicePlane);
 
-    // 7. MOUSE ORBIT CONTROLS
+    // Build 3D Dimensions & Rulers System
+    const dimensionsGroup = new THREE.Group();
+    dimensionsGroupRef.current = dimensionsGroup;
+    build3DDimensions(dimensionsGroup);
+    dimensionsGroup.visible = showDimensions;
+    scene.add(dimensionsGroup);
+
+    // 7. MOUSE & TOUCH EVENT HANDLERS
     const handleMouseDown = (e: MouseEvent) => {
-      isMouseDownRef.current = true;
+      if (e.button === 2) {
+        isRightMouseDownRef.current = true;
+      } else {
+        isMouseDownRef.current = true;
+      }
       mousePrevRef.current = { x: e.clientX, y: e.clientY };
     };
 
     const handleMouseMove = (e: MouseEvent) => {
-      if (!isMouseDownRef.current) return;
+      if (!isMouseDownRef.current && !isRightMouseDownRef.current) return;
       const dx = e.clientX - mousePrevRef.current.x;
       const dy = e.clientY - mousePrevRef.current.y;
       mousePrevRef.current = { x: e.clientX, y: e.clientY };
 
-      if (viewAngle === '3D_ORBIT') {
-        cameraOrbitRef.current.theta -= dx * 0.007;
-        cameraOrbitRef.current.phi = Math.max(
-          0.06,
-          Math.min(Math.PI / 2 - 0.04, cameraOrbitRef.current.phi + dy * 0.007)
-        );
+      if (isRightMouseDownRef.current) {
+        // Pan Target
+        const panSpeed = 0.02;
+        cameraOrbitRef.current.target.x -= dx * panSpeed;
+        cameraOrbitRef.current.target.y += dy * panSpeed;
+      } else if (isMouseDownRef.current) {
+        // Rotate 360
+        if (viewAngle === '3/4' || viewAngle === 'CLOSE_UP_BOW' || viewAngle === 'CLOSE_UP_STERN') {
+          cameraOrbitRef.current.theta -= dx * 0.007;
+          cameraOrbitRef.current.phi = Math.max(
+            0.06,
+            Math.min(Math.PI / 2 - 0.04, cameraOrbitRef.current.phi + dy * 0.007)
+          );
+        }
       }
     };
 
     const handleMouseUp = () => {
       isMouseDownRef.current = false;
+      isRightMouseDownRef.current = false;
+    };
+
+    const handleContextMenu = (e: MouseEvent) => {
+      e.preventDefault();
     };
 
     const handleWheel = (e: WheelEvent) => {
       e.preventDefault();
-      cameraOrbitRef.current.radius = Math.max(
-        5,
-        Math.min(65, cameraOrbitRef.current.radius + e.deltaY * 0.035)
-      );
+      handleZoom(e.deltaY * 0.03);
+    };
+
+    // Touch Support for Pinch-to-Zoom & Orbit
+    const handleTouchStart = (e: TouchEvent) => {
+      if (e.touches.length === 1) {
+        touchPrevRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+      } else if (e.touches.length === 2) {
+        const dx = e.touches[0].clientX - e.touches[1].clientX;
+        const dy = e.touches[0].clientY - e.touches[1].clientY;
+        touchStartDistRef.current = Math.sqrt(dx * dx + dy * dy);
+      }
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length === 1) {
+        const dx = e.touches[0].clientX - touchPrevRef.current.x;
+        const dy = e.touches[0].clientY - touchPrevRef.current.y;
+        touchPrevRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+
+        if (viewAngle === '3/4' || viewAngle === 'CLOSE_UP_BOW' || viewAngle === 'CLOSE_UP_STERN') {
+          cameraOrbitRef.current.theta -= dx * 0.008;
+          cameraOrbitRef.current.phi = Math.max(
+            0.06,
+            Math.min(Math.PI / 2 - 0.04, cameraOrbitRef.current.phi + dy * 0.008)
+          );
+        }
+      } else if (e.touches.length === 2) {
+        const dx = e.touches[0].clientX - e.touches[1].clientX;
+        const dy = e.touches[0].clientY - e.touches[1].clientY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const delta = touchStartDistRef.current - dist;
+        touchStartDistRef.current = dist;
+        handleZoom(delta * 0.05);
+      }
     };
 
     container.addEventListener('mousedown', handleMouseDown);
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseup', handleMouseUp);
+    container.addEventListener('contextmenu', handleContextMenu);
     container.addEventListener('wheel', handleWheel, { passive: false });
+    container.addEventListener('touchstart', handleTouchStart, { passive: true });
+    container.addEventListener('touchmove', handleTouchMove, { passive: true });
 
     // 8. RESIZE OBSERVER
     const handleResize = () => {
@@ -354,14 +448,23 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
     const resizeObserver = new ResizeObserver(handleResize);
     resizeObserver.observe(container);
 
-    // 9. ANIMATION LOOP & BIOMECHANICAL KINEMATICS ENGINE
-    let clock = new THREE.Clock();
+    // 9. ANIMATION LOOP
+    const clock = new THREE.Clock();
 
     const animate = () => {
       animationFrameRef.current = requestAnimationFrame(animate);
       const elapsedTime = clock.getElapsedTime();
       const delta = lastTimestampRef.current === 0 ? 0.016 : Math.min(0.1, elapsedTime - lastTimestampRef.current);
       lastTimestampRef.current = elapsedTime;
+
+      // Auto-rotation handling
+      if (
+        isAutoRotatingRef.current &&
+        (viewAngle === '3/4' || viewAngle === 'CLOSE_UP_BOW' || viewAngle === 'CLOSE_UP_STERN') &&
+        !isMouseDownRef.current
+      ) {
+        cameraOrbitRef.current.theta += 0.005;
+      }
 
       // Kinematics cycle calculation
       if (isPlayingRef.current) {
@@ -372,7 +475,7 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
 
       const masterT = manualProgressRef.current;
 
-      // 1. PADDLES MOTION CYCLE (Catch, Drive, Finish, Extraction, Recovery)
+      // 1. Paddles Motion
       if (paddlesGroupRef.current) {
         paddlesGroupRef.current.children.forEach((paddleMesh) => {
           const uData = paddleMesh.userData;
@@ -389,75 +492,57 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
               kin.strokeAngleZ
             );
           } else if (uData && uData.isSteeringOar) {
-            // Steering oar subtle dynamic scull to maintain heading
             paddleMesh.rotation.z = uData.baseRotZ + Math.sin(masterT * Math.PI * 2) * 0.035;
             paddleMesh.rotation.x = uData.baseRotX + Math.cos(masterT * Math.PI * 2) * 0.045;
           }
         });
       }
 
-      // 2. CREW SKELETAL & ARTICULATED TORSO KINEMATICS
+      // 2. Crew Skeletal Kinematics
       if (crewGroupRef.current) {
         crewGroupRef.current.children.forEach((athleteGroup) => {
           const uData = athleteGroup.userData;
           if (uData && uData.isRower) {
             const kin = calculateStrokeKinematics(masterT, uData.pair, uData.isPort);
             if (uData.upperBody) {
-              // Torso bends forward at Catch (+38 deg) and drives back at Finish (-14 deg)
               uData.upperBody.rotation.z = kin.bodyLeanZ;
               uData.upperBody.position.y = kin.torsoElevY;
             }
             if (uData.outsideArm) {
-              // Arm extension and catch reach
               uData.outsideArm.rotation.z = -0.52 - kin.armReachX * 0.45 + kin.armPullZ * 0.35;
             }
             if (uData.insideArm) {
-              // Arm pull and handle recovery
               uData.insideArm.rotation.z = -0.48 - kin.armReachX * 0.40 + kin.armPullZ * 0.45;
             }
           } else if (uData && uData.isBowLeader) {
-            // Bow leader dynamic rhythm bounce on prow
             athleteGroup.position.y = uData.baseY + Math.sin(masterT * Math.PI * 2) * 0.05;
             athleteGroup.rotation.z = uData.baseRotZ + Math.cos(masterT * Math.PI * 2) * 0.10;
           } else if (uData && uData.isMidCommander) {
-            // Midship rhythm commander jumping/stamping on central Kềm
             athleteGroup.position.y = uData.baseY + Math.abs(Math.sin(masterT * Math.PI)) * 0.07;
             athleteGroup.rotation.z = Math.sin(masterT * Math.PI * 2) * 0.07;
           } else if (uData && uData.isSteersman) {
-            // Steersmen balancing against torque
             athleteGroup.rotation.z = uData.baseRotZ + Math.sin(masterT * Math.PI * 2) * 0.025;
           }
         });
       }
 
-      // 3. BOAT DYNAMIC HEAVE, PITCH & KÈM ELASTIC SURGE
+      // 3. Boat Dynamic Heave & Pitch
       if (boatGroupRef.current) {
-        // Peak forward thrust occurs during Drive phase (0.15 - 0.58)
         const heaveDisplacement = Math.sin(masterT * Math.PI * 2) * 0.028;
-        const pitchAngle = Math.cos(masterT * Math.PI * 2 - 0.2) * 0.011; // ~0.65 degrees pitch rocking
+        const pitchAngle = Math.cos(masterT * Math.PI * 2 - 0.2) * 0.011;
         const surgeX = Math.sin(masterT * Math.PI * 2 - 0.3) * 0.035;
         boatGroupRef.current.position.set(surgeX, heaveDisplacement, 0);
         boatGroupRef.current.rotation.z = pitchAngle;
       }
 
-      // 4. Wake splash & spray animation
+      // 4. Wake Splash Animation
       if (wakeGroupRef.current) {
-        wakeGroupRef.current.visible = showWake;
         const isDrive = masterT >= 0.15 && masterT < 0.60;
         const drivePulse = isDrive ? 1.0 + Math.sin(((masterT - 0.15) / 0.45) * Math.PI) * 0.35 : 0.75;
         wakeGroupRef.current.children.forEach((wakeParticle, wIdx) => {
           const scalePulse = drivePulse * (1.0 + Math.sin(masterT * Math.PI * 2 + wIdx) * 0.15);
           wakeParticle.scale.set(scalePulse, scalePulse, scalePulse);
         });
-      }
-
-      // Throttle telemetry update to React state (every 4 frames)
-      frameCountRef.current++;
-      if (frameCountRef.current % 4 === 0) {
-        const info = getGlobalStrokePhase(masterT);
-        setGlobalCycleProgress(masterT);
-        setCurrentPhase(info.phase);
-        setPhaseProgress(info.phaseProgress);
       }
 
       // Update camera position
@@ -477,12 +562,25 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
       container.removeEventListener('mousedown', handleMouseDown);
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseup', handleMouseUp);
+      container.removeEventListener('contextmenu', handleContextMenu);
       container.removeEventListener('wheel', handleWheel);
+      container.removeEventListener('touchstart', handleTouchStart);
+      container.removeEventListener('touchmove', handleTouchMove);
       if (rendererRef.current) {
         rendererRef.current.dispose();
       }
     };
-  }, [renderMode, strokeCadenceSPM]);
+  }, [renderMode]);
+
+  // Synchronize Toggles with Three.js Objects
+  useEffect(() => {
+    if (waterMeshRef.current) waterMeshRef.current.visible = showWater;
+    if (wakeGroupRef.current) wakeGroupRef.current.visible = showWater;
+    if (crewGroupRef.current) crewGroupRef.current.visible = showCrew;
+    if (gridHelperRef.current) gridHelperRef.current.visible = showGrid;
+    if (dimensionsGroupRef.current) dimensionsGroupRef.current.visible = showDimensions;
+    if (slicePlaneRef.current) slicePlaneRef.current.visible = showSlicePlane;
+  }, [showWater, showCrew, showGrid, showDimensions, showSlicePlane]);
 
   // Update Slice plane position
   useEffect(() => {
@@ -491,75 +589,122 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
     }
   }, [stationSliceMeters]);
 
-  // Update visibility toggles
-  useEffect(() => {
-    if (waterMeshRef.current) waterMeshRef.current.visible = showWater;
-    if (crewGroupRef.current) crewGroupRef.current.visible = showCrew;
-    if (wakeGroupRef.current) wakeGroupRef.current.visible = showWake && showWater;
-    if (kemGroupRef.current) {
-      kemGroupRef.current.visible =
-        renderMode === 'STRUCTURAL_KEM' || renderMode === 'REALISTIC_PBR' || renderMode === 'BLUEPRINT_CAD';
-    }
-    if (ribsGroupRef.current) {
-      ribsGroupRef.current.visible = renderMode !== 'CREW_MATRIX';
-    }
-    if (thwartsGroupRef.current) {
-      thwartsGroupRef.current.visible = true;
-    }
-  }, [showWater, showCrew, showWake, renderMode]);
-
-  // Update camera view angle
+  // Update Camera View Angle (5 Validation Modes: 3/4, TOP, SIDE, CLOSE-UP MŨI, CLOSE-UP ĐUÔI)
   const updateCameraView = () => {
     if (!cameraRef.current || !orthoCameraRef.current) return;
 
-    if (viewAngle === '3D_ORBIT') {
+    if (viewAngle === '3/4') {
       activeCameraTypeRef.current = 'PERSPECTIVE';
       const { radius, theta, phi, target } = cameraOrbitRef.current;
-      const x = radius * Math.sin(phi) * Math.sin(theta);
-      const y = radius * Math.cos(phi);
-      const z = radius * Math.sin(phi) * Math.cos(theta);
+      const x = target.x + radius * Math.sin(phi) * Math.cos(theta);
+      const y = target.y + radius * Math.cos(phi);
+      const z = target.z + radius * Math.sin(phi) * Math.sin(theta);
 
       cameraRef.current.position.set(x, y, z);
       cameraRef.current.lookAt(target);
     } else if (viewAngle === 'TOP') {
       activeCameraTypeRef.current = 'ORTHO';
       orthoCameraRef.current.zoom = 1.0;
-      orthoCameraRef.current.position.set(0, 36, 0);
+      orthoCameraRef.current.position.set(0, 38, 0);
       orthoCameraRef.current.lookAt(0, 0, 0);
       orthoCameraRef.current.up.set(0, 0, -1);
       orthoCameraRef.current.updateProjectionMatrix();
     } else if (viewAngle === 'SIDE') {
       activeCameraTypeRef.current = 'ORTHO';
       orthoCameraRef.current.zoom = 1.0;
-      orthoCameraRef.current.position.set(0, 0.70, 26);
+      orthoCameraRef.current.position.set(0, 0.70, 28);
       orthoCameraRef.current.lookAt(0, 0.70, 0);
       orthoCameraRef.current.up.set(0, 1, 0);
       orthoCameraRef.current.updateProjectionMatrix();
-    } else if (viewAngle === 'FRONT') {
-      activeCameraTypeRef.current = 'ORTHO';
-      orthoCameraRef.current.zoom = 5.5;
-      orthoCameraRef.current.position.set(BOAT_LENGTH / 2 + 10.0, 0.75, 0);
-      orthoCameraRef.current.lookAt(0, 0.75, 0);
-      orthoCameraRef.current.up.set(0, 1, 0);
-      orthoCameraRef.current.updateProjectionMatrix();
-    } else if (viewAngle === 'REAR') {
-      activeCameraTypeRef.current = 'ORTHO';
-      orthoCameraRef.current.zoom = 5.5;
-      orthoCameraRef.current.position.set(-BOAT_LENGTH / 2 - 10.0, 0.85, 0);
-      orthoCameraRef.current.lookAt(0, 0.85, 0);
-      orthoCameraRef.current.up.set(0, 1, 0);
-      orthoCameraRef.current.updateProjectionMatrix();
+    } else if (viewAngle === 'CLOSE_UP_BOW') {
+      activeCameraTypeRef.current = 'PERSPECTIVE';
+      const bowTarget = new THREE.Vector3(BOAT_LENGTH / 2 - 1.2, 1.15, 0);
+      const { radius, theta, phi } = cameraOrbitRef.current;
+      const closeRadius = Math.min(6.8, radius);
+      const x = bowTarget.x + closeRadius * Math.sin(phi) * Math.cos(theta);
+      const y = bowTarget.y + closeRadius * Math.cos(phi);
+      const z = bowTarget.z + closeRadius * Math.sin(phi) * Math.sin(theta);
+
+      cameraRef.current.position.set(x, y, z);
+      cameraRef.current.lookAt(bowTarget);
+    } else if (viewAngle === 'CLOSE_UP_STERN') {
+      activeCameraTypeRef.current = 'PERSPECTIVE';
+      const sternTarget = new THREE.Vector3(-BOAT_LENGTH / 2 + 1.2, 1.25, 0);
+      const { radius, theta, phi } = cameraOrbitRef.current;
+      const closeRadius = Math.min(6.8, radius);
+      const x = sternTarget.x + closeRadius * Math.sin(phi) * Math.cos(theta);
+      const y = sternTarget.y + closeRadius * Math.cos(phi);
+      const z = sternTarget.z + closeRadius * Math.sin(phi) * Math.sin(theta);
+
+      cameraRef.current.position.set(x, y, z);
+      cameraRef.current.lookAt(sternTarget);
     }
   };
 
-  // Helper: Build authentic Khmer Ngo Boat Hull (Outer Shell + Inner Dugout Cockpit)
-  // Helper: Build authentic Khmer Ngo Boat Hull (Outer Shell + Inner Dugout Cockpit)
+  // Helper: Build 3D Dimension Lines & Rulers
+  const build3DDimensions = (parent: THREE.Group) => {
+    const lineMat = new THREE.LineBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.8 });
+
+    // 1. Overall Length LOA = 30.20m
+    const loaPoints = [
+      new THREE.Vector3(-BOAT_LENGTH / 2, -0.6, 1.6),
+      new THREE.Vector3(BOAT_LENGTH / 2, -0.6, 1.6),
+    ];
+    const loaGeo = new THREE.BufferGeometry().setFromPoints(loaPoints);
+    parent.add(new THREE.Line(loaGeo, lineMat));
+
+    // End ticks for LOA
+    const tickA = new THREE.Line(
+      new THREE.BufferGeometry().setFromPoints([
+        new THREE.Vector3(-BOAT_LENGTH / 2, -0.8, 1.6),
+        new THREE.Vector3(-BOAT_LENGTH / 2, -0.4, 1.6),
+      ]),
+      lineMat
+    );
+    const tickB = new THREE.Line(
+      new THREE.BufferGeometry().setFromPoints([
+        new THREE.Vector3(BOAT_LENGTH / 2, -0.8, 1.6),
+        new THREE.Vector3(BOAT_LENGTH / 2, -0.4, 1.6),
+      ]),
+      lineMat
+    );
+    parent.add(tickA);
+    parent.add(tickB);
+
+    const loaSprite = createDimensionSprite('LOA: 30.20 m');
+    loaSprite.position.set(0, -0.9, 1.6);
+    parent.add(loaSprite);
+
+    // 2. Beam Max = 1.16m
+    const beamPoints = [
+      new THREE.Vector3(0, 0.65, -BOAT_MAX_BEAM / 2),
+      new THREE.Vector3(0, 0.65, BOAT_MAX_BEAM / 2),
+    ];
+    const beamGeo = new THREE.BufferGeometry().setFromPoints(beamPoints);
+    parent.add(new THREE.Line(beamGeo, lineMat));
+
+    const beamSprite = createDimensionSprite('Beam: 1.16 m');
+    beamSprite.position.set(0, 1.1, 0);
+    parent.add(beamSprite);
+
+    // 3. Prow Tip Height = +1.38m
+    const prowSprite = createDimensionSprite('Mũi: +1.38 m', 'rgba(220, 38, 38, 0.85)', '#fef08a');
+    prowSprite.position.set(BOAT_LENGTH / 2 - 0.5, 1.9, 0);
+    parent.add(prowSprite);
+
+    // 4. Stern Fin Height = +1.52m
+    const sternSprite = createDimensionSprite('Đuôi: +1.52 m', 'rgba(220, 38, 38, 0.85)', '#fef08a');
+    sternSprite.position.set(-BOAT_LENGTH / 2 + 0.5, 2.1, 0);
+    parent.add(sternSprite);
+  };
+
+  // Helper: Build authentic Khmer Ngo Boat Hull (Tum Núp 2 2024 Reference)
   const buildAuthenticHull = (parent: THREE.Group, mode: RenderMode) => {
     const isCAD = mode === 'BLUEPRINT_CAD';
     const isKemFocus = mode === 'STRUCTURAL_KEM';
 
-    const STATIONS = 120; // 120 longitudinal cross-sections for ultra-smooth organic lofting
-    const SLICES = 32; // 32 lateral profile points
+    const STATIONS = 200;
+    const SLICES = 40;
     const outerVerts: number[] = [];
     const outerIndices: number[] = [];
     const outerColors: number[] = [];
@@ -568,111 +713,95 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
     const innerIndices: number[] = [];
     const innerColors: number[] = [];
 
-    // Calculate station profile coordinates for Outer Shell
     for (let i = 0; i <= STATIONS; i++) {
-      const u = i / STATIONS; // 0 = Stern Tip, 1 = Bow Tip
-      const x = (u - 0.5) * BOAT_LENGTH; // Longitude (-15.1m to +15.1m)
+      const u = i / STATIONS;
+      const x = (u - 0.5) * BOAT_LENGTH;
 
-      // 1. Organic willow-leaf (lá tre / thoi naga) continuous slender taper
-      // Powers > 1.0 ensure needle-sharp tapering at bow and stern tips without bluntness
       const sinU = Math.sin(u * Math.PI);
-      const beamAtStation = BOAT_MAX_BEAM * Math.pow(sinU, 1.25);
+      let beamAtStation = BOAT_MAX_BEAM * Math.pow(sinU, 1.18);
 
-      // 2. Continuous Rocker Keel Curve & Gunwale Sheer Line
       let keelY = 0.0;
       let gunwaleSheerY = BOAT_MID_DEPTH;
 
       if (u >= 0.5) {
-        // Forward section (Midship -> Bow Prow)
-        const tBow = (u - 0.5) / 0.5; // 0 at midship, 1 at bow tip
-        // Smooth C2 cubic keel sweep up to Meet the prow nose
-        keelY = (PROW_RISE - 0.16) * Math.pow(tBow, 2.8);
-        // Smooth C2 sheer sweep up to Prow Tip (+1.38m)
-        gunwaleSheerY = BOAT_MID_DEPTH + (PROW_RISE - BOAT_MID_DEPTH) * Math.pow(tBow, 2.4);
+        const tBow = (u - 0.5) / 0.5;
+        // Non-linear sheer rise and keel rise to +1.38m
+        keelY = (PROW_RISE - 0.14) * Math.pow(tBow, 2.6);
+        gunwaleSheerY = BOAT_MID_DEPTH + (PROW_RISE - BOAT_MID_DEPTH) * Math.pow(tBow, 2.2);
+        // Slender knife-edge arrow taper at prow tip
+        beamAtStation *= 1.0 - 0.12 * Math.pow(tBow, 3.0);
+        if (i === STATIONS) beamAtStation = 0.015;
       } else {
-        // Aft section (Midship -> Stern Fin)
-        const tStern = (0.5 - u) / 0.5; // 0 at midship, 1 at stern tip
-        // Smooth C2 cubic keel sweep up to Stern Fin bottom
-        keelY = (STERN_RISE - 0.18) * Math.pow(tStern, 2.8);
-        // Smooth C2 sheer sweep up to Stern Fin Tip (+1.52m)
+        const tStern = (0.5 - u) / 0.5;
+        // Non-linear sheer rise and keel rise to +1.52m (curved swept tail)
+        keelY = (STERN_RISE - 0.16) * Math.pow(tStern, 2.6);
         gunwaleSheerY = BOAT_MID_DEPTH + (STERN_RISE - BOAT_MID_DEPTH) * Math.pow(tStern, 2.2);
+        // Slender swept tail fin taper at stern
+        beamAtStation *= 1.0 - 0.15 * Math.pow(tStern, 3.0);
+        if (i === 0) beamAtStation = 0.012;
       }
 
-      // Outer hull points
       for (let j = 0; j <= SLICES; j++) {
-        const v = j / SLICES; // 0 = Port Gunwale, 0.5 = Keel center, 1 = Starboard Gunwale
-        const angle = (v - 0.5) * Math.PI; // -PI/2 to +PI/2
+        const v = j / SLICES;
+        const angle = (v - 0.5) * Math.PI;
 
         const halfBeam = beamAtStation / 2;
-        // Subtle topside flare, naturally vanishing at razor-sharp tips
         const flareRatio = Math.min(1.0, (beamAtStation / BOAT_MAX_BEAM) * 1.2);
         const localFlare = FLARE_ANGLE * flareRatio;
         const z = Math.sin(angle) * halfBeam * (1.0 + Math.abs(Math.sin(angle)) * localFlare);
 
-        // Authentic U-máng bottom: smooth transition from rounded bottom to vertical flared gunwale
-        const uCurvature = Math.pow(Math.abs(Math.sin(angle)), 1.6);
+        // U-to-V cross section transition: U-bottom at midship, sharpening into V-hydrofoil at bow
+        const tEnd = u >= 0.5 ? (u - 0.5) / 0.5 : (0.5 - u) / 0.5;
+        const curvatureExp = 1.6 - 0.6 * tEnd;
+        const uCurvature = Math.pow(Math.abs(Math.sin(angle)), curvatureExp);
         const y = keelY + uCurvature * (gunwaleSheerY - keelY);
 
         outerVerts.push(x, y, z);
 
-        // Color coding for authentic 2024 Tum Núp 2 livery (Royal Blue, Naga Scales, Gold Kbach, Scarlet Trim)
         if (isCAD) {
-          outerColors.push(0.22, 0.74, 0.97); // Neon Cyan CAD
+          outerColors.push(0.22, 0.74, 0.97);
         } else if (isKemFocus) {
-          outerColors.push(0.18, 0.22, 0.32); // Translucent muted slate
+          outerColors.push(0.18, 0.22, 0.32);
         } else {
-          // Authentic Tum Núp 2 Livery
+          // Authentic Tum Núp 2 Livery: Royal Blue Hull, Golden Dragon Scales, Red Waterline & Accents
           if (u > 0.94) {
-            // Scarlet Red & Gold Prow Tip (Mũi Rồng)
-            outerColors.push(0.86, 0.15, 0.15);
+            outerColors.push(0.86, 0.15, 0.15); // Prow Red
           } else if (u < 0.06) {
-            // Scarlet Red & Gold Stern Fin Tip (Đuôi Rồng)
-            outerColors.push(0.86, 0.15, 0.15);
-          } else if ((j <= 1 || j >= SLICES - 1) && halfBeam > 0.1) {
-            // Gold Angkor Kbach Scroll Trim along upper Gunwales (#FBBF24)
-            outerColors.push(0.98, 0.75, 0.14);
-          } else if ((j === 2 || j === SLICES - 2) && halfBeam > 0.1) {
-            // Scarlet Red accent pinstripe (#DC2626)
-            outerColors.push(0.86, 0.15, 0.15);
-          } else if (uCurvature < 0.18) {
-            // Bottom Keel & Bilge (Gỗ sao ngâm dầu / Sơn đen chống hà #18181B)
-            outerColors.push(0.09, 0.09, 0.11);
+            outerColors.push(0.86, 0.15, 0.15); // Stern Red
+          } else if ((j <= 2 || j >= SLICES - 2) && halfBeam > 0.08) {
+            outerColors.push(0.98, 0.75, 0.14); // Gold Gunwale Band
+          } else if ((j === 3 || j === SLICES - 3) && halfBeam > 0.08) {
+            outerColors.push(0.86, 0.15, 0.15); // Red Accent Pinstripe
+          } else if (uCurvature < 0.16) {
+            outerColors.push(0.09, 0.09, 0.11); // Keel bottom dark sao wood
           } else {
-            // Side Hull: Royal Sapphire Blue (#1D4ED8) with subtle Naga Gold Scale waves
-            const scaleWave = Math.sin(u * Math.PI * 48) * Math.cos(angle * 6);
-            if (scaleWave > 0.65 && halfBeam > 0.25) {
-              // Naga Gold dragon scale highlight (#F59E0B)
-              outerColors.push(0.96, 0.62, 0.04);
-            } else if (scaleWave > 0.35 && halfBeam > 0.25) {
-              // Amber dragon scale transition (#EA580C)
-              outerColors.push(0.92, 0.35, 0.05);
+            const scaleWave = Math.sin(u * Math.PI * 52) * Math.cos(angle * 6);
+            if (scaleWave > 0.65 && halfBeam > 0.22) {
+              outerColors.push(0.96, 0.62, 0.04); // Naga Golden Scales
+            } else if (scaleWave > 0.35 && halfBeam > 0.22) {
+              outerColors.push(0.92, 0.35, 0.05); // Amber Glow
             } else {
-              // Royal Blue Primary Racing Hull Ground (#1D4ED8)
-              outerColors.push(0.11, 0.31, 0.85);
+              outerColors.push(0.11, 0.31, 0.85); // Tum Núp Royal Blue
             }
           }
         }
 
-        // Inner hollow cavity (wall thickness ~4.5cm, tapering at ends)
-        const wallThickness = Math.min(0.045, halfBeam * 0.4);
+        const wallThickness = Math.min(0.042, halfBeam * 0.38);
         const innerHalfBeam = Math.max(0.0, halfBeam - wallThickness);
         const innerZ = Math.sin(angle) * innerHalfBeam * (1.0 + Math.abs(Math.sin(angle)) * localFlare);
         const innerY = Math.max(keelY + wallThickness, y - wallThickness * 0.5);
         innerVerts.push(x, innerY, innerZ);
 
-        // Inner wood lacquer color
         if (isCAD) {
           innerColors.push(0.14, 0.48, 0.72);
         } else if (isKemFocus) {
           innerColors.push(0.12, 0.16, 0.24);
         } else {
-          // Natural oiled dark Sao wood (`#582A0B`)
-          innerColors.push(0.35, 0.18, 0.08);
+          innerColors.push(0.35, 0.18, 0.08); // Sao Wood Interior
         }
       }
     }
 
-    // Generate Quads for Outer and Inner Shells
     for (let i = 0; i < STATIONS; i++) {
       for (let j = 0; j < SLICES; j++) {
         const a = i * (SLICES + 1) + j;
@@ -683,13 +812,11 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
         outerIndices.push(a, b, d);
         outerIndices.push(b, c, d);
 
-        // Reverse winding for inner shell
         innerIndices.push(a, d, b);
         innerIndices.push(b, d, c);
       }
     }
 
-    // 1. Create Outer Hull Mesh
     const outerGeo = new THREE.BufferGeometry();
     outerGeo.setAttribute('position', new THREE.Float32BufferAttribute(outerVerts, 3));
     outerGeo.setAttribute('color', new THREE.Float32BufferAttribute(outerColors, 3));
@@ -715,10 +842,8 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
     const outerMesh = new THREE.Mesh(outerGeo, outerMat);
     outerMesh.castShadow = true;
     outerMesh.receiveShadow = true;
-    hullOuterMeshRef.current = outerMesh;
     parent.add(outerMesh);
 
-    // 2. Create Inner Dugout Cockpit Mesh
     const innerGeo = new THREE.BufferGeometry();
     innerGeo.setAttribute('position', new THREE.Float32BufferAttribute(innerVerts, 3));
     innerGeo.setAttribute('color', new THREE.Float32BufferAttribute(innerColors, 3));
@@ -743,52 +868,57 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
 
     const innerMesh = new THREE.Mesh(innerGeo, innerMat);
     innerMesh.receiveShadow = true;
-    hullInnerMeshRef.current = innerMesh;
     parent.add(innerMesh);
 
-    // 3. Build Gunwales Rails & Paddle Pivot Fulcrum Plates (Be Ghe & Nẹp Mép Be)
     buildGunwalesAndFulcrums(parent, mode);
-
-    // 4. Build Inner Keel Spine & Bilge Limber Channel (Sống Đáy & Rãnh Thoát Nước)
     buildHullInteriorDetails(parent, mode);
 
-    // 5. Sacred Dragon Eyes on Bow Flanks & Traditional Tum Núp 2 Ornaments
     if (!isCAD) {
       buildSacredEyes(parent);
       buildTumNup2Ornaments(parent);
     }
   };
 
-  // Helper: Build Gunwale Rails (Mặt Be Ghe) and Wear Plates / Paddle Fulcrum Points (Nẹp Tì Dầm)
+  // Helper: Build Gunwale Rails and Paddle Fulcrum Wear Plates
   const buildGunwalesAndFulcrums = (parent: THREE.Group, mode: RenderMode) => {
     const isCAD = mode === 'BLUEPRINT_CAD';
     const gunwaleMat = new THREE.MeshStandardMaterial({
-      color: isCAD ? 0x0284c7 : 0x7c2d12, // Dark seasoned Hopea wood strake
+      color: isCAD ? 0x0284c7 : 0x7c2d12,
       roughness: 0.45,
     });
     const wearPlateMat = new THREE.MeshStandardMaterial({
-      color: isCAD ? 0x38bdf8 : 0xd97706, // Hardwood friction fulcrum pad
+      color: isCAD ? 0x38bdf8 : 0xd97706,
       roughness: 0.35,
       metalness: 0.2,
     });
 
-    const SAMPLES = 80;
+    const SAMPLES = 160;
     const portGunwalePoints: THREE.Vector3[] = [];
     const stbdGunwalePoints: THREE.Vector3[] = [];
 
     for (let i = 0; i <= SAMPLES; i++) {
       const u = i / SAMPLES;
       const x = (u - 0.5) * BOAT_LENGTH;
-      const beamHere = BOAT_MAX_BEAM * Math.pow(Math.sin(u * Math.PI), 1.25);
+      const sinU = Math.sin(u * Math.PI);
+      let beamHere = BOAT_MAX_BEAM * Math.pow(sinU, 1.18);
+
+      let ySheer = BOAT_MID_DEPTH;
+      if (u >= 0.5) {
+        const tBow = (u - 0.5) / 0.5;
+        ySheer = BOAT_MID_DEPTH + (PROW_RISE - BOAT_MID_DEPTH) * Math.pow(tBow, 2.2);
+        beamHere *= 1.0 - 0.12 * Math.pow(tBow, 3.0);
+        if (i === SAMPLES) beamHere = 0.015;
+      } else {
+        const tStern = (0.5 - u) / 0.5;
+        ySheer = BOAT_MID_DEPTH + (STERN_RISE - BOAT_MID_DEPTH) * Math.pow(tStern, 2.2);
+        beamHere *= 1.0 - 0.15 * Math.pow(tStern, 3.0);
+        if (i === 0) beamHere = 0.012;
+      }
+
       const halfB = beamHere / 2;
       const flareRatio = Math.min(1.0, (beamHere / BOAT_MAX_BEAM) * 1.2);
       const zPort = -halfB * (1.0 + flareRatio * FLARE_ANGLE);
       const zStbd = halfB * (1.0 + flareRatio * FLARE_ANGLE);
-
-      const ySheer =
-        u >= 0.5
-          ? BOAT_MID_DEPTH + (PROW_RISE - BOAT_MID_DEPTH) * Math.pow((u - 0.5) / 0.5, 2.4)
-          : BOAT_MID_DEPTH + (STERN_RISE - BOAT_MID_DEPTH) * Math.pow((0.5 - u) / 0.5, 2.2);
 
       portGunwalePoints.push(new THREE.Vector3(x, ySheer, zPort));
       stbdGunwalePoints.push(new THREE.Vector3(x, ySheer, zStbd));
@@ -797,19 +927,15 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
     const portCurve = new THREE.CatmullRomCurve3(portGunwalePoints);
     const stbdCurve = new THREE.CatmullRomCurve3(stbdGunwalePoints);
 
-    const portRailGeo = new THREE.TubeGeometry(portCurve, 80, 0.022, 6, false);
-    const stbdRailGeo = new THREE.TubeGeometry(stbdCurve, 80, 0.022, 6, false);
-
-    const portRail = new THREE.Mesh(portRailGeo, gunwaleMat);
-    const stbdRail = new THREE.Mesh(stbdRailGeo, gunwaleMat);
+    const portRail = new THREE.Mesh(new THREE.TubeGeometry(portCurve, 160, 0.022, 8, false), gunwaleMat);
+    const stbdRail = new THREE.Mesh(new THREE.TubeGeometry(stbdCurve, 160, 0.022, 8, false), gunwaleMat);
     parent.add(portRail);
     parent.add(stbdRail);
 
-    // Add 25 pairs of hardwood fulcrum wear plates along gunwales (Điểm tiếp xúc tì dầm bơi)
     for (let i = 0; i < 25; i++) {
       const u = 0.14 + (i / 24) * 0.68;
       const x = (u - 0.5) * BOAT_LENGTH;
-      const localBeam = BOAT_MAX_BEAM * Math.pow(Math.sin(u * Math.PI), 1.25);
+      const localBeam = BOAT_MAX_BEAM * Math.pow(Math.sin(u * Math.PI), 1.18);
       const halfB = localBeam / 2;
       const flareRatio = Math.min(1.0, (localBeam / BOAT_MAX_BEAM) * 1.2);
       const zPort = -halfB * (1.0 + flareRatio * FLARE_ANGLE);
@@ -817,11 +943,10 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
 
       const ySheer =
         u >= 0.5
-          ? BOAT_MID_DEPTH + (PROW_RISE - BOAT_MID_DEPTH) * Math.pow((u - 0.5) / 0.5, 2.4)
+          ? BOAT_MID_DEPTH + (PROW_RISE - BOAT_MID_DEPTH) * Math.pow((u - 0.5) / 0.5, 2.2)
           : BOAT_MID_DEPTH + (STERN_RISE - BOAT_MID_DEPTH) * Math.pow((0.5 - u) / 0.5, 2.2);
 
       const plateGeo = new THREE.BoxGeometry(0.12, 0.03, 0.04);
-
       const portPlate = new THREE.Mesh(plateGeo, wearPlateMat);
       portPlate.position.set(x, ySheer + 0.01, zPort);
       parent.add(portPlate);
@@ -832,7 +957,7 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
     }
   };
 
-  // Helper: Build Inner Keel Spine & Bilge Limber Trough (Sống Đáy Độc Mộc & Rãnh Ki)
+  // Helper: Build Hull Interior Details
   const buildHullInteriorDetails = (parent: THREE.Group, mode: RenderMode) => {
     const isCAD = mode === 'BLUEPRINT_CAD';
     const woodMat = new THREE.MeshStandardMaterial({
@@ -840,7 +965,6 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
       roughness: 0.7,
     });
 
-    // Central inner keel spine bar (Thanh sống đáy độc mộc)
     const spinePoints: THREE.Vector3[] = [];
     for (let i = 0; i <= 60; i++) {
       const u = i / 60;
@@ -852,27 +976,24 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
       spinePoints.push(new THREE.Vector3(x, keelY, 0));
     }
     const spineCurve = new THREE.CatmullRomCurve3(spinePoints);
-    const spineGeo = new THREE.TubeGeometry(spineCurve, 60, 0.035, 6, false);
-    const spineMesh = new THREE.Mesh(spineGeo, woodMat);
+    const spineMesh = new THREE.Mesh(new THREE.TubeGeometry(spineCurve, 60, 0.035, 6, false), woodMat);
     parent.add(spineMesh);
 
-    // Bow Solid Timber Deadwood Block (Khối gỗ đệm đặc đầu mũi)
     const bowDeadwood = new THREE.Mesh(new THREE.BoxGeometry(1.6, 0.28, 0.22), woodMat);
     bowDeadwood.position.set(BOAT_LENGTH / 2 - 1.0, 0.85, 0);
     bowDeadwood.rotation.z = -0.32;
     parent.add(bowDeadwood);
 
-    // Stern Solid Timber Deadwood Block (Khối gỗ đệm đặc đuôi lái)
     const sternDeadwood = new THREE.Mesh(new THREE.BoxGeometry(1.8, 0.32, 0.25), woodMat);
     sternDeadwood.position.set(-BOAT_LENGTH / 2 + 1.1, 0.95, 0);
     sternDeadwood.rotation.z = 0.38;
     parent.add(sternDeadwood);
   };
 
-  // Helper: Build Sacred Dragon Eye (Đôi Mắt Thần Ghe Ngo)
+  // Helper: Build Sacred Dragon Eyes
   const buildSacredEyes = (parent: THREE.Group) => {
     const eyeBezelMat = new THREE.MeshStandardMaterial({
-      color: 0xf59e0b, // Angkor Gold border
+      color: 0xf59e0b,
       roughness: 0.3,
       metalness: 0.6,
     });
@@ -883,7 +1004,7 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
     const stbdEyeGroup = new THREE.Group();
     const eyeBase = new THREE.Mesh(new THREE.CylinderGeometry(0.10, 0.10, 0.025, 24), eyeBezelMat);
     eyeBase.rotation.x = Math.PI / 2;
-    eyeBase.scale.set(1.5, 0.9, 1.0); // Almond elongated shape
+    eyeBase.scale.set(1.5, 0.9, 1.0);
     stbdEyeGroup.add(eyeBase);
 
     const eyeWhite = new THREE.Mesh(new THREE.SphereGeometry(0.08, 16, 16), eyeWhiteMat);
@@ -924,15 +1045,15 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
     parent.add(portEyeGroup);
   };
 
-  // Helper: Build Authentic Tum Núp 2 Ornaments (Prow Naga Head Crest, Flame Horns, Flag, Stern Tail Fin & Nameplates)
+  // Helper: Build Tum Núp 2 Traditional Ornaments
   const buildTumNup2Ornaments = (parent: THREE.Group) => {
     const goldOrnamentMat = new THREE.MeshStandardMaterial({
-      color: 0xf59e0b, // Angkor Imperial Gold
+      color: 0xf59e0b,
       roughness: 0.28,
       metalness: 0.65,
     });
     const scarletMat = new THREE.MeshStandardMaterial({
-      color: 0xdc2626, // Temple Scarlet Red
+      color: 0xdc2626,
       roughness: 0.35,
       metalness: 0.2,
     });
@@ -941,25 +1062,22 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
       roughness: 0.6,
     });
 
-    // 1. PROW NAGA HEAD CREST & FLAME HORNS (Kbach Kranok)
+    // Prow Crest & Flame Horns
     const prowGroup = new THREE.Group();
     prowGroup.position.set(BOAT_LENGTH / 2 - 0.25, 1.34, 0);
 
-    // Naga Snout & Crown
     const nagaCrownGeo = new THREE.ConeGeometry(0.09, 0.42, 8);
     nagaCrownGeo.rotateZ(-Math.PI / 3.2);
     const nagaCrown = new THREE.Mesh(nagaCrownGeo, goldOrnamentMat);
     nagaCrown.position.set(0.12, 0.16, 0);
     prowGroup.add(nagaCrown);
 
-    // Scarlet Flame Beard / Under-crest
     const flameBeardGeo = new THREE.ConeGeometry(0.06, 0.28, 6);
     flameBeardGeo.rotateZ(Math.PI / 4);
     const flameBeard = new THREE.Mesh(flameBeardGeo, scarletMat);
     flameBeard.position.set(0.05, -0.10, 0);
     prowGroup.add(flameBeard);
 
-    // Left & Right Flame Horns (Kbach Horns)
     [-0.07, 0.07].forEach((zHorn) => {
       const hornGeo = new THREE.CylinderGeometry(0.015, 0.035, 0.32, 6);
       const hornMesh = new THREE.Mesh(hornGeo, goldOrnamentMat);
@@ -969,44 +1087,38 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
       prowGroup.add(hornMesh);
     });
 
-    // Ceremonial Prow Flag Pole & Triangular Banner
     const flagPole = new THREE.Mesh(new THREE.CylinderGeometry(0.008, 0.008, 0.75, 8), woodFlagMat);
     flagPole.position.set(-0.35, 0.35, 0);
     flagPole.rotation.z = -0.18;
     prowGroup.add(flagPole);
 
-    // Triangular Banner (Vàng viền đỏ truyền thống Tum Núp)
     const bannerShape = new THREE.Shape();
     bannerShape.moveTo(0, 0);
     bannerShape.lineTo(0.28, -0.09);
     bannerShape.lineTo(0, -0.18);
     bannerShape.closePath();
 
-    const bannerGeo = new THREE.ShapeGeometry(bannerShape);
-    const bannerMesh = new THREE.Mesh(bannerGeo, goldOrnamentMat);
+    const bannerMesh = new THREE.Mesh(new THREE.ShapeGeometry(bannerShape), goldOrnamentMat);
     bannerMesh.position.set(-0.35, 0.65, 0.005);
     bannerMesh.rotation.z = 0.12;
     prowGroup.add(bannerMesh);
 
     parent.add(prowGroup);
 
-    // 2. STERN NAGA TAIL FIN (Uốn lượn cong vút +1.52m)
+    // Stern Fin
     const sternGroup = new THREE.Group();
     sternGroup.position.set(-BOAT_LENGTH / 2 + 0.30, 1.46, 0);
 
-    // Curving Swept-up Naga Tail Fin
-    const tailPoints: THREE.Vector3[] = [
+    const tailPoints = [
       new THREE.Vector3(0.0, 0.0, 0),
       new THREE.Vector3(-0.25, 0.28, 0),
       new THREE.Vector3(-0.45, 0.58, 0),
       new THREE.Vector3(-0.52, 0.85, 0),
     ];
     const tailCurve = new THREE.CatmullRomCurve3(tailPoints);
-    const tailGeo = new THREE.TubeGeometry(tailCurve, 16, 0.045, 8, false);
-    const tailMesh = new THREE.Mesh(tailGeo, goldOrnamentMat);
+    const tailMesh = new THREE.Mesh(new THREE.TubeGeometry(tailCurve, 16, 0.045, 8, false), goldOrnamentMat);
     sternGroup.add(tailMesh);
 
-    // Scarlet Flame Plumage on Tail Top
     const tailFeatherGeo = new THREE.ConeGeometry(0.08, 0.35, 6);
     tailFeatherGeo.rotateZ(Math.PI / 6);
     const tailFeather = new THREE.Mesh(tailFeatherGeo, scarletMat);
@@ -1015,16 +1127,9 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
 
     parent.add(sternGroup);
 
-    // 3. TEAM IDENTIFICATION DECALS ("TUM NÚP 2" on Bow Flanks)
-    const plateMat = new THREE.MeshStandardMaterial({
-      color: 0x1e3a8a, // Sapphire plate backing
-      roughness: 0.3,
-    });
-    const textBorderMat = new THREE.MeshStandardMaterial({
-      color: 0xf59e0b, // Gold border
-      roughness: 0.2,
-      metalness: 0.8,
-    });
+    // Team Decals "TUM NÚP 2"
+    const plateMat = new THREE.MeshStandardMaterial({ color: 0x1e3a8a, roughness: 0.3 });
+    const textBorderMat = new THREE.MeshStandardMaterial({ color: 0xf59e0b, roughness: 0.2, metalness: 0.8 });
 
     [-1, 1].forEach((sideSign) => {
       const zOffset = sideSign * 0.22;
@@ -1039,7 +1144,6 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
       border.position.z = -sideSign * 0.005;
       decalGroup.add(border);
 
-      // Gold stylized text block representing "TUM NÚP 2"
       const textBlock = new THREE.Mesh(new THREE.BoxGeometry(1.05, 0.09, 0.025), goldOrnamentMat);
       textBlock.position.z = sideSign * 0.01;
       decalGroup.add(textBlock);
@@ -1048,15 +1152,15 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
     });
   };
 
-  // Helper: Build 48 Internal Transverse Ribs (Cong Ghe)
+  // Helper: Build 48 Internal Ribs
   const buildTransverseRibs = (parent: THREE.Group, mode: RenderMode) => {
     const isCAD = mode === 'BLUEPRINT_CAD';
     const ribMat = new THREE.MeshStandardMaterial({
-      color: isCAD ? 0x0284c7 : 0x78350f, // Seasoned Hopea / Sao timber
+      color: isCAD ? 0x0284c7 : 0x78350f,
       roughness: 0.65,
     });
     const pegMat = new THREE.MeshStandardMaterial({
-      color: isCAD ? 0x38bdf8 : 0xd97706, // Wooden trunnel dowel pins
+      color: isCAD ? 0x38bdf8 : 0xd97706,
       roughness: 0.4,
     });
 
@@ -1077,11 +1181,10 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
           ? BOAT_MID_DEPTH + (PROW_RISE - BOAT_MID_DEPTH) * Math.pow((u - 0.5) / 0.5, 2.4)
           : BOAT_MID_DEPTH + (STERN_RISE - BOAT_MID_DEPTH) * Math.pow((0.5 - u) / 0.5, 2.2);
 
-      // Authentic U-shaped frame curve hugging the monoxyle hull bottom
       const ribPoints: THREE.Vector3[] = [];
       const PTS = 16;
       for (let p = 0; p <= PTS; p++) {
-        const v = p / PTS; // 0 (Port top) -> 0.5 (Bottom keel) -> 1.0 (Starboard top)
+        const v = p / PTS;
         const angle = (v - 0.5) * Math.PI;
         const z = Math.sin(angle) * halfB;
         const uCurv = Math.pow(Math.abs(Math.sin(angle)), 1.6);
@@ -1089,12 +1192,12 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
         ribPoints.push(new THREE.Vector3(x, y, z));
       }
 
-      const ribCurve = new THREE.CatmullRomCurve3(ribPoints);
-      const ribGeo = new THREE.TubeGeometry(ribCurve, 16, 0.016, 6, false);
-      const ribMesh = new THREE.Mesh(ribGeo, ribMat);
+      const ribMesh = new THREE.Mesh(
+        new THREE.TubeGeometry(new THREE.CatmullRomCurve3(ribPoints), 16, 0.016, 6, false),
+        ribMat
+      );
       parent.add(ribMesh);
 
-      // Trunnel dowel pins at Port and Starboard gunwale joints
       if (halfB > 0.15) {
         const pegGeo = new THREE.CylinderGeometry(0.008, 0.008, 0.03, 6);
         const portPeg = new THREE.Mesh(pegGeo, pegMat);
@@ -1108,28 +1211,26 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
     }
   };
 
-  // Helper: Build 26 Seating Thwarts (Đòn Ngồi) + 25 Footrest Chocks (Thanh Giậm Chân) + Bow/Stern Tie-Beams
+  // Helper: Build Seating Thwarts
   const buildSeatingThwarts = (parent: THREE.Group, mode: RenderMode) => {
     const isCAD = mode === 'BLUEPRINT_CAD';
     const thwartMat = new THREE.MeshStandardMaterial({
-      color: isCAD ? 0x38bdf8 : 0x92400e, // Polished hardwood thwart
+      color: isCAD ? 0x38bdf8 : 0x92400e,
       roughness: 0.45,
     });
     const chockMat = new THREE.MeshStandardMaterial({
-      color: isCAD ? 0x0284c7 : 0x5c2b09, // Footrest brace timber
+      color: isCAD ? 0x0284c7 : 0x5c2b09,
       roughness: 0.6,
     });
     const tieMat = new THREE.MeshStandardMaterial({
-      color: isCAD ? 0x0ea5e9 : 0x78350f, // Structural tie-beam
+      color: isCAD ? 0x0ea5e9 : 0x78350f,
       roughness: 0.5,
     });
 
-    // 1. 26 Primary Seating Thwarts (Đòn Ngồi)
     for (let k = 0; k < 26; k++) {
-      const u = 0.14 + (k / 25) * 0.68; // Spanned across rowers zone
+      const u = 0.14 + (k / 25) * 0.68;
       const x = (u - 0.5) * BOAT_LENGTH;
       const localBeam = Math.max(0.18, BOAT_MAX_BEAM * Math.pow(Math.sin(u * Math.PI), 1.25) * 0.96);
-      const halfB = localBeam / 2;
 
       const ySheer =
         u >= 0.5
@@ -1141,54 +1242,45 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
           ? (PROW_RISE - 0.16) * Math.pow((u - 0.5) / 0.5, 2.8) + 0.04
           : (STERN_RISE - 0.18) * Math.pow((0.5 - u) / 0.5, 2.8) + 0.04;
 
-      // Cross-thwart beam with mortise notches over gunwales
-      const thwartGeo = new THREE.BoxGeometry(0.08, 0.042, localBeam + 0.05);
-      const thwart = new THREE.Mesh(thwartGeo, thwartMat);
+      const thwart = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.042, localBeam + 0.05), thwartMat);
       thwart.position.set(x, ySheer - 0.035, 0);
       thwart.castShadow = true;
-      thwart.receiveShadow = true;
       parent.add(thwart);
 
-      // 2. Footrest Chocks (Thanh Giậm Chân Tì Lực) placed on floor ahead of thwart
       if (k < 25) {
-        const xChock = x + 0.36; // 36cm forward of seat
-        const chockGeo = new THREE.BoxGeometry(0.05, 0.035, Math.max(0.14, localBeam * 0.72));
-        const chock = new THREE.Mesh(chockGeo, chockMat);
+        const xChock = x + 0.36;
+        const chock = new THREE.Mesh(new THREE.BoxGeometry(0.05, 0.035, Math.max(0.14, localBeam * 0.72)), chockMat);
         chock.position.set(xChock, keelY + 0.035, 0);
-        chock.rotation.z = -0.22; // Angled foot push wedge
+        chock.rotation.z = -0.22;
         chock.castShadow = true;
         parent.add(chock);
       }
     }
 
-    // 3. Forward Bow Bracing Tie-Beams (4 thanh giằng liên kết mũi)
     for (let b = 1; b <= 4; b++) {
       const uBow = 0.84 + b * 0.035;
       const xB = (uBow - 0.5) * BOAT_LENGTH;
       const wB = Math.max(0.08, BOAT_MAX_BEAM * Math.pow(Math.sin(uBow * Math.PI), 1.25));
       const yB = BOAT_MID_DEPTH + (PROW_RISE - BOAT_MID_DEPTH) * Math.pow((uBow - 0.5) / 0.5, 2.4);
-      const tieGeo = new THREE.BoxGeometry(0.05, 0.03, wB);
-      const tieMesh = new THREE.Mesh(tieGeo, tieMat);
+      const tieMesh = new THREE.Mesh(new THREE.BoxGeometry(0.05, 0.03, wB), tieMat);
       tieMesh.position.set(xB, yB - 0.03, 0);
       parent.add(tieMesh);
     }
 
-    // 4. Aft Stern Bracing Tie-Beams (3 thanh giằng liên kết đuôi)
     for (let s = 1; s <= 3; s++) {
       const uStern = 0.12 - s * 0.03;
       if (uStern > 0.02) {
         const xS = (uStern - 0.5) * BOAT_LENGTH;
         const wS = Math.max(0.08, BOAT_MAX_BEAM * Math.pow(Math.sin(uStern * Math.PI), 1.25));
         const yS = BOAT_MID_DEPTH + (STERN_RISE - BOAT_MID_DEPTH) * Math.pow((0.5 - uStern) / 0.5, 2.2);
-        const tieGeo = new THREE.BoxGeometry(0.05, 0.03, wS);
-        const tieMesh = new THREE.Mesh(tieGeo, tieMat);
+        const tieMesh = new THREE.Mesh(new THREE.BoxGeometry(0.05, 0.03, wS), tieMat);
         tieMesh.position.set(xS, yS - 0.03, 0);
         parent.add(tieMesh);
       }
     }
   };
 
-  // Helper: Build Master Kèm Longitudinal Spring-Truss System (Cây Kềm Suốt + 5 Trụ Kềm + Cáp néo tăng đơ + Cần câu lái)
+  // Helper: Build Master Kèm Spring-Truss
   const buildMasterKemTruss = (parent: THREE.Group, mode: RenderMode) => {
     const isHighlight = mode === 'STRUCTURAL_KEM';
 
@@ -1206,7 +1298,7 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
     });
 
     const cableMat = new THREE.MeshStandardMaterial({
-      color: isHighlight ? 0x38bdf8 : 0x94a3b8, // Steel tension wire
+      color: isHighlight ? 0x38bdf8 : 0x94a3b8,
       metalness: 0.85,
       roughness: 0.2,
     });
@@ -1217,7 +1309,6 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
       roughness: 0.15,
     });
 
-    // 1. Primary Round Hopea/Cajun Timber Pole (Cây Kềm Suốt - 24.6m, Ø 0.19m)
     const kemPoleGeo = new THREE.CylinderGeometry(0.095, 0.095, 24.6, 20);
     kemPoleGeo.rotateZ(Math.PI / 2);
     const kemPole = new THREE.Mesh(kemPoleGeo, kemMat);
@@ -1225,47 +1316,40 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
     kemPole.castShadow = true;
     parent.add(kemPole);
 
-    // 2. Secondary Aft Cantilever Lever (Cần Câu Lái - Uốn cong dằn lực đuôi)
-    const aftKemPoints: THREE.Vector3[] = [
+    const aftKemPoints = [
       new THREE.Vector3(-12.0, 0.24, 0),
       new THREE.Vector3(-13.2, 0.45, 0),
       new THREE.Vector3(-14.2, 0.78, 0),
     ];
-    const aftKemCurve = new THREE.CatmullRomCurve3(aftKemPoints);
-    const aftKemGeo = new THREE.TubeGeometry(aftKemCurve, 16, 0.05, 8, false);
-    const aftKemMesh = new THREE.Mesh(aftKemGeo, kemMat);
+    const aftKemMesh = new THREE.Mesh(
+      new THREE.TubeGeometry(new THREE.CatmullRomCurve3(aftKemPoints), 16, 0.05, 8, false),
+      kemMat
+    );
     parent.add(aftKemMesh);
 
-    // 3. 5 Strategic Vertical Compression Struts (Trụ Kềm)
     const strutPositions = [
-      { x: 8.5, height: 0.34, label: 'Trụ Kềm Mũi' },
-      { x: 4.2, height: 0.42, label: 'Trụ Kềm Thân Trước' },
-      { x: 0.0, height: 0.46, label: 'Trụ Kềm Giữa (Bệ Chỉ Huy)' },
-      { x: -4.5, height: 0.42, label: 'Trụ Kềm Thân Sau' },
-      { x: -9.0, height: 0.36, label: 'Trụ Kềm Lái' },
+      { x: 8.5, height: 0.34 },
+      { x: 4.2, height: 0.42 },
+      { x: 0.0, height: 0.46 },
+      { x: -4.5, height: 0.42 },
+      { x: -9.0, height: 0.36 },
     ];
 
     strutPositions.forEach((strut) => {
-      const sGeo = new THREE.CylinderGeometry(0.048, 0.052, strut.height, 14);
-      const sMesh = new THREE.Mesh(sGeo, strutMat);
+      const sMesh = new THREE.Mesh(new THREE.CylinderGeometry(0.048, 0.052, strut.height, 14), strutMat);
       sMesh.position.set(strut.x, 0.12 + strut.height / 2, 0);
       sMesh.castShadow = true;
       parent.add(sMesh);
 
-      // Steel brackets at base and top
-      const bracketGeo = new THREE.BoxGeometry(0.13, 0.035, 0.13);
-      const bracketTop = new THREE.Mesh(bracketGeo, turnbuckleMat);
+      const bracketTop = new THREE.Mesh(new THREE.BoxGeometry(0.13, 0.035, 0.13), turnbuckleMat);
       bracketTop.position.set(strut.x, 0.12 + strut.height, 0);
       parent.add(bracketTop);
     });
 
-    // 4. Central Commander Platform atop Middle Kềm Strut (Bệ Đứng Chỉ Huy Giữa)
-    const platGeo = new THREE.BoxGeometry(0.38, 0.045, 0.44);
-    const platform = new THREE.Mesh(platGeo, strutMat);
+    const platform = new THREE.Mesh(new THREE.BoxGeometry(0.38, 0.045, 0.44), strutMat);
     platform.position.set(0.0, 0.60, 0);
     parent.add(platform);
 
-    // 5. Pre-stressed High-Tensile Steel Cable & Turnbuckles
     const cableCurve = new THREE.CatmullRomCurve3([
       new THREE.Vector3(-12.2, 0.22, 0),
       new THREE.Vector3(-9.0, 0.48, 0),
@@ -1275,12 +1359,9 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
       new THREE.Vector3(8.5, 0.46, 0),
       new THREE.Vector3(12.2, 0.24, 0),
     ]);
-
-    const cableTubeGeo = new THREE.TubeGeometry(cableCurve, 40, 0.014, 8, false);
-    const cableMesh = new THREE.Mesh(cableTubeGeo, cableMat);
+    const cableMesh = new THREE.Mesh(new THREE.TubeGeometry(cableCurve, 40, 0.014, 8, false), cableMat);
     parent.add(cableMesh);
 
-    // 6. Dual Turnbuckles (Tăng Đơ Siết Lực Néo)
     [-10.5, 10.5].forEach((tbX) => {
       const tbGeo = new THREE.CylinderGeometry(0.032, 0.032, 0.24, 12);
       tbGeo.rotateZ(Math.PI / 2);
@@ -1290,225 +1371,182 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
     });
   };
 
-  // Helper: Build 50 Leaf Paddles (Dầm bơi lá muỗng) + 3 Long Steering Oars (Dầm lái 3m) resting on Gunwales
+  // Helper: Build Paddles
   const buildAuthenticPaddles = (parent: THREE.Group, mode: RenderMode) => {
     const isCAD = mode === 'BLUEPRINT_CAD';
-    const isCrewMode = mode === 'CREW_MATRIX';
 
     const shaftMat = new THREE.MeshStandardMaterial({
-      color: isCAD ? 0x38bdf8 : 0x78350f, // Hopea wood shaft
+      color: isCAD ? 0x38bdf8 : 0x78350f,
       roughness: 0.4,
     });
-
-    const portBladeMat = new THREE.MeshStandardMaterial({
-      color: isCrewMode ? 0x0284c7 : isCAD ? 0x0284c7 : 0xd97706, // Amber lacquered teardrop blade with red tip
+    const bladeMat = new THREE.MeshStandardMaterial({
+      color: isCAD ? 0x0284c7 : 0xd97706,
+      roughness: 0.25,
+      metalness: 0.2,
+    });
+    const bladeTipMat = new THREE.MeshStandardMaterial({
+      color: isCAD ? 0x38bdf8 : 0xdc2626,
       roughness: 0.3,
-      metalness: 0.1,
     });
-
-    const stbdBladeMat = new THREE.MeshStandardMaterial({
-      color: isCrewMode ? 0x059669 : isCAD ? 0x0284c7 : 0xd97706,
-      roughness: 0.3,
-      metalness: 0.1,
-    });
-
-    const paddleTipMat = new THREE.MeshStandardMaterial({
-      color: isCAD ? 0x38bdf8 : 0xdc2626, // Authentic Tum Núp 2 Scarlet Red Tip Accent
-      roughness: 0.35,
-    });
-
-    const steeringShaftMat = new THREE.MeshStandardMaterial({
-      color: isCAD ? 0xf43f5e : 0x451a03,
+    const steerOarMat = new THREE.MeshStandardMaterial({
+      color: isCAD ? 0x0284c7 : 0xdc2626,
       roughness: 0.3,
     });
 
-    const steeringBladeMat = new THREE.MeshStandardMaterial({
-      color: isCAD ? 0xf43f5e : 0xdc2626, // Scarlet red steering blade
-      roughness: 0.35,
-    });
+    const paddleShaftGeo = new THREE.CylinderGeometry(0.018, 0.018, 1.30, 8);
+    const paddleBladeGeo = new THREE.BoxGeometry(0.18, 0.38, 0.022);
+    const paddleTipGeo = new THREE.BoxGeometry(0.18, 0.10, 0.023);
 
-    // 50 Standard Racing Paddles (25 pairs) pivoting directly on Gunwales
     for (let pair = 1; pair <= 25; pair++) {
       const u = 0.82 - ((pair - 1) / 24) * 0.68;
       const x = (u - 0.5) * BOAT_LENGTH;
       const localBeam = BOAT_MAX_BEAM * Math.pow(Math.sin(u * Math.PI), 1.25);
       const halfB = localBeam / 2;
       const flareRatio = Math.min(1.0, (localBeam / BOAT_MAX_BEAM) * 1.2);
-      const zPortGunwale = -halfB * (1.0 + flareRatio * FLARE_ANGLE);
-      const zStbdGunwale = halfB * (1.0 + flareRatio * FLARE_ANGLE);
+      const zPort = -halfB * (1.0 + flareRatio * FLARE_ANGLE);
+      const zStbd = halfB * (1.0 + flareRatio * FLARE_ANGLE);
 
-      const ySheer =
-        u >= 0.5
-          ? BOAT_MID_DEPTH + (PROW_RISE - BOAT_MID_DEPTH) * Math.pow((u - 0.5) / 0.5, 2.4)
-          : BOAT_MID_DEPTH + (STERN_RISE - BOAT_MID_DEPTH) * Math.pow((0.5 - u) / 0.5, 2.2);
+      const tBow = u >= 0.5 ? (u - 0.5) / 0.5 : (0.5 - u) / 0.5;
+      const ySheer = BOAT_MID_DEPTH + Math.pow(tBow, 2.3) * 0.35;
 
-      // Port Paddle (Mạn Trái) — Shaft gripped by port rower & rests on port gunwale
-      const portGroup = new THREE.Group();
-      const portShaft = new THREE.Mesh(new THREE.CylinderGeometry(0.016, 0.016, 1.30, 10), shaftMat);
-      const portBlade = new THREE.Mesh(new THREE.BoxGeometry(0.02, 0.50, 0.18), portBladeMat);
-      portBlade.position.y = -0.33;
-      const portTip = new THREE.Mesh(new THREE.BoxGeometry(0.022, 0.12, 0.182), paddleTipMat);
-      portTip.position.y = -0.62;
-      const portSpine = new THREE.Mesh(new THREE.CylinderGeometry(0.008, 0.008, 0.60, 6), shaftMat);
-      portSpine.position.set(0.011, -0.38, 0);
-      portGroup.add(portShaft);
-      portGroup.add(portBlade);
-      portGroup.add(portTip);
-      portGroup.add(portSpine);
-      // Pivot directly on port gunwale contact point
-      portGroup.position.set(x, ySheer + 0.02, zPortGunwale);
-      portGroup.rotation.x = -0.42;
-      portGroup.rotation.z = 0.18; // Catch angle
-      portGroup.rotation.y = -0.10;
-      portGroup.userData = {
+      // Port Paddle
+      const portPaddle = new THREE.Group();
+      const pShaft = new THREE.Mesh(paddleShaftGeo, shaftMat);
+      pShaft.position.y = -0.35;
+      portPaddle.add(pShaft);
+
+      const pBlade = new THREE.Mesh(paddleBladeGeo, bladeMat);
+      pBlade.position.set(0, -0.85, 0);
+      portPaddle.add(pBlade);
+
+      const pTip = new THREE.Mesh(paddleTipGeo, bladeTipMat);
+      pTip.position.set(0, -1.0, 0);
+      portPaddle.add(pTip);
+
+      portPaddle.position.set(x, ySheer + 0.05, zPort - 0.08);
+      portPaddle.rotation.set(-0.35, 0, 0);
+      portPaddle.userData = {
         isPaddle: true,
         isPort: true,
         pair,
         baseX: x,
-        baseY: ySheer + 0.02,
-        baseZ: zPortGunwale,
-        baseRotX: -0.42,
-        baseRotY: -0.10,
-        baseRotZ: 0.18,
+        baseY: ySheer + 0.05,
+        baseZ: zPort - 0.08,
+        baseRotX: -0.35,
+        baseRotY: 0,
+        baseRotZ: 0,
       };
-      parent.add(portGroup);
+      parent.add(portPaddle);
 
-      // Starboard Paddle (Mạn Phải) — Shaft gripped by starboard rower & rests on starboard gunwale
-      const stbdGroup = new THREE.Group();
-      const stbdShaft = new THREE.Mesh(new THREE.CylinderGeometry(0.016, 0.016, 1.30, 10), shaftMat);
-      const stbdBlade = new THREE.Mesh(new THREE.BoxGeometry(0.02, 0.50, 0.18), stbdBladeMat);
-      stbdBlade.position.y = -0.33;
-      const stbdTip = new THREE.Mesh(new THREE.BoxGeometry(0.022, 0.12, 0.182), paddleTipMat);
-      stbdTip.position.y = -0.62;
-      const stbdSpine = new THREE.Mesh(new THREE.CylinderGeometry(0.008, 0.008, 0.60, 6), shaftMat);
-      stbdSpine.position.set(-0.011, -0.38, 0);
-      stbdGroup.add(stbdShaft);
-      stbdGroup.add(stbdBlade);
-      stbdGroup.add(stbdTip);
-      stbdGroup.add(stbdSpine);
-      // Pivot directly on starboard gunwale contact point
-      stbdGroup.position.set(x, ySheer + 0.02, zStbdGunwale);
-      stbdGroup.rotation.x = 0.42;
-      stbdGroup.rotation.z = 0.18; // Catch angle
-      stbdGroup.rotation.y = 0.10;
-      stbdGroup.userData = {
+      // Starboard Paddle
+      const stbdPaddle = new THREE.Group();
+      const sShaft = new THREE.Mesh(paddleShaftGeo, shaftMat);
+      sShaft.position.y = -0.35;
+      stbdPaddle.add(sShaft);
+
+      const sBlade = new THREE.Mesh(paddleBladeGeo, bladeMat);
+      sBlade.position.set(0, -0.85, 0);
+      stbdPaddle.add(sBlade);
+
+      const sTip = new THREE.Mesh(paddleTipGeo, bladeTipMat);
+      sTip.position.set(0, -1.0, 0);
+      stbdPaddle.add(sTip);
+
+      stbdPaddle.position.set(x, ySheer + 0.05, zStbd + 0.08);
+      stbdPaddle.rotation.set(0.35, 0, 0);
+      stbdPaddle.userData = {
         isPaddle: true,
         isPort: false,
         pair,
         baseX: x,
-        baseY: ySheer + 0.02,
-        baseZ: zStbdGunwale,
-        baseRotX: 0.42,
-        baseRotY: 0.10,
-        baseRotZ: 0.18,
+        baseY: ySheer + 0.05,
+        baseZ: zStbd + 0.08,
+        baseRotX: 0.35,
+        baseRotY: 0,
+        baseRotZ: 0,
       };
-      parent.add(stbdGroup);
+      parent.add(stbdPaddle);
     }
 
-    // 3 Long Steering Oars (Dầm Lái - 3.1m) at Stern resting on aft gunwales
-    const steerPositions = [
-      { x: -11.80, y: 1.02, z: 0.16, rotX: 0.22, rotZ: -0.68 },
-      { x: -12.60, y: 1.14, z: -0.16, rotX: -0.22, rotZ: -0.68 },
-      { x: -13.50, y: 1.28, z: 0.00, rotX: 0.00, rotZ: -0.72 },
+    // 3 Steering Oars
+    const steerConfigs = [
+      { x: -11.8, y: 1.05, z: 0.22, rotX: 0.32, rotZ: 0.45 },
+      { x: -12.6, y: 1.18, z: -0.22, rotX: -0.32, rotZ: 0.50 },
+      { x: -13.5, y: 1.32, z: 0.0, rotX: 0.0, rotZ: 0.55 },
     ];
 
-    steerPositions.forEach((st) => {
-      const steerGroup = new THREE.Group();
-      const steerShaft = new THREE.Mesh(new THREE.CylinderGeometry(0.025, 0.025, 3.10, 12), steeringShaftMat);
-      const steerBlade = new THREE.Mesh(new THREE.BoxGeometry(0.03, 1.10, 0.22), steeringBladeMat);
-      steerBlade.position.y = -1.05;
-      steerGroup.add(steerShaft);
-      steerGroup.add(steerBlade);
-      steerGroup.position.set(st.x, st.y + 0.05, st.z);
-      steerGroup.rotation.z = st.rotZ;
-      steerGroup.rotation.x = st.rotX;
-      steerGroup.userData = {
+    steerConfigs.forEach((st) => {
+      const oarGroup = new THREE.Group();
+      const shaft = new THREE.Mesh(new THREE.CylinderGeometry(0.028, 0.028, 3.1, 8), shaftMat);
+      shaft.position.y = -1.1;
+      oarGroup.add(shaft);
+
+      const blade = new THREE.Mesh(new THREE.BoxGeometry(0.24, 1.1, 0.035), steerOarMat);
+      blade.position.y = -2.1;
+      oarGroup.add(blade);
+
+      oarGroup.position.set(st.x, st.y, st.z);
+      oarGroup.rotation.set(st.rotX, 0, st.rotZ);
+      oarGroup.userData = {
         isSteeringOar: true,
         baseX: st.x,
-        baseY: st.y + 0.05,
+        baseY: st.y,
         baseZ: st.z,
-        baseRotZ: st.rotZ,
         baseRotX: st.rotX,
+        baseRotZ: st.rotZ,
       };
-      parent.add(steerGroup);
+      parent.add(oarGroup);
     });
   };
 
-  // Helper: Build Full 55-Athlete Championship Crew Structure (1 Mũi + 1 Giữa + 50 Bơi + 3 Lái)
+  // Helper: Build Crew
   const buildAuthenticCrew = (parent: THREE.Group, mode: RenderMode) => {
-    const isCrewMode = mode === 'CREW_MATRIX';
+    const isCAD = mode === 'BLUEPRINT_CAD';
 
-    // Materials
-    const defaultJerseyMat = new THREE.MeshStandardMaterial({
-      color: 0x1d4ed8, // Tum Núp 2 Official Royal Blue Jersey
-      roughness: 0.6,
+    const skinMat = new THREE.MeshStandardMaterial({
+      color: isCAD ? 0x38bdf8 : 0x7c4a2d,
+      roughness: 0.65,
     });
     const portJerseyMat = new THREE.MeshStandardMaterial({
-      color: isCrewMode ? 0x0284c7 : 0x1d4ed8, // Sky blue in diagram mode
-      emissive: isCrewMode ? 0x0369a1 : 0x000000,
+      color: isCAD ? 0x0284c7 : 0x1d4ed8,
       roughness: 0.5,
     });
     const stbdJerseyMat = new THREE.MeshStandardMaterial({
-      color: isCrewMode ? 0x059669 : 0x1d4ed8, // Emerald green in diagram mode
-      emissive: isCrewMode ? 0x047857 : 0x000000,
+      color: isCAD ? 0x0284c7 : 0x1e40af,
       roughness: 0.5,
     });
-    const skinMat = new THREE.MeshStandardMaterial({
-      color: 0xc68642, // Healthy sun-tanned skin
-      roughness: 0.7,
-    });
-    const headbandMat = new THREE.MeshStandardMaterial({
-      color: 0xf59e0b, // Yellow victory headband
-      roughness: 0.4,
-    });
     const bowLeaderMat = new THREE.MeshStandardMaterial({
-      color: 0xf59e0b, // Gold/Amber leader outfit
-      emissive: isCrewMode ? 0xb45309 : 0x451a03,
+      color: isCAD ? 0x38bdf8 : 0xf59e0b,
       roughness: 0.4,
     });
     const midLeaderMat = new THREE.MeshStandardMaterial({
-      color: 0xea580c, // Flame orange whistle master
-      emissive: isCrewMode ? 0xc2410c : 0x431407,
+      color: isCAD ? 0x38bdf8 : 0xea580c,
       roughness: 0.4,
     });
     const steerMat = new THREE.MeshStandardMaterial({
-      color: 0xdc2626, // Crimson red steersman
-      emissive: isCrewMode ? 0x991b1b : 0x450a0a,
+      color: isCAD ? 0x38bdf8 : 0xdc2626,
       roughness: 0.4,
     });
+    const headbandMat = new THREE.MeshStandardMaterial({
+      color: 0xf59e0b,
+      roughness: 0.3,
+    });
 
-    // Helper: Create authentic Ghe Ngo seated rower model with articulated joints
     const createRowerMesh = (jerseyMaterial: THREE.Material, isPort: boolean, pair: number) => {
       const athlete = new THREE.Group();
 
-      // Lower body (Pelvis base and braced legs fixed on thwart)
-      const lowerGroup = new THREE.Group();
-      const legGeo = new THREE.CylinderGeometry(0.044, 0.044, 0.30, 8);
+      const legs = new THREE.Mesh(new THREE.BoxGeometry(0.24, 0.22, 0.32), skinMat);
+      legs.position.set(0.04, 0.08, 0);
+      athlete.add(legs);
 
-      // Front braced leg
-      const frontLeg = new THREE.Mesh(legGeo, skinMat);
-      frontLeg.position.set(0.12, -0.06, isPort ? -0.09 : 0.09);
-      frontLeg.rotation.z = 0.65;
-      lowerGroup.add(frontLeg);
-
-      // Rear tucked leg
-      const rearLeg = new THREE.Mesh(legGeo, skinMat);
-      rearLeg.position.set(0.02, -0.08, isPort ? 0.08 : -0.08);
-      rearLeg.rotation.z = 0.35;
-      lowerGroup.add(rearLeg);
-      athlete.add(lowerGroup);
-
-      // Upper body group (Pivoting around the hip joint for authentic forward lean / backward drive)
       const upperBody = new THREE.Group();
       upperBody.position.set(0, 0.0, 0);
 
-      // Torso with authentic racing proportion
       const torso = new THREE.Mesh(new THREE.BoxGeometry(0.24, 0.42, 0.28), jerseyMaterial);
       torso.position.y = 0.21;
       torso.castShadow = true;
       upperBody.add(torso);
 
-      // Head with headband
       const headGroup = new THREE.Group();
       const head = new THREE.Mesh(new THREE.SphereGeometry(0.088, 14, 14), skinMat);
       head.position.set(0.04, 0.48, 0);
@@ -1521,17 +1559,14 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
       headGroup.add(headband);
       upperBody.add(headGroup);
 
-      // Arms: Outside arm grips lower shaft, inside arm grips upper handle
       const armGeo = new THREE.CylinderGeometry(0.036, 0.036, 0.34, 8);
 
-      // Outside arm (Left for Port, Right for Starboard)
       const outsideArm = new THREE.Mesh(armGeo, skinMat);
       outsideArm.position.set(0.14, 0.20, isPort ? -0.14 : 0.14);
       outsideArm.rotation.x = isPort ? -0.45 : 0.45;
       outsideArm.rotation.z = -0.52;
       upperBody.add(outsideArm);
 
-      // Inside arm reaching forward across
       const insideArm = new THREE.Mesh(armGeo, skinMat);
       insideArm.position.set(0.12, 0.24, isPort ? 0.12 : -0.12);
       insideArm.rotation.x = isPort ? 0.35 : -0.35;
@@ -1547,23 +1582,19 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
         upperBody,
         outsideArm,
         insideArm,
-        headGroup,
       };
 
       return athlete;
     };
 
-    // Helper: Create standing/kneeling conductor or steersman
     const createStandingAthlete = (roleMaterial: THREE.Material, isKneeling = false) => {
       const athlete = new THREE.Group();
 
-      // Torso
       const torso = new THREE.Mesh(new THREE.BoxGeometry(0.25, 0.44, 0.28), roleMaterial);
       torso.position.y = 0.22;
       torso.castShadow = true;
       athlete.add(torso);
 
-      // Head
       const head = new THREE.Mesh(new THREE.SphereGeometry(0.088, 14, 14), skinMat);
       head.position.set(isKneeling ? 0.04 : 0.0, 0.50, 0);
       head.castShadow = true;
@@ -1574,7 +1605,6 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
       headband.rotation.x = Math.PI / 2;
       athlete.add(headband);
 
-      // Arms
       const armGeo = new THREE.CylinderGeometry(0.038, 0.038, 0.34, 8);
       const armL = new THREE.Mesh(armGeo, skinMat);
       armL.position.set(0.10, 0.22, 0.14);
@@ -1588,7 +1618,6 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
       armR.rotation.z = -0.35;
       athlete.add(armR);
 
-      // Legs
       const legGeo = new THREE.CylinderGeometry(0.045, 0.045, isKneeling ? 0.26 : 0.42, 8);
       const legL = new THREE.Mesh(legGeo, skinMat);
       legL.position.set(isKneeling ? 0.08 : 0.0, isKneeling ? -0.06 : -0.18, 0.09);
@@ -1603,22 +1632,10 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
       return athlete;
     };
 
-    // Helper: 3D station badge maker for CREW_MATRIX mode
-    const createStationBadge = (text: string, colorHex: number) => {
-      const badgeGroup = new THREE.Group();
-      const plate = new THREE.Mesh(
-        new THREE.BoxGeometry(0.24, 0.08, 0.02),
-        new THREE.MeshBasicMaterial({ color: colorHex })
-      );
-      badgeGroup.add(plate);
-      badgeGroup.position.y = 0.72;
-      return badgeGroup;
-    };
-
-    // 1. Bow Commander (Chỉ huy mũi - Station #1) at Prow Platform
+    // 1. Bow Commander
     const bowCommander = createStandingAthlete(bowLeaderMat, true);
     bowCommander.position.set(13.60, 1.15, 0);
-    bowCommander.rotation.z = 0.26; // Leaning forward leading cadence
+    bowCommander.rotation.z = 0.26;
     bowCommander.userData = {
       isBowLeader: true,
       baseX: 13.60,
@@ -1626,12 +1643,9 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
       baseZ: 0,
       baseRotZ: 0.26,
     };
-    if (isCrewMode) {
-      bowCommander.add(createStationBadge('MŨI', 0xf59e0b));
-    }
     parent.add(bowCommander);
 
-    // 2. 50 Paired Rowers (25 Pairs on Thwarts - Stations #2 to #51)
+    // 2. 50 Rowers
     for (let pair = 1; pair <= 25; pair++) {
       const u = 0.82 - ((pair - 1) / 24) * 0.68;
       const x = (u - 0.5) * BOAT_LENGTH;
@@ -1642,26 +1656,18 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
       const tBow = u >= 0.5 ? (u - 0.5) / 0.5 : (0.5 - u) / 0.5;
       const yPos = 0.48 + Math.pow(tBow, 2.2) * 0.16;
 
-      // Port Rower (Mạn Trái - Station 2*pair)
       const portRower = createRowerMesh(portJerseyMat, true, pair);
       portRower.position.set(x, yPos, -lateralAthleteZ);
-      portRower.rotation.y = -0.12; // Torso angled slightly toward port gunwale
-      if (isCrewMode && pair % 2 !== 0) {
-        portRower.add(createStationBadge(`C${pair}`, 0x0284c7));
-      }
+      portRower.rotation.y = -0.12;
       parent.add(portRower);
 
-      // Starboard Rower (Mạn Phải - Station 2*pair + 1)
       const stbdRower = createRowerMesh(stbdJerseyMat, false, pair);
       stbdRower.position.set(x, yPos, lateralAthleteZ);
-      stbdRower.rotation.y = 0.12; // Torso angled slightly toward starboard gunwale
-      if (isCrewMode && pair % 2 !== 0) {
-        stbdRower.add(createStationBadge(`C${pair}`, 0x059669));
-      }
+      stbdRower.rotation.y = 0.12;
       parent.add(stbdRower);
     }
 
-    // 3. Central Whistle Commander (Chỉ huy còi giữa - Station #52) atop Central Kềm Bridge
+    // 3. Central Whistle Commander
     const midCommander = createStandingAthlete(midLeaderMat, false);
     midCommander.position.set(0.0, 0.85, 0);
     midCommander.userData = {
@@ -1670,16 +1676,13 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
       baseY: 0.85,
       baseZ: 0,
     };
-    if (isCrewMode) {
-      midCommander.add(createStationBadge('GIỮA', 0xea580c));
-    }
     parent.add(midCommander);
 
-    // 4. 3 Steersmen (Tổ Lái Đuôi - Stations #53, #54, #55) in stepped aft formation
+    // 4. 3 Steersmen
     const steersmenConfig = [
-      { x: -11.80, y: 1.02, z: 0.14, rotZ: -0.12, label: 'LÁI 1' },
-      { x: -12.60, y: 1.14, z: -0.14, rotZ: -0.15, label: 'LÁI 2' },
-      { x: -13.50, y: 1.28, z: 0.00, rotZ: -0.18, label: 'LÁI 3' },
+      { x: -11.80, y: 1.02, z: 0.14, rotZ: -0.12 },
+      { x: -12.60, y: 1.14, z: -0.14, rotZ: -0.15 },
+      { x: -13.50, y: 1.28, z: 0.00, rotZ: -0.18 },
     ];
 
     steersmenConfig.forEach((st) => {
@@ -1693,14 +1696,11 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
         baseZ: st.z,
         baseRotZ: st.rotZ,
       };
-      if (isCrewMode) {
-        steersman.add(createStationBadge(st.label, 0xdc2626));
-      }
       parent.add(steersman);
     });
   };
 
-  // Helper: Build Water Wake, Bow Spray & Paddle Splashes
+  // Helper: Build Wake & Splashes
   const buildWakeAndSplashes = (parent: THREE.Group) => {
     const foamMat = new THREE.MeshBasicMaterial({
       color: 0xffffff,
@@ -1708,7 +1708,6 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
       opacity: 0.55,
     });
 
-    // Bow V-Shaped Wake Splashes
     for (let i = 0; i < 16; i++) {
       const splash = new THREE.Mesh(new THREE.SphereGeometry(0.08 + Math.random() * 0.06, 8, 8), foamMat);
       const x = BOAT_LENGTH / 2 - i * 0.8;
@@ -1717,7 +1716,6 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
       parent.add(splash);
     }
 
-    // Stern Trailing Wake Streamers
     for (let j = 0; j < 20; j++) {
       const sternWake = new THREE.Mesh(new THREE.PlaneGeometry(0.6, 0.25), foamMat);
       sternWake.rotation.x = -Math.PI / 2;
@@ -1726,421 +1724,347 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
     }
   };
 
-  // Calculate live station geometric slice data matching 3D lofting mesh
-  const uStation = Math.min(1.0, Math.max(0.0, stationSliceMeters / BOAT_LENGTH));
-  const rawLiveBeam = BOAT_MAX_BEAM * Math.pow(Math.sin(uStation * Math.PI), 0.80);
-  const currentBeam = Math.max(0.04, rawLiveBeam).toFixed(2);
-  const midDist = Math.abs(uStation - 0.5) * 2.0;
-  const liveKeelY = Math.pow(midDist, 2.5) * 0.28;
-  const liveSheerY =
-    uStation >= 0.5
-      ? BOAT_MID_DEPTH + Math.pow((uStation - 0.5) / 0.5, 2.3) * (PROW_RISE - BOAT_MID_DEPTH)
-      : BOAT_MID_DEPTH + Math.pow((0.5 - uStation) / 0.5, 2.2) * (STERN_RISE - BOAT_MID_DEPTH);
-  const currentDepth = (liveSheerY - liveKeelY).toFixed(2);
-
-  const handleTogglePlay = useCallback(() => {
-    setIsPlaying((prev) => !prev);
-  }, []);
-
-  const handleChangeCadence = useCallback((spm: number) => {
-    setStrokeCadenceSPM(spm);
-  }, []);
-
-  const handleScrubCycle = useCallback((progress: number) => {
-    manualProgressRef.current = progress;
-    accumulatedCycleRef.current = progress;
-    setGlobalCycleProgress(progress);
-    const info = getGlobalStrokePhase(progress);
-    setCurrentPhase(info.phase);
-    setPhaseProgress(info.phaseProgress);
-  }, []);
-
-  const handleStepPhase = useCallback(
-    (direction: 'prev' | 'next') => {
-      const currentIndex = STROKE_PHASES.findIndex((p) => p.id === currentPhase.id);
-      let nextIndex = direction === 'next' ? currentIndex + 1 : currentIndex - 1;
-      if (nextIndex >= STROKE_PHASES.length) nextIndex = 0;
-      if (nextIndex < 0) nextIndex = STROKE_PHASES.length - 1;
-      const targetPhase = STROKE_PHASES[nextIndex];
-      handleScrubCycle(targetPhase.range[0]);
-    },
-    [currentPhase.id, handleScrubCycle]
-  );
+  const viewAngleLabels: Record<ViewAngle, string> = {
+    '3/4': '3/4',
+    'TOP': 'TOP',
+    'SIDE': 'SIDE',
+    'CLOSE_UP_BOW': 'CLOSE-UP MŨI',
+    'CLOSE_UP_STERN': 'CLOSE-UP ĐUÔI',
+  };
 
   return (
-    <div className="flex flex-col w-full rounded-2xl bg-slate-900 border border-slate-800 shadow-2xl overflow-hidden">
-      {/* 1. Sleek Top Bar: Camera & Render Mode Controls */}
-      <div className="flex flex-wrap items-center justify-between gap-2 px-3.5 py-2 bg-slate-950/95 border-b border-slate-800 backdrop-blur z-10">
-        <div className="flex items-center gap-2">
-          <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-          <span className="text-xs font-mono font-bold tracking-wider text-white">
-            TUM NÚP 2 <span className="text-sky-400 font-normal">3D</span>
-          </span>
+    <div className="relative w-full rounded-2xl bg-slate-950 border border-slate-800/80 shadow-2xl overflow-hidden select-none">
+      {/* 1. Main 3D Viewport - Occupying >80% Dominant Canvas */}
+      <div className="relative w-full h-[620px] md:h-[680px] bg-slate-950">
+        <div
+          ref={mountRef}
+          className="w-full h-full cursor-grab active:cursor-grabbing outline-none"
+        />
+
+        {/* Minimal Floating Status Tag at Top-Left */}
+        <div className="absolute top-3.5 left-4 z-10 pointer-events-none flex items-center gap-2 font-mono text-xs">
+          <div className="flex items-center gap-2 bg-slate-950/80 px-3 py-1.5 rounded-xl border border-slate-800/80 backdrop-blur-md text-slate-300 shadow-lg">
+            <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <strong className="text-white tracking-wide">TUM NÚP 2</strong>
+            <span className="text-slate-500">•</span>
+            <span className="text-sky-400 font-mono">30.20m</span>
+          </div>
         </div>
 
-        {/* View Angles */}
-        <div className="flex items-center gap-1 bg-slate-900/90 p-1 rounded-lg border border-slate-800/80 text-xs font-mono">
-          <span className="text-[10px] text-slate-400 px-1 hidden sm:inline">Góc:</span>
-          {(
-            [
-              { id: '3D_ORBIT', label: '3D' },
-              { id: 'TOP', label: 'Top' },
-              { id: 'SIDE', label: 'Side' },
-              { id: 'FRONT', label: 'Mũi' },
-              { id: 'REAR', label: 'Đuôi' },
-            ] as const
-          ).map((v) => (
-            <button
-              key={v.id}
-              id={`btn-view-${v.id.toLowerCase()}`}
-              onClick={() => setViewAngle(v.id)}
-              className={`px-2 py-0.5 rounded text-[11px] transition ${
-                viewAngle === v.id
-                  ? 'bg-sky-600 text-white font-bold shadow'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
-              }`}
-            >
-              {v.label}
-            </button>
-          ))}
-        </div>
-
-        {/* Render Modes */}
-        <div className="flex items-center gap-1 bg-slate-900/90 p-1 rounded-lg border border-slate-800/80 text-xs font-mono">
-          <span className="text-[10px] text-slate-400 px-1 hidden sm:inline">Chế độ:</span>
-          {(
-            [
-              { id: 'REALISTIC_PBR', label: 'PBR' },
-              { id: 'BLUEPRINT_CAD', label: 'CAD' },
-              { id: 'STRUCTURAL_KEM', label: 'Kèm' },
-              { id: 'CREW_MATRIX', label: 'Đội hình 3D' },
-            ] as const
-          ).map((m) => (
-            <button
-              key={m.id}
-              id={`btn-render-${m.id.toLowerCase()}`}
-              onClick={() => setRenderMode(m.id)}
-              className={`px-2 py-0.5 rounded text-[11px] transition ${
-                renderMode === m.id
-                  ? 'bg-emerald-600 text-white font-bold shadow'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
-              }`}
-            >
-              {m.label}
-            </button>
-          ))}
+        {/* Minimal Play/Pause Indicator at Top-Right */}
+        <div className="absolute top-3.5 right-4 z-10 flex items-center gap-2">
           <button
-            id="btn-open-formation-top"
-            onClick={() => setIsCrewFormationOpen(true)}
-            className="flex items-center gap-1 px-2 py-0.5 rounded text-[11px] bg-sky-900/80 hover:bg-sky-800 text-sky-200 border border-sky-600/40 transition font-bold"
-            title="Mở Sơ đồ đội hình 55 VĐV chi tiết"
+            id="btn-quick-toggle-animation"
+            onClick={() => setIsPlaying(!isPlaying)}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-950/80 hover:bg-slate-900 border border-slate-800/80 backdrop-blur-md text-xs font-mono text-slate-300 hover:text-white shadow-lg transition"
+            title={isPlaying ? 'Tạm dừng mô phỏng chèo' : 'Tiếp tục mô phỏng chèo'}
           >
-            <Users className="w-3 h-3 text-sky-400" />
-            <span>Sơ đồ 2D</span>
+            {isPlaying ? (
+              <>
+                <Pause className="w-3.5 h-3.5 text-amber-400" />
+                <span className="hidden sm:inline">105 nhịp/phút</span>
+              </>
+            ) : (
+              <>
+                <Play className="w-3.5 h-3.5 text-emerald-400 fill-emerald-400" />
+                <span className="hidden sm:inline">Tiếp tục</span>
+              </>
+            )}
           </button>
         </div>
-      </div>
 
-      {/* 2. Main 3D Canvas Area */}
-      <div className="relative w-full h-[480px] md:h-[540px] bg-slate-950 select-none overflow-hidden">
-        <div ref={mountRef} className="w-full h-full cursor-grab active:cursor-grabbing" />
-
-        {/* Floating Minimal Quick Specs Badge at Top-Left */}
-        {showSpecsHUD && (
-          <div className="absolute top-3 left-3 z-10 flex items-center gap-2 font-mono text-[11px] text-slate-300 bg-slate-950/85 px-3 py-1.5 rounded-xl border border-slate-800 backdrop-blur shadow-xl max-w-[90vw]">
-            <Crosshair className="w-3.5 h-3.5 text-sky-400 shrink-0" />
-            <span className="truncate">
-              <strong className="text-white">30.20m × 1.16m</strong> <span className="text-amber-400 text-[10px]">[Suy luận]</span> | 55 VĐV <span className="text-emerald-400 text-[10px]">[Xác thực]</span>
-            </span>
-            <button
-              id="btn-open-details-from-hud"
-              onClick={() => setIsDetailsModalOpen(true)}
-              className="flex items-center gap-0.5 px-2 py-0.5 rounded bg-sky-950/80 hover:bg-sky-900 text-sky-300 border border-sky-600/40 text-[10px] font-bold transition ml-1 shrink-0"
-            >
-              <span>Chi tiết</span>
-              <ChevronDown className="w-3 h-3" />
-            </button>
-            <button
-              id="btn-hide-specs-hud"
-              onClick={() => setShowSpecsHUD(false)}
-              className="p-0.5 rounded hover:bg-slate-800 text-slate-400 hover:text-white transition shrink-0"
-              title="Ẩn thông số"
-            >
-              <X className="w-3.5 h-3.5" />
-            </button>
-          </div>
-        )}
-
-        {/* Floating Zoom & Reset Controls at Top-Right */}
-        <div className="absolute top-3 right-3 z-10 flex items-center gap-1 bg-slate-950/85 p-1 rounded-xl border border-slate-800 backdrop-blur shadow-xl">
+        {/* 2. Floating Minimal Dock - Fixed at Bottom Center */}
+        <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 bg-slate-950/90 border border-slate-800/90 px-3 py-2 rounded-2xl backdrop-blur-xl shadow-2xl font-mono text-xs text-slate-200">
+          {/* Main 4 Controls */}
+          {/* Button 1: Xoay 360° */}
           <button
-            id="btn-canvas-zoom-in"
+            id="btn-toggle-auto-rotate"
+            onClick={() => setIsAutoRotating(!isAutoRotating)}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl transition ${
+              isAutoRotating
+                ? 'bg-sky-600 text-white font-bold shadow-lg shadow-sky-600/30'
+                : 'hover:bg-slate-800 text-slate-300 hover:text-white'
+            }`}
+            title="Bật/tắt tự động xoay 360°"
+          >
+            <Compass className={`w-4 h-4 ${isAutoRotating ? 'animate-spin text-white' : 'text-sky-400'}`} />
+            <span>Xoay 360°</span>
+          </button>
+
+          <div className="w-px h-5 bg-slate-800 mx-0.5" />
+
+          {/* Button 2: Phóng to */}
+          <button
+            id="btn-zoom-in"
             onClick={() => handleZoom(-4)}
-            className="p-1.5 rounded-lg hover:bg-slate-800 text-slate-300 hover:text-white transition"
-            title="Phóng to"
+            className="flex items-center gap-1 px-2.5 py-1.5 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition"
+            title="Phóng to (Scroll / Pinch)"
           >
-            <ZoomIn className="w-4 h-4" />
+            <ZoomIn className="w-4 h-4 text-slate-300" />
+            <span className="hidden sm:inline">Phóng to</span>
           </button>
+
+          {/* Button 3: Thu nhỏ */}
           <button
-            id="btn-canvas-zoom-out"
+            id="btn-zoom-out"
             onClick={() => handleZoom(4)}
-            className="p-1.5 rounded-lg hover:bg-slate-800 text-slate-300 hover:text-white transition"
-            title="Thu nhỏ"
+            className="flex items-center gap-1 px-2.5 py-1.5 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition"
+            title="Thu nhỏ (Scroll / Pinch)"
           >
-            <ZoomOut className="w-4 h-4" />
+            <ZoomOut className="w-4 h-4 text-slate-300" />
+            <span className="hidden sm:inline">Thu nhỏ</span>
           </button>
+
+          {/* Button 4: Đặt lại góc nhìn */}
           <button
-            id="btn-canvas-reset-view"
+            id="btn-reset-view"
             onClick={handleResetView}
-            className="p-1.5 rounded-lg hover:bg-slate-800 text-slate-300 hover:text-white transition"
-            title="Đặt lại góc nhìn"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition"
+            title="Đặt lại góc nhìn 3D ban đầu"
           >
-            <RotateCcw className="w-4 h-4" />
-          </button>
-        </div>
-
-        {/* Subtle Canvas Interaction Hint */}
-        <div className="absolute bottom-3 right-3 pointer-events-none font-mono text-[10px] text-slate-500 bg-slate-950/70 px-2.5 py-1 rounded-lg border border-slate-800/60 backdrop-blur">
-          Xoay 3D: Kéo chuột | Zoom: Cuộn bánh xe
-        </div>
-      </div>
-
-      {/* 3. Specialized 5-Phase Rowing Kinematics Controller & SPM Dial */}
-      <RowingKinematicsController
-        isPlaying={isPlaying}
-        strokeCadenceSPM={strokeCadenceSPM}
-        cycleProgress={globalCycleProgress}
-        currentPhase={currentPhase}
-        phaseProgress={phaseProgress}
-        onTogglePlay={handleTogglePlay}
-        onChangeCadence={handleChangeCadence}
-        onScrubCycle={handleScrubCycle}
-        onStepPhase={handleStepPhase}
-      />
-
-      {/* 4. Essential Direct Controls Bar at Bottom */}
-      <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-2.5 bg-slate-950 border-t border-slate-800 text-xs">
-        {/* Direct Essential Feature Toggles */}
-        <div className="flex items-center gap-2 font-mono text-[11px]">
-          <button
-            id="btn-toggle-crew"
-            onClick={() => setShowCrew(!showCrew)}
-            className={`flex items-center gap-1 px-2.5 py-1 rounded-lg border transition ${
-              showCrew
-                ? 'bg-slate-800 text-sky-400 border-sky-500/40'
-                : 'bg-slate-900/60 text-slate-500 border-slate-800'
-            }`}
-          >
-            <Users className="w-3.5 h-3.5" />
-            <span>55 VĐV ({showCrew ? 'Hiện' : 'Ẩn'})</span>
+            <RotateCcw className="w-4 h-4 text-amber-400" />
+            <span>Đặt lại</span>
           </button>
 
-          <button
-            id="btn-open-crew-formation-bottom"
-            onClick={() => setIsCrewFormationOpen(true)}
-            className="flex items-center gap-1 px-2.5 py-1 rounded-lg border bg-sky-950/70 hover:bg-sky-900/80 text-sky-300 border-sky-600/40 transition font-bold"
-          >
-            <MapPin className="w-3.5 h-3.5 text-sky-400" />
-            <span>Sơ đồ 55 VĐV (2D)</span>
-          </button>
+          <div className="w-px h-5 bg-slate-800 mx-0.5" />
 
-          <button
-            id="btn-toggle-water"
-            onClick={() => setShowWater(!showWater)}
-            className={`flex items-center gap-1 px-2.5 py-1 rounded-lg border transition ${
-              showWater
-                ? 'bg-slate-800 text-emerald-400 border-emerald-500/40'
-                : 'bg-slate-900/60 text-slate-500 border-slate-800'
-            }`}
-          >
-            <Waves className="w-3.5 h-3.5" />
-            <span>Mặt nước</span>
-          </button>
+          {/* Compact Menu 1: Góc nhìn */}
+          <div className="relative">
+            <button
+              id="btn-menu-camera-angle"
+              onClick={() => {
+                setIsViewMenuOpen(!isViewMenuOpen);
+                setIsDisplayMenuOpen(false);
+              }}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl transition ${
+                isViewMenuOpen
+                  ? 'bg-slate-800 text-sky-400 font-bold'
+                  : 'hover:bg-slate-800/80 text-slate-300 hover:text-white'
+              }`}
+            >
+              <Camera className="w-4 h-4 text-sky-400" />
+              <span>Góc nhìn: {viewAngleLabels[viewAngle]}</span>
+              <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isViewMenuOpen ? 'rotate-180' : ''}`} />
+            </button>
 
-          <button
-            id="btn-toggle-specs-hud"
-            onClick={() => setShowSpecsHUD(!showSpecsHUD)}
-            className={`flex items-center gap-1 px-2.5 py-1 rounded-lg border transition ${
-              showSpecsHUD
-                ? 'bg-slate-800 text-amber-400 border-amber-500/40'
-                : 'bg-slate-900/60 text-slate-500 border-slate-800'
-            }`}
-          >
-            <Info className="w-3.5 h-3.5" />
-            <span>Thông số HUD</span>
-          </button>
-        </div>
-
-        {/* Details & Secondary Controls Button */}
-        <div>
-          <button
-            id="btn-open-details-modal"
-            onClick={() => setIsDetailsModalOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white border border-slate-700 transition text-xs font-mono font-medium"
-          >
-            <SlidersHorizontal className="w-3.5 h-3.5 text-sky-400" />
-            <span>Chi tiết cấu trúc & Cắt trạm</span>
-          </button>
-        </div>
-      </div>
-
-      {/* 4. Full Technical Details & Station Analysis Modal */}
-      {isDetailsModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-fadeIn">
-          <div className="relative w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden max-h-[85vh] flex flex-col font-mono text-xs">
-            {/* Modal Header */}
-            <div className="flex items-center justify-between px-5 py-3.5 bg-slate-950 border-b border-slate-800">
-              <div className="flex items-center gap-2 text-sky-400 font-bold text-sm">
-                <Crosshair className="w-4 h-4" />
-                <span>THÔNG SỐ KỸ THUẬT & CẮT TRẠM CAD</span>
+            {/* View Angle Dropdown */}
+            {isViewMenuOpen && (
+              <div className="absolute bottom-full mb-2.5 right-0 sm:left-0 w-44 bg-slate-900/95 border border-slate-800 rounded-xl p-1.5 backdrop-blur-xl shadow-2xl space-y-1 font-mono text-xs z-30 animate-in fade-in slide-in-from-bottom-2">
+                {(
+                  [
+                    { id: '3/4', label: '3/4 (Tổng thể)' },
+                    { id: 'TOP', label: 'TOP (Nhìn trên)' },
+                    { id: 'SIDE', label: 'SIDE (Nhìn bên)' },
+                    { id: 'CLOSE_UP_BOW', label: 'CLOSE-UP MŨI' },
+                    { id: 'CLOSE_UP_STERN', label: 'CLOSE-UP ĐUÔI' },
+                  ] as const
+                ).map((v) => (
+                  <button
+                    key={v.id}
+                    id={`btn-select-view-${v.id.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
+                    onClick={() => {
+                      setViewAngle(v.id);
+                      setIsViewMenuOpen(false);
+                      setIsAutoRotating(false);
+                    }}
+                    className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-left transition ${
+                      viewAngle === v.id
+                        ? 'bg-sky-600 text-white font-bold'
+                        : 'text-slate-300 hover:bg-slate-800 hover:text-white'
+                    }`}
+                  >
+                    <span>{v.label}</span>
+                    {viewAngle === v.id && <Check className="w-3.5 h-3.5" />}
+                  </button>
+                ))}
               </div>
-              <button
-                id="btn-close-details-modal"
-                onClick={() => setIsDetailsModalOpen(false)}
-                className="p-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            </div>
+            )}
+          </div>
 
-            {/* Modal Body */}
-            <div className="p-5 overflow-y-auto space-y-4 text-slate-300">
-              {/* Live Station CAD Slider */}
-              <div className="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 space-y-2">
-                <div className="flex items-center justify-between text-xs">
-                  <span className="font-bold text-white">Mặt phẳng cắt trạm CAD (X-Station):</span>
-                  <span className="text-rose-400 font-bold font-mono">
-                    Trạm {Math.round((stationSliceMeters / BOAT_LENGTH) * 64)} / 64 ({stationSliceMeters.toFixed(1)}m)
+          {/* Compact Menu 2: ⚙ Hiển thị */}
+          <div className="relative">
+            <button
+              id="btn-menu-display-settings"
+              onClick={() => {
+                setIsDisplayMenuOpen(!isDisplayMenuOpen);
+                setIsViewMenuOpen(false);
+              }}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl transition ${
+                isDisplayMenuOpen
+                  ? 'bg-slate-800 text-emerald-400 font-bold'
+                  : 'hover:bg-slate-800/80 text-slate-300 hover:text-white'
+              }`}
+            >
+              <Settings2 className="w-4 h-4 text-emerald-400" />
+              <span>⚙ Hiển thị</span>
+              <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isDisplayMenuOpen ? 'rotate-180' : ''}`} />
+            </button>
+
+            {/* Display Settings Popover */}
+            {isDisplayMenuOpen && (
+              <div className="absolute bottom-full mb-2.5 right-0 w-64 bg-slate-900/95 border border-slate-800 rounded-2xl p-3.5 backdrop-blur-xl shadow-2xl space-y-3 font-mono text-xs z-30 animate-in fade-in slide-in-from-bottom-2">
+                <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+                  <span className="font-bold text-white uppercase text-[11px] tracking-wider flex items-center gap-1.5">
+                    <Settings2 className="w-3.5 h-3.5 text-emerald-400" />
+                    TÙY CHỌN HIỂN THỊ
                   </span>
+                  <button
+                    onClick={() => setIsDisplayMenuOpen(false)}
+                    className="p-1 rounded hover:bg-slate-800 text-slate-400 hover:text-white transition"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                  </button>
                 </div>
-                <input
-                  id="slider-modal-station-slice"
-                  type="range"
-                  min="0"
-                  max={BOAT_LENGTH}
-                  step="0.1"
-                  value={stationSliceMeters}
-                  onChange={(e) => setStationSliceMeters(Number(e.target.value))}
-                  className="w-full accent-rose-500 cursor-pointer"
-                />
-                <div className="grid grid-cols-3 gap-2 pt-1 text-[11px] text-slate-400 text-center">
-                  <div className="bg-slate-900/90 p-2 rounded border border-slate-800">
-                    <span className="block text-[10px] text-slate-500">VỊ TRÍ X</span>
-                    <strong className="text-white">{stationSliceMeters.toFixed(2)} m</strong>
-                  </div>
-                  <div className="bg-slate-900/90 p-2 rounded border border-slate-800">
-                    <span className="block text-[10px] text-slate-500">CHIỀU RỘNG B(x)</span>
-                    <strong className="text-sky-400">{currentBeam} m</strong>
-                  </div>
-                  <div className="bg-slate-900/90 p-2 rounded border border-slate-800">
-                    <span className="block text-[10px] text-slate-500">CHIỀU CAO D(x)</span>
-                    <strong className="text-emerald-400">{currentDepth} m</strong>
-                  </div>
-                </div>
-              </div>
 
-              {/* Stroke Cadence Adjustment */}
-              <div className="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 space-y-2">
-                <div className="flex items-center justify-between text-xs">
-                  <span className="font-bold text-white">Tần số nhịp chèo (Cadence SPM):</span>
-                  <span className="text-sky-400 font-bold font-mono">{strokeCadenceSPM} SPM</span>
-                </div>
-                <input
-                  id="slider-modal-cadence-spm"
-                  type="range"
-                  min="60"
-                  max="125"
-                  step="1"
-                  value={strokeCadenceSPM}
-                  onChange={(e) => setStrokeCadenceSPM(Number(e.target.value))}
-                  className="w-full accent-sky-500 cursor-pointer"
-                />
-              </div>
-
-              {/* Verified vs Inferred Specifications Table */}
-              <div className="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 space-y-2.5">
-                <div className="flex items-center justify-between border-b border-slate-800 pb-1.5">
-                  <span className="font-bold text-white text-xs">
-                    KIỂM TOÁN CẤU TRÚC GHE NGO TUM NÚP 2
+                {/* 1. Render Modes */}
+                <div className="space-y-1.5">
+                  <span className="text-[10px] text-slate-400 uppercase tracking-wider block font-bold">
+                    Chế độ vật liệu:
                   </span>
-                  <span className="text-[10px] text-slate-400">Nguồn: Thực tế & Đo đạc hiện trường</span>
-                </div>
-                <div className="space-y-2 text-[11px]">
-                  <div className="flex items-center justify-between gap-2 pb-1 border-b border-slate-800/60">
-                    <span>Chiều dài tổng thể (LOA): <strong className="text-white">30.20 m</strong></span>
-                    <span className="px-1.5 py-0.5 rounded text-[9px] bg-amber-950/80 text-amber-300 border border-amber-500/40">XẤP XỈ / SUY LUẬN</span>
-                  </div>
-                  <div className="flex items-center justify-between gap-2 pb-1 border-b border-slate-800/60">
-                    <span>Chiều rộng lớn nhất (Beam max): <strong className="text-white">1.16 m</strong> (Mạn thon tỷ lệ ~26:1)</span>
-                    <span className="px-1.5 py-0.5 rounded text-[9px] bg-amber-950/80 text-amber-300 border border-amber-500/40">XẤP XỈ / SUY LUẬN</span>
-                  </div>
-                  <div className="flex items-center justify-between gap-2 pb-1 border-b border-slate-800/60">
-                    <span>Độ sâu mạn giữa (Depth mid): <strong className="text-white">0.48 m</strong> (Lòng máng chữ U)</span>
-                    <span className="px-1.5 py-0.5 rounded text-[9px] bg-amber-950/80 text-amber-300 border border-amber-500/40">XẤP XỈ / SUY LUẬN</span>
-                  </div>
-                  <div className="flex items-center justify-between gap-2 pb-1 border-b border-slate-800/60">
-                    <span>Độ vút Mũi / Đuôi: <strong className="text-white">+1.38 m / +1.52 m</strong></span>
-                    <span className="px-1.5 py-0.5 rounded text-[9px] bg-amber-950/80 text-amber-300 border border-amber-500/40">XẤP XỈ / SUY LUẬN</span>
-                  </div>
-                  <div className="flex items-center justify-between gap-2 pb-1 border-b border-slate-800/60">
-                    <span>26 Đòn ngồi ngang (Băng ngồi 2 người): <strong className="text-emerald-400">Gỗ căm xe khóa mộng be</strong></span>
-                    <span className="px-1.5 py-0.5 rounded text-[9px] bg-emerald-950/80 text-emerald-300 border border-emerald-500/40">ĐÃ XÁC NHẬN</span>
-                  </div>
-                  <div className="flex items-center justify-between gap-2 pb-1 border-b border-slate-800/60">
-                    <span>Cây Kềm suốt dọc thân: <strong className="text-purple-400">24.5 m (Ø 0.19m) + 5 trụ chống vòm</strong></span>
-                    <span className="px-1.5 py-0.5 rounded text-[9px] bg-purple-950/80 text-purple-300 border border-purple-500/40">KẾT CẤU XÁC NHẬN</span>
-                  </div>
-                  <div className="flex items-center justify-between gap-2 pb-1 border-b border-slate-800/60">
-                    <span>Cần câu lái (Kềm đuôi triệt vặn): <strong className="text-purple-400">Thanh gỗ dằn lực đuôi</strong></span>
-                    <span className="px-1.5 py-0.5 rounded text-[9px] bg-purple-950/80 text-purple-300 border border-purple-500/40">KẾT CẤU XÁC NHẬN</span>
-                  </div>
-                  <div className="flex items-center justify-between gap-2 pb-1 border-b border-slate-800/60">
-                    <span>48 Khung sườn Cong Ghe (Transverse Ribs): <strong className="text-white">Gỗ sao uốn chữ U</strong></span>
-                    <span className="px-1.5 py-0.5 rounded text-[9px] bg-emerald-950/80 text-emerald-300 border border-emerald-500/40">ĐÃ XÁC NHẬN</span>
-                  </div>
-                  <div className="flex items-center justify-between gap-2 pb-1 border-b border-slate-800/60">
-                    <span>25 Thanh chốt đạp chân (Footrest chocks): <strong className="text-white">Gá đáy vát 22°</strong></span>
-                    <span className="px-1.5 py-0.5 rounded text-[9px] bg-emerald-950/80 text-emerald-300 border border-emerald-500/40">ĐÃ XÁC NHẬN</span>
-                  </div>
-                  <div className="flex items-center justify-between gap-2 pb-1 border-b border-slate-800/60">
-                    <span>Biên chế VĐV: <strong className="text-sky-400">55 người (1 Mũi + 1 Giữa + 50 Bơi + 3 Lái)</strong></span>
-                    <span className="px-1.5 py-0.5 rounded text-[9px] bg-emerald-950/80 text-emerald-300 border border-emerald-500/40">ĐÃ XÁC NHẬN</span>
-                  </div>
-                  <div className="flex items-center justify-between gap-2 pb-1 border-b border-slate-800/60">
-                    <span>Mái chèo búp sen (1.30m) & Điểm tì nẹp be: <strong className="text-white">Đòn bẩy tì mạn</strong></span>
-                    <span className="px-1.5 py-0.5 rounded text-[9px] bg-emerald-950/80 text-emerald-300 border border-emerald-500/40">ĐÃ XÁC NHẬN</span>
-                  </div>
-                  <div className="flex items-center justify-between gap-2 pb-1 border-b border-slate-800/60">
-                    <span>Lực căng néo cáp Kềm (Pre-stress kN): <strong className="text-slate-400">~12 - 18 kN khi đua</strong></span>
-                    <span className="px-1.5 py-0.5 rounded text-[9px] bg-slate-800 text-rose-300 border border-rose-500/40 font-bold">CHƯA XÁC ĐỊNH</span>
-                  </div>
-                  <div className="flex items-center justify-between gap-2 pb-1 border-b border-slate-800/60">
-                    <span>Đường kính chốt mộng chìm (Trunnel pin): <strong className="text-slate-400">~12 - 16 mm</strong></span>
-                    <span className="px-1.5 py-0.5 rounded text-[9px] bg-slate-800 text-rose-300 border border-rose-500/40 font-bold">CHƯA XÁC ĐỊNH</span>
-                  </div>
-                  <div className="flex items-center justify-between gap-2">
-                    <span>Độ dày lớp composite gia cường vỏ ngoài: <strong className="text-slate-400">1.8 - 2.5 mm</strong></span>
-                    <span className="px-1.5 py-0.5 rounded text-[9px] bg-slate-800 text-rose-300 border border-rose-500/40 font-bold">CHƯA XÁC ĐỊNH</span>
+                  <div className="grid grid-cols-3 gap-1">
+                    <button
+                      id="btn-mode-pbr"
+                      onClick={() => setRenderMode('REALISTIC_PBR')}
+                      className={`px-2 py-1.5 rounded-lg text-center transition ${
+                        renderMode === 'REALISTIC_PBR'
+                          ? 'bg-emerald-600 text-white font-bold shadow'
+                          : 'bg-slate-950 text-slate-400 hover:text-white border border-slate-800'
+                      }`}
+                    >
+                      PBR
+                    </button>
+                    <button
+                      id="btn-mode-cad"
+                      onClick={() => setRenderMode('BLUEPRINT_CAD')}
+                      className={`px-2 py-1.5 rounded-lg text-center transition ${
+                        renderMode === 'BLUEPRINT_CAD'
+                          ? 'bg-sky-600 text-white font-bold shadow'
+                          : 'bg-slate-950 text-slate-400 hover:text-white border border-slate-800'
+                      }`}
+                    >
+                      Khung dây
+                    </button>
+                    <button
+                      id="btn-mode-kem"
+                      onClick={() => setRenderMode('STRUCTURAL_KEM')}
+                      className={`px-2 py-1.5 rounded-lg text-center transition ${
+                        renderMode === 'STRUCTURAL_KEM'
+                          ? 'bg-purple-600 text-white font-bold shadow'
+                          : 'bg-slate-950 text-slate-400 hover:text-white border border-slate-800'
+                      }`}
+                    >
+                      Kềm
+                    </button>
                   </div>
                 </div>
-              </div>
-            </div>
 
-            {/* Modal Footer */}
-            <div className="flex items-center justify-end px-5 py-3 bg-slate-950 border-t border-slate-800">
-              <button
-                id="btn-modal-close"
-                onClick={() => setIsDetailsModalOpen(false)}
-                className="px-4 py-1.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-medium transition"
-              >
-                Đóng
-              </button>
-            </div>
+                {/* 2. Feature Toggles List */}
+                <div className="space-y-1.5 pt-1 border-t border-slate-800/80">
+                  <span className="text-[10px] text-slate-400 uppercase tracking-wider block font-bold">
+                    Các lớp đối tượng:
+                  </span>
+
+                  {/* VĐV Toggle */}
+                  <label className="flex items-center justify-between p-2 rounded-lg bg-slate-950/70 border border-slate-800/70 cursor-pointer hover:bg-slate-800/60 transition">
+                    <span className="flex items-center gap-2 text-slate-300">
+                      <Users className="w-3.5 h-3.5 text-sky-400" />
+                      <span>VĐV (55 người)</span>
+                    </span>
+                    <input
+                      id="checkbox-show-crew"
+                      type="checkbox"
+                      checked={showCrew}
+                      onChange={(e) => setShowCrew(e.target.checked)}
+                      className="accent-sky-500 w-4 h-4 rounded cursor-pointer"
+                    />
+                  </label>
+
+                  {/* Thước đo Toggle */}
+                  <label className="flex items-center justify-between p-2 rounded-lg bg-slate-950/70 border border-slate-800/70 cursor-pointer hover:bg-slate-800/60 transition">
+                    <span className="flex items-center gap-2 text-slate-300">
+                      <Ruler className="w-3.5 h-3.5 text-amber-400" />
+                      <span>Thước đo 3D</span>
+                    </span>
+                    <input
+                      id="checkbox-show-dimensions"
+                      type="checkbox"
+                      checked={showDimensions}
+                      onChange={(e) => setShowDimensions(e.target.checked)}
+                      className="accent-amber-500 w-4 h-4 rounded cursor-pointer"
+                    />
+                  </label>
+
+                  {/* Lưới tọa độ Toggle */}
+                  <label className="flex items-center justify-between p-2 rounded-lg bg-slate-950/70 border border-slate-800/70 cursor-pointer hover:bg-slate-800/60 transition">
+                    <span className="flex items-center gap-2 text-slate-300">
+                      <Grid className="w-3.5 h-3.5 text-slate-400" />
+                      <span>Lưới tọa độ</span>
+                    </span>
+                    <input
+                      id="checkbox-show-grid"
+                      type="checkbox"
+                      checked={showGrid}
+                      onChange={(e) => setShowGrid(e.target.checked)}
+                      className="accent-slate-500 w-4 h-4 rounded cursor-pointer"
+                    />
+                  </label>
+
+                  {/* Mặt cắt Toggle & Slider */}
+                  <div className="p-2 rounded-lg bg-slate-950/70 border border-slate-800/70 space-y-2">
+                    <label className="flex items-center justify-between cursor-pointer">
+                      <span className="flex items-center gap-2 text-slate-300">
+                        <Scissors className="w-3.5 h-3.5 text-rose-400" />
+                        <span>Mặt cắt trạm</span>
+                      </span>
+                      <input
+                        id="checkbox-show-slice"
+                        type="checkbox"
+                        checked={showSlicePlane}
+                        onChange={(e) => setShowSlicePlane(e.target.checked)}
+                        className="accent-rose-500 w-4 h-4 rounded cursor-pointer"
+                      />
+                    </label>
+
+                    {showSlicePlane && (
+                      <div className="pt-1 space-y-1">
+                        <div className="flex items-center justify-between text-[10px] text-slate-400">
+                          <span>Vị trí X:</span>
+                          <strong className="text-rose-400">{stationSliceMeters.toFixed(1)} m</strong>
+                        </div>
+                        <input
+                          id="slider-station-slice-popover"
+                          type="range"
+                          min="0"
+                          max={BOAT_LENGTH}
+                          step="0.1"
+                          value={stationSliceMeters}
+                          onChange={(e) => setStationSliceMeters(Number(e.target.value))}
+                          className="w-full accent-rose-500 cursor-pointer h-1 bg-slate-800 rounded-lg"
+                        />
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Open 2D Formation Button */}
+                <button
+                  id="btn-open-formation-from-popover"
+                  onClick={() => {
+                    setIsCrewFormationOpen(true);
+                    setIsDisplayMenuOpen(false);
+                  }}
+                  className="w-full flex items-center justify-center gap-2 p-2 rounded-xl bg-sky-950 hover:bg-sky-900 text-sky-300 border border-sky-600/40 text-xs font-bold transition"
+                >
+                  <MapPin className="w-3.5 h-3.5" />
+                  <span>Xem Sơ đồ 55 VĐV (2D)</span>
+                </button>
+              </div>
+            )}
           </div>
         </div>
-      )}
+      </div>
 
-      {/* 5. Interactive 55-Athlete Crew Formation Diagram Modal (Sơ đồ đội hình 55 VĐV) */}
+      {/* 3. 55-Athlete 2D Crew Formation Modal */}
       <CrewFormationModal
         isOpen={isCrewFormationOpen}
         onClose={() => setIsCrewFormationOpen(false)}
