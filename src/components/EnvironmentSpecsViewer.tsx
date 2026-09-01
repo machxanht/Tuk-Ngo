@@ -1,10 +1,32 @@
 import React from 'react';
-import { MapPin, Flag, Waves, Users, Volume2, Camera, Navigation, CheckCircle } from 'lucide-react';
+import { MapPin, Flag, Waves, Users, Volume2, Camera, Navigation, CheckCircle, FileText, ExternalLink, Trophy } from 'lucide-react';
 import { COLOR_PALETTE } from '../data/technicalReferenceData';
 
 export const EnvironmentSpecsViewer: React.FC = () => {
   return (
     <div id="environment-specs-viewer" className="space-y-6">
+      {/* Reference Document Dossier Card */}
+      <div className="p-4 rounded-2xl bg-gradient-to-r from-amber-950/50 via-slate-900 to-slate-900 border border-amber-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xl">
+        <div className="flex items-center gap-3">
+          <div className="w-9 h-9 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-300 shrink-0">
+            <FileText className="w-5 h-5" />
+          </div>
+          <div>
+            <h4 className="text-sm font-bold text-white font-serif">
+              Hồ sơ khảo sát hiện trường: docs/race-course/2025-race-course-reference.md
+            </h4>
+            <p className="text-xs text-slate-400 font-mono">
+              Tổng hợp phân tích từ YouTube Livestream 2024 (Timestamp 00:15:20, 00:45:10, 01:12:00, 01:30:10)
+            </p>
+          </div>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="px-2.5 py-1 rounded-full bg-emerald-950 text-emerald-300 border border-emerald-700 text-[11px] font-mono font-bold">
+            8 CONFIRMED • 3 APPROXIMATE
+          </span>
+        </div>
+      </div>
+
       {/* 1,200m Course Blueprint Map */}
       <div className="p-5 rounded-2xl bg-slate-900 border border-slate-800 shadow-xl space-y-4">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-slate-800 pb-3">

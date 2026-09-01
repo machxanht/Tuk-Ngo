@@ -1,15 +1,26 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import * as THREE from 'three';
 import { CrewFormationModal } from './CrewFormationModal';
+import { MaterialCustomizerModal } from './MaterialCustomizerModal';
 import {
-  calculateStrokeKinematics,
+  SEVEN_STROKE_PHASES,
   getGlobalStrokePhase,
+  calculateBoatHydrodynamics,
+  HydrodynamicState,
+  StrokePhaseInfo,
 } from '../utils/rowingKinematics';
 import {
   BOAT_SPECS_V2,
-  getTumNup2ProfileV2,
   buildTumNup2MasterV2,
 } from '../utils/tumNup2MasterV2';
+import {
+  buildTumNup2Crew,
+  CrewSystem,
+} from '../utils/tumNup2CrewBuilder';
+import {
+  BoatMaterialConfig,
+  getDefaultMaterialConfig,
+} from '../utils/boatMaterialSystem';
 import {
   RotateCcw,
   ZoomIn,
@@ -19,23 +30,23 @@ import {
   Camera,
   Play,
   Pause,
-  Check,
   ChevronDown,
-  Layers,
   Users,
   Grid,
   Ruler,
-  Scissors,
   Eye,
   Waves,
   Sparkles,
-  MapPin,
   X,
   CheckCircle2,
   AlertTriangle,
   HelpCircle,
   ShieldCheck,
   ExternalLink,
+  Activity,
+  Palette,
+  Layers,
+  RotateCw,
 } from 'lucide-react';
 
 interface Interactive3DBlueprintProps {
@@ -59,6 +70,17 @@ export interface GeometryVerificationItem {
 }
 
 export const GEOMETRY_VERIFICATION_CHECKLIST: GeometryVerificationItem[] = [
+  {
+    id: 'PADDLE_OUTWARD',
+    name: 'Paddle Orientation (Mái chèo ngoài mạn)',
+    vietnameseName: 'Mái chèo xòe ngoài mạn & đòn bẩy be ghe',
+    status: 'CONFIRMED',
+    targetView: 'FRONT',
+    evidenceSource: 'YouTube Livestream 2024 (Timestamp 00:45:10 - 00:47:30)',
+    evidenceUrl: 'https://www.youtube.com/live/XagC29Eyt_U?si=-MEQXY-vzW3dxT2w',
+    description: 'Mái chèo của 50 tay chèo bố trí đối xứng hai bên và luôn xòe ra ngoài mạn ghe (không chụm vào lòng). Mép be ghe làm điểm tì đòn bẩy tự nhiên khi kéo nước.',
+    specs: 'Góc xòe mạn: 27.5° • Độ vươn ngoài be: 0.25m-0.42m • Không xuyên lòng ghe',
+  },
   {
     id: 'BOW_PROW',
     name: 'Prow & Stem (Mũi ghe & Sống mũi)',
@@ -111,6 +133,17 @@ export const GEOMETRY_VERIFICATION_CHECKLIST: GeometryVerificationItem[] = [
     specs: 'Đường kính: Ø90mm • Chiều dài: 28.5m • Trụ chống: 24 vị trí',
   },
   {
+    id: 'CREW_SYNCHRONY',
+    name: 'Crew Dynamics & 7-Phase Cycle',
+    vietnameseName: 'Đội hình 55 VĐV & Chu kỳ 7 pha chèo chuẩn',
+    status: 'CONFIRMED',
+    targetView: '3/4',
+    evidenceSource: 'Video YouTube Livestream Chung kết Maspero 2024 (Timestamp 00:45:10)',
+    evidenceUrl: 'https://www.youtube.com/live/XagC29Eyt_U?si=-MEQXY-vzW3dxT2w',
+    description: '55 VĐV phân bố gồm 1 chỉ huy mũi, 48-50 tay chèo ngồi đôi song song trên đòn gỗ, 3 tay lái sau đuôi. Chu kỳ 7 pha động tác thể hiện rõ phối hợp lưng-vai-tay và dầm cắm sâu dưới nước.',
+    specs: '55 VĐV • 24 Cặp chèo đôi • Nhịp: 95-125 SPM • Góc cắm dầm: 55°-60°',
+  },
+  {
     id: 'WOOD_THICKNESS',
     name: 'Sao Wood Thickness (Độ dày ván gỗ)',
     vietnameseName: 'Chiều dày thành ván gỗ sao nguyên khối',
@@ -119,16 +152,6 @@ export const GEOMETRY_VERIFICATION_CHECKLIST: GeometryVerificationItem[] = [
     evidenceSource: 'Kinh nghiệm nghệ nhân đóng ghe truyền thống Sóc Trăng',
     description: 'Đáy đục từ thân cây sao nguyên khối dày ~35mm, mạn ghép be mỏng dần ~24mm để tối ưu hóa trọng lượng.',
     specs: 'Đáy lườn: 35mm • Mạn be: 24mm • Sai số ước tính: ±4mm',
-  },
-  {
-    id: 'DRY_WEIGHT',
-    name: 'Dry Hull Mass (Khối lượng khô vỏ ghe)',
-    vietnameseName: 'Tổng trọng lượng vỏ gỗ sao khi hạ thủy',
-    status: 'APPROXIMATE',
-    targetView: '3/4',
-    evidenceSource: 'Tính toán thể tích hình học 3D x Tỷ trọng gỗ sao (850 kg/m³)',
-    description: 'Khối lượng vỏ gỗ khô ước tính khoảng 1.35 tấn, đảm bảo đủ nhẹ để bứt tốc nhưng đủ đầm để chịu tải 55 VĐV (~4.000 kg).',
-    specs: 'Khối lượng vỏ: ~1.350 kg • Tổng choán nước thi đấu: ~5.350 kg',
   },
   {
     id: 'BOTTOM_COATING',
@@ -145,48 +168,63 @@ export const GEOMETRY_VERIFICATION_CHECKLIST: GeometryVerificationItem[] = [
 export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = () => {
   const mountRef = useRef<HTMLDivElement>(null);
 
-  // Active Main Tab within 3D Component: '3D_CANVAS' | 'GEOMETRY_CHECKLIST'
+  // Active Sub-Tab: '3D_CANVAS' | 'GEOMETRY_CHECKLIST'
   const [activeSubTab, setActiveSubTab] = useState<'3D_CANVAS' | 'GEOMETRY_CHECKLIST'>('3D_CANVAS');
 
-  // View & Render State (5 Validation Inspection Modes: TOP, SIDE, FRONT, REAR, 3/4 + CLOSE-UPS)
+  // View & Render State
   const [viewAngle, setViewAngle] = useState<ViewAngle>('3/4');
   const [renderMode, setRenderMode] = useState<RenderMode>('REALISTIC_PBR');
   const [isAutoRotating, setIsAutoRotating] = useState<boolean>(false);
 
-  // Feature Toggles: Pure Geometry Mode default (hidden crew & water for clean silhouette inspection)
-  const [showCrew, setShowCrew] = useState<boolean>(false);
-  const [showGrid, setShowGrid] = useState<boolean>(true);
-  const [showDimensions, setShowDimensions] = useState<boolean>(true);
-  const [showSlicePlane, setShowSlicePlane] = useState<boolean>(false);
-  const [stationSliceMeters, setStationSliceMeters] = useState<number>(15.1);
-  const [showWater, setShowWater] = useState<boolean>(false);
+  // Material System Configuration
+  const [materialConfig, setMaterialConfig] = useState<BoatMaterialConfig>(getDefaultMaterialConfig());
+  const [isMaterialModalOpen, setIsMaterialModalOpen] = useState<boolean>(false);
 
-  // Dropdown Popovers
-  const [isViewMenuOpen, setIsViewMenuOpen] = useState<boolean>(false);
+  // Feature Toggles: Real-time Essentials on by default
+  const [showHull, setShowHull] = useState<boolean>(true);
+  const [showAthletes, setShowAthletes] = useState<boolean>(true);
+  const [showPaddles, setShowPaddles] = useState<boolean>(true);
+  const [showWater, setShowWater] = useState<boolean>(true);
+  const [showGrid, setShowGrid] = useState<boolean>(false); // Clean viewport by default
+  const [showDimensions, setShowDimensions] = useState<boolean>(false);
+
+  // Dropdown Popovers & Modals
   const [isDisplayMenuOpen, setIsDisplayMenuOpen] = useState<boolean>(false);
   const [isCrewFormationOpen, setIsCrewFormationOpen] = useState<boolean>(false);
 
-  // Animation State
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const strokeCadenceSPM = 105;
+  // Rowing Kinematics State
+  const [isPlaying, setIsPlaying] = useState<boolean>(true);
+  const [isContinuousLoop, setIsContinuousLoop] = useState<boolean>(true);
+  const [selectedStaticPhase, setSelectedStaticPhase] = useState<number | null>(null);
+  const [cadenceSPM, setCadenceSPM] = useState<number>(105);
+  const [currentPhaseInfo, setCurrentPhaseInfo] = useState<StrokePhaseInfo>(SEVEN_STROKE_PHASES[0]);
 
   // Selected item in geometry inspection
-  const [selectedGeoItem, setSelectedGeoItem] = useState<string>('BOW_PROW');
+  const [selectedGeoItem, setSelectedGeoItem] = useState<string>('PADDLE_OUTWARD');
 
   // Refs for Animation Loop
   const isPlayingRef = useRef<boolean>(isPlaying);
+  const isContinuousLoopRef = useRef<boolean>(isContinuousLoop);
   const isAutoRotatingRef = useRef<boolean>(isAutoRotating);
-  const cadenceRef = useRef<number>(strokeCadenceSPM);
+  const cadenceRef = useRef<number>(cadenceSPM);
   const accumulatedCycleRef = useRef<number>(0.0);
-  const lastTimestampRef = useRef<number>(0);
+  const crewSystemRef = useRef<CrewSystem | null>(null);
 
   useEffect(() => {
     isPlayingRef.current = isPlaying;
   }, [isPlaying]);
 
   useEffect(() => {
+    isContinuousLoopRef.current = isContinuousLoop;
+  }, [isContinuousLoop]);
+
+  useEffect(() => {
     isAutoRotatingRef.current = isAutoRotating;
   }, [isAutoRotating]);
+
+  useEffect(() => {
+    cadenceRef.current = cadenceSPM;
+  }, [cadenceSPM]);
 
   // Three.js Core Refs
   const sceneRef = useRef<THREE.Scene | null>(null);
@@ -195,10 +233,22 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = () 
   const orthoCameraRef = useRef<THREE.OrthographicCamera | null>(null);
   const activeCameraTypeRef = useRef<'PERSPECTIVE' | 'ORTHO'>('PERSPECTIVE');
   const masterBoatGroupRef = useRef<THREE.Group | null>(null);
+  const waterMeshRef = useRef<THREE.Mesh | null>(null);
+  const buoysGroupRef = useRef<THREE.Group | null>(null);
+  const buoyMeshesRef = useRef<THREE.Group[]>([]);
   const gridHelperRef = useRef<THREE.GridHelper | null>(null);
-  const slicePlaneRef = useRef<THREE.Mesh | null>(null);
   const dimensionsGroupRef = useRef<THREE.Group | null>(null);
   const animationFrameRef = useRef<number>(0);
+  const boatDistanceRef = useRef<number>(0);
+
+  const [liveHydroState, setLiveHydroState] = useState<HydrodynamicState>({
+    forwardSpeedMs: 5.2,
+    thrustForceN: 0,
+    surgeOffsetX: 0,
+    pitchRad: 0,
+    heaveY: 0,
+  });
+  const [boatDistanceM, setBoatDistanceM] = useState<number>(0);
 
   // Interaction Refs
   const isMouseDownRef = useRef<boolean>(false);
@@ -215,9 +265,8 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = () 
   });
 
   const BOAT_LENGTH = BOAT_SPECS_V2.LOA;
-  const BOAT_MAX_BEAM = BOAT_SPECS_V2.BEAM_MAX;
 
-  // 1. Zoom Control
+  // Zoom Control
   const handleZoom = (delta: number) => {
     if (activeCameraTypeRef.current === 'PERSPECTIVE' && cameraRef.current) {
       cameraOrbitRef.current.radius = Math.max(2.5, Math.min(65, cameraOrbitRef.current.radius + delta));
@@ -232,7 +281,7 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = () 
     }
   };
 
-  // 2. Reset View Control
+  // Reset View Control
   const handleResetView = () => {
     setViewAngle('3/4');
     setIsAutoRotating(false);
@@ -251,39 +300,62 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = () 
     }
   };
 
-  // Helper: Create 3D Dimension Canvas Sprite
-  const createDimensionSprite = (text: string, bgColor = 'rgba(15, 23, 42, 0.85)', textColor = '#38bdf8') => {
-    const canvas = document.createElement('canvas');
-    canvas.width = 256;
-    canvas.height = 64;
-    const ctx = canvas.getContext('2d');
-    if (ctx) {
-      ctx.fillStyle = bgColor;
-      ctx.roundRect(4, 4, 248, 56, 12);
-      ctx.fill();
-      ctx.strokeStyle = '#38bdf8';
-      ctx.lineWidth = 2;
-      ctx.stroke();
-
-      ctx.fillStyle = textColor;
-      ctx.font = 'bold 22px monospace';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText(text, 128, 32);
+  // Reset Animation (rewind to t=0)
+  const handleResetAnimation = () => {
+    accumulatedCycleRef.current = 0.0;
+    boatDistanceRef.current = 0;
+    setBoatDistanceM(0);
+    setIsContinuousLoop(true);
+    setSelectedStaticPhase(null);
+    if (crewSystemRef.current) {
+      crewSystemRef.current.update(0.0);
+      crewSystemRef.current.group.position.set(0, 0, 0);
+      crewSystemRef.current.group.rotation.z = 0;
     }
-
-    const texture = new THREE.CanvasTexture(canvas);
-    const spriteMat = new THREE.SpriteMaterial({ map: texture, transparent: true });
-    const sprite = new THREE.Sprite(spriteMat);
-    sprite.scale.set(2.4, 0.6, 1);
-    return sprite;
+    if (masterBoatGroupRef.current) {
+      masterBoatGroupRef.current.position.set(0, 0, 0);
+      masterBoatGroupRef.current.rotation.z = 0;
+    }
+    if (dimensionsGroupRef.current) {
+      dimensionsGroupRef.current.position.set(0, 0, 0);
+      dimensionsGroupRef.current.rotation.z = 0;
+    }
+    setCurrentPhaseInfo(SEVEN_STROKE_PHASES[0]);
   };
 
-  // Helper: Build 3D Dimension Lines & Rulers
-  const build3DDimensions = (parent: THREE.Group) => {
-    const lineMat = new THREE.LineBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.8 });
+  // Select a specific stroke phase (1 to 6 or Loop)
+  const handleSelectPhase = (phase: StrokePhaseInfo) => {
+    setIsContinuousLoop(false);
+    setIsPlaying(false);
+    setSelectedStaticPhase(phase.phaseIndex);
+    accumulatedCycleRef.current = (phase.range[0] + phase.range[1]) / 2.0;
+    if (crewSystemRef.current) {
+      crewSystemRef.current.update(accumulatedCycleRef.current);
+      crewSystemRef.current.group.position.set(0, 0, 0);
+      crewSystemRef.current.group.rotation.z = 0;
+    }
+    if (masterBoatGroupRef.current) {
+      masterBoatGroupRef.current.position.set(0, 0, 0);
+      masterBoatGroupRef.current.rotation.z = 0;
+    }
+    if (dimensionsGroupRef.current) {
+      dimensionsGroupRef.current.position.set(0, 0, 0);
+      dimensionsGroupRef.current.rotation.z = 0;
+    }
+    setCurrentPhaseInfo(phase);
+  };
 
-    // 1. Overall Length LOA = 30.20m
+  const handleSelectContinuousLoop = () => {
+    setIsContinuousLoop(true);
+    setSelectedStaticPhase(null);
+    setIsPlaying(true);
+  };
+
+  // Build 3D Dimensions
+  const build3DDimensions = (parent: THREE.Group) => {
+    const lineMat = new THREE.LineBasicMaterial({ color: 0x38bdf8, linewidth: 2 });
+
+    // 1. LOA = 30.20m
     const loaPoints = [
       new THREE.Vector3(-BOAT_LENGTH / 2, -0.6, 1.6),
       new THREE.Vector3(BOAT_LENGTH / 2, -0.6, 1.6),
@@ -291,150 +363,162 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = () 
     const loaGeo = new THREE.BufferGeometry().setFromPoints(loaPoints);
     parent.add(new THREE.Line(loaGeo, lineMat));
 
-    // End ticks for LOA
-    const tickA = new THREE.Line(
-      new THREE.BufferGeometry().setFromPoints([
-        new THREE.Vector3(-BOAT_LENGTH / 2, -0.8, 1.6),
-        new THREE.Vector3(-BOAT_LENGTH / 2, -0.4, 1.6),
-      ]),
-      lineMat
-    );
-    const tickB = new THREE.Line(
-      new THREE.BufferGeometry().setFromPoints([
-        new THREE.Vector3(BOAT_LENGTH / 2, -0.8, 1.6),
-        new THREE.Vector3(BOAT_LENGTH / 2, -0.4, 1.6),
-      ]),
-      lineMat
-    );
-    parent.add(tickA);
-    parent.add(tickB);
-
-    const loaSprite = createDimensionSprite('LOA: 30.20 m');
-    loaSprite.position.set(0, -0.9, 1.6);
-    parent.add(loaSprite);
-
-    // 2. Beam Max = 1.12m
+    // 2. Max Beam = 1.12m
     const beamPoints = [
-      new THREE.Vector3(0, 0.65, -BOAT_MAX_BEAM / 2),
-      new THREE.Vector3(0, 0.65, BOAT_MAX_BEAM / 2),
+      new THREE.Vector3(0, 0.65, -BOAT_SPECS_V2.BEAM_MAX / 2),
+      new THREE.Vector3(0, 0.65, BOAT_SPECS_V2.BEAM_MAX / 2),
     ];
     const beamGeo = new THREE.BufferGeometry().setFromPoints(beamPoints);
     parent.add(new THREE.Line(beamGeo, lineMat));
-
-    const beamSprite = createDimensionSprite('Beam: 1.12 m');
-    beamSprite.position.set(0, 1.1, 0);
-    parent.add(beamSprite);
-
-    // 3. Prow Tip Height = +1.38m
-    const prowSprite = createDimensionSprite('Mũi: +1.38 m', 'rgba(220, 38, 38, 0.85)', '#fef08a');
-    prowSprite.position.set(BOAT_LENGTH / 2 - 0.5, 1.9, 0);
-    parent.add(prowSprite);
-
-    // 4. Stern Fin Height = +1.52m
-    const sternSprite = createDimensionSprite('Đuôi: +1.52 m', 'rgba(220, 38, 38, 0.85)', '#fef08a');
-    sternSprite.position.set(-BOAT_LENGTH / 2 + 0.5, 2.1, 0);
-    parent.add(sternSprite);
   };
 
-  // Main Three.js Initialization Effect
+  // Initialize Three.js Scene
   useEffect(() => {
-    if (!mountRef.current) return;
     const container = mountRef.current;
-    const width = container.clientWidth || 800;
-    const height = container.clientHeight || 620;
+    if (!container) return;
+
+    const width = container.clientWidth;
+    const height = container.clientHeight;
 
     // 1. SCENE
     const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x020617);
+    scene.fog = new THREE.FogExp2(0x020617, 0.012);
     sceneRef.current = scene;
-    scene.background = new THREE.Color(renderMode === 'BLUEPRINT_CAD' ? 0x050c18 : 0x09101d);
 
     // 2. CAMERAS
-    const aspect = width / height;
-    const camera = new THREE.PerspectiveCamera(40, aspect, 0.1, 300);
+    const camera = new THREE.PerspectiveCamera(38, width / height, 0.1, 1000);
     cameraRef.current = camera;
 
     const frustumSize = 34;
+    const aspect = width / height;
     const orthoCamera = new THREE.OrthographicCamera(
       (-frustumSize * aspect) / 2,
       (frustumSize * aspect) / 2,
       frustumSize / 2,
       -frustumSize / 2,
       0.1,
-      300
+      1000
     );
     orthoCameraRef.current = orthoCamera;
 
     // 3. RENDERER
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, powerPreference: 'high-performance' });
     renderer.setSize(width, height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.15;
-    container.innerHTML = '';
-    container.appendChild(renderer.domElement);
     rendererRef.current = renderer;
 
-    // 4. LIGHTING SYSTEM
-    const ambientLight = new THREE.AmbientLight(0xfff8ed, 0.85);
+    while (container.firstChild) {
+      container.removeChild(container.firstChild);
+    }
+    container.appendChild(renderer.domElement);
+
+    // 4. LIGHTS
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.95);
     scene.add(ambientLight);
 
-    const sunLight = new THREE.DirectionalLight(0xfffae8, 1.6);
-    sunLight.position.set(16, 28, 18);
+    const sunLight = new THREE.DirectionalLight(0xfff7ed, 2.2);
+    sunLight.position.set(22, 36, 18);
     sunLight.castShadow = true;
     sunLight.shadow.mapSize.width = 2048;
     sunLight.shadow.mapSize.height = 2048;
-    sunLight.shadow.bias = -0.0001;
-    sunLight.shadow.camera.near = 5;
-    sunLight.shadow.camera.far = 70;
-    sunLight.shadow.camera.left = -20;
-    sunLight.shadow.camera.right = 20;
-    sunLight.shadow.camera.top = 20;
-    sunLight.shadow.camera.bottom = -20;
+    sunLight.shadow.camera.near = 0.5;
+    sunLight.shadow.camera.far = 120;
+    sunLight.shadow.camera.left = -22;
+    sunLight.shadow.camera.right = 22;
+    sunLight.shadow.camera.top = 22;
+    sunLight.shadow.camera.bottom = -22;
+    sunLight.shadow.bias = -0.0004;
     scene.add(sunLight);
 
-    const fillLight = new THREE.DirectionalLight(0x7dd3fc, 0.6);
-    fillLight.position.set(-16, 12, -18);
-    scene.add(fillLight);
+    const riverBlueBounce = new THREE.DirectionalLight(0x0284c7, 0.85);
+    riverBlueBounce.position.set(-18, -12, -18);
+    scene.add(riverBlueBounce);
 
-    const bottomReflectLight = new THREE.DirectionalLight(0x0284c7, 0.45);
-    bottomReflectLight.position.set(0, -10, 0);
-    scene.add(bottomReflectLight);
+    const rimLight = new THREE.DirectionalLight(0xf59e0b, 0.9);
+    rimLight.position.set(-25, 20, -15);
+    scene.add(rimLight);
 
-    // 5. GRID HELPER
-    const gridHelper = new THREE.GridHelper(36, 36, 0x0284c7, 0x1e293b);
-    gridHelper.position.y = -0.02;
+    // 5. GRID
+    const gridHelper = new THREE.GridHelper(60, 60, 0x0284c7, 0x1e293b);
+    gridHelper.position.y = -0.01;
+    gridHelper.visible = showGrid;
     gridHelperRef.current = gridHelper;
     scene.add(gridHelper);
 
-    // 6. BUILD NEW HULL V2 (TUM_NUP_2_2024_MASTER_V2)
+    // 6. WATER SURFACE (Sông Maspéro Sóc Trăng)
+    const waterGeo = new THREE.PlaneGeometry(120, 60, 64, 32);
+    const waterMat = new THREE.MeshStandardMaterial({
+      color: 0x0c3b5e,
+      roughness: 0.12,
+      metalness: 0.75,
+      transparent: true,
+      opacity: 0.88,
+    });
+    const waterMesh = new THREE.Mesh(waterGeo, waterMat);
+    waterMesh.rotation.x = -Math.PI / 2;
+    waterMesh.position.y = 0.0; // Baseline water plane level
+    waterMesh.receiveShadow = true;
+    waterMesh.visible = showWater;
+    waterMeshRef.current = waterMesh;
+    scene.add(waterMesh);
+
+    // 6.2 RACE COURSE LANE BUOYS (Phao tiêu luồng đua sông Maspéro)
+    const buoysGroup = new THREE.Group();
+    const buoyGeo = new THREE.SphereGeometry(0.12, 12, 8);
+    buoyGeo.scale(1, 1.3, 1);
+    const redBuoyMat = new THREE.MeshStandardMaterial({ color: 0xef4444, roughness: 0.2, metalness: 0.3 });
+    const yellowBuoyMat = new THREE.MeshStandardMaterial({ color: 0xfacc15, roughness: 0.2, metalness: 0.3 });
+    const flagGeo = new THREE.ConeGeometry(0.06, 0.22, 4);
+    const flagMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
+
+    const buoyMeshes: THREE.Group[] = [];
+    for (let x = -48; x <= 48; x += 4) {
+      [-2.2, 2.2].forEach((z, sideIdx) => {
+        const buoyObj = new THREE.Group();
+        const mesh = new THREE.Mesh(buoyGeo, Math.floor(x / 4) % 2 === 0 ? redBuoyMat : yellowBuoyMat);
+        mesh.position.y = 0.04;
+        buoyObj.add(mesh);
+
+        if (Math.abs(x) % 12 === 0) {
+          const flag = new THREE.Mesh(flagGeo, flagMat);
+          flag.position.y = 0.22;
+          flag.rotation.z = sideIdx === 0 ? 0.25 : -0.25;
+          buoyObj.add(flag);
+        }
+
+        buoyObj.position.set(x, 0, z);
+        buoysGroup.add(buoyObj);
+        buoyMeshes.push(buoyObj);
+      });
+    }
+    buoysGroup.visible = showWater;
+    buoysGroupRef.current = buoysGroup;
+    buoyMeshesRef.current = buoyMeshes;
+    scene.add(buoysGroup);
+
+    // 7. BUILD NEW HULL V2 (TUM_NUP_2_2024_MASTER_V2)
     const masterBoatGroup = buildTumNup2MasterV2(renderMode);
     masterBoatGroupRef.current = masterBoatGroup;
+    masterBoatGroup.visible = showHull;
     scene.add(masterBoatGroup);
 
-    // 7. BUILD 3D DIMENSION RULERS
+    // 8. BUILD 55-ATHLETE CREW & PADDLES
+    const crewSystem = buildTumNup2Crew(materialConfig);
+    crewSystemRef.current = crewSystem;
+    crewSystem.group.visible = showAthletes || showPaddles;
+    scene.add(crewSystem.group);
+
+    // 9. BUILD 3D DIMENSION RULERS
     const dimensionsGroup = new THREE.Group();
     build3DDimensions(dimensionsGroup);
     dimensionsGroupRef.current = dimensionsGroup;
     dimensionsGroup.visible = showDimensions;
     scene.add(dimensionsGroup);
-
-    // 8. SLICE PLANE
-    const sliceGeo = new THREE.PlaneGeometry(3.5, 3.0);
-    const sliceMat = new THREE.MeshBasicMaterial({
-      color: 0xf43f5e,
-      transparent: true,
-      opacity: 0.35,
-      side: THREE.DoubleSide,
-      wireframe: false,
-    });
-    const slicePlane = new THREE.Mesh(sliceGeo, sliceMat);
-    slicePlane.rotation.y = Math.PI / 2;
-    slicePlane.position.set(stationSliceMeters - BOAT_LENGTH / 2, 0.8, 0);
-    slicePlane.visible = showSlicePlane;
-    slicePlaneRef.current = slicePlane;
-    scene.add(slicePlane);
 
     // Initial Camera Orientation
     const { radius, theta, phi, target } = cameraOrbitRef.current;
@@ -556,19 +640,82 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = () 
 
     // Animation Render Loop
     let lastTime = performance.now();
+    let uiThrottleTimer = 0;
+
     const animate = () => {
       animationFrameRef.current = requestAnimationFrame(animate);
 
       const now = performance.now();
-      const dt = (now - lastTime) / 1000;
+      const dt = Math.min((now - lastTime) / 1000, 0.1);
       lastTime = now;
 
-      // Auto-rotation in 3D Perspective mode
+      // 1. Auto-rotation in 3D Perspective mode
       if (isAutoRotatingRef.current && activeCameraTypeRef.current === 'PERSPECTIVE') {
         cameraOrbitRef.current.theta += dt * 0.22;
       }
 
-      // Update camera position
+      // 2. 7-Phase Rowing Animation & Hydrodynamic Propulsion Updates
+      if (isPlayingRef.current && isContinuousLoopRef.current) {
+        const cycleSpeed = cadenceRef.current / 60.0; // Cycles per second
+        accumulatedCycleRef.current = (accumulatedCycleRef.current + dt * cycleSpeed) % 1.0;
+
+        // Calculate authentic hydrodynamic propulsion
+        const hydro = calculateBoatHydrodynamics(accumulatedCycleRef.current, cadenceRef.current);
+        boatDistanceRef.current += hydro.forwardSpeedMs * dt;
+
+        // 2a. Update 55-Athlete Crew Kinematics
+        if (crewSystemRef.current) {
+          crewSystemRef.current.update(accumulatedCycleRef.current);
+        }
+
+        // 2b. Dynamic Boat Hydrodynamic Response (Surge & Pitch)
+        // Reaction force pushes boat FORWARD towards Bow (+X), causing dynamic prow lift and forward surge
+        const surgeX = hydro.surgeOffsetX;
+        const boatPitchZ = -hydro.pitchRad; // Positive pitch angle lifts bow (+Y)
+        const boatHeaveY = hydro.heaveY;
+
+        if (masterBoatGroupRef.current) {
+          masterBoatGroupRef.current.position.set(surgeX, boatHeaveY, 0);
+          masterBoatGroupRef.current.rotation.z = boatPitchZ;
+        }
+        if (crewSystemRef.current) {
+          crewSystemRef.current.group.position.set(surgeX, boatHeaveY, 0);
+          crewSystemRef.current.group.rotation.z = boatPitchZ;
+        }
+        if (dimensionsGroupRef.current) {
+          dimensionsGroupRef.current.position.set(surgeX, boatHeaveY, 0);
+          dimensionsGroupRef.current.rotation.z = boatPitchZ;
+        }
+
+        // 2c. Stream river race course lane buoys backwards (-X) at boat speed
+        // This gives continuous, crystal-clear visual confirmation that the boat is moving FORWARD towards Bow (+X)
+        if (buoyMeshesRef.current.length > 0) {
+          buoyMeshesRef.current.forEach((b) => {
+            b.position.x -= hydro.forwardSpeedMs * dt;
+            if (b.position.x < -48) {
+              b.position.x += 96;
+            }
+            b.position.y = 0.04 + Math.sin(now * 0.003 + b.position.x * 0.4) * 0.015;
+          });
+        }
+
+        // Throttle React UI State updates to 15fps to keep rendering smooth at 60fps
+        uiThrottleTimer += dt;
+        if (uiThrottleTimer > 0.065) {
+          uiThrottleTimer = 0;
+          const phaseData = getGlobalStrokePhase(accumulatedCycleRef.current);
+          setCurrentPhaseInfo(phaseData.phase);
+          setLiveHydroState(hydro);
+          setBoatDistanceM(boatDistanceRef.current);
+        }
+      }
+
+      // 3. River Water Wave Animation
+      if (waterMeshRef.current) {
+        waterMeshRef.current.position.y = Math.sin(now * 0.002) * 0.012;
+      }
+
+      // 4. Update camera position
       updateCameraView();
 
       const activeCam = activeCameraTypeRef.current === 'PERSPECTIVE' ? cameraRef.current : orthoCameraRef.current;
@@ -595,21 +742,30 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = () 
     };
   }, [renderMode]);
 
-  // Synchronize Toggles with Three.js Objects
+  // Synchronize Materials
+  useEffect(() => {
+    if (crewSystemRef.current) {
+      crewSystemRef.current.updateMaterials(materialConfig);
+    }
+  }, [materialConfig]);
+
+  // Synchronize Layer Toggles
   useEffect(() => {
     if (gridHelperRef.current) gridHelperRef.current.visible = showGrid;
+    if (waterMeshRef.current) waterMeshRef.current.visible = showWater;
+    if (masterBoatGroupRef.current) masterBoatGroupRef.current.visible = showHull;
     if (dimensionsGroupRef.current) dimensionsGroupRef.current.visible = showDimensions;
-    if (slicePlaneRef.current) slicePlaneRef.current.visible = showSlicePlane;
-  }, [showGrid, showDimensions, showSlicePlane]);
 
-  // Update Slice plane position
-  useEffect(() => {
-    if (slicePlaneRef.current) {
-      slicePlaneRef.current.position.x = stationSliceMeters - BOAT_LENGTH / 2;
+    if (crewSystemRef.current) {
+      crewSystemRef.current.group.visible = showAthletes || showPaddles;
+      crewSystemRef.current.athletes.forEach((a) => {
+        a.torsoGroup.visible = showAthletes;
+        a.paddleGroup.visible = showPaddles;
+      });
     }
-  }, [stationSliceMeters]);
+  }, [showGrid, showWater, showHull, showAthletes, showPaddles, showDimensions]);
 
-  // Update Camera View Angle (5 Validation Modes: TOP, SIDE, FRONT, REAR, 3/4 + CLOSE-UPS)
+  // Update Camera View Angle (5 Standard Validation Modes: 3/4, TOP, SIDE, FRONT, REAR, CLOSE-UPS)
   const updateCameraView = () => {
     if (!cameraRef.current || !orthoCameraRef.current) return;
 
@@ -675,20 +831,10 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = () 
     }
   };
 
-  const viewAngleLabels: Record<ViewAngle, string> = {
-    '3/4': '3/4',
-    'TOP': 'TOP',
-    'SIDE': 'SIDE',
-    'FRONT': 'FRONT',
-    'REAR': 'REAR',
-    'CLOSE_UP_BOW': 'MŨI',
-    'CLOSE_UP_STERN': 'ĐUÔI',
-  };
-
   return (
     <div className="relative w-full rounded-2xl bg-slate-950 border border-slate-800/80 shadow-2xl overflow-hidden select-none">
-      {/* Sub-Tabs Selector: [Bản vẽ 3D Thân ghe V2] vs [Kiểm tra Hình học (Checklist)] */}
-      <div className="flex items-center justify-between px-4 py-2.5 bg-slate-900/90 border-b border-slate-800 backdrop-blur-md">
+      {/* Sub-Tabs Selector: [Bản vẽ 3D Thân ghe + VĐV] vs [Kiểm tra Hình học (Checklist)] */}
+      <div className="flex flex-wrap items-center justify-between px-4 py-2.5 bg-slate-900/90 border-b border-slate-800 backdrop-blur-md gap-2">
         <div className="flex items-center gap-2">
           <button
             id="tab-sub-3d-view"
@@ -700,7 +846,7 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = () 
             }`}
           >
             <Camera className="w-3.5 h-3.5" />
-            <span>Mô hình 3D (TUM_NUP_2_MASTER_V2)</span>
+            <span>3D Ghe Ngo + 55 VĐV + Động tác Chèo</span>
           </button>
 
           <button
@@ -713,25 +859,30 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = () 
             }`}
           >
             <ShieldCheck className="w-3.5 h-3.5 text-emerald-300" />
-            <span>Kiểm tra Hình học (Verification Checklist)</span>
+            <span>Thẩm định Video & Hình học (Checklist)</span>
             <span className="px-1.5 py-0.2 rounded-full bg-emerald-950 text-emerald-300 text-[10px]">
-              8/8
+              9/9
             </span>
           </button>
         </div>
 
-        {/* Rebuild Asset Tag */}
-        <div className="hidden md:flex items-center gap-2 font-mono text-xs text-slate-400">
-          <span className="px-2 py-0.5 rounded bg-sky-950 text-sky-400 border border-sky-800/60 font-bold">
-            HULL V2: REBUILT
-          </span>
-          <span>LOA: 30.20m • Beam: 1.12m</span>
-        </div>
+        {/* Video Direct Source Reference Badge */}
+        <a
+          href="https://www.youtube.com/live/XagC29Eyt_U?si=-MEQXY-vzW3dxT2w"
+          target="_blank"
+          rel="noreferrer"
+          className="flex items-center gap-2 font-mono text-xs text-rose-400 bg-rose-950/60 border border-rose-800/80 px-2.5 py-1 rounded-lg hover:bg-rose-900/60 transition"
+          title="Mở Video Reference Trực tiếp YouTube Livestream Sóc Trăng 2024"
+        >
+          <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse" />
+          <span>YouTube Livestream Ref</span>
+          <ExternalLink className="w-3 h-3" />
+        </a>
       </div>
 
-      {/* Mode 1: 3D Viewport */}
+      {/* Mode 1: 3D Viewport with Crew & Kinematics Engine */}
       {activeSubTab === '3D_CANVAS' && (
-        <div className="relative w-full h-[620px] md:h-[680px] bg-slate-950">
+        <div className="relative w-full h-[640px] md:h-[720px] bg-slate-950">
           <div
             ref={mountRef}
             className="w-full h-full cursor-grab active:cursor-grabbing outline-none"
@@ -739,35 +890,36 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = () 
 
           {/* Floating Status Tag at Top-Left */}
           <div className="absolute top-3.5 left-4 z-10 pointer-events-none hidden sm:flex items-center gap-2 font-mono text-xs">
-            <div className="flex items-center gap-2 bg-slate-950/80 px-3 py-1.5 rounded-xl border border-slate-800/80 backdrop-blur-md text-slate-300 shadow-lg">
+            <div className="flex items-center gap-2 bg-slate-950/85 px-3 py-1.5 rounded-xl border border-slate-800/80 backdrop-blur-md text-slate-300 shadow-lg">
               <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <strong className="text-white tracking-wide">TUM_NUP_2_2024_MASTER_V2</strong>
+              <strong className="text-white tracking-wide">TUM NÚP 2 (V2)</strong>
               <span className="text-slate-500">•</span>
-              <span className="text-sky-400 font-mono">30.20m</span>
+              <span className="text-sky-400 font-mono">55 VĐV (Mái chèo ngoài mạn)</span>
+              <span className="text-slate-500">•</span>
+              <span className="text-amber-400 font-mono">{cadenceSPM} SPM</span>
             </div>
           </div>
 
-          {/* Top Center: Direct Quick View Inspection Bar (TOP, SIDE, FRONT, REAR, 3/4, MŨI, ĐUÔI) */}
+          {/* Top Center: Clean Quick Camera Angles Bar (TOP, SIDE, FRONT, 3/4) */}
           <div className="absolute top-3.5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1 bg-slate-950/90 border border-slate-800/90 p-1 rounded-2xl backdrop-blur-xl shadow-2xl font-mono text-xs text-slate-200">
             {(
               [
+                { id: '3/4', label: '3/4' },
                 { id: 'TOP', label: 'TOP' },
                 { id: 'SIDE', label: 'SIDE' },
                 { id: 'FRONT', label: 'FRONT' },
-                { id: 'REAR', label: 'REAR' },
-                { id: '3/4', label: '3/4' },
                 { id: 'CLOSE_UP_BOW', label: 'MŨI' },
                 { id: 'CLOSE_UP_STERN', label: 'ĐUÔI' },
               ] as const
             ).map((v) => (
               <button
                 key={v.id}
-                id={`btn-quick-view-${v.id.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
+                id={`btn-camera-view-${v.id.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
                 onClick={() => {
                   setViewAngle(v.id);
                   setIsAutoRotating(false);
                 }}
-                className={`px-2.5 py-1.5 rounded-xl transition text-[11px] font-bold ${
+                className={`px-3 py-1.5 rounded-xl transition text-[11px] font-bold ${
                   viewAngle === v.id
                     ? 'bg-sky-600 text-white shadow-md shadow-sky-600/30'
                     : 'text-slate-400 hover:text-white hover:bg-slate-800/80'
@@ -778,13 +930,251 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = () 
             ))}
           </div>
 
-          {/* 2. Floating Minimal Dock - Fixed at Bottom Center */}
-          <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 bg-slate-950/90 border border-slate-800/90 px-3 py-2 rounded-2xl backdrop-blur-xl shadow-2xl font-mono text-xs text-slate-200">
+          {/* Top Right: Real-time 7-Phase Rowing Telemetry HUD */}
+          <div className="absolute top-3.5 right-4 z-20 hidden md:flex flex-col gap-1.5 w-72 bg-slate-950/90 border border-slate-800/90 p-3 rounded-2xl backdrop-blur-xl shadow-2xl font-mono text-xs">
+            <div className="flex items-center justify-between border-b border-slate-800/80 pb-1.5">
+              <span className="flex items-center gap-1.5 text-slate-400 text-[10px] uppercase font-bold tracking-wider">
+                <Activity className="w-3.5 h-3.5 text-sky-400" />
+                ĐỘNG LỰC HỌC CHÈO (KINEMATICS)
+              </span>
+              <span
+                className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider"
+                style={{
+                  backgroundColor: `${currentPhaseInfo.colorHex}22`,
+                  color: currentPhaseInfo.colorHex,
+                  border: `1px solid ${currentPhaseInfo.colorHex}66`,
+                }}
+              >
+                {currentPhaseInfo.badge}
+              </span>
+            </div>
+
+            <div className="text-white font-bold text-xs truncate flex items-center justify-between">
+              <span>{currentPhaseInfo.nameVi}</span>
+              <span className="text-[10px] text-emerald-400 font-mono">
+                {(liveHydroState.forwardSpeedMs * 3.6).toFixed(1)} km/h
+              </span>
+            </div>
+
+            <div className="grid grid-cols-2 gap-1 text-[10px] text-slate-300 pt-1">
+              <div>
+                <span className="text-slate-500 block">Góc dầm:</span>
+                <strong className="text-sky-400">{currentPhaseInfo.paddleAngleDeg}°</strong>
+              </div>
+              <div>
+                <span className="text-slate-500 block">Ngập nước:</span>
+                <strong className={currentPhaseInfo.bladeDepthM < 0 ? 'text-emerald-400' : 'text-amber-400'}>
+                  {currentPhaseInfo.bladeDepthM} m
+                </strong>
+              </div>
+              <div>
+                <span className="text-slate-500 block">Gập thân:</span>
+                <strong className="text-purple-400">{currentPhaseInfo.torsoAngleDeg}°</strong>
+              </div>
+              <div>
+                <span className="text-slate-500 block">Phản lực đẩy:</span>
+                <strong className="text-amber-400">+{liveHydroState.thrustForceN.toFixed(0)} N</strong>
+              </div>
+            </div>
+
+            {/* Forward Vector Direction Indicator */}
+            <div className="mt-1 pt-1.5 border-t border-slate-800/80 flex items-center justify-between text-[9px]">
+              <span className="text-slate-400 flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                Hướng tiến:
+              </span>
+              <span className="font-bold text-emerald-400">
+                MŨI (+X) ➔ TIẾN VỀ PHÍA TRƯỚC
+              </span>
+            </div>
+          </div>
+
+          {/* Canvas Direction Badges (Bow +X on right, Stern -X on left) */}
+          <div className="absolute top-1/2 -translate-y-1/2 right-3 pointer-events-none z-10 hidden sm:flex flex-col items-center gap-1 bg-emerald-950/70 border border-emerald-500/40 text-emerald-300 px-2.5 py-1.5 rounded-xl font-mono text-[10px] backdrop-blur-md shadow-lg shadow-emerald-950/50">
+            <span className="font-bold tracking-wider">MŨI GHE (+X)</span>
+            <span className="text-[9px] text-emerald-400 font-bold">➔ HƯỚNG TIẾN</span>
+          </div>
+
+          <div className="absolute top-1/2 -translate-y-1/2 left-3 pointer-events-none z-10 hidden sm:flex flex-col items-center gap-1 bg-slate-900/70 border border-slate-700/50 text-slate-400 px-2.5 py-1.5 rounded-xl font-mono text-[10px] backdrop-blur-md shadow-lg">
+            <span className="font-bold tracking-wider">ĐUÔI GHE (-X)</span>
+            <span className="text-[9px] text-slate-500">REAR STERN</span>
+          </div>
+
+          {/* Bottom Floating Bar: 7-Phase Selector & Cadence Controller */}
+          <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 w-[95%] max-w-4xl bg-slate-950/90 border border-slate-800/90 p-2.5 rounded-2xl backdrop-blur-xl shadow-2xl font-mono text-xs">
+            {/* Phase Selector Pills: Chuẩn bị -> Cắm nước -> Kéo mái -> Cực đại lực -> Rút mái -> Hồi vị -> Chạy toàn chu kỳ */}
+            <div className="grid grid-cols-4 sm:grid-cols-7 gap-1.5 w-full">
+              {/* 1. Chuẩn bị */}
+              <button
+                id="btn-phase-1-reach"
+                onClick={() => handleSelectPhase(SEVEN_STROKE_PHASES[0])}
+                className={`px-2 py-1.5 rounded-xl border text-center transition flex flex-col items-center justify-center ${
+                  !isContinuousLoop && selectedStaticPhase === 1
+                    ? 'bg-sky-950 border-sky-400 shadow-md shadow-sky-900/40 text-white font-bold ring-1 ring-sky-400'
+                    : 'bg-slate-900/70 border-slate-800 text-slate-400 hover:text-slate-200 hover:border-slate-700'
+                }`}
+              >
+                <span className="text-[10px] text-sky-400 font-bold">1. Chuẩn bị</span>
+                <span className="text-[9px] text-slate-500 truncate w-full">Reach (+34°)</span>
+              </button>
+
+              {/* 2. Cắm nước */}
+              <button
+                id="btn-phase-2-catch"
+                onClick={() => handleSelectPhase(SEVEN_STROKE_PHASES[1])}
+                className={`px-2 py-1.5 rounded-xl border text-center transition flex flex-col items-center justify-center ${
+                  !isContinuousLoop && selectedStaticPhase === 2
+                    ? 'bg-blue-950 border-blue-400 shadow-md shadow-blue-900/40 text-white font-bold ring-1 ring-blue-400'
+                    : 'bg-slate-900/70 border-slate-800 text-slate-400 hover:text-slate-200 hover:border-slate-700'
+                }`}
+              >
+                <span className="text-[10px] text-blue-400 font-bold">2. Cắm nước</span>
+                <span className="text-[9px] text-slate-500 truncate w-full">Catch (-0.16m)</span>
+              </button>
+
+              {/* 3. Kéo mái */}
+              <button
+                id="btn-phase-3-early-drive"
+                onClick={() => handleSelectPhase(SEVEN_STROKE_PHASES[2])}
+                className={`px-2 py-1.5 rounded-xl border text-center transition flex flex-col items-center justify-center ${
+                  !isContinuousLoop && selectedStaticPhase === 3
+                    ? 'bg-emerald-950 border-emerald-400 shadow-md shadow-emerald-900/40 text-white font-bold ring-1 ring-emerald-400'
+                    : 'bg-slate-900/70 border-slate-800 text-slate-400 hover:text-slate-200 hover:border-slate-700'
+                }`}
+              >
+                <span className="text-[10px] text-emerald-400 font-bold">3. Kéo mái</span>
+                <span className="text-[9px] text-slate-500 truncate w-full">Drive (1.450N)</span>
+              </button>
+
+              {/* 4. Cực đại lực */}
+              <button
+                id="btn-phase-4-peak-drive"
+                onClick={() => handleSelectPhase(SEVEN_STROKE_PHASES[3])}
+                className={`px-2 py-1.5 rounded-xl border text-center transition flex flex-col items-center justify-center ${
+                  !isContinuousLoop && selectedStaticPhase === 4
+                    ? 'bg-amber-950 border-amber-400 shadow-md shadow-amber-900/40 text-white font-bold ring-1 ring-amber-400'
+                    : 'bg-slate-900/70 border-slate-800 text-slate-400 hover:text-slate-200 hover:border-slate-700'
+                }`}
+              >
+                <span className="text-[10px] text-amber-400 font-bold">4. Cực đại lực</span>
+                <span className="text-[9px] text-slate-500 truncate w-full">Peak (1.820N)</span>
+              </button>
+
+              {/* 5. Rút mái */}
+              <button
+                id="btn-phase-5-extraction"
+                onClick={() => handleSelectPhase(SEVEN_STROKE_PHASES[4])}
+                className={`px-2 py-1.5 rounded-xl border text-center transition flex flex-col items-center justify-center ${
+                  !isContinuousLoop && selectedStaticPhase === 5
+                    ? 'bg-pink-950 border-pink-400 shadow-md shadow-pink-900/40 text-white font-bold ring-1 ring-pink-400'
+                    : 'bg-slate-900/70 border-slate-800 text-slate-400 hover:text-slate-200 hover:border-slate-700'
+                }`}
+              >
+                <span className="text-[10px] text-pink-400 font-bold">5. Rút mái</span>
+                <span className="text-[9px] text-slate-500 truncate w-full">Release (+0.12m)</span>
+              </button>
+
+              {/* 6. Hồi vị */}
+              <button
+                id="btn-phase-6-recovery"
+                onClick={() => handleSelectPhase(SEVEN_STROKE_PHASES[5])}
+                className={`px-2 py-1.5 rounded-xl border text-center transition flex flex-col items-center justify-center ${
+                  !isContinuousLoop && selectedStaticPhase === 6
+                    ? 'bg-purple-950 border-purple-400 shadow-md shadow-purple-900/40 text-white font-bold ring-1 ring-purple-400'
+                    : 'bg-slate-900/70 border-slate-800 text-slate-400 hover:text-slate-200 hover:border-slate-700'
+                }`}
+              >
+                <span className="text-[10px] text-purple-400 font-bold">6. Hồi vị</span>
+                <span className="text-[9px] text-slate-500 truncate w-full">Airborne (+0.18m)</span>
+              </button>
+
+              {/* 7. Chạy toàn chu kỳ */}
+              <button
+                id="btn-phase-full-cycle-loop"
+                onClick={handleSelectContinuousLoop}
+                className={`px-2 py-1.5 rounded-xl border text-center transition flex flex-col items-center justify-center ${
+                  isContinuousLoop
+                    ? 'bg-cyan-600 border-cyan-400 shadow-md shadow-cyan-900/40 text-white font-bold ring-2 ring-cyan-300'
+                    : 'bg-slate-900/70 border-slate-800 text-slate-400 hover:text-slate-200 hover:border-slate-700'
+                }`}
+              >
+                <span className="text-[10px] text-cyan-300 font-bold flex items-center gap-1">
+                  <RotateCw className={`w-3 h-3 ${isContinuousLoop && isPlaying ? 'animate-spin' : ''}`} />
+                  Toàn chu kỳ
+                </span>
+                <span className="text-[9px] text-slate-300 truncate w-full">Continuous Loop</span>
+              </button>
+            </div>
+
+            {/* Playback Controls & SPM Cadence Slider */}
+            <div className="flex flex-wrap items-center justify-between w-full gap-3 pt-1 border-t border-slate-800/80 px-1">
+              <div className="flex items-center gap-2">
+                <button
+                  id="btn-play-pause-rowing"
+                  onClick={() => {
+                    if (!isContinuousLoop) {
+                      setIsContinuousLoop(true);
+                      setSelectedStaticPhase(null);
+                      setIsPlaying(true);
+                    } else {
+                      setIsPlaying(!isPlaying);
+                    }
+                  }}
+                  className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl font-bold transition shadow ${
+                    isPlaying && isContinuousLoop
+                      ? 'bg-amber-600 hover:bg-amber-500 text-white shadow-amber-900/30'
+                      : 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-emerald-900/30'
+                  }`}
+                >
+                  {isPlaying && isContinuousLoop ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
+                  <span>{isPlaying && isContinuousLoop ? 'Tạm dừng chèo' : 'Phát chu kỳ chèo'}</span>
+                </button>
+
+                <button
+                  id="btn-reset-animation-loop"
+                  onClick={handleResetAnimation}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 text-xs transition"
+                  title="Đặt lại chu kỳ về Pha 1 (Chuẩn bị)"
+                >
+                  <RotateCcw className="w-3.5 h-3.5 text-amber-400" />
+                  <span>Reset Animation</span>
+                </button>
+
+                <button
+                  id="btn-open-crew-formation"
+                  onClick={() => setIsCrewFormationOpen(true)}
+                  className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 text-xs transition"
+                >
+                  <Users className="w-3.5 h-3.5 text-sky-400" />
+                  <span>Sơ đồ 55 VĐV</span>
+                </button>
+              </div>
+
+              <div className="flex items-center gap-3 bg-slate-900/80 px-3 py-1.5 rounded-xl border border-slate-800">
+                <span className="text-[11px] text-slate-400">Nhịp chèo:</span>
+                <input
+                  id="slider-cadence-spm"
+                  type="range"
+                  min="60"
+                  max="125"
+                  value={cadenceSPM}
+                  onChange={(e) => setCadenceSPM(Number(e.target.value))}
+                  className="w-24 sm:w-32 accent-sky-500 cursor-pointer"
+                />
+                <span className="text-xs font-bold text-sky-400 font-mono w-16 text-right">
+                  {cadenceSPM} SPM
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Floating Minimal Dock - Fixed at Bottom Center */}
+          <div className="absolute bottom-3.5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 bg-slate-950/90 border border-slate-800/90 px-3 py-1.5 rounded-2xl backdrop-blur-xl shadow-2xl font-mono text-xs text-slate-200">
             {/* Button 1: Xoay 360° */}
             <button
               id="btn-toggle-auto-rotate"
               onClick={() => setIsAutoRotating(!isAutoRotating)}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl transition ${
+              className={`flex items-center gap-1.5 px-3 py-1 rounded-xl transition ${
                 isAutoRotating
                   ? 'bg-sky-600 text-white font-bold shadow-lg shadow-sky-600/30'
                   : 'hover:bg-slate-800 text-slate-300 hover:text-white'
@@ -801,7 +1191,7 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = () 
             <button
               id="btn-zoom-in"
               onClick={() => handleZoom(-4)}
-              className="flex items-center gap-1 px-2.5 py-1.5 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition"
+              className="flex items-center gap-1 px-2.5 py-1 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition"
               title="Phóng to (Scroll / Pinch)"
             >
               <ZoomIn className="w-4 h-4 text-slate-300" />
@@ -812,7 +1202,7 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = () 
             <button
               id="btn-zoom-out"
               onClick={() => handleZoom(4)}
-              className="flex items-center gap-1 px-2.5 py-1.5 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition"
+              className="flex items-center gap-1 px-2.5 py-1 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition"
               title="Thu nhỏ (Scroll / Pinch)"
             >
               <ZoomOut className="w-4 h-4 text-slate-300" />
@@ -823,7 +1213,7 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = () 
             <button
               id="btn-reset-view"
               onClick={handleResetView}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition"
+              className="flex items-center gap-1.5 px-3 py-1 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition"
               title="Đặt lại góc nhìn 3D ban đầu"
             >
               <RotateCcw className="w-4 h-4 text-amber-400" />
@@ -832,87 +1222,42 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = () 
 
             <div className="w-px h-5 bg-slate-800 mx-0.5" />
 
-            {/* Compact Menu 1: Góc nhìn */}
-            <div className="relative">
-              <button
-                id="btn-menu-camera-angle"
-                onClick={() => {
-                  setIsViewMenuOpen(!isViewMenuOpen);
-                  setIsDisplayMenuOpen(false);
-                }}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl transition ${
-                  isViewMenuOpen
-                    ? 'bg-slate-800 text-sky-400 font-bold'
-                    : 'hover:bg-slate-800/80 text-slate-300 hover:text-white'
-                }`}
-              >
-                <Camera className="w-4 h-4 text-sky-400" />
-                <span>Góc nhìn: {viewAngleLabels[viewAngle]}</span>
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isViewMenuOpen ? 'rotate-180' : ''}`} />
-              </button>
+            {/* Button 5: Tùy biến vật liệu (Material Customizer) */}
+            <button
+              id="btn-open-material-customizer"
+              onClick={() => setIsMaterialModalOpen(true)}
+              className="flex items-center gap-1.5 px-3 py-1 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-sky-300 hover:text-sky-200 transition"
+              title="Tùy biến màu sắc thân ghe, mái chèo, đồng phục"
+            >
+              <Palette className="w-4 h-4 text-sky-400" />
+              <span>Màu sắc</span>
+            </button>
 
-              {/* View Angle Dropdown */}
-              {isViewMenuOpen && (
-                <div className="absolute bottom-full mb-2.5 right-0 sm:left-0 w-48 bg-slate-900/95 border border-slate-800 rounded-xl p-1.5 backdrop-blur-xl shadow-2xl space-y-1 font-mono text-xs z-30 animate-in fade-in slide-in-from-bottom-2">
-                  {(
-                    [
-                      { id: 'TOP', label: 'TOP (Nhìn trên)' },
-                      { id: 'SIDE', label: 'SIDE (Nhìn mạn)' },
-                      { id: 'FRONT', label: 'FRONT (Trực diện mũi)' },
-                      { id: 'REAR', label: 'REAR (Sau lái)' },
-                      { id: '3/4', label: '3/4 (Phối cảnh)' },
-                      { id: 'CLOSE_UP_BOW', label: 'CLOSE-UP MŨI' },
-                      { id: 'CLOSE_UP_STERN', label: 'CLOSE-UP ĐUÔI' },
-                    ] as const
-                  ).map((v) => (
-                    <button
-                      key={v.id}
-                      id={`btn-select-view-${v.id.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
-                      onClick={() => {
-                        setViewAngle(v.id);
-                        setIsViewMenuOpen(false);
-                        setIsAutoRotating(false);
-                      }}
-                      className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-left transition ${
-                        viewAngle === v.id
-                          ? 'bg-sky-600 text-white font-bold'
-                          : 'text-slate-300 hover:bg-slate-800 hover:text-white'
-                      }`}
-                    >
-                      <span>{v.label}</span>
-                      {viewAngle === v.id && <Check className="w-3.5 h-3.5" />}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
+            <div className="w-px h-5 bg-slate-800 mx-0.5" />
 
-            {/* Compact Menu 2: ⚙ Hiển thị */}
+            {/* Compact Menu: ⚙ Hiển thị */}
             <div className="relative">
               <button
                 id="btn-menu-display-settings"
-                onClick={() => {
-                  setIsDisplayMenuOpen(!isDisplayMenuOpen);
-                  setIsViewMenuOpen(false);
-                }}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl transition ${
+                onClick={() => setIsDisplayMenuOpen(!isDisplayMenuOpen)}
+                className={`flex items-center gap-1.5 px-3 py-1 rounded-xl transition ${
                   isDisplayMenuOpen
                     ? 'bg-slate-800 text-emerald-400 font-bold'
                     : 'hover:bg-slate-800/80 text-slate-300 hover:text-white'
                 }`}
               >
                 <Settings2 className="w-4 h-4 text-emerald-400" />
-                <span>⚙ Hiển thị</span>
+                <span>Hiển thị</span>
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isDisplayMenuOpen ? 'rotate-180' : ''}`} />
               </button>
 
               {/* Display Settings Popover */}
               {isDisplayMenuOpen && (
-                <div className="absolute bottom-full mb-2.5 right-0 w-64 bg-slate-900/95 border border-slate-800 rounded-2xl p-3.5 backdrop-blur-xl shadow-2xl space-y-3 font-mono text-xs z-30 animate-in fade-in slide-in-from-bottom-2">
+                <div className="absolute bottom-full mb-2.5 right-0 w-72 bg-slate-900/95 border border-slate-800 rounded-2xl p-3.5 backdrop-blur-xl shadow-2xl space-y-3 font-mono text-xs z-30 animate-in fade-in slide-in-from-bottom-2">
                   <div className="flex items-center justify-between border-b border-slate-800 pb-2">
                     <span className="font-bold text-white uppercase text-[11px] tracking-wider flex items-center gap-1.5">
                       <Settings2 className="w-3.5 h-3.5 text-emerald-400" />
-                      TÙY CHỌN HIỂN THỊ
+                      LỚP HIỂN THỊ
                     </span>
                     <button
                       onClick={() => setIsDisplayMenuOpen(false)}
@@ -925,7 +1270,7 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = () 
                   {/* 1. Render Modes */}
                   <div className="space-y-1.5">
                     <span className="text-[10px] text-slate-400 uppercase tracking-wider block font-bold">
-                      Chế độ vật liệu:
+                      Chế độ kết cấu ghe:
                     </span>
                     <div className="grid grid-cols-3 gap-1">
                       <button
@@ -937,7 +1282,7 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = () 
                             : 'bg-slate-950 text-slate-400 hover:text-white border border-slate-800'
                         }`}
                       >
-                        PBR
+                        PBR Thực tế
                       </button>
                       <button
                         id="btn-mode-cad"
@@ -948,7 +1293,7 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = () 
                             : 'bg-slate-950 text-slate-400 hover:text-white border border-slate-800'
                         }`}
                       >
-                        Khung dây
+                        Khung dây CAD
                       </button>
                       <button
                         id="btn-mode-kem"
@@ -959,7 +1304,7 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = () 
                             : 'bg-slate-950 text-slate-400 hover:text-white border border-slate-800'
                         }`}
                       >
-                        Kềm
+                        Cây Kềm
                       </button>
                     </div>
                   </div>
@@ -970,18 +1315,63 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = () 
                       Các lớp đối tượng:
                     </span>
 
-                    {/* Thước đo Toggle */}
+                    {/* Vỏ ghe Hull Toggle */}
                     <label className="flex items-center justify-between p-2 rounded-lg bg-slate-950/70 border border-slate-800/70 cursor-pointer hover:bg-slate-800/60 transition">
                       <span className="flex items-center gap-2 text-slate-300">
-                        <Ruler className="w-3.5 h-3.5 text-amber-400" />
-                        <span>Thước đo 3D</span>
+                        <Layers className="w-3.5 h-3.5 text-amber-400" />
+                        <span>Vỏ & Kết cấu ghe</span>
                       </span>
                       <input
-                        id="checkbox-show-dimensions"
+                        id="checkbox-show-hull"
                         type="checkbox"
-                        checked={showDimensions}
-                        onChange={(e) => setShowDimensions(e.target.checked)}
+                        checked={showHull}
+                        onChange={(e) => setShowHull(e.target.checked)}
                         className="accent-amber-500 w-4 h-4 rounded cursor-pointer"
+                      />
+                    </label>
+
+                    {/* VĐV Mannequins Toggle */}
+                    <label className="flex items-center justify-between p-2 rounded-lg bg-slate-950/70 border border-slate-800/70 cursor-pointer hover:bg-slate-800/60 transition">
+                      <span className="flex items-center gap-2 text-slate-300">
+                        <Users className="w-3.5 h-3.5 text-sky-400" />
+                        <span>55 Vận động viên</span>
+                      </span>
+                      <input
+                        id="checkbox-show-athletes"
+                        type="checkbox"
+                        checked={showAthletes}
+                        onChange={(e) => setShowAthletes(e.target.checked)}
+                        className="accent-sky-500 w-4 h-4 rounded cursor-pointer"
+                      />
+                    </label>
+
+                    {/* Mái chèo Paddles Toggle */}
+                    <label className="flex items-center justify-between p-2 rounded-lg bg-slate-950/70 border border-slate-800/70 cursor-pointer hover:bg-slate-800/60 transition">
+                      <span className="flex items-center gap-2 text-slate-300">
+                        <Activity className="w-3.5 h-3.5 text-rose-400" />
+                        <span>Mái chèo (ngoài mạn)</span>
+                      </span>
+                      <input
+                        id="checkbox-show-paddles"
+                        type="checkbox"
+                        checked={showPaddles}
+                        onChange={(e) => setShowPaddles(e.target.checked)}
+                        className="accent-rose-500 w-4 h-4 rounded cursor-pointer"
+                      />
+                    </label>
+
+                    {/* Mặt nước Water Plane Toggle */}
+                    <label className="flex items-center justify-between p-2 rounded-lg bg-slate-950/70 border border-slate-800/70 cursor-pointer hover:bg-slate-800/60 transition">
+                      <span className="flex items-center gap-2 text-slate-300">
+                        <Waves className="w-3.5 h-3.5 text-blue-400" />
+                        <span>Mặt nước sông Maspero</span>
+                      </span>
+                      <input
+                        id="checkbox-show-water"
+                        type="checkbox"
+                        checked={showWater}
+                        onChange={(e) => setShowWater(e.target.checked)}
+                        className="accent-blue-500 w-4 h-4 rounded cursor-pointer"
                       />
                     </label>
 
@@ -1000,41 +1390,20 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = () 
                       />
                     </label>
 
-                    {/* Mặt cắt Toggle & Slider */}
-                    <div className="p-2 rounded-lg bg-slate-950/70 border border-slate-800/70 space-y-2">
-                      <label className="flex items-center justify-between cursor-pointer">
-                        <span className="flex items-center gap-2 text-slate-300">
-                          <Scissors className="w-3.5 h-3.5 text-rose-400" />
-                          <span>Mặt cắt trạm</span>
-                        </span>
-                        <input
-                          id="checkbox-show-slice"
-                          type="checkbox"
-                          checked={showSlicePlane}
-                          onChange={(e) => setShowSlicePlane(e.target.checked)}
-                          className="accent-rose-500 w-4 h-4 rounded cursor-pointer"
-                        />
-                      </label>
-
-                      {showSlicePlane && (
-                        <div className="pt-1 space-y-1">
-                          <div className="flex items-center justify-between text-[10px] text-slate-400">
-                            <span>Vị trí X:</span>
-                            <strong className="text-rose-400">{stationSliceMeters.toFixed(1)} m</strong>
-                          </div>
-                          <input
-                            id="slider-station-slice-popover"
-                            type="range"
-                            min="0"
-                            max={BOAT_LENGTH}
-                            step="0.1"
-                            value={stationSliceMeters}
-                            onChange={(e) => setStationSliceMeters(Number(e.target.value))}
-                            className="w-full accent-rose-500 cursor-pointer h-1 bg-slate-800 rounded-lg"
-                          />
-                        </div>
-                      )}
-                    </div>
+                    {/* Thước đo Toggle */}
+                    <label className="flex items-center justify-between p-2 rounded-lg bg-slate-950/70 border border-slate-800/70 cursor-pointer hover:bg-slate-800/60 transition">
+                      <span className="flex items-center gap-2 text-slate-300">
+                        <Ruler className="w-3.5 h-3.5 text-emerald-400" />
+                        <span>Thông số & Thước đo</span>
+                      </span>
+                      <input
+                        id="checkbox-show-dimensions"
+                        type="checkbox"
+                        checked={showDimensions}
+                        onChange={(e) => setShowDimensions(e.target.checked)}
+                        className="accent-emerald-500 w-4 h-4 rounded cursor-pointer"
+                      />
+                    </label>
                   </div>
                 </div>
               )}
@@ -1043,28 +1412,28 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = () 
         </div>
       )}
 
-      {/* Mode 2: Geometry Verification Checklist Panel (Kiểm tra Hình học) */}
+      {/* Mode 2: Geometry & Video Verification Checklist Panel */}
       {activeSubTab === 'GEOMETRY_CHECKLIST' && (
         <div className="p-5 space-y-5 bg-slate-950 text-slate-200">
           <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800/80 pb-4">
             <div>
               <h3 className="text-base font-bold text-white font-serif tracking-wide flex items-center gap-2">
                 <ShieldCheck className="w-5 h-5 text-emerald-400" />
-                <span>Bảng Kiểm tra Hình học Thân ghe (Geometry Verification Checklist)</span>
+                <span>Bảng Thẩm định Video & Hình học (Checklist)</span>
               </h3>
               <p className="text-xs text-slate-400 font-mono mt-0.5">
-                Phân loại mức độ xác thực cho từng bộ phận model 3D: CONFIRMED / APPROXIMATE / UNKNOWN
+                Đối chiếu trực tiếp Frame-by-Frame từ Video Livestream Sóc Trăng 2024 & Blueprint @monghuorhout
               </p>
             </div>
 
             <div className="flex items-center gap-2 font-mono text-xs">
               <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-950/80 border border-emerald-800/70 text-emerald-300 font-bold">
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                5 CONFIRMED
+                7 CONFIRMED
               </span>
               <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-950/80 border border-amber-800/70 text-amber-300 font-bold">
                 <AlertTriangle className="w-3.5 h-3.5 text-amber-400" />
-                2 APPROXIMATE
+                1 APPROXIMATE
               </span>
               <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 font-bold">
                 <HelpCircle className="w-3.5 h-3.5 text-slate-400" />
@@ -1143,7 +1512,7 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = () 
                         rel="noreferrer"
                         className="flex items-center gap-1 text-[11px] font-mono text-slate-400 hover:text-sky-400 transition"
                       >
-                        <span>Tài liệu nguồn</span>
+                        <span>Mở tài liệu nguồn</span>
                         <ExternalLink className="w-3 h-3" />
                       </a>
                     )}
@@ -1159,6 +1528,14 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = () 
       <CrewFormationModal
         isOpen={isCrewFormationOpen}
         onClose={() => setIsCrewFormationOpen(false)}
+      />
+
+      {/* Material & Colors Customizer Modal */}
+      <MaterialCustomizerModal
+        isOpen={isMaterialModalOpen}
+        onClose={() => setIsMaterialModalOpen(false)}
+        config={materialConfig}
+        onChange={(newCfg) => setMaterialConfig(newCfg)}
       />
     </div>
   );

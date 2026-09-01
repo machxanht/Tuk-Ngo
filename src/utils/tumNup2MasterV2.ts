@@ -150,31 +150,67 @@ export function buildTumNup2MasterV2(
       const yOut = keelY + uCurvature * (gunwaleY - keelY);
       outerVerts.push(x, yOut, zOut);
 
-      // Color scheme based on Video and 2024 Champion livery
+      // Color scheme EXACTLY MATCHING VIDEO REFERENCE (@monghuorhout vector blueprint):
+      // 1. Chóp Mũi & Chóp Đuôi: Đỏ tươi (Scarlet Red) + Vàng kim
+      // 2. Mép be trên cùng: Vàng kim rực rỡ (Bright Gold Gunwale)
+      // 3. Dải băng hoa văn trên (Upper Band): Đỏ cờ (Crimson Red) kết hợp họa tiết quả trám vàng (Gold Rhombus)
+      // 4. Mạn thân chính (Main Flank): Đen tuyền (Jet Black #0d0d0f) phủ hoa văn Kbach Phka Chan / Kbach Angkor vàng kim
+      // 5. Sống đáy lườn: Sơn then đen bóng / Gỗ sao
       if (isCAD) {
         outerColors.push(0.22, 0.74, 0.97);
       } else if (isKemFocus) {
         outerColors.push(0.18, 0.24, 0.36);
       } else {
         if (u > 0.965) {
-          outerColors.push(0.88, 0.12, 0.12); // Prow Red Tip
+          // Prow Red Tip Cap
+          outerColors.push(0.88, 0.12, 0.12);
         } else if (u < 0.035) {
-          outerColors.push(0.88, 0.12, 0.12); // Stern Red Tip
-        } else if ((j <= 2 || j >= SLICES - 2) && halfBeam > 0.03) {
-          outerColors.push(0.98, 0.75, 0.14); // Gold Gunwale Band
-        } else if ((j === 3 || j === SLICES - 3) && halfBeam > 0.03) {
-          outerColors.push(0.88, 0.12, 0.12); // Red Pinstripe
-        } else if (uCurvature < 0.12) {
-          outerColors.push(0.08, 0.08, 0.10); // Keel Wood Base
+          // Stern Red Tip Cap
+          outerColors.push(0.88, 0.12, 0.12);
         } else {
-          // Khmer Kbach pattern scale wave
-          const scaleWave = Math.sin(u * Math.PI * 52) * Math.cos(angle * 6);
-          if (scaleWave > 0.65 && halfBeam > 0.16) {
-            outerColors.push(0.96, 0.62, 0.04); // Naga Golden Scales
-          } else if (scaleWave > 0.35 && halfBeam > 0.16) {
-            outerColors.push(0.92, 0.35, 0.05); // Amber Accent
+          // Gunwale top edge: Pure Gold band
+          const isTopGunwale = j <= 1 || j >= SLICES - 1;
+          // Upper band: Red background with golden diamond pattern (Dải đỏ hoa văn quả trám dưới mép be)
+          const isUpperRedBand = (j >= 2 && j <= 6) || (j >= SLICES - 6 && j <= SLICES - 2);
+          
+          if (isTopGunwale && halfBeam > 0.02) {
+            outerColors.push(0.98, 0.76, 0.12); // Bright Gold Gunwale Sheer
+          } else if (isUpperRedBand && halfBeam > 0.03) {
+            // Golden Rhombus (Quả trám vàng) on Red Band
+            const diamondFreq = 72; // Diamond repeat along boat length
+            const diamondPhase = (u * diamondFreq) % 1.0;
+            const jRel = (j <= 6 ? j - 2 : SLICES - 2 - j) / 4.0; // 0.0 -> 1.0 within red band
+            const distToCenter = Math.abs(jRel - 0.5) * 2.0; // 0.0 at center, 1.0 at edge
+            const inDiamond = (diamondPhase > 0.35 && diamondPhase < 0.65 && distToCenter < 0.65) ||
+                              (Math.abs(diamondPhase - 0.5) + distToCenter * 0.5 < 0.35);
+
+            if (inDiamond) {
+              outerColors.push(0.98, 0.82, 0.15); // Golden Rhombus Motif
+            } else {
+              outerColors.push(0.86, 0.14, 0.14); // Scarlet / Crimson Red Ribbon
+            }
+          } else if (uCurvature < 0.08) {
+            // Keel bottom base: Deep Ebony Black Lacquer
+            outerColors.push(0.06, 0.06, 0.07);
           } else {
-            outerColors.push(0.11, 0.31, 0.85); // Tum Núp Royal Blue
+            // Main Flank: Deep Jet Black Base with Opulent Golden Kbach Floral Flourishes
+            // Video reference: Flowing flame scrolls (Kbach Angkor / Phka Chan)
+            const kbachWave1 = Math.sin(u * Math.PI * 68 + s * 4.0);
+            const kbachWave2 = Math.cos(u * Math.PI * 34 - s * 6.0);
+            const scrollMotif = (kbachWave1 * 0.6 + kbachWave2 * 0.4);
+            const fineFeather = Math.sin(u * Math.PI * 136) * Math.sin(s * Math.PI * 8);
+
+            // Layered gold density
+            if (scrollMotif > 0.42 || (scrollMotif > 0.15 && fineFeather > 0.35)) {
+              // Primary Brilliant Gold Kbach Pattern
+              outerColors.push(0.96, 0.72, 0.10);
+            } else if (scrollMotif > 0.28) {
+              // Deep Amber Accent
+              outerColors.push(0.88, 0.54, 0.06);
+            } else {
+              // Deep Jet Black Hull Background (from Video)
+              outerColors.push(0.06, 0.06, 0.08);
+            }
           }
         }
       }
@@ -229,7 +265,8 @@ export function buildTumNup2MasterV2(
 
     for (let c = 0; c < 4; c++) {
       if (isCAD) capColors.push(0.22, 0.74, 0.97);
-      else capColors.push(0.48, 0.24, 0.10);
+      else if (isKemFocus) capColors.push(0.18, 0.24, 0.36);
+      else capColors.push(0.98, 0.76, 0.12); // Bright Gold Gunwale Top Rail
     }
   }
 
@@ -430,6 +467,34 @@ export function buildTumNup2MasterV2(
   }
 
   masterGroup.add(kemGroup);
+
+  // 9. Transverse Seating Thwarts (26 Đòn ngồi gỗ sao bắc ngang mạn cho VĐV)
+  const thwartsGroup = new THREE.Group();
+  thwartsGroup.name = 'SeatingThwartsGroup';
+  const thwartWoodMat = new THREE.MeshStandardMaterial({
+    color: 0x854d0e, // Natural Sao timber thwart
+    roughness: 0.65,
+    metalness: 0.05,
+  });
+
+  // 26 thwarts spaced along the cockpit from x = -10.5m to +10.5m (~0.84m spacing)
+  for (let idx = 0; idx < 26; idx++) {
+    const tx = -10.5 + idx * 0.84;
+    const tu = (tx + BOAT_SPECS_V2.LOA / 2) / BOAT_SPECS_V2.LOA;
+    const { halfBeam, gunwaleY } = getTumNup2ProfileV2(tu);
+
+    if (halfBeam > 0.15) {
+      const thwartWidth = halfBeam * 2 * 0.94;
+      const thwartGeo = new THREE.BoxGeometry(0.085, 0.035, thwartWidth);
+      const thwartMesh = new THREE.Mesh(thwartGeo, thwartWoodMat);
+      // Place thwart slightly below the gunwale rim
+      thwartMesh.position.set(tx, gunwaleY - 0.045, 0);
+      thwartMesh.castShadow = true;
+      thwartMesh.receiveShadow = true;
+      thwartsGroup.add(thwartMesh);
+    }
+  }
+  masterGroup.add(thwartsGroup);
 
   return masterGroup;
 }

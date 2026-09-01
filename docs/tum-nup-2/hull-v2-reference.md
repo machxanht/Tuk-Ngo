@@ -67,6 +67,14 @@
    - Tại thân giữa: $E = 1.75$ (đáy U phẳng, dung tích rẽ nước cao).
    - Tại hai đầu mũi/đuôi: $E = 1.03$ (sống V dao sắc gọt nước).
 
+### C. Hệ Thống Màu Sắc & Hoa Văn (Livery Color Hierarchy from Video)
+1. **Mép be trên cùng (Sheer Gunwale):** Màu Vàng kim nguyên khối (`#fbbf24`, RGB `0.98, 0.76, 0.12`).
+2. **Dải băng hoa văn trên (Upper Sheer Band):** Nền Đỏ cờ / Đỏ tươi (`#dc2626`, RGB `0.86, 0.14, 0.14`) với chuỗi hoa văn Quả trám Khmer (Rhombus Kbach) mạ Vàng kim (`#facc15`, RGB `0.98, 0.82, 0.15`).
+3. **Mạn thân chính (Main Hull Flank):** Nền Đen tuyền sơn then bóng (`#0c0d10`, RGB `0.06, 0.06, 0.08`), phủ dày đặc hoa văn cánh hoa Kbach Phka Chan / Kbach Angkor vàng kim uốn lượn hình ngọn lửa (`#f59e0b`, RGB `0.96, 0.72, 0.10`).
+4. **Sống đáy lườn (Keel Base):** Đen then bóng / Gỗ sao ngâm dầu rái (`#0f0f12`, RGB `0.06, 0.06, 0.07`).
+5. **Chóp mũi (Prow Tip):** Ốp đỏ vuốt nhọn (`#dc2626`) + Viền khánh vàng + Chùm tua râu thiêng đen tuyền (`#111827`) rủ xuống.
+6. **Chóp đuôi (Stern Tip):** Ốp đuôi tôm đỏ (`#dc2626`) + Cổ viền vàng kim.
+
 ---
 
 ## 4. MA TRẬN ĐÁNH GIÁ ĐỘ TIN CẬY HÌNH HỌC (VERIFICATION MATRIX)

@@ -21,7 +21,7 @@ export const CrewKinematicsStudio: React.FC = () => {
               </h3>
             </div>
             <p className="text-xs text-slate-400">
-              Chu kỳ nước rút tần số cao (95-125 nhịp/phút) được mô hình hóa qua 4 pha chuyển động then chốt.
+              Chu kỳ nước rút tần số cao (95-125 nhịp/phút) được mô hình hóa qua 7 pha chuyển động sinh cơ học chuẩn xác từ video thực tế.
             </p>
           </div>
 
@@ -39,8 +39,8 @@ export const CrewKinematicsStudio: React.FC = () => {
           </div>
         </div>
 
-        {/* Phase Selection Tabs (5 Authentic Phases) */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2">
+        {/* Phase Selection Tabs (7 Authentic Phases) */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
           {STROKE_PHASES.map((phase) => {
             const isSelected = phase.phaseIndex === selectedPhase;
             return (

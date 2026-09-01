@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { TECHNICAL_SECTIONS, SOURCES_CATALOG } from './data/technicalReferenceData';
 import { ConfidenceLevel } from './types';
 import { Interactive3DBlueprint } from './components/Interactive3DBlueprint';
+import { MasperoRaceCourseStudio } from './components/MasperoRaceCourseStudio';
 import { SectionCard } from './components/SectionCard';
 import { SourceTriageViewer } from './components/SourceTriageViewer';
 import { CrewKinematicsStudio } from './components/CrewKinematicsStudio';
@@ -24,9 +25,12 @@ import {
   ExternalLink,
   ChevronRight,
   ShieldAlert,
+  Trophy,
+  Waves,
 } from 'lucide-react';
 
 export default function App() {
+  const [active3DMode, setActive3DMode] = useState<'RACE_COURSE' | 'CAD_BLUEPRINT'>('RACE_COURSE');
   const [activeTab, setActiveTab] = useState<'ALL_SECTIONS' | '3D_BLUEPRINT' | 'SOURCE_TRIAGE' | 'CREW_KINEMATICS' | 'ENVIRONMENT'>('ALL_SECTIONS');
   const [selectedConfidence, setSelectedConfidence] = useState<ConfidenceLevel | 'ALL'>('ALL');
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -123,21 +127,57 @@ export default function App() {
           </div>
         </div>
 
-        {/* 3D Interactive Orthographic CAD Blueprint Viewer Section */}
+        {/* 3D Interactive Viewer Section: Race Course vs CAD Blueprint */}
         <section id="cad-blueprint-section" className="space-y-3">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div className="flex items-center gap-2">
-              <Box className="w-5 h-5 text-sky-400" />
+              {active3DMode === 'RACE_COURSE' ? (
+                <Waves className="w-5 h-5 text-amber-400" />
+              ) : (
+                <Box className="w-5 h-5 text-sky-400" />
+              )}
               <h2 className="text-base font-bold text-white font-serif tracking-wide">
-                Bản vẽ 3D tương tác & Mô phỏng chuyển động (Kinematics)
+                {active3DMode === 'RACE_COURSE'
+                  ? 'Mô phỏng 3D Sân Đua Sông Maspéro (TP. Sóc Trăng)'
+                  : 'Bản vẽ 3D tương tác & Động lực học chèo (Kinematics)'}
               </h2>
             </div>
-            <span className="text-xs font-mono text-slate-400">
-              Dữ liệu chuẩn hóa phục vụ dựng 3D Blender & Unreal Engine 5
-            </span>
+
+            {/* Mode Switcher Toggle */}
+            <div className="flex items-center gap-1.5 p-1 bg-slate-900 border border-slate-800 rounded-xl font-mono text-xs">
+              <button
+                id="btn-mode-race-course"
+                onClick={() => setActive3DMode('RACE_COURSE')}
+                className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg font-bold transition ${
+                  active3DMode === 'RACE_COURSE'
+                    ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20'
+                    : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+                }`}
+              >
+                <Trophy className="w-3.5 h-3.5" />
+                <span>Sân đua sông Maspéro (1.000m)</span>
+              </button>
+
+              <button
+                id="btn-mode-cad-blueprint"
+                onClick={() => setActive3DMode('CAD_BLUEPRINT')}
+                className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg font-bold transition ${
+                  active3DMode === 'CAD_BLUEPRINT'
+                    ? 'bg-sky-600 text-white shadow-md shadow-sky-600/20'
+                    : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+                }`}
+              >
+                <Box className="w-3.5 h-3.5" />
+                <span>Studio Bản vẽ kỹ thuật (CAD)</span>
+              </button>
+            </div>
           </div>
 
-          <Interactive3DBlueprint />
+          {active3DMode === 'RACE_COURSE' ? (
+            <MasperoRaceCourseStudio />
+          ) : (
+            <Interactive3DBlueprint />
+          )}
         </section>
 
         {/* Navigation Tabs Bar */}
