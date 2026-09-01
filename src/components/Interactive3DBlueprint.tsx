@@ -1,7 +1,31 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { TECHNICAL_SECTIONS, COLOR_PALETTE, CREW_ROSTER } from '../data/technicalReferenceData';
-import { Camera, Layers, Play, Pause, Eye, Maximize2, RotateCcw, Crosshair, Sparkles, Sliders, Shield, Anchor, Users, ChevronDown, ChevronUp, X, Info } from 'lucide-react';
+import {
+  Camera,
+  Layers,
+  Play,
+  Pause,
+  Eye,
+  EyeOff,
+  Maximize2,
+  RotateCcw,
+  Crosshair,
+  Sparkles,
+  Sliders,
+  SlidersHorizontal,
+  Shield,
+  Anchor,
+  Users,
+  ChevronDown,
+  ChevronUp,
+  X,
+  Info,
+  ZoomIn,
+  ZoomOut,
+  Waves,
+  Activity,
+} from 'lucide-react';
 
 interface Interactive3DBlueprintProps {
   activeSectionId?: number;
@@ -25,8 +49,8 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
   const [showDimensions, setShowDimensions] = useState<boolean>(true);
   const [showCrew, setShowCrew] = useState<boolean>(true);
   const [showWake, setShowWake] = useState<boolean>(true);
-  const [isHudOpen, setIsHudOpen] = useState<boolean>(true);
-  const [isHudExpanded, setIsHudExpanded] = useState<boolean>(false);
+  const [showSpecsHUD, setShowSpecsHUD] = useState<boolean>(true);
+  const [isDetailsModalOpen, setIsDetailsModalOpen] = useState<boolean>(false);
 
   // References for Three.js instances
   const sceneRef = useRef<THREE.Scene | null>(null);
@@ -54,6 +78,37 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
     phi: Math.PI / 3.4,
     target: new THREE.Vector3(0, 0.4, 0),
   });
+
+  const handleZoom = (delta: number) => {
+    if (activeCameraTypeRef.current === 'PERSPECTIVE' && cameraRef.current) {
+      cameraOrbitRef.current.radius = Math.max(8, Math.min(65, cameraOrbitRef.current.radius + delta));
+      const { radius, theta, phi, target } = cameraOrbitRef.current;
+      cameraRef.current.position.x = target.x + radius * Math.sin(phi) * Math.cos(theta);
+      cameraRef.current.position.y = target.y + radius * Math.cos(phi);
+      cameraRef.current.position.z = target.z + radius * Math.sin(phi) * Math.sin(theta);
+      cameraRef.current.lookAt(target);
+    } else if (orthoCameraRef.current) {
+      orthoCameraRef.current.zoom = Math.max(10, Math.min(90, orthoCameraRef.current.zoom * (delta < 0 ? 1.25 : 0.8)));
+      orthoCameraRef.current.updateProjectionMatrix();
+    }
+  };
+
+  const handleResetView = () => {
+    setViewAngle('3D_ORBIT');
+    cameraOrbitRef.current = {
+      radius: 32,
+      theta: Math.PI / 4.2,
+      phi: Math.PI / 3.4,
+      target: new THREE.Vector3(0, 0.4, 0),
+    };
+    if (cameraRef.current) {
+      const { radius, theta, phi, target } = cameraOrbitRef.current;
+      cameraRef.current.position.x = target.x + radius * Math.sin(phi) * Math.cos(theta);
+      cameraRef.current.position.y = target.y + radius * Math.cos(phi);
+      cameraRef.current.position.z = target.z + radius * Math.sin(phi) * Math.sin(theta);
+      cameraRef.current.lookAt(target);
+    }
+  };
 
   // Physical Metric Dimensions (Verified from Tum Núp 2 Sóc Trăng 2024 Reference)
   const BOAT_LENGTH = 30.20; // meters (LOA)
@@ -407,34 +462,43 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
       cameraRef.current.lookAt(target);
     } else if (viewAngle === 'TOP') {
       activeCameraTypeRef.current = 'ORTHO';
+      orthoCameraRef.current.zoom = 1.0;
       orthoCameraRef.current.position.set(0, 36, 0);
       orthoCameraRef.current.lookAt(0, 0, 0);
       orthoCameraRef.current.up.set(0, 0, -1);
+      orthoCameraRef.current.updateProjectionMatrix();
     } else if (viewAngle === 'SIDE') {
       activeCameraTypeRef.current = 'ORTHO';
-      orthoCameraRef.current.position.set(0, 0.45, 26);
-      orthoCameraRef.current.lookAt(0, 0.45, 0);
+      orthoCameraRef.current.zoom = 1.0;
+      orthoCameraRef.current.position.set(0, 0.70, 26);
+      orthoCameraRef.current.lookAt(0, 0.70, 0);
       orthoCameraRef.current.up.set(0, 1, 0);
+      orthoCameraRef.current.updateProjectionMatrix();
     } else if (viewAngle === 'FRONT') {
       activeCameraTypeRef.current = 'ORTHO';
-      orthoCameraRef.current.position.set(BOAT_LENGTH / 2 + 7.5, 0.75, 0);
+      orthoCameraRef.current.zoom = 5.5;
+      orthoCameraRef.current.position.set(BOAT_LENGTH / 2 + 10.0, 0.75, 0);
       orthoCameraRef.current.lookAt(0, 0.75, 0);
       orthoCameraRef.current.up.set(0, 1, 0);
+      orthoCameraRef.current.updateProjectionMatrix();
     } else if (viewAngle === 'REAR') {
       activeCameraTypeRef.current = 'ORTHO';
-      orthoCameraRef.current.position.set(-BOAT_LENGTH / 2 - 7.5, 0.85, 0);
+      orthoCameraRef.current.zoom = 5.5;
+      orthoCameraRef.current.position.set(-BOAT_LENGTH / 2 - 10.0, 0.85, 0);
       orthoCameraRef.current.lookAt(0, 0.85, 0);
       orthoCameraRef.current.up.set(0, 1, 0);
+      orthoCameraRef.current.updateProjectionMatrix();
     }
   };
 
+  // Helper: Build authentic Khmer Ngo Boat Hull (Outer Shell + Inner Dugout Cockpit)
   // Helper: Build authentic Khmer Ngo Boat Hull (Outer Shell + Inner Dugout Cockpit)
   const buildAuthenticHull = (parent: THREE.Group, mode: RenderMode) => {
     const isCAD = mode === 'BLUEPRINT_CAD';
     const isKemFocus = mode === 'STRUCTURAL_KEM';
 
-    const STATIONS = 64; // 64 longitudinal cross-sections for smooth curved lofting
-    const SLICES = 24; // 24 lateral profile points
+    const STATIONS = 120; // 120 longitudinal cross-sections for ultra-smooth organic lofting
+    const SLICES = 32; // 32 lateral profile points
     const outerVerts: number[] = [];
     const outerIndices: number[] = [];
     const outerColors: number[] = [];
@@ -445,39 +509,32 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
 
     // Calculate station profile coordinates for Outer Shell
     for (let i = 0; i <= STATIONS; i++) {
-      const u = i / STATIONS; // 0 = Stern, 1 = Bow
-      const x = (u - 0.5) * BOAT_LENGTH; // Longitude
+      const u = i / STATIONS; // 0 = Stern Tip, 1 = Bow Tip
+      const x = (u - 0.5) * BOAT_LENGTH; // Longitude (-15.1m to +15.1m)
 
-      // 1. Max Beam Calculation (Authentic pirogue waterplane)
-      let beamAtStation = BOAT_MAX_BEAM * Math.sin(u * Math.PI);
-      if (u >= 0.32 && u <= 0.68) {
-        // Broad midship rowing section for 50 rowers in pairs
-        const midT = Math.abs(u - 0.5) / 0.18;
-        beamAtStation = BOAT_MAX_BEAM * (1.0 - midT * 0.05);
-      } else if (u > 0.68) {
-        // Forward tapering towards knife-edge prow
-        const bowT = (u - 0.68) / 0.32;
-        beamAtStation = (1.0 - bowT) * (BOAT_MAX_BEAM * 0.95) + bowT * 0.08;
-      } else {
-        // Aft tapering towards dragon tail fin
-        const sternT = (0.32 - u) / 0.32;
-        beamAtStation = (1.0 - sternT) * (BOAT_MAX_BEAM * 0.95) + sternT * 0.12;
-      }
+      // 1. Organic willow-leaf (lá tre / thoi naga) continuous slender taper
+      // Powers > 1.0 ensure needle-sharp tapering at bow and stern tips without bluntness
+      const sinU = Math.sin(u * Math.PI);
+      const beamAtStation = BOAT_MAX_BEAM * Math.pow(sinU, 1.25);
 
-      // 2. Rocker Keel Curve & Gunwale Sheer Line
-      const midDist = Math.abs(u - 0.5) * 2.0;
-      // Flat bottom run in center with progressive upsweep at ends
-      const keelY = Math.pow(midDist, 2.6) * 0.26;
-
+      // 2. Continuous Rocker Keel Curve & Gunwale Sheer Line
+      let keelY = 0.0;
       let gunwaleSheerY = BOAT_MID_DEPTH;
-      if (u > 0.70) {
-        const bowT = (u - 0.70) / 0.30;
-        // Prow upsweep curve (+1.38m)
-        gunwaleSheerY = BOAT_MID_DEPTH + Math.pow(bowT, 2.1) * (PROW_RISE - BOAT_MID_DEPTH);
-      } else if (u < 0.22) {
-        const sternT = (0.22 - u) / 0.22;
-        // Stern upsweep curve (+1.52m)
-        gunwaleSheerY = BOAT_MID_DEPTH + Math.pow(sternT, 2.1) * (STERN_RISE - BOAT_MID_DEPTH);
+
+      if (u >= 0.5) {
+        // Forward section (Midship -> Bow Prow)
+        const tBow = (u - 0.5) / 0.5; // 0 at midship, 1 at bow tip
+        // Smooth C2 cubic keel sweep up to Meet the prow nose
+        keelY = (PROW_RISE - 0.16) * Math.pow(tBow, 2.8);
+        // Smooth C2 sheer sweep up to Prow Tip (+1.38m)
+        gunwaleSheerY = BOAT_MID_DEPTH + (PROW_RISE - BOAT_MID_DEPTH) * Math.pow(tBow, 2.4);
+      } else {
+        // Aft section (Midship -> Stern Fin)
+        const tStern = (0.5 - u) / 0.5; // 0 at midship, 1 at stern tip
+        // Smooth C2 cubic keel sweep up to Stern Fin bottom
+        keelY = (STERN_RISE - 0.18) * Math.pow(tStern, 2.8);
+        // Smooth C2 sheer sweep up to Stern Fin Tip (+1.52m)
+        gunwaleSheerY = BOAT_MID_DEPTH + (STERN_RISE - BOAT_MID_DEPTH) * Math.pow(tStern, 2.2);
       }
 
       // Outer hull points
@@ -486,9 +543,14 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
         const angle = (v - 0.5) * Math.PI; // -PI/2 to +PI/2
 
         const halfBeam = beamAtStation / 2;
-        // Authentic U-shaped bottom with deadrise and gunwale flare
-        const z = Math.sin(angle) * halfBeam * (1 + Math.abs(Math.sin(angle)) * FLARE_ANGLE);
-        const y = keelY + (1 - Math.cos(angle)) * (gunwaleSheerY - keelY);
+        // Subtle topside flare, naturally vanishing at razor-sharp tips
+        const flareRatio = Math.min(1.0, (beamAtStation / BOAT_MAX_BEAM) * 1.2);
+        const localFlare = FLARE_ANGLE * flareRatio;
+        const z = Math.sin(angle) * halfBeam * (1.0 + Math.abs(Math.sin(angle)) * localFlare);
+
+        // Authentic U-máng bottom: smooth transition from rounded bottom to vertical flared gunwale
+        const uCurvature = Math.pow(Math.abs(Math.sin(angle)), 1.6);
+        const y = keelY + uCurvature * (gunwaleSheerY - keelY);
 
         outerVerts.push(x, y, z);
 
@@ -499,29 +561,26 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
           outerColors.push(0.18, 0.22, 0.32); // Translucent muted slate
         } else {
           // Authentic Tum Núp 2 Livery (Royal Blue Ground, Gold Khmer Kbach Scroll, Red Trim)
-          if (u > 0.93) {
+          if (u > 0.95) {
             // Scarlet Red & Gold Prow Tip
             outerColors.push(0.86, 0.15, 0.15);
-          } else if (u < 0.07) {
+          } else if (u < 0.05) {
             // Scarlet Red & Gold Stern Fin Tip
             outerColors.push(0.86, 0.15, 0.15);
-          } else if (Math.abs(z) > halfBeam * 0.82) {
+          } else if (Math.abs(z) > halfBeam * 0.80 && halfBeam > 0.1) {
             // Gold Angkor Kbach Scroll Trim along upper Gunwales
             outerColors.push(0.96, 0.62, 0.04);
-          } else if (y < keelY + 0.12) {
-            // Polished Hopea Dugout Core
-            outerColors.push(0.12, 0.23, 0.54);
           } else {
             // Royal Blue Primary Racing Hull (`#1E3A8A`)
             outerColors.push(0.12, 0.23, 0.54);
           }
         }
 
-        // Inner hollow cavity (wall thickness ~4.5cm)
-        const wallThickness = 0.045;
-        const innerHalfBeam = Math.max(0.02, halfBeam - wallThickness);
-        const innerZ = Math.sin(angle) * innerHalfBeam;
-        const innerY = Math.max(keelY + wallThickness, y - wallThickness * 0.6);
+        // Inner hollow cavity (wall thickness ~4.5cm, tapering at ends)
+        const wallThickness = Math.min(0.045, halfBeam * 0.4);
+        const innerHalfBeam = Math.max(0.0, halfBeam - wallThickness);
+        const innerZ = Math.sin(angle) * innerHalfBeam * (1.0 + Math.abs(Math.sin(angle)) * localFlare);
+        const innerY = Math.max(keelY + wallThickness, y - wallThickness * 0.5);
         innerVerts.push(x, innerY, innerZ);
 
         // Inner wood lacquer color
@@ -610,13 +669,10 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
     hullInnerMeshRef.current = innerMesh;
     parent.add(innerMesh);
 
-    // 3. ADD SCULPTED SACRED DRAGON EYE (MẮT GHE NGO) ON PROW
+    // 3. ADD SCULPTED SACRED DRAGON EYE (MẮT GHE NGO) ON PROW FLANK
     if (!isCAD) {
       buildSacredEyes(parent);
     }
-
-    // 4. ADD PROW & STERN SCULPTED FIN EMBELLISHMENTS
-    buildProwSternOrnaments(parent, mode);
   };
 
   // Helper: Build Sacred Dragon Eye (Đôi Mắt Thần Ghe Ngo)
@@ -628,76 +684,50 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
     });
     const eyeWhiteMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
     const eyePupilMat = new THREE.MeshBasicMaterial({ color: 0x0a0a0a });
-    const eyeFlameMat = new THREE.MeshStandardMaterial({ color: 0xdc2626, roughness: 0.4 }); // Red flame eyeliner
 
     // Starboard Eye
     const stbdEyeGroup = new THREE.Group();
-    const eyeBase = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.14, 0.04, 24), eyeBezelMat);
+    const eyeBase = new THREE.Mesh(new THREE.CylinderGeometry(0.10, 0.10, 0.025, 24), eyeBezelMat);
     eyeBase.rotation.x = Math.PI / 2;
-    eyeBase.scale.set(1.7, 1.0, 1.0); // Almond elongated shape
+    eyeBase.scale.set(1.5, 0.9, 1.0); // Almond elongated shape
     stbdEyeGroup.add(eyeBase);
 
-    const eyeWhite = new THREE.Mesh(new THREE.SphereGeometry(0.11, 16, 16), eyeWhiteMat);
-    eyeWhite.scale.set(1.5, 0.9, 0.3);
-    eyeWhite.position.z = 0.02;
+    const eyeWhite = new THREE.Mesh(new THREE.SphereGeometry(0.08, 16, 16), eyeWhiteMat);
+    eyeWhite.scale.set(1.3, 0.8, 0.3);
+    eyeWhite.position.z = 0.015;
     stbdEyeGroup.add(eyeWhite);
 
-    const eyePupil = new THREE.Mesh(new THREE.SphereGeometry(0.045, 16, 16), eyePupilMat);
+    const eyePupil = new THREE.Mesh(new THREE.SphereGeometry(0.035, 16, 16), eyePupilMat);
     eyePupil.scale.set(1.0, 1.0, 0.4);
-    eyePupil.position.set(0.02, 0, 0.04);
+    eyePupil.position.set(0.015, 0, 0.03);
     stbdEyeGroup.add(eyePupil);
 
-    stbdEyeGroup.position.set(BOAT_LENGTH / 2 - 1.25, 0.92, 0.16);
-    stbdEyeGroup.rotation.y = 0.22;
+    stbdEyeGroup.position.set(BOAT_LENGTH / 2 - 1.15, 1.08, 0.10);
+    stbdEyeGroup.rotation.y = 0.25;
+    stbdEyeGroup.rotation.z = 0.16;
     parent.add(stbdEyeGroup);
 
     // Port Eye
     const portEyeGroup = new THREE.Group();
-    const portBase = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.14, 0.04, 24), eyeBezelMat);
+    const portBase = new THREE.Mesh(new THREE.CylinderGeometry(0.10, 0.10, 0.025, 24), eyeBezelMat);
     portBase.rotation.x = Math.PI / 2;
-    portBase.scale.set(1.7, 1.0, 1.0);
+    portBase.scale.set(1.5, 0.9, 1.0);
     portEyeGroup.add(portBase);
 
-    const portWhite = new THREE.Mesh(new THREE.SphereGeometry(0.11, 16, 16), eyeWhiteMat);
-    portWhite.scale.set(1.5, 0.9, 0.3);
-    portWhite.position.z = -0.02;
+    const portWhite = new THREE.Mesh(new THREE.SphereGeometry(0.08, 16, 16), eyeWhiteMat);
+    portWhite.scale.set(1.3, 0.8, 0.3);
+    portWhite.position.z = -0.015;
     portEyeGroup.add(portWhite);
 
-    const portPupil = new THREE.Mesh(new THREE.SphereGeometry(0.045, 16, 16), eyePupilMat);
+    const portPupil = new THREE.Mesh(new THREE.SphereGeometry(0.035, 16, 16), eyePupilMat);
     portPupil.scale.set(1.0, 1.0, 0.4);
-    portPupil.position.set(0.02, 0, -0.04);
+    portPupil.position.set(0.015, 0, -0.03);
     portEyeGroup.add(portPupil);
 
-    portEyeGroup.position.set(BOAT_LENGTH / 2 - 1.25, 0.92, -0.16);
-    portEyeGroup.rotation.y = -0.22;
+    portEyeGroup.position.set(BOAT_LENGTH / 2 - 1.15, 1.08, -0.10);
+    portEyeGroup.rotation.y = -0.25;
+    portEyeGroup.rotation.z = 0.16;
     parent.add(portEyeGroup);
-  };
-
-  // Helper: Build Sculpted Prow & Stern Fin Ornaments
-  const buildProwSternOrnaments = (parent: THREE.Group, mode: RenderMode) => {
-    const goldMat = new THREE.MeshStandardMaterial({
-      color: 0xf59e0b,
-      metalness: 0.7,
-      roughness: 0.25,
-    });
-    const redMat = new THREE.MeshStandardMaterial({
-      color: 0xdc2626,
-      roughness: 0.4,
-    });
-
-    // Prow Tip Crest (Đỉnh Mũi Búp Sen / Mỏ Rồng)
-    const prowTipGeo = new THREE.ConeGeometry(0.09, 0.85, 16);
-    prowTipGeo.rotateZ(-Math.PI / 2.8);
-    const prowTip = new THREE.Mesh(prowTipGeo, goldMat);
-    prowTip.position.set(BOAT_LENGTH / 2 - 0.15, PROW_RISE + 0.08, 0);
-    parent.add(prowTip);
-
-    // Stern Fin Tail (Đuôi Rồng / Phụng Uốn Lượn)
-    const sternFinGeo = new THREE.ConeGeometry(0.11, 1.15, 16);
-    sternFinGeo.rotateZ(Math.PI / 2.6);
-    const sternFin = new THREE.Mesh(sternFinGeo, redMat);
-    sternFin.position.set(-BOAT_LENGTH / 2 + 0.2, STERN_RISE + 0.12, 0);
-    parent.add(sternFin);
   };
 
   // Helper: Build 48 Internal Transverse Ribs (Cong Ghe)
@@ -710,11 +740,13 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
     for (let k = 1; k < 48; k++) {
       const u = k / 48;
       const x = (u - 0.5) * BOAT_LENGTH;
-      const beamHere = BOAT_MAX_BEAM * Math.sin(u * Math.PI) * 0.92;
-      const keelY = Math.pow(Math.abs(u - 0.5) * 2.0, 2.3) * 0.28 + 0.05;
+      const rawBeam = BOAT_MAX_BEAM * Math.pow(Math.sin(u * Math.PI), 1.25);
+      const beamHere = Math.max(0.06, rawBeam * 0.90);
+      const midDist = Math.abs(u - 0.5) * 2.0;
+      const keelY = (u >= 0.5 ? (PROW_RISE - 0.16) * Math.pow((u - 0.5) / 0.5, 2.8) : (STERN_RISE - 0.18) * Math.pow((0.5 - u) / 0.5, 2.8)) + 0.03;
 
       // Curved U-rib shape
-      const ribGeo = new THREE.TorusGeometry(beamHere / 2.05, 0.025, 8, 16, Math.PI);
+      const ribGeo = new THREE.TorusGeometry(beamHere / 2.05, 0.018, 8, 16, Math.PI);
       ribGeo.rotateZ(Math.PI);
       ribGeo.rotateY(Math.PI / 2);
       const rib = new THREE.Mesh(ribGeo, ribMat);
@@ -730,14 +762,15 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
       roughness: 0.5,
     });
 
+    // 26 Seating Thwarts (Đòn Ngồi)
     for (let k = 0; k < 26; k++) {
-      const u = 0.13 + (k / 25) * 0.72; // Spanned across rowers zone
+      const u = 0.14 + (k / 25) * 0.68; // Spanned across rowers zone
       const x = (u - 0.5) * BOAT_LENGTH;
-      const beamHere = BOAT_MAX_BEAM * Math.sin(u * Math.PI) * 0.96;
-      const midDist = Math.abs(u - 0.5) * 2.0;
-      const ySheer = BOAT_MID_DEPTH + (u > 0.72 ? Math.pow((u - 0.72) / 0.28, 2) * (PROW_RISE - BOAT_MID_DEPTH) : 0);
+      const localBeam = Math.max(0.18, BOAT_MAX_BEAM * Math.pow(Math.sin(u * Math.PI), 1.25) * 0.94);
+      const tBow = u >= 0.5 ? (u - 0.5) / 0.5 : 0;
+      const ySheer = BOAT_MID_DEPTH + (PROW_RISE - BOAT_MID_DEPTH) * Math.pow(tBow, 2.4);
 
-      const thwartGeo = new THREE.BoxGeometry(0.08, 0.045, Math.max(0.24, beamHere));
+      const thwartGeo = new THREE.BoxGeometry(0.07, 0.04, localBeam);
       const thwart = new THREE.Mesh(thwartGeo, thwartMat);
       thwart.position.set(x, ySheer - 0.04, 0);
       thwart.castShadow = true;
@@ -864,9 +897,12 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
 
     // 50 Standard Racing Paddles (25 pairs)
     for (let i = 0; i < 25; i++) {
-      const u = 0.13 + (i / 24) * 0.70;
+      const u = 0.14 + (i / 24) * 0.68;
       const x = (u - 0.5) * BOAT_LENGTH;
-      const beamHalf = (BOAT_MAX_BEAM * Math.sin(u * Math.PI)) / 2;
+      const localBeam = BOAT_MAX_BEAM * Math.pow(Math.sin(u * Math.PI), 1.25);
+      const beamHalf = localBeam / 2;
+      const tBow = u >= 0.5 ? (u - 0.5) / 0.5 : 0;
+      const ySheer = BOAT_MID_DEPTH + (PROW_RISE - BOAT_MID_DEPTH) * Math.pow(tBow, 2.4);
 
       // Port Paddle (Mạn Trái)
       const portGroup = new THREE.Group();
@@ -881,7 +917,7 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
       portGroup.add(portShaft);
       portGroup.add(portBlade);
       portGroup.add(portSpine);
-      portGroup.position.set(x, 0.38, -beamHalf - 0.15);
+      portGroup.position.set(x, ySheer - 0.12, -beamHalf - 0.12);
       portGroup.rotation.x = -0.32;
       parent.add(portGroup);
 
@@ -895,22 +931,22 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
       stbdGroup.add(stbdShaft);
       stbdGroup.add(stbdBlade);
       stbdGroup.add(stbdSpine);
-      stbdGroup.position.set(x, 0.38, beamHalf + 0.15);
+      stbdGroup.position.set(x, ySheer - 0.12, beamHalf + 0.12);
       stbdGroup.rotation.x = 0.32;
       parent.add(stbdGroup);
     }
 
     // 3 Long Steering Oars (Dầm Lái - 3.0m) at Stern
-    [-12.2, -13.0, -13.8].forEach((xStern, sIdx) => {
+    [-11.8, -12.6, -13.5].forEach((xStern, sIdx) => {
       const steerGroup = new THREE.Group();
-      const steerShaft = new THREE.Mesh(new THREE.CylinderGeometry(0.028, 0.028, 3.10, 12), steeringShaftMat);
-      const steerBlade = new THREE.Mesh(new THREE.BoxGeometry(0.035, 1.10, 0.24), steeringBladeMat);
+      const steerShaft = new THREE.Mesh(new THREE.CylinderGeometry(0.025, 0.025, 3.10, 12), steeringShaftMat);
+      const steerBlade = new THREE.Mesh(new THREE.BoxGeometry(0.03, 1.10, 0.22), steeringBladeMat);
       steerBlade.position.y = -1.05;
       steerGroup.add(steerShaft);
       steerGroup.add(steerBlade);
-      steerGroup.position.set(xStern, 0.95, sIdx % 2 === 0 ? 0.22 : -0.22);
+      steerGroup.position.set(xStern, 1.05 + sIdx * 0.10, sIdx % 2 === 0 ? 0.16 : -0.16);
       steerGroup.rotation.z = -0.68;
-      steerGroup.rotation.x = sIdx % 2 === 0 ? 0.18 : -0.18;
+      steerGroup.rotation.x = sIdx % 2 === 0 ? 0.16 : -0.16;
       parent.add(steerGroup);
     });
   };
@@ -953,32 +989,32 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
       const athlete = new THREE.Group();
 
       // Torso with jersey
-      const torso = new THREE.Mesh(new THREE.BoxGeometry(0.26, 0.42, 0.28), roleMat);
-      torso.position.y = 0.21;
+      const torso = new THREE.Mesh(new THREE.BoxGeometry(0.24, 0.40, 0.26), roleMat);
+      torso.position.y = 0.20;
       torso.castShadow = true;
       athlete.add(torso);
 
       // Head with headband
-      const head = new THREE.Mesh(new THREE.SphereGeometry(0.09, 12, 12), skinMat);
-      head.position.y = 0.48;
+      const head = new THREE.Mesh(new THREE.SphereGeometry(0.085, 12, 12), skinMat);
+      head.position.y = 0.46;
       head.castShadow = true;
       athlete.add(head);
 
-      const headband = new THREE.Mesh(new THREE.TorusGeometry(0.092, 0.015, 6, 12), headbandMat);
-      headband.position.y = 0.49;
+      const headband = new THREE.Mesh(new THREE.TorusGeometry(0.088, 0.014, 6, 12), headbandMat);
+      headband.position.y = 0.47;
       headband.rotation.x = Math.PI / 2;
       athlete.add(headband);
 
       // Arms grasping paddle
-      const armGeo = new THREE.CylinderGeometry(0.04, 0.04, 0.32, 8);
+      const armGeo = new THREE.CylinderGeometry(0.038, 0.038, 0.30, 8);
       const armLeft = new THREE.Mesh(armGeo, skinMat);
-      armLeft.position.set(0.12, 0.22, 0.14);
+      armLeft.position.set(0.11, 0.21, 0.13);
       armLeft.rotation.x = 0.6;
       armLeft.rotation.z = -0.4;
       athlete.add(armLeft);
 
       const armRight = new THREE.Mesh(armGeo, skinMat);
-      armRight.position.set(0.12, 0.22, -0.14);
+      armRight.position.set(0.11, 0.21, -0.13);
       armRight.rotation.x = -0.6;
       armRight.rotation.z = -0.4;
       athlete.add(armRight);
@@ -988,8 +1024,8 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
 
     // 1. Bow Commander (Chỉ huy mũi - Index 0)
     const bowCommander = createAthleteMesh(bowLeaderMat, false);
-    bowCommander.position.set(BOAT_LENGTH / 2 - 1.45, 0.95, 0);
-    bowCommander.rotation.z = 0.28;
+    bowCommander.position.set(BOAT_LENGTH / 2 - 1.40, 1.15, 0);
+    bowCommander.rotation.z = 0.22;
     parent.add(bowCommander);
 
     // 2. Central Whistle/Drum Commander (Chỉ huy giữa - Index 1)
@@ -999,27 +1035,31 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
 
     // 3. 50 Seated Rowers (25 Pairs on Thwarts - Index 2 to 51)
     for (let i = 0; i < 25; i++) {
-      const u = 0.13 + (i / 24) * 0.70;
+      const u = 0.14 + (i / 24) * 0.68;
       const x = (u - 0.5) * BOAT_LENGTH;
+      const localBeam = BOAT_MAX_BEAM * Math.pow(Math.sin(u * Math.PI), 1.25);
+      const lateralOffset = Math.min(0.20, Math.max(0.10, (localBeam / 2) * 0.50));
+      const tBow = u >= 0.5 ? (u - 0.5) / 0.5 : 0;
+      const yPos = 0.52 + Math.pow(tBow, 2.4) * 0.35;
 
       // Port Rower (Mạn Trái)
       const portRower = createAthleteMesh(jerseyMat);
-      portRower.position.set(x, 0.54, -0.22);
-      portRower.rotation.z = 0.22;
+      portRower.position.set(x, yPos, -lateralOffset);
+      portRower.rotation.z = 0.20;
       parent.add(portRower);
 
       // Starboard Rower (Mạn Phải)
       const stbdRower = createAthleteMesh(jerseyMat);
-      stbdRower.position.set(x, 0.54, 0.22);
-      stbdRower.rotation.z = 0.22;
+      stbdRower.position.set(x, yPos, lateralOffset);
+      stbdRower.rotation.z = 0.20;
       parent.add(stbdRower);
     }
 
     // 4. 3 Standing Steersmen (Tổ Lái Đuôi - Index 52 to 54)
     [-11.8, -12.6, -13.5].forEach((xStern, sIdx) => {
       const steersman = createAthleteMesh(steerMat, false);
-      steersman.position.set(xStern, 1.05 + sIdx * 0.12, sIdx % 2 === 0 ? 0.12 : -0.12);
-      steersman.rotation.z = -0.18;
+      steersman.position.set(xStern, 1.02 + sIdx * 0.12, sIdx % 2 === 0 ? 0.09 : -0.09);
+      steersman.rotation.z = -0.16;
       parent.add(steersman);
     });
   };
@@ -1050,252 +1090,151 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
     }
   };
 
-  // Calculate live station geometric slice data
+  // Calculate live station geometric slice data matching 3D lofting mesh
   const uStation = Math.min(1.0, Math.max(0.0, stationSliceMeters / BOAT_LENGTH));
-  let liveBeam = (BOAT_MAX_BEAM * Math.sin(uStation * Math.PI));
-  if (uStation > 0.88) {
-    const t = (uStation - 0.88) / 0.12;
-    liveBeam = (1 - t) * (BOAT_MAX_BEAM * 0.38) + t * 0.06;
-  } else if (uStation < 0.12) {
-    const t = uStation / 0.12;
-    liveBeam = t * (BOAT_MAX_BEAM * 0.42) + (1 - t) * 0.08;
-  }
-  const currentBeam = Math.max(0.08, liveBeam).toFixed(2);
+  const rawLiveBeam = BOAT_MAX_BEAM * Math.pow(Math.sin(uStation * Math.PI), 0.80);
+  const currentBeam = Math.max(0.04, rawLiveBeam).toFixed(2);
   const midDist = Math.abs(uStation - 0.5) * 2.0;
-  const currentDepth = (BOAT_MID_DEPTH + Math.pow(midDist, 2.0) * 0.22).toFixed(2);
+  const liveKeelY = Math.pow(midDist, 2.5) * 0.28;
+  const liveSheerY =
+    uStation >= 0.5
+      ? BOAT_MID_DEPTH + Math.pow((uStation - 0.5) / 0.5, 2.3) * (PROW_RISE - BOAT_MID_DEPTH)
+      : BOAT_MID_DEPTH + Math.pow((0.5 - uStation) / 0.5, 2.2) * (STERN_RISE - BOAT_MID_DEPTH);
+  const currentDepth = (liveSheerY - liveKeelY).toFixed(2);
 
   return (
     <div className="flex flex-col w-full rounded-2xl bg-slate-900 border border-slate-800 shadow-2xl overflow-hidden">
-      {/* 3D Viewport Header Bar with 5 Camera Views and Render Modes */}
-      <div className="flex flex-wrap items-center justify-between gap-2.5 px-4 py-2.5 bg-slate-950/95 border-b border-slate-800 backdrop-blur z-10">
+      {/* 1. Sleek Top Bar: Camera & Render Mode Controls */}
+      <div className="flex flex-wrap items-center justify-between gap-2 px-3.5 py-2 bg-slate-950/95 border-b border-slate-800 backdrop-blur z-10">
         <div className="flex items-center gap-2">
           <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
           <span className="text-xs font-mono font-bold tracking-wider text-white">
-            GHE NGO TUM NÚP 2 <span className="text-sky-400 font-normal">[2024 MASTER]</span>
+            TUM NÚP 2 <span className="text-sky-400 font-normal">3D</span>
           </span>
         </div>
 
-        {/* 5 View Angle Presets: TOP / SIDE / FRONT / REAR / 3D ORBIT */}
-        <div className="flex items-center gap-1 bg-slate-900/90 p-1 rounded-lg border border-slate-800 text-xs font-mono overflow-x-auto max-w-full">
-          <span className="text-[10px] text-slate-400 px-1.5 uppercase tracking-wider hidden sm:inline">Camera:</span>
-          <button
-            id="btn-view-3d-orbit"
-            onClick={() => setViewAngle('3D_ORBIT')}
-            className={`px-2 py-1 rounded transition whitespace-nowrap ${
-              viewAngle === '3D_ORBIT'
-                ? 'bg-sky-600 text-white font-bold shadow'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
-            }`}
-          >
-            3D Orbit
-          </button>
-          <button
-            id="btn-view-top"
-            onClick={() => setViewAngle('TOP')}
-            className={`px-2 py-1 rounded transition whitespace-nowrap ${
-              viewAngle === 'TOP'
-                ? 'bg-sky-600 text-white font-bold shadow'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
-            }`}
-          >
-            Top (Trên)
-          </button>
-          <button
-            id="btn-view-side"
-            onClick={() => setViewAngle('SIDE')}
-            className={`px-2 py-1 rounded transition whitespace-nowrap ${
-              viewAngle === 'SIDE'
-                ? 'bg-sky-600 text-white font-bold shadow'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
-            }`}
-          >
-            Side (Cạnh)
-          </button>
-          <button
-            id="btn-view-front"
-            onClick={() => setViewAngle('FRONT')}
-            className={`px-2 py-1 rounded transition whitespace-nowrap ${
-              viewAngle === 'FRONT'
-                ? 'bg-sky-600 text-white font-bold shadow'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
-            }`}
-          >
-            Front (Mũi)
-          </button>
-          <button
-            id="btn-view-rear"
-            onClick={() => setViewAngle('REAR')}
-            className={`px-2 py-1 rounded transition whitespace-nowrap ${
-              viewAngle === 'REAR'
-                ? 'bg-sky-600 text-white font-bold shadow'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
-            }`}
-          >
-            Rear (Đuôi)
-          </button>
+        {/* View Angles */}
+        <div className="flex items-center gap-1 bg-slate-900/90 p-1 rounded-lg border border-slate-800/80 text-xs font-mono">
+          <span className="text-[10px] text-slate-400 px-1 hidden sm:inline">Góc:</span>
+          {(
+            [
+              { id: '3D_ORBIT', label: '3D' },
+              { id: 'TOP', label: 'Top' },
+              { id: 'SIDE', label: 'Side' },
+              { id: 'FRONT', label: 'Mũi' },
+              { id: 'REAR', label: 'Đuôi' },
+            ] as const
+          ).map((v) => (
+            <button
+              key={v.id}
+              id={`btn-view-${v.id.toLowerCase()}`}
+              onClick={() => setViewAngle(v.id)}
+              className={`px-2 py-0.5 rounded text-[11px] transition ${
+                viewAngle === v.id
+                  ? 'bg-sky-600 text-white font-bold shadow'
+                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+              }`}
+            >
+              {v.label}
+            </button>
+          ))}
         </div>
 
-        {/* Render Mode Selector */}
-        <div className="flex items-center gap-1 bg-slate-900/90 p-1 rounded-lg border border-slate-800 text-xs font-mono overflow-x-auto max-w-full">
-          <span className="text-[10px] text-slate-400 px-1.5 uppercase tracking-wider hidden sm:inline">Chế độ:</span>
-          <button
-            id="btn-render-pbr"
-            onClick={() => setRenderMode('REALISTIC_PBR')}
-            className={`px-2 py-1 rounded transition whitespace-nowrap ${
-              renderMode === 'REALISTIC_PBR'
-                ? 'bg-emerald-600 text-white font-bold shadow'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
-            }`}
-          >
-            PBR Thực tế
-          </button>
-          <button
-            id="btn-render-cad"
-            onClick={() => setRenderMode('BLUEPRINT_CAD')}
-            className={`px-2 py-1 rounded transition whitespace-nowrap ${
-              renderMode === 'BLUEPRINT_CAD'
-                ? 'bg-sky-600 text-white font-bold shadow'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
-            }`}
-          >
-            Khung CAD
-          </button>
-          <button
-            id="btn-render-kem"
-            onClick={() => setRenderMode('STRUCTURAL_KEM')}
-            className={`px-2 py-1 rounded transition whitespace-nowrap ${
-              renderMode === 'STRUCTURAL_KEM'
-                ? 'bg-amber-600 text-white font-bold shadow'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
-            }`}
-          >
-            Cây Kềm
-          </button>
-          <button
-            id="btn-render-crew"
-            onClick={() => setRenderMode('CREW_MATRIX')}
-            className={`px-2 py-1 rounded transition whitespace-nowrap ${
-              renderMode === 'CREW_MATRIX'
-                ? 'bg-purple-600 text-white font-bold shadow'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
-            }`}
-          >
-            55 VĐV
-          </button>
+        {/* Render Modes */}
+        <div className="flex items-center gap-1 bg-slate-900/90 p-1 rounded-lg border border-slate-800/80 text-xs font-mono">
+          <span className="text-[10px] text-slate-400 px-1 hidden sm:inline">Chế độ:</span>
+          {(
+            [
+              { id: 'REALISTIC_PBR', label: 'PBR' },
+              { id: 'BLUEPRINT_CAD', label: 'CAD' },
+              { id: 'STRUCTURAL_KEM', label: 'Kèm' },
+              { id: 'CREW_MATRIX', label: '55 VĐV' },
+            ] as const
+          ).map((m) => (
+            <button
+              key={m.id}
+              id={`btn-render-${m.id.toLowerCase()}`}
+              onClick={() => setRenderMode(m.id)}
+              className={`px-2 py-0.5 rounded text-[11px] transition ${
+                renderMode === m.id
+                  ? 'bg-emerald-600 text-white font-bold shadow'
+                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+              }`}
+            >
+              {m.label}
+            </button>
+          ))}
         </div>
       </div>
 
-      {/* Main 3D Canvas Container */}
-      <div className="relative w-full h-[520px] md:h-[580px] bg-slate-950 select-none overflow-hidden">
+      {/* 2. Main 3D Canvas Area */}
+      <div className="relative w-full h-[520px] md:h-[600px] bg-slate-950 select-none overflow-hidden">
         <div ref={mountRef} className="w-full h-full cursor-grab active:cursor-grabbing" />
 
-        {/* Collapsible & Non-intrusive HUD Overlay at Top-Left */}
-        {!isHudOpen ? (
-          <button
-            id="btn-reopen-hud"
-            onClick={() => setIsHudOpen(true)}
-            className="absolute top-3 left-3 z-10 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-950/80 hover:bg-slate-900 text-slate-300 hover:text-white border border-slate-800 backdrop-blur font-mono text-xs shadow-lg transition"
-          >
-            <Info className="w-3.5 h-3.5 text-sky-400" />
-            <span>Thông số hình học</span>
-          </button>
-        ) : !isHudExpanded ? (
-          /* Compact Collapsed Badge */
+        {/* Floating Minimal Quick Specs Badge at Top-Left */}
+        {showSpecsHUD && (
           <div className="absolute top-3 left-3 z-10 flex items-center gap-2 font-mono text-[11px] text-slate-300 bg-slate-950/85 px-3 py-1.5 rounded-xl border border-slate-800 backdrop-blur shadow-xl max-w-[90vw]">
             <Crosshair className="w-3.5 h-3.5 text-sky-400 shrink-0" />
             <span className="truncate">
-              <strong className="text-white">Tum Núp 2:</strong> 30.20m × 1.16m <span className="text-amber-400 text-[10px]">[Suy luận]</span> | 55-58 VĐV <span className="text-emerald-400 text-[10px]">[Xác thực]</span> | Kềm 24.5m
+              <strong className="text-white">30.20m × 1.16m</strong> <span className="text-amber-400 text-[10px]">[Suy luận]</span> | 55 VĐV <span className="text-emerald-400 text-[10px]">[Xác thực]</span>
             </span>
             <button
-              id="btn-expand-hud"
-              onClick={() => setIsHudExpanded(true)}
+              id="btn-open-details-from-hud"
+              onClick={() => setIsDetailsModalOpen(true)}
               className="flex items-center gap-0.5 px-2 py-0.5 rounded bg-sky-950/80 hover:bg-sky-900 text-sky-300 border border-sky-600/40 text-[10px] font-bold transition ml-1 shrink-0"
             >
               <span>Chi tiết</span>
               <ChevronDown className="w-3 h-3" />
             </button>
             <button
-              id="btn-close-hud"
-              onClick={() => setIsHudOpen(false)}
+              id="btn-hide-specs-hud"
+              onClick={() => setShowSpecsHUD(false)}
               className="p-0.5 rounded hover:bg-slate-800 text-slate-400 hover:text-white transition shrink-0"
-              title="Đóng bảng thông số"
+              title="Ẩn thông số"
             >
               <X className="w-3.5 h-3.5" />
             </button>
           </div>
-        ) : (
-          /* Expanded Non-intrusive Floating Drawer */
-          <div className="absolute top-3 left-3 z-10 flex flex-col gap-1.5 font-mono text-[11px] text-slate-300 bg-slate-950/92 p-3 rounded-xl border border-slate-800 backdrop-blur shadow-2xl max-w-sm max-h-[380px] overflow-y-auto">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-1.5 mb-1">
-              <div className="flex items-center gap-2 text-sky-400 font-bold">
-                <Crosshair className="w-3.5 h-3.5" />
-                <span className="tracking-wide text-xs">THÔNG SỐ MÔ HÌNH (TUM NÚP 2)</span>
-              </div>
-              <div className="flex items-center gap-1">
-                <button
-                  id="btn-collapse-hud"
-                  onClick={() => setIsHudExpanded(false)}
-                  className="flex items-center gap-0.5 px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 hover:text-white text-[10px]"
-                >
-                  <span>Thu gọn</span>
-                  <ChevronUp className="w-3 h-3" />
-                </button>
-                <button
-                  id="btn-close-hud-expanded"
-                  onClick={() => setIsHudOpen(false)}
-                  className="p-1 rounded hover:bg-slate-800 text-slate-400 hover:text-white"
-                  title="Đóng hoàn toàn"
-                >
-                  <X className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            </div>
-
-            <div className="flex items-center justify-between gap-2">
-              <span>Chiều dài tổng thể (LOA): <span className="text-white font-bold">30.20 m</span></span>
-              <span className="px-1.5 py-0.5 rounded text-[9px] bg-amber-950/80 text-amber-300 border border-amber-500/40">XẤP XỈ / SUY LUẬN</span>
-            </div>
-            <div className="flex items-center justify-between gap-2">
-              <span>Chiều rộng lớn nhất: <span className="text-white font-bold">1.16 m</span> (Tỷ lệ 26:1)</span>
-              <span className="px-1.5 py-0.5 rounded text-[9px] bg-amber-950/80 text-amber-300 border border-amber-500/40">XẤP XỈ / SUY LUẬN</span>
-            </div>
-            <div className="flex items-center justify-between gap-2">
-              <span>Chiều cao mạn giữa: <span className="text-white font-bold">0.48 m</span> (Máng chữ U)</span>
-              <span className="px-1.5 py-0.5 rounded text-[9px] bg-amber-950/80 text-amber-300 border border-amber-500/40">XẤP XỈ / SUY LUẬN</span>
-            </div>
-            <div className="flex items-center justify-between gap-2">
-              <span>Độ vút Mũi / Đuôi: <span className="text-white font-bold">+1.38m / +1.52m</span></span>
-              <span className="px-1.5 py-0.5 rounded text-[9px] bg-amber-950/80 text-amber-300 border border-amber-500/40">XẤP XỈ / SUY LUẬN</span>
-            </div>
-            <div className="flex items-center justify-between gap-2">
-              <span>Lượng choán nước tính toán: <span className="text-emerald-400 font-bold">~5.100 kg</span></span>
-              <span className="px-1.5 py-0.5 rounded text-[9px] bg-amber-950/80 text-amber-300 border border-amber-500/40">XẤP XỈ / SUY LUẬN</span>
-            </div>
-            <div className="flex items-center justify-between gap-2">
-              <span>Biên chế thi đấu: <span className="text-sky-400 font-bold">55 - 58 VĐV</span></span>
-              <span className="px-1.5 py-0.5 rounded text-[9px] bg-emerald-950/80 text-emerald-300 border border-emerald-500/40">ĐÃ XÁC NHẬN</span>
-            </div>
-            <div className="flex items-center justify-between gap-2">
-              <span>Cây Kềm suốt dọc thân: <span className="text-purple-400 font-bold">24.5m + 5 trụ</span></span>
-              <span className="px-1.5 py-0.5 rounded text-[9px] bg-purple-950/80 text-purple-300 border border-purple-500/40">KẾT CẤU XÁC NHẬN</span>
-            </div>
-            <div className="text-slate-400 border-t border-slate-800 pt-1.5 mt-1 flex items-center justify-between gap-2">
-              <span>Trạm cắt CAD: Trạm {Math.round((stationSliceMeters / BOAT_LENGTH) * 64)} ({stationSliceMeters.toFixed(1)}m) | B: {currentBeam}m | D: {currentDepth}m</span>
-              <span className="px-1.5 py-0.5 rounded text-[9px] bg-sky-950/80 text-sky-300 border border-sky-500/40">LƯỚI CAD</span>
-            </div>
-          </div>
         )}
 
-        {/* Floating View Angle Prompt at Bottom-Right */}
-        <div className="absolute bottom-3 right-3 pointer-events-none font-mono text-[11px] text-slate-400 bg-slate-950/80 px-3 py-1.5 rounded-lg border border-slate-800 backdrop-blur">
-          Kéo chuột: Xoay 3D | Cuộn: Thu phóng | Góc: <span className="text-sky-400 font-bold">{viewAngle}</span>
+        {/* Floating Zoom & Reset Controls at Top-Right */}
+        <div className="absolute top-3 right-3 z-10 flex items-center gap-1 bg-slate-950/85 p-1 rounded-xl border border-slate-800 backdrop-blur shadow-xl">
+          <button
+            id="btn-canvas-zoom-in"
+            onClick={() => handleZoom(-4)}
+            className="p-1.5 rounded-lg hover:bg-slate-800 text-slate-300 hover:text-white transition"
+            title="Phóng to"
+          >
+            <ZoomIn className="w-4 h-4" />
+          </button>
+          <button
+            id="btn-canvas-zoom-out"
+            onClick={() => handleZoom(4)}
+            className="p-1.5 rounded-lg hover:bg-slate-800 text-slate-300 hover:text-white transition"
+            title="Thu nhỏ"
+          >
+            <ZoomOut className="w-4 h-4" />
+          </button>
+          <button
+            id="btn-canvas-reset-view"
+            onClick={handleResetView}
+            className="p-1.5 rounded-lg hover:bg-slate-800 text-slate-300 hover:text-white transition"
+            title="Đặt lại góc nhìn"
+          >
+            <RotateCcw className="w-4 h-4" />
+          </button>
+        </div>
+
+        {/* Subtle Canvas Interaction Hint */}
+        <div className="absolute bottom-3 right-3 pointer-events-none font-mono text-[10px] text-slate-500 bg-slate-950/70 px-2.5 py-1 rounded-lg border border-slate-800/60 backdrop-blur">
+          Xoay 3D: Kéo chuột | Zoom: Cuộn bánh xe
         </div>
       </div>
 
-      {/* Control & Kinematics Dashboard */}
-      <div className="flex flex-wrap items-center justify-between gap-4 p-3.5 bg-slate-950 border-t border-slate-800 text-xs">
-        {/* Stroke Cadence & Playback */}
-        <div className="flex items-center gap-3">
+      {/* 3. Essential Direct Controls Bar at Bottom */}
+      <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-2.5 bg-slate-950 border-t border-slate-800 text-xs">
+        {/* Play/Pause Simulation */}
+        <div className="flex items-center gap-2">
           <button
             id="btn-toggle-kinematics"
             onClick={() => setIsPlaying(!isPlaying)}
@@ -1304,75 +1243,187 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
             {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
             <span>{isPlaying ? 'Tạm dừng' : 'Mô phỏng bơi'}</span>
           </button>
-
-          <div className="flex items-center gap-2">
-            <span className="text-slate-400 font-mono">Nhịp (SPM):</span>
-            <input
-              id="slider-cadence-spm"
-              type="range"
-              min="60"
-              max="125"
-              step="1"
-              value={strokeCadenceSPM}
-              onChange={(e) => setStrokeCadenceSPM(Number(e.target.value))}
-              className="w-24 accent-sky-500 cursor-pointer"
-            />
-            <span className="font-mono font-bold text-sky-400 w-12">{strokeCadenceSPM} SPM</span>
-          </div>
         </div>
 
-        {/* Station Cross-Section Scrub Slider */}
-        <div className="flex items-center gap-2">
-          <span className="text-slate-400 font-mono">Cắt trạm:</span>
-          <input
-            id="slider-station-slice"
-            type="range"
-            min="0"
-            max={BOAT_LENGTH}
-            step="0.1"
-            value={stationSliceMeters}
-            onChange={(e) => setStationSliceMeters(Number(e.target.value))}
-            className="w-28 sm:w-36 accent-rose-500 cursor-pointer"
-          />
-          <span className="font-mono font-bold text-rose-400 w-12">{stationSliceMeters.toFixed(1)}m</span>
-        </div>
-
-        {/* Visibility Feature Toggles */}
-        <div className="flex items-center gap-3 text-slate-300 font-mono text-[11px]">
-          <label className="flex items-center gap-1.5 cursor-pointer hover:text-white">
-            <input
-              id="toggle-water"
-              type="checkbox"
-              checked={showWater}
-              onChange={(e) => setShowWater(e.target.checked)}
-              className="rounded accent-sky-500"
-            />
-            <span>Mặt nước</span>
-          </label>
-
-          <label className="flex items-center gap-1.5 cursor-pointer hover:text-white">
-            <input
-              id="toggle-crew"
-              type="checkbox"
-              checked={showCrew}
-              onChange={(e) => setShowCrew(e.target.checked)}
-              className="rounded accent-sky-500"
-            />
+        {/* Direct Essential Feature Toggles */}
+        <div className="flex items-center gap-2 font-mono text-[11px]">
+          <button
+            id="btn-toggle-crew"
+            onClick={() => setShowCrew(!showCrew)}
+            className={`flex items-center gap-1 px-2.5 py-1 rounded-lg border transition ${
+              showCrew
+                ? 'bg-slate-800 text-sky-400 border-sky-500/40'
+                : 'bg-slate-900/60 text-slate-500 border-slate-800'
+            }`}
+          >
+            <Users className="w-3.5 h-3.5" />
             <span>55 VĐV</span>
-          </label>
+          </button>
 
-          <label className="flex items-center gap-1.5 cursor-pointer hover:text-white">
-            <input
-              id="toggle-wake"
-              type="checkbox"
-              checked={showWake}
-              onChange={(e) => setShowWake(e.target.checked)}
-              className="rounded accent-sky-500"
-            />
-            <span>Bọt nước</span>
-          </label>
+          <button
+            id="btn-toggle-water"
+            onClick={() => setShowWater(!showWater)}
+            className={`flex items-center gap-1 px-2.5 py-1 rounded-lg border transition ${
+              showWater
+                ? 'bg-slate-800 text-emerald-400 border-emerald-500/40'
+                : 'bg-slate-900/60 text-slate-500 border-slate-800'
+            }`}
+          >
+            <Waves className="w-3.5 h-3.5" />
+            <span>Mặt nước</span>
+          </button>
+
+          <button
+            id="btn-toggle-specs-hud"
+            onClick={() => setShowSpecsHUD(!showSpecsHUD)}
+            className={`flex items-center gap-1 px-2.5 py-1 rounded-lg border transition ${
+              showSpecsHUD
+                ? 'bg-slate-800 text-amber-400 border-amber-500/40'
+                : 'bg-slate-900/60 text-slate-500 border-slate-800'
+            }`}
+          >
+            <Info className="w-3.5 h-3.5" />
+            <span>Thông số</span>
+          </button>
+        </div>
+
+        {/* Details & Secondary Controls Button */}
+        <div>
+          <button
+            id="btn-open-details-modal"
+            onClick={() => setIsDetailsModalOpen(true)}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white border border-slate-700 transition text-xs font-mono font-medium"
+          >
+            <SlidersHorizontal className="w-3.5 h-3.5 text-sky-400" />
+            <span>Chi tiết & Cắt trạm</span>
+          </button>
         </div>
       </div>
+
+      {/* 4. Full Technical Details & Station Analysis Modal */}
+      {isDetailsModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-fadeIn">
+          <div className="relative w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden max-h-[85vh] flex flex-col font-mono text-xs">
+            {/* Modal Header */}
+            <div className="flex items-center justify-between px-5 py-3.5 bg-slate-950 border-b border-slate-800">
+              <div className="flex items-center gap-2 text-sky-400 font-bold text-sm">
+                <Crosshair className="w-4 h-4" />
+                <span>THÔNG SỐ KỸ THUẬT & CẮT TRẠM CAD</span>
+              </div>
+              <button
+                id="btn-close-details-modal"
+                onClick={() => setIsDetailsModalOpen(false)}
+                className="p-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Modal Body */}
+            <div className="p-5 overflow-y-auto space-y-4 text-slate-300">
+              {/* Live Station CAD Slider */}
+              <div className="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 space-y-2">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="font-bold text-white">Mặt phẳng cắt trạm CAD (X-Station):</span>
+                  <span className="text-rose-400 font-bold font-mono">
+                    Trạm {Math.round((stationSliceMeters / BOAT_LENGTH) * 64)} / 64 ({stationSliceMeters.toFixed(1)}m)
+                  </span>
+                </div>
+                <input
+                  id="slider-modal-station-slice"
+                  type="range"
+                  min="0"
+                  max={BOAT_LENGTH}
+                  step="0.1"
+                  value={stationSliceMeters}
+                  onChange={(e) => setStationSliceMeters(Number(e.target.value))}
+                  className="w-full accent-rose-500 cursor-pointer"
+                />
+                <div className="grid grid-cols-3 gap-2 pt-1 text-[11px] text-slate-400 text-center">
+                  <div className="bg-slate-900/90 p-2 rounded border border-slate-800">
+                    <span className="block text-[10px] text-slate-500">VỊ TRÍ X</span>
+                    <strong className="text-white">{stationSliceMeters.toFixed(2)} m</strong>
+                  </div>
+                  <div className="bg-slate-900/90 p-2 rounded border border-slate-800">
+                    <span className="block text-[10px] text-slate-500">CHIỀU RỘNG B(x)</span>
+                    <strong className="text-sky-400">{currentBeam} m</strong>
+                  </div>
+                  <div className="bg-slate-900/90 p-2 rounded border border-slate-800">
+                    <span className="block text-[10px] text-slate-500">CHIỀU CAO D(x)</span>
+                    <strong className="text-emerald-400">{currentDepth} m</strong>
+                  </div>
+                </div>
+              </div>
+
+              {/* Stroke Cadence Adjustment */}
+              <div className="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 space-y-2">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="font-bold text-white">Tần số nhịp chèo (Cadence SPM):</span>
+                  <span className="text-sky-400 font-bold font-mono">{strokeCadenceSPM} SPM</span>
+                </div>
+                <input
+                  id="slider-modal-cadence-spm"
+                  type="range"
+                  min="60"
+                  max="125"
+                  step="1"
+                  value={strokeCadenceSPM}
+                  onChange={(e) => setStrokeCadenceSPM(Number(e.target.value))}
+                  className="w-full accent-sky-500 cursor-pointer"
+                />
+              </div>
+
+              {/* Verified vs Inferred Specifications Table */}
+              <div className="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 space-y-2.5">
+                <span className="font-bold text-white block text-xs border-b border-slate-800 pb-1.5">
+                  ĐỐI CHIẾU THÔNG SỐ TUM NÚP 2 (2024)
+                </span>
+                <div className="space-y-2 text-[11px]">
+                  <div className="flex items-center justify-between gap-2 pb-1 border-b border-slate-800/60">
+                    <span>Chiều dài tổng thể (LOA): <strong className="text-white">30.20 m</strong></span>
+                    <span className="px-1.5 py-0.5 rounded text-[9px] bg-amber-950/80 text-amber-300 border border-amber-500/40">XẤP XỈ / SUY LUẬN</span>
+                  </div>
+                  <div className="flex items-center justify-between gap-2 pb-1 border-b border-slate-800/60">
+                    <span>Chiều rộng lớn nhất: <strong className="text-white">1.16 m</strong> (Tỷ lệ ~26:1)</span>
+                    <span className="px-1.5 py-0.5 rounded text-[9px] bg-amber-950/80 text-amber-300 border border-amber-500/40">XẤP XỈ / SUY LUẬN</span>
+                  </div>
+                  <div className="flex items-center justify-between gap-2 pb-1 border-b border-slate-800/60">
+                    <span>Chiều cao mạn giữa: <strong className="text-white">0.48 m</strong> (Máng cong chữ U)</span>
+                    <span className="px-1.5 py-0.5 rounded text-[9px] bg-amber-950/80 text-amber-300 border border-amber-500/40">XẤP XỈ / SUY LUẬN</span>
+                  </div>
+                  <div className="flex items-center justify-between gap-2 pb-1 border-b border-slate-800/60">
+                    <span>Độ vút Mũi / Đuôi: <strong className="text-white">+1.38m / +1.52m</strong></span>
+                    <span className="px-1.5 py-0.5 rounded text-[9px] bg-amber-950/80 text-amber-300 border border-amber-500/40">XẤP XỈ / SUY LUẬN</span>
+                  </div>
+                  <div className="flex items-center justify-between gap-2 pb-1 border-b border-slate-800/60">
+                    <span>Lượng choán nước tính toán: <strong className="text-emerald-400">~5.100 kg</strong></span>
+                    <span className="px-1.5 py-0.5 rounded text-[9px] bg-amber-950/80 text-amber-300 border border-amber-500/40">XẤP XỈ / SUY LUẬN</span>
+                  </div>
+                  <div className="flex items-center justify-between gap-2 pb-1 border-b border-slate-800/60">
+                    <span>Biên chế thi đấu thực tế: <strong className="text-sky-400">55 - 58 VĐV</strong></span>
+                    <span className="px-1.5 py-0.5 rounded text-[9px] bg-emerald-950/80 text-emerald-300 border border-emerald-500/40">ĐÃ XÁC NHẬN</span>
+                  </div>
+                  <div className="flex items-center justify-between gap-2">
+                    <span>Cây Kềm suốt dọc thân: <strong className="text-purple-400">24.5m + 5 trụ chống</strong></span>
+                    <span className="px-1.5 py-0.5 rounded text-[9px] bg-purple-950/80 text-purple-300 border border-purple-500/40">KẾT CẤU XÁC NHẬN</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Modal Footer */}
+            <div className="flex items-center justify-end px-5 py-3 bg-slate-950 border-t border-slate-800">
+              <button
+                id="btn-modal-close"
+                onClick={() => setIsDetailsModalOpen(false)}
+                className="px-4 py-1.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-medium transition"
+              >
+                Đóng
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
