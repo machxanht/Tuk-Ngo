@@ -1,0 +1,6 @@
+{
+  "name": "Ngo Boat Racing — Tum Núp 2 Technical Reference",
+  "description": "Visual research and Blender/Unreal-ready 3D technical blueprint reference for the Khmer Ngo boat Tum Núp 2 (Sóc Trăng 2024 Champion).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
