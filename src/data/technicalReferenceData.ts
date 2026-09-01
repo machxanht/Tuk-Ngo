@@ -136,49 +136,61 @@ export const SOURCES_CATALOG: SourceReference[] = [
 export const COLOR_PALETTE: ColorPaletteItem[] = [
   {
     name: "Royal River Blue",
+    vietnameseName: "Xanh dương hoàng gia (Áo đấu & Thân ghe)",
     hex: "#1E3A8A",
     rgb: "rgb(30, 58, 138)",
     role: "Primary Team Uniform & Hull Ground",
+    vietnameseRole: "Màu áo thi đấu chính của Tum Núp 2 & Nền sơn dải thân ghe",
     applicationArea: "Tum Núp 2 Crew Racing Jersey, Main Outer Hull Midship Stripe",
     confidence: "CONFIRMED"
   },
   {
     name: "Angkor Imperial Gold / Yellow",
+    vietnameseName: "Vàng hoàng kim Khmer (Hoa văn Kbach)",
     hex: "#F59E0B",
     rgb: "rgb(245, 158, 11)",
     role: "Khmer Traditional Scroll Accent",
+    vietnameseRole: "Họa tiết hoa văn Khmer, vảy rồng Naga và viền mắt ghe",
     applicationArea: "Kbach Angkor flourishes, Naga scales, and eye bezel borders",
     confidence: "CONFIRMED"
   },
   {
     name: "Temple Scarlet Red",
+    vietnameseName: "Đỏ son truyền thống (Đường viền & Đuôi lượn)",
     hex: "#DC2626",
     rgb: "rgb(220, 38, 38)",
     role: "Contrast Trim & Prow Crest",
+    vietnameseRole: "Đường viền be ghe, tròng mắt ghe và chóp đuôi ghe",
     applicationArea: "Gunwale highlight trim, bow eye pupil contour, and stern fin tip",
     confidence: "CONFIRMED"
   },
   {
     name: "Ceremonial Pure White",
+    vietnameseName: "Trắng tinh khiết (Lòng mắt & Chi tiết chữ)",
     hex: "#F8FAFC",
     rgb: "rgb(248, 250, 252)",
     role: "Graphic Fill & Eye Sclera",
+    vietnameseRole: "Lòng trắng mắt ghe, nét viền phân cách và chữ số áo",
     applicationArea: "Painted sacred eye sclera, floral outline separators, and jersey text",
     confidence: "CONFIRMED"
   },
   {
     name: "Natural Hopea Wood Lacquer",
+    vietnameseName: "Nâu gỗ Sao dầu tự nhiên (Khung sườn & Kềm)",
     hex: "#78350F",
     rgb: "rgb(120, 53, 15)",
     role: "Interior Raw Wood Tone",
+    vietnameseRole: "Đòn ngồi, cong ghe, thân độc mộc và cây kềm chịu lực",
     applicationArea: "Crossbeams, internal ribs, thwarts, and cây kềm longitudinal pole",
     confidence: "CONFIRMED"
   },
   {
     name: "Maspero Alluvial Mud Brown",
+    vietnameseName: "Nâu phù sa sông Maspéro (Mặt nước đua)",
     hex: "#85583E",
     rgb: "rgb(133, 88, 62)",
     role: "Environment Water Base",
+    vietnameseRole: "Màu nước phù sa sông Maspéro và vệt bọt sóng",
     applicationArea: "Maspero River surface, wake foam tint, and submerged hull waterline shading",
     confidence: "CONFIRMED"
   }

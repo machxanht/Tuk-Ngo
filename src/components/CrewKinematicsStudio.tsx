@@ -17,16 +17,16 @@ export const CrewKinematicsStudio: React.FC = () => {
             <div className="flex items-center gap-2">
               <Activity className="w-5 h-5 text-sky-400" />
               <h3 className="text-lg font-bold text-white font-serif">
-                Synchronized Stroke Kinematics & Biomechanics
+                Kỹ động học & Sinh cơ học nhịp chèo đồng bộ
               </h3>
             </div>
             <p className="text-xs text-slate-400">
-              High-frequency (95-125 SPM) sprint cycle modeled across 4 discrete keyframe phases.
+              Chu kỳ nước rút tần số cao (95-125 nhịp/phút) được mô hình hóa qua 4 pha chuyển động then chốt.
             </p>
           </div>
 
           <div className="flex items-center gap-3 bg-slate-950 px-3 py-1.5 rounded-lg border border-slate-800">
-            <span className="text-xs font-mono text-slate-400">Simulation Cadence:</span>
+            <span className="text-xs font-mono text-slate-400">Nhịp mô phỏng:</span>
             <input
               type="range"
               min="60"
@@ -56,12 +56,12 @@ export const CrewKinematicsStudio: React.FC = () => {
               >
                 <div className="flex items-center justify-between text-xs font-mono mb-1">
                   <span className={isSelected ? 'text-sky-400 font-bold' : 'text-slate-400'}>
-                    Phase 0{phase.phaseIndex}
+                    Pha 0{phase.phaseIndex}
                   </span>
                   <span className="text-[10px] text-slate-400">{phase.timePercentage}</span>
                 </div>
-                <div className="font-bold text-xs text-white truncate">{phase.phaseName}</div>
-                <div className="text-[11px] text-slate-400 truncate">{phase.vietnameseName}</div>
+                <div className="font-bold text-xs text-white truncate">{phase.vietnameseName}</div>
+                <div className="text-[11px] text-slate-400 truncate">{phase.phaseName}</div>
               </button>
             );
           })}
@@ -72,9 +72,9 @@ export const CrewKinematicsStudio: React.FC = () => {
           <div className="md:col-span-2 space-y-2">
             <div className="flex items-center gap-2">
               <span className="px-2 py-0.5 rounded text-xs font-mono font-bold bg-sky-950 text-sky-400 border border-sky-800">
-                Phase 0{activePhaseData.phaseIndex}: {activePhaseData.phaseName}
+                Pha 0{activePhaseData.phaseIndex}: {activePhaseData.vietnameseName}
               </span>
-              <span className="text-xs text-slate-400">({activePhaseData.vietnameseName})</span>
+              <span className="text-xs text-slate-400">({activePhaseData.phaseName})</span>
             </div>
             <p className="text-xs text-slate-300 leading-relaxed">
               {activePhaseData.description}
@@ -82,21 +82,21 @@ export const CrewKinematicsStudio: React.FC = () => {
           </div>
 
           <div className="space-y-1.5 font-mono text-xs border-l border-slate-800/80 pl-4">
-            <div className="text-slate-400 text-[11px]">SKELETAL JOINT METRICS:</div>
+            <div className="text-slate-400 text-[11px]">THÔNG SỐ KHỚP XƯƠNG & GÓC ĐỘ:</div>
             <div className="flex justify-between text-slate-300">
-              <span>Paddle Angle:</span>
+              <span>Góc dầm bơi (Paddle Angle):</span>
               <span className="font-bold text-sky-400">{activePhaseData.paddleAngleDeg}°</span>
             </div>
             <div className="flex justify-between text-slate-300">
-              <span>Blade Immersion Depth:</span>
+              <span>Độ sâu ngập dầm:</span>
               <span className="font-bold text-emerald-400">{activePhaseData.bladeDepthM} m</span>
             </div>
             <div className="flex justify-between text-slate-300">
-              <span>Torso Flexion:</span>
+              <span>Góc gập thân người (Torso):</span>
               <span className="font-bold text-amber-400">{activePhaseData.torsoAngleDeg}°</span>
             </div>
             <div className="flex justify-between text-slate-300">
-              <span>Force Vector:</span>
+              <span>Véc-tơ lực đẩy:</span>
               <span className="font-bold text-purple-400">{activePhaseData.forceVector}</span>
             </div>
           </div>
@@ -109,11 +109,11 @@ export const CrewKinematicsStudio: React.FC = () => {
           <div className="flex items-center gap-2">
             <Users className="w-5 h-5 text-emerald-400" />
             <h3 className="text-lg font-bold text-white font-serif">
-              Championship Crew Structure (55-58 Athletes)
+              Cơ cấu đội hình vô địch (55-58 Vận động viên)
             </h3>
           </div>
           <span className="px-3 py-1 rounded-full bg-emerald-950 text-emerald-300 border border-emerald-800 text-xs font-mono font-bold">
-            CONFIRMED ROSTER
+            BIÊN CHẾ ĐÃ XÁC THỰC (CONFIRMED)
           </span>
         </div>
 
@@ -127,28 +127,28 @@ export const CrewKinematicsStudio: React.FC = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <h4 className="text-sm font-bold text-white font-serif">
-                    {crew.roleName}
+                    {crew.vietnameseName}
                   </h4>
-                  <p className="text-xs text-slate-400">{crew.vietnameseName}</p>
+                  <p className="text-xs text-slate-400">{crew.roleName}</p>
                 </div>
                 <span className="px-2.5 py-1 rounded-lg bg-sky-950 text-sky-300 border border-sky-800 font-mono font-bold text-xs">
-                  {crew.count} {crew.count > 1 ? 'athletes' : 'athlete'}
+                  {crew.count} vận động viên
                 </span>
               </div>
 
               <div className="grid grid-cols-2 gap-2 text-xs font-mono pt-1">
                 <div className="p-2 rounded bg-slate-900 border border-slate-800/80">
-                  <span className="text-slate-500 block text-[10px]">STATION SPAN</span>
+                  <span className="text-slate-500 block text-[10px]">VỊ TRÍ (TỪ MŨI)</span>
                   <span className="text-slate-200">{crew.positionRangeMeters}</span>
                 </div>
                 <div className="p-2 rounded bg-slate-900 border border-slate-800/80">
-                  <span className="text-slate-500 block text-[10px]">PADDLE TYPE</span>
+                  <span className="text-slate-500 block text-[10px]">LOẠI DẦM BƠI</span>
                   <span className="text-slate-200">{crew.paddleType} ({crew.paddleLengthM}m)</span>
                 </div>
               </div>
 
               <div className="text-xs text-slate-300 pt-1">
-                <strong className="text-slate-400 font-mono text-[11px] block mb-0.5">ANIMATION LOOP:</strong>
+                <strong className="text-slate-400 font-mono text-[11px] block mb-0.5">VÒNG LẶP CHUYỂN ĐỘNG (ANIMATION LOOP):</strong>
                 <p className="text-[11px] leading-relaxed text-slate-400">{crew.primaryAnimationLoop}</p>
               </div>
             </div>

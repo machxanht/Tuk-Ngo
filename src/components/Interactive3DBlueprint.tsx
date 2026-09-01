@@ -644,7 +644,7 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 rounded-full bg-emerald-500 animate-pulse" />
           <span className="text-xs font-mono font-bold tracking-wider text-emerald-400 uppercase">
-            3D ORTHOGRAPHIC CAD ENGINE
+            HỆ THỐNG DỰNG HÌNH 3D & CAD
           </span>
           <span className="text-xs font-mono text-slate-400">
             [NGO_ST_TUMNUP2_2024_MASTER]
@@ -662,7 +662,7 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
-            3D Orbit
+            Xoay tự do (3D Orbit)
           </button>
           <button
             id="btn-view-top-plan"
@@ -673,7 +673,7 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
-            Top (Plan)
+            Nhìn từ trên (Top Plan)
           </button>
           <button
             id="btn-view-side-elev"
@@ -684,7 +684,7 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
-            Side (Sheer)
+            Chiếu cạnh (Side Sheer)
           </button>
           <button
             id="btn-view-bow-front"
@@ -695,7 +695,7 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
-            Bow (Prow)
+            Chính diện mũi (Bow Front)
           </button>
           <button
             id="btn-view-midship-section"
@@ -706,7 +706,7 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
-            Section Cut
+            Mặt cắt trạm (Section Cut)
           </button>
         </div>
 
@@ -721,7 +721,7 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
-            Realistic PBR
+            Hiển thị vật liệu PBR
           </button>
           <button
             id="btn-render-cad"
@@ -732,7 +732,7 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
-            CAD Wireframe
+            Khung dây CAD
           </button>
           <button
             id="btn-render-kem"
@@ -743,7 +743,7 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
-            Kềm Spring Truss
+            Kết cấu kềm
           </button>
         </div>
       </div>
@@ -757,19 +757,19 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
         <div className="absolute top-3 left-3 pointer-events-none flex flex-col gap-1.5 font-mono text-[11px] text-slate-300 bg-slate-950/80 p-2.5 rounded-lg border border-slate-800 backdrop-blur">
           <div className="flex items-center gap-2 text-sky-400 font-bold border-b border-slate-800 pb-1">
             <Crosshair className="w-3.5 h-3.5" />
-            <span>REAL METRIC SPECIFICATIONS</span>
+            <span>THÔNG SỐ HÌNH HỌC THỰC TẾ</span>
           </div>
-          <div>LOA (Length Overall): <span className="text-white font-bold">30.20 m</span></div>
-          <div>Max Beam (Midship): <span className="text-white font-bold">1.16 m</span></div>
-          <div>Depth (Keel-Gunwale): <span className="text-white font-bold">0.48 m</span></div>
-          <div>Prow Rise / Stern Rise: <span className="text-white font-bold">+1.38m / +1.52m</span></div>
-          <div>Displacement: <span className="text-emerald-400 font-bold">5,100 kg (55 Crew)</span></div>
-          <div className="text-amber-400">Station Slice: St.{Math.round((stationSliceMeters / BOAT_LENGTH) * 32)} ({stationSliceMeters.toFixed(1)}m) | Beam: {currentBeam}m</div>
+          <div>Chiều dài tổng thể (LOA): <span className="text-white font-bold">30.20 m</span></div>
+          <div>Chiều rộng lớn nhất (Beam): <span className="text-white font-bold">1.16 m</span></div>
+          <div>Chiều cao mạn giữa (Depth): <span className="text-white font-bold">0.48 m</span></div>
+          <div>Độ vút Mũi / Độ vút Đuôi: <span className="text-white font-bold">+1.38m / +1.52m</span></div>
+          <div>Lượng choán nước: <span className="text-emerald-400 font-bold">5.100 kg (55 VĐV)</span></div>
+          <div className="text-amber-400">Vị trí cắt trạm: Trạm {Math.round((stationSliceMeters / BOAT_LENGTH) * 32)} ({stationSliceMeters.toFixed(1)}m) | Chiều rộng: {currentBeam}m</div>
         </div>
 
         {/* Floating View Angle Prompt */}
         <div className="absolute bottom-3 right-3 pointer-events-none font-mono text-[10px] text-slate-400 bg-slate-900/90 px-3 py-1.5 rounded-md border border-slate-800">
-          Left Drag: Orbit | Scroll: Zoom | Mode: {viewAngle}
+          Kéo chuột trái: Xoay | Cuộn chuột: Thu phóng | Góc nhìn: {viewAngle}
         </div>
       </div>
 
@@ -783,11 +783,11 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-medium transition"
           >
             {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
-            <span>{isPlaying ? 'Pause Kinematics' : 'Play Kinematics'}</span>
+            <span>{isPlaying ? 'Tạm dừng chuyển động' : 'Phát chuyển động (Kinematics)'}</span>
           </button>
 
           <div className="flex items-center gap-2">
-            <span className="text-slate-400 font-mono">Stroke Rate:</span>
+            <span className="text-slate-400 font-mono">Nhịp chèo (SPM):</span>
             <input
               id="slider-cadence-spm"
               type="range"
@@ -806,7 +806,7 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
 
         {/* Station Cross-Section Scrub Slider */}
         <div className="flex items-center gap-2">
-          <span className="text-slate-400 font-mono">Station Cut (0-30m):</span>
+          <span className="text-slate-400 font-mono">Vị trí cắt (0-30m):</span>
           <input
             id="slider-station-slice"
             type="range"
@@ -831,7 +831,7 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
               onChange={(e) => setShowWater(e.target.checked)}
               className="rounded accent-sky-500"
             />
-            <span>Maspero River Water</span>
+            <span>Mặt nước sông Maspéro</span>
           </label>
 
           <label className="flex items-center gap-1.5 cursor-pointer hover:text-white">
@@ -841,7 +841,7 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
               onChange={(e) => setShowCrew(e.target.checked)}
               className="rounded accent-sky-500"
             />
-            <span>55 Crew Mesh</span>
+            <span>Mô hình 55 vận động viên</span>
           </label>
         </div>
       </div>

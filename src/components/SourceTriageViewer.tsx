@@ -8,11 +8,11 @@ export const SourceTriageViewer: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
 
   const categories = [
-    { id: 'ALL', label: 'All 13 Sources', count: SOURCES_CATALOG.length, icon: Database },
-    { id: 'A_TUMNUP2_2024', label: 'Group A: Tum Núp 2 (2024)', count: SOURCES_CATALOG.filter(s => s.category === 'A_TUMNUP2_2024').length, icon: ShieldCheck, color: 'text-sky-400' },
-    { id: 'B_OTHER_NGO_BOATS', label: 'Group B: Other Ngo Boats', count: SOURCES_CATALOG.filter(s => s.category === 'B_OTHER_NGO_BOATS').length, icon: Anchor, color: 'text-amber-400' },
-    { id: 'C_HISTORICAL_MUSEUM', label: 'Group C: Historical / Museum', count: SOURCES_CATALOG.filter(s => s.category === 'C_HISTORICAL_MUSEUM').length, icon: Database, color: 'text-emerald-400' },
-    { id: 'D_RACE_ENVIRONMENT', label: 'Group D: Race Environment', count: SOURCES_CATALOG.filter(s => s.category === 'D_RACE_ENVIRONMENT').length, icon: MapPin, color: 'text-purple-400' },
+    { id: 'ALL', label: 'Tất cả 13 nguồn tài liệu', count: SOURCES_CATALOG.length, icon: Database },
+    { id: 'A_TUMNUP2_2024', label: 'Nhóm A: Trực tiếp Tum Núp 2 (2024)', count: SOURCES_CATALOG.filter(s => s.category === 'A_TUMNUP2_2024').length, icon: ShieldCheck, color: 'text-sky-400' },
+    { id: 'B_OTHER_NGO_BOATS', label: 'Nhóm B: Các ghe Ngo khác (Đối chiếu)', count: SOURCES_CATALOG.filter(s => s.category === 'B_OTHER_NGO_BOATS').length, icon: Anchor, color: 'text-amber-400' },
+    { id: 'C_HISTORICAL_MUSEUM', label: 'Nhóm C: Lịch sử & Mẫu vật bảo tàng', count: SOURCES_CATALOG.filter(s => s.category === 'C_HISTORICAL_MUSEUM').length, icon: Database, color: 'text-emerald-400' },
+    { id: 'D_RACE_ENVIRONMENT', label: 'Nhóm D: Môi trường đường đua Maspéro', count: SOURCES_CATALOG.filter(s => s.category === 'D_RACE_ENVIRONMENT').length, icon: MapPin, color: 'text-purple-400' },
   ];
 
   const filteredSources = SOURCES_CATALOG.filter((src) => {
@@ -58,7 +58,7 @@ export const SourceTriageViewer: React.FC = () => {
           <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
           <input
             type="text"
-            placeholder="Search verified evidence..."
+            placeholder="Tìm kiếm bằng chứng xác thực..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full md:w-64 pl-9 pr-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-sky-500"
@@ -77,7 +77,7 @@ export const SourceTriageViewer: React.FC = () => {
             <div>
               <div className="flex items-center justify-between gap-2 mb-2">
                 <span className="px-2 py-0.5 rounded text-[11px] font-mono font-bold bg-sky-950 text-sky-400 border border-sky-800">
-                  Source #{source.id}
+                  Tài liệu nguồn #{source.id}
                 </span>
                 <span className="text-[11px] font-mono text-slate-400">
                   {source.categoryLabel}
@@ -88,18 +88,18 @@ export const SourceTriageViewer: React.FC = () => {
                 {source.title}
               </h4>
               <p className="text-xs text-slate-400 mb-2">
-                <strong className="text-slate-300">Subject:</strong> {source.primarySubject}
+                <strong className="text-slate-300">Chủ thể nghiên cứu:</strong> {source.primarySubject}
               </p>
 
               <div className="p-2.5 rounded-lg bg-slate-950/70 border border-slate-800/80 text-xs text-slate-300 mb-3">
                 <p className="leading-relaxed text-[11px]">
-                  <strong className="text-sky-400 font-mono">Evidence Verification:</strong> {source.evidenceNotes}
+                  <strong className="text-sky-400 font-mono">Xác minh bằng chứng:</strong> {source.evidenceNotes}
                 </p>
               </div>
 
               <div>
                 <div className="text-[10px] font-mono text-slate-400 uppercase tracking-wider mb-1.5">
-                  Verified Physical Features:
+                  Các đặc điểm vật lý đã xác thực:
                 </div>
                 <div className="flex flex-wrap gap-1.5">
                   {source.verifiedFeatures.map((feat, idx) => (

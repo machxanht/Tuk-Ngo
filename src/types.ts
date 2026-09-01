@@ -59,9 +59,11 @@ export interface CrewMemberSpec {
 
 export interface ColorPaletteItem {
   name: string;
+  vietnameseName?: string;
   hex: string;
   rgb: string;
   role: string;
+  vietnameseRole?: string;
   applicationArea: string;
   confidence: ConfidenceLevel;
 }

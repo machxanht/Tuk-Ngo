@@ -12,15 +12,15 @@ export const EnvironmentSpecsViewer: React.FC = () => {
             <MapPin className="w-5 h-5 text-purple-400" />
             <div>
               <h3 className="text-lg font-bold text-white font-serif">
-                Maspero River Course Blueprint (Sóc Trăng City)
+                Sơ đồ kỹ thuật đường đua sông Maspéro (TP. Sóc Trăng)
               </h3>
               <p className="text-xs text-slate-400">
-                Official 1,200-meter straight river arena between Cầu C2 and Cầu Quay.
+                Đoạn đua thẳng 1.200m chính thức từ cầu C2 đến khán đài trung tâm và cầu Quay.
               </p>
             </div>
           </div>
           <span className="px-3 py-1 rounded-full bg-purple-950 text-purple-300 border border-purple-800 text-xs font-mono font-bold">
-            CONFIRMED TRACK BLUEPRINT
+            SƠ ĐỒ ĐƯỜNG ĐUA ĐÃ XÁC THỰC
           </span>
         </div>
 
@@ -28,11 +28,11 @@ export const EnvironmentSpecsViewer: React.FC = () => {
         <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-3 font-mono text-xs">
           <div className="flex items-center justify-between text-[11px] text-slate-400 border-b border-slate-800 pb-2">
             <span className="flex items-center gap-1.5 text-emerald-400">
-              <Flag className="w-3.5 h-3.5" /> 0m (START PONTOON - CẦU C2)
+              <Flag className="w-3.5 h-3.5" /> 0m (PHAO XUẤT PHÁT - CẦU C2)
             </span>
-            <span className="text-amber-400">800m (SPRINT BURST ZONE)</span>
+            <span className="text-amber-400">800m (KHU VỰC TĂNG TỐC BỨT PHÁ)</span>
             <span className="flex items-center gap-1.5 text-rose-400">
-              <Camera className="w-3.5 h-3.5" /> 1,200m (FINISH TOWER - KHÁN ĐÀI)
+              <Camera className="w-3.5 h-3.5" /> 1.200m (THÁP ĐÍCH - KHÁN ĐÀI)
             </span>
           </div>
 
@@ -40,23 +40,23 @@ export const EnvironmentSpecsViewer: React.FC = () => {
           <div className="relative h-20 w-full rounded-lg bg-gradient-to-r from-amber-950/40 via-amber-900/30 to-amber-950/40 border border-amber-800/40 flex flex-col justify-between p-2 overflow-hidden">
             {/* Bank Revetment Lines */}
             <div className="w-full flex items-center justify-between text-[9px] text-slate-500">
-              <span>◄ NORTH BANK (CHÂU THÀNH SIDE - STEPPED PROMENADE)</span>
-              <span>100K+ SPECTATORS ►</span>
+              <span>◄ BỜ BẮC (PHÍA HUYỆN CHÂU THÀNH - BỜ KÈ BẬC THANG)</span>
+              <span>HƠN 100.000 KHÁN GIẢ ►</span>
             </div>
 
             {/* Lane Separator Buoy String */}
             <div className="w-full border-b-2 border-dashed border-sky-400/40 flex items-center justify-around text-[10px]">
               <span className="px-2 py-0.5 rounded bg-sky-950/80 text-sky-300 border border-sky-800">
-                LANE 1 (Khán đài side)
+                LÀN 1 (Phía Khán đài chính)
               </span>
               <span className="px-2 py-0.5 rounded bg-purple-950/80 text-purple-300 border border-purple-800">
-                LANE 2 (Opposite bank)
+                LÀN 2 (Phía bờ đối diện)
               </span>
             </div>
 
             <div className="w-full flex items-center justify-between text-[9px] text-slate-500">
-              <span>◄ SOUTH BANK (CENTRAL VIP GRANDSTAND & MEDIA TOWERS)</span>
-              <span>FINISH REPLAY ZONE ►</span>
+              <span>◄ BỜ NAM (KHÁN ĐÀI VIP TRUNG TÂM & THÁP TRUYỀN HÌNH)</span>
+              <span>KHU VỰC CÁN ĐÍCH & QUAY CHẬM ►</span>
             </div>
           </div>
         </div>
@@ -64,24 +64,24 @@ export const EnvironmentSpecsViewer: React.FC = () => {
         {/* Environmental Parameter Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
           <div className="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1">
-            <span className="text-slate-400 font-mono text-[11px] block">RIVER DIMENSIONS</span>
-            <div className="text-white font-bold font-mono">Length: 1,200m / 1,000m</div>
-            <div className="text-slate-300 font-mono">Width: 65m - 85m</div>
-            <div className="text-slate-300 font-mono">Depth: 2.5m - 4.5m tidal</div>
+            <span className="text-slate-400 font-mono text-[11px] block">KÍCH THƯỚC ĐƯỜNG THỦY</span>
+            <div className="text-white font-bold font-mono">Chiều dài: 1.200m (Nam) / 1.000m (Nữ)</div>
+            <div className="text-slate-300 font-mono">Chiều rộng lòng sông: 65m - 85m</div>
+            <div className="text-slate-300 font-mono">Độ sâu: 2.5m - 4.5m (thay đổi theo triều)</div>
           </div>
 
           <div className="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1">
-            <span className="text-slate-400 font-mono text-[11px] block">WATER FLUID PROPERTIES</span>
-            <div className="text-amber-400 font-bold font-mono">Turbid Alluvial Mud Brown</div>
-            <div className="text-slate-300 font-mono">Density: 1,018 kg/m³</div>
-            <div className="text-slate-300 font-mono">Color: #85583E (High silt)</div>
+            <span className="text-slate-400 font-mono text-[11px] block">TÍNH CHẤT DÒNG NƯỚC</span>
+            <div className="text-amber-400 font-bold font-mono">Nước phù sa đục màu nâu đỏ</div>
+            <div className="text-slate-300 font-mono">Khối lượng riêng: 1.018 kg/m³</div>
+            <div className="text-slate-300 font-mono">Màu nước: #85583E (Nhiều bùn cát)</div>
           </div>
 
           <div className="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1">
-            <span className="text-slate-400 font-mono text-[11px] block">SPECTATOR DENSITY</span>
-            <div className="text-purple-400 font-bold font-mono">100,000 - 150,000 live</div>
-            <div className="text-slate-300 font-mono">Chhai-yam Drums & Gongs</div>
-            <div className="text-slate-300 font-mono">Continuous roar + vuvuzelas</div>
+            <span className="text-slate-400 font-mono text-[11px] block">KHÔNG KHÍ & KHÁN GIẢ</span>
+            <div className="text-purple-400 font-bold font-mono">100.000 - 150.000 người trực tiếp</div>
+            <div className="text-slate-300 font-mono">Trống Chhay-dăm & Cồng chiêng</div>
+            <div className="text-slate-300 font-mono">Tiếng hò reo vang dội dọc 2 bờ kè</div>
           </div>
         </div>
       </div>
@@ -92,11 +92,11 @@ export const EnvironmentSpecsViewer: React.FC = () => {
           <div className="flex items-center gap-2">
             <Waves className="w-5 h-5 text-sky-400" />
             <h3 className="text-lg font-bold text-white font-serif">
-              Master Color Palette & Material Offsets
+              Hệ thống màu sắc & Vật liệu nhận diện
             </h3>
           </div>
           <span className="px-3 py-1 rounded-full bg-sky-950 text-sky-300 border border-sky-800 text-xs font-mono font-bold">
-            CONFIRMED PALETTE
+            HỆ MÀU ĐÃ XÁC THỰC
           </span>
         </div>
 
@@ -111,9 +111,9 @@ export const EnvironmentSpecsViewer: React.FC = () => {
                 style={{ backgroundColor: color.hex }}
               />
               <div className="min-w-0">
-                <div className="text-xs font-bold text-white truncate">{color.name}</div>
+                <div className="text-xs font-bold text-white truncate">{color.vietnameseName || color.name}</div>
                 <div className="text-[10px] font-mono text-sky-400">{color.hex} • {color.rgb}</div>
-                <div className="text-[10px] text-slate-400 truncate">{color.role}</div>
+                <div className="text-[10px] text-slate-400 truncate">{color.vietnameseRole || color.role}</div>
               </div>
             </div>
           ))}

@@ -63,14 +63,14 @@ export default function App() {
             <div>
               <div className="flex items-center gap-2">
                 <h1 className="text-base font-bold text-white tracking-wide font-serif">
-                  NGO BOAT RACING — SÓC TRĂNG
+                  ĐUA GHE NGO SÓC TRĂNG
                 </h1>
                 <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-amber-950 text-amber-300 border border-amber-800/60">
-                  2024 CHAMPION
+                  VÔ ĐỊCH 2024
                 </span>
               </div>
               <p className="text-xs text-slate-400 font-mono">
-                Asset: <strong className="text-sky-400">NGO_ST_TUMNUP2_2024_MASTER</strong> • Zero-Invention Reference Dossier
+                Mẫu ghe (Asset): <strong className="text-sky-400">NGO_ST_TUMNUP2_2024_MASTER</strong> • Hồ sơ tham chiếu kỹ thuật
               </p>
             </div>
           </div>
@@ -82,7 +82,7 @@ export default function App() {
               className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-xs font-mono font-bold shadow-lg shadow-sky-600/20 transition"
             >
               <Download className="w-3.5 h-3.5" />
-              <span>Export Technical Dossier</span>
+              <span>Xuất hồ sơ kỹ thuật (Export Dossier)</span>
             </button>
           </div>
         </div>
@@ -93,33 +93,33 @@ export default function App() {
         {/* Metric Quick-Glance Banner */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
           <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 shadow">
-            <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Target Vessel</span>
-            <div className="text-sm font-bold text-white truncate">Tum Núp 2 (Men's)</div>
+            <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Ghe mục tiêu</span>
+            <div className="text-sm font-bold text-white truncate">Tum Núp 2 (Đội Nam)</div>
             <div className="text-[11px] text-sky-400 font-mono">Chùa Bô Tum Răng Sây</div>
           </div>
 
           <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 shadow">
-            <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Dimensions (LOA x Beam)</span>
+            <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Kích thước (Dài x Rộng)</span>
             <div className="text-sm font-bold text-emerald-400 font-mono">30.20m x 1.16m</div>
-            <div className="text-[11px] text-slate-400 font-mono">Aspect Ratio ~26:1</div>
+            <div className="text-[11px] text-slate-400 font-mono">Tỷ lệ khung thân ~26:1</div>
           </div>
 
           <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 shadow">
-            <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Crew Capacity</span>
-            <div className="text-sm font-bold text-sky-400 font-mono">55 - 58 Athletes</div>
-            <div className="text-[11px] text-slate-400 font-mono">Displacement 5,100 kg</div>
+            <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Biên chế vận động viên</span>
+            <div className="text-sm font-bold text-sky-400 font-mono">55 - 58 Vận động viên</div>
+            <div className="text-[11px] text-slate-400 font-mono">Lượng choán nước 5.100 kg</div>
           </div>
 
           <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 shadow">
-            <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Sprint Cadence</span>
+            <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Nhịp chèo nước rút</span>
             <div className="text-sm font-bold text-amber-400 font-mono">95 - 125 SPM</div>
-            <div className="text-[11px] text-slate-400 font-mono">1,200m Maspero Track</div>
+            <div className="text-[11px] text-slate-400 font-mono">Đường đua 1.200m Maspéro</div>
           </div>
 
           <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 shadow col-span-2 sm:col-span-1">
-            <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Structural Tensioner</span>
-            <div className="text-sm font-bold text-purple-400 font-mono">Cây Kềm Spring Truss</div>
-            <div className="text-[11px] text-emerald-400 font-mono">100% Confirmed</div>
+            <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Kết cấu chịu lực dọc</span>
+            <div className="text-sm font-bold text-purple-400 font-mono">Cây Kềm (Kềm Spring Truss)</div>
+            <div className="text-[11px] text-emerald-400 font-mono">100% Đã xác thực</div>
           </div>
         </div>
 
@@ -129,11 +129,11 @@ export default function App() {
             <div className="flex items-center gap-2">
               <Box className="w-5 h-5 text-sky-400" />
               <h2 className="text-base font-bold text-white font-serif tracking-wide">
-                Interactive 3D Hull Blueprint & Kinematics Engine
+                Bản vẽ 3D tương tác & Mô phỏng chuyển động (Kinematics)
               </h2>
             </div>
             <span className="text-xs font-mono text-slate-400">
-              Blender & Unreal Engine 5 Reconstruction Target
+              Dữ liệu chuẩn hóa phục vụ dựng 3D Blender & Unreal Engine 5
             </span>
           </div>
 
@@ -153,7 +153,7 @@ export default function App() {
               }`}
             >
               <Layers className="w-3.5 h-3.5" />
-              <span>All 25 Technical Sections</span>
+              <span>Tất cả 25 Hạng mục Kỹ thuật</span>
               <span className="px-1.5 py-0.2 rounded-full bg-slate-950 text-[10px] text-sky-300">
                 25
               </span>
@@ -169,7 +169,7 @@ export default function App() {
               }`}
             >
               <FileText className="w-3.5 h-3.5" />
-              <span>Source Triage Matrix</span>
+              <span>Ma trận nguồn & Bằng chứng</span>
               <span className="px-1.5 py-0.2 rounded-full bg-slate-950 text-[10px] text-sky-300">
                 13
               </span>
@@ -185,7 +185,7 @@ export default function App() {
               }`}
             >
               <Users className="w-3.5 h-3.5" />
-              <span>Crew Matrix & Kinematics</span>
+              <span>Sơ đồ VĐV & Kỹ động học (Kinematics)</span>
               <span className="px-1.5 py-0.2 rounded-full bg-slate-950 text-[10px] text-emerald-300">
                 55
               </span>
@@ -201,7 +201,7 @@ export default function App() {
               }`}
             >
               <MapPin className="w-3.5 h-3.5" />
-              <span>Maspero Race Track & Environment</span>
+              <span>Đường đua Maspéro & Môi trường</span>
             </button>
           </div>
 
@@ -212,7 +212,7 @@ export default function App() {
               <input
                 id="input-search-sections"
                 type="text"
-                placeholder="Search 25 technical specs..."
+                placeholder="Tìm kiếm 25 thông số kỹ thuật..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-64 pl-9 pr-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-sky-500"
@@ -228,7 +228,7 @@ export default function App() {
             <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-xl bg-slate-900 border border-slate-800">
               <div className="flex items-center gap-2 text-xs text-slate-400 font-mono">
                 <Filter className="w-3.5 h-3.5 text-sky-400" />
-                <span>Filter by Evidence Confidence:</span>
+                <span>Lọc theo độ tin cậy của bằng chứng:</span>
               </div>
 
               <div className="flex flex-wrap items-center gap-2">
@@ -241,7 +241,7 @@ export default function App() {
                       : 'bg-slate-950 text-slate-400 border border-slate-800 hover:text-slate-200'
                   }`}
                 >
-                  All (25)
+                  Tất cả (25)
                 </button>
 
                 <button
@@ -254,7 +254,7 @@ export default function App() {
                   }`}
                 >
                   <CheckCircle2 className="w-3 h-3 text-emerald-400" />
-                  <span>CONFIRMED ({confidenceCounts.CONFIRMED})</span>
+                  <span>XÁC THỰC ({confidenceCounts.CONFIRMED})</span>
                 </button>
 
                 <button
@@ -267,7 +267,7 @@ export default function App() {
                   }`}
                 >
                   <AlertTriangle className="w-3 h-3 text-amber-400" />
-                  <span>APPROXIMATE ({confidenceCounts.APPROXIMATE})</span>
+                  <span>ƯỚC TÍNH ({confidenceCounts.APPROXIMATE})</span>
                 </button>
 
                 <button
@@ -280,7 +280,7 @@ export default function App() {
                   }`}
                 >
                   <HelpCircle className="w-3 h-3 text-sky-400" />
-                  <span>INFERRED ({confidenceCounts.INFERRED})</span>
+                  <span>SUY LUẬN ({confidenceCounts.INFERRED})</span>
                 </button>
 
                 <button
@@ -293,7 +293,7 @@ export default function App() {
                   }`}
                 >
                   <ShieldAlert className="w-3 h-3 text-rose-400" />
-                  <span>UNKNOWN ({confidenceCounts.UNKNOWN})</span>
+                  <span>CHƯA XÁC ĐỊNH ({confidenceCounts.UNKNOWN})</span>
                 </button>
               </div>
             </div>
@@ -320,10 +320,10 @@ export default function App() {
       {/* Footer */}
       <footer className="border-t border-slate-800 bg-slate-950 py-8 text-center text-xs text-slate-500 space-y-2">
         <p className="font-mono">
-          NGO_ST_TUMNUP2_2024_MASTER • Khmer Ngo Boat Racing 3D Technical Blueprint Dossier
+          NGO_ST_TUMNUP2_2024_MASTER • Hồ Sơ Kỹ Thuật 3D Ghe Ngo Khmer Sóc Trăng
         </p>
         <p className="text-[11px] text-slate-600 max-w-2xl mx-auto px-4">
-          Strict visual research compiled from official government portals, Sóc Trăng media archives, Vietnam Cultural Heritage Department records, and Vietnam Museum of Ethnology physical specimens.
+          Nghiên cứu thị giác nghiêm ngặt được tổng hợp từ Cổng thông tin điện tử tỉnh Sóc Trăng, Báo Sóc Trăng, Cục Di sản Văn hóa Việt Nam và Mẫu vật Bảo tàng Dân tộc học Việt Nam.
         </p>
       </footer>
 

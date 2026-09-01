@@ -240,10 +240,10 @@ generate_tumnup2_boat()
             </div>
             <div>
               <h3 className="text-base font-bold text-white font-serif">
-                Export Technical Reference Dossier
+                Xuất hồ sơ kỹ thuật tham chiếu (Export Dossier)
               </h3>
               <p className="text-xs text-slate-400 font-mono">
-                Asset: NGO_ST_TUMNUP2_2024_MASTER
+                Mẫu ghe (Asset): NGO_ST_TUMNUP2_2024_MASTER
               </p>
             </div>
           </div>
@@ -268,7 +268,7 @@ generate_tumnup2_boat()
               }`}
             >
               <FileText className="w-3.5 h-3.5" />
-              <span>Markdown Dossier</span>
+              <span>Hồ sơ Markdown</span>
             </button>
 
             <button
@@ -280,7 +280,7 @@ generate_tumnup2_boat()
               }`}
             >
               <Database className="w-3.5 h-3.5" />
-              <span>Full JSON Spec</span>
+              <span>Dữ liệu JSON toàn diện</span>
             </button>
 
             <button
@@ -292,7 +292,7 @@ generate_tumnup2_boat()
               }`}
             >
               <FileCode className="w-3.5 h-3.5" />
-              <span>Blender Python Script</span>
+              <span>Mã nguồn Python (Blender)</span>
             </button>
 
             <button
@@ -304,7 +304,7 @@ generate_tumnup2_boat()
               }`}
             >
               <Code2 className="w-3.5 h-3.5" />
-              <span>UE5 Crew Sockets (CSV)</span>
+              <span>Tọa độ vị trí VĐV UE5 (CSV)</span>
             </button>
           </div>
 
@@ -314,7 +314,7 @@ generate_tumnup2_boat()
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-mono text-xs transition"
             >
               {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-              <span>{copied ? 'Copied to Clipboard' : 'Copy'}</span>
+              <span>{copied ? 'Đã sao chép' : 'Sao chép (Copy)'}</span>
             </button>
 
             <button
@@ -322,7 +322,7 @@ generate_tumnup2_boat()
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-xs font-bold transition"
             >
               <Download className="w-3.5 h-3.5" />
-              <span>Download File</span>
+              <span>Tải xuống tệp tin</span>
             </button>
           </div>
         </div>
