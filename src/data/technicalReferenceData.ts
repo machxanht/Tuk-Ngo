@@ -366,19 +366,19 @@ export const TECHNICAL_SECTIONS: TechnicalSection[] = [
     sectionNumber: 2,
     title: "Exact Visible Hull Shape",
     vietnameseTitle: "Hình dáng hình học thân ghe",
-    confidence: "CONFIRMED",
-    summary: "An ultra-slender, highly elongated racing pirogue with high aspect ratio (~26:1 length-to-beam), shallow draft, and flared topsides.",
+    confidence: "APPROXIMATE",
+    summary: "An ultra-slender, highly elongated racing pirogue with high aspect ratio (~26:1 length-to-beam), shallow draft, and flared topsides. The 30.20m x 1.16m dimensions are standardized reference metrics within the 29.5m-30.5m tournament regulation range.",
     specifications: [
-      { label: "Total Length (LOA)", value: "30.0m - 30.5m (Standard: 30.20m)", confidence: "CONFIRMED" },
-      { label: "Maximum Beam (Width)", value: "1.14m - 1.18m at station 15 (Midship)", confidence: "CONFIRMED" },
-      { label: "Bow Width", value: "0.32m tapering to knife-edge prow (0.08m)", confidence: "CONFIRMED" },
-      { label: "Stern Width", value: "0.45m tapering to raised tail fin (0.12m)", confidence: "CONFIRMED" },
-      { label: "Hull Depth (Keel to Gunwale)", value: "0.46m midship, rising to 1.35m at prow tip, 1.48m at stern tip", confidence: "CONFIRMED" },
+      { label: "Total Length (LOA)", value: "29.5m - 30.5m (Mô hình hóa tham chiếu: 30.20m)", confidence: "APPROXIMATE" },
+      { label: "Maximum Beam (Width)", value: "1.10m - 1.20m (Mô hình hóa tham chiếu: 1.16m)", confidence: "APPROXIMATE" },
+      { label: "Bow Width", value: "0.32m tapering to knife-edge prow (0.08m)", confidence: "APPROXIMATE" },
+      { label: "Stern Width", value: "0.45m tapering to raised tail fin (0.12m)", confidence: "APPROXIMATE" },
+      { label: "Hull Depth (Keel to Gunwale)", value: "0.45m - 0.50m (Mô hình hóa tham chiếu: 0.48m)", confidence: "APPROXIMATE" },
       { label: "Cross-Section Profile", value: "Flattened rounded U-shape bottom transitioning to flared outward topsides", confidence: "CONFIRMED" },
-      { label: "Freeboard at Max Load", value: "0.18m - 0.24m clearance above water level under 55-crew displacement", confidence: "APPROXIMATE" }
+      { label: "Freeboard at Max Load", value: "0.18m - 0.24m clearance above water level under 55-crew displacement (~5.100 kg)", confidence: "APPROXIMATE" }
     ],
     geometryDetails: {
-      blenderDimensions: "Bézier curve guide with 32 cross-section profiles lofted into quad-strip surface.",
+      blenderDimensions: "Overall reference length: 30.20m | Beam max: 1.16m | Mid depth: 0.48m (CAD Mesh Grid 48 Stations)",
       meshTopology: "32,400 quads for LOD0 hull master. Flared topsides with 12 degree tumblehome roll at gunwale.",
       materialShader: "PBR Wood-Composite multi-layer shader with normal map for plank seam joints.",
       physicsSimulation: "Hydrodynamic center of mass placed at Z = +0.12m above inner keel floor."
@@ -402,12 +402,12 @@ export const TECHNICAL_SECTIONS: TechnicalSection[] = [
     sectionNumber: 3,
     title: "Bow Geometry (Mũi Ghe)",
     vietnameseTitle: "Hình học cấu trúc mũi ghe",
-    confidence: "CONFIRMED",
+    confidence: "APPROXIMATE",
     summary: "Elevated, recurved prow rising gracefully like a cobra hood / dragon snout to deflect oncoming river chop.",
     specifications: [
-      { label: "Prow Elevation Angle", value: "22° - 28° upward rake from forward waterline", confidence: "CONFIRMED" },
-      { label: "Prow Tip Height (Above Keel)", value: "1.32m - 1.42m", confidence: "CONFIRMED" },
-      { label: "Prow Tapering Length", value: "First 3.5 meters of hull taper from 0.08m tip to 0.85m beam", confidence: "CONFIRMED" },
+      { label: "Prow Elevation Angle", value: "22° - 28° upward rake from forward waterline", confidence: "APPROXIMATE" },
+      { label: "Prow Tip Height (Above Keel)", value: "1.32m - 1.42m (Mô hình hóa tham chiếu: +1.38m)", confidence: "APPROXIMATE" },
+      { label: "Prow Tapering Length", value: "First 3.5 meters of hull taper from 0.08m tip to 0.85m beam", confidence: "APPROXIMATE" },
       { label: "Bow Platform / Stance Area", value: "Reinforced narrow timber pad for Bow Conductor (0.28m wide x 1.2m long)", confidence: "CONFIRMED" },
       { label: "Sacred Eye Placement", value: "Port and Starboard symmetrical eyes mounted 1.10m aft of prow tip", confidence: "CONFIRMED" }
     ],
@@ -435,13 +435,13 @@ export const TECHNICAL_SECTIONS: TechnicalSection[] = [
     sectionNumber: 4,
     title: "Stern Geometry (Đuôi Ghe)",
     vietnameseTitle: "Hình học cấu trúc đuôi ghe",
-    confidence: "CONFIRMED",
+    confidence: "APPROXIMATE",
     summary: "Sharply upward-sweeping fishtail / naga tail fin elevated higher than the prow, providing clearance for long steering oars.",
     specifications: [
-      { label: "Stern Rake Angle", value: "30° - 36° upward flare from aft waterline", confidence: "CONFIRMED" },
-      { label: "Stern Tip Height", value: "1.45m - 1.58m above base keel line", confidence: "CONFIRMED" },
+      { label: "Stern Rake Angle", value: "30° - 36° upward flare from aft waterline", confidence: "APPROXIMATE" },
+      { label: "Stern Tip Height", value: "1.45m - 1.58m (Mô hình hóa tham chiếu: +1.52m)", confidence: "APPROXIMATE" },
       { label: "Steersmen Platform Span", value: "Rear 2.5 meters configured with 3 braced standing crossbeams", confidence: "CONFIRMED" },
-      { label: "Aft Taper Profile", value: "Tapers from 1.05m beam down to 0.14m at extreme tail terminal", confidence: "CONFIRMED" },
+      { label: "Aft Taper Profile", value: "Tapers from 1.05m beam down to 0.14m at extreme tail terminal", confidence: "APPROXIMATE" },
       { label: "Steering Oar Fulcrum Fulcra", value: "Smooth rounded gunwale edges reinforced with hardwood wear plates", confidence: "INFERRED" }
     ],
     geometryDetails: {
@@ -566,8 +566,8 @@ export const TECHNICAL_SECTIONS: TechnicalSection[] = [
     confidence: "CONFIRMED",
     summary: "The master internal spring-truss engineering element unique to Khmer Ngo boats: 1 to 2 heavy seasoned timber beams tensioned longitudinally along the keel with cable/rope rigging.",
     specifications: [
-      { label: "Primary Kềm Pole (Cây Kềm Suốt)", value: "Seasoned round Cajeput/Eucalyptus or Hopea trunk (Ø 0.18m - 0.22m, length ~22m - 26m)", confidence: "CONFIRMED" },
-      { label: "Secondary Aft Kềm (Cây Kềm Lái / Cần Câu)", value: "Shorter pre-cambered cantilever pole running from midship to stern (Ø 0.15m, length ~12m)", confidence: "CONFIRMED" },
+      { label: "Primary Kềm Pole (Cây Kềm Suốt)", value: "Seasoned round Cajeput/Eucalyptus or Hopea trunk (Ø 0.18m - 0.22m, length ~22m - 26m; CAD: 24.5m + 5 struts)", confidence: "APPROXIMATE" },
+      { label: "Secondary Aft Kềm (Cây Kềm Lái / Cần Câu)", value: "Shorter pre-cambered cantilever pole running from midship to stern (Ø 0.15m, length ~12m)", confidence: "APPROXIMATE" },
       { label: "Tension Rigging System", value: "High-tensile steel wire cables / nylon tension ropes and hardwood vertical spacers (Trụ Kềm)", confidence: "CONFIRMED" },
       { label: "Pre-stress Function", value: "Pre-loads the hull with positive arching tension; prevents the 30m hull from snapping in half", confidence: "CONFIRMED" },
       { label: "Kinetic Spring Action (Nhún Nhảy)", value: "Acts as a mechanical leaf spring, converting 50+ rowers' downward body bounce into forward surge", confidence: "CONFIRMED" }

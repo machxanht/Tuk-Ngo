@@ -95,31 +95,31 @@ export default function App() {
           <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 shadow">
             <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Ghe mục tiêu</span>
             <div className="text-sm font-bold text-white truncate">Tum Núp 2 (Đội Nam)</div>
-            <div className="text-[11px] text-sky-400 font-mono">Chùa Bô Tum Răng Sây</div>
+            <div className="text-[11px] text-sky-400 font-mono">Chùa Bô Tum Răng Sây [XÁC THỰC]</div>
           </div>
 
           <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 shadow">
-            <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Kích thước (Dài x Rộng)</span>
+            <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Kích thước tham chiếu (Dài x Rộng)</span>
             <div className="text-sm font-bold text-emerald-400 font-mono">30.20m x 1.16m</div>
-            <div className="text-[11px] text-slate-400 font-mono">Tỷ lệ khung thân ~26:1</div>
+            <div className="text-[11px] text-amber-400 font-mono">[XẤP XỈ / SUY LUẬN] Tỷ lệ ~26:1</div>
           </div>
 
           <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 shadow">
-            <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Biên chế vận động viên</span>
-            <div className="text-sm font-bold text-sky-400 font-mono">55 - 58 Vận động viên</div>
-            <div className="text-[11px] text-slate-400 font-mono">Lượng choán nước 5.100 kg</div>
+            <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Biên chế & Tải trọng</span>
+            <div className="text-sm font-bold text-sky-400 font-mono">55 - 58 VĐV <span className="text-[10px] text-emerald-400">[XÁC THỰC]</span></div>
+            <div className="text-[11px] text-amber-400 font-mono">Choán nước ~5.100 kg [SUY LUẬN]</div>
           </div>
 
           <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 shadow">
             <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Nhịp chèo nước rút</span>
             <div className="text-sm font-bold text-amber-400 font-mono">95 - 125 SPM</div>
-            <div className="text-[11px] text-slate-400 font-mono">Đường đua 1.200m Maspéro</div>
+            <div className="text-[11px] text-slate-400 font-mono">Đường đua 1.200m Maspéro [XÁC THỰC]</div>
           </div>
 
           <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 shadow col-span-2 sm:col-span-1">
             <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Kết cấu chịu lực dọc</span>
             <div className="text-sm font-bold text-purple-400 font-mono">Cây Kềm (Kềm Spring Truss)</div>
-            <div className="text-[11px] text-emerald-400 font-mono">100% Đã xác thực</div>
+            <div className="text-[11px] text-emerald-400 font-mono">Cây Kềm: ĐÃ XÁC NHẬN</div>
           </div>
         </div>
 
