@@ -1,14 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { TECHNICAL_SECTIONS, COLOR_PALETTE, CREW_ROSTER } from '../data/technicalReferenceData';
-import { Camera, Layers, Play, Pause, Eye, Maximize2, RotateCcw, Crosshair, Sparkles, Sliders, Shield, Anchor, Users } from 'lucide-react';
+import { Camera, Layers, Play, Pause, Eye, Maximize2, RotateCcw, Crosshair, Sparkles, Sliders, Shield, Anchor, Users, ChevronDown, ChevronUp, X, Info } from 'lucide-react';
 
 interface Interactive3DBlueprintProps {
   activeSectionId?: number;
   onSelectSection?: (sectionId: number) => void;
 }
 
-type ViewAngle = '3D_ORBIT' | 'TOP_PLAN' | 'SIDE_ELEVATION' | 'BOW_FRONT' | 'MIDSHIP_SECTION';
+type ViewAngle = '3D_ORBIT' | 'TOP' | 'SIDE' | 'FRONT' | 'REAR';
 type RenderMode = 'REALISTIC_PBR' | 'BLUEPRINT_CAD' | 'STRUCTURAL_KEM' | 'CREW_MATRIX';
 
 export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
@@ -25,6 +25,8 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
   const [showDimensions, setShowDimensions] = useState<boolean>(true);
   const [showCrew, setShowCrew] = useState<boolean>(true);
   const [showWake, setShowWake] = useState<boolean>(true);
+  const [isHudOpen, setIsHudOpen] = useState<boolean>(true);
+  const [isHudExpanded, setIsHudExpanded] = useState<boolean>(false);
 
   // References for Three.js instances
   const sceneRef = useRef<THREE.Scene | null>(null);
@@ -403,26 +405,26 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
 
       cameraRef.current.position.set(x, y, z);
       cameraRef.current.lookAt(target);
-    } else if (viewAngle === 'TOP_PLAN') {
+    } else if (viewAngle === 'TOP') {
       activeCameraTypeRef.current = 'ORTHO';
       orthoCameraRef.current.position.set(0, 36, 0);
       orthoCameraRef.current.lookAt(0, 0, 0);
-      orthoCameraRef.current.rotation.z = Math.PI / 2;
-    } else if (viewAngle === 'SIDE_ELEVATION') {
+      orthoCameraRef.current.up.set(0, 0, -1);
+    } else if (viewAngle === 'SIDE') {
       activeCameraTypeRef.current = 'ORTHO';
       orthoCameraRef.current.position.set(0, 0.45, 26);
       orthoCameraRef.current.lookAt(0, 0.45, 0);
-      orthoCameraRef.current.rotation.z = 0;
-    } else if (viewAngle === 'BOW_FRONT') {
+      orthoCameraRef.current.up.set(0, 1, 0);
+    } else if (viewAngle === 'FRONT') {
       activeCameraTypeRef.current = 'ORTHO';
-      orthoCameraRef.current.position.set(BOAT_LENGTH / 2 + 5.5, 0.7, 0);
-      orthoCameraRef.current.lookAt(0, 0.7, 0);
-      orthoCameraRef.current.rotation.z = 0;
-    } else if (viewAngle === 'MIDSHIP_SECTION') {
+      orthoCameraRef.current.position.set(BOAT_LENGTH / 2 + 7.5, 0.75, 0);
+      orthoCameraRef.current.lookAt(0, 0.75, 0);
+      orthoCameraRef.current.up.set(0, 1, 0);
+    } else if (viewAngle === 'REAR') {
       activeCameraTypeRef.current = 'ORTHO';
-      orthoCameraRef.current.position.set(stationSliceMeters - BOAT_LENGTH / 2 + 4.5, 0.35, 0);
-      orthoCameraRef.current.lookAt(stationSliceMeters - BOAT_LENGTH / 2, 0.35, 0);
-      orthoCameraRef.current.rotation.z = 0;
+      orthoCameraRef.current.position.set(-BOAT_LENGTH / 2 - 7.5, 0.85, 0);
+      orthoCameraRef.current.lookAt(0, 0.85, 0);
+      orthoCameraRef.current.up.set(0, 1, 0);
     }
   };
 
@@ -431,8 +433,8 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
     const isCAD = mode === 'BLUEPRINT_CAD';
     const isKemFocus = mode === 'STRUCTURAL_KEM';
 
-    const STATIONS = 48; // 48 longitudinal cross-sections
-    const SLICES = 20; // 20 lateral profile points
+    const STATIONS = 64; // 64 longitudinal cross-sections for smooth curved lofting
+    const SLICES = 24; // 24 lateral profile points
     const outerVerts: number[] = [];
     const outerIndices: number[] = [];
     const outerColors: number[] = [];
@@ -446,31 +448,36 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
       const u = i / STATIONS; // 0 = Stern, 1 = Bow
       const x = (u - 0.5) * BOAT_LENGTH; // Longitude
 
-      // 1. Max Beam Calculation (Tapered waterplane)
+      // 1. Max Beam Calculation (Authentic pirogue waterplane)
       let beamAtStation = BOAT_MAX_BEAM * Math.sin(u * Math.PI);
-      if (u > 0.88) {
-        // Bow sharpening towards prow tip
-        const t = (u - 0.88) / 0.12;
-        beamAtStation = (1 - t) * (BOAT_MAX_BEAM * 0.38) + t * 0.06;
-      } else if (u < 0.12) {
-        // Stern tapering to dragon fin blade
-        const t = u / 0.12;
-        beamAtStation = t * (BOAT_MAX_BEAM * 0.42) + (1 - t) * 0.08;
+      if (u >= 0.32 && u <= 0.68) {
+        // Broad midship rowing section for 50 rowers in pairs
+        const midT = Math.abs(u - 0.5) / 0.18;
+        beamAtStation = BOAT_MAX_BEAM * (1.0 - midT * 0.05);
+      } else if (u > 0.68) {
+        // Forward tapering towards knife-edge prow
+        const bowT = (u - 0.68) / 0.32;
+        beamAtStation = (1.0 - bowT) * (BOAT_MAX_BEAM * 0.95) + bowT * 0.08;
+      } else {
+        // Aft tapering towards dragon tail fin
+        const sternT = (0.32 - u) / 0.32;
+        beamAtStation = (1.0 - sternT) * (BOAT_MAX_BEAM * 0.95) + sternT * 0.12;
       }
 
       // 2. Rocker Keel Curve & Gunwale Sheer Line
       const midDist = Math.abs(u - 0.5) * 2.0;
-      const keelY = Math.pow(midDist, 2.3) * 0.28; // Bottom rocker curve
+      // Flat bottom run in center with progressive upsweep at ends
+      const keelY = Math.pow(midDist, 2.6) * 0.26;
 
       let gunwaleSheerY = BOAT_MID_DEPTH;
-      if (u > 0.72) {
-        const bowT = (u - 0.72) / 0.28;
+      if (u > 0.70) {
+        const bowT = (u - 0.70) / 0.30;
         // Prow upsweep curve (+1.38m)
-        gunwaleSheerY = BOAT_MID_DEPTH + Math.pow(bowT, 2.0) * (PROW_RISE - BOAT_MID_DEPTH);
-      } else if (u < 0.24) {
-        const sternT = (0.24 - u) / 0.24;
+        gunwaleSheerY = BOAT_MID_DEPTH + Math.pow(bowT, 2.1) * (PROW_RISE - BOAT_MID_DEPTH);
+      } else if (u < 0.22) {
+        const sternT = (0.22 - u) / 0.22;
         // Stern upsweep curve (+1.52m)
-        gunwaleSheerY = BOAT_MID_DEPTH + Math.pow(sternT, 2.0) * (STERN_RISE - BOAT_MID_DEPTH);
+        gunwaleSheerY = BOAT_MID_DEPTH + Math.pow(sternT, 2.1) * (STERN_RISE - BOAT_MID_DEPTH);
       }
 
       // Outer hull points
@@ -502,7 +509,7 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
             // Gold Angkor Kbach Scroll Trim along upper Gunwales
             outerColors.push(0.96, 0.62, 0.04);
           } else if (y < keelY + 0.12) {
-            // Polished Hopea Dugout Core (Deep Royal Blue / Natural Wood blend)
+            // Polished Hopea Dugout Core
             outerColors.push(0.12, 0.23, 0.54);
           } else {
             // Royal Blue Primary Racing Hull (`#1E3A8A`)
@@ -1059,191 +1066,247 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
 
   return (
     <div className="flex flex-col w-full rounded-2xl bg-slate-900 border border-slate-800 shadow-2xl overflow-hidden">
-      {/* 3D Viewport Header Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-3 bg-slate-950/90 border-b border-slate-800 backdrop-blur">
+      {/* 3D Viewport Header Bar with 5 Camera Views and Render Modes */}
+      <div className="flex flex-wrap items-center justify-between gap-2.5 px-4 py-2.5 bg-slate-950/95 border-b border-slate-800 backdrop-blur z-10">
         <div className="flex items-center gap-2">
-          <div className="w-3 h-3 rounded-full bg-emerald-500 animate-pulse" />
-          <span className="text-xs font-mono font-bold tracking-wider text-emerald-400 uppercase">
-            HỆ THỐNG DỰNG HÌNH 3D & CAD NGO BOAT MASTER
-          </span>
-          <span className="text-xs font-mono text-slate-400">
-            [NGO_ST_TUMNUP2_2024_MASTER]
+          <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+          <span className="text-xs font-mono font-bold tracking-wider text-white">
+            GHE NGO TUM NÚP 2 <span className="text-sky-400 font-normal">[2024 MASTER]</span>
           </span>
         </div>
 
-        {/* View Angle Selector Buttons */}
-        <div className="flex items-center gap-1 bg-slate-900 p-1 rounded-lg border border-slate-800 text-xs font-mono">
+        {/* 5 View Angle Presets: TOP / SIDE / FRONT / REAR / 3D ORBIT */}
+        <div className="flex items-center gap-1 bg-slate-900/90 p-1 rounded-lg border border-slate-800 text-xs font-mono overflow-x-auto max-w-full">
+          <span className="text-[10px] text-slate-400 px-1.5 uppercase tracking-wider hidden sm:inline">Camera:</span>
           <button
             id="btn-view-3d-orbit"
             onClick={() => setViewAngle('3D_ORBIT')}
-            className={`px-2.5 py-1 rounded transition ${
+            className={`px-2 py-1 rounded transition whitespace-nowrap ${
               viewAngle === '3D_ORBIT'
-                ? 'bg-sky-600 text-white font-bold'
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'bg-sky-600 text-white font-bold shadow'
+                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
             }`}
           >
-            Xoay tự do (3D Orbit)
+            3D Orbit
           </button>
           <button
-            id="btn-view-top-plan"
-            onClick={() => setViewAngle('TOP_PLAN')}
-            className={`px-2.5 py-1 rounded transition ${
-              viewAngle === 'TOP_PLAN'
-                ? 'bg-sky-600 text-white font-bold'
-                : 'text-slate-400 hover:text-slate-200'
+            id="btn-view-top"
+            onClick={() => setViewAngle('TOP')}
+            className={`px-2 py-1 rounded transition whitespace-nowrap ${
+              viewAngle === 'TOP'
+                ? 'bg-sky-600 text-white font-bold shadow'
+                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
             }`}
           >
-            Nhìn từ trên (Top Plan)
+            Top (Trên)
           </button>
           <button
-            id="btn-view-side-elev"
-            onClick={() => setViewAngle('SIDE_ELEVATION')}
-            className={`px-2.5 py-1 rounded transition ${
-              viewAngle === 'SIDE_ELEVATION'
-                ? 'bg-sky-600 text-white font-bold'
-                : 'text-slate-400 hover:text-slate-200'
+            id="btn-view-side"
+            onClick={() => setViewAngle('SIDE')}
+            className={`px-2 py-1 rounded transition whitespace-nowrap ${
+              viewAngle === 'SIDE'
+                ? 'bg-sky-600 text-white font-bold shadow'
+                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
             }`}
           >
-            Chiếu cạnh (Side Sheer)
+            Side (Cạnh)
           </button>
           <button
-            id="btn-view-bow-front"
-            onClick={() => setViewAngle('BOW_FRONT')}
-            className={`px-2.5 py-1 rounded transition ${
-              viewAngle === 'BOW_FRONT'
-                ? 'bg-sky-600 text-white font-bold'
-                : 'text-slate-400 hover:text-slate-200'
+            id="btn-view-front"
+            onClick={() => setViewAngle('FRONT')}
+            className={`px-2 py-1 rounded transition whitespace-nowrap ${
+              viewAngle === 'FRONT'
+                ? 'bg-sky-600 text-white font-bold shadow'
+                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
             }`}
           >
-            Chính diện mũi (Bow Front)
+            Front (Mũi)
           </button>
           <button
-            id="btn-view-midship-section"
-            onClick={() => setViewAngle('MIDSHIP_SECTION')}
-            className={`px-2.5 py-1 rounded transition ${
-              viewAngle === 'MIDSHIP_SECTION'
-                ? 'bg-sky-600 text-white font-bold'
-                : 'text-slate-400 hover:text-slate-200'
+            id="btn-view-rear"
+            onClick={() => setViewAngle('REAR')}
+            className={`px-2 py-1 rounded transition whitespace-nowrap ${
+              viewAngle === 'REAR'
+                ? 'bg-sky-600 text-white font-bold shadow'
+                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
             }`}
           >
-            Mặt cắt trạm (Section Cut)
+            Rear (Đuôi)
           </button>
         </div>
 
         {/* Render Mode Selector */}
-        <div className="flex items-center gap-1 bg-slate-900 p-1 rounded-lg border border-slate-800 text-xs font-mono">
+        <div className="flex items-center gap-1 bg-slate-900/90 p-1 rounded-lg border border-slate-800 text-xs font-mono overflow-x-auto max-w-full">
+          <span className="text-[10px] text-slate-400 px-1.5 uppercase tracking-wider hidden sm:inline">Chế độ:</span>
           <button
             id="btn-render-pbr"
             onClick={() => setRenderMode('REALISTIC_PBR')}
-            className={`px-2.5 py-1 rounded transition ${
+            className={`px-2 py-1 rounded transition whitespace-nowrap ${
               renderMode === 'REALISTIC_PBR'
-                ? 'bg-emerald-600 text-white font-bold'
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'bg-emerald-600 text-white font-bold shadow'
+                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
             }`}
           >
-            Hiển thị vật liệu PBR
+            PBR Thực tế
           </button>
           <button
             id="btn-render-cad"
             onClick={() => setRenderMode('BLUEPRINT_CAD')}
-            className={`px-2.5 py-1 rounded transition ${
+            className={`px-2 py-1 rounded transition whitespace-nowrap ${
               renderMode === 'BLUEPRINT_CAD'
-                ? 'bg-sky-600 text-white font-bold'
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'bg-sky-600 text-white font-bold shadow'
+                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
             }`}
           >
-            Khung dây CAD
+            Khung CAD
           </button>
           <button
             id="btn-render-kem"
             onClick={() => setRenderMode('STRUCTURAL_KEM')}
-            className={`px-2.5 py-1 rounded transition ${
+            className={`px-2 py-1 rounded transition whitespace-nowrap ${
               renderMode === 'STRUCTURAL_KEM'
-                ? 'bg-amber-600 text-white font-bold'
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'bg-amber-600 text-white font-bold shadow'
+                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
             }`}
           >
-            Kết cấu Kềm (Spring Truss)
+            Cây Kềm
           </button>
           <button
             id="btn-render-crew"
             onClick={() => setRenderMode('CREW_MATRIX')}
-            className={`px-2.5 py-1 rounded transition ${
+            className={`px-2 py-1 rounded transition whitespace-nowrap ${
               renderMode === 'CREW_MATRIX'
-                ? 'bg-purple-600 text-white font-bold'
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'bg-purple-600 text-white font-bold shadow'
+                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
             }`}
           >
-            Sơ đồ 55 VĐV
+            55 VĐV
           </button>
         </div>
       </div>
 
       {/* Main 3D Canvas Container */}
-      <div className="relative w-full h-[520px] bg-slate-950 select-none overflow-hidden">
+      <div className="relative w-full h-[520px] md:h-[580px] bg-slate-950 select-none overflow-hidden">
         <div ref={mountRef} className="w-full h-full cursor-grab active:cursor-grabbing" />
 
-        {/* Real Metric Specs HUD Overlay */}
-        <div className="absolute top-3 left-3 pointer-events-none flex flex-col gap-1 font-mono text-[11px] text-slate-300 bg-slate-950/90 p-3 rounded-xl border border-slate-800 backdrop-blur shadow-xl max-w-sm">
-          <div className="flex items-center gap-2 text-sky-400 font-bold border-b border-slate-800 pb-1.5 mb-1">
-            <Crosshair className="w-3.5 h-3.5" />
-            <span className="tracking-wide">THÔNG SỐ THAM CHIẾU & MÔ HÌNH HÓA (TUM NÚP 2 2024)</span>
+        {/* Collapsible & Non-intrusive HUD Overlay at Top-Left */}
+        {!isHudOpen ? (
+          <button
+            id="btn-reopen-hud"
+            onClick={() => setIsHudOpen(true)}
+            className="absolute top-3 left-3 z-10 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-950/80 hover:bg-slate-900 text-slate-300 hover:text-white border border-slate-800 backdrop-blur font-mono text-xs shadow-lg transition"
+          >
+            <Info className="w-3.5 h-3.5 text-sky-400" />
+            <span>Thông số hình học</span>
+          </button>
+        ) : !isHudExpanded ? (
+          /* Compact Collapsed Badge */
+          <div className="absolute top-3 left-3 z-10 flex items-center gap-2 font-mono text-[11px] text-slate-300 bg-slate-950/85 px-3 py-1.5 rounded-xl border border-slate-800 backdrop-blur shadow-xl max-w-[90vw]">
+            <Crosshair className="w-3.5 h-3.5 text-sky-400 shrink-0" />
+            <span className="truncate">
+              <strong className="text-white">Tum Núp 2:</strong> 30.20m × 1.16m <span className="text-amber-400 text-[10px]">[Suy luận]</span> | 55-58 VĐV <span className="text-emerald-400 text-[10px]">[Xác thực]</span> | Kềm 24.5m
+            </span>
+            <button
+              id="btn-expand-hud"
+              onClick={() => setIsHudExpanded(true)}
+              className="flex items-center gap-0.5 px-2 py-0.5 rounded bg-sky-950/80 hover:bg-sky-900 text-sky-300 border border-sky-600/40 text-[10px] font-bold transition ml-1 shrink-0"
+            >
+              <span>Chi tiết</span>
+              <ChevronDown className="w-3 h-3" />
+            </button>
+            <button
+              id="btn-close-hud"
+              onClick={() => setIsHudOpen(false)}
+              className="p-0.5 rounded hover:bg-slate-800 text-slate-400 hover:text-white transition shrink-0"
+              title="Đóng bảng thông số"
+            >
+              <X className="w-3.5 h-3.5" />
+            </button>
           </div>
-          <div className="flex items-center justify-between gap-2">
-            <span>Chiều dài tổng thể (LOA): <span className="text-white font-bold">30.20 m</span></span>
-            <span className="px-1.5 py-0.5 rounded text-[9px] bg-amber-950/80 text-amber-300 border border-amber-500/40">XẤP XỈ / SUY LUẬN</span>
-          </div>
-          <div className="flex items-center justify-between gap-2">
-            <span>Chiều rộng lớn nhất: <span className="text-white font-bold">1.16 m</span> (Tỷ lệ 26:1)</span>
-            <span className="px-1.5 py-0.5 rounded text-[9px] bg-amber-950/80 text-amber-300 border border-amber-500/40">XẤP XỈ / SUY LUẬN</span>
-          </div>
-          <div className="flex items-center justify-between gap-2">
-            <span>Chiều cao mạn giữa: <span className="text-white font-bold">0.48 m</span> (Máng chữ U)</span>
-            <span className="px-1.5 py-0.5 rounded text-[9px] bg-amber-950/80 text-amber-300 border border-amber-500/40">XẤP XỈ / SUY LUẬN</span>
-          </div>
-          <div className="flex items-center justify-between gap-2">
-            <span>Độ vút Mũi / Đuôi: <span className="text-white font-bold">+1.38m / +1.52m</span></span>
-            <span className="px-1.5 py-0.5 rounded text-[9px] bg-amber-950/80 text-amber-300 border border-amber-500/40">XẤP XỈ / SUY LUẬN</span>
-          </div>
-          <div className="flex items-center justify-between gap-2">
-            <span>Lượng choán nước tính toán: <span className="text-emerald-400 font-bold">~5.100 kg</span></span>
-            <span className="px-1.5 py-0.5 rounded text-[9px] bg-amber-950/80 text-amber-300 border border-amber-500/40">XẤP XỈ / SUY LUẬN</span>
-          </div>
-          <div className="flex items-center justify-between gap-2">
-            <span>Biên chế thi đấu: <span className="text-sky-400 font-bold">55 - 58 VĐV</span></span>
-            <span className="px-1.5 py-0.5 rounded text-[9px] bg-emerald-950/80 text-emerald-300 border border-emerald-500/40">ĐÃ XÁC NHẬN</span>
-          </div>
-          <div className="flex items-center justify-between gap-2">
-            <span>Cây Kềm suốt dọc thân (24.5m + 5 trụ):</span>
-            <span className="px-1.5 py-0.5 rounded text-[9px] bg-purple-950/80 text-purple-300 border border-purple-500/40">KẾT CẤU XÁC NHẬN</span>
-          </div>
-          <div className="text-slate-400 border-t border-slate-800 pt-1.5 mt-1 flex items-center justify-between gap-2">
-            <span>Trạm cắt CAD: Trạm {Math.round((stationSliceMeters / BOAT_LENGTH) * 48)} ({stationSliceMeters.toFixed(1)}m) | B: {currentBeam}m | D: {currentDepth}m</span>
-            <span className="px-1.5 py-0.5 rounded text-[9px] bg-sky-950/80 text-sky-300 border border-sky-500/40">LƯỚI CAD</span>
-          </div>
-        </div>
+        ) : (
+          /* Expanded Non-intrusive Floating Drawer */
+          <div className="absolute top-3 left-3 z-10 flex flex-col gap-1.5 font-mono text-[11px] text-slate-300 bg-slate-950/92 p-3 rounded-xl border border-slate-800 backdrop-blur shadow-2xl max-w-sm max-h-[380px] overflow-y-auto">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-1.5 mb-1">
+              <div className="flex items-center gap-2 text-sky-400 font-bold">
+                <Crosshair className="w-3.5 h-3.5" />
+                <span className="tracking-wide text-xs">THÔNG SỐ MÔ HÌNH (TUM NÚP 2)</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <button
+                  id="btn-collapse-hud"
+                  onClick={() => setIsHudExpanded(false)}
+                  className="flex items-center gap-0.5 px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 hover:text-white text-[10px]"
+                >
+                  <span>Thu gọn</span>
+                  <ChevronUp className="w-3 h-3" />
+                </button>
+                <button
+                  id="btn-close-hud-expanded"
+                  onClick={() => setIsHudOpen(false)}
+                  className="p-1 rounded hover:bg-slate-800 text-slate-400 hover:text-white"
+                  title="Đóng hoàn toàn"
+                >
+                  <X className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
 
-        {/* Floating View Angle Prompt */}
+            <div className="flex items-center justify-between gap-2">
+              <span>Chiều dài tổng thể (LOA): <span className="text-white font-bold">30.20 m</span></span>
+              <span className="px-1.5 py-0.5 rounded text-[9px] bg-amber-950/80 text-amber-300 border border-amber-500/40">XẤP XỈ / SUY LUẬN</span>
+            </div>
+            <div className="flex items-center justify-between gap-2">
+              <span>Chiều rộng lớn nhất: <span className="text-white font-bold">1.16 m</span> (Tỷ lệ 26:1)</span>
+              <span className="px-1.5 py-0.5 rounded text-[9px] bg-amber-950/80 text-amber-300 border border-amber-500/40">XẤP XỈ / SUY LUẬN</span>
+            </div>
+            <div className="flex items-center justify-between gap-2">
+              <span>Chiều cao mạn giữa: <span className="text-white font-bold">0.48 m</span> (Máng chữ U)</span>
+              <span className="px-1.5 py-0.5 rounded text-[9px] bg-amber-950/80 text-amber-300 border border-amber-500/40">XẤP XỈ / SUY LUẬN</span>
+            </div>
+            <div className="flex items-center justify-between gap-2">
+              <span>Độ vút Mũi / Đuôi: <span className="text-white font-bold">+1.38m / +1.52m</span></span>
+              <span className="px-1.5 py-0.5 rounded text-[9px] bg-amber-950/80 text-amber-300 border border-amber-500/40">XẤP XỈ / SUY LUẬN</span>
+            </div>
+            <div className="flex items-center justify-between gap-2">
+              <span>Lượng choán nước tính toán: <span className="text-emerald-400 font-bold">~5.100 kg</span></span>
+              <span className="px-1.5 py-0.5 rounded text-[9px] bg-amber-950/80 text-amber-300 border border-amber-500/40">XẤP XỈ / SUY LUẬN</span>
+            </div>
+            <div className="flex items-center justify-between gap-2">
+              <span>Biên chế thi đấu: <span className="text-sky-400 font-bold">55 - 58 VĐV</span></span>
+              <span className="px-1.5 py-0.5 rounded text-[9px] bg-emerald-950/80 text-emerald-300 border border-emerald-500/40">ĐÃ XÁC NHẬN</span>
+            </div>
+            <div className="flex items-center justify-between gap-2">
+              <span>Cây Kềm suốt dọc thân: <span className="text-purple-400 font-bold">24.5m + 5 trụ</span></span>
+              <span className="px-1.5 py-0.5 rounded text-[9px] bg-purple-950/80 text-purple-300 border border-purple-500/40">KẾT CẤU XÁC NHẬN</span>
+            </div>
+            <div className="text-slate-400 border-t border-slate-800 pt-1.5 mt-1 flex items-center justify-between gap-2">
+              <span>Trạm cắt CAD: Trạm {Math.round((stationSliceMeters / BOAT_LENGTH) * 64)} ({stationSliceMeters.toFixed(1)}m) | B: {currentBeam}m | D: {currentDepth}m</span>
+              <span className="px-1.5 py-0.5 rounded text-[9px] bg-sky-950/80 text-sky-300 border border-sky-500/40">LƯỚI CAD</span>
+            </div>
+          </div>
+        )}
+
+        {/* Floating View Angle Prompt at Bottom-Right */}
         <div className="absolute bottom-3 right-3 pointer-events-none font-mono text-[11px] text-slate-400 bg-slate-950/80 px-3 py-1.5 rounded-lg border border-slate-800 backdrop-blur">
-          Kéo chuột trái: Xoay | Cuộn chuột: Thu phóng | Chế độ: {viewAngle}
+          Kéo chuột: Xoay 3D | Cuộn: Thu phóng | Góc: <span className="text-sky-400 font-bold">{viewAngle}</span>
         </div>
       </div>
 
       {/* Control & Kinematics Dashboard */}
-      <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-slate-950 border-t border-slate-800 text-xs">
+      <div className="flex flex-wrap items-center justify-between gap-4 p-3.5 bg-slate-950 border-t border-slate-800 text-xs">
         {/* Stroke Cadence & Playback */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <button
             id="btn-toggle-kinematics"
             onClick={() => setIsPlaying(!isPlaying)}
-            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-medium shadow-md shadow-sky-600/20 transition"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-medium shadow-md shadow-sky-600/20 transition"
           >
             {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
-            <span>{isPlaying ? 'Tạm dừng chuyển động' : 'Phát chuyển động (Kinematics)'}</span>
+            <span>{isPlaying ? 'Tạm dừng' : 'Mô phỏng bơi'}</span>
           </button>
 
           <div className="flex items-center gap-2">
-            <span className="text-slate-400 font-mono">Nhịp chèo (SPM):</span>
+            <span className="text-slate-400 font-mono">Nhịp (SPM):</span>
             <input
               id="slider-cadence-spm"
               type="range"
@@ -1252,7 +1315,7 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
               step="1"
               value={strokeCadenceSPM}
               onChange={(e) => setStrokeCadenceSPM(Number(e.target.value))}
-              className="w-28 accent-sky-500 cursor-pointer"
+              className="w-24 accent-sky-500 cursor-pointer"
             />
             <span className="font-mono font-bold text-sky-400 w-12">{strokeCadenceSPM} SPM</span>
           </div>
@@ -1260,7 +1323,7 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
 
         {/* Station Cross-Section Scrub Slider */}
         <div className="flex items-center gap-2">
-          <span className="text-slate-400 font-mono">Vị trí cắt trạm (0-30.2m):</span>
+          <span className="text-slate-400 font-mono">Cắt trạm:</span>
           <input
             id="slider-station-slice"
             type="range"
@@ -1269,13 +1332,13 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
             step="0.1"
             value={stationSliceMeters}
             onChange={(e) => setStationSliceMeters(Number(e.target.value))}
-            className="w-36 accent-rose-500 cursor-pointer"
+            className="w-28 sm:w-36 accent-rose-500 cursor-pointer"
           />
-          <span className="font-mono font-bold text-rose-400 w-14">{stationSliceMeters.toFixed(1)} m</span>
+          <span className="font-mono font-bold text-rose-400 w-12">{stationSliceMeters.toFixed(1)}m</span>
         </div>
 
         {/* Visibility Feature Toggles */}
-        <div className="flex items-center gap-4 text-slate-300 font-mono text-[11px]">
+        <div className="flex items-center gap-3 text-slate-300 font-mono text-[11px]">
           <label className="flex items-center gap-1.5 cursor-pointer hover:text-white">
             <input
               id="toggle-water"
@@ -1284,7 +1347,7 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
               onChange={(e) => setShowWater(e.target.checked)}
               className="rounded accent-sky-500"
             />
-            <span>Mặt nước sông Maspéro</span>
+            <span>Mặt nước</span>
           </label>
 
           <label className="flex items-center gap-1.5 cursor-pointer hover:text-white">
@@ -1295,7 +1358,7 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
               onChange={(e) => setShowCrew(e.target.checked)}
               className="rounded accent-sky-500"
             />
-            <span>Đội hình 55 VĐV</span>
+            <span>55 VĐV</span>
           </label>
 
           <label className="flex items-center gap-1.5 cursor-pointer hover:text-white">
@@ -1306,7 +1369,7 @@ export const Interactive3DBlueprint: React.FC<Interactive3DBlueprintProps> = ({
               onChange={(e) => setShowWake(e.target.checked)}
               className="rounded accent-sky-500"
             />
-            <span>Vệt rẽ sóng & bọt nước</span>
+            <span>Bọt nước</span>
           </label>
         </div>
       </div>
