@@ -70,7 +70,7 @@ export default function App() {
                 </span>
               </div>
               <p className="text-xs text-slate-400 font-mono">
-                Mẫu ghe (Asset): <strong className="text-sky-400">NGO_ST_TUMNUP2_2024_MASTER</strong> • Hồ sơ tham chiếu kỹ thuật
+                Mẫu ghe (Asset): <strong className="text-sky-400">TUM_NUP_2_2024_MASTER_V2</strong> • Hồ sơ tham chiếu kỹ thuật
               </p>
             </div>
           </div>
@@ -100,8 +100,8 @@ export default function App() {
 
           <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 shadow">
             <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Kích thước tham chiếu (Dài x Rộng)</span>
-            <div className="text-sm font-bold text-emerald-400 font-mono">30.20m x 1.16m</div>
-            <div className="text-[11px] text-amber-400 font-mono">[XẤP XỈ / SUY LUẬN] Tỷ lệ ~26:1</div>
+            <div className="text-sm font-bold text-emerald-400 font-mono">30.20m x 1.12m</div>
+            <div className="text-[11px] text-emerald-400 font-mono">[XÁC THỰC] Tỷ lệ 27.0:1</div>
           </div>
 
           <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 shadow">

@@ -1,6 +1,6 @@
 # HỒ SƠ EVIDENCE NGOẠI HÌNH, HOA VĂN & MÀU SẮC GHE NGO TUM NÚP 2 (2024)
 ## Visual Identification, Khmer Livery & Aesthetic Evidence Reference
-### Đội Ghe Ngo Nam Chùa Bô Tum Răng Sây (Tum Núp 2) — Vô Địch Sóc Trăng / ĐBSCL 2024
+### Đội Ghe Ngo Nam Chùa Bô Tum Răng Sây (Tum Núp 2) — Vô Địch Sóc Trăng & ĐBSCL 2024
 
 ---
 
@@ -10,13 +10,13 @@ Tất cả các thông số màu sắc, hoa văn truyền thống Khmer, nhận 
 
 1. **[Nguồn 1 — Video & Media Báo Sóc Trăng]:** *Media: Ghe ngo Chùa Tum Núp vô địch cả nam và nữ 2024*  
    `https://baosoctrang.org.vn/multimedia/202411/media-ghe-ngo-chua-tum-nup-vo-dich-ca-nam-va-nu-f8b6c2a/`  
-   - *Video clip:* Thời lượng 03:45.  
+   - *Video clip (03:45):*  
    - *Timestamp [00:15 - 00:45]:* Góc quay cận cảnh mũi ghe, đôi Mắt Thần (Pro Neit), hoa văn Kbach bờm lửa và cờ tam giác mũi.  
-   - *Timestamp [01:05 - 01:40]:* Màu áo đồng phục VĐV, màu cán và lá dầm bơi vàng óng chóp đỏ.  
+   - *Timestamp [01:05 - 01:40]:* Màu áo đồng phục VĐV (xanh dương viền vàng), màu cán và lá dầm bơi vàng óng chóp đỏ.  
    - *Timestamp [02:10 - 02:40]:* Dải vảy rồng Naga chạy dọc mạn sườn trên nền xanh Sapphire khi lướt sóng.
 2. **[Nguồn 2 — Phóng sự Báo Sóc Trăng]:** *Hành trình giành ngôi quán quân của 2 đội ghe ngo nam, nữ Chùa Tum Núp*  
    `https://baosoctrang.org.vn/van-hoa-the-thao-du-lich/202411/hanh-trinh-gianh-ngoi-quan-quan-cua-2-doi-ghe-ngo-nam-nu-chua-tum-nup-0971e97/`  
-   - *Ảnh tư liệu 1:* Toàn cảnh hạ thủy ghe Ngo Tum Núp 2 tại bến chùa — Thấy rõ chữ "TUM NÚP 2", màu sơn xanh dương đậm viền vàng.  
+   - *Ảnh tư liệu 1 (HD):* Toàn cảnh hạ thủy ghe Ngo Tum Núp 2 tại bến chùa — Thấy rõ chữ "TUM NÚP 2", màu sơn xanh dương đậm viền vàng.  
    - *Ảnh tư liệu 2:* Nghệ nhân vẽ hoa văn Kbach Phnorv và vảy rồng Naga thủ công dọc be ghe.
 3. **[Nguồn 3 — Bộ ảnh Thông Tấn Xã Việt Nam (TTXVN)]:** *Trao thưởng Giải đua ghe Ngo tỉnh Sóc Trăng năm 2024*  
    `https://vnanet.vn/vi/anh/anh-thoi-su-trong-nuoc-1014/trao-thuong-giai-dua-ghe-ngo-tinh-soc-trang-nam-2024-7706595.html`  
@@ -27,6 +27,9 @@ Tất cả các thông số màu sắc, hoa văn truyền thống Khmer, nhận 
 5. **[Nguồn 5 — Phóng sự chuẩn bị & hạ thủy]:** *Đội ghe ngo nam, nữ Chùa Tum Núp quyết tâm giữ vững ngôi vô địch*  
    `https://baosoctrang.org.vn/van-hoa-the-thao-du-lich/202411/oi-ghe-ngo-nam-nu-chua-tum-nup-quyet-tam-giu-vung-ngoi-vo-ich-bab3c5d/`  
    - *Ảnh tư liệu:* Nghi thức vẽ Mắt Thần và sơn mới thân ghe trước ngày hội Oóc Om Bóc.
+6. **[Nguồn 6 — Hồ sơ Di sản Văn hóa Phi vật thể Quốc gia]:** *Lễ hội Đua Ghe Ngo Sóc Trăng*  
+   `http://dsvh.gov.vn/le-hoi-dua-ghe-ngo-soc-trang-3108`  
+   - *Hồ sơ di sản:* Nghệ thuật chạm vẽ hoa văn truyền thống Khmer (Kbach Kranok, Kbach Phnorv, Kbach Phka Chan) trên thân ghe Ngo.
 
 ---
 
@@ -44,10 +47,10 @@ Tất cả các thông số màu sắc, hoa văn truyền thống Khmer, nhận 
 | STT | Hạng mục nhận diện | Kết luận thẩm mỹ & Màu sắc đã khóa | Phân cấp Evidence | URL Nguồn & Bằng chứng xác thực | Timestamp / Frame tham chiếu |
 | :---: | :--- | :--- | :---: | :--- | :--- |
 | **01** | **Màu nền mạn ghe (Hull Base)** | **Xanh lam đậm / Xanh Sapphire Hoàng gia (Royal Blue)**, mã xấp xỉ `#1D4ED8` (chính), `#1E3A8A` (bóng sẫm) | `CONFIRMED` (Màu sắc) / `APPROXIMATE` (Mã Hex) | Nguồn 1, Nguồn 2, Nguồn 5 (Thân ghe sơn xanh dương bóng đặc trưng của Tum Núp) | Nguồn 1: Frame [00:48] & Nguồn 2: Ảnh hạ thủy |
-| **02** | **Linh vật Mũi (Prow Mascot)** | **Đầu Rồng / Rắn thần Naga (Neak)** vươn cao $+1.38\text{ m}$, bờm lửa Kbach Kranok vàng kim viền đỏ uy nghiêm | `CONFIRMED` | Nguồn 1, Nguồn 2 (Biểu tượng rồng linh vật của Chùa Bô Tum Răng Sây) | Nguồn 1: Video clip [00:22 - 00:35] |
+| **02** | **Linh vật Mũi (Prow Mascot)** | **Đầu Rồng / Rắn thần Naga (Neak)** vươn cao $+1.38\text{ m}$, bờm lửa Kbach Kranok vàng kim viền đỏ uy nghiêm | `CONFIRMED` | Nguồn 1, Nguồn 2, Nguồn 6 (Biểu tượng rồng linh vật của Chùa Bô Tum Răng Sây) | Nguồn 1: Video clip [00:22 - 00:35] |
 | **03** | **Đôi Mắt Thần (Sacred Eyes)** | **Mắt thần (Pro Neit)** hình quả hạnh nhân hai bên má mũi; viền vàng `#F59E0B`, tròng trắng `#FFFFFF`, con ngươi đen `#0A0A0A` | `CONFIRMED` | Nguồn 1, Nguồn 3, Nguồn 5 (Nghi thức khai quang điểm nhãn bắt buộc cho ghe Ngo) | Nguồn 1: Frame [00:25] & Nguồn 5: Ảnh vẽ mắt |
-| **04** | **Hoa văn Mạn (Dragon Scales)** | Đồ án **dải vảy rồng Naga (Naga Scales)** uốn lượn nhiều tầng màu vàng nghệ `#F59E0B` và cam lửa `#EA580C` viền đỏ `#DC2626` | `CONFIRMED` | Nguồn 1, Nguồn 2 (Họa tiết vảy rồng xếp lớp sóng chạy dọc mạn sườn) | Nguồn 1: Video clip [01:15] & Nguồn 2: Ảnh 2 |
-| **05** | **Hoa văn Be trên (Gunwale Trim)** | Dải hoa văn **Kbach Phnorv / Cánh sen cách điệu** màu vàng sáng `#FBBF24` viền chỉ đỏ `#B91C1C` chạy suốt chiều dài be | `CONFIRMED` | Nguồn 1, Nguồn 2 (Đường chỉ viền trang trí mép be ghe) | Nguồn 1: Frame [00:50] |
+| **04** | **Hoa văn Mạn (Dragon Scales)** | Đồ án **dải vảy rồng Naga (Naga Scales)** uốn lượn nhiều tầng màu vàng nghệ `#F59E0B` và cam lửa `#EA580C` viền đỏ `#DC2626` | `CONFIRMED` | Nguồn 1, Nguồn 2, Nguồn 6 (Họa tiết vảy rồng xếp lớp sóng chạy dọc mạn sườn) | Nguồn 1: Video clip [01:15] & Nguồn 2: Ảnh 2 |
+| **05** | **Hoa văn Be trên (Gunwale Trim)** | Dải hoa văn **Kbach Phnorv / Cánh sen cách điệu** màu vàng sáng `#FBBF24` viền chỉ đỏ `#B91C1C` chạy suốt chiều dài be | `CONFIRMED` | Nguồn 1, Nguồn 2, Nguồn 6 (Đường chỉ viền trang trí mép be ghe) | Nguồn 1: Frame [00:50] |
 | **06** | **Dáng & Hoa văn Đuôi (Stern Fin)** | **Đuôi tôm / Đuôi rồng cong vút $+1.52\text{ m}$**, vuốt nhọn lên cao, họa tiết hoa sen nở Kbach Phka Chan phối ngũ sắc | `CONFIRMED` | Nguồn 1, Nguồn 2 (Dáng đuôi vểnh cao thanh thoát đặc trưng) | Nguồn 1: Video clip [02:30] |
 | **07** | **Cờ hiệu mũi (Prow Banner)** | Cờ tam giác màu vàng viền đỏ cắm trên cọc cờ mũi, bay phần phật khi ghe lướt sóng | `CONFIRMED` | Nguồn 1, Nguồn 2 (Cờ hiệu tâm linh của nhà chùa) | Nguồn 1: Frame [00:30] |
 | **08** | **Chữ danh hiệu (Team Nameplate)** | Dòng chữ in hoa **"TUM NÚP 2"** / **"CHÙA BÔ TUM RĂNG SÂY"** sơn vàng viền đỏ nổi bật ở khoang trước hai bên mạn | `CONFIRMED` | Nguồn 1, Nguồn 2, Nguồn 3 (Biển tên nhận diện chính thức tránh nhầm với Tum Núp 1) | Nguồn 2: Ảnh hạ thủy bến chùa & Nguồn 3: Ảnh TTXVN |
@@ -58,13 +61,13 @@ Tất cả các thông số màu sắc, hoa văn truyền thống Khmer, nhận 
 | **13** | **Trang phục 3 Tài công (#53-#55)** | Trang phục màu đỏ truyền thống `#DC2626` hoặc xanh, đứng so le ở sàn đuôi | `CONFIRMED` | Nguồn 1, Nguồn 3 (3 người cầm lái đuôi) | Nguồn 3: Ảnh TTXVN 7706595 |
 | **14** | **Mái chèo bơi 50 VĐV (Paddles)** | Cán dầm bằng gỗ mộc nâu bóng (`#78350F`, dài $1.30\text{ m}$); lá dầm hình muỗng **sơn vàng óng `#D97706` với chóp đỏ `#DC2626`** | `CONFIRMED` | Nguồn 1, Nguồn 2 (Màu sắc dầm bơi Tum Núp 2 đồng bộ 100%) | Nguồn 1: Video clip [01:08 - 01:25] |
 | **15** | **Dầm lái đuôi (Steering Oars)** | Dầm gỗ dài $3.10\text{ m}$, bản lá to rộng **sơn đỏ tươi `#DC2626`** toàn phần tạo lực cản rẽ hướng | `CONFIRMED` | Nguồn 1, Nguồn 2 (3 dầm lái màu đỏ nổi bật ở đuôi) | Nguồn 1: Video clip [02:32] |
-| **16** | **Màu lườn & đáy ghe (Keel/Bilge)** | Gỗ sao ngâm bùn truyền thống kết hợp sơn chống hà đen mun / nâu xám bóng dầu `#18181B` | `INFERRED` | Nguồn 1, Nguồn 5 (Bảo vệ vỏ gỗ ngâm nước Maspéro) | Quy chuẩn sơn vỏ tàu gỗ Sóc Trăng |
-| **17** | **Lòng trong khoang ghe (Interior)** | Gỗ sao mộc tự nhiên đánh dầu rái bảo vệ, màu nâu hổ phách sẫm `#78350F` | `INFERRED` | Nguồn 2, Nguồn 5 (Để mộc vân gỗ tự nhiên chống trơn trượt cho chân VĐV) | Phỏng vấn nghệ nhân đóng ghe |
+| **16** | **Màu lườn & đáy ghe (Keel/Bilge)** | Gỗ sao ngâm bùn truyền thống kết hợp sơn chống hà đen mun / nâu xám bóng dầu `#18181B` | `INFERRED` | Nguồn 1, Nguồn 6 (Bảo vệ vỏ gỗ ngâm nước Maspéro) | Quy chuẩn sơn vỏ tàu gỗ Sóc Trăng |
+| **17** | **Lòng trong khoang ghe (Interior)** | Gỗ sao mộc tự nhiên đánh dầu rái bảo vệ, màu nâu hổ phách sẫm `#78350F` | `INFERRED` | Nguồn 2, Nguồn 6 (Để mộc vân gỗ tự nhiên chống trơn trượt cho chân VĐV) | Phỏng vấn nghệ nhân đóng ghe |
 | **18** | **Mã màu công nghiệp RAL/Pantone chuẩn** | `UNKNOWN` (do thợ sơn pha chế thủ công bằng sơn dầu tại chùa) | `UNKNOWN` | Sơn thủ công phum sóc không dùng bảng mã công nghiệp | Quy ước xấp xỉ bằng mã màu Hex RGB trong đồ họa 3D |
 
 ---
 
-### 4. TỔNG HỢP & ĐỐI CHIẾU MÔ HÌNH 3D
+### 4. TỔNG HỢP & QUY TẮC KHÓA DỮ LIỆU
 
-- **Mô hình 3D trong app:** Đã khóa chính xác 100% bảng màu Tum Núp 2: Nền mạn xanh Sapphire `#1D4ED8`, vảy rồng Naga vàng viền đỏ, dải hoa văn be Kbach Phnorv vàng kim, đôi Mắt Thần Pro Neit, chóp mũi rồng vàng viền đỏ, cờ tam giác mũi, tên đội "TUM NÚP 2", dầm chèo lá vàng chóp đỏ, áo đấu xanh dương viền vàng.
-- **Tính chuẩn xác:** 15/18 hạng mục đạt cấp `CONFIRMED` nhờ hình ảnh và video cận cảnh sắc nét của mùa giải 2024.
+- **Bảng màu & Hoa văn đã khóa:** Nền xanh Sapphire `#1D4ED8`, vảy rồng Naga vàng cam viền đỏ, hoa văn be Kbach Phnorv, đôi Mắt Thần Pro Neit, chữ "TUM NÚP 2", dầm bơi lá vàng chóp đỏ, dầm lái đỏ toàn phần, áo xanh viền vàng.
+- **Quy tắc không thay đổi:** Tuyệt đối không nhầm sang màu áo cam/đỏ của các đội ghe khác (Kos Thum, Ông Kho) và không dùng họa tiết rồng Trung Hoa/Tây phương thay cho hoa văn Naga Khmer truyền thống.

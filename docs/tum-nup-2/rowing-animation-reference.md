@@ -1,14 +1,14 @@
 # HỒ SƠ EVIDENCE ĐỘNG HỌC & ANIMATION CHÈO GHE NGO TUM NÚP 2 (2024)
 ## Biomechanical Rowing Kinematics, 5-Phase Cycle & Crew Dynamics Reference
-### Đội Ghe Ngo Nam Chùa Bô Tum Răng Sây (Tum Núp 2) — Vô Địch Sóc Trăng / ĐBSCL 2024
+### Đội Ghe Ngo Nam Chùa Bô Tum Răng Sây (Tum Núp 2) — Vô Địch Sóc Trăng & ĐBSCL 2024
 
 ---
 
 ### 1. NGUỒN TƯ LIỆU ĐỐI CHIẾU & DANH MỤC URL XÁC THỰC
 
-Toàn bộ các pha chuyển động chèo, nhịp chèo (SPM), tư thế sinh cơ học của 55 VĐV và sự cộng hưởng chuyển động của thân ghe Ngo Tum Núp 2 được thiết lập dựa trên việc phân tích từng khung hình (frame-by-frame) từ các nguồn tư liệu thực tế:
+Toàn bộ các pha chuyển động chèo, nhịp chèo (SPM), tư thế sinh cơ học của 55 thành viên và sự cộng hưởng chuyển động của thân ghe Ngo Nam **Tum Núp 2** (Chùa Bô Tum Răng Sây, xã An Ninh, huyện Châu Thành, tỉnh Sóc Trăng) được thiết lập dựa trên việc phân tích từng khung hình (frame-by-frame) từ các nguồn tư liệu thực tế:
 
-1. **[Nguồn 1 — Video & Media Báo Sóc Trăng]:** *Media: Ghe ngo Chùa Tum Núp vô dịch cả nam và nữ 2024*  
+1. **[Nguồn 1 — Video & Media Báo Sóc Trăng]:** *Media: Ghe ngo Chùa Tum Núp vô địch cả nam và nữ 2024*  
    `https://baosoctrang.org.vn/multimedia/202411/media-ghe-ngo-chua-tum-nup-vo-dich-ca-nam-va-nu-f8b6c2a/`  
    - *Video clip:* Thời lượng 03:45.  
    - *Timestamp [00:48 - 01:25]:* Phân tích chuyển động đồng bộ của 25 cặp tay chèo, nhịp giậm gót của Chỉ huy giữa.  
@@ -61,7 +61,7 @@ Toàn bộ các pha chuyển động chèo, nhịp chèo (SPM), tư thế sinh c
 
 ---
 
-### 4. TỔNG HỢP & ĐỐI CHIẾU MÔ HÌNH 3D
+### 4. TỔNG HỢP & QUY TẮC KHÓA DỮ LIỆU
 
-- **Mô hình 3D trong app:** Đã tích hợp đầy đủ chu kỳ 5 pha chuẩn hóa, thanh trượt điều chỉnh nhịp chèo từ $28$ đến $58\text{ SPM}$, độ trễ pha lan truyền sóng giữa 25 cặp chèo, chuyển động giậm nhảy của Chỉ huy giữa trên cây Kềm và chuyển động lắc dầm của 3 tài công lái.
-- **Tính chuẩn xác:** Các thông số trực quan đạt chuẩn `CONFIRMED`, các góc sinh học đạt `APPROXIMATE` dựa trên phân tích từng khung hình thực tế 2024.
+- **Động học chèo đã khóa:** Chu kỳ 5 pha chuẩn hóa, 55 vị trí cơ cấu, nhịp thi đấu $38 - 54\text{ SPM}$, độ trễ pha lan truyền dọc thân và sự cộng hưởng chuyển động của Cây Kềm.
+- **Quy tắc không thay đổi:** Mọi animation 3D trong các task sau phải dùng đúng chu kỳ và biên độ này, cấm sử dụng chuyển động xoay mái chèo tròn hoặc kiểu chèo xuồng máy.
