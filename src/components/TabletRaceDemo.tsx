@@ -46,7 +46,7 @@ export function TabletRaceDemo({embedded=false}:{embedded?:boolean}){
     wake.position.set(travel-19,SPEC.waterY+.016,-18);wake.visible=s.playing;
     if(s.camera!==lastCamera)positionCamera(s.camera);else{view.position.x+=dx;controls.target.x+=dx;}controls.update();
     if(s.lowPower!==lastQuality){lastQuality=s.lowPower;resize();}renderer.render(scene,view);frames++;
-    if(now-lastUi>400){lastUi=now;const stats=waterFx.stats();host.dataset.splashEvents=String(stats.events);host.dataset.activeParticles=String(stats.particles);host.dataset.distance=travel.toFixed(1);host.dataset.drawCalls=String(renderer.info.render.calls);setDistance(travel);}
+    if(now-lastUi>400){lastUi=now;const stats=waterFx.stats();host.dataset.splashEvents=String(stats.events);host.dataset.activeParticles=String(stats.particles);host.dataset.distance=travel.toFixed(1);host.dataset.liveMaxGripGap=String(Math.max(...boat.athletes.flatMap(a=>a.gripErrors)));host.dataset.drawCalls=String(renderer.info.render.calls);setDistance(travel);}
     if(now-fpsStart>1200){host.dataset.fps=(frames*1000/(now-fpsStart)).toFixed(1);frames=0;fpsStart=now;}raf=requestAnimationFrame(animate);
    }
    raf=requestAnimationFrame(animate);

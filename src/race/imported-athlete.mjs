@@ -7,7 +7,7 @@ let template;
 const SCALE=.96, V=(x,y,z)=>new T.Vector3(x,y,z);
 const skin=new T.Color('#ac7959'),jersey=new T.Color('#087d46'),shorts=new T.Color('#192a32');
 export async function prepareActors(url){
- const gltf=await new GLTFLoader().loadAsync(url);template=gltf.scene;template.updateMatrixWorld(true);
+ const loader=new GLTFLoader(),gltf=typeof url==='string'?await loader.loadAsync(url):await loader.parseAsync(url,'');template=gltf.scene;template.updateMatrixWorld(true);
  template.traverse(o=>{if(!o.isMesh)return;o.frustumCulled=false;
   if(o.name==='SuperHero_Male'){
    const geo=o.geometry.clone(),p=geo.attributes.position,colors=[];

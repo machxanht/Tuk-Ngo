@@ -1,0 +1,66 @@
+{
+  "pass": true,
+  "errors": [],
+  "checks": {
+    "hullBoundsMeters": {
+      "min": [
+        -15.100000381469727,
+        0,
+        -0.5600000023841858
+      ],
+      "max": [
+        15.100000381469727,
+        1.5199999809265137,
+        0.5600000023841858
+      ],
+      "size": [
+        30.200000762939453,
+        1.5199999809265137,
+        1.1200000047683716
+      ]
+    },
+    "roles": {
+      "ROWER": 50,
+      "PROW_COMMAND": 1,
+      "MID_COMMAND": 1,
+      "STEERSMAN": 3
+    },
+    "thwarts": 25,
+    "hullTopology": {
+      "triangles": 72956,
+      "openOrNonmanifoldEdges": 0,
+      "minTriangleArea": 0.00007837491824777429
+    },
+    "animation": {
+      "sampledPhases": 81,
+      "translatedSampledPhases": 81,
+      "translatedMaxHandGripGapM": 1.7844099760826322e-7,
+      "minBladeOutboardClearanceM": 0.31047773914601734,
+      "minShaftClearanceBelowRailM": 0.039482108172385066,
+      "maxHandGripGapM": 1.7468026653053243e-7,
+      "maxArmLengthErrorM": 1.5304895878420766e-7,
+      "worstGrip": {
+        "id": 16,
+        "role": "ROWER",
+        "phase": 0.5125,
+        "gap": 1.7468026653053243e-7
+      },
+      "gripByRole": {
+        "ROWER": 1.7468026653053243e-7,
+        "PROW_COMMAND": 1.707805817774879e-7,
+        "MID_COMMAND": 1.707805819096231e-7,
+        "STEERSMAN": 1.0749185906018497e-7
+      }
+    },
+    "rig": {
+      "athletes": 55,
+      "joints": 3575,
+      "skinnedMeshes": 165
+    }
+  },
+  "limits": [
+    "Dimensions are repository constraints, not field measurements",
+    "Hidden livery and interior are inferred",
+    "Crew anatomy and stroke animation are illustrative, not motion capture"
+  ]
+}

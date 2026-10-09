@@ -9,3 +9,5 @@ The boat uses the owner's clip-derived Kbach/black/gold/red design. A 1,200m riv
 The original reference panels/utilities remain. React/Vite/Three.js remain the stack.
 
 Verification: TypeScript check, production build, 81-phase rig/hull check, 55 roles, imported mesh source, splash emission, pause/reset, camera modes, splash toggle and portrait/landscape tablet viewports. Public deployment is verified separately after publication. Physical tablet performance must be tested on the user's device.
+
+A live-scene check exposed grips being treated as world positions after the boat moved. The adapter now converts actor-local grips and shaft directions to world space. The rig check samples another 81 phases at x=650m/z=-18m with a yaw rotation; the live scene reports its current hand gap. The exported GLB is at the origin, retains the same skeleton animation, and uses original WebP pixels with converted UV orientation.

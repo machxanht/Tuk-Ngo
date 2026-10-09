@@ -148,7 +148,7 @@ function person(g,id,role,x,z){
 const KEYS=[0,.10,.22,.42,.60,.74,.94,1];
 const LEAN=[34,34,32,7,-13,-5,26,34],SWEEP=[28,28,24,-4,-26,-16,24,28],DEPTH=[.14,.12,-.16,-.18,-.15,.14,.14,.14];
 function smoothKey(values,t){let i=0;while(i<KEYS.length-2 && t>=KEYS[i+1])i++;const u=(t-KEYS[i])/(KEYS[i+1]-KEYS[i]),s=u*u*(3-2*u);return T.MathUtils.lerp(values[i],values[i+1],s);}
-function armsToGrips(a,grips,direction){return setAthleteGrips(a,grips.map(p=>p.clone().add(a.root.position)),direction);}
+function armsToGrips(a,grips,direction){a.root.updateWorldMatrix(true,false);return setAthleteGrips(a,grips.map(p=>a.root.localToWorld(p.clone())),direction?.clone().transformDirection(a.root.matrixWorld));}
 function updateRower(a,cycle,phaseLag){
  const t=(cycle-phaseLag+1)%1,side=Math.sign(a.z),lean=smoothKey(LEAN,t)*Math.PI/180,sw=smoothKey(SWEEP,t)*Math.PI/180,depth=smoothKey(DEPTH,t);
  a.setTorsoLean(lean);
@@ -207,6 +207,9 @@ export function verifyBoat(boat){
    const top=a.paddle.position.clone(),direction=Y.clone().applyQuaternion(a.paddle.quaternion);
    for(let sample=0;sample<=24;sample++){const point=top.clone().addScaledVector(direction,-SPEC.paddleLength*sample/24),p=profile(point.x);if(Math.abs(point.x)<15.1 && point.y>p.k && point.y<p.g){const s=Math.pow((point.y-p.k)/(p.g-p.k),1/p.p),boundary=Math.abs(section(point.x,s).z);minShaftClearance=Math.min(minShaftClearance,Math.abs(point.z)-boundary);}}
  }}
- checks.animation={sampledPhases:81,minBladeOutboardClearanceM:minClearance,minShaftClearanceBelowRailM:minShaftClearance,maxHandGripGapM:gripGap,maxArmLengthErrorM:armLengthError,worstGrip,gripByRole};checks.rig={athletes:boat.athletes.length,joints:boat.athletes.reduce((n,a)=>n+a.bones.length,0),skinnedMeshes:boat.athletes.reduce((n,a)=>n+a.meshes.length,0)};if(minClearance<.15)errors.push('Blade penetrates hull');if(minShaftClearance<.019)errors.push('Paddle shaft intersects hull below rail');if(gripGap>.002)errors.push('Hands detached from paddles');if(armLengthError>.00001)errors.push('Arm length changes during motion');
+ const savedPosition=boat.root.position.clone(),savedRotation=boat.root.quaternion.clone();let translatedGripGap=0;boat.root.position.set(650,.012,-18);boat.root.rotation.y=.13;
+ for(let frame=0;frame<=80;frame++){boat.pose(frame===80?0:frame/80);for(const a of boat.athletes)for(const gap of a.gripErrors)translatedGripGap=Math.max(translatedGripGap,gap);}
+ boat.root.position.copy(savedPosition);boat.root.quaternion.copy(savedRotation);boat.root.updateMatrixWorld(true);
+ checks.animation={sampledPhases:81,translatedSampledPhases:81,translatedMaxHandGripGapM:translatedGripGap,minBladeOutboardClearanceM:minClearance,minShaftClearanceBelowRailM:minShaftClearance,maxHandGripGapM:gripGap,maxArmLengthErrorM:armLengthError,worstGrip,gripByRole};checks.rig={athletes:boat.athletes.length,joints:boat.athletes.reduce((n,a)=>n+a.bones.length,0),skinnedMeshes:boat.athletes.reduce((n,a)=>n+a.meshes.length,0)};if(minClearance<.15)errors.push('Blade penetrates hull');if(minShaftClearance<.019)errors.push('Paddle shaft intersects hull below rail');if(gripGap>.002||translatedGripGap>.002)errors.push('Hands detached from paddles');if(armLengthError>.00001)errors.push('Arm length changes during motion');
  boat.pose(.25);return {pass:errors.length===0,errors,checks,limits:['Dimensions are repository constraints, not field measurements','Hidden livery and interior are inferred','Crew anatomy and stroke animation are illustrative, not motion capture']};
 }
