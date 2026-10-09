@@ -1,0 +1,34 @@
+{
+  "sourceCommit": "0a57c0147e036d02485e0353c5e7267e5b42af42",
+  "deploymentCommit": "51750d3b8cf384da2dce5eede4e52dd51ecfc6fe",
+  "deployment": "https://github.com/machxanht/Tuk-Ngo/actions/runs/37959730650",
+  "url": "https://machxanht.github.io/Tuk-Ngo/?demo=race&v=51750d3",
+  "result": "success",
+  "checks": {
+    "typescript": "pass",
+    "productionBuild": "pass, large JS chunk warning",
+    "GLBValidator": "no errors; nested skinned mesh warnings",
+    "persistedGLBVisual": "loaded with livery and rowing clip",
+    "publicGLBDownloadSHA256": "ccaf99cb438c02adb6297157779e809422054153be5c66b09ffc13c26643f2dc",
+    "publicCrewCount": 55,
+    "publicRigPass": true,
+    "publicLiveHandGapM": 1.5477502466864134e-07,
+    "publicActiveSplashParticles": 811,
+    "publicViewportPortrait": [
+      768,
+      1024
+    ],
+    "publicNoHorizontalOverflow": true,
+    "unchangedToolbarLandscapeCheck": [
+      1024,
+      768
+    ],
+    "toolbarMinButtonHeightPx": 44,
+    "pauseResetCamerasSplashToggleBatteryMode": "pass"
+  },
+  "limits": [
+    "Physical tablet FPS and pinch gestures require the user device",
+    "River/splashes are realtime visual effects and not embedded in the boat GLB",
+    "Boat shape/livery follows the owner clip; no historical 2024 livery claim"
+  ]
+}
