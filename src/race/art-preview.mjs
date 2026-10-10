@@ -142,11 +142,11 @@ export async function startModelPreview(host,settings,clock,base,onReady){
   camera.setViewOffset(w,h,0,view==='boat'?-h*.05:0,w,h);camera.updateProjectionMatrix();lastView=view;
  }
  function frame(now){if(disposed)return;const dt=stepClock(clock,settings,now),s=settings.current,c=clock.current;
-  if(s.view!==lastView)setCamera(s.view);mixer.setTime(c.phase*clip.duration);root.position.y=Math.sin(c.phase*Math.PI*2)*.006;root.updateMatrixWorld(true);
+  if(s.view!==lastView){setCamera(s.view);fx.reset();}mixer.setTime(c.phase*clip.duration);root.position.y=Math.sin(c.phase*Math.PI*2)*.006;root.updateMatrixWorld(true);
   river.update(c.seconds);boat.athletes=athletes.filter(a=>a.root.visible);fx.update(dt,boat,4.2,c.seconds,s.splash);renderer.render(scene,camera);
-  host.dataset.renderMode='model';host.dataset.artSource='MAKEHUMAN_GLB_V4';host.dataset.phase=c.phase.toFixed(4);host.dataset.view=s.view;host.dataset.crewCount='55';host.dataset.drawCalls=String(renderer.info.render.calls);host.dataset.triangles=String(renderer.info.render.triangles);host.dataset.splashEvents=String(fx.stats().events);host.dataset.activeParticles=String(fx.stats().particles);
+  host.dataset.renderMode='model';host.dataset.artSource='MAKEHUMAN_GLB_MOTION_V6';host.dataset.phase=c.phase.toFixed(4);host.dataset.view=s.view;host.dataset.crewCount='55';host.dataset.drawCalls=String(renderer.info.render.calls);host.dataset.triangles=String(renderer.info.render.triangles);host.dataset.splashEvents=String(fx.stats().events);host.dataset.activeParticles=String(fx.stats().particles);
   raf=requestAnimationFrame(frame);
  }
- onReady({reset(){},capture(){saveCanvas(renderer.domElement,'ghe-ngo-3d-'+settings.current.view+'.png');},record(){return recordCanvas(renderer.domElement,'ghe-ngo-3d-'+settings.current.view+'-10s.webm');},dispose(){disposed=true;cancelAnimationFrame(raf);observer.disconnect();mixer.stopAllAction();fx.dispose();river.dispose();scene.traverse(o=>{o.geometry?.dispose();for(const m of o.material?(Array.isArray(o.material)?o.material:[o.material]):[]){for(const v of Object.values(m))if(v?.isTexture)v.dispose();m.dispose();}});renderer.dispose();renderer.domElement.remove();}});
+ onReady({reset(){fx.reset();},capture(){saveCanvas(renderer.domElement,'ghe-ngo-3d-'+settings.current.view+'.png');},record(){return recordCanvas(renderer.domElement,'ghe-ngo-3d-'+settings.current.view+'-10s.webm');},dispose(){disposed=true;cancelAnimationFrame(raf);observer.disconnect();mixer.stopAllAction();fx.dispose();river.dispose();scene.traverse(o=>{o.geometry?.dispose();for(const m of o.material?(Array.isArray(o.material)?o.material:[o.material]):[]){for(const v of Object.values(m))if(v?.isTexture)v.dispose();m.dispose();}});renderer.dispose();renderer.domElement.remove();}});
  raf=requestAnimationFrame(frame);
 }

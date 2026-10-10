@@ -47,7 +47,12 @@ export function makeAthlete(id,role){
    if(role==='ROWER'||role==='STEERSMAN')b.quaternion.multiply(new T.Quaternion().setFromAxisAngle(axis,finger==='thumb'?.48:n===1?.95:n===2?1.15:.78));
   }
   root.updateMatrixWorld(true);
-  arms.push({side,upper,elbow,wrist,palm,palmLength:palm.length()*SCALE,handBasis:frameQ(across,palm),upperLength:worldPos(upper).distanceTo(worldPos(elbow)),foreLength:worldPos(elbow).distanceTo(worldPos(wrist))});
+  // Preserve the source elbow's hinge plane, including axial bone orientation.
+  // Aligning only shoulder->elbow and elbow->wrist leaves the skin twisting
+  // around an arbitrary axis, even when the end points touch the paddle.
+  const upperDir=worldPos(elbow).sub(worldPos(upper)).normalize(),foreDir=worldPos(wrist).sub(worldPos(elbow)).normalize(),hinge=upperDir.clone().cross(foreDir).normalize();
+  const boneFrame=b=>frameQ(hinge.clone().applyQuaternion(worldQuat(b).invert()),(b===upper?upperDir:foreDir).clone().applyQuaternion(worldQuat(b).invert()));
+  arms.push({side,upper,elbow,wrist,palm,palmLength:palm.length()*SCALE,handBasis:frameQ(across,palm),upperFrame:boneFrame(upper),foreFrame:boneFrame(elbow),upperLength:worldPos(upper).distanceTo(worldPos(elbow)),foreLength:worldPos(elbow).distanceTo(worldPos(wrist))});
  }
  // Cloth cap with a short visor; eye details are accessories on the source face.
  const hp=worldPos(head),capMaterial=new T.MeshStandardMaterial({color:'#e8e4d8',roughness:.94});
@@ -67,17 +72,22 @@ export function makeAthlete(id,role){
  };
 }
 
-export function setAthleteGrips(a,grips,shaftDirection){
+export function setAthleteGrips(a,grips,shaftDirection,topHand=-1,handleAxis){
  a.root.updateMatrixWorld(true);a.gripErrors=[];
  for(let i=0;i<2;i++){
-  const arm=a.arms[i],origin=worldPos(arm.upper),toward=grips[i].clone().sub(origin).normalize();
-  const wristTarget=grips[i].clone().addScaledVector(toward,-arm.palmLength),delta=wristTarget.clone().sub(origin),raw=delta.length();
-  const distance=Math.min(arm.upperLength+arm.foreLength-.0001,Math.max(.025,raw)),axis=delta.normalize();
-  const along=(arm.upperLength**2-arm.foreLength**2+distance**2)/(2*distance),height=Math.sqrt(Math.max(0,arm.upperLength**2-along**2));
-  const pole=V(.20,-.25,arm.side*.65).applyQuaternion(worldQuat(a.root));pole.sub(axis.clone().multiplyScalar(pole.dot(axis))).normalize();
-  const elbow=origin.clone().addScaledVector(axis,along).addScaledVector(pole,height),end=origin.clone().addScaledVector(axis,distance);
-  pointDirection(arm.upper,arm.elbow,elbow.clone().sub(origin));pointDirection(arm.elbow,arm.wrist,end.clone().sub(elbow));
-  const y=grips[i].clone().sub(end).normalize(),x=(shaftDirection||V(0,1,0)).clone().sub(y.clone().multiplyScalar(y.dot(shaftDirection||V(0,1,0))));
+  const arm=a.arms[i],origin=worldPos(arm.upper),delta=grips[i].clone().sub(origin),raw=delta.length();
+  // Solve to the fist centre with the palm continuing the forearm. Subtracting
+  // the palm along shoulder->grip instead forced deep sideways wrist bends.
+  const reach=arm.foreLength+arm.palmLength;
+  const distance=Math.min(arm.upperLength+reach-.0001,Math.max(.025,raw)),axis=delta.normalize();
+  const along=(arm.upperLength**2-reach**2+distance**2)/(2*distance),height=Math.sqrt(Math.max(0,arm.upperLength**2-along**2));
+  const pole=(i===topHand?V(-.15,-.70,-arm.side*.55):V(-.30,-.70,arm.side*.25)).applyQuaternion(worldQuat(a.root));pole.sub(axis.clone().multiplyScalar(pole.dot(axis))).normalize();
+  const elbow=origin.clone().addScaledVector(axis,along).addScaledVector(pole,height),fist=origin.clone().addScaledVector(axis,distance);
+  const end=elbow.clone().addScaledVector(fist.clone().sub(elbow).normalize(),arm.foreLength);
+  const upperDir=elbow.clone().sub(origin).normalize(),foreDir=end.clone().sub(elbow).normalize(),hinge=upperDir.clone().cross(foreDir).normalize();
+  setWorldQuat(arm.upper,frameQ(hinge,upperDir).multiply(arm.upperFrame.clone().invert()));
+  setWorldQuat(arm.elbow,frameQ(hinge,foreDir).multiply(arm.foreFrame.clone().invert()));
+  const y=grips[i].clone().sub(end).normalize(),bar=i===topHand&&handleAxis?handleAxis:(shaftDirection||V(0,1,0)),x=bar.clone().sub(y.clone().multiplyScalar(y.dot(bar)));
   if(x.lengthSq()<.01)x.copy(V(0,0,arm.side));
   const q=frameQ(x,y).multiply(arm.handBasis.clone().invert());setWorldQuat(arm.wrist,q);
   const actual=arm.wrist.localToWorld(arm.palm.clone());a.gripErrors.push(actual.distanceTo(grips[i]));

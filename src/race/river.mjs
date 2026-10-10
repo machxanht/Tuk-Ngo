@@ -61,5 +61,5 @@ export function buildSplashes(scene,waterY=.28){
   active=0;for(let i=0;i<COUNT;i++){if(life[i]<=0){alpha[i]=0;continue;}active++;const j=i*3;life[i]-=dt;velocity[j+1]-=4.8*dt;positions[j]+=velocity[j]*dt;positions[j+1]+=velocity[j+1]*dt;positions[j+2]+=velocity[j+2]*dt;alpha[i]=Math.max(0,Math.min(1,life[i]*2));if(positions[j+1]<waterY-.025)life[i]=0;}
   for(let i=0;i<120;i++){ringLife[i]=Math.max(0,ringLife[i]-dt);const s=ringLife[i]>0?.08+(.8-ringLife[i])*.72:0;dummy.position.fromArray(ringPos,i*3);dummy.scale.set(s,1,s);dummy.updateMatrix();rings.setMatrixAt(i,dummy.matrix);}rings.instanceMatrix.needsUpdate=true;
   geo.attributes.position.needsUpdate=true;geo.attributes.aAlpha.needsUpdate=true;droplets.visible=enabled;rings.visible=enabled;
- },stats(){return {events:eventCount,particles:active};},dispose(){geo.dispose();mat.dispose();ringGeo.dispose();rings.material.dispose();scene.remove(droplets,rings);}};
+ },reset(){life.fill(0);alpha.fill(0);positions.fill(-999);ringLife.fill(0);previous.clear();driveTimer.clear();eventCount=0;active=0;cursor=0;ringCursor=0;},stats(){return {events:eventCount,particles:active};},dispose(){geo.dispose();mat.dispose();ringGeo.dispose();rings.material.dispose();scene.remove(droplets,rings);}};
 }

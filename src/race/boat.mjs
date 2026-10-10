@@ -3,7 +3,7 @@ import {DESIGN_GUIDES} from './design-profile.mjs';
 import {prepareActors,makeAthlete,setAthleteGrips} from './imported-athlete.mjs';
 
 // The photos establish appearance; the repository establishes approximate design dimensions.
-export const SPEC = Object.freeze({id:'GHE_NGO_MAKEHUMAN_ART_V4',loa:30.2,beam:1.12,depth:0.58,bow:1.38,stern:1.52,waterY:0.28,rows:25,crew:55,kemDiameter:0.09,kemLength:28.5,kemSupports:24,paddleLength:1.22,steeringLength:4.2});
+export const SPEC = Object.freeze({id:'GHE_NGO_MAKEHUMAN_MOTION_V6',loa:30.2,beam:1.12,depth:0.58,bow:1.38,stern:1.52,waterY:0.28,rows:25,crew:55,kemDiameter:0.09,kemLength:28.5,kemSupports:24,paddleLength:1.22,steeringLength:4.2});
 export const SOURCES = [
  {id:'USER-DESIGN-01',publisher:'User supplied assetghe.mp4',date:'2026-10-09',url:'https://drive.google.com/file/d/1P4vzMy9rbXIHvB8kH6aNWpenhgbOcVoA/view',file:'../../references/user-ghe-design/assetghe.mp4',role:'Primary shape and livery reference; upper design in clip, original video pixels from 0–36 seconds'},
  {id:'REAL-01',publisher:'Báo Nhân Dân',date:'2024-11-15',url:'https://nhandan.vn/gan-1-trieu-luot-nguoi-du-le-hoi-ooc-om-boc-dua-ghe-ngo-soc-trang-nam-2024-post845131.html',files:['../../references/tum-nup-2-2024/nhandan-tum-nup-2-no12.png','../../references/tum-nup-2-2024/nhandan-final-finish.png']},
@@ -146,22 +146,35 @@ function person(g,id,role,x,z){
 }
 // Smooth seven-phase pose. Cadence is a preview control, not a measured 2024 value.
 const KEYS=[0,.10,.22,.42,.60,.74,.94,1];
-const LEAN=[26,26,24,2,-10,-7,20,26],SWEEP=[26,26,22,-5,-24,-12,22,26],DEPTH=[.08,.035,-.13,-.15,-.12,.085,.08,.08];
-function smoothKey(values,t){let i=0;while(i<KEYS.length-2 && t>=KEYS[i+1])i++;const u=(t-KEYS[i])/(KEYS[i+1]-KEYS[i]),s=u*u*(3-2*u);return T.MathUtils.lerp(values[i],values[i+1],s);}
-function armsToGrips(a,grips,direction){a.root.updateWorldMatrix(true,false);return setAthleteGrips(a,grips.map(p=>a.root.localToWorld(p.clone())),direction?.clone().transformDirection(a.root.matrixWorld));}
+const LEAN=[22,22,20,6,-5,0,18,22],SWEEP=[26,26,22,-5,-24,-12,22,26],DEPTH=[.025,.015,-.13,-.15,-.12,.025,.025,.025];
+const HANDLE_X=[.45,.45,.44,.40,.36,.42,.45,.45];
+function smoothKey(values,t){
+ let i=0;while(i<KEYS.length-2 && t>=KEYS[i+1])i++;
+ // Periodic monotone Hermite interpolation: velocity is continuous at phase
+ // boundaries, instead of stopping the entire crew at every authored key.
+ const tangent=j=>{const n=KEYS.length-1,k=j===n?0:j,prev=k===0?n-1:k-1,next=k+1,h0=k===0?1-KEYS[prev]:KEYS[k]-KEYS[prev],h1=KEYS[next]-KEYS[k],d0=(values[k]-values[prev])/h0,d1=(values[next]-values[k])/h1;if(d0*d1<=0)return 0;const w0=2*h1+h0,w1=h1+2*h0;return (w0+w1)/(w0/d0+w1/d1);};
+ const h=KEYS[i+1]-KEYS[i],u=(t-KEYS[i])/h,u2=u*u,u3=u2*u;
+ return (2*u3-3*u2+1)*values[i]+(u3-2*u2+u)*h*tangent(i)+(-2*u3+3*u2)*values[i+1]+(u3-u2)*h*tangent(i+1);
+}
+function armsToGrips(a,grips,direction,topHand=-1,handleAxis){a.root.updateWorldMatrix(true,false);return setAthleteGrips(a,grips.map(p=>a.root.localToWorld(p.clone())),direction?.clone().transformDirection(a.root.matrixWorld),topHand,handleAxis?.clone().transformDirection(a.root.matrixWorld));}
 function updateRower(a,cycle,phaseLag){
  const t=(cycle-phaseLag+1)%1,side=Math.sign(a.z),lean=smoothKey(LEAN,t)*Math.PI/180,sw=smoothKey(SWEEP,t)*Math.PI/180,depth=smoothKey(DEPTH,t);
  a.setTorsoLean(lean);
  a.setHeadPitch(lean*.70);
  const recovery=t>=.70&&t<=.94?Math.sin(Math.PI*(t-.70)/.24)**2:0;
- const cant=(27.5+12.5*recovery)*Math.PI/180;
+ const cant=(31+7*recovery)*Math.PI/180;
  // Blade toe is outside the actual local rail; root position is solved from water height.
  const localHalfBeam=profile(a.x).b,bladeZ=side*(localHalfBeam+.34);
  const dir=V(-Math.sin(sw)*Math.cos(cant),Math.cos(sw)*Math.cos(cant),-side*Math.sin(cant)).normalize();
- a.paddle.quaternion.setFromUnitVectors(Y,dir);a.paddle.quaternion.multiply(new T.Quaternion().setFromAxisAngle(Y,recovery*Math.PI/2));const toe=V(a.x+.18+.22*Math.sin(lean)-dir.x*SPEC.paddleLength,SPEC.waterY+depth,bladeZ);
+ // The broad blade faces the direction of travel during the water pull.
+ // A small recovery roll avoids spinning the athlete's wrists through 90°.
+ const cross=V(0,0,1).addScaledVector(dir,-dir.z).normalize(),normal=cross.clone().cross(dir).normalize();
+ a.paddle.quaternion.setFromRotationMatrix(new T.Matrix4().makeBasis(cross,dir,normal));a.paddle.quaternion.multiply(new T.Quaternion().setFromAxisAngle(Y,recovery*.30));
+ const toe=V(a.x+smoothKey(HANDLE_X,t)-dir.x*SPEC.paddleLength,SPEC.waterY+depth,bladeZ);
  const top=toe.clone().addScaledVector(dir,SPEC.paddleLength);a.paddle.position.copy(top);
  const gripTop=top.clone().sub(a.root.position),gripLow=top.clone().addScaledVector(dir,-.44).sub(a.root.position);
- armsToGrips(a,side<0?[gripLow,gripTop]:[gripTop,gripLow],dir);
+ const handleAxis=V(1,0,0).applyQuaternion(a.paddle.quaternion);
+ armsToGrips(a,side<0?[gripLow,gripTop]:[gripTop,gripLow],dir,side<0?1:0,handleAxis);
  a.paddle.userData.outboardBladeZ=bladeZ;
 }
 function updateStanding(a,cycle){
@@ -202,6 +215,18 @@ export function verifyBoat(boat){
  checks.hullTopology={triangles:index.length/3,openOrNonmanifoldEdges:[...edgeCounts.values()].filter(c=>c!==2).length,minTriangleArea:minArea};if(checks.hullTopology.openOrNonmanifoldEdges!==0)errors.push('Hull shell open edges');if(minArea<1e-12)errors.push('Degenerate hull faces');
  let minClearance=Infinity,minShaftClearance=Infinity,gripGap=0,armLengthError=0,worstGrip=null;const gripByRole={};
  for(let frame=0;frame<=80;frame++){boat.pose(frame===80?0:frame/80);for(const a of boat.athletes){for(const gap of a.gripErrors){gripByRole[a.role]=Math.max(gripByRole[a.role]||0,gap);if(gap>gripGap){gripGap=gap;worstGrip={id:a.root.userData.id,role:a.role,phase:frame/80,gap};}}for(const arm of a.arms){const upper=arm.upper.getWorldPosition(new T.Vector3()),elbow=arm.elbow.getWorldPosition(new T.Vector3()),wrist=arm.wrist.getWorldPosition(new T.Vector3());armLengthError=Math.max(armLengthError,Math.abs(upper.distanceTo(elbow)-arm.upperLength),Math.abs(elbow.distanceTo(wrist)-arm.foreLength));}}}
+ // Regressions observed in V4: a 14° folded elbow, fist beside the face, and
+ // sideways wrist flexion. These limits supplement direct visual inspection;
+ // they are authoring bounds, not clinical or measured race biomechanics.
+ const posture={sampledPhases:161,minElbowAngleDeg:180,maxElbowAngleDeg:0,maxWristFlexDeg:0,minFistToHeadJointM:Infinity,maxJointStepDeg:0,minPairElbowGapM:Infinity},previous=new Map();
+ for(let frame=0;frame<=160;frame++){boat.pose(frame===160?0:frame/160);for(const a of boat.athletes.filter(a=>a.role==='ROWER'))for(const arm of a.arms){
+  const shoulder=arm.upper.getWorldPosition(new T.Vector3()),elbow=arm.elbow.getWorldPosition(new T.Vector3()),wrist=arm.wrist.getWorldPosition(new T.Vector3()),fist=arm.wrist.localToWorld(arm.palm.clone()),fore=wrist.clone().sub(elbow);
+  const angle=T.MathUtils.radToDeg(shoulder.sub(elbow).angleTo(fore));posture.minElbowAngleDeg=Math.min(posture.minElbowAngleDeg,angle);posture.maxElbowAngleDeg=Math.max(posture.maxElbowAngleDeg,angle);posture.maxWristFlexDeg=Math.max(posture.maxWristFlexDeg,T.MathUtils.radToDeg(fore.angleTo(fist.clone().sub(wrist))));posture.minFistToHeadJointM=Math.min(posture.minFistToHeadJointM,fist.distanceTo(a.head.getWorldPosition(new T.Vector3())));
+  for(const bone of [arm.upper,arm.elbow,arm.wrist]){if(previous.has(bone))posture.maxJointStepDeg=Math.max(posture.maxJointStepDeg,T.MathUtils.radToDeg(previous.get(bone).angleTo(bone.quaternion)));previous.set(bone,bone.quaternion.clone());}
+ }for(let pair=0;pair<25;pair++){const left=boat.athletes[pair*2].arms[1].elbow.getWorldPosition(new T.Vector3()),right=boat.athletes[pair*2+1].arms[0].elbow.getWorldPosition(new T.Vector3());posture.minPairElbowGapM=Math.min(posture.minPairElbowGapM,left.distanceTo(right));}}
+ checks.rowingPosture=posture;
+ if(posture.minElbowAngleDeg<55||posture.maxElbowAngleDeg>170)errors.push('Rower elbow folds or locks');if(posture.maxWristFlexDeg>15)errors.push('Rower wrist bends sideways');if(posture.minFistToHeadJointM<.18)errors.push('Rower grip too close to head');if(posture.maxJointStepDeg>12)errors.push('Rower joint snaps between sampled poses');
+ if(posture.minPairElbowGapM<.08)errors.push('Paired rower elbows overlap');
  for(let frame=0;frame<=80;frame++){boat.pose(frame===80?0:frame/80);for(const a of boat.athletes.filter(o=>o.role==='ROWER')){
    const tip=V(0,-SPEC.paddleLength,0).applyQuaternion(a.paddle.quaternion).add(a.paddle.position);const clearance=Math.abs(tip.z)-profile(tip.x).b;minClearance=Math.min(minClearance,clearance);
    const top=a.paddle.position.clone(),direction=Y.clone().applyQuaternion(a.paddle.quaternion);

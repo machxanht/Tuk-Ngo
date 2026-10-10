@@ -10,10 +10,10 @@ boat.root.traverse(o=>{if(o.isMesh){o.castShadow=true;o.receiveShadow=true;}});
 const renderer=new T.WebGLRenderer({alpha:true,antialias:true,preserveDrawingBuffer:true});renderer.setClearColor(0x000000,0);renderer.setPixelRatio(1);renderer.outputColorSpace=T.SRGBColorSpace;renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;renderer.shadowMap.enabled=true;renderer.shadowMap.type=T.PCFSoftShadowMap;renderer.clippingPlanes=[new T.Plane(new T.Vector3(0,1,0),-SPEC.waterY)];
 document.querySelector('#shot').appendChild(renderer.domElement);
 const camera=new T.OrthographicCamera(-16.9,16.9,4.225,-4.225,.05,500);
-const config={boat:{width:1536,height:384},crew:{width:512,height:512}};
+const config={boat:{width:1536,height:384},crew:{width:512,height:512},side:{width:512,height:512},front:{width:512,height:512}};
 const status=document.querySelector('#status'),viewControl=document.querySelector('#view'),phaseControl=document.querySelector('#phase');
 function setView(view){const v=config[view];renderer.setSize(v.width,v.height);const width=view==='boat'?33.8:2.4;camera.left=-width/2;camera.right=width/2;camera.top=width*v.height/v.width/2;camera.bottom=-camera.top;
- if(view==='boat'){camera.position.set(10,13,43);camera.lookAt(0,1,0);}else{camera.position.set(5.4,2.25,4.5);camera.lookAt(4.27,.90,.06);}
+ if(view==='boat'){camera.position.set(10,13,43);camera.lookAt(0,1,0);}else{camera.position.set(...(view==='side'?[4.27,1.25,5]:view==='front'?[9,1.25,0]:[5.4,2.25,4.5]));camera.lookAt(4.27,.90,.06);}
  for(const a of boat.athletes){a.root.visible=view==='boat'||a.pair===8;if(a.paddle)a.paddle.visible=a.root.visible;}
  camera.updateProjectionMatrix();camera.updateMatrixWorld(true);
 }
