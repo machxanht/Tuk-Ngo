@@ -148,6 +148,9 @@ function person(g,id,role,x,z){
 const KEYS=[0,.10,.22,.42,.60,.74,.94,1];
 const LEAN=[22,22,20,6,-5,0,18,22],SWEEP=[26,26,22,-5,-24,-12,22,26],DEPTH=[.025,.015,-.13,-.15,-.12,.025,.025,.025];
 const HANDLE_X=[.45,.45,.44,.40,.36,.42,.45,.45];
+// Catch clearance only: a global forward offset overextends the lower arm
+// around phase .74 (early recovery), even though it fixes the catch near .18.
+const SPRINT_HANDLE_OFFSET=[.015,.015,.015,0,0,0,.015,.015];
 function smoothKey(values,t){
  let i=0;while(i<KEYS.length-2 && t>=KEYS[i+1])i++;
  // Periodic monotone Hermite interpolation: velocity is continuous at phase
@@ -157,20 +160,20 @@ function smoothKey(values,t){
  return (2*u3-3*u2+1)*values[i]+(u3-2*u2+u)*h*tangent(i)+(-2*u3+3*u2)*values[i+1]+(u3-u2)*h*tangent(i+1);
 }
 function armsToGrips(a,grips,direction,topHand=-1,handleAxis){a.root.updateWorldMatrix(true,false);return setAthleteGrips(a,grips.map(p=>a.root.localToWorld(p.clone())),direction?.clone().transformDirection(a.root.matrixWorld),topHand,handleAxis?.clone().transformDirection(a.root.matrixWorld));}
-function updateRower(a,cycle,phaseLag){
- const t=(cycle-phaseLag+1)%1,side=Math.sign(a.z),lean=smoothKey(LEAN,t)*Math.PI/180,sw=smoothKey(SWEEP,t)*Math.PI/180,depth=smoothKey(DEPTH,t);
+function updateRower(a,cycle,phaseLag,strength=0){
+ const t=(cycle-phaseLag+1)%1,side=Math.sign(a.z),lean=smoothKey(LEAN,t)*(1+strength*.25)*Math.PI/180,sw=smoothKey(SWEEP,t)*(1+strength*.19)*Math.PI/180,depth=smoothKey(DEPTH,t)-(t>.18&&t<.66?strength*.035*Math.sin(Math.PI*(t-.18)/.48)**2:0);
  a.setTorsoLean(lean);
  a.setHeadPitch(lean*.70);
  const recovery=t>=.70&&t<=.94?Math.sin(Math.PI*(t-.70)/.24)**2:0;
  const cant=(31+7*recovery)*Math.PI/180;
  // Blade toe is outside the actual local rail; root position is solved from water height.
- const localHalfBeam=profile(a.x).b,bladeZ=side*(localHalfBeam+.34);
+ const localHalfBeam=profile(a.x).b,bladeZ=side*(localHalfBeam+.34+strength*.025);
  const dir=V(-Math.sin(sw)*Math.cos(cant),Math.cos(sw)*Math.cos(cant),-side*Math.sin(cant)).normalize();
  // The broad blade faces the direction of travel during the water pull.
  // A small recovery roll avoids spinning the athlete's wrists through 90°.
  const cross=V(0,0,1).addScaledVector(dir,-dir.z).normalize(),normal=cross.clone().cross(dir).normalize();
  a.paddle.quaternion.setFromRotationMatrix(new T.Matrix4().makeBasis(cross,dir,normal));a.paddle.quaternion.multiply(new T.Quaternion().setFromAxisAngle(Y,recovery*.30));
- const toe=V(a.x+smoothKey(HANDLE_X,t)-dir.x*SPEC.paddleLength,SPEC.waterY+depth,bladeZ);
+ const toe=V(a.x+smoothKey(HANDLE_X,t)+strength*smoothKey(SPRINT_HANDLE_OFFSET,t)-dir.x*SPEC.paddleLength,SPEC.waterY+depth,bladeZ);
  const top=toe.clone().addScaledVector(dir,SPEC.paddleLength);a.paddle.position.copy(top);
  const gripTop=top.clone().sub(a.root.position),gripLow=top.clone().addScaledVector(dir,-.44).sub(a.root.position);
  const handleAxis=V(1,0,0).applyQuaternion(a.paddle.quaternion);
@@ -192,18 +195,19 @@ export function buildBoat(){
  }
  athletes.push(person(crew,1,'PROW_COMMAND',11.7,0));athletes.push(person(crew,52,'MID_COMMAND',.2,0));
  for(let i=0;i<3;i++){const a=person(crew,53+i,'STEERSMAN',-11.2-i*.95,(i%2?-.08:.08));a.steerSide=i%2?-1:1;a.paddle=paddle(paddles,'Steering_Oar_'+(i+1),SPEC.steeringLength);athletes.push(a);}
- function pose(cycle=0){root.updateMatrixWorld(true);for(const a of athletes){if(a.role==='ROWER')updateRower(a,cycle,(a.pair-1)*.025/24);else updateStanding(a,cycle);}root.updateMatrixWorld(true);}
+ function pose(cycle=0,strength=0){root.updateMatrixWorld(true);for(const a of athletes){if(a.role==='ROWER')updateRower(a,cycle,(a.pair-1)*.025/24,strength);else updateStanding(a,cycle);}root.updateMatrixWorld(true);}
  pose(.25);
  return {root,shell,crew,paddles,body,athletes,pose};
 }
-export function bakeAnimation(boat,cadence=90){
+export function bakeAnimation(boat,cadence=90,strength=0){
  const dynamic=[];for(const a of boat.athletes){dynamic.push(...a.bones);if(a.paddle)dynamic.push(a.paddle);}
  const times=[],samples=new Map(dynamic.map(o=>[o,{p:[],q:[],s:[]}]));const frames=80,duration=60/cadence;
- for(let i=0;i<=frames;i++){times.push(i*duration/frames);boat.pose(i===frames?0:i/frames);for(const o of dynamic){const s=samples.get(o);s.p.push(...o.position.toArray());s.q.push(...o.quaternion.toArray());s.s.push(...o.scale.toArray());}}
+ for(let i=0;i<=frames;i++){times.push(i*duration/frames);boat.pose(i===frames?0:i/frames,strength);for(const o of dynamic){const s=samples.get(o);s.p.push(...o.position.toArray());s.q.push(...o.quaternion.toArray());s.s.push(...o.scale.toArray());}}
  const tracks=[];for(const o of dynamic){const s=samples.get(o);tracks.push(new T.VectorKeyframeTrack(o.name+'.position',times,s.p),new T.QuaternionKeyframeTrack(o.name+'.quaternion',times,s.q),new T.VectorKeyframeTrack(o.name+'.scale',times,s.s));}
- boat.pose(.25);return new T.AnimationClip('Rowing_7_Phases_Preview_'+cadence+'SPM',duration,tracks);
+ boat.pose(.25);return new T.AnimationClip((strength?'Rowing_Sprint_Preview_':'Rowing_7_Phases_Preview_')+cadence+'SPM',duration,tracks);
 }
-export function verifyBoat(boat){
+export function verifyBoat(boat,strength=0){
+ const sourcePose=boat.pose;boat={...boat,pose:cycle=>sourcePose(cycle,strength)};
  const errors=[],checks={};boat.pose(.25);const b=new T.Box3().setFromObject(boat.body),size=b.getSize(new T.Vector3());
  checks.hullBoundsMeters={min:b.min.toArray(),max:b.max.toArray(),size:size.toArray()};
  for(const [label,a,want] of [['loa',size.x,SPEC.loa],['beam',size.z,SPEC.beam],['maxHullHeight',b.max.y,SPEC.stern]])if(Math.abs(a-want)>.0001)errors.push(label+': '+a+' != '+want);

@@ -70,8 +70,9 @@ export async function loadRaceCrews(url){
  const gltf=await new GLTFLoader().loadAsync(url),clip=gltf.animations[0];if(!clip)throw Error('GLB thiếu chu kỳ chèo');
  const teams=[undefined,'#df8f29'].map((shirt,i)=>{
   const root=clone(gltf.scene);root.name='RaceTeam_'+(i+1);root.userData.spec={paddleLength:1.22};
-  const boat=optimizeRaceBoat(root,shirt),mixer=new T.AnimationMixer(root);mixer.clipAction(clip).play();
-  return {...boat,mixer,phase:i?.17:.28,pose(phase){mixer.setTime(phase*clip.duration);boat.updateInstances();},dispose(){mixer.stopAllAction();mixer.uncacheRoot(root);boat.dispose();}};
+  const boat=optimizeRaceBoat(root,shirt),mixer=new T.AnimationMixer(root),baseAction=mixer.clipAction(clip).play(),sprintClip=gltf.animations.find(a=>a.name.startsWith('Rowing_Sprint_')),sprintAction=sprintClip?mixer.clipAction(sprintClip).play():null;
+  sprintAction?.setEffectiveWeight(0);
+  return {...boat,mixer,phase:i?.17:.28,pose(phase,strength=0){const power=sprintAction?T.MathUtils.clamp(strength,0,1):0;baseAction.setEffectiveWeight(1-power);sprintAction?.setEffectiveWeight(power);mixer.setTime(phase*clip.duration);boat.updateInstances();},dispose(){mixer.stopAllAction();mixer.uncacheRoot(root);boat.dispose();}};
  });
  const resources={geometry:new Set(),material:new Set(),texture:new Set(),skeleton:new Set()};
  gltf.scene.traverse(o=>{if(o.geometry)resources.geometry.add(o.geometry);if(o.isSkinnedMesh)resources.skeleton.add(o.skeleton);for(const m of Array.isArray(o.material)?o.material:o.material?[o.material]:[]){resources.material.add(m);for(const value of Object.values(m))if(value?.isTexture)resources.texture.add(value);}});
