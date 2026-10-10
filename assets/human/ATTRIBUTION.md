@@ -1,5 +1,13 @@
 # Athlete assets and reference provenance
 
+## Independently drawn 2D illustration (V5)
+
+The default V5 illustration is original code-native Canvas2D artwork in `src/race/illustrated-ghe.mjs`. It uses separate drawn faces, garments, limbs and boat contours, with its own continuous rowing pose curve. It does not use the MakeHuman body, GLB geometry, 3D poses or rendered V4 atlas. The owner's existing livery WebP remains the only image used by this scene. No AI-generated reference image is used.
+
+The real photograph captioned “Đội ghe Nam Tum Nup 2 (số 12)” in Nhân Dân's 15 November 2024 report was visually inspected for green tops, white caps, close seating and rowing posture: https://nhandan.vn/gan-1-trieu-luot-nguoi-du-le-hoi-ooc-om-boc-dua-ghe-ngo-soc-trang-nam-2024-post845131.html . The photograph is a reference and is not included in the game. Faces are generic drawn characters. The pose timing is authored rather than measured race timing.
+
+The preserved MakeHuman model below remains active in the 3D comparison. The V4 atlas is historical material rather than V5's default artwork.
+
 ## Active MakeHuman athlete (V4)
 
 The anatomical body, face, skin weights and 53-bone skeleton come from MakeHuman/MPFB assets, packaged and released under **CC0** by Innerscene. It is a generic character, not a portrait of a named athlete.
