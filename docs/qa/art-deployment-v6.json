@@ -1,0 +1,63 @@
+{
+  "url": "https://machxanht.github.io/Tuk-Ngo/?demo=art&v=95c14e2",
+  "pagesCommit": "95c14e21ea4e21a88b67e93141ab5ef241af0cc1",
+  "pagesAction": 38059505528,
+  "pagesActionResult": "completed/success",
+  "allMatch": true,
+  "files": [
+    {
+      "file": "index.html",
+      "url": "https://machxanht.github.io/Tuk-Ngo/?demo=art&v=95c14e2",
+      "status": 200,
+      "mime": "text/html; charset=utf-8",
+      "bytes": 1429,
+      "sha256": "9947ddf9bd30d97c7fb13ecd3f28fde38c0c49ccc1ec171b934f3bba0e6fd16b",
+      "matchesBuild": true
+    },
+    {
+      "file": "assets/index-CLFgRnjO.js",
+      "url": "https://machxanht.github.io/Tuk-Ngo/assets/index-CLFgRnjO.js?v=06d3d78",
+      "status": 200,
+      "mime": "application/javascript; charset=utf-8",
+      "bytes": 1192293,
+      "sha256": "12c0828a95fe908b850f297ab5e28e72b2fe4776d5ab0b3679c2365ae23790d2",
+      "matchesBuild": true
+    },
+    {
+      "file": "assets/index-Oe4s6uZv.css",
+      "url": "https://machxanht.github.io/Tuk-Ngo/assets/index-Oe4s6uZv.css?v=06d3d78",
+      "status": 200,
+      "mime": "text/css; charset=utf-8",
+      "bytes": 70717,
+      "sha256": "c2a9ef8f014dc38c944cb66a27889b3f9f306d45acb79b277b8a7c4334f32cff",
+      "matchesBuild": true
+    },
+    {
+      "file": "assets/ghe-ngo/ghe-ngo-crew.glb",
+      "url": "https://machxanht.github.io/Tuk-Ngo/assets/ghe-ngo/ghe-ngo-crew.glb?v=06d3d78",
+      "status": 200,
+      "mime": "model/gltf-binary",
+      "bytes": 7505908,
+      "sha256": "06d3d78f748ceaaaf84a2d9bcd10e5acb92a692cb4b17ac5e03a29b6787908f3",
+      "matchesBuild": true
+    },
+    {
+      "file": "assets/human/ATTRIBUTION.md",
+      "url": "https://machxanht.github.io/Tuk-Ngo/assets/human/ATTRIBUTION.md?v=06d3d78",
+      "status": 200,
+      "mime": "text/markdown; charset=utf-8",
+      "bytes": 4613,
+      "sha256": "9ef32af0515396a6c6842056646cfa7f5181208b34dc94010b5b2f91df0a40c6",
+      "matchesBuild": true
+    },
+    {
+      "file": "assets/ghe-ngo/kbach-from-reference.webp",
+      "url": "https://machxanht.github.io/Tuk-Ngo/assets/ghe-ngo/kbach-from-reference.webp?v=06d3d78",
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 304100,
+      "sha256": "ca32a1e35ecfa4f6653637b189a21fe838b14cf76951743556dde765773b1e18",
+      "matchesBuild": true
+    }
+  ]
+}

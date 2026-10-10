@@ -1,0 +1,142 @@
+{
+  "mainCommit": "9ec0fdbb81379bbdf10761eb454d6a0722455731",
+  "fileCount": 27,
+  "allMatch": true,
+  "files": [
+    {
+      "file": "README.md",
+      "matches": true,
+      "sha256": "ef36c8ae69af622241cdc2ab95e39d2d2e55d4381a900a36abbfe8dd1e0f91f5"
+    },
+    {
+      "file": "art-bake.html",
+      "matches": true,
+      "sha256": "133aef49245bf094d86b6c86b1d2da3e18d573084b46cf9a33b5d6135c44888f"
+    },
+    {
+      "file": "docs/qa/rig-check.json",
+      "matches": true,
+      "sha256": "694cf6e4df7a40360a023f301712230626c21f65081c34b97a9dd6d7aaf6a759"
+    },
+    {
+      "file": "public/assets/ghe-ngo/ghe-ngo-crew.glb",
+      "matches": true,
+      "sha256": "06d3d78f748ceaaaf84a2d9bcd10e5acb92a692cb4b17ac5e03a29b6787908f3"
+    },
+    {
+      "file": "public/assets/human/ATTRIBUTION.md",
+      "matches": true,
+      "sha256": "9ef32af0515396a6c6842056646cfa7f5181208b34dc94010b5b2f91df0a40c6"
+    },
+    {
+      "file": "src/components/ArtPreview.css",
+      "matches": true,
+      "sha256": "409ca4cd979372c95616303c9ee8b5f598a053fab4dac8fc77dad0a642e6394e"
+    },
+    {
+      "file": "src/components/ArtPreview.tsx",
+      "matches": true,
+      "sha256": "049c65300b87c0657ccc1f513f24a3ac1b73093854893a5bf63d7897b254f338"
+    },
+    {
+      "file": "src/components/TabletRaceDemo.tsx",
+      "matches": true,
+      "sha256": "85a809bc8d0f9ea06d2020c833248b293c0e9c7c71a2c653e77334b0bdbef86e"
+    },
+    {
+      "file": "src/race/art-preview.mjs",
+      "matches": true,
+      "sha256": "3bb7afa719fbf437dac8bac255d63c8d1e465a2430c0a83c5cc72a6bbc407f10"
+    },
+    {
+      "file": "src/race/bake-sprites.mjs",
+      "matches": true,
+      "sha256": "fbf8a902d46830b8fc1a8dd9190303138b02804f96f278d5ecda800b484b7352"
+    },
+    {
+      "file": "src/race/boat.mjs",
+      "matches": true,
+      "sha256": "f1893b6f28da29f99fa56ea021e1e6b570c2fa3bbd5b0c1467d6bba939f77af0"
+    },
+    {
+      "file": "src/race/imported-athlete.mjs",
+      "matches": true,
+      "sha256": "d64373f97783b538ce6c2f4017faf969f33aea77b86ae161368dc647a7f19c67"
+    },
+    {
+      "file": "src/race/river.mjs",
+      "matches": true,
+      "sha256": "004acb2630f8d1a459d4e03739c80169104a5137bc3f8de1d94e046e1a68521f"
+    },
+    {
+      "file": "docs/qa/art-check-v6.json",
+      "matches": true,
+      "sha256": "c85593a887285970cce73b7da50aa4bfc7daa6504cb8a52ea4a3fb943bfa3af3"
+    },
+    {
+      "file": "docs/qa/baked-motion-cycle-v6.jpg",
+      "matches": true,
+      "sha256": "b3c1f06459b5df19c9088161de592e42945108db1eedc0b000d9494f8cc2c0c4"
+    },
+    {
+      "file": "docs/qa/baked-rig-v6.json",
+      "matches": true,
+      "sha256": "70f28c7660d7bad324bcd640a9ad8fbb0101e4b045407890c6dd969e1574d295"
+    },
+    {
+      "file": "docs/qa/crew-cycle-v6.jpg",
+      "matches": true,
+      "sha256": "506eabda05ccc28d73ebb4b197b647d338185d9c74bb0b0b1038916e2374a986"
+    },
+    {
+      "file": "docs/qa/crew-front-cycle-v6.jpg",
+      "matches": true,
+      "sha256": "cd224b61b340e06ca141e4d951cdea32d3f7faa67eb3628cf9e4ad3bc5b28f26"
+    },
+    {
+      "file": "docs/qa/crew-side-cycle-v6.jpg",
+      "matches": true,
+      "sha256": "b16fb7a3ca91f9fbc56d55fe27b445a3f6e2beb98fbdb63a7cc156225d81aeb3"
+    },
+    {
+      "file": "docs/qa/glb-validation-v6.json",
+      "matches": true,
+      "sha256": "77ac47ceb8cccad7ecc1bea03a67b401d21ccbd2c86ae3476c4637dc5f2b5c0b"
+    },
+    {
+      "file": "docs/qa/hull-preservation-v6.json",
+      "matches": true,
+      "sha256": "34026adb5d69791fb22f7846c212696e01767bd55e51ccca0c5d6e3c62c08396"
+    },
+    {
+      "file": "docs/qa/model-crew-v6.png",
+      "matches": true,
+      "sha256": "042e769f34afb9ff789056cbab732bf0f717df1247a987e2e3fb5d643ecc6537"
+    },
+    {
+      "file": "docs/qa/model-cycle-10s-v6.webm",
+      "matches": true,
+      "sha256": "1f210ed275139e56a24d763637651dfd1d37c284869ba07d0b958e3cdb735399"
+    },
+    {
+      "file": "docs/qa/motion-before-after-v6.jpg",
+      "matches": true,
+      "sha256": "7bdb8c1ac5ed20cf13421d3ec2ba240edf0b141a4b428f1caac38fc4686784e3"
+    },
+    {
+      "file": "docs/qa/video-check-v6.json",
+      "matches": true,
+      "sha256": "d5e2f833b311ab98c1ac1c2d89019789d5463ff40934d217b674f3a20b487d71"
+    },
+    {
+      "file": "docs/rowing-motion-v6.md",
+      "matches": true,
+      "sha256": "5032574ea34b75a77cee1ba8425f6c077b5db5c1adc8ecb46f312a1c1efa113a"
+    },
+    {
+      "file": "scripts/check-crew-glb.mjs",
+      "matches": true,
+      "sha256": "9848d482d8f0b267647d83cfa97fd69ac13faf3cb9216a57666e4f0847a739f0"
+    }
+  ]
+}

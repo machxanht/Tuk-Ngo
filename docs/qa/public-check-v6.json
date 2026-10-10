@@ -1,0 +1,39 @@
+{
+  "url": "https://machxanht.github.io/Tuk-Ngo/?demo=art&v=95c14e2",
+  "defaultMode": "3D motion V6",
+  "portrait": {
+    "width": 768,
+    "height": 1024,
+    "phaseScrubbedTo": 0.75,
+    "canvases": 1,
+    "controlsInside": true,
+    "horizontalOverflow": false,
+    "particlesAfterScrub": 0,
+    "eventsAfterScrub": 0
+  },
+  "landscape": {
+    "width": 1024,
+    "height": 768,
+    "canvases": 1,
+    "controlsInside": true,
+    "horizontalOverflow": false
+  },
+  "recording": {
+    "file": "public-cycle-10s-v6.webm",
+    "frames": 598,
+    "containerFPS": 60.0,
+    "durationSeconds": 9.966666666666667,
+    "width": 768,
+    "height": 1024,
+    "splashEventsObserved": 680,
+    "activeParticlesObserved": 26
+  },
+  "publicScreenshot": "public-crew-v6.png",
+  "publicShotMatchesLocalBytes": false,
+  "consoleErrors": [],
+  "limits": [
+    "Viewport emulation in desktop browser, not a physical tablet benchmark",
+    "Animation is authored, not motion capture",
+    "The experimental 2D boat remains unapproved"
+  ]
+}
