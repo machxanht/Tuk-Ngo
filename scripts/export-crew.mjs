@@ -31,5 +31,5 @@ const jsonBytes=Buffer.from(JSON.stringify(json)),paddedJson=Buffer.concat([json
 const header=Buffer.alloc(20),binHeader=Buffer.alloc(8);header.writeUInt32LE(0x46546c67,0);header.writeUInt32LE(2,4);header.writeUInt32LE(28+paddedJson.length+bin.length,8);header.writeUInt32LE(paddedJson.length,12);header.writeUInt32LE(0x4e4f534a,16);binHeader.writeUInt32LE(bin.length,0);binHeader.writeUInt32LE(0x004e4942,4);
 const output=process.argv[2]||path.join(os.tmpdir(),'tuk-ngo-crew.glb');
 await fs.writeFile(output,Buffer.concat([header,paddedJson,binHeader,bin]));
-await fs.writeFile('docs/qa/rig-sprint-v8.json',JSON.stringify({base:check,sprint:sprintCheck},null,2)+'\n');
+await fs.writeFile(process.argv[3]||'docs/qa/rig-sprint-v8.json',JSON.stringify({base:check,sprint:sprintCheck},null,2)+'\n');
 console.log(JSON.stringify({output,bytes:28+paddedJson.length+bin.length,check:check.checks.animation}));

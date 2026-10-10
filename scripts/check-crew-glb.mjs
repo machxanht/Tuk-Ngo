@@ -6,7 +6,7 @@ import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 // image/material references so Node can load the same binary rig without a DOM.
 const path=process.argv[2]||'public/assets/ghe-ngo/ghe-ngo-crew.glb',raw=await fs.readFile(path),length=raw.readUInt32LE(12),json=JSON.parse(raw.subarray(20,20+length)),bin=raw.subarray(28+length);
 delete json.images;delete json.textures;delete json.samplers;
-for(const material of json.materials||[])delete material.pbrMetallicRoughness?.baseColorTexture;
+for(const material of json.materials||[]){delete material.pbrMetallicRoughness?.baseColorTexture;delete material.pbrMetallicRoughness?.metallicRoughnessTexture;delete material.normalTexture;}
 const body=Buffer.from(JSON.stringify(json)),padded=Buffer.concat([body,Buffer.alloc((4-body.length%4)%4,32)]),header=Buffer.alloc(20),binHeader=Buffer.alloc(8);
 header.writeUInt32LE(0x46546c67,0);header.writeUInt32LE(2,4);header.writeUInt32LE(28+padded.length+bin.length,8);header.writeUInt32LE(padded.length,12);header.writeUInt32LE(0x4e4f534a,16);binHeader.writeUInt32LE(bin.length,0);binHeader.writeUInt32LE(0x004e4942,4);
 const bytes=Buffer.concat([header,padded,binHeader,bin]);
@@ -29,4 +29,4 @@ for(const strength of report.strengths){base.setEffectiveWeight(1-strength);spri
 }}
 if(report.rowers!==50)report.errors.push('Incorrect rower count');if(report.maxGripGapM>.002)report.errors.push('Baked hand detaches from paddle');if(report.minElbowAngleDeg<55||report.maxElbowAngleDeg>170)report.errors.push('Baked elbow folds/locks');if(report.maxWristFlexDeg>15)report.errors.push('Baked wrist bends sideways');if(report.minPairElbowGapM<.08)report.errors.push('Baked paired elbows overlap');if(report.maxJointStepDeg>12)report.errors.push('Baked joint snaps');
 report.pass=report.errors.length===0;report.limits=['Rig and interpolation inspection; textures are inspected in the browser','Authoring bounds, not measured race biomechanics','No exhaustive body collision test'];
-await fs.writeFile(sprint?'docs/qa/baked-rig-v8.json':'docs/qa/baked-rig-v6.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));if(!report.pass)process.exitCode=1;
+await fs.writeFile(process.argv[3]||(sprint?'docs/qa/baked-rig-v8.json':'docs/qa/baked-rig-v6.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));if(!report.pass)process.exitCode=1;
