@@ -3,7 +3,7 @@ import {DESIGN_GUIDES} from './design-profile.mjs';
 import {prepareActors,makeAthlete,setAthleteGrips} from './imported-athlete.mjs';
 
 // The photos establish appearance; the repository establishes approximate design dimensions.
-export const SPEC = Object.freeze({id:'GHE_NGO_IMPORTED_CC0_RIVER_V3',loa:30.2,beam:1.12,depth:0.58,bow:1.38,stern:1.52,waterY:0.28,rows:25,crew:55,kemDiameter:0.09,kemLength:28.5,kemSupports:24,paddleLength:1.22,steeringLength:4.2});
+export const SPEC = Object.freeze({id:'GHE_NGO_MAKEHUMAN_ART_V4',loa:30.2,beam:1.12,depth:0.58,bow:1.38,stern:1.52,waterY:0.28,rows:25,crew:55,kemDiameter:0.09,kemLength:28.5,kemSupports:24,paddleLength:1.22,steeringLength:4.2});
 export const SOURCES = [
  {id:'USER-DESIGN-01',publisher:'User supplied assetghe.mp4',date:'2026-10-09',url:'https://drive.google.com/file/d/1P4vzMy9rbXIHvB8kH6aNWpenhgbOcVoA/view',file:'../../references/user-ghe-design/assetghe.mp4',role:'Primary shape and livery reference; upper design in clip, original video pixels from 0–36 seconds'},
  {id:'REAL-01',publisher:'Báo Nhân Dân',date:'2024-11-15',url:'https://nhandan.vn/gan-1-trieu-luot-nguoi-du-le-hoi-ooc-om-boc-dua-ghe-ngo-soc-trang-nam-2024-post845131.html',files:['../../references/tum-nup-2-2024/nhandan-tum-nup-2-no12.png','../../references/tum-nup-2-2024/nhandan-final-finish.png']},
@@ -146,13 +146,13 @@ function person(g,id,role,x,z){
 }
 // Smooth seven-phase pose. Cadence is a preview control, not a measured 2024 value.
 const KEYS=[0,.10,.22,.42,.60,.74,.94,1];
-const LEAN=[34,34,32,7,-13,-5,26,34],SWEEP=[28,28,24,-4,-26,-16,24,28],DEPTH=[.14,.12,-.16,-.18,-.15,.14,.14,.14];
+const LEAN=[26,26,24,2,-10,-7,20,26],SWEEP=[26,26,22,-5,-24,-12,22,26],DEPTH=[.08,.035,-.13,-.15,-.12,.085,.08,.08];
 function smoothKey(values,t){let i=0;while(i<KEYS.length-2 && t>=KEYS[i+1])i++;const u=(t-KEYS[i])/(KEYS[i+1]-KEYS[i]),s=u*u*(3-2*u);return T.MathUtils.lerp(values[i],values[i+1],s);}
 function armsToGrips(a,grips,direction){a.root.updateWorldMatrix(true,false);return setAthleteGrips(a,grips.map(p=>a.root.localToWorld(p.clone())),direction?.clone().transformDirection(a.root.matrixWorld));}
 function updateRower(a,cycle,phaseLag){
  const t=(cycle-phaseLag+1)%1,side=Math.sign(a.z),lean=smoothKey(LEAN,t)*Math.PI/180,sw=smoothKey(SWEEP,t)*Math.PI/180,depth=smoothKey(DEPTH,t);
  a.setTorsoLean(lean);
- a.setHeadPitch(lean*.25);
+ a.setHeadPitch(lean*.70);
  const recovery=t>=.70&&t<=.94?Math.sin(Math.PI*(t-.70)/.24)**2:0;
  const cant=(27.5+12.5*recovery)*Math.PI/180;
  // Blade toe is outside the actual local rail; root position is solved from water height.

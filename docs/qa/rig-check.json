@@ -34,28 +34,28 @@
     "animation": {
       "sampledPhases": 81,
       "translatedSampledPhases": 81,
-      "translatedMaxHandGripGapM": 1.7844099760826322e-7,
-      "minBladeOutboardClearanceM": 0.31047773914601734,
-      "minShaftClearanceBelowRailM": 0.039482108172385066,
-      "maxHandGripGapM": 1.7468026653053243e-7,
-      "maxArmLengthErrorM": 1.5304895878420766e-7,
+      "translatedMaxHandGripGapM": 0.0008751798104136634,
+      "minBladeOutboardClearanceM": 0.3125848733517572,
+      "minShaftClearanceBelowRailM": 0.06467898106989928,
+      "maxHandGripGapM": 0.0008751798312845365,
+      "maxArmLengthErrorM": 1.3295860912254653e-8,
       "worstGrip": {
-        "id": 16,
+        "id": 4,
         "role": "ROWER",
-        "phase": 0.5125,
-        "gap": 1.7468026653053243e-7
+        "phase": 0.7,
+        "gap": 0.0008751798312845365
       },
       "gripByRole": {
-        "ROWER": 1.7468026653053243e-7,
-        "PROW_COMMAND": 1.707805817774879e-7,
-        "MID_COMMAND": 1.707805819096231e-7,
-        "STEERSMAN": 1.0749185906018497e-7
+        "ROWER": 0.0008751798312845365,
+        "PROW_COMMAND": 1.097339836271768e-8,
+        "MID_COMMAND": 8.712728685055705e-9,
+        "STEERSMAN": 8.624253069659916e-9
       }
     },
     "rig": {
       "athletes": 55,
-      "joints": 3575,
-      "skinnedMeshes": 165
+      "joints": 2915,
+      "skinnedMeshes": 275
     }
   },
   "limits": [

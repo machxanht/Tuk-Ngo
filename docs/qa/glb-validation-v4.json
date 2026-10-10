@@ -1,0 +1,9 @@
+{
+  "errors": 0,
+  "warnings": 275,
+  "infos": 316,
+  "codes": {
+    "UNUSED_OBJECT": 316,
+    "NODE_SKINNED_MESH_NON_ROOT": 275
+  }
+}

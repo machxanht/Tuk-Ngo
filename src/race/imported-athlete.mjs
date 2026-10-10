@@ -2,19 +2,14 @@ import * as T from 'three';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 import {clone} from 'three/examples/jsm/utils/SkeletonUtils.js';
 
-// Original Quaternius mesh/skin weights. Source and CC0 grant are in public/assets/human.
+// Anatomical MakeHuman/MPFB mesh and skinning, from Innerscene's CC0 release.
+// A separate fabric shell replaces the earlier uniform painted onto the body.
 let template;
-const SCALE=.96, V=(x,y,z)=>new T.Vector3(x,y,z);
-const skin=new T.Color('#ac7959'),jersey=new T.Color('#087d46'),shorts=new T.Color('#192a32');
+const SCALE=1, V=(x,y,z)=>new T.Vector3(x,y,z);
 export async function prepareActors(url){
  const loader=new GLTFLoader(),gltf=typeof url==='string'?await loader.loadAsync(url):await loader.parseAsync(url,'');template=gltf.scene;template.updateMatrixWorld(true);
  template.traverse(o=>{if(!o.isMesh)return;o.frustumCulled=false;
-  if(o.name==='SuperHero_Male'){
-   const geo=o.geometry.clone(),p=geo.attributes.position,colors=[];
-   for(let i=0;i<p.count;i++){const x=p.getX(i),y=p.getY(i),c=y>.99&&y<1.50&&Math.abs(x)<.245?jersey:y>.68&&y<=1.02&&Math.abs(x)<.27?shorts:skin;colors.push(c.r,c.g,c.b);}
-   geo.setAttribute('color',new T.Float32BufferAttribute(colors,3));o.geometry=geo;o.material=new T.MeshStandardMaterial({color:0xffffff,vertexColors:true,roughness:.82});
-  }else if(o.name==='Eyebrows')o.material=new T.MeshStandardMaterial({color:'#25231e',roughness:.8});
-  else o.material=new T.MeshStandardMaterial({color:'#e9e9df',roughness:.45});
+  o.castShadow=true;o.receiveShadow=true;
  });
 }
 function worldPos(o){return o.getWorldPosition(new T.Vector3());}
@@ -27,12 +22,14 @@ function frameQ(x,y){y=y.clone().normalize();x=x.clone().sub(y.clone().multiplyS
 
 export function makeAthlete(id,role){
  if(!template)throw Error('Actor model must load before building crew');
- const root=new T.Group();root.name=`Athlete_${id}_${role}`;root.userData={component:'athlete',id,role,source:'Quaternius Universal Base Characters (CC0), preserved mesh and skin weights'};
+ const root=new T.Group();root.name=`Athlete_${id}_${role}`;root.userData={component:'athlete',id,role,source:'MakeHuman/MPFB via Innerscene (CC0), anatomical body and separate jersey/shorts'};
  const model=clone(template);root.add(model);model.rotation.y=Math.PI/2;model.scale.setScalar(SCALE);root.updateMatrixWorld(true);
+ const skinColors=['#a77250','#9d6946','#b57f59','#a16d4c'];
+ model.traverse(o=>{if(o.isMesh&&o.name==='MakeHuman_Athlete_Body'){o.material=o.material.clone();o.material.color.set(skinColors[id%skinColors.length]);}});
  const byName=new Map(),bones=[],meshes=[];model.traverse(o=>{if(o.isBone){byName.set(o.name,o);bones.push(o);}if(o.isSkinnedMesh)meshes.push(o);});
- const hips=byName.get('pelvis'),torso=byName.get('spine_01'),head=byName.get('Head');
+ const hips=byName.get('pelvis'),torso=byName.get('spine_01'),upperTorso=byName.get('spine_03'),head=byName.get('head');
  const hip=worldPos(hips);model.position.sub(hip);root.updateMatrixWorld(true);
- const standingHipHeight=.92;
+ const standingHipHeight=.90;
  const standingFeet=new Map(['l','r'].map(s=>[s,worldQuat(byName.get('foot_'+s))]));
  if(role==='ROWER'||role==='STEERSMAN')for(const s of ['l','r']){
   pointDirection(byName.get('thigh_'+s),byName.get('calf_'+s),role==='ROWER'?V(.9,-.28,0):V(-.18,-.34,0));
@@ -52,16 +49,21 @@ export function makeAthlete(id,role){
   root.updateMatrixWorld(true);
   arms.push({side,upper,elbow,wrist,palm,palmLength:palm.length()*SCALE,handBasis:frameQ(across,palm),upperLength:worldPos(upper).distanceTo(worldPos(elbow)),foreLength:worldPos(elbow).distanceTo(worldPos(wrist))});
  }
- // White cap and pupil details are accessories; the face and body are the imported mesh.
- const cap=new T.Mesh(new T.SphereGeometry(.105,20,10,0,Math.PI*2,0,Math.PI/2),new T.MeshStandardMaterial({color:'#f0f0e7',roughness:.88}));
- const hp=worldPos(head),capWorld=V(hp.x+.006,hp.y+.173,hp.z);cap.position.copy(head.worldToLocal(capWorld));cap.quaternion.copy(worldQuat(head).invert());head.add(cap);
- for(const z of [-.029,.029]){const eye=new T.Mesh(new T.SphereGeometry(.008,10,8),new T.MeshStandardMaterial({color:'#2a251d',roughness:.35}));const p=V(.119,1.696-.949,z).multiplyScalar(SCALE);eye.position.copy(head.worldToLocal(p));head.add(eye);}
+ // Cloth cap with a short visor; eye details are accessories on the source face.
+ const hp=worldPos(head),capMaterial=new T.MeshStandardMaterial({color:'#e8e4d8',roughness:.94});
+ const cap=new T.Mesh(new T.SphereGeometry(.10,24,12,0,Math.PI*2,0,Math.PI/2),capMaterial);
+ cap.scale.set(1,.80,1.02);cap.position.copy(head.worldToLocal(V(hp.x-.006,hp.y+.09,hp.z)));cap.quaternion.copy(worldQuat(head).invert());head.add(cap);
+ const visor=new T.Mesh(new T.SphereGeometry(1,20,8),capMaterial);visor.scale.set(.064,.005,.076);visor.position.copy(head.worldToLocal(V(hp.x+.073,hp.y+.093,hp.z)));visor.quaternion.copy(worldQuat(head).invert());head.add(visor);
+ for(const z of [-.027,.027]){
+  const eye=new T.Mesh(new T.SphereGeometry(.010,12,8),new T.MeshStandardMaterial({color:'#d1c9ad',roughness:.6}));eye.scale.set(.50,1,1);eye.position.copy(head.worldToLocal(V(hp.x+.069,hp.y+.046,hp.z+z)));eye.quaternion.copy(worldQuat(head).invert());head.add(eye);
+  const pupil=new T.Mesh(new T.SphereGeometry(.005,10,6),new T.MeshStandardMaterial({color:'#27251b',roughness:.55}));pupil.scale.set(.4,1,1);pupil.position.copy(head.worldToLocal(V(hp.x+.074,hp.y+.046,hp.z+z)));pupil.quaternion.copy(worldQuat(head).invert());head.add(pupil);
+ }
  const preset=new Map(bones.map(b=>[b,b.quaternion.clone()]));
  const reset=()=>{for(const b of bones)b.quaternion.copy(preset.get(b));root.updateMatrixWorld(true);};
  const rotateFromPreset=(b,angle)=>{const axis=V(0,0,1).applyQuaternion(worldQuat(root)),q=worldQuat(b);setWorldQuat(b,new T.Quaternion().setFromAxisAngle(axis,angle).multiply(q));};
  for(const b of bones)b.name=root.name+'_Joint_'+b.name.replace(/[^a-zA-Z0-9_]/g,'_');
  return {root,model,bones,meshes,hips,torso,head,arms,role,standingHipHeight,steeringHipHeight:.76,gripErrors:[],
-  setTorsoLean(lean){reset();rotateFromPreset(torso,-lean);},setHeadPitch(pitch){rotateFromPreset(head,pitch);},
+  setTorsoLean(lean){reset();rotateFromPreset(torso,-lean*.72);rotateFromPreset(upperTorso,-lean*.28);},setHeadPitch(pitch){rotateFromPreset(head,pitch);},
  };
 }
 

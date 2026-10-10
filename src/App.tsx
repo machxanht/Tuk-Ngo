@@ -4,6 +4,7 @@ import { ConfidenceLevel } from './types';
 import { Interactive3DBlueprint } from './components/Interactive3DBlueprint';
 import { MasperoRaceCourseStudio } from './components/MasperoRaceCourseStudio';
 import { TabletRaceDemo } from './components/TabletRaceDemo';
+import { ArtPreview } from './components/ArtPreview';
 import { SectionCard } from './components/SectionCard';
 import { SourceTriageViewer } from './components/SourceTriageViewer';
 import { CrewKinematicsStudio } from './components/CrewKinematicsStudio';
@@ -56,7 +57,9 @@ export default function App() {
     UNKNOWN: TECHNICAL_SECTIONS.filter((s) => s.confidence === 'UNKNOWN').length,
   };
 
-  if (new URLSearchParams(window.location.search).get('demo') === 'race') return <TabletRaceDemo />;
+  const demo = new URLSearchParams(window.location.search).get('demo');
+  if (demo === 'race' || demo === 'art') return <ArtPreview />;
+  if (demo === 'studio') return <TabletRaceDemo />;
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-sky-500 selection:text-white">
@@ -177,7 +180,7 @@ export default function App() {
           </div>
 
           {active3DMode === 'RACE_COURSE' ? (
-            <TabletRaceDemo embedded />
+            <ArtPreview embedded />
           ) : (
             <Interactive3DBlueprint />
           )}

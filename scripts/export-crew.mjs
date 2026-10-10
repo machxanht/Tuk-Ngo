@@ -8,7 +8,7 @@ globalThis.self=globalThis;
 globalThis.FileReader=class {
  readAsArrayBuffer(blob){blob.arrayBuffer().then(result=>{this.result=result;this.onloadend?.();});}
 };
-const bytes=await fs.readFile('public/assets/human/quaternius-athlete.glb');
+const bytes=await fs.readFile('public/assets/human/makehuman-athlete.glb');
 await prepareActors(bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength));
 const boat=buildBoat(),check=verifyBoat(boat);
 if(!check.pass)throw new Error(JSON.stringify(check.errors));

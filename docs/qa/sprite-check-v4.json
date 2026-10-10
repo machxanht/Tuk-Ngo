@@ -1,0 +1,18 @@
+{
+  "pass": true,
+  "views": {
+    "boat": {
+      "frames": 24,
+      "contactCount": 50,
+      "depthMin": -0.14998351851851854,
+      "depthMax": 0.08499985382080122
+    },
+    "crew": {
+      "frames": 24,
+      "contactCount": 2,
+      "depthMin": -0.14983666137695306,
+      "depthMax": 0.08499727418122482
+    }
+  },
+  "modelSha256": "28b834980a09a1ad9c7b955b7d5e1aa3044f3e40cdca052135e38db969cc1cfa"
+}

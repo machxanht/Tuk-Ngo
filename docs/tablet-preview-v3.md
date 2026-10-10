@@ -1,5 +1,7 @@
 # Tablet preview V3
 
+Historical V3 report. Superseded by `docs/art-preview-v4.md`; the current `?demo=race` opens the V4 art comparison and `?demo=studio` preserves the orbit studio with the new athlete source.
+
 Requested result: use a freely licensed existing humanoid, render river/paddle splashes, keep source/assets in `machxanht/Tuk-Ngo`, and publish a tablet test link.
 
 The default river preview and fullscreen `?demo=race` use Quaternius Superhero Male from Universal Base Characters. CC0 is confirmed at the original author's site; the pack license and repack provenance are preserved. The adapter retains mesh/skin weights, colors the uniform, seats the character with bone rotations, closes fingers and solves arm IK with imported segment lengths. Steering grips follow each steersman's hip height.
