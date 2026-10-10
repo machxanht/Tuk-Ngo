@@ -1,0 +1,64 @@
+{
+  "checkedAtUtc": "2026-10-10T11:01:20.883991+00:00",
+  "revision": "AUTHORED_2D_V5",
+  "requestedDirection": "Soft illustration with distinct drawn people/boat and its own motion",
+  "independence": {
+    "GLBLoadedByIllustration": false,
+    "renderAtlasLoadedByIllustration": false,
+    "soleBitmap": "assets/ghe-ngo/kbach-from-reference.webp",
+    "poseModule": "src/race/illustrated-ghe.mjs"
+  },
+  "browser": {
+    "portrait": [
+      768,
+      1024
+    ],
+    "landscape": [
+      1024,
+      768
+    ],
+    "overflowObserved": false,
+    "singleCanvasAfterSwitch": true,
+    "resetPhase": 0.28,
+    "resetEvents": 0,
+    "waterOffParticles": 0,
+    "waterOnBoatEventsObserved": 50,
+    "closeCrewCount": 2,
+    "fullCrewCount": 55,
+    "maxCadenceTested": 96,
+    "consoleErrorsObserved": []
+  },
+  "poseDiagnostic": {
+    "samples": 241,
+    "maximumShoulderToGripUnits": 58.91079637010628,
+    "armReachUnits": 62,
+    "loopEndpointsEqual": true
+  },
+  "checks": {
+    "typescript": "pass",
+    "productionBuild": "pass"
+  },
+  "artifacts": [
+    {
+      "path": "dist/assets/index-CCD9OIjh.js",
+      "bytes": 1189009,
+      "sha256": "54ad446fd62771c19946efce66bd0c3776ba136530b226af207ea96a2f495645"
+    },
+    {
+      "path": "dist/assets/index-DppDAAA8.css",
+      "bytes": 70418,
+      "sha256": "f3d94eb745e48a296d910617b0a51606d2be64bb5644cc08a1ca902c1948d38d"
+    },
+    {
+      "path": "dist/index.html",
+      "bytes": 1429,
+      "sha256": "a85b4450bc81525bc865ed8645ec6af0bf8094af0e65ad6a9ea384c0530c7bd1"
+    }
+  ],
+  "limits": [
+    "Generic drawn faces and authored motion, not likenesses or motion capture.",
+    "3D model unchanged in this revision.",
+    "Physical tablet performance and final art approval have not been established."
+  ],
+  "physicalTabletTested": false
+}
