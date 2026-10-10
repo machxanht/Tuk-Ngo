@@ -40,3 +40,9 @@ The livery WebP is rectified from the graphic boat clip supplied by the owner: h
 The rowing loop is authored animation, not motion capture; preview cadence is adjustable and is not claimed to be a measured historical race cadence. The river, droplets and ripples are illustrations, not hydrodynamic measurements.
 
 V6 retains the source body/garment mesh and skin weights. It changes the arm hinge orientation, fist/paddle path and phase interpolation to address the owner's rejection of the earlier rowing motion. The accepted 3D hull and original livery remain unchanged. The actual race video at https://www.youtube.com/watch?v=P5FvDeN7vow was viewed for broad sequence/rhythm; its distant view is not used to claim measured joint angles. V5's 2D illustration remains an unapproved experiment.
+
+## V8 crowd and sprint derivatives
+
+`crowd-near.bin/.json` and `crowd-far.bin/.json` derive from the same CC0 MakeHuman source. Mesh simplification and 16-frame standing cheer, standing clap and seated clap cycles are authored in `scripts/bake-crowd.mjs`; these are not video-extracted people or motion capture. Shirt, trousers, hair and skin are vertex regions on the licensed anatomical mesh. Near/far meshes contain 1,800/314 triangles.
+
+The separate `ghe-ngo-crew-v8.glb` preserves V6 hull and ornament bytes and adds an authored sprint animation. Cadence 81–105 blends stronger torso/paddle movement while solving both hand grips. The owner-supplied VTV10 livestream https://www.youtube.com/watch?v=dSmHY2HSR2g&t=5338s was inspected for real crew rhythm, spray and event appearance. No generated image was used as evidence.
