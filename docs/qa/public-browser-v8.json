@@ -1,0 +1,71 @@
+{
+  "url": "https://machxanht.github.io/Tuk-Ngo/?demo=studio&v=54badd7",
+  "sceneVersion": "MASPERO_TWO_CREWS_V8",
+  "source": "Observed public GitHub Pages runtime and native canvas exports, 2026-10-11",
+  "scene": {
+    "boats": 2,
+    "actors": 110,
+    "rowers": 100,
+    "spectators": 12213,
+    "stands": 2,
+    "seats": 1916,
+    "trees": 207,
+    "houses": 313,
+    "umbrellas": 270,
+    "nationalFlags": 0,
+    "khmerFontLoaded": true
+  },
+  "crowdView": {
+    "anatomicalNpcMeshesVisible": true,
+    "animationVisible": true,
+    "fpsOnDevelopmentPc": 51.4,
+    "drawCalls": 152,
+    "triangles": 8667092,
+    "audio": {
+      "enabled": true,
+      "playing": true,
+      "currentTime": 2.442856,
+      "volume": 0.18,
+      "error": null
+    }
+  },
+  "sprintView": {
+    "strokesPerMinute": 105,
+    "strokeStrength": 1,
+    "activeSprayParticlesPerBoat": [2400, 2400],
+    "fpsOnDevelopmentPc": 32.0,
+    "drawCalls": 181,
+    "triangles": 8860534,
+    "audio": {
+      "enabled": true,
+      "playing": true,
+      "currentTime": 16.882932,
+      "volume": 0.46,
+      "error": null
+    }
+  },
+  "pauseCheck": {
+    "audioEnabled": true,
+    "audioPlaying": false,
+    "audioCurrentTime": 6.171612,
+    "audioError": null
+  },
+  "exports": {
+    "public-v8-crowd.png": "Actual public crowd view, visually inspected",
+    "public-v8-crew-sprint.png": "Actual public close crew sprint view, visually inspected",
+    "public-v8-sprint.png": "Actual public follow camera sprint view",
+    "public-v8-overview.png": "Actual public two-boat overview",
+    "public-v8-sprint-10s.webm": {
+      "decodedFrames": 299,
+      "lastFrameTimeSeconds": 9.947,
+      "audioTrack": false
+    }
+  },
+  "limits": [
+    "Physical tablet performance has not been tested. Responsive checks at 768x1024 and 1024x768 are documented in browser-v8.json.",
+    "Audio playback state and time progression were verified; human listening quality was not verified.",
+    "The cheer recording is generic CC0 crowd audio, not Khmer chanting or tournament audio.",
+    "Bridge 30/4 structure is approximated from an actual January 2022 construction photo; completed decoration and current paint have not been verified.",
+    "House placement, dimensions, river scale and individual architectural details are authored approximations, not surveyed reconstructions."
+  ]
+}

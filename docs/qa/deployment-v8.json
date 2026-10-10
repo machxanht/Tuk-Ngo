@@ -1,0 +1,93 @@
+{
+  "url": "https://machxanht.github.io/Tuk-Ngo/?demo=studio&v=54badd7",
+  "ghPagesHead": "54badd7d5665f3160a41d7fde257b7f36d1b57f3",
+  "pagesRun": 38075868214,
+  "pagesConclusion": "success",
+  "allMatch": true,
+  "files": [
+    {
+      "path": "index.html",
+      "status": 200,
+      "bytes": 1429,
+      "matches": true
+    },
+    {
+      "path": "assets/index-MRQ5gN6c.js",
+      "status": 200,
+      "bytes": 1186633,
+      "matches": true
+    },
+    {
+      "path": "assets/index-daaeIAan.css",
+      "status": 200,
+      "bytes": 72326,
+      "matches": true
+    },
+    {
+      "path": "assets/ghe-ngo/ghe-ngo-crew-v8.glb",
+      "status": 200,
+      "bytes": 9122716,
+      "matches": true
+    },
+    {
+      "path": "assets/human/crowd-near.json",
+      "status": 200,
+      "bytes": 22950,
+      "matches": true
+    },
+    {
+      "path": "assets/human/crowd-near.bin",
+      "status": 200,
+      "bytes": 1039104,
+      "matches": true
+    },
+    {
+      "path": "assets/human/crowd-far.json",
+      "status": 200,
+      "bytes": 3675,
+      "matches": true
+    },
+    {
+      "path": "assets/human/crowd-far.bin",
+      "status": 200,
+      "bytes": 185472,
+      "matches": true
+    },
+    {
+      "path": "assets/fonts/NotoSansKhmer.ttf",
+      "status": 200,
+      "bytes": 359788,
+      "matches": true
+    },
+    {
+      "path": "assets/fonts/OFL.txt",
+      "status": 200,
+      "bytes": 4381,
+      "matches": true
+    },
+    {
+      "path": "assets/fonts/ATTRIBUTION.md",
+      "status": 200,
+      "bytes": 511,
+      "matches": true
+    },
+    {
+      "path": "assets/audio/crowd-cheer-cc0.mp3",
+      "status": 200,
+      "bytes": 360081,
+      "matches": true
+    },
+    {
+      "path": "assets/audio/ATTRIBUTION.md",
+      "status": 200,
+      "bytes": 720,
+      "matches": true
+    },
+    {
+      "path": "assets/human/ATTRIBUTION.md",
+      "status": 200,
+      "bytes": 5445,
+      "matches": true
+    }
+  ]
+}
