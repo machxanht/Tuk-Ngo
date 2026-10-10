@@ -53,7 +53,7 @@ export function TabletRaceDemo({embedded=false}:{embedded?:boolean}){
   }catch(error){setStatus('Không tải được cảnh 3D: '+(error instanceof Error?error.message:String(error)));}}
   start();return()=>{stopped=true;cancelAnimationFrame(raf);cleanup();};
  },[]);
- function exportGlb(){const a=document.createElement('a');a.href=import.meta.env.BASE_URL+'assets/ghe-ngo/ghe-ngo-crew.glb';a.download='ghe-ngo-crew.glb';a.click();}
+ function exportGlb(){const a=document.createElement('a');a.href=import.meta.env.BASE_URL+'assets/ghe-ngo/ghe-ngo-crew.glb?v=06d3d78';a.download='ghe-ngo-crew.glb';a.click();}
  const fullUrl=import.meta.env.BASE_URL+'?demo=studio';
  return <section className={'race-demo'+(embedded?' race-demo-embedded':'')}>
   <div ref={mount} className="race-stage" data-testid="race-stage" />
