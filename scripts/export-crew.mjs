@@ -12,8 +12,9 @@ const bytes=await fs.readFile('public/assets/human/makehuman-athlete.glb');
 await prepareActors(bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength));
 const boat=buildBoat(),check=verifyBoat(boat);
 if(!check.pass)throw new Error(JSON.stringify(check.errors));
-const clip=bakeAnimation(boat,80);
-const data=await new GLTFExporter().parseAsync(boat.root,{binary:true,animations:[clip],onlyVisible:false});
+const sprintCheck=verifyBoat(boat,1);if(!sprintCheck.pass)throw new Error(JSON.stringify(sprintCheck.errors));
+const clip=bakeAnimation(boat,80),sprint=bakeAnimation(boat,80,1);
+const data=await new GLTFExporter().parseAsync(boat.root,{binary:true,animations:[clip,sprint],onlyVisible:false});
 // Embed the original clip-derived WebP without a browser canvas or image generation.
 const raw=Buffer.from(data),jsonLength=raw.readUInt32LE(12),json=JSON.parse(raw.subarray(20,20+jsonLength).toString());
 const oldBin=raw.subarray(28+jsonLength),image=await fs.readFile('public/assets/ghe-ngo/kbach-from-reference.webp');
@@ -30,5 +31,5 @@ const jsonBytes=Buffer.from(JSON.stringify(json)),paddedJson=Buffer.concat([json
 const header=Buffer.alloc(20),binHeader=Buffer.alloc(8);header.writeUInt32LE(0x46546c67,0);header.writeUInt32LE(2,4);header.writeUInt32LE(28+paddedJson.length+bin.length,8);header.writeUInt32LE(paddedJson.length,12);header.writeUInt32LE(0x4e4f534a,16);binHeader.writeUInt32LE(bin.length,0);binHeader.writeUInt32LE(0x004e4942,4);
 const output=process.argv[2]||path.join(os.tmpdir(),'tuk-ngo-crew.glb');
 await fs.writeFile(output,Buffer.concat([header,paddedJson,binHeader,bin]));
-await fs.writeFile('docs/qa/rig-check.json',JSON.stringify(check,null,2)+'\n');
+await fs.writeFile('docs/qa/rig-sprint-v8.json',JSON.stringify({base:check,sprint:sprintCheck},null,2)+'\n');
 console.log(JSON.stringify({output,bytes:28+paddedJson.length+bin.length,check:check.checks.animation}));
