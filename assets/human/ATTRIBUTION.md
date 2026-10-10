@@ -8,7 +8,7 @@ The real photograph captioned “Đội ghe Nam Tum Nup 2 (số 12)” in Nhân 
 
 The preserved MakeHuman model below remains active in the 3D comparison. The V4 atlas is historical material rather than V5's default artwork.
 
-## Active MakeHuman athlete (V4)
+## Active MakeHuman athlete (V6 motion, V4 mesh)
 
 The anatomical body, face, skin weights and 53-bone skeleton come from MakeHuman/MPFB assets, packaged and released under **CC0** by Innerscene. It is a generic character, not a portrait of a named athlete.
 
@@ -38,3 +38,5 @@ The complete boat/crew GLB embeds the same derivative with baked rowing animatio
 The livery WebP is rectified from the graphic boat clip supplied by the owner: https://drive.google.com/file/d/1P4vzMy9rbXIHvB8kH6aNWpenhgbOcVoA/view . It is a design variant, not asserted to be the original Tum Nup 2 race livery from 2024. Existing press photographs in the project's evidence index guide uniform colors, seating and river setting. No press photograph/video is redistributed as a texture here.
 
 The rowing loop is authored animation, not motion capture; preview cadence is adjustable and is not claimed to be a measured historical race cadence. The river, droplets and ripples are illustrations, not hydrodynamic measurements.
+
+V6 retains the source body/garment mesh and skin weights. It changes the arm hinge orientation, fist/paddle path and phase interpolation to address the owner's rejection of the earlier rowing motion. The accepted 3D hull and original livery remain unchanged. The actual race video at https://www.youtube.com/watch?v=P5FvDeN7vow was viewed for broad sequence/rhythm; its distant view is not used to claim measured joint angles. V5's 2D illustration remains an unapproved experiment.
