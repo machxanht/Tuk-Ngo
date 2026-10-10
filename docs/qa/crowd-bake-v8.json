@@ -1,0 +1,36 @@
+{
+  "levels": [
+    {
+      "vertices": 902,
+      "triangles": 1800,
+      "frames": 16,
+      "activities": 3,
+      "deviation": 0.0023291821125894785,
+      "binary": "crowd-near.bin",
+      "source": "MakeHuman/MPFB via Innerscene, CC0",
+      "poses": [
+        "standing cheer",
+        "standing clap",
+        "seated clap"
+      ],
+      "bytes": 1039104
+    },
+    {
+      "vertices": 161,
+      "triangles": 314,
+      "frames": 16,
+      "activities": 3,
+      "deviation": 0.01014657225459814,
+      "binary": "crowd-far.bin",
+      "source": "MakeHuman/MPFB via Innerscene, CC0",
+      "poses": [
+        "standing cheer",
+        "standing clap",
+        "seated clap"
+      ],
+      "bytes": 185472
+    }
+  ],
+  "source": "makehuman-athlete-base.glb",
+  "animation": "Authored poses, not captured motion"
+}

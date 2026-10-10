@@ -1,0 +1,22 @@
+{
+  "sceneVersion": "MASPERO_TWO_CREWS_V8",
+  "environment": {"spectators":12213,"seats":1916,"stands":2,"trees":207,"houses":313,"umbrellas":270,"nationalFlags":0,"signLanguage":"km"},
+  "realBrowser": {"boats":2,"actors":110,"rowers":100,"KhmerFontLoaded":true,"failedGPUPrograms":0},
+  "responsive": [
+    {"viewport":[768,1024],"documentScrollWidth":768,"canvasCount":1,"cameraButtons":7,"minimumButtonHeight":44,"expandedToolbarButtonsY":[553,948],"horizontalOverflow":false},
+    {"viewport":[1024,768],"documentScrollWidth":1024,"canvasCount":1,"cameraButtons":7,"minimumButtonHeight":44,"expandedToolbarButtonsY":[297,692],"horizontalOverflow":false}
+  ],
+  "audioRegression": [
+    {"stage":"enabled-while-paused","enabled":true,"playing":false,"time":0,"error":null},
+    {"stage":"playing","enabled":true,"playing":true,"time":12.308335,"error":null},
+    {"stage":"paused-after-play","enabled":true,"playing":false,"time":12.626424,"error":null},
+    {"stage":"resumed","enabled":true,"playing":true,"time":16.125571,"error":null}
+  ],
+  "sprayWindows": [
+    {"cadence":80,"strength":0,"elapsedSimulationS":10.3004,"emittedPerBoat":[12756,12724],"activeParticles":[567,843]},
+    {"cadence":105,"strength":1,"elapsedSimulationS":10.1469,"emittedPerBoat":[51164,52092],"activeParticles":[2400,2400]}
+  ],
+  "desktopObservations": {"FPSDuringSprintingRecording":33.0,"FPSDuringCrowdRecording":36.5,"FPSPausedPortrait":47.3,"FPSPausedLandscape":49.4,"note":"PC/browser samples, not a physical tablet benchmark; shader compile and recording affect the rate"},
+  "visualEvidence": ["maspero-v8-overview.png","maspero-v8-crowd.png","maspero-v8-stands.png","maspero-v8-opposite-stand.png","maspero-v8-bridge-c247.png","maspero-v8-bridge-30-4.png","maspero-v8-crew-sprint.png","maspero-v8-sprint-10s.webm","maspero-v8-crowd-water-10s.webm","maspero-v8-tablet-portrait.png","maspero-v8-tablet-landscape.png"],
+  "limitations": ["30/4 finished decoration remains approximate: reference is January 2022 construction photo","Buildings, dimensions and placements are authored approximations, not a near-identical surveyed replica","No physical tablet tested","Audio playback state verified; no claim of manually hearing the recording through this tool","Khmer terminology checked against native press, no native-speaker editorial review"]
+}

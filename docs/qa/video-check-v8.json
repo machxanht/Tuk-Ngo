@@ -1,0 +1,32 @@
+[
+  {
+    "file": "maspero-v8-sprint-10s.webm",
+    "decodedFrames": 267,
+    "firstFrameS": 0.0,
+    "lastFrameS": 9.857,
+    "sampleTimes": [
+      0.321,
+      3.328,
+      6.317,
+      9.329
+    ],
+    "width": 1280,
+    "height": 720
+  },
+  {
+    "file": "maspero-v8-crowd-water-10s.webm",
+    "decodedFrames": 271,
+    "firstFrameS": 0.0,
+    "lastFrameS": 9.895,
+    "sampleTimes": [
+      0.35,
+      3.313,
+      6.35,
+      9.336
+    ],
+    "width": 1280,
+    "height": 720,
+    "fixedCameraNPCBandMeanAbsolutePixelChange": 13.293815104166667,
+    "fixedCameraWaterBandMeanAbsolutePixelChange": 4.945674107142857
+  }
+]

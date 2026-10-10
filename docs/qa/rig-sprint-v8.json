@@ -1,0 +1,152 @@
+{
+  "base": {
+    "pass": true,
+    "errors": [],
+    "checks": {
+      "hullBoundsMeters": {
+        "min": [
+          -15.100000381469727,
+          0,
+          -0.5600000023841858
+        ],
+        "max": [
+          15.100000381469727,
+          1.5199999809265137,
+          0.5600000023841858
+        ],
+        "size": [
+          30.200000762939453,
+          1.5199999809265137,
+          1.1200000047683716
+        ]
+      },
+      "roles": {
+        "ROWER": 50,
+        "PROW_COMMAND": 1,
+        "MID_COMMAND": 1,
+        "STEERSMAN": 3
+      },
+      "thwarts": 25,
+      "hullTopology": {
+        "triangles": 72956,
+        "openOrNonmanifoldEdges": 0,
+        "minTriangleArea": 0.00007837491824777429
+      },
+      "rowingPosture": {
+        "sampledPhases": 161,
+        "minElbowAngleDeg": 63.7920909120288,
+        "maxElbowAngleDeg": 154.12267186245248,
+        "maxWristFlexDeg": 0.000002091309789151873,
+        "minFistToHeadJointM": 0.2217513356851728,
+        "maxJointStepDeg": 4.559800578985706,
+        "minPairElbowGapM": 0.20945524297777995
+      },
+      "animation": {
+        "sampledPhases": 81,
+        "translatedSampledPhases": 81,
+        "translatedMaxHandGripGapM": 7.380535342101098e-9,
+        "minBladeOutboardClearanceM": 0.3071012851290169,
+        "minShaftClearanceBelowRailM": 0.030472817508960415,
+        "maxHandGripGapM": 7.38630114451395e-9,
+        "maxArmLengthErrorM": 3.829017325429618e-9,
+        "worstGrip": {
+          "id": 27,
+          "role": "ROWER",
+          "phase": 0.225,
+          "gap": 7.38630114451395e-9
+        },
+        "gripByRole": {
+          "ROWER": 7.38630114451395e-9,
+          "PROW_COMMAND": 7.2748527437031314e-9,
+          "MID_COMMAND": 7.2422030348456945e-9,
+          "STEERSMAN": 7.250818857990322e-9
+        }
+      },
+      "rig": {
+        "athletes": 55,
+        "joints": 2915,
+        "skinnedMeshes": 275
+      }
+    },
+    "limits": [
+      "Dimensions are repository constraints, not field measurements",
+      "Hidden livery and interior are inferred",
+      "Crew anatomy and stroke animation are illustrative, not motion capture"
+    ]
+  },
+  "sprint": {
+    "pass": true,
+    "errors": [],
+    "checks": {
+      "hullBoundsMeters": {
+        "min": [
+          -15.100000381469727,
+          0,
+          -0.5600000023841858
+        ],
+        "max": [
+          15.100000381469727,
+          1.5199999809265137,
+          0.5600000023841858
+        ],
+        "size": [
+          30.200000762939453,
+          1.5199999809265137,
+          1.1200000047683716
+        ]
+      },
+      "roles": {
+        "ROWER": 50,
+        "PROW_COMMAND": 1,
+        "MID_COMMAND": 1,
+        "STEERSMAN": 3
+      },
+      "thwarts": 25,
+      "hullTopology": {
+        "triangles": 72956,
+        "openOrNonmanifoldEdges": 0,
+        "minTriangleArea": 0.00007837491824777429
+      },
+      "rowingPosture": {
+        "sampledPhases": 161,
+        "minElbowAngleDeg": 61.61249041124681,
+        "maxElbowAngleDeg": 158.26797561871163,
+        "maxWristFlexDeg": 0.0000019090959104164224,
+        "minFistToHeadJointM": 0.19458774150629551,
+        "maxJointStepDeg": 4.85180735096862,
+        "minPairElbowGapM": 0.24074765559435546
+      },
+      "animation": {
+        "sampledPhases": 81,
+        "translatedSampledPhases": 81,
+        "translatedMaxHandGripGapM": 7.391369897753027e-9,
+        "minBladeOutboardClearanceM": 0.3288679329401393,
+        "minShaftClearanceBelowRailM": 0.038588300124065,
+        "maxHandGripGapM": 7.395948094196119e-9,
+        "maxArmLengthErrorM": 3.831042150181929e-9,
+        "worstGrip": {
+          "id": 27,
+          "role": "ROWER",
+          "phase": 0.2375,
+          "gap": 7.395948094196119e-9
+        },
+        "gripByRole": {
+          "ROWER": 7.395948094196119e-9,
+          "PROW_COMMAND": 7.2748527437031314e-9,
+          "MID_COMMAND": 7.2422030348456945e-9,
+          "STEERSMAN": 7.250818857990322e-9
+        }
+      },
+      "rig": {
+        "athletes": 55,
+        "joints": 2915,
+        "skinnedMeshes": 275
+      }
+    },
+    "limits": [
+      "Dimensions are repository constraints, not field measurements",
+      "Hidden livery and interior are inferred",
+      "Crew anatomy and stroke animation are illustrative, not motion capture"
+    ]
+  }
+}

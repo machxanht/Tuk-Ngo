@@ -1,0 +1,24 @@
+{
+  "path": "public/assets/ghe-ngo/ghe-ngo-crew-v8.glb",
+  "rowers": 50,
+  "clips": 2,
+  "strengths": [
+    0,
+    0.5,
+    1
+  ],
+  "sampledPhases": 161,
+  "maxGripGapM": 0.000982614001810216,
+  "minElbowAngleDeg": 61.61248907448032,
+  "maxElbowAngleDeg": 158.26796772259365,
+  "maxWristFlexDeg": 0.000002091309789151873,
+  "minPairElbowGapM": 0.20945525189960681,
+  "maxJointStepDeg": 4.649039440339016,
+  "errors": [],
+  "pass": true,
+  "limits": [
+    "Rig and interpolation inspection; textures are inspected in the browser",
+    "Authoring bounds, not measured race biomechanics",
+    "No exhaustive body collision test"
+  ]
+}

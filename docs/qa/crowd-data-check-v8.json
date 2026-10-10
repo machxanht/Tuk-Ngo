@@ -1,0 +1,16 @@
+[
+  {
+    "level": "near",
+    "vertices": 902,
+    "triangles": 1800,
+    "finite": true,
+    "maxFrameToFrameDisplacementM": 0.09690669924020767
+  },
+  {
+    "level": "far",
+    "vertices": 161,
+    "triangles": 314,
+    "finite": true,
+    "maxFrameToFrameDisplacementM": 0.09690669924020767
+  }
+]
