@@ -25,16 +25,21 @@
     "winningRecordSurvivesReload": true,
     "reducedMotionButtonTransitionsDisabled": true,
     "consoleErrorsOrWarningsDuringFullRace": [],
-    "horizontalPageOverflow": false
+    "horizontalPageOverflow": false,
+    "gameplayFramingClearsPaddlePanel": true,
+    "normalProjectionRestoredOnPause": true
   },
-  "viewportsCssPixels": [[768,1024],[1024,768],[375,812]],
+  "viewportsCssPixels": [[768,1024],[1024,768],[375,812],[834,480]],
   "screenshots": [
     "local-v10-ready.jpg",
     "local-v10-ready-phone.jpg",
     "local-v10-racing-portrait.jpg",
     "local-v10-racing-landscape.jpg",
     "local-v10-paused.jpg",
-    "local-v10-result.jpg"
+    "local-v10-result.jpg",
+    "local-v10-framing-landscape.jpg",
+    "local-v10-framing-portrait.jpg",
+    "local-v10-framing-short.jpg"
   ],
   "limits": [
     "No physical tablet benchmark",
