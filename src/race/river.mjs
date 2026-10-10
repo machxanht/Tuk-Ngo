@@ -1,22 +1,27 @@
 import * as T from 'three';
+import {buildMasperoBanks} from './maspero-course.mjs';
 
 const V=(x,y,z)=>new T.Vector3(x,y,z);
-export function buildRiver(scene,waterY=.28){
+export function buildRiver(scene,waterY=.28,{detailed=false}={}){
  const group=new T.Group();group.name='Maspero_River_And_Banks';scene.add(group);
- const material=new T.ShaderMaterial({fog:true,uniforms:T.UniformsUtils.merge([T.UniformsLib.fog,{uTime:{value:0}}]),
-  vertexShader:`uniform float uTime;varying vec3 vWorld;varying vec3 vNormal;
+ const material=new T.ShaderMaterial({fog:true,uniforms:T.UniformsUtils.merge([T.UniformsLib.fog,{uTime:{value:0},uSediment:{value:detailed?1:0}}]),
+  vertexShader:`uniform float uTime;uniform float uSediment;varying vec3 vWorld;varying vec3 vNormal;
    #include <fog_pars_vertex>
    void main(){vec3 p=position;vec3 w=(modelMatrix*vec4(p,1.)).xyz;
    float a=w.x*.34+w.z*.65-uTime*1.2;float b=w.x*.87-w.z*.72-uTime*1.8;
-   p.y+=.022*sin(a)+.009*sin(b);vNormal=normalize(vec3(-.0075*cos(a)-.0078*cos(b),1.,-.0143*cos(a)+.0065*cos(b)));vWorld=(modelMatrix*vec4(p,1.)).xyz;
+   float wave=mix(1.,.42,uSediment);p.y+=wave*(.022*sin(a)+.009*sin(b));vNormal=normalize(vec3(wave*(-.0075*cos(a)-.0078*cos(b)),1.,wave*(-.0143*cos(a)+.0065*cos(b))));vWorld=(modelMatrix*vec4(p,1.)).xyz;
    vec4 mvPosition=modelViewMatrix*vec4(p,1.);gl_Position=projectionMatrix*mvPosition;
    #include <fog_vertex>
    }`,
-  fragmentShader:`uniform float uTime;varying vec3 vWorld;varying vec3 vNormal;
+  fragmentShader:`uniform float uTime;uniform float uSediment;varying vec3 vWorld;varying vec3 vNormal;
    #include <fog_pars_fragment>
+   float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+   float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(hash(i),hash(i+vec2(1.,0.)),f.x),mix(hash(i+vec2(0.,1.)),hash(i+vec2(1.)),f.x),f.y);}
    void main(){vec3 n=normalize(vNormal);vec3 view=normalize(cameraPosition-vWorld);
    float f=pow(1.-max(dot(n,view),0.),3.);float ripple=sin(vWorld.x*3.8+sin(vWorld.z*2.2)-uTime*2.)*.5+.5;
    vec3 sediment=mix(vec3(.035,.095,.065),vec3(.09,.19,.13),ripple*.32);
+   float patches=noise(vWorld.xz*.24+vec2(-uTime*.05,0.))*.7+noise(vWorld.xz*.77+vec2(0.,uTime*.03))*.3;
+   sediment=mix(sediment,mix(vec3(.16,.135,.074),vec3(.23,.21,.14),patches*.45),uSediment);
    vec3 sky=vec3(.38,.63,.64);float shine=pow(max(dot(reflect(-normalize(vec3(-.4,1.,.4)),n),view),0.),100.);
    gl_FragColor=vec4(mix(sediment,sky,f*.70)+shine*vec3(.9,.8,.6),1.);
    #include <tonemapping_fragment>
@@ -24,6 +29,7 @@ export function buildRiver(scene,waterY=.28){
    #include <fog_fragment>
    }`});
  const geo=new T.PlaneGeometry(1600,86,320,32);geo.rotateX(-Math.PI/2);const water=new T.Mesh(geo,material);water.position.set(650,waterY,0);group.add(water);
+ if(detailed){const banks=buildMasperoBanks(group,waterY);return {group,water,update(time){material.uniforms.uTime.value=time;banks.update(time);},dispose(){const geometries=new Set(),materials=new Set(),textures=new Set();group.traverse(o=>{if(o.geometry)geometries.add(o.geometry);for(const m of Array.isArray(o.material)?o.material:o.material?[o.material]:[]){materials.add(m);if(m.map)textures.add(m.map);}});geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());textures.forEach(t=>t.dispose());scene.remove(group);}};}
  const bankMat=new T.MeshStandardMaterial({color:'#8d958c',roughness:.96}),grassMat=new T.MeshStandardMaterial({color:'#44704b',roughness:1});
  for(const side of [-1,1]){
   const bank=new T.Mesh(new T.BoxGeometry(1600,1.5,8),bankMat);bank.position.set(650,.1,side*46);group.add(bank);
