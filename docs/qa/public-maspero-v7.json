@@ -1,0 +1,81 @@
+{
+  "url": "https://machxanht.github.io/Tuk-Ngo/?demo=studio&v=2d48602",
+  "sceneVersion": "MASPERO_TWO_CREWS_V7",
+  "boatCount": 2,
+  "crewCount": 110,
+  "rowerCount": 100,
+  "tabletLayouts": [
+    {
+      "size": [
+        1024,
+        768
+      ],
+      "canvasCount": 1,
+      "horizontalOverflow": false,
+      "toolbarOutOfBounds": []
+    },
+    {
+      "size": [
+        768,
+        1024
+      ],
+      "canvasCount": 1,
+      "horizontalOverflow": false,
+      "toolbarOutOfBounds": []
+    }
+  ],
+  "bothTeamColoursVisuallyInspected": true,
+  "cameraModes": [
+    "overview",
+    "follow",
+    "crew",
+    "stand"
+  ],
+  "publicPlay": {
+    "distanceAfterClip": 1097.2,
+    "splashEventsPerBoat": [
+      3290,
+      3220
+    ],
+    "activeParticlesPerBoat": [
+      718,
+      372
+    ],
+    "renderCallsSnapshot": 183,
+    "triangleSnapshot": 4591234,
+    "desktopRafFpsSnapshot": 20.4
+  },
+  "nearFinishReset": {
+    "distance": 1050,
+    "splashEvents": [
+      0,
+      0
+    ],
+    "activeParticles": [
+      0,
+      0
+    ]
+  },
+  "video": {
+    "file": "public-maspero-10s-v7.webm",
+    "decodedFrames": 198,
+    "lastFrameTimestampMs": 9814.0,
+    "metadataFpsNotUsed": true
+  },
+  "assetPreviewRegression": {
+    "route": "demo=art",
+    "renderMode": "model",
+    "source": "MAKEHUMAN_GLB_MOTION_V6",
+    "crewCount": 55,
+    "canvasCount": 1,
+    "errors": []
+  },
+  "limits": [
+    "Desktop browser at tablet dimensions; no physical tablet benchmark",
+    "Raf snapshot is not a controlled benchmark; not a 60 FPS claim",
+    "Splash totals were read after recording while play continued; not a 10-second rate",
+    "OpenCV WebM metadata FPS is unreliable; frames were sequentially decoded",
+    "Geographic layout and building dimensions are approximate",
+    "V6 stroke and source mesh are unchanged; no final athlete art acceptance claimed"
+  ]
+}

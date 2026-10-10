@@ -1,0 +1,46 @@
+{
+  "sourceHead": "8d1bc508b46701082ad439eca4d937be03582481",
+  "files": [
+    {
+      "path": "README.md",
+      "match": true,
+      "sha256": "e5bc4fa38a3582884e2af66ad1efdc3f73ba40ae296c986a9b3f7b160519a76b"
+    },
+    {
+      "path": "src/components/TabletRaceDemo.tsx",
+      "match": true,
+      "sha256": "98c54b42cdb3cafe9c9a582c76949c91db8b12962c6d4dd46db886dbad99216f"
+    },
+    {
+      "path": "src/components/TabletRaceDemo.css",
+      "match": true,
+      "sha256": "9d42073b70f39caf9332ae691e42dc7802e9b47b80c01c9018d1351ee9c31a26"
+    },
+    {
+      "path": "src/race/river.mjs",
+      "match": true,
+      "sha256": "78f4c5271aef762b2323f0dca805ca7cee8bf0cc1a0c22098873a536be601bd0"
+    },
+    {
+      "path": "src/race/maspero-course.mjs",
+      "match": true,
+      "sha256": "81cfc97bc91e472fd714c12f0e597bc616a2f243095d38cb5df9f439b61d9b46"
+    },
+    {
+      "path": "src/race/race-crew.mjs",
+      "match": true,
+      "sha256": "02324013c0430579878ff990358b701f21fe32f76b7ff7b11b20e167101bfb23"
+    },
+    {
+      "path": "scripts/check-race-crews.mjs",
+      "match": true,
+      "sha256": "eec69d3e52ba9fc4fc473a581f7115c3378a8a03bc3ed33f3c2308b55cbc6b23"
+    },
+    {
+      "path": "docs/maspero-scene-v7.md",
+      "match": true,
+      "sha256": "aeadc779305717df6360f8fceeab4ddbbc7739661d7d4f58e698def6c14bbd10"
+    }
+  ],
+  "pass": true
+}

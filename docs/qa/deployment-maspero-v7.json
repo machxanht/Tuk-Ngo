@@ -1,0 +1,56 @@
+{
+  "url": "https://machxanht.github.io/Tuk-Ngo/?demo=studio&v=2d48602",
+  "pagesHead": "2d48602e0ab9ce75b4c798141b95806672d0166b",
+  "run": {
+    "id": 38068224665,
+    "status": "completed",
+    "conclusion": "success",
+    "head": "2d48602e0ab9ce75b4c798141b95806672d0166b",
+    "url": "https://github.com/machxanht/Tuk-Ngo/actions/runs/38068224665"
+  },
+  "files": [
+    {
+      "path": "index.html",
+      "status": 200,
+      "bytes": 1429,
+      "sha256": "40457a3c248c0bda3c62cde48deda6e9acd6fd14ca0e374cb74738cc82c13c64",
+      "match": true
+    },
+    {
+      "path": "assets/index-fVI05d8M.js",
+      "status": 200,
+      "bytes": 1188262,
+      "sha256": "e993438f9d104abc0e074ac3e2cb1869e59eac6853a0eeb08985543d94f7f5fe",
+      "match": true
+    },
+    {
+      "path": "assets/index-B-VPA9hP.css",
+      "status": 200,
+      "bytes": 72218,
+      "sha256": "3e9b1e3fa1de39990645ae00e8366b6a036654b3c44fb8c5557a7c15e869ad00",
+      "match": true
+    },
+    {
+      "path": "assets/ghe-ngo/ghe-ngo-crew.glb",
+      "status": 200,
+      "bytes": 7505908,
+      "sha256": "06d3d78f748ceaaaf84a2d9bcd10e5acb92a692cb4b17ac5e03a29b6787908f3",
+      "match": true
+    },
+    {
+      "path": "assets/ghe-ngo/kbach-from-reference.webp",
+      "status": 200,
+      "bytes": 304100,
+      "sha256": "ca32a1e35ecfa4f6653637b189a21fe838b14cf76951743556dde765773b1e18",
+      "match": true
+    },
+    {
+      "path": "assets/human/ATTRIBUTION.md",
+      "status": 200,
+      "bytes": 4613,
+      "sha256": "9ef32af0515396a6c6842056646cfa7f5181208b34dc94010b5b2f91df0a40c6",
+      "match": true
+    }
+  ],
+  "pass": true
+}

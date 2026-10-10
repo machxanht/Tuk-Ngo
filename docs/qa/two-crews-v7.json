@@ -1,0 +1,28 @@
+{
+  "boats": 2,
+  "actors": 110,
+  "rowers": 100,
+  "mergedActors": 110,
+  "phases": [
+    0,
+    0.1,
+    0.22,
+    0.42,
+    0.6,
+    0.74,
+    0.94,
+    1
+  ],
+  "sampledSkinVertices": 92400,
+  "maxSkinDeviationM": 0,
+  "maxColorDeviation": 2.8709063348841823e-8,
+  "jerseysChecked": 880,
+  "maxAccessoryDeviationM": 4.788557339578236e-7,
+  "errors": [],
+  "limits": [
+    "Actual V6 GLB animation and skin weights; images excluded only for Node decoder",
+    "Rendering geometry preservation; appearance and water inspected in browser",
+    "Not a physical tablet benchmark or a geographic survey"
+  ],
+  "pass": true
+}

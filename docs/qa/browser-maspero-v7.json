@@ -1,0 +1,69 @@
+{
+  "scene": "MASPERO_TWO_CREWS_V7",
+  "localBrowser": {
+    "portrait": [
+      768,
+      1024
+    ],
+    "landscape": [
+      1024,
+      768
+    ],
+    "canvasCount": 1,
+    "horizontalOverflow": false,
+    "toolbarOutOfBounds": [],
+    "cameraModesInspected": [
+      "overview",
+      "follow",
+      "crew",
+      "stand"
+    ],
+    "bothTeamColoursInspected": true,
+    "startMidpointFinishJumps": true,
+    "reset": {
+      "distance": 0,
+      "boats": [
+        [
+          -15.1,
+          -7.5
+        ],
+        [
+          -16.5,
+          7.5
+        ]
+      ],
+      "splashEvents": [
+        0,
+        0
+      ],
+      "activeParticles": [
+        0,
+        0
+      ]
+    },
+    "perBoatPaddleContactObserved": true,
+    "consoleErrors": []
+  },
+  "gates": {
+    "typecheck": "passed",
+    "viteBuild": "passed",
+    "crewGeometryCheck": "passed",
+    "buildWarning": "existing bundle above 500 kB"
+  },
+  "unchangedAssets": {
+    "public/assets/ghe-ngo/ghe-ngo-crew.glb": {
+      "bytes": 7505908,
+      "sha256": "06d3d78f748ceaaaf84a2d9bcd10e5acb92a692cb4b17ac5e03a29b6787908f3"
+    },
+    "public/assets/ghe-ngo/kbach-from-reference.webp": {
+      "bytes": 304100,
+      "sha256": "ca32a1e35ecfa4f6653637b189a21fe838b14cf76951743556dde765773b1e18"
+    }
+  },
+  "limits": [
+    "Desktop browser tested at tablet dimensions; no physical tablet",
+    "Geographic dimensions and building positions are approximate",
+    "Existing V6 stroke is authored, not rowing motion capture",
+    "No claim of 60 FPS or final athlete art acceptance"
+  ]
+}
