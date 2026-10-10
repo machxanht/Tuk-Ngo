@@ -120,7 +120,7 @@ export async function startIllustratedPreview(host,settings,clock,base,onReady){
 }
 
 export async function startModelPreview(host,settings,clock,base,onReady){
- const model=await new GLTFLoader().loadAsync(base+'assets/ghe-ngo/ghe-ngo-crew.glb'),root=model.scene;
+ const model=await new GLTFLoader().loadAsync(base+'assets/ghe-ngo/ghe-ngo-crew.glb?v=06d3d78'),root=model.scene;
  const scene=new T.Scene();scene.background=new T.Color('#d6dfce');scene.fog=new T.Fog('#d6dfce',75,200);
  scene.add(new T.HemisphereLight('#fff4dc','#557062',1.25));
  const key=new T.DirectionalLight('#ffe6b5',2.6);key.position.set(-12,22,18);key.castShadow=true;key.shadow.mapSize.set(2048,2048);key.shadow.camera.left=-20;key.shadow.camera.right=20;key.shadow.camera.top=10;key.shadow.camera.bottom=-10;key.shadow.normalBias=.015;scene.add(key);
