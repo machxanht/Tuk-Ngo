@@ -60,6 +60,7 @@ export default function App() {
   const demo = new URLSearchParams(window.location.search).get('demo');
   if (demo === 'race' || demo === 'art') return <ArtPreview />;
   if (demo === 'studio') return <TabletRaceDemo />;
+  if (demo === 'play') return <TabletRaceDemo gameplay />;
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-sky-500 selection:text-white">
