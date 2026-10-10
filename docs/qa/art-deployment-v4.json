@@ -1,0 +1,162 @@
+{
+  "timestampUtc": "2026-10-10T16:32:02.6148+07:00",
+  "sourceCommit": "73b5683ae8ff3120fed883a6624fcd4a8ae3b69d",
+  "pagesCommit": "94693078c4df6633b2a9c8346875b838f9d8d8ea",
+  "pagesAction": {
+    "id": 38041589246,
+    "conclusion": "success",
+    "url": "https://github.com/machxanht/Tuk-Ngo/actions/runs/38041589246"
+  },
+  "url": "https://machxanht.github.io/Tuk-Ngo/?demo=art&v=9469307",
+  "artifacts": [
+    {
+      "path": "index.html",
+      "httpStatus": 200,
+      "bytes": 1429,
+      "sha256": "3436e30f19d5a8722b0018800d4943a9757ff002c59c0284b96c3c27c64bcc79",
+      "matchesLocalBuild": true
+    },
+    {
+      "path": "assets/index-CjDfNFuj.js",
+      "httpStatus": 200,
+      "bytes": 1183469,
+      "sha256": "c067640f02ab5f67a62e702d6274afda024f7365fbcfce102f50cd8d419b9298",
+      "matchesLocalBuild": true
+    },
+    {
+      "path": "assets/index-DppDAAA8.css",
+      "httpStatus": 200,
+      "bytes": 70418,
+      "sha256": "f3d94eb745e48a296d910617b0a51606d2be64bb5644cc08a1ca902c1948d38d",
+      "matchesLocalBuild": true
+    },
+    {
+      "path": "assets/ghe-ngo/ghe-ngo-crew.glb",
+      "httpStatus": 200,
+      "bytes": 7505172,
+      "sha256": "28b834980a09a1ad9c7b955b7d5e1aa3044f3e40cdca052135e38db969cc1cfa",
+      "matchesLocalBuild": true
+    },
+    {
+      "path": "assets/ghe-ngo/sprites/manifest.json",
+      "httpStatus": 200,
+      "bytes": 262139,
+      "sha256": "f06ea4e9802233ad3ecf83ea1ae911af636921602f7fc7b775ecc708212b8cd9",
+      "matchesLocalBuild": true
+    },
+    {
+      "path": "assets/ghe-ngo/sprites/boat-0.webp",
+      "httpStatus": 200,
+      "bytes": 427036,
+      "sha256": "dd683dd0354bd31781596490f6d0aad141356f1f47916cfce9ff6cf47df9be34",
+      "matchesLocalBuild": true
+    },
+    {
+      "path": "assets/ghe-ngo/sprites/boat-1.webp",
+      "httpStatus": 200,
+      "bytes": 410534,
+      "sha256": "4e2becf490967596f6927f16a7e266ca3cd629b836ada37439bc2dc9ca3dc0eb",
+      "matchesLocalBuild": true
+    },
+    {
+      "path": "assets/ghe-ngo/sprites/boat-2.webp",
+      "httpStatus": 200,
+      "bytes": 415220,
+      "sha256": "b9a1077c92baea08eb22db7955ec613071746d94e7391e4c4b86f8bd348078ef",
+      "matchesLocalBuild": true
+    },
+    {
+      "path": "assets/ghe-ngo/sprites/crew-0.webp",
+      "httpStatus": 200,
+      "bytes": 216912,
+      "sha256": "d7dd33f3605434edd4afc4d711e825e2ecd38715ff2b6566001e8a3bf4e62b16",
+      "matchesLocalBuild": true
+    },
+    {
+      "path": "assets/ghe-ngo/sprites/crew-1.webp",
+      "httpStatus": 200,
+      "bytes": 208714,
+      "sha256": "1848ed81da27083424eff28759fb6277b9149a0b2a8b87f279c7eca2328e0795",
+      "matchesLocalBuild": true
+    },
+    {
+      "path": "assets/ghe-ngo/sprites/crew-2.webp",
+      "httpStatus": 200,
+      "bytes": 213196,
+      "sha256": "ac9e5e5f91d54c72d0846b5b3f86107ac3d5cd1dbebe235da3aa50cfc299703c",
+      "matchesLocalBuild": true
+    },
+    {
+      "path": "assets/human/makehuman-athlete.glb",
+      "httpStatus": 200,
+      "bytes": 1408020,
+      "sha256": "8d6cbac28a42a88c0bd28f9aae67127d429d508b91aefb2f027ec5db15cfbbf6",
+      "matchesLocalBuild": true
+    },
+    {
+      "path": "assets/human/ATTRIBUTION.md",
+      "httpStatus": 200,
+      "bytes": 3044,
+      "sha256": "55280ee942b8fe56542ce1bf3f332371f16667c982f15277a9052653f688aabd",
+      "matchesLocalBuild": true
+    }
+  ],
+  "pass": true,
+  "physicalTabletTested": false,
+  "browserVerification": {
+    "testedAtUtc": "2026-10-10T09:39:29.1849299+00:00",
+    "url": "https://machxanht.github.io/Tuk-Ngo/?demo=art&v=9469307",
+    "portrait": {
+      "canvasCount": 1,
+      "horizontalOverflow": false,
+      "width": 768,
+      "views": [
+        "boat",
+        "crew"
+      ],
+      "height": 1024,
+      "modes": [
+        "sprite",
+        "model"
+      ]
+    },
+    "landscape": {
+      "scrollHeight": 768,
+      "canvasCount": 1,
+      "width": 1024,
+      "scrollWidth": 1024,
+      "buttonHeightPixels": 44,
+      "height": 768
+    },
+    "modelAnimation": {
+      "phaseStableAfterPause": 0.2034,
+      "phaseChangedWhilePlaying": true,
+      "drawCalls": 340,
+      "splashEventsObserved": 3754,
+      "crewViewTriangles": 369816
+    },
+    "spriteControls": {
+      "splashOffParticles": 0,
+      "minCadence": 48,
+      "maxCadence": 96,
+      "splashOnEventsObserved": 300,
+      "resetEvents": 0,
+      "resetPhase": 0.28
+    },
+    "consoleErrorsObserved": [],
+    "video": {
+      "decodedFrames": 285,
+      "path": "docs/qa/crew-cycle-10s.webm",
+      "capturedFromPublicPages": true,
+      "durationSecondsFromTimestamps": 9.968
+    },
+    "screenshot": "docs/qa/public-crew-v4.png",
+    "physicalTabletTested": false,
+    "mocapUsed": false,
+    "limitations": [
+      "Generic licensed human anatomy, authored rowing motion rather than motion capture.",
+      "Appearance and frame rate on a physical tablet have not been measured.",
+      "glTF validator reports 0 errors and 275 NODE_SKINNED_MESH_NON_ROOT warnings; tested in the project Three.js viewer."
+    ]
+  }
+}

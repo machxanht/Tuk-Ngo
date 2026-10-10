@@ -1,0 +1,32 @@
+{
+  "framesDecoded": 285,
+  "durationSeconds": 9.968,
+  "samples": [
+    {
+      "frame": 0,
+      "timestampMs": 0.0,
+      "mean": 141.37201690673828
+    },
+    {
+      "frame": 60,
+      "timestampMs": 2155.0000000000005,
+      "mean": 140.78922949896918
+    },
+    {
+      "frame": 120,
+      "timestampMs": 4186.0,
+      "mean": 141.08020570543079
+    },
+    {
+      "frame": 180,
+      "timestampMs": 6343.0,
+      "mean": 140.80337270100912
+    },
+    {
+      "frame": 240,
+      "timestampMs": 8437.0,
+      "mean": 140.89424218071832
+    }
+  ],
+  "sourceUrl": "https://machxanht.github.io/Tuk-Ngo/?demo=art&v=9469307"
+}
