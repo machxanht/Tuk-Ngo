@@ -1,0 +1,186 @@
+{
+  "uri": "public/assets/human/athlete-rower-v9.glb",
+  "mimeType": "model/gltf-binary",
+  "validatorVersion": "2.0.0-dev.3.10",
+  "validatedAt": "2026-10-10T20:46:37.487Z",
+  "issues": {
+    "numErrors": 0,
+    "numWarnings": 10,
+    "numInfos": 7,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+        "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+        "severity": 1,
+        "pointer": "/meshes/0/primitives/0/material"
+      },
+      {
+        "code": "UNUSED_OBJECT",
+        "message": "This object may be unused.",
+        "severity": 2,
+        "pointer": "/meshes/1/primitives/0/attributes/TEXCOORD_0"
+      },
+      {
+        "code": "UNUSED_OBJECT",
+        "message": "This object may be unused.",
+        "severity": 2,
+        "pointer": "/meshes/2/primitives/0/attributes/TEXCOORD_0"
+      },
+      {
+        "code": "UNUSED_OBJECT",
+        "message": "This object may be unused.",
+        "severity": 2,
+        "pointer": "/meshes/3/primitives/0/attributes/TEXCOORD_0"
+      },
+      {
+        "code": "UNUSED_OBJECT",
+        "message": "This object may be unused.",
+        "severity": 2,
+        "pointer": "/meshes/4/primitives/0/attributes/TEXCOORD_0"
+      },
+      {
+        "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+        "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+        "severity": 1,
+        "pointer": "/meshes/5/primitives/0/material"
+      },
+      {
+        "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+        "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+        "severity": 1,
+        "pointer": "/meshes/6/primitives/0/material"
+      },
+      {
+        "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+        "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+        "severity": 1,
+        "pointer": "/meshes/7/primitives/0/material"
+      },
+      {
+        "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+        "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+        "severity": 1,
+        "pointer": "/meshes/8/primitives/0/material"
+      },
+      {
+        "code": "UNUSED_OBJECT",
+        "message": "This object may be unused.",
+        "severity": 2,
+        "pointer": "/meshes/9/primitives/0/attributes/TEXCOORD_0"
+      },
+      {
+        "code": "UNUSED_OBJECT",
+        "message": "This object may be unused.",
+        "severity": 2,
+        "pointer": "/meshes/10/primitives/0/attributes/TEXCOORD_0"
+      },
+      {
+        "code": "UNUSED_OBJECT",
+        "message": "This object may be unused.",
+        "severity": 2,
+        "pointer": "/meshes/11/primitives/0/attributes/TEXCOORD_0"
+      },
+      {
+        "code": "NODE_SKINNED_MESH_NON_ROOT",
+        "message": "Node with a skinned mesh is not root. Parent transforms will not affect a skinned mesh.",
+        "severity": 1,
+        "pointer": "/nodes/59"
+      },
+      {
+        "code": "NODE_SKINNED_MESH_NON_ROOT",
+        "message": "Node with a skinned mesh is not root. Parent transforms will not affect a skinned mesh.",
+        "severity": 1,
+        "pointer": "/nodes/60"
+      },
+      {
+        "code": "NODE_SKINNED_MESH_NON_ROOT",
+        "message": "Node with a skinned mesh is not root. Parent transforms will not affect a skinned mesh.",
+        "severity": 1,
+        "pointer": "/nodes/61"
+      },
+      {
+        "code": "NODE_SKINNED_MESH_NON_ROOT",
+        "message": "Node with a skinned mesh is not root. Parent transforms will not affect a skinned mesh.",
+        "severity": 1,
+        "pointer": "/nodes/62"
+      },
+      {
+        "code": "NODE_SKINNED_MESH_NON_ROOT",
+        "message": "Node with a skinned mesh is not root. Parent transforms will not affect a skinned mesh.",
+        "severity": 1,
+        "pointer": "/nodes/63"
+      }
+    ],
+    "truncated": false
+  },
+  "info": {
+    "version": "2.0",
+    "generator": "Khronos glTF Blender I/O v5.2.40",
+    "extensionsUsed": [
+      "EXT_texture_webp"
+    ],
+    "extensionsRequired": [
+      "EXT_texture_webp"
+    ],
+    "resources": [
+      {
+        "pointer": "/buffers/0",
+        "mimeType": "application/gltf-buffer",
+        "storage": "glb",
+        "byteLength": 2765588
+      },
+      {
+        "pointer": "/images/0",
+        "mimeType": "image/png",
+        "storage": "buffer-view",
+        "image": {
+          "width": 2048,
+          "height": 1024,
+          "format": "rgb",
+          "primaries": "srgb",
+          "transfer": "srgb",
+          "bits": 8
+        }
+      },
+      {
+        "pointer": "/images/1",
+        "mimeType": "image/webp",
+        "storage": "buffer-view",
+        "image": {
+          "width": 2048,
+          "height": 1024,
+          "format": "rgb",
+          "primaries": "srgb",
+          "transfer": "srgb",
+          "bits": 8
+        }
+      },
+      {
+        "pointer": "/images/2",
+        "mimeType": "image/png",
+        "storage": "buffer-view",
+        "image": {
+          "width": 2048,
+          "height": 1024,
+          "format": "rgb",
+          "primaries": "srgb",
+          "transfer": "srgb",
+          "bits": 8
+        }
+      }
+    ],
+    "animationCount": 2,
+    "materialCount": 10,
+    "hasMorphTargets": false,
+    "hasSkins": true,
+    "hasTextures": true,
+    "hasDefaultScene": true,
+    "drawCallCount": 12,
+    "totalVertexCount": 28991,
+    "totalTriangleCount": 32575,
+    "maxUVs": 1,
+    "maxInfluences": 4,
+    "maxAttributes": 6
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "boats": 2,
+  "actors": 110,
+  "rowers": 100,
+  "mergedActors": 110,
+  "phases": [
+    0,
+    0.1,
+    0.22,
+    0.42,
+    0.6,
+    0.74,
+    0.94,
+    1
+  ],
+  "sampledSkinVertices": 92400,
+  "maxSkinDeviationM": 0,
+  "maxColorDeviation": 2.3457897069256717e-8,
+  "maxUvDeviation": 0,
+  "maxTangentDeviation": 0,
+  "jerseysChecked": 880,
+  "maxAccessoryDeviationM": 4.7673251636329505e-7,
+  "errors": [],
+  "limits": [
+    "Actual supplied GLB animation and skin weights; images excluded only for Node decoder",
+    "Atlas texture identity tokens; actual image/shader/appearance requires browser QA",
+    "Not a physical tablet benchmark or a geographic survey"
+  ],
+  "pass": true
+}

@@ -1,0 +1,12 @@
+{
+  "blenderVersion": "5.2.2 LTS",
+  "armatures": 1,
+  "actors": 1,
+  "actions": 2,
+  "actionSlots": [
+    2,
+    2
+  ],
+  "packedImages": 3,
+  "camera": "Studio_Camera"
+}

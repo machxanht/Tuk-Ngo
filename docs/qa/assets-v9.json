@@ -1,0 +1,27 @@
+{
+  "asset": "ghe-ngo-crew-v9.glb",
+  "bytes": 10853560,
+  "sha256": "cba350a44c29576afe90780481268e39f74b4e8bc82df39078368bca89dd5158",
+  "baselineSha256": "42018ea235fabe9d503c022a71fc5df44dadea4a9a21df82d388999556d3a856",
+  "hullPreservation": {
+    "POSITION": true,
+    "TEXCOORD_0": true,
+    "NORMAL": true,
+    "indices": true,
+    "ownerLiveryBytes": true,
+    "hullMaterial": true
+  },
+  "ownerLiverySha256": "ca32a1e35ecfa4f6653637b189a21fe838b14cf76951743556dde765773b1e18",
+  "skinSource": {
+    "license": "CC0",
+    "author": "MakeHuman Community / Data Collection AB, Joel Palmius, Jonas Hauquier",
+    "source": "https://static.makehumancommunity.org/assets/assetpacks/makehuman_system_assets.html",
+    "skin": "young_asian_male/young_lightskinned_male_diffuse3.png",
+    "sha256": "f50016a5507fc687dc8df06599c8ea48de950cd185de33a71cafc1319ddab4d5",
+    "fabric": "authored analytic weave; normal/roughness derived for this game"
+  },
+  "pass": true,
+  "limits": [
+    "Hull data and original livery preservation; athlete appearance checked visually separately"
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "sceneVersion": "MASPERO_TWO_CREWS_V9",
+  "actors": 110,
+  "rowers": 100,
+  "actorAtlas": {
+    "width": 2048,
+    "height": 1024,
+    "normal": true,
+    "roughness": true,
+    "uv": true
+  },
+  "spectators": 12005,
+  "nationalFlags": 0,
+  "signLanguage": "km",
+  "khmerFontLoaded": true,
+  "bridgesGameMetres": [
+    940,
+    1340
+  ],
+  "shaderErrors": [],
+  "baseCadence80": {
+    "strength": 0,
+    "observedActiveParticles": [
+      500,
+      334
+    ]
+  },
+  "sprintCadence105": {
+    "strength": 1,
+    "observedActiveParticles": [
+      2043,
+      1867
+    ]
+  },
+  "waterAndStrokeAdvancedDuringRecording": true,
+  "recording": {
+    "file": "local-v9-sprint.webm",
+    "decodedFrames": 216
+  },
+  "responsive": [
+    {
+      "width": 768,
+      "height": 1024,
+      "scrollWidth": 768,
+      "minimumVisibleControlHeight": 44
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "scrollWidth": 1024
+    }
+  ],
+  "artPreviewV9Loaded": true,
+  "artPreviewWarnings": [
+    "Three.js PCFSoftShadowMap deprecated, fallback PCFShadowMap"
+  ],
+  "observedDesktopFPS": {
+    "pausedCrew": 31.3,
+    "sprintWhileRecording": 21.3
+  },
+  "limits": [
+    "Desktop viewport checks are not physical tablet performance tests",
+    "Generic CC0 bodies and authored strokes, not tournament athlete scans or motion capture",
+    "Environment and finished bridge decoration remain approximate",
+    "Different particle samples are observational, not a fixed-duration performance benchmark"
+  ]
+}
