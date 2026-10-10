@@ -1,8 +1,10 @@
-# Tuk-Ngo — 3D ghe Ngo and Maspéro race preview
+# Tuk-Ngo — 3D ghe Ngo racing on Maspéro
 
 React/Vite/Three.js project. V6 defaults to the **3D boat** the owner preferred. The hull geometry and owner-video livery are preserved; the crew's rowing loop has a forward grip path, source elbow hinge frames, straight wrist alignment and continuous phase velocity. V5's independent 2D illustration remains an experimental comparison after the owner rejected its appearance. The original reference panels and orbit-camera studio remain available.
 
-Current two-boat tablet preview (V9): https://machxanht.github.io/Tuk-Ngo/?demo=studio&v=v9
+Playable tablet race (V10): https://machxanht.github.io/Tuk-Ngo/?demo=play&v=v10
+
+Two-boat scene inspection (V9 assets): https://machxanht.github.io/Tuk-Ngo/?demo=studio
 
 Single-boat asset inspection (V9): https://machxanht.github.io/Tuk-Ngo/?demo=art
 
@@ -12,6 +14,7 @@ Single-boat asset inspection (V9): https://machxanht.github.io/Tuk-Ngo/?demo=art
 npm ci
 npm run dev
 npm run lint
+node scripts/check-gameplay.mjs
 npm run build
 ```
 
@@ -33,7 +36,7 @@ Vite base is `/Tuk-Ngo/`. `?demo=art` and the existing `?demo=race` open the V9 
 - `public/assets/fonts/`: self-hosted Noto Sans Khmer, SIL OFL 1.1. `public/assets/audio/`: CC0 real crowd recording and attribution; not a recording of this tournament or a Khmer chant.
 - `public/assets/human/ATTRIBUTION.md`: source, license and changes. The previous Quaternius files remain for provenance; V4 does not load that character.
 
-Source is on `main`; the static production build is on `gh-pages`. Animations are authored, not motion capture. V9 is a scene/rowing trial with no new scoring gameplay. See `docs/asset-pipeline-v9.md` and `docs/maspero-scene-v8.md` for the actual reference basis, checks and remaining approximations. In particular, 30/4 bridge decoration uses a 2022 construction photograph, not a verified current finished elevation. Browser-size QA does not replace a physical tablet benchmark. V4–V8 remain documented historically.
+Source is on `main`; the static production build is on `gh-pages`. Animations are authored, not motion capture. V10 adds playable rhythm racing at `?demo=play`, using the preserved V9 assets. Tap Chèo in the bright timing zone, choose recovery/steady/sprint, race an independent AI over 1,200 m, view results and replay. Space/Enter also activate the focused Chèo button. Three difficulties and browser-local winning records are included. Changing tabs pauses the race. See `docs/gameplay-v10.md` for the game rules and checks, and `docs/asset-pipeline-v9.md` / `docs/maspero-scene-v8.md` for the reference basis and remaining approximations. The game balance is authored, not an official race simulation. In particular, 30/4 bridge decoration uses a 2022 construction photograph, not a verified current finished elevation. Browser-size QA does not replace a physical tablet benchmark. V4–V9 remain documented historically.
 
 ## Rebuild assets
 
