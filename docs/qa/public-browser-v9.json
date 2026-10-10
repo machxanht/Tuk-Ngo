@@ -1,0 +1,72 @@
+{
+  "url": "https://machxanht.github.io/Tuk-Ngo/?demo=studio&v=9b0f16c",
+  "sceneVersion": "MASPERO_TWO_CREWS_V9",
+  "actors": 110,
+  "rowers": 100,
+  "atlas": {
+    "width": 2048,
+    "height": 1024,
+    "normal": true,
+    "roughness": true,
+    "uv": true
+  },
+  "spectators": 12005,
+  "stands": 2,
+  "nationalFlags": 0,
+  "signLanguage": "km",
+  "khmerFontLoaded": true,
+  "course": {
+    "length": 1200,
+    "bridgeStart": 940,
+    "bridgeEnd": 1340
+  },
+  "publicRuntimeErrors": [],
+  "sprint": {
+    "cadence": 105,
+    "strength": 1,
+    "observedParticles": [
+      2002,
+      1900
+    ],
+    "waterTimeAfterRecording": 9.4454,
+    "phasesAfterRecording": [
+      0.80945,
+      0.5735113333333357
+    ]
+  },
+  "audio": {
+    "enabled": true,
+    "played": true,
+    "timeWhilePlaying": 11.642336,
+    "pausedWithScene": true,
+    "error": null
+  },
+  "recording": {
+    "file": "public-v9-sprint.webm",
+    "decodedFrames": 160,
+    "canvasVideoOnly": true
+  },
+  "captures": [
+    "public-v9-crew.png",
+    "public-v9-overview.png"
+  ],
+  "tabletViewports": [
+    {
+      "width": 768,
+      "height": 1024,
+      "scrollWidth": 768,
+      "minControlHeight": 44
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "scrollWidth": 1024
+    }
+  ],
+  "physicalTabletTested": false,
+  "appearanceLimits": [
+    "Generic CC0 bodies with authored rowing, not athlete scans or motion capture",
+    "Building/tree/finished bridge appearance remains approximate",
+    "Crowd recording is generic CC0 cheering, not actual Khmer tournament chants"
+  ]
+}

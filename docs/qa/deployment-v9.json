@@ -1,0 +1,73 @@
+{
+  "ghPagesCommit": "9b0f16c1a5ff9cf9030603c33e329e663365c3d7",
+  "sourceCommit": "313aa69d53a0e2788dc91dc3c674c27645cde280",
+  "pagesAction": "https://github.com/machxanht/Tuk-Ngo/actions/runs/38085583854",
+  "pagesActionObservedStatus": "Success",
+  "tabletURL": "https://machxanht.github.io/Tuk-Ngo/?demo=studio&v=9b0f16c",
+  "verifiedSourceFiles": 40,
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 1429,
+      "sha256": "55fb210d0463abf3adf4d0a0e114b0f71fde59e9028f5bcb3ca6f8d410ec4906",
+      "gitMatch": true,
+      "httpStatus": 200,
+      "publicSha256": "55fb210d0463abf3adf4d0a0e114b0f71fde59e9028f5bcb3ca6f8d410ec4906",
+      "publicMatch": true
+    },
+    {
+      "path": "assets/index-CW8ttjGo.js",
+      "bytes": 1188745,
+      "sha256": "b286f8fcf22b5668e066ac7379b2dda2ce814ebd6fc8abf170cc70eabb4c54b5",
+      "gitMatch": true,
+      "httpStatus": 200,
+      "publicSha256": "b286f8fcf22b5668e066ac7379b2dda2ce814ebd6fc8abf170cc70eabb4c54b5",
+      "publicMatch": true
+    },
+    {
+      "path": "assets/index-BfL_mFi4.css",
+      "bytes": 73549,
+      "sha256": "ad1b7593b22a1f4f977472087ace03ce4d6f6a4cfd0d124249c7a987b678dcef",
+      "gitMatch": true,
+      "httpStatus": 200,
+      "publicSha256": "ad1b7593b22a1f4f977472087ace03ce4d6f6a4cfd0d124249c7a987b678dcef",
+      "publicMatch": true
+    },
+    {
+      "path": "assets/ghe-ngo/ghe-ngo-crew-v9.glb",
+      "bytes": 10853560,
+      "sha256": "cba350a44c29576afe90780481268e39f74b4e8bc82df39078368bca89dd5158",
+      "gitMatch": true,
+      "httpStatus": 200,
+      "publicSha256": "cba350a44c29576afe90780481268e39f74b4e8bc82df39078368bca89dd5158",
+      "publicMatch": true
+    },
+    {
+      "path": "assets/human/ATTRIBUTION.md",
+      "bytes": 7754,
+      "sha256": "7e4d9e70e01dc4f8120405e8ce07510d79790674019276854c9f280a2a5a6d00",
+      "gitMatch": true,
+      "httpStatus": 200,
+      "publicSha256": "7e4d9e70e01dc4f8120405e8ce07510d79790674019276854c9f280a2a5a6d00",
+      "publicMatch": true
+    },
+    {
+      "path": "assets/human/makehuman-athlete.glb",
+      "bytes": 1695824,
+      "sha256": "f3571035d4d497765fe90ad79b9b02b1c5e6be160c709fda6d9ff0a40d1021ba",
+      "gitMatch": true,
+      "httpStatus": 200,
+      "publicSha256": "f3571035d4d497765fe90ad79b9b02b1c5e6be160c709fda6d9ff0a40d1021ba",
+      "publicMatch": true
+    },
+    {
+      "path": "assets/human/athlete-rower-v9.glb",
+      "bytes": 2860436,
+      "sha256": "b51f9fba35c649b24583c359e90181d41df5a7bcadd7bdcc100bf41a9cf130ea",
+      "gitMatch": true,
+      "httpStatus": 200,
+      "publicSha256": "b51f9fba35c649b24583c359e90181d41df5a7bcadd7bdcc100bf41a9cf130ea",
+      "publicMatch": true
+    }
+  ]
+}
