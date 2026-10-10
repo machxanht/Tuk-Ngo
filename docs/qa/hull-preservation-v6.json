@@ -1,0 +1,33 @@
+{
+  "hullIdentical": true,
+  "hullPrimitiveHashes": [
+    {
+      "attributes": {
+        "POSITION": "d5efe9b5a6dd274d2ce3e03dc86fb88cd61a814ee6eae4342dfe49ed84c19e37",
+        "TEXCOORD_0": "4a2805321862a8e2ec11279bc8c4e2c013c181248116cd60f8d59355ba38f511",
+        "NORMAL": "3927836c56b3f884e6df3554140c40aaebd0c5f4501241712fe71ee56cd2fc09"
+      },
+      "indices": "818020d88841eb8bfb79f0632fc6d09852b0c67cf7b9fff026139222f92c05ac"
+    },
+    {
+      "attributes": {
+        "POSITION": "d5efe9b5a6dd274d2ce3e03dc86fb88cd61a814ee6eae4342dfe49ed84c19e37",
+        "TEXCOORD_0": "4a2805321862a8e2ec11279bc8c4e2c013c181248116cd60f8d59355ba38f511",
+        "NORMAL": "3927836c56b3f884e6df3554140c40aaebd0c5f4501241712fe71ee56cd2fc09"
+      },
+      "indices": "edba57740005b8a85876c825cd8bcd721d352261e6484c9e512d9847167353d4"
+    },
+    {
+      "attributes": {
+        "POSITION": "d5efe9b5a6dd274d2ce3e03dc86fb88cd61a814ee6eae4342dfe49ed84c19e37",
+        "TEXCOORD_0": "4a2805321862a8e2ec11279bc8c4e2c013c181248116cd60f8d59355ba38f511",
+        "NORMAL": "3927836c56b3f884e6df3554140c40aaebd0c5f4501241712fe71ee56cd2fc09"
+      },
+      "indices": "72faaf7074ff34a5b232ab3b0b87aaeaefce0645db2a40e5207e0cfc99af1f04"
+    }
+  ],
+  "liverySHA256": "ca32a1e35ecfa4f6653637b189a21fe838b14cf76951743556dde765773b1e18",
+  "oldGLBSHA256": "28b834980a09a1ad9c7b955b7d5e1aa3044f3e40cdca052135e38db969cc1cfa",
+  "newGLBSHA256": "06d3d78f748ceaaaf84a2d9bcd10e5acb92a692cb4b17ac5e03a29b6787908f3",
+  "newGLBBytes": 7505908
+}

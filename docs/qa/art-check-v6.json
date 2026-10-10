@@ -1,0 +1,28 @@
+{
+  "glb": {
+    "bytes": 7505908,
+    "sha256": "06d3d78f748ceaaaf84a2d9bcd10e5acb92a692cb4b17ac5e03a29b6787908f3"
+  },
+  "checked": {
+    "sourceCycle": "24 phases in each of oblique, front and side views",
+    "bakedCycle": "10s WebM loaded from actual exported GLB",
+    "tabletPortrait": "768x1024, one canvas, no horizontal overflow, buttons 44px",
+    "tabletLandscape": "1024x768, one canvas, no horizontal overflow",
+    "phaseScrub": "75% and 28%, paused; water events and particles clear after reloading latest code",
+    "motion": "Elbow folding/twist and paired elbow overlap corrected in inspected views",
+    "hull": "Byte-identical geometry buffers and unchanged owner livery"
+  },
+  "limits": [
+    "Authored animation, not motion capture",
+    "Generic mesh and skinning remain",
+    "No physical tablet benchmark",
+    "No exhaustive body collision proof",
+    "glTF validator retains 275 non-root skinned mesh warnings"
+  ],
+  "checks": {
+    "typescript": "npm run lint exit 0",
+    "build": "npm run build exit 0; existing large bundle warning",
+    "bakedRig": "scripts/check-crew-glb.mjs pass",
+    "structuralValidator": "0 errors, 275 warnings"
+  }
+}

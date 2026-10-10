@@ -1,0 +1,9 @@
+{
+  "file": "model-cycle-10s-v6.webm",
+  "frames": 599,
+  "fps": 60.0,
+  "durationSeconds": 9.983333333333333,
+  "width": 768,
+  "height": 1024,
+  "source": "Actual persisted GLB loaded in local tablet preview; browser captureStream"
+}

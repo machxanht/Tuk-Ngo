@@ -31,25 +31,34 @@
       "openOrNonmanifoldEdges": 0,
       "minTriangleArea": 0.00007837491824777429
     },
+    "rowingPosture": {
+      "sampledPhases": 161,
+      "minElbowAngleDeg": 63.7920909120288,
+      "maxElbowAngleDeg": 154.12267186245248,
+      "maxWristFlexDeg": 0.000002091309789151873,
+      "minFistToHeadJointM": 0.2217513356851728,
+      "maxJointStepDeg": 4.559800578985706,
+      "minPairElbowGapM": 0.20945524297777995
+    },
     "animation": {
       "sampledPhases": 81,
       "translatedSampledPhases": 81,
-      "translatedMaxHandGripGapM": 0.0008751798104136634,
-      "minBladeOutboardClearanceM": 0.3125848733517572,
-      "minShaftClearanceBelowRailM": 0.06467898106989928,
-      "maxHandGripGapM": 0.0008751798312845365,
-      "maxArmLengthErrorM": 1.3295860912254653e-8,
+      "translatedMaxHandGripGapM": 7.380535342101098e-9,
+      "minBladeOutboardClearanceM": 0.3071012851290169,
+      "minShaftClearanceBelowRailM": 0.030472817508960415,
+      "maxHandGripGapM": 7.38630114451395e-9,
+      "maxArmLengthErrorM": 3.829017325429618e-9,
       "worstGrip": {
-        "id": 4,
+        "id": 27,
         "role": "ROWER",
-        "phase": 0.7,
-        "gap": 0.0008751798312845365
+        "phase": 0.225,
+        "gap": 7.38630114451395e-9
       },
       "gripByRole": {
-        "ROWER": 0.0008751798312845365,
-        "PROW_COMMAND": 1.097339836271768e-8,
-        "MID_COMMAND": 8.712728685055705e-9,
-        "STEERSMAN": 8.624253069659916e-9
+        "ROWER": 7.38630114451395e-9,
+        "PROW_COMMAND": 7.2748527437031314e-9,
+        "MID_COMMAND": 7.2422030348456945e-9,
+        "STEERSMAN": 7.250818857990322e-9
       }
     },
     "rig": {
