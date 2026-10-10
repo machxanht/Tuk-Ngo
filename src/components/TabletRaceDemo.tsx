@@ -6,19 +6,27 @@ import {loadRaceCrews,buildBoatWake} from '../race/race-crew.mjs';
 import {COURSE,buildMasperoSky} from '../race/maspero-course.mjs';
 import {loadCrowdAssets} from '../race/crowd.mjs';
 import {createCrowdAudio} from '../race/crowd-audio.mjs';
+import {createRaceGame,PACES} from '../race/gameplay.mjs';
+import {RaceGameControls} from './RaceGameControls';
 import {Play,Pause,RotateCcw,Waves,Maximize2,Download,Users,ArrowLeft,Camera,Video} from 'lucide-react';
 import './TabletRaceDemo.css';
 
 type CameraMode='overview'|'follow'|'crew'|'stand'|'crowd'|'bridgeStart'|'bridgeEnd';
-export function TabletRaceDemo({embedded=false}:{embedded?:boolean}){
+export function TabletRaceDemo({embedded=false,gameplay=false}:{embedded?:boolean;gameplay?:boolean}){
  const mount=useRef<HTMLDivElement>(null),runtime=useRef<any>(null);
- const [playing,setPlaying]=useState(true),[camera,setCamera]=useState<CameraMode>('overview'),[cadence,setCadence]=useState(80),[splash,setSplash]=useState(true),[lowPower,setLowPower]=useState(true),[team,setTeam]=useState(0);
- const [status,setStatus]=useState('Đang tải hai ghe và đường đua Maspéro…'),[ready,setReady]=useState(false),[distance,setDistance]=useState(1020),[recording,setRecording]=useState(false),[fps,setFps]=useState('—');
+ const game=useRef<any>(null);if(!game.current)game.current=createRaceGame();
+ const [gameView,setGameView]=useState(()=>game.current.snapshot());
+ const [bestTimes,setBestTimes]=useState<Record<string,number>>(()=>{try{const saved=JSON.parse(localStorage.getItem('tuk-ngo-best-v1')||'{}');return Object.fromEntries(Object.entries(saved).filter(([key,value])=>['easy','normal','hard'].includes(key)&&typeof value==='number'&&value>0&&value<=360)) as Record<string,number>;}catch{return {};}});
+ const [recordsPersisted,setRecordsPersisted]=useState(true);
+ const [playing,setPlaying]=useState(!gameplay),[camera,setCamera]=useState<CameraMode>(gameplay?'follow':'overview'),[cadence,setCadence]=useState(80),[splash,setSplash]=useState(true),[lowPower,setLowPower]=useState(true),[team,setTeam]=useState(0);
+ const [status,setStatus]=useState('Đang tải hai ghe và đường đua Maspéro…'),[ready,setReady]=useState(false),[distance,setDistance]=useState(gameplay?0:1020),[recording,setRecording]=useState(false),[fps,setFps]=useState('—');
  const [sound,setSound]=useState(false);
  const settings=useRef({playing,camera,cadence,splash,lowPower,team});settings.current={playing,camera,cadence,splash,lowPower,team};
+ useEffect(()=>{if(!gameplay||gameView.phase!=='finished'||gameView.result!=='win')return;const time=gameView.finishTimes[0];if(time==null||(bestTimes[gameView.difficulty]&&bestTimes[gameView.difficulty]<=time))return;const next={...bestTimes,[gameView.difficulty]:time};try{localStorage.setItem('tuk-ngo-best-v1',JSON.stringify(next));setRecordsPersisted(true);}catch{setRecordsPersisted(false);}setBestTimes(next);},[gameplay,gameView.phase,gameView.runId]);
  useEffect(()=>{
   let stopped=false,raf=0,cleanup:()=>void=()=>{};
   const host=mount.current!;
+  const visibility=()=>{if(gameplay&&document.hidden){game.current.pause('Đã tạm dừng khi bạn chuyển tab.');setGameView(game.current.snapshot());}};document.addEventListener('visibilitychange',visibility);
   async function start(){try{
    const font=new FontFace('Noto Sans Khmer','url('+import.meta.env.BASE_URL+'assets/fonts/NotoSansKhmer.ttf)',{weight:'100 900'});document.fonts.add(await font.load());
    const [model,crowdAssets]=await Promise.all([loadRaceCrews(import.meta.env.BASE_URL+'assets/ghe-ngo/ghe-ngo-crew-v9.glb'),loadCrowdAssets(import.meta.env.BASE_URL)]);if(stopped){model.dispose();return;}
@@ -28,9 +36,9 @@ export function TabletRaceDemo({embedded=false}:{embedded?:boolean}){
    renderer.domElement.setAttribute('aria-label','Hai ghe Ngo 3D chèo trên đường đua Maspéro với khán đài và khán giả hai bờ');
    const view=new THREE.PerspectiveCamera(48,1,.10,1800),controls=new OrbitControls(view,renderer.domElement);controls.enableDamping=true;controls.dampingFactor=.10;controls.maxPolarAngle=Math.PI*.49;controls.minDistance=2;controls.maxDistance=230;controls.enablePan=false;
    const river=buildRiver(scene,.28,{detailed:true,crowdAssets}),sky=buildMasperoSky(scene),effects=model.teams.map(()=>buildSplashes(scene,.28)),wakes=model.teams.map(()=>buildBoatWake(scene,.28)),crowdAudio=createCrowdAudio(import.meta.env.BASE_URL+'assets/audio/crowd-cheer-cc0.mp3');model.teams.forEach(t=>scene.add(t.root));
-   host.dataset.sceneVersion='MASPERO_TWO_CREWS_V9';host.dataset.actorSource='MAKEHUMAN_CC0_SKIN_PBR_BASE_AND_SPRINT';host.dataset.boatCount='2';host.dataset.crewCount=String(model.teams.reduce((n,t)=>n+t.actors.length,0));host.dataset.rowerCount=String(model.teams.reduce((n,t)=>n+t.athletes.length,0));host.dataset.optimization=JSON.stringify(model.teams.map(t=>t.stats));host.dataset.course=JSON.stringify(COURSE);host.dataset.environment=JSON.stringify(river.group.userData);host.dataset.khmerFont=String(document.fonts.check('700 18px "Noto Sans Khmer"'));
+   host.dataset.sceneVersion=gameplay?'MASPERO_TWO_CREWS_V10_GAMEPLAY':'MASPERO_TWO_CREWS_V9';host.dataset.actorSource='MAKEHUMAN_CC0_SKIN_PBR_BASE_AND_SPRINT';host.dataset.boatCount='2';host.dataset.crewCount=String(model.teams.reduce((n,t)=>n+t.actors.length,0));host.dataset.rowerCount=String(model.teams.reduce((n,t)=>n+t.athletes.length,0));host.dataset.optimization=JSON.stringify(model.teams.map(t=>t.stats));host.dataset.course=JSON.stringify(COURSE);host.dataset.environment=JSON.stringify(river.group.userData);host.dataset.khmerFont=String(document.fonts.check('700 18px "Noto Sans Khmer"'));
    const atlasMaps:any[]=[];model.teams.forEach(t=>t.root.traverse((o:any)=>{if(o.name.endsWith('_RaceSkin'))atlasMaps.push({map:[o.material.map?.image?.width,o.material.map?.image?.height],normal:!!o.material.normalMap,roughness:!!o.material.roughnessMap,uv:!!o.geometry.attributes.uv});}));host.dataset.actorAtlas=JSON.stringify({actors:atlasMaps.length,example:atlasMaps[0]});
-   let simTime=0,travel=1020,last=performance.now(),lastPose=0,lastUi=0,lastCamera='',lastTeam=-1,lastQuality=true,frames=0,fpsStart=last,recorder:MediaRecorder|null=null,recordTimer:ReturnType<typeof setTimeout>|undefined;
+   let simTime=0,travel=gameplay?0:1020,last=performance.now(),lastPose=0,lastUi=0,lastGameUi=0,lastCamera='',lastTeam=-1,lastQuality=true,frames=0,fpsStart=last,recorder:MediaRecorder|null=null,recordTimer:ReturnType<typeof setTimeout>|undefined;
    function positionCamera(mode:CameraMode){const selected=model.teams[settings.current.team],x=selected.root.position.x,z=selected.root.position.z,portrait=view.aspect<1?1.18:1;
     controls.maxDistance=230;
     if(mode==='overview'){controls.target.set(x-4,1.3,-2);view.position.set(x+34*portrait,27*portrait,67*portrait);}
@@ -42,7 +50,7 @@ export function TabletRaceDemo({embedded=false}:{embedded?:boolean}){
     controls.update();lastCamera=mode;lastTeam=settings.current.team;
    }
    const strokeStrength=()=>Math.max(0,Math.min(1,(settings.current.cadence-80)/25));
-   function placeBoats(){model.teams.forEach((t,i)=>{const gap=i?1.4+Math.sin(simTime*.12)*.9:0;t.root.position.set(travel-15.1-gap,.010*Math.sin(t.phase*Math.PI*2),COURSE.lanes[i]);t.pose(t.phase,strokeStrength());});}
+   function placeBoats(){model.teams.forEach((t,i)=>{const gap=i?1.4+Math.sin(simTime*.12)*.9:0;t.root.position.set((gameplay?game.current.state.distances[i]:travel-gap)-15.1,.010*Math.sin(t.phase*Math.PI*2),COURSE.lanes[i]);t.pose(t.phase,gameplay?0:strokeStrength());});}
    function resize(){const w=host.clientWidth,h=host.clientHeight;renderer.setPixelRatio(settings.current.lowPower?1:Math.min(devicePixelRatio,1.5));renderer.setSize(w,h);view.aspect=w/h;view.updateProjectionMatrix();effects.forEach(f=>f.setDpr(renderer.getPixelRatio()));positionCamera(settings.current.camera);}
    placeBoats();const observer=new ResizeObserver(resize);observer.observe(host);resize();
    function seek(value:number){travel=Math.min(COURSE.length,Math.max(0,value));simTime=0;model.teams.forEach((t,i)=>t.phase=i?.17:.28);effects.forEach(f=>f.reset());placeBoats();wakes.forEach((w,i)=>w.update(model.teams[i].root,0,false));positionCamera(settings.current.camera);setDistance(travel);}
@@ -53,14 +61,23 @@ export function TabletRaceDemo({embedded=false}:{embedded?:boolean}){
     recorder.ondataavailable=e=>{if(e.data.size)chunks.push(e.data);};recorder.onerror=()=>{stream.getTracks().forEach(t=>t.stop());setRecording(false);setStatus('Không ghi được clip.');};
     recorder.onstop=()=>{stream.getTracks().forEach(t=>t.stop());if(stopped)return;const url=URL.createObjectURL(new Blob(chunks,{type:mimeType})),a=document.createElement('a');a.href=url;a.download='maspero-v9-two-crews-10s.webm';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);setRecording(false);};recorder.start();recordTimer=setTimeout(()=>{if(recorder?.state==='recording')recorder.stop();},10000);
    }};
+   runtime.current.beginRace=(difficulty?:string)=>{game.current.start(difficulty);seek(0);setTeam(0);setGameView(game.current.snapshot());};
+   runtime.current.gameMenu=()=>{game.current.reset(game.current.state.difficulty);seek(0);setGameView(game.current.snapshot());};
+   if(gameplay)runtime.current.game=game.current;
    if(import.meta.env.DEV)(host as any).__raceRuntime=runtime.current;
    cleanup=()=>{delete (host as any).__raceRuntime;observer.disconnect();controls.dispose();crowdAudio.dispose();clearTimeout(recordTimer);if(recorder?.state==='recording')recorder.stop();effects.forEach(f=>f.dispose());wakes.forEach(w=>w.dispose());river.dispose();sky.dispose();model.dispose();renderer.dispose();renderer.domElement.remove();runtime.current=null;};
    setReady(true);setStatus('Hai ghe · NPC cổ vũ · hai khán đài · biểu ngữ Khmer');
-   function animate(now:number){if(stopped)return;const frameDt=Math.max(0,Math.min(.05,(now-last)/1000));last=now;const s=settings.current,dt=s.playing?frameDt:0,speed=s.cadence/80*4.8,dx=dt*speed;
-    simTime+=dt;travel+=dx;if(travel>COURSE.length+75)seek(0);
-    model.teams.forEach((t,i)=>{t.phase=(t.phase+dt*(s.cadence+(i?-.8:0))/60)%1;t.root.position.set(travel-15.1-(i?1.4+Math.sin(simTime*.12)*.9:0),.010*Math.sin(t.phase*Math.PI*2),COURSE.lanes[i]);});
-    const intensity=strokeStrength();if(now-lastPose>1000/(s.lowPower?24:40)){model.teams.forEach(t=>t.pose(t.phase,intensity));lastPose=now;}else model.teams.forEach(t=>t.root.updateMatrixWorld(true));
-    river.update(simTime,view.position.x);effects.forEach((f,i)=>f.update(dt,model.teams[i],speed,simTime,s.splash,intensity));wakes.forEach((w,i)=>w.update(model.teams[i].root,simTime,s.playing));crowdAudio.update(s.playing,s.cadence,travel);
+   function animate(now:number){if(stopped)return;const frameDt=Math.max(0,Math.min(gameplay?.25:.05,(now-last)/1000));last=now;const s=settings.current;
+    const previousX=model.teams[s.team].root.position.x;
+    if(gameplay)game.current.advance(frameDt);
+    const gs=game.current.snapshot(),moving=gameplay?gs.phase==='racing':s.playing;
+    const dt=gameplay?(gs.phase==='paused'?0:frameDt):(s.playing?frameDt:0),speed=gameplay?gs.speeds[0]:s.cadence/80*4.8;
+    simTime+=dt;if(gameplay)travel=gs.distances[0];else{travel+=dt*speed;if(travel>COURSE.length+75)seek(0);}
+    model.teams.forEach((t,i)=>{if(gameplay)t.phase=gs.phase==='racing'?(i?gs.aiPhase:(gs.beatPhase+.28)%1):t.phase;else t.phase=(t.phase+dt*(s.cadence+(i?-.8:0))/60)%1;t.root.position.set((gameplay?gs.distances[i]:travel-(i?1.4+Math.sin(simTime*.12)*.9:0))-15.1,.010*Math.sin(t.phase*Math.PI*2),COURSE.lanes[i]);});
+    const dx=model.teams[s.team].root.position.x-previousX,intensity=gameplay?gs.strength:strokeStrength();
+    if(now-lastPose>1000/(s.lowPower?24:40)){model.teams.forEach((t,i)=>t.pose(t.phase,gameplay&&i?gs.distances[1]>1000?.7:0:intensity));lastPose=now;}else model.teams.forEach(t=>t.root.updateMatrixWorld(true));
+    river.update(simTime,view.position.x);effects.forEach((f,i)=>f.update(dt,model.teams[i],gameplay?gs.speeds[i]:speed,simTime,s.splash&&(!gameplay||moving),gameplay&&i?gs.distances[1]>1000?.7:0:intensity));wakes.forEach((w,i)=>w.update(model.teams[i].root,simTime,moving&&(!gameplay||gs.speeds[i]>.1)));crowdAudio.update(moving,gameplay?gs.cadence:s.cadence,travel);
+    if(gameplay&&now-lastGameUi>60){lastGameUi=now;host.dataset.gameplay=JSON.stringify(gs);setGameView(gs);}
     if(s.camera!==lastCamera||s.team!==lastTeam)positionCamera(s.camera);else if(['overview','follow','crew'].includes(s.camera)){view.position.x+=dx;controls.target.x+=dx;}controls.update();
     if(s.lowPower!==lastQuality){lastQuality=s.lowPower;resize();}sky.update(view);renderer.render(scene,view);frames++;
     if(now-lastUi>450){lastUi=now;host.dataset.splashEvents=JSON.stringify(effects.map(f=>f.stats().events));host.dataset.splashStats=JSON.stringify(effects.map(f=>f.stats()));host.dataset.waterTime=String(simTime);host.dataset.audio=JSON.stringify(crowdAudio.state());host.dataset.strokeStrength=String(intensity);host.dataset.activeParticles=JSON.stringify(effects.map(f=>f.stats().particles));host.dataset.boatPositions=JSON.stringify(model.teams.map(t=>t.root.position.toArray()));host.dataset.phases=JSON.stringify(model.teams.map(t=>t.phase));host.dataset.distance=travel.toFixed(1);host.dataset.drawCalls=String(renderer.info.render.calls);host.dataset.triangles=String(renderer.info.render.triangles);host.dataset.camera=s.camera;host.dataset.team=String(s.team);setDistance(travel);}
@@ -68,11 +85,13 @@ export function TabletRaceDemo({embedded=false}:{embedded?:boolean}){
    }
    raf=requestAnimationFrame(animate);
   }catch(error){setStatus('Không tải được cảnh 3D: '+(error instanceof Error?error.message:String(error)));host.dataset.loadError=String(error);}}
-  start();return()=>{stopped=true;cancelAnimationFrame(raf);cleanup();};
- },[]);
+  start();return()=>{stopped=true;document.removeEventListener('visibilitychange',visibility);cancelAnimationFrame(raf);cleanup();};
+ },[gameplay]);
+ async function toggleSound(){const next=!sound;try{await runtime.current?.crowdAudio.enable(next);setSound(next);setStatus('Hai ghe · NPC cổ vũ · hai khán đài · biểu ngữ Khmer');}catch{setStatus('Không phát được âm thanh cổ vũ.');}}
  const fullUrl=import.meta.env.BASE_URL+'?demo=studio';
- return <section className={'race-demo'+(embedded?' race-demo-embedded':'')}>
+ return <section className={'race-demo'+(embedded?' race-demo-embedded':'')+(gameplay?' race-game':'')}>
   <div ref={mount} className="race-stage" data-testid="race-stage" />
+  {gameplay?<RaceGameControls ready={ready} status={status} game={gameView} bestTimes={bestTimes} recordsPersisted={recordsPersisted} sound={sound} lowPower={lowPower} camera={camera} onStart={difficulty=>runtime.current?.beginRace(difficulty)} onStroke={()=>{game.current.stroke();setGameView(game.current.snapshot());}} onPace={pace=>{game.current.setPace(pace);setGameView(game.current.snapshot());}} onPause={()=>{game.current.pause();setGameView(game.current.snapshot());}} onResume={()=>{game.current.resume();setGameView(game.current.snapshot());}} onMenu={()=>runtime.current?.gameMenu()} onSound={toggleSound} onQuality={()=>setLowPower(v=>!v)} onCamera={setCamera}/>:<>
   <header className="race-heading"><div><span className="race-eyebrow">BẢN THỬ 3D · V9</span><h1>Sông Maspéro</h1><p>Hai ghe chèo · khán đài & phố ven sông</p><div className="race-teams"><span><i className="team-green"/>Tum Núp 2</span><span><i className="team-amber"/>Đội thử</span></div></div><div className="race-distance">{Math.min(1200,Math.floor(distance))} <small>/ 1.200 m</small><em>{distance>1200?'Qua đích':fps+' FPS'}</em></div></header>
   {!ready&&<div className="race-loading" role="status">{status}</div>}
   <div className="race-toolbar">
@@ -81,10 +100,11 @@ export function TabletRaceDemo({embedded=false}:{embedded?:boolean}){
    </div>
    <div className="race-main-controls"><button className="race-play" disabled={!ready} onClick={()=>setPlaying(v=>!v)}>{playing?<Pause size={18}/>:<Play size={18}/>} {playing?'Dừng':'Chèo'}</button><button onClick={()=>runtime.current?.reset()} aria-label="Về vạch xuất phát" disabled={!ready}><RotateCcw size={18}/></button><label className="race-cadence">Nhịp <input aria-label="Nhịp chèo" type="range" min="55" max="105" value={cadence} onChange={e=>setCadence(Number(e.target.value))}/><strong>{cadence}</strong></label><button aria-pressed={splash} onClick={()=>setSplash(v=>!v)}><Waves size={18}/> Nước té</button></div>
    <details className="race-options"><summary>Đường đua & tùy chọn</summary><div className="race-course-controls"><button disabled={!ready} onClick={()=>runtime.current?.seek(0)}>Xuất phát</button><button disabled={!ready} onClick={()=>runtime.current?.seek(600)}>Giữa sông</button><button disabled={!ready} onClick={()=>runtime.current?.seek(1050)}>Gần đích</button></div><div className="race-focus"><span>Theo đội</span><button aria-pressed={team===0} onClick={()=>setTeam(0)}>Tum Núp 2</button><button aria-pressed={team===1} onClick={()=>setTeam(1)}>Đội thử</button></div><label className="race-course-slider">Vị trí <input aria-label="Vị trí trên đường đua" type="range" min="0" max="1200" step="10" value={Math.min(1200,distance)} disabled={!ready} onChange={e=>runtime.current?.seek(Number(e.target.value))}/></label><div className="race-secondary"><label><input type="checkbox" checked={lowPower} onChange={e=>setLowPower(e.target.checked)}/> Tiết kiệm pin</label><button onClick={()=>runtime.current?.screenshot()} aria-label="Chụp ảnh cảnh 3D" disabled={!ready}><Camera size={16}/> Ảnh</button><button disabled={!ready||recording} onClick={()=>{setPlaying(true);runtime.current?.record();}}><Video size={16}/>{recording?'Đang ghi…':'Clip 10s'}</button></div></details>
-   <button className="race-sound" aria-pressed={sound} disabled={!ready} onClick={async()=>{const next=!sound;try{await runtime.current?.crowdAudio.enable(next);setSound(next);setStatus('Hai ghe · NPC cổ vũ · hai khán đài · biểu ngữ Khmer');}catch{setStatus('Không phát được âm thanh cổ vũ.');}}}>{sound?'Tắt':'Bật'} tiếng cổ vũ</button>
-   <div className="race-links"><a href={import.meta.env.BASE_URL+'assets/ghe-ngo/ghe-ngo-crew-v9.glb'} download="ghe-ngo-crew-v9.glb"><Download size={15}/> GLB ghe</a>{embedded?<a href={fullUrl}><Maximize2 size={15}/> Toàn màn hình</a>:<a href={import.meta.env.BASE_URL+'?demo=art'}><ArrowLeft size={15}/> Xem asset</a>}</div>
+   <button className="race-sound" aria-pressed={sound} disabled={!ready} onClick={toggleSound}>{sound?'Tắt':'Bật'} tiếng cổ vũ</button>
+   <div className="race-links"><a href={import.meta.env.BASE_URL+'assets/ghe-ngo/ghe-ngo-crew-v9.glb'} download="ghe-ngo-crew-v9.glb"><Download size={15}/> GLB ghe</a><a href={import.meta.env.BASE_URL+'?demo=play'}><Play size={15}/> Chơi đua</a>{embedded?<a href={fullUrl}><Maximize2 size={15}/> Toàn màn hình</a>:<a href={import.meta.env.BASE_URL+'?demo=art'}><ArrowLeft size={15}/> Xem asset</a>}</div>
   </div>
   <details className="race-source"><summary>Nguồn Maspéro & lưu ý</summary><p>Hai bờ và hai khán đài dựa trên <a href="https://www.youtube.com/watch?v=dSmHY2HSR2g&t=5338s" target="_blank" rel="noreferrer">livestream VTV10 bạn cung cấp</a>, đối chiếu ảnh Báo Sóc Trăng và SGGP. Cầu C247 theo ảnh thật khung thép xanh.</p><p>Cự ly nam 1.200 m. Đoạn hai cầu khoảng 400 m; vạch xuất phát ở xa hơn về thượng lưu. Vị trí và kích thước công trình là ước lượng. Khung cầu 30/4 theo ảnh thi công 2022; chi tiết hoàn thiện còn cần ảnh mới. Đội áo vàng là đội thử.</p><p>Người <a href={import.meta.env.BASE_URL+'assets/human/ATTRIBUTION.md'}>MakeHuman CC0</a>; <a href={import.meta.env.BASE_URL+'assets/audio/ATTRIBUTION.md'}>âm thanh cổ vũ CC0</a>. Nhịp 81–105 tăng dần lực chèo và nước té. Kéo để xoay, chụm hai ngón để phóng to.</p></details>
+  </>}
   <span className="race-live-status" role="status">{ready?status:''}</span>
  </section>;
 }
