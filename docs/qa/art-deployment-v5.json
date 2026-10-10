@@ -1,0 +1,84 @@
+{
+  "checkedAtUtc": "2026-10-10T11:12:48.620599+00:00",
+  "url": "https://machxanht.github.io/Tuk-Ngo/?demo=art&v=d6bfc43",
+  "sourceCommit": "8853ed8b3155465dce575a501cc798574f4d6353",
+  "pagesCommit": "d6bfc43133c9fa736bd9562383caffcba055bf5b",
+  "pagesRun": {
+    "id": 38047540782,
+    "conclusion": "success",
+    "url": "https://github.com/machxanht/Tuk-Ngo/actions/runs/38047540782"
+  },
+  "files": [
+    {
+      "path": "index.html",
+      "httpStatus": 200,
+      "bytes": 1429,
+      "sha256": "a85b4450bc81525bc865ed8645ec6af0bf8094af0e65ad6a9ea384c0530c7bd1",
+      "matchesBuild": true
+    },
+    {
+      "path": "assets/index-CCD9OIjh.js",
+      "httpStatus": 200,
+      "bytes": 1189009,
+      "sha256": "54ad446fd62771c19946efce66bd0c3776ba136530b226af207ea96a2f495645",
+      "matchesBuild": true
+    },
+    {
+      "path": "assets/index-DppDAAA8.css",
+      "httpStatus": 200,
+      "bytes": 70418,
+      "sha256": "f3d94eb745e48a296d910617b0a51606d2be64bb5644cc08a1ca902c1948d38d",
+      "matchesBuild": true
+    },
+    {
+      "path": "assets/ghe-ngo/kbach-from-reference.webp",
+      "httpStatus": 200,
+      "bytes": 304100,
+      "sha256": "ca32a1e35ecfa4f6653637b189a21fe838b14cf76951743556dde765773b1e18",
+      "matchesBuild": true
+    },
+    {
+      "path": "assets/human/ATTRIBUTION.md",
+      "httpStatus": 200,
+      "bytes": 4114,
+      "sha256": "1f57f778e6c61007ea89562b161557ba06f806034533137e68e843b1eb057cb6",
+      "matchesBuild": true
+    }
+  ],
+  "pass": true,
+  "physicalTabletTested": false,
+  "publicBrowser": {
+    "default": "2D minh h\u1ecda",
+    "artSource": "AUTHORED_2D_V5",
+    "portraitViewport": [
+      768,
+      1024
+    ],
+    "portraitScroll": [
+      768,
+      1024
+    ],
+    "closeCrewCount": 2,
+    "canvasCount": 1,
+    "animationPhaseObserved": 0.4654,
+    "splashEventsObserved": 6,
+    "capturedImage": "docs/qa/public-illustrated-v5.png",
+    "landscapeViewport": [
+      1024,
+      768
+    ],
+    "landscapeScroll": [
+      1024,
+      768
+    ],
+    "modeSwitchVerified": [
+      "AUTHORED_2D_V5",
+      "MAKEHUMAN_GLB_V4",
+      "AUTHORED_2D_V5"
+    ],
+    "singleCanvasAfterSwitch": true,
+    "3DCloseDrawCalls": 340,
+    "3DCloseTriangles": 369816,
+    "consoleErrorsObserved": []
+  }
+}
