@@ -1,8 +1,10 @@
-# Tuk-Ngo — ghe Ngo art preview
+# Tuk-Ngo — 3D ghe Ngo and Maspéro race preview
 
 React/Vite/Three.js project. V6 defaults to the **3D boat** the owner preferred. The hull geometry and owner-video livery are preserved; the crew's rowing loop has a forward grip path, source elbow hinge frames, straight wrist alignment and continuous phase velocity. V5's independent 2D illustration remains an experimental comparison after the owner rejected its appearance. The original reference panels and orbit-camera studio remain available.
 
-Tablet preview: https://machxanht.github.io/Tuk-Ngo/?demo=art
+Current two-boat tablet preview (V7): https://machxanht.github.io/Tuk-Ngo/?demo=studio
+
+Single-boat asset inspection (V6): https://machxanht.github.io/Tuk-Ngo/?demo=art
 
 ## Run and build
 
@@ -13,7 +15,7 @@ npm run lint
 npm run build
 ```
 
-Vite base is `/Tuk-Ngo/`. `?demo=art` and the existing `?demo=race` open the 3D preview. Choose full boat/close crew, pause/reset, cadence and splashes. “Xem từng pha chèo” pauses and scrubs the loop. Export a PNG, a 10-second WebM clip (supported browsers), or the 3D GLB. `?demo=studio` retains the orbit-camera river preview. The root page keeps the reference dossier.
+Vite base is `/Tuk-Ngo/`. `?demo=art` and the existing `?demo=race` open the single-boat 3D preview. Choose full boat/close crew, pause/reset, cadence and splashes. “Xem từng pha chèo” pauses and scrubs the loop. Export a PNG, a 10-second WebM clip (supported browsers), or the 3D GLB. `?demo=studio` opens V7: two animated 3D crews, the photo-referenced Maspéro grandstand, urban banks, spectators, a 1,200 m preview course, four cameras and separate paddle-contact effects. Start near the grandstand; use “Đường đua & tùy chọn” to visit the start, midpoint or finish and select either crew. The amber-shirt team is a fictional test team. The root page keeps the reference dossier.
 
 ## Assets and effects
 
@@ -23,11 +25,13 @@ Vite base is `/Tuk-Ngo/`. `?demo=art` and the existing `?demo=race` open the 3D 
 - `public/assets/ghe-ngo/sprites/`: preserved historical V4 WebP renders and phase/contact manifest. The current preview does not use them.
 - `src/race/boat.mjs` and `design-profile.mjs`: boat, repository dimension constraints, owner-supplied graphic-reference shape/livery.
 - `src/race/imported-athlete.mjs`: preserved body mesh/weights, separate garment surfaces/accessories, seated poses, fixed-length IK and finger closure.
-- `src/race/river.mjs`: animated water, banks/trees/buoys, droplet/ripple pool triggered by paddle contact.
+- `src/race/river.mjs`: animated water and separate droplet/ripple pools triggered by each boat's paddle contact.
+- `src/race/maspero-course.mjs`: authored 3D grandstand, shallow double-pitch roof/trusses, coloured seats, embankments, urban streets/houses, spectators, flags, bridges and signs based on real 2024 photos. Dimensions and placement are approximate.
+- `src/race/race-crew.mjs`: loads the unchanged V6 GLB twice, consolidates skinned surfaces and instances moving accessories for the two-boat scene, plus tapered wakes.
 - **GLB** downloads the prebuilt boat with 55 rigged athletes and a rowing loop (7.51 MB). Water particles are realtime app effects.
 - `public/assets/human/ATTRIBUTION.md`: source, license and changes. The previous Quaternius files remain for provenance; V4 does not load that character.
 
-Source is on `main`; the static production build is on `gh-pages`. Both animations are authored, not motion capture; the river is an illustration. Tablet-size browser QA does not replace testing on a physical tablet. This revision addresses the rejected rowing motion, with no new race gameplay. See `docs/rowing-motion-v6.md`; V4 and V5 remain documented historically.
+Source is on `main`; the static production build is on `gh-pages`. Both animations are authored, not motion capture; the environment is an approximation. Tablet-size browser QA does not replace testing on a physical tablet. V7 is a two-boat scene/rowing trial, with no race scoring or new input gameplay. See `docs/maspero-scene-v7.md` for references, assumptions and checks, and `docs/rowing-motion-v6.md` for the unchanged stroke. V4 and V5 remain documented historically.
 
 ## Rebuild assets
 
