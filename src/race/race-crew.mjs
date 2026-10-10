@@ -4,25 +4,38 @@ import {clone} from 'three/examples/jsm/utils/SkeletonUtils.js';
 import {mergeGeometries} from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 
 
-// Rendering-only consolidation. The persisted V6 vertices, weights, inverse
+// Rendering-only consolidation. The persisted GLB vertices, weights, inverse
 // binds and animation remain the source of the two racing crews.
 export function optimizeRaceBoat(root,jerseyColor){
  root.updateMatrixWorld(true);
  const actors=[],paddles=[],ownedGeometry=[],ownedMaterials=[],skinCache=new Map();
  root.traverse(o=>{if(/^Athlete_\d+_/.test(o.name)&&o.userData.component==='athlete')actors.push(o);if(o.userData.component==='paddle')paddles.push(o);});
- const skinMaterial=new T.MeshStandardMaterial({vertexColors:true,roughness:.9,side:T.DoubleSide});ownedMaterials.push(skinMaterial);
+ const skinMaterials=new Map();
  let mergedActors=0;
  for(const actor of actors){
   const skins=[];actor.traverse(o=>{if(o.isSkinnedMesh)skins.push(o);});
   const first=skins[0];if(!first)continue;
-  // Never merge incompatible bind spaces, textured or morphed meshes.
-  const compatible=skins.every(s=>s.parent===first.parent&&s.matrix.equals(first.matrix)&&s.bindMatrix.equals(first.bindMatrix)&&s.skeleton.bones.every((b,i)=>b===first.skeleton.bones[i])&&!Array.isArray(s.material)&&!s.material.map&&!s.morphTargetInfluences);
+  // Atlas-backed skins can share one draw call only when all maps and PBR
+  // settings match. Arbitrary source materials still remain separate.
+  const atlas=first.material.map&&first.material.userData.athleteAtlas;
+  const compatible=skins.every(s=>s.parent===first.parent&&s.matrix.equals(first.matrix)&&s.bindMatrix.equals(first.bindMatrix)&&s.skeleton.bones.every((b,i)=>b===first.skeleton.bones[i])&&!Array.isArray(s.material)&&!s.morphTargetInfluences&&
+   (atlas?s.material.userData.athleteAtlas===atlas&&['map','normalMap','roughnessMap','metalnessMap'].every(k=>s.material[k]===first.material[k])&&s.material.normalScale.equals(first.material.normalScale)&&s.material.roughness===first.material.roughness&&s.material.metalness===first.material.metalness&&!s.material.transparent:!s.material.map));
   if(!compatible)continue;
+  const materialKey=atlas?first.material.map.uuid:'untextured';
+  if(!skinMaterials.has(materialKey)){
+   const material=atlas?first.material.clone():new T.MeshStandardMaterial({roughness:.9,side:T.DoubleSide});
+   material.color.set('white');material.vertexColors=true;material.side=T.DoubleSide;
+   skinMaterials.set(materialKey,material);ownedMaterials.push(material);
+  }
+  const skinMaterial=skinMaterials.get(materialKey);
   const key=skins.map(s=>s.geometry.uuid+':'+s.material.color.getHexString()).join('|')+':'+(jerseyColor||'original');
   let geometry=skinCache.get(key);
   if(!geometry){
    const parts=skins.map(s=>{
-    const g=s.geometry.clone();for(const name of Object.keys(g.attributes))if(!['position','normal','skinIndex','skinWeight'].includes(name))g.deleteAttribute(name);
+    const g=s.geometry.clone();for(const name of Object.keys(g.attributes))if(!['position','normal','uv','skinIndex','skinWeight',...(atlas?['tangent']:[])].includes(name))g.deleteAttribute(name);
+    if(!g.getAttribute('uv'))g.setAttribute('uv',new T.BufferAttribute(new Float32Array(g.attributes.position.count*2),2));
+    const sourceUv=g.getAttribute('uv'),uv=new Float32Array(sourceUv.count*2);
+    for(let i=0;i<sourceUv.count;i++){uv[i*2]=sourceUv.getX(i);uv[i*2+1]=sourceUv.getY(i);}g.setAttribute('uv',new T.BufferAttribute(uv,2));
     // glTF quantizes JOINTS differently for body and cloth. Decode values
     // through attribute getters, including normalized weights, before merging.
     for(const name of ['skinIndex','skinWeight']){const a=g.getAttribute(name),values=name==='skinIndex'?new Uint16Array(a.count*4):new Float32Array(a.count*4);for(let i=0;i<a.count;i++){values[i*4]=a.getX(i);values[i*4+1]=a.getY(i);values[i*4+2]=a.getZ(i);values[i*4+3]=a.getW(i);}g.setAttribute(name,new T.BufferAttribute(values,4));}

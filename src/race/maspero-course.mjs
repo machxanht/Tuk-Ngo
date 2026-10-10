@@ -4,9 +4,12 @@ import {buildCrowd} from './crowd.mjs';
 // All dimensions/coordinates below are authored approximations for the game.
 // Visual references: owner-supplied VTV10 2025 footage and real press photos.
 // No survey, GIS orientation, press-photo textures, or generated image sources.
-export const COURSE=Object.freeze({length:1200,width:86,lanes:[-7.5,7.5],standX:1090,standZ:-54,bridgeStart:-105,bridgeEnd:1340});
+// The C247–30/4 festival reach is reported as about 400 m (Tuoi Tre, Aug 2026).
+// The race starts farther upstream; bridge positions remain authored estimates.
+export const COURSE=Object.freeze({length:1200,width:86,lanes:[-7.5,7.5],standX:1090,standZ:-54,bridgeStart:940,bridgeEnd:1340});
 const V=(x,y,z)=>new T.Vector3(x,y,z);
 const palette=['#e2bb64','#61979b','#bf5651','#517955','#faf0d6','#42688b','#987194'];
+const nearBridge=(x,margin)=>[COURSE.bridgeStart,COURSE.bridgeEnd].some(b=>Math.abs(x-b)<margin);
 
 export function buildMasperoSky(scene){
  const geometry=new T.SphereGeometry(900,20,12),material=new T.ShaderMaterial({side:T.BackSide,depthWrite:false,vertexShader:'varying vec3 vDir;void main(){vDir=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',fragmentShader:`varying vec3 vDir;
@@ -59,11 +62,13 @@ export function buildMasperoBanks(group,waterY,crowdAssets){
   for(let x=-140;x<1410;x+=1.25){beam(V(x,1.5,side*44.6),V(x+.60,2.17,side*44.6),.024,'#c8cec4');beam(V(x+.60,2.17,side*44.6),V(x+1.2,1.5,side*44.6),.024,'#c8cec4');}
   for(let x=-140;x<1410;x+=9)box(x,1.265,side*60,3,.025,.16,'#ded5a8');
   for(let x=-130;x<1410;x+=23){
+   if(nearBridge(x,12))continue;
    if(!(side<0&&x>1008&&x<1170))tree(x,side*(side>0&&x>995&&x<1170?59:52),Math.round(x),side>0);
    beam(V(x,1.35,side*53.2),V(x,8,side*53.2),.06,'#e1e2d7');beam(V(x,8,side*53.2),V(x,8.3,side*50.3),.06,'#e1e2d7');box(x,8.25,side*50.0,.38,.12,.70,'#eeead9');
   }
   // Dense spectators near the finish, with smaller clusters up-course.
   for(let x=-30;x<1260;x+=.63){
+   if(nearBridge(x,8))continue;
    for(let row=0;row<(x>700?4:2);row++){
     if((side<0&&x>1025&&x<1155||side>0&&x>1000&&x<1170)&&row>0)continue;
     const id=Math.round((x+50)*11)+row*23+(side+1)*41,z=side*(45.35+row*.69);
@@ -72,6 +77,7 @@ export function buildMasperoBanks(group,waterY,crowdAssets){
   }
   // Narrow mixed townhouses, pitched metal roofs, balconies and shop awnings.
   for(let x=-130,id=0;x<1410;x+=9.3,id++){
+   if(nearBridge(x,17))continue;
    if(side<0&&x>1000&&x<1175)continue;
    const height=id%5===0?8.6:id%4===0?6.2:3.2+(id%3)*.5,width=6.8+(id%3)*.6,z=side*(73+(id%3)*2),wall=['#d8d2bc','#b5cfc9','#e0d4b9','#b6c4b7','#ccb5a4'][id%5];
    box(x,1.4+height/2,z,width,height,9,wall);box(x,1.4+height+.2,z,width+.4,.35,9.5,id%2?'#b8c2bd':'#829e9c');

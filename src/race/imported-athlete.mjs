@@ -57,7 +57,7 @@ export function makeAthlete(id,role){
  // Cloth cap with a short visor; eye details are accessories on the source face.
  const hp=worldPos(head),capMaterial=new T.MeshStandardMaterial({color:'#e8e4d8',roughness:.94});
  const cap=new T.Mesh(new T.SphereGeometry(.10,24,12,0,Math.PI*2,0,Math.PI/2),capMaterial);
- cap.scale.set(1,.80,1.02);cap.position.copy(head.worldToLocal(V(hp.x-.006,hp.y+.09,hp.z)));cap.quaternion.copy(worldQuat(head).invert());head.add(cap);
+ cap.scale.set(1.05,.80,1.04);cap.position.copy(head.worldToLocal(V(hp.x+.007,hp.y+.085,hp.z)));cap.quaternion.copy(worldQuat(head).invert());head.add(cap);
  const visor=new T.Mesh(new T.SphereGeometry(1,20,8),capMaterial);visor.scale.set(.064,.005,.076);visor.position.copy(head.worldToLocal(V(hp.x+.073,hp.y+.093,hp.z)));visor.quaternion.copy(worldQuat(head).invert());head.add(visor);
  for(const z of [-.027,.027]){
   const eye=new T.Mesh(new T.SphereGeometry(.010,12,8),new T.MeshStandardMaterial({color:'#d1c9ad',roughness:.6}));eye.scale.set(.50,1,1);eye.position.copy(head.worldToLocal(V(hp.x+.069,hp.y+.046,hp.z+z)));eye.quaternion.copy(worldQuat(head).invert());head.add(eye);
