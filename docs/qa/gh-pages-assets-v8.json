@@ -1,0 +1,71 @@
+{
+  "head": "2d4102fd1a233899f4128396ddeafd5e9b6e3aaf",
+  "allMatch": true,
+  "files": [
+    {
+      "path": "assets/index-MRQ5gN6c.js",
+      "matches": true,
+      "bytes": 1186633
+    },
+    {
+      "path": "assets/index-daaeIAan.css",
+      "matches": true,
+      "bytes": 72326
+    },
+    {
+      "path": "assets/ghe-ngo/ghe-ngo-crew-v8.glb",
+      "matches": true,
+      "bytes": 9122716
+    },
+    {
+      "path": "assets/human/crowd-near.json",
+      "matches": true,
+      "bytes": 22950
+    },
+    {
+      "path": "assets/human/crowd-near.bin",
+      "matches": true,
+      "bytes": 1039104
+    },
+    {
+      "path": "assets/human/crowd-far.json",
+      "matches": true,
+      "bytes": 3675
+    },
+    {
+      "path": "assets/human/crowd-far.bin",
+      "matches": true,
+      "bytes": 185472
+    },
+    {
+      "path": "assets/fonts/NotoSansKhmer.ttf",
+      "matches": true,
+      "bytes": 359788
+    },
+    {
+      "path": "assets/fonts/OFL.txt",
+      "matches": true,
+      "bytes": 4381
+    },
+    {
+      "path": "assets/fonts/ATTRIBUTION.md",
+      "matches": true,
+      "bytes": 511
+    },
+    {
+      "path": "assets/audio/crowd-cheer-cc0.mp3",
+      "matches": true,
+      "bytes": 360081
+    },
+    {
+      "path": "assets/audio/ATTRIBUTION.md",
+      "matches": true,
+      "bytes": 720
+    },
+    {
+      "path": "assets/human/ATTRIBUTION.md",
+      "matches": true,
+      "bytes": 5445
+    }
+  ]
+}

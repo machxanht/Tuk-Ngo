@@ -1,0 +1,198 @@
+{
+  "checked": 48,
+  "allMatch": true,
+  "files": [
+    {
+      "file": "README.md",
+      "matches": true
+    },
+    {
+      "file": "public/assets/human/ATTRIBUTION.md",
+      "matches": true
+    },
+    {
+      "file": "scripts/check-crew-glb.mjs",
+      "matches": true
+    },
+    {
+      "file": "scripts/check-race-crews.mjs",
+      "matches": true
+    },
+    {
+      "file": "scripts/export-crew.mjs",
+      "matches": true
+    },
+    {
+      "file": "src/components/TabletRaceDemo.css",
+      "matches": true
+    },
+    {
+      "file": "src/components/TabletRaceDemo.tsx",
+      "matches": true
+    },
+    {
+      "file": "src/race/boat.mjs",
+      "matches": true
+    },
+    {
+      "file": "src/race/maspero-course.mjs",
+      "matches": true
+    },
+    {
+      "file": "src/race/race-crew.mjs",
+      "matches": true
+    },
+    {
+      "file": "src/race/river.mjs",
+      "matches": true
+    },
+    {
+      "file": "docs/maspero-scene-v8.md",
+      "matches": true
+    },
+    {
+      "file": "docs/qa/baked-rig-v8.json",
+      "matches": true
+    },
+    {
+      "file": "docs/qa/browser-v8.json",
+      "matches": true
+    },
+    {
+      "file": "docs/qa/crowd-bake-v8.json",
+      "matches": true
+    },
+    {
+      "file": "docs/qa/crowd-data-check-v8.json",
+      "matches": true
+    },
+    {
+      "file": "docs/qa/gltf-validator-v8.json",
+      "matches": true
+    },
+    {
+      "file": "docs/qa/hull-preservation-v8.json",
+      "matches": true
+    },
+    {
+      "file": "docs/qa/maspero-v8-bridge-30-4.png",
+      "matches": true
+    },
+    {
+      "file": "docs/qa/maspero-v8-bridge-c247.png",
+      "matches": true
+    },
+    {
+      "file": "docs/qa/maspero-v8-crew-sprint.png",
+      "matches": true
+    },
+    {
+      "file": "docs/qa/maspero-v8-crowd-water-10s-frames.png",
+      "matches": true
+    },
+    {
+      "file": "docs/qa/maspero-v8-crowd-water-10s.webm",
+      "matches": true
+    },
+    {
+      "file": "docs/qa/maspero-v8-crowd.png",
+      "matches": true
+    },
+    {
+      "file": "docs/qa/maspero-v8-opposite-stand.png",
+      "matches": true
+    },
+    {
+      "file": "docs/qa/maspero-v8-overview.png",
+      "matches": true
+    },
+    {
+      "file": "docs/qa/maspero-v8-sprint-10s-frames.png",
+      "matches": true
+    },
+    {
+      "file": "docs/qa/maspero-v8-sprint-10s.webm",
+      "matches": true
+    },
+    {
+      "file": "docs/qa/maspero-v8-sprint.png",
+      "matches": true
+    },
+    {
+      "file": "docs/qa/maspero-v8-stands.png",
+      "matches": true
+    },
+    {
+      "file": "docs/qa/maspero-v8-tablet-landscape.png",
+      "matches": true
+    },
+    {
+      "file": "docs/qa/maspero-v8-tablet-portrait.png",
+      "matches": true
+    },
+    {
+      "file": "docs/qa/rig-sprint-v8.json",
+      "matches": true
+    },
+    {
+      "file": "docs/qa/two-crews-v8.json",
+      "matches": true
+    },
+    {
+      "file": "docs/qa/video-check-v8.json",
+      "matches": true
+    },
+    {
+      "file": "public/assets/audio/ATTRIBUTION.md",
+      "matches": true
+    },
+    {
+      "file": "public/assets/audio/crowd-cheer-cc0.mp3",
+      "matches": true
+    },
+    {
+      "file": "public/assets/fonts/ATTRIBUTION.md",
+      "matches": true
+    },
+    {
+      "file": "public/assets/fonts/NotoSansKhmer.ttf",
+      "matches": true
+    },
+    {
+      "file": "public/assets/fonts/OFL.txt",
+      "matches": true
+    },
+    {
+      "file": "public/assets/ghe-ngo/ghe-ngo-crew-v8.glb",
+      "matches": true
+    },
+    {
+      "file": "public/assets/human/crowd-far.bin",
+      "matches": true
+    },
+    {
+      "file": "public/assets/human/crowd-far.json",
+      "matches": true
+    },
+    {
+      "file": "public/assets/human/crowd-near.bin",
+      "matches": true
+    },
+    {
+      "file": "public/assets/human/crowd-near.json",
+      "matches": true
+    },
+    {
+      "file": "scripts/bake-crowd.mjs",
+      "matches": true
+    },
+    {
+      "file": "src/race/crowd-audio.mjs",
+      "matches": true
+    },
+    {
+      "file": "src/race/crowd.mjs",
+      "matches": true
+    }
+  ]
+}
