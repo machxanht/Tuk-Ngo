@@ -1,0 +1,45 @@
+{
+  "mode": "actual local browser controls; read-only clock inspection for timed input",
+  "route": "/Tuk-Ngo/?demo=play",
+  "sceneVersion": "MASPERO_TWO_CREWS_V10_GAMEPLAY",
+  "fullRace": {
+    "difficulty": "easy",
+    "result": "win",
+    "playerFinishSeconds": 191.5858626954156,
+    "playerDistanceMetres": 1200,
+    "opponentDistanceMetresAtPlayerFinish": 958.7493674938024,
+    "perfect": 269,
+    "good": 3,
+    "missed": 4,
+    "accuracyPercent": 99,
+    "maxCombo": 101,
+    "staminaAtFinish": 21.004684655641668,
+    "strategy": "steady until 1004.95 m, then sprint; paused between QA batches",
+    "input": "actual button clicks and five Space presses; no injected strokes or distances"
+  },
+  "verified": {
+    "pointerClickScoresOnce": true,
+    "keyboardSpaceScores": true,
+    "pauseFreezesTimeAndDistances": true,
+    "replayResetsTimeDistancesStaminaAndScore": true,
+    "winningRecordSurvivesReload": true,
+    "reducedMotionButtonTransitionsDisabled": true,
+    "consoleErrorsOrWarningsDuringFullRace": [],
+    "horizontalPageOverflow": false
+  },
+  "viewportsCssPixels": [[768,1024],[1024,768],[375,812]],
+  "screenshots": [
+    "local-v10-ready.jpg",
+    "local-v10-ready-phone.jpg",
+    "local-v10-racing-portrait.jpg",
+    "local-v10-racing-landscape.jpg",
+    "local-v10-paused.jpg",
+    "local-v10-result.jpg"
+  ],
+  "limits": [
+    "No physical tablet benchmark",
+    "Mechanics simulations are separate from this actual-control race",
+    "V9 asset and environment approximations remain",
+    "Single-player; browser-local winning records"
+  ]
+}

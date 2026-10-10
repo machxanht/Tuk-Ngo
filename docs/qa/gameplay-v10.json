@@ -1,0 +1,121 @@
+{
+  "checks": [
+    "Ready and countdown keep both bows at the start",
+    "Perfect/good/early strokes and duplicate taps",
+    "Missing a beat hurts power and resets combo",
+    "Pause freezes clock, physics, countdown and input",
+    "Endurance is bounded, sprint depletes and recovery restores it",
+    "AI speed is independent of player distance",
+    "No input produces a completed loss instead of an endless race",
+    "Integration is independent of frame grouping",
+    "Finish order uses interpolated bow crossings, including a tie",
+    "Replay clears race state and preserves requested difficulty",
+    "Time formatting carries centiseconds into the next minute",
+    "Good timing can win easy; late sprint is faster than steady",
+    "Hard can be won with a late sprint; sprinting all race loses"
+  ],
+  "balance": {
+    "easy_steady": {
+      "result": "win",
+      "time": 197.2841561205193,
+      "aiTime": null,
+      "distance": 1200,
+      "accuracy": 100,
+      "stamina": 70.69805726839876
+    },
+    "easy_sprint": {
+      "result": "loss",
+      "time": 270.59704013001266,
+      "aiTime": 236.04076405770974,
+      "distance": 1200,
+      "accuracy": 100,
+      "stamina": 0
+    },
+    "easy_finishSprint": {
+      "result": "win",
+      "time": 190.62189817602882,
+      "aiTime": null,
+      "distance": 1200,
+      "accuracy": 100,
+      "stamina": 19.35924429907457
+    },
+    "easy_restThenSprint": {
+      "result": "win",
+      "time": 196.32821302612786,
+      "aiTime": null,
+      "distance": 1200,
+      "accuracy": 100,
+      "stamina": 43.02455095684573
+    },
+    "normal_steady": {
+      "result": "win",
+      "time": 197.2841561205193,
+      "aiTime": null,
+      "distance": 1200,
+      "accuracy": 100,
+      "stamina": 70.69805726839876
+    },
+    "normal_sprint": {
+      "result": "dnf",
+      "time": null,
+      "aiTime": 216.85489417724122,
+      "distance": 1146.6505045254999,
+      "accuracy": 100,
+      "stamina": 0
+    },
+    "normal_finishSprint": {
+      "result": "win",
+      "time": 190.62189817602882,
+      "aiTime": null,
+      "distance": 1200,
+      "accuracy": 100,
+      "stamina": 19.35924429907457
+    },
+    "normal_restThenSprint": {
+      "result": "win",
+      "time": 196.32821302612786,
+      "aiTime": null,
+      "distance": 1200,
+      "accuracy": 100,
+      "stamina": 43.02455095684573
+    },
+    "hard_steady": {
+      "result": "loss",
+      "time": 197.2841561205193,
+      "aiTime": 190.87990823918716,
+      "distance": 1200,
+      "accuracy": 100,
+      "stamina": 70.69805726839876
+    },
+    "hard_sprint": {
+      "result": "dnf",
+      "time": null,
+      "aiTime": 190.8795656032864,
+      "distance": 1045.725542474272,
+      "accuracy": 100,
+      "stamina": 0
+    },
+    "hard_finishSprint": {
+      "result": "win",
+      "time": 190.62189817602882,
+      "aiTime": null,
+      "distance": 1200,
+      "accuracy": 100,
+      "stamina": 19.35924429907457
+    },
+    "hard_restThenSprint": {
+      "result": "loss",
+      "time": 196.32821302612786,
+      "aiTime": 190.88039604239773,
+      "distance": 1200,
+      "accuracy": 100,
+      "stamina": 43.02455095684573
+    },
+    "easy_goodTiming": {
+      "result": "win",
+      "time": 209.0642243970804,
+      "accuracy": 100
+    }
+  },
+  "pass": true
+}
