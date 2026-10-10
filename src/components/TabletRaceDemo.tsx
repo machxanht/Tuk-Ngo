@@ -36,7 +36,7 @@ export function TabletRaceDemo({embedded=false}:{embedded?:boolean}){
     controls.update();lastCamera=mode;
    }
    positionCamera(settings.current.camera);
-   runtime.current={renderer,scene,boat,view,controls,reset(){travel=0;phase=.25;simTime=0;positionCamera(settings.current.camera);},screenshot(){renderer.render(scene,view);renderer.domElement.toBlob(blob=>{if(!blob)return;const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='ghe-ngo-river-'+settings.current.camera+'.png';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});}};
+   runtime.current={renderer,scene,boat,view,controls,reset(){travel=0;phase=.25;simTime=0;waterFx.reset();positionCamera(settings.current.camera);},screenshot(){renderer.render(scene,view);renderer.domElement.toBlob(blob=>{if(!blob)return;const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='ghe-ngo-river-'+settings.current.camera+'.png';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});}};
    cleanup=()=>{observer.disconnect();controls.dispose();waterFx.dispose();river.dispose();scene.traverse((o:any)=>{if(o.geometry)o.geometry.dispose();if(o.material)for(const m of Array.isArray(o.material)?o.material:[o.material])m.dispose();});renderer.dispose();renderer.domElement.remove();runtime.current=null;};
    setReady(true);setStatus('Model MakeHuman CC0 · 55 người · hoa văn theo clip');
    function animate(now:number){if(stopped)return;const frameDt=Math.max(0,Math.min(.05,(now-last)/1000));last=now;const s=settings.current,dt=s.playing?frameDt:0;
