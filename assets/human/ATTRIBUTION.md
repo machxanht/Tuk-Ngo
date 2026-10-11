@@ -1,5 +1,13 @@
 # Athlete assets and reference provenance
 
+## V11 active racing crew and revised study
+
+`ghe-ngo-crew-v11.glb` now replaces the V9 crew in both the studio and game. The licensed anatomy/skin source below remains. The shared crew LOD, clean green kit, continuous waistband, white baseball caps, shaped Khmer back print **កូនខ្មែរ**, wooden paddles and role animation are project derivatives. Khmer UI is rasterized through Windows text shaping; its font file is not redistributed. Noto Sans Khmer remains separately licensed for river signs.
+
+Each boat has 8 seated pairs, 17 standing pairs, a seated bow caller, a light-blue coordinator and three stern helmsmen. Counts, stance targets and steering motion are authored approximations. Fresh real 2024 Báo Sóc Trăng footage and Duy Tân/Thanh Niên photos guide the role silhouettes and kit; see `docs/crew-role-reference-2024.md`. No press pixels are shipped as textures. The detailed actor is still a generic licensed derivative, not an identified/scanned participant.
+
+`crowd-v10-near.bin/.json` and `crowd-v10-far.bin/.json` add 16 authored adult profiles and six activities using the same free anatomical source. See `../crowd/ATTRIBUTION-v10.md`. These are stylized mesh/animation derivatives, not 16 independent scans. V3–V9 and the first study notes below describe preserved historical assets.
+
 ## Independently drawn 2D illustration (V5)
 
 The default V5 illustration is original code-native Canvas2D artwork in `src/race/illustrated-ghe.mjs`. It uses separate drawn faces, garments, limbs and boat contours, with its own continuous rowing pose curve. It does not use the MakeHuman body, GLB geometry, 3D poses or rendered V4 atlas. The owner's existing livery WebP remains the only image used by this scene. No AI-generated reference image is used.
@@ -63,4 +71,10 @@ Blender is used headlessly to import the actual persisted crew, render a selecte
 
 Green sleeveless kit with **green binding**, white print/caps, bare feet, brown paddle, pale transverse grip and blue tape are based on photos 8 and 11 in [Duy Tân's 15 November 2024 Thanh Niên report](https://thanhnien.vn/chua-tum-nup-doat-cu-dup-vo-dich-ghe-ngo-nam-va-nu-185241115184726094.htm). Motion sequence was checked against boat 12 at 104–107 seconds in the [2024 Báo Sóc Trăng video](https://baosoctrang.org.vn/multimedia/202411/media-ghe-ngo-chua-tum-nup-vo-dich-ca-nam-va-nu-f8b6c2a/). Press images/video are reference only, not included as game textures/sounds. No generated image is used as evidence.
 
-This is a generic athlete, not a scanned or identified participant. Paddle dimensions, skin tint, cloth folds and motion are authored approximations; small sponsor artwork is incomplete. The detailed actor is for inspection before preparing a crew LOD. See `docs/athlete-study-2024.md` for reference decisions, build and limits.
+This is a generic athlete, not a scanned or identified participant. Paddle dimensions, skin tint, cloth folds and motion are authored approximations. See `docs/athlete-study-2024.md` for the earlier reference decisions, build and limits.
+
+## V11 active role crew and spectators
+
+The current detailed actor and `ghe-ngo-crew-v11.glb` use the requested custom **កូនខ្មែរ** (Koun Khmer) back print instead of historical sponsor lettering. Windows Khmer UI shapes a raster of those glyphs; the font file is not redistributed. The crew LOD welds physical seams before simplification, retains the licensed skin UVs and adds anchored feet, mixed cap orientation and five authored role-motion families. The accepted original hull/livery buffer remains byte-for-byte intact. Counts, paddle dimensions and motion are authored approximations informed by the real 2024 frames; they are not measured race biomechanics or motion capture.
+
+The `crowd-v10-*` data derives from the same CC0 anatomy with modeled headgear/hair, sixteen generic profiles and six authored activities. Profile labels describe styling, not scanned individuals. [Crowd attribution](../crowd/ATTRIBUTION-v10.md) and `docs/crew-v11.md` record the source, current checks and limitations.
