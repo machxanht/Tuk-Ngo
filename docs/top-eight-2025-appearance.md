@@ -21,6 +21,8 @@ The [official day-two broadcast](https://www.youtube.com/watch?v=crZF3hghbgQ) an
 
 Official 11,590s and excerpt 405s/850s were directly inspected for this appearance document. Other race colors above are corroborated by the separate results research; they are not detailed garment/sponsor reconstructions.
 
+The parent also directly inspected `binding-12000s.jpg` and `qf-850s.jpg`: Trà Tim 08 has a seated bow participant in pink, blue shorts and a red cap; its standing controller wears orange with a red cap. These two role palettes are implemented independently of the red/white rower kit. Exact sponsor details and sleeve tailoring remain approximate.
+
 ## On-land hull and kbach evidence
 
 | Team | Inspected source and local frame | Visible ornament and colors | Assignment confidence / limitation |

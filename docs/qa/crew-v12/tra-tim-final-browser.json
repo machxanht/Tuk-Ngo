@@ -1,0 +1,32 @@
+{
+  "pass": true,
+  "base": "http://localhost:3000/Tuk-Ngo/",
+  "identity": {
+    "id": "chroi-tum-chas",
+    "name": "Chrôi Tưm Chắs · Trà Tim cũ",
+    "rank": 4,
+    "number": "08",
+    "jersey": "#c92336",
+    "trim": "#efeee5",
+    "cap": "#df2837",
+    "sleeve": "#edece5",
+    "roleKit": {
+      "BOW_CALLER": {
+        "jersey": "#b85c8e",
+        "cap": "#df2837",
+        "shorts": "#245782",
+        "sleeve": "#b85c8e"
+      },
+      "MID_CONTROLLER": {
+        "jersey": "#ed693b",
+        "cap": "#df2837",
+        "sleeve": "#ed693b"
+      }
+    },
+    "pattern": "tra-tim-flowers",
+    "evidenceStatus": "kit confirmed; carried launch hull reconstructed; race binding approximate"
+  },
+  "downloadBytes": 17884948,
+  "sha256": "5bf3077ac2c746b6c21d19cdd3d2045f180bc70d5b1f5b5ac9684344b6e1351f",
+  "errors": []
+}

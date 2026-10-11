@@ -29,22 +29,24 @@ export function applyTeamIdentity(root,id,liveries){
  const sleeveLength=.14,sleeveGeometry=new T.CylinderGeometry(.059,.068,sleeveLength,16,1,true);
  const direction=new T.Vector3(0,1,0);
  for(const actor of actors){
-  if(!['ROWER','HELMSMAN'].includes(actor.userData.role))continue;
-  const kitColor=team.alternateJersey&&actor.userData.id%7===0?team.alternateJersey:team.jersey;
-  const capColor=team.capVariants?team.capVariants[actor.userData.id%10<7?0:actor.userData.id%10<9?1:2]:team.cap;
+  const roleKit=team.roleKit?.[actor.userData.role];
+  if(!['ROWER','HELMSMAN'].includes(actor.userData.role)&&!roleKit)continue;
+  const kitColor=roleKit?.jersey||(team.alternateJersey&&actor.userData.id%7===0?team.alternateJersey:team.jersey);
+  const capColor=roleKit?.cap||(team.capVariants?team.capVariants[actor.userData.id%10<7?0:actor.userData.id%10<9?1:2]:team.cap);
   actor.userData.teamId=id;actor.userData.jersey=kitColor;actor.userData.capColor=capColor;
   actor.traverse(mesh=>{
    if(!mesh.isMesh)return;
    function style(m){
+    if(roleKit&&/^(Caller_Olive|Controller_Light_Blue)/.test(m.name))return tint(m,kitColor,team.id+'_'+actor.userData.role+'_Fabric');
     if(/^Competition_Green_Fabric/.test(m.name))return tint(m,kitColor,team.id+'_Competition_Fabric');
     if(/^Green_Ribbed_Binding/.test(m.name))return tint(m,team.trim,team.id+'_Collar_Armhole');
     if(/^White_Cotton_Cap/.test(m.name))return tint(m,capColor,team.id+'_Cap');
-    if(/^Dark_Competition_Shorts/.test(m.name))return tint(m,'#17222a',team.id+'_Shorts');
+    if(/^Dark_Competition_Shorts/.test(m.name))return tint(m,roleKit?.shorts||'#17222a',team.id+'_'+actor.userData.role+'_Shorts');
     return m;
    }
    const original=Array.isArray(mesh.material)?mesh.material[0]:mesh.material;
    mesh.material=Array.isArray(mesh.material)?mesh.material.map(style):style(mesh.material);
-   if(team.lowerJersey&&/^Competition_Green_Fabric/.test(original.name)){
+   if(team.lowerJersey&&!roleKit&&/^Competition_Green_Fabric/.test(original.name)){
     const geometry=mesh.geometry.clone(),position=geometry.attributes.position,index=geometry.index;
     let min=Infinity,max=-Infinity;for(let v=0;v<(index?.count??position.count);v++){const i=index?index.getX(v):v;min=Math.min(min,position.getY(i));max=Math.max(max,position.getY(i));}
     const top=new T.Color(kitColor),bottom=new T.Color(team.lowerJersey),color=new T.Color(),values=new Float32Array(position.count*3);
@@ -53,8 +55,9 @@ export function applyTeamIdentity(root,id,liveries){
     const material=mesh.material.clone();material.color.set('white');material.vertexColors=true;mesh.material=material;materials.push(material);
    }
   });
-  if(team.sleeve){
-   const fabric=new T.MeshStandardMaterial({color:team.sleeve,roughness:.9,side:T.DoubleSide});fabric.name=team.id+'_Short_Sleeve';materials.push(fabric);
+  const sleeveColor=roleKit?roleKit.sleeve:team.sleeve;
+  if(sleeveColor){
+   const fabric=new T.MeshStandardMaterial({color:sleeveColor,roughness:.9,side:T.DoubleSide});fabric.name=team.id+'_Short_Sleeve';materials.push(fabric);
    for(const suffix of ['l','r']){
     let upper,fore;actor.traverse(b=>{if(b.isBone&&new RegExp('^upperarm_'+suffix+'(?:_|$)').test(b.name))upper=b;if(b.isBone&&new RegExp('^lowerarm_'+suffix+'(?:_|$)').test(b.name))fore=b;});
     if(!upper||!fore)continue;
