@@ -1,0 +1,17 @@
+{
+  "checkedAt": "2026-10-11T07:19:33.576848+00:00",
+  "sourceCommit": "a3f9c9a89345dcee3a67cbd2c63bd3d468b730be",
+  "pagesCommit": "0a1da3de5b5abd629772b4c3daa5721bb3e9d90a",
+  "url": "https://machxanht.github.io/Tuk-Ngo/?demo=art",
+  "deploymentRun": "https://github.com/machxanht/Tuk-Ngo/actions/runs/38120843780",
+  "deploymentConclusion": "success",
+  "publishedBundle": "index-AclkgouA.js",
+  "remoteGlbBytes": 14508140,
+  "remoteGlbSha256": "e9296899ac704c035a8fcb605a3b12c52ce17fdf45ec6e986f54834c04da4d97",
+  "matchesLocalGlb": true,
+  "visualCheck": "Published single-athlete viewer loaded in the user Edge window; play control tested",
+  "limits": [
+    "No physical tablet performance benchmark",
+    "The single athlete does not replace the V9 racing crew"
+  ]
+}

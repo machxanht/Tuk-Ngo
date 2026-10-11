@@ -6,9 +6,9 @@ Playable tablet race (V10): https://machxanht.github.io/Tuk-Ngo/?demo=play&v=v10
 
 Two-boat scene inspection (V9 assets): https://machxanht.github.io/Tuk-Ngo/?demo=studio
 
-Asset inspection (public build currently V9): https://machxanht.github.io/Tuk-Ngo/?demo=art
+Asset inspection (new detailed athlete and V9 boat comparison): https://machxanht.github.io/Tuk-Ngo/?demo=art
 
-This checkout adds a detailed **single athlete study**, competition kit and wooden paddle using real 2024 photos/video. Locally, `?demo=art` defaults to “Một VĐV mới”; the current V9 boat remains available for comparison. The new standalone GLB and Blender source do not replace the racing crew yet. See [reference/build notes](docs/athlete-study-2024.md). Publication is pending repository write access; the public link above does not contain this sample yet.
+This checkout adds a detailed **single athlete study**, competition kit and wooden paddle using real 2024 photos/video. The public `?demo=art` defaults to “Một VĐV mới”; the current V9 boat remains available for comparison. The new standalone GLB and Blender source do not replace the racing crew yet. See [reference/build notes](docs/athlete-study-2024.md). Published on 11 October 2026 from source commit `a3f9c9a`; the public GLB was verified against the local file.
 
 ## Run and build
 

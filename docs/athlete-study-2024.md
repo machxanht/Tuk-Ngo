@@ -30,7 +30,7 @@ Blender thực sự tạo bề mặt áo, quần, nón, dằm và dữ liệu ch
 - `?demo=art`: mặc định “Một VĐV mới”, góc trước / ngang / sau / dằm; kéo xoay, phóng to, dừng, kéo từng pha, tải GLB, chụp PNG và ghi WebM.
 - “Ghe 3D hiện tại” giữ V9 để đối chiếu. Mẫu này chưa nhân thành 55 người hoặc thay gameplay.
 
-Bản này được chuẩn bị trong checkout local. Push bằng credential hiện có bị GitHub trả HTTP 403 vì tài khoản không có quyền repo; GitHub CLI và trình duyệt trên máy hiện chưa đăng nhập tài khoản có quyền. GitHub Pages đang công khai **chưa có mẫu mới**. Khi có quyền xuất bản, cập nhật cùng `?demo=art`, không tạo trang riêng cho từng lần sửa.
+Bản này đã được push lên `main` ở commit `a3f9c9a` và xuất bản trên GitHub Pages ngày 11/10/2026. Link giữ nguyên: [xem asset](https://machxanht.github.io/Tuk-Ngo/?demo=art). Deployment `0a1da3d` có [kết quả thành công](https://github.com/machxanht/Tuk-Ngo/actions/runs/38120843780); GLB công khai trùng SHA-256 với file đã kiểm tra local. Đã mở và kiểm tra mẫu trên Edge. Đội hình game vẫn là V9; đây là mẫu chi tiết một người.
 
 ## Dựng lại và bằng chứng
 
