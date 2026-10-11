@@ -5,7 +5,7 @@ import bpy, bmesh, math, json, sys
 from pathlib import Path
 from mathutils import Vector, Quaternion, Matrix
 repo=Path(__file__).resolve().parent.parent
-out=repo.parent/'asset-studio/crew-v11';out.mkdir(parents=True,exist_ok=True)
+out=repo.parent/'asset-studio/crew-v12';out.mkdir(parents=True,exist_ok=True)
 sprint='--sprint' in sys.argv
 bpy.ops.wm.open_mainfile(filepath=str(repo/'assets/blender/athlete-rower-study.blend'))
 scene=bpy.context.scene
@@ -119,7 +119,7 @@ def actor(id,role,x,side=0,posture='standing'):
     actors.append((a,ar,pad,role,posture,side));return a
 for row in range(25):
     for side in [-1,1]:actor(2+2*row+(side>0),'ROWER',10-row*20/24,side,'seated' if row<8 else 'standing')
-actor(1,'BOW_CALLER',11.7,0,'seated')
+actor(1,'BOW_CALLER',10.65,0,'seated')
 actor(52,'MID_CONTROLLER',3.75)
 for i in range(3):actor(53+i,'HELMSMAN',-11.2-.95*i,(-1 if i%2 else 1))
 def direction(ar,name,child,target):
@@ -231,7 +231,7 @@ scene.frame_set(8)
 bpy.ops.object.select_all(action='SELECT')
 bpy.ops.export_scene.gltf(filepath=str(out/('crew-only-sprint.glb' if sprint else 'crew-only.glb')),export_format='GLB',export_extras=True,export_animations=True,export_animation_mode='SCENE',export_anim_scene_split_object=False,export_frame_range=True,export_force_sampling=True,export_apply=False)
 if not sprint:
-    bpy.ops.file.pack_all();bpy.ops.wm.save_as_mainfile(filepath=str(repo/'assets/blender/crew-v11.blend'))
+    bpy.ops.file.pack_all();bpy.ops.wm.save_as_mainfile(filepath=str(repo/'assets/blender/crew-v12.blend'))
 report={'crew':55,'seatedPairs':8,'standingPairs':17,'roles':{'ROWER':50,'BOW_CALLER':1,'MID_CONTROLLER':1,'HELMSMAN':3},'capForward':sum(a['capOrientation']=='forward' for a,*_ in actors),'capBackward':sum(a['capOrientation']=='backward' for a,*_ in actors),'sourceTrianglesPerActor':lod_triangles,'limits':['Authored approximate postures and cycle; not mocap','8 seated pairs are user-selected approximation','Helmsman hand contact and collision require visual QA']}
 (out/('role-report-sprint.json' if sprint else 'role-report.json')).write_text(json.dumps(report,indent=2),encoding='utf8')
 print(json.dumps(report),flush=True)

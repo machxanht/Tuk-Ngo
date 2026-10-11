@@ -1,0 +1,62 @@
+{
+  "base": "http://localhost:3000/Tuk-Ngo/",
+  "errors": [],
+  "teams": [
+    {
+      "id": "tum-nup-2",
+      "name": "Tum Núp 2",
+      "downloadBytes": 17920236
+    },
+    {
+      "id": "prek-on-dok-2",
+      "name": "Prêk On Đơk 2",
+      "downloadBytes": 17931216
+    },
+    {
+      "id": "prek-ta-cuol",
+      "name": "Prếk Ta Cuôl · Trà Cuôn",
+      "downloadBytes": 17910228
+    },
+    {
+      "id": "chroi-tum-chas",
+      "name": "Chrôi Tưm Chắs · Trà Tim cũ",
+      "downloadBytes": 17883616
+    },
+    {
+      "id": "om-pou-year",
+      "name": "Om Pou Year",
+      "downloadBytes": 17884548
+    },
+    {
+      "id": "kos-thum-1",
+      "name": "Kos Thum 1",
+      "downloadBytes": 17873636
+    },
+    {
+      "id": "pothi-satharam-2",
+      "name": "Pôthi Satharam 2",
+      "downloadBytes": 17835704
+    },
+    {
+      "id": "pothi-khsach",
+      "name": "Pôthi Khsach · Kế Sách",
+      "downloadBytes": 18037904
+    }
+  ],
+  "physicalTabletTested": false,
+  "sprintWater": {
+    "strength": 1,
+    "splashEvents": [
+      714,
+      716
+    ]
+  },
+  "gameplay": {
+    "start": true,
+    "names": true,
+    "pauseFreezes": true,
+    "pausedTeamChange": true,
+    "resume": true
+  },
+  "pass": true
+}

@@ -2,7 +2,7 @@ param([switch]$RebuildStudy)
 $ErrorActionPreference = 'Stop'
 $crewRepo = Split-Path -Parent $PSScriptRoot
 $crewBlender = Join-Path $crewRepo '../tools/blender/blender-5.2.2-windows-x64/blender.exe'
-$crewCache = Join-Path $crewRepo '../asset-studio/crew-v11'
+$crewCache = Join-Path $crewRepo '../asset-studio/crew-v12'
 if (!(Test-Path -LiteralPath $crewBlender)) { throw "Blender is missing: $crewBlender" }
 Push-Location $crewRepo
 try {

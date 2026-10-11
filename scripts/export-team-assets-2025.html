@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="vi"><meta charset="utf-8"><title>Xuất GLB các đội 2025</title>
+<style>body{font:16px system-ui;background:#142f29;color:#f5f2df;max-width:760px;margin:48px auto;padding:16px}button{font:inherit;padding:12px}pre{white-space:pre-wrap}</style>
+<h1>Xuất GLB đội nam 2025</h1><p>Chạy trang này bằng Vite của repo. Mỗi GLB gồm ghe, 55 người, kbach và hai clip chèo. Tư liệu và giới hạn nhận diện ghe nằm trong docs/top-eight-2025-appearance.md.</p>
+<button id="build">Xuất tám GLB</button><pre id="status"></pre>
+<script type="module">
+import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
+import {GLTFExporter} from 'three/examples/jsm/exporters/GLTFExporter.js';
+import {clone} from 'three/examples/jsm/utils/SkeletonUtils.js';
+import {RACE_TEAMS_2025} from '../src/race/teams-2025.mjs';
+import {loadTeamLiveries,applyTeamIdentity} from '../src/race/team-style-2025.mjs';
+const base=import.meta.env.BASE_URL,status=document.querySelector('#status');
+document.querySelector('#build').onclick=async()=>{
+ document.querySelector('#build').disabled=true;
+ try{
+  const [model,liveries]=await Promise.all([new GLTFLoader().loadAsync(base+'assets/ghe-ngo/ghe-ngo-crew-v12.glb'),loadTeamLiveries(base)]);
+  for(const team of RACE_TEAMS_2025){
+   const root=clone(model.scene),style=applyTeamIdentity(root,team.id,liveries);root.name=team.id+'_2025';
+   try{
+    const data=await new GLTFExporter().parseAsync(root,{binary:true,animations:model.animations,onlyVisible:true,trs:true});
+    const url=URL.createObjectURL(new Blob([data],{type:'model/gltf-binary'})),link=document.createElement('a');link.href=url;link.download=team.id+'-2025.glb';link.click();setTimeout(()=>URL.revokeObjectURL(url),10000);
+    status.textContent+=team.name+': '+data.byteLength+' bytes\n';
+   }finally{style.dispose();root.traverse(o=>{if(o.isSkinnedMesh)o.skeleton.dispose();});}
+  }
+  liveries.dispose();status.textContent+='Xuất xong. Chạy gltf-transform dedup rồi check-team-assets-2025.mjs trước khi phát hành.\n';
+ }catch(error){status.textContent+='Lỗi: '+error.message;}finally{document.querySelector('#build').disabled=false;}
+};
+</script></html>

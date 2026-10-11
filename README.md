@@ -8,7 +8,7 @@ Two-boat scene inspection: https://machxanht.github.io/Tuk-Ngo/?demo=studio
 
 Asset inspection: https://machxanht.github.io/Tuk-Ngo/?demo=art
 
-V11 brings the detailed athlete into **both racing crews and the playable game**. Each boat has 8 seated pairs forward, 17 standing pairs aft, a seated bow caller, a standing coordinator and three stern helmsmen. The requested back print is **កូនខ្មែរ** (Koun Khmer); caps face both forward and backward. Sixteen authored spectator profiles use six activities with independent phase and speed. The accepted hull and owner-video livery are preserved. See [role evidence](docs/crew-role-reference-2024.md) and [implementation/verification notes](docs/crew-v11.md). The same three links above are retained for updates.
+V12 puts the bow caller's feet **inside the open hull** and adds eight selectable men's quarter-finalist teams from the 2025 Maspéro tournament. Each team has its own authored kbach texture, race kit palette and downloadable GLB with two rowing clips. Both studio and gameplay keep two boats on the existing course. The crew has 8 seated pairs forward, 17 standing pairs aft, a bow caller, a coordinator and three stern helmsmen. The requested back print is **កូនខ្មែរ** (Koun Khmer); caps face forward and backward. Sixteen spectator profiles and their activities remain. See [2025 results](docs/top-eight-2025-results.md), [real land-video references and identification limits](docs/top-eight-2025-appearance.md), and [V12 implementation/verification notes](docs/crew-v12.md). Eight exact tournament-hull replicas are not established: several fleets have unresolved hull assignments. The same three links above are retained for updates.
 
 ## Run and build
 
@@ -19,10 +19,11 @@ npm run lint
 node scripts/check-gameplay.mjs
 node scripts/check-role-crew.mjs
 node scripts/check-role-runtime.mjs
+node scripts/check-team-assets-2025.mjs
 npm run build
 ```
 
-Vite base is `/Tuk-Ngo/`. `?demo=art` and `?demo=race` open the detailed athlete and new whole boat. `?demo=studio` loads the V11 crews and updated crowd. “Người trên ghe & khán giả” offers close views of seated/standing rowers, bow caller, coordinator, stern steering and the opposite bank. The existing two grandstands, river, Khmer signs and bridges remain. “Đường đua & tùy chọn” provides start/midpoint/finish jumps, team selection, low-power rendering, PNG and 10-second WebM exports. Enable “Bật tiếng cổ vũ” for the licensed recording. The amber-shirt team is fictional. The root page keeps the reference dossier.
+Vite base is `/Tuk-Ngo/`. `?demo=art` and `?demo=race` open the detailed athlete and whole-boat inspection. `?demo=studio` loads the V12 crew. “Chọn đội 2025 · Hai ghe” selects a team for each lane and downloads that team's baked GLB. “Người trên ghe & khán giả” offers close views of seated/standing rowers, bow caller, coordinator, stern steering and the opposite bank. The existing grandstands, river, Khmer signs and bridges remain. “Đường đua & tùy chọn” provides start/midpoint/finish jumps, camera focus, low-power rendering, PNG and 10-second WebM exports. Enable “Bật tiếng cổ vũ” for the licensed recording. Game selection is available before starting and while paused. The root page keeps the reference dossier.
 
 ## Assets and effects
 

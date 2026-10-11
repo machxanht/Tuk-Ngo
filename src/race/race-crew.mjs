@@ -2,6 +2,8 @@ import * as T from 'three';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 import {clone} from 'three/examples/jsm/utils/SkeletonUtils.js';
 import {mergeGeometries} from 'three/examples/jsm/utils/BufferGeometryUtils.js';
+import {DEFAULT_TEAM_IDS,team2025} from './teams-2025.mjs';
+import {loadTeamLiveries,applyTeamIdentity} from './team-style-2025.mjs';
 
 
 // Rendering-only consolidation. The persisted GLB vertices, weights, inverse
@@ -89,17 +91,31 @@ export function optimizeRaceBoat(root,jerseyColor){
 }
 
 export async function loadRaceCrews(url){
- const gltf=await new GLTFLoader().loadAsync(url),clip=gltf.animations[0];if(!clip)throw Error('GLB thiếu chu kỳ chèo');
- const teams=[undefined,'#df8f29'].map((shirt,i)=>{
+ const base=url.slice(0,url.indexOf('assets/ghe-ngo/'));
+ const [gltf,liveries]=await Promise.all([new GLTFLoader().loadAsync(url),loadTeamLiveries(base)]),clip=gltf.animations[0];if(!clip)throw Error('GLB thiếu chu kỳ chèo');
+ function makeTeam(id,i){
   const root=clone(gltf.scene);root.name='RaceTeam_'+(i+1);root.userData.spec={...root.userData.spec,paddleLength:root.userData.spec?.paddleLength||1.52};
   root.traverse(o=>{if(o.userData.component==='paddle'&&o.userData.lengthM)o.userData.length=o.userData.lengthM;});
-  const boat=optimizeRaceBoat(root,shirt),mixer=new T.AnimationMixer(root),baseAction=mixer.clipAction(clip).play(),sprintClip=gltf.animations.find(a=>a.name.startsWith('Rowing_Sprint_')),sprintAction=sprintClip?mixer.clipAction(sprintClip).play():null;
+  const style=applyTeamIdentity(root,id,liveries),boat=optimizeRaceBoat(root),mixer=new T.AnimationMixer(root),baseAction=mixer.clipAction(clip).play(),sprintClip=gltf.animations.find(a=>a.name.startsWith('Rowing_Sprint_')),sprintAction=sprintClip?mixer.clipAction(sprintClip).play():null;
   sprintAction?.setEffectiveWeight(0);
-  return {...boat,mixer,phase:i?.17:.28,pose(phase,strength=0){const power=sprintAction?T.MathUtils.clamp(strength,0,1):0;baseAction.setEffectiveWeight(1-power);sprintAction?.setEffectiveWeight(power);mixer.setTime(phase*clip.duration);boat.updateInstances();},dispose(){mixer.stopAllAction();mixer.uncacheRoot(root);boat.dispose();}};
- });
+  return {...boat,identity:style.team,mixer,phase:i?.17:.28,pose(phase,strength=0){const power=sprintAction?T.MathUtils.clamp(strength,0,1):0;baseAction.setEffectiveWeight(1-power);sprintAction?.setEffectiveWeight(power);mixer.setTime(phase*clip.duration);boat.updateInstances();},dispose(){mixer.stopAllAction();mixer.uncacheRoot(root);boat.dispose();style.dispose();root.traverse(o=>{if(o.isSkinnedMesh)o.skeleton.dispose();});}};
+ }
+ const teams=DEFAULT_TEAM_IDS.map(makeTeam);
  const resources={geometry:new Set(),material:new Set(),texture:new Set(),skeleton:new Set()};
  gltf.scene.traverse(o=>{if(o.geometry)resources.geometry.add(o.geometry);if(o.isSkinnedMesh)resources.skeleton.add(o.skeleton);for(const m of Array.isArray(o.material)?o.material:o.material?[o.material]:[]){resources.material.add(m);for(const value of Object.values(m))if(value?.isTexture)resources.texture.add(value);}});
- return {teams,dispose(){teams.forEach(t=>t.dispose());for(const list of Object.values(resources))for(const r of list)r.dispose();teams.forEach(t=>t.root.traverse(o=>{if(o.isSkinnedMesh)o.skeleton.dispose();}));},clipDuration:clip.duration};
+ return {teams,setTeamIdentity(i,id){
+  team2025(id);if(![0,1].includes(i))throw Error('Unknown lane');if(teams[1-i].identity.id===id)throw Error('Hai làn cần hai đội khác nhau');
+  const previous=teams[i];if(previous.identity.id===id)return previous;
+  const next=makeTeam(id,i);next.phase=previous.phase;next.root.position.copy(previous.root.position);next.root.quaternion.copy(previous.root.quaternion);next.root.scale.copy(previous.root.scale);next.pose(next.phase);
+  const parent=previous.root.parent;parent?.remove(previous.root);parent?.add(next.root);teams[i]=next;previous.dispose();return next;
+ },async exportTeam(i){
+  // Serve the validated baked asset. Avoid baking 55 rigs and textures in
+  // tablet memory or pausing a live race during GLTFExporter processing.
+  if(!teams[i])throw Error('Unknown lane');
+  const response=await fetch(base+'assets/ghe-ngo/teams-2025/'+teams[i].identity.id+'-2025.glb');
+  if(!response.ok)throw Error('GLB download HTTP '+response.status);
+  return await response.arrayBuffer();
+ },dispose(){teams.forEach(t=>t.dispose());for(const list of Object.values(resources))for(const r of list)r.dispose();liveries.dispose();},clipDuration:clip.duration};
 }
 
 export function buildBoatWake(scene,waterY){

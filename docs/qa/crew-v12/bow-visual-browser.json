@@ -1,0 +1,33 @@
+{
+  "errors": [],
+  "dataset": {
+    "testid": "race-stage",
+    "selectedTeams": "[{\"id\":\"pothi-satharam-2\",\"name\":\"Pôthi Satharam 2\",\"rank\":null,\"number\":\"07\",\"jersey\":\"#ce2830\",\"alternateJersey\":\"#e66924\",\"trim\":\"#f4d433\",\"cap\":\"#f28321\",\"capVariants\":[\"#f28321\",\"#ed342c\",\"#238a52\"],\"sleeve\":\"#20262d\",\"pattern\":\"satharam-red\",\"evidenceStatus\":\"mixed kit confirmed; red/name band confirmed; lower detail unresolved\"},{\"id\":\"prek-on-dok-2\",\"name\":\"Prêk On Đơk 2\",\"rank\":2,\"number\":\"25\",\"jersey\":\"#f6d820\",\"trim\":\"#242524\",\"cap\":\"#f6d820\",\"pattern\":\"prek-scroll\",\"evidenceStatus\":\"kit confirmed; visible kbach reconstructed\"}]",
+    "sceneVersion": "MASPERO_TWO_CREWS_V12",
+    "actorSource": "MAKEHUMAN_CC0_KOUN_KHMER_ROLE_CREW",
+    "boatCount": "2",
+    "crewCount": "110",
+    "rowerCount": "100",
+    "optimization": "[{\"actors\":55,\"mergedActors\":55,\"staticBatches\":7,\"dynamicBatches\":61},{\"actors\":55,\"mergedActors\":55,\"staticBatches\":7,\"dynamicBatches\":8}]",
+    "course": "{\"length\":1200,\"width\":86,\"lanes\":[-7.5,7.5],\"standX\":1090,\"standZ\":-54,\"bridgeStart\":940,\"bridgeEnd\":1340}",
+    "environment": "{\"crowd\":{\"variants\":[\"young man tee\",\"woman blouse\",\"older man polo\",\"older woman tunic\",\"slim man vest\",\"woman long sleeve\",\"stocky man tee\",\"woman dress\",\"man cap\",\"woman cap\",\"older man grey hair\",\"woman bob\",\"tall man striped polo\",\"woman striped blouse\",\"stocky older woman\",\"man light cap\"],\"variantCount\":16,\"people\":12005,\"activityCounts\":{\"standing cheer\":1448,\"standing clap\":1473,\"seated clap\":627,\"one hand wave\":1468,\"seated watcher\":1222,\"standing watcher\":5767},\"activities\":[\"standing cheer\",\"standing clap\",\"seated clap\",\"one hand wave\",\"seated watcher\",\"standing watcher\"],\"lods\":[{\"vertices\":928,\"triangles\":1800,\"textureBytes\":4276224},{\"vertices\":177,\"triangles\":319,\"textureBytes\":815616}],\"motion\":\"Independent deterministic clip, phase and speed; calm watcher majority\"},\"reference\":\"OWNER_VTV10_VIDEO_2025_AND_REAL_PHOTOS\",\"dimensions\":\"APPROXIMATE\",\"spectators\":12005,\"seats\":1916,\"trees\":201,\"houses\":301,\"umbrellas\":267,\"stands\":2,\"nationalFlags\":0,\"npcSource\":\"MakeHuman CC0, animated anatomical mesh\",\"signLanguage\":\"km\",\"standRoof\":\"VIP double pitch; opposite low single pitch\",\"bridgeC247\":\"teal curved steel portals\",\"bridge30April\":\"concrete piers and silver arched truss, 2022 construction photo; finished decoration approximate\"}",
+    "khmerFont": "true",
+    "crewRoles": "[{\"BOW_CALLER:seated\":1,\"ROWER:seated\":16,\"ROWER:standing\":34,\"MID_CONTROLLER:standing\":1,\"HELMSMAN:standing\":3},{\"BOW_CALLER:seated\":1,\"ROWER:seated\":16,\"ROWER:standing\":34,\"MID_CONTROLLER:standing\":1,\"HELMSMAN:standing\":3}]",
+    "capOrientations": "[{\"backward\":37,\"forward\":18},{\"backward\":37,\"forward\":18}]",
+    "actorAtlas": "{\"actors\":110,\"example\":{\"map\":[null,null],\"normal\":false,\"roughness\":false,\"uv\":true}}",
+    "splashEvents": "[50,50]",
+    "splashStats": "[{\"events\":50,\"emitted\":50,\"particles\":50,\"strength\":0},{\"events\":50,\"emitted\":50,\"particles\":50,\"strength\":0}]",
+    "waterTime": "0.21670000000000073",
+    "audio": "{\"enabled\":false,\"playing\":false,\"time\":0,\"volume\":0.18,\"error\":null}",
+    "strokeStrength": "0",
+    "activeParticles": "[50,50]",
+    "boatPositions": "[[1005.94016,-0.004197055653820329,-7.5],[1004.5167590375278,0.002726859627720467,7.5]]",
+    "phases": "[0.5689333333333343,0.45604400000000095]",
+    "distance": "1021.0",
+    "drawCalls": "260",
+    "triangles": "6278712",
+    "camera": "seated",
+    "team": "0",
+    "fps": "12.7"
+  }
+}
