@@ -1,0 +1,63 @@
+{
+  "base": "http://localhost:3000/Tuk-Ngo/",
+  "errors": [],
+  "failedResources": [],
+  "ignoredImplicitIcon404": [
+    {
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "location": {
+        "url": "http://localhost:3000/favicon.ico",
+        "line": 0,
+        "column": 0,
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    }
+  ],
+  "studio": {
+    "testid": "race-stage",
+    "sceneVersion": "MASPERO_TWO_CREWS_V11",
+    "actorSource": "MAKEHUMAN_CC0_KOUN_KHMER_ROLE_CREW",
+    "boatCount": "2",
+    "crewCount": "110",
+    "rowerCount": "100",
+    "optimization": "[{\"actors\":55,\"mergedActors\":55,\"staticBatches\":7,\"dynamicBatches\":8},{\"actors\":55,\"mergedActors\":55,\"staticBatches\":7,\"dynamicBatches\":8}]",
+    "course": "{\"length\":1200,\"width\":86,\"lanes\":[-7.5,7.5],\"standX\":1090,\"standZ\":-54,\"bridgeStart\":940,\"bridgeEnd\":1340}",
+    "environment": "{\"crowd\":{\"variants\":[\"young man tee\",\"woman blouse\",\"older man polo\",\"older woman tunic\",\"slim man vest\",\"woman long sleeve\",\"stocky man tee\",\"woman dress\",\"man cap\",\"woman cap\",\"older man grey hair\",\"woman bob\",\"tall man striped polo\",\"woman striped blouse\",\"stocky older woman\",\"man light cap\"],\"variantCount\":16,\"people\":12005,\"activityCounts\":{\"standing cheer\":1448,\"standing clap\":1473,\"seated clap\":627,\"one hand wave\":1468,\"seated watcher\":1222,\"standing watcher\":5767},\"activities\":[\"standing cheer\",\"standing clap\",\"seated clap\",\"one hand wave\",\"seated watcher\",\"standing watcher\"],\"lods\":[{\"vertices\":928,\"triangles\":1800,\"textureBytes\":4276224},{\"vertices\":177,\"triangles\":319,\"textureBytes\":815616}],\"motion\":\"Independent deterministic clip, phase and speed; calm watcher majority\"},\"reference\":\"OWNER_VTV10_VIDEO_2025_AND_REAL_PHOTOS\",\"dimensions\":\"APPROXIMATE\",\"spectators\":12005,\"seats\":1916,\"trees\":201,\"houses\":301,\"umbrellas\":267,\"stands\":2,\"nationalFlags\":0,\"npcSource\":\"MakeHuman CC0, animated anatomical mesh\",\"signLanguage\":\"km\",\"standRoof\":\"VIP double pitch; opposite low single pitch\",\"bridgeC247\":\"teal curved steel portals\",\"bridge30April\":\"concrete piers and silver arched truss, 2022 construction photo; finished decoration approximate\"}",
+    "khmerFont": "true",
+    "crewRoles": "[{\"BOW_CALLER:seated\":1,\"ROWER:seated\":16,\"ROWER:standing\":34,\"MID_CONTROLLER:standing\":1,\"HELMSMAN:standing\":3},{\"BOW_CALLER:seated\":1,\"ROWER:seated\":16,\"ROWER:standing\":34,\"MID_CONTROLLER:standing\":1,\"HELMSMAN:standing\":3}]",
+    "capOrientations": "[{\"backward\":37,\"forward\":18},{\"backward\":37,\"forward\":18}]",
+    "actorAtlas": "{\"actors\":110,\"example\":{\"map\":[null,null],\"normal\":false,\"roughness\":false,\"uv\":true}}",
+    "splashEvents": "[404,400]",
+    "splashStats": "[{\"events\":404,\"emitted\":456,\"particles\":124,\"strength\":0},{\"events\":400,\"emitted\":426,\"particles\":117,\"strength\":0}]",
+    "waterTime": "0.9875999999999996",
+    "audio": "{\"enabled\":false,\"playing\":false,\"time\":0,\"volume\":0.18,\"error\":null}",
+    "strokeStrength": "0",
+    "activeParticles": "[124,117]",
+    "boatPositions": "[[1009.6404800000006,-0.0057140129168236275,-7.5],[1008.1340687015521,0.0016491815567751872,7.5]]",
+    "phases": "[0.5967999999999996,0.4736319999999992]",
+    "distance": "1024.7",
+    "drawCalls": "616",
+    "triangles": "9020131",
+    "camera": "overview",
+    "team": "0",
+    "fps": "4.0"
+  },
+  "sprint": {
+    "strength": "1",
+    "splashEvents": "[1124,1106]",
+    "waterAdvanced": true
+  },
+  "game": {
+    "start": true,
+    "strokeFeedback": "Lỡ nhịp",
+    "pauseFreezes": true,
+    "resume": true
+  },
+  "tabletViewports": [
+    "1024x768",
+    "768x1024"
+  ],
+  "physicalTabletTested": false,
+  "pass": true
+}

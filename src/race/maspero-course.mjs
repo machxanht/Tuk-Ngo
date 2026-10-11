@@ -162,6 +162,6 @@ export function buildMasperoBanks(group,waterY,crowdAssets){
   const mesh=new T.InstancedMesh(geometries[type],shiny?metal:material,list.length);if(type==='leaf')mesh.material=material.clone(),mesh.material.side=T.DoubleSide;mesh.name='Maspero_'+type+(shiny?'_metal':'');for(let i=0;i<list.length;i++){mesh.setMatrixAt(i,list[i].matrix);mesh.setColorAt(i,list[i].color);}mesh.computeBoundingSphere();group.add(mesh);
  }
  const crowd=buildCrowd(group,people,crowdAssets);
- group.userData={reference:'OWNER_VTV10_VIDEO_2025_AND_REAL_PHOTOS',dimensions:'APPROXIMATE',...totals,npcSource:'MakeHuman CC0, animated anatomical mesh',signLanguage:'km',standRoof:'VIP double pitch; opposite low single pitch',bridgeC247:'teal curved steel portals',bridge30April:'concrete piers and silver arched truss, 2022 construction photo; finished decoration approximate'};
+ group.userData={...group.userData,reference:'OWNER_VTV10_VIDEO_2025_AND_REAL_PHOTOS',dimensions:'APPROXIMATE',...totals,npcSource:'MakeHuman CC0, animated anatomical mesh',signLanguage:'km',standRoof:'VIP double pitch; opposite low single pitch',bridgeC247:'teal curved steel portals',bridge30April:'concrete piers and silver arched truss, 2022 construction photo; finished decoration approximate'};
  return {totals,update(time,cameraX){crowd.update(time,cameraX);},dispose(){crowd.dispose();}};
 }

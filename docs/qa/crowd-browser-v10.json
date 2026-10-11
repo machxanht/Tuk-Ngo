@@ -1,0 +1,56 @@
+{
+  "crowd": {
+    "variants": [
+      "young man tee",
+      "woman blouse",
+      "older man polo",
+      "older woman tunic",
+      "slim man vest",
+      "woman long sleeve",
+      "stocky man tee",
+      "woman dress",
+      "man cap",
+      "woman cap",
+      "older man grey hair",
+      "woman bob",
+      "tall man striped polo",
+      "woman striped blouse",
+      "stocky older woman",
+      "man light cap"
+    ],
+    "variantCount": 16,
+    "people": 16,
+    "activityCounts": {
+      "standing cheer": 1,
+      "standing clap": 2,
+      "seated clap": 2,
+      "one hand wave": 2,
+      "seated watcher": 2,
+      "standing watcher": 7
+    },
+    "activities": [
+      "standing cheer",
+      "standing clap",
+      "seated clap",
+      "one hand wave",
+      "seated watcher",
+      "standing watcher"
+    ],
+    "lods": [
+      {
+        "vertices": 928,
+        "triangles": 1800,
+        "textureBytes": 4276224
+      },
+      {
+        "vertices": 177,
+        "triangles": 319,
+        "textureBytes": 815616
+      }
+    ],
+    "motion": "Independent deterministic clip, phase and speed; calm watcher majority"
+  },
+  "triangles": 28800,
+  "drawCalls": 1,
+  "errors": []
+}

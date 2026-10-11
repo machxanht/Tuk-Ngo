@@ -4,7 +4,7 @@ import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
 import {saveCanvas,recordCanvas} from './art-preview.mjs';
 
 export async function startAthleteStudy(host,settings,clock,base,onReady){
- const gltf=await new GLTFLoader().loadAsync(base+'assets/human/athlete-rower-study.glb');
+ const gltf=await new GLTFLoader().loadAsync(base+'assets/human/athlete-rower-study.glb?v=v11');
  if(!gltf.animations.length)throw Error('Thiếu chuyển động của VĐV mẫu.');
  const scene=new T.Scene();scene.background=new T.Color('#202b30');
  scene.add(new T.HemisphereLight('#e5eff4','#667069',1.7));

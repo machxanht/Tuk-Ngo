@@ -2,6 +2,7 @@
 .art-pose-inspector{font-size:12px;border-top:1px solid #37534626;margin-top:8px}.art-pose-inspector summary{cursor:pointer;min-height:44px;display:flex;align-items:center;justify-content:center}.art-pose-inspector .art-cadence{justify-content:center}.art-pose-inspector input{width:min(320px,50vw)}
 
 .art-athlete-study .art-heading{color:#e7eee9}.art-athlete-study .art-view-controls{flex-wrap:wrap;right:310px}.art-athlete-study .art-evidence{top:136px}.art-athlete-study .art-controls{width:min(760px,calc(100% - 28px))}
+.art-header-links{display:flex;gap:8px;align-items:flex-start}.art-header-links .art-back{white-space:nowrap}@media(max-width:900px){.art-header-links{flex-direction:column;align-items:flex-end}}
 .art-athlete-study{background:#202b30}.art-athlete-study .art-canvas{top:200px;bottom:250px}.art-athlete-study .art-evidence{z-index:2}
 @media(max-width:1050px){.art-athlete-study .art-view-controls{right:18px;max-width:650px}.art-athlete-study .art-evidence{top:240px;right:18px}}
 @media(max-width:720px){.art-athlete-study .art-view-controls{top:120px}.art-athlete-study .art-heading p{max-width:230px}.art-athlete-study .art-view-controls .art-segment{flex-wrap:wrap}.art-athlete-study .art-segment button{padding:7px 10px}.art-athlete-study .art-evidence{top:230px;font-size:11px}.art-athlete-study .art-control-links{flex-wrap:wrap}.art-athlete-study .art-control-links span{display:none}}

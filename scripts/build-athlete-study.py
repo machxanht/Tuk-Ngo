@@ -103,7 +103,7 @@ for sign,side in [(-1,'Right'),(1,'Left')]:
 green=material('Competition_Green_Fabric',(.012,.34,.135),.72)
 shirt_bones={'pelvis','spine_01','spine_02','spine_03','clavicle_l','clavicle_r'}
 trim=material('Green_Ribbed_Binding',(.014,.245,.095),.79)
-navy=material('Dark_Competition_Shorts',(.010,.022,.028),.78)
+navy=material('Dark_Competition_Shorts',(.012,.060,.033),.78)
 white=material('White_Cotton_Cap',(.88,.89,.86),.76)
 hair=material('Short_Black_Hair',(.014,.009,.006),.83)
 wood=material('Oiled_Brown_Wood',(.32,.105,.030),.34)
@@ -197,18 +197,19 @@ for t in [math.pi/2,3*math.pi/2]:tube('Tank_Top_Side_Seam',[cloth_point(t,j/M) f
 
 # Loose shorts have a separate waistband and two real leg openings. The main
 # shorts mesh follows the body but receives outward ease and gathered cloth folds.
-short_verts=[];short_faces=[];short_uv=[];short_ids={}
-for p in body.data.polygons:
-    coords=[body.data.vertices[i].co for i in p.vertices]
-    if not all(.585<c.z<.943 and abs(c.x)<.32 for c in coords):continue
-    ids=[]
-    for original,c in zip(p.vertices,coords):
-        if original in short_ids:ids.append(short_ids[original]);continue
-        leg=1 if c.x>0 else -1; center=leg*.115
-        ease=.012+.006*math.sin(c.z*37+c.x*24)
-        direction=Vector((c.x-center,c.y-.006,0)).normalized()
-        q=c+direction*ease;short_ids[original]=len(short_verts);ids.append(len(short_verts));short_verts.append(tuple(q));short_uv.append(((c.x+.32)/.64,(c.z-.585)/.358))
-    short_faces.append(tuple(ids))
+short_verts=[];short_faces=[];short_uv=[]
+# Continuous rings give each leg a complete clean hem, independent of body faces.
+for side in [-1,1]:
+    start=len(short_verts)
+    for j in range(13):
+        u=j/12;z=.60+.32*u
+        for i in range(65):
+            t=2*math.pi*i/64
+            short_verts.append((side*.095+(.105-.04*u)*math.sin(t),-.022+(.115-.008*u)*math.cos(t),z))
+            short_uv.append((i/64,u))
+    for j in range(12):
+        for i in range(64):
+            k=start+j*65+i;short_faces.append((k,k+1,k+66,k+65))
 shorts=mesh('Competition_Shorts_Loose',short_verts,short_faces,navy,short_uv,allowed={'pelvis','thigh_l','thigh_r'})
 bm=bmesh.new();bm.from_mesh(shorts.data);bmesh.ops.remove_doubles(bm,verts=list(bm.verts),dist=.00001);bm.to_mesh(shorts.data);bm.free()
 sm=shorts.modifiers.new('Cloth_Smoothing','SMOOTH');sm.factor=.35;sm.iterations=5
@@ -216,10 +217,10 @@ bpy.context.view_layer.objects.active=shorts;shorts.modifiers.move(len(shorts.mo
 mod=shorts.modifiers.new('Cloth_Edge_Thickness','SOLIDIFY');mod.thickness=.0018
 v=[];f=[]
 for j in range(5):
-    z=.895+j*.018
+    z=.858+j*.011
     for i in range(97):
         theta=i*math.pi*2/96
-        v.append((.179*math.sin(theta),-.025-.119*math.cos(theta),z))
+        v.append((.163*math.sin(theta),-.025-.107*math.cos(theta),z))
 for j in range(4):
     for i in range(96):k=j*97+i;f.append((k,k+1,k+98,k+97))
 waist=mesh('Shorts_Continuous_Waistband',v,f,navy,allowed={'pelvis','spine_01'})
@@ -239,9 +240,24 @@ def lettering(text,x,y,z,size,back=False):
         v.co.y=cloth_point(theta,level)[1]+(.003 if back else -.003)
     skin_mesh(obj,{'spine_01','spine_02','spine_03'})
 lettering('TUM NÚP 2',-.105,-.119,1.276,.017)
-lettering('ĐỘI GHE NGO',0,.129,1.282,.023,True)
-lettering('GIA ĐẠT',0,.130,1.238,.041,True)
-lettering('TUM NÚP 2',0,.132,1.159,.036,True)
+# Khmer text is shaped by Windows DrawString in build-athlete-study.ps1.
+textmat=material('Khmer_Back_Print_Only',(1,1,1),.8)
+textmat.surface_render_method='DITHERED'
+textimage=bpy.data.images.load(str(out/'koun-khmer.png'));textimage.pack()
+tex=textmat.node_tree.nodes.new('ShaderNodeTexImage');tex.image=textimage
+textmat.node_tree.links.new(tex.outputs['Color'],textmat.node_tree.nodes.get('Principled BSDF').inputs['Base Color'])
+textmat.node_tree.links.new(tex.outputs['Alpha'],textmat.node_tree.nodes.get('Principled BSDF').inputs['Alpha'])
+v=[];f=[];uv=[]
+for j in range(7):
+    for i in range(33):
+        theta=math.pi-.72+1.44*i/32;z=1.22+j*.011
+        top=interp(topkeys,math.acos(math.cos(theta)));q=Vector(cloth_point(theta,(z-.914)/(top-.914)));q.y+=.003
+        v.append(tuple(q));uv.append((.329+i/32*.344,.281+j/6*.484))
+for j in range(6):
+    for i in range(32):
+        k=j*33+i;f.append((k,k+1,k+34,k+33))
+printobj=mesh('Uniform_Print_Koun_Khmer',v,f,textmat,uv,allowed={'spine_01','spine_02','spine_03'})
+printobj['text']='កូនខ្មែរ';printobj['translation']='Koun Khmer'
 bpy.data.fonts.remove(font)
 
 # A six-panel fabric cap with shaped rear visor, seams, sweatband and button.

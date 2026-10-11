@@ -1,12 +1,12 @@
 {
   "path": "public/assets/human/athlete-rower-study.glb",
-  "sha256": "e9296899ac704c035a8fcb605a3b12c52ce17fdf45ec6e986f54834c04da4d97",
-  "bytes": 14508140,
+  "sha256": "251e93140fd1880731875f818d818bf35a6a7643e6649514547f3fa20439bc27",
+  "bytes": 13713020,
   "clips": [
     {
       "name": "Scene",
       "duration": 1.6333333253860474,
-      "tracks": 172
+      "tracks": 170
     }
   ],
   "sampledPhases": 193,
@@ -18,7 +18,7 @@
   "maxLoopPositionDeltaM": 0.000002413343676642928,
   "validator": {
     "errors": 0,
-    "warnings": 30,
+    "warnings": 28,
     "warningCodes": [
       "NODE_SKINNED_MESH_NON_ROOT"
     ]

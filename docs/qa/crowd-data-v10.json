@@ -1,0 +1,26 @@
+{
+  "levels": [
+    {
+      "level": "near",
+      "vertices": 928,
+      "triangles": 1800,
+      "bytes": 3207168,
+      "expectedBytes": 3207168,
+      "maxNormalError": 4.8197670521332725e-8,
+      "textureWidth": 1856,
+      "textureHeight": 144
+    },
+    {
+      "level": "far",
+      "vertices": 177,
+      "triangles": 319,
+      "bytes": 611712,
+      "expectedBytes": 611712,
+      "maxNormalError": 4.751651805356971e-8,
+      "textureWidth": 354,
+      "textureHeight": 144
+    }
+  ],
+  "errors": [],
+  "pass": true
+}

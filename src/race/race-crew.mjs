@@ -10,10 +10,18 @@ export function optimizeRaceBoat(root,jerseyColor){
  root.updateMatrixWorld(true);
  const actors=[],paddles=[],ownedGeometry=[],ownedMaterials=[],skinCache=new Map();
  root.traverse(o=>{if(/^Athlete_\d+_/.test(o.name)&&o.userData.component==='athlete')actors.push(o);if(o.userData.component==='paddle')paddles.push(o);});
+ // V11 garment material names survive Blender's shared mesh LOD. Clone only
+ // the team colour slots so both teams retain their own recognizable kit.
+ if(jerseyColor){const tinted=new Map();root.traverse(o=>{if(!o.isMesh)return;const tint=m=>{if(!/^Competition_Green_Fabric|^Green_Ribbed_Binding/.test(m.name))return m;if(!tinted.has(m)){const c=m.clone();c.color.set(jerseyColor);tinted.set(m,c);ownedMaterials.push(c);}return tinted.get(m);};o.material=Array.isArray(o.material)?o.material.map(tint):tint(o.material);});}
  const skinMaterials=new Map();
  let mergedActors=0;
  for(const actor of actors){
-  const skins=[];actor.traverse(o=>{if(o.isSkinnedMesh)skins.push(o);});
+  const allSkins=[];actor.traverse(o=>{if(o.isSkinnedMesh)allSkins.push(o);});
+  let skins=allSkins;
+  // V11 keeps the licensed skin and Khmer print as distinct textured surfaces.
+  // Merge the compatible solid garment primitives without dropping those maps.
+  if(!allSkins[0]?.material?.userData?.athleteAtlas){const groups=new Map();for(const skin of allSkins){if(Array.isArray(skin.material)||skin.material.map||skin.morphTargetInfluences)continue;const key=skin.parent.uuid;if(!groups.has(key))groups.set(key,[]);groups.get(key).push(skin);}skins=[...groups.values()].sort((a,b)=>b.length-a.length)[0]||[];}
+  if(skins.length<2)continue;
   const first=skins[0];if(!first)continue;
   // Atlas-backed skins can share one draw call only when all maps and PBR
   // settings match. Arbitrary source materials still remain separate.
@@ -74,7 +82,8 @@ export function optimizeRaceBoat(root,jerseyColor){
  }
  const matrix=new T.Matrix4(),rootInverse=new T.Matrix4();
  function updateInstances(){root.updateMatrixWorld(true);rootInverse.copy(root.matrixWorld).invert();for(const {batch,meshes} of batches){for(let i=0;i<meshes.length;i++){matrix.multiplyMatrices(rootInverse,meshes[i].matrixWorld);batch.setMatrixAt(i,matrix);}batch.instanceMatrix.needsUpdate=true;}}
- const athletes=paddles.filter(p=>/^Paddle_\d+$/.test(p.name)).map(p=>({role:'ROWER',root:{name:p.name},paddle:p}));
+ const actorById=new Map(actors.map(a=>[a.userData.id,a]));
+ const athletes=paddles.filter(p=>/^Paddle_\d+$/.test(p.name)).map(p=>{const actor=actorById.get(p.userData.id??Number(p.name.slice(7)));return {role:'ROWER',posture:actor?.userData.posture||'seated',root:actor||{name:p.name},paddle:p};});
  updateInstances();
  return {root,athletes,actors,accessoryBatches:batches,updateInstances,stats:{actors:actors.length,mergedActors,staticBatches:mergedStatic,dynamicBatches:batches.length},dispose(){ownedGeometry.forEach(g=>g.dispose());ownedMaterials.forEach(m=>m.dispose());batches.forEach(({batch})=>batch.dispose());}};
 }
@@ -82,7 +91,8 @@ export function optimizeRaceBoat(root,jerseyColor){
 export async function loadRaceCrews(url){
  const gltf=await new GLTFLoader().loadAsync(url),clip=gltf.animations[0];if(!clip)throw Error('GLB thiếu chu kỳ chèo');
  const teams=[undefined,'#df8f29'].map((shirt,i)=>{
-  const root=clone(gltf.scene);root.name='RaceTeam_'+(i+1);root.userData.spec={paddleLength:1.22};
+  const root=clone(gltf.scene);root.name='RaceTeam_'+(i+1);root.userData.spec={...root.userData.spec,paddleLength:root.userData.spec?.paddleLength||1.52};
+  root.traverse(o=>{if(o.userData.component==='paddle'&&o.userData.lengthM)o.userData.length=o.userData.lengthM;});
   const boat=optimizeRaceBoat(root,shirt),mixer=new T.AnimationMixer(root),baseAction=mixer.clipAction(clip).play(),sprintClip=gltf.animations.find(a=>a.name.startsWith('Rowing_Sprint_')),sprintAction=sprintClip?mixer.clipAction(sprintClip).play():null;
   sprintAction?.setEffectiveWeight(0);
   return {...boat,mixer,phase:i?.17:.28,pose(phase,strength=0){const power=sprintAction?T.MathUtils.clamp(strength,0,1):0;baseAction.setEffectiveWeight(1-power);sprintAction?.setEffectiveWeight(power);mixer.setTime(phase*clip.duration);boat.updateInstances();},dispose(){mixer.stopAllAction();mixer.uncacheRoot(root);boat.dispose();}};
@@ -99,6 +109,6 @@ export function buildBoatWake(scene,waterY){
  const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(points,3));g.setAttribute('uv',new T.Float32BufferAttribute(uv,2));g.setIndex(indices);g.computeVertexNormals();
  const m=new T.ShaderMaterial({transparent:true,depthWrite:false,side:T.DoubleSide,uniforms:{uTime:{value:0}},vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',fragmentShader:'uniform float uTime;varying vec2 vUv;void main(){float edge=abs(vUv.y-.5)*2.;float arms=exp(-pow((edge-.68)*17.,2.));float noise=.5+.5*sin(vUv.x*100.-uTime*9.+sin(vUv.y*37.));float foam=(arms*.36+pow(noise,5.)*(1.-edge)*.13)*pow(1.-vUv.x,1.6)*smoothstep(0.,.07,vUv.x);gl_FragColor=vec4(.78,.81,.68,foam);}' });
  const mesh=new T.Mesh(g,m);mesh.position.y=waterY+.028;scene.add(mesh);
- const shadow=new T.Mesh(new T.PlaneGeometry(31,2),new T.ShaderMaterial({transparent:true,depthWrite:false,vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',fragmentShader:'varying vec2 vUv;void main(){vec2 p=(vUv-.5)*2.;float a=max(0.,1.-p.x*p.x)*exp(-p.y*p.y*8.);gl_FragColor=vec4(.12,.10,.05,a*.26);}'}));shadow.rotation.x=-Math.PI/2;shadow.position.y=waterY+.009;scene.add(shadow);
+ const shadow=new T.Mesh(new T.PlaneGeometry(31,2),new T.ShaderMaterial({transparent:true,depthWrite:false,vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',fragmentShader:'varying vec2 vUv;void main(){vec2 p=(vUv-.5)*2.;float a=max(0.,1.-p.x*p.x)*exp(-p.y*p.y*8.)*smoothstep(.54,.68,abs(p.y));gl_FragColor=vec4(.12,.10,.05,a*.26);}'}));shadow.rotation.x=-Math.PI/2;shadow.position.y=waterY+.009;scene.add(shadow);
  return {update(root,time,moving){mesh.position.x=root.position.x;mesh.position.z=root.position.z;m.uniforms.uTime.value=time;mesh.visible=moving;shadow.position.x=root.position.x;shadow.position.z=root.position.z;},dispose(){g.dispose();m.dispose();shadow.geometry.dispose();shadow.material.dispose();scene.remove(mesh,shadow);}};
 }
