@@ -1,0 +1,11 @@
+{
+  "source": "actual standalone GLB in production build",
+  "frames": 49,
+  "resolution": [
+    1000,
+    1100
+  ],
+  "errors": [],
+  "mode": "offline deterministic capture, not realtime benchmark",
+  "glbSha256": "e9296899ac704c035a8fcb605a3b12c52ce17fdf45ec6e986f54834c04da4d97"
+}

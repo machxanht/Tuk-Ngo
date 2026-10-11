@@ -6,7 +6,9 @@ Playable tablet race (V10): https://machxanht.github.io/Tuk-Ngo/?demo=play&v=v10
 
 Two-boat scene inspection (V9 assets): https://machxanht.github.io/Tuk-Ngo/?demo=studio
 
-Single-boat asset inspection (V9): https://machxanht.github.io/Tuk-Ngo/?demo=art
+Asset inspection (public build currently V9): https://machxanht.github.io/Tuk-Ngo/?demo=art
+
+This checkout adds a detailed **single athlete study**, competition kit and wooden paddle using real 2024 photos/video. Locally, `?demo=art` defaults to “Một VĐV mới”; the current V9 boat remains available for comparison. The new standalone GLB and Blender source do not replace the racing crew yet. See [reference/build notes](docs/athlete-study-2024.md). Publication is pending repository write access; the public link above does not contain this sample yet.
 
 ## Run and build
 
@@ -18,7 +20,7 @@ node scripts/check-gameplay.mjs
 npm run build
 ```
 
-Vite base is `/Tuk-Ngo/`. `?demo=art` and the existing `?demo=race` open the V9 single-boat inspection. `?demo=studio` opens V9: two 3D crews, two different covered grandstands, dense animated anatomical spectators, Khmer signs, urban Mekong Delta banks and bridge inspection cameras. Cadence above 80 blends into a stronger sprint stroke and increases paddle-contact spray. Use “Bật tiếng cổ vũ” to enable the licensed crowd recording; sound pauses with the scene. “Đường đua & tùy chọn” provides start/midpoint/finish jumps, team selection, low-power rendering, PNG and 10-second WebM exports. The amber-shirt team is a fictional test team. The root page keeps the reference dossier.
+Vite base is `/Tuk-Ngo/`. In this checkout, `?demo=art` and the existing `?demo=race` open the new single athlete and the preserved V9 boat comparison. `?demo=studio` opens V9: two 3D crews, two different covered grandstands, dense animated anatomical spectators, Khmer signs, urban Mekong Delta banks and bridge inspection cameras. Cadence above 80 blends into a stronger sprint stroke and increases paddle-contact spray. Use “Bật tiếng cổ vũ” to enable the licensed crowd recording; sound pauses with the scene. “Đường đua & tùy chọn” provides start/midpoint/finish jumps, team selection, low-power rendering, PNG and 10-second WebM exports. The amber-shirt team is a fictional test team. The root page keeps the reference dossier.
 
 ## Assets and effects
 

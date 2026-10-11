@@ -1,0 +1,24 @@
+{
+  "bodySource": "MakeHuman/MPFB via Innerscene CC0",
+  "newMeshes": [
+    "stitched loose tank top",
+    "binding and seams",
+    "loose shorts and continuous waistband",
+    "six-panel white cap",
+    "curved visor",
+    "rounded wooden dam"
+  ],
+  "realReference": "Thanh Nien / Duy Tan, 15 November 2024, photos 8 and 11",
+  "dimensions": "approximate",
+  "paddleLengthM": 1.52,
+  "bladeLengthM": 0.48,
+  "bladeWidthM": 0.158,
+  "animationFrames": 49,
+  "maxHandReachExcessM": 0,
+  "maxArmReachClampM": 0,
+  "maxGripPathCorrectionM": 0.03964970128734493,
+  "bodyTriangles": 102570,
+  "clothContactFrames": 49,
+  "maxClothCorrectionM": 0.05444266412781802,
+  "clothCorrectedVertexSamples": 73465
+}

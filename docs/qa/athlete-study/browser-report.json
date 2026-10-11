@@ -1,0 +1,44 @@
+{
+  "errors": [],
+  "athleteDataset": {
+    "testid": "art-stage",
+    "renderMode": "athlete-study",
+    "artSource": "BLENDER_2024_REFERENCE_STUDY",
+    "phase": "0.6800",
+    "view": "front",
+    "crewCount": "1",
+    "triangles": "150671",
+    "drawCalls": "39"
+  },
+  "phaseAdvanced": true,
+  "screenshots": [
+    "landscape-back.png",
+    "landscape-front.png",
+    "phase-000.png",
+    "phase-013.png",
+    "phase-032.png",
+    "phase-053.png",
+    "phase-064.png",
+    "phase-077.png",
+    "phase-100.png",
+    "portrait-front.png"
+  ],
+  "videoBytes": 222011,
+  "oldBoatModeLoaded": true,
+  "glbSha256": "e9296899ac704c035a8fcb605a3b12c52ce17fdf45ec6e986f54834c04da4d97",
+  "testedProductionBuild": "index-AclkgouA.js",
+  "viewports": [
+    [
+      1024,
+      768
+    ],
+    [
+      768,
+      1024
+    ]
+  ],
+  "limits": [
+    "Desktop software WebGL, not a physical tablet benchmark",
+    "Visual inspection complements the persisted bone and contact checks"
+  ]
+}

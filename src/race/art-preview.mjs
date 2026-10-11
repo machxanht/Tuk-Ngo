@@ -8,8 +8,8 @@ function stepClock(clock,settings,now){
  if(s.playing){c.seconds+=dt;c.phase=(c.phase+dt*s.cadence/60)%1;}
  return s.playing?dt:0;
 }
-function saveCanvas(canvas,name){canvas.toBlob(blob=>{if(!blob)return;const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});}
-function recordCanvas(canvas,name){
+export function saveCanvas(canvas,name){canvas.toBlob(blob=>{if(!blob)return;const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});}
+export function recordCanvas(canvas,name){
  if(!canvas.captureStream||!globalThis.MediaRecorder)throw Error('Trình duyệt này chưa hỗ trợ xuất clip.');
  const stream=canvas.captureStream(30),types=['video/webm;codecs=vp9','video/webm;codecs=vp8','video/webm'];
  const mimeType=types.find(type=>MediaRecorder.isTypeSupported(type));

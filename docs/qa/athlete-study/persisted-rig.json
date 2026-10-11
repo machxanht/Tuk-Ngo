@@ -1,0 +1,54 @@
+{
+  "path": "public/assets/human/athlete-rower-study.glb",
+  "sha256": "e9296899ac704c035a8fcb605a3b12c52ce17fdf45ec6e986f54834c04da4d97",
+  "bytes": 14508140,
+  "clips": [
+    {
+      "name": "Scene",
+      "duration": 1.6333333253860474,
+      "tracks": 172
+    }
+  ],
+  "sampledPhases": 193,
+  "maxPalmCenterGapM": 0.0037101993482062372,
+  "minElbowAngleDeg": 54.99998279858723,
+  "maxElbowAngleDeg": 145.00002539084153,
+  "maxWristFlexDeg": 0.00010712392897346297,
+  "maxJointStepDeg": 5.0902850000429085,
+  "maxLoopPositionDeltaM": 0.000002413343676642928,
+  "validator": {
+    "errors": 0,
+    "warnings": 30,
+    "warningCodes": [
+      "NODE_SKINNED_MESH_NON_ROOT"
+    ]
+  },
+  "errors": [],
+  "largestGapAt": {
+    "phase": 0.5833333333333334,
+    "arm": "l",
+    "time": 0.9527777731418611,
+    "palm": [
+      -0.1623387604474243,
+      1.1714524268531243,
+      0.3661391553259591
+    ],
+    "grip": [
+      -0.16124095416174655,
+      1.172983191871275,
+      0.36294272622119816
+    ]
+  },
+  "largestStepAt": {
+    "phase": 0.5833333333333334,
+    "bone": "upperarm_r"
+  },
+  "shirtMorphTargets": 49,
+  "pass": true,
+  "limits": [
+    "Palm center / bones are checked, not exhaustive finger surface contact",
+    "Authored animation, not measured race biomechanics or motion capture",
+    "Real textures and garment appearance require browser inspection",
+    "One detailed actor; no physical tablet performance benchmark"
+  ]
+}

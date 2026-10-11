@@ -1,0 +1,16 @@
+{
+  "rigBones": 53,
+  "shirtVertices": 4250,
+  "shirtShapeKeys": 49,
+  "packedImages": [
+    {
+      "name": "young_lightskinned_male_diffuse3.png",
+      "bytes": 3569044
+    }
+  ],
+  "externalFonts": [],
+  "frames": [
+    1,
+    49
+  ]
+}
