@@ -1,0 +1,20 @@
+{
+  "url": "https://machxanht.github.io/Tuk-Ngo/?demo=play&v=7151daf",
+  "pagesCommit": "7151daf42a9a5c4f36a33eb0cf162d03392d36d1",
+  "workflow": "https://github.com/machxanht/Tuk-Ngo/actions/runs/38088241372",
+  "workflowStatus": "Success",
+  "sceneVersion": "MASPERO_TWO_CREWS_V10_GAMEPLAY",
+  "loaded": {"boats": 2, "crewActors": 110, "khmerFont": true},
+  "verified": {
+    "startEnabledAfterAssetsLoad": true,
+    "countdownAndIndependentOpponentAdvance": true,
+    "strokeButtonReceivesInput": true,
+    "cameraAccountsForPaddlePanel": true,
+    "pauseOpensAndFreezesRace": true,
+    "consoleErrorsOrWarnings": [],
+    "publicFilesMatchTestedBuild": true
+  },
+  "scope": "Public smoke and visual QA; the full actual-control race and timing checks are documented in local-v10-browser.json and gameplay-v10.json",
+  "screenshots": ["public-v10-ready.jpg", "public-v10-racing.jpg", "public-v10-paused.jpg"],
+  "physicalTabletTested": false
+}

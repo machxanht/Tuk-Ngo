@@ -1,0 +1,79 @@
+{
+  "url": "https://machxanht.github.io/Tuk-Ngo/?demo=play&v=7151daf",
+  "sourceCommit": "d9882298040c90f3d722ae6c853a41c618980f7f",
+  "pagesCommit": "7151daf42a9a5c4f36a33eb0cf162d03392d36d1",
+  "pagesWorkflow": "https://github.com/machxanht/Tuk-Ngo/actions/runs/38088241372",
+  "files": [
+    {
+      "path": "index.html",
+      "httpStatus": 200,
+      "bytes": 1429,
+      "sha256": "eac41322ee6058a7a9e64dbaddaa4131e4cb1400314c6f0db8524e757b6438c3",
+      "matchesBuildOrPreservedAsset": true
+    },
+    {
+      "path": "assets/index-CpxUD8Sp.js",
+      "httpStatus": 200,
+      "bytes": 1205765,
+      "sha256": "06ec6c34f0ff07874aaed94d19988e09bc40ebe97c8d7ba783aa3106f2a9666a",
+      "matchesBuildOrPreservedAsset": true
+    },
+    {
+      "path": "assets/index-DDn_2dbJ.css",
+      "httpStatus": 200,
+      "bytes": 81157,
+      "sha256": "08d33ac924de02fb2e97c50a9174ac407b76e23a19b05706c98ec8a66f4fe05a",
+      "matchesBuildOrPreservedAsset": true
+    },
+    {
+      "path": "assets/ghe-ngo/ghe-ngo-crew-v9.glb",
+      "httpStatus": 200,
+      "bytes": 10853560,
+      "sha256": "cba350a44c29576afe90780481268e39f74b4e8bc82df39078368bca89dd5158",
+      "matchesBuildOrPreservedAsset": true
+    },
+    {
+      "path": "assets/fonts/NotoSansKhmer.ttf",
+      "httpStatus": 200,
+      "bytes": 359788,
+      "sha256": "f37a8431a0c5d5ed2f81a767417546aca576a81fb7eff9c924d46aecf828f2ca",
+      "matchesBuildOrPreservedAsset": true
+    },
+    {
+      "path": "assets/audio/crowd-cheer-cc0.mp3",
+      "httpStatus": 200,
+      "bytes": 360081,
+      "sha256": "b75957f07b5702256004beb31a59a8dd762785a197e2133bbf8fcf7d92fc6714",
+      "matchesBuildOrPreservedAsset": true
+    },
+    {
+      "path": "assets/human/crowd-near.json",
+      "httpStatus": 200,
+      "bytes": 22950,
+      "sha256": "1e9b615102e7afb37fe45e501957797df481411af5a4ad394b1143daacd3593c",
+      "matchesBuildOrPreservedAsset": true
+    },
+    {
+      "path": "assets/human/crowd-near.bin",
+      "httpStatus": 200,
+      "bytes": 1039104,
+      "sha256": "58aabe50d624a0d45bf397302fcf26f4818b28f913781f83b8523a0d58abc6a2",
+      "matchesBuildOrPreservedAsset": true
+    },
+    {
+      "path": "assets/human/crowd-far.json",
+      "httpStatus": 200,
+      "bytes": 3675,
+      "sha256": "c39dc63bef8d6af83c7c880eb7b623a5f767c09077d43ecab72d119d199d1b4f",
+      "matchesBuildOrPreservedAsset": true
+    },
+    {
+      "path": "assets/human/crowd-far.bin",
+      "httpStatus": 200,
+      "bytes": 185472,
+      "sha256": "c27dd5a795267b9f4cc1b740bdeef86093808a3d8d4fed099f72cb3b60616f0b",
+      "matchesBuildOrPreservedAsset": true
+    }
+  ],
+  "allMatch": true
+}
