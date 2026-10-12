@@ -6,6 +6,11 @@ The SVG paint is newly authored vector drawing based on directly inspected land 
 
 References:
 
+- Owner-provided channel: https://www.youtube.com/@mrchanhung72 (Trường Dương, UC-cSAjy2v10_AFLwGBuEjRw). V14's completed-pattern review is in repository `docs/chanhung-finished-kbach-catalog.md`.
+- Tum Núp finished green scales, curled yellow crest and pink segmented belly: https://www.youtube.com/watch?v=uG4E4LHORIE&t=250s (2025-09-23). Fleet contains an old bib12; it is not assigned as2025bib17.
+- Trà Tim finished flower-band side: https://www.youtube.com/watch?v=fneO2kuutM0&t=200s (2025-10-06). Large/small pink-gold flame flowers with cyan centres and lime boundaries. Different diagonal/Phoenix hulls in the same walkthrough remain separate studies.
+- Prêk On Đơk finished river-side palette: https://www.youtube.com/watch?v=qT1jWHE3YpY&t=80s (2025-10-31).
+
 - Official Cần Thơ day-two broadcast: https://www.youtube.com/watch?v=crZF3hghbgQ
 - Tum Núp bib17 actual race: https://www.youtube.com/watch?v=vw-KGT03-AY&t=30s (compilation uploaded 2026-10-06; readable 17 and Cần Thơ2 broadcast watermark)
 - Trà Cuôn, THÁI DƯƠNG TV: https://www.youtube.com/watch?v=sfENfcv6K8M&t=250s
@@ -21,3 +26,5 @@ References:
 - Pôthi Khsach, Tập Rèn TV: https://www.youtube.com/watch?v=waFNI0MzD7s&t=100s
 
 Kos Thum49's repeating diamonds/floral side now matches the adjacent **blue-interior** launch hull. Tum Núp17's visible race naga overrides the earlier unbound leaf-scroll training candidate. Om Pou Year and Satharam details are bound to named 2025 team sources, but readable bib23/07 was absent from the new land samples. Hidden strokes and mirrored unseen end paintings are authored approximations. Numbers and readable plaques are added game identifiers. Plate placement uses the shared hull dimensions rather than recovered per-team measurements.
+
+V14 refines the two newly observed completed paint families and rebakes their team GLBs. Remaining variants preserve earlier2025 observations. `../kbach-studies/index.html` offers source-linked drawings and two additional texture studies. Khleang is outside the ranked roster; Trà Tim's diagonal study is not mixed into its flower-band boat. Exact Trà Tim race08 land-hull binding remains unresolved. The original crew mesh and authored base/sprint animation remain V13.
