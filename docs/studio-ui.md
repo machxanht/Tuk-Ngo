@@ -1,0 +1,11 @@
+# Unobstructed tablet studio
+
+The owner reported that the studio overlays covered the boat assets. Previously, the always-open toolbar occupied approximately the lower half of a tablet viewport, with heading/source/distance overlays at the top. The stable link remains `https://machxanht.github.io/Tuk-Ngo/?demo=studio`.
+
+The studio now starts with its heading, source, status and complete toolbar hidden. A single 48px-high **Điều khiển** button at the lower-right opens them; **Ẩn điều khiển** restores the unobstructed scene. Choosing any camera automatically closes the panel and returns keyboard focus to that button. Escape also closes it. A hidden panel is excluded from tab navigation and pointer hit-testing. Loading/error feedback remains visible while the scene has not loaded.
+
+Closing the UI does not remount the WebGL scene, change teams, resume a paused scene, or reset cadence. Camera framing clears the toolbar offset when it is hidden and updates when the panel's size changes, so a closed panel leaves no reserved space. Expanded controls remain scrollable in shorter landscape viewports; the floating toggle stays below them. The playable race retains its paddle/timing controls.
+
+The UI/UX skill's targeted searches did not produce a verified progressive-disclosure rule (the narrower result concerned heading wrapping), so that result was not adopted. The scoped fix uses native hidden/aria-expanded semantics and the entrypoint's touch-target/focus guidance. No design-system replacement or asset rebuild was needed.
+
+Validation: TypeScript and production build pass. Actual production Edge checks at1024×768,768×1024 and800×600 confirm the single-button default, no hidden overlays,48px touch target, no horizontal overflow and automatic closure on camera selection. Direct screenshots were reviewed, including unobstructed seated athletes. Pause state survives open/close; team selection and downloaded GLB SHA match the unchanged validated asset. Sprint splash events continue while UI is hidden. Game start, input and pause remain functional. There are no page/WebGL console errors in those checks. Evidence: `docs/qa/studio-ui/`. Physical tablet hardware performance remains untested.
