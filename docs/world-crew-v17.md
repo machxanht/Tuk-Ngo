@@ -33,3 +33,6 @@ The people-inspection cameras now follow actual head facing after the course rev
 
 
 Final production world gate reports 32549 spectator placements,16face types in each55-person crew,192vehicles,318mapped/308authoredfrontage buildings. Public acceptance remains to be recorded after release. Final ocular alignment and front-facing inspection cameras are in the shipped source.
+
+
+The linked whole-boat art preview and GLB download now both point to V17; previously they loaded V15 and downloaded V12. The solo VĐV study remains explicitly labelled initial research; the current crew and roles can be inspected from the studio.

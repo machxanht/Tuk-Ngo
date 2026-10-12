@@ -120,7 +120,7 @@ export async function startIllustratedPreview(host,settings,clock,base,onReady){
 }
 
 export async function startModelPreview(host,settings,clock,base,onReady){
- const model=await new GLTFLoader().loadAsync(base+'assets/ghe-ngo/ghe-ngo-crew-v15.glb'),root=model.scene;
+ const model=await new GLTFLoader().loadAsync(base+'assets/ghe-ngo/ghe-ngo-crew-v17.glb'),root=model.scene;
  const scene=new T.Scene();scene.background=new T.Color('#d6dfce');scene.fog=new T.Fog('#d6dfce',75,200);
  scene.add(new T.HemisphereLight('#fff4dc','#557062',1.25));
  const key=new T.DirectionalLight('#ffe6b5',2.6);key.position.set(-12,22,18);key.castShadow=true;key.shadow.mapSize.set(2048,2048);key.shadow.camera.left=-20;key.shadow.camera.right=20;key.shadow.camera.top=10;key.shadow.camera.bottom=-10;key.shadow.normalBias=.015;scene.add(key);
@@ -145,7 +145,7 @@ export async function startModelPreview(host,settings,clock,base,onReady){
   const strength=sprintAction?T.MathUtils.clamp((s.cadence-80)/25,0,1):0;action.setEffectiveWeight(1-strength);sprintAction?.setEffectiveWeight(strength);
   if(s.view!==lastView){setCamera(s.view);fx.reset();}mixer.setTime(c.phase*clip.duration);root.position.y=Math.sin(c.phase*Math.PI*2)*.006;root.updateMatrixWorld(true);
   river.update(c.seconds);boat.athletes=athletes.filter(a=>a.root.visible);fx.update(dt,boat,4.2,c.seconds,s.splash,strength);renderer.render(scene,camera);
-  host.dataset.renderMode='model';host.dataset.artSource='MAKEHUMAN_CC0_ROLE_CREW_V15';host.dataset.phase=c.phase.toFixed(4);host.dataset.view=s.view;host.dataset.crewCount='55';host.dataset.drawCalls=String(renderer.info.render.calls);host.dataset.triangles=String(renderer.info.render.triangles);host.dataset.splashEvents=String(fx.stats().events);host.dataset.activeParticles=String(fx.stats().particles);
+  host.dataset.renderMode='model';host.dataset.artSource='MAKEHUMAN_CC0_ROLE_CREW_V17';host.dataset.phase=c.phase.toFixed(4);host.dataset.view=s.view;host.dataset.crewCount='55';host.dataset.drawCalls=String(renderer.info.render.calls);host.dataset.triangles=String(renderer.info.render.triangles);host.dataset.splashEvents=String(fx.stats().events);host.dataset.activeParticles=String(fx.stats().particles);
   raf=requestAnimationFrame(frame);
  }
  onReady({reset(){fx.reset();},capture(){saveCanvas(renderer.domElement,'ghe-ngo-3d-'+settings.current.view+'.png');},record(){return recordCanvas(renderer.domElement,'ghe-ngo-3d-'+settings.current.view+'-10s.webm');},dispose(){disposed=true;cancelAnimationFrame(raf);observer.disconnect();mixer.stopAllAction();fx.dispose();river.dispose();scene.traverse(o=>{o.geometry?.dispose();for(const m of o.material?(Array.isArray(o.material)?o.material:[o.material]):[]){for(const v of Object.values(m))if(v?.isTexture)v.dispose();m.dispose();}});renderer.dispose();renderer.domElement.remove();}});
