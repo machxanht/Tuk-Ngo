@@ -1,0 +1,44 @@
+{
+  "base": "https://machxanht.github.io/Tuk-Ngo/",
+  "errors": [],
+  "viewports": [
+    {
+      "width": 1024,
+      "height": 768,
+      "defaultClean": true,
+      "toggleTouchTarget": true,
+      "cameraAutoCloses": true,
+      "noOverflow": true
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "defaultClean": true,
+      "toggleTouchTarget": true,
+      "cameraAutoCloses": true,
+      "noOverflow": true
+    },
+    {
+      "width": 800,
+      "height": 600,
+      "defaultClean": true,
+      "toggleTouchTarget": true,
+      "cameraAutoCloses": true,
+      "noOverflow": true
+    }
+  ],
+  "physicalTabletTested": false,
+  "studio": {
+    "pauseSurvivesToggle": true,
+    "orbitGesture": true,
+    "escapeRestoresFocus": true,
+    "teamSelection": true,
+    "downloadHashMatched": true,
+    "sprintWaterWhileHidden": true
+  },
+  "gameplay": {
+    "startInputPause": true,
+    "controlsRemainAvailable": true
+  },
+  "pass": true
+}

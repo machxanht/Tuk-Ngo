@@ -15,4 +15,10 @@ Reproduction: `python scripts/baseball-caps-v18.py INPUT_GLB OUTPUT_GLB`. Start 
 
 The production build and TypeScript check pass. Actual Edge browser checks pass at 1024×768, 768×1024 and 800×600: clean default UI, camera selection, gestures, team switching, actual GLB download hash, sprint water, and game start/input/pause. See [production browser checks](qa/crew-v18/production-ui-check.json), [front-facing cap](qa/crew-v18/cap-3-front.png), [side profile](qa/crew-v18/cap-3-side.png), and [backward cap and strap](qa/crew-v18/cap-2-front.png).
 
-Public deployment acceptance is recorded after verification. Physical tablet hardware remains untested. The existing V17 map, crowd, traffic and camera behavior are unchanged by this cap-only update.
+## Public acceptance — 2026-10-13
+
+Source commit `29dc430` is live through Pages commit `ca8f6346966516b5e3dc2782357606467dc42226`. The [Pages deployment](https://github.com/machxanht/Tuk-Ngo/actions/runs/38283433237) completed successfully. Public HTML serves `index-CXv479Hm.js`, while the stable [studio link](https://machxanht.github.io/Tuk-Ngo/?demo=studio) is unchanged.
+
+The [public UI check](qa/crew-v18/public-ui-check.json) passes at all three tested tablet-sized viewports, including selecting Trà Tim, downloading its GLB and matching its SHA-256, sprint water and gameplay start/input/pause. The [public file check](qa/crew-v18/public-files-check.json) confirms the expected sizes of all eight team files and an actual matching Tum Núp 2 download. The [public art check](qa/crew-v18/public-art-check.json) confirms V18 is the default whole-boat preview and that its downloaded template matches the source SHA-256. [The live crew screenshot](qa/crew-v18/public-seated-crews.png) shows both forward and backward red caps on Trà Tim and yellow caps on the opposite crew. There are no browser errors in these checks.
+
+Physical tablet hardware remains untested. The existing V17 map, crowd, traffic and camera behavior are unchanged by this cap-only update.

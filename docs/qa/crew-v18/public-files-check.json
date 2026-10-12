@@ -1,0 +1,40 @@
+{
+  "pass": true,
+  "base": "https://machxanht.github.io/Tuk-Ngo/",
+  "bundle": "index-CXv479Hm.js",
+  "teamFiles": [
+    {
+      "id": "tum-nup-2",
+      "bytes": 26009212
+    },
+    {
+      "id": "prek-on-dok-2",
+      "bytes": 25742172
+    },
+    {
+      "id": "prek-ta-cuol",
+      "bytes": 25723780
+    },
+    {
+      "id": "chroi-tum-chas",
+      "bytes": 25719680
+    },
+    {
+      "id": "om-pou-year",
+      "bytes": 25772168
+    },
+    {
+      "id": "kos-thum-1",
+      "bytes": 25704296
+    },
+    {
+      "id": "pothi-satharam-2",
+      "bytes": 25668968
+    },
+    {
+      "id": "pothi-khsach",
+      "bytes": 25921972
+    }
+  ],
+  "tumNupDownloadHashMatched": true
+}
