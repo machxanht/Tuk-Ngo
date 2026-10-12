@@ -1,0 +1,97 @@
+{
+  "teams": [
+    {
+      "actors": 55,
+      "rowers": 50,
+      "seated": 16,
+      "standing": 34,
+      "batches": {
+        "actors": 55,
+        "mergedActors": 55,
+        "staticBatches": 7,
+        "dynamicBatches": 8
+      }
+    },
+    {
+      "actors": 55,
+      "rowers": 50,
+      "seated": 16,
+      "standing": 34,
+      "batches": {
+        "actors": 55,
+        "mergedActors": 55,
+        "staticBatches": 7,
+        "dynamicBatches": 8
+      }
+    }
+  ],
+  "boneMetrics": {
+    "BOW_CALLER_seated": {
+      "minFootY": 0.24266023574696027,
+      "maxFootY": 0.2426623937414974,
+      "minHeadY": 1.35894815386009,
+      "maxHeadY": 1.35894815386009
+    },
+    "ROWER_seated": {
+      "minFootY": 0.15260971672720625,
+      "maxFootY": 0.3428437732839793,
+      "minHeadY": 1.07366370693522,
+      "maxHeadY": 1.2137123611476222
+    },
+    "ROWER_standing": {
+      "minFootY": 0.1336672785525007,
+      "maxFootY": 0.35621692831201085,
+      "minHeadY": 1.3902069051258494,
+      "maxHeadY": 1.685559239138791
+    },
+    "MID_CONTROLLER_standing": {
+      "minFootY": 0.1567001711174713,
+      "maxFootY": 0.15670023746854278,
+      "minHeadY": 1.6125133907861688,
+      "maxHeadY": 1.6125133907861688
+    },
+    "HELMSMAN_standing": {
+      "minFootY": 0.6946551558950513,
+      "maxFootY": 0.907999351691076,
+      "minHeadY": 2.0995809585477203,
+      "maxHeadY": 2.3038126975919098
+    }
+  },
+  "gripSupport": {
+    "samples": 10388,
+    "maxGapM": 0.002918633570353318,
+    "helmTipMinY": -2.05635426548214,
+    "helmTipMaxY": -1.7970948682696122,
+    "worst": {
+      "id": 55,
+      "frame": 20,
+      "clip": "Rowing_Real_2024_Roles_80SPM",
+      "side": "l",
+      "gap": 0.002918633570353318
+    }
+  },
+  "footSupport": {
+    "sampledFramesPerClip": 49,
+    "maxTargetGapM": 0.000009812388834651167,
+    "maxLowerLegIntrusionM": 0,
+    "verticesChecked": 2457840,
+    "worstIntrusion": {
+      "id": 52,
+      "frame": 0,
+      "clip": "Rowing_Real_2024_Roles_80SPM",
+      "depth": -0.026405900149225045,
+      "position": [
+        3.9209836348033233,
+        0.08893113324059733,
+        0.11566219291922121
+      ]
+    }
+  },
+  "callerFeet": {
+    "samples": 196,
+    "maxX": 10.069999289618647,
+    "maxY": 0.2426623937414974,
+    "insideHull": true
+  },
+  "pass": true
+}

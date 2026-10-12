@@ -1,0 +1,395 @@
+{
+  "pass": true,
+  "caps": 55,
+  "surfaceSamples": 121495,
+  "minimumRadialScalpClearanceM": 0.0009926415420910828,
+  "headOnlyWeights": true,
+  "records": [
+    {
+      "id": 1,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.0017787973925186829,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 2,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.0017127653479605959,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 3,
+      "orientation": "forward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.004461093077081063,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 4,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.0019347727811699356,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 5,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.001867212060840881,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 6,
+      "orientation": "forward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.004080774816590513,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 7,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.0016201586076018265,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 8,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.001627262983017977,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 9,
+      "orientation": "forward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.0042257985427175265,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 10,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.0022877004226316833,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 11,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.0012511903172026523,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 12,
+      "orientation": "forward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.0043748318561760285,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 13,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.0016691220659134365,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 14,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.0019484057140455868,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 15,
+      "orientation": "forward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.004103846460455432,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 16,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.0010791770353289626,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 17,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.0017786064406981883,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 18,
+      "orientation": "forward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.004426782605730484,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 19,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.0017513293111523082,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 20,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.0019346069446021658,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 21,
+      "orientation": "forward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.00454660386270174,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 22,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.0009929989564285424,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 23,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.001619221950982963,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 24,
+      "orientation": "forward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.004385432509952061,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 25,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.0012961776238631373,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 26,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.0022873760095029616,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 27,
+      "orientation": "forward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.004203837000202507,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 28,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.0016064056676747956,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 29,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.0016695420754695434,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 30,
+      "orientation": "forward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.004589579952465547,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 31,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.0010435572510406332,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 32,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.0010791789569545018,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 33,
+      "orientation": "forward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.004478195886170586,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 34,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.001712252082074775,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 35,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.0017511359952561562,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 36,
+      "orientation": "forward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.0045995041744397586,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 37,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.0018668880053443054,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 38,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.0009926415420910828,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 39,
+      "orientation": "forward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.004426483272940124,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 40,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.001626854956845683,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 41,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.001295955937174742,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 42,
+      "orientation": "forward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.004687944791704188,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 43,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.0012508507749001557,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 44,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.0016062313787488514,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 45,
+      "orientation": "forward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.004422189753536213,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 46,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.0019479832356238402,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 47,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.0010431943868347698,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 48,
+      "orientation": "forward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.00412158505570244,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 49,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.0017787963399713003,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 50,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.0017134536830712421,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 51,
+      "orientation": "forward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.004461765256352307,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 52,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.001934398321606759,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 53,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.001867218509448279,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 54,
+      "orientation": "forward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.004080671335427041,
+      "penetratingSamples": 0
+    },
+    {
+      "id": 55,
+      "orientation": "backward",
+      "surfaceSamples": 2209,
+      "minimumRadialScalpClearanceM": 0.0016201910377729167,
+      "penetratingSamples": 0
+    }
+  ],
+  "limits": "Static scalp/crown clearance; visual animation inspection is also required."
+}

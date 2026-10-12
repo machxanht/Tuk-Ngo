@@ -1,0 +1,1111 @@
+{
+  "input": "public/assets/ghe-ngo/ghe-ngo-crew-v17.glb",
+  "output": "../asset-studio/crew-v18/ghe-ngo-crew-v18.glb",
+  "pass": true,
+  "caps": 55,
+  "animationSkinAndNonCapNodesPreserved": true,
+  "originalBinPrefixSha256": "184e3b50ef9cc57f0fb92da676d3ce2f54669c868e970899660b37394b541360",
+  "bytes": 36846172,
+  "records": [
+    {
+      "id": 1,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_1_BOW_CALLER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_2_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "orientation": "forward",
+      "headJoint": 44,
+      "node": "Athlete_3_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.11143321407450495
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.1945
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_4_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_5_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "orientation": "forward",
+      "headJoint": 44,
+      "node": "Athlete_6_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.11143321407450495
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.1945
+        ]
+      }
+    },
+    {
+      "id": 7,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_7_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_8_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    },
+    {
+      "id": 9,
+      "orientation": "forward",
+      "headJoint": 44,
+      "node": "Athlete_9_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.11143321407450495
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.1945
+        ]
+      }
+    },
+    {
+      "id": 10,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_10_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    },
+    {
+      "id": 11,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_11_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    },
+    {
+      "id": 12,
+      "orientation": "forward",
+      "headJoint": 44,
+      "node": "Athlete_12_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.11143321407450495
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.1945
+        ]
+      }
+    },
+    {
+      "id": 13,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_13_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    },
+    {
+      "id": 14,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_14_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    },
+    {
+      "id": 15,
+      "orientation": "forward",
+      "headJoint": 44,
+      "node": "Athlete_15_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.11143321407450495
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.1945
+        ]
+      }
+    },
+    {
+      "id": 16,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_16_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    },
+    {
+      "id": 17,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_17_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    },
+    {
+      "id": 18,
+      "orientation": "forward",
+      "headJoint": 44,
+      "node": "Athlete_18_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.11143321407450495
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.1945
+        ]
+      }
+    },
+    {
+      "id": 19,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_19_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    },
+    {
+      "id": 20,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_20_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    },
+    {
+      "id": 21,
+      "orientation": "forward",
+      "headJoint": 44,
+      "node": "Athlete_21_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.11143321407450495
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.1945
+        ]
+      }
+    },
+    {
+      "id": 22,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_22_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    },
+    {
+      "id": 23,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_23_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    },
+    {
+      "id": 24,
+      "orientation": "forward",
+      "headJoint": 44,
+      "node": "Athlete_24_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.11143321407450495
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.1945
+        ]
+      }
+    },
+    {
+      "id": 25,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_25_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    },
+    {
+      "id": 26,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_26_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    },
+    {
+      "id": 27,
+      "orientation": "forward",
+      "headJoint": 44,
+      "node": "Athlete_27_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.11143321407450495
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.1945
+        ]
+      }
+    },
+    {
+      "id": 28,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_28_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    },
+    {
+      "id": 29,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_29_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    },
+    {
+      "id": 30,
+      "orientation": "forward",
+      "headJoint": 44,
+      "node": "Athlete_30_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.11143321407450495
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.1945
+        ]
+      }
+    },
+    {
+      "id": 31,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_31_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    },
+    {
+      "id": 32,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_32_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    },
+    {
+      "id": 33,
+      "orientation": "forward",
+      "headJoint": 44,
+      "node": "Athlete_33_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.11143321407450495
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.1945
+        ]
+      }
+    },
+    {
+      "id": 34,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_34_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    },
+    {
+      "id": 35,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_35_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    },
+    {
+      "id": 36,
+      "orientation": "forward",
+      "headJoint": 44,
+      "node": "Athlete_36_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.11143321407450495
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.1945
+        ]
+      }
+    },
+    {
+      "id": 37,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_37_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    },
+    {
+      "id": 38,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_38_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    },
+    {
+      "id": 39,
+      "orientation": "forward",
+      "headJoint": 44,
+      "node": "Athlete_39_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.11143321407450495
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.1945
+        ]
+      }
+    },
+    {
+      "id": 40,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_40_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    },
+    {
+      "id": 41,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_41_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    },
+    {
+      "id": 42,
+      "orientation": "forward",
+      "headJoint": 44,
+      "node": "Athlete_42_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.11143321407450495
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.1945
+        ]
+      }
+    },
+    {
+      "id": 43,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_43_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    },
+    {
+      "id": 44,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_44_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    },
+    {
+      "id": 45,
+      "orientation": "forward",
+      "headJoint": 44,
+      "node": "Athlete_45_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.11143321407450495
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.1945
+        ]
+      }
+    },
+    {
+      "id": 46,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_46_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    },
+    {
+      "id": 47,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_47_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    },
+    {
+      "id": 48,
+      "orientation": "forward",
+      "headJoint": 44,
+      "node": "Athlete_48_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.11143321407450495
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.1945
+        ]
+      }
+    },
+    {
+      "id": 49,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_49_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    },
+    {
+      "id": 50,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_50_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    },
+    {
+      "id": 51,
+      "orientation": "forward",
+      "headJoint": 44,
+      "node": "Athlete_51_ROWER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.11143321407450495
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.1945
+        ]
+      }
+    },
+    {
+      "id": 52,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_52_MID_CONTROLLER_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    },
+    {
+      "id": 53,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_53_HELMSMAN_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    },
+    {
+      "id": 54,
+      "orientation": "forward",
+      "headJoint": 44,
+      "node": "Athlete_54_HELMSMAN_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.11143321407450495
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.1945
+        ]
+      }
+    },
+    {
+      "id": 55,
+      "orientation": "backward",
+      "headJoint": 44,
+      "node": "Athlete_55_HELMSMAN_Cap_Baseball_LOD",
+      "vertices": 1323,
+      "triangles": 2004,
+      "headLocalBounds": {
+        "min": [
+          -0.08070000000000001,
+          0.06357982785931342,
+          -0.1945
+        ],
+        "max": [
+          0.08070000000000001,
+          0.1617,
+          0.11143321407450495
+        ]
+      }
+    }
+  ]
+}

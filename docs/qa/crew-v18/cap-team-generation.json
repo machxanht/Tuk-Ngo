@@ -1,0 +1,77 @@
+{
+  "pass": true,
+  "teams": [
+    {
+      "input": "E:\\AI\\Um Tuk\\github-workspace\\public\\assets\\ghe-ngo\\teams-2025\\chroi-tum-chas-2025.glb",
+      "output": "..\\asset-studio\\crew-v18\\teams-2025\\chroi-tum-chas-2025.glb",
+      "pass": true,
+      "caps": 55,
+      "animationSkinAndNonCapNodesPreserved": true,
+      "originalBinPrefixSha256": "9aa22fb9cf883ea898c240bffb08b3d570ac4af63352f3e698797b5f0eccca03",
+      "bytes": 28919928
+    },
+    {
+      "input": "E:\\AI\\Um Tuk\\github-workspace\\public\\assets\\ghe-ngo\\teams-2025\\kos-thum-1-2025.glb",
+      "output": "..\\asset-studio\\crew-v18\\teams-2025\\kos-thum-1-2025.glb",
+      "pass": true,
+      "caps": 55,
+      "animationSkinAndNonCapNodesPreserved": true,
+      "originalBinPrefixSha256": "0fead162505623b2a1583c6da00ab35a00f00f416529c2fa35c9ceb8b3def98a",
+      "bytes": 28904520
+    },
+    {
+      "input": "E:\\AI\\Um Tuk\\github-workspace\\public\\assets\\ghe-ngo\\teams-2025\\om-pou-year-2025.glb",
+      "output": "..\\asset-studio\\crew-v18\\teams-2025\\om-pou-year-2025.glb",
+      "pass": true,
+      "caps": 55,
+      "animationSkinAndNonCapNodesPreserved": true,
+      "originalBinPrefixSha256": "e12a7cbef6efce0ee9ddc1e695306c4e50ce6927f511040ae262709a4f8dd584",
+      "bytes": 28972396
+    },
+    {
+      "input": "E:\\AI\\Um Tuk\\github-workspace\\public\\assets\\ghe-ngo\\teams-2025\\pothi-khsach-2025.glb",
+      "output": "..\\asset-studio\\crew-v18\\teams-2025\\pothi-khsach-2025.glb",
+      "pass": true,
+      "caps": 55,
+      "animationSkinAndNonCapNodesPreserved": true,
+      "originalBinPrefixSha256": "49ce41b95e5f6ae7867145abcdad89fb99d2396d3f11699ddb6761693c2a61af",
+      "bytes": 29122216
+    },
+    {
+      "input": "E:\\AI\\Um Tuk\\github-workspace\\public\\assets\\ghe-ngo\\teams-2025\\pothi-satharam-2-2025.glb",
+      "output": "..\\asset-studio\\crew-v18\\teams-2025\\pothi-satharam-2-2025.glb",
+      "pass": true,
+      "caps": 55,
+      "animationSkinAndNonCapNodesPreserved": true,
+      "originalBinPrefixSha256": "477f65df920f0aa304ffaf76e65a0592c065e95b40a3dda7023d6f5208725c39",
+      "bytes": 28869196
+    },
+    {
+      "input": "E:\\AI\\Um Tuk\\github-workspace\\public\\assets\\ghe-ngo\\teams-2025\\prek-on-dok-2-2025.glb",
+      "output": "..\\asset-studio\\crew-v18\\teams-2025\\prek-on-dok-2-2025.glb",
+      "pass": true,
+      "caps": 55,
+      "animationSkinAndNonCapNodesPreserved": true,
+      "originalBinPrefixSha256": "a24c65452b152edfbb78b89deb3afef9cb98196c2e43501261690ae79b063499",
+      "bytes": 28942412
+    },
+    {
+      "input": "E:\\AI\\Um Tuk\\github-workspace\\public\\assets\\ghe-ngo\\teams-2025\\prek-ta-cuol-2025.glb",
+      "output": "..\\asset-studio\\crew-v18\\teams-2025\\prek-ta-cuol-2025.glb",
+      "pass": true,
+      "caps": 55,
+      "animationSkinAndNonCapNodesPreserved": true,
+      "originalBinPrefixSha256": "938b3b3b15961a55b757e2fb25145b08e84d4ec49f106563a49523b753195ab3",
+      "bytes": 28924024
+    },
+    {
+      "input": "E:\\AI\\Um Tuk\\github-workspace\\public\\assets\\ghe-ngo\\teams-2025\\tum-nup-2-2025.glb",
+      "output": "..\\asset-studio\\crew-v18\\teams-2025\\tum-nup-2-2025.glb",
+      "pass": true,
+      "caps": 55,
+      "animationSkinAndNonCapNodesPreserved": true,
+      "originalBinPrefixSha256": "24944d8f25f4e276109e0b318b70eb176121e858969a31a27eae80f908bd284e",
+      "bytes": 29209440
+    }
+  ]
+}

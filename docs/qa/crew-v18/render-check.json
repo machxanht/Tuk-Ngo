@@ -1,0 +1,42 @@
+{
+  "pass": true,
+  "portraits": [
+    {
+      "id": 3,
+      "angle": "front",
+      "orientation": "forward",
+      "style": "six-panel baseball cap"
+    },
+    {
+      "id": 3,
+      "angle": "side",
+      "orientation": "forward",
+      "style": "six-panel baseball cap"
+    },
+    {
+      "id": 3,
+      "angle": "back",
+      "orientation": "forward",
+      "style": "six-panel baseball cap"
+    },
+    {
+      "id": 2,
+      "angle": "front",
+      "orientation": "backward",
+      "style": "six-panel baseball cap"
+    },
+    {
+      "id": 2,
+      "angle": "side",
+      "orientation": "backward",
+      "style": "six-panel baseball cap"
+    },
+    {
+      "id": 2,
+      "angle": "back",
+      "orientation": "backward",
+      "style": "six-panel baseball cap"
+    }
+  ],
+  "errors": []
+}

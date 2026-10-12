@@ -1,0 +1,32 @@
+{
+  "pass": true,
+  "crew": 55,
+  "roles": {
+    "BOW_CALLER": 1,
+    "ROWER": 50,
+    "MID_CONTROLLER": 1,
+    "HELMSMAN": 3
+  },
+  "postures": {
+    "seated": 16,
+    "standing": 34
+  },
+  "caps": {
+    "backward": 37,
+    "forward": 18
+  },
+  "triangleCount": 892407,
+  "hullBytesPreserved": true,
+  "animationClips": [
+    "Rowing_Real_2024_Roles_80SPM",
+    "Rowing_Sprint_Real_2024_Roles_80SPM"
+  ],
+  "validator": {
+    "errors": 0,
+    "warnings": 660
+  },
+  "limitations": [
+    "Direct visual QA also required",
+    "Unused V9 geometry retained to preserve original bytes; not rendered"
+  ]
+}
