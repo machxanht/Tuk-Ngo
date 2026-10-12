@@ -5,7 +5,7 @@ import * as T from 'three';
 import {validateBytes} from 'gltf-validator';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 import {RACE_TEAMS_2025} from '../src/race/teams-2025.mjs';
-const revision=process.argv[2]||'v15';if(!['v12','v13','v14','v15'].includes(revision))throw Error('Unknown crew revision');
+const revision=process.argv[2]||'v15';if(!['v12','v13','v14','v15','v17'].includes(revision))throw Error('Unknown crew revision');
 const report={pass:true,teams:[]},paintHashes=new Set();
 const support=new Map(JSON.parse(fs.readFileSync('docs/qa/crew-v12/support-plan.json')).map(a=>[a.id,a]));
 function geometryOnly(raw,source){
@@ -32,7 +32,7 @@ for(const team of RACE_TEAMS_2025){
  if(team.interior){const inner=j.materials.find(m=>m.name===team.id+'_Inner_Paint');assert.ok(inner);assert.ok(new T.Color(team.interior).toArray().every((v,i)=>Math.abs(v-inner.pbrMetallicRoughness.baseColorFactor[i])<1e-5));}
  const paint=j.materials.find(m=>m.name===team.id+'_Kbach_2025');assert.ok(paint?.pbrMetallicRoughness.baseColorTexture);
  const svg=fs.readFileSync('public/assets/ghe-ngo/teams-2025/'+team.id+'.svg'),paintHash=crypto.createHash('sha256').update(svg).digest('hex');paintHashes.add(paintHash);
- const validation=await validateBytes(new Uint8Array(raw),{uri:path,maxIssues:100});assert.equal(validation.issues.numErrors,0);
+ const validation=await validateBytes(new Uint8Array(raw),{uri:path,maxIssues:100000});assert.equal(validation.issues.numErrors,0);
  // Reopen each delivered GLB, not just the shared template, and exercise its
  // exported track bindings. A structurally valid clip can still bind wrong rigs.
  const model=await new GLTFLoader().parseAsync(geometryOnly(raw,j),''),mixer=new T.AnimationMixer(model.scene),runtime={footSamples:0,maxFootGapM:0,gripSamples:0,maxGripGapM:0};

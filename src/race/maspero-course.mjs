@@ -1,6 +1,7 @@
 import * as T from 'three';
 import {buildCrowd} from './crowd.mjs';
 import {buildMappedHouses} from './maspero-buildings.mjs';
+import {buildTraffic} from './traffic.mjs';
 import {courseZ,bridgeYaw,MASPERO_LAYOUT,DETAIL_RANGE} from './maspero-layout.mjs';
 
 // All dimensions/coordinates below are authored approximations for the game.
@@ -27,7 +28,7 @@ export function buildMasperoSky(scene){
  return {update(camera){mesh.position.copy(camera.position);},dispose(){geometry.dispose();material.dispose();scene.remove(mesh);}};
 }
 
-export function buildMasperoBanks(group,waterY,crowdAssets){
+export function buildMasperoBanks(group,waterY,crowdAssets,bankMaterials={}){
  const meshes=new Map(),geometries={box:new T.BoxGeometry(1,1,1),pole:new T.CylinderGeometry(1,1,1,8),head:new T.SphereGeometry(1,9,7),crown:new T.SphereGeometry(1,20,14),cone:new T.ConeGeometry(1,1,12)},dummy=new T.Object3D();
  const material=new T.MeshStandardMaterial({color:'white',roughness:.85}),metal=new T.MeshStandardMaterial({color:'white',roughness:.55,metalness:.28});
  const people=[],totals={spectators:0,seats:0,trees:0,houses:0,distantBlocks:0,umbrellas:0,stands:2,nationalFlags:0};
@@ -54,7 +55,7 @@ export function buildMasperoBanks(group,waterY,crowdAssets){
  function beam(a,b,r,color){const d=b.clone().sub(a);dummy.quaternion.setFromUnitVectors(V(0,1,0),d.clone().normalize());const e=new T.Euler().setFromQuaternion(dummy.quaternion);add('pole',(a.x+b.x)/2,(a.y+b.y)/2,(a.z+b.z)/2,r,d.length(),r,color,e.x,e.y,e.z,true);}
  function text(text,width,height,x,y,z,background='#8c2321',fg='#f6d880',ry=0){
   const c=document.createElement('canvas');c.width=2048;c.height=Math.max(64,Math.round(c.width*height/width));const p=c.getContext('2d'),pad=c.height*.08;p.fillStyle=background;p.fillRect(0,0,c.width,c.height);p.strokeStyle=fg;p.lineWidth=Math.max(2,c.height*.025);p.strokeRect(pad,pad,c.width-pad*2,c.height-pad*2);p.fillStyle=fg;p.textAlign='center';p.textBaseline='middle';const base=c.height*.52;p.font='700 '+base+'px "Noto Sans Khmer"';const size=Math.min(base,base*(c.width-pad*4)/p.measureText(text).width);p.font='700 '+size+'px "Noto Sans Khmer"';p.fillText(text,c.width/2,c.height*.52);
-  const tx=new T.CanvasTexture(c);tx.colorSpace=T.SRGBColorSpace;const m=new T.MeshBasicMaterial({map:tx,side:T.DoubleSide}),o=new T.Mesh(new T.PlaneGeometry(width,height),m);o.position.set(x,y,bridgeFrame?z:mappedZ(x,z));o.rotation.y=ry;if(bridgeFrame){const dx=x-bridgeFrame.x;cDummyPosition(o,dx,z,bridgeFrame);o.rotation.y+=bridgeFrame.yaw;}o.name='CourseSign_'+text;group.add(o);return o;
+  const tx=new T.CanvasTexture(c);tx.colorSpace=T.SRGBColorSpace;tx.anisotropy=4;const m=new T.MeshBasicMaterial({map:tx,side:T.FrontSide}),o=new T.Mesh(new T.PlaneGeometry(width,height),m);o.position.set(x,y,bridgeFrame?z:mappedZ(x,z));o.rotation.y=ry;if(bridgeFrame){const dx=x-bridgeFrame.x;cDummyPosition(o,dx,z,bridgeFrame);o.rotation.y+=bridgeFrame.yaw;}o.name='CourseSign_'+text;o.userData={language:'km',width,height,worldText:text};group.add(o);return o;
  }
  function cDummyPosition(o,dx,z,frame){o.position.x=frame.x+dx*Math.cos(frame.yaw)+z*Math.sin(frame.yaw);o.position.z=-dx*Math.sin(frame.yaw)+z*Math.cos(frame.yaw);}
  function person(x,floor,z,id,seated=false){
@@ -70,7 +71,7 @@ export function buildMasperoBanks(group,waterY,crowdAssets){
  for(const side of [-1,1]){
   // Continuous land behind both streets prevents a narrow city strip from
   // ending abruptly in the sky when the player rotates the wide camera.
-  box(1150,1.16,side*370,2800,.46,605,'#879c74');
+  box(1150,1.00,side*370,2800,.46,605,'#879c74');
   // Quiet low-detail city mass behind the front street, with no window/
   // crowd detail. Its heights are authored context, not mapped elevations.
   for(let x=-120,id=0;x<2450;x+=27,id++)for(let row=0;row<2;row++){
@@ -95,37 +96,15 @@ export function buildMasperoBanks(group,waterY,crowdAssets){
    if(x>1000&&x<1180)continue;
    beam(V(x,1.35,side*53.2),V(x,8,side*53.2),.06,'#e1e2d7');beam(V(x,8,side*53.2),V(x,8.3,side*50.3),.06,'#e1e2d7');box(x,8.25,side*50.0,.38,.12,.70,'#eeead9');
   }
-  // Dense spectators near the finish, with smaller clusters up-course.
-  for(let x=-30;x<2400;x+=.63){
+  // Shoulder-to-shoulder spectators along the full race, not a single sparse
+  // row after leaving the finish cameras. The street remains behind them.
+  for(let x=850,col=0;x<2438;x+=.56,col++){
    if(nearBridge(x,8))continue;
-   const detailed=x>=DETAIL_RANGE[0]&&x<=DETAIL_RANGE[1];if(!detailed&&Math.round((x+30)/.63)%2)continue;
-   for(let row=0;row<(detailed?4:1);row++){
-    if((side<0&&x>1025&&x<1155||side>0&&x>1000&&x<1170)&&row>0)continue;
-    const id=Math.round((x+50)*11)+row*23+(side+1)*41,z=side*(45.35+row*.69);
-    person(x+Math.sin(id*12.9)*.09,1.4,z,id);if(row>0&&id%23===0)umbrella(x,3.48,z,id);
+   const inStand=side<0&&x>1025&&x<1155||side>0&&x>1000&&x<1170;
+   for(let row=0;row<(inStand?1:6);row++){
+    const id=100000+(side+1)*200000+col*13+row,z=side*(45.05+row*.62);
+    person(x+(row%2)*.24+Math.sin(id*12.9)*.045,1.4,z,id);if(row>=3&&id%97===0)umbrella(x,3.55,z,id);
    }
-  }
-  // Narrow mixed townhouses, pitched metal roofs, balconies and shop awnings.
-  for(let x=-130,id=0;x<2440;x+=9.3,id++){
-   const detailed=x>=DETAIL_RANGE[0]&&x<=DETAIL_RANGE[1];if(!detailed&&id%3!==0)continue;
-   if(detailed)continue; // Actual open footprints replace the repeated row.
-   if(nearBridge(x,34))continue;
-   if(side<0&&x>1000&&x<1175)continue;
-   const height=id%5===0?8.6:id%4===0?6.2:3.2+(id%3)*.5,width=6.8+(id%3)*.6,z=side*(73+(id%3)*2),wall=['#d8d2bc','#b5cfc9','#e0d4b9','#b6c4b7','#ccb5a4'][id%5];
-   box(x,1.4+height/2,z,width,height,9,wall);
-   const pitched=id%3!==0,roofColor=['#82949c','#a98b75','#a8b9ad'][id%3],roofAngle=Math.atan(.55/4.65),roofLength=Math.hypot(4.65,.55);
-   box(x,1.4+height+(pitched?.04:.2),z,width+.4,pitched?.08:.35,9.5,id%2?'#b8c2bd':'#829e9c');
-   if(pitched)for(const r of [-1,1])box(x,1.4+height+.425,z+r*2.325,width+.55,.13,roofLength,roofColor,r*roofAngle);
-   const face=z-side*4.56;
-   if(!detailed){box(x,2.8,face,width*.45,1.5,.075,'#4c6668');totals.houses++;continue;}
-   for(let floor=0;floor<Math.floor(height/2.5);floor++){for(const dx of [-2.1,0,2.1])box(x+dx,2.8+floor*2.5,face,1.18,1.45,.075,'#4c6668');if(floor>0){box(x,2.06+floor*2.5,face-side*.55,width*.88,.20,1.2,wall);box(x,2.85+floor*2.5,face-side*1.1,width*.87,.075,.065,'#e1e0d6');}}
-   box(x,3.5,face-side*.65,width,.13,1.5,palette[id%palette.length],side*.17);box(x,1.65,face,width*.6,.5,.08,'#6c7871');totals.houses++;
-   for(const dx of [-width*.46,width*.46])box(x+dx,2.5,face-side*.9,.12,2.3,.12,wall);
-   for(let n=0;n<12;n++){const px=x-width/2+n*width/12;if(pitched)for(const r of [-1,1])box(px,1.4+height+.51,z+r*2.325,.035,.035,roofLength,roofColor,r*roofAngle);else box(px,1.4+height+.4,z,.035,.035,9.5,'#afbbb3');}
-   box(x,1.72,face-side*.60,width*.95,.22,1.15,'#9e9b8b');
-   if(id%3===0){add('pole',x+1.5,1.4+height+.72,z,.44,1.06,.44,'#bac4bf',0,0,Math.PI/2,true);box(x-2.6,3.0,face-side*.15,.68,.56,.22,'#c6c8ba');}
-   if(id%4===1)tree(x+width*.5+1,side*82,id,true);
-   if(id%13===0)text('សូមស្វាគមន៍',width*.92,.63,x,3.6,face-side*.12,'#426b62','#f1e5c6');
   }
  }
  // Main stand observed in both photos: white concrete, a shallow double-pitch
@@ -149,8 +128,8 @@ export function buildMasperoBanks(group,waterY,crowdAssets){
  }
  for(const side of [-1,1])box(cx,11.62,-56.5+side*5.75,132,.15,11.9,'#a2bab3',side*.105);
  for(let x=cx-65;x<cx+66;x+=3.6){for(const side of [-1,1])box(x,11.73,-56.5+side*5.75,.065,.035,11.9,'#c4cfbd',side*.105);}
- box(cx,10.1,-45.7,126,.78,.08,'#992e25');for(const x of [cx-45,cx-15,cx+15,cx+45])text('ពិធីបុណ្យអកអំបុក · ប្រណាំងទូក-ង',30,.92,x,10.12,-45.63);
- for(const x of [cx-43,cx,cx+43])text('អបអរសាទរ · ប្រណាំងទូក-ង   ·   អបអរសាទរ · ប្រណាំងទូក-ង',39,1.05,x,3.1,-45.60,'#d0af59','#573b20');
+ box(cx,9.62,-45.7,126,1.82,.08,'#992e25');for(const x of [cx-45,cx-15,cx+15,cx+45])text('ពិធីបុណ្យអកអំបុក · ប្រណាំងទូក-ង',30,1.82,x,9.62,-45.63);
+ for(const x of [cx-43,cx,cx+43])text('អបអរសាទរ · ប្រណាំងទូក-ង',39,2.05,x,3.05,-45.60,'#e1c271','#49301c');
  for(const x of [cx-64,cx+64]){
   box(x,4.9,-56,.25,5.7,20,'#e5e7dc');for(let i=0;i<15;i++)box(x-(x<cx?-1:1)*2,1.65+i*.32,-47-i*.83,3.7,.30,.82,'#cccfc3');
  }
@@ -162,7 +141,7 @@ export function buildMasperoBanks(group,waterY,crowdAssets){
  for(let row=0;row<4;row++){const y=1.98+row*.32,z=47.3+row*1.2;box(cx-10,y-.18,z,151,.32,1.2,'#d4d4c6');for(let col=0;col<203;col++){if(col%42<2)continue;const x=cx-83+col*.72;person(x,y+.09,z,13000+row*213+col,true);box(x,y+.08,z,.53,.1,.5,'#4c8291');totals.seats++;}}
  for(let x=cx-88;x<cx+72;x+=10){beam(V(x,1.4,46.6),V(x,4.15,46.6),.075,'#879892');beam(V(x,1.4,56),V(x,4.8,56),.075,'#879892');beam(V(x,4.15,46.6),V(x,4.8,56),.075,'#6d8078');}
  box(cx-10,4.55,51.3,161,.12,10.7,'#c9d2ce',-.067);for(let x=cx-90;x<cx+71;x+=1.1)box(x,4.62,51.3,.035,.025,10.7,'#adbdb7',-.067);
- for(let i=0;i<6;i++)text('ប្រណាំងទូក-ង · សូមស្វាគមន៍',25.1,.75,cx-72.75+i*25.1,1.87,45.6,'#d0af59','#573b20',Math.PI);
+ for(let i=0;i<6;i++)text('ប្រណាំងទូក-ង · សូមស្វាគមន៍',25.1,1.55,cx-72.75+i*25.1,2.07,45.6,'#e1c271','#49301c',Math.PI);
  bankAnchor=null;
  box(1190,3.0,-49.5,10,3.2,7,'#e7eadc');box(1190,4.66,-49.5,10.5,.20,7.8,'#c6d1c6');box(1190,3.50,-45.95,7.7,1.3,.10,'#567b7d');text('អាជ្ញាកណ្តាល',7,.70,1190,2.4,-45.87,'#f1eee1','#4c665c');
  for(let i=0;i<4;i++){const x=970+i*17;box(x,3.0,-51,12,.16,9,'#e9e8d6');for(const dx of [-5.5,5.5])for(const dz of [-4,4])add('pole',x+dx,2.25,-51+dz,.045,1.8,.045,'#c8d1c6');for(let n=0;n<11;n++)person(x-4+n*.8,1.4,-49,900+n+i*7);}
@@ -207,9 +186,10 @@ export function buildMasperoBanks(group,waterY,crowdAssets){
   if(b.points.some(p=>Math.abs(p[1])<road+8.5))return true;
   if(nearBridge(x,13)&&Math.abs(z)<105)return true;
   return z<0&&x>1019&&x<1161&&z>-68||z>0&&x>992&&x<1171&&z<57;
- });
+ },bankMaterials);
  totals.houses+=buildings.rendered;
- const crowd=buildCrowd(group,people,crowdAssets);
+ const crowd=buildCrowd(group,people,crowdAssets),traffic=buildTraffic(group);
  group.userData={...group.userData,reference:'OWNER_VTV10_VIDEO_2025_REAL_PHOTOS_AND_OSM_LAYOUT',dimensions:'APPROXIMATE_GAME_SCALE',...totals,buildings,detailRange:DETAIL_RANGE,bankSource:MASPERO_LAYOUT.source,bankLicense:MASPERO_LAYOUT.license,bankOutlineGameSpanM:400,bridgeYawSource:'OSM bridge centre-lines',continuousLand:true,pitchedRoof:'ridge above eaves; corrugation follows both slopes',npcSource:'MakeHuman CC0, animated anatomical mesh',signLanguage:'km',standRoof:'VIP double pitch; opposite low single pitch',bridgeC247:'teal curved steel portals',bridge30April:'concrete piers and silver arched truss, 2022 construction photo; finished decoration approximate'};
- return {totals,update(time,cameraX){crowd.update(time,cameraX);},dispose(){crowd.dispose();}};
+ group.userData.traffic=traffic.stats;group.userData.spectatorSpacingM=.56;group.userData.fullCourseCrowdRows=6;
+ return {totals,update(time,cameraX,cameraZ){crowd.update(time,cameraX,cameraZ);traffic.update(time,cameraX);},dispose(){crowd.dispose();traffic.dispose();}};
 }

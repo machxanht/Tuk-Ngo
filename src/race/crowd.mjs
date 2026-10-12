@@ -87,15 +87,15 @@ export function buildCrowd(group,people,assets){
   };
   m.customProgramCacheKey=()=> 'anatomical-crowd-v16-'+meta.vertices;shared.push({g,m,texture,uniforms});
  }
- const sections=new Map();for(const p of people){const key=Math.floor(p.x/80);if(!sections.has(key))sections.set(key,[]);sections.get(key).push(p);}
+ const sections=new Map();for(const p of people){const key=Math.floor(p.x/80)+':'+Math.sign(p.z);if(!sections.has(key))sections.set(key,[]);sections.get(key).push(p);}
  for(const list of sections.values()){
-  const cx=list.reduce((n,p)=>n+p.x,0)/list.length;
+  const cx=list.reduce((n,p)=>n+p.x,0)/list.length,cz=list.reduce((n,p)=>n+p.z,0)/list.length;
   for(let level=0;level<2;level++){
-   const s=shared[level],g=s.g.clone(),activity=[],style=[],motion=[];const mesh=new T.InstancedMesh(g,s.m,list.length);mesh.name='Crowd_Anatomical_'+level+'_'+Math.round(cx);mesh.frustumCulled=false;
+   const s=shared[level],g=s.g.clone(),activity=[],style=[],motion=[];const mesh=new T.InstancedMesh(g,s.m,list.length);mesh.name='Crowd_Anatomical_'+level+'_'+Math.round(cx)+'_'+Math.sign(cz);mesh.frustumCulled=false;
    list.forEach((p,i)=>{const q=identities.get(p);dummy.position.set(p.x,p.floor,p.z);dummy.rotation.set(0,(p.z<0?0:Math.PI)+q.yaw,0);dummy.scale.set(p.width,p.height*q.height,p.width);dummy.updateMatrix();mesh.setMatrixAt(i,dummy.matrix);mesh.setColorAt(i,new T.Color(q.color));activity.push(q.clip,q.phase,q.speed,q.intensity);style.push(q.clothing,q.width,q.skin,q.hair);motion.push(q.breathe,q.profile);});
-   g.setAttribute('aActivity',new T.InstancedBufferAttribute(new Float32Array(activity),4));group.add(mesh);batches.push({mesh,cx,level});
+   g.setAttribute('aActivity',new T.InstancedBufferAttribute(new Float32Array(activity),4));group.add(mesh);batches.push({mesh,cx,cz,level});
    g.setAttribute('aStyle',new T.InstancedBufferAttribute(new Float32Array(style),4));g.setAttribute('aMotion',new T.InstancedBufferAttribute(new Float32Array(motion),2));
   }
  }
- return {count:people.length,update(time,cameraX){shared.forEach(s=>s.uniforms.uCrowdTime.value=time);for(const b of batches){const distance=Math.abs(cameraX-b.cx);b.mesh.visible=distance<520&&(distance<55?0:1)===b.level;}},dispose(){batches.forEach(b=>{b.mesh.geometry.dispose();b.mesh.dispose();group.remove(b.mesh);});shared.forEach(s=>{s.g.dispose();s.m.dispose();s.texture.dispose();});}};
+ return {count:people.length,update(time,cameraX,cameraZ=0){shared.forEach(s=>s.uniforms.uCrowdTime.value=time);for(const b of batches){const distance=Math.hypot(cameraX-b.cx,cameraZ-b.cz);b.mesh.visible=distance<430&&(distance<45?0:1)===b.level;}},dispose(){batches.forEach(b=>{b.mesh.geometry.dispose();b.mesh.dispose();group.remove(b.mesh);});shared.forEach(s=>{s.g.dispose();s.m.dispose();s.texture.dispose();});}};
 }
