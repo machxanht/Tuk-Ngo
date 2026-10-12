@@ -5,7 +5,7 @@ import * as T from 'three';
 import {validateBytes} from 'gltf-validator';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 import {RACE_TEAMS_2025} from '../src/race/teams-2025.mjs';
-const revision=process.argv[2]||'v14';if(!['v12','v13','v14'].includes(revision))throw Error('Unknown crew revision');
+const revision=process.argv[2]||'v15';if(!['v12','v13','v14','v15'].includes(revision))throw Error('Unknown crew revision');
 const report={pass:true,teams:[]},paintHashes=new Set();
 const support=new Map(JSON.parse(fs.readFileSync('docs/qa/crew-v12/support-plan.json')).map(a=>[a.id,a]));
 function geometryOnly(raw,source){

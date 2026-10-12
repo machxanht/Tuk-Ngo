@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import {validateBytes} from 'gltf-validator';
-const revision=process.argv[2]||'v12';if(!['v12','v13'].includes(revision))throw Error('Unknown crew revision');
+const revision=process.argv[2]||'v12';if(!['v12','v13','v15'].includes(revision))throw Error('Unknown crew revision');
 const raw=fs.readFileSync('public/assets/ghe-ngo/ghe-ngo-crew-'+revision+'.glb'),size=raw.readUInt32LE(12),j=JSON.parse(raw.subarray(20,20+size)),bin=raw.subarray(28+size);
 const old=fs.readFileSync('public/assets/ghe-ngo/ghe-ngo-crew-v9.glb'),oldSize=old.readUInt32LE(12),oldBin=old.subarray(28+oldSize);
 assert.ok(bin.subarray(0,oldBin.length).equals(oldBin),'accepted hull/livery source bytes preserved');

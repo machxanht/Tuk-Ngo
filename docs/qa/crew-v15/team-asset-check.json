@@ -1,0 +1,197 @@
+{
+  "pass": true,
+  "teams": [
+    {
+      "id": "tum-nup-2",
+      "name": "Tum Núp 2",
+      "bytes": 20220688,
+      "sha256": "7e6d119f2abe35b9c269a750b97ea7392882e1d19c7fd7317dd65aa5b414ac37",
+      "crew": 55,
+      "clips": [
+        "Rowing_Real_2024_Roles_80SPM",
+        "Rowing_Sprint_Real_2024_Roles_80SPM"
+      ],
+      "runtime": {
+        "footSamples": 880,
+        "maxFootGapM": 0.000009812388834651167,
+        "gripSamples": 848,
+        "maxGripGapM": 0.0021427344405108954
+      },
+      "kit": true,
+      "kbachSourceHash": "abb561e739bc004dd834676d906731a952e69f90d5063ace31ff0715c0ed97ed",
+      "validator": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "evidenceStatus": "bib17 race naga; finished channel scale/crest/pink belly detail; exact land hull unresolved"
+    },
+    {
+      "id": "prek-on-dok-2",
+      "name": "Prêk On Đơk 2",
+      "bytes": 19953672,
+      "sha256": "a0c13bbe0fb06425e3fb3313f4d177677b60d4325f5ee5f81c3115c98d7e22ce",
+      "crew": 55,
+      "clips": [
+        "Rowing_Real_2024_Roles_80SPM",
+        "Rowing_Sprint_Real_2024_Roles_80SPM"
+      ],
+      "runtime": {
+        "footSamples": 880,
+        "maxFootGapM": 0.000009812388834651167,
+        "gripSamples": 848,
+        "maxGripGapM": 0.0021427344405108954
+      },
+      "kit": true,
+      "kbachSourceHash": "40458b12ef08dec98ba77cffb0d30990069eb07cf6f4af352592d54808922674",
+      "validator": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "evidenceStatus": "kit confirmed; visible kbach reconstructed"
+    },
+    {
+      "id": "prek-ta-cuol",
+      "name": "Prếk Ta Cuôl · Trà Cuôn",
+      "bytes": 19935272,
+      "sha256": "1459040479cbe099e20778e630ad7b1bb42ec4a732fd81259d880a438f9efeb1",
+      "crew": 55,
+      "clips": [
+        "Rowing_Real_2024_Roles_80SPM",
+        "Rowing_Sprint_Real_2024_Roles_80SPM"
+      ],
+      "runtime": {
+        "footSamples": 880,
+        "maxFootGapM": 0.000009812388834651167,
+        "gripSamples": 848,
+        "maxGripGapM": 0.0021427344405108954
+      },
+      "kit": true,
+      "kbachSourceHash": "f31b506d6d1916390055beb438b1e5d9a19bec5120a3c99af61a8e1779c7dd0a",
+      "validator": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "evidenceStatus": "kit confirmed; visible kbach reconstructed"
+    },
+    {
+      "id": "chroi-tum-chas",
+      "name": "Chrôi Tưm Chắs · Trà Tim cũ",
+      "bytes": 19931168,
+      "sha256": "ff7580a8d236f429e67e4b04468151a30ceb6786e5ab22d6ef48be26fdeacb4b",
+      "crew": 55,
+      "clips": [
+        "Rowing_Real_2024_Roles_80SPM",
+        "Rowing_Sprint_Real_2024_Roles_80SPM"
+      ],
+      "runtime": {
+        "footSamples": 880,
+        "maxFootGapM": 0.000009812388834651167,
+        "gripSamples": 848,
+        "maxGripGapM": 0.0021427344405108954
+      },
+      "kit": true,
+      "kbachSourceHash": "4756a0b9ef4cc1302b6017ceed06856eedb163c493d13882eb36f59fc77cdbba",
+      "validator": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "evidenceStatus": "kit confirmed; finished flower-band hull observed in channel; exact race08 binding unresolved"
+    },
+    {
+      "id": "om-pou-year",
+      "name": "Om Pou Year",
+      "bytes": 19983668,
+      "sha256": "a32ea64bf0083cdddcd32da722df8a98aa17e356ce042633604ddeb7d01dfcd0",
+      "crew": 55,
+      "clips": [
+        "Rowing_Real_2024_Roles_80SPM",
+        "Rowing_Sprint_Real_2024_Roles_80SPM"
+      ],
+      "runtime": {
+        "footSamples": 880,
+        "maxFootGapM": 0.000009812388834651167,
+        "gripSamples": 848,
+        "maxGripGapM": 0.0021427344405108954
+      },
+      "kit": true,
+      "kbachSourceHash": "bf4f39e0e5efe40dce4cd23a4ddce6f9a067da79c10c596d377b230295e3ea99",
+      "validator": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "evidenceStatus": "race kit confirmed; finished 2025 black/lime side and cyan end observed; bib23 hull binding unresolved"
+    },
+    {
+      "id": "kos-thum-1",
+      "name": "Kos Thum 1",
+      "bytes": 19915856,
+      "sha256": "b3f1a2eb744b8e3aedf0497f25d73f734d79670b53d0fe0c484cfbaa445d5bc6",
+      "crew": 55,
+      "clips": [
+        "Rowing_Real_2024_Roles_80SPM",
+        "Rowing_Sprint_Real_2024_Roles_80SPM"
+      ],
+      "runtime": {
+        "footSamples": 880,
+        "maxFootGapM": 0.000009812388834651167,
+        "gripSamples": 848,
+        "maxGripGapM": 0.0021427344405108954
+      },
+      "kit": true,
+      "kbachSourceHash": "2d00b907487a75b084cec5d918e964f6de8232149e375288a927684d9ccd5385",
+      "validator": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "evidenceStatus": "bib49 blue interior, diamond/floral side and orange/red caps matched to race; hidden paint approximate"
+    },
+    {
+      "id": "pothi-satharam-2",
+      "name": "Pôthi Satharam 2",
+      "bytes": 19880488,
+      "sha256": "63e990fe5b5997a849326523085b8054c9210bd655edb4de7a9eee63dc685b6b",
+      "crew": 55,
+      "clips": [
+        "Rowing_Real_2024_Roles_80SPM",
+        "Rowing_Sprint_Real_2024_Roles_80SPM"
+      ],
+      "runtime": {
+        "footSamples": 880,
+        "maxFootGapM": 0.000009812388834651167,
+        "gripSamples": 848,
+        "maxGripGapM": 0.0021427344405108954
+      },
+      "kit": true,
+      "kbachSourceHash": "10216266266356d9a3c15f7c69086b868ddf2bfd01af884464f758db88ec39fa",
+      "validator": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "evidenceStatus": "mixed race kit confirmed; finished red side and lower curl border observed; bib07 hull binding unresolved"
+    },
+    {
+      "id": "pothi-khsach",
+      "name": "Pôthi Khsach · Kế Sách",
+      "bytes": 20133460,
+      "sha256": "2e90f8106349f0653c45223cea1f7d6529b64633d0c3a16a21e7e6a904a87991",
+      "crew": 55,
+      "clips": [
+        "Rowing_Real_2024_Roles_80SPM",
+        "Rowing_Sprint_Real_2024_Roles_80SPM"
+      ],
+      "runtime": {
+        "footSamples": 880,
+        "maxFootGapM": 0.000009812388834651167,
+        "gripSamples": 848,
+        "maxGripGapM": 0.0021427344405108954
+      },
+      "kit": true,
+      "kbachSourceHash": "f0cadd26d5aa8f80a8b43866831e307c6fc187367dc097d9a78a903761b2cb4c",
+      "validator": {
+        "errors": 0,
+        "warnings": 0
+      },
+      "evidenceStatus": "kit confirmed; visible kbach reconstructed"
+    }
+  ]
+}

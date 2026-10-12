@@ -1,0 +1,106 @@
+{
+  "source": "OpenStreetMap contributors",
+  "license": "ODbL-1.0",
+  "copyrightUrl": "https://www.openstreetmap.org/copyright",
+  "retrieved": "2026-10-12",
+  "sources": [
+    "https://www.openstreetmap.org/way/1428433854",
+    "https://www.openstreetmap.org/way/130065828",
+    "https://www.openstreetmap.org/way/668449647"
+  ],
+  "gameScale": {
+    "anchorSpanM": 346.016,
+    "gameSpanM": 400,
+    "scale": 1.156017,
+    "note": "Existing game course retained; not a surveyed reconstruction"
+  },
+  "banks": [
+    {
+      "x": 850,
+      "north": -31.573,
+      "south": 28.125
+    },
+    {
+      "x": 900,
+      "north": -29.637,
+      "south": 28.717
+    },
+    {
+      "x": 940,
+      "north": -29.054,
+      "south": 29.19
+    },
+    {
+      "x": 980,
+      "north": -29.043,
+      "south": 29.664
+    },
+    {
+      "x": 1040,
+      "north": -29.026,
+      "south": 30.374
+    },
+    {
+      "x": 1090,
+      "north": -29.012,
+      "south": 30.966
+    },
+    {
+      "x": 1140,
+      "north": -28.999,
+      "south": 31.558
+    },
+    {
+      "x": 1200,
+      "north": -28.982,
+      "south": 31.973
+    },
+    {
+      "x": 1280,
+      "north": -28.96,
+      "south": 32.207
+    },
+    {
+      "x": 1340,
+      "north": -28.943,
+      "south": 32.383
+    },
+    {
+      "x": 1400,
+      "north": -28.927,
+      "south": 32.559
+    }
+  ],
+  "bridges": [
+    {
+      "osmId": 130065828,
+      "x": 940,
+      "yawRad": 0.32567183490548884,
+      "points": [
+        [
+          951.843,
+          35.07
+        ],
+        [
+          928.157,
+          -35.07
+        ]
+      ]
+    },
+    {
+      "osmId": 668449647,
+      "x": 1340,
+      "yawRad": -0.05069861735281925,
+      "points": [
+        [
+          1341.853,
+          -36.518
+        ],
+        [
+          1338.147,
+          36.518
+        ]
+      ]
+    }
+  ]
+}

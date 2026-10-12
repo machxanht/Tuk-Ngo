@@ -1,0 +1,240 @@
+{
+  "pass": true,
+  "source": "public/assets/ghe-ngo/ghe-ngo-crew-v13.glb",
+  "destination": "public/assets/ghe-ngo/ghe-ngo-crew-v15.glb",
+  "outputBytes": 25022444,
+  "originalBufferSHA256": "fc75255cdc5366fef585939fb2ef4b159ca6ba7ff227906ebf0d65eaf9a0a038",
+  "originalBufferBytes": 17847624,
+  "originalBufferRetained": true,
+  "animationsUnchanged": true,
+  "skinsUnchanged": true,
+  "occupiedRegionUnchangedAbsXM": 13.6,
+  "changes": [
+    {
+      "name": "mesh_0",
+      "verticesChanged": 3418,
+      "maxVerticalShiftM": 0.05782551502176303,
+      "shell": true
+    },
+    {
+      "name": "mesh_0_1",
+      "verticesChanged": 3418,
+      "maxVerticalShiftM": 0.05782551502176303,
+      "shell": true
+    },
+    {
+      "name": "mesh_0_2",
+      "verticesChanged": 3418,
+      "maxVerticalShiftM": 0.05782551502176303,
+      "shell": true
+    },
+    {
+      "name": "Foredeck",
+      "verticesChanged": 48,
+      "maxVerticalShiftM": 0.05853042509693118,
+      "shell": false
+    },
+    {
+      "name": "SternDeck",
+      "verticesChanged": 48,
+      "maxVerticalShiftM": 0.05139372532127573,
+      "shell": false
+    },
+    {
+      "name": "Red_Integrated_Stern",
+      "verticesChanged": 50,
+      "maxVerticalShiftM": 0.05139372532127573,
+      "shell": false
+    },
+    {
+      "name": "Red_Integrated_Prow",
+      "verticesChanged": 50,
+      "maxVerticalShiftM": 0.05853042509693118,
+      "shell": false
+    },
+    {
+      "name": "Tassel_Collar_-1",
+      "verticesChanged": 64,
+      "maxVerticalShiftM": 0.043689101653722195,
+      "shell": false
+    },
+    {
+      "name": "Black_Tassel_-1_0",
+      "verticesChanged": 54,
+      "maxVerticalShiftM": 0.045333299026010465,
+      "shell": false
+    },
+    {
+      "name": "Black_Tassel_-1_1",
+      "verticesChanged": 54,
+      "maxVerticalShiftM": 0.04486579236866839,
+      "shell": false
+    },
+    {
+      "name": "Black_Tassel_-1_2",
+      "verticesChanged": 54,
+      "maxVerticalShiftM": 0.04352108817090761,
+      "shell": false
+    },
+    {
+      "name": "Black_Tassel_-1_3",
+      "verticesChanged": 54,
+      "maxVerticalShiftM": 0.04134876212843985,
+      "shell": false
+    },
+    {
+      "name": "Black_Tassel_-1_4",
+      "verticesChanged": 54,
+      "maxVerticalShiftM": 0.03942902312495078,
+      "shell": false
+    },
+    {
+      "name": "Black_Tassel_-1_5",
+      "verticesChanged": 54,
+      "maxVerticalShiftM": 0.0382615354262843,
+      "shell": false
+    },
+    {
+      "name": "Black_Tassel_-1_6",
+      "verticesChanged": 54,
+      "maxVerticalShiftM": 0.03738773717229349,
+      "shell": false
+    },
+    {
+      "name": "Black_Tassel_-1_7",
+      "verticesChanged": 54,
+      "maxVerticalShiftM": 0.03708494167264287,
+      "shell": false
+    },
+    {
+      "name": "Black_Tassel_-1_8",
+      "verticesChanged": 54,
+      "maxVerticalShiftM": 0.037384221110992044,
+      "shell": false
+    },
+    {
+      "name": "Black_Tassel_-1_9",
+      "verticesChanged": 54,
+      "maxVerticalShiftM": 0.0382615354262843,
+      "shell": false
+    },
+    {
+      "name": "Black_Tassel_-1_10",
+      "verticesChanged": 54,
+      "maxVerticalShiftM": 0.03942902312495078,
+      "shell": false
+    },
+    {
+      "name": "Black_Tassel_-1_11",
+      "verticesChanged": 54,
+      "maxVerticalShiftM": 0.04134876212843985,
+      "shell": false
+    },
+    {
+      "name": "Black_Tassel_-1_12",
+      "verticesChanged": 54,
+      "maxVerticalShiftM": 0.04352108817090761,
+      "shell": false
+    },
+    {
+      "name": "Black_Tassel_-1_13",
+      "verticesChanged": 54,
+      "maxVerticalShiftM": 0.04486711372197494,
+      "shell": false
+    },
+    {
+      "name": "Tassel_Collar_1",
+      "verticesChanged": 64,
+      "maxVerticalShiftM": 0.048433479281821734,
+      "shell": false
+    },
+    {
+      "name": "Black_Tassel_1_0",
+      "verticesChanged": 54,
+      "maxVerticalShiftM": 0.04034986768859783,
+      "shell": false
+    },
+    {
+      "name": "Black_Tassel_1_1",
+      "verticesChanged": 54,
+      "maxVerticalShiftM": 0.04082665487290882,
+      "shell": false
+    },
+    {
+      "name": "Black_Tassel_1_2",
+      "verticesChanged": 54,
+      "maxVerticalShiftM": 0.04195258607415653,
+      "shell": false
+    },
+    {
+      "name": "Black_Tassel_1_3",
+      "verticesChanged": 54,
+      "maxVerticalShiftM": 0.04342701031410434,
+      "shell": false
+    },
+    {
+      "name": "Black_Tassel_1_4",
+      "verticesChanged": 54,
+      "maxVerticalShiftM": 0.04559738359249721,
+      "shell": false
+    },
+    {
+      "name": "Black_Tassel_1_5",
+      "verticesChanged": 54,
+      "maxVerticalShiftM": 0.048079482216508485,
+      "shell": false
+    },
+    {
+      "name": "Black_Tassel_1_6",
+      "verticesChanged": 54,
+      "maxVerticalShiftM": 0.049787083319595915,
+      "shell": false
+    },
+    {
+      "name": "Black_Tassel_1_7",
+      "verticesChanged": 54,
+      "maxVerticalShiftM": 0.050329000872834095,
+      "shell": false
+    },
+    {
+      "name": "Black_Tassel_1_8",
+      "verticesChanged": 54,
+      "maxVerticalShiftM": 0.0497886113413446,
+      "shell": false
+    },
+    {
+      "name": "Black_Tassel_1_9",
+      "verticesChanged": 54,
+      "maxVerticalShiftM": 0.048079482216508485,
+      "shell": false
+    },
+    {
+      "name": "Black_Tassel_1_10",
+      "verticesChanged": 54,
+      "maxVerticalShiftM": 0.04559738359249721,
+      "shell": false
+    },
+    {
+      "name": "Black_Tassel_1_11",
+      "verticesChanged": 54,
+      "maxVerticalShiftM": 0.04342701031410434,
+      "shell": false
+    },
+    {
+      "name": "Black_Tassel_1_12",
+      "verticesChanged": 54,
+      "maxVerticalShiftM": 0.04195258607415653,
+      "shell": false
+    },
+    {
+      "name": "Black_Tassel_1_13",
+      "verticesChanged": 54,
+      "maxVerticalShiftM": 0.040821087434893766,
+      "shell": false
+    }
+  ],
+  "validator": {
+    "errors": 0,
+    "warnings": 0
+  }
+}

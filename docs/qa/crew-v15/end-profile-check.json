@@ -1,0 +1,22 @@
+{
+  "pass": true,
+  "occupiedRegionUnchanged": true,
+  "ends": [
+    {
+      "side": "stern",
+      "minGapM": 1.1053380433168059e-12,
+      "minUpperSlope": 0.09318181576578599,
+      "joinSlopeGap": 0.00003706597140329393,
+      "joinCurvatureGap": 0.0006785905171113882,
+      "tipHeightM": 1.52
+    },
+    {
+      "side": "bow",
+      "minGapM": 4.722888746755416e-13,
+      "minUpperSlope": 0.16747094913149851,
+      "joinSlopeGap": 0.00003286250493950149,
+      "joinCurvatureGap": 0.00043216541456558843,
+      "tipHeightM": 1.3800000000000001
+    }
+  ]
+}

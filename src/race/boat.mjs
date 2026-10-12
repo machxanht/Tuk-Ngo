@@ -26,7 +26,18 @@ function halfBeam(x){
 }
 function guideSpline(values){const knots=DESIGN_GUIDES.t,n=knots.length,second=new Array(n).fill(0),temp=new Array(n).fill(0);for(let i=1;i<n-1;i++){const s=(knots[i]-knots[i-1])/(knots[i+1]-knots[i-1]),p=s*second[i-1]+2;second[i]=(s-1)/p;temp[i]=(6*((values[i+1]-values[i])/(knots[i+1]-knots[i])-(values[i]-values[i-1])/(knots[i]-knots[i-1]))/(knots[i+1]-knots[i-1])-s*temp[i-1])/p;}for(let i=n-2;i>=0;i--)second[i]=second[i]*second[i+1]+temp[i];return t=>{let i=0;while(i<n-2&&t>knots[i+1])i++;const h=knots[i+1]-knots[i],a=(knots[i+1]-t)/h,b=(t-knots[i])/h;return a*values[i]+b*values[i+1]+((a*a*a-a)*second[i]+(b*b*b-b)*second[i+1])*h*h/6;};}
 const guides={bow:{k:guideSpline(DESIGN_GUIDES.bow.keel),g:guideSpline(DESIGN_GUIDES.bow.gunwale)},stern:{k:guideSpline(DESIGN_GUIDES.stern.keel),g:guideSpline(DESIGN_GUIDES.stern.gunwale)}};
-export function profile(x){const t=Math.min(1,Math.abs(x)/15.1),h=x>=0?SPEC.bow:SPEC.stern,guide=x>=0?guides.bow:guides.stern,g=Math.max(.58,Math.min(h,guide.g(t))),k=Math.max(0,Math.min(g,guide.k(t)));return {x,b:halfBeam(x),k,g,p:1.8-.75*Math.pow(t,1.6)};}
+export function legacyProfile(x){const t=Math.min(1,Math.abs(x)/15.1),h=x>=0?SPEC.bow:SPEC.stern,guide=x>=0?guides.bow:guides.stern,g=Math.max(.58,Math.min(h,guide.g(t))),k=Math.max(0,Math.min(g,guide.k(t)));return {x,b:halfBeam(x),k,g,p:1.8-.75*Math.pow(t,1.6)};}
+// Fair only the unoccupied tips. Match height, slope and curvature at the
+// join, then keep a rising tangent at the tip instead of clipping a cubic
+// overshoot into a flat top. The seated caller/helmsman support region stays.
+export const END_FAIRING_START=13.6;
+const endCurves=new Map();
+for(const side of [-1,1])for(const key of ['g']){
+ const start=END_FAIRING_START,length=15.1-start,eps=.001,f=x=>legacyProfile(side*x)[key],y0=f(start),d0=(f(start+eps)-f(start-eps))/(2*eps),dd0=(f(start+eps)-2*y0+f(start-eps))/(eps*eps),y1=side>0?SPEC.bow:SPEC.stern;
+ const a0=y0,a1=d0*length,a2=.5*dd0*length*length,r0=y1-a0-a1-a2,r1=(side>0?.18:.24)*length-a1-2*a2,r2=-.20*length*length-2*a2;
+ endCurves.set(side+key,[a0,a1,a2,10*r0-4*r1+.5*r2,-15*r0+7*r1-r2,6*r0-3*r1+.5*r2]);
+}
+export function profile(x){const p=legacyProfile(x),r=Math.abs(x);if(r<=END_FAIRING_START)return p;const t=Math.min(1,(r-END_FAIRING_START)/(15.1-END_FAIRING_START)),a=endCurves.get(Math.sign(x)+'g');p.g=a.reduceRight((value,c)=>value*t+c,0);return p;}
 let designTexture;
 export async function prepareDesign(textureUrl,actorUrl){const result=await Promise.all([new T.TextureLoader().loadAsync(textureUrl),prepareActors(actorUrl)]);designTexture=result[0];designTexture.colorSpace=T.SRGBColorSpace;designTexture.anisotropy=8;}
 export function section(x,s){
