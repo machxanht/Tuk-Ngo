@@ -1,5 +1,6 @@
 import * as T from 'three';
 import {buildCrowd} from './crowd.mjs';
+import {buildMappedHouses} from './maspero-buildings.mjs';
 import {courseZ,bridgeYaw,MASPERO_LAYOUT,DETAIL_RANGE} from './maspero-layout.mjs';
 
 // All dimensions/coordinates below are authored approximations for the game.
@@ -7,7 +8,9 @@ import {courseZ,bridgeYaw,MASPERO_LAYOUT,DETAIL_RANGE} from './maspero-layout.mj
 // No survey, GIS orientation, press-photo textures, or generated image sources.
 // The C247–30/4 festival reach is reported as about 400 m (Tuoi Tre, Aug 2026).
 // The race starts farther upstream; bridge positions remain authored estimates.
-export const COURSE=Object.freeze({length:1200,width:61,lanes:[-7.5,7.5],standX:1090,standZ:courseZ(1090,-54),bridgeStart:940,bridgeEnd:1340});
+export const COURSE=Object.freeze({length:1200,width:61,lanes:[-7.5,7.5],standX:1090,standZ:courseZ(1090,-54),bridgeStart:940,bridgeEnd:1340,finishX:1090,direction:-1});
+// Positive race progress heads towards -X; the VIP stand is on the right.
+export const raceX=distance=>COURSE.finishX+COURSE.length-distance;
 const V=(x,y,z)=>new T.Vector3(x,y,z);
 const palette=['#e2bb64','#61979b','#bf5651','#517955','#faf0d6','#42688b','#987194'];
 const nearBridge=(x,margin)=>[COURSE.bridgeStart,COURSE.bridgeEnd].some(b=>Math.abs(x-b)<margin);
@@ -57,9 +60,8 @@ export function buildMasperoBanks(group,waterY,crowdAssets){
  function person(x,floor,z,id,seated=false){
   const shirt=palette[Math.abs(id)%palette.length],height=.94+Math.abs(id%7)*.023,width=.90+Math.abs(id%5)*.045;
   people.push({x,floor,z:mappedZ(x,z),id:Math.abs(id),seated,shirt,height,width});
-  const headY=floor+(seated?1.39:1.67)*height;
-  if(id%9===0)add('cone',x,headY+.07,z,.25,.13,.25,'#cdb994');
-  else if(id%4===0)add('head',x,headY+.025,z,.115,.045,.125,'#e4e4d8');
+  // Headwear belongs to the animated NPC, rather than a separate fixed hat
+  // that floats when an age variant or seated pose changes head height.
   totals.spectators++;
  }
  function umbrella(x,y,z,id){add('pole',x,y-1.05,z,.025,2.1,.025,'#bfc2b9');add('cone',x,y,z,.78,.27,.78,palette[id%palette.length]);totals.umbrellas++;}
@@ -68,26 +70,33 @@ export function buildMasperoBanks(group,waterY,crowdAssets){
  for(const side of [-1,1]){
   // Continuous land behind both streets prevents a narrow city strip from
   // ending abruptly in the sky when the player rotates the wide camera.
-  box(630,1.16,side*370,1800,.46,605,'#879c74');
+  box(1150,1.16,side*370,2800,.46,605,'#879c74');
   // Quiet low-detail city mass behind the front street, with no window/
   // crowd detail. Its heights are authored context, not mapped elevations.
-  for(let x=-120,id=0;x<1450;x+=27,id++)for(let row=0;row<2;row++){
+  for(let x=-120,id=0;x<2450;x+=27,id++)for(let row=0;row<2;row++){
+   if(x>=DETAIL_RANGE[0]&&x<=DETAIL_RANGE[1])continue;
    const height=3.3+(id%4)*1.1,width=17+id%3*3,z=side*(112+row*36+(id%3)*3),wall=['#bdc8bf','#ccd0bf','#b8c4bf'][id%3];
    box(x+row*9,1.39+height/2,z,width,height,16,wall);box(x+row*9,1.39+height+.07,z,width+.3,.14,16.4,'#adbeb6');totals.distantBlocks++;
   }
-  box(630,-.22,side*44.9,1580,2.7,4.2,'#a8a18d',side*.24);box(630,.60,side*43.16,1580,.40,.22,'#706e5e');
-  box(630,1.2,side*48.6,1580,.35,8.4,'#c4bfb0');box(630,1.13,side*59.9,1580,.22,13.6,'#767b79');box(630,1.26,side*68.2,1580,.26,3.2,'#b8b6a4');
-  for(const y of [1.7,2.32])box(630,y,side*44.6,1580,.055,.055,'#d9ddd6',0,0,0,true);
-  for(let x=-140;x<1410;x+=2.5)box(x,1.85,side*44.6,.065,1.05,.065,'#d9ddd6',0,0,0,true);
-  for(let x=-140;x<1410;x+=1.25){beam(V(x,1.5,side*44.6),V(x+.60,2.17,side*44.6),.024,'#c8cec4');beam(V(x+.60,2.17,side*44.6),V(x+1.2,1.5,side*44.6),.024,'#c8cec4');}
-  for(let x=-140;x<1410;x+=9)box(x,1.265,side*60,3,.025,.16,'#ded5a8');
-  for(let x=-130;x<1410;x+=23){
+  box(1150,-.22,side*44.9,2590,2.7,4.2,'#a8a18d',side*.24);box(1150,.60,side*43.16,2590,.40,.22,'#706e5e');
+  box(1150,1.2,side*48.6,2590,.35,8.4,'#c4bfb0');
+  // Roads bend behind the stands instead of passing through their seating.
+  const roadZ=x=>{const d=Math.abs(x-1090),t=T.MathUtils.smoothstep(d,80,145);return side*(60+(side<0?24:6)*(1-t));};
+  const roadGeo=new T.BoxGeometry(2590,.22,13.6,260,1,1);roadGeo.translate(1150,1.13,0);const roadP=roadGeo.attributes.position;for(let i=0;i<roadP.count;i++)roadP.setZ(i,courseZ(roadP.getX(i),roadZ(roadP.getX(i))+roadP.getZ(i)));roadGeo.computeVertexNormals();const road=new T.Mesh(roadGeo,new T.MeshStandardMaterial({color:'#767b79',roughness:.94}));road.name='Maspero_Road_Behind_Stands_'+side;group.add(road);
+  for(let x=-140;x<2440;x+=4){box(x,1.25,roadZ(x)+side*8.1,4,.22,2.4,'#b8b6a4');}
+
+  for(const y of [1.7,2.32])box(1150,y,side*44.6,2590,.055,.055,'#d9ddd6',0,0,0,true);
+  for(let x=-140;x<2440;x+=2.5)if(!nearBridge(x,8))box(x,1.85,side*44.6,.065,1.05,.065,'#d9ddd6',0,0,0,true);
+  for(let x=-140;x<2440;x+=1.25){if(nearBridge(x,8))continue;beam(V(x,1.5,side*44.6),V(x+.60,2.17,side*44.6),.024,'#c8cec4');beam(V(x+.60,2.17,side*44.6),V(x+1.2,1.5,side*44.6),.024,'#c8cec4');}
+  for(let x=-140;x<2440;x+=9)box(x,1.265,roadZ(x),3,.025,.16,'#ded5a8');
+  for(let x=-130;x<2440;x+=23){
    if(nearBridge(x,25))continue;
    if(!(side<0&&x>1008&&x<1170))tree(x,side*(side>0&&x>995&&x<1170?59:52),Math.round(x),side>0);
+   if(x>1000&&x<1180)continue;
    beam(V(x,1.35,side*53.2),V(x,8,side*53.2),.06,'#e1e2d7');beam(V(x,8,side*53.2),V(x,8.3,side*50.3),.06,'#e1e2d7');box(x,8.25,side*50.0,.38,.12,.70,'#eeead9');
   }
   // Dense spectators near the finish, with smaller clusters up-course.
-  for(let x=-30;x<1260;x+=.63){
+  for(let x=-30;x<2400;x+=.63){
    if(nearBridge(x,8))continue;
    const detailed=x>=DETAIL_RANGE[0]&&x<=DETAIL_RANGE[1];if(!detailed&&Math.round((x+30)/.63)%2)continue;
    for(let row=0;row<(detailed?4:1);row++){
@@ -97,8 +106,9 @@ export function buildMasperoBanks(group,waterY,crowdAssets){
    }
   }
   // Narrow mixed townhouses, pitched metal roofs, balconies and shop awnings.
-  for(let x=-130,id=0;x<1410;x+=9.3,id++){
+  for(let x=-130,id=0;x<2440;x+=9.3,id++){
    const detailed=x>=DETAIL_RANGE[0]&&x<=DETAIL_RANGE[1];if(!detailed&&id%3!==0)continue;
+   if(detailed)continue; // Actual open footprints replace the repeated row.
    if(nearBridge(x,34))continue;
    if(side<0&&x>1000&&x<1175)continue;
    const height=id%5===0?8.6:id%4===0?6.2:3.2+(id%3)*.5,width=6.8+(id%3)*.6,z=side*(73+(id%3)*2),wall=['#d8d2bc','#b5cfc9','#e0d4b9','#b6c4b7','#ccb5a4'][id%5];
@@ -167,7 +177,7 @@ export function buildMasperoBanks(group,waterY,crowdAssets){
   const deck=label==='C247'?4.8:7.1;box(x,deck,0,12,.78,115,'#bdc8c1');box(x,deck+.43,0,10.5,.06,115,'#707775');
   for(const dx of [-5.7,5.7]){box(x+dx,deck+1,0,.18,.12,115,'#dbe1d6');for(let z=-55;z<56;z+=2.2){box(x+dx,deck+.85,z,.11,1.25,.11,'#d2d7cc');box(x+dx,deck+.9,z+1.1,.075,.75,1.1,'#d2d7cc');}}
   for(const z of [-28,28]){box(x,deck/2-1,z,8,deck-1,1.7,'#9ba69f');box(x,deck-.6,z,10.5,.6,2.2,'#adb8af');}
-  for(const side of [-1,1])box(x,deck*.5,side*68,12,.8,28,'#b9c3b9',side*.11);
+  const rampRun=label==='C247'?36:56,rampRise=deck+.4-1.24,rampLength=Math.hypot(rampRun,rampRise);for(const side of [-1,1])box(x,1.24+rampRise/2,side*(57.5+rampRun/2),12,.45,rampLength,'#b9c3b9',side*Math.atan2(rampRise,rampRun));
   if(label==='C247')for(const z0 of [-34,0,34]){
    for(const side of [-1,1]){let lastPoint;for(let k=0;k<=24;k++){const t=k/24,z=z0+(t-.5)*31,y=deck+.6+9.8*Math.sin(Math.PI*t),px=x+side*(5.4-1.25*Math.sin(Math.PI*t));const point=V(px,y,z);if(lastPoint)beam(lastPoint,point,.29,'#327f80');lastPoint=point;if(k%4===0&&k>0&&k<24)beam(V(px,y,z),V(x+side*5.5,deck+.65,z),.048,'#bcc8bc');}}
    beam(V(x-4.15,deck+10.4,z0),V(x+4.15,deck+10.4,z0),.25,'#327f80');
@@ -183,15 +193,23 @@ export function buildMasperoBanks(group,waterY,crowdAssets){
   bridgeFrame=null;
  }
  // Course markers and finish cable: below all cameras, above the paddle reach.
- for(const x of [0,300,600,900,1200])for(const side of [-1,1]){
-  const numerals=String(x).replace(/\d/g,n=>'០១២៣៤៥៦៧៨៩'[Number(n)]);add('pole',x,4.7,side*43.8,.07,7,.07,'#d4d4c5');text(x===1200?'ទីបញ្ចប់':x===0?'ចំណុចចាប់ផ្តើម':numerals+' ម៉ែត្រ',x===0?7:5,1.1,x,7.7,side*43.8,'#8c2c27','#f0dc92');
+ for(const distance of [0,300,600,900,1200])for(const side of [-1,1]){
+  const x=raceX(distance),numerals=String(distance).replace(/\d/g,n=>'០១២៣៤៥៦៧៨៩'[Number(n)]);add('pole',x,4.7,side*43.8,.07,7,.07,'#d4d4c5');text(distance===1200?'ទីបញ្ចប់':distance===0?'ចំណុចចាប់ផ្តើម':numerals+' ម៉ែត្រ',distance===0?7:5,1.1,x,7.7,side*43.8,'#8c2c27','#f0dc92');
  }
- beam(V(1200,8, -43.8),V(1200,8,43.8),.015,'#737f74');
- for(let z=-40,i=0;z<42;z+=2.2,i++)box(1200,7.68,z,.04,.55,.75,palette[i%palette.length]);
+ beam(V(COURSE.finishX,8, -43.8),V(COURSE.finishX,8,43.8),.015,'#737f74');
+ for(let z=-40,i=0;z<42;z+=2.2,i++)box(COURSE.finishX,7.68,z,.04,.55,.75,palette[i%palette.length]);
  for(const {type,shiny,list} of meshes.values()){
   const mesh=new T.InstancedMesh(geometries[type],shiny?metal:material,list.length);if(type==='leaf')mesh.material=material.clone(),mesh.material.side=T.DoubleSide;mesh.name='Maspero_'+type+(shiny?'_metal':'');for(let i=0;i<list.length;i++){mesh.setMatrixAt(i,list[i].matrix);mesh.setColorAt(i,list[i].color);}mesh.computeBoundingSphere();group.add(mesh);
  }
+ const buildings=buildMappedHouses(group,(b,x,z)=>{
+  if(Math.abs(z)<36)return true;
+  const d=Math.abs(x-1090),t=T.MathUtils.smoothstep(d,80,145),road=Math.abs(courseZ(x,Math.sign(z)*(60+(z<0?24:6)*(1-t))));
+  if(b.points.some(p=>Math.abs(p[1])<road+8.5))return true;
+  if(nearBridge(x,13)&&Math.abs(z)<105)return true;
+  return z<0&&x>1019&&x<1161&&z>-68||z>0&&x>992&&x<1171&&z<57;
+ });
+ totals.houses+=buildings.rendered;
  const crowd=buildCrowd(group,people,crowdAssets);
- group.userData={...group.userData,reference:'OWNER_VTV10_VIDEO_2025_REAL_PHOTOS_AND_OSM_LAYOUT',dimensions:'APPROXIMATE_GAME_SCALE',...totals,detailRange:DETAIL_RANGE,bankSource:MASPERO_LAYOUT.source,bankLicense:MASPERO_LAYOUT.license,bankOutlineGameSpanM:400,bridgeYawSource:'OSM bridge centre-lines',continuousLand:true,pitchedRoof:'ridge above eaves; corrugation follows both slopes',npcSource:'MakeHuman CC0, animated anatomical mesh',signLanguage:'km',standRoof:'VIP double pitch; opposite low single pitch',bridgeC247:'teal curved steel portals',bridge30April:'concrete piers and silver arched truss, 2022 construction photo; finished decoration approximate'};
+ group.userData={...group.userData,reference:'OWNER_VTV10_VIDEO_2025_REAL_PHOTOS_AND_OSM_LAYOUT',dimensions:'APPROXIMATE_GAME_SCALE',...totals,buildings,detailRange:DETAIL_RANGE,bankSource:MASPERO_LAYOUT.source,bankLicense:MASPERO_LAYOUT.license,bankOutlineGameSpanM:400,bridgeYawSource:'OSM bridge centre-lines',continuousLand:true,pitchedRoof:'ridge above eaves; corrugation follows both slopes',npcSource:'MakeHuman CC0, animated anatomical mesh',signLanguage:'km',standRoof:'VIP double pitch; opposite low single pitch',bridgeC247:'teal curved steel portals',bridge30April:'concrete piers and silver arched truss, 2022 construction photo; finished decoration approximate'};
  return {totals,update(time,cameraX){crowd.update(time,cameraX);},dispose(){crowd.dispose();}};
 }

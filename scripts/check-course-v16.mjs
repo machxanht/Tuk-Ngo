@@ -1,0 +1,11 @@
+import * as T from 'three';
+import {buildMappedHouses} from '../src/race/maspero-buildings.mjs';
+import {COURSE,raceX} from '../src/race/maspero-course.mjs';
+import {courseZ} from '../src/race/maspero-layout.mjs';
+import assert from 'node:assert/strict';
+const group=new T.Group();
+const nearBridge=x=>[940,1340].some(b=>Math.abs(x-b)<13);
+const stats=buildMappedHouses(group,(b,x,z)=>{const d=Math.abs(x-1090),t=T.MathUtils.smoothstep(d,80,145),road=Math.abs(courseZ(x,Math.sign(z)*(60+(z<0?24:6)*(1-t))));return Math.abs(z)<36||b.points.some(p=>Math.abs(p[1])<road+8.5)||nearBridge(x)&&Math.abs(z)<105||z<0&&x>1019&&x<1161&&z>-68||z>0&&x>992&&x<1171&&z<57;});
+assert(stats.rendered>200);assert.equal(group.children.length,1);const mesh=group.children[0];let invalid=0;for(const a of Object.values(mesh.geometry.attributes))for(const v of a.array)if(!Number.isFinite(v))invalid++;assert.equal(invalid,0);
+assert.equal(raceX(1200),1090);assert.equal(raceX(0)-raceX(1200),1200);const forward=new T.Vector3(-1,0,0),right=forward.clone().cross(new T.Vector3(0,1,0)),stand=new T.Vector3(0,0,COURSE.standZ);assert(right.dot(stand)>0);
+console.log(JSON.stringify({pass:true,buildings:stats,triangles:mesh.geometry.attributes.position.count/3,invalid,standOnCrewRight:true}));mesh.geometry.dispose();mesh.material.dispose();
