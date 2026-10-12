@@ -5,6 +5,7 @@ import { Interactive3DBlueprint } from './components/Interactive3DBlueprint';
 import { MasperoRaceCourseStudio } from './components/MasperoRaceCourseStudio';
 import { TabletRaceDemo } from './components/TabletRaceDemo';
 import { ArtPreview } from './components/ArtPreview';
+import { CoherentSample } from './components/CoherentSample';
 import { SectionCard } from './components/SectionCard';
 import { SourceTriageViewer } from './components/SourceTriageViewer';
 import { CrewKinematicsStudio } from './components/CrewKinematicsStudio';
@@ -59,7 +60,7 @@ export default function App() {
 
   const demo = new URLSearchParams(window.location.search).get('demo');
   if (demo === 'race' || demo === 'art') return <ArtPreview />;
-  if (demo === 'studio') return <TabletRaceDemo />;
+  if (demo === 'studio') return new URLSearchParams(window.location.search).get('scene')==='race'?<TabletRaceDemo />:<CoherentSample />;
   if (demo === 'play') return <TabletRaceDemo gameplay />;
 
   return (

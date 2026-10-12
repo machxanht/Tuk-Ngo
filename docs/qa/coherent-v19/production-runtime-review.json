@@ -1,0 +1,119 @@
+{
+  "base": "http://localhost:3000/Tuk-Ngo/",
+  "errors": [],
+  "viewports": [
+    {
+      "width": 1024,
+      "height": 768,
+      "oneDefaultButton": true,
+      "touchTarget": true,
+      "noOverflow": true,
+      "viewClosesPanel": true
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "oneDefaultButton": true,
+      "touchTarget": true,
+      "noOverflow": true,
+      "viewClosesPanel": true
+    },
+    {
+      "width": 800,
+      "height": 600,
+      "oneDefaultButton": true,
+      "touchTarget": true,
+      "noOverflow": true,
+      "viewClosesPanel": true
+    }
+  ],
+  "physicalTabletTested": false,
+  "visualAcceptance": "Screenshots require direct inspection; runtime checks do not score likeness.",
+  "heroPauseKeepsEnvironmentAlive": true,
+  "downloadSha256": "26abed72c6be0a2862be808fd1018283ed9f3f630496474d31804ee40f5d08cf",
+  "longRun": [
+    {
+      "elapsedSeconds": 0,
+      "stats": {
+        "phase": 0.75,
+        "ambientTime": 10.400100000000004,
+        "triangles": 1002114,
+        "drawCalls": 175,
+        "npcs": 3,
+        "bank": {
+          "lengthMeters": 50,
+          "lots": 7,
+          "trees": 3,
+          "palms": 1,
+          "vehicles": 2,
+          "drawCalls": 41,
+          "triangles": 168364
+        }
+      },
+      "fps": "32.0"
+    },
+    {
+      "elapsedSeconds": 60,
+      "stats": {
+        "phase": 0.8078666666666726,
+        "ambientTime": 70.69990000000017,
+        "triangles": 1009058,
+        "drawCalls": 181,
+        "npcs": 3,
+        "bank": {
+          "lengthMeters": 50,
+          "lots": 7,
+          "trees": 3,
+          "palms": 1,
+          "vehicles": 2,
+          "drawCalls": 41,
+          "triangles": 168364
+        }
+      },
+      "fps": "32.0"
+    },
+    {
+      "elapsedSeconds": 120,
+      "stats": {
+        "phase": 0.406883333333344,
+        "ambientTime": 130.35620000000034,
+        "triangles": 1002638,
+        "drawCalls": 142,
+        "npcs": 3,
+        "bank": {
+          "lengthMeters": 50,
+          "lots": 7,
+          "trees": 3,
+          "palms": 1,
+          "vehicles": 2,
+          "drawCalls": 41,
+          "triangles": 168364
+        }
+      },
+      "fps": "32.0"
+    },
+    {
+      "elapsedSeconds": 180,
+      "stats": {
+        "phase": 0.3197333333333595,
+        "ambientTime": 190.28150000000042,
+        "triangles": 1002638,
+        "drawCalls": 142,
+        "npcs": 3,
+        "bank": {
+          "lengthMeters": 50,
+          "lots": 7,
+          "trees": 3,
+          "palms": 1,
+          "vehicles": 2,
+          "drawCalls": 41,
+          "triangles": 168364
+        }
+      },
+      "fps": "32.0"
+    }
+  ],
+  "fullRaceRetained": true,
+  "gameStartStrokePause": true,
+  "pass": true
+}

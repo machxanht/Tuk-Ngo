@@ -1,0 +1,69 @@
+{
+  "version": "COHERENT_V19",
+  "scope": "Quality sample, not full course replacement",
+  "files": [
+    {
+      "name": "accepted-hull.glb",
+      "bytes": 3953040,
+      "sha256": "0827b017db678477016ca7a55854c4fec3bdcec18975fbba0c72fc1d69deb43d",
+      "validation": {
+        "errors": 0,
+        "warnings": 0,
+        "warningCodes": []
+      }
+    },
+    {
+      "name": "athlete-v19.glb",
+      "bytes": 11540712,
+      "sha256": "26abed72c6be0a2862be808fd1018283ed9f3f630496474d31804ee40f5d08cf",
+      "validation": {
+        "errors": 0,
+        "warnings": 12,
+        "warningCodes": [
+          "NODE_SKINNED_MESH_NON_ROOT"
+        ]
+      }
+    },
+    {
+      "name": "casual-man.glb",
+      "bytes": 1326556,
+      "sha256": "317e8d27fa8c96ef7f95074a7b142e9a5b8ac3b9d9ff5a32812511b852dd32b5",
+      "validation": {
+        "errors": 0,
+        "warnings": 4,
+        "warningCodes": [
+          "NODE_SKINNED_MESH_NON_ROOT"
+        ]
+      }
+    },
+    {
+      "name": "hoodie-man.glb",
+      "bytes": 1379596,
+      "sha256": "ff293b7bfa41b9bcba9f68feb1c5b0977b0e7a0fb6350e72a88345c83af38faa",
+      "validation": {
+        "errors": 0,
+        "warnings": 4,
+        "warningCodes": [
+          "NODE_SKINNED_MESH_NON_ROOT"
+        ]
+      }
+    },
+    {
+      "name": "casual-woman.glb",
+      "bytes": 1428856,
+      "sha256": "7a72d9af06f2f1eea5011807175bb7017797429c3fdc885eeb21330dc6a22a2b",
+      "validation": {
+        "errors": 0,
+        "warnings": 4,
+        "warningCodes": [
+          "NODE_SKINNED_MESH_NON_ROOT"
+        ]
+      }
+    },
+    {
+      "name": "daylight.hdr",
+      "bytes": 1474097,
+      "sha256": "d9e9dda540997476a2c295482d2b6c0b49b13599d1657befe3778da5179cd057"
+    }
+  ]
+}
