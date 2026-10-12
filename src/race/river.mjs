@@ -41,10 +41,11 @@ export function buildRiver(scene,waterY=.28,{detailed=false,crowdAssets=null}={}
    float f=pow(1.-max(dot(n,view),0.),3.);float ripple=sin(vWorld.x*3.8+sin(vWorld.z*2.2)-uTime*2.)*.5+.5;
    vec3 sediment=mix(vec3(.035,.095,.065),vec3(.09,.19,.13),ripple*.32);
    float patches=noise(flow*.24)*.6+noise(flow*.77)*.4;
-   sediment=mix(sediment,mix(vec3(.18,.125,.065),vec3(.265,.215,.125),patches),uSediment);
+   sediment=mix(sediment,mix(vec3(.235,.175,.095),vec3(.34,.265,.155),patches),uSediment);
    float streak=smoothstep(.70,.89,surface(small*1.6));
-   vec3 sky=vec3(.49,.59,.57);float shine=pow(max(dot(reflect(-normalize(vec3(-.4,1.,.4)),n),view),0.),45.);
-   gl_FragColor=vec4(mix(sediment,sky,f*.52)+shine*vec3(.65,.63,.48)+streak*.018,1.);
+   vec3 sky=vec3(.55,.76,.94);float shine=pow(max(dot(reflect(-normalize(vec3(-.4,1.,.4)),n),view),0.),36.);
+   float glints=smoothstep(.65,.92,ripple)*smoothstep(.53,.80,h);
+   gl_FragColor=vec4(mix(sediment,sky,f*.60)+shine*vec3(.67,.76,.80)+streak*.024+glints*vec3(.023,.026,.028),1.);
    #include <tonemapping_fragment>
    #include <colorspace_fragment>
    #include <fog_fragment>

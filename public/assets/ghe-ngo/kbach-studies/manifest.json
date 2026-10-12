@@ -1,0 +1,26 @@
+{
+  "channel": "https://www.youtube.com/@mrchanhung72",
+  "reviewed": "2026-10-12",
+  "studies": [
+    {
+      "id": "khleang-gold-2025",
+      "name": "Khleang · hoa vàng trên nền đen",
+      "year": 2025,
+      "source": "https://www.youtube.com/watch?v=f7ZVm1-x5Wo&t=300s",
+      "time": 300,
+      "status": "Hoa văn đã vẽ xong; đang phủ bóng.",
+      "file": "khleang-gold-2025.svg",
+      "raceRoster": false
+    },
+    {
+      "id": "tra-tim-diagonal-2025",
+      "name": "Trà Tim · cuộn vàng và dải chéo",
+      "year": 2025,
+      "source": "https://www.youtube.com/watch?v=fneO2kuutM0&t=650s",
+      "time": 650,
+      "status": "Ghe trong nhà ghe; chưa xác nhận là ghe số 08 thi đấu.",
+      "file": "tra-tim-diagonal-2025.svg",
+      "raceRoster": false
+    }
+  ]
+}

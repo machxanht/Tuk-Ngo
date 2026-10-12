@@ -15,7 +15,7 @@ export function buildMasperoSky(scene){
  const geometry=new T.SphereGeometry(900,20,12),material=new T.ShaderMaterial({side:T.BackSide,depthWrite:false,vertexShader:'varying vec3 vDir;void main(){vDir=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',fragmentShader:`varying vec3 vDir;
  float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
  float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(hash(i),hash(i+vec2(1.,0.)),f.x),mix(hash(i+vec2(0.,1.)),hash(i+vec2(1.)),f.x),f.y);}
- void main(){vec3 d=normalize(vDir);float h=max(0.,d.y);vec3 sky=mix(vec3(.68,.76,.73),vec3(.27,.48,.65),pow(h,.52));vec2 p=d.xz/max(.15,h)*1.35;float n=noise(p)*.7+noise(p*2.3+4.)*.3;float clouds=smoothstep(.50,.76,n)*smoothstep(.02,.16,h);sky=mix(sky,vec3(.88,.89,.82),clouds*.72);gl_FragColor=vec4(sky,1.);
+ void main(){vec3 d=normalize(vDir);float h=max(0.,d.y);vec3 sky=mix(vec3(.63,.82,.96),vec3(.19,.49,.83),pow(h,.52));vec2 p=d.xz/max(.15,h)*1.35;float n=noise(p)*.7+noise(p*2.3+4.)*.3;float clouds=smoothstep(.55,.79,n)*smoothstep(.02,.16,h);sky=mix(sky,vec3(.97,.985,1.),clouds*.62);gl_FragColor=vec4(sky,1.);
  #include <tonemapping_fragment>
  #include <colorspace_fragment>
  }`});

@@ -14,7 +14,9 @@ document.querySelector('#build').onclick=async()=>{
  document.querySelector('#build').disabled=true;
  try{
   const [model,liveries]=await Promise.all([new GLTFLoader().loadAsync(base+'assets/ghe-ngo/ghe-ngo-crew-v13.glb'),loadTeamLiveries(base)]);
-  for(const team of RACE_TEAMS_2025){
+  const requested=new URLSearchParams(location.search).get('teams')?.split(',').filter(Boolean);
+  if(requested?.some(id=>!RACE_TEAMS_2025.some(team=>team.id===id)))throw Error('Đội xuất không hợp lệ');
+  for(const team of RACE_TEAMS_2025.filter(team=>!requested||requested.includes(team.id))){
    const root=clone(model.scene),style=applyTeamIdentity(root,team.id,liveries);root.name=team.id+'_2025';
    try{
     const data=await new GLTFExporter().parseAsync(root,{binary:true,animations:model.animations,onlyVisible:true,trs:true});

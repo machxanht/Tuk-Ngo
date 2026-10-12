@@ -5,7 +5,7 @@ import {profile,section} from './boat.mjs';
 export async function loadTeamLiveries(base){
  const loader=new T.TextureLoader(),textures=new Map();
  await Promise.all(RACE_TEAMS_2025.map(async team=>{
-  const texture=await loader.loadAsync(base+'assets/ghe-ngo/teams-2025/'+team.id+'.svg?v=13');
+  const texture=await loader.loadAsync(base+'assets/ghe-ngo/teams-2025/'+team.id+'.svg?v=14');
   // The Blender export inverts the old Three UV: v=0 at the gunwale.
   // Follow glTF image orientation so the upper kbach stays above the water.
   texture.colorSpace=T.SRGBColorSpace;texture.flipY=false;texture.anisotropy=8;

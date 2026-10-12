@@ -116,7 +116,7 @@ export async function loadRaceCrews(url){
   // Serve the validated baked asset. Avoid baking 55 rigs and textures in
   // tablet memory or pausing a live race during GLTFExporter processing.
   if(!teams[i])throw Error('Unknown lane');
-  const response=await fetch(base+'assets/ghe-ngo/teams-2025/'+teams[i].identity.id+'-2025.glb?v=13');
+  const response=await fetch(base+'assets/ghe-ngo/teams-2025/'+teams[i].identity.id+'-2025.glb?v=14');
   if(!response.ok)throw Error('GLB download HTTP '+response.status);
   return await response.arrayBuffer();
  },dispose(){teams.forEach(t=>t.dispose());for(const list of Object.values(resources))for(const r of list)r.dispose();liveries.dispose();},clipDuration:clip.duration};
