@@ -29,7 +29,7 @@ const guides={bow:{k:guideSpline(DESIGN_GUIDES.bow.keel),g:guideSpline(DESIGN_GU
 export function profile(x){const t=Math.min(1,Math.abs(x)/15.1),h=x>=0?SPEC.bow:SPEC.stern,guide=x>=0?guides.bow:guides.stern,g=Math.max(.58,Math.min(h,guide.g(t))),k=Math.max(0,Math.min(g,guide.k(t)));return {x,b:halfBeam(x),k,g,p:1.8-.75*Math.pow(t,1.6)};}
 let designTexture;
 export async function prepareDesign(textureUrl,actorUrl){const result=await Promise.all([new T.TextureLoader().loadAsync(textureUrl),prepareActors(actorUrl)]);designTexture=result[0];designTexture.colorSpace=T.SRGBColorSpace;designTexture.anisotropy=8;}
-function section(x,s){
+export function section(x,s){
  const p=profile(x),q=Math.pow(Math.abs(s),p.p),d=p.g-p.k;
  const slope=Math.min(.85,d*Math.tan(14.5*Math.PI/180)/Math.max(p.b,.001)),coef=slope-1/p.p;
  const f=q===0?0:Math.pow(q,1/p.p)*(1-coef+coef*q);

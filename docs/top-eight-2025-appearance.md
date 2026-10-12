@@ -1,5 +1,7 @@
 # Real 2025 final-eight appearance references
 
+**V13 follow-up:** [bib49/17 race binding](top-eight-2025-hull-binding-followup.md) corrects the old Kos Thum cap interpretation and resolves its blue-interior diamond/floral hull. Tum Núp17's actual race naga supersedes the unbound leaf-scroll training candidate. [Om/Satharam finished-hull detail](top-eight-2025-om-satharam-followup.md) supplies the black/lime Om middle and lower Satharam curling border. The tables below preserve the original V12 research record; unresolved fields there are not the current asset status. See [V13](crew-v13.md).
+
 Research date: 2026-10-11. This records inspected real YouTube frames, not generated imagery. Team/result evidence is in [top-eight-2025-results.md](top-eight-2025-results.md). The event is the 4–5 November 2025 men's Maspéro tournament in Sóc Trăng, Cần Thơ. Top eight means quarter-finalists.
 
 All selected frames and source metadata are cached outside the repository at `E:/AI/Um Tuk/asset-studio/top8-2025-references/`. A timestamp identifies an inspected video frame. Upload dates were retrieved from YouTube metadata; they do not prove the exact filming day. Colors are visual descriptions, not measured paint values. Launch/training clothing is recorded separately from tournament clothing.

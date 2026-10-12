@@ -1,0 +1,19 @@
+{
+  "bindingRadialSegments": 6,
+  "crewOnly": true,
+  "actorRoles": {
+    "BOW_CALLER": 1,
+    "ROWER": 50,
+    "MID_CONTROLLER": 1,
+    "HELMSMAN": 3
+  },
+  "actorCount": 55,
+  "clips": [
+    "Scene"
+  ],
+  "animationTargetPaths": 2968,
+  "missingOriginalAnimationTargetPaths": [],
+  "originalPathsPreserved": 3401,
+  "originalScenePaths": 3401,
+  "garmentNodesAdded": 275
+}

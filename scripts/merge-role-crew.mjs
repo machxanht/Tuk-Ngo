@@ -1,7 +1,8 @@
 import fs from 'node:fs';
 import crypto from 'node:crypto';
 const decode=path=>{const raw=fs.readFileSync(path),n=raw.readUInt32LE(12);return {json:JSON.parse(raw.subarray(20,20+n)),bin:raw.subarray(28+n)};};
-const old=decode('public/assets/ghe-ngo/ghe-ngo-crew-v9.glb'),fresh=decode('../asset-studio/crew-v12/crew-dedup.glb');
+const revision=process.argv[2]||'v12';if(!['v12','v13'].includes(revision))throw Error('Unknown crew revision');
+const old=decode('public/assets/ghe-ngo/ghe-ngo-crew-v9.glb'),fresh=decode('../asset-studio/crew-'+revision+'/crew-dedup.glb');
 const a=old.json,b=fresh.json,offset={};
 function paths(document){const result=new Map();function walk(id,prefix){const node=document.nodes[id],path=prefix+'/'+(node.name||'unnamed');result.set(id,path);for(const c of node.children||[])walk(c,path);}for(const id of document.scenes[document.scene||0].nodes)walk(id,'');return result;}
 const basePaths=paths(b);
@@ -48,7 +49,7 @@ for(const n of b.nodes||[]){if(n.children)n.children=n.children.map(i=>i+offset.
 for(const clip of b.animations||[]){clip.name='Rowing_Real_2024_Roles_80SPM';for(const s of clip.samplers){s.input+=offset.accessors;s.output+=offset.accessors;}for(const c of clip.channels)c.target.node+=offset.nodes;}
 const rootIndex=a.scenes[a.scene||0].nodes[0],hullIndex=a.nodes.findIndex(n=>n.name==='Boat_Hull_and_Structure');
 a.nodes[rootIndex].children=[hullIndex,...b.scenes[b.scene||0].nodes.map(i=>i+offset.nodes)];
-a.nodes[rootIndex].extras={...a.nodes[rootIndex].extras,crewRevision:'V12_FEET_INSIDE_HULL',seatedPairs:8,standingPairs:17,roles:{ROWER:50,BOW_CALLER:1,MID_CONTROLLER:1,HELMSMAN:3},backPrint:'កូនខ្មែរ'};
+a.nodes[rootIndex].extras={...a.nodes[rootIndex].extras,crewRevision:revision==='v13'?'V13_CONTINUOUS_GARMENT_BOUNDARIES':'V12_FEET_INSIDE_HULL',seatedPairs:8,standingPairs:17,roles:{ROWER:50,BOW_CALLER:1,MID_CONTROLLER:1,HELMSMAN:3},backPrint:'កូនខ្មែរ'};
 for(const k of Object.keys(offset))a[k]=[...(a[k]||[]),...(b[k]||[])];
 a.animations=[...b.animations];a.extensionsUsed=[...new Set([...(a.extensionsUsed||[]),...(b.extensionsUsed||[])])];
 const sprint=decode('../asset-studio/crew-v12/crew-only-sprint.glb'),sj=sprint.json,clip=structuredClone(sj.animations[0]);
@@ -70,6 +71,6 @@ a.animations.push(clip);
 const unpadded=Buffer.concat(chunks),bin=Buffer.concat([unpadded,Buffer.alloc((4-unpadded.length%4)%4)]);a.buffers=[{byteLength:bin.length}];
 const json=Buffer.from(JSON.stringify(a)),pad=Buffer.concat([json,Buffer.alloc((4-json.length%4)%4,32)]),head=Buffer.alloc(20),bh=Buffer.alloc(8);
 head.writeUInt32LE(0x46546c67);head.writeUInt32LE(2,4);head.writeUInt32LE(28+pad.length+bin.length,8);head.writeUInt32LE(pad.length,12);head.writeUInt32LE(0x4e4f534a,16);bh.writeUInt32LE(bin.length);bh.writeUInt32LE(0x004e4942,4);
-fs.writeFileSync('public/assets/ghe-ngo/ghe-ngo-crew-v12.glb',Buffer.concat([head,pad,bh,bin]));
+fs.writeFileSync('public/assets/ghe-ngo/ghe-ngo-crew-'+revision+'.glb',Buffer.concat([head,pad,bh,bin]));
 const report={preservedOriginalBinaryBytes:old.bin.length,preservedOriginalBinarySHA256:crypto.createHash('sha256').update(old.bin).digest('hex'),outputBytes:28+pad.length+bin.length,clips:a.animations.map(c=>c.name),crew:55,seatedPairs:8,standingPairs:17};
-fs.mkdirSync('docs/qa/crew-v12',{recursive:true});fs.writeFileSync('docs/qa/crew-v12/preserved-hull.json',JSON.stringify(report,null,2)+'\n');console.log(report);
+fs.mkdirSync('docs/qa/crew-'+revision,{recursive:true});fs.writeFileSync('docs/qa/crew-'+revision+'/preserved-hull.json',JSON.stringify(report,null,2)+'\n');console.log(report);

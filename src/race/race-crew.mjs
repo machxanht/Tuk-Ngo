@@ -43,6 +43,10 @@ export function optimizeRaceBoat(root,jerseyColor){
   if(!geometry){
    const parts=skins.map(s=>{
     const g=s.geometry.clone();for(const name of Object.keys(g.attributes))if(!['position','normal','uv','skinIndex','skinWeight',...(atlas?['tangent']:[])].includes(name))g.deleteAttribute(name);
+    // Blender may interleave the restored shirt while emitting its binding
+    // separately. Normalize float attributes before Three's merge compares
+    // gpuType; an interleaved attribute otherwise has undefined gpuType.
+    for(const name of ['position','normal',...(atlas?['tangent']:[])]){const a=g.getAttribute(name);if(!a?.isInterleavedBufferAttribute)continue;const values=new Float32Array(a.count*a.itemSize),getters=['getX','getY','getZ','getW'];for(let i=0;i<a.count;i++)for(let k=0;k<a.itemSize;k++)values[i*a.itemSize+k]=a[getters[k]](i);g.setAttribute(name,new T.BufferAttribute(values,a.itemSize));}
     if(!g.getAttribute('uv'))g.setAttribute('uv',new T.BufferAttribute(new Float32Array(g.attributes.position.count*2),2));
     const sourceUv=g.getAttribute('uv'),uv=new Float32Array(sourceUv.count*2);
     for(let i=0;i<sourceUv.count;i++){uv[i*2]=sourceUv.getX(i);uv[i*2+1]=sourceUv.getY(i);}g.setAttribute('uv',new T.BufferAttribute(uv,2));
@@ -112,7 +116,7 @@ export async function loadRaceCrews(url){
   // Serve the validated baked asset. Avoid baking 55 rigs and textures in
   // tablet memory or pausing a live race during GLTFExporter processing.
   if(!teams[i])throw Error('Unknown lane');
-  const response=await fetch(base+'assets/ghe-ngo/teams-2025/'+teams[i].identity.id+'-2025.glb');
+  const response=await fetch(base+'assets/ghe-ngo/teams-2025/'+teams[i].identity.id+'-2025.glb?v=13');
   if(!response.ok)throw Error('GLB download HTTP '+response.status);
   return await response.arrayBuffer();
  },dispose(){teams.forEach(t=>t.dispose());for(const list of Object.values(resources))for(const r of list)r.dispose();liveries.dispose();},clipDuration:clip.duration};

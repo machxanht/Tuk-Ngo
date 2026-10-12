@@ -4,7 +4,8 @@ import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 import {clone} from 'three/examples/jsm/utils/SkeletonUtils.js';
 import {optimizeRaceBoat} from '../src/race/race-crew.mjs';
 import {profile} from '../src/race/boat.mjs';
-const raw=fs.readFileSync('public/assets/ghe-ngo/ghe-ngo-crew-v12.glb'),size=raw.readUInt32LE(12),j=JSON.parse(raw.subarray(20,20+size)),bin=raw.subarray(28+size);
+const revision=process.argv[2]||'v12';if(!['v12','v13'].includes(revision))throw Error('Unknown crew revision');
+const raw=fs.readFileSync('public/assets/ghe-ngo/ghe-ngo-crew-'+revision+'.glb'),size=raw.readUInt32LE(12),j=JSON.parse(raw.subarray(20,20+size)),bin=raw.subarray(28+size);
 delete j.images;delete j.textures;delete j.samplers;for(const m of j.materials){delete m.pbrMetallicRoughness?.baseColorTexture;delete m.normalTexture;delete m.pbrMetallicRoughness?.metallicRoughnessTexture;}
 const text=Buffer.from(JSON.stringify(j)),pad=Buffer.concat([text,Buffer.alloc((4-text.length%4)%4,32)]),h=Buffer.alloc(20),bh=Buffer.alloc(8);h.writeUInt32LE(0x46546c67);h.writeUInt32LE(2,4);h.writeUInt32LE(28+pad.length+bin.length,8);h.writeUInt32LE(pad.length,12);h.writeUInt32LE(0x4e4f534a,16);bh.writeUInt32LE(bin.length);bh.writeUInt32LE(0x004e4942,4);const bytes=Buffer.concat([h,pad,bh,bin]);
 const gltf=await new GLTFLoader().parseAsync(bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength),'');
@@ -38,4 +39,4 @@ for(let team=0;team<2;team++){
  }
  report.teams.push({actors:boat.actors.length,rowers:boat.athletes.length,seated:boat.athletes.filter(a=>a.posture==='seated').length,standing:boat.athletes.filter(a=>a.posture==='standing').length,batches:boat.stats});boat.dispose();
 }
-report.pass=!report.teams.some(t=>t.actors!==55||t.rowers!==50||t.seated!==16||t.standing!==34)&&report.footSupport.verticesChecked>100000&&report.footSupport.maxTargetGapM<.012&&report.footSupport.maxLowerLegIntrusionM<.018&&report.gripSupport.samples===10388&&report.gripSupport.maxGapM<.02&&report.gripSupport.helmTipMaxY<.28&&report.callerFeet.samples===196&&report.callerFeet.insideHull;fs.writeFileSync('docs/qa/crew-v12/runtime-role-check.json',JSON.stringify(report,null,2)+'\n');console.log(report);if(!report.pass)process.exitCode=1;
+report.pass=!report.teams.some(t=>t.actors!==55||t.rowers!==50||t.seated!==16||t.standing!==34)&&report.footSupport.verticesChecked>100000&&report.footSupport.maxTargetGapM<.012&&report.footSupport.maxLowerLegIntrusionM<.018&&report.gripSupport.samples===10388&&report.gripSupport.maxGapM<.02&&report.gripSupport.helmTipMaxY<.28&&report.callerFeet.samples===196&&report.callerFeet.insideHull;fs.writeFileSync('docs/qa/crew-'+revision+'/runtime-role-check.json',JSON.stringify(report,null,2)+'\n');console.log(report);if(!report.pass)process.exitCode=1;

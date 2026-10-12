@@ -13,7 +13,7 @@ const base=import.meta.env.BASE_URL,status=document.querySelector('#status');
 document.querySelector('#build').onclick=async()=>{
  document.querySelector('#build').disabled=true;
  try{
-  const [model,liveries]=await Promise.all([new GLTFLoader().loadAsync(base+'assets/ghe-ngo/ghe-ngo-crew-v12.glb'),loadTeamLiveries(base)]);
+  const [model,liveries]=await Promise.all([new GLTFLoader().loadAsync(base+'assets/ghe-ngo/ghe-ngo-crew-v13.glb'),loadTeamLiveries(base)]);
   for(const team of RACE_TEAMS_2025){
    const root=clone(model.scene),style=applyTeamIdentity(root,team.id,liveries);root.name=team.id+'_2025';
    try{

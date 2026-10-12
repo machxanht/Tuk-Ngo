@@ -1,0 +1,496 @@
+{
+  "meshAttributes": [
+    [
+      "custom_normal",
+      "CORNER",
+      "INT16_2D"
+    ],
+    [
+      "UVMap",
+      "CORNER",
+      "FLOAT2"
+    ],
+    [
+      ".select_vert",
+      "POINT",
+      "BOOLEAN"
+    ],
+    [
+      ".select_edge",
+      "EDGE",
+      "BOOLEAN"
+    ],
+    [
+      ".select_poly",
+      "FACE",
+      "BOOLEAN"
+    ],
+    [
+      "sharp_face",
+      "FACE",
+      "BOOLEAN"
+    ],
+    [
+      ".uv_select_vert",
+      "CORNER",
+      "BOOLEAN"
+    ],
+    [
+      ".uv_select_edge",
+      "CORNER",
+      "BOOLEAN"
+    ],
+    [
+      ".uv_select_face",
+      "FACE",
+      "BOOLEAN"
+    ],
+    [
+      "material_index",
+      "FACE",
+      "INT"
+    ],
+    [
+      "position",
+      "POINT",
+      "FLOAT_VECTOR"
+    ],
+    [
+      ".edge_verts",
+      "EDGE",
+      "INT32_2D"
+    ],
+    [
+      ".corner_vert",
+      "CORNER",
+      "INT"
+    ],
+    [
+      ".corner_edge",
+      "CORNER",
+      "INT"
+    ]
+  ],
+  "actor": "Athlete_18_ROWER",
+  "crewLOD": {
+    "Competition_Green_Fabric": {
+      "vertices": 822,
+      "polygons": 1317,
+      "boundaryEdges": 163,
+      "loops": [
+        {
+          "vertices": 59,
+          "zMin": 0.9089721441268921,
+          "zMax": 0.9190477728843689,
+          "branches": 0
+        },
+        {
+          "vertices": 43,
+          "zMin": 1.3229999542236328,
+          "zMax": 1.420258641242981,
+          "branches": 0
+        },
+        {
+          "vertices": 30,
+          "zMin": 1.214999794960022,
+          "zMax": 1.3758585453033447,
+          "branches": 0
+        },
+        {
+          "vertices": 31,
+          "zMin": 1.215000033378601,
+          "zMax": 1.3758585453033447,
+          "branches": 0
+        }
+      ]
+    },
+    "Green_Ribbed_Binding": {
+      "vertices": 720,
+      "polygons": 1238,
+      "boundaryEdges": 49,
+      "loops": [
+        {
+          "vertices": 4,
+          "zMin": 1.3629270792007446,
+          "zMax": 1.3666974306106567,
+          "branches": 0
+        },
+        {
+          "vertices": 3,
+          "zMin": 1.361985683441162,
+          "zMax": 1.3666331768035889,
+          "branches": 0
+        },
+        {
+          "vertices": 5,
+          "zMin": 1.355871319770813,
+          "zMax": 1.361255168914795,
+          "branches": 0
+        },
+        {
+          "vertices": 4,
+          "zMin": 1.3570451736450195,
+          "zMax": 1.3598856925964355,
+          "branches": 0
+        },
+        {
+          "vertices": 5,
+          "zMin": 1.355784296989441,
+          "zMax": 1.361255168914795,
+          "branches": 0
+        },
+        {
+          "vertices": 4,
+          "zMin": 1.3570451736450195,
+          "zMax": 1.359885811805725,
+          "branches": 0
+        },
+        {
+          "vertices": 4,
+          "zMin": 0.9148440361022949,
+          "zMax": 0.9194872379302979,
+          "branches": 0
+        },
+        {
+          "vertices": 4,
+          "zMin": 0.9152502417564392,
+          "zMax": 0.9195933938026428,
+          "branches": 0
+        },
+        {
+          "vertices": 4,
+          "zMin": 0.9189187288284302,
+          "zMax": 0.9190889596939087,
+          "branches": 0
+        },
+        {
+          "vertices": 4,
+          "zMin": 1.2148879766464233,
+          "zMax": 1.215116024017334,
+          "branches": 0
+        },
+        {
+          "vertices": 4,
+          "zMin": 0.9088854193687439,
+          "zMax": 0.9090984463691711,
+          "branches": 0
+        },
+        {
+          "vertices": 4,
+          "zMin": 1.2148323059082031,
+          "zMax": 1.215185284614563,
+          "branches": 0
+        }
+      ]
+    },
+    "Dark_Competition_Shorts": {
+      "vertices": 773,
+      "polygons": 1057,
+      "boundaryEdges": 0,
+      "loops": []
+    }
+  },
+  "canonical": {
+    "Tank_Top_Side_Seam.001": {
+      "Green_Ribbed_Binding.001": {
+        "vertices": 350,
+        "polygons": 340,
+        "boundaryEdges": 20,
+        "loops": [
+          {
+            "vertices": 10,
+            "zMin": 0.9088948369026184,
+            "zMax": 0.909105122089386,
+            "branches": 0
+          },
+          {
+            "vertices": 10,
+            "zMin": 1.2148432731628418,
+            "zMax": 1.2151567935943604,
+            "branches": 0
+          }
+        ]
+      }
+    },
+    "Tank_Top_Side_Seam": {
+      "Green_Ribbed_Binding.001": {
+        "vertices": 350,
+        "polygons": 340,
+        "boundaryEdges": 20,
+        "loops": [
+          {
+            "vertices": 10,
+            "zMin": 0.9189044237136841,
+            "zMax": 0.9190956354141235,
+            "branches": 0
+          },
+          {
+            "vertices": 10,
+            "zMin": 1.2148627042770386,
+            "zMax": 1.2151373624801636,
+            "branches": 0
+          }
+        ]
+      }
+    },
+    "Tank_Top_Right_Armhole_Binding": {
+      "Green_Ribbed_Binding.001": {
+        "vertices": 650,
+        "polygons": 640,
+        "boundaryEdges": 20,
+        "loops": [
+          {
+            "vertices": 10,
+            "zMin": 1.3555996417999268,
+            "zMax": 1.3609602451324463,
+            "branches": 0
+          },
+          {
+            "vertices": 10,
+            "zMin": 1.3567436933517456,
+            "zMax": 1.3598161935806274,
+            "branches": 0
+          }
+        ]
+      }
+    },
+    "Tank_Top_Neck_Binding": {
+      "Green_Ribbed_Binding.001": {
+        "vertices": 810,
+        "polygons": 800,
+        "boundaryEdges": 20,
+        "loops": [
+          {
+            "vertices": 10,
+            "zMin": 1.363122582435608,
+            "zMax": 1.3665488958358765,
+            "branches": 0
+          },
+          {
+            "vertices": 10,
+            "zMin": 1.3622791767120361,
+            "zMax": 1.3673923015594482,
+            "branches": 0
+          }
+        ]
+      }
+    },
+    "Tank_Top_Left_Armhole_Binding": {
+      "Green_Ribbed_Binding.001": {
+        "vertices": 650,
+        "polygons": 640,
+        "boundaryEdges": 20,
+        "loops": [
+          {
+            "vertices": 10,
+            "zMin": 1.3555996417999268,
+            "zMax": 1.3609602451324463,
+            "branches": 0
+          },
+          {
+            "vertices": 10,
+            "zMin": 1.3567436933517456,
+            "zMax": 1.3598161935806274,
+            "branches": 0
+          }
+        ]
+      }
+    },
+    "Tank_Top_Hem": {
+      "Green_Ribbed_Binding.001": {
+        "vertices": 1130,
+        "polygons": 1120,
+        "boundaryEdges": 20,
+        "loops": [
+          {
+            "vertices": 10,
+            "zMin": 0.9146316051483154,
+            "zMax": 0.9199123382568359,
+            "branches": 0
+          },
+          {
+            "vertices": 10,
+            "zMin": 0.914614737033844,
+            "zMax": 0.9199292063713074,
+            "branches": 0
+          }
+        ]
+      }
+    },
+    "Shorts_Continuous_Waistband": {
+      "Dark_Competition_Shorts.001": {
+        "vertices": 485,
+        "polygons": 384,
+        "boundaryEdges": 200,
+        "loops": [
+          {
+            "vertices": 200,
+            "zMin": 0.8579999804496765,
+            "zMax": 0.9020000100135803,
+            "branches": 0
+          }
+        ]
+      }
+    },
+    "Competition_Tank_Top_Loose": {
+      "Competition_Green_Fabric.001": {
+        "vertices": 4250,
+        "polygons": 4128,
+        "boundaryEdges": 248,
+        "loops": [
+          {
+            "vertices": 112,
+            "zMin": 0.9089999794960022,
+            "zMax": 0.9190000295639038,
+            "branches": 0
+          },
+          {
+            "vertices": 64,
+            "zMin": 1.3229999542236328,
+            "zMax": 1.420271396636963,
+            "branches": 0
+          },
+          {
+            "vertices": 36,
+            "zMin": 1.215000033378601,
+            "zMax": 1.3758585453033447,
+            "branches": 0
+          },
+          {
+            "vertices": 36,
+            "zMin": 1.215000033378601,
+            "zMax": 1.3758585453033447,
+            "branches": 0
+          }
+        ]
+      }
+    },
+    "Competition_Shorts_Loose": {
+      "Dark_Competition_Shorts.001": {
+        "vertices": 1663,
+        "polygons": 1536,
+        "boundaryEdges": 256,
+        "loops": [
+          {
+            "vertices": 64,
+            "zMin": 0.6069575548171997,
+            "zMax": 0.6069575548171997,
+            "branches": 0
+          },
+          {
+            "vertices": 64,
+            "zMin": 0.9130423665046692,
+            "zMax": 0.9130423665046692,
+            "branches": 0
+          },
+          {
+            "vertices": 64,
+            "zMin": 0.6069575548171997,
+            "zMax": 0.6069575548171997,
+            "branches": 0
+          },
+          {
+            "vertices": 64,
+            "zMin": 0.9130423665046692,
+            "zMax": 0.9130423665046692,
+            "branches": 0
+          }
+        ]
+      }
+    }
+  },
+  "bindingRadialSegments": 6,
+  "repairedShell": {
+    "Competition_Green_Fabric.001": {
+      "vertices": 1416,
+      "polygons": 476,
+      "boundaryEdges": 138,
+      "loops": [
+        {
+          "vertices": 55,
+          "zMin": 0.9089999794960022,
+          "zMax": 0.9190000295639038,
+          "branches": 0
+        },
+        {
+          "vertices": 23,
+          "zMin": 1.215000033378601,
+          "zMax": 1.3758585453033447,
+          "branches": 0
+        },
+        {
+          "vertices": 24,
+          "zMin": 1.215000033378601,
+          "zMax": 1.3758585453033447,
+          "branches": 0
+        },
+        {
+          "vertices": 36,
+          "zMin": 1.3229999542236328,
+          "zMax": 1.4200503826141357,
+          "branches": 0
+        }
+      ]
+    }
+  },
+  "repairedBindings": {
+    "Continuous_Binding_0": {
+      "Green_Ribbed_Binding": {
+        "vertices": 330,
+        "polygons": 330,
+        "boundaryEdges": 0,
+        "loops": []
+      }
+    },
+    "Continuous_Binding_1": {
+      "Green_Ribbed_Binding": {
+        "vertices": 138,
+        "polygons": 138,
+        "boundaryEdges": 0,
+        "loops": []
+      }
+    },
+    "Continuous_Binding_2": {
+      "Green_Ribbed_Binding": {
+        "vertices": 144,
+        "polygons": 144,
+        "boundaryEdges": 0,
+        "loops": []
+      }
+    },
+    "Continuous_Binding_3": {
+      "Green_Ribbed_Binding": {
+        "vertices": 216,
+        "polygons": 216,
+        "boundaryEdges": 0,
+        "loops": []
+      }
+    }
+  },
+  "preservation": {
+    "motionBefore": "0efa2d714763f706e8c2ef502c25f784c7798816329e4aa9247d3d1567d06dcf",
+    "motionAfter": "0efa2d714763f706e8c2ef502c25f784c7798816329e4aa9247d3d1567d06dcf",
+    "anatomyMatches": true,
+    "armatures": 55,
+    "maxAnatomyNormalReencodeError": 0.0006215273440812988,
+    "roleColors": {
+      "BOW_CALLER": [
+        [
+          0.11999999731779099,
+          0.1899999976158142,
+          0.07000000029802322,
+          1.0
+        ]
+      ],
+      "MID_CONTROLLER": [
+        [
+          0.11999999731779099,
+          0.550000011920929,
+          0.7799999713897705,
+          1.0
+        ]
+      ]
+    },
+    "motionMatches": true
+  }
+}

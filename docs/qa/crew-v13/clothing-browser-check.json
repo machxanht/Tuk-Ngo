@@ -1,0 +1,19 @@
+{
+  "pass": true,
+  "errors": [],
+  "phases": [
+    0,
+    0.32,
+    0.66
+  ],
+  "cadences": [
+    80,
+    105
+  ],
+  "cameras": [
+    "seated",
+    "standing",
+    "caller"
+  ],
+  "physicalTabletTested": false
+}
