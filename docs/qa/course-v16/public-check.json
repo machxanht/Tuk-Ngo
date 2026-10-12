@@ -1,0 +1,49 @@
+{
+  "pass": true,
+  "base": "https://machxanht.github.io/Tuk-Ngo/",
+  "bundle": "index-wrz-Ldu8.js",
+  "teamFiles": [
+    {
+      "id": "tum-nup-2",
+      "bytes": 20220688
+    },
+    {
+      "id": "prek-on-dok-2",
+      "bytes": 19953672
+    },
+    {
+      "id": "prek-ta-cuol",
+      "bytes": 19935272
+    },
+    {
+      "id": "chroi-tum-chas",
+      "bytes": 19931168
+    },
+    {
+      "id": "om-pou-year",
+      "bytes": 19983668
+    },
+    {
+      "id": "kos-thum-1",
+      "bytes": 19915856
+    },
+    {
+      "id": "pothi-satharam-2",
+      "bytes": 19880488
+    },
+    {
+      "id": "pothi-khsach",
+      "bytes": 20133460
+    }
+  ],
+  "changedDownloadsHashMatched": [
+    "tum-nup-2",
+    "chroi-tum-chas"
+  ],
+  "galleryCards": 10,
+  "studyDownloadMatched": true,
+  "waterAdvanced": true,
+  "gameStarts": true,
+  "errors": [],
+  "physicalTabletTested": false
+}

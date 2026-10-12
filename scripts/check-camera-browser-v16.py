@@ -9,7 +9,7 @@ with sync_playwright() as p:
  page.goto(base+'?demo=studio',wait_until='domcontentloaded');page.wait_for_selector('[data-scene-version="MASPERO_TWO_CREWS_V16"]',timeout=90000)
  page.wait_for_function('document.querySelector("[data-testid=race-stage]").dataset.cameraPosition');samples=[]
  for n in range(19):
-  state=page.evaluate('''()=>{const h=document.querySelector('[data-testid=race-stage]'),return {distance:h.dataset.distance,loops:h.dataset.loopCount,camera:JSON.parse(h.dataset.cameraPosition),target:JSON.parse(h.dataset.cameraTarget),boat:JSON.parse(h.dataset.boatPositions)[0],mode:h.dataset.camera};}''');state['elapsed']=n*10;state['targetOffset']=state['target'][0]-state['boat'][0];assert abs(state['targetOffset'])<6 and all(math.isfinite(x) for x in state['camera']);samples.append(state)
+  state=page.evaluate('''()=>{const h=document.querySelector('[data-testid=race-stage]');return {distance:h.dataset.distance,loops:h.dataset.loopCount,camera:JSON.parse(h.dataset.cameraPosition),target:JSON.parse(h.dataset.cameraTarget),boat:JSON.parse(h.dataset.boatPositions)[0],mode:h.dataset.camera};}''');state['elapsed']=n*10;state['targetOffset']=state['target'][0]-state['boat'][0];assert abs(state['targetOffset'])<6 and all(math.isfinite(x) for x in state['camera']);samples.append(state)
   if n in [0,6,12,18]:page.screenshot(path=str(out/f'fixed-live-{n*10}s.png'));print(json.dumps(state),flush=True)
   if n<18:page.wait_for_timeout(10000)
  assert int(samples[-1]['loops'])>=1
