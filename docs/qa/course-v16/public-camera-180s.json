@@ -1,0 +1,1038 @@
+{
+  "pass": true,
+  "samples": [
+    {
+      "distance": "1020.2",
+      "loops": "0",
+      "camera": [
+        1250.86,
+        27,
+        67
+      ],
+      "target": [
+        1288.86,
+        1.3000000000000005,
+        0
+      ],
+      "boat": [
+        1284.86,
+        0.008211492091337041,
+        -7.5
+      ],
+      "mode": "overview",
+      "elapsed": 0,
+      "targetOffset": 4.0
+    },
+    {
+      "distance": "1069.7",
+      "loops": "0",
+      "camera": [
+        1201.359519999992,
+        27,
+        67
+      ],
+      "target": [
+        1239.359519999992,
+        1.299999999999999,
+        0
+      ],
+      "boat": [
+        1235.3595199999945,
+        0.005714012916823869,
+        -7.5
+      ],
+      "mode": "overview",
+      "elapsed": 10,
+      "targetOffset": 3.999999999997499
+    },
+    {
+      "distance": "1117.0",
+      "loops": "0",
+      "camera": [
+        1154.1102399999872,
+        26.999999999999993,
+        67
+      ],
+      "target": [
+        1192.1102399999872,
+        1.2999999999999954,
+        0
+      ],
+      "boat": [
+        1188.1102399999897,
+        0.00984121344545549,
+        -7.5
+      ],
+      "mode": "overview",
+      "elapsed": 20,
+      "targetOffset": 3.999999999997499
+    },
+    {
+      "distance": "1164.2",
+      "loops": "0",
+      "camera": [
+        1106.861439999984,
+        26.999999999999996,
+        67
+      ],
+      "target": [
+        1144.861439999984,
+        1.2999999999999978,
+        0
+      ],
+      "boat": [
+        1140.861439999986,
+        0.00822580973852544,
+        -7.5
+      ],
+      "mode": "overview",
+      "elapsed": 30,
+      "targetOffset": 3.9999999999979536
+    },
+    {
+      "distance": "1213.7",
+      "loops": "0",
+      "camera": [
+        1057.360479999982,
+        26.999999999999996,
+        67
+      ],
+      "target": [
+        1095.360479999982,
+        1.2999999999999987,
+        0
+      ],
+      "boat": [
+        1091.360479999983,
+        0.00570025443137749,
+        -7.5
+      ],
+      "mode": "overview",
+      "elapsed": 40,
+      "targetOffset": 3.9999999999990905
+    },
+    {
+      "distance": "1261.0",
+      "loops": "0",
+      "camera": [
+        1010.1102399999809,
+        27,
+        67
+      ],
+      "target": [
+        1048.1102399999809,
+        1.300000000000002,
+        0
+      ],
+      "boat": [
+        1044.1102399999809,
+        0.009841213445455497,
+        -7.5
+      ],
+      "mode": "overview",
+      "elapsed": 50,
+      "targetOffset": 4.0
+    },
+    {
+      "distance": "35.4",
+      "loops": "1",
+      "camera": [
+        2235.69808,
+        27,
+        67
+      ],
+      "target": [
+        2273.69808,
+        1.3,
+        0
+      ],
+      "boat": [
+        2269.69808,
+        0.008287251310369769,
+        -7.5
+      ],
+      "mode": "overview",
+      "elapsed": 60,
+      "targetOffset": 4.0
+    },
+    {
+      "distance": "82.7",
+      "loops": "1",
+      "camera": [
+        2188.4492800000003,
+        27,
+        67
+      ],
+      "target": [
+        2226.4492800000003,
+        1.2999999999999992,
+        0
+      ],
+      "boat": [
+        2222.44928,
+        0.009821299258405193,
+        -7.5
+      ],
+      "mode": "overview",
+      "elapsed": 70,
+      "targetOffset": 4.000000000000455
+    },
+    {
+      "distance": "132.2",
+      "loops": "1",
+      "camera": [
+        2138.94976,
+        26.999999999999996,
+        67
+      ],
+      "target": [
+        2176.94976,
+        1.2999999999999987,
+        0
+      ],
+      "boat": [
+        2172.94976,
+        0.0018738131458572755,
+        -7.5
+      ],
+      "mode": "overview",
+      "elapsed": 80,
+      "targetOffset": 4.0
+    },
+    {
+      "distance": "179.4",
+      "loops": "1",
+      "camera": [
+        2091.6995200000006,
+        27,
+        67
+      ],
+      "target": [
+        2129.6995200000006,
+        1.3000000000000007,
+        0
+      ],
+      "boat": [
+        2125.69952,
+        0.008273159466428067,
+        -7.5
+      ],
+      "mode": "overview",
+      "elapsed": 90,
+      "targetOffset": 4.000000000000455
+    },
+    {
+      "distance": "226.6",
+      "loops": "1",
+      "camera": [
+        2044.4502400000006,
+        27,
+        67
+      ],
+      "target": [
+        2082.4502400000006,
+        1.2999999999999994,
+        0
+      ],
+      "boat": [
+        2078.45024,
+        0.009824438862098299,
+        -7.5
+      ],
+      "mode": "overview",
+      "elapsed": 100,
+      "targetOffset": 4.000000000000455
+    },
+    {
+      "distance": "276.2",
+      "loops": "1",
+      "camera": [
+        1994.9483200000002,
+        26.999999999999986,
+        66.99999999999996
+      ],
+      "target": [
+        2032.9483200000004,
+        1.3,
+        0
+      ],
+      "boat": [
+        2028.9483200000004,
+        0.001898494773141143,
+        -7.5
+      ],
+      "mode": "overview",
+      "elapsed": 110,
+      "targetOffset": 4.0
+    },
+    {
+      "distance": "323.4",
+      "loops": "1",
+      "camera": [
+        1947.7000000000019,
+        26.999999999999986,
+        66.99999999999996
+      ],
+      "target": [
+        1985.700000000002,
+        1.2999999999999998,
+        0
+      ],
+      "boat": [
+        1981.700000000001,
+        0.008268450567870617,
+        -7.5
+      ],
+      "mode": "overview",
+      "elapsed": 120,
+      "targetOffset": 4.000000000001137
+    },
+    {
+      "distance": "372.9",
+      "loops": "1",
+      "camera": [
+        1898.2014399999985,
+        26.999999999999982,
+        66.99999999999996
+      ],
+      "target": [
+        1936.2014399999987,
+        1.2999999999999985,
+        0
+      ],
+      "boat": [
+        1932.2014400000003,
+        -0.005645060850223283,
+        -7.5
+      ],
+      "mode": "overview",
+      "elapsed": 130,
+      "targetOffset": 3.9999999999984084
+    },
+    {
+      "distance": "420.2",
+      "loops": "1",
+      "camera": [
+        1850.9497599999945,
+        26.999999999999982,
+        66.99999999999996
+      ],
+      "target": [
+        1888.9497599999947,
+        1.2999999999999985,
+        0
+      ],
+      "boat": [
+        1884.9497599999995,
+        0.0018738131458585908,
+        -7.5
+      ],
+      "mode": "overview",
+      "elapsed": 140,
+      "targetOffset": 3.999999999995225
+    },
+    {
+      "distance": "469.7",
+      "loops": "1",
+      "camera": [
+        1801.4492799999955,
+        26.999999999999986,
+        66.99999999999996
+      ],
+      "target": [
+        1839.4492799999957,
+        1.299999999999999,
+        0
+      ],
+      "boat": [
+        1835.449279999999,
+        -0.009821299258405384,
+        -7.5
+      ],
+      "mode": "overview",
+      "elapsed": 150,
+      "targetOffset": 3.9999999999968168
+    },
+    {
+      "distance": "516.9",
+      "loops": "1",
+      "camera": [
+        1754.2009599999924,
+        26.999999999999982,
+        66.99999999999996
+      ],
+      "target": [
+        1792.2009599999926,
+        1.2999999999999987,
+        0
+      ],
+      "boat": [
+        1788.2009599999976,
+        -0.005638143773032979,
+        -7.5
+      ],
+      "mode": "overview",
+      "elapsed": 160,
+      "targetOffset": 3.999999999994998
+    },
+    {
+      "distance": "566.4",
+      "loops": "1",
+      "camera": [
+        1704.6990399999909,
+        26.999999999999982,
+        66.99999999999996
+      ],
+      "target": [
+        1742.699039999991,
+        1.2999999999999976,
+        0
+      ],
+      "boat": [
+        1738.6990399999986,
+        -0.00827786255856395,
+        -7.5
+      ],
+      "mode": "overview",
+      "elapsed": 170,
+      "targetOffset": 3.9999999999924967
+    },
+    {
+      "distance": "613.7",
+      "loops": "1",
+      "camera": [
+        1657.4497599999916,
+        26.999999999999982,
+        66.99999999999996
+      ],
+      "target": [
+        1695.4497599999918,
+        1.2999999999999967,
+        0
+      ],
+      "boat": [
+        1691.4497599999995,
+        -0.009822872507286553,
+        -7.5
+      ],
+      "mode": "overview",
+      "elapsed": 180,
+      "targetOffset": 3.9999999999922693
+    }
+  ],
+  "pausedCrowd": {
+    "before": {
+      "time": "181.92470000000006",
+      "phase": "[0.6134666666666643,0.7901319999999127]",
+      "boat": "[[1688.4492799999998,-0.00654054553312883,-7.5],[1690.1080986641969,-0.009683765694886902,7.5]]"
+    },
+    "after": {
+      "time": "184.26880000000006",
+      "phase": "[0.6134666666666643,0.7901319999999127]",
+      "boat": "[[1688.4492799999998,-0.00654054553312883,-7.5],[1690.1080986641969,-0.009683765694886902,7.5]]"
+    }
+  },
+  "environment": {
+    "crowd": {
+      "variants": [
+        "young man tee",
+        "woman blouse",
+        "older man polo",
+        "older woman tunic",
+        "slim man vest",
+        "woman long sleeve",
+        "stocky man tee",
+        "woman dress",
+        "man cap",
+        "woman cap",
+        "older man grey hair",
+        "woman bob",
+        "tall man striped polo",
+        "woman striped blouse",
+        "stocky older woman",
+        "man light cap"
+      ],
+      "variantCount": 16,
+      "people": 10019,
+      "demographicCounts": {
+        "age": {
+          "older adult": 2048,
+          "young adult": 7063,
+          "adolescent": 908
+        },
+        "gender": {
+          "masculine styling": 4979,
+          "feminine styling": 5040
+        },
+        "profile": {
+          "0": 605,
+          "1": 680,
+          "2": 666,
+          "3": 643,
+          "4": 589,
+          "5": 624,
+          "6": 634,
+          "7": 636,
+          "8": 615,
+          "9": 594,
+          "10": 615,
+          "11": 622,
+          "12": 650,
+          "13": 614,
+          "14": 627,
+          "15": 605
+        },
+        "palette": {
+          "#ca9c3e": 656,
+          "#ece2c7": 653,
+          "#ae4f6b": 613,
+          "#7866a0": 615,
+          "#967856": 626,
+          "#b2463d": 615,
+          "#8d4f38": 626,
+          "#718347": 616,
+          "#46669c": 574,
+          "#c7829b": 656,
+          "#387b87": 639,
+          "#d5c59f": 602,
+          "#d56d43": 586,
+          "#569079": 634,
+          "#8b9690": 649,
+          "#577e9c": 659
+        }
+      },
+      "randomization": {
+        "algorithm": "salted id and centimetre coordinates",
+        "samples": [
+          {
+            "id": 220,
+            "seed": 4020642003,
+            "profile": 12,
+            "age": "older adult",
+            "gender": "masculine styling",
+            "clothing": 6,
+            "hair": 2,
+            "color": "#ca9c3e",
+            "clip": 5,
+            "phase": 21.002484949305654,
+            "speed": 4.867926539853215,
+            "intensity": 0.7875338192679919,
+            "width": 0.9966253953822887,
+            "height": 1.0378298651481865,
+            "skin": 0.6517239729873836,
+            "yaw": -0.08691462613642216,
+            "breathe": 5.550344423674905
+          },
+          {
+            "id": 234,
+            "seed": 2343128199,
+            "profile": 9,
+            "age": "young adult",
+            "gender": "feminine styling",
+            "clothing": 15,
+            "hair": 1,
+            "color": "#ece2c7",
+            "clip": 5,
+            "phase": 23.64004390127957,
+            "speed": 4.071101900888607,
+            "intensity": 0.7939452046412043,
+            "width": 0.856692549654469,
+            "height": 0.9629829764306543,
+            "skin": 0.11256849626079202,
+            "yaw": 0.15621702380478383,
+            "breathe": 6.182090190051899
+          },
+          {
+            "id": 248,
+            "seed": 98699523,
+            "profile": 12,
+            "age": "young adult",
+            "gender": "masculine styling",
+            "clothing": 8,
+            "hair": 0,
+            "color": "#ece2c7",
+            "clip": 5,
+            "phase": 0.07558920420706272,
+            "speed": 4.449669198319316,
+            "intensity": 0.9687808328308165,
+            "width": 0.9490363821154459,
+            "height": 1.135861810464412,
+            "skin": 0.1297482019290328,
+            "yaw": 0.1371477223932743,
+            "breathe": 5.20657393253432
+          },
+          {
+            "id": 262,
+            "seed": 284428184,
+            "profile": 3,
+            "age": "young adult",
+            "gender": "feminine styling",
+            "clothing": 1,
+            "hair": 4,
+            "color": "#ae4f6b",
+            "clip": 5,
+            "phase": 21.890855552628636,
+            "speed": 5.097131664166227,
+            "intensity": 0.7634463057038374,
+            "width": 1.1123702542651444,
+            "height": 0.9317549767741469,
+            "skin": 0.7312567650806159,
+            "yaw": 0.08686140887439252,
+            "breathe": 1.5066719923421297
+          },
+          {
+            "id": 275,
+            "seed": 3342855677,
+            "profile": 3,
+            "age": "adolescent",
+            "gender": "feminine styling",
+            "clothing": 11,
+            "hair": 3,
+            "color": "#ca9c3e",
+            "clip": 0,
+            "phase": 9.609973680227995,
+            "speed": 3.68209202485159,
+            "intensity": 0.5518385823932477,
+            "width": 1.1308669133227318,
+            "height": 0.6926729859324042,
+            "skin": 0.3726751757785678,
+            "yaw": 0.03206570200622082,
+            "breathe": 2.5290147397046137
+          },
+          {
+            "id": 289,
+            "seed": 3076065181,
+            "profile": 9,
+            "age": "older adult",
+            "gender": "feminine styling",
+            "clothing": 15,
+            "hair": 4,
+            "color": "#7866a0",
+            "clip": 1,
+            "phase": 2.384935822337866,
+            "speed": 6.321910827467217,
+            "intensity": 0.7826974367024377,
+            "width": 0.8690200791247189,
+            "height": 0.9177318145799337,
+            "skin": 0.38741184724494815,
+            "yaw": -0.11610700495541096,
+            "breathe": 0.35352233183858217
+          },
+          {
+            "id": 303,
+            "seed": 2817185267,
+            "profile": 15,
+            "age": "young adult",
+            "gender": "masculine styling",
+            "clothing": 8,
+            "hair": 0,
+            "color": "#ece2c7",
+            "clip": 5,
+            "phase": 20.842206118628383,
+            "speed": 5.103868239559233,
+            "intensity": 0.8793779404368252,
+            "width": 1.1448460003930143,
+            "height": 1.0131836283330806,
+            "skin": 0.8895906994584948,
+            "yaw": 0.01639071077108383,
+            "breathe": 6.208926310549239
+          },
+          {
+            "id": 317,
+            "seed": 2206881458,
+            "profile": 5,
+            "age": "young adult",
+            "gender": "feminine styling",
+            "clothing": 11,
+            "hair": 3,
+            "color": "#967856",
+            "clip": 5,
+            "phase": 17.235230818390846,
+            "speed": 3.7834967914503066,
+            "intensity": 0.807646821718663,
+            "width": 0.8944082806400955,
+            "height": 0.9919604235626758,
+            "skin": 0.17672282946296036,
+            "yaw": 0.06354690074920655,
+            "breathe": 0.4086474245021946
+          },
+          {
+            "id": 331,
+            "seed": 4125756750,
+            "profile": 15,
+            "age": "older adult",
+            "gender": "masculine styling",
+            "clothing": 14,
+            "hair": 2,
+            "color": "#b2463d",
+            "clip": 1,
+            "phase": 23.710732575505972,
+            "speed": 5.8607251111418,
+            "intensity": 0.704835200693924,
+            "width": 1.0887035405563188,
+            "height": 0.9711572959051876,
+            "skin": 0.9203518794383854,
+            "yaw": 0.01597689799964428,
+            "breathe": 5.1053985099523205
+          },
+          {
+            "id": 345,
+            "seed": 2702582050,
+            "profile": 9,
+            "age": "older adult",
+            "gender": "feminine styling",
+            "clothing": 7,
+            "hair": 2,
+            "color": "#8d4f38",
+            "clip": 0,
+            "phase": 11.87637859582901,
+            "speed": 5.058700239192694,
+            "intensity": 0.7706670988234692,
+            "width": 0.9379629346027037,
+            "height": 0.8848869365611374,
+            "skin": 0.6758094145916402,
+            "yaw": -0.14154632456600666,
+            "breathe": 3.58199584118542
+          },
+          {
+            "id": 359,
+            "seed": 1326246445,
+            "profile": 6,
+            "age": "young adult",
+            "gender": "masculine styling",
+            "clothing": 14,
+            "hair": 4,
+            "color": "#718347",
+            "clip": 5,
+            "phase": 2.4727804977446795,
+            "speed": 5.931705590616911,
+            "intensity": 0.9041951045510359,
+            "width": 1.2527049279127267,
+            "height": 1.0039060463046654,
+            "skin": 0.09447385696694255,
+            "yaw": 0.12364838987588883,
+            "breathe": 5.5424943617577975
+          },
+          {
+            "id": 372,
+            "seed": 3561240366,
+            "profile": 2,
+            "age": "young adult",
+            "gender": "masculine styling",
+            "clothing": 8,
+            "hair": 0,
+            "color": "#718347",
+            "clip": 0,
+            "phase": 8.555531412363052,
+            "speed": 2.9332907368429004,
+            "intensity": 0.6592277351999656,
+            "width": 1.1558142003148795,
+            "height": 0.9456522814437746,
+            "skin": 0.92152154375799,
+            "yaw": -0.044507527947425844,
+            "breathe": 0.25224924631330414
+          },
+          {
+            "id": 386,
+            "seed": 3947734653,
+            "profile": 1,
+            "age": "adolescent",
+            "gender": "feminine styling",
+            "clothing": 3,
+            "hair": 4,
+            "color": "#46669c",
+            "clip": 5,
+            "phase": 0.5460074152797461,
+            "speed": 3.207647043187171,
+            "intensity": 0.770995999162551,
+            "width": 0.8648816354103386,
+            "height": 0.7010659320711903,
+            "skin": 0.443482450209558,
+            "yaw": -0.05998470731079578,
+            "breathe": 1.997651438758535
+          },
+          {
+            "id": 400,
+            "seed": 1004704076,
+            "profile": 10,
+            "age": "older adult",
+            "gender": "masculine styling",
+            "clothing": 12,
+            "hair": 4,
+            "color": "#c7829b",
+            "clip": 5,
+            "phase": 11.068536574020982,
+            "speed": 2.823634749324992,
+            "intensity": 0.8218021346838214,
+            "width": 1.1246758922096343,
+            "height": 0.8746362192377093,
+            "skin": 0.9781589501071721,
+            "yaw": 0.05663144171237946,
+            "breathe": 3.3280827801860378
+          },
+          {
+            "id": 414,
+            "seed": 4004171078,
+            "profile": 4,
+            "age": "older adult",
+            "gender": "masculine styling",
+            "clothing": 0,
+            "hair": 2,
+            "color": "#387b87",
+            "clip": 0,
+            "phase": 7.887561745941639,
+            "speed": 3.160911066830158,
+            "intensity": 0.5598896319395863,
+            "width": 0.8245593807110562,
+            "height": 1.0077298989693801,
+            "skin": 0.26292079384438694,
+            "yaw": -0.0018513485044240952,
+            "breathe": 0.219589007845656
+          },
+          {
+            "id": 428,
+            "seed": 3372740654,
+            "profile": 9,
+            "age": "young adult",
+            "gender": "feminine styling",
+            "clothing": 5,
+            "hair": 3,
+            "color": "#d5c59f",
+            "clip": 1,
+            "phase": 17.3425334058702,
+            "speed": 5.14006593762897,
+            "intensity": 0.6781012264080346,
+            "width": 0.9619602404754609,
+            "height": 0.9716447001591324,
+            "skin": 0.2227006012108177,
+            "yaw": 0.06165766179561615,
+            "breathe": 1.4703252736408612
+          },
+          {
+            "id": 442,
+            "seed": 3433979895,
+            "profile": 4,
+            "age": "young adult",
+            "gender": "masculine styling",
+            "clothing": 6,
+            "hair": 4,
+            "color": "#718347",
+            "clip": 1,
+            "phase": 22.47902018018067,
+            "speed": 5.736056132987141,
+            "intensity": 0.7988762068096549,
+            "width": 0.8308328501563519,
+            "height": 1.0812462181677112,
+            "skin": 0.12389301299117506,
+            "yaw": 0.013584099784493446,
+            "breathe": 5.770593763450897
+          },
+          {
+            "id": 456,
+            "seed": 643980780,
+            "profile": 7,
+            "age": "young adult",
+            "gender": "feminine styling",
+            "clothing": 9,
+            "hair": 4,
+            "color": "#d56d43",
+            "clip": 1,
+            "phase": 10.173099908977747,
+            "speed": 3.883182885032147,
+            "intensity": 0.7248119833064266,
+            "width": 1.026569444714673,
+            "height": 0.989477350200247,
+            "skin": 0.8531883771065623,
+            "yaw": -0.14080227464437486,
+            "breathe": 5.328122172192813
+          },
+          {
+            "id": 469,
+            "seed": 438427379,
+            "profile": 12,
+            "age": "adolescent",
+            "gender": "masculine styling",
+            "clothing": 12,
+            "hair": 0,
+            "color": "#569079",
+            "clip": 5,
+            "phase": 0.6799013391137123,
+            "speed": 4.144433842692524,
+            "intensity": 0.95647425489733,
+            "width": 0.9757641761931589,
+            "height": 0.8738883888950646,
+            "skin": 0.49467943934723735,
+            "yaw": -0.06487440027296543,
+            "breathe": 0.07439378846585866
+          },
+          {
+            "id": 483,
+            "seed": 2899188301,
+            "profile": 5,
+            "age": "young adult",
+            "gender": "feminine styling",
+            "clothing": 1,
+            "hair": 1,
+            "color": "#8d4f38",
+            "clip": 0,
+            "phase": 9.310469521209598,
+            "speed": 4.150311642512679,
+            "intensity": 0.7182817903347314,
+            "width": 0.9075056414429098,
+            "height": 1.0284420252394861,
+            "skin": 0.6571218250319362,
+            "yaw": 0.02982183776795864,
+            "breathe": 2.830222219502858
+          },
+          {
+            "id": 497,
+            "seed": 3737716706,
+            "profile": 2,
+            "age": "older adult",
+            "gender": "masculine styling",
+            "clothing": 12,
+            "hair": 2,
+            "color": "#8b9690",
+            "clip": 5,
+            "phase": 17.68909311108291,
+            "speed": 5.958306576171889,
+            "intensity": 0.7525494198780507,
+            "width": 1.1860199150800705,
+            "height": 0.9093324306929109,
+            "skin": 0.7391681412700564,
+            "yaw": 0.05883255325257778,
+            "breathe": 6.131035030375508
+          },
+          {
+            "id": 511,
+            "seed": 86406703,
+            "profile": 13,
+            "age": "young adult",
+            "gender": "feminine styling",
+            "clothing": 5,
+            "hair": 3,
+            "color": "#967856",
+            "clip": 5,
+            "phase": 8.918532891198993,
+            "speed": 3.8516520533710716,
+            "intensity": 0.9023911863332614,
+            "width": 0.8508675162762404,
+            "height": 1.0567089882763103,
+            "skin": 0.46886726771481335,
+            "yaw": -0.10958816081285477,
+            "breathe": 1.9521370561668765
+          },
+          {
+            "id": 525,
+            "seed": 1500572054,
+            "profile": 5,
+            "age": "young adult",
+            "gender": "feminine styling",
+            "clothing": 15,
+            "hair": 3,
+            "color": "#569079",
+            "clip": 1,
+            "phase": 20.661254659295082,
+            "speed": 3.54825659035705,
+            "intensity": 0.7300246495404281,
+            "width": 0.9464967207275332,
+            "height": 1.0117554643325508,
+            "skin": 0.6720546651631594,
+            "yaw": -0.034442167878150944,
+            "breathe": 4.553435045693836
+          },
+          {
+            "id": 539,
+            "seed": 2827313406,
+            "profile": 6,
+            "age": "young adult",
+            "gender": "masculine styling",
+            "clothing": 2,
+            "hair": 0,
+            "color": "#8b9690",
+            "clip": 3,
+            "phase": 3.8617579210549593,
+            "speed": 3.73697670805268,
+            "intensity": 0.5989724293584004,
+            "width": 1.2919863885454834,
+            "height": 0.9526929550061933,
+            "skin": 0.917472843779251,
+            "yaw": 0.08015206180512906,
+            "breathe": 1.7886524212250543
+          }
+        ]
+      },
+      "activityCounts": {
+        "standing cheer": 1147,
+        "standing clap": 1519,
+        "seated clap": 594,
+        "one hand wave": 1366,
+        "seated watcher": 1255,
+        "standing watcher": 4138
+      },
+      "activities": [
+        "standing cheer",
+        "standing clap",
+        "seated clap",
+        "one hand wave",
+        "seated watcher",
+        "standing watcher"
+      ],
+      "lods": [
+        {
+          "vertices": 928,
+          "triangles": 1800,
+          "textureBytes": 4276224
+        },
+        {
+          "vertices": 177,
+          "triangles": 319,
+          "textureBytes": 815616
+        }
+      ],
+      "motion": "Independent deterministic clip, phase and speed; calm watcher majority"
+    },
+    "reference": "OWNER_VTV10_VIDEO_2025_REAL_PHOTOS_AND_OSM_LAYOUT",
+    "dimensions": "APPROXIMATE_GAME_SCALE",
+    "spectators": 10019,
+    "seats": 1916,
+    "trees": 209,
+    "houses": 466,
+    "distantBlocks": 300,
+    "umbrellas": 153,
+    "stands": 2,
+    "nationalFlags": 0,
+    "buildings": {
+      "source": "Overture Maps Foundation",
+      "release": "2026-09-23.1",
+      "license": "ODbL-1.0",
+      "available": 557,
+      "rendered": 318,
+      "excluded": 239,
+      "heights": "authored; all source heights unknown",
+      "footprintExtent": [
+        850,
+        1400
+      ]
+    },
+    "detailRange": [
+      850,
+      1400
+    ],
+    "bankSource": "OpenStreetMap contributors",
+    "bankLicense": "ODbL-1.0",
+    "bankOutlineGameSpanM": 400,
+    "bridgeYawSource": "OSM bridge centre-lines",
+    "continuousLand": true,
+    "pitchedRoof": "ridge above eaves; corrugation follows both slopes",
+    "npcSource": "MakeHuman CC0, animated anatomical mesh",
+    "signLanguage": "km",
+    "standRoof": "VIP double pitch; opposite low single pitch",
+    "bridgeC247": "teal curved steel portals",
+    "bridge30April": "concrete piers and silver arched truss, 2022 construction photo; finished decoration approximate"
+  },
+  "finiteInstances": {
+    "production": true
+  },
+  "errors": []
+}
