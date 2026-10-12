@@ -1,0 +1,8 @@
+{
+  "pass": true,
+  "production": true,
+  "artDefaultV17": true,
+  "renderDownloadMatch": true,
+  "downloadSha256": "d498796277e0013c115d1ed28a8e3fc84f89a6ce803eb5ef8ba53258194f9991",
+  "errors": []
+}
