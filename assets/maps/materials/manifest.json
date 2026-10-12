@@ -1,0 +1,27 @@
+{
+  "clay_roof_tiles-normal.jpg": {
+    "sha256": "e6b364661f6c3045bf5268f684047968fc6550e5fa9b22b4b1266df47b495faa",
+    "bytes": 1101177,
+    "source": "PolyHaven CC0"
+  },
+  "clay_roof_tiles.jpg": {
+    "sha256": "aac0f4e742a2cce21afb5dfb523b47c720c6a8e2782a312b823608fe3f80eae6",
+    "bytes": 878367,
+    "source": "PolyHaven CC0"
+  },
+  "corrugated_iron-normal.jpg": {
+    "sha256": "e98b839ae681ba929eb80f07348c70d0731b48239abe69268effab18420cd271",
+    "bytes": 755185,
+    "source": "PolyHaven CC0"
+  },
+  "corrugated_iron.jpg": {
+    "sha256": "7f3649dd0d056a55a910146f09b1d5298370696a90f511a255fb4c5715bb4b58",
+    "bytes": 719557,
+    "source": "PolyHaven CC0"
+  },
+  "worn_plaster_wall.jpg": {
+    "sha256": "f769bee35504ff713e89e89d2b64c1eb3c373dd184973ac8706310f19fd63efe",
+    "bytes": 750361,
+    "source": "PolyHaven CC0"
+  }
+}
