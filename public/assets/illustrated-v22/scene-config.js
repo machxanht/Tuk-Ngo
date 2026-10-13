@@ -2,7 +2,7 @@
    not a surveyed map. Every mode uses the same hull, crew and visual style. */
 (()=>{
  const config={
-  revision:'hybrid-v29',
+  revision:'hybrid-v30',
   style:{id:'painted-daylight',description:'Minh họa mềm, nét rõ, nắng sáng, màu tự nhiên',banner:'#a91e19',bannerText:'#ffe4a0'},
   camera:{id:'bank-side-elevated',description:'Nhìn ngang từ bờ gần, hơi từ trên xuống',width:2400,height:1500,workshopHeight:860,maxRenderWidth:1600,maxPixelRatio:1.5,direction:-1},
   modes:{demo:{label:'Đua thử',boats:2,camera:'bank-side-elevated'},play:{label:'Đua nhanh',boats:2,camera:'bank-side-elevated'},practice:{label:'Tập chèo',boats:1,camera:'bank-side-elevated'},workshop:{label:'Xưởng ghe',boats:1,camera:'bank-side-elevated'}},

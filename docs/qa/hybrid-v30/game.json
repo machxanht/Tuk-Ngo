@@ -1,0 +1,62 @@
+{
+  "url": "http://127.0.0.1:4255/",
+  "physicalTabletTested": false,
+  "reports": [
+    {
+      "viewport": [
+        1024,
+        768
+      ],
+      "simulatedFinish": 190.62189817602882,
+      "simulationResult": "win",
+      "actualButtonInput": true,
+      "pausedClockFrozen": true,
+      "fullscreenPanelOutsideScene": true,
+      "recordReload": true,
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "simulatedFinish": 190.62189817602882,
+      "simulationResult": "win",
+      "actualButtonInput": true,
+      "pausedClockFrozen": true,
+      "fullscreenPanelOutsideScene": true,
+      "recordReload": true,
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "simulatedFinish": 190.62189817602882,
+      "simulationResult": "win",
+      "actualButtonInput": true,
+      "pausedClockFrozen": true,
+      "fullscreenPanelOutsideScene": true,
+      "recordReload": true,
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "viewport": [
+        834,
+        480
+      ],
+      "simulatedFinish": 190.62189817602882,
+      "simulationResult": "win",
+      "actualButtonInput": true,
+      "pausedClockFrozen": true,
+      "fullscreenPanelOutsideScene": true,
+      "recordReload": true,
+      "errors": [],
+      "failedRequests": []
+    }
+  ]
+}

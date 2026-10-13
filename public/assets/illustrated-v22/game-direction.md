@@ -69,4 +69,6 @@ V28 đã ghép tám đội nam tứ kết 2025 vào cảnh hybrid: chọn đội
 
 V29 thêm 12 mẫu khán giả, tổng 24 kiểu, trộn góc nhìn trước/sau đúng hai bờ và giữ mật độ 1.949 vị trí. Nội thất Kos Thum đã chuyển xanh khi chọn đội. Danh sách 61 ghe Việt/Khmer mở từ cùng game và trở lại đây; 55 mục có tên chùa Khmer theo nguồn, sáu mục chưa xác minh. Danh sách đăng ký không đồng nghĩa có 61 model hoàn chỉnh.
 
+V30 sửa khe hở vai ở áo có tay: lớp vải bám bề mặt vai/cánh tay cùng skin weights, thay vòng tay áo riêng. Khi dùng áo có tay, viền nách áo ba lỗ được ẩn; cổ áo và lai áo giữ nguyên. Đây là kiểu may dựng gần đúng, chưa phải bản phục dựng đủ chi tiết từng áo thật.
+
 Chưa hoàn thành: giải đấu nhiều vòng, trang phục/kbach từng đội được xác minh đầy đủ, rig chuyển động khán giả gần và các khuôn mặt được tạo hình riêng. Chưa đo hiệu năng trên tablet thật.

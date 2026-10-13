@@ -26,23 +26,25 @@ export function makeAthleteMaterials(skinMap,detail){
 attribute float paintZone; attribute vec2 paintUV; attribute float shirtMix;
 uniform vec3 kit_jersey,kit_lower,kit_cap,kit_trim,kit_shorts,kit_sleeve;
 uniform float hybridSkinDetail;
-varying vec2 vHybridSkinUV; varying float vHybridSkin; varying float vSleeve;
+varying vec2 vHybridSkinUV; varying float vHybridSkin; varying float vSleeve; varying float vArmBinding;
 `).replace('#include <color_vertex>',`#include <color_vertex>
 vHybridSkinUV=paintUV;
 vHybridSkin=(paintZone>0.9 && paintZone<1.1 && color.r>0.06)?hybridSkinDetail:0.0;
 vSleeve=paintZone>6.9 && paintZone<7.1?1.0:0.0;
+vArmBinding=paintZone>7.9 && paintZone<8.1?1.0:0.0;
 if(vHybridSkin>0.0) vColor.rgb=mix(vColor.rgb,vec3(clamp(color.r/.56,.65,1.3)*.75),vHybridSkin);
 if(paintZone>1.9 && paintZone<2.1) vColor.rgb=kit_cap;
 if(paintZone>2.9 && paintZone<4.1) vColor.rgb=mix(kit_lower,kit_jersey,shirtMix);
-if(paintZone>4.9 && paintZone<5.1) vColor.rgb=kit_trim;
+if((paintZone>4.9 && paintZone<5.1) || vArmBinding>0.0) vColor.rgb=kit_trim;
 if(paintZone>5.9 && paintZone<6.1) vColor.rgb=kit_shorts;
 if(vSleeve>0.0) vColor.rgb=kit_sleeve;
 `);
    shader.fragmentShader=shader.fragmentShader.replace('#include <common>',`#include <common>
 uniform sampler2D hybridSkinMap; uniform float kit_sleeved;
-varying vec2 vHybridSkinUV; varying float vHybridSkin; varying float vSleeve;
+varying vec2 vHybridSkinUV; varying float vHybridSkin; varying float vSleeve; varying float vArmBinding;
 `).replace('#include <color_fragment>',`#include <color_fragment>
 if(vSleeve>0.5 && kit_sleeved<0.5) discard;
+if(vArmBinding>0.5 && kit_sleeved>0.5) discard;
 if(vHybridSkin>0.0) diffuseColor.rgb *= mix(vec3(1.0),texture2D(hybridSkinMap,vHybridSkinUV).rgb,vHybridSkin);
 `);
   };
@@ -51,35 +53,29 @@ if(vHybridSkin>0.0) diffuseColor.rgb *= mix(vec3(1.0),texture2D(hybridSkinMap,vH
  return {get,dispose(){for(const material of cache.values())material.dispose();},get size(){return cache.size;}};
 }
 
-// Fit six smooth cloth rings to each anatomical upper arm in its bind pose.
-// Nearest body vertices supply the original four joint influences, so the
-// cuff follows the arm without an independently animated floating tube.
+// Follow the anatomical shoulder/upper-arm surface with its exact original
+// weights. This closes the tank armhole when a sleeved kit is selected.
 export function shortSleeves(body,jointNames,skeleton){
- const p=body.attributes.position,j=body.attributes.skinIndex,w=body.attributes.skinWeight,values={position:[],normal:[],uv:[],skinIndex:[],skinWeight:[],color:[],paintZone:[],shirtMix:[]},indices=[];
- const point=new T.Vector3(),radial=new T.Vector3(),segments=24,rings=6;
+ const p=body.attributes.position,j=body.attributes.skinIndex,w=body.attributes.skinWeight,selected=[],arms=[];
  for(const side of ['l','r']){
-  const upper=jointNames.indexOf('upperarm_'+side),lower=jointNames.indexOf('lowerarm_'+side);
+  const upper=jointNames.indexOf('upperarm_'+side),lower=jointNames.indexOf('lowerarm_'+side),clavicle=jointNames.indexOf('clavicle_'+side);
   const a=new T.Vector3().setFromMatrixPosition(skeleton.boneInverses[upper].clone().invert()),b=new T.Vector3().setFromMatrixPosition(skeleton.boneInverses[lower].clone().invert());
-  const axis=b.sub(a),length=axis.length();axis.normalize();const u=new T.Vector3(0,0,1).cross(axis).normalize(),v=axis.clone().cross(u).normalize(),candidates=[];
-  for(let i=0;i<p.count;i++){
-   let amount=0;for(let k=0;k<4;k++)if(j.getComponent(i,k)===upper)amount+=w.getComponent(i,k);
-   if(amount<.4)continue;point.fromBufferAttribute(p,i).sub(a);const along=point.dot(axis),radius=point.clone().addScaledVector(axis,-along).length();
-   if(along>-.04&&along<length*.8)candidates.push({i,along,radius});
-  }
-  const offset=values.paintZone.length;
-  for(let ring=0;ring<rings;ring++){
-   const along=-.006+ring/(rings-1)*Math.min(.19,length*.70),near=candidates.filter(c=>Math.abs(c.along-along)<.045).map(c=>c.radius).sort((a,b)=>a-b);
-   const radius=T.MathUtils.clamp((near[Math.floor(near.length*.9)]||.055)+.006,.047,.085);
-   for(let segment=0;segment<segments;segment++){
-    const theta=segment/segments*Math.PI*2;radial.copy(u).multiplyScalar(Math.cos(theta)).addScaledVector(v,Math.sin(theta));point.copy(a).addScaledVector(axis,along).addScaledVector(radial,radius);
-    let nearest=candidates[0]?.i??0,best=Infinity;for(const c of candidates){const d=(p.getX(c.i)-point.x)**2+(p.getY(c.i)-point.y)**2+(p.getZ(c.i)-point.z)**2;if(d<best){best=d;nearest=c.i;}}
-    values.position.push(...point.toArray());values.normal.push(...radial.toArray());values.uv.push(segment/segments,ring/(rings-1));values.color.push(1,1,1);values.paintZone.push(7);values.shirtMix.push(1);
-    for(let k=0;k<4;k++){values.skinIndex.push(j.getComponent(nearest,k));values.skinWeight.push(w.getComponent(nearest,k));}
-   }
-  }
-  for(let ring=0;ring<rings-1;ring++)for(let s=0;s<segments;s++){const a=offset+ring*segments+s,b=offset+ring*segments+(s+1)%segments;indices.push(a,b,a+segments,b,b+segments,a+segments);}
+  arms.push({upper,clavicle,start:a,axis:b.sub(a),sign:Math.sign(a.x)});
  }
- const source=new T.BufferGeometry();for(const [name,array] of Object.entries(values)){const size=body.attributes[name].itemSize,type=name==='skinIndex'?Uint16Array:Float32Array;source.setAttribute(name,new T.BufferAttribute(new type(array),size));}source.setIndex(indices);
+ const center=new T.Vector3(),probe=new T.Vector3();
+ for(let face=0;face<body.index.count;face+=3){
+  const vertices=[0,1,2].map(k=>body.index.getX(face+k));center.set(0,0,0);for(const i of vertices)center.add(probe.fromBufferAttribute(p,i));center.multiplyScalar(1/3);
+  const closesArmhole=Math.abs(center.x)>.10&&Math.abs(center.x)<.21&&center.y>1.105&&center.y<1.445;
+  const onArm=arms.some(arm=>{let amount=0;for(const i of vertices)for(let k=0;k<4;k++)if([arm.upper,arm.clavicle].includes(j.getComponent(i,k)))amount+=w.getComponent(i,k)/3;const along=probe.copy(center).sub(arm.start).dot(arm.axis)/arm.axis.lengthSq();return amount>.16&&along>-.32&&along<.78&&center.x*arm.sign>Math.abs(arm.start.x)*.6;});
+  if(closesArmhole||onArm)selected.push(...vertices);
+ }
+ const used=[...new Set(selected)],lookup=new Map(used.map((old,i)=>[old,i])),source=new T.BufferGeometry();
+ for(const [name,attribute] of Object.entries(body.attributes)){
+  const type=name==='skinIndex'?Uint16Array:Float32Array,array=new type(used.length*attribute.itemSize);
+  for(const [i,old] of used.entries())for(let k=0;k<attribute.itemSize;k++)array[i*attribute.itemSize+k]=name==='position'?attribute.getComponent(old,k)+body.attributes.normal.getComponent(old,k)*.0045:name==='paintZone'?7:name==='color'?1:attribute.getComponent(old,k);
+  source.setAttribute(name,new T.BufferAttribute(array,attribute.itemSize));
+ }
+ source.setIndex(selected.map(old=>lookup.get(old)));source.userData.fit={normalOffsetM:.0045,skinWeights:'exact anatomical surface weights',closesArmholes:true};
  return source;
 }
 
