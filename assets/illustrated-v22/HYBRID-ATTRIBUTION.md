@@ -1,0 +1,9 @@
+# Hybrid V25 model sources
+
+The athlete is derived from the project's existing MakeHuman/MPFB CC0 anatomical mesh and 53-bone rig, originally distributed by [Innerscene](https://www.innerscene.com/tools/library/3d-parts/human-base-mesh-with-editable-53-bone-rig-8e7c8ab1). Original attribution and source hashes remain in `../human/ATTRIBUTION.md` and `../coherent-v19/ATTRIBUTION.md` in the repository. The new vest, binding, shorts, positive-scale pose variants, head variants and material colours are authored project modifications. The fitted cap and rounded wooden paddle derive from the project's existing authored V20 study.
+
+Real kit/pose references are the existing [Thanh Niên / Duy Tân report, 15 November 2024](https://thanhnien.vn/chua-tum-nup-doat-cu-dup-vo-dich-ghe-ngo-nam-va-nu-185241115184726094.htm) and locally retained real training/video frames. They inform proportions and movement; their photographs are not redistributed as game textures. Motion is authored and contact-calibrated, not motion capture. Neither the model nor its six geometric head variants represents an identifiable athlete.
+
+`hull-rig-v25.glb` preserves the previously accepted authored 3D hull. Runtime paint samples the existing approved `hull-slim-bow-v23.webp` illustration, without changing that image. That illustration supplies a visual style, not evidence of exact historical team kbach. Runtime footboards and seats are authored supports. Khmer back print remains `កូនខ្មែរ`.
+
+The environment keeps the previously documented painted images, bundled Khmer font and their existing attribution. Three.js is MIT licensed; its copyright/license notices are retained in the bundled renderer. No new Adobe/Mixamo asset, registration or paid download is involved.

@@ -1,0 +1,48 @@
+{
+  "revision": "hybrid-v25",
+  "files": [
+    {
+      "file": "athlete-rig-v25.glb",
+      "bytes": 637072
+    },
+    {
+      "file": "motion-seated-port-v25.glb",
+      "bytes": 105200
+    },
+    {
+      "file": "motion-seated-starboard-v25.glb",
+      "bytes": 105100
+    },
+    {
+      "file": "motion-standing-port-v25.glb",
+      "bytes": 105096
+    },
+    {
+      "file": "motion-standing-starboard-v25.glb",
+      "bytes": 104992
+    },
+    {
+      "file": "motion-caller-v25.glb",
+      "bytes": 56348
+    },
+    {
+      "file": "motion-controller-v25.glb",
+      "bytes": 56776
+    },
+    {
+      "file": "motion-helm-v25.glb",
+      "bytes": 103356
+    },
+    {
+      "file": "motion-helm-starboard-v25.glb",
+      "bytes": 103256
+    },
+    {
+      "file": "hull-rig-v25.glb",
+      "bytes": 3953040
+    }
+  ],
+  "geometrySource": "Existing MakeHuman/MPFB CC0 anatomy, new sewn garment and 97-sample continuous bone clips",
+  "hullSource": "Accepted existing 3D hull, paint sampled from approved illustration at runtime",
+  "background": "Existing painted festival layers"
+}

@@ -3,7 +3,7 @@
 (()=>{
  const config=TukNgoConfig,rules=config.race,W=config.camera.width,H=config.camera.height;
  const clamp=(n,a=0,b=1)=>Math.max(a,Math.min(b,n));
- let elapsed=0,follow=true;
+ let elapsed=0,follow=true,bowAnchor=null;
  const duration=rules.countdown+Math.max(...rules.boats.map(b=>b.finishTime));
  function rampIntegral(t,start,length){const q=Math.max(0,t-start);return q<length?q*q/(2*length):q-length/2;}
  function sample(stamp=elapsed){
@@ -11,7 +11,7 @@
   const stage=clock<rules.countdown?'countdown':clock<duration?'racing':'finished';
   const boats=rules.boats.map(b=>{
    const u=clamp(run/b.finishTime),progress=clamp(u+b.earlyLead*Math.sin(Math.PI*u));
-   const bowLocal={x:config.boat.hull.x+rules.bowSource[0]*config.boat.hull.sx,y:config.boat.hull.y+rules.bowSource[1]*config.boat.hull.sy};
+   const bowLocal=bowAnchor||{x:config.boat.hull.x+rules.bowSource[0]*config.boat.hull.sx,y:config.boat.hull.y+rules.bowSource[1]*config.boat.hull.sy};
    const startY=b.y+bowLocal.y*b.scale;
    const distance=(rules.start-rules.finish)/(1+rules.riverSlope**2),travel=distance*progress;
    const bow={x:rules.start+rules.riverSlope*(startY-530)-travel,y:startY+rules.riverSlope*travel};
@@ -51,5 +51,5 @@
    ctx.restore();
   }
  }
- window.illustratedRace={sample,drawGates,advance(dt){elapsed=clamp(elapsed+Math.max(0,dt),0,duration);},reset(){elapsed=0;},seek(stamp){elapsed=clamp(Number(stamp)||0,0,duration);},toggleCamera(){follow=!follow;},get state(){return sample();}};
+ window.illustratedRace={sample,drawGates,setBowAnchor(point){bowAnchor={x:point[0],y:point[1]};},advance(dt){elapsed=clamp(elapsed+Math.max(0,dt),0,duration);},reset(){elapsed=0;},seek(stamp){elapsed=clamp(Number(stamp)||0,0,duration);},toggleCamera(){follow=!follow;},get state(){return sample();}};
 })();
