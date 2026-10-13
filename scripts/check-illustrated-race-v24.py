@@ -20,7 +20,7 @@ with sync_playwright() as p:
         page.goto(args.url,wait_until='domcontentloaded',timeout=60000)
         page.wait_for_selector('body[data-ready=true]',timeout=60000)
         assert page.locator('button[data-mode=demo]').inner_text()=='Đua tự động'
-        assert page.evaluate('illustratedPreview.stats.configuration')=='race-demo-v24'
+        assert page.evaluate('illustratedPreview.stats.configuration')=='hybrid-v25'
         assert page.evaluate('illustratedRace.state.stage')=='countdown'
         # Validate geometry throughout the course rather than only endpoints.
         states=page.evaluate('Array.from({length:464},(_,i)=>illustratedRace.sample(i/10))')

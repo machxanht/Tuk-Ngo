@@ -2,7 +2,7 @@
 
 ## Quyết định hiện tại
 
-Phiên bản đang phát triển chính dùng **2.5D minh họa sáng**, lấy bộ PNG đã được duyệt làm cơ sở. Một renderer Canvas, một bộ asset và một cấu hình cảnh dùng chung cho các chế độ. Các thử nghiệm 3D và hồ sơ kỹ thuật được giữ để tham khảo, không tiếp tục tạo thêm các phong cách song song trong luồng chính.
+Phiên bản đang phát triển chính dùng **2.5D kết hợp**: ghe và VĐV là 3D có khung xương, trên cảnh hai bờ minh họa sáng đã được duyệt. Một luồng dựng cảnh và một cấu hình dùng chung cho đua tự động, tập chèo và kiểm tra VĐV. Không dùng bốn hình rời làm chuyển động VĐV nữa.
 
 Trang chính `https://machxanht.github.io/Tuk-Ngo/` mở phiên bản này. Link test cũ `/assets/illustrated-v22/` vẫn dẫn đến cùng bản. Các URL có tham số `demo` rõ ràng của bản cũ tiếp tục dùng được; `demo=2d` mở bản chính.
 
@@ -40,11 +40,11 @@ Thứ tự làm tiếp là **Tập chèo → Đua nhanh → Giải đấu**. T�
 
 ## Ghe và chuyển động
 
-- Bản `hull-slim-bow-v23.png` thay bản mũi lớn: đầu gọn, cong liền thân, giữ chiều dài và hướng ghe. PNG cũ được giữ làm đối chiếu.
+- Giữ hình học ghe 3D đã được chấp nhận; hoa văn lấy từ bản vẽ `hull-slim-bow-v23.webp`, ánh sáng và vật liệu theo bảng màu sáng. PNG được giữ làm nguồn màu/hoa văn.
 - Biên chế mẫu: 8 cặp ngồi phía trước, 17 cặp đứng phía sau, một người đầu ghe, một người điều khiển giữa, ba người lái cuối ghe.
-- Điểm ngồi/đứng bám theo mép và đáy ghe. Lớp thành ghe che chân bên trong; dằm gần nằm ở lớp trước thành ghe để thấy vào nước.
+- VĐV ngồi/đứng trên điểm tựa trong lòng ghe; hai tay giữ đúng cán dằm. Thành ghe, chân và dằm có độ sâu 3D thật.
 - Không bóp nhỏ cả ghe để chữa mũi quá lớn. Sửa silhouette đầu ghe trong nguồn ảnh, sau đó kiểm tra lại điểm neo người và dằm.
-- Hiện có bốn hình chèo và hai tư thế cổ vũ. Bước hoàn thiện tiếp là tăng số khung phù hợp hoặc rig các phần vẽ, sau khi silhouette và điểm neo đã ổn; không coi bốn hình hiện tại là animation cuối cùng.
+- VĐV dùng chu kỳ khung xương 97 mẫu với nội suy liên tục; người đầu ghe, điều khiển và lái có động tác riêng. Khán giả nền vẫn dùng hai tư thế cổ vũ, người đi bộ bốn pha; các phần này chưa chuyển sang rig 3D.
 
 ## Nơi sửa và quy trình
 
@@ -53,10 +53,11 @@ Thứ tự làm tiếp là **Tập chèo → Đua nhanh → Giải đấu**. T�
 | `scene-config.js` | Hướng mỹ thuật, camera, chế độ, vị trí làn, mép ghe, biên chế, vùng bờ/đường và các vị trí chính |
 | `festival-scene.js` | Ghép lớp môi trường, NPC, quán và xe theo cấu hình |
 | `preview.js` | Vẽ ghe/người/dằm, trạng thái chế độ, vòng animation và bài tập nhịp cơ bản |
+| `src/race/hybrid-boats-v25.mjs` | Dựng ghe, VĐV có khung xương, màu, độ sâu và camera; được đóng gói thành `hybrid-boats-v25.js` |
 | `festival-atlas.json` | Vùng lấy sprite và điểm neo đo từ PNG |
 | `entry-route.js` | Đưa trang chính về phiên bản thống nhất, giữ URL tham khảo có `demo` rõ ràng |
 | `game-direction.md` | Quy chuẩn phát triển này, cập nhật khi có quyết định mới |
 
 Tạo asset mới phải theo cùng style và góc nhìn, lưu nguồn/prompts, ghép qua cấu hình, kiểm tra trực tiếp hình động và các điểm tiếp xúc, rồi chạy kiểm tra trên khung tablet trước khi xuất bản tại cùng link.
 
-Chưa hoàn thành: đối thủ và kết quả đua thật, sức bền, giải đấu, trang phục/kbach từng đội được xác minh đầy đủ, tiếng cổ vũ và animation nhiều khung. Chưa đo hiệu năng trên tablet thật. Chốt hướng phát triển không có nghĩa các phần này đã được triển khai.
+Chưa hoàn thành: điều khiển cả trận đua bởi người chơi, sức bền, giải đấu, trang phục/kbach từng đội được xác minh đầy đủ, tiếng cổ vũ và rig chuyển động khán giả gần. Demo tự động đã có đích và kết quả. Chưa đo hiệu năng trên tablet thật.
