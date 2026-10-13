@@ -38,7 +38,7 @@ with sync_playwright() as p:
         assert stats['boats'] == 2 and stats['members'] == 55
         assert stats['festival']['spectators'] >= 1800
         assert stats['festival']['identities'] == 12
-        assert stats['configuration'] == 'hybrid-v26'
+        assert stats['configuration'] == 'hybrid-v27'
         assert stats['direction'] == -1
         assert stats['festival']['bridges'] == 1
         assert page.evaluate('Math.max(...TukNgoConfig.boat.lanes.map(l=>l.scale))/Math.min(...TukNgoConfig.boat.lanes.map(l=>l.scale))<1.1')

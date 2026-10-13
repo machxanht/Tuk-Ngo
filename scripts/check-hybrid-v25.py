@@ -14,7 +14,7 @@ with sync_playwright() as p:
     page.wait_for_function('document.body.dataset.ready === "true" || !!document.body.dataset.loadError',timeout=60000)
     assert not page.evaluate('document.body.dataset.loadError'),page.locator('#status').inner_text()
     assert page.evaluate('illustratedPreview.stats.hybrid.animation')=='continuous-skinned-3d'
-    assert page.evaluate('illustratedPreview.stats.configuration')=='hybrid-v26'
+    assert page.evaluate('illustratedPreview.stats.configuration')=='hybrid-v27'
     page.evaluate('illustratedPreview.seekRace(16)')
     page.screenshot(path=str(out/'festival.png'))
     page.locator('#view').click()

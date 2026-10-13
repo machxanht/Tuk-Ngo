@@ -1,0 +1,105 @@
+{
+  "numErrors": 0,
+  "numWarnings": 16,
+  "numInfos": 0,
+  "numHints": 0,
+  "messages": [
+    {
+      "code": "NODE_SKINNED_MESH_NON_ROOT",
+      "message": "Node with a skinned mesh is not root. Parent transforms will not affect a skinned mesh.",
+      "severity": 1,
+      "pointer": "/nodes/53"
+    },
+    {
+      "code": "NODE_SKINNED_MESH_NON_ROOT",
+      "message": "Node with a skinned mesh is not root. Parent transforms will not affect a skinned mesh.",
+      "severity": 1,
+      "pointer": "/nodes/54"
+    },
+    {
+      "code": "NODE_SKINNED_MESH_NON_ROOT",
+      "message": "Node with a skinned mesh is not root. Parent transforms will not affect a skinned mesh.",
+      "severity": 1,
+      "pointer": "/nodes/55"
+    },
+    {
+      "code": "NODE_SKINNED_MESH_NON_ROOT",
+      "message": "Node with a skinned mesh is not root. Parent transforms will not affect a skinned mesh.",
+      "severity": 1,
+      "pointer": "/nodes/56"
+    },
+    {
+      "code": "NODE_SKINNED_MESH_NON_ROOT",
+      "message": "Node with a skinned mesh is not root. Parent transforms will not affect a skinned mesh.",
+      "severity": 1,
+      "pointer": "/nodes/57"
+    },
+    {
+      "code": "NODE_SKINNED_MESH_NON_ROOT",
+      "message": "Node with a skinned mesh is not root. Parent transforms will not affect a skinned mesh.",
+      "severity": 1,
+      "pointer": "/nodes/58"
+    },
+    {
+      "code": "NODE_SKINNED_MESH_NON_ROOT",
+      "message": "Node with a skinned mesh is not root. Parent transforms will not affect a skinned mesh.",
+      "severity": 1,
+      "pointer": "/nodes/59"
+    },
+    {
+      "code": "NODE_SKINNED_MESH_NON_ROOT",
+      "message": "Node with a skinned mesh is not root. Parent transforms will not affect a skinned mesh.",
+      "severity": 1,
+      "pointer": "/nodes/60"
+    },
+    {
+      "code": "NODE_SKINNED_MESH_NON_ROOT",
+      "message": "Node with a skinned mesh is not root. Parent transforms will not affect a skinned mesh.",
+      "severity": 1,
+      "pointer": "/nodes/61"
+    },
+    {
+      "code": "NODE_SKINNED_MESH_NON_ROOT",
+      "message": "Node with a skinned mesh is not root. Parent transforms will not affect a skinned mesh.",
+      "severity": 1,
+      "pointer": "/nodes/62"
+    },
+    {
+      "code": "NODE_SKINNED_MESH_NON_ROOT",
+      "message": "Node with a skinned mesh is not root. Parent transforms will not affect a skinned mesh.",
+      "severity": 1,
+      "pointer": "/nodes/63"
+    },
+    {
+      "code": "NODE_SKINNED_MESH_NON_ROOT",
+      "message": "Node with a skinned mesh is not root. Parent transforms will not affect a skinned mesh.",
+      "severity": 1,
+      "pointer": "/nodes/64"
+    },
+    {
+      "code": "NODE_SKINNED_MESH_NON_ROOT",
+      "message": "Node with a skinned mesh is not root. Parent transforms will not affect a skinned mesh.",
+      "severity": 1,
+      "pointer": "/nodes/65"
+    },
+    {
+      "code": "NODE_SKINNED_MESH_NON_ROOT",
+      "message": "Node with a skinned mesh is not root. Parent transforms will not affect a skinned mesh.",
+      "severity": 1,
+      "pointer": "/nodes/66"
+    },
+    {
+      "code": "NODE_SKINNED_MESH_NON_ROOT",
+      "message": "Node with a skinned mesh is not root. Parent transforms will not affect a skinned mesh.",
+      "severity": 1,
+      "pointer": "/nodes/67"
+    },
+    {
+      "code": "NODE_SKINNED_MESH_NON_ROOT",
+      "message": "Node with a skinned mesh is not root. Parent transforms will not affect a skinned mesh.",
+      "severity": 1,
+      "pointer": "/nodes/68"
+    }
+  ],
+  "truncated": false
+}

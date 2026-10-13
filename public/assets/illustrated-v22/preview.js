@@ -31,7 +31,7 @@ function drawBoat(t,animation={}){
  if(!ready||!hybrid)return;
  const tempo=animation.cadence??cadence,motion=animation.motion??1,cycles=animation.cycles??t*tempo/60,phase=((cycles%1)+1)%1;
  const study=sceneMode==='boat',posture=document.querySelector('#posture').value;
- ctx.drawImage(hybrid.render(phase,t,{study,posture,kitColor:study?document.querySelector('#study-kit').value:animation.kitColor||'#23855e'}),0,0,W,CONFIG.camera.workshopHeight);
+ ctx.drawImage(hybrid.render(phase,t,{study,posture,kitColor:study?document.querySelector('#study-kit').value:animation.kitColor||'#23855e',faceVariant:study?Number(document.querySelector('#study-face').value):null,skinDetail:lowPower?0:1,focus:study?document.querySelector('#study-focus').value:'body'}),0,0,W,CONFIG.camera.workshopHeight);
  if(motion>0&&!study){
   for(const [i,tip] of hybrid.tips.entries())if(tip.inWater){
    effect(tempo>95?2:0,...tip.point,55+Math.max(0,tempo-80)*1.3,.55*motion);
@@ -102,6 +102,8 @@ function updateModeUI(){
  document.querySelector('#view').textContent=sceneMode==='festival'?'VĐV cận':'Về cảnh đua';
  document.querySelector('#posture-control').hidden=sceneMode!=='boat';
  document.querySelector('#kit-control').hidden=sceneMode!=='boat';
+ document.querySelector('#face-control').hidden=sceneMode!=='boat';
+ document.querySelector('#focus-control').hidden=sceneMode!=='boat';
  document.querySelector('#practice-controls').hidden=gameMode!=='practice'||sceneMode!=='festival';
  document.querySelector('#play-panel').hidden=gameMode!=='play'||sceneMode!=='festival';
  document.querySelector('#view').hidden=gameMode==='play';
@@ -121,6 +123,8 @@ document.querySelector('#restart').onclick=()=>setMode('demo');
 document.querySelector('#camera').onclick=()=>{illustratedRace.toggleCamera();draw(time);};
 document.querySelector('#posture').onchange=()=>draw(time);
 document.querySelector('#study-kit').onchange=()=>draw(time);
+document.querySelector('#study-face').onchange=()=>draw(time);
+document.querySelector('#study-focus').onchange=()=>draw(time);
 document.querySelector('#view').onclick=()=>{sceneMode=sceneMode==='festival'?'boat':'festival';H=sceneMode==='festival'?CONFIG.camera.height:CONFIG.camera.workshopHeight;resizeCanvas();updateModeUI();draw(time);};
 addEventListener('resize',()=>{resizeCanvas();draw(time);});
 function stroke(){
