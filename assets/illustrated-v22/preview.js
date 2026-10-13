@@ -31,7 +31,7 @@ function drawBoat(t,animation={}){
  if(!ready||!hybrid)return;
  const tempo=animation.cadence??cadence,motion=animation.motion??1,cycles=animation.cycles??t*tempo/60,phase=((cycles%1)+1)%1;
  const study=sceneMode==='boat',posture=document.querySelector('#posture').value;
- ctx.drawImage(hybrid.render(phase,t,{study,posture,kitColor:study?document.querySelector('#study-kit').value:animation.kitColor||'#23855e',faceVariant:study?Number(document.querySelector('#study-face').value):null,skinDetail:lowPower?0:1,focus:study?document.querySelector('#study-focus').value:'body'}),0,0,W,CONFIG.camera.workshopHeight);
+ ctx.drawImage(hybrid.render(phase,t,{study,posture,teamId:study?(document.querySelector('#study-kit').value==='team'?hybridTeams.near.id:null):animation.teamId||hybridTeams.near.id,kitColor:study?document.querySelector('#study-kit').value:animation.kitColor||'#23855e',faceVariant:study?Number(document.querySelector('#study-face').value):null,skinDetail:lowPower?0:1,focus:study?document.querySelector('#study-focus').value:'body'}),0,0,W,CONFIG.camera.workshopHeight);
  if(motion>0&&!study){
   for(const [i,tip] of hybrid.tips.entries())if(tip.inWater){
    effect(tempo>95?2:0,...tip.point,55+Math.max(0,tempo-80)*1.3,.55*motion);
@@ -50,7 +50,7 @@ function draw(t){
  if(!ready)return;
  ctx.setTransform(renderScale,0,0,renderScale,0,0);
  if(sceneMode==='festival'){
-  const race=gameMode==='demo'?illustratedRace.state:gameMode==='play'?quickRace.projected():null;
+  const sourceRace=gameMode==='demo'?illustratedRace.state:gameMode==='play'?quickRace.projected():null,race=sourceRace?hybridTeams.project(sourceRace):null;
   ctx.save();
   if(race){const camera=race.camera;ctx.translate(W/2,H/2);ctx.scale(camera.zoom,camera.zoom);ctx.translate(-camera.x,-camera.y);}
   if(festivalScene.setActivity)festivalScene.setActivity(race?.player?race.player.phase==='finished'?1:race.player.distances[0]>1000?.85:.45:race?.run>32?.8:.4);
@@ -59,8 +59,8 @@ function draw(t){
   const boats=race?race.boats:CONFIG.boat.lanes.slice(1);
   for(const boat of boats){
    ctx.save();ctx.translate(boat.x,boat.y+Math.sin(t*2+(boat.phase||0))*.6);ctx.scale(boat.scale,boat.scale);
-   drawBoat(t+(boat.phase||0),race&&!manualPose?{...boat,kitColor:boat.kitColor||(boat.id==='near'?'#cc9335':'#23855e')}:{});
-   if(race){ctx.font='600 38px system-ui';ctx.textAlign='center';ctx.strokeStyle='#edf0e8';ctx.lineWidth=5;ctx.strokeText(boat.name,165,617);ctx.fillStyle='#234b3e';ctx.fillText(boat.name,165,617);}
+   drawBoat(t+(boat.phase||0),race?{...boat,...(manualPose?{cycles:time*cadence/60,cadence}:{}),kitColor:boat.kitColor||(boat.id==='near'?'#cc9335':'#23855e')}:{});
+   if(race){ctx.font='600 38px system-ui';ctx.textAlign='center';ctx.strokeStyle='#edf0e8';ctx.lineWidth=5;ctx.strokeText(boat.name,340,617,660);ctx.fillStyle='#234b3e';ctx.fillText(boat.name,340,617,660);}
    ctx.restore();
   }
   festivalScene.drawFront(ctx,t);
@@ -70,7 +70,7 @@ function draw(t){
  renderedFrames++;canvas.dataset.time=t.toFixed(3);canvas.dataset.mode=sceneMode;
 }
 async function init(){
- hybrid=await createHybridBoats();illustratedRace.setBowAnchor(hybrid.bow);resizeCanvas();
+ hybrid=await createHybridBoats();await hybridTeams.init(hybrid);illustratedRace.setBowAnchor(hybrid.bow);resizeCanvas();
  await Promise.all(Object.entries(sources).map(([key,file])=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>{images[key]=im;resolve();};im.onerror=()=>reject(Error('Cannot load '+file));im.src=file;})));
  await festivalScene.load();ready=true;document.body.dataset.ready='true';updateModeUI();draw(0);requestAnimationFrame(loop);
 }
@@ -80,11 +80,12 @@ let lastDraw=0;
 function loop(now){const dt=last===null?0:Math.max(0,Math.min(.1,(now-last)/1000));last=now;if(playing&&!document.hidden){time+=dt;if(sceneMode==='festival'&&!manualPose){if(gameMode==='demo')illustratedRace.advance(dt);else if(gameMode==='play')quickRace.advance(dt);}}const interval=1000/(lowPower?20:30),elapsed=now-lastDraw;if(playing&&!document.hidden&&elapsed>=interval){draw(time);lastDraw=now-elapsed%interval;}requestAnimationFrame(loop);}
 function updatePlayUI(s){
  const status=document.querySelector('#status');
- const messages={ready:'Đua nhanh · ghe xanh là ghe bạn',countdown:`Xuất phát sau ${Math.ceil(s.countdown)}…`,paused:'Trận đua tạm dừng',finished:document.querySelector('#play-title').textContent,racing:`${TukNgoGameRules.formatRaceTime(s.elapsed)} · ${Math.floor(s.distances[0])} m`};
+ const messages={ready:'Đua nhanh · '+hybridTeams.near.name+' ở làn gần',countdown:`Xuất phát sau ${Math.ceil(s.countdown)}…`,paused:'Trận đua tạm dừng',finished:document.querySelector('#play-title').textContent,racing:`${TukNgoGameRules.formatRaceTime(s.elapsed)} · ${Math.floor(s.distances[0])} m`};
  if(status.textContent!==messages[s.phase])status.textContent=messages[s.phase];
  canvas.dataset.raceStage=s.phase;canvas.dataset.raceTime=s.elapsed.toFixed(3);
  document.querySelector('#camera').textContent=illustratedRace.state.follow?'Góc nhìn: Theo ghe':'Góc nhìn: Toàn cảnh';
  crowdAudio.volume=s.phase==='finished'?.3:.12+.12*Math.min(1,s.distances[0]/1200);
+ hybridTeams.update(s.phase);
 }
 function updateRaceUI(race){
  const leader=race.boats.find(b=>b.id===race.leader),winner=race.boats.find(b=>b.id===race.winner);
@@ -116,7 +117,7 @@ function updateModeUI(){
 function setMode(mode){
  gameMode=mode;sceneMode='festival';H=CONFIG.camera.height;resizeCanvas();practice.strokes=0;practice.accuracy=0;practice.lastScore=0;time=0;playing=true;manualPose=false;illustratedRace.reset();document.querySelector('#toggle').textContent='Dừng';
  document.querySelector('#practice-result').textContent='Chạm sân hoặc bấm Chèo khi dằm vào nước';updateModeUI();
- if(mode==='play')quickRace.enter();draw(time);updateAudio();
+ if(mode==='play')quickRace.enter();hybridTeams.update();draw(time);updateAudio();
 }
 document.querySelectorAll('button[data-mode]').forEach(button=>button.onclick=()=>setMode(button.dataset.mode));
 document.querySelector('#restart').onclick=()=>setMode('demo');
