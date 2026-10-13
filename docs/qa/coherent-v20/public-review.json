@@ -1,0 +1,11 @@
+{
+  "pass": true,
+  "url": "https://machxanht.github.io/Tuk-Ngo/?demo=studio",
+  "sourceCommit": "da33cc4",
+  "pagesCommit": "971b3b430672aacd274cff52e05e467190368342",
+  "bundle": "/Tuk-Ngo/assets/index-Ba81vfVu.js",
+  "downloadSha256": "b44d9533bd51255309a976cdcae5622a9a1557b6a6882cccc364baeb5e729b69",
+  "defaultOnlyOneButton": true,
+  "errors": [],
+  "physicalTabletTested": false
+}
