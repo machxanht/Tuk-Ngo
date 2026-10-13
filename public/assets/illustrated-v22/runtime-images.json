@@ -1,5 +1,13 @@
 [
   {
+    "source": "bridge-c247-perspective-v23.png",
+    "runtime": "bridge-c247-perspective-v23.webp",
+    "source_bytes": 1982470,
+    "runtime_bytes": 1301602,
+    "decoded_pixels_identical": true,
+    "runtime_sha256": "aca42e92571d5a92432a5752ef821b7959c00168f5b63af515fead55fdec11c4"
+  },
+  {
     "source": "caller-controller-helm-2poses.png",
     "runtime": "caller-controller-helm-2poses.webp",
     "source_bytes": 1833419,
@@ -22,6 +30,14 @@
     "runtime_bytes": 2090392,
     "decoded_pixels_identical": true,
     "runtime_sha256": "0fd88e91c4dddfcc0bb080f245bd7311021c73f80f349e9297025278d42d9f6f"
+  },
+  {
+    "source": "hull-slim-bow-v23.png",
+    "runtime": "hull-slim-bow-v23.webp",
+    "source_bytes": 604503,
+    "runtime_bytes": 460626,
+    "decoded_pixels_identical": true,
+    "runtime_sha256": "e5195dcba46564e1aace6f32c87aaef8ec85759df2caaea7ebf7501d26f1427d"
   },
   {
     "source": "hull-tum-nup-study.png",

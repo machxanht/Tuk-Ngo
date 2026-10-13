@@ -10,7 +10,8 @@ for source in sorted(root.glob('*.png')):
         continue
     image = Image.open(source)
     target = source.with_suffix('.webp')
-    image.save(target, format='WEBP', lossless=True, quality=85, method=6, exact=True)
+    if not target.exists() or target.stat().st_mtime < source.stat().st_mtime:
+        image.save(target, format='WEBP', lossless=True, quality=85, method=6, exact=True)
     decoded = Image.open(target).convert(image.mode)
     assert ImageChops.difference(image, decoded).getbbox() is None, source.name
     # Compare all RGBA channels, including hidden RGB under zero alpha.

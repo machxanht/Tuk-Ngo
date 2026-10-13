@@ -1,14 +1,11 @@
 /* Independent art preview. No gameplay or existing 3D route imports this file. */
 const canvas=document.querySelector('#scene'),ctx=canvas.getContext('2d');
-const W=2400;let H=1500,sceneMode='festival',renderedFrames=0;canvas.width=W;canvas.height=H;
-const sources={hull:'hull-tum-nup-study.webp',seated:'rower-seated-4poses.webp',standing:'rower-standing-4poses.webp',roles:'caller-controller-helm-2poses.webp',fx:'water-effects.webp'};
+const CONFIG=TukNgoConfig,W=CONFIG.camera.width;let H=CONFIG.camera.height,sceneMode='festival',gameMode='demo',renderedFrames=0,renderScale=1;
+function resizeCanvas(){const width=Math.min(CONFIG.camera.maxRenderWidth,(canvas.clientWidth||innerWidth)*Math.min(devicePixelRatio||1,CONFIG.camera.maxPixelRatio));renderScale=width/W;canvas.width=Math.round(width);canvas.height=Math.round(H*renderScale);}
+resizeCanvas();
+const sources={hull:CONFIG.assets.hull,seated:'rower-seated-4poses.webp',standing:'rower-standing-4poses.webp',roles:'caller-controller-helm-2poses.webp',fx:'water-effects.webp'};
 const images={};let ready=false,playing=true,time=0,cadence=80,last=null;
-const hull={x:65,y:230,sx:.96,sy:.61};
-const profile=[
- [250,455,523],[350,481,547],[450,474,552],[600,478,549],
- [800,474,539],[1000,461,523],[1200,444,502],[1400,422,477],
- [1600,396,447],[1800,363,411],[1900,343,388],[2000,316,359],[2100,260,291]
-];
+const hull=CONFIG.boat.hull,profile=CONFIG.boat.profile,crew=CONFIG.boat.crew;
 function edge(x,column){let i=0;while(i<profile.length-2&&x>profile[i+1][0])i++;const a=profile[i],b=profile[i+1],t=Math.max(0,Math.min(1,(x-a[0])/(b[0]-a[0])));return a[column]+(b[column]-a[column])*t;}
 const world=(x,y)=>[hull.x+x*hull.sx,hull.y+y*hull.sy];
 const seated=[
@@ -45,9 +42,10 @@ const paddleLayers={
  ]
 };
 const members=[];
-for(let row=0;row<25;row++)for(let lane=0;lane<2;lane++)members.push({id:2+row*2+lane,role:'ROWER',posture:row<8?'seated':'standing',row,lane,x:470+row*53+(row>11?35:0)});
-members.push({id:1,role:'BOW_CALLER',x:335},{id:52,role:'MID_CONTROLLER',x:1100});
-for(let i=0;i<3;i++)members.push({id:53+i,role:'HELMSMAN',x:1835+i*68});
+for(let row=0;row<crew.rows;row++)for(let lane=0;lane<2;lane++)members.push({id:2+row*2+lane,role:'ROWER',posture:row<crew.seatedRows?'seated':'standing',row,lane,x:crew.firstRowX+row*crew.rowPitch+(row>11?crew.controllerGap:0)});
+members.push({id:1,role:'BOW_CALLER',x:crew.callerX},{id:52,role:'MID_CONTROLLER',x:crew.controllerX});
+for(let i=0;i<3;i++)members.push({id:53+i,role:'HELMSMAN',x:crew.helmFirstX+i*crew.helmPitch});
+const practice={strokes:0,accuracy:0,lastScore:0};
 function sprite(image,frame,x,y,scale,alpha=1){
  const [sx,sy,sw,sh]=frame.rect,[ax,ay]=frame.anchor;
  ctx.save();ctx.globalAlpha=alpha;ctx.drawImage(image,sx,sy,sw,sh,x-ax*scale,y-ay*scale,sw*scale,sh*scale);ctx.restore();
@@ -79,7 +77,7 @@ function water(t){
 function drawBoat(t){
  if(!ready)return;const phase=((t*cadence/60)%1+1)%1,frame=Math.floor(phase*4),roleFrame=phase<.5?0:1;
  effect(4,2210,452,385,.72);
- ctx.drawImage(images.hull,hull.x,hull.y,images.hull.width*hull.sx,images.hull.height*hull.sy);
+ ctx.drawImage(images.hull,hull.x,hull.y,hull.width*hull.sx,hull.height*hull.sy);
  // Far bank of the boat is rendered before the near bank of rowers.
  for(const lane of [1,0])for(const m of members.filter(m=>m.role==='ROWER'&&m.lane===lane).reverse()){
   const rail=edge(m.x,1),floor=edge(m.x,2)-5-(lane?19:0);
@@ -96,7 +94,7 @@ function drawBoat(t){
  ctx.save();ctx.beginPath();ctx.moveTo(...world(20,0));
  ctx.lineTo(...world(250,455));for(const p of profile.slice(1))ctx.lineTo(...world(p[0],p[1]));
  ctx.lineTo(...world(2168,30));ctx.lineTo(W,H);ctx.lineTo(0,H);ctx.closePath();ctx.clip();
- ctx.drawImage(images.hull,hull.x,hull.y,images.hull.width*hull.sx,images.hull.height*hull.sy);ctx.restore();
+ ctx.drawImage(images.hull,hull.x,hull.y,hull.width*hull.sx,hull.height*hull.sy);ctx.restore();
  for(const m of members.filter(m=>m.role==='ROWER'&&m.lane===0).reverse())paddle(m,frame);
  if(phase<.55){const strength=(phase<.25?.72:1)*(cadence/80);for(const m of members.filter(m=>m.role==='ROWER'&&m.lane===0)){const x=m.x+(frame===0?-53:frame===1?-18:19),[wx,wy]=world(x,edge(x,2)+8);effect(cadence>95?2:frame===1?1:0,wx,wy,58+(cadence-80)*.65,strength*.76);}}
  const [bx,by]=world(250,edge(250,2));effect(3,bx-44,by+8,174,.72);
@@ -104,10 +102,12 @@ function drawBoat(t){
 }
 function draw(t){
  if(!ready)return;
+ ctx.setTransform(renderScale,0,0,renderScale,0,0);
  if(sceneMode==='festival'){
   festivalScene.drawBack(ctx,t);
-  for(const boat of [{x:590,y:256,scale:.70,phase:.12},{x:12,y:455,scale:.96,phase:0}]){
-   ctx.save();ctx.translate(boat.x-Math.sin(t*.12)*24,boat.y+Math.sin(t*2+boat.phase)*1.2);ctx.scale(boat.scale,boat.scale);drawBoat(t+boat.phase);ctx.restore();
+  const boats=gameMode==='practice'?CONFIG.boat.lanes.slice(1):CONFIG.boat.lanes;
+  for(const boat of boats){
+   ctx.save();ctx.translate(boat.x,boat.y+Math.sin(t*2+boat.phase)*1.2);ctx.scale(boat.scale,boat.scale);drawBoat(t+boat.phase);ctx.restore();
   }
   festivalScene.drawFront(ctx,t);
  }else{water(t);drawBoat(t);}
@@ -115,19 +115,40 @@ function draw(t){
 }
 async function init(){
  await Promise.all(Object.entries(sources).map(([key,file])=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>{images[key]=im;resolve();};im.onerror=()=>reject(Error('Cannot load '+file));im.src=file;})));
- await festivalScene.load();ready=true;document.body.dataset.ready='true';document.querySelector('#status').textContent='Cảnh ghép minh họa · 2 ghe';draw(0);requestAnimationFrame(loop);
+ await festivalScene.load();ready=true;document.body.dataset.ready='true';updateModeUI();draw(0);requestAnimationFrame(loop);
 }
 let lastDraw=0;
-function loop(now){const dt=last===null?0:Math.max(0,Math.min(.05,(now-last)/1000));last=now;if(playing)time+=dt;if(now-lastDraw>=1000/30){draw(time);lastDraw=now;}requestAnimationFrame(loop);}
-document.querySelector('#view').onclick=()=>{sceneMode=sceneMode==='festival'?'boat':'festival';H=sceneMode==='festival'?1500:860;canvas.height=H;document.querySelector('#view').textContent=sceneMode==='festival'?'Cận ghe':'Toàn cảnh';draw(time);};
+// Carry the remainder: a browser callback around 31 ms must not turn a 30 fps
+// target into one draw every two callbacks. Paused scenes only draw on edits.
+function loop(now){const dt=last===null?0:Math.max(0,Math.min(.05,(now-last)/1000));last=now;if(playing)time+=dt;const interval=1000/30,elapsed=now-lastDraw;if(playing&&elapsed>=interval){draw(time);lastDraw=now-elapsed%interval;}requestAnimationFrame(loop);}
+function updateModeUI(){
+ document.body.dataset.mode=gameMode;
+ document.querySelector('#status').textContent=sceneMode==='boat'?'Xưởng ghe · cùng bộ asset':gameMode==='practice'?'Tập nhịp chèo · một ghe':'Đua thử · hai ghe';
+ document.querySelector('#view').textContent=sceneMode==='festival'?'Xưởng ghe':'Về cảnh đua';
+ document.querySelector('#practice-controls').hidden=gameMode!=='practice'||sceneMode!=='festival';
+ document.querySelectorAll('[data-mode]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.mode===gameMode&&sceneMode==='festival')));
+}
+function setMode(mode){
+ gameMode=mode;sceneMode='festival';H=CONFIG.camera.height;resizeCanvas();practice.strokes=0;practice.accuracy=0;practice.lastScore=0;time=0;playing=true;document.querySelector('#toggle').textContent='Dừng';
+ document.querySelector('#practice-result').textContent='Bấm Chèo khi dằm vào nước';updateModeUI();draw(time);
+}
+document.querySelectorAll('[data-mode]').forEach(button=>button.onclick=()=>setMode(button.dataset.mode));
+document.querySelector('#view').onclick=()=>{sceneMode=sceneMode==='festival'?'boat':'festival';H=sceneMode==='festival'?CONFIG.camera.height:CONFIG.camera.workshopHeight;resizeCanvas();updateModeUI();draw(time);};
+addEventListener('resize',()=>{resizeCanvas();draw(time);});
+document.querySelector('#stroke').onclick=()=>{
+ if(!ready||!playing||gameMode!=='practice')return;
+ const phase=((time*cadence/60)%1+1)%1,distance=Math.min(phase,1-phase),score=Math.max(0,Math.round(100*(1-distance/.3)));
+ practice.accuracy=(practice.accuracy*practice.strokes+score)/(practice.strokes+1);practice.strokes++;practice.lastScore=score;
+ document.querySelector('#practice-result').textContent=`${practice.strokes} nhịp · đúng nhịp ${Math.round(practice.accuracy)}%`;
+};
 document.querySelector('#fullscreen').onclick=async()=>{const target=document.querySelector('.stage');if(document.fullscreenElement)await document.exitFullscreen();else if(target.requestFullscreen)await target.requestFullscreen();else if(target.webkitRequestFullscreen)target.webkitRequestFullscreen();};
 async function exitFullscreen(){if(document.fullscreenElement)await document.exitFullscreen();else if(document.webkitFullscreenElement&&document.webkitExitFullscreen)document.webkitExitFullscreen();}
 document.querySelector('#exit-fullscreen').onclick=exitFullscreen;
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.fullscreenElement)exitFullscreen();});
-document.querySelector('#toggle').onclick=()=>{playing=!playing;document.querySelector('#toggle').textContent=playing?'Dừng':'Chèo';};
-document.querySelector('#cadence').oninput=e=>{cadence=Number(e.target.value);document.querySelector('#cadenceValue').textContent=cadence;};
+document.querySelector('#toggle').onclick=()=>{playing=!playing;document.querySelector('#toggle').textContent=playing?'Dừng':'Chèo';draw(time);};
+document.querySelector('#cadence').oninput=e=>{cadence=Number(e.target.value);document.querySelector('#cadenceValue').textContent=cadence;draw(time);};
 document.querySelectorAll('[data-pose]').forEach(b=>b.onclick=()=>{playing=false;document.querySelector('#toggle').textContent='Chèo';time=Number(b.dataset.pose)*.75;cadence=80;document.querySelector('#cadence').value=80;document.querySelector('#cadenceValue').textContent=80;draw(time);});
-window.illustratedPreview={members,images,sources,seated,standing,roles,draw,seek(t){playing=false;time=t;draw(t);},play(){playing=true;},get stats(){return{mode:sceneMode,boats:sceneMode==='festival'?2:1,members:members.length,seated:members.filter(m=>m.posture==='seated').length,standing:members.filter(m=>m.posture==='standing').length,phase:canvas.dataset.phase,cadence,playing,renderedFrames,festival:festivalScene.stats};},async record(seconds=8){
+window.illustratedPreview={members,images,sources,seated,standing,roles,draw,setMode,practice,seek(t){playing=false;time=t;draw(t);},play(){playing=true;},get stats(){return{mode:sceneMode,gameMode,boats:sceneMode==='boat'||gameMode==='practice'?1:2,members:members.length,seated:members.filter(m=>m.posture==='seated').length,standing:members.filter(m=>m.posture==='standing').length,phase:canvas.dataset.phase,cadence,playing,renderedFrames,configuration:CONFIG.revision,camera:CONFIG.camera.id,direction:CONFIG.camera.direction,renderSize:[canvas.width,canvas.height],festival:festivalScene.stats};},async record(seconds=8){
  const stream=canvas.captureStream(30),chunks=[],mime=['video/webm;codecs=vp9','video/webm;codecs=vp8'].find(t=>MediaRecorder.isTypeSupported(t));const rec=new MediaRecorder(stream,{mimeType:mime,videoBitsPerSecond:5000000});playing=true;
  const complete=new Promise(resolve=>rec.onstop=()=>{stream.getTracks().forEach(t=>t.stop());resolve(new Blob(chunks,{type:mime}));});rec.ondataavailable=e=>{if(e.data.size)chunks.push(e.data);};rec.start();setTimeout(()=>rec.stop(),seconds*1000);const blob=await complete;const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='rowing-preview-v22.webm';a.click();setTimeout(()=>URL.revokeObjectURL(url),10000);return blob.size;
 }};

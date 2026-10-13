@@ -8,6 +8,19 @@
     "sha256": "4382264b64c35e596590f85e11685c31921972617c29909b5400a0a3f4e4c806"
   },
   {
+    "file": "bridge-c247-perspective-v23.png",
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
+    "bytes": 1982470,
+    "sha256": "c6aa6c96c20a7a7f7134fe6827f0ee2ebbf0e7b79d6b1d11041f06c764bb1027",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "transparent_fraction": 0.6719741821289062
+  },
+  {
     "file": "caller-controller-helm-2poses.png",
     "width": 1536,
     "height": 1024,
@@ -40,6 +53,19 @@
     "mode": "RGB",
     "bytes": 2702486,
     "sha256": "c6648aab6dfbba2f534ef5f82689beb09bd414f184abe37953a840eedd845226"
+  },
+  {
+    "file": "hull-slim-bow-v23.png",
+    "width": 2172,
+    "height": 724,
+    "mode": "RGBA",
+    "bytes": 604503,
+    "sha256": "1947b009ef7c198c862093d8a0ebef18cedc348cf7e50951d0ef1a816612dfed",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "transparent_fraction": 0.8286580588708118
   },
   {
     "file": "hull-tum-nup-study.png",

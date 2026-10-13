@@ -1,0 +1,9 @@
+{
+  "tool": "built-in image_gen",
+  "source": "hull-tum-nup-study.png",
+  "output": "hull-slim-bow-v23.png",
+  "real_reference": "tra-cuon-land-0045.jpg",
+  "reference_note": "Existing local frame from a real boat-on-land video; structural bow reference only, not an exact team kbach verification.",
+  "prompt": "Use case: precise-object-edit. Edit target: Image 1, the existing transparent painted Ngo hull. Image 2 is a REAL photograph of a long Khmer Ngo boat on land; use only as a structural reference for the slender rising bow and continuous long hull, NOT for colour or style. Make a targeted correction to the LEFT/FORWARD BOW in image1: it is too bulbous and tall. Reduce the raised front's visual height by about one third, reduce its heavy paddle-like/leaf-like vertical silhouette, make it a slender smoothly tapered rounded end that curves upward gently and blends continuously into the long hull. The red rounded tip should be compact, not a massive round cap. The decorated bow panel should feel slim, about two times the midship side height, not three or four times. Preserve full boat length and left-facing orientation, current camera and slope, central and rear hull alignment, black/lime/gold kbach colours, fine painted linework, red upper gunwale, wooden interior and all transverse seats. Preserve the stern; change primarily the first 17 percent of the boat length on the left, keep the other 83 percent as close as possible. Same extremely elongated 3:1 image canvas, whole boat visible, transparent padding, genuinely transparent background. No people, water, shadows, text or new ornaments. Keep the soft painted illustrated game style; do not make a new 3D rendering.",
+  "real_reference_video": "https://www.youtube.com/watch?v=sfENfcv6K8M"
+}
