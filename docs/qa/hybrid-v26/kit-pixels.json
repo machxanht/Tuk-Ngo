@@ -1,0 +1,13 @@
+{
+  "actualRendererPixels": {
+    "green": {
+      "green": 2686,
+      "amber": 15964
+    },
+    "amber": {
+      "green": 0,
+      "amber": 18692
+    }
+  },
+  "errors": []
+}

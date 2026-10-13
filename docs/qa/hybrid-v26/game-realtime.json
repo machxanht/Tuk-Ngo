@@ -1,0 +1,108 @@
+{
+  "url": "http://127.0.0.1:4255/",
+  "physicalTabletTested": false,
+  "reports": [
+    {
+      "viewport": [
+        1024,
+        768
+      ],
+      "simulatedFinish": 190.62189817602882,
+      "simulationResult": "win",
+      "actualButtonInput": true,
+      "pausedClockFrozen": true,
+      "fullscreenPanelOutsideScene": true,
+      "recordReload": true,
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "simulatedFinish": 190.62189817602882,
+      "simulationResult": "win",
+      "actualButtonInput": true,
+      "pausedClockFrozen": true,
+      "fullscreenPanelOutsideScene": true,
+      "recordReload": true,
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "simulatedFinish": 190.62189817602882,
+      "simulationResult": "win",
+      "actualButtonInput": true,
+      "pausedClockFrozen": true,
+      "fullscreenPanelOutsideScene": true,
+      "recordReload": true,
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "viewport": [
+        834,
+        480
+      ],
+      "simulatedFinish": 190.62189817602882,
+      "simulationResult": "win",
+      "actualButtonInput": true,
+      "pausedClockFrozen": true,
+      "fullscreenPanelOutsideScene": true,
+      "recordReload": true,
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "realBrowserClockSeconds": 194.72,
+      "actualButtonPresses": 275,
+      "result": "win",
+      "state": {
+        "phase": "finished",
+        "difficulty": "easy",
+        "pace": "sprint",
+        "countdown": 0,
+        "elapsed": 190.601833333316,
+        "distances": [
+          1200,
+          953.7249599119601
+        ],
+        "speeds": [
+          0,
+          0
+        ],
+        "finishTimes": [
+          190.60051872476282,
+          null
+        ],
+        "beatPhase": 275.9016283332571,
+        "aiPhase": 0.6591722222222761,
+        "stamina": 18.61204614969372,
+        "power": 0.8674292442312843,
+        "cohesion": 1,
+        "combo": 275,
+        "maxCombo": 275,
+        "perfect": 275,
+        "good": 0,
+        "missed": 0,
+        "lastResolved": 275,
+        "feedback": "Chuẩn!",
+        "feedbackAt": 190.0938999999831,
+        "result": "win",
+        "pauseReason": "",
+        "runId": 1,
+        "cadence": 105,
+        "rhythmProgress": 0.401628333257122,
+        "accuracy": 100,
+        "gap": 246.27504008803987,
+        "strength": 0.672693046884442
+      },
+      "errors": []
+    }
+  ]
+}

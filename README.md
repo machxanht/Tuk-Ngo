@@ -1,6 +1,12 @@
-# Tuk-Ngo — 3D ghe Ngo racing on Maspéro
+# Tuk-Ngo — hybrid ghe Ngo racing on Maspéro
 
-React/Vite/Three.js project. The **3D boat** remains the owner's preferred direction. The hull keeps the owner-video basis with V15 fairing of its unoccupied tips; the crew's rowing loop has a forward grip path, source elbow hinge frames, straight wrist alignment and continuous phase velocity. V5's independent2D illustration remains an experimental comparison. The original reference panels and orbit-camera studio remain available.
+The current primary game is the **bright hybrid preview**: actual 3D hull and skinned rowers on the approved painted festival. One renderer serves automatic racing, rhythm practice, close-athlete inspection and the V26 playable 1,200 m race. The tested existing gameplay model supplies timing, endurance, an independent opponent and finish results. The canonical root and the owner's existing tablet link open this version:
+
+https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/
+
+Use **Đua nhanh → Bắt đầu → Chèo** in the bright timing zone. Recovery/steady/sprint, three difficulties, pause/resume, replay, local winning records, fullscreen controls, optional licensed crowd ambience and a low-power setting are available. A short automatic race remains available for asset review. The course artwork is compressed and approximate; there is no claim of a surveyed 1,200 m map or exact 2025 team kits. See [current direction](public/assets/illustrated-v22/game-direction.md), [V25 asset sources](docs/hybrid-v25.md) and [V26 integration](docs/hybrid-v26.md).
+
+The React/Vite/Three.js routes below remain historical 3D references, separate from the current primary preview. Their assets and working functionality are preserved.
 
 Playable tablet race: https://machxanht.github.io/Tuk-Ngo/?demo=play
 

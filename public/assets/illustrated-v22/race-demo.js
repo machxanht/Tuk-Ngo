@@ -51,5 +51,21 @@
    ctx.restore();
   }
  }
- window.illustratedRace={sample,drawGates,setBowAnchor(point){bowAnchor={x:point[0],y:point[1]};},advance(dt){elapsed=clamp(elapsed+Math.max(0,dt),0,duration);},reset(){elapsed=0;},seek(stamp){elapsed=clamp(Number(stamp)||0,0,duration);},toggleCamera(){follow=!follow;},get state(){return sample();}};
+ // The playable race supplies measured progress and continuous rowing cycles.
+ // Projection and gates stay in the same art space as the automatic demo.
+ function project(entries,meta={}){
+  const local=bowAnchor||{x:config.boat.hull.x+rules.bowSource[0]*config.boat.hull.sx,y:config.boat.hull.y+rules.bowSource[1]*config.boat.hull.sy};
+  const boats=entries.map((entry,i)=>{
+   const b={...rules.boats[i],...entry},progress=clamp(b.progress),startY=b.y+local.y*b.scale;
+   const travel=(rules.start-rules.finish)/(1+rules.riverSlope**2)*progress;
+   const bow={x:rules.start+rules.riverSlope*(startY-530)-travel,y:startY+rules.riverSlope*travel};
+   return {...b,progress,bow,x:bow.x-local.x*b.scale,y:bow.y-local.y*b.scale};
+  });
+  const leader=boats.reduce((a,b)=>a.progress>=b.progress?a:b),left=Math.min(...boats.map(b=>b.bow.x)),right=Math.max(...boats.map(b=>b.x+2220*b.scale));
+  const desired=follow?1+(rules.zoom-1)*Math.sin(Math.PI*leader.progress)**2:1;
+  const zoom=Math.min(desired,W/Math.max(W/desired,right-left+65));
+  const camera={zoom,x:clamp((left+right)/2,W/(2*zoom),W-W/(2*zoom)),y:clamp(780,H/(2*zoom),H-H/(2*zoom))};
+  return {...meta,boats,leader:leader.id,camera,follow};
+ }
+ window.illustratedRace={sample,project,drawGates,setBowAnchor(point){bowAnchor={x:point[0],y:point[1]};},advance(dt){elapsed=clamp(elapsed+Math.max(0,dt),0,duration);},reset(){elapsed=0;},seek(stamp){elapsed=clamp(Number(stamp)||0,0,duration);},toggleCamera(){follow=!follow;},get state(){return sample();}};
 })();

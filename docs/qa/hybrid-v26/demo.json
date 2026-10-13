@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:4255/",
+  "physical_tablet_tested": false,
+  "results": [
+    {
+      "viewport": [
+        1024,
+        768
+      ],
+      "geometry_samples": 464,
+      "realtime": null,
+      "errors": [],
+      "failed_requests": []
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "geometry_samples": 464,
+      "realtime": null,
+      "errors": [],
+      "failed_requests": []
+    },
+    {
+      "viewport": [
+        1440,
+        1100
+      ],
+      "geometry_samples": 464,
+      "realtime": null,
+      "errors": [],
+      "failed_requests": []
+    }
+  ]
+}

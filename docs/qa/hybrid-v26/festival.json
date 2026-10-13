@@ -1,0 +1,390 @@
+{
+  "url": "http://127.0.0.1:4255/",
+  "results": [
+    {
+      "viewport": [
+        1440,
+        1100
+      ],
+      "status": 200,
+      "stats": {
+        "mode": "festival",
+        "gameMode": "demo",
+        "boats": 2,
+        "members": 55,
+        "seated": 16,
+        "standing": 34,
+        "phase": "3",
+        "cadence": 80,
+        "playing": true,
+        "lowPower": false,
+        "sound": false,
+        "renderedFrames": 5,
+        "configuration": "hybrid-v26",
+        "camera": "bank-side-elevated",
+        "direction": -1,
+        "renderSize": [
+          1440,
+          900
+        ],
+        "hybrid": {
+          "revision": "hybrid-v26",
+          "athletes": 55,
+          "geometryVariants": 12,
+          "animation": "continuous-skinned-3d",
+          "sharedPoseRigs": 8,
+          "trianglesPerActor": 13743,
+          "soleLiftM": -0.004221124609649146
+        },
+        "draw3D": {
+          "triangles": 925311,
+          "drawCalls": 314
+        },
+        "race": {
+          "elapsed": 0.16279999999999994,
+          "run": 0,
+          "stage": "countdown",
+          "countdown": 3,
+          "boats": [
+            {
+              "id": "far",
+              "name": "Ghe 1",
+              "scale": 0.62,
+              "y": 419.99999999999994,
+              "finishTime": 42,
+              "earlyLead": -0.018,
+              "tempoOffset": 0,
+              "progress": 0,
+              "bow": {
+                "x": 892.8173247107036,
+                "y": 687.3608600738178
+              },
+              "x": 831.3836823282787,
+              "finished": false,
+              "cadence": 72,
+              "cycles": 0.75,
+              "motion": 0
+            },
+            {
+              "id": "near",
+              "name": "Ghe 2",
+              "scale": 0.66,
+              "y": 660,
+              "finishTime": 43.3,
+              "earlyLead": 0.025,
+              "tempoOffset": 3,
+              "progress": 0,
+              "bow": {
+                "x": 930.1184424339748,
+                "y": 944.6099478205158
+              },
+              "x": 864.7213392526838,
+              "finished": false,
+              "cadence": 75,
+              "cycles": 0.75,
+              "motion": 0
+            }
+          ],
+          "leader": "far",
+          "winner": null,
+          "camera": {
+            "zoom": 1,
+            "x": 1200,
+            "y": 750
+          },
+          "duration": 46.3,
+          "follow": true
+        },
+        "festival": {
+          "spectators": 1949,
+          "identities": 12,
+          "walkers": 64,
+          "vehicles": 16,
+          "stalls": 10,
+          "buildingTypes": 6,
+          "plantTypes": 6,
+          "stands": 2,
+          "bridges": 1,
+          "bridgeAssetTypes": 2,
+          "configuration": "hybrid-v26",
+          "sourcePoseFrames": 2,
+          "motion": "Fixed foot anchors; independent lean/sway and irregular two-pose cheer windows",
+          "activity": 0.4,
+          "renderedActivity": 0.4
+        }
+      },
+      "motion_regions": {
+        "far_crowd": true,
+        "near_crowd": true,
+        "road": true,
+        "river": true
+      },
+      "phases": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "headless_desktop_fps": 30.0,
+      "errors": [],
+      "failed_requests": []
+    },
+    {
+      "viewport": [
+        1024,
+        768
+      ],
+      "status": 200,
+      "stats": {
+        "mode": "festival",
+        "gameMode": "demo",
+        "boats": 2,
+        "members": 55,
+        "seated": 16,
+        "standing": 34,
+        "phase": "3",
+        "cadence": 80,
+        "playing": true,
+        "lowPower": false,
+        "sound": false,
+        "renderedFrames": 6,
+        "configuration": "hybrid-v26",
+        "camera": "bank-side-elevated",
+        "direction": -1,
+        "renderSize": [
+          1024,
+          640
+        ],
+        "hybrid": {
+          "revision": "hybrid-v26",
+          "athletes": 55,
+          "geometryVariants": 12,
+          "animation": "continuous-skinned-3d",
+          "sharedPoseRigs": 8,
+          "trianglesPerActor": 13743,
+          "soleLiftM": -0.004221124609649146
+        },
+        "draw3D": {
+          "triangles": 925311,
+          "drawCalls": 314
+        },
+        "race": {
+          "elapsed": 0.19379999999999997,
+          "run": 0,
+          "stage": "countdown",
+          "countdown": 3,
+          "boats": [
+            {
+              "id": "far",
+              "name": "Ghe 1",
+              "scale": 0.62,
+              "y": 419.99999999999994,
+              "finishTime": 42,
+              "earlyLead": -0.018,
+              "tempoOffset": 0,
+              "progress": 0,
+              "bow": {
+                "x": 892.8173247107036,
+                "y": 687.3608600738178
+              },
+              "x": 831.3836823282787,
+              "finished": false,
+              "cadence": 72,
+              "cycles": 0.75,
+              "motion": 0
+            },
+            {
+              "id": "near",
+              "name": "Ghe 2",
+              "scale": 0.66,
+              "y": 660,
+              "finishTime": 43.3,
+              "earlyLead": 0.025,
+              "tempoOffset": 3,
+              "progress": 0,
+              "bow": {
+                "x": 930.1184424339748,
+                "y": 944.6099478205158
+              },
+              "x": 864.7213392526838,
+              "finished": false,
+              "cadence": 75,
+              "cycles": 0.75,
+              "motion": 0
+            }
+          ],
+          "leader": "far",
+          "winner": null,
+          "camera": {
+            "zoom": 1,
+            "x": 1200,
+            "y": 750
+          },
+          "duration": 46.3,
+          "follow": true
+        },
+        "festival": {
+          "spectators": 1949,
+          "identities": 12,
+          "walkers": 64,
+          "vehicles": 16,
+          "stalls": 10,
+          "buildingTypes": 6,
+          "plantTypes": 6,
+          "stands": 2,
+          "bridges": 1,
+          "bridgeAssetTypes": 2,
+          "configuration": "hybrid-v26",
+          "sourcePoseFrames": 2,
+          "motion": "Fixed foot anchors; independent lean/sway and irregular two-pose cheer windows",
+          "activity": 0.4,
+          "renderedActivity": 0.4
+        }
+      },
+      "motion_regions": {
+        "far_crowd": true,
+        "near_crowd": true,
+        "road": true,
+        "river": true
+      },
+      "phases": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "headless_desktop_fps": 30.0,
+      "errors": [],
+      "failed_requests": []
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "status": 200,
+      "stats": {
+        "mode": "festival",
+        "gameMode": "demo",
+        "boats": 2,
+        "members": 55,
+        "seated": 16,
+        "standing": 34,
+        "phase": "3",
+        "cadence": 80,
+        "playing": true,
+        "lowPower": false,
+        "sound": false,
+        "renderedFrames": 6,
+        "configuration": "hybrid-v26",
+        "camera": "bank-side-elevated",
+        "direction": -1,
+        "renderSize": [
+          768,
+          480
+        ],
+        "hybrid": {
+          "revision": "hybrid-v26",
+          "athletes": 55,
+          "geometryVariants": 12,
+          "animation": "continuous-skinned-3d",
+          "sharedPoseRigs": 8,
+          "trianglesPerActor": 13743,
+          "soleLiftM": -0.004221124609649146
+        },
+        "draw3D": {
+          "triangles": 925311,
+          "drawCalls": 314
+        },
+        "race": {
+          "elapsed": 0.1935999999999999,
+          "run": 0,
+          "stage": "countdown",
+          "countdown": 3,
+          "boats": [
+            {
+              "id": "far",
+              "name": "Ghe 1",
+              "scale": 0.62,
+              "y": 419.99999999999994,
+              "finishTime": 42,
+              "earlyLead": -0.018,
+              "tempoOffset": 0,
+              "progress": 0,
+              "bow": {
+                "x": 892.8173247107036,
+                "y": 687.3608600738178
+              },
+              "x": 831.3836823282787,
+              "finished": false,
+              "cadence": 72,
+              "cycles": 0.75,
+              "motion": 0
+            },
+            {
+              "id": "near",
+              "name": "Ghe 2",
+              "scale": 0.66,
+              "y": 660,
+              "finishTime": 43.3,
+              "earlyLead": 0.025,
+              "tempoOffset": 3,
+              "progress": 0,
+              "bow": {
+                "x": 930.1184424339748,
+                "y": 944.6099478205158
+              },
+              "x": 864.7213392526838,
+              "finished": false,
+              "cadence": 75,
+              "cycles": 0.75,
+              "motion": 0
+            }
+          ],
+          "leader": "far",
+          "winner": null,
+          "camera": {
+            "zoom": 1,
+            "x": 1200,
+            "y": 750
+          },
+          "duration": 46.3,
+          "follow": true
+        },
+        "festival": {
+          "spectators": 1949,
+          "identities": 12,
+          "walkers": 64,
+          "vehicles": 16,
+          "stalls": 10,
+          "buildingTypes": 6,
+          "plantTypes": 6,
+          "stands": 2,
+          "bridges": 1,
+          "bridgeAssetTypes": 2,
+          "configuration": "hybrid-v26",
+          "sourcePoseFrames": 2,
+          "motion": "Fixed foot anchors; independent lean/sway and irregular two-pose cheer windows",
+          "activity": 0.4,
+          "renderedActivity": 0.4
+        }
+      },
+      "motion_regions": {
+        "far_crowd": true,
+        "near_crowd": true,
+        "road": true,
+        "river": true
+      },
+      "phases": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "headless_desktop_fps": 30.0,
+      "errors": [],
+      "failed_requests": []
+    }
+  ],
+  "physical_tablet_tested": false
+}

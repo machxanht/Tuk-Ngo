@@ -2,10 +2,10 @@
    not a surveyed map. Every mode uses the same hull, crew and visual style. */
 (()=>{
  const config={
-  revision:'hybrid-v25',
+  revision:'hybrid-v26',
   style:{id:'painted-daylight',description:'Minh họa mềm, nét rõ, nắng sáng, màu tự nhiên',banner:'#a91e19',bannerText:'#ffe4a0'},
   camera:{id:'bank-side-elevated',description:'Nhìn ngang từ bờ gần, hơi từ trên xuống',width:2400,height:1500,workshopHeight:860,maxRenderWidth:1600,maxPixelRatio:1.5,direction:-1},
-  modes:{demo:{label:'Đua thử',boats:2,camera:'bank-side-elevated'},practice:{label:'Tập chèo',boats:1,camera:'bank-side-elevated'},workshop:{label:'Xưởng ghe',boats:1,camera:'bank-side-elevated'}},
+  modes:{demo:{label:'Đua thử',boats:2,camera:'bank-side-elevated'},play:{label:'Đua nhanh',boats:2,camera:'bank-side-elevated'},practice:{label:'Tập chèo',boats:1,camera:'bank-side-elevated'},workshop:{label:'Xưởng ghe',boats:1,camera:'bank-side-elevated'}},
   assets:{hull:'hull-slim-bow-v23.webp',bridge:'bridge-c247-perspective-v23.webp'},
   boat:{hull:{x:65,y:230,sx:.96,sy:.61,width:2172,height:724},
    profile:[[250,429,499],[350,451,523],[450,467,534],[600,475,540],[800,472,536],[1000,460,522],[1200,443,503],[1400,421,478],[1600,396,449],[1800,363,412],[1900,342,389],[2000,313,360],[2100,299,303]],
@@ -28,7 +28,7 @@
    nearStalls:[{x:1570,y:1285,height:190,variant:1,vendor:2},{x:1900,y:1238,height:205,variant:0,vendor:4},{x:2240,y:1132,height:200,variant:3,vendor:0}],
    layerOrder:['sky','houses-trees','road-traffic','stands-stalls','far-crowd','upstream-bridge','river-boats','near-crowd-stands','near-stalls','near-road-traffic']
   },
-  development:{primary:'quick-race',sequence:['practice','quick-race','tournament'],tournamentStatus:'planned',boatAnimation:'continuous-skinned-3d',raceStatus:'automatic-asset-demo'}
+  development:{primary:'quick-race',sequence:['practice','quick-race','tournament'],tournamentStatus:'planned',boatAnimation:'continuous-skinned-3d',raceStatus:'playable-quick-race-and-automatic-demo'}
  };
  function freeze(object){Object.values(object).forEach(value=>{if(value&&typeof value==='object')freeze(value);});return Object.freeze(object);}
  window.TukNgoConfig=freeze(config);

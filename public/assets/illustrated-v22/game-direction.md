@@ -21,7 +21,7 @@ Góc nhìn này ưu tiên thấy rõ nhịp chèo, đầu/đuôi ghe, hoa văn v
 | Mục | Mục đích | Hiện trạng |
 |---|---|---|
 | Tập chèo | Một ghe, học nhịp vào nước và thao tác chạm | Chạm sân hoặc bấm Chèo; có mẫu chấm độ đúng nhịp, đếm lượt chèo, dùng được khi toàn màn hình; chưa có sức bền/huấn luyện đầy đủ |
-| Đua tự động / Đua nhanh | Hai ghe, một trận, nhịp chèo và nước rút | Demo tự chạy có đếm ngược, di chuyển, đổi vị trí dẫn đầu, cán đích và kết quả; thao tác điều khiển trận đua của người chơi phát triển sau |
+| Đua tự động / Đua nhanh | Hai ghe, một trận, nhịp chèo và nước rút | Demo tự chạy để kiểm tra asset; Đua nhanh điều khiển ghe xanh, đua với AI độc lập, chấm nhịp, sức bền, nước rút, ba độ khó, kết quả và đua lại |
 | Giải đấu | Nhiều vòng với dữ liệu đội ghe đã xác minh | Phát triển sau; chưa đưa nút giả vào giao diện |
 | Xưởng ghe/asset | Kiểm tra silhouette, tư thế, lớp che chân và file nguồn | Công cụ kiểm tra, không phải chế độ chơi |
 
@@ -44,7 +44,7 @@ Thứ tự làm tiếp là **Tập chèo → Đua nhanh → Giải đấu**. T�
 - Biên chế mẫu: 8 cặp ngồi phía trước, 17 cặp đứng phía sau, một người đầu ghe, một người điều khiển giữa, ba người lái cuối ghe.
 - VĐV ngồi/đứng trên điểm tựa trong lòng ghe; hai tay giữ đúng cán dằm. Thành ghe, chân và dằm có độ sâu 3D thật.
 - Không bóp nhỏ cả ghe để chữa mũi quá lớn. Sửa silhouette đầu ghe trong nguồn ảnh, sau đó kiểm tra lại điểm neo người và dằm.
-- VĐV dùng chu kỳ khung xương 97 mẫu với nội suy liên tục; người đầu ghe, điều khiển và lái có động tác riêng. Khán giả nền vẫn dùng hai tư thế cổ vũ, người đi bộ bốn pha; các phần này chưa chuyển sang rig 3D.
+- VĐV dùng chu kỳ khung xương 97 mẫu với nội suy liên tục; người đầu ghe, điều khiển và lái có động tác riêng. Mười hai biến thể đầu/tông da được tạo từ một mesh gốc; hai ghe có màu áo riêng. Khán giả nền vẫn dùng hai tư thế cổ vũ, với chuyển động thân nhẹ và các thời điểm hò reo riêng; người đi bộ bốn pha. Khán giả chưa chuyển sang rig 3D.
 
 ## Nơi sửa và quy trình
 
@@ -54,10 +54,14 @@ Thứ tự làm tiếp là **Tập chèo → Đua nhanh → Giải đấu**. T�
 | `festival-scene.js` | Ghép lớp môi trường, NPC, quán và xe theo cấu hình |
 | `preview.js` | Vẽ ghe/người/dằm, trạng thái chế độ, vòng animation và bài tập nhịp cơ bản |
 | `src/race/hybrid-boats-v25.mjs` | Dựng ghe, VĐV có khung xương, màu, độ sâu và camera; được đóng gói thành `hybrid-boats-v25.js` |
+| `src/race/gameplay.mjs` | Luật trận đua dùng chung với bản 3D cũ: nhịp, sức bền, AI và thời gian cán đích |
+| `quick-race-v26.js` | Giao diện trận đua, kỷ lục trên trình duyệt và ánh xạ hai ghe vào cùng cảnh |
 | `festival-atlas.json` | Vùng lấy sprite và điểm neo đo từ PNG |
 | `entry-route.js` | Đưa trang chính về phiên bản thống nhất, giữ URL tham khảo có `demo` rõ ràng |
 | `game-direction.md` | Quy chuẩn phát triển này, cập nhật khi có quyết định mới |
 
 Tạo asset mới phải theo cùng style và góc nhìn, lưu nguồn/prompts, ghép qua cấu hình, kiểm tra trực tiếp hình động và các điểm tiếp xúc, rồi chạy kiểm tra trên khung tablet trước khi xuất bản tại cùng link.
 
-Chưa hoàn thành: điều khiển cả trận đua bởi người chơi, sức bền, giải đấu, trang phục/kbach từng đội được xác minh đầy đủ, tiếng cổ vũ và rig chuyển động khán giả gần. Demo tự động đã có đích và kết quả. Chưa đo hiệu năng trên tablet thật.
+Đua nhanh đã có điều khiển cả trận và sức bền, dùng cự ly gameplay 1.200 m trên bố cục sông thu gọn. Kỷ lục chỉ lưu trên trình duyệt hiện tại; chưa đồng bộ giữa thiết bị. Âm thanh dùng bản ghi khán giả CC0, không phải hô vang Khmer của giải Maspero. Bảng điều khiển nằm dưới cảnh hoặc bên cạnh trên màn hình ngang thấp; toàn màn hình vẫn có nút chèo và thanh nhịp. Chuyển khỏi trang tự tạm dừng trận đua.
+
+Chưa hoàn thành: giải đấu nhiều vòng, trang phục/kbach từng đội được xác minh đầy đủ trong bản hybrid, rig chuyển động khán giả gần và các khuôn mặt được tạo hình riêng. Chưa đo hiệu năng trên tablet thật.
