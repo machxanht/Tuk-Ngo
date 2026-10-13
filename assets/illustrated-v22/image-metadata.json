@@ -1,0 +1,123 @@
+[
+  {
+    "file": "approved-concept.png",
+    "sourceGeneration": "exec-69016e88-22f8-468d-b30b-2e56d29b1812.png",
+    "size": [
+      1586,
+      992
+    ],
+    "bytes": 3173791,
+    "sha256": "4382264b64c35e596590f85e11685c31921972617c29909b5400a0a3f4e4c806",
+    "mode": "RGB"
+  },
+  {
+    "file": "hull-tum-nup-study.png",
+    "sourceGeneration": "exec-80924cda-d6dd-47e0-86a5-571ddb1d3b08.png",
+    "size": [
+      2172,
+      724
+    ],
+    "bytes": 686359,
+    "sha256": "9336478b2b25035c688ba538c43f70b6b93ddebe279f0d3615ab57dea907597f",
+    "mode": "RGBA",
+    "alphaBounds": [
+      24,
+      55,
+      2159,
+      724
+    ],
+    "transparentPixels": 1283273,
+    "alphaExtrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "file": "rower-seated-4poses.png",
+    "sourceGeneration": "exec-88a811a2-9b30-4dd2-a2ba-f7cc9873ae61.png",
+    "size": [
+      1374,
+      1145
+    ],
+    "bytes": 1234255,
+    "sha256": "e4096d426a07620c7a09cf6590d204a5146f89f9c92f660054bca3a7b2f7568f",
+    "mode": "RGBA",
+    "alphaBounds": [
+      0,
+      17,
+      1358,
+      1145
+    ],
+    "transparentPixels": 1033169,
+    "alphaExtrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "file": "rower-standing-4poses.png",
+    "sourceGeneration": "exec-847cd5ee-a377-49bd-83d3-25caf4116d63.png",
+    "size": [
+      1374,
+      1145
+    ],
+    "bytes": 911630,
+    "sha256": "e351f0a8ddf5cbeeb64a129311f18065e72e6a5d5b11d6b37bd093f4f0de5ab8",
+    "mode": "RGBA",
+    "alphaBounds": [
+      39,
+      19,
+      1354,
+      1145
+    ],
+    "transparentPixels": 1182804,
+    "alphaExtrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "file": "caller-controller-helm-2poses.png",
+    "sourceGeneration": "exec-0f1b7aa6-7a01-4b62-b251-0ffdcbaa6c76.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "bytes": 1833419,
+    "sha256": "77d3a182cef6d392e6842db71d63b12934a8d7fc79005bf5c20363530ad7de64",
+    "mode": "RGBA",
+    "alphaBounds": [
+      0,
+      31,
+      1535,
+      1024
+    ],
+    "transparentPixels": 1196209,
+    "alphaExtrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "file": "water-effects.png",
+    "sourceGeneration": "exec-a36d531b-9579-417d-96cf-4ccd5361a89d.png",
+    "size": [
+      1774,
+      887
+    ],
+    "bytes": 1342711,
+    "sha256": "da1bce36744ed52c07d9e0d8367a823303bb5aab3b2d9d262cb902bc5d47d577",
+    "mode": "RGBA",
+    "alphaBounds": [
+      0,
+      6,
+      1774,
+      887
+    ],
+    "transparentPixels": 948838,
+    "alphaExtrema": [
+      0,
+      255
+    ]
+  }
+]
