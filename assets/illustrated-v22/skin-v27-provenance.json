@@ -1,0 +1,11 @@
+{
+  "file": "athlete-rig-v27.glb",
+  "bytes": 4230492,
+  "texture": "athlete-skin-v27.png",
+  "source": "assets/source/makehuman/young_lightskinned_male_diffuse3.png",
+  "sha256": "f50016a5507fc687dc8df06599c8ea48de950cd185de33a71cafc1319ddab4d5",
+  "officialSource": "https://static.makehumancommunity.org/assets/assetpacks/makehuman_system_assets.html",
+  "sourcePack": "skins/young_asian_male/",
+  "license": "CC0-1.0",
+  "changes": "Original image pixels and anatomical UVs retained; diffuse material factor authored for bright game lighting. Generic source face; twelve runtime shape/tone variants are not embedded in this single prototype."
+}

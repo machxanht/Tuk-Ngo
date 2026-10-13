@@ -1,4 +1,4 @@
-# Ghe Ngo hybrid V26
+# Ghe Ngo hybrid V27
 
 Stable tablet/game URL: https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/
 
@@ -15,9 +15,9 @@ Stroke controls sit outside the picture, including in fullscreen. Short landscap
 
 ## Assets and animation
 
-Eight shared pose rigs animate 55 athletes per boat: eight seated pairs, seventeen standing pairs, caller, controller and three helmsmen. The preserved CC0 anatomical mesh has regenerated sewn vest/shorts, continuous bindings, fitted forward/backward caps, fingers and eyes. The 97-sample authored clips interpolate continuously. Hands grip the paddle, feet sit on real internal supports and the hull occludes the legs. Twelve modest geometric head/skin-tone variants derive from one body, not independently sculpted or scanned identities.
+Eight shared pose rigs animate 55 athletes per boat: eight seated pairs, seventeen standing pairs, caller, controller and three helmsmen. The preserved CC0 anatomical mesh has regenerated sewn vest/shorts, continuous bindings, fitted forward/backward caps, fingers and eyes. V27 restores its skin UVs and smooth seam normals, using the original licensed MakeHuman texture. The 97-sample authored clips interpolate continuously. Hands grip the paddle, feet sit on real internal supports and the hull occludes the legs. Twelve modest geometric head/skin-tone variants derive from one body, not independently sculpted or scanned identities. The inspector can show each variant's face clearly.
 
-The source hull retains the accepted 3D shape. Runtime UVs sample the approved painted hull illustration. The raw downloadable hull GLB retains its original source texture; its in-game paint is applied by the renderer. `hybrid-v25-manifest.json` lists the unchanged ten GLBs totaling 5,330,236 bytes. Boat colours are illustrative, not verified assignments to historical teams.
+The source hull retains the accepted 3D shape. Runtime UVs sample the approved painted hull illustration. The raw downloadable hull GLB retains its original source texture; its in-game paint is applied by the renderer. The archived V25 manifest lists its original ten GLBs. The current runtime uses `athlete-rig-v27.glb` (4,230,492 bytes with embedded skin) instead of its untextured predecessor, retaining the same hull and eight role clips. `skin-v27-provenance.json` documents the new source. Boat colours are illustrative, not verified assignments to historical teams.
 
 The scene contains 1,949 placed spectators, 64 walkers, 16 vehicles and ten stalls, plus two stands and one visible upstream bridge. These are authored placement counts. Twelve painted spectator identities have two source poses each, independent cheer windows and gentle body motion around fixed foot anchors. Walking still uses four painted steps; riders are painted into the moving vehicle sprites. Water has coherent drifting ripple/glint layers and paddle-contact droplets, denser at sprint cadence.
 
@@ -25,7 +25,7 @@ Approved raster sources, prompts, atlas anchors, hashes and optional PNG downloa
 
 ## Rebuild and checks
 
-The source remains in the existing repository. `src/race/gameplay.mjs` supplies the same tested game rules as the legacy 3D version. `src/race/hybrid-boats-v25.mjs` supplies shared geometry/depth/animation; `preview.js`, `quick-race-v26.js`, `race-demo.js` and `festival-scene.js` compose the game and festival. Run `node scripts/build-preview-v26.mjs` after changing the game wrapper or hybrid renderer. The V25 Blender/packing scripts rebuild the geometry; rebuild V26 browser bundles after running the V25 packer.
+The source remains in the existing repository. `src/race/gameplay.mjs` supplies the same tested game rules as the legacy 3D version. `src/race/hybrid-boats-v25.mjs` supplies shared geometry/depth/animation; `preview.js`, `quick-race-v26.js`, `race-demo.js` and `festival-scene.js` compose the game and festival. Run `node scripts/build-preview-v26.mjs` after changing the game wrapper or hybrid renderer. After a geometry rebuild, `export-skin-hero-v27.py` and `build-skin-asset-v27.mjs` export/pack the textured UV-correct prototype; then rebuild the browser bundles. See `docs/hybrid-v27.md` in the repository.
 
 Affected browser checks cover actual buttons, repeat-input prevention, pause, endurance, independent AI, fullscreen, replay, records after reload, win/DNF results, rig continuity/grip contact, frame changes and layouts. A real browser-clock automated-button race finished with 275 perfect strokes and a 3:10.60 player time; that is a test run, not a human playtest. Detailed current evidence is in `docs/hybrid-v26.md` in the repository. Physical tablet performance has not been measured.
 

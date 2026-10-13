@@ -45,6 +45,7 @@ Thứ tự làm tiếp là **Tập chèo → Đua nhanh → Giải đấu**. T�
 - VĐV ngồi/đứng trên điểm tựa trong lòng ghe; hai tay giữ đúng cán dằm. Thành ghe, chân và dằm có độ sâu 3D thật.
 - Không bóp nhỏ cả ghe để chữa mũi quá lớn. Sửa silhouette đầu ghe trong nguồn ảnh, sau đó kiểm tra lại điểm neo người và dằm.
 - VĐV dùng chu kỳ khung xương 97 mẫu với nội suy liên tục; người đầu ghe, điều khiển và lái có động tác riêng. Mười hai biến thể đầu/tông da được tạo từ một mesh gốc; hai ghe có màu áo riêng. Khán giả nền vẫn dùng hai tư thế cổ vũ, với chuyển động thân nhẹ và các thời điểm hò reo riêng; người đi bộ bốn pha. Khán giả chưa chuyển sang rig 3D.
+- V27 dùng GLB có UV da được phục hồi từ file Blender và giữ normals mượt tại đường nối. Texture là nguồn MakeHuman CC0; áo, nón và chữ Khmer giữ vùng chất liệu riêng. Xưởng cho xem toàn thân hoặc cận mặt, chọn từng biến thể. Góc nhìn trận đua giữ nguyên.
 
 ## Nơi sửa và quy trình
 
