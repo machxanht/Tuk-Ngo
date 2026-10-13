@@ -1,7 +1,7 @@
 /* Independent art preview. No gameplay or existing 3D route imports this file. */
 const canvas=document.querySelector('#scene'),ctx=canvas.getContext('2d');
-const W=2400,H=860;canvas.width=W;canvas.height=H;
-const sources={hull:'hull-tum-nup-study.png',seated:'rower-seated-4poses.png',standing:'rower-standing-4poses.png',roles:'caller-controller-helm-2poses.png',fx:'water-effects.png'};
+const W=2400;let H=1500,sceneMode='festival',renderedFrames=0;canvas.width=W;canvas.height=H;
+const sources={hull:'hull-tum-nup-study.webp',seated:'rower-seated-4poses.webp',standing:'rower-standing-4poses.webp',roles:'caller-controller-helm-2poses.webp',fx:'water-effects.webp'};
 const images={};let ready=false,playing=true,time=0,cadence=80,last=null;
 const hull={x:65,y:230,sx:.96,sy:.61};
 const profile=[
@@ -76,9 +76,8 @@ function water(t){
   }
  }
 }
-function draw(t){
+function drawBoat(t){
  if(!ready)return;const phase=((t*cadence/60)%1+1)%1,frame=Math.floor(phase*4),roleFrame=phase<.5?0:1;
- water(t);
  effect(4,2210,452,385,.72);
  ctx.drawImage(images.hull,hull.x,hull.y,images.hull.width*hull.sx,images.hull.height*hull.sy);
  // Far bank of the boat is rendered before the near bank of rowers.
@@ -99,19 +98,36 @@ function draw(t){
  ctx.lineTo(...world(2168,30));ctx.lineTo(W,H);ctx.lineTo(0,H);ctx.closePath();ctx.clip();
  ctx.drawImage(images.hull,hull.x,hull.y,images.hull.width*hull.sx,images.hull.height*hull.sy);ctx.restore();
  for(const m of members.filter(m=>m.role==='ROWER'&&m.lane===0).reverse())paddle(m,frame);
- if(phase<.55){const strength=phase<.25?.72:1;for(const m of members.filter(m=>m.role==='ROWER'&&m.lane===0)){const x=m.x+(frame===0?-53:frame===1?-18:19),[wx,wy]=world(x,edge(x,2)+8);effect(frame===1?1:0,wx,wy,58,strength*.76);}}
+ if(phase<.55){const strength=(phase<.25?.72:1)*(cadence/80);for(const m of members.filter(m=>m.role==='ROWER'&&m.lane===0)){const x=m.x+(frame===0?-53:frame===1?-18:19),[wx,wy]=world(x,edge(x,2)+8);effect(cadence>95?2:frame===1?1:0,wx,wy,58+(cadence-80)*.65,strength*.76);}}
  const [bx,by]=world(250,edge(250,2));effect(3,bx-44,by+8,174,.72);
- canvas.dataset.phase=String(frame);canvas.dataset.time=t.toFixed(3);
+ canvas.dataset.phase=String(frame);
+}
+function draw(t){
+ if(!ready)return;
+ if(sceneMode==='festival'){
+  festivalScene.drawBack(ctx,t);
+  for(const boat of [{x:590,y:256,scale:.70,phase:.12},{x:12,y:455,scale:.96,phase:0}]){
+   ctx.save();ctx.translate(boat.x-Math.sin(t*.12)*24,boat.y+Math.sin(t*2+boat.phase)*1.2);ctx.scale(boat.scale,boat.scale);drawBoat(t+boat.phase);ctx.restore();
+  }
+  festivalScene.drawFront(ctx,t);
+ }else{water(t);drawBoat(t);}
+ renderedFrames++;canvas.dataset.time=t.toFixed(3);canvas.dataset.mode=sceneMode;
 }
 async function init(){
  await Promise.all(Object.entries(sources).map(([key,file])=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>{images[key]=im;resolve();};im.onerror=()=>reject(Error('Cannot load '+file));im.src=file;})));
- ready=true;document.body.dataset.ready='true';draw(0);requestAnimationFrame(loop);
+ await festivalScene.load();ready=true;document.body.dataset.ready='true';document.querySelector('#status').textContent='Cảnh ghép minh họa · 2 ghe';draw(0);requestAnimationFrame(loop);
 }
-function loop(now){const dt=last===null?0:Math.max(0,Math.min(.05,(now-last)/1000));last=now;if(playing)time+=dt;draw(time);requestAnimationFrame(loop);}
+let lastDraw=0;
+function loop(now){const dt=last===null?0:Math.max(0,Math.min(.05,(now-last)/1000));last=now;if(playing)time+=dt;if(now-lastDraw>=1000/30){draw(time);lastDraw=now;}requestAnimationFrame(loop);}
+document.querySelector('#view').onclick=()=>{sceneMode=sceneMode==='festival'?'boat':'festival';H=sceneMode==='festival'?1500:860;canvas.height=H;document.querySelector('#view').textContent=sceneMode==='festival'?'Cận ghe':'Toàn cảnh';draw(time);};
+document.querySelector('#fullscreen').onclick=async()=>{const target=document.querySelector('.stage');if(document.fullscreenElement)await document.exitFullscreen();else if(target.requestFullscreen)await target.requestFullscreen();else if(target.webkitRequestFullscreen)target.webkitRequestFullscreen();};
+async function exitFullscreen(){if(document.fullscreenElement)await document.exitFullscreen();else if(document.webkitFullscreenElement&&document.webkitExitFullscreen)document.webkitExitFullscreen();}
+document.querySelector('#exit-fullscreen').onclick=exitFullscreen;
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.fullscreenElement)exitFullscreen();});
 document.querySelector('#toggle').onclick=()=>{playing=!playing;document.querySelector('#toggle').textContent=playing?'Dừng':'Chèo';};
 document.querySelector('#cadence').oninput=e=>{cadence=Number(e.target.value);document.querySelector('#cadenceValue').textContent=cadence;};
-document.querySelectorAll('[data-pose]').forEach(b=>b.onclick=()=>{playing=false;document.querySelector('#toggle').textContent='Chèo';time=Number(b.dataset.pose)*.75;cadence=80;draw(time);});
-window.illustratedPreview={members,images,sources,seated,standing,roles,draw,seek(t){playing=false;time=t;draw(t);},play(){playing=true;},get stats(){return{members:members.length,seated:members.filter(m=>m.posture==='seated').length,standing:members.filter(m=>m.posture==='standing').length,phase:canvas.dataset.phase,cadence,playing};},async record(seconds=8){
+document.querySelectorAll('[data-pose]').forEach(b=>b.onclick=()=>{playing=false;document.querySelector('#toggle').textContent='Chèo';time=Number(b.dataset.pose)*.75;cadence=80;document.querySelector('#cadence').value=80;document.querySelector('#cadenceValue').textContent=80;draw(time);});
+window.illustratedPreview={members,images,sources,seated,standing,roles,draw,seek(t){playing=false;time=t;draw(t);},play(){playing=true;},get stats(){return{mode:sceneMode,boats:sceneMode==='festival'?2:1,members:members.length,seated:members.filter(m=>m.posture==='seated').length,standing:members.filter(m=>m.posture==='standing').length,phase:canvas.dataset.phase,cadence,playing,renderedFrames,festival:festivalScene.stats};},async record(seconds=8){
  const stream=canvas.captureStream(30),chunks=[],mime=['video/webm;codecs=vp9','video/webm;codecs=vp8'].find(t=>MediaRecorder.isTypeSupported(t));const rec=new MediaRecorder(stream,{mimeType:mime,videoBitsPerSecond:5000000});playing=true;
  const complete=new Promise(resolve=>rec.onstop=()=>{stream.getTracks().forEach(t=>t.stop());resolve(new Blob(chunks,{type:mime}));});rec.ondataavailable=e=>{if(e.data.size)chunks.push(e.data);};rec.start();setTimeout(()=>rec.stop(),seconds*1000);const blob=await complete;const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='rowing-preview-v22.webm';a.click();setTimeout(()=>URL.revokeObjectURL(url),10000);return blob.size;
 }};

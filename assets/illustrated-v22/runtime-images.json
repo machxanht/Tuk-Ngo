@@ -1,0 +1,106 @@
+[
+  {
+    "source": "caller-controller-helm-2poses.png",
+    "runtime": "caller-controller-helm-2poses.webp",
+    "source_bytes": 1833419,
+    "runtime_bytes": 1193630,
+    "decoded_pixels_identical": true,
+    "runtime_sha256": "722c5eafceb9e1dd7dada6c0f3aa1e26f76da2d52af2bb58094e97416772c116"
+  },
+  {
+    "source": "festival-food-stalls-4.png",
+    "runtime": "festival-food-stalls-4.webp",
+    "source_bytes": 2687394,
+    "runtime_bytes": 1969570,
+    "decoded_pixels_identical": true,
+    "runtime_sha256": "23869ce0e89cc0dec8d75b46a3e4aa6cb64905f639b67d4c06d2128e900d51f1"
+  },
+  {
+    "source": "festival-landscape.png",
+    "runtime": "festival-landscape.webp",
+    "source_bytes": 2702486,
+    "runtime_bytes": 2090392,
+    "decoded_pixels_identical": true,
+    "runtime_sha256": "0fd88e91c4dddfcc0bb080f245bd7311021c73f80f349e9297025278d42d9f6f"
+  },
+  {
+    "source": "hull-tum-nup-study.png",
+    "runtime": "hull-tum-nup-study.webp",
+    "source_bytes": 686359,
+    "runtime_bytes": 515578,
+    "decoded_pixels_identical": true,
+    "runtime_sha256": "25167c08f9df2253293a3a88856b577e535c79a2302007d354b64bcebadacbc6"
+  },
+  {
+    "source": "mekong-buildings-6.png",
+    "runtime": "mekong-buildings-6.webp",
+    "source_bytes": 2909681,
+    "runtime_bytes": 2122286,
+    "decoded_pixels_identical": true,
+    "runtime_sha256": "b369d50032e75aaa23ddb95285206025fa721f55533c90abfd009bd06659015e"
+  },
+  {
+    "source": "mekong-plants-6.png",
+    "runtime": "mekong-plants-6.webp",
+    "source_bytes": 2892200,
+    "runtime_bytes": 2193190,
+    "decoded_pixels_identical": true,
+    "runtime_sha256": "3b189949a5b217c3e5d08185b7efe876462fa570fe19681296653409722c6b1a"
+  },
+  {
+    "source": "pedestrians-4-4poses.png",
+    "runtime": "pedestrians-4-4poses.webp",
+    "source_bytes": 1148078,
+    "runtime_bytes": 804540,
+    "decoded_pixels_identical": true,
+    "runtime_sha256": "736805aa588e877126c1c54c1ade4056f75ae5c284110bd51c5fc4b641dc3d44"
+  },
+  {
+    "source": "rower-seated-4poses.png",
+    "runtime": "rower-seated-4poses.webp",
+    "source_bytes": 1234255,
+    "runtime_bytes": 839392,
+    "decoded_pixels_identical": true,
+    "runtime_sha256": "bf09dc5132ee83217b977da85143923a12133d70363ff99fac442aebe0d0eaa9"
+  },
+  {
+    "source": "rower-standing-4poses.png",
+    "runtime": "rower-standing-4poses.webp",
+    "source_bytes": 911630,
+    "runtime_bytes": 630804,
+    "decoded_pixels_identical": true,
+    "runtime_sha256": "4bf20299da721a05b911035ba665ad85f8718906d70e3e03f8179a6db794f888"
+  },
+  {
+    "source": "spectators-12-2poses.png",
+    "runtime": "spectators-12-2poses.webp",
+    "source_bytes": 2060007,
+    "runtime_bytes": 1448058,
+    "decoded_pixels_identical": true,
+    "runtime_sha256": "c518fe278ee30c99907b4d847563c5bfeeddc95cc58f23497add575de6a9bc99"
+  },
+  {
+    "source": "stands-bridges-4.png",
+    "runtime": "stands-bridges-4.webp",
+    "source_bytes": 2385994,
+    "runtime_bytes": 1732434,
+    "decoded_pixels_identical": true,
+    "runtime_sha256": "c7cefbb9c1b23865bb36cfa005ac58adddb298c969380ab29c15fff12f38443a"
+  },
+  {
+    "source": "street-vehicles-6.png",
+    "runtime": "street-vehicles-6.webp",
+    "source_bytes": 2275732,
+    "runtime_bytes": 1557802,
+    "decoded_pixels_identical": true,
+    "runtime_sha256": "f165421867325ba9d75783452e7040effc51a781b5bac1dcc147e55998e35e62"
+  },
+  {
+    "source": "water-effects.png",
+    "runtime": "water-effects.webp",
+    "source_bytes": 1342711,
+    "runtime_bytes": 943972,
+    "decoded_pixels_identical": true,
+    "runtime_sha256": "b2dd58cc51cad645209603bfd5d3d526de0eb4a5007a7df4c83395a6054e2418"
+  }
+]

@@ -1,123 +1,174 @@
 [
   {
     "file": "approved-concept.png",
-    "sourceGeneration": "exec-69016e88-22f8-468d-b30b-2e56d29b1812.png",
-    "size": [
-      1586,
-      992
-    ],
+    "width": 1586,
+    "height": 992,
+    "mode": "RGB",
     "bytes": 3173791,
-    "sha256": "4382264b64c35e596590f85e11685c31921972617c29909b5400a0a3f4e4c806",
-    "mode": "RGB"
-  },
-  {
-    "file": "hull-tum-nup-study.png",
-    "sourceGeneration": "exec-80924cda-d6dd-47e0-86a5-571ddb1d3b08.png",
-    "size": [
-      2172,
-      724
-    ],
-    "bytes": 686359,
-    "sha256": "9336478b2b25035c688ba538c43f70b6b93ddebe279f0d3615ab57dea907597f",
-    "mode": "RGBA",
-    "alphaBounds": [
-      24,
-      55,
-      2159,
-      724
-    ],
-    "transparentPixels": 1283273,
-    "alphaExtrema": [
-      0,
-      255
-    ]
-  },
-  {
-    "file": "rower-seated-4poses.png",
-    "sourceGeneration": "exec-88a811a2-9b30-4dd2-a2ba-f7cc9873ae61.png",
-    "size": [
-      1374,
-      1145
-    ],
-    "bytes": 1234255,
-    "sha256": "e4096d426a07620c7a09cf6590d204a5146f89f9c92f660054bca3a7b2f7568f",
-    "mode": "RGBA",
-    "alphaBounds": [
-      0,
-      17,
-      1358,
-      1145
-    ],
-    "transparentPixels": 1033169,
-    "alphaExtrema": [
-      0,
-      255
-    ]
-  },
-  {
-    "file": "rower-standing-4poses.png",
-    "sourceGeneration": "exec-847cd5ee-a377-49bd-83d3-25caf4116d63.png",
-    "size": [
-      1374,
-      1145
-    ],
-    "bytes": 911630,
-    "sha256": "e351f0a8ddf5cbeeb64a129311f18065e72e6a5d5b11d6b37bd093f4f0de5ab8",
-    "mode": "RGBA",
-    "alphaBounds": [
-      39,
-      19,
-      1354,
-      1145
-    ],
-    "transparentPixels": 1182804,
-    "alphaExtrema": [
-      0,
-      255
-    ]
+    "sha256": "4382264b64c35e596590f85e11685c31921972617c29909b5400a0a3f4e4c806"
   },
   {
     "file": "caller-controller-helm-2poses.png",
-    "sourceGeneration": "exec-0f1b7aa6-7a01-4b62-b251-0ffdcbaa6c76.png",
-    "size": [
-      1536,
-      1024
-    ],
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
     "bytes": 1833419,
     "sha256": "77d3a182cef6d392e6842db71d63b12934a8d7fc79005bf5c20363530ad7de64",
-    "mode": "RGBA",
-    "alphaBounds": [
-      0,
-      31,
-      1535,
-      1024
-    ],
-    "transparentPixels": 1196209,
-    "alphaExtrema": [
+    "alpha_extrema": [
       0,
       254
-    ]
+    ],
+    "transparent_fraction": 0.7605292002360026
+  },
+  {
+    "file": "festival-food-stalls-4.png",
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
+    "bytes": 2687394,
+    "sha256": "cb8c4d4d746913e91ad9143b8bd9fc3ae13862ba1e1e3855229f997adf68e3db",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "transparent_fraction": 0.3440093994140625
+  },
+  {
+    "file": "festival-landscape.png",
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGB",
+    "bytes": 2702486,
+    "sha256": "c6648aab6dfbba2f534ef5f82689beb09bd414f184abe37953a840eedd845226"
+  },
+  {
+    "file": "hull-tum-nup-study.png",
+    "width": 2172,
+    "height": 724,
+    "mode": "RGBA",
+    "bytes": 686359,
+    "sha256": "9336478b2b25035c688ba538c43f70b6b93ddebe279f0d3615ab57dea907597f",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "transparent_fraction": 0.8160573293448511
+  },
+  {
+    "file": "mekong-buildings-6.png",
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
+    "bytes": 2909681,
+    "sha256": "487fa636403d2145815d5948141906fbceb881ce7475530769d5be82e7f6299e",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "transparent_fraction": 0.3007666269938151
+  },
+  {
+    "file": "mekong-plants-6.png",
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
+    "bytes": 2892200,
+    "sha256": "d13969d01a9e8013abf39534cd5f39bd5f2a50594f75e5f307ac8be7650085c9",
+    "alpha_extrema": [
+      0,
+      253
+    ],
+    "transparent_fraction": 0.3938897450764974
+  },
+  {
+    "file": "pedestrians-4-4poses.png",
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "bytes": 1148078,
+    "sha256": "017b85213e55d4978eb67a9746ac9bc39887649652584a32a8cd972e45f32dd4",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "transparent_fraction": 0.7205351169717829
+  },
+  {
+    "file": "rower-seated-4poses.png",
+    "width": 1374,
+    "height": 1145,
+    "mode": "RGBA",
+    "bytes": 1234255,
+    "sha256": "e4096d426a07620c7a09cf6590d204a5146f89f9c92f660054bca3a7b2f7568f",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "transparent_fraction": 0.6567183437895285
+  },
+  {
+    "file": "rower-standing-4poses.png",
+    "width": 1374,
+    "height": 1145,
+    "mode": "RGBA",
+    "bytes": 911630,
+    "sha256": "e351f0a8ddf5cbeeb64a129311f18065e72e6a5d5b11d6b37bd093f4f0de5ab8",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "transparent_fraction": 0.7518315821589977
+  },
+  {
+    "file": "spectators-12-2poses.png",
+    "width": 1024,
+    "height": 1536,
+    "mode": "RGBA",
+    "bytes": 2060007,
+    "sha256": "5334e2544a5ee3a8d6a2d198fee77357cef5474d846c1e93f64a566af2e28311",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "transparent_fraction": 0.6622543334960938
+  },
+  {
+    "file": "stands-bridges-4.png",
+    "width": 1024,
+    "height": 1536,
+    "mode": "RGBA",
+    "bytes": 2385994,
+    "sha256": "f6e68055308d6761f8bd2f78e024ed73ecc99dd73b75303b286a4cf687dc0574",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "transparent_fraction": 0.47846539815266925
+  },
+  {
+    "file": "street-vehicles-6.png",
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
+    "bytes": 2275732,
+    "sha256": "7da92289f6d4c6101a63dbfa69b59864dd345640eed9dec8caef47bf3f5ab1bb",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "transparent_fraction": 0.5456574757893881
   },
   {
     "file": "water-effects.png",
-    "sourceGeneration": "exec-a36d531b-9579-417d-96cf-4ccd5361a89d.png",
-    "size": [
-      1774,
-      887
-    ],
+    "width": 1774,
+    "height": 887,
+    "mode": "RGBA",
     "bytes": 1342711,
     "sha256": "da1bce36744ed52c07d9e0d8367a823303bb5aab3b2d9d262cb902bc5d47d577",
-    "mode": "RGBA",
-    "alphaBounds": [
-      0,
-      6,
-      1774,
-      887
-    ],
-    "transparentPixels": 948838,
-    "alphaExtrema": [
+    "alpha_extrema": [
       0,
       255
-    ]
+    ],
+    "transparent_fraction": 0.6029965593458817
   }
 ]
