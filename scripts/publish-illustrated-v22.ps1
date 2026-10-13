@@ -11,6 +11,10 @@ $taskSource = Join-Path $taskRepo 'public/assets/illustrated-v22'
 $taskTarget = Join-Path $taskDeploy 'assets/illustrated-v22'
 New-Item -ItemType Directory -Force -Path $taskTarget | Out-Null
 Get-ChildItem -LiteralPath $taskSource -File | ForEach-Object { Copy-Item -LiteralPath $_.FullName -Destination $taskTarget }
+if (!$PrepareOnly) {
+    & git -C $taskRepo fetch origin 'refs/heads/gh-pages:refs/remotes/origin/gh-pages'
+    if ($LASTEXITCODE -ne 0) { throw 'Cannot fetch current Pages parent' }
+}
 $taskParent = (& git -C $taskRepo rev-parse origin/gh-pages).Trim()
 if ($LASTEXITCODE -ne 0) { throw 'Cannot read Pages parent' }
 $taskRootHtml = (& git -C $taskRepo show ($taskParent + ':index.html')) -join "`n"
