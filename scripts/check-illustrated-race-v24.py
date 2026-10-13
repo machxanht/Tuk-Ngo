@@ -18,7 +18,14 @@ with sync_playwright() as p:
         page.on('pageerror',lambda e:errors.append(str(e)))
         page.on('requestfailed',lambda r:failed.append(r.url))
         page.goto(args.url,wait_until='domcontentloaded',timeout=60000)
-        page.wait_for_selector('body[data-ready=true]',timeout=60000)
+        try:
+            page.wait_for_function('document.body.dataset.ready === "true" || !!document.body.dataset.loadError',timeout=60000)
+            assert not page.evaluate('document.body.dataset.loadError'),page.locator('#status').inner_text()
+        except Exception:
+            failure={'viewport':[width,height],'status':page.locator('#status').inner_text(),'errors':errors,'failed_requests':failed}
+            (out/'load-failure.json').write_text(json.dumps(failure,ensure_ascii=False,indent=2),encoding='utf8')
+            page.screenshot(path=str(out/'load-failure.png'))
+            raise
         assert page.locator('button[data-mode=demo]').inner_text()=='Đua tự động'
         assert page.evaluate('illustratedPreview.stats.configuration')=='hybrid-v25'
         assert page.evaluate('illustratedRace.state.stage')=='countdown'

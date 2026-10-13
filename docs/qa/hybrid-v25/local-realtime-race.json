@@ -1,0 +1,437 @@
+{
+  "url": "http://127.0.0.1:4255/",
+  "physical_tablet_tested": false,
+  "results": [
+    {
+      "viewport": [
+        1024,
+        768
+      ],
+      "geometry_samples": 464,
+      "realtime": {
+        "wall_seconds": 46.55,
+        "fps_headless_desktop": 30.0,
+        "samples": [
+          {
+            "elapsed": 0,
+            "stage": "countdown",
+            "leader": "far",
+            "winner": null
+          },
+          {
+            "elapsed": 0.7187000000000006,
+            "stage": "countdown",
+            "leader": "far",
+            "winner": null
+          },
+          {
+            "elapsed": 1.4377,
+            "stage": "countdown",
+            "leader": "far",
+            "winner": null
+          },
+          {
+            "elapsed": 2.1562000000000006,
+            "stage": "countdown",
+            "leader": "far",
+            "winner": null
+          },
+          {
+            "elapsed": 2.8751,
+            "stage": "countdown",
+            "leader": "far",
+            "winner": null
+          },
+          {
+            "elapsed": 3.5938999999999997,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 4.312600000000001,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 5.031599999999998,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 5.749899999999997,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 6.468799999999998,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 7.156099999999998,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 7.875199999999997,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 8.593899999999994,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 9.312499999999995,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 10.031499999999996,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 10.719199999999995,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 11.437899999999997,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 12.156699999999997,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 12.875300000000001,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 13.5937,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 14.312700000000001,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 15.031300000000002,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 15.750300000000001,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 16.46880000000001,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 17.187900000000003,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 17.906700000000004,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 18.625300000000006,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 19.34370000000001,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 20.06300000000001,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 20.78140000000001,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 21.499900000000007,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 22.21890000000001,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 22.937800000000003,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 23.625400000000003,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 24.34370000000001,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 25.06330000000001,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 25.78130000000001,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 26.50000000000001,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 27.21880000000001,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 27.93770000000001,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 28.656400000000023,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 29.37500000000002,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 30.094200000000022,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 30.812600000000025,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 31.531400000000023,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 32.219200000000015,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 32.93770000000001,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 33.656200000000005,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 34.374900000000004,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 35.0941,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 35.813099999999984,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 36.53139999999998,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 37.25049999999997,
+            "stage": "racing",
+            "leader": "near",
+            "winner": null
+          },
+          {
+            "elapsed": 37.96869999999997,
+            "stage": "racing",
+            "leader": "far",
+            "winner": null
+          },
+          {
+            "elapsed": 38.68749999999997,
+            "stage": "racing",
+            "leader": "far",
+            "winner": null
+          },
+          {
+            "elapsed": 39.374999999999964,
+            "stage": "racing",
+            "leader": "far",
+            "winner": null
+          },
+          {
+            "elapsed": 40.094099999999955,
+            "stage": "racing",
+            "leader": "far",
+            "winner": null
+          },
+          {
+            "elapsed": 40.81289999999996,
+            "stage": "racing",
+            "leader": "far",
+            "winner": null
+          },
+          {
+            "elapsed": 41.53129999999996,
+            "stage": "racing",
+            "leader": "far",
+            "winner": null
+          },
+          {
+            "elapsed": 42.25009999999996,
+            "stage": "racing",
+            "leader": "far",
+            "winner": null
+          },
+          {
+            "elapsed": 42.96879999999996,
+            "stage": "racing",
+            "leader": "far",
+            "winner": null
+          },
+          {
+            "elapsed": 43.687399999999954,
+            "stage": "racing",
+            "leader": "far",
+            "winner": null
+          },
+          {
+            "elapsed": 44.40649999999994,
+            "stage": "racing",
+            "leader": "far",
+            "winner": null
+          },
+          {
+            "elapsed": 45.12489999999993,
+            "stage": "racing",
+            "leader": "far",
+            "winner": "far"
+          },
+          {
+            "elapsed": 45.844099999999926,
+            "stage": "racing",
+            "leader": "far",
+            "winner": "far"
+          },
+          {
+            "elapsed": 46.3,
+            "stage": "finished",
+            "leader": "far",
+            "winner": "far"
+          }
+        ]
+      },
+      "errors": [],
+      "failed_requests": []
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "geometry_samples": 464,
+      "realtime": null,
+      "errors": [],
+      "failed_requests": []
+    },
+    {
+      "viewport": [
+        1440,
+        1100
+      ],
+      "geometry_samples": 464,
+      "realtime": null,
+      "errors": [],
+      "failed_requests": []
+    }
+  ]
+}
