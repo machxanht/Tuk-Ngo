@@ -12,14 +12,14 @@ export function CoherentSample(){
  function choose(value:View){settings.current.view=value;setView(value);setOpen(false);requestAnimationFrame(()=>document.querySelector<HTMLButtonElement>('.sample-toggle')?.focus());}
  function togglePlaying(){settings.current.playing=!settings.current.playing;settings.current.phase=phase/100;setPlaying(settings.current.playing);}
  return <main className="coherent-sample" data-controls-open={open}>
-  <div ref={host} className="sample-stage" data-testid="coherent-stage" role="img" aria-label="Mẫu 3D mới: một vận động viên chèo ghe, ba NPC và 50 mét bờ sông dưới ánh sáng ban ngày"/>
+  <div ref={host} className="sample-stage" data-testid="coherent-stage" role="img" aria-label="Mẫu 3D mới: một vận động viên chèo ghe, 11 kiểu NPC và phố ven sông với nhiều loại nhà, xe"/>
   {!ready&&<div className="sample-loading" role="status">{error?'Không tải được mẫu: '+error:'Đang tải VĐV và cảnh mẫu mới…'}</div>}
   {open&&<section className="sample-controls" aria-label="Điều khiển mẫu mới">
-   <p className="sample-kicker">MẪU 3D MỚI</p><h1>Người · ghe · phố ven sông</h1><p className="sample-description">Một VĐV chi tiết, ba NPC có sẵn và đoạn phố 50 m. Kéo để xoay, chụm hai ngón để phóng to.</p>
+   <p className="sample-kicker">MẪU 3D MỚI</p><h1>Người · ghe · phố ven sông</h1><p className="sample-description">VĐV, 11 kiểu NPC, nhà cửa và xe trên đoạn phố 50 m. Kéo để xoay, chụm hai ngón để phóng to.</p>
    <div className="sample-views">{([['wide','Toàn cảnh'],['hero','VĐV'],['face','Khuôn mặt'],['back','Áo sau'],['npc','NPC'],['street','Đường phố']] as [View,string][]).map(([value,label])=><button key={value} disabled={!ready} aria-pressed={view===value} onClick={()=>choose(value)}>{label}</button>)}</div>
    <div className="sample-play"><button disabled={!ready} onClick={togglePlaying}>{playing?'Dừng':'Chèo'}</button><label>Pha chèo <input type="range" aria-label="Pha chèo" min="0" max="100" value={phase} disabled={!ready} onChange={e=>{const value=Number(e.target.value);setPhase(value);settings.current.playing=false;settings.current.phase=value/100;setPlaying(false);}}/></label></div>
-   <nav><a href={import.meta.env.BASE_URL+'?demo=studio&scene=race'}>Cảnh đua đầy đủ</a><a href={import.meta.env.BASE_URL+'?demo=play'}>Chơi game</a><a href={import.meta.env.BASE_URL+'assets/coherent-v19/athlete-v19.glb'} download>GLB VĐV mới</a></nav>
-   <details><summary>Nguồn & phạm vi mẫu</summary><p>Nhân vật VĐV: MakeHuman CC0; NPC: Quaternius CC0; ánh sáng và vật liệu: Poly Haven CC0. Trang phục và nhịp chèo dựng theo tư liệu ghe Ngo thật. Đây là mẫu chất lượng hình ảnh trước khi nhân rộng sang toàn giải.</p></details>
+   <nav><a href={import.meta.env.BASE_URL+'?demo=studio&scene=race'}>Cảnh đua đầy đủ</a><a href={import.meta.env.BASE_URL+'?demo=play'}>Chơi game</a><a href={import.meta.env.BASE_URL+'assets/coherent-v20/athlete-v20.glb'} download>GLB VĐV mới</a></nav>
+   <details><summary>Nguồn & phạm vi mẫu</summary><p>Nhân vật VĐV: MakeHuman CC0; NPC: Quaternius CC0; ánh sáng và vật liệu: Poly Haven CC0. Trang phục và nhịp chèo dựng theo tư liệu ghe Ngo thật. Nhà và xe là hình học dựng riêng. Đây là mẫu chất lượng hình ảnh trước khi nhân rộng sang toàn giải.</p></details>
   </section>}
   <button className="sample-toggle" aria-expanded={open} onClick={()=>setOpen(!open)}>{open?'Ẩn điều khiển':'Điều khiển'}</button>
  </main>;

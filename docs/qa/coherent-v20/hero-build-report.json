@@ -1,0 +1,134 @@
+{
+  "source": "MakeHuman/MPFB via Innerscene CC0",
+  "bodyTrianglesBeforeEyeOpenings": 102570,
+  "faceAndFingerTopologyPreservedExceptInnerClosedEyePatch": true,
+  "eyePatchFacesRemoved": 1512,
+  "skinSourcePixelsUnmodified": true,
+  "skinBaseColorFactor": [
+    0.6,
+    0.43,
+    0.29,
+    1
+  ],
+  "garments": {
+    "removed": [
+      "Competition_Tank_Top_Loose",
+      "Tank_Top_Neck_Binding",
+      "Tank_Top_Right_Armhole_Binding",
+      "Tank_Top_Left_Armhole_Binding",
+      "Tank_Top_Hem",
+      "Tank_Top_Side_Seam",
+      "Tank_Top_Side_Seam.001",
+      "Competition_Shorts_Loose",
+      "Shorts_Continuous_Waistband"
+    ],
+    "shorts": {
+      "vertices": 3369,
+      "boundaryLoops": 3,
+      "nonManifoldInterior": 0
+    },
+    "limits": [
+      "Contact rebake required",
+      "Boundary counts do not prove visual fit",
+      "Existing print placement requires back view review"
+    ],
+    "shirtWeightTransfer": {
+      "vertices": 9602,
+      "method": "Conformal source torso with interpolated original weights; no nearest-arm switching"
+    },
+    "sewnBindings": [
+      "Tank_Top_Sewn_Binding_0",
+      "Tank_Top_Sewn_Binding_1",
+      "Tank_Top_Sewn_Binding_2",
+      "Tank_Top_Sewn_Binding_3"
+    ],
+    "clothThicknessM": 0.0018,
+    "fix": "Vest pattern and shoulders share the source anatomical surface and original weights",
+    "legacyJersey": {
+      "vertices": 2620,
+      "boundaryLoops": 4,
+      "nonManifoldInterior": 0
+    },
+    "jersey": {
+      "vertices": 9602,
+      "stage": "Fitted solidified pattern before contact bake",
+      "sewnOpeningBindings": 4
+    }
+  },
+  "clothingContactSamples": 27026,
+  "maxClothingCorrectionM": 0.015000001322568948,
+  "motion": {
+    "frames": 49,
+    "maxPalmGapM": 5.031211082975308e-07,
+    "maxFootDriftM": 5.1619136559035694e-08,
+    "elbowFlexDegrees": [
+      54.9999857321046,
+      145.0000426743465
+    ],
+    "maxReachExcessM": 0,
+    "headWorldDriftRadians": 0,
+    "footSolve": {
+      "maxTargetGapM": 6.153385755406609e-07,
+      "maxReachExcessM": 0,
+      "boneSideX": {
+        "l": 0.10558183491230011,
+        "r": -0.1055818572640419
+      }
+    },
+    "footTargets": {
+      "l": [
+        0.095,
+        -0.36,
+        0.11
+      ],
+      "r": [
+        -0.095,
+        -0.36,
+        0.11
+      ]
+    },
+    "footPositions": {
+      "l": [
+        0.09499945491552353,
+        -0.35999974608421326,
+        0.1099998950958252
+      ],
+      "r": [
+        -0.09499964863061905,
+        -0.3599996566772461,
+        0.10999986529350281
+      ]
+    },
+    "headWorldBounds": {
+      "min": [
+        -2.1846939743928352e-14,
+        -0.24053189158439636,
+        1.1203047037124634
+      ],
+      "max": [
+        9.213448417828146e-15,
+        -0.06944408267736435,
+        1.1818562746047974
+      ]
+    },
+    "pelvisWorldBounds": {
+      "min": [
+        -1.862645149230957e-08,
+        0.00542328879237175,
+        0.5444804430007935
+      ],
+      "max": [
+        -1.862645149230957e-08,
+        0.00542328879237175,
+        0.5444804430007935
+      ]
+    },
+    "limits": [
+      "Authored seated rhythm from real2024 footage; not mocap",
+      "Foot stationarity is not a hull collision check",
+      "Garment morphs need regeneration for the changed pose"
+    ]
+  },
+  "caps": "Fitted six-panel forward baseball cap",
+  "scope": "One detailed seated athlete; not a full-crew mobile LOD"
+}

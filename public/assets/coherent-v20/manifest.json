@@ -1,0 +1,19 @@
+{
+  "version": "COHERENT_V20",
+  "athlete": {
+    "file": "athlete-v20.glb",
+    "bytes": 14009092,
+    "sha256": "b44d9533bd51255309a976cdcae5622a9a1557b6a6882cccc364baeb5e729b69",
+    "validation": {
+      "errors": 0,
+      "warnings": 16
+    }
+  },
+  "npcs": {
+    "manifest": "npcs/manifest.json",
+    "models": 11,
+    "totalBytes": 15771748
+  },
+  "retainedAssets": "../coherent-v19/accepted-hull.glb and daylight.hdr",
+  "geometry": "Five authored frontage families; sedan and pickup"
+}

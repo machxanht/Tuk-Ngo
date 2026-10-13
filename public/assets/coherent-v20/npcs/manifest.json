@@ -1,0 +1,205 @@
+{
+  "version": 20,
+  "license": "CC0-1.0",
+  "sourceLicenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "models": [
+    {
+      "id": "casual-man",
+      "gender": "men",
+      "sourceModel": "Casual_2",
+      "sourceUrl": "https://raw.githubusercontent.com/agentkaerf/FreeModels/main/Ultimate Modular Men- Feb 2022/Individual Characters/glTF/Casual_2.gltf",
+      "officialSourceUrl": "https://quaternius.com/packs/ultimatemodularcharacters.html",
+      "license": "CC0-1.0",
+      "file": "casual-man.glb",
+      "bytes": 1376588,
+      "sha256": "ee373f53d0e0653d032bed70c5d70db9535b847d8ab8e47b9e8df9a083d8d137",
+      "animations": [
+        "Idle",
+        "Idle_Neutral",
+        "Walk",
+        "Wave"
+      ],
+      "triangles": 34656
+    },
+    {
+      "id": "hoodie-man",
+      "gender": "men",
+      "sourceModel": "Casual_Hoodie",
+      "sourceUrl": "https://raw.githubusercontent.com/agentkaerf/FreeModels/main/Ultimate Modular Men- Feb 2022/Individual Characters/glTF/Casual_Hoodie.gltf",
+      "officialSourceUrl": "https://quaternius.com/packs/ultimatemodularcharacters.html",
+      "license": "CC0-1.0",
+      "file": "hoodie-man.glb",
+      "bytes": 1429628,
+      "sha256": "5065e91cdaaf0d00607f72a7e1bdd103080ade840e86237824131c2b73ba2ec4",
+      "animations": [
+        "Idle",
+        "Idle_Neutral",
+        "Walk",
+        "Wave"
+      ],
+      "triangles": 37236
+    },
+    {
+      "id": "casual-woman",
+      "gender": "women",
+      "sourceModel": "Casual",
+      "sourceUrl": "https://raw.githubusercontent.com/agentkaerf/FreeModels/main/Ultimate Modular Women - April 2022/Individual Characters/glTF/Casual.gltf",
+      "officialSourceUrl": "https://quaternius.com/packs/ultimatemodularwomen.html",
+      "license": "CC0-1.0",
+      "file": "casual-woman.glb",
+      "bytes": 1482316,
+      "sha256": "055fd4c6096aa2b6d35bfc2369e05946ca95057ee5ac40874ed5986490ca772d",
+      "animations": [
+        "Idle",
+        "Idle_Neutral",
+        "Walk",
+        "Wave"
+      ],
+      "triangles": 38544
+    },
+    {
+      "id": "beach-man",
+      "gender": "men",
+      "sourceModel": "Beach",
+      "sourceUrl": "https://raw.githubusercontent.com/agentkaerf/FreeModels/main/Ultimate Modular Men- Feb 2022/Individual Characters/glTF/Beach.gltf",
+      "officialSourceUrl": "https://quaternius.com/packs/ultimatemodularcharacters.html",
+      "license": "CC0-1.0",
+      "file": "beach-man.glb",
+      "bytes": 1521668,
+      "sha256": "7d27e591a83be146a4694faeb78d2555b79f18424198fb21b139bbebd01b4cc3",
+      "animations": [
+        "Idle",
+        "Idle_Neutral",
+        "Walk",
+        "Wave"
+      ],
+      "triangles": 39468
+    },
+    {
+      "id": "farmer-man",
+      "gender": "men",
+      "sourceModel": "Farmer",
+      "sourceUrl": "https://raw.githubusercontent.com/agentkaerf/FreeModels/main/Ultimate Modular Men- Feb 2022/Individual Characters/glTF/Farmer.gltf",
+      "officialSourceUrl": "https://quaternius.com/packs/ultimatemodularcharacters.html",
+      "license": "CC0-1.0",
+      "file": "farmer-man.glb",
+      "bytes": 1307592,
+      "sha256": "d842ba91af71c3f0d28d9959fbaa61e19baa344b5b6d33909e56694278ad31b8",
+      "animations": [
+        "Idle",
+        "Idle_Neutral",
+        "Walk",
+        "Wave"
+      ],
+      "triangles": 32856
+    },
+    {
+      "id": "suit-man",
+      "gender": "men",
+      "sourceModel": "Suit",
+      "sourceUrl": "https://raw.githubusercontent.com/agentkaerf/FreeModels/main/Ultimate Modular Men- Feb 2022/Individual Characters/glTF/Suit.gltf",
+      "officialSourceUrl": "https://quaternius.com/packs/ultimatemodularcharacters.html",
+      "license": "CC0-1.0",
+      "file": "suit-man.glb",
+      "bytes": 1708720,
+      "sha256": "09b6e7c0cebcefce55c41644c21b770b36b3772237762afe294b5b7a2c040554",
+      "animations": [
+        "Idle",
+        "Idle_Neutral",
+        "Walk",
+        "Wave"
+      ],
+      "triangles": 45588
+    },
+    {
+      "id": "worker-man",
+      "gender": "men",
+      "sourceModel": "Worker",
+      "sourceUrl": "https://raw.githubusercontent.com/agentkaerf/FreeModels/main/Ultimate Modular Men- Feb 2022/Individual Characters/glTF/Worker.gltf",
+      "officialSourceUrl": "https://quaternius.com/packs/ultimatemodularcharacters.html",
+      "license": "CC0-1.0",
+      "file": "worker-man.glb",
+      "bytes": 1273412,
+      "sha256": "6f5c32c49b37d9540a9718060518d6aed6788a3bd6606af8ee3d0c2bc1a0767e",
+      "animations": [
+        "Idle",
+        "Idle_Neutral",
+        "Walk",
+        "Wave"
+      ],
+      "triangles": 31440
+    },
+    {
+      "id": "punk-man",
+      "gender": "men",
+      "sourceModel": "Punk",
+      "sourceUrl": "https://raw.githubusercontent.com/agentkaerf/FreeModels/main/Ultimate Modular Men- Feb 2022/Individual Characters/glTF/Punk.gltf",
+      "officialSourceUrl": "https://quaternius.com/packs/ultimatemodularcharacters.html",
+      "license": "CC0-1.0",
+      "file": "punk-man.glb",
+      "bytes": 1298900,
+      "sha256": "7a6b2b98e270af92db11003ee23d4b9164df2cbf03b3e0af0bcc0b9508263157",
+      "animations": [
+        "Idle",
+        "Idle_Neutral",
+        "Walk",
+        "Wave"
+      ],
+      "triangles": 33000
+    },
+    {
+      "id": "formal-woman",
+      "gender": "women",
+      "sourceModel": "Formal",
+      "sourceUrl": "https://raw.githubusercontent.com/agentkaerf/FreeModels/main/Ultimate Modular Women - April 2022/Individual Characters/glTF/Formal.gltf",
+      "officialSourceUrl": "https://quaternius.com/packs/ultimatemodularwomen.html",
+      "license": "CC0-1.0",
+      "file": "formal-woman.glb",
+      "bytes": 1426132,
+      "sha256": "b8f3b254657bcaf37c22af02fbb73f0462f700e97828089d569461fbf5b0c59a",
+      "animations": [
+        "Idle",
+        "Idle_Neutral",
+        "Walk",
+        "Wave"
+      ],
+      "triangles": 36432
+    },
+    {
+      "id": "suit-woman",
+      "gender": "women",
+      "sourceModel": "Suit",
+      "sourceUrl": "https://raw.githubusercontent.com/agentkaerf/FreeModels/main/Ultimate Modular Women - April 2022/Individual Characters/glTF/Suit.gltf",
+      "officialSourceUrl": "https://quaternius.com/packs/ultimatemodularwomen.html",
+      "license": "CC0-1.0",
+      "file": "suit-woman.glb",
+      "bytes": 1498800,
+      "sha256": "83653092d7b83d4679e9a83bbb347b760b9126ad596e7ca2aa48b8e3711f5f90",
+      "animations": [
+        "Idle",
+        "Idle_Neutral",
+        "Walk",
+        "Wave"
+      ],
+      "triangles": 38892
+    },
+    {
+      "id": "worker-woman",
+      "gender": "women",
+      "sourceModel": "Worker",
+      "sourceUrl": "https://raw.githubusercontent.com/agentkaerf/FreeModels/main/Ultimate Modular Women - April 2022/Individual Characters/glTF/Worker.gltf",
+      "officialSourceUrl": "https://quaternius.com/packs/ultimatemodularwomen.html",
+      "license": "CC0-1.0",
+      "file": "worker-woman.glb",
+      "bytes": 1447992,
+      "sha256": "97b769004d37934b2372ae3289589f2e0c4d6feb417d40bc4ead0bd33fcc2f5a",
+      "animations": [
+        "Idle",
+        "Idle_Neutral",
+        "Walk",
+        "Wave"
+      ],
+      "triangles": 36672
+    }
+  ]
+}

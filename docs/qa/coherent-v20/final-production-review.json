@@ -1,0 +1,102 @@
+{
+  "base": "http://localhost:3000/Tuk-Ngo/",
+  "errors": [],
+  "viewports": [
+    {
+      "width": 1024,
+      "height": 768,
+      "oneDefaultButton": true,
+      "touchTarget": true,
+      "noOverflow": true,
+      "viewClosesPanel": true
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "oneDefaultButton": true,
+      "touchTarget": true,
+      "noOverflow": true,
+      "viewClosesPanel": true
+    },
+    {
+      "width": 800,
+      "height": 600,
+      "oneDefaultButton": true,
+      "touchTarget": true,
+      "noOverflow": true,
+      "viewClosesPanel": true
+    }
+  ],
+  "physicalTabletTested": false,
+  "visualAcceptance": "Screenshots require direct inspection; runtime checks do not score likeness.",
+  "heroPauseKeepsEnvironmentAlive": true,
+  "downloadSha256": "b44d9533bd51255309a976cdcae5622a9a1557b6a6882cccc364baeb5e729b69",
+  "longRun": [
+    {
+      "elapsedSeconds": 0,
+      "stats": {
+        "phase": 0.75,
+        "ambientTime": 10.374500000000001,
+        "triangles": 1463122,
+        "drawCalls": 355,
+        "npcs": 11,
+        "npcKinds": [
+          "casual-man",
+          "hoodie-man",
+          "casual-woman",
+          "beach-man",
+          "farmer-man",
+          "suit-man",
+          "worker-man",
+          "punk-man",
+          "formal-woman",
+          "suit-woman",
+          "worker-woman"
+        ],
+        "npcActions": [
+          "Idle",
+          "Idle_Neutral",
+          "Wave",
+          "Walk",
+          "clap",
+          "cheer",
+          "indicate"
+        ],
+        "bank": {
+          "lengthMeters": 50,
+          "lots": 7,
+          "trees": 3,
+          "palms": 1,
+          "vehicles": {
+            "vehicles": 2,
+            "types": [
+              "compact sedan",
+              "small pickup"
+            ],
+            "source": "Original authored geometry",
+            "license": "Project source license; no third-party vehicle asset",
+            "externalAssetBytes": 0,
+            "lanes": [
+              6,
+              10
+            ],
+            "roadTopY": -0.1
+          },
+          "frontageFamilies": [
+            "old-tiled-dwelling",
+            "shutter-shophouse",
+            "modern-townhouse",
+            "open-front-shop",
+            "tin-local-house"
+          ],
+          "drawCalls": 62,
+          "triangles": 174156
+        }
+      },
+      "fps": "31.4"
+    }
+  ],
+  "fullRaceRetained": true,
+  "gameStartStrokePause": true,
+  "pass": true
+}
