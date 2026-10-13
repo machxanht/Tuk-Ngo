@@ -1,0 +1,11 @@
+{
+  "url": "http://127.0.0.1:4255/",
+  "registrationRows": 61,
+  "KhmerSearchMatches": 2,
+  "CaMauFilterMatches": 13,
+  "qualityNotice": "Có 61 mục đăng ký. 55 mục có tên Khmer đã đối chiếu nguồn (45 từ báo chí Khmer, 10 từ danh bạ chùa cộng đồng); 6 mục còn cần xác minh chữ Khmer. Bảng BTC trong tỉnh có 48 dòng nhưng phần tổng kết ghi 47; trang này giữ nguyên các dòng đã công bố.",
+  "KhmerFontLoaded": true,
+  "returnToSameGame": true,
+  "errors": [],
+  "failedRequests": []
+}

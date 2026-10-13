@@ -1,5 +1,7 @@
 # Tuk-Ngo — hybrid ghe Ngo racing on Maspéro
 
+V29 adds twelve illustrated spectator pose pairs (24 total looks), fixes Kos Thum's blue interior, and links the existing 61-entry Việt/Khmer registration table into the same game. The eight 2025 team appearances and playable race remain on the stable URL below. See [V29 integration and limits](docs/hybrid-v29.md).
+
 The current primary game is the **bright hybrid preview**: actual 3D hull and skinned rowers on the approved painted festival. One renderer serves automatic racing, rhythm practice, close-athlete inspection and the V26 playable 1,200 m race. The tested existing gameplay model supplies timing, endurance, an independent opponent and finish results. The canonical root and the owner's existing tablet link open this version:
 
 https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/

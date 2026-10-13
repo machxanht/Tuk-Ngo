@@ -1,0 +1,683 @@
+{
+  "placements": {
+    "unchanged": true,
+    "motionUnchanged": true,
+    "sha256": "eafed1d57e81420e10816d4d4bf726f7a764a9be7d70355f0bcc0b798fd2479f"
+  },
+  "viewports": [
+    {
+      "spectators": 1949,
+      "walkers": 64,
+      "traffic": 16,
+      "stalls": 10,
+      "uniqueSourceIds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "identities": 24,
+      "mix": {
+        "far": {
+          "0": 76,
+          "1": 58,
+          "2": 78,
+          "3": 64,
+          "4": 77,
+          "5": 74,
+          "6": 81,
+          "7": 78,
+          "12": 81,
+          "13": 70,
+          "14": 82,
+          "15": 81,
+          "16": 70,
+          "17": 76
+        },
+        "near": {
+          "8": 37,
+          "9": 26,
+          "10": 38,
+          "11": 39,
+          "18": 30,
+          "19": 28,
+          "20": 35,
+          "21": 25,
+          "22": 29,
+          "23": 37
+        },
+        "stand": {
+          "0": 28,
+          "1": 28,
+          "2": 33,
+          "3": 25,
+          "4": 24,
+          "5": 27,
+          "6": 35,
+          "7": 29,
+          "12": 28,
+          "13": 32,
+          "14": 23,
+          "15": 17,
+          "16": 19,
+          "17": 24
+        },
+        "nearStand": {
+          "8": 18,
+          "9": 23,
+          "10": 23,
+          "11": 7,
+          "18": 21,
+          "19": 21,
+          "20": 12,
+          "21": 20,
+          "22": 18,
+          "23": 17
+        },
+        "bridge": {
+          "0": 1,
+          "1": 1,
+          "2": 1,
+          "3": 2,
+          "5": 5,
+          "6": 4,
+          "7": 2,
+          "12": 5,
+          "13": 1,
+          "14": 2,
+          "16": 2,
+          "17": 1
+        }
+      },
+      "bad": [],
+      "adjacentRepeatRate": {
+        "pairs": 1907,
+        "same": 140,
+        "rate": 0.07341373885684321
+      },
+      "viewport": "desktop",
+      "size": [
+        1440,
+        1080
+      ],
+      "frames": 150,
+      "measuredFPS": 29.96,
+      "pageErrors": []
+    },
+    {
+      "spectators": 1949,
+      "walkers": 64,
+      "traffic": 16,
+      "stalls": 10,
+      "uniqueSourceIds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "identities": 24,
+      "mix": {
+        "far": {
+          "0": 76,
+          "1": 58,
+          "2": 78,
+          "3": 64,
+          "4": 77,
+          "5": 74,
+          "6": 81,
+          "7": 78,
+          "12": 81,
+          "13": 70,
+          "14": 82,
+          "15": 81,
+          "16": 70,
+          "17": 76
+        },
+        "near": {
+          "8": 37,
+          "9": 26,
+          "10": 38,
+          "11": 39,
+          "18": 30,
+          "19": 28,
+          "20": 35,
+          "21": 25,
+          "22": 29,
+          "23": 37
+        },
+        "stand": {
+          "0": 28,
+          "1": 28,
+          "2": 33,
+          "3": 25,
+          "4": 24,
+          "5": 27,
+          "6": 35,
+          "7": 29,
+          "12": 28,
+          "13": 32,
+          "14": 23,
+          "15": 17,
+          "16": 19,
+          "17": 24
+        },
+        "nearStand": {
+          "8": 18,
+          "9": 23,
+          "10": 23,
+          "11": 7,
+          "18": 21,
+          "19": 21,
+          "20": 12,
+          "21": 20,
+          "22": 18,
+          "23": 17
+        },
+        "bridge": {
+          "0": 1,
+          "1": 1,
+          "2": 1,
+          "3": 2,
+          "5": 5,
+          "6": 4,
+          "7": 2,
+          "12": 5,
+          "13": 1,
+          "14": 2,
+          "16": 2,
+          "17": 1
+        }
+      },
+      "bad": [],
+      "adjacentRepeatRate": {
+        "pairs": 1907,
+        "same": 140,
+        "rate": 0.07341373885684321
+      },
+      "viewport": "tablet",
+      "size": [
+        1024,
+        768
+      ],
+      "frames": 149,
+      "measuredFPS": 29.72,
+      "pageErrors": []
+    }
+  ],
+  "sprites110": [
+    {
+      "id": 12,
+      "pose": 0,
+      "footAnchorError": 0,
+      "raster": [
+        53,
+        111
+      ]
+    },
+    {
+      "id": 12,
+      "pose": 1,
+      "footAnchorError": 0,
+      "raster": [
+        66,
+        116
+      ]
+    },
+    {
+      "id": 13,
+      "pose": 0,
+      "footAnchorError": 0,
+      "raster": [
+        57,
+        116
+      ]
+    },
+    {
+      "id": 13,
+      "pose": 1,
+      "footAnchorError": 0,
+      "raster": [
+        58,
+        115
+      ]
+    },
+    {
+      "id": 14,
+      "pose": 0,
+      "footAnchorError": 0,
+      "raster": [
+        47,
+        108
+      ]
+    },
+    {
+      "id": 14,
+      "pose": 1,
+      "footAnchorError": 0,
+      "raster": [
+        56,
+        116
+      ]
+    },
+    {
+      "id": 15,
+      "pose": 0,
+      "footAnchorError": 0,
+      "raster": [
+        52,
+        108
+      ]
+    },
+    {
+      "id": 15,
+      "pose": 1,
+      "footAnchorError": 0,
+      "raster": [
+        65,
+        116
+      ]
+    },
+    {
+      "id": 16,
+      "pose": 0,
+      "footAnchorError": 0,
+      "raster": [
+        61,
+        116
+      ]
+    },
+    {
+      "id": 16,
+      "pose": 1,
+      "footAnchorError": 0,
+      "raster": [
+        86,
+        116
+      ]
+    },
+    {
+      "id": 17,
+      "pose": 0,
+      "footAnchorError": 0,
+      "raster": [
+        43,
+        88
+      ]
+    },
+    {
+      "id": 17,
+      "pose": 1,
+      "footAnchorError": 0,
+      "raster": [
+        46,
+        88
+      ]
+    },
+    {
+      "id": 18,
+      "pose": 0,
+      "footAnchorError": 0,
+      "raster": [
+        58,
+        112
+      ]
+    },
+    {
+      "id": 18,
+      "pose": 1,
+      "footAnchorError": 0,
+      "raster": [
+        72,
+        116
+      ]
+    },
+    {
+      "id": 19,
+      "pose": 0,
+      "footAnchorError": 0,
+      "raster": [
+        56,
+        112
+      ]
+    },
+    {
+      "id": 19,
+      "pose": 1,
+      "footAnchorError": 0,
+      "raster": [
+        72,
+        116
+      ]
+    },
+    {
+      "id": 20,
+      "pose": 0,
+      "footAnchorError": 0,
+      "raster": [
+        60,
+        112
+      ]
+    },
+    {
+      "id": 20,
+      "pose": 1,
+      "footAnchorError": 0,
+      "raster": [
+        81,
+        116
+      ]
+    },
+    {
+      "id": 21,
+      "pose": 0,
+      "footAnchorError": 0,
+      "raster": [
+        54,
+        117
+      ]
+    },
+    {
+      "id": 21,
+      "pose": 1,
+      "footAnchorError": 0,
+      "raster": [
+        58,
+        117
+      ]
+    },
+    {
+      "id": 22,
+      "pose": 0,
+      "footAnchorError": 0,
+      "raster": [
+        45,
+        88
+      ]
+    },
+    {
+      "id": 22,
+      "pose": 1,
+      "footAnchorError": 0,
+      "raster": [
+        59,
+        88
+      ]
+    },
+    {
+      "id": 23,
+      "pose": 0,
+      "footAnchorError": 0,
+      "raster": [
+        60,
+        116
+      ]
+    },
+    {
+      "id": 23,
+      "pose": 1,
+      "footAnchorError": 0,
+      "raster": [
+        63,
+        117
+      ]
+    }
+  ],
+  "sprites220": [
+    {
+      "id": 12,
+      "pose": 0,
+      "footAnchorError": 0,
+      "raster": [
+        102,
+        216
+      ]
+    },
+    {
+      "id": 12,
+      "pose": 1,
+      "footAnchorError": 0,
+      "raster": [
+        127,
+        226
+      ]
+    },
+    {
+      "id": 13,
+      "pose": 0,
+      "footAnchorError": 0,
+      "raster": [
+        110,
+        226
+      ]
+    },
+    {
+      "id": 13,
+      "pose": 1,
+      "footAnchorError": 0,
+      "raster": [
+        111,
+        223
+      ]
+    },
+    {
+      "id": 14,
+      "pose": 0,
+      "footAnchorError": 0,
+      "raster": [
+        90,
+        209
+      ]
+    },
+    {
+      "id": 14,
+      "pose": 1,
+      "footAnchorError": 0,
+      "raster": [
+        108,
+        226
+      ]
+    },
+    {
+      "id": 15,
+      "pose": 0,
+      "footAnchorError": 0,
+      "raster": [
+        100,
+        210
+      ]
+    },
+    {
+      "id": 15,
+      "pose": 1,
+      "footAnchorError": 0,
+      "raster": [
+        126,
+        226
+      ]
+    },
+    {
+      "id": 16,
+      "pose": 0,
+      "footAnchorError": 0,
+      "raster": [
+        117,
+        226
+      ]
+    },
+    {
+      "id": 16,
+      "pose": 1,
+      "footAnchorError": 0,
+      "raster": [
+        166,
+        225
+      ]
+    },
+    {
+      "id": 17,
+      "pose": 0,
+      "footAnchorError": 0,
+      "raster": [
+        81,
+        169
+      ]
+    },
+    {
+      "id": 17,
+      "pose": 1,
+      "footAnchorError": 0,
+      "raster": [
+        88,
+        169
+      ]
+    },
+    {
+      "id": 18,
+      "pose": 0,
+      "footAnchorError": 0,
+      "raster": [
+        112,
+        218
+      ]
+    },
+    {
+      "id": 18,
+      "pose": 1,
+      "footAnchorError": 0,
+      "raster": [
+        139,
+        226
+      ]
+    },
+    {
+      "id": 19,
+      "pose": 0,
+      "footAnchorError": 0,
+      "raster": [
+        107,
+        218
+      ]
+    },
+    {
+      "id": 19,
+      "pose": 1,
+      "footAnchorError": 0,
+      "raster": [
+        139,
+        226
+      ]
+    },
+    {
+      "id": 20,
+      "pose": 0,
+      "footAnchorError": 0,
+      "raster": [
+        115,
+        218
+      ]
+    },
+    {
+      "id": 20,
+      "pose": 1,
+      "footAnchorError": 0,
+      "raster": [
+        157,
+        226
+      ]
+    },
+    {
+      "id": 21,
+      "pose": 0,
+      "footAnchorError": 0,
+      "raster": [
+        105,
+        226
+      ]
+    },
+    {
+      "id": 21,
+      "pose": 1,
+      "footAnchorError": 0,
+      "raster": [
+        112,
+        226
+      ]
+    },
+    {
+      "id": 22,
+      "pose": 0,
+      "footAnchorError": 0,
+      "raster": [
+        86,
+        170
+      ]
+    },
+    {
+      "id": 22,
+      "pose": 1,
+      "footAnchorError": 0,
+      "raster": [
+        113,
+        170
+      ]
+    },
+    {
+      "id": 23,
+      "pose": 0,
+      "footAnchorError": 0,
+      "raster": [
+        116,
+        226
+      ]
+    },
+    {
+      "id": 23,
+      "pose": 1,
+      "footAnchorError": 0,
+      "raster": [
+        121,
+        227
+      ]
+    }
+  ]
+}

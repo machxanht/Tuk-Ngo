@@ -67,4 +67,6 @@ Tạo asset mới phải theo cùng style và góc nhìn, lưu nguồn/prompts, 
 
 V28 đã ghép tám đội nam tứ kết 2025 vào cảnh hybrid: chọn đội ở ngoài cảnh, đổi hoa văn, áo/nón và màu người đầu ghe/điều khiển khi có dữ liệu. Làn gần là ghe bạn. Chọn đội chỉ đổi hình thức; chưa có dữ liệu để gán sức mạnh thực của từng đội. Một số ghe quay trên bờ chưa đối chiếu chắc với số đua, và đường cắt may vẫn là bản dựng.
 
+V29 thêm 12 mẫu khán giả, tổng 24 kiểu, trộn góc nhìn trước/sau đúng hai bờ và giữ mật độ 1.949 vị trí. Nội thất Kos Thum đã chuyển xanh khi chọn đội. Danh sách 61 ghe Việt/Khmer mở từ cùng game và trở lại đây; 55 mục có tên chùa Khmer theo nguồn, sáu mục chưa xác minh. Danh sách đăng ký không đồng nghĩa có 61 model hoàn chỉnh.
+
 Chưa hoàn thành: giải đấu nhiều vòng, trang phục/kbach từng đội được xác minh đầy đủ, rig chuyển động khán giả gần và các khuôn mặt được tạo hình riêng. Chưa đo hiệu năng trên tablet thật.

@@ -20,6 +20,9 @@ with sync_playwright() as p:
   actor=page.evaluate('illustratedPreview.hybrid.actors.find(a=>a.role==="rower"&&a.posture==="standing"&&a.side===-1).palette')
   assert actor['jersey']==team['jersey'],(team,actor)
   assert actor['cap']==team['cap'] or actor['cap'] in team.get('capVariants',[]),(team,actor)
+  if team.get('interior'):
+   interior=page.evaluate('''()=>{const colors=[];illustratedPreview.hybrid.boat.getObjectByName('Hull_Watertight_30_20x1_12').traverse(mesh=>{if(mesh.isMesh&&!mesh.material.map)colors.push('#'+mesh.material.color.getHexString());});return colors;}''')
+   assert len(interior)==2 and all(color==team['interior'] for color in interior),interior
   for role in ['caller','controller']:
    if team.get('roleKit',{}).get('BOW_CALLER' if role=='caller' else 'MID_CONTROLLER'):
     page.locator('#posture').select_option(role);page.locator('#scene').screenshot(path=str(out/(team['id']+'-'+role+'.png')))

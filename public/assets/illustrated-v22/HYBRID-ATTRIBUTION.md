@@ -1,5 +1,7 @@
 # Hybrid V25 model sources
 
+V29 adds a new twelve-person/two-cell illustration sheet, generated with the built-in image_gen tool using the accepted sheet as a style reference. The PNG is copied unchanged with its alpha; runtime metadata separates overlapping figure bounds. It is game artwork, not real-event evidence. [Exact prompt, hash and limits](spectators-v29-provenance.json) accompany [the new source PNG](spectators-extra-12-2poses-v29.png).
+
 V28 adds eight source-linked 2025 SVG liveries and known kit/cap/leadership palettes to the same hybrid rig. Original vector bytes come from the established team folder; [its attribution](teams-2025/ATTRIBUTION.md) records real-video sources and incomplete boat/bib matching. Short sleeves are authored fitted cloth with anatomical skin weights. Team choice gives no invented performance rating. The generic V27 downloadable athlete does not include runtime team choices.
 
 The athlete is derived from the project's existing MakeHuman/MPFB CC0 anatomical mesh and 53-bone rig, originally distributed by [Innerscene](https://www.innerscene.com/tools/library/3d-parts/human-base-mesh-with-editable-53-bone-rig-8e7c8ab1). Original attribution and source hashes remain in `../human/ATTRIBUTION.md` and `../coherent-v19/ATTRIBUTION.md` in the repository. The new vest, binding, shorts, positive-scale pose variants, head variants and material colours are authored project modifications. The fitted cap and rounded wooden paddle derive from the project's existing authored V20 study.

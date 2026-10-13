@@ -88,7 +88,10 @@ window.createHybridBoats=async function(base=''){
    o.geometry=g;o.material.map=texture;o.material.color.set('white');paintedHull.push({mesh:o,originalUV,paintedUV:uv});
   }else if(/Wood|Timber|Rib|Beam/.test(old.name))o.material.color.set('#b9844d');
   if(/Red_Integrated_Prow|Red_Integrated_Stern/.test(o.name))hullEnds.push(o);
-  if(!old.map&&/Inner|Interior/.test(old.name))hullInteriors.push({mesh:o,color:o.material.color.clone()});
+  // The optimized hull GLB strips material names. Identify its two untextured
+  // inner primitives by ancestry, and isolate them from shared timber paint.
+  let ancestor=o;while(ancestor&&ancestor!==hullBody)ancestor=ancestor.parent;
+  if(!old.map&&ancestor===hullBody){o.material=o.material.clone();hullInteriors.push({mesh:o,color:o.material.color.clone()});}
  });
  boat.add(hull.scene);
  // Keep the real hull depth. A depth-only water plane hides submerged mesh
