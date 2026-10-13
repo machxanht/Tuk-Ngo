@@ -36,6 +36,12 @@
  const nearFeet=x=>LAYOUT.near.frontY+x*LAYOUT.near.slope;
  function roadEdge(x){const points=LAYOUT.near.roadEdge;let i=0;while(i<points.length-2&&x>points[i+1][0])i++;const a=points[i],b=points[i+1],t=Math.max(0,Math.min(1,(x-a[0])/(b[0]-a[0])));return a[1]+(b[1]-a[1])*t;}
  const crowds=[],walkers=[],traffic=[],stalls=[];
+ const frontIdentities=[0,1,2,3,4,5,6,7,12,13,14,15,16,17],backIdentities=[8,9,10,11,18,19,20,21,22,23];
+ function identityAt(p){
+  const pool=p.bank==='near'||p.bank==='nearStand'?backIdentities:frontIdentities;
+  const n=(Math.imul((p.id??0)+1,73856093)^Math.imul(Math.round(p.x*10),19349663)^Math.imul(Math.round(p.y*10),83492791))>>>0;
+  return pool[Math.floor(motionHash(n,8129)*pool.length)];
+ }
  for(let row=0;row<LAYOUT.far.crowdRows;row++)for(let col=0;col<LAYOUT.far.crowdColumns;col++){
   const x=col*LAYOUT.far.crowdStep+(row%2)*7+rand()*5;
   // Leave an access strip to the upstream bridge abutment.
@@ -64,16 +70,18 @@
   ctx.save();ctx.globalAlpha=alpha;ctx.translate(x,y);ctx.scale(flip?-s:s,s);ctx.drawImage(image,sx,sy,sw,sh,-ax,-ay,sw,sh);ctx.restore();
  }
  function personRaster(p,frame){
-  const row=Math.floor(p.variant/2),col=p.variant%2*2+frame;
-  const base=groups.spectators.cells[row*4+col];
-  const first=row*4+p.variant%2*2,referenceHeight=Math.max(groups.spectators.cells[first].height,groups.spectators.cells[first+1].height);
-  const child=(p.variant===6||p.variant===7)? .75:1;
-  const height=Math.max(4,Math.round(p.height*child/4)*4),key=`${p.variant}:${frame}:${height}`;
+  const identity=identityAt(p),sheet=identity<12?'spectators':'spectatorsExtra',variant=identity<12?identity:identity-12,atlas=groups[sheet];
+  const first=variant*2,base=atlas.cells[first+frame],referenceHeight=Math.max(atlas.cells[first].height,atlas.cells[first+1].height);
+  const relativeScale=sheet==='spectatorsExtra'?atlas.identities[variant].relativeScale:variant===6||variant===7?.75:1;
+  const height=Math.max(4,Math.round(p.height*relativeScale/4)*4),key=`${sheet}:${variant}:${frame}:${height}`;
   let raster=personRasters.get(key);
   if(!raster){
    const [sx,sy,sw,sh]=base.rect,[ax,ay]=base.anchor,scale=height/referenceHeight,c=document.createElement('canvas');
    c.width=Math.ceil(sw*scale)+2;c.height=Math.ceil(sh*scale)+2;
-   c.getContext('2d').drawImage(images.spectators,sx,sy,sw,sh,1,1,sw*scale,sh*scale);
+   const rc=c.getContext('2d');
+   if(base.clipRows?.length){rc.save();rc.beginPath();for(const [row,left,right]of base.clipRows)rc.rect(1+left*scale,1+row*scale,(right-left)*scale,scale+.001);rc.clip();}
+   rc.drawImage(images[sheet],sx,sy,sw,sh,1,1,sw*scale,sh*scale);
+   if(base.clipRows?.length)rc.restore();
    raster={image:c,x:-ax*scale-1,y:-ay*scale-1};personRasters.set(key,raster);
   }
   return raster;
@@ -197,9 +205,11 @@
  }
  async function load(){
   const response=await fetch('festival-atlas.json');if(!response.ok)throw Error('Cannot load festival atlas');Object.assign(groups,await response.json());
-  const files={landscape:'festival-landscape.webp',bridge:CONFIG.assets.bridge,...Object.fromEntries(Object.entries(groups).map(([key,value])=>[key,value.file.replace(/\.png$/,'.webp')]))};
+  const extra=await fetch('festival-crowd-atlas-v29.json');if(!extra.ok)throw Error('Cannot load additional crowd atlas');groups.spectatorsExtra=await extra.json();
+  const files={landscape:'festival-landscape.webp',bridge:CONFIG.assets.bridge,...Object.fromEntries(Object.entries(groups).map(([key,value])=>[key,value.runtime||value.file.replace(/\.png$/,'.webp')]))};
   await Promise.all(Object.entries(files).map(([key,file])=>new Promise((resolve,reject)=>{const img=new Image();img.onload=()=>{images[key]=img;resolve();};img.onerror=()=>reject(Error('Cannot load '+file));img.src=file;})));
   const font=new FontFace('FestivalKhmer','url(NotoSansKhmer.ttf)');await font.load();document.fonts.add(font);bake();
  }
- window.festivalScene={load,drawBack,drawFront,roadEdge,setActivity,getActivity:()=>activity,WIDTH,HEIGHT,crowds,walkers,traffic,stalls,groups,images,stats:{spectators:crowds.length,identities:12,walkers:walkers.length,vehicles:traffic.length,stalls:stalls.length,buildingTypes:6,plantTypes:6,stands:2,bridges:1,bridgeAssetTypes:2,configuration:CONFIG.revision,sourcePoseFrames:2,motion:'Fixed foot anchors; independent lean/sway and irregular two-pose cheer windows',get activity(){return activity;},get renderedActivity(){return activityDraw;}},motionAt(p,t,value=activityDraw){return personMotion(p,safeTime(t),Math.max(0,Math.min(1,Number.isFinite(value)?value:.4)));}};
+ const identityMix={};for(const p of crowds){const bank=identityMix[p.bank]||(identityMix[p.bank]={}),identity=identityAt(p);bank[identity]=(bank[identity]||0)+1;}
+ window.festivalScene={load,drawBack,drawFront,roadEdge,setActivity,getActivity:()=>activity,identityAt,WIDTH,HEIGHT,crowds,walkers,traffic,stalls,groups,images,stats:{spectators:crowds.length,identities:24,identityMix,frontIdentityPool:frontIdentities,backIdentityPool:backIdentities,walkers:walkers.length,vehicles:traffic.length,stalls:stalls.length,buildingTypes:6,plantTypes:6,stands:2,bridges:1,bridgeAssetTypes:2,configuration:CONFIG.revision,sourcePoseFrames:2,motion:'Fixed foot anchors; independent lean/sway and irregular two-pose cheer windows',get activity(){return activity;},get renderedActivity(){return activityDraw;}},motionAt(p,t,value=activityDraw){return personMotion(p,safeTime(t),Math.max(0,Math.min(1,Number.isFinite(value)?value:.4)));}};
 })();
