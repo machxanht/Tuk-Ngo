@@ -130,17 +130,19 @@ function updateModeUI(){
 }
 function setMode(mode){
  gameMode=mode;sceneMode='festival';H=CONFIG.camera.height;resizeCanvas();practice.strokes=0;practice.accuracy=0;practice.lastScore=0;time=0;playing=true;document.querySelector('#toggle').textContent='Dừng';
- document.querySelector('#practice-result').textContent='Bấm Chèo khi dằm vào nước';updateModeUI();draw(time);
+ document.querySelector('#practice-result').textContent='Chạm sân hoặc bấm Chèo khi dằm vào nước';updateModeUI();draw(time);
 }
 document.querySelectorAll('[data-mode]').forEach(button=>button.onclick=()=>setMode(button.dataset.mode));
 document.querySelector('#view').onclick=()=>{sceneMode=sceneMode==='festival'?'boat':'festival';H=sceneMode==='festival'?CONFIG.camera.height:CONFIG.camera.workshopHeight;resizeCanvas();updateModeUI();draw(time);};
 addEventListener('resize',()=>{resizeCanvas();draw(time);});
-document.querySelector('#stroke').onclick=()=>{
+function stroke(){
  if(!ready||!playing||gameMode!=='practice')return;
  const phase=((time*cadence/60)%1+1)%1,distance=Math.min(phase,1-phase),score=Math.max(0,Math.round(100*(1-distance/.3)));
  practice.accuracy=(practice.accuracy*practice.strokes+score)/(practice.strokes+1);practice.strokes++;practice.lastScore=score;
  document.querySelector('#practice-result').textContent=`${practice.strokes} nhịp · đúng nhịp ${Math.round(practice.accuracy)}%`;
-};
+}
+document.querySelector('#stroke').onclick=stroke;
+canvas.onclick=()=>{if(sceneMode==='festival')stroke();};
 document.querySelector('#fullscreen').onclick=async()=>{const target=document.querySelector('.stage');if(document.fullscreenElement)await document.exitFullscreen();else if(target.requestFullscreen)await target.requestFullscreen();else if(target.webkitRequestFullscreen)target.webkitRequestFullscreen();};
 async function exitFullscreen(){if(document.fullscreenElement)await document.exitFullscreen();else if(document.webkitFullscreenElement&&document.webkitExitFullscreen)document.webkitExitFullscreen();}
 document.querySelector('#exit-fullscreen').onclick=exitFullscreen;

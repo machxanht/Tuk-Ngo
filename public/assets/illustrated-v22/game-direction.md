@@ -20,7 +20,7 @@ Góc nhìn này ưu tiên thấy rõ nhịp chèo, đầu/đuôi ghe, hoa văn v
 
 | Mục | Mục đích | Hiện trạng |
 |---|---|---|
-| Tập chèo | Một ghe, học nhịp vào nước và thao tác chạm | Có mẫu chấm độ đúng nhịp, đếm lượt chèo; chưa có sức bền/huấn luyện đầy đủ |
+| Tập chèo | Một ghe, học nhịp vào nước và thao tác chạm | Chạm sân hoặc bấm Chèo; có mẫu chấm độ đúng nhịp, đếm lượt chèo, dùng được khi toàn màn hình; chưa có sức bền/huấn luyện đầy đủ |
 | Đua nhanh | Hai ghe, một trận, thao tác nhịp và nước rút | Nền cảnh hai ghe và animation đã có trong Đua thử; luật thắng/thua, quãng đường và đối thủ chưa hoàn thiện |
 | Giải đấu | Nhiều vòng với dữ liệu đội ghe đã xác minh | Phát triển sau; chưa đưa nút giả vào giao diện |
 | Xưởng ghe/asset | Kiểm tra silhouette, tư thế, lớp che chân và file nguồn | Công cụ kiểm tra, không phải chế độ chơi |

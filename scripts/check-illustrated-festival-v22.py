@@ -31,7 +31,7 @@ with sync_playwright() as p:
         errors, failed = [], []
         page.on('pageerror', lambda e: errors.append(str(e)))
         page.on('requestfailed', lambda r: failed.append(r.url))
-        response = page.goto(args.url, wait_until='networkidle')
+        response = page.goto(args.url, wait_until='domcontentloaded', timeout=60000)
         assert response.status == 200
         page.wait_for_selector('body[data-ready=true]', timeout=60000)
         stats = page.evaluate('illustratedPreview.stats')
@@ -82,9 +82,15 @@ with sync_playwright() as p:
         page.locator('#stroke').click()
         assert page.evaluate('illustratedPreview.practice.strokes') == 1
         assert 0 <= page.evaluate('illustratedPreview.practice.accuracy') <= 100
+        page.locator('#fullscreen').click()
+        page.wait_for_function('document.fullscreenElement !== null')
+        page.locator('#scene').tap()
+        assert page.evaluate('illustratedPreview.practice.strokes') == 2
+        page.locator('#exit-fullscreen').click()
+        page.wait_for_function('document.fullscreenElement === null')
         page.locator('#toggle').click()
         page.locator('#stroke').click()
-        assert page.evaluate('illustratedPreview.practice.strokes') == 1
+        assert page.evaluate('illustratedPreview.practice.strokes') == 2
         page.locator('[data-mode="demo"]').click()
         assert page.evaluate('illustratedPreview.stats.boats') == 2
         assert page.evaluate('illustratedPreview.stats.camera') == camera

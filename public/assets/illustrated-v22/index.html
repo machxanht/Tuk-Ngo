@@ -10,7 +10,7 @@ canvas{max-height:calc(100svh - 220px);object-fit:contain}body[data-mode=practic
 <nav class="mode-controls" aria-label="Chế độ"><button data-mode="demo" aria-pressed="true">Đua thử</button><button data-mode="practice" aria-pressed="false">Tập chèo</button></nav>
 <div class="stage"><canvas id="scene" aria-label="Cảnh lễ hội ghe Ngo với hai ghe chèo, khán giả cổ vũ, người đi bộ, xe cộ, quán ăn, khán đài và cầu"></canvas><button id="exit-fullscreen" aria-label="Thoát toàn màn hình">Thoát</button></div>
 <div class="controls"><button id="toggle">Dừng</button><label>Nhịp chèo <input id="cadence" type="range" min="55" max="105" value="80"><strong id="cadenceValue">80</strong></label><button id="view">Xưởng ghe</button><button id="fullscreen">Toàn màn hình</button></div>
-<div id="practice-controls" class="practice-controls" hidden><button id="stroke">Chèo</button><span id="practice-result" aria-live="polite">Bấm Chèo khi dằm vào nước</span></div>
+<div id="practice-controls" class="practice-controls" hidden><button id="stroke">Chèo</button><span id="practice-result" aria-live="polite">Chạm sân hoặc bấm Chèo khi dằm vào nước</span></div>
 <details id="pose-controls"><summary>Xem từng pha chèo</summary><div class="poses"><button data-pose="0">Vào nước</button><button data-pose=".25">Kéo</button><button data-pose=".5">Thoát nước</button><button data-pose=".75">Trả dằm</button></div></details>
 <details id="asset-gallery"><summary>Xem và tải các asset riêng</summary><div class="gallery">
 <article class="card"><h2>Nền trời, sông và hai bờ</h2><img loading="lazy" src="festival-landscape.png" alt="Nền sông nắng sáng với hai bờ kè"><a href="festival-landscape.png" download>Tải PNG</a></article>
@@ -30,4 +30,4 @@ canvas{max-height:calc(100svh - 220px);object-fit:contain}body[data-mode=practic
 <article class="card"><h2>Phác thảo đã duyệt</h2><img loading="lazy" src="approved-concept.png" alt="Phác thảo làm cơ sở cho chất hình minh họa"><a href="approved-concept.png" download>Tải PNG</a></article>
 </div></details>
 <footer>Bản thử hướng 2.5D: Đua thử xem hai ghe; Tập chèo luyện nhịp với một ghe; Xưởng ghe để kiểm tra hình vẽ. Hai ghe đang dùng chung bộ hình. <a href="game-direction.md">Hướng phát triển thống nhất</a> · <a href="README.md">Thông tin asset</a></footer>
-</main><script src="scene-config.js?v=coherent-23"></script><script src="festival-scene.js?v=coherent-23"></script><script src="preview.js?v=coherent-23"></script></body></html>
+</main><script src="scene-config.js?v=coherent-23-touch"></script><script src="festival-scene.js?v=coherent-23-touch"></script><script src="preview.js?v=coherent-23-touch"></script></body></html>
