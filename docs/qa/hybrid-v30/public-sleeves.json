@@ -1,0 +1,43 @@
+{
+  "url": "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/",
+  "garmentFit": [
+    {
+      "id": 2,
+      "role": "rower",
+      "posture": "seated",
+      "clothVertices": 276,
+      "maxRestGapM": 0.004500053109498705,
+      "maxPosedGapM": 0.004500037457425359,
+      "skinWeightDifference": 0
+    },
+    {
+      "id": 18,
+      "role": "rower",
+      "posture": "standing",
+      "clothVertices": 276,
+      "maxRestGapM": 0.004500053109498705,
+      "maxPosedGapM": 0.00450003655433839,
+      "skinWeightDifference": 0
+    },
+    {
+      "id": 1,
+      "role": "caller",
+      "posture": "seated",
+      "clothVertices": 276,
+      "maxRestGapM": 0.004500053109498705,
+      "maxPosedGapM": 0.004500010359341182,
+      "skinWeightDifference": 0
+    },
+    {
+      "id": 52,
+      "role": "controller",
+      "posture": "standing",
+      "clothVertices": 276,
+      "maxRestGapM": 0.004500053109498705,
+      "maxPosedGapM": 0.004500010359341229,
+      "skinWeightDifference": 0
+    }
+  ],
+  "posesPerActor": 17,
+  "errors": []
+}
