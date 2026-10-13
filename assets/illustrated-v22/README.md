@@ -1,4 +1,4 @@
-# Ghe Ngo hybrid V29
+# Ghe Ngo hybrid V30
 
 Stable tablet/game URL: https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/
 
@@ -23,6 +23,8 @@ The source hull retains the accepted 3D shape. V28 uses the existing source-link
 The scene contains 1,949 placed spectators, 64 walkers, 16 vehicles and ten stalls, plus two stands and one visible upstream bridge. These are authored placement counts. V29 adds twelve illustrated spectator pairs, for twenty-four total looks: fourteen front looks in the far bank/stand pool, ten rear looks in the near pool. Ages, outfits and cheering poses mix by position rather than shirt-colour rows. Each look has two painted source cells, independent cheer windows and gentle body motion around fixed foot anchors; some new pose pairs are similar, rather than complete new animation clips. Alpha-component atlas metadata prevents neighbouring hands/shoes entering a cutout. Walking still uses four painted steps; riders are painted into moving vehicle sprites. Water has coherent drifting ripples/glints and paddle-contact droplets, denser at sprint cadence.
 
 The existing 61-entry 2025 registration list is reachable from this same game and returns here. Fifty-five entries have sourced Khmer pagoda names (45 press, 10 community directory); six are explicitly unverified. Registration ordinal is separate from race bib. These list entries are not 61 completed playable models. V29 also fixes Kos Thum's blue interior by identifying hull primitives after optimization removed their material names, while preserving the brown wooden supports.
+
+V30 closes the sleeved jersey shoulder with an anatomical surface shell using the exact body skin weights. The tank armhole binding hides for sleeved kits; the neckline and hem remain. Raised-arm close-ups no longer expose the separate cloth tube. Garment/body pairs stay within approximately 4.5mm across 17 poses; the tailoring is still an authored approximation. Body/face/festival gallery clips were refreshed for this corrected garment.
 
 Approved raster sources, prompts, atlas anchors, hashes and optional PNG downloads remain in this folder. Four-pose rower PNGs are style references, not the live athlete animation. The art is original generated illustration, not evidence of historical kit or exact Maspéro architecture. Khmer banners use the bundled Noto Sans Khmer font; no national flags are present. Wording has not received a native Khmer editorial review. See [model/audio attribution](HYBRID-ATTRIBUTION.md) and [font attribution](FONT-ATTRIBUTION.md). Audio is a CC0 concert crowd recording, not Khmer chants or a tournament recording.
 
