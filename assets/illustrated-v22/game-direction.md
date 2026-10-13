@@ -14,14 +14,14 @@ Trang chính `https://machxanht.github.io/Tuk-Ngo/` mở phiên bản này. Link
 - Người, cây, nhà và xe dùng cùng hệ tỷ lệ theo lớp gần/xa. Cùng một ghe trên hai làn chỉ chênh nhẹ do phối cảnh, không thu nhỏ làn xa quá mức.
 - Cận ghe là công cụ trong Xưởng, giữ nguyên góc asset; không phải một phong cách hay chế độ thi đấu khác.
 
-Góc nhìn này ưu tiên thấy rõ nhịp chèo, đầu/đuôi ghe, hoa văn và cả hai bờ. Khi làm đua thật, camera chỉ dịch dọc sông theo ghe, giữ nguyên hướng và độ nghiêng. Hiện bản Đua thử vẫn là cảnh kiểm tra nhịp/asset tại một khung sân, chưa mô phỏng hành trình 1.200 m hay camera bám ghe.
+Góc nhìn này ưu tiên thấy rõ nhịp chèo, đầu/đuôi ghe, hoa văn và cả hai bờ. Demo Đua tự động có hai ghe di chuyển từ vạch xuất phát đến vạch đích, camera bám nhẹ và trở lại toàn cảnh khi kết thúc. Có thể chọn Toàn cảnh để giữ cả sân. Đoạn đua được thu gọn trong bố cục hiện tại để kiểm tra asset; chưa mô phỏng tuyến đo đạc 1.200 m.
 
 ## Các chế độ
 
 | Mục | Mục đích | Hiện trạng |
 |---|---|---|
 | Tập chèo | Một ghe, học nhịp vào nước và thao tác chạm | Chạm sân hoặc bấm Chèo; có mẫu chấm độ đúng nhịp, đếm lượt chèo, dùng được khi toàn màn hình; chưa có sức bền/huấn luyện đầy đủ |
-| Đua nhanh | Hai ghe, một trận, thao tác nhịp và nước rút | Nền cảnh hai ghe và animation đã có trong Đua thử; luật thắng/thua, quãng đường và đối thủ chưa hoàn thiện |
+| Đua tự động / Đua nhanh | Hai ghe, một trận, nhịp chèo và nước rút | Demo tự chạy có đếm ngược, di chuyển, đổi vị trí dẫn đầu, cán đích và kết quả; thao tác điều khiển trận đua của người chơi phát triển sau |
 | Giải đấu | Nhiều vòng với dữ liệu đội ghe đã xác minh | Phát triển sau; chưa đưa nút giả vào giao diện |
 | Xưởng ghe/asset | Kiểm tra silhouette, tư thế, lớp che chân và file nguồn | Công cụ kiểm tra, không phải chế độ chơi |
 
