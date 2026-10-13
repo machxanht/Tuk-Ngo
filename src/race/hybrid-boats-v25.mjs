@@ -2,6 +2,7 @@ import * as T from 'three';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {clone} from 'three/addons/utils/SkeletonUtils.js';
 import {mergeGeometries} from 'three/addons/utils/BufferGeometryUtils.js';
+import {athletePalette,makeAthleteMaterials,shortSleeves,teamTextures} from './hybrid-team-style-v28.mjs';
 
 const W=2400,H=860;
 const roleNames=['seated-port','seated-starboard','standing-port','standing-starboard','caller','controller','helm','helm-starboard'];
@@ -24,21 +25,18 @@ window.createHybridBoats=async function(base=''){
   const source=g.getAttribute('color'),color=new Float32Array(g.attributes.position.count*3);
   const materialColor=skin.material.name==='Painted_Skin_V25'?[.56,.31,.15]:skin.material.color.toArray();for(let i=0;i<g.attributes.position.count;i++)for(let k=0;k<3;k++)color[i*3+k]=materialColor[k]*(source?source.getComponent(i,k):1);
   g.setAttribute('color',new T.BufferAttribute(color,3));
-  const zone=new Float32Array(g.attributes.position.count);if(skin.material.name==='Painted_Skin_V25')zone.fill(1);else if(skin.material.name==='White_Cotton_Cap')zone.fill(2);else if(skin.material.name==='Painted_Vest_V25')zone.fill(3);g.setAttribute('paintZone',new T.BufferAttribute(zone,1));
+  const zone=new Float32Array(g.attributes.position.count),zones={Painted_Skin_V25:1,White_Cotton_Cap:2,Painted_Vest_V25:3,Painted_Ivory_Binding_V25:5,Painted_Shorts_V25:6};zone.fill(zones[skin.material.name]||0);g.setAttribute('paintZone',new T.BufferAttribute(zone,1));
+  const blend=new Float32Array(g.attributes.position.count),p=g.attributes.position;for(let i=0;i<p.count;i++)blend[i]=T.MathUtils.smoothstep(p.getY(i),.86,1.30);g.setAttribute('shirtMix',new T.BufferAttribute(blend,1));
   if(!g.getAttribute('uv'))g.setAttribute('uv',new T.BufferAttribute(new Float32Array(g.attributes.position.count*2),2));
   if(skin.material.map&&skin.material.name!=='Painted_Skin_V25')decals.push({geometry:g,material:materialFrom(skin.material)});else solid.push(g);
+  if(skin.material.name==='Painted_Skin_V25')solid.push(shortSleeves(g,jointNames,reference.skeleton));
  }
  const merged=mergeGeometries(solid,false);solid.forEach(g=>g.dispose());if(!merged)throw Error('Cannot merge continuous athlete skin');
  merged.setAttribute('paintUV',merged.attributes.uv);
  const skinMap=skins.find(s=>s.material.name==='Painted_Skin_V25')?.material.map;if(!skinMap)throw Error('Anatomical skin/UV source is missing');skinMap.colorSpace=T.SRGBColorSpace;skinMap.flipY=false;
  const detail={value:1};
- const kit={value:new T.Color('#23855e')},skinMaterial=new T.MeshLambertMaterial({vertexColors:true,side:T.DoubleSide});
- skinMaterial.onBeforeCompile=shader=>{
-  shader.uniforms.hybridKit=kit;
-  shader.uniforms.hybridSkinMap={value:skinMap};shader.uniforms.hybridSkinDetail=detail;
-  shader.vertexShader=shader.vertexShader.replace('#include <common>','#include <common>\nattribute float paintZone;\nattribute vec2 paintUV;\nuniform vec3 hybridKit;\nuniform float hybridSkinDetail;\nvarying vec2 vHybridSkinUV;\nvarying float vHybridSkin;').replace('#include <color_vertex>','#include <color_vertex>\nvHybridSkinUV=paintUV;\nvHybridSkin=(paintZone>0.9 && paintZone<1.1 && color.r>0.06)?hybridSkinDetail:0.0;\nif(vHybridSkin>0.0) vColor.rgb=mix(vColor.rgb,vec3(clamp(color.r/.56,.65,1.3)*.75),vHybridSkin);\nif(paintZone > 2.9 && paintZone < 3.1) vColor.rgb = hybridKit;');
-  shader.fragmentShader=shader.fragmentShader.replace('#include <common>','#include <common>\nuniform sampler2D hybridSkinMap;\nvarying vec2 vHybridSkinUV;\nvarying float vHybridSkin;').replace('#include <color_fragment>','#include <color_fragment>\nif(vHybridSkin>0.0) diffuseColor.rgb *= mix(vec3(1.0),texture2D(hybridSkinMap,vHybridSkinUV).rgb,vHybridSkin);');
- };
+ const materials=makeAthleteMaterials(skinMap,detail),liveries=teamTextures(base);
+ const skinMaterial=materials.get(athletePalette(null,0,'rower','#23855e'));
  const roleGeometry=new Map();
  const headId=jointNames.indexOf('head'),headInverse=reference.skeleton.boneInverses[headId],headBind=headInverse.clone().invert();
  const headNormalInverse=new T.Matrix3().getNormalMatrix(headInverse),headNormalBind=new T.Matrix3().getNormalMatrix(headBind),normalProbe=new T.Vector3(),headAxis=new T.Vector3(0,1,0);
@@ -76,18 +74,21 @@ window.createHybridBoats=async function(base=''){
   for(let y=0;y<paintCanvas.height;y++){const i=(y*paintCanvas.width+x)*4;if(pixels[i+3]<160)continue;top=Math.min(top,y);bottom=y;if(pixels[i]>120&&pixels[i]>pixels[i+1]*1.6&&pixels[i]>pixels[i+2]*1.6)rail=y;}
   const value=[rail>=0?Math.max(top,rail-3):top,Math.max(bottom,top+1)];bands.set(x,value);return value;
  }
+ const paintedHull=[],hullInteriors=[],hullEnds=[];
  hull.scene.traverse(o=>{
   if(!o.isMesh)return;
   if(/Bench|Command_Platform/.test(o.name)){o.visible=false;return;}
   const old=o.material;o.material=materialFrom(old);
   if(old.map&&hullBody){
-   const g=o.geometry.clone(),uv=g.attributes.uv,p=g.attributes.position;
+   const g=o.geometry.clone(),uv=g.attributes.uv,p=g.attributes.position,originalUV=uv.clone();
    for(let i=0;i<p.count;i++){
     v.fromBufferAttribute(p,i).applyMatrix4(o.matrixWorld);const sourceX=T.MathUtils.clamp((15.1-v.x)/30.2*2120+30,30,2150),band=bandAt(sourceX),depth=T.MathUtils.clamp(uv.getY(i),0,1);
     uv.setXY(i,sourceX/paintCanvas.width,(band[0]+(band[1]-band[0])*depth)/paintCanvas.height);
    }
-   o.geometry=g;o.material.map=texture;o.material.color.set('white');
+   o.geometry=g;o.material.map=texture;o.material.color.set('white');paintedHull.push({mesh:o,originalUV,paintedUV:uv});
   }else if(/Wood|Timber|Rib|Beam/.test(old.name))o.material.color.set('#b9844d');
+  if(/Red_Integrated_Prow|Red_Integrated_Stern/.test(o.name))hullEnds.push(o);
+  if(!old.map&&/Inner|Interior/.test(old.name))hullInteriors.push({mesh:o,color:o.material.color.clone()});
  });
  boat.add(hull.scene);
  // Keep the real hull depth. A depth-only water plane hides submerged mesh
@@ -151,8 +152,13 @@ window.createHybridBoats=async function(base=''){
  function project(point){const p=point.clone().project(camera);return [(p.x+1)*W/2,(1-p.y)*H/2];}
  const bow=project(new T.Vector3(15.1,1.38,0)),waterBow=project(new T.Vector3(14.2,.28,0)),stern=project(new T.Vector3(-15.1,.28,0));
  const tips=[];
- function render(phase,t,{study=false,posture='seated',kitColor='#23855e',faceVariant=null,skinDetail=1,focus='body'}={}){
-  kit.value.set(kitColor);
+ function render(phase,t,{study=false,posture='seated',kitColor='#23855e',teamId=null,faceVariant=null,skinDetail=1,focus='body'}={}){
+  const team=teamId?window.TukNgoTeams.get(teamId):null,map=team?liveries.get(team.id):null;
+  if(team&&!map)throw Error('Team livery is not loaded: '+teamId);
+  for(const {mesh,originalUV,paintedUV} of paintedHull){mesh.geometry.setAttribute('uv',team?originalUV:paintedUV);mesh.material.map=team?map:texture;}
+  for(const mesh of hullEnds)mesh.material.color.set(team?.pattern==='om-scroll'?'#ed6826':'#c83239');
+  for(const {mesh,color} of hullInteriors)mesh.material.color.copy(team?.interior?new T.Color(team.interior):color);
+  for(const a of actors){const palette=athletePalette(team,a.id,a.role,kitColor);a.skin.material=materials.get(palette);a.teamId=teamId;a.palette=palette;}
   detail.value=T.MathUtils.clamp(skinDetail,0,1);actors.forEach(a=>a.skin.geometry=a.baseGeometry);
   pose(phase,t);
   if(study){
@@ -183,5 +189,5 @@ window.createHybridBoats=async function(base=''){
  let sole=Infinity;
  for(let i=0;i<joints.count;i++){let amount=0;for(let k=0;k<4;k++)if(footIds.includes(joints.getComponent(i,k)))amount+=weights.getComponent(i,k);if(amount>.65)sole=Math.min(sole,probe.getVertexPosition(i,new T.Vector3()).y);}
  const soleLift=Number.isFinite(sole)?.002-sole:0;for(const a of actors)a.group.position.y+=soleLift;boat.updateMatrixWorld(true);
- return {render,bow,waterBow,stern,tips,actors,roles,boat,scene,renderer,camera,stats:{revision:'hybrid-v27',athletes:actors.length,geometryVariants:12,skinTexture:'Official MakeHuman CC0; original UVs and pixels',animation:'continuous-skinned-3d',sharedPoseRigs:roleNames.length,trianglesPerActor:merged.index.count/3,soleLiftM:soleLift},resize(width){const w=Math.min(1600,Math.max(640,Math.round(width)));renderer.setSize(w,Math.round(w*H/W),false);},getDrawStats(){return {triangles:renderer.info.render.triangles,drawCalls:renderer.info.render.calls};},dispose(){renderer.dispose();merged.dispose();geometryVariants.forEach(g=>g.dispose());roleGeometry.forEach(g=>g.dispose());texture.dispose();skinMap.dispose();}};
+ return {render,bow,waterBow,stern,tips,actors,roles,boat,scene,renderer,camera,prepareTeams:liveries.load,stats:{revision:'hybrid-v28',athletes:actors.length,geometryVariants:12,skinTexture:'Official MakeHuman CC0; original UVs and pixels',animation:'continuous-skinned-3d',sharedPoseRigs:roleNames.length,trianglesPerActor:merged.index.count/3,soleLiftM:soleLift},resize(width){const w=Math.min(1600,Math.max(640,Math.round(width)));renderer.setSize(w,Math.round(w*H/W),false);},getDrawStats(){return {triangles:renderer.info.render.triangles,drawCalls:renderer.info.render.calls,teamTextures:liveries.textures.size,kitMaterials:materials.size};},dispose(){renderer.dispose();merged.dispose();geometryVariants.forEach(g=>g.dispose());roleGeometry.forEach(g=>g.dispose());texture.dispose();skinMap.dispose();materials.dispose();liveries.dispose();}};
 };

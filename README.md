@@ -4,7 +4,7 @@ The current primary game is the **bright hybrid preview**: actual 3D hull and sk
 
 https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/
 
-Use **Đua nhanh → Bắt đầu → Chèo** in the bright timing zone. Recovery/steady/sprint, three difficulties, pause/resume, replay, local winning records, fullscreen controls, optional licensed crowd ambience and a low-power setting are available. A short automatic race remains available for asset review. The course artwork is compressed and approximate; there is no claim of a surveyed 1,200 m map or exact 2025 team kits. See [current direction](public/assets/illustrated-v22/game-direction.md), [V25 asset sources](docs/hybrid-v25.md) and [V26 integration](docs/hybrid-v26.md).
+Use **Đua nhanh → Bắt đầu → Chèo** in the bright timing zone. Recovery/steady/sprint, three difficulties, pause/resume, replay, local winning records, fullscreen controls, optional licensed crowd ambience and a low-power setting are available. V27 restores skin UVs/smooth normals; V28 adds the eight 2025 quarter-finalist hull/kit choices, with the player in the near lane. A short automatic race remains available for asset review. The artwork is compressed and approximate; exact 2025 tailoring and several hull/bib matches remain unresolved. See [current direction](public/assets/illustrated-v22/game-direction.md), [V26 gameplay](docs/hybrid-v26.md), [V27 skin](docs/hybrid-v27.md) and [V28 teams](docs/hybrid-v28.md).
 
 The React/Vite/Three.js routes below remain historical 3D references, separate from the current primary preview. Their assets and working functionality are preserved.
 

@@ -1,0 +1,124 @@
+{
+  "url": "http://127.0.0.1:4255/",
+  "teams": [
+    {
+      "id": "tum-nup-2",
+      "bib": "17",
+      "rank": 1,
+      "rowerPalette": {
+        "jersey": "#36b85d",
+        "lower": "#36b85d",
+        "cap": "#f5f3e9",
+        "trim": "#f0f0df",
+        "shorts": "#17222a",
+        "sleeve": null
+      }
+    },
+    {
+      "id": "prek-on-dok-2",
+      "bib": "25",
+      "rank": 2,
+      "rowerPalette": {
+        "jersey": "#f6d820",
+        "lower": "#f6d820",
+        "cap": "#f6d820",
+        "trim": "#242524",
+        "shorts": "#17222a",
+        "sleeve": "#22232b"
+      }
+    },
+    {
+      "id": "prek-ta-cuol",
+      "bib": "19",
+      "rank": 3,
+      "rowerPalette": {
+        "jersey": "#75379f",
+        "lower": "#75379f",
+        "cap": "#f5d51b",
+        "trim": "#edc925",
+        "shorts": "#17222a",
+        "sleeve": null
+      }
+    },
+    {
+      "id": "chroi-tum-chas",
+      "bib": "08",
+      "rank": 4,
+      "rowerPalette": {
+        "jersey": "#c92336",
+        "lower": "#c92336",
+        "cap": "#df2837",
+        "trim": "#efeee5",
+        "shorts": "#17222a",
+        "sleeve": "#edece5"
+      }
+    },
+    {
+      "id": "om-pou-year",
+      "bib": "23",
+      "rank": null,
+      "rowerPalette": {
+        "jersey": "#ef562c",
+        "lower": "#ef562c",
+        "cap": "#dc282e",
+        "trim": "#ecb739",
+        "shorts": "#17222a",
+        "sleeve": "#242c44"
+      }
+    },
+    {
+      "id": "kos-thum-1",
+      "bib": "49",
+      "rank": null,
+      "rowerPalette": {
+        "jersey": "#f4d522",
+        "lower": "#f4d522",
+        "cap": "#dc342e",
+        "trim": "#25212b",
+        "shorts": "#17222a",
+        "sleeve": null
+      }
+    },
+    {
+      "id": "pothi-satharam-2",
+      "bib": "07",
+      "rank": null,
+      "rowerPalette": {
+        "jersey": "#ce2830",
+        "lower": "#ce2830",
+        "cap": "#ed342c",
+        "trim": "#f4d433",
+        "shorts": "#17222a",
+        "sleeve": "#20262d"
+      }
+    },
+    {
+      "id": "pothi-khsach",
+      "bib": "44",
+      "rank": null,
+      "rowerPalette": {
+        "jersey": "#219251",
+        "lower": "#e3d52c",
+        "cap": "#d52b31",
+        "trim": "#f0eee4",
+        "shorts": "#17222a",
+        "sleeve": "#eceee6"
+      }
+    }
+  ],
+  "initialSVGRequests": 2,
+  "totalSVGRequests": 8,
+  "selectionLockedDuringRaceAndPause": true,
+  "sameTeamAllowed": true,
+  "forcedNetworkFailureKeepsPreviousTeamAndRetryWorks": true,
+  "headlessDesktopFPS": 29.8,
+  "draw3D": {
+    "triangles": 951711,
+    "drawCalls": 314,
+    "teamTextures": 8,
+    "kitMaterials": 32
+  },
+  "errors": [],
+  "failedRequests": [],
+  "physicalTabletTested": false
+}

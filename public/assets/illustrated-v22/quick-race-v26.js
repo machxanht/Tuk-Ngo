@@ -6,6 +6,7 @@
  function text(id,value){const element=q(id);if(element.textContent!==value)element.textContent=value;}
  function update(){
   const s=model.snapshot(),phase=s.phase,canStroke=phase==='racing'&&s.finishTimes[0]===null;
+  window.hybridTeams?.update(phase);
   q('play-card').hidden=!['ready','finished','paused'].includes(phase);
   q('play-live').hidden=['ready','finished'].includes(phase);
   q('difficulty-control').hidden=phase==='paused';
@@ -29,7 +30,7 @@
    }else if(phase==='paused'){
     text('play-title','Trận đua tạm dừng');text('play-description',s.pauseReason||'Bấm Tiếp tục khi sẵn sàng.');text('play-start','Tiếp tục');
    }else if(phase==='ready'){
-    text('play-title','Đua 1.200 m');text('play-description','Bạn điều khiển ghe xanh ở làn gần. Chạm Chèo khi vạch vào vùng sáng; giữ sức rồi nước rút ở cuối đường đua.');text('play-start','Bắt đầu');
+    text('play-title','Đua 1.200 m');text('play-description','Bạn điều khiển ghe ở làn gần. Chạm Chèo khi vạch vào vùng sáng; giữ sức rồi nước rút ở cuối đường đua.');text('play-start','Bắt đầu');
    }
    if(['ready','paused','finished'].includes(phase))text('race-announcement',q('play-title').textContent);
    lastPhase=phase;
@@ -47,6 +48,6 @@
  document.querySelectorAll('[data-pace]').forEach(button=>button.onclick=()=>{model.setPace(button.dataset.pace);update();});
  function stroke(){const result=model.stroke();if(result){text('race-announcement',model.state.feedback);update();}return result;}
  q('play-stroke').onclick=stroke;
- window.quickRace={model,update,projected,stroke,enter(){model.reset(q('difficulty').value);lastPhase='';update();},advance(dt){model.advance(dt);},pause(reason=''){model.pause(reason);update();},resume(){model.resume();update();},get state(){return model.snapshot();}};
+ window.quickRace={model,update,projected,stroke,refreshChoice(){lastPhase='';update();},enter(){model.reset(q('difficulty').value);lastPhase='';update();},advance(dt){model.advance(dt);},pause(reason=''){model.pause(reason);update();},resume(){model.resume();update();},get state(){return model.snapshot();}};
  update();
 })();

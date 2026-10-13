@@ -65,4 +65,6 @@ Tạo asset mới phải theo cùng style và góc nhìn, lưu nguồn/prompts, 
 
 Đua nhanh đã có điều khiển cả trận và sức bền, dùng cự ly gameplay 1.200 m trên bố cục sông thu gọn. Kỷ lục chỉ lưu trên trình duyệt hiện tại; chưa đồng bộ giữa thiết bị. Âm thanh dùng bản ghi khán giả CC0, không phải hô vang Khmer của giải Maspero. Bảng điều khiển nằm dưới cảnh hoặc bên cạnh trên màn hình ngang thấp; toàn màn hình vẫn có nút chèo và thanh nhịp. Chuyển khỏi trang tự tạm dừng trận đua.
 
-Chưa hoàn thành: giải đấu nhiều vòng, trang phục/kbach từng đội được xác minh đầy đủ trong bản hybrid, rig chuyển động khán giả gần và các khuôn mặt được tạo hình riêng. Chưa đo hiệu năng trên tablet thật.
+V28 đã ghép tám đội nam tứ kết 2025 vào cảnh hybrid: chọn đội ở ngoài cảnh, đổi hoa văn, áo/nón và màu người đầu ghe/điều khiển khi có dữ liệu. Làn gần là ghe bạn. Chọn đội chỉ đổi hình thức; chưa có dữ liệu để gán sức mạnh thực của từng đội. Một số ghe quay trên bờ chưa đối chiếu chắc với số đua, và đường cắt may vẫn là bản dựng.
+
+Chưa hoàn thành: giải đấu nhiều vòng, trang phục/kbach từng đội được xác minh đầy đủ, rig chuyển động khán giả gần và các khuôn mặt được tạo hình riêng. Chưa đo hiệu năng trên tablet thật.
