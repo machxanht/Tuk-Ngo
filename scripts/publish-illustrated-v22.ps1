@@ -44,7 +44,7 @@ try {
     $taskTree = (& git -C $taskRepo write-tree).Trim()
     if ($LASTEXITCODE -ne 0) { throw 'Cannot write Pages tree' }
     $taskMain = (& git -C $taskRepo rev-parse HEAD).Trim()
-    $taskCommit = (& git -C $taskRepo commit-tree $taskTree -p $taskParent -m ('Publish coherent 2.5D direction V23 from ' + $taskMain)).Trim()
+    $taskCommit = (& git -C $taskRepo commit-tree $taskTree -p $taskParent -m ('Publish illustrated race preview from ' + $taskMain)).Trim()
     if ($LASTEXITCODE -ne 0) { throw 'Cannot create Pages commit' }
     & git -C $taskRepo -c credential.username=machxanht push origin ($taskCommit + ':refs/heads/gh-pages')
     if ($LASTEXITCODE -ne 0) { throw 'Cannot push Pages preview' }
