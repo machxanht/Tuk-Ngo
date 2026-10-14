@@ -1,0 +1,12 @@
+{
+  "url": "http://127.0.0.1:4255/",
+  "fixture": "First model request aborted, then all model requests aborted; actual retry and user reload checked",
+  "firstFailureRecovered": true,
+  "boundedFailureShowsRetry": true,
+  "actualReloadRecovers": true,
+  "requests": [
+    "http://127.0.0.1:4255/athlete-rig-v27.glb",
+    "http://127.0.0.1:4255/athlete-rig-v27.glb?asset-retry=1"
+  ],
+  "errors": []
+}

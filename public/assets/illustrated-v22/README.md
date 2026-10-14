@@ -15,6 +15,8 @@ The canonical project root opens this same version. The shared visual direction 
 
 Stroke controls sit outside the picture, including in fullscreen. Short landscape screens place them beside the scene. Pause/resume freezes the player race; switching away from the page pauses it automatically. Winning records are local to this browser, with an in-memory fallback if storage is unavailable; they do not sync between devices. Optional licensed crowd ambience starts only after a sound-button gesture. Chế độ nhẹ lowers 3D resolution and the draw target to 20 fps.
 
+Model loading retries stalled transfers without changing the game URL. A slow download can continue while bytes arrive; an inactive transfer is aborted and retried at most three times. Final failure shows a Thử tải lại button. It does not change race state or records.
+
 ## Assets and animation
 
 Eight shared pose rigs animate 55 athletes per boat: eight seated pairs, seventeen standing pairs, caller, controller and three helmsmen. The preserved CC0 anatomical mesh has regenerated sewn vest/shorts, continuous bindings, fitted forward/backward caps, fingers and eyes. V27 restores its skin UVs and smooth seam normals, using the original licensed MakeHuman texture. The 97-sample authored clips interpolate continuously. Hands grip the paddle, feet sit on real internal supports and the hull occludes the legs. Twelve localized face profiles change jaw, cheeks, chin, nose and eye spacing, with hairlines/stubble and seeded crew distributions. They derive from one body, not independently sculpted or scanned identities. The inspector can show each variant's face clearly.

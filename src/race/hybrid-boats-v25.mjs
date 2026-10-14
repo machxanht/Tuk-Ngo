@@ -6,6 +6,7 @@ import {athletePalette,makeAthleteMaterials,shortSleeves,teamTextures} from './h
 import {buildFaceVariants,FACE_PROFILES} from './athlete-faces-v31.mjs';
 import {strokePhase} from './rowing-effort-v32.mjs';
 import {connectedShirt} from './athlete-shirt-v32.mjs';
+import {assetBytes} from './asset-transfer-v32.mjs';
 
 const W=2400,H=860;
 const roleNames=['seated-port','seated-starboard','standing-port','standing-starboard','caller','controller','helm','helm-starboard'];
@@ -16,7 +17,9 @@ function regularAttribute(a,type=Float32Array){const array=new type(a.count*a.it
 
 window.createHybridBoats=async function(base=''){
  const loader=new GLTFLoader(),roles={};
- const [shirtData,model,hull,...motions]=await Promise.all([fetch(base+'shirt-runtime-v32.json').then(r=>{if(!r.ok)throw Error('Connected shirt asset unavailable');return r.json();}),loader.loadAsync(base+'athlete-rig-v27.glb'),loader.loadAsync(base+'hull-rig-v25.glb'),...roleNames.map(r=>loader.loadAsync(base+'motion-'+r+'-v25.glb'))]);
+ const transfer={onRetry(){document.body.dataset.loadRetries=String(Number(document.body.dataset.loadRetries||0)+1);if(!document.body.dataset.loadError)document.querySelector('#status').textContent='Kết nối chậm · đang thử tải lại…';}};
+ const loadModel=async file=>loader.parseAsync(await assetBytes(base+file,transfer),T.LoaderUtils.extractUrlBase(new URL(base+file,document.baseURI).href));
+ const [shirtData,model,hull,...motions]=await Promise.all([assetBytes(base+'shirt-runtime-v32.json',transfer).then(b=>JSON.parse(new TextDecoder().decode(b))),loadModel('athlete-rig-v27.glb'),loadModel('hull-rig-v25.glb'),...roleNames.map(r=>loadModel('motion-'+r+'-v25.glb'))]);
  model.scene.updateMatrixWorld(true);
  const skins=[];model.scene.traverse(o=>{if(o.isSkinnedMesh)skins.push(o);});
  const reference=skins[0],jointNames=reference.skeleton.bones.map(b=>b.name),solid=[],decals=[];
