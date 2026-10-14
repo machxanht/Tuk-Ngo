@@ -154,4 +154,5 @@ window.illustratedPreview={members,images,sources,draw,setMode,practice,get hybr
  const stream=canvas.captureStream(30),chunks=[],mime=['video/webm;codecs=vp9','video/webm;codecs=vp8'].find(t=>MediaRecorder.isTypeSupported(t));const rec=new MediaRecorder(stream,{mimeType:mime,videoBitsPerSecond:5000000});playing=true;
  const complete=new Promise(resolve=>rec.onstop=()=>{stream.getTracks().forEach(t=>t.stop());resolve(new Blob(chunks,{type:mime}));});rec.ondataavailable=e=>{if(e.data.size)chunks.push(e.data);};rec.start();setTimeout(()=>rec.stop(),seconds*1000);const blob=await complete;const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='rowing-preview-v22.webm';a.click();setTimeout(()=>URL.revokeObjectURL(url),10000);return blob.size;
 }};
-init().catch(e=>{document.querySelector('#status').textContent=String(e);document.body.dataset.loadError=String(e);});
+const loadRetryButton=document.querySelector('#asset-retry');if(loadRetryButton)loadRetryButton.onclick=()=>location.reload();
+init().catch(e=>{document.querySelector('#status').textContent='Không tải được trận đua. Kiểm tra kết nối rồi tải lại trang.';document.body.dataset.loadError=String(e);if(loadRetryButton)loadRetryButton.hidden=false;});
