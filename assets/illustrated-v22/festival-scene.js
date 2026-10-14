@@ -30,13 +30,23 @@
   const shear=m.bias+lean*.004*m.sway+envelope*pulse*.008*(.35+value*.65);
   return {frame,shear,scaleX:1+breathe*.0018,scaleY:1+breathe*.0025,envelope};
  }
+ const actionSequences=[[1,2,3,2,1],[1,2,3,2,3,2,1],[1,2,2,3],[1,2,3,2,1]];
+ function renderMotion(p,t,value=activityDraw){
+  const motion=personMotion(p,t,value),identity=identityAt(p);
+  if(identity<24)return motion;
+  const m=motionFor(p),clock=t+m.offset,cycle=Math.floor(clock/m.period),within=wrap(clock,m.period);
+  const duration=1.4+motionHash(m.seed,cycle+71)*1.7,start=.7+motionHash(m.seed,cycle+151)*(m.period-duration-1.4);
+  const sequence=actionSequences[identity-24],progress=Math.max(0,Math.min(.999999,(within-start)/duration));
+  // Source frames are single registered poses; never blend duplicate limbs.
+  return {...motion,frame:motion.envelope>.35?sequence[Math.floor(progress*sequence.length)]:0};
+ }
  let seed=20251004;
  const rand=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};
  const wrap=(x,span)=>((x%span)+span)%span;
  const nearFeet=x=>LAYOUT.near.frontY+x*LAYOUT.near.slope;
  function roadEdge(x){const points=LAYOUT.near.roadEdge;let i=0;while(i<points.length-2&&x>points[i+1][0])i++;const a=points[i],b=points[i+1],t=Math.max(0,Math.min(1,(x-a[0])/(b[0]-a[0])));return a[1]+(b[1]-a[1])*t;}
  const crowds=[],walkers=[],traffic=[],stalls=[];
- const frontIdentities=[0,1,2,3,4,5,6,7,12,13,14,15,16,17],backIdentities=[8,9,10,11,18,19,20,21,22,23];
+ const frontIdentities=[0,1,2,3,4,5,6,7,12,13,14,15,16,17,24,25,27],backIdentities=[8,9,10,11,18,19,20,21,22,23,26];
  function identityAt(p){
   const pool=p.bank==='near'||p.bank==='nearStand'?backIdentities:frontIdentities;
   const n=(Math.imul((p.id??0)+1,73856093)^Math.imul(Math.round(p.x*10),19349663)^Math.imul(Math.round(p.y*10),83492791))>>>0;
@@ -70,9 +80,9 @@
   ctx.save();ctx.globalAlpha=alpha;ctx.translate(x,y);ctx.scale(flip?-s:s,s);ctx.drawImage(image,sx,sy,sw,sh,-ax,-ay,sw,sh);ctx.restore();
  }
  function personRaster(p,frame){
-  const identity=identityAt(p),sheet=identity<12?'spectators':'spectatorsExtra',variant=identity<12?identity:identity-12,atlas=groups[sheet];
-  const first=variant*2,base=atlas.cells[first+frame],referenceHeight=Math.max(atlas.cells[first].height,atlas.cells[first+1].height);
-  const relativeScale=sheet==='spectatorsExtra'?atlas.identities[variant].relativeScale:variant===6||variant===7?.75:1;
+  const identity=identityAt(p),sheet=identity<12?'spectators':identity<24?'spectatorsExtra':'spectatorsAction',variant=identity<12?identity:identity<24?identity-12:identity-24,atlas=groups[sheet],poseCount=identity>=24?4:2;
+  const first=variant*poseCount,base=atlas.cells[first+frame],referenceHeight=Math.max(...atlas.cells.slice(first,first+poseCount).map(c=>c.height));
+  const relativeScale=sheet!=='spectators'?atlas.identities[variant].relativeScale:(variant===6||variant===7?.75:1);
   const height=Math.max(4,Math.round(p.height*relativeScale/4)*4),key=`${sheet}:${variant}:${frame}:${height}`;
   let raster=personRasters.get(key);
   if(!raster){
@@ -87,7 +97,7 @@
   return raster;
  }
  function person(ctx,p,t){
-  const motion=personMotion(p,t),raster=personRaster(p,motion.frame);
+  const motion=renderMotion(p,t),raster=personRaster(p,motion.frame);
   // The atlas foot anchor remains (0,0); body shear/compression cannot lift it.
   ctx.save();ctx.translate(p.x,p.y);ctx.transform(motion.scaleX,0,motion.shear,motion.scaleY,0,0);
   ctx.drawImage(raster.image,raster.x,raster.y);ctx.restore();
@@ -121,7 +131,7 @@
    rippleRows.push({image:strip,y:502+row*23+(motionHash(row,61)-.5)*10,phase:motionHash(row,63)*6.283185,speed:23+perspective*8,glint});
   }
   // Warm both poses before exposing the page as ready; reuse their rasters.
-  for(const p of crowds)for(const frame of [0,1])personRaster(p,frame);
+  for(const p of crowds)for(let frame=0;frame<(identityAt(p)>=24?4:2);frame++)personRaster(p,frame);
  }
  function drawTraffic(ctx,t,bank){
   for(const v of traffic.filter(v=>v.bank===bank)){
@@ -206,10 +216,11 @@
  async function load(){
   const response=await fetch('festival-atlas.json');if(!response.ok)throw Error('Cannot load festival atlas');Object.assign(groups,await response.json());
   const extra=await fetch('festival-crowd-atlas-v29.json');if(!extra.ok)throw Error('Cannot load additional crowd atlas');groups.spectatorsExtra=await extra.json();
+  const actions=await fetch('spectators-action-v32-atlas.json');if(!actions.ok)throw Error('Cannot load crowd action atlas');groups.spectatorsAction=await actions.json();
   const files={landscape:'festival-landscape.webp',bridge:CONFIG.assets.bridge,...Object.fromEntries(Object.entries(groups).map(([key,value])=>[key,value.runtime||value.file.replace(/\.png$/,'.webp')]))};
   await Promise.all(Object.entries(files).map(([key,file])=>new Promise((resolve,reject)=>{const img=new Image();img.onload=()=>{images[key]=img;resolve();};img.onerror=()=>reject(Error('Cannot load '+file));img.src=file;})));
   const font=new FontFace('FestivalKhmer','url(NotoSansKhmer.ttf)');await font.load();document.fonts.add(font);bake();
  }
  const identityMix={};for(const p of crowds){const bank=identityMix[p.bank]||(identityMix[p.bank]={}),identity=identityAt(p);bank[identity]=(bank[identity]||0)+1;}
- window.festivalScene={load,drawBack,drawFront,roadEdge,setActivity,getActivity:()=>activity,identityAt,WIDTH,HEIGHT,crowds,walkers,traffic,stalls,groups,images,stats:{spectators:crowds.length,identities:24,identityMix,frontIdentityPool:frontIdentities,backIdentityPool:backIdentities,walkers:walkers.length,vehicles:traffic.length,stalls:stalls.length,buildingTypes:6,plantTypes:6,stands:2,bridges:1,bridgeAssetTypes:2,configuration:CONFIG.revision,sourcePoseFrames:2,motion:'Fixed foot anchors; independent lean/sway and irregular two-pose cheer windows',get activity(){return activity;},get renderedActivity(){return activityDraw;}},motionAt(p,t,value=activityDraw){return personMotion(p,safeTime(t),Math.max(0,Math.min(1,Number.isFinite(value)?value:.4)));}};
+ window.festivalScene={load,drawBack,drawFront,roadEdge,setActivity,getActivity:()=>activity,identityAt,WIDTH,HEIGHT,crowds,walkers,traffic,stalls,groups,images,stats:{spectators:crowds.length,identities:28,identityMix,frontIdentityPool:frontIdentities,backIdentityPool:backIdentities,walkers:walkers.length,vehicles:traffic.length,stalls:stalls.length,buildingTypes:6,plantTypes:6,stands:2,bridges:1,bridgeAssetTypes:2,configuration:CONFIG.revision,sourcePoseFrames:2,actionPoseFrames:4,actionIdentities:4,actionTypes:['overhead clap','wave','photograph','child cheer'],motion:'Fixed feet; existing two-pose motion plus four registered phases for four new actions',get activity(){return activity;},get renderedActivity(){return activityDraw;}},motionAt(p,t,value=activityDraw){return renderMotion(p,safeTime(t),Math.max(0,Math.min(1,Number.isFinite(value)?value:.4)));}};
 })();

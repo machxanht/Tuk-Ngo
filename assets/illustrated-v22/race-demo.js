@@ -16,7 +16,7 @@
    const distance=(rules.start-rules.finish)/(1+rules.riverSlope**2),travel=distance*progress;
    const bow={x:rules.start+rules.riverSlope*(startY-530)-travel,y:startY+rules.riverSlope*travel};
    const rowingTime=Math.min(run,b.finishTime),finished=run>=b.finishTime;
-   // Integrating the tempo keeps the four painted poses continuous during
+   // Integrating the tempo keeps the skinned rowing cycle continuous during
    // acceleration; multiplying time by a changing tempo would jump poses.
    const cadence=72+b.tempoOffset+16*clamp(rowingTime/7)+14*clamp((rowingTime-25)/6);
    const cycles=(72+b.tempoOffset)/60*rowingTime+16/60*rampIntegral(rowingTime,0,7)+14/60*rampIntegral(rowingTime,25,6);

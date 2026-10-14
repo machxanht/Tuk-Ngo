@@ -1,0 +1,22 @@
+{
+  "method": "native image_gen built-in tool",
+  "purpose": "Synthetic painted game sprite atlas; not factual event evidence",
+  "styleReference": "spectators-extra-12-2poses-v29.png",
+  "originalFile": "C:/Users/OliverkhangPC/.codex/generated_images/01a129e6-456f-7f71-8c83-228b43dadf95/exec-d53c70f7-ddc8-4c14-8649-27e321c7f496.png",
+  "prompt": "Use case: stylized-concept. Asset: transparent alpha sprite atlas for an existing painted daylight Vietnamese Mekong festival game. Use the attached image ONLY as a style reference: match its warm hand-painted semi-realistic cartoon linework, readable expressive Southeast Asian people, soft daylight clothing folds and cheerful faces. Create a NEW portrait PNG atlas, 4 columns by 4 rows, exactly 16 isolated full-body figures. Each row is ONE new identity in FOUR clearly different consecutive action phases from left to right. Same face, hairstyle, clothing, body proportions, camera angle, apparent body scale and planted foot positions within the entire row. Full bodies including complete fingers and shoes, wide transparent gutters, no figure touches another cell, no shadows, no floor, no gradient, no text/numbers, actual transparent background. Please compose on a portrait 1024x1536 canvas, four equal spacious rows; each figure centered in its cell with feet on an identical baseline and enough margin for raised arms. Row1 FRONT 3/4 cheerful adult woman, raspberry floral short-sleeved blouse, dark charcoal trousers, sandals: phase0 palms apart at upper chest; phase1 both arms lifted high with palms far apart; phase2 palms visibly contacting overhead in a clap; phase3 palms separated overhead after the clap. Row2 FRONT 3/4 friendly adult man, muted mustard polo, cream trousers, sandals: phase0 relaxed right hand down; phase1 right hand at shoulder level; phase2 right hand raised high and bent LEFT in a wave; phase3 raised right hand bent RIGHT in a wave. Row3 REAR view adult woman with long dark ponytail, teal blouse, light gray trousers, flat shoes: phase0 smartphone held low at waist; phase1 both hands lifting phone at chest; phase2 phone held horizontally at eye level to take photo, elbows wide; phase3 phone clearly lowered to chest while she looks down to review screen. Rear view in ALL four cells, phone and hand positions must change clearly. Row4 FRONT 3/4 small boy with curly dark hair, sky blue T-shirt, yellow shorts, sandals: phase0 hands low at waist; phase1 one arm extended pointing at the race; phase2 both bent elbows out with fists at shoulder height; phase3 both fists raised overhead and excited open-mouth smile. Child stays visibly smaller than adults. IMPORTANT: do not reproduce any of the old identities; this is four NEW identities. These are game illustration assets, NOT a factual race photograph. No overlapping figures or detached limbs; feet and torso registration must remain stable; make all four phases in each row visibly different.",
+  "transparent_background": true,
+  "bitmapPolicy": "Original generated PNG bytes retained; metadata/canvas clipping only",
+  "sha256": "c8cd22fc2afc2aaeae2e6dbf5b09bce29897765dfaeb062bb9497333f2e292d6",
+  "dimensions": [
+    1024,
+    1536
+  ],
+  "mode": "RGBA",
+  "alphaRange": [
+    0,
+    254
+  ],
+  "actualSourceFrames": 16,
+  "identityCount": 4,
+  "sourcePoseCountPerIdentity": 4
+}
