@@ -2,17 +2,17 @@
 import argparse,json,time
 from pathlib import Path
 from playwright.sync_api import sync_playwright,TimeoutError as PlaywrightTimeout
-parser=argparse.ArgumentParser();parser.add_argument('--url',default='http://127.0.0.1:4255/');parser.add_argument('--out',required=True);parser.add_argument('--realtime',action='store_true');args=parser.parse_args()
+parser=argparse.ArgumentParser();parser.add_argument('--url',default='http://127.0.0.1:4255/');parser.add_argument('--out',required=True);parser.add_argument('--realtime',action='store_true');parser.add_argument('--load-timeout',type=int,default=60000);parser.add_argument('--tablet-only',action='store_true');args=parser.parse_args()
 out=Path(args.out);out.mkdir(parents=True,exist_ok=True);reports=[]
 def outside(a,b):
  return b['y']>=a['y']+a['height']-1 or b['x']>=a['x']+a['width']-1
 with sync_playwright() as p:
  browser=p.chromium.launch(channel='msedge',headless=True)
- for width,height in [(1024,768),(768,1024),(390,844),(834,480)]:
+ for width,height in ([(1024,768)] if args.tablet_only else [(1024,768),(768,1024),(390,844),(834,480)]):
   page=browser.new_page(viewport={'width':width,'height':height},has_touch=True);errors=[];failed=[]
   page.on('pageerror',lambda e:errors.append(str(e)));page.on('console',lambda m:errors.append(m.text) if m.type=='error' else None);page.on('requestfailed',lambda r:failed.append(r.url))
   page.goto(args.url,wait_until='domcontentloaded',timeout=60000)
-  page.wait_for_function('document.body.dataset.ready==="true" || !!document.body.dataset.loadError',timeout=60000)
+  page.wait_for_function('document.body.dataset.ready==="true" || !!document.body.dataset.loadError',timeout=args.load_timeout)
   assert not page.evaluate('document.body.dataset.loadError'),page.locator('#status').inner_text()
   page.locator('button[data-mode=play]:not([data-kind])').click();assert page.evaluate('quickRace.state.phase')=='ready'
   assert not page.evaluate('document.documentElement.scrollWidth>innerWidth')

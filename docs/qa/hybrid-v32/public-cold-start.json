@@ -1,0 +1,81 @@
+{
+  "url": "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/",
+  "freshContexts": 3,
+  "results": [
+    {
+      "revision": "hybrid-v32",
+      "shader": {
+        "triangles": 949877,
+        "drawCalls": 312,
+        "teamTextures": 2,
+        "kitMaterials": 7,
+        "vertexAttributes": 14,
+        "vertexAttributeLimit": 16
+      },
+      "retries": 0,
+      "keys": [
+        "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/scene-config.js?v=hybrid-32.1",
+        "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/festival-scene.js?v=hybrid-32.1",
+        "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/race-demo.js?v=hybrid-32.1",
+        "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/hybrid-boats-v25.js?v=hybrid-32.1",
+        "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/game-rules-v26.js?v=hybrid-32.1",
+        "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/quick-race-v26.js?v=hybrid-32.1",
+        "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/team-picker-v28.js?v=hybrid-32.1",
+        "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/tournament-ui-v31.js?v=hybrid-32.1",
+        "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/preview.js?v=hybrid-32.1"
+      ],
+      "seconds": 53.81,
+      "errors": []
+    },
+    {
+      "revision": "hybrid-v32",
+      "shader": {
+        "triangles": 949877,
+        "drawCalls": 312,
+        "teamTextures": 2,
+        "kitMaterials": 7,
+        "vertexAttributes": 14,
+        "vertexAttributeLimit": 16
+      },
+      "retries": 0,
+      "keys": [
+        "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/scene-config.js?v=hybrid-32.1",
+        "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/festival-scene.js?v=hybrid-32.1",
+        "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/race-demo.js?v=hybrid-32.1",
+        "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/hybrid-boats-v25.js?v=hybrid-32.1",
+        "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/game-rules-v26.js?v=hybrid-32.1",
+        "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/quick-race-v26.js?v=hybrid-32.1",
+        "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/team-picker-v28.js?v=hybrid-32.1",
+        "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/tournament-ui-v31.js?v=hybrid-32.1",
+        "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/preview.js?v=hybrid-32.1"
+      ],
+      "seconds": 13.93,
+      "errors": []
+    },
+    {
+      "revision": "hybrid-v32",
+      "shader": {
+        "triangles": 949877,
+        "drawCalls": 312,
+        "teamTextures": 2,
+        "kitMaterials": 7,
+        "vertexAttributes": 14,
+        "vertexAttributeLimit": 16
+      },
+      "retries": 0,
+      "keys": [
+        "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/scene-config.js?v=hybrid-32.1",
+        "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/festival-scene.js?v=hybrid-32.1",
+        "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/race-demo.js?v=hybrid-32.1",
+        "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/hybrid-boats-v25.js?v=hybrid-32.1",
+        "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/game-rules-v26.js?v=hybrid-32.1",
+        "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/quick-race-v26.js?v=hybrid-32.1",
+        "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/team-picker-v28.js?v=hybrid-32.1",
+        "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/tournament-ui-v31.js?v=hybrid-32.1",
+        "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/preview.js?v=hybrid-32.1"
+      ],
+      "seconds": 53.02,
+      "errors": []
+    }
+  ]
+}

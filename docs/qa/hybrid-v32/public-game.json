@@ -1,0 +1,20 @@
+{
+  "url": "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/",
+  "physicalTabletTested": false,
+  "reports": [
+    {
+      "viewport": [
+        1024,
+        768
+      ],
+      "simulatedFinish": 190.62189817602882,
+      "simulationResult": "win",
+      "actualButtonInput": true,
+      "pausedClockFrozen": true,
+      "fullscreenPanelOutsideScene": true,
+      "recordReload": true,
+      "errors": [],
+      "failedRequests": []
+    }
+  ]
+}
