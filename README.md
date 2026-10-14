@@ -1,5 +1,13 @@
 # Tuk-Ngo — hybrid ghe Ngo racing on Maspéro
 
+The canonical runtime uses unversioned modules in `src/race/`, with one existing tablet URL: **https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/**. Choose **Đua nhanh** or **Giải 8 ghe**; automatic racing, practice and athlete inspection remain available.
+
+The race has three phases: explosive start (0–200 m), cruise (200–950 m), and final sprint (950–1,200 m). Chèo timing gives PERFECT / GOOD / BAD. PERFECT builds the charge for **Đạp**; its four-second final-phase surge requires 60% charge and 24% stamina. AI has its own cadence, stamina and charge. Team identity changes appearance only.
+
+`npm run build` rebuilds the canonical browser bundles and React tools. `npm test` checks imports, protected shirt/rig hashes, asset transfers, race balance, cup progression and stroke timing. `npm run lint` checks active source and Vite configuration. Browser gates are `python scripts/check-game-ui.py` and `python scripts/check-runtime.py`, using the local static server on port 4255. See [architecture](docs/architecture.md), [module map](docs/module-map.json), and [cleanup evidence](CHANGELOG.md).
+
+The material below retains the asset development history. The canonical commands and module names above describe the current runtime.
+
 V29 adds twelve illustrated spectator pose pairs (24 total looks), fixes Kos Thum's blue interior, and links the existing 61-entry Việt/Khmer registration table into the same game. The eight 2025 team appearances and playable race remain on the stable URL below. See [V29 integration and limits](docs/hybrid-v29.md).
 
 V31 adds localized athlete face/hair variants, current portable rower/caller GLBs, corrected cuff surface motion, and an eight-boat cup using the same touch race. [Implementation, checks and remaining asset work](docs/hybrid-v31.md) distinguish completed features from unverified visual fidelity. The tablet URL stays unchanged.
@@ -30,7 +38,7 @@ V13's 55-person template remains: bow caller feet **inside the open hull**, eigh
 npm ci
 npm run dev
 npm run lint
-node scripts/check-gameplay.mjs
+npm test
 node scripts/check-role-crew.mjs
 node scripts/check-role-runtime.mjs
 node scripts/check-team-assets-2025.mjs

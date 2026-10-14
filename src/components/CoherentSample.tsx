@@ -1,5 +1,5 @@
 import {useEffect,useRef,useState} from 'react';
-import {startCoherentSample} from '../race/coherent-sample-v19.mjs';
+import {startCoherentSample} from '../race/race-sample.mjs';
 import './CoherentSample.css';
 
 type View='wide'|'hero'|'face'|'back'|'npc'|'street';

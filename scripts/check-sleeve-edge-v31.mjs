@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import * as T from 'three';
 globalThis.window={};
-const {shortSleeves}=await import('../src/race/hybrid-team-style-v28.mjs');
+const {shortSleeves}=await import('../src/race/team-style.mjs');
 const bytes=fs.readFileSync(new URL('../public/assets/illustrated-v22/athlete-rig-v27.glb',import.meta.url));
 const jsonLength=bytes.readUInt32LE(12),gltf=JSON.parse(bytes.subarray(20,20+jsonLength)),bin=bytes.subarray(28+jsonLength);
 function accessor(id){

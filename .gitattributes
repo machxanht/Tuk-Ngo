@@ -1,0 +1,4 @@
+# Store the protected source exactly as approved, including its line endings.
+src/race/athlete-shirt.mjs -text
+# Generated Three.js shader strings retain upstream whitespace verbatim.
+public/assets/illustrated-v22/hybrid-boats.js -whitespace

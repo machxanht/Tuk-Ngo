@@ -1,0 +1,22 @@
+<!doctype html><html lang="vi"><meta charset="utf-8"><title>Xuất bộ ghe V21</title>
+<button id="build">Xuất template</button><pre id="status"></pre>
+<script type="module">
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+import {GLTFExporter} from 'three/addons/exporters/GLTFExporter.js';
+import {loadAthleteIdentities,applyAthleteIdentities} from '../src/race/athlete-identity.mjs';
+import {loadAthleteKit,applyAthleteKit} from '../src/race/athlete-kit.mjs';
+const base=import.meta.env.BASE_URL,status=document.querySelector('#status');
+document.querySelector('#build').onclick=async()=>{
+ document.querySelector('#build').disabled=true;
+ try{
+  const [model,library,kit]=await Promise.all([new GLTFLoader().loadAsync(base+'assets/ghe-ngo/ghe-ngo-crew-v18.glb'),loadAthleteIdentities(base),loadAthleteKit(base)]);
+  const identities=applyAthleteIdentities(model.scene,library,{seed:2101});
+  const clothes=applyAthleteKit(model.scene,kit);
+  const bytes=await new GLTFExporter().parseAsync(model.scene,{binary:true,animations:model.animations,onlyVisible:true,trs:true});
+  const url=URL.createObjectURL(new Blob([bytes],{type:'model/gltf-binary'})),a=document.createElement('a');a.href=url;a.download='festival-crew.glb';a.click();
+  window.exportReport={stats:identities.stats,kit:clothes.stats,bytes:bytes.byteLength,animations:model.animations.map(a=>({name:a.name,duration:a.duration,tracks:a.tracks.length}))};
+  status.textContent=JSON.stringify(window.exportReport,null,2);window.exportComplete=true;
+  setTimeout(()=>URL.revokeObjectURL(url),10000);
+ }catch(e){status.textContent=String(e);window.exportError=String(e);}
+};
+</script></html>

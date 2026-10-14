@@ -1,7 +1,7 @@
 import * as T from 'three';
-import {buildCrowd} from './crowd.mjs';
-import {buildMappedHouses} from './maspero-buildings.mjs';
-import {buildTraffic} from './traffic.mjs';
+import {buildFestivalCrowd} from './festival-crowd.mjs';
+import {buildFestivalStreet} from './festival-street.mjs';
+import {buildFestivalTraffic} from './festival-traffic.mjs';
 import {courseZ,bridgeYaw,MASPERO_LAYOUT,DETAIL_RANGE} from './maspero-layout.mjs';
 
 // All dimensions/coordinates below are authored approximations for the game.
@@ -58,9 +58,9 @@ export function buildMasperoBanks(group,waterY,crowdAssets,bankMaterials={}){
   const tx=new T.CanvasTexture(c);tx.colorSpace=T.SRGBColorSpace;tx.anisotropy=4;const m=new T.MeshBasicMaterial({map:tx,side:T.FrontSide}),o=new T.Mesh(new T.PlaneGeometry(width,height),m);o.position.set(x,y,bridgeFrame?z:mappedZ(x,z));o.rotation.y=ry;if(bridgeFrame){const dx=x-bridgeFrame.x;cDummyPosition(o,dx,z,bridgeFrame);o.rotation.y+=bridgeFrame.yaw;}o.name='CourseSign_'+text;o.userData={language:'km',width,height,worldText:text};group.add(o);return o;
  }
  function cDummyPosition(o,dx,z,frame){o.position.x=frame.x+dx*Math.cos(frame.yaw)+z*Math.sin(frame.yaw);o.position.z=-dx*Math.sin(frame.yaw)+z*Math.cos(frame.yaw);}
- function person(x,floor,z,id,seated=false){
+ function person(x,floor,z,id,seated=false,seatY=null){
   const shirt=palette[Math.abs(id)%palette.length],height=.94+Math.abs(id%7)*.023,width=.90+Math.abs(id%5)*.045;
-  people.push({x,floor,z:mappedZ(x,z),id:Math.abs(id),seated,shirt,height,width});
+  people.push({x,floor,z:mappedZ(x,z),id:Math.abs(id),seated,seatY,shirt,height,width});
   // Headwear belongs to the animated NPC, rather than a separate fixed hat
   // that floats when an age variant or seated pose changes head height.
   totals.spectators++;
@@ -92,7 +92,6 @@ export function buildMasperoBanks(group,waterY,crowdAssets,bankMaterials={}){
   for(let x=-140;x<2440;x+=9)box(x,1.265,roadZ(x),3,.025,.16,'#ded5a8');
   for(let x=-130;x<2440;x+=23){
    if(nearBridge(x,25))continue;
-   if(!(side<0&&x>1008&&x<1170))tree(x,side*(side>0&&x>995&&x<1170?59:52),Math.round(x),side>0);
    if(x>1000&&x<1180)continue;
    beam(V(x,1.35,side*53.2),V(x,8,side*53.2),.06,'#e1e2d7');beam(V(x,8,side*53.2),V(x,8.3,side*50.3),.06,'#e1e2d7');box(x,8.25,side*50.0,.38,.12,.70,'#eeead9');
   }
@@ -101,8 +100,8 @@ export function buildMasperoBanks(group,waterY,crowdAssets,bankMaterials={}){
   for(let x=850,col=0;x<2438;x+=.56,col++){
    if(nearBridge(x,8))continue;
    const inStand=side<0&&x>1025&&x<1155||side>0&&x>1000&&x<1170;
-   for(let row=0;row<(inStand?1:6);row++){
-    const id=100000+(side+1)*200000+col*13+row,z=side*(45.05+row*.62);
+   for(let row=0;row<(inStand?1:10);row++){
+    const id=100000+(side+1)*200000+col*13+row,z=side*(45.05+row*.55);
     person(x+(row%2)*.24+Math.sin(id*12.9)*.045,1.4,z,id);if(row>=3&&id%97===0)umbrella(x,3.55,z,id);
    }
   }
@@ -117,8 +116,8 @@ export function buildMasperoBanks(group,waterY,crowdAssets,bankMaterials={}){
   for(let col=0;col<153;col++){
    if(col%31===0||col%31===1)continue;
    const x=cx-58.7+col*.77,color=col>46&&col<107?(r%2?'#eee6d6':'#be3f38'):'#447f9f';
-   box(x,y+.11,z,.57,.12,.53,color);box(x,y+.39,z-.24,.57,.55,.08,color);totals.seats++;
-   if((col+r)%17!==0)person(x,y+.16,z,100+col*7+r,true);
+   box(x,y+.45,z,.57,.12,.53,color);box(x,y+.74,z-.24,.57,.55,.08,color);totals.seats++;
+   person(x,y+.01,z,100+col*7+r,true,y+.56);
   }
  }
  for(const x of [cx-60,cx-40,cx-20,cx,cx+20,cx+40,cx+60]){
@@ -138,13 +137,13 @@ export function buildMasperoBanks(group,waterY,crowdAssets,bankMaterials={}){
  // seen at 00:00 in the supplied livestream, not a mirrored VIP grandstand.
  bankAnchor=cx-10;
  box(cx-10,1.72,50.8,156,.6,10.0,'#d4d0bd');
- for(let row=0;row<4;row++){const y=1.98+row*.32,z=47.3+row*1.2;box(cx-10,y-.18,z,151,.32,1.2,'#d4d4c6');for(let col=0;col<203;col++){if(col%42<2)continue;const x=cx-83+col*.72;person(x,y+.09,z,13000+row*213+col,true);box(x,y+.08,z,.53,.1,.5,'#4c8291');totals.seats++;}}
+ for(let row=0;row<4;row++){const y=1.98+row*.32,z=47.3+row*1.2;box(cx-10,y-.18,z,151,.32,1.2,'#d4d4c6');for(let col=0;col<203;col++){if(col%42<2)continue;const x=cx-83+col*.72;person(x,y+.01,z,13000+row*213+col,true,y+.55);box(x,y+.44,z,.53,.1,.5,'#4c8291');box(x,y+.73,z+.24,.53,.50,.08,'#4c8291');totals.seats++;}}
  for(let x=cx-88;x<cx+72;x+=10){beam(V(x,1.4,46.6),V(x,4.15,46.6),.075,'#879892');beam(V(x,1.4,56),V(x,4.8,56),.075,'#879892');beam(V(x,4.15,46.6),V(x,4.8,56),.075,'#6d8078');}
  box(cx-10,4.55,51.3,161,.12,10.7,'#c9d2ce',-.067);for(let x=cx-90;x<cx+71;x+=1.1)box(x,4.62,51.3,.035,.025,10.7,'#adbdb7',-.067);
  for(let i=0;i<6;i++)text('ប្រណាំងទូក-ង · សូមស្វាគមន៍',25.1,1.55,cx-72.75+i*25.1,2.07,45.6,'#e1c271','#49301c',Math.PI);
  bankAnchor=null;
  box(1190,3.0,-49.5,10,3.2,7,'#e7eadc');box(1190,4.66,-49.5,10.5,.20,7.8,'#c6d1c6');box(1190,3.50,-45.95,7.7,1.3,.10,'#567b7d');text('អាជ្ញាកណ្តាល',7,.70,1190,2.4,-45.87,'#f1eee1','#4c665c');
- for(let i=0;i<4;i++){const x=970+i*17;box(x,3.0,-51,12,.16,9,'#e9e8d6');for(const dx of [-5.5,5.5])for(const dz of [-4,4])add('pole',x+dx,2.25,-51+dz,.045,1.8,.045,'#c8d1c6');for(let n=0;n<11;n++)person(x-4+n*.8,1.4,-49,900+n+i*7);}
+ for(let i=0;i<4;i++){const x=966+i*16;box(x,4.15,-56.5,10.5,.16,7,'#e9e8d6');for(const dx of [-4.8,4.8])for(const dz of [-3.2,3.2])add('pole',x+dx,2.775,-56.5+dz,.045,2.75,.045,'#c8d1c6');for(let n=0;n<11;n++)person(x-4+n*.8,1.4,-54.7,900+n+i*13);}
  for(const x of [cx-61,cx+61]){box(x,6.6,-45.2,.72,2.1,.65,'#353e3b');box(x,7.9,-45.2,.1,.6,.1,'#767e77');}
  // National flags and stars removed at the owner's request.
  // C247: real teal curved steel portal forms (2022 press-photo reference).
@@ -180,16 +179,11 @@ export function buildMasperoBanks(group,waterY,crowdAssets,bankMaterials={}){
  for(const {type,shiny,list} of meshes.values()){
   const mesh=new T.InstancedMesh(geometries[type],shiny?metal:material,list.length);if(type==='leaf')mesh.material=material.clone(),mesh.material.side=T.DoubleSide;mesh.name='Maspero_'+type+(shiny?'_metal':'');for(let i=0;i<list.length;i++){mesh.setMatrixAt(i,list[i].matrix);mesh.setColorAt(i,list[i].color);}mesh.computeBoundingSphere();group.add(mesh);
  }
- const buildings=buildMappedHouses(group,(b,x,z)=>{
-  if(Math.abs(z)<36)return true;
-  const d=Math.abs(x-1090),t=T.MathUtils.smoothstep(d,80,145),road=Math.abs(courseZ(x,Math.sign(z)*(60+(z<0?24:6)*(1-t))));
-  if(b.points.some(p=>Math.abs(p[1])<road+8.5))return true;
-  if(nearBridge(x,13)&&Math.abs(z)<105)return true;
-  return z<0&&x>1019&&x<1161&&z>-68||z>0&&x>992&&x<1171&&z<57;
- },bankMaterials);
- totals.houses+=buildings.rendered;
- const crowd=buildCrowd(group,people,crowdAssets),traffic=buildTraffic(group);
- group.userData={...group.userData,reference:'OWNER_VTV10_VIDEO_2025_REAL_PHOTOS_AND_OSM_LAYOUT',dimensions:'APPROXIMATE_GAME_SCALE',...totals,buildings,detailRange:DETAIL_RANGE,bankSource:MASPERO_LAYOUT.source,bankLicense:MASPERO_LAYOUT.license,bankOutlineGameSpanM:400,bridgeYawSource:'OSM bridge centre-lines',continuousLand:true,pitchedRoof:'ridge above eaves; corrugation follows both slopes',npcSource:'MakeHuman CC0, animated anatomical mesh',signLanguage:'km',standRoof:'VIP double pitch; opposite low single pitch',bridgeC247:'teal curved steel portals',bridge30April:'concrete piers and silver arched truss, 2022 construction photo; finished decoration approximate'};
- group.userData.traffic=traffic.stats;group.userData.spectatorSpacingM=.56;group.userData.fullCourseCrowdRows=6;
- return {totals,update(time,cameraX,cameraZ){crowd.update(time,cameraX,cameraZ);traffic.update(time,cameraX);},dispose(){crowd.dispose();traffic.dispose();}};
+ const street=buildFestivalStreet(group,bankMaterials),buildings=street.stats;
+ totals.houses+=buildings.houses||buildings.buildings||0;totals.trees+=buildings.trees||0;
+ people.push(...street.people);totals.spectators=people.length;
+ const crowd=buildFestivalCrowd(group,people,crowdAssets),traffic=buildFestivalTraffic(group);
+ group.userData={...group.userData,reference:'OWNER_VTV10_VIDEO_2025_REAL_PHOTOS_AND_OSM_LAYOUT',dimensions:'APPROXIMATE_GAME_SCALE',...totals,buildings,detailRange:DETAIL_RANGE,bankSource:MASPERO_LAYOUT.source,bankLicense:MASPERO_LAYOUT.license,bankOutlineGameSpanM:400,bridgeYawSource:'OSM bridge centre-lines',continuousLand:true,pitchedRoof:'ridge above eaves; corrugation follows both slopes',npcSource:'Quaternius CC0 civilian silhouettes with independently animated festival actions',signLanguage:'km',standRoof:'VIP double pitch; opposite low single pitch',bridgeC247:'teal curved steel portals',bridge30April:'concrete piers and silver arched truss, 2022 construction photo; finished decoration approximate'};
+ group.userData.traffic=traffic.stats;group.userData.spectatorSpacingM=.56;group.userData.fullCourseCrowdRows=10;
+ return {totals,update(time,cameraX,cameraZ){crowd.update(time,cameraX,cameraZ);street.update(time,cameraX,cameraZ);traffic.update(time,cameraX);},dispose(){crowd.dispose();street.dispose();traffic.dispose();}};
 }

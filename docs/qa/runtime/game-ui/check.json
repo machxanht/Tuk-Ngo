@@ -1,0 +1,786 @@
+{
+  "url": "http://127.0.0.1:4255/",
+  "raceTiming": "accelerated legal beats; actual touch buttons; no injected distances/results",
+  "physicalTabletTested": false,
+  "reports": [
+    {
+      "viewport": [
+        1366,
+        900
+      ],
+      "layout": {
+        "canvas": {
+          "x": 0,
+          "y": 324.5,
+          "width": 1366,
+          "height": 520
+        },
+        "hud": {
+          "x": 0,
+          "y": 137.5,
+          "width": 1366,
+          "height": 187
+        }
+      },
+      "actualTouchJudgements": [
+        "PERFECT",
+        "BAD",
+        "GOOD"
+      ],
+      "surgeProjected": {
+        "stage": "racing",
+        "countdown": 0,
+        "run": 152.20833333327712,
+        "elapsed": 152.20833333327712,
+        "player": {
+          "phase": "racing",
+          "difficulty": "normal",
+          "pace": "steady",
+          "countdown": 0,
+          "elapsed": 152.20833333327712,
+          "distances": [
+            952.0445439719459,
+            851.6576797805401
+          ],
+          "speeds": [
+            6.662896042035362,
+            5.537274483374641
+          ],
+          "finishTimes": [
+            null,
+            null
+          ],
+          "beatPhase": 219.10458333320162,
+          "aiPhase": 0.015000000000660214,
+          "stamina": 58.68582509954584,
+          "power": 1,
+          "cohesion": 1,
+          "combo": 219,
+          "maxCombo": 219,
+          "perfect": 219,
+          "good": 0,
+          "missed": 0,
+          "lastResolved": 218,
+          "feedback": "ĐẠP!",
+          "feedbackAt": 152.20833333327712,
+          "result": null,
+          "pauseReason": "",
+          "runId": 1,
+          "surgeCharge": 0.4,
+          "surgeRemaining": 4,
+          "desync": 0,
+          "lastSpamAt": -10,
+          "slipstream": false,
+          "lastJudgement": "PERFECT",
+          "aiStamina": 69.5789999999699,
+          "aiSurgeCharge": 1,
+          "aiSurgeRemaining": 0,
+          "raceStage": "final",
+          "stageLabel": "Nước rút về đích",
+          "cadence": 102,
+          "aiRaceStage": "cruise",
+          "aiStageLabel": "Giữ nhịp đường trường",
+          "aiCadence": 84,
+          "aiSurgeActive": false,
+          "judgement": "PERFECT",
+          "surgeActive": true,
+          "canSurge": false,
+          "desyncIntensity": 0,
+          "rhythmProgress": 0.6045833332016173,
+          "accuracy": 100,
+          "gap": 100.38686419140583,
+          "strength": 1
+        },
+        "winner": null,
+        "boats": [
+          {
+            "id": "far",
+            "name": "Ghe đối thủ",
+            "scale": 0.62,
+            "y": 489.5447800511275,
+            "finishTime": null,
+            "earlyLead": -0.018,
+            "tempoOffset": 0,
+            "progress": 0.7097147331504501,
+            "finished": false,
+            "cadence": 84,
+            "cycles": 0.015000000000660214,
+            "motion": 0.9228790805624402,
+            "effort": 0,
+            "surge": false,
+            "desyncIntensity": 0,
+            "kitColor": "#cc9335",
+            "bow": {
+              "x": 413.1981519443065,
+              "y": 756.9056401249453
+            },
+            "x": 351.76450956188165
+          },
+          {
+            "id": "near",
+            "name": "Ghe bạn",
+            "scale": 0.66,
+            "y": 737.7421844261023,
+            "finishTime": null,
+            "earlyLead": 0.025,
+            "tempoOffset": 3,
+            "progress": 0.7933704533099549,
+            "finished": false,
+            "cadence": 102,
+            "cycles": 219.10458333320162,
+            "motion": 1,
+            "effort": 1,
+            "surge": true,
+            "desyncIntensity": 0,
+            "kitColor": "#23855e",
+            "bow": {
+              "x": 393.96544639189074,
+              "y": 1022.352132246618
+            },
+            "x": 328.5683432105998
+          }
+        ],
+        "leader": "near",
+        "camera": {
+          "zoom": 1.0584684437332914,
+          "x": 1133.7135340261227,
+          "y": 780
+        },
+        "follow": true
+      },
+      "finishTime": 183.9440864290693,
+      "errors": []
+    },
+    {
+      "viewport": [
+        1024,
+        768
+      ],
+      "layout": {
+        "canvas": {
+          "x": 0,
+          "y": 324.5,
+          "width": 1024,
+          "height": 388
+        },
+        "hud": {
+          "x": 0,
+          "y": 137.5,
+          "width": 1024,
+          "height": 187
+        }
+      },
+      "actualTouchJudgements": [
+        "PERFECT",
+        "BAD",
+        "GOOD"
+      ],
+      "surgeProjected": {
+        "stage": "racing",
+        "countdown": 0,
+        "run": 152.20833333327712,
+        "elapsed": 152.20833333327712,
+        "player": {
+          "phase": "racing",
+          "difficulty": "normal",
+          "pace": "steady",
+          "countdown": 0,
+          "elapsed": 152.20833333327712,
+          "distances": [
+            952.0445439719459,
+            851.6576797805401
+          ],
+          "speeds": [
+            6.662896042035362,
+            5.537274483374641
+          ],
+          "finishTimes": [
+            null,
+            null
+          ],
+          "beatPhase": 219.10458333320162,
+          "aiPhase": 0.015000000000660214,
+          "stamina": 58.68582509954584,
+          "power": 1,
+          "cohesion": 1,
+          "combo": 219,
+          "maxCombo": 219,
+          "perfect": 219,
+          "good": 0,
+          "missed": 0,
+          "lastResolved": 218,
+          "feedback": "ĐẠP!",
+          "feedbackAt": 152.20833333327712,
+          "result": null,
+          "pauseReason": "",
+          "runId": 1,
+          "surgeCharge": 0.4,
+          "surgeRemaining": 4,
+          "desync": 0,
+          "lastSpamAt": -10,
+          "slipstream": false,
+          "lastJudgement": "PERFECT",
+          "aiStamina": 69.5789999999699,
+          "aiSurgeCharge": 1,
+          "aiSurgeRemaining": 0,
+          "raceStage": "final",
+          "stageLabel": "Nước rút về đích",
+          "cadence": 102,
+          "aiRaceStage": "cruise",
+          "aiStageLabel": "Giữ nhịp đường trường",
+          "aiCadence": 84,
+          "aiSurgeActive": false,
+          "judgement": "PERFECT",
+          "surgeActive": true,
+          "canSurge": false,
+          "desyncIntensity": 0,
+          "rhythmProgress": 0.6045833332016173,
+          "accuracy": 100,
+          "gap": 100.38686419140583,
+          "strength": 1
+        },
+        "winner": null,
+        "boats": [
+          {
+            "id": "far",
+            "name": "Ghe đối thủ",
+            "scale": 0.62,
+            "y": 489.5447800511275,
+            "finishTime": null,
+            "earlyLead": -0.018,
+            "tempoOffset": 0,
+            "progress": 0.7097147331504501,
+            "finished": false,
+            "cadence": 84,
+            "cycles": 0.015000000000660214,
+            "motion": 0.9228790805624402,
+            "effort": 0,
+            "surge": false,
+            "desyncIntensity": 0,
+            "kitColor": "#cc9335",
+            "bow": {
+              "x": 413.1981519443065,
+              "y": 756.9056401249453
+            },
+            "x": 351.76450956188165
+          },
+          {
+            "id": "near",
+            "name": "Ghe bạn",
+            "scale": 0.66,
+            "y": 737.7421844261023,
+            "finishTime": null,
+            "earlyLead": 0.025,
+            "tempoOffset": 3,
+            "progress": 0.7933704533099549,
+            "finished": false,
+            "cadence": 102,
+            "cycles": 219.10458333320162,
+            "motion": 1,
+            "effort": 1,
+            "surge": true,
+            "desyncIntensity": 0,
+            "kitColor": "#23855e",
+            "bow": {
+              "x": 393.96544639189074,
+              "y": 1022.352132246618
+            },
+            "x": 328.5683432105998
+          }
+        ],
+        "leader": "near",
+        "camera": {
+          "zoom": 1.0584684437332914,
+          "x": 1133.7135340261227,
+          "y": 780
+        },
+        "follow": true
+      },
+      "finishTime": 183.9440864290693,
+      "errors": []
+    },
+    {
+      "viewport": [
+        1180,
+        820
+      ],
+      "layout": {
+        "canvas": {
+          "x": 0,
+          "y": 324.5,
+          "width": 1180,
+          "height": 440
+        },
+        "hud": {
+          "x": 0,
+          "y": 137.5,
+          "width": 1180,
+          "height": 187
+        }
+      },
+      "actualTouchJudgements": [
+        "PERFECT",
+        "BAD",
+        "GOOD"
+      ],
+      "surgeProjected": {
+        "stage": "racing",
+        "countdown": 0,
+        "run": 152.20833333327712,
+        "elapsed": 152.20833333327712,
+        "player": {
+          "phase": "racing",
+          "difficulty": "normal",
+          "pace": "steady",
+          "countdown": 0,
+          "elapsed": 152.20833333327712,
+          "distances": [
+            952.0445439719459,
+            851.6576797805401
+          ],
+          "speeds": [
+            6.662896042035362,
+            5.537274483374641
+          ],
+          "finishTimes": [
+            null,
+            null
+          ],
+          "beatPhase": 219.10458333320162,
+          "aiPhase": 0.015000000000660214,
+          "stamina": 58.68582509954584,
+          "power": 1,
+          "cohesion": 1,
+          "combo": 219,
+          "maxCombo": 219,
+          "perfect": 219,
+          "good": 0,
+          "missed": 0,
+          "lastResolved": 218,
+          "feedback": "ĐẠP!",
+          "feedbackAt": 152.20833333327712,
+          "result": null,
+          "pauseReason": "",
+          "runId": 1,
+          "surgeCharge": 0.4,
+          "surgeRemaining": 4,
+          "desync": 0,
+          "lastSpamAt": -10,
+          "slipstream": false,
+          "lastJudgement": "PERFECT",
+          "aiStamina": 69.5789999999699,
+          "aiSurgeCharge": 1,
+          "aiSurgeRemaining": 0,
+          "raceStage": "final",
+          "stageLabel": "Nước rút về đích",
+          "cadence": 102,
+          "aiRaceStage": "cruise",
+          "aiStageLabel": "Giữ nhịp đường trường",
+          "aiCadence": 84,
+          "aiSurgeActive": false,
+          "judgement": "PERFECT",
+          "surgeActive": true,
+          "canSurge": false,
+          "desyncIntensity": 0,
+          "rhythmProgress": 0.6045833332016173,
+          "accuracy": 100,
+          "gap": 100.38686419140583,
+          "strength": 1
+        },
+        "winner": null,
+        "boats": [
+          {
+            "id": "far",
+            "name": "Ghe đối thủ",
+            "scale": 0.62,
+            "y": 489.5447800511275,
+            "finishTime": null,
+            "earlyLead": -0.018,
+            "tempoOffset": 0,
+            "progress": 0.7097147331504501,
+            "finished": false,
+            "cadence": 84,
+            "cycles": 0.015000000000660214,
+            "motion": 0.9228790805624402,
+            "effort": 0,
+            "surge": false,
+            "desyncIntensity": 0,
+            "kitColor": "#cc9335",
+            "bow": {
+              "x": 413.1981519443065,
+              "y": 756.9056401249453
+            },
+            "x": 351.76450956188165
+          },
+          {
+            "id": "near",
+            "name": "Ghe bạn",
+            "scale": 0.66,
+            "y": 737.7421844261023,
+            "finishTime": null,
+            "earlyLead": 0.025,
+            "tempoOffset": 3,
+            "progress": 0.7933704533099549,
+            "finished": false,
+            "cadence": 102,
+            "cycles": 219.10458333320162,
+            "motion": 1,
+            "effort": 1,
+            "surge": true,
+            "desyncIntensity": 0,
+            "kitColor": "#23855e",
+            "bow": {
+              "x": 393.96544639189074,
+              "y": 1022.352132246618
+            },
+            "x": 328.5683432105998
+          }
+        ],
+        "leader": "near",
+        "camera": {
+          "zoom": 1.0584684437332914,
+          "x": 1133.7135340261227,
+          "y": 780
+        },
+        "follow": true
+      },
+      "finishTime": 183.9440864290693,
+      "errors": []
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "layout": {
+        "canvas": {
+          "x": 0,
+          "y": 322.5,
+          "width": 768,
+          "height": 644
+        },
+        "hud": {
+          "x": 0,
+          "y": 144.5,
+          "width": 768,
+          "height": 178
+        }
+      },
+      "actualTouchJudgements": [
+        "PERFECT",
+        "BAD",
+        "GOOD"
+      ],
+      "surgeProjected": {
+        "stage": "racing",
+        "countdown": 0,
+        "run": 152.20833333327712,
+        "elapsed": 152.20833333327712,
+        "player": {
+          "phase": "racing",
+          "difficulty": "normal",
+          "pace": "steady",
+          "countdown": 0,
+          "elapsed": 152.20833333327712,
+          "distances": [
+            952.0445439719459,
+            851.6576797805401
+          ],
+          "speeds": [
+            6.662896042035362,
+            5.537274483374641
+          ],
+          "finishTimes": [
+            null,
+            null
+          ],
+          "beatPhase": 219.10458333320162,
+          "aiPhase": 0.015000000000660214,
+          "stamina": 58.68582509954584,
+          "power": 1,
+          "cohesion": 1,
+          "combo": 219,
+          "maxCombo": 219,
+          "perfect": 219,
+          "good": 0,
+          "missed": 0,
+          "lastResolved": 218,
+          "feedback": "ĐẠP!",
+          "feedbackAt": 152.20833333327712,
+          "result": null,
+          "pauseReason": "",
+          "runId": 1,
+          "surgeCharge": 0.4,
+          "surgeRemaining": 4,
+          "desync": 0,
+          "lastSpamAt": -10,
+          "slipstream": false,
+          "lastJudgement": "PERFECT",
+          "aiStamina": 69.5789999999699,
+          "aiSurgeCharge": 1,
+          "aiSurgeRemaining": 0,
+          "raceStage": "final",
+          "stageLabel": "Nước rút về đích",
+          "cadence": 102,
+          "aiRaceStage": "cruise",
+          "aiStageLabel": "Giữ nhịp đường trường",
+          "aiCadence": 84,
+          "aiSurgeActive": false,
+          "judgement": "PERFECT",
+          "surgeActive": true,
+          "canSurge": false,
+          "desyncIntensity": 0,
+          "rhythmProgress": 0.6045833332016173,
+          "accuracy": 100,
+          "gap": 100.38686419140583,
+          "strength": 1
+        },
+        "winner": null,
+        "boats": [
+          {
+            "id": "far",
+            "name": "Ghe đối thủ",
+            "scale": 0.62,
+            "y": 489.5447800511275,
+            "finishTime": null,
+            "earlyLead": -0.018,
+            "tempoOffset": 0,
+            "progress": 0.7097147331504501,
+            "finished": false,
+            "cadence": 84,
+            "cycles": 0.015000000000660214,
+            "motion": 0.9228790805624402,
+            "effort": 0,
+            "surge": false,
+            "desyncIntensity": 0,
+            "kitColor": "#cc9335",
+            "bow": {
+              "x": 413.1981519443065,
+              "y": 756.9056401249453
+            },
+            "x": 351.76450956188165
+          },
+          {
+            "id": "near",
+            "name": "Ghe bạn",
+            "scale": 0.66,
+            "y": 737.7421844261023,
+            "finishTime": null,
+            "earlyLead": 0.025,
+            "tempoOffset": 3,
+            "progress": 0.7933704533099549,
+            "finished": false,
+            "cadence": 102,
+            "cycles": 219.10458333320162,
+            "motion": 1,
+            "effort": 1,
+            "surge": true,
+            "desyncIntensity": 0,
+            "kitColor": "#23855e",
+            "bow": {
+              "x": 393.96544639189074,
+              "y": 1022.352132246618
+            },
+            "x": 328.5683432105998
+          }
+        ],
+        "leader": "near",
+        "camera": {
+          "zoom": 1.0584684437332914,
+          "x": 1133.7135340261227,
+          "y": 780
+        },
+        "follow": true
+      },
+      "finishTime": 183.9440864290693,
+      "errors": []
+    },
+    {
+      "viewport": [
+        1180,
+        430
+      ],
+      "layout": {
+        "canvas": {
+          "x": 0,
+          "y": 229,
+          "width": 1180,
+          "height": 150
+        },
+        "hud": {
+          "x": 0,
+          "y": 95,
+          "width": 1180,
+          "height": 134
+        }
+      },
+      "actualTouchJudgements": [
+        "PERFECT",
+        "BAD",
+        "GOOD"
+      ],
+      "surgeProjected": {
+        "stage": "racing",
+        "countdown": 0,
+        "run": 152.20833333327712,
+        "elapsed": 152.20833333327712,
+        "player": {
+          "phase": "racing",
+          "difficulty": "normal",
+          "pace": "steady",
+          "countdown": 0,
+          "elapsed": 152.20833333327712,
+          "distances": [
+            952.0445439719459,
+            851.6576797805401
+          ],
+          "speeds": [
+            6.662896042035362,
+            5.537274483374641
+          ],
+          "finishTimes": [
+            null,
+            null
+          ],
+          "beatPhase": 219.10458333320162,
+          "aiPhase": 0.015000000000660214,
+          "stamina": 58.68582509954584,
+          "power": 1,
+          "cohesion": 1,
+          "combo": 219,
+          "maxCombo": 219,
+          "perfect": 219,
+          "good": 0,
+          "missed": 0,
+          "lastResolved": 218,
+          "feedback": "ĐẠP!",
+          "feedbackAt": 152.20833333327712,
+          "result": null,
+          "pauseReason": "",
+          "runId": 1,
+          "surgeCharge": 0.4,
+          "surgeRemaining": 4,
+          "desync": 0,
+          "lastSpamAt": -10,
+          "slipstream": false,
+          "lastJudgement": "PERFECT",
+          "aiStamina": 69.5789999999699,
+          "aiSurgeCharge": 1,
+          "aiSurgeRemaining": 0,
+          "raceStage": "final",
+          "stageLabel": "Nước rút về đích",
+          "cadence": 102,
+          "aiRaceStage": "cruise",
+          "aiStageLabel": "Giữ nhịp đường trường",
+          "aiCadence": 84,
+          "aiSurgeActive": false,
+          "judgement": "PERFECT",
+          "surgeActive": true,
+          "canSurge": false,
+          "desyncIntensity": 0,
+          "rhythmProgress": 0.6045833332016173,
+          "accuracy": 100,
+          "gap": 100.38686419140583,
+          "strength": 1
+        },
+        "winner": null,
+        "boats": [
+          {
+            "id": "far",
+            "name": "Ghe đối thủ",
+            "scale": 0.62,
+            "y": 489.5447800511275,
+            "finishTime": null,
+            "earlyLead": -0.018,
+            "tempoOffset": 0,
+            "progress": 0.7097147331504501,
+            "finished": false,
+            "cadence": 84,
+            "cycles": 0.015000000000660214,
+            "motion": 0.9228790805624402,
+            "effort": 0,
+            "surge": false,
+            "desyncIntensity": 0,
+            "kitColor": "#cc9335",
+            "bow": {
+              "x": 413.1981519443065,
+              "y": 756.9056401249453
+            },
+            "x": 351.76450956188165
+          },
+          {
+            "id": "near",
+            "name": "Ghe bạn",
+            "scale": 0.66,
+            "y": 737.7421844261023,
+            "finishTime": null,
+            "earlyLead": 0.025,
+            "tempoOffset": 3,
+            "progress": 0.7933704533099549,
+            "finished": false,
+            "cadence": 102,
+            "cycles": 219.10458333320162,
+            "motion": 1,
+            "effort": 1,
+            "surge": true,
+            "desyncIntensity": 0,
+            "kitColor": "#23855e",
+            "bow": {
+              "x": 393.96544639189074,
+              "y": 1022.352132246618
+            },
+            "x": 328.5683432105998
+          }
+        ],
+        "leader": "near",
+        "camera": {
+          "zoom": 1.0584684437332914,
+          "x": 1133.7135340261227,
+          "y": 780
+        },
+        "follow": true
+      },
+      "finishTime": 183.9440864290693,
+      "errors": []
+    }
+  ],
+  "cupRounds": [
+    {
+      "matchId": "r0-m0-a0",
+      "round": "quarterfinal",
+      "roundIndex": 0,
+      "playerId": "tum-nup-2",
+      "opponentId": "prek-on-dok-2",
+      "teams": [
+        "tum-nup-2",
+        "prek-on-dok-2"
+      ],
+      "blocked": false
+    },
+    {
+      "matchId": "r1-m0-a0",
+      "round": "semifinal",
+      "roundIndex": 1,
+      "playerId": "tum-nup-2",
+      "opponentId": "chroi-tum-chas",
+      "teams": [
+        "tum-nup-2",
+        "chroi-tum-chas"
+      ],
+      "blocked": false
+    },
+    {
+      "matchId": "r2-m0-a0",
+      "round": "final",
+      "roundIndex": 2,
+      "playerId": "tum-nup-2",
+      "opponentId": "om-pou-year",
+      "teams": [
+        "tum-nup-2",
+        "om-pou-year"
+      ],
+      "blocked": false
+    }
+  ],
+  "cupReloadRestored": true
+}

@@ -1,9 +1,10 @@
 import * as T from 'three';
+import {assetBytes,releaseAssetBytes} from './asset-transfer.mjs';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 import {clone} from 'three/examples/jsm/utils/SkeletonUtils.js';
 import {mergeGeometries} from 'three/examples/jsm/utils/BufferGeometryUtils.js';
-import {DEFAULT_TEAM_IDS,team2025} from './teams-2025.mjs';
-import {loadTeamLiveries,applyTeamIdentity} from './team-style-2025.mjs';
+import {DEFAULT_TEAM_IDS,team2025} from './teams.mjs';
+import {loadTeamLiveries,applyTeamIdentity} from './team-livery.mjs';
 
 
 // Rendering-only consolidation. The persisted GLB vertices, weights, inverse
@@ -18,11 +19,11 @@ export function optimizeRaceBoat(root,jerseyColor){
  const skinMaterials=new Map();
  let mergedActors=0;
  for(const actor of actors){
-  const allSkins=[];actor.traverse(o=>{if(o.isSkinnedMesh)allSkins.push(o);});
+  const allSkins=[];actor.traverse(o=>{if(o.isSkinnedMesh&&o.visible)allSkins.push(o);});
   let skins=allSkins;
   // V11 keeps the licensed skin and Khmer print as distinct textured surfaces.
   // Merge the compatible solid garment primitives without dropping those maps.
-  if(!allSkins[0]?.material?.userData?.athleteAtlas){const groups=new Map();for(const skin of allSkins){if(Array.isArray(skin.material)||skin.material.map||skin.morphTargetInfluences)continue;const key=skin.parent.uuid;if(!groups.has(key))groups.set(key,[]);groups.get(key).push(skin);}skins=[...groups.values()].sort((a,b)=>b.length-a.length)[0]||[];}
+  if(actor.userData.kitVersion==='V21'||root.userData.kitVersion==='V21'||!allSkins[0]?.material?.userData?.athleteAtlas){const groups=new Map();for(const skin of allSkins){if(Array.isArray(skin.material)||skin.material.map||skin.morphTargetInfluences)continue;const key=skin.parent.uuid;if(!groups.has(key))groups.set(key,[]);groups.get(key).push(skin);}skins=[...groups.values()].sort((a,b)=>b.length-a.length)[0]||[];}
   if(skins.length<2)continue;
   const first=skins[0];if(!first)continue;
   // Atlas-backed skins can share one draw call only when all maps and PBR
@@ -96,7 +97,7 @@ export function optimizeRaceBoat(root,jerseyColor){
 
 export async function loadRaceCrews(url){
  const base=url.slice(0,url.indexOf('assets/ghe-ngo/'));
- const [gltf,liveries]=await Promise.all([new GLTFLoader().loadAsync(url),loadTeamLiveries(base)]),clip=gltf.animations[0];if(!clip)throw Error('GLB thiếu chu kỳ chèo');
+ const [gltf,liveries]=await Promise.all([assetBytes(url).then(bytes=>new GLTFLoader().parseAsync(bytes,new URL('.',new URL(url,document.baseURI)).href)),loadTeamLiveries(base)]),clip=gltf.animations[0];if(!clip)throw Error('GLB thiếu chu kỳ chèo');
  function makeTeam(id,i){
   const root=clone(gltf.scene);root.name='RaceTeam_'+(i+1);root.userData.spec={...root.userData.spec,paddleLength:root.userData.spec?.paddleLength||1.52};
   root.traverse(o=>{if(o.userData.component==='paddle'&&o.userData.lengthM)o.userData.length=o.userData.lengthM;});
@@ -116,10 +117,10 @@ export async function loadRaceCrews(url){
   // Serve the validated baked asset. Avoid baking 55 rigs and textures in
   // tablet memory or pausing a live race during GLTFExporter processing.
   if(!teams[i])throw Error('Unknown lane');
-  const response=await fetch(base+'assets/ghe-ngo/teams-2025/'+teams[i].identity.id+'-2025.glb?v=18');
+  const response=await fetch(base+'assets/ghe-ngo/teams-2025/'+teams[i].identity.id+'-2025.glb?v=21');
   if(!response.ok)throw Error('GLB download HTTP '+response.status);
   return await response.arrayBuffer();
- },dispose(){teams.forEach(t=>t.dispose());for(const list of Object.values(resources))for(const r of list)r.dispose();liveries.dispose();},clipDuration:clip.duration};
+ },dispose(){releaseAssetBytes(url);teams.forEach(t=>t.dispose());for(const list of Object.values(resources))for(const r of list)r.dispose();liveries.dispose();},clipDuration:clip.duration};
 }
 
 export function buildBoatWake(scene,waterY){

@@ -12,6 +12,20 @@ export default defineConfig(() => {
         '@': path.resolve(__dirname, '.'),
       },
     },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          // Three already separates its platform-independent core and WebGL
+          // renderer. Keep those boundaries instead of loading every studio
+          // and renderer in the root dashboard bundle.
+          if (id.includes('/three/build/three.core.js')) return 'three-core';
+          if (id.includes('/three/build/three.module.js')) return 'three-renderer';
+          if (id.includes('/three/examples/')) return 'three-addons';
+        },
+      },
+    },
+  },
     server: {
       // HMR is disabled in AI Studio via DISABLE_HMR env var.
       // Do not modifyâfile watching is disabled to prevent flickering during agent edits.

@@ -1,0 +1,26 @@
+[
+  {
+    "route": "?demo=play",
+    "errors": [],
+    "canvasCount": 1,
+    "bodyText": "ĐUA GHE NGO · MASPÉRO\nTum Núp 2\nThi đấu · 1.200 m\n0:02.18\nBạn · Tum Núp 2\n0 m\nPrêk On Đơk 2\n10 m\n\nĐang sau 10.6 m\n1200 m còn lại\n\nXuất phát bùng nổ\n0–200 · 200–950 · 950–1.200 m\n96"
+  },
+  {
+    "route": "?demo=studio&scene=sample",
+    "errors": [],
+    "canvasCount": 1,
+    "bodyText": "Điều khiển"
+  },
+  {
+    "route": "?demo=art",
+    "errors": [],
+    "canvasCount": 1,
+    "bodyText": "GHE NGO · XEM ASSET\nNhịp chèo trên sông\n\nGhe 3D · người ngồi/đứng và các vai trò\n\nHai ghe & NPC\nChơi game\nMẫu VĐV ban đầu\nToàn ghe mới\n2D cũ\nToàn ghe\nCận VĐV\nDừng\nNhịp chèo\n48\n/phú"
+  },
+  {
+    "route": "?demo=dossier",
+    "errors": [],
+    "canvasCount": 1,
+    "bodyText": "ĐUA GHE NGO SÓC TRĂNG\nVÔ ĐỊCH 2024\n\nMẫu ghe (Asset): TUM_NUP_2_2024_MASTER_V2 • Hồ sơ tham chiếu kỹ thuật\n\nXuất hồ sơ kỹ thuật (Export Dossier)\nGHE MỤC TIÊU\nTum Núp 2 (Đội Nam)\nChù"
+  }
+]

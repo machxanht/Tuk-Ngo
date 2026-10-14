@@ -1,0 +1,16 @@
+import fs from 'node:fs/promises';
+import {NodeIO} from '@gltf-transform/core';
+import {ALL_EXTENSIONS} from '@gltf-transform/extensions';
+import {prune,dedup,simplify} from '@gltf-transform/functions';
+import {MeshoptSimplifier} from '../node_modules/three/examples/jsm/libs/meshopt_simplifier.module.js';
+await MeshoptSimplifier.ready;
+const io=new NodeIO().registerExtensions(ALL_EXTENSIONS),doc=await io.read('public/assets/coherent-v20/athlete-v20.glb');
+const wanted=/^(Competition_Shorts_Loose|Competition_Tank_Top_Loose|Tank_Top_Sewn_Binding_\d|Uniform_Print_Koun_Khmer)$/;
+for(const a of doc.getRoot().listAnimations())a.dispose();
+for(const n of doc.getRoot().listNodes())if(n.getMesh()&&!wanted.test(n.getName()))n.setMesh(null);
+for(const m of doc.getRoot().listMeshes())for(const p of m.listPrimitives())for(const t of p.listTargets())t.dispose();
+for(const m of doc.getRoot().listMeshes())m.setWeights([]);
+await doc.transform(prune(),dedup(),simplify({simplifier:MeshoptSimplifier,ratio:.15,error:.003}));
+await fs.mkdir('public/assets/studio-kit',{recursive:true});
+await io.write('public/assets/studio-kit/athlete-kit.glb',doc);
+console.log(doc.getRoot().listMeshes().map(m=>[m.getName(),m.listPrimitives().map(p=>p.getIndices()?.getCount()/3)]));

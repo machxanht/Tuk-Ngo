@@ -23,6 +23,6 @@ for(const [i,role] of roles.entries()){
 }
 await fs.copyFile('public/assets/coherent-v19/accepted-hull.glb',path.join(target,'hull-rig-v25.glb'));
 files.push({file:'hull-rig-v25.glb',bytes:(await fs.stat(path.join(target,'hull-rig-v25.glb'))).size});
-await build({entryPoints:['src/race/hybrid-boats-v25.mjs'],bundle:true,format:'iife',platform:'browser',target:'es2020',minify:true,outfile:path.join(target,'hybrid-boats-v25.js'),legalComments:'eof'});
+await build({entryPoints:['src/race/hybrid-boats.mjs'],bundle:true,format:'iife',platform:'browser',target:'es2020',minify:true,outfile:path.join(target,'hybrid-boats.js'),legalComments:'eof'});
 await fs.writeFile(path.join(target,'hybrid-v25-manifest.json'),JSON.stringify({revision:'hybrid-v25',files,geometrySource:'Existing MakeHuman/MPFB CC0 anatomy, new sewn garment and 97-sample continuous bone clips',hullSource:'Accepted existing 3D hull, paint sampled from approved illustration at runtime',background:'Existing painted festival layers'},null,2)+'\n');
 console.log(JSON.stringify({files,totalModelBytes:files.reduce((s,f)=>s+f.bytes,0)}));

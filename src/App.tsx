@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 import { TECHNICAL_SECTIONS, SOURCES_CATALOG } from './data/technicalReferenceData';
 import { ConfidenceLevel } from './types';
-import { Interactive3DBlueprint } from './components/Interactive3DBlueprint';
-import { MasperoRaceCourseStudio } from './components/MasperoRaceCourseStudio';
-import { TabletRaceDemo } from './components/TabletRaceDemo';
-import { ArtPreview } from './components/ArtPreview';
-import { CoherentSample } from './components/CoherentSample';
+const Interactive3DBlueprint = lazy(() => import('./components/Interactive3DBlueprint').then(m => ({default:m.Interactive3DBlueprint})));
+const MasperoRaceCourseStudio = lazy(() => import('./components/MasperoRaceCourseStudio').then(m => ({default:m.MasperoRaceCourseStudio})));
+const TabletRaceDemo = lazy(() => import('./components/TabletRaceDemo').then(m => ({default:m.TabletRaceDemo})));
+const ArtPreview = lazy(() => import('./components/ArtPreview').then(m => ({default:m.ArtPreview})));
+const CoherentSample = lazy(() => import('./components/CoherentSample').then(m => ({default:m.CoherentSample})));
 import { SectionCard } from './components/SectionCard';
 import { SourceTriageViewer } from './components/SourceTriageViewer';
 import { CrewKinematicsStudio } from './components/CrewKinematicsStudio';
@@ -33,6 +33,10 @@ import {
 } from 'lucide-react';
 
 export default function App() {
+  return <Suspense fallback={<p role="status">Đang tải giao diện…</p>}><AppView /></Suspense>;
+}
+
+function AppView() {
   const [active3DMode, setActive3DMode] = useState<'RACE_COURSE' | 'CAD_BLUEPRINT'>('RACE_COURSE');
   const [activeTab, setActiveTab] = useState<'ALL_SECTIONS' | '3D_BLUEPRINT' | 'SOURCE_TRIAGE' | 'CREW_KINEMATICS' | 'ENVIRONMENT'>('ALL_SECTIONS');
   const [selectedConfidence, setSelectedConfidence] = useState<ConfidenceLevel | 'ALL'>('ALL');
@@ -60,7 +64,7 @@ export default function App() {
 
   const demo = new URLSearchParams(window.location.search).get('demo');
   if (demo === 'race' || demo === 'art') return <ArtPreview />;
-  if (demo === 'studio') return new URLSearchParams(window.location.search).get('scene')==='race'?<TabletRaceDemo />:<CoherentSample />;
+  if (demo === 'studio') return new URLSearchParams(window.location.search).get('scene')==='sample'?<CoherentSample />:<TabletRaceDemo />;
   if (demo === 'play') return <TabletRaceDemo gameplay />;
 
   return (

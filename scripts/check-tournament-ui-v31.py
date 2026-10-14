@@ -3,7 +3,7 @@ import argparse,json
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 parser=argparse.ArgumentParser();parser.add_argument('--url',default='http://127.0.0.1:4255/');parser.add_argument('--out',required=True);args=parser.parse_args();out=Path(args.out);out.mkdir(parents=True,exist_ok=True)
-win="""()=>{const g=quickRace.model;g.advance(3);let count=0;while(g.state.phase==='racing'&&count++<600){g.setPace(g.state.distances[0]>1000?'sprint':'steady');g.advance((Math.floor(g.state.beatPhase+1e-7)+1-g.state.beatPhase)*60/TukNgoGameRules.PACES[g.state.pace].cadence);quickRace.stroke();}illustratedPreview.draw(200);return quickRace.state;}"""
+win="""()=>{const g=quickRace.model;g.advance(3);let count=0;while(g.state.phase==='racing'&&count++<600){g.setPace('steady');if(g.snapshot().canSurge)g.surge();g.advance((Math.floor(g.state.beatPhase+1e-7)+1-g.state.beatPhase)*60/g.snapshot().cadence+1/240);quickRace.stroke();}illustratedPreview.draw(200);return quickRace.state;}"""
 reports=[]
 with sync_playwright() as p:
  browser=p.chromium.launch(channel='msedge',headless=True)

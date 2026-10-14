@@ -25,10 +25,10 @@ with sync_playwright() as p:
   page.locator('#play-start').click();assert page.evaluate('quickRace.state.phase')=='countdown'
   page.evaluate('illustratedPreview.seek(0);quickRace.model.advance(3.1);quickRace.update()')
   # A real UI click on a legal beat, with the scene clock frozen for repeatability.
-  page.evaluate('quickRace.model.advance((1-quickRace.state.beatPhase)*60/quickRace.state.cadence);illustratedPreview.draw(1)')
+  page.evaluate('quickRace.model.advance((1-quickRace.state.beatPhase)*60/quickRace.state.cadence+1/240);illustratedPreview.draw(1)')
   page.locator('#play-stroke').click();assert page.evaluate('quickRace.state.perfect')==1
   page.locator('#play-stroke').click();assert page.evaluate('quickRace.state.perfect')==1
-  page.locator('[data-pace=sprint]').click();assert page.evaluate('quickRace.state.cadence')==105
+  page.locator('[data-pace=sprint]').click();assert page.evaluate('quickRace.state.cadence')==114
   page.locator('[data-pace=recover]').click();page.evaluate('quickRace.model.state.stamina=40;quickRace.model.advance(4);illustratedPreview.draw(5)')
   assert page.evaluate('quickRace.state.stamina')>40
   page.locator('[data-pace=steady]').click()
@@ -37,7 +37,7 @@ with sync_playwright() as p:
   assert page.locator('#play-stroke').is_visible();assert outside(page.locator('#scene').bounding_box(),page.locator('#play-panel').bounding_box())
   page.locator('#exit-fullscreen').click();page.wait_for_function('!document.fullscreenElement')
   # Integrated model/adapter completion, accelerated; this is not a timed human race.
-  result=page.evaluate('''()=>{const g=quickRace.model;g.start('normal');g.advance(3);let count=0;while(g.state.phase==='racing'&&count++<600){g.setPace(g.state.distances[0]>1000?'sprint':'steady');const next=Math.floor(g.state.beatPhase+1e-7)+1;g.advance((next-g.state.beatPhase)*60/TukNgoGameRules.PACES[g.state.pace].cadence);quickRace.stroke();}illustratedPreview.draw(200);return quickRace.state;}''')
+  result=page.evaluate('''()=>{const g=quickRace.model;g.start('normal');g.advance(3);let count=0;while(g.state.phase==='racing'&&count++<600){g.setPace('steady');if(g.snapshot().canSurge)g.surge();const next=Math.floor(g.state.beatPhase+1e-7)+1;g.advance((next-g.state.beatPhase)*60/g.snapshot().cadence+1/240);quickRace.stroke();}illustratedPreview.draw(200);return quickRace.state;}''')
   assert result['phase']=='finished' and result['result']=='win',result
   assert 'thắng' in page.locator('#play-title').inner_text()
   page.screenshot(path=str(out/f'{width}-win.png'))
