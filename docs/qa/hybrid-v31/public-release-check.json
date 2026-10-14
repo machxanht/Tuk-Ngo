@@ -1,6 +1,26 @@
 {
   "url": "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/",
   "version": 31,
+  "scriptURLs": [
+    "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/scene-config.js?v=hybrid-31.1",
+    "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/festival-scene.js?v=hybrid-31.1",
+    "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/race-demo.js?v=hybrid-31.1",
+    "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/hybrid-boats-v25.js?v=hybrid-31.1",
+    "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/game-rules-v26.js?v=hybrid-31.1",
+    "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/quick-race-v26.js?v=hybrid-31.1",
+    "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/team-picker-v28.js?v=hybrid-31.1",
+    "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/tournament-ui-v31.js?v=hybrid-31.1",
+    "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/preview.js?v=hybrid-31.1"
+  ],
+  "draw": {
+    "triangles": 92535,
+    "drawCalls": 10,
+    "teamTextures": 2,
+    "kitMaterials": 7,
+    "vertexAttributes": 14,
+    "vertexAttributeLimit": 16
+  },
   "capture": "Actual served page, browser-clock automatic race and visible inspector buttons",
+  "physicalTabletTested": false,
   "errors": []
 }
