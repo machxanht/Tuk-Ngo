@@ -1,0 +1,179 @@
+{
+  "url": "http://127.0.0.1:4255/",
+  "physicalTabletTested": false,
+  "raceTiming": "accelerated model; actual UI buttons; tie outcome injected explicitly",
+  "reports": [
+    {
+      "viewport": [
+        1024,
+        768
+      ],
+      "threeActualGameWinsAccelerated": [
+        {
+          "match": {
+            "matchId": "r0-m0-a0",
+            "round": "quarterfinal",
+            "roundIndex": 0,
+            "playerId": "tum-nup-2",
+            "opponentId": "prek-on-dok-2",
+            "teams": [
+              "tum-nup-2",
+              "prek-on-dok-2"
+            ],
+            "blocked": false
+          },
+          "acceleratedFinishSeconds": 190.62189817602882
+        },
+        {
+          "match": {
+            "matchId": "r1-m0-a0",
+            "round": "semifinal",
+            "roundIndex": 1,
+            "playerId": "tum-nup-2",
+            "opponentId": "chroi-tum-chas",
+            "teams": [
+              "tum-nup-2",
+              "chroi-tum-chas"
+            ],
+            "blocked": false
+          },
+          "acceleratedFinishSeconds": 190.62189817602882
+        },
+        {
+          "match": {
+            "matchId": "r2-m0-a0",
+            "round": "final",
+            "roundIndex": 2,
+            "playerId": "tum-nup-2",
+            "opponentId": "pothi-satharam-2",
+            "teams": [
+              "tum-nup-2",
+              "pothi-satharam-2"
+            ],
+            "blocked": false
+          },
+          "acceleratedFinishSeconds": 190.62189817602882
+        }
+      ],
+      "savedAfterRoundAndRestored": true,
+      "tieFixtureRetry": true,
+      "dnfEliminates": true,
+      "errors": []
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "threeActualGameWinsAccelerated": [
+        {
+          "match": {
+            "matchId": "r0-m0-a0",
+            "round": "quarterfinal",
+            "roundIndex": 0,
+            "playerId": "tum-nup-2",
+            "opponentId": "prek-on-dok-2",
+            "teams": [
+              "tum-nup-2",
+              "prek-on-dok-2"
+            ],
+            "blocked": false
+          },
+          "acceleratedFinishSeconds": 190.62189817602882
+        },
+        {
+          "match": {
+            "matchId": "r1-m0-a0",
+            "round": "semifinal",
+            "roundIndex": 1,
+            "playerId": "tum-nup-2",
+            "opponentId": "chroi-tum-chas",
+            "teams": [
+              "tum-nup-2",
+              "chroi-tum-chas"
+            ],
+            "blocked": false
+          },
+          "acceleratedFinishSeconds": 190.62189817602882
+        },
+        {
+          "match": {
+            "matchId": "r2-m0-a0",
+            "round": "final",
+            "roundIndex": 2,
+            "playerId": "tum-nup-2",
+            "opponentId": "pothi-khsach",
+            "teams": [
+              "tum-nup-2",
+              "pothi-khsach"
+            ],
+            "blocked": false
+          },
+          "acceleratedFinishSeconds": 190.62189817602882
+        }
+      ],
+      "savedAfterRoundAndRestored": true,
+      "tieFixtureRetry": true,
+      "dnfEliminates": true,
+      "errors": []
+    },
+    {
+      "viewport": [
+        834,
+        480
+      ],
+      "threeActualGameWinsAccelerated": [
+        {
+          "match": {
+            "matchId": "r0-m0-a0",
+            "round": "quarterfinal",
+            "roundIndex": 0,
+            "playerId": "tum-nup-2",
+            "opponentId": "prek-on-dok-2",
+            "teams": [
+              "tum-nup-2",
+              "prek-on-dok-2"
+            ],
+            "blocked": false
+          },
+          "acceleratedFinishSeconds": 190.62189817602882
+        },
+        {
+          "match": {
+            "matchId": "r1-m0-a0",
+            "round": "semifinal",
+            "roundIndex": 1,
+            "playerId": "tum-nup-2",
+            "opponentId": "prek-ta-cuol",
+            "teams": [
+              "tum-nup-2",
+              "prek-ta-cuol"
+            ],
+            "blocked": false
+          },
+          "acceleratedFinishSeconds": 190.62189817602882
+        },
+        {
+          "match": {
+            "matchId": "r2-m0-a0",
+            "round": "final",
+            "roundIndex": 2,
+            "playerId": "tum-nup-2",
+            "opponentId": "kos-thum-1",
+            "teams": [
+              "tum-nup-2",
+              "kos-thum-1"
+            ],
+            "blocked": false
+          },
+          "acceleratedFinishSeconds": 190.62189817602882
+        }
+      ],
+      "savedAfterRoundAndRestored": true,
+      "tieFixtureRetry": true,
+      "dnfEliminates": true,
+      "errors": []
+    }
+  ],
+  "liveryFailureKeptPairAndRetried": true
+}

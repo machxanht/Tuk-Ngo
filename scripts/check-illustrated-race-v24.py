@@ -27,7 +27,7 @@ with sync_playwright() as p:
             page.screenshot(path=str(out/'load-failure.png'))
             raise
         assert page.locator('button[data-mode=demo]').inner_text()=='Đua tự động'
-        assert page.evaluate('illustratedPreview.stats.configuration')=='hybrid-v30'
+        assert page.evaluate('illustratedPreview.stats.configuration')=='hybrid-v31'
         assert page.evaluate('illustratedRace.state.stage')=='countdown'
         # Validate geometry throughout the course rather than only endpoints.
         states=page.evaluate('Array.from({length:464},(_,i)=>illustratedRace.sample(i/10))')

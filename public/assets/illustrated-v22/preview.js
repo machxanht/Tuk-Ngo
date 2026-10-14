@@ -70,7 +70,7 @@ function draw(t){
  renderedFrames++;canvas.dataset.time=t.toFixed(3);canvas.dataset.mode=sceneMode;
 }
 async function init(){
- hybrid=await createHybridBoats();await hybridTeams.init(hybrid);illustratedRace.setBowAnchor(hybrid.bow);resizeCanvas();
+ hybrid=await createHybridBoats();for(const [i,profile] of hybrid.stats.faceProfiles.entries())document.querySelector('#study-face').options[i].textContent=profile.name;await hybridTeams.init(hybrid);illustratedRace.setBowAnchor(hybrid.bow);resizeCanvas();
  await Promise.all(Object.entries(sources).map(([key,file])=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>{images[key]=im;resolve();};im.onerror=()=>reject(Error('Cannot load '+file));im.src=file;})));
  await festivalScene.load();ready=true;document.body.dataset.ready='true';updateModeUI();draw(0);requestAnimationFrame(loop);
 }
@@ -112,14 +112,15 @@ function updateModeUI(){
  document.querySelectorAll('[data-race-control]').forEach(control=>control.hidden=!(autoRace||gameMode==='play'&&sceneMode==='festival'));
  document.querySelector('#race-score').hidden=!autoRace;document.querySelector('#restart').hidden=!autoRace;
  document.querySelector('#cadence-control').hidden=autoRace||gameMode==='play';
- document.querySelectorAll('button[data-mode]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.mode===gameMode&&sceneMode==='festival')));
+ document.querySelectorAll('button[data-mode]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.mode===gameMode&&sceneMode==='festival'&&(gameMode!=='play'||(button.dataset.kind||'quick')===quickRace.kind))));
 }
-function setMode(mode){
+function setMode(mode,kind='quick'){
+ if(mode==='play')quickRace.enter(kind);else window.hybridCup?.leave();
  gameMode=mode;sceneMode='festival';H=CONFIG.camera.height;resizeCanvas();practice.strokes=0;practice.accuracy=0;practice.lastScore=0;time=0;playing=true;manualPose=false;illustratedRace.reset();document.querySelector('#toggle').textContent='Dừng';
  document.querySelector('#practice-result').textContent='Chạm sân hoặc bấm Chèo khi dằm vào nước';updateModeUI();
- if(mode==='play')quickRace.enter();hybridTeams.update();draw(time);updateAudio();
+ hybridTeams.update();draw(time);updateAudio();
 }
-document.querySelectorAll('button[data-mode]').forEach(button=>button.onclick=()=>setMode(button.dataset.mode));
+document.querySelectorAll('button[data-mode]').forEach(button=>button.onclick=()=>setMode(button.dataset.mode,button.dataset.kind||'quick'));
 document.querySelector('#restart').onclick=()=>setMode('demo');
 document.querySelector('#camera').onclick=()=>{illustratedRace.toggleCamera();draw(time);};
 document.querySelector('#posture').onchange=()=>draw(time);

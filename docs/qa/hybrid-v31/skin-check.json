@@ -1,0 +1,18 @@
+{
+  "actualShaderErrors": [],
+  "variantsInspected": 12,
+  "lowPowerDisablesSkinDetail": true,
+  "runtimeSkinUVAndNormals": {
+    "uvMin": [
+      0.009968999773263931,
+      0.03175914287567139
+    ],
+    "uvMax": [
+      0.9918909072875977,
+      0.9899294376373291
+    ],
+    "duplicates": 431,
+    "splitSmoothNormals": 0
+  },
+  "physicalTabletTested": false
+}

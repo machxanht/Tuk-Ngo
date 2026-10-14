@@ -22,7 +22,7 @@ Góc nhìn này ưu tiên thấy rõ nhịp chèo, đầu/đuôi ghe, hoa văn v
 |---|---|---|
 | Tập chèo | Một ghe, học nhịp vào nước và thao tác chạm | Chạm sân hoặc bấm Chèo; có mẫu chấm độ đúng nhịp, đếm lượt chèo, dùng được khi toàn màn hình; chưa có sức bền/huấn luyện đầy đủ |
 | Đua tự động / Đua nhanh | Hai ghe, một trận, nhịp chèo và nước rút | Demo tự chạy để kiểm tra asset; Đua nhanh điều khiển ghe xanh, đua với AI độc lập, chấm nhịp, sức bền, nước rút, ba độ khó, kết quả và đua lại |
-| Giải đấu | Nhiều vòng với dữ liệu đội ghe đã xác minh | Phát triển sau; chưa đưa nút giả vào giao diện |
+| Giải 8 ghe | Tứ kết, bán kết, chung kết với tám đội nam 2025 | Dùng cùng gameplay và renderer; thắng tiến vòng, hòa đua lại, thua bị loại. Lưu sau mỗi trận. Đây là giải mô phỏng, không phát lại kết quả thật |
 | Xưởng ghe/asset | Kiểm tra silhouette, tư thế, lớp che chân và file nguồn | Công cụ kiểm tra, không phải chế độ chơi |
 
 Thứ tự làm tiếp là **Tập chèo → Đua nhanh → Giải đấu**. Tập chèo và Đua nhanh phải dùng cùng renderer, quy ước nhịp, mặt nước, camera và tỷ lệ nhân vật. Không làm một engine riêng cho mỗi mục.
@@ -72,3 +72,5 @@ V29 thêm 12 mẫu khán giả, tổng 24 kiểu, trộn góc nhìn trước/sau
 V30 sửa khe hở vai ở áo có tay: lớp vải bám bề mặt vai/cánh tay cùng skin weights, thay vòng tay áo riêng. Khi dùng áo có tay, viền nách áo ba lỗ được ẩn; cổ áo và lai áo giữ nguyên. Đây là kiểu may dựng gần đúng, chưa phải bản phục dựng đủ chi tiết từng áo thật.
 
 Chưa hoàn thành: giải đấu nhiều vòng, trang phục/kbach từng đội được xác minh đầy đủ, rig chuyển động khán giả gần và các khuôn mặt được tạo hình riêng. Chưa đo hiệu năng trên tablet thật.
+
+V31 thêm 12 biến thể mặt ở hàm/má/cằm/mũi, tóc và râu nhẹ, trộn theo mã đội/người. Hai GLB tải xuống mới có trang phục và động tác hiện tại; người đầu ghe có hiệu chỉnh mép tay áo trong animation GLB. Mặt vẫn phát triển từ một mẫu giải phẫu; các đường ráp áo nhỏ và chi tiết may thật còn cần hoàn thiện. Chế độ Giải 8 ghe dùng cùng màn đua và lưu các vòng đã kết thúc ngay trên trình duyệt.

@@ -31,7 +31,7 @@ with sync_playwright() as p:
   report.append({'id':team['id'],'bib':team['number'],'rank':team['rank'],'rowerPalette':actor})
   page.locator('#view').click()
  assert ImageChops.difference(Image.open(out/'tum-nup-2-kit.png').convert('RGB'),Image.open(out/'chroi-tum-chas-kit.png').convert('RGB')).getbbox()
- page.locator('[data-mode=play]').click();page.locator('#play-start').click();assert not page.locator('#team-near').is_enabled();assert not page.locator('#team-far').is_enabled()
+ page.locator('button[data-mode=play]:not([data-kind])').click();page.locator('#play-start').click();assert not page.locator('#team-near').is_enabled();assert not page.locator('#team-far').is_enabled()
  page.locator('#toggle').click();assert not page.locator('#team-near').is_enabled()
  page.locator('[data-mode=demo]').click();assert page.locator('#team-near').is_enabled()
  page.locator('#team-near').select_option('tum-nup-2');page.wait_for_function('!hybridTeams.busy && hybridTeams.near.id==="tum-nup-2"');page.locator('#team-far').select_option('tum-nup-2');page.wait_for_function('!hybridTeams.busy && hybridTeams.far.id==="tum-nup-2"')

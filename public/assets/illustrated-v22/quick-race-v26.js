@@ -1,7 +1,7 @@
 /* UI adapter for the existing tested race rules and the shared hybrid scene. */
 (()=>{
  const rules=TukNgoGameRules,model=rules.createRaceGame(),q=id=>document.getElementById(id),clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
- const recordKey='tuk-ngo-hybrid-records-v26';let records={},lastPhase='';
+ const recordKey='tuk-ngo-hybrid-records-v26';let records={},lastPhase='',kind='quick';
  try{const saved=JSON.parse(localStorage.getItem(recordKey)||'{}');for(const key of Object.keys(rules.DIFFICULTIES))if(Number.isFinite(saved[key])&&saved[key]>0)records[key]=saved[key];}catch{}
  function text(id,value){const element=q(id);if(element.textContent!==value)element.textContent=value;}
  function update(){
@@ -22,6 +22,7 @@
   q('play-feedback').dataset.quality=s.elapsed-s.feedbackAt<1.1?s.feedback==='Chuẩn!'?'perfect':s.feedback==='Đúng nhịp'?'good':'missed':'';
   if(phase!==lastPhase){
    if(phase==='finished'){
+    window.hybridCup?.finished(s);
     if(s.result==='win'){const t=s.finishTimes[0];if(!records[s.difficulty]||t<records[s.difficulty]){records[s.difficulty]=t;try{localStorage.setItem(recordKey,JSON.stringify(records));}catch{}}}
     const titles={win:'Ghe bạn thắng!',loss:'Ghe đối thủ thắng',tie:'Hai ghe hòa nhau',dnf:'Ghe bạn chưa hoàn thành'};
     text('play-title',titles[s.result]);
@@ -36,6 +37,7 @@
    lastPhase=phase;
   }
   text('play-record',records[s.difficulty]?`Kỷ lục thắng: ${rules.formatRaceTime(records[s.difficulty])}`:'Chưa có kỷ lục thắng ở độ khó này');
+  window.hybridCup?.update(s);
   return s;
  }
  function projected(){
@@ -43,11 +45,11 @@
   const make=(i)=>({name:i===0?'Ghe bạn':'Ghe đối thủ',progress:s.distances[i]/rules.RACE_LENGTH,finished:s.finishTimes[i]!==null,finishTime:s.finishTimes[i],cadence:i===0?s.cadence:s.distances[1]>1000?96:82,cycles:active&&s.finishTimes[i]===null?(i===0?s.beatPhase:s.aiPhase):.75,motion:active&&!done&&s.finishTimes[i]===null?clamp(i===0?s.power:s.speeds[1]/6):0,kitColor:i===0?'#23855e':'#cc9335'});
   return illustratedRace.project([make(1),make(0)],{stage:s.phase==='ready'?'ready':s.phase==='countdown'?'countdown':done?'finished':'racing',countdown:Math.ceil(s.countdown),run:s.elapsed,elapsed:s.elapsed,player:s,winner:done?s.result==='win'?'near':s.result==='loss'||s.result==='dnf'?'far':null:null});
  }
- q('play-start').onclick=()=>{if(model.state.phase==='paused')model.resume();else model.start(q('difficulty').value);window.illustratedPreview?.play();update();};
+ q('play-start').onclick=async()=>{if(model.state.phase==='paused')model.resume();else{if(kind==='cup'&&!await hybridCup.beforeStart())return;model.start(q('difficulty').value);window.hybridCup?.raceStarted();}window.illustratedPreview?.play();update();};
  q('difficulty').onchange=()=>{if(['ready','finished'].includes(model.state.phase)){model.reset(q('difficulty').value);lastPhase='';update();}};
  document.querySelectorAll('[data-pace]').forEach(button=>button.onclick=()=>{model.setPace(button.dataset.pace);update();});
  function stroke(){const result=model.stroke();if(result){text('race-announcement',model.state.feedback);update();}return result;}
  q('play-stroke').onclick=stroke;
- window.quickRace={model,update,projected,stroke,refreshChoice(){lastPhase='';update();},enter(){model.reset(q('difficulty').value);lastPhase='';update();},advance(dt){model.advance(dt);},pause(reason=''){model.pause(reason);update();},resume(){model.resume();update();},get state(){return model.snapshot();}};
+ window.quickRace={model,update,projected,stroke,get kind(){return kind;},refreshChoice(){lastPhase='';update();},enter(nextKind='quick'){kind=nextKind;model.reset(q('difficulty').value);lastPhase='';window.hybridCup?.enter(kind);update();},advance(dt){model.advance(dt);},pause(reason=''){model.pause(reason);update();},resume(){model.resume();update();},get state(){return model.snapshot();}};
  update();
 })();

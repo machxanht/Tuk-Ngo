@@ -14,7 +14,7 @@ with sync_playwright() as p:
   page.goto(args.url,wait_until='domcontentloaded',timeout=60000)
   page.wait_for_function('document.body.dataset.ready==="true" || !!document.body.dataset.loadError',timeout=60000)
   assert not page.evaluate('document.body.dataset.loadError'),page.locator('#status').inner_text()
-  page.locator('[data-mode=play]').click();assert page.evaluate('quickRace.state.phase')=='ready'
+  page.locator('button[data-mode=play]:not([data-kind])').click();assert page.evaluate('quickRace.state.phase')=='ready'
   assert not page.evaluate('document.documentElement.scrollWidth>innerWidth')
   a,b=page.locator('#scene').bounding_box(),page.locator('#play-panel').bounding_box();assert outside(a,b),(a,b)
   assert page.locator('#play-start').bounding_box()['height']>=60
@@ -41,7 +41,7 @@ with sync_playwright() as p:
   assert result['phase']=='finished' and result['result']=='win',result
   assert 'thắng' in page.locator('#play-title').inner_text()
   page.screenshot(path=str(out/f'{width}-win.png'))
-  page.reload();page.wait_for_selector('body[data-ready=true]',timeout=60000);page.locator('[data-mode=play]').click()
+  page.reload();page.wait_for_selector('body[data-ready=true]',timeout=60000);page.locator('button[data-mode=play]:not([data-kind])').click()
   assert 'Kỷ lục thắng' in page.locator('#play-record').inner_text()
   page.locator('#play-start').click();assert page.evaluate('quickRace.state.distances')==[0,0]
   page.evaluate('illustratedPreview.seek(0);quickRace.model.advance(363);illustratedPreview.draw(363)')
@@ -58,7 +58,7 @@ with sync_playwright() as p:
  if args.realtime:
   page=browser.new_page(viewport={'width':1024,'height':768},has_touch=True);errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
   page.goto(args.url,wait_until='domcontentloaded');page.wait_for_selector('body[data-ready=true]',timeout=60000)
-  page.locator('[data-mode=play]').click();page.locator('#difficulty').select_option('easy');page.locator('#play-start').click();started=time.monotonic();pressed=0;lastBeat=0
+  page.locator('button[data-mode=play]:not([data-kind])').click();page.locator('#difficulty').select_option('easy');page.locator('#play-start').click();started=time.monotonic();pressed=0;lastBeat=0
   while True:
    s=page.evaluate('quickRace.state')
    if s['phase']=='finished':break

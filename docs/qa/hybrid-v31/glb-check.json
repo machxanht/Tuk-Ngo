@@ -1,0 +1,32 @@
+{
+  "url": "http://127.0.0.1:4255/",
+  "reports": [
+    {
+      "role": "seated",
+      "animations": [
+        {
+          "name": "Scene",
+          "duration": 1.0104166269302368,
+          "tracks": 161
+        }
+      ],
+      "bones": 53,
+      "handMotionM": 0.053488241535662784,
+      "maxGarmentGapM": 0
+    },
+    {
+      "role": "caller",
+      "animations": [
+        {
+          "name": "Scene",
+          "duration": 1.0104166269302368,
+          "tracks": 161
+        }
+      ],
+      "bones": 53,
+      "handMotionM": 0.010659888387320238,
+      "maxGarmentGapM": 0.004500010378402626
+    }
+  ],
+  "errors": []
+}

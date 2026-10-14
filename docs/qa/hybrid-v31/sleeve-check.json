@@ -1,0 +1,40 @@
+{
+  "url": "http://127.0.0.1:4255/",
+  "garmentFit": [
+    {
+      "id": 2,
+      "role": "rower",
+      "posture": "seated",
+      "clothVertices": 300,
+      "intersections": 68,
+      "maxPosedBarycentricGapM": 0.004500796803127137
+    },
+    {
+      "id": 18,
+      "role": "rower",
+      "posture": "standing",
+      "clothVertices": 300,
+      "intersections": 68,
+      "maxPosedBarycentricGapM": 0.004501046352808427
+    },
+    {
+      "id": 1,
+      "role": "caller",
+      "posture": "seated",
+      "clothVertices": 300,
+      "intersections": 68,
+      "maxPosedBarycentricGapM": 0.004500839063729233
+    },
+    {
+      "id": 52,
+      "role": "controller",
+      "posture": "standing",
+      "clothVertices": 300,
+      "intersections": 68,
+      "maxPosedBarycentricGapM": 0.0045008930475034835
+    }
+  ],
+  "posesPerActor": 17,
+  "correspondence": "original vertices or equivalent of actual packed shader endpoint skinning; direct role renders captured",
+  "errors": []
+}
