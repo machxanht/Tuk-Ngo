@@ -1,7 +1,7 @@
 /* Painted asset demo and practice view, independent of the legacy 3D route. */
 const canvas=document.querySelector('#scene'),ctx=canvas.getContext('2d');
 const CONFIG=TukNgoConfig,W=CONFIG.camera.width;let H=CONFIG.camera.height,sceneMode='festival',gameMode='demo',renderedFrames=0,renderScale=1,lowPower=false;
-function resizeCanvas(){const width=Math.min(CONFIG.camera.maxRenderWidth,(canvas.clientWidth||innerWidth)*Math.min(devicePixelRatio||1,CONFIG.camera.maxPixelRatio));renderScale=width/W;canvas.width=Math.round(width);canvas.height=Math.round(H*renderScale);hybrid?.resize(lowPower?Math.min(900,canvas.width):canvas.width);}
+function resizeCanvas(){const width=Math.min(CONFIG.camera.maxRenderWidth,(canvas.clientWidth||innerWidth)*Math.min(devicePixelRatio||1,CONFIG.camera.maxPixelRatio));renderScale=width/W;canvas.width=Math.round(width);canvas.height=Math.round(H*renderScale);hybrid?.resize(lowPower?Math.min(900,canvas.width):sceneMode==='boat'?canvas.width:canvas.width*.8);}
 const sources={fx:'water-effects.webp'};
 const images={},strokeEfforts=new Map();let ready=false,playing=true,time=0,cadence=80,last=null,manualPose=false,hybrid;
 resizeCanvas();
@@ -31,13 +31,13 @@ function drawBoat(t,animation={}){
  if(!ready||!hybrid)return;
  const tempo=animation.cadence??cadence,motion=animation.motion??1,cycles=animation.cycles??t*tempo/60,phase=((cycles%1)+1)%1;
  const study=sceneMode==='boat',posture=document.querySelector('#posture').value;
- const effortKey=animation.id||'study',effortTarget=Math.min(1,Math.max(0,(tempo-95)/10))*motion;
+ const effortKey=animation.id||'study',effortTarget=Math.max(animation.effort||0,Math.min(1,Math.max(0,(tempo-95)/10)))*motion;
  let effort=strokeEfforts.get(effortKey);if(!effort){effort={value:effortTarget,t};strokeEfforts.set(effortKey,effort);}else{const dt=Math.max(0,Math.min(.1,t-effort.t));effort.value+=(effortTarget-effort.value)*(1-Math.exp(-dt*5));effort.t=t;}
- ctx.drawImage(hybrid.render(phase,t,{study,posture,teamId:study?(document.querySelector('#study-kit').value==='team'?hybridTeams.near.id:null):animation.teamId||hybridTeams.near.id,kitColor:study?document.querySelector('#study-kit').value:animation.kitColor||'#23855e',faceVariant:study?Number(document.querySelector('#study-face').value):null,skinDetail:lowPower?0:1,focus:study?document.querySelector('#study-focus').value:'body',effort:effort.value}),0,0,W,CONFIG.camera.workshopHeight);
+ ctx.drawImage(hybrid.render(phase,t,{study,posture,teamId:study?(document.querySelector('#study-kit').value==='team'?hybridTeams.near.id:null):animation.teamId||hybridTeams.near.id,kitColor:study?document.querySelector('#study-kit').value:animation.kitColor||'#23855e',faceVariant:study?Number(document.querySelector('#study-face').value):null,skinDetail:lowPower?0:1,focus:study?document.querySelector('#study-focus').value:'body',effort:effort.value,viewKey:effortKey,frameId:renderedFrames,distance:32.6/(animation.scale||1),nearest:study||animation.id==='near',desyncIntensity:animation.desyncIntensity||0}),0,0,W,CONFIG.camera.workshopHeight);
  if(motion>0&&!study){
   for(const [i,tip] of hybrid.tips.entries())if(tip.inWater){
    effect(tempo>95?2:0,...tip.point,55+Math.max(0,tempo-80)*1.3,.55*motion);
-   const energy=motion*(tempo>95?1.7:.7),count=Math.ceil(4+energy*6);
+   const energy=motion*(animation.surge?2.5:tempo>95?1.7:.7),count=Math.ceil(4+energy*6);
    ctx.save();ctx.fillStyle='#fff5df';
    for(let n=0;n<count;n++){
     const age=((t*2.9+n*.037+i*.071)% .32+.32)% .32,spread=Math.sin(i*19+n*7),x=tip.point[0]+age*(60+spread*100),y=tip.point[1]-age*(85+energy*95+n*5)+360*age*age;
@@ -54,8 +54,8 @@ function draw(t){
  if(sceneMode==='festival'){
   const sourceRace=gameMode==='demo'?illustratedRace.state:gameMode==='play'?quickRace.projected():null,race=sourceRace?hybridTeams.project(sourceRace):null;
   ctx.save();
-  if(race){const camera=race.camera;ctx.translate(W/2,H/2);ctx.scale(camera.zoom,camera.zoom);ctx.translate(-camera.x,-camera.y);}
-  if(festivalScene.setActivity)festivalScene.setActivity(race?.player?race.player.phase==='finished'?1:race.player.distances[0]>1000?.85:.45:race?.run>32?.8:.4);
+  if(race){const camera=race.camera,surge=race.player?.surgeActive&&!matchMedia('(prefers-reduced-motion: reduce)').matches;ctx.translate(W/2+(surge?Math.sin(t*34)*1.8:0),H/2+(surge?Math.sin(t*29)*1.1:0));ctx.scale(camera.zoom*(surge?1.014:1),camera.zoom*(surge?1.014:1));ctx.translate(-camera.x,-camera.y);}
+  if(festivalScene.setActivity)festivalScene.setActivity(race?.player?race.player.phase==='finished'?1:race.player.surgeActive?1:race.player.raceStage==='final'?.85:.45:race?.run>32?.8:.4);
   festivalScene.drawBack(ctx,t);
   if(race)illustratedRace.drawGates(ctx,race);
   const boats=race?race.boats:CONFIG.boat.lanes.slice(1);
@@ -77,16 +77,16 @@ async function init(){
  await festivalScene.load();ready=true;document.body.dataset.ready='true';updateModeUI();draw(0);requestAnimationFrame(loop);
 }
 let lastDraw=0;
-// Carry the remainder: a browser callback around 31 ms must not turn a 30 fps
-// target into one draw every two callbacks. Paused scenes only draw on edits.
-function loop(now){const dt=last===null?0:Math.max(0,Math.min(.1,(now-last)/1000));last=now;if(playing&&!document.hidden){time+=dt;if(sceneMode==='festival'&&!manualPose){if(gameMode==='demo')illustratedRace.advance(dt);else if(gameMode==='play')quickRace.advance(dt);}}const interval=1000/(lowPower?20:30),elapsed=now-lastDraw;if(playing&&!document.hidden&&elapsed>=interval){draw(time);lastDraw=now-elapsed%interval;}requestAnimationFrame(loop);}
+// Carry fractional frame time. Near crews update at 60 Hz; distant crews
+// evaluate their shared masters every other frame. Physics uses fixed ticks.
+function loop(now){const dt=last===null?0:Math.max(0,Math.min(.1,(now-last)/1000));last=now;if(playing&&!document.hidden){time+=dt;if(sceneMode==='festival'&&!manualPose){if(gameMode==='demo')illustratedRace.advance(dt);else if(gameMode==='play')quickRace.advance(dt);}}const interval=1000/(lowPower?30:60),elapsed=now-lastDraw;if(playing&&!document.hidden&&elapsed>=interval){draw(time);lastDraw=now-elapsed%interval;}requestAnimationFrame(loop);}
 function updatePlayUI(s){
  const status=document.querySelector('#status');
  const messages={ready:'Đua nhanh · '+hybridTeams.near.name+' ở làn gần',countdown:`Xuất phát sau ${Math.ceil(s.countdown)}…`,paused:'Trận đua tạm dừng',finished:document.querySelector('#play-title').textContent,racing:`${TukNgoGameRules.formatRaceTime(s.elapsed)} · ${Math.floor(s.distances[0])} m`};
  if(status.textContent!==messages[s.phase])status.textContent=messages[s.phase];
  canvas.dataset.raceStage=s.phase;canvas.dataset.raceTime=s.elapsed.toFixed(3);
  document.querySelector('#camera').textContent=illustratedRace.state.follow?'Góc nhìn: Theo ghe':'Góc nhìn: Toàn cảnh';
- crowdAudio.volume=s.phase==='finished'?.3:.12+.12*Math.min(1,s.distances[0]/1200);
+ crowdAudio.volume=s.phase==='finished'?.3:s.surgeActive?.42:s.raceStage==='final'?.3:.15;
  hybridTeams.update(s.phase);
 }
 function updateRaceUI(race){
@@ -152,7 +152,9 @@ document.querySelectorAll('[data-pose]').forEach(b=>b.onclick=()=>{playing=false
 document.querySelector('#pose-scrub').oninput=e=>{playing=false;manualPose=true;document.querySelector('#toggle').textContent='Tiếp tục';time=Number(e.target.value)/100*60/cadence;draw(time);};
 window.illustratedPreview={members,images,sources,draw,setMode,practice,get hybrid(){return hybrid;},seek(t){playing=false;time=t;draw(t);},seekRace(t){playing=false;manualPose=false;time=Math.max(0,t);illustratedRace.seek(t);draw(time);},play(){playing=true;manualPose=false;if(gameMode==='play')quickRace.resume();document.querySelector('#toggle').textContent='Dừng';updateAudio();},get stats(){return{mode:sceneMode,gameMode,boats:sceneMode==='boat'||gameMode==='practice'?1:2,members:members.length,seated:members.filter(m=>m.posture==='seated').length,standing:members.filter(m=>m.posture==='standing').length,phase:canvas.dataset.phase,cadence,playing,lowPower,sound,renderedFrames,configuration:CONFIG.revision,camera:CONFIG.camera.id,direction:CONFIG.camera.direction,renderSize:[canvas.width,canvas.height],hybrid:hybrid?.stats,draw3D:hybrid?.getDrawStats(),race:gameMode==='play'?quickRace.projected():illustratedRace.state,festival:festivalScene.stats};},async record(seconds=8){
  const stream=canvas.captureStream(30),chunks=[],mime=['video/webm;codecs=vp9','video/webm;codecs=vp8'].find(t=>MediaRecorder.isTypeSupported(t));const rec=new MediaRecorder(stream,{mimeType:mime,videoBitsPerSecond:5000000});playing=true;
- const complete=new Promise(resolve=>rec.onstop=()=>{stream.getTracks().forEach(t=>t.stop());resolve(new Blob(chunks,{type:mime}));});rec.ondataavailable=e=>{if(e.data.size)chunks.push(e.data);};rec.start();setTimeout(()=>rec.stop(),seconds*1000);const blob=await complete;const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='rowing-preview-v22.webm';a.click();setTimeout(()=>URL.revokeObjectURL(url),10000);return blob.size;
+ const complete=new Promise(resolve=>rec.onstop=()=>{stream.getTracks().forEach(t=>t.stop());resolve(new Blob(chunks,{type:mime}));});rec.ondataavailable=e=>{if(e.data.size)chunks.push(e.data);};rec.start();setTimeout(()=>rec.stop(),seconds*1000);const blob=await complete;const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='rowing-preview.webm';a.click();setTimeout(()=>URL.revokeObjectURL(url),10000);return blob.size;
 }};
 const loadRetryButton=document.querySelector('#asset-retry');if(loadRetryButton)loadRetryButton.onclick=()=>location.reload();
 init().catch(e=>{document.querySelector('#status').textContent='Không tải được trận đua. Kiểm tra kết nối rồi tải lại trang.';document.body.dataset.loadError=String(e);if(loadRetryButton)loadRetryButton.hidden=false;});
+
+addEventListener('pagehide',event=>{crowdAudio.pause();if(!event.persisted)hybrid?.dispose();});

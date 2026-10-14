@@ -1,0 +1,39 @@
+{
+  "version": 21,
+  "license": "CC0-1.0",
+  "officialSource": "https://quaternius.com/packs/ultimatemodularcharacters.html",
+  "models": [
+    {
+      "id": "casual-man",
+      "file": "casual-man-head.glb",
+      "bytes": 61496,
+      "triangles": 2324,
+      "source": "../coherent-v20/npcs/casual-man.glb",
+      "license": "CC0-1.0"
+    },
+    {
+      "id": "beach-man",
+      "file": "beach-man-head.glb",
+      "bytes": 42672,
+      "triangles": 1630,
+      "source": "../coherent-v20/npcs/beach-man.glb",
+      "license": "CC0-1.0"
+    },
+    {
+      "id": "farmer-man",
+      "file": "farmer-man-head.glb",
+      "bytes": 35280,
+      "triangles": 1338,
+      "source": "../coherent-v20/npcs/farmer-man.glb",
+      "license": "CC0-1.0"
+    },
+    {
+      "id": "punk-man",
+      "file": "punk-man-head.glb",
+      "bytes": 26028,
+      "triangles": 960,
+      "source": "../coherent-v20/npcs/punk-man.glb",
+      "license": "CC0-1.0"
+    }
+  ]
+}

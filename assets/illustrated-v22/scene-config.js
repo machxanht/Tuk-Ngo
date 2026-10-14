@@ -28,6 +28,7 @@
    nearStalls:[{x:1570,y:1285,height:190,variant:1,vendor:2},{x:1900,y:1238,height:205,variant:0,vendor:4},{x:2240,y:1132,height:200,variant:3,vendor:0}],
    layerOrder:['sky','houses-trees','road-traffic','stands-stalls','far-crowd','upstream-bridge','river-boats','near-crowd-stands','near-stalls','near-road-traffic']
   },
+  performance:{crewDistanceThreshold:44,targetFps:60,lowPowerFps:30},
   development:{primary:'quick-race',sequence:['practice','quick-race','tournament'],tournamentStatus:'playable-quarterfinal-semifinal-final',boatAnimation:'continuous-skinned-3d',raceStatus:'playable-quick-race-cup-and-automatic-demo'}
  };
  function freeze(object){Object.values(object).forEach(value=>{if(value&&typeof value==='object')freeze(value);});return Object.freeze(object);}
