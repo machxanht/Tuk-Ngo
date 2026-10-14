@@ -53,6 +53,8 @@ with sync_playwright() as p:
         page.locator('#play-start').tap()
         page.evaluate('illustratedPreview.seek(0);quickRace.model.advance(3.1);quickRace.update()')
         page.evaluate('''()=>{const g=quickRace.model,s=g.snapshot();g.advance((Math.floor(s.beatPhase)+1-s.beatPhase)*60/s.cadence);quickRace.update();}''')
+        rig_sync=page.evaluate('''()=>{const s=quickRace.state;illustratedPreview.draw(s.elapsed);const phase=s.beatPhase%1;return Object.entries(illustratedPreview.hybrid.roles).filter(([name])=>!name.startsWith('helm')).map(([name,rig])=>{const actual=(rig.mixer.time/rig.clip.duration)%1,delta=Math.abs(actual-phase);return {name,delta:Math.min(delta,1-delta)};});}''')
+        assert all(r['delta']<.001 for r in rig_sync),rig_sync
         page.locator('#play-stroke').tap()
         assert page.evaluate('quickRace.state.judgement') == 'PERFECT'
         page.locator('#play-stroke').tap()
@@ -68,6 +70,10 @@ with sync_playwright() as p:
         page.locator('#fullscreen').tap()
         page.wait_for_function('!!document.fullscreenElement')
         layout(page)
+        exit_box=page.locator('#exit-fullscreen').bounding_box()
+        for selector in ['#play-cadence','#stamina-value']:
+            box=page.locator(selector).bounding_box()
+            assert box['x']+box['width']<=exit_box['x'] or box['y']>=exit_box['y']+exit_box['height'], (selector,box,exit_box)
         page.screenshot(path=str(out/f'{width}x{height}-fullscreen.png'))
         page.locator('#exit-fullscreen').tap()
         page.wait_for_function('!document.fullscreenElement')
@@ -91,7 +97,7 @@ with sync_playwright() as p:
         assert result['phase']=='finished' and result['result']=='win', result
         page.screenshot(path=str(out/f'{width}x{height}-result.png'))
         assert not errors, errors
-        reports.append({'viewport':[width,height], 'layout':boxes, 'actualTouchJudgements':['PERFECT','BAD','GOOD'], 'surgeProjected':projected, 'finishTime':result['finishTimes'][0], 'errors':errors})
+        reports.append({'viewport':[width,height], 'layout':boxes, 'actualTouchJudgements':['PERFECT','BAD','GOOD'], 'rigEntrySync':rig_sync, 'surgeProjected':projected, 'finishTime':result['finishTimes'][0], 'errors':errors})
         page.close()
 
     page = browser.new_page(viewport={'width':1024,'height':768}, has_touch=True)
