@@ -4,7 +4,6 @@ import {clone} from 'three/addons/utils/SkeletonUtils.js';
 import {mergeGeometries} from 'three/addons/utils/BufferGeometryUtils.js';
 import {athletePalette,makeAthleteMaterials,shortSleeves,teamTextures} from './hybrid-team-style-v28.mjs';
 import {buildFaceVariants,FACE_PROFILES} from './athlete-faces-v31.mjs';
-import {conformShoulders} from './athlete-shoulders-v31.mjs';
 
 const W=2400,H=860;
 const roleNames=['seated-port','seated-starboard','standing-port','standing-starboard','caller','controller','helm','helm-starboard'];
@@ -34,8 +33,6 @@ window.createHybridBoats=async function(base=''){
   if(skin.material.map&&skin.material.name!=='Painted_Skin_V25')decals.push({geometry:g,material:materialFrom(skin.material)});else solid.push(g);
   if(skin.material.name==='Painted_Skin_V25')solid.push(shortSleeves(g,jointNames,reference.skeleton));
  }
- const anatomy=solid.find(g=>g.attributes.paintZone.getX(0)===1);
- for(const g of solid)if([3,8].includes(g.attributes.paintZone.getX(0)))conformShoulders(anatomy,g);
  const merged=mergeGeometries(solid,false);solid.forEach(g=>g.dispose());if(!merged)throw Error('Cannot merge continuous athlete skin');
  let offset=0,bodyOffset=0;const garmentPairs=[];
  for(const g of solid){if(g.attributes.paintZone.getX(0)===1)bodyOffset=offset;if(g.userData.sourceBarycentric)for(const [i,weights] of g.userData.sourceBarycentric.entries())garmentPairs.push([offset+i,weights.map(([source,amount])=>[bodyOffset+source,amount])]);offset+=g.attributes.position.count;}
