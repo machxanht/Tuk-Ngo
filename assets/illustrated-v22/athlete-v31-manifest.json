@@ -1,0 +1,27 @@
+{
+  "exports": [
+    {
+      "posture": "seated",
+      "teamId": "tum-nup-2",
+      "face": 2,
+      "bytes": 6357876,
+      "triangles": 13743,
+      "bones": 53,
+      "clipTracks": 161,
+      "cuffCorrectiveTargets": 0
+    },
+    {
+      "posture": "caller",
+      "teamId": "tum-nup-2",
+      "face": 9,
+      "bytes": 7177544,
+      "triangles": 13453,
+      "bones": 53,
+      "clipTracks": 160,
+      "cuffCorrectiveTargets": 9
+    }
+  ],
+  "errors": [],
+  "source": "Current hybrid renderer; generic CC0 human with authored 2025 Tum Nup palette",
+  "portableAppearanceLimit": "Hair and stubble are smooth vertex colours; fine procedural grain is not baked. Other team styles remain runtime selections."
+}
