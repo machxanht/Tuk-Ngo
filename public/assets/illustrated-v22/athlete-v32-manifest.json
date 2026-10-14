@@ -1,0 +1,187 @@
+{
+  "exports": [
+    {
+      "posture": "seated",
+      "teamId": "chroi-tum-chas",
+      "face": 2,
+      "bytes": 7781756,
+      "triangles": 8660,
+      "bones": 53,
+      "clipTracks": 163,
+      "shirtMorphTargets": 97
+    },
+    {
+      "posture": "standing",
+      "teamId": "chroi-tum-chas",
+      "face": 3,
+      "bytes": 7782104,
+      "triangles": 8660,
+      "bones": 53,
+      "clipTracks": 163,
+      "shirtMorphTargets": 97
+    },
+    {
+      "posture": "caller",
+      "teamId": "tum-nup-2",
+      "face": 9,
+      "bytes": 7700116,
+      "triangles": 8660,
+      "bones": 53,
+      "clipTracks": 161,
+      "shirtMorphTargets": 97
+    },
+    {
+      "posture": "controller",
+      "teamId": "tum-nup-2",
+      "face": 6,
+      "bytes": 7701136,
+      "triangles": 8660,
+      "bones": 53,
+      "clipTracks": 161,
+      "shirtMorphTargets": 97
+    }
+  ],
+  "errors": [],
+  "source": "Current V32 connected-shirt runtime and authored 2025 palettes",
+  "portableAppearanceLimit": "Vertex-coloured shirts and conforming Khmer alpha print. Fine shader hair grain and thin runtime collar trim are omitted.",
+  "verification": {
+    "validator": [
+      {
+        "role": "seated",
+        "errors": 0,
+        "warnings": 0,
+        "messages": [
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/4/primitives/1/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/6/primitives/0/attributes/TEXCOORD_0"
+          }
+        ]
+      },
+      {
+        "role": "standing",
+        "errors": 0,
+        "warnings": 0,
+        "messages": [
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/4/primitives/1/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/6/primitives/0/attributes/TEXCOORD_0"
+          }
+        ]
+      },
+      {
+        "role": "caller",
+        "errors": 0,
+        "warnings": 0,
+        "messages": [
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/0/primitives/1/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/2/primitives/0/attributes/TEXCOORD_0"
+          }
+        ]
+      },
+      {
+        "role": "controller",
+        "errors": 0,
+        "warnings": 0,
+        "messages": [
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/0/primitives/1/attributes/TEXCOORD_0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/meshes/2/primitives/0/attributes/TEXCOORD_0"
+          }
+        ]
+      }
+    ],
+    "reloadedActualGLBs": {
+      "roles": [
+        {
+          "role": "seated",
+          "animations": [
+            {
+              "name": "Scene",
+              "duration": 1.0104166269302368,
+              "tracks": 163
+            }
+          ],
+          "bones": 53,
+          "shirtVisible": true,
+          "maxGarmentGapM": 0.0055164344950718895
+        },
+        {
+          "role": "standing",
+          "animations": [
+            {
+              "name": "Scene",
+              "duration": 1.0104166269302368,
+              "tracks": 163
+            }
+          ],
+          "bones": 53,
+          "shirtVisible": true,
+          "maxGarmentGapM": 0.005636722795736143
+        },
+        {
+          "role": "caller",
+          "animations": [
+            {
+              "name": "Scene",
+              "duration": 1.0104166269302368,
+              "tracks": 161
+            }
+          ],
+          "bones": 53,
+          "shirtVisible": true,
+          "maxGarmentGapM": 0.005512773180660677
+        },
+        {
+          "role": "controller",
+          "animations": [
+            {
+              "name": "Scene",
+              "duration": 1.0104166269302368,
+              "tracks": 161
+            }
+          ],
+          "bones": 53,
+          "shirtVisible": true,
+          "maxGarmentGapM": 0.005512773184411123
+        }
+      ],
+      "actualPosesPerRole": 17,
+      "errors": []
+    }
+  },
+  "appearance": "Ordinary vertex-coloured team shirts plus conforming Khmer back-print alpha texture. Fine procedural hair grain and the thin runtime collar trim are omitted.",
+  "notHistoricalLikeness": true
+}

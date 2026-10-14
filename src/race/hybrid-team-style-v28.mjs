@@ -9,7 +9,7 @@ export function athletePalette(team,id,role,fallback){
  const jersey=leader?.jersey||(role==='caller'?'#8d965c':role==='controller'?'#73aebd':team?.alternateJersey&&id%7===0?team.alternateJersey:team?.jersey||fallback);
  return {jersey,lower:!leader&&role==='rower'?team?.lowerJersey||jersey:jersey,
   cap:leader?.cap||(team?.capVariants?team.capVariants[id%10<7?0:id%10<9?1:2]:team?.cap||'#f5f3e9'),
-  trim:team?.trim||'#f0f0df',shorts:leader?.shorts||'#17222a',sleeve:leader?leader.sleeve:role==='rower'||role==='helm'?team?.sleeve:null};
+  trim:team?.trim||'#f0f0df',shorts:leader?.shorts||'#17222a',sleeve:leader?leader.sleeve:role==='rower'||role==='helm'?team?.sleeve:null,frontPrint:team?.id==='tum-nup-2'};
 }
 
 export function makeAthleteMaterials(skinMap,detail){
@@ -21,6 +21,7 @@ export function makeAthleteMaterials(skinMap,detail){
   material.onBeforeCompile=shader=>{
    for(const name of ['jersey','lower','cap','trim','shorts','sleeve'])shader.uniforms['kit_'+name]={value:new T.Color(palette[name]||palette.jersey)};
    shader.uniforms.kit_sleeved={value:palette.sleeve?1:0};
+   shader.uniforms.kit_front_print={value:palette.frontPrint?1:0};
    shader.uniforms.hybridSkinMap={value:skinMap};shader.uniforms.hybridSkinDetail=detail;
    shader.vertexShader=shader.vertexShader.replace('#include <common>',`#include <common>
 attribute float paintZone; attribute vec2 paintUV; attribute float shirtMix; attribute vec3 facePoint; attribute float beard; attribute float hair;
@@ -28,13 +29,15 @@ attribute vec4 cuffSourceA,cuffSourceB,cuffWeights;
 uniform vec3 kit_jersey,kit_lower,kit_cap,kit_trim,kit_shorts,kit_sleeve;
 uniform float hybridSkinDetail;
 varying vec2 vHybridSkinUV; varying float vHybridSkin; varying float vSleeve; varying float vArmBinding;
-varying vec3 vFacePoint; varying float vBeard; varying float vHair;
+varying vec3 vFacePoint; varying float vBeard; varying float vHair; varying float vOldShirt; varying float vFrontPrint;
 `).replace('#include <color_vertex>',`#include <color_vertex>
 vHybridSkinUV=paintUV;
 vFacePoint=facePoint; vBeard=beard; vHair=hair;
 vHybridSkin=(paintZone>0.9 && paintZone<1.1 && color.r>0.06)?hybridSkinDetail:0.0;
 vSleeve=paintZone>6.9 && paintZone<7.1?1.0:0.0;
 vArmBinding=paintZone>7.9 && paintZone<8.1?1.0:0.0;
+vOldShirt=((paintZone>2.9 && paintZone<5.1) || vSleeve>0.5 || vArmBinding>0.5)?1.0:0.0;
+vFrontPrint=paintZone>8.9?1.0:0.0;
 if(vHybridSkin>0.0) vColor.rgb=mix(vColor.rgb,vec3(clamp(color.r/.56,.65,1.3)*.75),vHybridSkin);
 if(paintZone>1.9 && paintZone<2.1) vColor.rgb=kit_cap;
 if(paintZone>2.9 && paintZone<4.1) vColor.rgb=mix(kit_lower,kit_jersey,shirtMix);
@@ -56,12 +59,14 @@ if(cuffSourceA.w>=0.0){
 }
 `);
    shader.fragmentShader=shader.fragmentShader.replace('#include <common>',`#include <common>
-uniform sampler2D hybridSkinMap; uniform float kit_sleeved;
+uniform sampler2D hybridSkinMap; uniform float kit_sleeved,kit_front_print;
 varying vec2 vHybridSkinUV; varying float vHybridSkin; varying float vSleeve; varying float vArmBinding;
-varying vec3 vFacePoint; varying float vBeard; varying float vHair;
+varying vec3 vFacePoint; varying float vBeard; varying float vHair; varying float vOldShirt; varying float vFrontPrint;
 `).replace('#include <color_fragment>',`#include <color_fragment>
 if(vSleeve>0.5 && kit_sleeved<0.5) discard;
 if(vArmBinding>0.5 && kit_sleeved>0.5) discard;
+if(vOldShirt>0.5 && kit_sleeved>0.5) discard;
+if(vFrontPrint>0.5 && (kit_front_print<0.5 || kit_sleeved>0.5)) discard;
 if(vHybridSkin>0.0) diffuseColor.rgb *= mix(vec3(1.0),texture2D(hybridSkinMap,vHybridSkinUV).rgb,vHybridSkin);
 if(vHair>0.5){
  float line=vHair<1.5?.063:vHair<2.5?.056:vHair<3.5?.052:.058+.002*sin(vFacePoint.x*160.0);

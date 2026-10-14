@@ -14,7 +14,7 @@ with sync_playwright() as p:
     page.wait_for_function('document.body.dataset.ready === "true" || !!document.body.dataset.loadError',timeout=60000)
     assert not page.evaluate('document.body.dataset.loadError'),page.locator('#status').inner_text()
     assert page.evaluate('illustratedPreview.stats.hybrid.animation')=='continuous-skinned-3d'
-    assert page.evaluate('illustratedPreview.stats.configuration')=='hybrid-v31'
+    assert page.evaluate('illustratedPreview.stats.configuration')=='hybrid-v32'
     page.evaluate('illustratedPreview.seekRace(16)')
     page.screenshot(path=str(out/'festival.png'))
     page.locator('#view').click()
@@ -34,10 +34,10 @@ with sync_playwright() as p:
         second=out/f'{posture}-continuity-b.png';page.locator('#scene').screenshot(path=str(second))
         assert ImageChops.difference(Image.open(first).convert('RGB'),Image.open(second).convert('RGB')).getbbox(), 'Sub-frame pose did not move'
     contacts=page.evaluate('''()=>{
-      const h=illustratedPreview.hybrid,actors=h.actors.filter(a=>a.role==='rower'&&[2,3,18,19].includes(a.id));
+      const h=illustratedPreview.hybrid,actors=h.actors.filter(a=>a.role==='helm'||a.role==='rower'&&[2,3,18,19].includes(a.id));
       const initial=new Map();let maxPalmGap=0,maxFootDrift=0;
-      for(let step=0;step<33;step++){
-       h.render(step/33,step/33);
+      for(const effort of [0,1])for(let step=0;step<33;step++){
+       h.render(step/33,step/33*5,{effort});
        for(const a of actors){
         const bones=a.master.skeleton.bones,position=n=>bones.find(b=>b.name===n).getWorldPosition(a.group.position.clone()).applyMatrix4(a.group.matrixWorld);
         const upper=a.side<0?'l':'r';

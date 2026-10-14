@@ -1,0 +1,58 @@
+{
+  "roles": [
+    {
+      "role": "seated",
+      "animations": [
+        {
+          "name": "Scene",
+          "duration": 1.0104166269302368,
+          "tracks": 163
+        }
+      ],
+      "bones": 53,
+      "shirtVisible": true,
+      "maxGarmentGapM": 0.0055164344950718895
+    },
+    {
+      "role": "standing",
+      "animations": [
+        {
+          "name": "Scene",
+          "duration": 1.0104166269302368,
+          "tracks": 163
+        }
+      ],
+      "bones": 53,
+      "shirtVisible": true,
+      "maxGarmentGapM": 0.005636722795736143
+    },
+    {
+      "role": "caller",
+      "animations": [
+        {
+          "name": "Scene",
+          "duration": 1.0104166269302368,
+          "tracks": 161
+        }
+      ],
+      "bones": 53,
+      "shirtVisible": true,
+      "maxGarmentGapM": 0.005512773180660677
+    },
+    {
+      "role": "controller",
+      "animations": [
+        {
+          "name": "Scene",
+          "duration": 1.0104166269302368,
+          "tracks": 161
+        }
+      ],
+      "bones": 53,
+      "shirtVisible": true,
+      "maxGarmentGapM": 0.005512773184411123
+    }
+  ],
+  "actualPosesPerRole": 17,
+  "errors": []
+}

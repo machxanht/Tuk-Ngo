@@ -2,7 +2,7 @@
 from pathlib import Path
 import argparse
 from playwright.sync_api import sync_playwright
-parser=argparse.ArgumentParser();parser.add_argument('--version',default='27');parser.add_argument('--url',default='http://127.0.0.1:4255/');parser.add_argument('--festival-only',action='store_true');args=parser.parse_args()
+parser=argparse.ArgumentParser();parser.add_argument('--version',default='27');parser.add_argument('--url',default='http://127.0.0.1:4255/');parser.add_argument('--festival-only',action='store_true');parser.add_argument('--body-team');args=parser.parse_args()
 version='v'+args.version;out=Path('E:/AI/Um Tuk/asset-studio/hybrid-'+version+'/video');out.mkdir(parents=True,exist_ok=True)
 with sync_playwright() as p:
  browser=p.chromium.launch(channel='msedge',headless=True);page=browser.new_page(viewport={'width':1200,'height':900})
@@ -11,6 +11,7 @@ with sync_playwright() as p:
   page.locator('#view').click();page.locator('#study-focus').select_option('face');page.locator('#posture').select_option('caller')
   with page.expect_download(timeout=30000) as download:page.evaluate('illustratedPreview.record(6)')
   download.value.save_as(out/('athlete-face-'+version+'.webm'));page.screenshot(path=str(out/('face-'+version+'.png')))
+  if args.body_team:page.evaluate('async id=>{await hybridTeams.setPair([id,"tum-nup-2"]);}',args.body_team)
   page.locator('#study-focus').select_option('body');page.locator('#posture').select_option('seated')
   with page.expect_download(timeout=30000) as download:page.evaluate('illustratedPreview.record(6)')
   download.value.save_as(out/('athlete-continuous-'+version+'.webm'));page.screenshot(path=str(out/('athlete-'+version+'.png')))

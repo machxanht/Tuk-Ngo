@@ -1,0 +1,87 @@
+{
+  "topology": {
+    "vertices": 533,
+    "triangles": 896,
+    "components": 1,
+    "boundaryLoops": 4,
+    "nonmanifoldEdges": 0
+  },
+  "masterRigs": [
+    {
+      "role": "Scene",
+      "actor": 16,
+      "posture": "seated",
+      "maximumSurfaceOffsetM": 0.0055165900625565555,
+      "maximumPackedShaderErrorM": 4.410288867790415e-05,
+      "sprintSurfaceOffsetM": 0.0055165900625565555
+    },
+    {
+      "role": "Scene",
+      "actor": 17,
+      "posture": "seated",
+      "maximumSurfaceOffsetM": 0.005516552848498267,
+      "maximumPackedShaderErrorM": 3.951145210437487e-05,
+      "sprintSurfaceOffsetM": 0.005516552848498267
+    },
+    {
+      "role": "Scene",
+      "actor": 50,
+      "posture": "standing",
+      "maximumSurfaceOffsetM": 0.005516937830886364,
+      "maximumPackedShaderErrorM": 4.30973040560836e-05,
+      "sprintSurfaceOffsetM": 0.005516937830886364
+    },
+    {
+      "role": "Scene",
+      "actor": 51,
+      "posture": "standing",
+      "maximumSurfaceOffsetM": 0.005516908727677743,
+      "maximumPackedShaderErrorM": 3.765738290665771e-05,
+      "sprintSurfaceOffsetM": 0.005516908727677743
+    },
+    {
+      "role": "Scene",
+      "actor": 1,
+      "posture": "seated",
+      "maximumSurfaceOffsetM": 0.005512777715987111,
+      "maximumPackedShaderErrorM": 3.015451824176719e-05,
+      "sprintSurfaceOffsetM": 0.005512777715987111
+    },
+    {
+      "role": "Scene",
+      "actor": 52,
+      "posture": "standing",
+      "maximumSurfaceOffsetM": 0.005512777657403289,
+      "maximumPackedShaderErrorM": 3.155950151450263e-05,
+      "sprintSurfaceOffsetM": 0.005512777657403289
+    },
+    {
+      "role": "Scene",
+      "actor": 55,
+      "posture": "standing",
+      "maximumSurfaceOffsetM": 0.005517829208034809,
+      "maximumPackedShaderErrorM": 4.044527716810144e-05,
+      "sprintSurfaceOffsetM": 0.005517829208034809
+    },
+    {
+      "role": "Scene",
+      "actor": 54,
+      "posture": "standing",
+      "maximumSurfaceOffsetM": 0.005517788954298921,
+      "maximumPackedShaderErrorM": 4.2359552118868256e-05,
+      "sprintSurfaceOffsetM": 0.005517788954298921
+    }
+  ],
+  "draw": {
+    "triangles": 956661,
+    "drawCalls": 259,
+    "teamTextures": 3,
+    "kitMaterials": 10,
+    "vertexAttributes": 14,
+    "vertexAttributeLimit": 16
+  },
+  "url": "http://127.0.0.1:4255/",
+  "posesPerMasterRig": 34,
+  "actualShaderErrors": [],
+  "signedUniversalCollisionProof": false
+}

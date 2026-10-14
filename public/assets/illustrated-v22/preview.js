@@ -3,7 +3,7 @@ const canvas=document.querySelector('#scene'),ctx=canvas.getContext('2d');
 const CONFIG=TukNgoConfig,W=CONFIG.camera.width;let H=CONFIG.camera.height,sceneMode='festival',gameMode='demo',renderedFrames=0,renderScale=1,lowPower=false;
 function resizeCanvas(){const width=Math.min(CONFIG.camera.maxRenderWidth,(canvas.clientWidth||innerWidth)*Math.min(devicePixelRatio||1,CONFIG.camera.maxPixelRatio));renderScale=width/W;canvas.width=Math.round(width);canvas.height=Math.round(H*renderScale);hybrid?.resize(lowPower?Math.min(900,canvas.width):canvas.width);}
 const sources={fx:'water-effects.webp'};
-const images={};let ready=false,playing=true,time=0,cadence=80,last=null,manualPose=false,hybrid;
+const images={},strokeEfforts=new Map();let ready=false,playing=true,time=0,cadence=80,last=null,manualPose=false,hybrid;
 resizeCanvas();
 const crowdAudio=new Audio('crowd-cheer-cc0.mp3');crowdAudio.loop=true;crowdAudio.preload='none';crowdAudio.volume=.18;let sound=false;
 function updateAudio(){if(sound&&playing&&!document.hidden)crowdAudio.play().catch(()=>{sound=false;document.querySelector('#sound').textContent='Bật tiếng';document.querySelector('#sound').setAttribute('aria-pressed','false');});else crowdAudio.pause();}
@@ -31,7 +31,9 @@ function drawBoat(t,animation={}){
  if(!ready||!hybrid)return;
  const tempo=animation.cadence??cadence,motion=animation.motion??1,cycles=animation.cycles??t*tempo/60,phase=((cycles%1)+1)%1;
  const study=sceneMode==='boat',posture=document.querySelector('#posture').value;
- ctx.drawImage(hybrid.render(phase,t,{study,posture,teamId:study?(document.querySelector('#study-kit').value==='team'?hybridTeams.near.id:null):animation.teamId||hybridTeams.near.id,kitColor:study?document.querySelector('#study-kit').value:animation.kitColor||'#23855e',faceVariant:study?Number(document.querySelector('#study-face').value):null,skinDetail:lowPower?0:1,focus:study?document.querySelector('#study-focus').value:'body'}),0,0,W,CONFIG.camera.workshopHeight);
+ const effortKey=animation.id||'study',effortTarget=Math.min(1,Math.max(0,(tempo-95)/10))*motion;
+ let effort=strokeEfforts.get(effortKey);if(!effort){effort={value:effortTarget,t};strokeEfforts.set(effortKey,effort);}else{const dt=Math.max(0,Math.min(.1,t-effort.t));effort.value+=(effortTarget-effort.value)*(1-Math.exp(-dt*5));effort.t=t;}
+ ctx.drawImage(hybrid.render(phase,t,{study,posture,teamId:study?(document.querySelector('#study-kit').value==='team'?hybridTeams.near.id:null):animation.teamId||hybridTeams.near.id,kitColor:study?document.querySelector('#study-kit').value:animation.kitColor||'#23855e',faceVariant:study?Number(document.querySelector('#study-face').value):null,skinDetail:lowPower?0:1,focus:study?document.querySelector('#study-focus').value:'body',effort:effort.value}),0,0,W,CONFIG.camera.workshopHeight);
  if(motion>0&&!study){
   for(const [i,tip] of hybrid.tips.entries())if(tip.inWater){
    effect(tempo>95?2:0,...tip.point,55+Math.max(0,tempo-80)*1.3,.55*motion);
@@ -116,7 +118,7 @@ function updateModeUI(){
 }
 function setMode(mode,kind='quick'){
  if(mode==='play')quickRace.enter(kind);else window.hybridCup?.leave();
- gameMode=mode;sceneMode='festival';H=CONFIG.camera.height;resizeCanvas();practice.strokes=0;practice.accuracy=0;practice.lastScore=0;time=0;playing=true;manualPose=false;illustratedRace.reset();document.querySelector('#toggle').textContent='Dừng';
+  gameMode=mode;sceneMode='festival';H=CONFIG.camera.height;resizeCanvas();strokeEfforts.clear();practice.strokes=0;practice.accuracy=0;practice.lastScore=0;time=0;playing=true;manualPose=false;illustratedRace.reset();document.querySelector('#toggle').textContent='Dừng';
  document.querySelector('#practice-result').textContent='Chạm sân hoặc bấm Chèo khi dằm vào nước';updateModeUI();
  hybridTeams.update();draw(time);updateAudio();
 }

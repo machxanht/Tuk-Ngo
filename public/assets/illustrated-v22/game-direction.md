@@ -25,7 +25,7 @@ Góc nhìn này ưu tiên thấy rõ nhịp chèo, đầu/đuôi ghe, hoa văn v
 | Giải 8 ghe | Tứ kết, bán kết, chung kết với tám đội nam 2025 | Dùng cùng gameplay và renderer; thắng tiến vòng, hòa đua lại, thua bị loại. Lưu sau mỗi trận. Đây là giải mô phỏng, không phát lại kết quả thật |
 | Xưởng ghe/asset | Kiểm tra silhouette, tư thế, lớp che chân và file nguồn | Công cụ kiểm tra, không phải chế độ chơi |
 
-Thứ tự làm tiếp là **Tập chèo → Đua nhanh → Giải đấu**. Tập chèo và Đua nhanh phải dùng cùng renderer, quy ước nhịp, mặt nước, camera và tỷ lệ nhân vật. Không làm một engine riêng cho mỗi mục.
+Tập chèo, Đua nhanh và Giải 8 ghe dùng chung renderer, quy ước nhịp, mặt nước, camera và tỷ lệ nhân vật. Giải đấu dùng cùng luật trận, thêm tiến vòng và lưu kết quả sau trận.
 
 ## Quy tắc bố cục sân
 
@@ -44,7 +44,7 @@ Thứ tự làm tiếp là **Tập chèo → Đua nhanh → Giải đấu**. T�
 - Biên chế mẫu: 8 cặp ngồi phía trước, 17 cặp đứng phía sau, một người đầu ghe, một người điều khiển giữa, ba người lái cuối ghe.
 - VĐV ngồi/đứng trên điểm tựa trong lòng ghe; hai tay giữ đúng cán dằm. Thành ghe, chân và dằm có độ sâu 3D thật.
 - Không bóp nhỏ cả ghe để chữa mũi quá lớn. Sửa silhouette đầu ghe trong nguồn ảnh, sau đó kiểm tra lại điểm neo người và dằm.
-- VĐV dùng chu kỳ khung xương 97 mẫu với nội suy liên tục; người đầu ghe, điều khiển và lái có động tác riêng. Mười hai biến thể đầu/tông da được tạo từ một mesh gốc; hai ghe có màu áo riêng. Khán giả nền vẫn dùng hai tư thế cổ vũ, với chuyển động thân nhẹ và các thời điểm hò reo riêng; người đi bộ bốn pha. Khán giả chưa chuyển sang rig 3D.
+- VĐV dùng chu kỳ khung xương 97 mẫu với nội suy liên tục; người đầu ghe, điều khiển và lái có động tác riêng. Mười hai biến thể đầu/tông da được tạo từ một mesh gốc, có tóc/râu và phân bố theo người/đội. Khán giả gồm 28 kiểu; 24 kiểu có hai tư thế, bốn kiểu mới có bốn pha vỗ tay, vẫy tay, chụp ảnh và trẻ em cổ vũ. Chuyển động thân và thời điểm hò reo độc lập; người đi bộ bốn pha.
 - V27 dùng GLB có UV da được phục hồi từ file Blender và giữ normals mượt tại đường nối. Texture là nguồn MakeHuman CC0; áo, nón và chữ Khmer giữ vùng chất liệu riêng. Xưởng cho xem toàn thân hoặc cận mặt, chọn từng biến thể. Góc nhìn trận đua giữ nguyên.
 
 ## Nơi sửa và quy trình
@@ -71,6 +71,8 @@ V29 thêm 12 mẫu khán giả, tổng 24 kiểu, trộn góc nhìn trước/sau
 
 V30 sửa khe hở vai ở áo có tay: lớp vải bám bề mặt vai/cánh tay cùng skin weights, thay vòng tay áo riêng. Khi dùng áo có tay, viền nách áo ba lỗ được ẩn; cổ áo và lai áo giữ nguyên. Đây là kiểu may dựng gần đúng, chưa phải bản phục dựng đủ chi tiết từng áo thật.
 
-Chưa hoàn thành: giải đấu nhiều vòng, trang phục/kbach từng đội được xác minh đầy đủ, rig chuyển động khán giả gần và các khuôn mặt được tạo hình riêng. Chưa đo hiệu năng trên tablet thật.
+Các model là bản dựng game theo ảnh/video và nguồn có giấy phép, không phải bản scan từng VĐV hoặc khảo sát từng nhà. Chi tiết may và một số đối chiếu hoa văn trên bờ với số ghe thi đấu vẫn có giới hạn nguồn được ghi trong attribution. Hiệu năng trên tablet thật chưa được đo.
 
 V31 thêm 12 biến thể mặt ở hàm/má/cằm/mũi, tóc và râu nhẹ, trộn theo mã đội/người. Hai GLB tải xuống mới có trang phục và động tác hiện tại; người đầu ghe có hiệu chỉnh mép tay áo trong animation GLB. Mặt vẫn phát triển từ một mẫu giải phẫu; các đường ráp áo nhỏ và chi tiết may thật còn cần hoàn thiện. Chế độ Giải 8 ghe dùng cùng màn đua và lưu các vòng đã kết thúc ngay trên trình duyệt.
+
+V32 thay áo có tay bằng một mesh liền ở thân, vai và nách; màu tay áo theo đội, cổ có viền mảnh và lưng in `កូនខ្មែរ`. Điểm cắt vải theo các điểm giải phẫu đã biến dạng để không trôi khỏi cánh tay khi chèo. Nước rút đẩy nhanh pha kéo, giữ đường chuyển động/tay cầm dằm/chân trên điểm tựa, đồng thời tăng giọt nước. Bốn vai trò GLB mới dùng vật liệu glTF và animation có thể mở ngoài game. Link game/tablet tiếp tục giữ nguyên.
