@@ -127,7 +127,7 @@ and zero retained GPU geometries/textures after disposal. Edge headless measured
 31.6 FPS on this host; it does not establish physical tablet performance or a
 speedup over the previous host-limited measurement.
 
-## Public verification
+## Previous athlete milestone public verification
 
 Source commit `5c015960df8faf4679e71dbf582ea8827178d98b` was pushed to `main`.
 Pages commit `c0ecfaa84f7f9a672900741cc1b9465f77f70be7` deployed successfully
@@ -166,3 +166,20 @@ placement, mode remounting, direct water/splashes, and unobscured desktop/tablet
 layouts. An independent 96-phase endpoint comparison measured maximum cloth
 surface drift of 1.50 mm. This is sampled animation verification, not a claim of
 motion capture or measurements on a physical tablet.
+
+## Complete boat public verification
+
+Runtime source commit `94ae852` is published by Pages commit
+`efffebf14d70f56d5cf4e15aecefe2b5d867afa8`. GitHub Actions run
+`38966187816` completed successfully. The direct public browser gate passed for
+all 96 motion comparison samples, all eight role master geometry checks,
+three tablet viewport layouts, mode remounting and water/splash updates, with
+no browser errors. Fourteen public runtime files match the local bytes.
+The previous tablet URL forwards to the canonical 3D entry; **Giải 8 ghe**
+opens the preserved cup directly. Evidence: `docs/qa/athlete-master/public-boat`.
+
+The final material correction limits the shirt-print zone to zone 9; it no
+longer discards the authored hair in zone 10 when the connected kit is active.
+Public initial transfer measured approximately 8.0 MB with Pages compression.
+The same-server local comparison is approximately 31.2 MB before and 10.4 MB
+after, a 66.7% byte reduction. These figures do not establish physical tablet FPS.

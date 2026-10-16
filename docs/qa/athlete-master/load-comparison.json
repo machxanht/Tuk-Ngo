@@ -62,8 +62,8 @@
   "afterEvidence": "boat/check.json -> initialLoad",
   "claimLimit": "encoded resource bytes, not physical-tablet download or FPS measurements",
   "after": {
-    "resourceBytes": 10373443,
-    "readyMs": 2550.699999999255
+    "resourceBytes": 10373455,
+    "readyMs": 2510
   },
-  "byteReductionPercent": 66.71856782699143
+  "byteReductionPercent": 66.71852932702704
 }
