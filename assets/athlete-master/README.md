@@ -12,6 +12,7 @@ and the owner-requested text កូនខ្មែរ. Cap, paddle and hair-shel
 authored for this project. Reference photographs are not included as textures.
 
 The game keeps the original eight role motions and exact connected-shirt
-skinning. This GLB is a sampled single-athlete proof, not motion capture or a
-scan of a named competitor. Details, references and verification are recorded
+skinning. This GLB preserves all 161 original body/paddle tracks byte-for-byte; only
+the shirt surface is sampled at the original keys. It is not motion capture or
+a scan of a named competitor. Details, references and verification are recorded
 in `docs/asset-workflow.md` in the source repository.
