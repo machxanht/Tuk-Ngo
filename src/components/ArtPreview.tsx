@@ -1,6 +1,7 @@
 import {useEffect, useRef, useState} from 'react';
 import {Camera, Download, Pause, Play, RotateCcw, Video} from 'lucide-react';
 import './ArtPreview.css';
+import {athleteMasterDigest} from '../race/asset-digests.mjs';
 
 type Mode = 'boat' | 'athlete';
 export function ArtPreview({embedded=false}:{embedded?:boolean}) {
@@ -31,7 +32,7 @@ export function ArtPreview({embedded=false}:{embedded?:boolean}) {
  function togglePlaying(){if(playing)setInspectedPhase(Math.round(clock.current.phase*100));setPlaying(!playing);}
  function inspectPhase(value:number){setPlaying(false);setInspectedPhase(value);clock.current.phase=value/100;}
  async function record(){setRecordError('');setRecording(true);setPlaying(true);try{await runtime.current?.record();}catch(e){setRecordError(e instanceof Error?e.message:String(e));}finally{setRecording(false);}}
- const views=mode==='athlete'?[['front','Trước'],['side','Ngang'],['back','Sau'],['paddle','Dằm']]:[['boat','Toàn ghe'],['crew','Cận tay bơi'],['bow','Đầu ghe'],['stern','Lái cuối ghe']];
+ const views=mode==='athlete'?[['front','Trước'],['side','Ngang'],['back','Sau'],['paddle','Dằm']]:[['boat','Toàn ghe'],['banks','Hai bờ sông'],['top','Nhìn từ trên'],['crew','Cận tay bơi'],['kneel','Nhóm quỳ'],['bow','Đầu ghe'],['stern','Lái cuối ghe']];
  return <section className={'art-preview'+(embedded?' art-embedded':'')}>
   <header className="art-heading"><div><span className="art-kicker">GHE NGO · 3D</span><h1>{mode==='boat'?'Ghe Tum Núp 2 · 55 người':'VĐV Tum Núp 2'}</h1><p>Kéo để xoay · chụm hai ngón để phóng to</p></div><a className="art-back" href={import.meta.env.BASE_URL+'assets/illustrated-v22/race.html?mode=cup'}>Giải 8 ghe</a></header>
   <nav className="art-view-controls" aria-label="Chọn hình ảnh">
@@ -43,8 +44,8 @@ export function ArtPreview({embedded=false}:{embedded?:boolean}) {
    <div className="art-control-main"><button className="art-play" disabled={!ready} onClick={togglePlaying}>{playing?<Pause size={18}/>:<Play size={18}/>} {playing?'Dừng':'Chèo'}</button><button onClick={reset} aria-label="Xem lại chu kỳ chèo"><RotateCcw size={18}/></button><label className="art-cadence">Nhịp chèo <input aria-label="Nhịp chèo mỗi phút" type="range" min="30" max="96" value={cadence} onChange={e=>setCadence(Number(e.target.value))}/><strong>{cadence}<small>/phút</small></strong></label>{mode==='boat'&&<label className="art-water"><input type="checkbox" checked={splash} onChange={e=>setSplash(e.target.checked)}/> Nước té</label>}</div>
    <details className="art-tools"><summary>Kiểm tra pha chèo · tải asset · nguồn tham khảo</summary><div className="art-tool-content">
     <label className="art-cadence">Chu kỳ <input aria-label="Xem từng pha chèo" disabled={!ready||recording} type="range" min="0" max="100" step="1" value={inspectedPhase} onChange={e=>inspectPhase(Number(e.target.value))}/><strong>{inspectedPhase}%</strong></label>
-    <div className="art-control-links"><button disabled={!ready} onClick={()=>runtime.current?.capture()}><Camera size={16}/> Chụp ảnh</button><button disabled={!ready||recording} onClick={record}><Video size={16}/> {recording?'Đang ghi…':'Clip 10s'}</button><a href={import.meta.env.BASE_URL+'assets/athlete-master/athlete-master.glb'} download><Download size={16}/> GLB VĐV</a></div>
-    <p>Ghe dùng chung 8 bộ động tác với bản đua. VĐV đơn giữ nguyên track gốc khi xuất GLB, gồm cả áo và dằm. Nón, tóc và dằm dựng trong Blender; cơ thể MakeHuman/MPFB CC0. Đây là bản xem asset trên nước, chưa phải đường đua đầy đủ.</p>
+    <div className="art-control-links"><button disabled={!ready} onClick={()=>runtime.current?.capture()}><Camera size={16}/> Chụp ảnh</button><button disabled={!ready||recording} onClick={record}><Video size={16}/> {recording?'Đang ghi…':'Clip 10s'}</button><a href={import.meta.env.BASE_URL+'assets/athlete-master/athlete-master.glb?sha='+athleteMasterDigest} download><Download size={16}/> GLB VĐV</a></div>
+    <p>Ghe dùng chung 8 bộ động tác với bản đua. VĐV đơn dùng cùng bộ động tác đã sửa hướng chèo với cả ghe, gồm cả áo và dằm. Nón, tóc và dằm dựng trong Blender; cơ thể MakeHuman/MPFB CC0. Hai bờ dùng nhân vật Quaternius CC0 có chuyển động và phố 3D. Đây là cảnh xem asset; giải 8 ghe nằm ở nút riêng phía trên.</p>
     <p><a href="https://thanhnien.vn/chua-tum-nup-doat-cu-dup-vo-dich-ghe-ngo-nam-va-nu-185241115184726094.htm" target="_blank" rel="noreferrer">Ảnh trang phục và dằm</a> · <a href="https://baosoctrang.org.vn/multimedia/202411/media-ghe-ngo-chua-tum-nup-vo-dich-ca-nam-va-nu-f8b6c2a/" target="_blank" rel="noreferrer">Video thi đấu</a></p>
    </div></details>
    {(recording||recordError)&&<p role="status">{recording?'Đang ghi 10 giây…':recordError}</p>}

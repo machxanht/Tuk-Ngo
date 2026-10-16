@@ -196,10 +196,10 @@
       "round": "semifinal",
       "roundIndex": 1,
       "playerId": "tum-nup-2",
-      "opponentId": "chroi-tum-chas",
+      "opponentId": "prek-ta-cuol",
       "teams": [
         "tum-nup-2",
-        "chroi-tum-chas"
+        "prek-ta-cuol"
       ],
       "blocked": false
     },
@@ -208,10 +208,10 @@
       "round": "final",
       "roundIndex": 2,
       "playerId": "tum-nup-2",
-      "opponentId": "pothi-khsach",
+      "opponentId": "om-pou-year",
       "teams": [
         "tum-nup-2",
-        "pothi-khsach"
+        "om-pou-year"
       ],
       "blocked": false
     }

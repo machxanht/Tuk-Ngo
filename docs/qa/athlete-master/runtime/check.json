@@ -1,24 +1,24 @@
 {
   "maxRestoreError": 0,
-  "differentPose": 1.8934712543225727,
-  "render120Ms": 209.89999999850988,
+  "differentPose": 1.8135222306546526,
+  "render120Ms": 257.30000000074506,
   "updates": 90,
   "restores": 30,
   "gpuReuses": 30,
   "stats": {
-    "gpuRenders": 223,
+    "gpuRenders": 225,
     "gpuReuses": 34,
-    "poseUpdates": 224,
+    "poseUpdates": 226,
     "poseRestores": 34,
     "poseUpdatesByView": {
       "study": 123,
-      "far": 3,
-      "near": 67,
+      "far": 4,
+      "near": 68,
       "cache-check": 1,
       "far-bench": 30
     },
     "geometryCacheSize": 12,
-    "triangles": 1100312,
+    "triangles": 1100720,
     "drawCalls": 303,
     "teamTextures": 2,
     "kitMaterials": 7,
@@ -33,8 +33,8 @@
     "boundaryLoops": 4,
     "nonmanifoldEdges": 0
   },
-  "headlessFps": 31.57794911813299,
-  "loadSeconds": 3.0171107000005577,
+  "headlessFps": 31.74778568679634,
+  "loadSeconds": 3.289187899998069,
   "physicalTabletTested": false,
   "disposal": {
     "geometries": 0,

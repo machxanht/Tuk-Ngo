@@ -3,16 +3,17 @@ import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
 import {mergeGeometries} from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 import {saveCanvas,recordCanvas} from './art-preview.mjs';
+import {athleteMasterDigest} from './asset-digests.mjs';
 
 export async function startAthleteStudy(host,settings,clock,base,onReady){
  const loader=new GLTFLoader();
- const [gltf,hull]=await Promise.all([loader.loadAsync(base+'assets/athlete-master/athlete-master.glb'),loader.loadAsync(base+'assets/illustrated-v22/hull-rig-v25.glb')]);
+ const [gltf,hull]=await Promise.all([loader.loadAsync(base+'assets/athlete-master/athlete-master.glb?sha='+athleteMasterDigest),loader.loadAsync(base+'assets/illustrated-v22/hull-rig-v25.glb')]);
  if(!gltf.animations.length)throw Error('Thiếu chuyển động của VĐV mẫu.');
  const scene=new T.Scene();scene.background=new T.Color('#e3e9df');
  scene.add(new T.HemisphereLight('#e5eff4','#667069',1.7));
  const light=new T.DirectionalLight('#fff1df',3.3);light.position.set(3,5,4);scene.add(light);
  const rim=new T.DirectionalLight('#b8d8e7',1.9);rim.position.set(-3,3,-2);scene.add(rim);
- const root=gltf.scene;scene.add(root);root.traverse(o=>{if(o.isMesh)o.frustumCulled=false;});
+ const root=gltf.scene;root.position.x=.16;scene.add(root);root.traverse(o=>{if(o.isMesh)o.frustumCulled=false;});
  const mixer=new T.AnimationMixer(root);for(const clip of gltf.animations)mixer.clipAction(clip).play();
  const duration=Math.max(...gltf.animations.map(c=>c.duration));
  // Same scene handles used for render/export acceptance checks; no second rig.
@@ -25,7 +26,7 @@ export async function startAthleteStudy(host,settings,clock,base,onReady){
  const limits=[new T.Plane(new T.Vector3(0,0,1),1.35),new T.Plane(new T.Vector3(0,0,-1),1.35)];
  section.updateMatrixWorld(true);
  const ray=new T.Raycaster(),hullBody=hull.scene.getObjectByName('Hull_Watertight_30_20x1_12');let innerFloor=.07;
- for(const x of [-.14,.14]){ray.set(new T.Vector3(x,3,.4),new T.Vector3(0,-1,0));const hit=ray.intersectObject(hullBody,true)[0];if(hit)innerFloor=Math.max(innerFloor,hit.point.y+.015);}
+ for(const x of [root.position.x-.14,root.position.x+.14]){ray.set(new T.Vector3(x,3,.4),new T.Vector3(0,-1,0));const hit=ray.intersectObject(hullBody,true)[0];if(hit)innerFloor=Math.max(innerFloor,hit.point.y+.015);}
  const groups=new Map(),sourceGeometry=new Set(),probe=new T.Vector3();
  hull.scene.traverse(o=>{
   if(!o.isMesh)return;sourceGeometry.add(o.geometry);
@@ -68,7 +69,7 @@ export async function startAthleteStudy(host,settings,clock,base,onReady){
  const camera=new T.PerspectiveCamera(36,1,.02,50);const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.minDistance=.7;controls.maxDistance=6;controls.maxPolarAngle=Math.PI*.89;
  let disposed=false,raf=0,lastView='',w=1,h=1;
  const views={front:{position:[-1.55,1.30,2.24],target:[-.12,.59,.15]},side:{position:[2.50,1.05,.40],target:[-.15,.58,.20]},back:{position:[-1.25,1.25,-2.20],target:[-.1,.59,.12]},paddle:{position:[2.4,1.1,1.9],target:[-.4,.43,.18]}};
- for(const view of Object.values(views)){view.position[1]+=lift;view.target[1]+=lift;}
+ for(const view of Object.values(views)){view.position[1]+=lift;view.target[1]+=lift;view.position[0]+=root.position.x;view.target[0]+=root.position.x;}
  function resize(){w=host.clientWidth;h=host.clientHeight;renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix();lastView='';}
  const observer=new ResizeObserver(resize);observer.observe(host);resize();
  function frame(now){

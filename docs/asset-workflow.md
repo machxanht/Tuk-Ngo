@@ -183,3 +183,46 @@ longer discards the authored hair in zone 10 when the connected kit is active.
 Public initial transfer measured approximately 8.0 MB with Pages compression.
 The same-server local comparison is approximately 31.2 MB before and 10.4 MB
 after, a 66.7% byte reduction. These figures do not establish physical tablet FPS.
+
+
+## Outboard rowing and bright festival banks
+
+The canonical root now uses `rowing-motion.glb`, an offline derived bundle of
+all eight role clips. `scripts/build-rowing-motion.mjs` preserves the eight
+source GLBs and the original skeletons. The port/starboard source bindings are
+corrected before baking outboard blade trajectories. Rear rowers use a low
+half-kneeling stance and fitted knee pads; the caller is at x=12.35 m with the
+same pelvis height as the first seated rower. Three stern helmsmen sweep long
+blades aft and lift them above the water during recovery.
+
+The saved Blender scene and exported standalone athlete use the same calibrated
+clip. Blender pose bones are converted through the original inverse binds;
+the final GLB retains the exact derived samplers rather than resampling the
+scene export. Rebuild the motion before running `assemble-athlete.py`. Original
+shirt topology (533 vertices / 896 triangles / four boundary loops), eight
+master source clips, body and hull hashes remain protected and unchanged.
+
+The boat scene has two 3D banks across a 61 m channel, two covered stands,
+2,214 people (1,107 on each bank), 11 CC0 Quaternius character models, twelve
+clothing tints, seven activities, ten Khmer signs, 42 instanced house frontages
+and moving road vehicles. The scene is an authored asset inspection reach,
+not a surveyed recreation or a completed 3D race course. The preserved cup
+remains accessible through its own button.
+
+`build-crowd-preview.mjs` packages the existing two lower civilian LODs and
+unchanged bone palettes into a 3.92 MB compressed stream (7.97 MB decoded),
+instead of fetching the full-resolution meshes. Modern browsers decompress
+it with DecompressionStream; a raw canonical binary is the compatibility
+fallback. The compact data and source models retain their CC0 attribution.
+The near and middle crowd budgets are 24 and 280. Pose updates run in the GPU;
+random activity phase, speed, model, colour and age avoid a uniform crowd.
+
+`check-athlete-browser.py` verifies 96 animation phases, both outboard margins,
+all eight master soles and hand grips, 34 half-kneeling people, fitted knee
+supports, caller seat alignment, stern reach/lift, three tablet layouts,
+actual rendered crowd pixel changes, Khmer font loading, splashes and remounts.
+Local evidence is in `docs/qa/athlete-master/boat/check.json`. Maximum sampled
+standalone palm gap was 3.06 mm, within the shared 5 mm interpolation tolerance;
+standalone and shared bone positions agreed to floating-point precision.
+The first local transfer with the added 3D banks was 14.94 MB; the host reported
+about 32 FPS. These are desktop browser measurements, not physical tablet FPS.

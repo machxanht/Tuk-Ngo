@@ -20,18 +20,9 @@ QA=ROOT/'docs/qa/athlete-master'
 bpy.ops.wm.open_mainfile(filepath=str(SOURCE/'athlete-master.blend'))
 scene=bpy.context.scene
 arm=next(o for o in scene.objects if o.type=='ARMATURE')
-factor=96/scene.render.fps
-actions={o.animation_data.action for o in (arm,scene.objects.get('Dam_Wood_152cm')) if o and o.animation_data and o.animation_data.action}
-for action in actions:
-    for layer in action.layers:
-        for strip in layer.strips:
-            for bag in strip.channelbags:
-                for curve in bag.fcurves:
-                    for key in curve.keyframe_points:
-                        key.co.x*=factor;key.handle_left.x*=factor;key.handle_right.x*=factor
 data=json.loads((ROOT/'public/assets/illustrated-v22/shirt-runtime-v32.json').read_text())
 def xyz(p):return Vector((p[0],-p[2],p[1]))
-source_raw=(ROOT/'public/assets/illustrated-v22/motion-seated-port-v25.glb').read_bytes()
+source_raw=(OUT/'rowing-motion.glb').read_bytes()
 source_size=struct.unpack_from('<I',source_raw,12)[0]
 source_doc=json.loads(source_raw[20:20+source_size]);source_bin=source_raw[28+source_size:]
 body_raw=(ROOT/'public/assets/illustrated-v22/athlete-rig-v27.glb').read_bytes()
@@ -64,7 +55,7 @@ def value(name,path,default,time):
     if path=='rotation':
         a,b=values[i],values[i+1];q=Quaternion((a[3],*a[:3])).slerp(Quaternion((b[3],*b[:3])),float(amount));return (q.x,q.y,q.z,q.w)
     return values[i]*(1-amount)+values[i+1]*amount
-def coordinates(time):
+def pose_world(time):
     world={}
     def transform(i):
         if i in world:return world[i]
@@ -76,7 +67,11 @@ def coordinates(time):
         if 'matrix' in node and not any((name,k) in tracks for k in ('translation','rotation','scale')):local=Matrix(np.array(node['matrix']).reshape(4,4).T.tolist())
         world[i]=transform(parents[i]) @ local if i in parents else local
         return world[i]
-    matrices={name:transform(i) @ inverse for name,(i,inverse) in joint_ids.items()}
+    for i in range(len(body_doc['nodes'])):transform(i)
+    return world
+def coordinates(time):
+    world=pose_world(time)
+    matrices={name:world[i] @ inverse for name,(i,inverse) in joint_ids.items()}
     values=[]
     for vertex in data['vertices']:
         position=Vector((0,0,0))
@@ -100,7 +95,8 @@ old=scene.objects.get('Connected_Race_Shirt')
 # Reuse the existing coherent UV/atlas for a motion-only rebuild. Repainting
 # unchanged shirt surfaces is costly and can introduce unnecessary UV churn.
 cached_uv=None;cached_material=None
-if old and len(old.data.vertices)==len(points) and old.data.uv_layers.active and max((v.co-p).length for v,p in zip(old.data.vertices,points))<1e-5:
+same_topology=old and [list(p.vertices) for p in old.data.polygons]==[data['indices'][i:i+3] for i in range(0,len(data['indices']),3)]
+if same_topology and len(old.data.vertices)==len(points) and old.data.uv_layers.active:
     cached_uv=[tuple(loop.uv) for loop in old.data.uv_layers.active.data]
     cached_material=old.data.materials[0] if old.data.materials else None
 if old:bpy.data.objects.remove(old,do_unlink=True)
@@ -202,6 +198,27 @@ for layer in action.layers:
             for curve in bag.fcurves:
                 for key in curve.keyframe_points:key.interpolation='LINEAR'
 scene.frame_start=0;scene.frame_end=round(duration*96);scene.render.fps=96
+# The editable Blender source must show the corrected motion as well as the
+# GLB. Transfer the exact glTF world poses to the original armature's basis;
+# meshes, rest joints, weights and protected source files stay untouched.
+convert=Matrix(((1,0,0,0),(0,0,-1,0),(0,1,0,0),(0,0,0,1)));unconvert=convert.inverted()
+pivot=scene.objects.get('Dam_Wood_152cm');arm.animation_data_clear()
+if pivot:pivot.animation_data_clear()
+node_ids={n.get('name'):i for i,n in enumerate(body_doc['nodes'])}
+ordered=sorted(arm.pose.bones,key=lambda b:len(b.parent_recursive))
+for b in ordered:b.rotation_mode='QUATERNION'
+for time in sample_times:
+    frame=time*96;scene.frame_set(int(frame),subframe=frame%1);world=pose_world(time)
+    for b in ordered:
+        node,inverse=joint_ids[b.name]
+        deform=convert @ world[node] @ inverse @ unconvert
+        b.matrix=arm.matrix_world.inverted() @ deform @ arm.matrix_world @ b.bone.matrix_local
+        bpy.context.view_layer.update()
+        for prop in ('location','rotation_quaternion','scale'):b.keyframe_insert(data_path=prop,frame=frame)
+    bpy.context.view_layer.update()
+    if pivot:
+        pivot.rotation_mode='QUATERNION';pivot.matrix_world=convert @ world[node_ids['Dam_Wood_152cm']] @ unconvert
+        for prop in ('location','rotation_quaternion','scale'):pivot.keyframe_insert(data_path=prop,frame=frame)
 scene.frame_set(8)
 # Frame the seated body and paddle with little unused space.
 camera=scene.camera;target=Vector((0,0,.60));camera.location=target+Vector((2.3,-3.8,1.1));camera.rotation_euler=(target-camera.location).to_track_quat('-Z','Y').to_euler();camera.data.ortho_scale=1.9
@@ -294,6 +311,6 @@ binary.extend(b'\0'*((-len(binary))%4));document['buffers'][0]['byteLength']=len
 encoded=json.dumps(document,separators=(',',':')).encode();encoded+=b' '*((-len(encoded))%4)
 tail=struct.pack('<II',len(binary),0x004E4942)+binary
 glb_path.write_bytes(struct.pack('<III',0x46546C67,2,20+len(encoded)+len(tail))+struct.pack('<II',len(encoded),0x4E4F534A)+encoded+tail)
-report={'shirtVertices':len(mesh.vertices),'shirtTriangles':sum(len(p.vertices)-2 for p in mesh.polygons),'shirtSamples':samples,'shirtBake':'exact source glTF joint matrices and endpoint interpolation at every original key','motionTracks':'original seated-port samplers copied without resampling','durationS':duration,'originalEightMotionFilesChanged':False,'glbBytes':(OUT/'athlete-master.glb').stat().st_size,'sourceBlendBytes':(SOURCE/'athlete-master.blend').stat().st_size}
+report={'shirtVertices':len(mesh.vertices),'shirtTriangles':sum(len(p.vertices)-2 for p in mesh.polygons),'shirtSamples':samples,'shirtBake':'exact calibrated glTF joint matrices and endpoint interpolation at every motion key','motionTracks':'calibrated seated-port from the shared eight-role bundle; no export resampling','durationS':duration,'originalEightMotionFilesChanged':False,'glbBytes':(OUT/'athlete-master.glb').stat().st_size,'sourceBlendBytes':(SOURCE/'athlete-master.blend').stat().st_size}
 (QA/'assembly.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
 print(json.dumps(report))

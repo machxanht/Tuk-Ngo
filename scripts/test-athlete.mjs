@@ -27,7 +27,7 @@ const animated=new Set(master.animations[0].channels.map(c=>master.nodes[c.targe
 assert.ok([...animated].some(n=>n.includes('Shirt')));assert.ok(animated.has('Dam_Wood_152cm'));assert.ok(animated.has('head'));
 const rootNodes=new Set(master.scenes[master.scene||0].nodes);
 master.nodes.forEach((node,i)=>{if(node.skin!==undefined)assert.ok(rootNodes.has(i),'Skin must be a scene root');});
-const {doc:source,bin:sourceBin}=await glb('public/assets/illustrated-v22/motion-seated-port-v25.glb');
+const {doc:source,bin:sourceBin}=await glb('public/assets/athlete-master/rowing-motion.glb');
 function accessorBytes(doc,bin,id){const a=doc.accessors[id],v=doc.bufferViews[a.bufferView],width={SCALAR:1,VEC3:3,VEC4:4}[a.type]*4;assert.equal(a.componentType,5126);const start=(v.byteOffset||0)+(a.byteOffset||0);return Buffer.concat(Array.from({length:a.count},(_,i)=>bin.subarray(start+i*(v.byteStride||width),start+i*(v.byteStride||width)+width)));}
 const newTracks=new Map(master.animations[0].channels.map(c=>[master.nodes[c.target.node].name+'|'+c.target.path,master.animations[0].samplers[c.sampler]]));
 for(const channel of source.animations[0].channels){
@@ -38,4 +38,4 @@ for(const channel of source.animations[0].channels){
 const validated=await validateBytes(new Uint8Array(await readFile('public/assets/athlete-master/athlete-master.glb')));
 assert.equal(validated.issues.numErrors,0,JSON.stringify(validated.issues.messages));
 assert.equal(validated.issues.numWarnings,0,JSON.stringify(validated.issues.messages));
-console.log('Athlete: unchanged shirt geometry; fitted equipment; all 161 original animation samplers preserved byte-for-byte.');
+console.log('Athlete: unchanged shirt geometry; fitted equipment; all calibrated motion samplers copied to the standalone GLB without resampling.');

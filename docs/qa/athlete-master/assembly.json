@@ -2,10 +2,10 @@
   "shirtVertices": 533,
   "shirtTriangles": 896,
   "shirtSamples": 98,
-  "shirtBake": "exact source glTF joint matrices and endpoint interpolation at every original key",
-  "motionTracks": "original seated-port samplers copied without resampling",
+  "shirtBake": "exact calibrated glTF joint matrices and endpoint interpolation at every motion key",
+  "motionTracks": "calibrated seated-port from the shared eight-role bundle; no export resampling",
   "durationS": 1.0104166269302368,
   "originalEightMotionFilesChanged": false,
-  "glbBytes": 6274336,
-  "sourceBlendBytes": 5260297
+  "glbBytes": 6328528,
+  "sourceBlendBytes": 5553950
 }

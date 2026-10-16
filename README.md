@@ -1,6 +1,6 @@
 # Tuk-Ngo — hybrid ghe Ngo racing on Maspéro
 
-The canonical runtime uses unversioned modules in `src/race/`, with one existing tablet URL: **https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/**. Choose **Đua nhanh** or **Giải 8 ghe**; automatic racing, practice and athlete inspection remain available.
+The canonical tablet entry is **https://machxanht.github.io/Tuk-Ngo/**. It opens a complete 3D boat with 55 people, corrected outboard rowing, half-kneeling rear rowers, bow caller and aft steering. **Hai bờ sông** shows the bright 3D festival reach: 2,214 animated spectators, two grandstands, Khmer banners and 42 house frontages. **Giải 8 ghe** opens the preserved cup. The previous tablet URL redirects to this same entry. Runtime modules have canonical unversioned names in `src/race/`.
 
 The race has three phases: explosive start (0–200 m), cruise (200–950 m), and final sprint (950–1,200 m). Chèo timing gives PERFECT / GOOD / BAD. PERFECT builds the charge for **Đạp**; its four-second final-phase surge requires 60% charge and 24% stamina. AI has its own cadence, stamina and charge. Team identity changes appearance only.
 
@@ -12,9 +12,9 @@ V29 adds twelve illustrated spectator pose pairs (24 total looks), fixes Kos Thu
 
 V31 adds localized athlete face/hair variants, current portable rower/caller GLBs, corrected cuff surface motion, and an eight-boat cup using the same touch race. [Implementation, checks and remaining asset work](docs/hybrid-v31.md) distinguish completed features from unverified visual fidelity. The tablet URL stays unchanged.
 
-The current primary game is the **bright hybrid preview**: actual 3D hull and skinned rowers on the approved painted festival. One renderer serves automatic racing, rhythm practice, close-athlete inspection and the V26 playable 1,200 m race. The tested existing gameplay model supplies timing, endurance, an independent opponent and finish results. The canonical root and the owner's existing tablet link open this version:
+The previous **bright hybrid preview**, preserved at `assets/illustrated-v22/race.html`, uses actual 3D hull and skinned rowers on the approved painted festival. One renderer serves automatic racing, rhythm practice, close-athlete inspection and the V26 playable 1,200 m race. The tested existing gameplay model supplies timing, endurance, an independent opponent and finish results. Its preserved race entry is:
 
-https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/
+https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/race.html
 
 Use **Đua nhanh → Bắt đầu → Chèo** in the bright timing zone. Recovery/steady/sprint, three difficulties, pause/resume, replay, local winning records, fullscreen controls, optional licensed crowd ambience and a low-power setting are available. V27 restores skin UVs/smooth normals; V28 adds the eight 2025 quarter-finalist hull/kit choices, with the player in the near lane. A short automatic race remains available for asset review. The artwork is compressed and approximate; exact 2025 tailoring and several hull/bib matches remain unresolved. See [current direction](public/assets/illustrated-v22/game-direction.md), [V26 gameplay](docs/hybrid-v26.md), [V27 skin](docs/hybrid-v27.md) and [V28 teams](docs/hybrid-v28.md).
 

@@ -4,7 +4,7 @@ import {profile} from './boat.mjs';
 import {courseZ} from './maspero-layout.mjs';
 
 const V=(x,y,z)=>new T.Vector3(x,y,z);
-export function buildRiver(scene,waterY=.28,{detailed=false,crowdAssets=null,bankMaterials=null,waterOnly=false}={}){
+export function buildRiver(scene,waterY=.28,{detailed=false,crowdAssets=null,bankMaterials=null,waterOnly=false,bright=false}={}){
  const group=new T.Group();group.name='Maspero_River_And_Banks';scene.add(group);
  // The river plane must not fill the dry interior of a narrow open hull.
  // Sample the accepted hull profile; transform fragments into each moving boat.
@@ -15,7 +15,7 @@ export function buildRiver(scene,waterY=.28,{detailed=false,crowdAssets=null,ban
  let boatRoots=[];
  function setBoats(roots){boatRoots=roots.slice(0,2);boatMasks.uBoatCount.value=boatRoots.length;}
  function updateBoatMasks(){boatRoots.forEach((root,i)=>boatMasks['uBoatInverse'+i].value.copy(root.matrixWorld).invert());}
- const material=new T.ShaderMaterial({fog:true,uniforms:T.UniformsUtils.merge([T.UniformsLib.fog,{uTime:{value:0},uSediment:{value:detailed?1:0}}]),
+ const material=new T.ShaderMaterial({fog:true,uniforms:T.UniformsUtils.merge([T.UniformsLib.fog,{uTime:{value:0},uSediment:{value:detailed?1:0},uDaylight:{value:bright?1:0}}]),
   vertexShader:`uniform float uTime;uniform float uSediment;varying vec3 vWorld;varying vec3 vNormal;
    #include <fog_pars_vertex>
    void main(){vec3 p=position;vec3 w=(modelMatrix*vec4(p,1.)).xyz;
@@ -24,7 +24,7 @@ export function buildRiver(scene,waterY=.28,{detailed=false,crowdAssets=null,ban
    vec4 mvPosition=modelViewMatrix*vec4(p,1.);gl_Position=projectionMatrix*mvPosition;
    #include <fog_vertex>
    }`,
-  fragmentShader:`uniform float uTime;uniform float uSediment;uniform sampler2D uHullSections;uniform int uBoatCount;uniform mat4 uBoatInverse0;uniform mat4 uBoatInverse1;varying vec3 vWorld;varying vec3 vNormal;
+  fragmentShader:`uniform float uTime;uniform float uSediment;uniform float uDaylight;uniform sampler2D uHullSections;uniform int uBoatCount;uniform mat4 uBoatInverse0;uniform mat4 uBoatInverse1;varying vec3 vWorld;varying vec3 vNormal;
    #include <fog_pars_fragment>
    float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
    float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(hash(i),hash(i+vec2(1.,0.)),f.x),mix(hash(i+vec2(0.,1.)),hash(i+vec2(1.)),f.x),f.y);}
@@ -43,6 +43,7 @@ export function buildRiver(scene,waterY=.28,{detailed=false,crowdAssets=null,ban
    vec3 sediment=mix(vec3(.035,.095,.065),vec3(.09,.19,.13),ripple*.32);
    float patches=noise(flow*.24)*.6+noise(flow*.77)*.4;
    sediment=mix(sediment,mix(vec3(.235,.175,.095),vec3(.34,.265,.155),patches),uSediment);
+   sediment=mix(sediment,mix(vec3(.16,.32,.27),vec3(.29,.40,.29),patches),uDaylight);
    float streak=smoothstep(.70,.89,surface(small*1.6));
    vec3 sky=vec3(.55,.76,.94);float shine=pow(max(dot(reflect(-normalize(vec3(-.4,1.,.4)),n),view),0.),36.);
    float glints=smoothstep(.65,.92,ripple)*smoothstep(.53,.80,h);

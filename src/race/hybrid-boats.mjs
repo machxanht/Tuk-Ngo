@@ -9,6 +9,8 @@ import {connectedShirt} from './athlete-shirt.mjs';
 import {assetBytes,releaseAssetBytes} from './asset-transfer.mjs';
 import {crewAnimation} from './crew-animation.mjs';
 import {finishAthleteShirt} from './athlete-finish.mjs';
+import {ROWING_LAYOUT} from './rowing-pose.mjs';
+import {rowingMotionDigest} from './asset-digests.mjs';
 
 const W=2400,H=860;
 const roleNames=['seated-port','seated-starboard','standing-port','standing-starboard','caller','controller','helm','helm-starboard'];
@@ -19,10 +21,11 @@ function regularAttribute(a,type=Float32Array){const array=new type(a.count*a.it
 
 export async function createHybridBoats(base='',{onProgress=()=>{}}={}){
  const loader=new GLTFLoader(),roles={};
+ const motionFile='../athlete-master/rowing-motion.glb?sha='+rowingMotionDigest;
  let loaded=0;
  const transfer={onRetry(){document.body.dataset.loadRetries=String(Number(document.body.dataset.loadRetries||0)+1);const status=document.querySelector('#status');if(status&&!document.body.dataset.loadError)status.textContent='Kết nối chậm · đang thử tải lại…';}};
- const loadModel=async file=>{const result=await loader.parseAsync(await assetBytes(base+file,transfer),T.LoaderUtils.extractUrlBase(new URL(base+file,document.baseURI).href));onProgress(++loaded,11);return result;};
- const [shirtData,model,hull,equipment,...motions]=await Promise.all([assetBytes(base+'shirt-runtime-v32.json',transfer).then(b=>JSON.parse(new TextDecoder().decode(b))),loadModel('athlete-rig-v27.glb'),loadModel('hull-rig-v25.glb'),loadModel('../athlete-master/athlete-details.glb'),...roleNames.map(r=>loadModel('motion-'+r+'-v25.glb'))]);
+ const loadModel=async file=>{const result=await loader.parseAsync(await assetBytes(base+file,transfer),T.LoaderUtils.extractUrlBase(new URL(base+file,document.baseURI).href));onProgress(++loaded,4);return result;};
+ const [shirtData,model,hull,equipment,motions]=await Promise.all([assetBytes(base+'shirt-runtime-v32.json',transfer).then(b=>JSON.parse(new TextDecoder().decode(b))),loadModel('athlete-rig-v27.glb'),loadModel('hull-rig-v25.glb'),loadModel('../athlete-master/athlete-details.glb'),loadModel(motionFile)]);
  model.scene.updateMatrixWorld(true);
  const skins=[];model.scene.traverse(o=>{if(o.isSkinnedMesh)skins.push(o);});
  const reference=skins[0],jointNames=reference.skeleton.bones.map(b=>b.name),solid=[],decals=[];
@@ -126,7 +129,7 @@ export async function createHybridBoats(base='',{onProgress=()=>{}}={}){
  for(let i=0;i<roleNames.length;i++){
   const root=clone(model.scene);root.visible=false;scene.add(root);root.updateMatrixWorld(true);
   let first;root.traverse(o=>{if(o.isSkinnedMesh&&!first)first=o;});
-  const mixer=new T.AnimationMixer(root),clip=motions[i].animations[0];if(!clip)throw Error('Missing continuous '+roleNames[i]);mixer.clipAction(clip).play();
+  const mixer=new T.AnimationMixer(root),clip=motions.animations.find(clip=>clip.name===roleNames[i]);if(!clip)throw Error('Missing continuous '+roleNames[i]);mixer.clipAction(clip).play();mixer.setTime(0);root.updateMatrixWorld(true);first.skeleton.update();
   const paddle=root.getObjectByName('Dam_Wood_152cm');if(!paddle)throw Error('Missing protected paddle animation pivot');
   paddle.traverse(o=>{if(o.isMesh)sourcePaddles.push(o);});paddle.clear();paddle.add(equipment.scene.getObjectByName('Race_Paddle').clone());
   roles[roleNames[i]]={root,skeleton:first.skeleton,mixer,clip,paddle};
@@ -137,7 +140,7 @@ export async function createHybridBoats(base='',{onProgress=()=>{}}={}){
  function actor(id,x,side,posture,role='rower'){
   const key=role==='rower'?posture+(side<0?'-port':'-starboard'):role==='helm'&&side>0?'helm-starboard':role,master=roles[key],group=new T.Group();
   group.name='Hybrid_Athlete_'+id;group.position.set(x,0,role==='rower'?side*.16:0);group.rotation.y=role==='caller'?-Math.PI/2:Math.PI/2;
-  const forward=role==='caller'?-1:1,footing=Math.max(floor(x+forward*.12,group.position.z-.14),floor(x+forward*.12,group.position.z+.14))+(role==='controller'?.16:0);group.position.y=footing;
+  const forward=role==='caller'?-1:1,footing=role==='caller'?actors[0].footing:role==='helm'?ROWING_LAYOUT.sternDeckY:Math.max(floor(x+forward*.12,group.position.z-.14),floor(x+forward*.12,group.position.z+.14))+(role==='controller'?.16:0);group.position.y=footing;
   const variant=faceFor(id,null),geometry=geometryFor(role,variant);
   const skin=new T.SkinnedMesh(geometry,skinMaterial);skin.bindMode='detached';skin.bind(master.skeleton,identity);skin.frustumCulled=false;group.add(skin);
   const shirt=new T.SkinnedMesh(shirtAsset.geometry,shirtAsset.material(athletePalette(null,id,role,'#23855e')));shirt.bindMode='detached';shirt.bind(master.skeleton,identity);shirt.frustumCulled=false;shirt.name='Connected_Shirt_V32';group.add(shirt);
@@ -155,20 +158,34 @@ export async function createHybridBoats(base='',{onProgress=()=>{}}={}){
    paddle.traverse(o=>{if(o.isMesh)o.material=materialFrom(o.material);});group.add(paddle);
   }
   // A real crosswise footboard supports the soles inside the hull.
-  const board=new T.Mesh(new T.BoxGeometry(role==='controller'?.65:.40,role==='controller'?.18:.023,role==='controller'?.65:.34),wood);board.position.set(x+forward*.14,footing-(role==='controller'?.09:.012),group.position.z);board.userData.owner=id;boat.add(board);boards.push(board);
+  const board=new T.Mesh(new T.BoxGeometry(role==='controller'?.65:role==='helm'?.90:.40,role==='controller'?.18:.023,role==='controller'?.65:.34),wood);board.position.set(x+(role==='helm'?0:forward*.14),footing-(role==='controller'?.09:.012),group.position.z);board.userData.owner=id;boat.add(board);boards.push(board);
   if(posture==='seated'){const seat=new T.Mesh(new T.BoxGeometry(.18,.03,.40),wood);seat.position.set(x,footing+.515,group.position.z);seat.userData.owner=id;boat.add(seat);boards.push(seat);}
   boat.add(group);actors.push({id,group,master,paddle,role,posture,side,variant,footing,skin,shirt,baseGeometry:geometry});
  }
  for(let row=0;row<25;row++)for(const side of [-1,1])actor(2+row*2+(side>0?1:0),10-row*20/24,side,row<8?'seated':'standing');
- actor(1,10.65,0,'seated','caller');actor(52,3.2,0,'standing','controller');for(let i=0;i<3;i++)actor(53+i,-10.8-i*.8,i%2?1:-1,'standing','helm');
+ actor(1,ROWING_LAYOUT.callerX,0,'seated','caller');actor(52,3.2,0,'standing','controller');for(let i=0;i<3;i++)actor(53+i,-10.8-i*.8,i%2?1:-1,'standing','helm');
  boat.updateMatrixWorld(true);
+ const footIds=jointNames.map((name,i)=>/^foot_|^ball_|^toe_/.test(name)?i:-1).filter(i=>i>=0),probe=actors[0].skin,weights=probe.geometry.attributes.skinWeight,joints=probe.geometry.attributes.skinIndex;
+ let sole=Infinity;
+ for(let i=0;i<joints.count;i++){let amount=0;for(let k=0;k<4;k++)if(footIds.includes(joints.getComponent(i,k)))amount+=weights.getComponent(i,k);if(amount>.65)sole=Math.min(sole,probe.getVertexPosition(i,new T.Vector3()).y);}
+ const soleLift=Number.isFinite(sole)?.002-sole:0;for(const a of actors)a.group.position.y+=soleLift;boat.updateMatrixWorld(true);
+ for(const a of actors)if(a.role==='rower'&&a.posture==='standing'){
+  a.stance='half-kneeling';a.kneelingLeg=a.side<0?'l':'r';
+  const knee=a.master.root.getObjectByName('calf_'+a.kneelingLeg).getWorldPosition(new T.Vector3()).applyMatrix4(a.group.matrixWorld);
+  const rest=new T.Mesh(new T.BoxGeometry(.22,.04,.18),wood);rest.position.copy(knee);
+  // Fit the support below the actual deformed knee/shin surface, rather than
+  // the joint centre. The leg pose is planted throughout the stroke.
+  const p=new T.Vector3(),g=a.skin.geometry;let surface=Infinity;
+  for(let i=0;i<g.attributes.position.count;i++){if(g.attributes.paintZone.getX(i)!==1)continue;a.skin.getVertexPosition(i,p).applyMatrix4(a.group.matrixWorld);if(Math.abs(p.x-knee.x)<.11&&Math.abs(p.z-knee.z)<.09&&p.y>knee.y-.15&&p.y<knee.y+.02)surface=Math.min(surface,p.y);}
+  rest.position.y=(Number.isFinite(surface)?surface:knee.y-.075)-.022;rest.userData.owner=a.id;boat.add(rest);boards.push(rest);a.kneeRest=rest;
+ }
  const boardParts=boards.map(o=>o.geometry.clone().applyMatrix4(o.matrixWorld)),boardGeometry=mergeGeometries(boardParts,false);boardParts.forEach(g=>g.dispose());
  const boardBatch=new T.Mesh(boardGeometry,wood);boat.add(boardBatch);boards.forEach(o=>o.visible=false);
  const accessories=new Map();
  for(const a of actors)if(a.paddle)a.paddle.traverse(mesh=>{if(!mesh.isMesh)return;const key=mesh.geometry.uuid+mesh.material.uuid;if(!accessories.has(key))accessories.set(key,[]);accessories.get(key).push({owner:a,mesh});mesh.visible=false;});
  const batches=[...accessories.values()].map(entries=>{const batch=new T.InstancedMesh(entries[0].mesh.geometry,entries[0].mesh.material,entries.length);batch.frustumCulled=false;batch.instanceMatrix.setUsage(T.DynamicDrawUsage);boat.add(batch);return {batch,entries};});
  function applyPose(phase,t,desyncIntensity=0){
-  for(const [name,master] of Object.entries(roles)){const offset=/^(seated|standing)/.test(name)?(name.endsWith('port')?-.035:.035)*desyncIntensity:0;master.mixer.setTime((name.startsWith('helm')?((t*.20)%1+1)%1:((phase+offset)%1+1)%1)*master.clip.duration);master.root.updateMatrixWorld(true);master.skeleton.update();}
+  for(const [name,master] of Object.entries(roles)){const offset=/^(seated|standing)/.test(name)?(name.endsWith('port')?-.035:.035)*desyncIntensity:0;master.mixer.setTime((name.startsWith('helm')?((t*.45)%1+1)%1:((phase+offset)%1+1)%1)*master.clip.duration);master.root.updateMatrixWorld(true);master.skeleton.update();}
  }
  const animation=crewAnimation(roles,applyPose,{distanceThreshold:window.TukNgoConfig?.performance?.crewDistanceThreshold??44});
  function pose(phase,t,options={}){
@@ -228,12 +245,6 @@ export async function createHybridBoats(base='',{onProgress=()=>{}}={}){
   return renderer.domElement;
  }
  pose(0,0);
- // The anatomical ankle is not the sole. Measure the deformed foot surface
- // once, then align the actors by its exact bind-to-sole offset onto the boards.
- const footIds=jointNames.map((name,i)=>/^foot_|^ball_|^toe_/.test(name)?i:-1).filter(i=>i>=0),probe=actors[0].group.children.find(o=>o.isSkinnedMesh),weights=probe.geometry.attributes.skinWeight,joints=probe.geometry.attributes.skinIndex;
- let sole=Infinity;
- for(let i=0;i<joints.count;i++){let amount=0;for(let k=0;k<4;k++)if(footIds.includes(joints.getComponent(i,k)))amount+=weights.getComponent(i,k);if(amount>.65)sole=Math.min(sole,probe.getVertexPosition(i,new T.Vector3()).y);}
- const soleLift=Number.isFinite(sole)?.002-sole:0;for(const a of actors)a.group.position.y+=soleLift;boat.updateMatrixWorld(true);
  return {render,bow,waterBow,stern,tips,actors,roles,boat,scene,renderer,camera,animation,prepareTeams:liveries.load,stats:{revision:'hybrid-v32',athletes:actors.length,geometryVariants:12,faceProfiles:FACE_PROFILES.map(p=>({name:p.name,hair:p.hair,beard:p.beard})),skinTexture:'Official MakeHuman CC0; original UVs and pixels',animation:'continuous-skinned-3d',sharedPoseRigs:roleNames.length,trianglesPerActor:merged.index.count/3,soleLiftM:soleLift},resize(width){const w=Math.min(1600,Math.max(640,Math.round(width)));renderer.setSize(w,Math.round(w*H/W),false);farImages.clear();animation.clear();},getDrawStats(){return {gpuRenders,gpuReuses,poseUpdates:animation.counters.updates,poseRestores:animation.counters.restores,poseUpdatesByView:{...animation.counters.byView},geometryCacheSize:geometryVariants.length,triangles:renderer.info.render.triangles,drawCalls:renderer.info.render.calls,teamTextures:liveries.textures.size,kitMaterials:materials.size,vertexAttributes:Math.max(...renderer.info.programs.map(p=>Object.values(p.getAttributes()).reduce((sum,a)=>sum+(a.locationSize||1),0))),vertexAttributeLimit:renderer.getContext().getParameter(renderer.getContext().MAX_VERTEX_ATTRIBS)};},dispose(){
    animation.clear();styles.clear();for(const {canvas} of farImages.values()){canvas.width=1;canvas.height=1;}farImages.clear();for(const master of Object.values(roles)){master.mixer.stopAllAction();master.mixer.uncacheRoot(master.root);master.skeleton.dispose();}
    const geometries=new Set(),meshMaterials=new Set(),maps=new Set();
@@ -244,7 +255,7 @@ export async function createHybridBoats(base='',{onProgress=()=>{}}={}){
    for(const o of boards)geometries.add(o.geometry);geometries.add(merged);for(const g of geometryVariants)geometries.add(g);
    geometries.forEach(g=>g.dispose());meshMaterials.forEach(m=>m.dispose());maps.forEach(t=>t.dispose());
    shirtAsset.dispose();materials.dispose();liveries.dispose();texture.dispose();skinMap.dispose();renderer.dispose();
-   for(const file of ['shirt-runtime-v32.json','athlete-rig-v27.glb','hull-rig-v25.glb','../athlete-master/athlete-details.glb',...roleNames.map(r=>'motion-'+r+'-v25.glb')])releaseAssetBytes(base+file);
+   for(const file of ['shirt-runtime-v32.json','athlete-rig-v27.glb','hull-rig-v25.glb','../athlete-master/athlete-details.glb',motionFile])releaseAssetBytes(base+file);
    scene.clear();
   }};
 }

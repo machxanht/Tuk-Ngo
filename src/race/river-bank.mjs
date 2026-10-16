@@ -4,10 +4,11 @@ import { buildCoherentVehicles } from './traffic.mjs';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 
 /** A separate 50 m study; caller owns lighting and surrounding river/people. */
-export function buildCoherentBank(scene, { materials = null } = {}) {
+export function buildCoherentBank(scene, { materials = null, vibrant = false, clearPromenade = false } = {}) {
   const group = new T.Group(); group.name = 'Coherent_Bank_V20'; scene.add(group);
   const buckets = new Map(), owned = new Set();
   const palette = { ivory: '#eadfc9', teal: '#649b96', clay: '#b56e53', wood: '#72503a', green: '#385f47', dark: '#304346', cream: '#d3c6ad', glass: '#638a91', asphalt: '#727875', concrete: '#bcb9a9', trim: '#f1e9d8', leaf: '#48784c', leafLight: '#67864a', rubber: '#353b3b', metal: '#8a9491', roofTile: '#b56e53', roofTin: '#8a9491' };
+  if (vibrant) Object.assign(palette,{ivory:'#fff0cc',teal:'#74c8bb',clay:'#e2936e',green:'#4e9851',cream:'#f2dba8',glass:'#8ec6d4',concrete:'#d8d4bd',leaf:'#54a958',leafLight:'#85bb58',roofTile:'#dd885c',roofTin:'#a0bdc0'});
   function mat(key) {
     if (!buckets.has(key)) {
       const source = ['ivory', 'teal', 'cream', 'clay'].includes(key) ? materials?.wall : key === 'roofTile' ? materials?.tile : key === 'roofTin' ? materials?.tin : null;
@@ -179,9 +180,9 @@ export function buildCoherentBank(scene, { materials = null } = {}) {
     }
     box('cream', x, .17, z, 1.6, .34, 1.6, .12);
   }
-  tree(-17, 2.25, 1, .7); tree(7, 2.3, .9, 2); tree(21, 2.3, 1.1, 4);
+  tree(-17, clearPromenade?13.8:2.25, 1, .7); tree(7, clearPromenade?13.8:2.3, .9, 2); tree(21, clearPromenade?13.8:2.3, 1.1, 4);
   // Curved coconut fronds use tapered leaf surfaces, not cone or spike crowns.
-  const px = -2, pz = 2.4;
+  const px = -2, pz = clearPromenade?13.8:2.4;
   rod('wood', [px, 0, pz], [px + .35, 5.8, pz + .15], .15, .08);
   for (let n = 0; n < 10; n++) {
     const a = n * Math.PI * 2 / 10, points = [];
