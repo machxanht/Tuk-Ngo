@@ -2,19 +2,31 @@
 
 ## Current delivered milestone
 
-The first asset milestone is an editable single athlete, an animated standard
-GLB, and the same authored equipment in the existing race. This milestone does
-not rebuild the river banks, architecture, crowd or the whole game into a new
-3D scene. The existing illustrated race still composites live Three.js boat
-renders over the illustrated festival. Its cup, controls and URL are retained.
+The default page now opens a complete, orbitable 3D boat with 55 athletes on
+animated water, using the new Blender cap/hair/paddles and connected shirt.
+It shares the race's eight original role masters instead of loading the old
+full-crew GLB. Sixteen athletes sit in eight front pairs; 34 stand behind them;
+the bow caller, middle controller and three helmsmen retain separate motions.
+The connected green shirt is the same prototype garment shown on the single
+athlete; this does not redefine the historical team kits in the preserved cup.
 
+- Canonical tablet entry: `https://machxanht.github.io/Tuk-Ngo/`.
+- The previously shared `assets/illustrated-v22/` link forwards to this entry.
+- Full-boat viewer: `src/race/boat-preview.mjs`; one direct WebGL render per frame.
+- Single-athlete inspector: the **Một VĐV** button on the same page.
 - Editable source: `art/athlete/athlete-master.blend`, with packed textures.
-- Downloadable one-athlete proof: `public/assets/athlete-master/athlete-master.glb`.
+- Download: `public/assets/athlete-master/athlete-master.glb`.
 - Runtime equipment: `public/assets/athlete-master/athlete-details.glb`.
 - Race integration: `src/race/hybrid-boats.mjs`.
 - Collar appearance: `src/race/athlete-finish.mjs`.
-- Standard GLB inspection: the existing `?demo=art` mode; the game asset gallery
-  links to this mode. The existing tablet game URL stays unchanged.
+
+The old 2D/sprite/model preview modes and their runtime illustration module are
+removed. The main route does not load the illustrated banks/crowd/vehicle
+atlases or technical dossier. Historical asset files are retained as sources;
+they do not load when opening the boat. The existing cup is explicitly reached
+through **Giải 8 ghe**, at `assets/illustrated-v22/race.html?mode=cup`; its festival
+background remains illustrated. Rebuilding the full Maspéro environment is not
+part of this boat/motion correction.
 
 The details contain a sewn-panel baseball cap with curved brim/rear strap,
 scalp-fitted short hair, and a rounded wooden paddle. Cap direction is forward
@@ -129,3 +141,28 @@ runtime assets matched the local SHA256 bytes, including both new GLBs and all
 eleven protected public source files. Evidence is under
 `docs/qa/athlete-master/public`. The source-only protected shirt module remains
 covered by the local invariant gate.
+
+## Motion regression and load correction
+
+Blender's old scene export reduced 97 original motion samples to 26 and changed
+the clip duration from 1.0104166 to 1.0416666 seconds. A same-phase browser
+comparison found a hand discrepancy of approximately 0.176 m. Assembly now
+copies all 161 source samplers (times, values and interpolation) exactly into
+the exported GLB and evaluates the connected-shirt endpoints from the source
+glTF joint matrices. Cloth is sampled at all original keys, including time zero.
+Unused exported animation buffers are removed, with sparse morph accessor
+references retained and remapped.
+
+Run `blender --background --python scripts/assemble-athlete.py` to regenerate
+the proof. Unchanged garment UVs and the atlas are reused; the saved Blender
+source uses 96 FPS so the original subframe keys remain editable. The eight
+source motion files and protected shirt module/data are never rewritten.
+
+Regression evidence is in `docs/qa/athlete-master/boat`, `cup`,
+`cloth-agreement.json` and `load-comparison.json`. `test-athlete.mjs` checks every
+original animation accessor byte and validates the actual exported GLB. The
+browser compares 96 phases with the original role master and checks grip/sole
+placement, mode remounting, direct water/splashes, and unobscured desktop/tablet
+layouts. An independent 96-phase endpoint comparison measured maximum cloth
+surface drift of 1.50 mm. This is sampled animation verification, not a claim of
+motion capture or measurements on a physical tablet.

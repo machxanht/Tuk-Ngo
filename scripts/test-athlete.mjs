@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import * as T from 'three';
 import {finishAthleteShirt} from '../src/race/athlete-finish.mjs';
+import {validateBytes} from 'gltf-validator';
 
 const data=JSON.parse(await readFile('public/assets/illustrated-v22/shirt-runtime-v32.json','utf8'));
 const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(data.vertices.flatMap(v=>v.position),3));g.setIndex(data.indices);
@@ -20,10 +21,21 @@ const {doc:equipment}=await glb('public/assets/athlete-master/athlete-details.gl
 for(const name of ['Race_Cap','Race_Hair','Race_Paddle'])assert.ok(equipment.nodes.some(n=>n.name===name),name);
 const paddle=equipment.nodes.find(n=>n.name==='Race_Paddle'),positionsAccessor=equipment.accessors[equipment.meshes[paddle.mesh].primitives[0].attributes.POSITION];
 assert.ok(Math.abs(positionsAccessor.min[1]+1.52)<1e-5);assert.ok(Math.abs(positionsAccessor.max[1])<.01);
-const {doc:master}=await glb('public/assets/athlete-master/athlete-master.glb');
+const {doc:master,bin:masterBin}=await glb('public/assets/athlete-master/athlete-master.glb');
 assert.equal(master.animations.length,1,'Body, cloth and paddle must play in one clip');
 const animated=new Set(master.animations[0].channels.map(c=>master.nodes[c.target.node].name));
 assert.ok([...animated].some(n=>n.includes('Shirt')));assert.ok(animated.has('Dam_Wood_152cm'));assert.ok(animated.has('head'));
 const rootNodes=new Set(master.scenes[master.scene||0].nodes);
 master.nodes.forEach((node,i)=>{if(node.skin!==undefined)assert.ok(rootNodes.has(i),'Skin must be a scene root');});
-console.log('Athlete: unchanged shirt geometry; narrow geometric collar; fitted equipment; synchronized standalone GLB.');
+const {doc:source,bin:sourceBin}=await glb('public/assets/illustrated-v22/motion-seated-port-v25.glb');
+function accessorBytes(doc,bin,id){const a=doc.accessors[id],v=doc.bufferViews[a.bufferView],width={SCALAR:1,VEC3:3,VEC4:4}[a.type]*4;assert.equal(a.componentType,5126);const start=(v.byteOffset||0)+(a.byteOffset||0);return Buffer.concat(Array.from({length:a.count},(_,i)=>bin.subarray(start+i*(v.byteStride||width),start+i*(v.byteStride||width)+width)));}
+const newTracks=new Map(master.animations[0].channels.map(c=>[master.nodes[c.target.node].name+'|'+c.target.path,master.animations[0].samplers[c.sampler]]));
+for(const channel of source.animations[0].channels){
+ const name=source.nodes[channel.target.node].name+'|'+channel.target.path,old=source.animations[0].samplers[channel.sampler],next=newTracks.get(name);assert.ok(next,'Missing original track '+name);
+ assert.equal(next.interpolation||'LINEAR',old.interpolation||'LINEAR',name+' interpolation');
+ for(const field of ['input','output'])assert.deepEqual(accessorBytes(master,masterBin,next[field]),accessorBytes(source,sourceBin,old[field]),name+' '+field+' was resampled');
+}
+const validated=await validateBytes(new Uint8Array(await readFile('public/assets/athlete-master/athlete-master.glb')));
+assert.equal(validated.issues.numErrors,0,JSON.stringify(validated.issues.messages));
+assert.equal(validated.issues.numWarnings,0,JSON.stringify(validated.issues.messages));
+console.log('Athlete: unchanged shirt geometry; fitted equipment; all 161 original animation samplers preserved byte-for-byte.');

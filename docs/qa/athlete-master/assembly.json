@@ -1,9 +1,11 @@
 {
   "shirtVertices": 533,
   "shirtTriangles": 896,
-  "shirtSamples": 49,
-  "shirtBake": "skin each original endpoint then barycentrically interpolate; 48 intervals per original one-second loop",
+  "shirtSamples": 98,
+  "shirtBake": "exact source glTF joint matrices and endpoint interpolation at every original key",
+  "motionTracks": "original seated-port samplers copied without resampling",
+  "durationS": 1.0104166269302368,
   "originalEightMotionFilesChanged": false,
-  "glbBytes": 5261304,
-  "sourceBlendBytes": 5178306
+  "glbBytes": 6274336,
+  "sourceBlendBytes": 5260297
 }

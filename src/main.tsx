@@ -1,13 +1,12 @@
-import {StrictMode} from 'react';
+import {lazy, Suspense} from 'react';
 import {createRoot} from 'react-dom/client';
-import App from './App.tsx';
 import './index.css';
 
 const demo = new URLSearchParams(window.location.search).get('demo');
-if (!demo || demo === '2d') {
-  window.location.replace(new URL('assets/illustrated-v22/', window.location.href));
-} else createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
+const isAssetView = !demo || ['2d', 'art', 'race'].includes(demo);
+const View = isAssetView
+  ? lazy(() => import('./components/ArtPreview').then(m => ({default: m.ArtPreview})))
+  : lazy(() => import('./App'));
+createRoot(document.getElementById('root')!).render(
+  <Suspense fallback={<p role="status">Đang mở ghe 3D…</p>}><View /></Suspense>,
 );

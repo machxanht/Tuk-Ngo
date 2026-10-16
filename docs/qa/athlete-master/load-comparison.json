@@ -1,0 +1,69 @@
+{
+  "baseline": "preserved illustrated game at race.html; same local Vite production server and Edge viewport 1024x768",
+  "before": {
+    "readyMs": 2986.699999999255,
+    "resourceBytes": 31168860,
+    "resources": 42,
+    "images": [
+      {
+        "name": "hull-slim-bow-v23.webp",
+        "bytes": 460626
+      },
+      {
+        "name": "water-effects.webp",
+        "bytes": 943972
+      },
+      {
+        "name": "bridge-c247-perspective-v23.webp",
+        "bytes": 1301602
+      },
+      {
+        "name": "festival-landscape.webp",
+        "bytes": 2090392
+      },
+      {
+        "name": "mekong-buildings-6.webp",
+        "bytes": 2122286
+      },
+      {
+        "name": "mekong-plants-6.webp",
+        "bytes": 2193190
+      },
+      {
+        "name": "festival-food-stalls-4.webp",
+        "bytes": 1969570
+      },
+      {
+        "name": "spectators-12-2poses.webp",
+        "bytes": 1448058
+      },
+      {
+        "name": "pedestrians-4-4poses.webp",
+        "bytes": 804540
+      },
+      {
+        "name": "street-vehicles-6.webp",
+        "bytes": 1557802
+      },
+      {
+        "name": "stands-bridges-4.webp",
+        "bytes": 1732434
+      },
+      {
+        "name": "spectators-extra-12-2poses-v29.png",
+        "bytes": 2125951
+      },
+      {
+        "name": "spectators-action-v32.png",
+        "bytes": 2222909
+      }
+    ]
+  },
+  "afterEvidence": "boat/check.json -> initialLoad",
+  "claimLimit": "encoded resource bytes, not physical-tablet download or FPS measurements",
+  "after": {
+    "resourceBytes": 10373443,
+    "readyMs": 2550.699999999255
+  },
+  "byteReductionPercent": 66.71856782699143
+}

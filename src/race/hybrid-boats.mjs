@@ -17,10 +17,11 @@ const materialCache=new WeakMap();
 function materialFrom(m){if(!materialCache.has(m))materialCache.set(m,new T.MeshLambertMaterial({color:m.color,map:m.map,vertexColors:m.vertexColors,side:T.DoubleSide,transparent:m.transparent,opacity:m.opacity,alphaTest:m.alphaTest}));return materialCache.get(m);}
 function regularAttribute(a,type=Float32Array){const array=new type(a.count*a.itemSize);for(let i=0;i<a.count;i++)for(let k=0;k<a.itemSize;k++)array[i*a.itemSize+k]=a.getComponent(i,k);return new T.BufferAttribute(array,a.itemSize);}
 
-window.createHybridBoats=async function(base=''){
+export async function createHybridBoats(base='',{onProgress=()=>{}}={}){
  const loader=new GLTFLoader(),roles={};
- const transfer={onRetry(){document.body.dataset.loadRetries=String(Number(document.body.dataset.loadRetries||0)+1);if(!document.body.dataset.loadError)document.querySelector('#status').textContent='Kết nối chậm · đang thử tải lại…';}};
- const loadModel=async file=>loader.parseAsync(await assetBytes(base+file,transfer),T.LoaderUtils.extractUrlBase(new URL(base+file,document.baseURI).href));
+ let loaded=0;
+ const transfer={onRetry(){document.body.dataset.loadRetries=String(Number(document.body.dataset.loadRetries||0)+1);const status=document.querySelector('#status');if(status&&!document.body.dataset.loadError)status.textContent='Kết nối chậm · đang thử tải lại…';}};
+ const loadModel=async file=>{const result=await loader.parseAsync(await assetBytes(base+file,transfer),T.LoaderUtils.extractUrlBase(new URL(base+file,document.baseURI).href));onProgress(++loaded,11);return result;};
  const [shirtData,model,hull,equipment,...motions]=await Promise.all([assetBytes(base+'shirt-runtime-v32.json',transfer).then(b=>JSON.parse(new TextDecoder().decode(b))),loadModel('athlete-rig-v27.glb'),loadModel('hull-rig-v25.glb'),loadModel('../athlete-master/athlete-details.glb'),...roleNames.map(r=>loadModel('motion-'+r+'-v25.glb'))]);
  model.scene.updateMatrixWorld(true);
  const skins=[];model.scene.traverse(o=>{if(o.isSkinnedMesh)skins.push(o);});
@@ -180,17 +181,17 @@ window.createHybridBoats=async function(base=''){
  const tips=[],tipVector=new T.Vector3();
  let styleKey,studyOverride,gpuRenders=0,gpuReuses=0;
  const styles=new Map(),farImages=new Map();
- function render(phase,t,{study=false,posture='seated',kitColor='#23855e',teamId=null,faceVariant=null,skinDetail=1,focus='body',angle='three-quarter',effort=0,viewKey='study',frameId,distance=0,nearest=false,desyncIntensity=0}={}){
+ function render(phase,t,{study=false,posture='seated',kitColor='#23855e',teamId=null,faceVariant=null,skinDetail=1,focus='body',angle='three-quarter',effort=0,viewKey='study',frameId,distance=0,nearest=false,desyncIntensity=0,externalCamera=null,beforeRender=null,connectedKit=false}={}){
   if(studyOverride){studyOverride.variant=faceFor(studyOverride.id,studyOverride.teamId);studyOverride.skin.geometry=geometryFor(studyOverride.role,studyOverride.variant);studyOverride=null;}
   const team=teamId?window.TukNgoTeams.get(teamId):null,map=team?liveries.get(team.id):null;
   if(team&&!map)throw Error('Team livery is not loaded: '+teamId);
-  const key=teamId+'|'+kitColor;
+  const key=teamId+'|'+kitColor+'|'+connectedKit;
   if(styleKey!==key){
    for(const {mesh,originalUV,paintedUV} of paintedHull){mesh.geometry.setAttribute('uv',team?originalUV:paintedUV);mesh.material.map=team?map:texture;}
    for(const mesh of hullEnds)mesh.material.color.set(team?.pattern==='om-scroll'?'#ed6826':'#c83239');
    for(const {mesh,color} of hullInteriors)mesh.material.color.copy(team?.interior?new T.Color(team.interior):color);
    let prepared=styles.get(key);
-   if(!prepared){prepared=actors.map(a=>{const palette=athletePalette(team,a.id,a.role,kitColor),variant=faceFor(a.id,teamId);return {palette,variant,geometry:geometryFor(a.role,variant),skin:materials.get(palette),shirt:shirtAsset.material(palette)};});styles.set(key,prepared);}
+   if(!prepared){prepared=actors.map(a=>{const palette=athletePalette(team,a.id,a.role,kitColor),variant=faceFor(a.id,teamId);if(connectedKit&&['rower','helm'].includes(a.role))palette.sleeve=palette.jersey;return {palette,variant,geometry:geometryFor(a.role,variant),skin:materials.get(palette),shirt:shirtAsset.material(palette)};});styles.set(key,prepared);}
    actors.forEach((a,i)=>{const p=prepared[i];a.skin.material=p.skin;a.shirt.visible=!!p.palette.sleeve;a.shirt.material=p.shirt;for(const mesh of a.group.children)if(mesh.userData.oldKitPrint)mesh.visible=!p.palette.sleeve;a.teamId=teamId;a.palette=p.palette;a.variant=p.variant;a.skin.geometry=p.geometry;});
    styleKey=key;
   }
@@ -206,11 +207,12 @@ window.createHybridBoats=async function(base=''){
    const span=focus==='face'?1.3:posture==='helm'?9:5.6;camera.left=-span/2;camera.right=span/2;camera.top=span*H/W/2;camera.bottom=-camera.top;
    const direction={front:[1,.10,0],side:[0,.10,-1],back:[-1,.10,0],'three-quarter':[.65,.18,-.75]}[angle]||[.65,.18,-.75],offset=new T.Vector3(...direction);if(target.role==='caller')offset.x*=-1;
    if(focus==='face'){const head=target.master.skeleton.bones.find(b=>b.name==='head').getWorldPosition(new T.Vector3()).applyMatrix4(target.group.matrixWorld);head.y+=.06;camera.position.copy(head).add(offset);camera.lookAt(head);}else{const center=new T.Vector3(x,y,0);camera.position.copy(center).add(offset.multiplyScalar(3.3)).add(new T.Vector3(0,.45,0));camera.lookAt(center);}camera.updateProjectionMatrix();camera.updateMatrixWorld(true);
-  }else{actors.forEach(a=>a.group.visible=true);boardBatch.visible=true;boards.forEach(board=>board.visible=false);fullCamera();}
+  }else{actors.forEach(a=>a.group.visible=true);boardBatch.visible=true;boards.forEach(board=>board.visible=false);if(!externalCamera)fullCamera();}
   for(const {batch,entries} of batches){let n=0;for(const {owner,mesh} of entries)if(owner.group.visible)batch.setMatrixAt(n++,mesh.matrixWorld);batch.count=n;batch.instanceMatrix.needsUpdate=true;}
   const far=!study&&!nearest&&Number.isInteger(frameId)&&distance>animation.distanceThreshold;
   const imageKey=key+'|'+skinDetail,previous=farImages.get(viewKey),reuse=far&&frameId%2&&previous?.key===imageKey&&previous.canvas.width===renderer.domElement.width;
-  if(!reuse){renderer.render(scene,camera);gpuRenders++;}else gpuReuses++;
+  beforeRender?.();
+  if(!reuse){renderer.render(scene,externalCamera||camera);gpuRenders++;}else gpuReuses++;
   tips.length=0;
   for(const a of actors)if(a.role==='rower'&&a.side===-1&&a.group.visible){
    const p=tipVector.set(0,a.posture==='standing'?-1.75:-1.52,0).applyMatrix4(a.paddle.matrixWorld);tips.push({point:project(p),inWater:p.y<.30,world:p.toArray()});
@@ -245,4 +247,5 @@ window.createHybridBoats=async function(base=''){
    for(const file of ['shirt-runtime-v32.json','athlete-rig-v27.glb','hull-rig-v25.glb','../athlete-master/athlete-details.glb',...roleNames.map(r=>'motion-'+r+'-v25.glb')])releaseAssetBytes(base+file);
    scene.clear();
   }};
-};
+}
+window.createHybridBoats=createHybridBoats;

@@ -157,6 +157,6 @@ window.illustratedPreview={members,images,sources,draw,setMode,practice,get hybr
  const complete=new Promise(resolve=>rec.onstop=()=>{stream.getTracks().forEach(t=>t.stop());resolve(new Blob(chunks,{type:mime}));});rec.ondataavailable=e=>{if(e.data.size)chunks.push(e.data);};rec.start();setTimeout(()=>rec.stop(),seconds*1000);const blob=await complete;const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='rowing-preview.webm';a.click();setTimeout(()=>URL.revokeObjectURL(url),10000);return blob.size;
 }};
 const loadRetryButton=document.querySelector('#asset-retry');if(loadRetryButton)loadRetryButton.onclick=()=>location.reload();
-init().catch(e=>{document.querySelector('#status').textContent='Không tải được trận đua. Kiểm tra kết nối rồi tải lại trang.';document.body.dataset.loadError=String(e);if(loadRetryButton)loadRetryButton.hidden=false;});
+init().then(()=>{if(new URLSearchParams(location.search).get('mode')==='cup')setMode('play','cup');}).catch(e=>{document.querySelector('#status').textContent='Không tải được trận đua. Kiểm tra kết nối rồi tải lại trang.';document.body.dataset.loadError=String(e);if(loadRetryButton)loadRetryButton.hidden=false;});
 
 addEventListener('pagehide',event=>{crowdAudio.pause();if(!event.persisted)hybrid?.dispose();});

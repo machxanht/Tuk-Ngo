@@ -1,0 +1,225 @@
+{
+  "physicalTabletTested": false,
+  "initialLoad": {
+    "readyMs": 2407.800000000745,
+    "bytes": 10373459,
+    "urls": [
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/index-B2YNJGsE.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/index-Bo7mo07X.css",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/ArtPreview-BeQUfICO.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/rotate-ccw-BQ2UEFAn.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/download-Ck0iMpi-.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/video-DtH2XgAB.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/ArtPreview-CLUOzjDj.css",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/boat-preview-DUoSzLqL.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/three-addons-BnpvScye.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/three-renderer-3VrNaQXw.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/three-core-DFpmdtjz.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/art-preview-DZCQDa8H.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/river-CZRf4oG4.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/shirt-runtime-v32.json",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/athlete-rig-v27.glb",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/hull-rig-v25.glb",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/athlete-master/athlete-details.glb",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/motion-seated-port-v25.glb",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/motion-seated-starboard-v25.glb",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/motion-standing-port-v25.glb",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/motion-standing-starboard-v25.glb",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/motion-caller-v25.glb",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/motion-controller-v25.glb",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/motion-helm-v25.glb",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/motion-helm-starboard-v25.glb",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/NotoSansKhmer.ttf",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/hull-slim-bow-v23.webp",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/teams-2025/tum-nup-2.svg"
+    ]
+  },
+  "geometry": {
+    "roles": {
+      "seated-port": {
+        "footClearanceM": [
+          0.0020000000000000018,
+          0.0020000000000000018
+        ],
+        "paddleLengthM": 1.5199999809265137,
+        "maxWristAxisDistanceM": 0.09738157873215113,
+        "maxPalmGripGapM": 0.0009605928489888658
+      },
+      "seated-starboard": {
+        "footClearanceM": [
+          0.0020000000000000018,
+          0.0020000000000000018
+        ],
+        "paddleLengthM": 1.5199999809265137,
+        "maxWristAxisDistanceM": 0.09738135609482401,
+        "maxPalmGripGapM": 0.0009603814113235884
+      },
+      "standing-port": {
+        "footClearanceM": [
+          0.0020003479782688127,
+          0.0020003479782688127
+        ],
+        "paddleLengthM": 1.75,
+        "maxWristAxisDistanceM": 0.09726964697035322,
+        "maxPalmGripGapM": 0.00047084943123969637
+      },
+      "standing-starboard": {
+        "footClearanceM": [
+          0.0020003479782688127,
+          0.0020003479782688127
+        ],
+        "paddleLengthM": 1.75,
+        "maxWristAxisDistanceM": 0.0972695716621479,
+        "maxPalmGripGapM": 0.00047058960075866145
+      },
+      "caller": {
+        "footClearanceM": [
+          0.0020000000000000018,
+          0.0020000000000000018
+        ],
+        "paddleLengthM": null,
+        "maxWristAxisDistanceM": 0,
+        "maxPalmGripGapM": 0
+      },
+      "controller": {
+        "footClearanceM": [
+          0.0020003479782688127,
+          0.0020003479782688127
+        ],
+        "paddleLengthM": null,
+        "maxWristAxisDistanceM": 0,
+        "maxPalmGripGapM": 0
+      },
+      "helm": {
+        "footClearanceM": [
+          0.0020003479782688127,
+          0.0020003479782688127
+        ],
+        "paddleLengthM": 4.199999809265137,
+        "maxWristAxisDistanceM": 0.09731394257772827,
+        "maxPalmGripGapM": 6.1475482174878375e-06
+      },
+      "helm-starboard": {
+        "footClearanceM": [
+          0.0020003479782688127,
+          0.0020003479782688127
+        ],
+        "paddleLengthM": 4.199999809265137,
+        "maxWristAxisDistanceM": 0.09738753166329309,
+        "maxPalmGripGapM": 5.58791542991376e-06
+      }
+    },
+    "masters": 8,
+    "stats": {
+      "gpuRenders": 15,
+      "gpuReuses": 0,
+      "poseUpdates": 16,
+      "poseRestores": 0,
+      "poseUpdatesByView": {
+        "study": 16
+      },
+      "geometryCacheSize": 12,
+      "triangles": 1115034,
+      "drawCalls": 307,
+      "teamTextures": 1,
+      "kitMaterials": 6,
+      "vertexAttributes": 14,
+      "vertexAttributeLimit": 16
+    }
+  },
+  "boatLayouts": [
+    {
+      "viewport": [
+        1024,
+        768
+      ],
+      "canvas": {
+        "x": 0,
+        "y": 159,
+        "width": 1024,
+        "height": 516
+      },
+      "controls": {
+        "x": 0,
+        "y": 675,
+        "width": 1024,
+        "height": 93
+      }
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "canvas": {
+        "x": 0,
+        "y": 152,
+        "width": 768,
+        "height": 779
+      },
+      "controls": {
+        "x": 0,
+        "y": 931,
+        "width": 768,
+        "height": 93
+      }
+    },
+    {
+      "viewport": [
+        1180,
+        430
+      ],
+      "canvas": {
+        "x": 0,
+        "y": 110,
+        "width": 1180,
+        "height": 240
+      },
+      "controls": {
+        "x": 0,
+        "y": 350,
+        "width": 1180,
+        "height": 80
+      }
+    }
+  ],
+  "standalone": {
+    "testid": "art-stage",
+    "renderMode": "athlete-study",
+    "artSource": "BLENDER_MASTER",
+    "crewCount": "1",
+    "masterRigs": "8",
+    "phase": "0.5732",
+    "view": "front",
+    "triangles": "21919",
+    "drawCalls": "19",
+    "splashEvents": "0",
+    "fps": "32.0"
+  },
+  "motionAgreement": {
+    "samples": 96,
+    "maxBoneDriftM": {
+      "head": 0,
+      "spine_03": 0,
+      "pelvis": 0,
+      "hand_l": 4.440892098500626e-16,
+      "hand_r": 2.220446049250313e-16,
+      "foot_l": 5.551115123125783e-17
+    },
+    "maxPalmGripGapM": 0.002333301369605199
+  },
+  "remount": {
+    "testid": "art-stage",
+    "renderMode": "boat",
+    "artSource": "BLENDER_EQUIPMENT_APPROVED_ROLE_MASTERS",
+    "crewCount": "55",
+    "masterRigs": "8",
+    "phase": "0.8067",
+    "view": "boat",
+    "triangles": "1122074",
+    "drawCalls": "252",
+    "splashEvents": "1182",
+    "fps": "32.0"
+  },
+  "errors": []
+}

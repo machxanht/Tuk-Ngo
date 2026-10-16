@@ -41,10 +41,7 @@ if (!$PrepareOnly) {
 $taskParent = (& git -C $taskRepo rev-parse origin/gh-pages).Trim()
 if ($LASTEXITCODE -ne 0) { throw 'Cannot read Pages parent' }
 $taskRootHtml = [IO.File]::ReadAllText((Join-Path $taskBuilt 'index.html'))
-if (!$taskRootHtml.Contains('entry-route.js')) {
-    $taskRootHtml = $taskRootHtml.Replace('<head>', '<head>' + "`n" + '    <script src="./assets/illustrated-v22/entry-route.js"></script>')
-}
-$taskDescription = 'Đua ghe Ngo 2.5D minh họa trên sông Maspero: tập nhịp chèo, hai ghe đua thử và cảnh lễ hội hai bờ sông.'
+$taskDescription = 'Ghe Ngo 3D Tum Núp 2: 55 người, chuyển động chèo liên tục, mô hình từ Blender và điều khiển cảm ứng.'
 $taskRootHtml = [regex]::Replace($taskRootHtml, '<meta name="description" content="[^"]*"\s*/?>', '<meta name="description" content="' + $taskDescription + '" />')
 $taskRootHtml = [regex]::Replace($taskRootHtml, '<meta property="og:description" content="[^"]*"\s*/?>', '<meta property="og:description" content="' + $taskDescription + '" />')
 $taskRootHtml = [regex]::Replace($taskRootHtml, '<meta property="og:title" content="[^"]*"\s*/?>', '<meta property="og:title" content="Đua Ghe Ngo — Sông Maspéro" />')
@@ -73,7 +70,7 @@ try {
     $taskTree = (& git -C $taskRepo write-tree).Trim()
     if ($LASTEXITCODE -ne 0) { throw 'Cannot write Pages tree' }
     $taskMain = (& git -C $taskRepo rev-parse HEAD).Trim()
-    $taskCommit = (& git -C $taskRepo commit-tree $taskTree -p $taskParent -m ('Publish illustrated race preview from ' + $taskMain)).Trim()
+    $taskCommit = (& git -C $taskRepo commit-tree $taskTree -p $taskParent -m ('Publish canonical 3D boat from ' + $taskMain)).Trim()
     if ($LASTEXITCODE -ne 0) { throw 'Cannot create Pages commit' }
     & git -C $taskRepo -c credential.username=machxanht push origin ($taskCommit + ':refs/heads/gh-pages')
     if ($LASTEXITCODE -ne 0) { throw 'Cannot push Pages preview' }
