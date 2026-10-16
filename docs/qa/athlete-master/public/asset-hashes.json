@@ -1,0 +1,86 @@
+[
+  {
+    "file": "public/assets/athlete-master/athlete-details.glb",
+    "sha256": "f58000faf2a7931c858b549b4248003717b5d0dde72598dfcf750a14cbb87425",
+    "bytes": 162632,
+    "matchesSource": true
+  },
+  {
+    "file": "public/assets/athlete-master/athlete-master.glb",
+    "sha256": "ff09ec3ec1702e02cf9df81371df30901e9ad323ad3a40ea3bccbe80166030ad",
+    "bytes": 5261304,
+    "matchesSource": true
+  },
+  {
+    "file": "public/assets/illustrated-v22/hybrid-boats.js",
+    "sha256": "e31bc32f96828d05ad00577925aeff0a2818117a88b7b557e0b46424d0414f7e",
+    "bytes": 695451,
+    "matchesSource": true
+  },
+  {
+    "file": "public/assets/illustrated-v22/athlete-rig-v27.glb",
+    "sha256": "c1e65ac307de0f078bd213a4314afe5e13b2b47844611c8780273b86cef49b3e",
+    "bytes": 4230492,
+    "matchesSource": true
+  },
+  {
+    "file": "public/assets/illustrated-v22/hull-rig-v25.glb",
+    "sha256": "0827b017db678477016ca7a55854c4fec3bdcec18975fbba0c72fc1d69deb43d",
+    "bytes": 3953040,
+    "matchesSource": true
+  },
+  {
+    "file": "public/assets/illustrated-v22/motion-caller-v25.glb",
+    "sha256": "59dacff2222b5dbc999596f51ed644ff429dc2f4b43f50d272c5e56cd70b0a75",
+    "bytes": 56348,
+    "matchesSource": true
+  },
+  {
+    "file": "public/assets/illustrated-v22/motion-controller-v25.glb",
+    "sha256": "f52be89078595e7efe56011dd48d12a38ac4990b4a1c8ab4a462a5ca644d061e",
+    "bytes": 56776,
+    "matchesSource": true
+  },
+  {
+    "file": "public/assets/illustrated-v22/motion-helm-starboard-v25.glb",
+    "sha256": "61f766ddff54ca3ccfd3fc033b066aa1272addb37655835532377cda1498b591",
+    "bytes": 103256,
+    "matchesSource": true
+  },
+  {
+    "file": "public/assets/illustrated-v22/motion-helm-v25.glb",
+    "sha256": "26413ed499a60bc216744acedc508d4f94dfd1e7f84db879868a4468e30545cb",
+    "bytes": 103356,
+    "matchesSource": true
+  },
+  {
+    "file": "public/assets/illustrated-v22/motion-seated-port-v25.glb",
+    "sha256": "8abb65b76617516ead2ad899eb88a53ec56b3410c838b289b14e0279589c560e",
+    "bytes": 105200,
+    "matchesSource": true
+  },
+  {
+    "file": "public/assets/illustrated-v22/motion-seated-starboard-v25.glb",
+    "sha256": "36577a99143cfc5a6d1e805ef39bdc3c889f0f9e89172cdf21b52631d7914b23",
+    "bytes": 105100,
+    "matchesSource": true
+  },
+  {
+    "file": "public/assets/illustrated-v22/motion-standing-port-v25.glb",
+    "sha256": "06e842fff4642680286479bf7c91ece043256c1b954ba4d770caa2ef65b6a62e",
+    "bytes": 105096,
+    "matchesSource": true
+  },
+  {
+    "file": "public/assets/illustrated-v22/motion-standing-starboard-v25.glb",
+    "sha256": "f8b0169de43a19f004ebc01425b5183e2d0a8ce9279ca647f41ede1099d4fcae",
+    "bytes": 104992,
+    "matchesSource": true
+  },
+  {
+    "file": "public/assets/illustrated-v22/shirt-runtime-v32.json",
+    "sha256": "f5e56ad7436ad0abe0ffc1c5b0214eef9ffce4f3d5a646bf859289c2c7be7b90",
+    "bytes": 340934,
+    "matchesSource": true
+  }
+]

@@ -114,3 +114,18 @@ far-pose restoration, 90 pose evaluations/30 frame reuses over 120 boat renders,
 and zero retained GPU geometries/textures after disposal. Edge headless measured
 31.6 FPS on this host; it does not establish physical tablet performance or a
 speedup over the previous host-limited measurement.
+
+## Public verification
+
+Source commit `5c015960df8faf4679e71dbf582ea8827178d98b` was pushed to `main`.
+Pages commit `c0ecfaa84f7f9a672900741cc1b9465f77f70be7` deployed successfully
+in GitHub Actions run `38961184883`. The existing tablet entry remains
+`https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/`.
+
+The same athlete browser gate was run against that public game and its existing
+`?demo=art` inspection mode. Roles, grip/sole samples, desktop/tablet layouts and
+actual body/cloth animation passed without browser errors. Fourteen downloaded
+runtime assets matched the local SHA256 bytes, including both new GLBs and all
+eleven protected public source files. Evidence is under
+`docs/qa/athlete-master/public`. The source-only protected shirt module remains
+covered by the local invariant gate.
