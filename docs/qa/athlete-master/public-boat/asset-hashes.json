@@ -66,21 +66,39 @@
     "matchesLocal": true
   },
   {
-    "file": "public/assets/athlete-master/athlete-master.glb",
-    "bytes": 6274336,
-    "sha256": "22d108c7feb81ac16c2984487dd64b2fc3852c87a527980719190c0941291b3e",
-    "matchesLocal": true
-  },
-  {
     "file": "public/assets/athlete-master/athlete-details.glb",
     "bytes": 162632,
     "sha256": "f58000faf2a7931c858b549b4248003717b5d0dde72598dfcf750a14cbb87425",
     "matchesLocal": true
   },
   {
-    "file": "public/assets/illustrated-v22/hybrid-boats.js",
-    "bytes": 695736,
-    "sha256": "f4d2b96c4f5a40d6dd3e55c54c81f42d63e22a109701326b59b58a358bacee80",
+    "file": "public/assets/athlete-master/athlete-master.glb",
+    "bytes": 6328528,
+    "sha256": "37d8c426ec88ba5c872be127bc2ab98867f5075ad4b1d023056af84bdc61b458",
+    "matchesLocal": true
+  },
+  {
+    "file": "public/assets/athlete-master/rowing-motion.glb",
+    "bytes": 1039568,
+    "sha256": "704fcb2b93ad0010fa1b4450da3269116d96a956ef6dbf843b4b57649b9a70ee",
+    "matchesLocal": true
+  },
+  {
+    "file": "public/assets/festival-crowd/crowd-compact.json",
+    "bytes": 32824,
+    "sha256": "228863e4e2935fd33738e173cbcf6dcd203958ce1b067315182dc4a6697ebbe9",
+    "matchesLocal": true
+  },
+  {
+    "file": "public/assets/festival-crowd/crowd-compact.bin",
+    "bytes": 7967864,
+    "sha256": "fdb0571743dfb52d5732c6c8c535c8930771ff220958a4c8b3ad23bf6f61ee9b",
+    "matchesLocal": true
+  },
+  {
+    "file": "public/assets/festival-crowd/crowd-compact.packed",
+    "bytes": 3920655,
+    "sha256": "a7f449afa3aa689f324a4aa5d22ad600c515cf6f60587e40435f54c3418a8889",
     "matchesLocal": true
   }
 ]

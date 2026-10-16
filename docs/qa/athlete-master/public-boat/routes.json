@@ -1,4 +1,6 @@
 {
   "oldLinkRedirectsTo3D": true,
-  "cupLinkOpensCup": true
+  "cupLinkOpensCup": true,
+  "cupTeamCount": 8,
+  "cupUrl": "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/race.html?mode=cup"
 }

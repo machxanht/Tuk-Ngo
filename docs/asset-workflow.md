@@ -226,3 +226,15 @@ standalone palm gap was 3.06 mm, within the shared 5 mm interpolation tolerance;
 standalone and shared bone positions agreed to floating-point precision.
 The first local transfer with the added 3D banks was 14.94 MB; the host reported
 about 32 FPS. These are desktop browser measurements, not physical tablet FPS.
+
+
+The public gate passed against source `04609e9`, Pages commit
+`9ddf3986567540507a6366abecbf01fa27cee052` and successful Actions run
+`38977671958`. Evidence in `docs/qa/athlete-master/public-boat` includes actual
+public desktop/tablet renders, 96-phase motion comparisons, animated crowd pixel
+changes, all 17 public asset hashes and both existing entry routes. Public
+initial transfer was 11.88 MB in that run. The cup exposes all eight choices;
+the local touch gate completed its three rounds. A separate 120-second local
+run kept identical camera/target values and stable geometry/texture counts after
+warm-up, with no browser errors (`boat/stability.json`). The main shader, asset
+bytes and application code were unchanged by this subsequent documentation gate.
