@@ -1,0 +1,47 @@
+{
+  "source": "MakeHuman CC0 body; original approved rig retained",
+  "authoring": "Blender Python via local MCP; original procedural equipment",
+  "headBind": [
+    [
+      1.0,
+      -1.0478563857655164e-16,
+      5.963374860584736e-08,
+      2.0722326476562292e-15
+    ],
+    [
+      -1.2123761994331517e-09,
+      0.9997931718826294,
+      0.020330369472503662,
+      1.534483790397644
+    ],
+    [
+      -5.962139937309985e-08,
+      -0.02033039927482605,
+      0.999793291091919,
+      0.04694711044430733
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "details": {
+    "Race_Cap": {
+      "vertices": 2522,
+      "triangles": 4174
+    },
+    "Race_Hair": {
+      "vertices": 551,
+      "triangles": 199
+    },
+    "Race_Paddle": {
+      "vertices": 496,
+      "triangles": 940
+    }
+  },
+  "paddleLengthM": 1.52,
+  "sourceRigModified": false,
+  "referencePhotosAreTextures": false
+}

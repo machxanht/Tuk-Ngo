@@ -1,0 +1,113 @@
+{
+  "physicalTabletTested": false,
+  "geometry": {
+    "roles": {
+      "seated-port": {
+        "footClearanceM": [
+          0.0020000000000000018,
+          0.0020000000000000018
+        ],
+        "paddleLengthM": 1.5199999809265137,
+        "maxWristAxisDistanceM": 0.09738157873215113,
+        "maxPalmGripGapM": 0.0009605928489888658
+      },
+      "seated-starboard": {
+        "footClearanceM": [
+          0.0020000000000000018,
+          0.0020000000000000018
+        ],
+        "paddleLengthM": 1.5199999809265137,
+        "maxWristAxisDistanceM": 0.09738135609482401,
+        "maxPalmGripGapM": 0.0009603814113235884
+      },
+      "standing-port": {
+        "footClearanceM": [
+          0.0020003479782688127,
+          0.0020003479782688127
+        ],
+        "paddleLengthM": 1.75,
+        "maxWristAxisDistanceM": 0.09726964697035322,
+        "maxPalmGripGapM": 0.00047084943123969637
+      },
+      "standing-starboard": {
+        "footClearanceM": [
+          0.0020003479782688127,
+          0.0020003479782688127
+        ],
+        "paddleLengthM": 1.75,
+        "maxWristAxisDistanceM": 0.0972695716621479,
+        "maxPalmGripGapM": 0.00047058960075866145
+      },
+      "caller": {
+        "footClearanceM": [
+          0.0020000000000000018,
+          0.0020000000000000018
+        ],
+        "paddleLengthM": null,
+        "maxWristAxisDistanceM": 0,
+        "maxPalmGripGapM": 0
+      },
+      "controller": {
+        "footClearanceM": [
+          0.0020003479782688127,
+          0.0020003479782688127
+        ],
+        "paddleLengthM": null,
+        "maxWristAxisDistanceM": 0,
+        "maxPalmGripGapM": 0
+      },
+      "helm": {
+        "footClearanceM": [
+          0.0020003479782688127,
+          0.0020003479782688127
+        ],
+        "paddleLengthM": 4.199999809265137,
+        "maxWristAxisDistanceM": 0.09731394257772827,
+        "maxPalmGripGapM": 6.1475482174878375e-06
+      },
+      "helm-starboard": {
+        "footClearanceM": [
+          0.0020003479782688127,
+          0.0020003479782688127
+        ],
+        "paddleLengthM": 4.199999809265137,
+        "maxWristAxisDistanceM": 0.09738753166329309,
+        "maxPalmGripGapM": 5.58791542991376e-06
+      }
+    },
+    "masters": 8,
+    "stats": {
+      "gpuRenders": 18,
+      "gpuReuses": 2,
+      "poseUpdates": 19,
+      "poseRestores": 2,
+      "poseUpdatesByView": {
+        "study": 13,
+        "far": 2,
+        "near": 4
+      },
+      "geometryCacheSize": 12,
+      "triangles": 1100056,
+      "drawCalls": 305,
+      "teamTextures": 2,
+      "kitMaterials": 9,
+      "vertexAttributes": 14,
+      "vertexAttributeLimit": 16
+    }
+  },
+  "standalone": {
+    "testid": "art-stage",
+    "renderMode": "athlete-study",
+    "artSource": "BLENDER_MASTER",
+    "phase": "0.3850",
+    "view": "front",
+    "crewCount": "1",
+    "triangles": "21919",
+    "drawCalls": "19"
+  },
+  "standaloneMotion": {
+    "handTravelM": 0.15142446378090554,
+    "clothWeightChange": 1
+  },
+  "errors": []
+}

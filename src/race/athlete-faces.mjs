@@ -51,7 +51,8 @@ export function buildFaceVariants(merged,headInverse,headBind,headId){
      mapped.addScaledVector(normal.clone().normalize(),profile.hair===0?.0003:.0014);
     }
    }
-   if(zone===2&&variant%3!==0){mapped.applyAxisAngle(axis,Math.PI);normal.applyAxisAngle(axis,Math.PI);}
+   if(zone===2&&variant%4===3){mapped.applyAxisAngle(axis,Math.PI);normal.applyAxisAngle(axis,Math.PI);}
+   if(zone===10){const length=[.0004,.0018,.0032,.0038][profile.hair],wave=profile.hair===3?Math.sin(point.x*220)*Math.sin(point.z*170)*.001:0;mapped.addScaledVector(normal.clone().normalize(),length-.0018+wave);}
    mapped.applyMatrix4(headBind);normal.applyMatrix3(bindNormal).normalize();p.setXYZ(i,mapped.x,mapped.y,mapped.z);n.setXYZ(i,normal.x,normal.y,normal.z);
   }
   g.setAttribute('facePoint',new T.BufferAttribute(facePoint,3));g.setAttribute('beard',new T.BufferAttribute(beard,1));g.setAttribute('hair',new T.BufferAttribute(hair,1));g.userData={...g.userData,face:{...profile,changedVertices:changed,maxDisplacementM:maxDisplacement}};g.computeBoundingSphere();geometryVariants.push(g);

@@ -33,7 +33,7 @@ function drawBoat(t,animation={}){
  const study=sceneMode==='boat',posture=document.querySelector('#posture').value;
  const effortKey=animation.id||'study',effortTarget=Math.max(animation.effort||0,Math.min(1,Math.max(0,(tempo-95)/10)))*motion;
  let effort=strokeEfforts.get(effortKey);if(!effort){effort={value:effortTarget,t};strokeEfforts.set(effortKey,effort);}else{const dt=Math.max(0,Math.min(.1,t-effort.t));effort.value+=(effortTarget-effort.value)*(1-Math.exp(-dt*5));effort.t=t;}
- ctx.drawImage(hybrid.render(phase,t,{study,posture,teamId:study?(document.querySelector('#study-kit').value==='team'?hybridTeams.near.id:null):animation.teamId||hybridTeams.near.id,kitColor:study?document.querySelector('#study-kit').value:animation.kitColor||'#23855e',faceVariant:study?Number(document.querySelector('#study-face').value):null,skinDetail:lowPower?0:1,focus:study?document.querySelector('#study-focus').value:'body',effort:effort.value,viewKey:effortKey,frameId:renderedFrames,distance:32.6/(animation.scale||1),nearest:study||animation.id==='near',desyncIntensity:animation.desyncIntensity||0}),0,0,W,CONFIG.camera.workshopHeight);
+ ctx.drawImage(hybrid.render(phase,t,{study,posture,teamId:study?(document.querySelector('#study-kit').value==='team'?hybridTeams.near.id:null):animation.teamId||hybridTeams.near.id,kitColor:study?document.querySelector('#study-kit').value:animation.kitColor||'#23855e',faceVariant:study?Number(document.querySelector('#study-face').value):null,skinDetail:lowPower?0:1,focus:study?document.querySelector('#study-focus').value:'body',angle:study?document.querySelector('#study-angle').value:'three-quarter',effort:effort.value,viewKey:effortKey,frameId:renderedFrames,distance:32.6/(animation.scale||1),nearest:study||animation.id==='near',desyncIntensity:animation.desyncIntensity||0}),0,0,W,CONFIG.camera.workshopHeight);
  if(motion>0&&!study){
   for(const [i,tip] of hybrid.tips.entries())if(tip.inWater){
    effect(tempo>95?2:0,...tip.point,55+Math.max(0,tempo-80)*1.3,.55*motion);
@@ -107,6 +107,7 @@ function updateModeUI(){
  document.querySelector('#kit-control').hidden=sceneMode!=='boat';
  document.querySelector('#face-control').hidden=sceneMode!=='boat';
  document.querySelector('#focus-control').hidden=sceneMode!=='boat';
+ document.querySelector('#angle-control').hidden=sceneMode!=='boat';
  document.querySelector('#practice-controls').hidden=gameMode!=='practice'||sceneMode!=='festival';
  document.querySelector('#play-panel').hidden=gameMode!=='play'||sceneMode!=='festival';
  document.querySelector('#view').hidden=gameMode==='play';
@@ -129,6 +130,7 @@ document.querySelector('#posture').onchange=()=>draw(time);
 document.querySelector('#study-kit').onchange=()=>draw(time);
 document.querySelector('#study-face').onchange=()=>draw(time);
 document.querySelector('#study-focus').onchange=()=>draw(time);
+document.querySelector('#study-angle').onchange=()=>draw(time);
 document.querySelector('#view').onclick=()=>{sceneMode=sceneMode==='festival'?'boat':'festival';H=sceneMode==='festival'?CONFIG.camera.height:CONFIG.camera.workshopHeight;resizeCanvas();updateModeUI();draw(time);};
 addEventListener('resize',()=>{resizeCanvas();draw(time);});
 function stroke(){

@@ -1,3 +1,17 @@
+# Blender athlete source and runtime integration
+
+- Added editable packed Blender source and a standard animated one-athlete GLB.
+- Authored and integrated fitted baseball cap, scalp hair and rounded wooden
+  paddle; forward/back caps and hair variation use the existing identity cache.
+- Kept all twelve protected source hashes, the 533/896/four-loop shirt topology
+  and all eight master motions. Collar appearance now follows the actual mesh
+  boundary; no geometric endpoint equation changed.
+- Added front/side/back inspection on the existing game page, linked the existing
+  orbit viewer to the new GLB, and retained the stable tablet URL and cup UI.
+- Standalone texture UV islands prevent mip bleeding. Body, cloth and paddle
+  export as one animation. Source rigs and legacy team working changes remain
+  untouched. See `docs/asset-workflow.md` for scope and evidence.
+
 # Architectural cleanup and three-phase race
 
 ## Preserved sources and behavior

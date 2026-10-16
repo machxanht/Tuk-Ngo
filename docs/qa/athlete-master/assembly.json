@@ -1,0 +1,9 @@
+{
+  "shirtVertices": 533,
+  "shirtTriangles": 896,
+  "shirtSamples": 49,
+  "shirtBake": "skin each original endpoint then barycentrically interpolate; 48 intervals per original one-second loop",
+  "originalEightMotionFilesChanged": false,
+  "glbBytes": 5261304,
+  "sourceBlendBytes": 5178306
+}

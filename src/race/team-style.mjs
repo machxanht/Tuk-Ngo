@@ -16,7 +16,7 @@ export function makeAthleteMaterials(skinMap,detail){
  const cache=new Map();
  function get(palette){
   const key=JSON.stringify(palette);if(cache.has(key))return cache.get(key);
-  const material=new T.MeshLambertMaterial({vertexColors:true,side:T.DoubleSide});
+  const material=new T.MeshPhongMaterial({vertexColors:true,side:T.DoubleSide,shininess:14,specular:'#302a22'});
   material.userData.palette={...palette};material.userData.skinMap=skinMap;
   material.onBeforeCompile=shader=>{
    for(const name of ['jersey','lower','cap','trim','shorts','sleeve'])shader.uniforms['kit_'+name]={value:new T.Color(palette[name]||palette.jersey)};
@@ -39,7 +39,7 @@ vArmBinding=paintZone>7.9 && paintZone<8.1?1.0:0.0;
 vOldShirt=((paintZone>2.9 && paintZone<5.1) || vSleeve>0.5 || vArmBinding>0.5)?1.0:0.0;
 vFrontPrint=paintZone>8.9?1.0:0.0;
 if(vHybridSkin>0.0) vColor.rgb=mix(vColor.rgb,vec3(clamp(color.r/.56,.65,1.3)*.75),vHybridSkin);
-if(paintZone>1.9 && paintZone<2.1) vColor.rgb=kit_cap;
+if(paintZone>1.9 && paintZone<2.1) vColor.rgb=kit_cap*color.rgb;
 if(paintZone>2.9 && paintZone<4.1) vColor.rgb=mix(kit_lower,kit_jersey,shirtMix);
 if((paintZone>4.9 && paintZone<5.1) || vArmBinding>0.0) vColor.rgb=kit_trim;
 if(paintZone>5.9 && paintZone<6.1) vColor.rgb=kit_shorts;
@@ -68,13 +68,6 @@ if(vArmBinding>0.5 && kit_sleeved>0.5) discard;
 if(vOldShirt>0.5 && kit_sleeved>0.5) discard;
 if(vFrontPrint>0.5 && (kit_front_print<0.5 || kit_sleeved>0.5)) discard;
 if(vHybridSkin>0.0) diffuseColor.rgb *= mix(vec3(1.0),texture2D(hybridSkinMap,vHybridSkinUV).rgb,vHybridSkin);
-if(vHair>0.5){
- float line=vHair<1.5?.063:vHair<2.5?.056:vHair<3.5?.052:.058+.002*sin(vFacePoint.x*160.0);
- float side=smoothstep(.053,.067,abs(vFacePoint.x))*(1.0-smoothstep(.025,.052,vFacePoint.z));
- float back=1.0-smoothstep(-.018,-.008,vFacePoint.z);
- float mask=smoothstep(line-.002,line+.002,vFacePoint.y)*max(side,back);
- diffuseColor.rgb=mix(diffuseColor.rgb,vec3(.034,.026,.019),mask);
-}
 if(vBeard>0.0 && vHybridSkin>0.0){
  float front=smoothstep(.035,.075,vFacePoint.z);
  float lower=(1.0-smoothstep(-.032,-.014,vFacePoint.y))*smoothstep(-.089,-.065,vFacePoint.y);
