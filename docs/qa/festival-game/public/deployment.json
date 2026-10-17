@@ -1,0 +1,80 @@
+{
+  "sourceCommit": "a87b754",
+  "pagesCommit": "9838e79e365ca83f94e25ea57c5ae6805ff0f890",
+  "actionsRun": 39031877069,
+  "conclusion": "success",
+  "stableEntry": "https://machxanht.github.io/Tuk-Ngo/",
+  "entryChunk": "index-C9bjMpp5.js",
+  "physicalTabletTested": false,
+  "playableEntries": 61,
+  "researchedAppearanceEntries": 8,
+  "sampleAppearanceEntries": 53,
+  "byes": 3,
+  "cupHeats": 60,
+  "publicPlayerHeatsPlayed": 6,
+  "publicCupChampion": "can_tho-03",
+  "cupVerification": "legal timed strokes through the actual fixed-step model; accelerated playback, not wall-clock race-duration benchmark",
+  "paceWater": {
+    "steady": 0.45,
+    "sprintBeforeFinal": 0.95
+  },
+  "waterComparison": {
+    "runs": [
+      {
+        "events": 1660,
+        "emitted": 11376,
+        "particles": 790,
+        "strength": 0.12,
+        "catches": 336,
+        "releases": 338,
+        "drives": 986,
+        "capacity": 3600,
+        "sprayFans": 18,
+        "maxHeightM": 0.1999467325210571,
+        "maxFans": 128
+      },
+      {
+        "events": 2164,
+        "emitted": 33668,
+        "particles": 3595,
+        "strength": 1,
+        "catches": 336,
+        "releases": 338,
+        "drives": 1490,
+        "capacity": 3600,
+        "sprayFans": 18,
+        "maxHeightM": 0.6805622887611389,
+        "maxFans": 128
+      }
+    ]
+  },
+  "tabletViewports": [
+    [
+      1024,
+      768
+    ],
+    [
+      768,
+      1024
+    ],
+    [
+      1180,
+      430
+    ]
+  ],
+  "audio": {
+    "playing": true,
+    "source": "/Tuk-Ngo/assets/illustrated-v22/crowd-cheer-cc0.mp3"
+  },
+  "dispose": {
+    "geometries": 0,
+    "textures": 1
+  },
+  "inspectionNavigation": [
+    "two-boat trial",
+    "54-person boat",
+    "61-team game"
+  ],
+  "eliminationAndNewCup": true,
+  "publicBrowserErrors": []
+}
