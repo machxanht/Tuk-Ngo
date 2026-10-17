@@ -37,3 +37,13 @@ The baker verifies source/CC hashes and selected CC words, changes only this
 generated audio set, and removes its obsolete recordings. It does not download or process
 media at runtime. The full source, ASR model and extraction tools remain on drive
 E outside the website.
+
+The current set additionally includes 39 original team-name cuts and three
+historical excerpts. Registration coverage is 39 Vietnamese names, 10 Khmer
+names, three Vietnamese histories, and zero Khmer histories. Aliases and number
+boundaries were reviewed against the roster/CC/context; these are not independently
+listened-to speaker/name certifications. Names too short for stable R128 loudness
+measurement use measured peak normalization with MP3 headroom instead.
+`team-audio.zip` exports available audio and a provenance/availability profile for
+all 61 registrations. Unidentified names/history remain missing. Historical
+sources are recorded per entry in the manifest and in the archive profiles.
