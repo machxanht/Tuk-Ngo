@@ -1,972 +1,457 @@
 {
-  "schema": 1,
-  "reference": "https://www.youtube.com/watch?v=crZF3hghbgQ",
-  "referenceUse": "broadcast metadata verified; direct audio retrieval returned HTTP 403; no programme audio copied",
-  "speech": "Original authored text; Google Translate TTS generated via gTTS; prerecorded MP3, no runtime speech service",
-  "chantUse": "Short authored Khmer encouragement; not a documented traditional chant recording",
-  "drums": "Original deterministic membrane/stick synthesis, not a recording of the programme drum",
-  "clips": {
+  "schema": 2,
+  "mode": "broadcast",
+  "source": {
+    "url": "https://www.youtube.com/watch?v=crZF3hghbgQ",
+    "videoId": "crZF3hghbgQ",
+    "channel": "Cần Thơ – Tiếng Dân tộc",
+    "sha256": "2c443d23b71fe92cc191baca5bbc45ec12704d79a2ef1b31492839cd04654ed5",
+    "bytes": 301668624,
+    "duration": 18640,
+    "format": "YouTube audio 140, AAC 128 kbps stereo"
+  },
+  "review": {
+    "vietnamese": "Word boundaries selected from local Whisper small ASR; captions describe the excerpt and are not certified verbatim transcripts. Team-name portions excluded from Vietnamese cuts.",
+    "khmer": "Original Khmer-language broadcast passages; no reliable word-for-word translation or native review. May retain real broadcast context/team mentions. Played as labelled source excerpts, never used to announce a game winner.",
+    "percussion": "Recorded field transients during a gap in recognised commentary; filtered and faded, not isolated studio drum stems.",
+    "rights": "Source attributed to broadcaster. No permission or reusable-content licence has been independently verified."
+  },
+  "ambience": "broadcast-ambience",
+  "warmup": [
+    "broadcast-ready",
+    "broadcast-go",
+    "broadcast-intro",
+    "khmer-intro",
+    "drum-low",
+    "drum-open",
+    "drum-rim"
+  ],
+  "events": {
     "ready": {
-      "file": "ready.mp3",
-      "text": "Hai đội đã vào vị trí. Chú ý hiệu lệnh xuất phát!",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 3.2396,
-      "peak": 0.7574,
-      "bytes": 26540,
-      "sha256": "59f641d73548e12c5ba534c793b10b0e397a657d4057f1724953f37895f0ab18",
-      "signature": "b946b18f0f22aa22fb2d68e40c4453925d9f6b4a9139103b6a6748a91922356b"
+      "voice": [
+        "broadcast-ready"
+      ],
+      "khmer": []
     },
     "go": {
-      "file": "go.mp3",
-      "text": "Xuất phát! Hai ghe đồng loạt tăng tốc!",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 2.2944,
-      "peak": 0.6853,
-      "bytes": 19052,
-      "sha256": "e9043fd969bf2476cc091a05add2c26dda3c19691f11aa8f10b45467a4302620",
-      "signature": "fcf04fc336848024d4415b0454fc523ca7828a0e341154550b9bae9c8fa40dd8"
+      "voice": [
+        "broadcast-go"
+      ],
+      "khmer": []
     },
     "intro": {
-      "file": "intro.mp3",
-      "text": "Làn của bạn là ghe",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 1.2939,
-      "peak": 0.7568,
-      "bytes": 10988,
-      "sha256": "b8bd00960e618a67a435cbfc6431463a6b8ef3d11263c1107adc5e71cd74475d",
-      "signature": "d8d1d56b7e85a4747f1597f41e3391742d4456faea88783a5ce8dddde608480c"
-    },
-    "versus": {
-      "file": "versus.mp3",
-      "text": "Đối diện là ghe",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 1.1335,
-      "peak": 0.6573,
-      "bytes": 9836,
-      "sha256": "27c8f2e270a269f1fba25a49f7448be594fd46b61fe305a57011abc12454be49",
-      "signature": "1ee67577a099fa3cb28a9b3e9ab7b4ac8e51242f873dd7fd0059669d1599b90c"
-    },
-    "leading": {
-      "file": "leading.mp3",
-      "text": "đang vươn lên dẫn đầu!",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 1.2175,
-      "peak": 0.5912,
-      "bytes": 10412,
-      "sha256": "fa7ed9b4f725c171d41cc4650b3f2faef8231633b04574bc22e16bc796e8bc35",
-      "signature": "fdc5949eb35aac22a5c90490f9ca24c01804924d16e5b3bb2d9edf8ff4b04214"
-    },
-    "close-race": {
-      "file": "close-race.mp3",
-      "text": "Hai mũi ghe đang bám đuổi rất sát nhau!",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 2.2411,
-      "peak": 0.7436,
-      "bytes": 18668,
-      "sha256": "e5c9c11c1d8aeb90b993126047fda7af46cfb6fe9d5d5c9b4ada5c6c7a36d427",
-      "signature": "f5207efe23b0839a924a349e9f2e0218fcb5a5fdd52b82f62658d69fd7faa2a8"
+      "voice": [
+        "broadcast-intro"
+      ],
+      "khmer": [
+        "khmer-intro"
+      ]
     },
     "cruise": {
-      "file": "cruise.mp3",
-      "text": "Đã vào đường trường. Giữ nhịp chắc, phối hợp đều tay!",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 3.4541,
-      "peak": 0.6916,
-      "bytes": 28268,
-      "sha256": "69902ee6fd91f03adb103307a680ce9ad6b1330a90f0376d63a4c4051d5eb60a",
-      "signature": "c9b4d411508c843c17aaa8c6eee05c5a59cac3e073c3e090815eaead43f4f0e9"
+      "voice": [
+        "broadcast-rhythm"
+      ],
+      "khmer": [
+        "khmer-cruise"
+      ]
     },
     "halfway": {
-      "file": "halfway.mp3",
-      "text": "Nửa chặng đường đã qua. Cuộc đua vẫn còn rất quyết liệt!",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 3.4968,
-      "peak": 0.739,
-      "bytes": 28652,
-      "sha256": "901c9f0ee40356169b7d9b193e4eac241eed9f541a186328fea9eecdff8cf684",
-      "signature": "c1af0edef4cfcb7a67b362c813f65d6dda94dc27d099d12810fd9b49060f27ee"
+      "voice": [
+        "broadcast-rhythm"
+      ],
+      "khmer": [
+        "khmer-cruise"
+      ]
     },
     "final": {
-      "file": "final.mp3",
-      "text": "Hai trăm năm mươi mét cuối! Tất cả dồn sức cho nước rút!",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 3.2936,
-      "peak": 0.7548,
-      "bytes": 27116,
-      "sha256": "d58fcaae4a220b6d7dd74cca215fed229c308f84f303403dc4d32a896ec01d8e",
-      "signature": "66bf01c223027a93e59608825045aca85cb21ca3207286b51eacdee5737331c5"
+      "voice": [
+        "broadcast-sprint"
+      ],
+      "khmer": [
+        "khmer-final"
+      ]
     },
     "last-hundred": {
-      "file": "last-hundred.mp3",
-      "text": "Một trăm mét cuối cùng! Hai đội đang dốc toàn lực!",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 2.9087,
-      "peak": 0.6656,
-      "bytes": 24044,
-      "sha256": "1d0f157b831c105b7f69fcf2c0e7930901d8f6337572a0da19f5fb499ff1d291",
-      "signature": "9e5418464972585e5bba248679c940733a9139f796a2dd834e57fcf14f4042f3"
+      "voice": [
+        "broadcast-surge"
+      ],
+      "khmer": []
     },
     "last-fifty": {
-      "file": "last-fifty.mp3",
-      "text": "Còn năm mươi mét! Vạch đích đã ở ngay phía trước!",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 2.474,
-      "peak": 0.7543,
-      "bytes": 20588,
-      "sha256": "c0e0a970d3f4944cdaa6d3c208e4737572525f99d047d24eaf6957d87364f245",
-      "signature": "a34eec225890bdf4a387cae154316126c464c94ad489a976f87bed3da47822dc"
+      "voice": [
+        "broadcast-sprint"
+      ],
+      "khmer": []
     },
     "surge": {
-      "file": "surge.mp3",
-      "text": "Đạp! Đạp mạnh! Cả đội cùng dồn sức!",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 2.3372,
-      "peak": 0.7549,
-      "bytes": 19436,
-      "sha256": "bad531f8230cf5113cd3d88f2fd9c0e8eaf416e807a948716e26a992fe5b559e",
-      "signature": "05af8059a7c1484d50c45ad7a93659374a350bf1b50070a9796ab7682907e5a4"
+      "voice": [
+        "broadcast-surge"
+      ],
+      "khmer": [
+        "khmer-surge"
+      ]
     },
     "pace-sprint": {
-      "file": "pace-sprint.mp3",
-      "text": "Tăng nhịp chèo! Những mái dằm đang quạt nước mạnh hơn!",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 3.146,
-      "peak": 0.7653,
-      "bytes": 25964,
-      "sha256": "11ed182b88a96f3b81f08c5c8eeb85907f0fab29e7ad40e1aa89f39bffaf1c5e",
-      "signature": "7a2609db8791be7a37bb92eee1081c7cd69b82f437a9fd6c59f95dadfd108266"
+      "voice": [
+        "broadcast-sprint"
+      ],
+      "khmer": []
     },
     "recover": {
-      "file": "recover.mp3",
-      "text": "Đội hình đang điều chỉnh nhịp, giữ sức cho đoạn cuối.",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 3.045,
-      "peak": 0.7297,
-      "bytes": 25004,
-      "sha256": "ccefb405ca3038a9c21220856eb303b7de129b9af922a694588b6be1631e3519",
-      "signature": "e5abe5bb915af14035eeb20c52cc01b3359a58a952761d399af8af1766c52a48"
+      "voice": [
+        "broadcast-recover"
+      ],
+      "khmer": []
     },
     "cohesion": {
-      "file": "cohesion.mp3",
-      "text": "Những mái dằm phối hợp rất đều. Hãy giữ chắc nhịp này!",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 3.6692,
-      "peak": 0.6619,
-      "bytes": 29996,
-      "sha256": "1527c4bcaf7d6302db59255defe020237133ad5591af3ebec356860b1eb60045",
-      "signature": "6adf0934d776ad5c8bab1945bde4e9d19b1a46f3c51c06294d507959d4091527"
+      "voice": [
+        "broadcast-rhythm"
+      ],
+      "khmer": []
     },
     "fatigue": {
-      "file": "fatigue.mp3",
-      "text": "Đội hình có dấu hiệu xuống sức. Cần giữ nhịp thật chắc!",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 3.207,
-      "peak": 0.7501,
-      "bytes": 26348,
-      "sha256": "6a9d0b0f48dfc5aa19289f1b4039f03478548d4658159cea353f459f1deaf050",
-      "signature": "84a361554da3094d7a11e6217ac93f2a9d58f1e684e01355e377bbae8c16c2ea"
+      "voice": [
+        "broadcast-recover"
+      ],
+      "khmer": []
+    },
+    "close-race": {
+      "voice": [
+        "broadcast-close"
+      ],
+      "khmer": []
+    },
+    "lead": {
+      "voice": [
+        "broadcast-lead"
+      ],
+      "khmer": []
     },
     "finish": {
-      "file": "finish.mp3",
-      "text": "Đã về đích!",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 0.5652,
-      "peak": 0.6091,
-      "bytes": 5228,
-      "sha256": "09884c12c8e8662eb6510564abbbd452a3f7762ee748e6f7d869fb599143a2ac",
-      "signature": "d99a5b9972ee21c232cc401f027301d31071b4d4a3b66902d799bc597eb4827f"
-    },
-    "winner": {
-      "file": "winner.mp3",
-      "text": "giành chiến thắng trong lượt đua này! Xin chúc mừng!",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 2.834,
-      "peak": 0.7301,
-      "bytes": 23468,
-      "sha256": "ef33069b906203931f25411f335304c41770452448186402baad31239727db40",
-      "signature": "99cf7c46c80cf30ff84b3927df377698d1d8fbc8bb8784582ec7cc505107ac5a"
+      "voice": [
+        "broadcast-finish"
+      ],
+      "khmer": []
     },
     "loss": {
-      "file": "loss.mp3",
-      "text": "Đối thủ về đích trước. Hẹn gặp lại ở giải đấu tiếp theo!",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 3.51,
-      "peak": 0.7011,
-      "bytes": 28844,
-      "sha256": "0e0a605086979dd02a536f3cfe497a853a28fbbbb06fad4ec31e27d6f5d4c4fa",
-      "signature": "a953096d75a11879da4b590b581e935a78d85fda04e3ce14cf1b95b2d9930818"
-    },
-    "tie": {
-      "file": "tie.mp3",
-      "text": "Hai ghe về gần như cùng lúc! Lượt đua sẽ được tổ chức lại!",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 3.4896,
-      "peak": 0.7568,
-      "bytes": 28652,
-      "sha256": "43b56990ec686b73724a8687f4ca3773f4da8885ca99a19db89c8fef34817d3e",
-      "signature": "2103fc49aad3ea1a04ddd3cc579e6bd8444dd221a18e8dfe93c50b97ee117b93"
+      "voice": [
+        "broadcast-finish"
+      ],
+      "khmer": []
     },
     "dnf": {
-      "file": "dnf.mp3",
-      "text": "Ghe của bạn chưa hoàn thành cự ly. Hãy thử lại với nhịp chèo chắc hơn!",
+      "voice": [
+        "broadcast-loss"
+      ],
+      "khmer": []
+    },
+    "tie": {
+      "voice": [
+        "broadcast-wait"
+      ],
+      "khmer": []
+    }
+  },
+  "clips": {
+    "broadcast-ready": {
+      "start": 5472.64,
+      "end": 5474.6,
+      "channel": "voice",
       "lang": "vi",
-      "translationVi": null,
-      "duration": 4.5215,
-      "peak": 0.7581,
-      "bytes": 36908,
-      "sha256": "6d38d160a5ae3f1633d9dc7f943b9e91893c856b078b01825e9a1907c8af9c31",
-      "signature": "2bd06ec1b23fc3d4864031cb6081a2411e3a3cc267dd2d5858035dd20a21dbae"
+      "text": "Đúng như chúng ta đã chờ đợi.",
+      "file": "broadcast-ready.mp3",
+      "duration": 1.96,
+      "peak": 0.712,
+      "bytes": 24617,
+      "sha256": "be21d80f72994726cd7d47ff02ba7b1a8070bfe501f32f2eae13c67dde00de2b",
+      "sourceType": "broadcast",
+      "sourceStart": 5472.64,
+      "sourceEnd": 5474.6
     },
-    "chant-ho": {
-      "file": "chant-ho.mp3",
-      "text": "ហ៊ោ! ហ៊ោ!",
-      "lang": "km",
-      "translationVi": "Hô! Hô!",
-      "duration": 1.2111,
-      "peak": 0.688,
-      "bytes": 10412,
-      "sha256": "456fd92611efd7b541811b70a7904694fc2e6b662d880baebcb7e0a05afa3bb9",
-      "signature": "d5e9aa29b0ab99703cad5f2f40db0047efde9af344b0ba6b3447881245ef341b"
-    },
-    "chant-victory": {
-      "file": "chant-victory.mp3",
-      "text": "ជយោ! ជយោ!",
-      "lang": "km",
-      "translationVi": "Hoan hô! Hoan hô!",
-      "duration": 1.7203,
-      "peak": 0.6051,
-      "bytes": 14444,
-      "sha256": "dffd22ab89ec4ee1aaab5af3bc2b14dc7e63c945e40267b5f766c05c982ce6fb",
-      "signature": "1fbc30f71bb5946f1c167a86e235cd364514313369eca7abcb8fd865d9d3cece"
-    },
-    "chant-encourage": {
-      "file": "chant-encourage.mp3",
-      "text": "ខំប្រឹងឡើង!",
-      "lang": "km",
-      "translationVi": "Cố lên!",
-      "duration": 1.0302,
-      "peak": 0.6445,
-      "bytes": 8876,
-      "sha256": "2e9ebc048612ada2167f61dc725c8434006fabaf990fde86c66ca6deac381e0a",
-      "signature": "dcd433c3eed90616dcf4abd4534fb257c3e3bb1472929d5de8d657b1dc57daa0"
-    },
-    "name-can_tho-01": {
-      "file": "name-can_tho-01.mp3",
-      "text": "PôThiSaThaRam (Đội 1)",
+    "broadcast-go": {
+      "start": 5572.94,
+      "end": 5574.69,
+      "channel": "voice",
       "lang": "vi",
-      "translationVi": null,
-      "duration": 1.6417,
-      "peak": 0.7647,
-      "bytes": 13868,
-      "sha256": "683b5552c83a57e23d3b764da30a524c18bd2a84b34a68b347d6a00eae64b1dd",
-      "signature": "af43a597192a897eaebaddabfbc1854388e0d2533f955a6e05db5d0425821a0e"
+      "text": "Chúng ta cùng chờ xem điều gì xảy ra.",
+      "file": "broadcast-go.mp3",
+      "duration": 1.75,
+      "peak": 0.5807,
+      "bytes": 22025,
+      "sha256": "e948c3c3b44e4ca07f83d4aedbb9a4a5cb1d519ff7be94f210f5fa13bca7ab69",
+      "sourceType": "broadcast",
+      "sourceStart": 5572.94,
+      "sourceEnd": 5574.69
     },
-    "name-pothi-satharam-2": {
-      "file": "name-pothi-satharam-2.mp3",
-      "text": "Pôthi Satharam hai",
+    "broadcast-intro": {
+      "start": 5474.72,
+      "end": 5476.97,
+      "channel": "voice",
       "lang": "vi",
-      "translationVi": null,
-      "duration": 1.454,
-      "peak": 0.7456,
-      "bytes": 12332,
-      "sha256": "daa296e3eac6d88ce2679f74a77effc3ca6e818da91d53f7c3d2dec38d3b70e8",
-      "signature": "095604275e570d7f8dfbf148757cdbb5091eed01551e41d1f9d41c8be49466c3"
-    },
-    "name-can_tho-03": {
-      "file": "name-can_tho-03.mp3",
-      "text": "Khleáng (Đội 1)",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 1.1723,
-      "peak": 0.7205,
-      "bytes": 10028,
-      "sha256": "8291c9caf0ccaa054945f1f905af5c3322f4166bd51d44a974048a5d11b11cf7",
-      "signature": "63db321b1990d4a0dfb818994516a828e54da165e4374b04f4c0e4c37046ac23"
-    },
-    "name-can_tho-04": {
-      "file": "name-can_tho-04.mp3",
-      "text": "Khleáng (Đội 2)",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 1.3035,
-      "peak": 0.7192,
-      "bytes": 11180,
-      "sha256": "a0a015bd0457ae5c8fbbd135625383b13e7e0301a682f7b85d1990b36c399082",
-      "signature": "c44132f148dcb996d06b3fd5bad523ee4d00bd3095c927e6bfdb6202a2ea732e"
-    },
-    "name-can_tho-05": {
-      "file": "name-can_tho-05.mp3",
-      "text": "Sro Lôn (Đội 1)",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 1.3619,
-      "peak": 0.6265,
-      "bytes": 11564,
-      "sha256": "242c60bfe21ba421685f22ee1caa06146f92a90b5e5e38398dda20eb77c75fc3",
-      "signature": "ed405ba9c64db7b5780f5a2d87daae35a8f28d87a4b8e6ffe5cd7dc7ecc06506"
-    },
-    "name-can_tho-06": {
-      "file": "name-can_tho-06.mp3",
-      "text": "Sro Lôn (Đội 2)",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 1.4983,
-      "peak": 0.5866,
-      "bytes": 12716,
-      "sha256": "5cb213c0022a7f381f6acea0b187ff28e1dc2dc4a9a86eb9359e3a6ec0ef778d",
-      "signature": "664bcf2b56b61d158411418fedf71dd47514410d4f591564eb92ef39d4b20fad"
-    },
-    "name-chroi-tum-chas": {
-      "file": "name-chroi-tum-chas.mp3",
-      "text": "Chrôi Tưm Chắs",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 0.9868,
-      "peak": 0.5246,
-      "bytes": 8684,
-      "sha256": "4fdf2f07d6840a6b5eead038fb7ff9d73629ca42021e6a01ebd2300388b2a6ae",
-      "signature": "977d6f2d37e6b066f81058d8141d2235566cf8118376cea01aeca44ef241c7b0"
-    },
-    "name-can_tho-08": {
-      "file": "name-can_tho-08.mp3",
-      "text": "Đơm Om Prul (Xẻo Me)",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 1.8645,
-      "peak": 0.6742,
-      "bytes": 15596,
-      "sha256": "0299a6151354b5e5731c0aa3f953833c9b812eec204e937331f36ac25e269811",
-      "signature": "752e6101900f44708cc310c02104152985239eca48349b1fc1fc9d70e0b01490"
-    },
-    "name-can_tho-09": {
-      "file": "name-can_tho-09.mp3",
-      "text": "Sê Rây Kan Đal",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 1.308,
-      "peak": 0.5384,
-      "bytes": 11180,
-      "sha256": "db2c349d4b6ac0d22c7e2670cbdd24513247097868fc66371c2d2c34b5ad0237",
-      "signature": "4f40cb2ad378f39c6b5aebc4b6749b6af8a675fd0a75e4bac210f921339e7ba0"
-    },
-    "name-can_tho-10": {
-      "file": "name-can_tho-10.mp3",
-      "text": "Pích Măng Kol (Wáth Pích)",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 1.5728,
-      "peak": 0.6612,
-      "bytes": 13292,
-      "sha256": "8566bed7cf1f665741bf787efcba82d27f7c6e19255820e98f072b2baaf7d0b5",
-      "signature": "502abcf8918bde4b97254957838c6aa0191bda31d89e2f9af4964408dd56cc4f"
-    },
-    "name-can_tho-11": {
-      "file": "name-can_tho-11.mp3",
-      "text": "Ô Chum - Prếk Chếk",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 1.1124,
-      "peak": 0.7079,
-      "bytes": 9644,
-      "sha256": "39131e3c193a1e11a4bddbebbc53e66ec5cb80057c0731bc3dfe82bf9f29efa0",
-      "signature": "18ef278157c0ae8b3dd9cffa07e95d4a42927c6461ec728b146cf183aedcd606"
-    },
-    "name-can_tho-12": {
-      "file": "name-can_tho-12.mp3",
-      "text": "Nô Rên Răn Sây (Ông Kho)",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 1.9416,
-      "peak": 0.5977,
-      "bytes": 16172,
-      "sha256": "169fde86ce3f9ce6ce4520e0838abafabb2b54fab6928c400ec967d888e1366a",
-      "signature": "c58c6a85ecce861567c443c39e7cbeb604367ecb77fa2e36f8759e2b60b1c20d"
-    },
-    "name-can_tho-13": {
-      "file": "name-can_tho-13.mp3",
-      "text": "Pong Tứk Chắc",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 0.7198,
-      "peak": 0.7589,
-      "bytes": 6380,
-      "sha256": "e2c84a8cd9943ec49809953d2d14e15de4f4bc1b79d66c053036bcd0c6c90b15",
-      "signature": "92cf174c2cbec0a9391ffdb35170376dddaa21f1c3ae7d5441d872f6d5ced83e"
-    },
-    "name-can_tho-14": {
-      "file": "name-can_tho-14.mp3",
-      "text": "Buôl Mun (Lộ Mới)",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 1.4011,
-      "peak": 0.6479,
-      "bytes": 11948,
-      "sha256": "0f55d428f048e847ded68e926fdd6f341e6522bc830e1aafcf162e06a4fe8442",
-      "signature": "12abb43255e64043eb5f8a09351499dc712e520905ef9f173660b5f8d0c349b8"
-    },
-    "name-can_tho-15": {
-      "file": "name-can_tho-15.mp3",
-      "text": "Muni Srắc Keo",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 1.2116,
-      "peak": 0.5433,
-      "bytes": 10412,
-      "sha256": "10d66c5724a16313eeeaa0c071f8d8ad65c39ce57b31c4033b248f5c1042b666",
-      "signature": "93922944d0b32b74f194109ca1a2b6d0ba819d076b1ccda1b50c4b666b90d4e2"
-    },
-    "name-can_tho-16": {
-      "file": "name-can_tho-16.mp3",
-      "text": "Phnôrôka",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 0.8686,
-      "peak": 0.5213,
-      "bytes": 7724,
-      "sha256": "49354667b0bfa6216ea2fcabfbb857feae15130bf176e3ac2bf140a4fb110733",
-      "signature": "24127c87b6c90db496656f4cceef1154ee9e7ca6fc0ebb16a3eb5d3ef68a1089"
-    },
-    "name-can_tho-17": {
-      "file": "name-can_tho-17.mp3",
-      "text": "Tà Khvich Thmây (Trà Quýt Mới)",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 2.138,
-      "peak": 0.7552,
-      "bytes": 17900,
-      "sha256": "afc6380f2c6f6f332c26d461294d848c493f1aab7d282fe9b274c0e6be7a57bc",
-      "signature": "fc2d08cc668550b6b91f6f675f95c840a7891bfba9c5658bfcda93325c7f3e62"
-    },
-    "name-can_tho-18": {
-      "file": "name-can_tho-18.mp3",
-      "text": "Bốn Mặt (Buôl Preas Phek)",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 1.7077,
-      "peak": 0.7529,
-      "bytes": 14444,
-      "sha256": "4a306649d512c79f3b327ad8b2fd2672aa3a442a86dd5f93082cba6e9e56e7a6",
-      "signature": "1c38c796d19cdd834aad390c6ff659feaf2918b4873f15a89fad7da797366aee"
-    },
-    "name-can_tho-19": {
-      "file": "name-can_tho-19.mp3",
-      "text": "Cham Pa",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 0.7236,
-      "peak": 0.6442,
-      "bytes": 6572,
-      "sha256": "c75461a90653b18d49ca1aeae18d5b28f7f989d80d4f5839fbdc9171354c5896",
-      "signature": "c9c289f04e0899f85e76ed3db68e35d7e567b3b770ec9c20e12eea16bf643628"
-    },
-    "name-can_tho-20": {
-      "file": "name-can_tho-20.mp3",
-      "text": "Trà Quýt cũ (Ta Kh Vích Chăs)",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 2.3832,
-      "peak": 0.7434,
-      "bytes": 19820,
-      "sha256": "ac59fe255b2155742403ad164ae377e905f40581f8ec0badd33e52e3bf486108",
-      "signature": "82f93aba71edc40f7d532252ad07986d4d550b0af22fe5324ad006deb8953be0"
-    },
-    "name-can_tho-21": {
-      "file": "name-can_tho-21.mp3",
-      "text": "Kom Pong Tróp A",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 1.2372,
-      "peak": 0.7534,
-      "bytes": 10604,
-      "sha256": "a5f721896f76a3bf1669da923329201c8515b3b3aa16e16eea0afb2851903312",
-      "signature": "d9e5c1d036efd9935057c288ead781cc7787ee0ee0218e15063b1108e9165c7e"
-    },
-    "name-can_tho-22": {
-      "file": "name-can_tho-22.mp3",
-      "text": "Bô Tum Reangsey Tum Nup (Tum Núp 1)",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 2.5024,
-      "peak": 0.5752,
-      "bytes": 20780,
-      "sha256": "196032988759e0edbf23fe526491203a3dda14cd0352778fbaf37c8110ae00a9",
-      "signature": "3150faa1e1ebb9313d6597d05cfaedf03d7fd31a8c0e692e6f49eb2deff80ff0"
-    },
-    "name-tum-nup-2": {
-      "file": "name-tum-nup-2.mp3",
-      "text": "Tum Núp hai",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 0.9115,
-      "peak": 0.691,
-      "bytes": 7916,
-      "sha256": "c1f14dfe705ae0256fbd534e5e8d38b383413de3d1ce0dae87c31a7459d279e6",
-      "signature": "1a3747ee3062082691e67a2ebb74e6dbd8f59aab65e563ba829f08aa7ffe2cd3"
-    },
-    "name-can_tho-24": {
-      "file": "name-can_tho-24.mp3",
-      "text": "Bô Tum Reangsey Tum Nup",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 1.6003,
-      "peak": 0.6011,
-      "bytes": 13484,
-      "sha256": "68893efc37f5d4614247416b55fb4c69ff48ba2a017b45274804ab1fe6f37463",
-      "signature": "f9a72a5b41783b6532d7b5ee3c4479aedfd08ccc8bf9c9f88ebb2c799f89dfff"
-    },
-    "name-can_tho-25": {
-      "file": "name-can_tho-25.mp3",
-      "text": "Bâng Kók (Đội 1)",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 1.1967,
-      "peak": 0.7421,
-      "bytes": 10220,
-      "sha256": "f98e3b692fba79a889c092be549f27050cf4a488be3cf802482c02e5a4e13c34",
-      "signature": "970cc8530338eae84d0bede5e9ced61c5a0fde9a6dd97e0730be83ed3cd95c47"
-    },
-    "name-can_tho-26": {
-      "file": "name-can_tho-26.mp3",
-      "text": "Bâng Kók (Đội 2)",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 1.3515,
-      "peak": 0.7559,
-      "bytes": 11564,
-      "sha256": "5b08b11e5edf2e0f8a31ee614d105e21a67d252d126c451a335f3ecd4a8efdd9",
-      "signature": "d6fa89662cc69687a50110ca8fff6baee07e6b5e910c3adbda865404800f2e32"
-    },
-    "name-can_tho-27": {
-      "file": "name-can_tho-27.mp3",
-      "text": "Bâng Khdon",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 0.6917,
-      "peak": 0.7412,
-      "bytes": 6188,
-      "sha256": "7b4ca2342de410041e628eb3977f80651a9304cfa0c0cbdd94625b8d86760fd8",
-      "signature": "e5a988686692050695104d965d1772190569bf3691e931ef5503f9706ce458b0"
-    },
-    "name-can_tho-28": {
-      "file": "name-can_tho-28.mp3",
-      "text": "Đay Ta Suốs",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 0.899,
-      "peak": 0.6186,
-      "bytes": 7916,
-      "sha256": "ff512ed797975828afa3641f7499051791e21fb6fc0de4289ecf92a393d530eb",
-      "signature": "70f02d280e1ce4a2538f76d527f625e8e9a8f80d660ddcd791eabc903c274cc0"
-    },
-    "name-can_tho-29": {
-      "file": "name-can_tho-29.mp3",
-      "text": "Prếk Pinh Tuang (Bét Tôn)",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 1.802,
-      "peak": 0.7483,
-      "bytes": 15212,
-      "sha256": "9bc75a0090973e50d8fac2abb00ebbe491dc5e665e62d6f4f210f33f1e686471",
-      "signature": "6d0a286a6ea2335170e7b8ff393dd1fbbc92e0e44be2de555db489c351e0c455"
-    },
-    "name-can_tho-30": {
-      "file": "name-can_tho-30.mp3",
-      "text": "Tà On",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 0.5803,
-      "peak": 0.7306,
-      "bytes": 5420,
-      "sha256": "fb27e1ad6941e096684a6db2f3fce91ba26dbb5f1630a5269ee8e3fb96ddd09c",
-      "signature": "ed1449721dfdb7133dfb4928241b12a9883d6eb89e6fccc9c018d59e03fb9270"
-    },
-    "name-can_tho-31": {
-      "file": "name-can_tho-31.mp3",
-      "text": "TumPokSok (Đội nam)",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 1.4265,
-      "peak": 0.7448,
-      "bytes": 12140,
-      "sha256": "cadc98cfb14bf7c3c4387fb2258543b70ed261563439f3bed5e5ccfdec086e76",
-      "signature": "0840dfe233959b85d3004b654f99a8ea891b085c925c70a8c538304f0a0a5b45"
-    },
-    "name-can_tho-32": {
-      "file": "name-can_tho-32.mp3",
-      "text": "TumPokSok (Đội nữ)",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 1.3867,
-      "peak": 0.7554,
-      "bytes": 11756,
-      "sha256": "bc5066ff54af7b1750e8bf6be535f2f74b821e779e554d0cf28b46b1eb4d6660",
-      "signature": "0f7a7f5f9c261b5bec1572fc5a85381e9db0911856db3e2759a707723ddb2acd"
-    },
-    "name-can_tho-33": {
-      "file": "name-can_tho-33.mp3",
-      "text": "Bâng Tone Sa",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 1.0166,
+      "text": "Vòng đấu thắng thì đi tiếp.",
+      "file": "broadcast-intro.mp3",
+      "duration": 2.25,
       "peak": 0.7094,
-      "bytes": 8876,
-      "sha256": "d2a25754a20912673d616c3f5eed34e963b3f579d58984f3225bb5a2ab4bfaba",
-      "signature": "e5552da25f70eef6ccec5b17c10b73accd52dc9f23036344f8814d75c6eed4ca"
+      "bytes": 28073,
+      "sha256": "08620b4bbcf4b977cd20c064f01e94607564f4aa950482b119362305ef3c794d",
+      "sourceType": "broadcast",
+      "sourceStart": 5474.72,
+      "sourceEnd": 5476.97
     },
-    "name-can_tho-34": {
-      "file": "name-can_tho-34.mp3",
-      "text": "Prếk Om Pu",
+    "broadcast-rhythm": {
+      "start": 5363.32,
+      "end": 5365.78,
+      "channel": "voice",
       "lang": "vi",
-      "translationVi": null,
-      "duration": 0.9243,
-      "peak": 0.6925,
-      "bytes": 8108,
-      "sha256": "eee7cbc65240d20d9abf73012a2ba5f6f72630231e3f1f7b57cee77c64dd9dcd",
-      "signature": "4595d465226f14a30641fd46ce6328f9034a531463cb36df298bc8fba89b98d4"
+      "text": "Giữ nhịp trong thời điểm này.",
+      "file": "broadcast-rhythm.mp3",
+      "duration": 2.46,
+      "peak": 0.5336,
+      "bytes": 30665,
+      "sha256": "73b4a1d653b58884d9b4a1c3b35c6d0858cfed63c0663ebe5b53be4991927376",
+      "sourceType": "broadcast",
+      "sourceStart": 5363.32,
+      "sourceEnd": 5365.78
     },
-    "name-prek-ta-cuol": {
-      "file": "name-prek-ta-cuol.mp3",
-      "text": "Prếk Ta Cuôl",
+    "broadcast-recover": {
+      "start": 5360.88,
+      "end": 5363.38,
+      "channel": "voice",
       "lang": "vi",
-      "translationVi": null,
-      "duration": 0.962,
-      "peak": 0.7533,
-      "bytes": 8492,
-      "sha256": "e6ea2c9cbb6a1b48d457a2eab4c79e2a1fe31b16b02dbdfffdfc0b2778883d73",
-      "signature": "2c7bec042a9b39aaaa184d61a267dc08241264751bf4ca22776b2cb126e4cab4"
+      "text": "Những nhịp chèo nhẹ nhàng.",
+      "file": "broadcast-recover.mp3",
+      "duration": 2.5,
+      "peak": 0.5669,
+      "bytes": 31241,
+      "sha256": "655f954f60d6252ba419b524cd475b90d38b3144c71d25fa49b717df1fc71411",
+      "sourceType": "broadcast",
+      "sourceStart": 5360.88,
+      "sourceEnd": 5363.38
     },
-    "name-can_tho-36": {
-      "file": "name-can_tho-36.mp3",
-      "text": "Đay Om Pu (Phú Giao)",
+    "broadcast-close": {
+      "start": 5559.12,
+      "end": 5562.42,
+      "channel": "voice",
       "lang": "vi",
-      "translationVi": null,
-      "duration": 1.7569,
-      "peak": 0.5909,
-      "bytes": 14828,
-      "sha256": "0ad11d7762eebc891db12b681c9840ebd61e64285329060f768108280d98a6be",
-      "signature": "7ffec7389b11ceee97db9a6a5771a32369e68da6e15c10470074c7b65a811a50"
+      "text": "Vẫn còn cân bằng, vẫn còn so kè.",
+      "file": "broadcast-close.mp3",
+      "duration": 3.3,
+      "peak": 0.554,
+      "bytes": 40745,
+      "sha256": "34072e58f646e7b1631b71ed250314eebd7cbb72bd17b27f37a7df3e038f0437",
+      "sourceType": "broadcast",
+      "sourceStart": 5559.12,
+      "sourceEnd": 5562.42
     },
-    "name-om-pou-year": {
-      "file": "name-om-pou-year.mp3",
-      "text": "Om Pou Year",
+    "broadcast-sprint": {
+      "start": 5568.56,
+      "end": 5569.85,
+      "channel": "voice",
       "lang": "vi",
-      "translationVi": null,
-      "duration": 0.8825,
-      "peak": 0.5363,
-      "bytes": 7724,
-      "sha256": "3f300baad12dba5eee7272c351fd7dd7a973da48d40d69d15458dce48b5e877b",
-      "signature": "27458c9ae54a0284cc6eebf6dfbc4929cf4b365103767405bed179b4bdf0da57"
+      "text": "Tung nước rút!",
+      "file": "broadcast-sprint.mp3",
+      "duration": 1.29,
+      "peak": 0.7454,
+      "bytes": 16553,
+      "sha256": "ba1d425d7c67b63ead460398d2e167c0fe4b3e292c2e4ef9b457d319e24487e4",
+      "sourceType": "broadcast",
+      "sourceStart": 5568.56,
+      "sourceEnd": 5569.85
     },
-    "name-can_tho-38": {
-      "file": "name-can_tho-38.mp3",
-      "text": "Prêk On Đơk (Đội 1)",
+    "broadcast-surge": {
+      "start": 5592.47,
+      "end": 5593.44,
+      "channel": "voice",
       "lang": "vi",
-      "translationVi": null,
-      "duration": 1.4807,
-      "peak": 0.7422,
-      "bytes": 12524,
-      "sha256": "68bc22fe66589276a97df5dbfaf06595e9aee65e6e5f77b602e2c797c32166b2",
-      "signature": "e0fed06bbbe2dd1a82adf078e9b64160e3a81ab459842edcb46ac07d9c9cab52"
+      "text": "Cú tung nước rút!",
+      "file": "broadcast-surge.mp3",
+      "duration": 0.97,
+      "peak": 0.869,
+      "bytes": 12809,
+      "sha256": "68ebc1a5040e4c3fb9060ff600e243586d750492af86c194460ce76bcfa1eae0",
+      "sourceType": "broadcast",
+      "sourceStart": 5592.47,
+      "sourceEnd": 5593.44
     },
-    "name-prek-on-dok-2": {
-      "file": "name-prek-on-dok-2.mp3",
-      "text": "Prêk On Đơk hai",
+    "broadcast-finish": {
+      "start": 5595.81,
+      "end": 5597.0,
+      "channel": "voice",
       "lang": "vi",
-      "translationVi": null,
-      "duration": 1.1852,
-      "peak": 0.6524,
-      "bytes": 10220,
-      "sha256": "a7d398c3390637bda6af3a71941e31fae2e70e8f2806e017d9d874f3271bf0ea",
-      "signature": "e050ace663f4c98598e51993aedc4397eff580c46ef0a7934e200e7a2ab7deef"
+      "text": "Quá tuyệt vời!",
+      "file": "broadcast-finish.mp3",
+      "duration": 1.19,
+      "peak": 0.8138,
+      "bytes": 15401,
+      "sha256": "1eae051da1c136b77dc9c88ff6cec8e938288ddafe784de12c8655113740b9de",
+      "sourceType": "broadcast",
+      "sourceStart": 5595.81,
+      "sourceEnd": 5597.0
     },
-    "name-can_tho-40": {
-      "file": "name-can_tho-40.mp3",
-      "text": "Phnô Kanh Chơ Thmây",
+    "broadcast-loss": {
+      "start": 5477.48,
+      "end": 5479.67,
+      "channel": "voice",
       "lang": "vi",
-      "translationVi": null,
-      "duration": 1.6079,
-      "peak": 0.586,
-      "bytes": 13484,
-      "sha256": "2c1f4365ffc386ec42f111db8ae2628e38fa71e6404fa586fa70b2decc8d8e0e",
-      "signature": "ea8e9ad9feda8ac1a784be7207a21d3786d4bd5ad8faebc76fad184f7619818b"
+      "text": "Hẹn nhau ở mùa giải năm sau.",
+      "file": "broadcast-loss.mp3",
+      "duration": 2.19,
+      "peak": 0.5635,
+      "bytes": 27497,
+      "sha256": "f983acf1a14e0830987f3b6bf0d3d26575c8af204af1aada3c2fa5b32e3f1479",
+      "sourceType": "broadcast",
+      "sourceStart": 5477.48,
+      "sourceEnd": 5479.67
     },
-    "name-can_tho-41": {
-      "file": "name-can_tho-41.mp3",
-      "text": "Phônô Cambốth",
+    "broadcast-wait": {
+      "start": 5582.95,
+      "end": 5584.55,
+      "channel": "voice",
       "lang": "vi",
-      "translationVi": null,
-      "duration": 0.8721,
-      "peak": 0.7544,
-      "bytes": 7724,
-      "sha256": "a5214074075488f3c783364aa24c17e470672f6341117a0a8a95bbfb053b9a64",
-      "signature": "05051989c4e8da4c47160dfa6fc46c6a0e305347236507a5e4cc79cd8cc50681"
+      "text": "Chúng ta vẫn đợi.",
+      "file": "broadcast-wait.mp3",
+      "duration": 1.6,
+      "peak": 0.6373,
+      "bytes": 20297,
+      "sha256": "f65488f03a114ca04fd726d9088d200feeb0e33fb6017f513ec6e84c540f352c",
+      "sourceType": "broadcast",
+      "sourceStart": 5582.95,
+      "sourceEnd": 5584.55
     },
-    "name-can_tho-42": {
-      "file": "name-can_tho-42.mp3",
-      "text": "Bâng Cro Chap Thmây",
+    "broadcast-lead": {
+      "start": 5590.72,
+      "end": 5592.34,
+      "channel": "voice",
       "lang": "vi",
-      "translationVi": null,
-      "duration": 1.43,
-      "peak": 0.6776,
-      "bytes": 12140,
-      "sha256": "e28bd4d333b5020d507a9ce77311ba4ff0194ef2511c8a9bdc1c8513592f1a89",
-      "signature": "85038e918f3250bc22c5731bd25bc8e25f3a2440d98b2176d4491b1e18da1081"
+      "text": "Nhích trước, nhích trước!",
+      "file": "broadcast-lead.mp3",
+      "duration": 1.62,
+      "peak": 0.6372,
+      "bytes": 20585,
+      "sha256": "68a0e1797112b137f74ee7a2553b047fdc80b52cb3fde792906aa63456683c55",
+      "sourceType": "broadcast",
+      "sourceStart": 5590.72,
+      "sourceEnd": 5592.34
     },
-    "name-can_tho-43": {
-      "file": "name-can_tho-43.mp3",
-      "text": "Bâng Cro Chap Chắs",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 1.2267,
-      "peak": 0.7471,
-      "bytes": 10604,
-      "sha256": "e9b593abca22f22b71b1ec8c41870566718470820f1a2daf75159fd93569eb34",
-      "signature": "1418471a33baf203bb2d3b6670f8a70c80708a2cd69cbedb26ee2e5cbe031440"
+    "khmer-intro": {
+      "start": 5403.8,
+      "end": 5407.9,
+      "channel": "khmer",
+      "lang": "km",
+      "text": "BLV Khmer · trích âm thanh gốc",
+      "file": "khmer-intro.mp3",
+      "duration": 4.1,
+      "peak": 0.6415,
+      "bytes": 50249,
+      "sha256": "68a14fa7f0134f23cda0f0adc323135d0c23ac68fd9532b916ae3c2fa7e23c82",
+      "sourceType": "broadcast",
+      "sourceStart": 5403.8,
+      "sourceEnd": 5407.9
     },
-    "name-can_tho-44": {
-      "file": "name-can_tho-44.mp3",
-      "text": "Tứk Pray",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 0.6052,
-      "peak": 0.5121,
-      "bytes": 5612,
-      "sha256": "6ceea84cdde0bee4d87f90a52d414184bca584209a15b88b05dfbc7824d223d9",
-      "signature": "71c2e89244b3c7064eca0de7b7cc458c0dab4b7b9369ce0258f815a98cb3a9a1"
+    "khmer-cruise": {
+      "start": 5408.86,
+      "end": 5412.08,
+      "channel": "khmer",
+      "lang": "km",
+      "text": "BLV Khmer · trích âm thanh gốc",
+      "file": "khmer-cruise.mp3",
+      "duration": 3.22,
+      "peak": 0.5947,
+      "bytes": 39881,
+      "sha256": "8b589cad0d668a8945b6075c062f93662cc8e601ef79909b9d30dd9d1acf1a20",
+      "sourceType": "broadcast",
+      "sourceStart": 5408.86,
+      "sourceEnd": 5412.08
     },
-    "name-can_tho-45": {
-      "file": "name-can_tho-45.mp3",
-      "text": "Săng Ke",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 0.7542,
-      "peak": 0.6613,
-      "bytes": 6764,
-      "sha256": "1063073c9954bdde781ab57e1728dbd2a3d20f0e72651e5e111523a7e72f2b7d",
-      "signature": "acc9c2ede924909a123a8799bd61cf4348e280f9fc1e619d7d9bf3bc96eacb88"
+    "khmer-final": {
+      "start": 5412.44,
+      "end": 5415.7,
+      "channel": "khmer",
+      "lang": "km",
+      "text": "BLV Khmer · trích âm thanh gốc",
+      "file": "khmer-final.mp3",
+      "duration": 3.26,
+      "peak": 0.5723,
+      "bytes": 40169,
+      "sha256": "8913612983a82a7545f659beef4e5b75f62f247aaba0e5c16b89e2f53c85fa20",
+      "sourceType": "broadcast",
+      "sourceStart": 5412.44,
+      "sourceEnd": 5415.7
     },
-    "name-pothi-khsach": {
-      "file": "name-pothi-khsach.mp3",
-      "text": "Pôthi Khsach",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 0.7001,
-      "peak": 0.6601,
-      "bytes": 6380,
-      "sha256": "d403b919363a2ab5db407b591706e2e15f71ba1e812de8054f8745a9cfc07bb4",
-      "signature": "bb9afbc4b89ba58af5be8b38329b0b614c30144e1c87e203d20cbe838d562c11"
-    },
-    "name-can_tho-47": {
-      "file": "name-can_tho-47.mp3",
-      "text": "Pô Thi Thlâng",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 0.9566,
-      "peak": 0.7553,
-      "bytes": 8300,
-      "sha256": "60d85ed87202978528002a149f399681e847d749f62c94d62edbc6aa0c54d5b0",
-      "signature": "0c27b0521345fcbbcff19988b370a406bbbd899f038eac8295916aad4158c433"
-    },
-    "name-can_tho-48": {
-      "file": "name-can_tho-48.mp3",
-      "text": "Settodor",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 0.735,
-      "peak": 0.4891,
-      "bytes": 6572,
-      "sha256": "fa69ac8aa2ad140c8b285195f6af860223fbd73a104682a6293d5e7168806315",
-      "signature": "c9c95ef6368423fb13794357e04871f3f233939c22a85a42f032d64df96ce64a"
-    },
-    "name-ca_mau-01": {
-      "file": "name-ca_mau-01.mp3",
-      "text": "Cao Dân",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 0.5507,
-      "peak": 0.5965,
-      "bytes": 5036,
-      "sha256": "76d88bea8127310e23a22c11275d31037f8481f07f4ba304cffa5be3b4f0237d",
-      "signature": "652dfe628965489e3c4733fd48696d0b92246fdabf55539124fba03ec5daf782"
-    },
-    "name-ca_mau-02": {
-      "file": "name-ca_mau-02.mp3",
-      "text": "Rạch Giồng",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 0.6506,
-      "peak": 0.7422,
-      "bytes": 5996,
-      "sha256": "2fb2fe546493384417b1f4dc1b4ec08f17097283a4d9d282664e884e38e98c07",
-      "signature": "756c9733342fd9e9235c494bf7b98b6fc5adf3fe2411130a76bc100f313b9ca1"
-    },
-    "name-ca_mau-03": {
-      "file": "name-ca_mau-03.mp3",
-      "text": "Đìa Muồng (Đội nam)",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 1.3603,
-      "peak": 0.6316,
-      "bytes": 11564,
-      "sha256": "56a0fa76b94aef5b7e756308f16de0a4579ad7ae9c1f8502f771b20e8fd8ea73",
-      "signature": "6acff5a0f806b5ba39a0b4114e70f8231388523489070021671ba6e164f76a53"
-    },
-    "name-ca_mau-04": {
-      "file": "name-ca_mau-04.mp3",
-      "text": "Đìa Muồng (Đội nữ)",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 1.3573,
-      "peak": 0.6117,
-      "bytes": 11564,
-      "sha256": "5e890811f90205a24524c0a3b79d4a8d8e5a2298567c59ef9333ede3dd2fdb95",
-      "signature": "00f5e9e28270b9a660bbc9cd05cb8802bdfd87123233e95f248b584584adeaa6"
-    },
-    "name-kos-thum-1": {
-      "file": "name-kos-thum-1.mp3",
-      "text": "Kos Thum một",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 0.8782,
-      "peak": 0.618,
-      "bytes": 7724,
-      "sha256": "78f2a0b74930662734ded8b48340125e2ae41323431718b075a30b372f0733a9",
-      "signature": "4dabfc0d02126bad253c0e8cbf85128016bf1c048c893a03f520c6aecb27c25f"
-    },
-    "name-ca_mau-06": {
-      "file": "name-ca_mau-06.mp3",
-      "text": "Kos Thum (Nam Đội 2)",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 1.6739,
-      "peak": 0.6393,
-      "bytes": 14060,
-      "sha256": "c8e50d7eabe5ad818feb01e7a213fd035e8554cdd71928958a058459237248ba",
-      "signature": "6dafa941baee6b307590a5354ded1be80c5c14980599cf9e4be4395e2cbf8449"
-    },
-    "name-ca_mau-07": {
-      "file": "name-ca_mau-07.mp3",
-      "text": "Kos Thum (Nữ Đội 1)",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 1.4674,
-      "peak": 0.6243,
-      "bytes": 12524,
-      "sha256": "6736c5a58010160994fd525d62567af969fa3cd67a6f0ff1e1538cd4887131a5",
-      "signature": "7593d28023c961574eaf232ce53d0530c8d59c278ee091efddcc3f766fc424a9"
-    },
-    "name-ca_mau-08": {
-      "file": "name-ca_mau-08.mp3",
-      "text": "Kos Thum (Nữ Đội 2)",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 1.634,
-      "peak": 0.6496,
-      "bytes": 13868,
-      "sha256": "f230cae5ee2a0fc3787366a86be39c94abe13dd1a17cda0f96e840655e6e17fc",
-      "signature": "5a48a03ce5b6925a56068f94dbab713f447e69687a66c4a3009d3f899af9fee6"
-    },
-    "name-ca_mau-09": {
-      "file": "name-ca_mau-09.mp3",
-      "text": "Ngan Dừa (Đội nam)",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 1.394,
-      "peak": 0.5783,
-      "bytes": 11948,
-      "sha256": "791e4cb0b2f99c405588644aab46d98ef02cf627f972d15d814578aa3ccd6db6",
-      "signature": "0673ff271689a5b15c0d44f4dcad71e014caaf3036a8c8a9ec5b5f6514fef22f"
-    },
-    "name-ca_mau-10": {
-      "file": "name-ca_mau-10.mp3",
-      "text": "Ngan Dừa (Đội nữ)",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 1.3845,
-      "peak": 0.5333,
-      "bytes": 11756,
-      "sha256": "9a3f656f6b8f52f37f11fe6625b66cf49b2142fd5724ec3a64acee5517a5887e",
-      "signature": "f37fd10439ba28c9200d3169db2d57d67ab2c088f49fee90201387bcd210090a"
-    },
-    "name-ca_mau-11": {
-      "file": "name-ca_mau-11.mp3",
-      "text": "Đầu Sấu (Đội 1)",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 1.3248,
-      "peak": 0.6151,
-      "bytes": 11372,
-      "sha256": "782fcd7ac8b9d0f8ab75e786610673c7953259586cf90bd47c6975b41555c95a",
-      "signature": "89c59c9796da9d83bc77ea53c48149362342f09b13e4c63cde299854d5cf76ae"
-    },
-    "name-ca_mau-12": {
-      "file": "name-ca_mau-12.mp3",
-      "text": "Đầu Sấu (Đội 2)",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 1.482,
-      "peak": 0.6624,
-      "bytes": 12524,
-      "sha256": "933418c4f84f828d3604dbefc22c9e2fc741a28de2905437414d18a7217cd462",
-      "signature": "7711a23875c1eb7e37febe0b2f966be47cf636a9859d2d96852f721b8cb93b5c"
-    },
-    "name-ca_mau-13": {
-      "file": "name-ca_mau-13.mp3",
-      "text": "Đìa Chuối",
-      "lang": "vi",
-      "translationVi": null,
-      "duration": 0.7252,
-      "peak": 0.7078,
-      "bytes": 6572,
-      "sha256": "65da337b43e689818c247163b6e8b3f9afd8359548b2f7b086628bcfddbeaa3f",
-      "signature": "63cda9149f2ab5f452e9fe082173a84ebb0ea0ec3d84906d2b188784aa61cf9e"
+    "khmer-surge": {
+      "start": 5415.94,
+      "end": 5417.38,
+      "channel": "khmer",
+      "lang": "km",
+      "text": "BLV Khmer · trích âm thanh gốc",
+      "file": "khmer-surge.mp3",
+      "duration": 1.44,
+      "peak": 0.8552,
+      "bytes": 18281,
+      "sha256": "426b7d2e520b2b6bbc79cb5eb95d047bb94c636634c9a590c63e67afed408ab7",
+      "sourceType": "broadcast",
+      "sourceStart": 5415.94,
+      "sourceEnd": 5417.38
     },
     "drum-low": {
-      "file": "drum-low.mp3",
-      "peak": 0.7943,
-      "duration": 0.72,
+      "start": 5576.8,
+      "end": 5577.17,
+      "channel": "drums",
       "lang": null,
-      "text": "Original authored struck-membrane drum sample",
-      "bytes": 9548,
-      "sha256": "27d012fb770709bd769519cd85ea56317f91fcff3aa6477ae596edab4f1be291"
+      "text": "Nhịp trống/va đập gốc từ hiện trường",
+      "file": "drum-low.mp3",
+      "duration": 0.37,
+      "peak": 0.8889,
+      "bytes": 5609,
+      "sha256": "7e43c413746ac5aee29397694913506545eb917047df639e2b4933cc7af02ee3",
+      "sourceType": "broadcast",
+      "sourceStart": 5576.8,
+      "sourceEnd": 5577.17
     },
     "drum-open": {
-      "file": "drum-open.mp3",
-      "peak": 0.817,
-      "duration": 0.72,
+      "start": 5577.64,
+      "end": 5577.99,
+      "channel": "drums",
       "lang": null,
-      "text": "Original authored struck-membrane drum sample",
-      "bytes": 9548,
-      "sha256": "dfeb3344e905c68a030ec0ca1191467a89b46b8c7a51e95f5e639a8565564bf9"
+      "text": "Nhịp trống/va đập gốc từ hiện trường",
+      "file": "drum-open.mp3",
+      "duration": 0.35,
+      "peak": 0.8302,
+      "bytes": 5321,
+      "sha256": "8154937c7503134aae0cd6af54dca4f25b824cfe174a134639046d1970c1a80c",
+      "sourceType": "broadcast",
+      "sourceStart": 5577.64,
+      "sourceEnd": 5577.99
     },
     "drum-rim": {
-      "file": "drum-rim.mp3",
-      "peak": 0.818,
-      "duration": 0.72,
+      "start": 5578.1,
+      "end": 5578.39,
+      "channel": "drums",
       "lang": null,
-      "text": "Original authored struck-membrane drum sample",
-      "bytes": 9548,
-      "sha256": "fb23975c15ae093f54be3d84d7bb4e785fbf0c7c0609f0a5d048952f837baec1"
+      "text": "Nhịp trống/va đập gốc từ hiện trường",
+      "file": "drum-rim.mp3",
+      "duration": 0.29,
+      "peak": 0.9487,
+      "bytes": 4745,
+      "sha256": "2d244543babb4d7102d0390327ae55d93db3350a05951f0cd0e0706e4a55bebc",
+      "sourceType": "broadcast",
+      "sourceStart": 5578.1,
+      "sourceEnd": 5578.39
+    },
+    "broadcast-ambience": {
+      "start": 5574.68,
+      "end": 5578.55,
+      "channel": "crowd",
+      "lang": null,
+      "text": "Âm thanh hiện trường từ clip gốc",
+      "file": "broadcast-ambience.mp3",
+      "duration": 3.87,
+      "peak": 0.3241,
+      "bytes": 47657,
+      "sha256": "0394384c18e17b6044ae8f946fc3da251fb14e42c80063d84e6e84b43dd7086d",
+      "sourceType": "broadcast",
+      "sourceStart": 5574.68,
+      "sourceEnd": 5578.55
     }
   }
 }

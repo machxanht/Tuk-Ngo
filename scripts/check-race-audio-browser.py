@@ -23,10 +23,11 @@ with sync_playwright() as p:
  report['start']=page.evaluate(audio+'.stats()')
  assert report['start']['context']=='running' and report['start']['decoded']>=4
  assert 'ready' in report['start']['cues']
- page.wait_for_function(audio+".stats().played.filter(p=>p.key.startsWith('name-')).length>=2",timeout=25000)
+ page.wait_for_function(audio+".stats().played.some(p=>p.key==='khmer-intro')",timeout=25000)
  page.wait_for_function(audio+'.stats().drumHits>=4',timeout=15000)
  report['intro']=page.evaluate(audio+'.stats()')
- assert set('name-'+id for id in report['intro']['teams']).issubset(p['key'] for p in report['intro']['played'])
+ assert report['intro']['origin']=='broadcast' and report['intro']['sourceVideo']=='crZF3hghbgQ'
+ assert {'broadcast-intro','khmer-intro'}.issubset(p['key'] for p in report['intro']['played'])
  page.get_by_role('button',name='Tạm dừng cuộc đua',exact=True).tap();page.wait_for_timeout(200)
  report['pause']=page.evaluate(audio+'.stats()');assert report['pause']['sources']==0 and not report['pause']['queued'] and report['pause']['outputRms']<.0001
  page.get_by_role('button',name='Tiếp tục cuộc đua',exact=True).tap()
@@ -36,19 +37,19 @@ with sync_playwright() as p:
  page.get_by_role('button',name='Bật âm thanh',exact=True).tap()
  page.wait_for_function(audio+'.stats().sources>0')
  page.get_by_label('Tùy chỉnh âm thanh',exact=True).tap()
- page.get_by_label('Bình luận tiếng Việt',exact=True).uncheck();page.get_by_label('Trống nhịp chèo',exact=True).uncheck()
+ page.get_by_label('BLV Việt (âm gốc)',exact=True).uncheck();page.get_by_label('Trống nhịp chèo',exact=True).uncheck()
  page.get_by_label('Âm lượng',exact=True).focus();page.keyboard.press('Home')
  for _ in range(11):page.keyboard.press('ArrowRight')
  report['mix']=page.evaluate(audio+'.stats().mix');assert not report['mix']['voice'] and not report['mix']['drums'] and report['mix']['volume']==.55
  assert json.loads(page.evaluate("localStorage.getItem('tukngo-race-audio')"))==report['mix']
- page.get_by_label('Bình luận tiếng Việt',exact=True).check();page.get_by_label('Trống nhịp chèo',exact=True).check()
+ page.get_by_label('BLV Việt (âm gốc)',exact=True).check();page.get_by_label('Trống nhịp chèo',exact=True).check()
  report['viewports']=[]
  for width,height in [(1024,768),(768,1024),(1180,430)]:
   page.set_viewport_size({'width':width,'height':height});page.wait_for_timeout(100)
   options=page.locator('.game-audio-options>div').bounding_box()
   if width==1024:page.screenshot(path=str(out/'mix-controls.png'))
   assert options['x']>=0 and options['x']+options['width']<=width
-  for label in ['Bình luận tiếng Việt','Câu hò Khmer','Trống nhịp chèo','Tiếng khán giả']:
+  for label in ['BLV Việt (âm gốc)','BLV Khmer (âm gốc)','Trống nhịp chèo','Âm thanh hiện trường']:
    box=page.get_by_label(label,exact=True).locator('..').bounding_box();assert box['height']>=44
   page.get_by_label('Tùy chỉnh âm thanh',exact=True).tap()
   stage=page.locator('.game-stage').bounding_box();footer=page.locator('.game-controls').bounding_box()
@@ -68,16 +69,16 @@ with sync_playwright() as p:
   diagnostic={'audio':page.evaluate(audio+'.stats()'),'race':page.evaluate(boat+'.game.snapshot()'),'errors':errors}
   (out/'failure.json').write_text(json.dumps(diagnostic,ensure_ascii=False,indent=2),encoding='utf-8');page.screenshot(path=str(out/'failure.png'));raise
  page.wait_for_function(audio+".stats().drumKinds['drum-rim']>=3",timeout=15000)
- page.wait_for_function("()=>{const s="+audio+".stats();return s.played.some(p=>p.key==='chant-encourage'&&p.at<s.audioTime);}",timeout=15000)
+ page.wait_for_function("()=>{const s="+audio+".stats();return s.played.some(p=>p.key==='khmer-final'&&p.at<s.audioTime);}",timeout=15000)
  report['final']=page.evaluate(audio+'.stats()');assert not any(c in report['final']['queued'] for c in ['cruise','halfway'])
  page.get_by_role('button',name='ĐẠP!',exact=False).tap()
  page.wait_for_function(audio+".stats().cues.includes('surge')")
- page.wait_for_function("()=>{const s="+audio+".stats();return s.played.some(p=>p.key==='chant-ho'&&p.at<s.audioTime);}",timeout=15000)
+ page.wait_for_function("()=>{const s="+audio+".stats();return s.played.some(p=>p.key==='khmer-surge'&&p.at<s.audioTime);}",timeout=15000)
  report['surge']=page.evaluate(audio+'.stats()');assert report['surge']['drumHits']>report['intro']['drumHits']
  page.evaluate('''()=>{const a=document.querySelector('[data-testid=art-stage]').boatPreview,g=a.game;let next=Math.floor(g.state.beatPhase)+1;for(let i=0;i<70000&&g.state.phase!=='finished';i++){a.advance(1/240);if(g.state.phase==='racing'&&g.state.beatPhase>=next){g.stroke();next++;}}}''')
  page.wait_for_selector('[aria-label="Kết quả trận đua"]',timeout=15000)
  page.wait_for_function(audio+".stats().cues.includes('finish')")
- page.wait_for_function("()=>{const s="+audio+".stats();return s.played.some(p=>p.key==='chant-victory'&&p.at<s.audioTime);}",timeout=15000)
+ page.wait_for_function("()=>{const s="+audio+".stats();return s.played.some(p=>p.key==='broadcast-finish'&&p.at<s.audioTime);}",timeout=15000)
  report['finish']=page.evaluate(audio+'.stats()');report['result']=page.evaluate(boat+'.game.snapshot()')
  assert report['result']['result']=='win'
  assert not report['finish']['errors'],report['finish']['errors']
@@ -100,6 +101,8 @@ with sync_playwright() as p:
  page.wait_for_selector('.art-preview [data-render-mode=race]',timeout=90000)
  report['disposed']=page.evaluate('window.previousRaceAudio.stats()');assert report['disposed']['disposed'] and report['disposed']['context'] in ['closed','uninitialized'] and report['disposed']['sources']==0
  assert not errors,errors;assert all(r['status']==200 for r in responses),responses
+ assert not any('name-' in r['url'] or 'chant-' in r['url'] for r in responses),'No synthetic speech requests'
+ assert report['finish']['khmerClips']>=3
  report['responses']=responses;report['errors']=errors
  browser.close()
 (out/'checks.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')

@@ -1,53 +1,51 @@
-// Prerecorded, authored commentary. No speech service or account is used at runtime.
-export const DEFAULT_AUDIO_MIX = {enabled:true,voice:true,chants:true,drums:true,crowd:true,volume:.8};
-export function normalizeAudioMix(value={}) {
+// Original Vietnamese/Khmer broadcast cuts; no runtime TTS or generated voices.
+export const DEFAULT_AUDIO_MIX={enabled:true,voice:true,khmer:true,drums:true,crowd:true,volume:.8};
+export function normalizeAudioMix(value={}){
  const mix={...DEFAULT_AUDIO_MIX};
- for(const key of ['enabled','voice','chants','drums','crowd'])if(typeof value?.[key]==='boolean')mix[key]=value[key];
+ for(const key of ['enabled','voice','khmer','drums','crowd'])if(typeof value?.[key]==='boolean')mix[key]=value[key];
+ if(typeof value?.khmer!=='boolean'&&typeof value?.chants==='boolean')mix.khmer=value.chants;
  if(Number.isFinite(value?.volume))mix.volume=Math.max(0,Math.min(1,value.volume));
  return mix;
 }
-
-// Pure event director: milestone selection uses actual race distances/results.
-// A large simulation jump emits only the most recent milestone, never a backlog.
-export function createCommentaryDirector() {
+export function createCommentaryDirector(){
  let previous=null,seen=new Set(),leader=0,lastLead=-20,lastPace=-20;
  return {
   reset(){previous=null;seen=new Set();leader=0;lastLead=-20;lastPace=-20;},
-  update(s,teams){
-   const cues=[],emit=(id,clips,priority=1,chant=null)=>cues.push({id,clips,priority,chant,elapsed:s.elapsed});
-   const once=(id,clips,priority=1,chant=null)=>{if(!seen.has(id)){seen.add(id);emit(id,clips,priority,chant);}};
-   const name=i=>'name-'+teams[i].id;
-   if(s.phase==='countdown')once('ready',['ready'],2);
-   if(s.phase==='finished'){
-    const clips=s.result==='tie'?['tie']:s.result==='win'?['finish',name(0),'winner']:['finish',name(1),'winner',s.result==='dnf'?'dnf':'loss'];
-    once('finish',clips,5,s.result==='tie'?null:'chant-victory');
-   }else if(s.phase==='racing'){
-    if(!seen.has('go')){seen.add('go');if(s.elapsed<3)emit('go',['go'],3);}
+  update(s){
+   const cues=[],emit=(id,priority=1)=>cues.push({id,priority,elapsed:s.elapsed,result:s.result||null});
+   const once=(id,priority=1)=>{if(!seen.has(id)){seen.add(id);emit(id,priority);}};
+   if(s.phase==='countdown')once('ready',2);
+   if(s.phase==='finished')once('finish',5);
+   else if(s.phase==='racing'){
+    if(!seen.has('go')){seen.add('go');if(s.elapsed<3)emit('go',3);}
     const distance=Math.max(...s.distances),milestones=[[200,'cruise'],[600,'halfway'],[950,'final'],[1100,'last-hundred'],[1150,'last-fifty']];
     const crossed=milestones.filter(([m,id])=>distance>=m&&!seen.has(id));
     for(const [,id]of crossed)seen.add(id);
-    if(crossed.length){const [,id]=crossed.at(-1);emit(id,[id],distance>=950?4:2,distance>=950?'chant-encourage':null);}
-    if(s.elapsed>=3&&s.elapsed<20)once('intro',['intro',name(0),'versus',name(1)],2);
-    if(s.surgeActive&&!previous?.surgeActive)emit('surge',['surge'],4,'chant-ho');
+    if(crossed.length)emit(crossed.at(-1)[1],distance>=950?4:2);
+    if(s.elapsed>=3&&s.elapsed<20)once('intro',2);
+    if(s.surgeActive&&!previous?.surgeActive)emit('surge',4);
     if(previous?.phase==='racing'&&s.pace!==previous.pace&&s.elapsed-lastPace>12){
-     if(s.pace==='sprint')emit('pace-sprint',['pace-sprint'],2);
-     if(s.pace==='recover')emit('recover',['recover']);
+     if(s.pace==='sprint')emit('pace-sprint',2);
+     if(s.pace==='recover')emit('recover');
      lastPace=s.elapsed;
     }
     const nextLeader=s.gap>3?1:s.gap< -3?-1:leader;
-    if(nextLeader!==leader){
-     if(leader!==0&&s.elapsed-lastLead>=12){emit('lead-'+nextLeader,[name(nextLeader===1?0:1),'leading'],3);lastLead=s.elapsed;}
-     leader=nextLeader;
-    }
-    if(s.elapsed>30&&Math.abs(s.gap)<2)once('close-race',['close-race']);
-    if(s.combo>=30)once('cohesion',['cohesion']);
-    if(s.stamina<20&&s.elapsed>20)once('fatigue',['fatigue'],2);
+    if(nextLeader!==leader){if(leader!==0&&s.elapsed-lastLead>=12){emit('lead-'+nextLeader,3);lastLead=s.elapsed;}leader=nextLeader;}
+    if(s.elapsed>30&&Math.abs(s.gap)<2)once('close-race');
+    if(s.combo>=30)once('cohesion');
+    if(s.stamina<20&&s.elapsed>20)once('fatigue',2);
    }
    previous={phase:s.phase,pace:s.pace,surgeActive:s.surgeActive};
-   // One coherent high-priority event per frame, e.g. final marker + surge.
    return cues.sort((a,b)=>b.priority-a.priority).slice(0,1);
   },
  };
+}
+// A recorded commentator cannot be made to say arbitrary team names. Original
+// cuts remain labelled excerpts; the actual teams/results are shown in the HUD.
+export function resolveBroadcastCue(cue,manifest){
+ const id=cue.id==='finish'&&['tie','dnf','loss'].includes(cue.result)?cue.result:cue.id.startsWith('lead-')?'lead':cue.id;
+ const event=manifest.events[id]||{voice:[],khmer:[]};
+ return {voice:[...event.voice],khmer:[...event.khmer]};
 }
 
 export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{}}={}) {
@@ -56,17 +54,17 @@ export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{}}={}
  let active=false,disposed=false,epoch=0,queue=[],speaking=false,currentPriority=0;
  let teams=[],latest=null,lastBeat=null,crowdSource=null,crowdPending=false,voiceUntil=0,ambienceStage=0;
  const cache=new Map(),sources=new Set(),abort=new AbortController();
- const metrics={drumHits:0,drumKinds:{'drum-low':0,'drum-open':0,'drum-rim':0},voiceClips:0,chantClips:0,cues:[],played:[],errors:[],decoded:0};
+ const metrics={drumHits:0,drumKinds:{'drum-low':0,'drum-open':0,'drum-rim':0},voiceClips:0,khmerClips:0,cues:[],played:[],errors:[],decoded:0};
  function fail(error){if(disposed||error?.name==='AbortError')return;const message=String(error?.message||error);if(!metrics.errors.includes(message)){metrics.errors.push(message);onError(message);}}
  function loadManifest(){
-  if(!manifestPromise)manifestPromise=fetch(directory+'manifest.json',{signal:abort.signal}).then(r=>{if(!r.ok)throw Error('Audio manifest: '+r.status);return r.json();}).then(m=>manifest=m).catch(e=>{manifestPromise=null;throw e;});
+  if(!manifestPromise)manifestPromise=fetch(directory+'manifest.json?source=2c443d23b71f',{signal:abort.signal,cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('Audio manifest: '+r.status);return r.json();}).then(m=>{if(m.mode!=='broadcast')throw Error('Cần tải lại bộ âm thanh gốc');return manifest=m;}).catch(e=>{manifestPromise=null;throw e;});
   return manifestPromise;
  }
  function load(key){
   if(!cache.has(key))cache.set(key,(async()=>{
-   const m=key==='crowd'?null:await loadManifest(),entry=m?.clips[key];
-   if(key!=='crowd'&&!entry)throw Error('Unknown audio clip: '+key);
-   const url=key==='crowd'?baseUrl+'assets/illustrated-v22/crowd-cheer-cc0.mp3':directory+entry.file;
+   const m=await loadManifest(),entry=m.clips[key==='crowd'?m.ambience:key];
+   if(!entry)throw Error('Unknown audio clip: '+key);
+   const url=directory+entry.file+'?clip='+entry.sha256.slice(0,12);
    const response=await fetch(url,{signal:abort.signal});if(!response.ok)throw Error('Audio '+key+': '+response.status);
    const bytes=await response.arrayBuffer();if(disposed)throw new DOMException('Disposed','AbortError');
    const buffer=await context.decodeAudioData(bytes);metrics.decoded++;return buffer;
@@ -78,11 +76,11 @@ export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{}}={}
   for(const item of [...sources])if(!channel||item.channel===channel){try{item.node.stop();}catch{/* Already ended. */}item.node.disconnect();sources.delete(item);}
   if(!channel||channel==='crowd')crowdSource=null;
  }
- function clearSpeech(){epoch++;queue=[];speaking=false;currentPriority=0;voiceUntil=0;stopSources('voice');stopSources('chants');onCaption('');applyMix();}
+ function clearSpeech(){epoch++;queue=[];speaking=false;currentPriority=0;voiceUntil=0;stopSources('voice');stopSources('khmer');onCaption('');applyMix();}
  function applyMix(){
   if(!context)return;const t=context.currentTime,duck=voiceUntil>t;
   buses.master.gain.setTargetAtTime(active&&mix.enabled?mix.volume:0,t,.025);
-  for(const [key,gain]of Object.entries({voice:.92,chants:.52,drums:duck?.18:.38,crowd:(duck?.035:.105)*(ambienceStage?1.8:1)}))buses[key].gain.setTargetAtTime(mix[key]?gain:0,t,.035);
+  for(const [key,gain]of Object.entries({voice:.92,khmer:.72,drums:duck?.18:.38,crowd:(duck?.035:.105)*(ambienceStage?1.8:1)}))buses[key].gain.setTargetAtTime(mix[key]?gain:0,t,.035);
  }
  function source(buffer,channel,{when=0,gain=1,rate=1,loop=false}={}){
   if(!permitted(channel))return null;
@@ -100,18 +98,19 @@ export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{}}={}
   const cue=queue.shift();if(!cue)return;
   speaking=true;currentPriority=cue.priority;const token=epoch;
   try{
-   const keys=[...(mix.voice?cue.clips:[]),...(mix.chants&&cue.chant?[cue.chant]:[])];
+   const selection=resolveBroadcastCue(cue,await loadManifest());
+   const keys=[...(mix.voice?selection.voice:[]),...(mix.khmer?selection.khmer:[])];
    // Fetch the phrase in parallel, then schedule it as one uninterrupted sentence.
    const buffers=await Promise.all(keys.map(load));if(token!==epoch||!active||!mix.enabled||disposed||latest.elapsed-cue.elapsed>(cue.priority>=4?20:9)||(cue.id==='ready'&&latest.phase!=='countdown'))return;
    let offset=.02;
    for(let i=0;i<keys.length;i++){
-    const key=keys[i],channel=key.startsWith('chant-')?'chants':'voice';if(!permitted(channel))continue;
+    const key=keys[i],channel=manifest.clips[key].channel;if(!permitted(channel))continue;
     const node=source(buffers[i],channel,{when:offset});if(!node)continue;
-    const entry=manifest.clips[key];metrics[channel==='voice'?'voiceClips':'chantClips']++;
+    const entry=manifest.clips[key];metrics[channel==='voice'?'voiceClips':'khmerClips']++;
     metrics.played.push({key,at:context.currentTime+offset,match:teams.map(t=>t.id)});if(metrics.played.length>100)metrics.played.shift();
     offset+=buffers[i].duration+.075;
     // Captions are updated at actual clip boundaries by update(), with no timers.
-    captions.push({at:context.currentTime+offset-buffers[i].duration-.075,text:channel==='chants'?entry.text+' · '+entry.translationVi:entry.text,token});
+    captions.push({at:context.currentTime+offset-buffers[i].duration-.075,text:entry.text,token});
    }
    voiceUntil=context.currentTime+offset;applyMix();
   }catch(e){fail(e);voiceUntil=0;}
@@ -119,7 +118,7 @@ export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{}}={}
  }
  let captions=[];
  function enqueue(cue){
-  if(!mix.voice&&!mix.chants)return;
+  if(!mix.voice&&!mix.khmer)return;
   metrics.cues.push(cue.id);if(metrics.cues.length>100)metrics.cues.shift();
   if(cue.priority>=4&&cue.priority>=currentPriority){clearSpeech();captions=[];}
   queue=queue.filter(c=>c.priority>=cue.priority);queue.push(cue);queue.sort((a,b)=>b.priority-a.priority);queue=queue.slice(0,3);void pump();
@@ -144,22 +143,22 @@ export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{}}={}
      context=new Audio();buses={master:context.createGain(),analyser:context.createAnalyser()};buses.analyser.fftSize=256;
      const limiter=context.createDynamicsCompressor();limiter.threshold.value=-8;limiter.knee.value=8;limiter.ratio.value=8;
      buses.master.connect(limiter);limiter.connect(buses.analyser);buses.analyser.connect(context.destination);
-     for(const key of ['voice','chants','drums','crowd']){buses[key]=context.createGain();buses[key].connect(buses.master);}applyMix();
+     for(const key of ['voice','khmer','drums','crowd']){buses[key]=context.createGain();buses[key].connect(buses.master);}applyMix();
     }
     const resumed=context.resume();
-    return resumed.then(()=>Promise.allSettled(['ready','go','intro','versus','drum-low','drum-open','drum-rim'].map(load))).catch(fail);
+    return resumed.then(loadManifest).then(m=>Promise.allSettled(m.warmup.map(load))).catch(fail);
    }catch(e){fail(e);return Promise.resolve();}
   },
   beginMatch(pair){
    clearSpeech();captions=[];stopSources();director.reset();teams=pair;latest=null;lastBeat=null;
-   if(context&&mix.enabled)for(const key of ['name-'+pair[0].id,'name-'+pair[1].id,'final','last-hundred','last-fifty','finish','winner','chant-encourage','chant-ho','chant-victory'])void load(key).catch(fail);
+   if(context&&mix.enabled)void loadManifest().then(m=>Promise.allSettled(['final','surge','finish'].flatMap(id=>{const e=m.events[id];return [...e.voice,...e.khmer];}).map(load))).catch(fail);
   },
-  setMix(value){const previous=mix;mix=normalizeAudioMix(value);if(!mix.enabled){clearSpeech();captions=[];stopSources();}else{if(previous.voice!==mix.voice||previous.chants!==mix.chants){clearSpeech();captions=[];}if(!mix.drums)stopSources('drums');if(!mix.crowd)stopSources('crowd');}applyMix();void ambient();},
+  setMix(value){const previous=mix;mix=normalizeAudioMix(value);if(!mix.enabled){clearSpeech();captions=[];stopSources();}else{if(previous.voice!==mix.voice||previous.khmer!==mix.khmer){clearSpeech();captions=[];}if(!mix.drums)stopSources('drums');if(!mix.crowd)stopSources('crowd');}applyMix();void ambient();},
   setActive(value){if(active===value)return;active=value;if(!active){clearSpeech();captions=[];stopSources();lastBeat=null;}applyMix();if(active)void ambient();},
   update(s){
    latest=s;if(teams.length!==2||disposed)return;
    const intensity=s.raceStage==='final'||s.surgeActive?1:0;if(intensity!==ambienceStage){ambienceStage=intensity;applyMix();}
-   const cues=director.update(s,teams);
+   const cues=director.update(s);
    if(!active||!mix.enabled||!context)return;
    if(s.phase==='finished'){stopSources('drums');stopSources('crowd');}else void ambient();
    for(const cue of cues)enqueue(cue);
@@ -170,7 +169,7 @@ export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{}}={}
   },
   stats(){
    let rms=0;if(context&&buses){const data=new Float32Array(buses.analyser.fftSize);buses.analyser.getFloatTimeDomainData(data);rms=Math.sqrt(data.reduce((n,v)=>n+v*v,0)/data.length);}
-   return {...metrics,drumKinds:{...metrics.drumKinds},cues:[...metrics.cues],played:[...metrics.played],context:context?.state||'uninitialized',audioTime:context?.currentTime||0,active,mix:{...mix},sources:sources.size,queued:queue.map(c=>c.id),speaking,outputRms:rms,cached:cache.size,teams:teams.map(t=>t.id),disposed};
+   return {...metrics,drumKinds:{...metrics.drumKinds},cues:[...metrics.cues],played:[...metrics.played],context:context?.state||'uninitialized',audioTime:context?.currentTime||0,active,mix:{...mix},sources:sources.size,queued:queue.map(c=>c.id),speaking,outputRms:rms,cached:cache.size,teams:teams.map(t=>t.id),disposed,origin:manifest?.mode||'unloaded',sourceVideo:manifest?.source.videoId||null};
   },
   dispose(){if(disposed)return;active=false;clearSpeech();captions=[];stopSources();disposed=true;abort.abort();cache.clear();if(context)void context.close().catch(()=>{});},
  };

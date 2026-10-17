@@ -1,0 +1,296 @@
+{
+  "schema": 1,
+  "source": {
+    "url": "https://www.youtube.com/watch?v=crZF3hghbgQ",
+    "videoId": "crZF3hghbgQ",
+    "channel": "Cần Thơ – Tiếng Dân tộc",
+    "sha256": "2c443d23b71fe92cc191baca5bbc45ec12704d79a2ef1b31492839cd04654ed5",
+    "bytes": 301668624,
+    "duration": 18640,
+    "format": "YouTube audio 140, AAC 128 kbps stereo"
+  },
+  "review": {
+    "vietnamese": "Word boundaries selected from local Whisper small ASR; captions describe the excerpt and are not certified verbatim transcripts. Team-name portions excluded from Vietnamese cuts.",
+    "khmer": "Original Khmer-language broadcast passages; no reliable word-for-word translation or native review. May retain real broadcast context/team mentions. Played as labelled source excerpts, never used to announce a game winner.",
+    "percussion": "Recorded field transients during a gap in recognised commentary; filtered and faded, not isolated studio drum stems.",
+    "rights": "Source attributed to broadcaster. No permission or reusable-content licence has been independently verified."
+  },
+  "ambience": "broadcast-ambience",
+  "warmup": [
+    "broadcast-ready",
+    "broadcast-go",
+    "broadcast-intro",
+    "khmer-intro",
+    "drum-low",
+    "drum-open",
+    "drum-rim"
+  ],
+  "events": {
+    "ready": {
+      "voice": [
+        "broadcast-ready"
+      ],
+      "khmer": []
+    },
+    "go": {
+      "voice": [
+        "broadcast-go"
+      ],
+      "khmer": []
+    },
+    "intro": {
+      "voice": [
+        "broadcast-intro"
+      ],
+      "khmer": [
+        "khmer-intro"
+      ]
+    },
+    "cruise": {
+      "voice": [
+        "broadcast-rhythm"
+      ],
+      "khmer": [
+        "khmer-cruise"
+      ]
+    },
+    "halfway": {
+      "voice": [
+        "broadcast-rhythm"
+      ],
+      "khmer": [
+        "khmer-cruise"
+      ]
+    },
+    "final": {
+      "voice": [
+        "broadcast-sprint"
+      ],
+      "khmer": [
+        "khmer-final"
+      ]
+    },
+    "last-hundred": {
+      "voice": [
+        "broadcast-surge"
+      ],
+      "khmer": []
+    },
+    "last-fifty": {
+      "voice": [
+        "broadcast-sprint"
+      ],
+      "khmer": []
+    },
+    "surge": {
+      "voice": [
+        "broadcast-surge"
+      ],
+      "khmer": [
+        "khmer-surge"
+      ]
+    },
+    "pace-sprint": {
+      "voice": [
+        "broadcast-sprint"
+      ],
+      "khmer": []
+    },
+    "recover": {
+      "voice": [
+        "broadcast-recover"
+      ],
+      "khmer": []
+    },
+    "cohesion": {
+      "voice": [
+        "broadcast-rhythm"
+      ],
+      "khmer": []
+    },
+    "fatigue": {
+      "voice": [
+        "broadcast-recover"
+      ],
+      "khmer": []
+    },
+    "close-race": {
+      "voice": [
+        "broadcast-close"
+      ],
+      "khmer": []
+    },
+    "lead": {
+      "voice": [
+        "broadcast-lead"
+      ],
+      "khmer": []
+    },
+    "finish": {
+      "voice": [
+        "broadcast-finish"
+      ],
+      "khmer": []
+    },
+    "loss": {
+      "voice": [
+        "broadcast-finish"
+      ],
+      "khmer": []
+    },
+    "dnf": {
+      "voice": [
+        "broadcast-loss"
+      ],
+      "khmer": []
+    },
+    "tie": {
+      "voice": [
+        "broadcast-wait"
+      ],
+      "khmer": []
+    }
+  },
+  "cuts": {
+    "broadcast-ready": {
+      "start": 5472.64,
+      "end": 5474.6,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Đúng như chúng ta đã chờ đợi."
+    },
+    "broadcast-go": {
+      "start": 5572.94,
+      "end": 5574.69,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Chúng ta cùng chờ xem điều gì xảy ra."
+    },
+    "broadcast-intro": {
+      "start": 5474.72,
+      "end": 5476.97,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Vòng đấu thắng thì đi tiếp."
+    },
+    "broadcast-rhythm": {
+      "start": 5363.32,
+      "end": 5365.78,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Giữ nhịp trong thời điểm này."
+    },
+    "broadcast-recover": {
+      "start": 5360.88,
+      "end": 5363.38,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Những nhịp chèo nhẹ nhàng."
+    },
+    "broadcast-close": {
+      "start": 5559.12,
+      "end": 5562.42,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Vẫn còn cân bằng, vẫn còn so kè."
+    },
+    "broadcast-sprint": {
+      "start": 5568.56,
+      "end": 5569.85,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Tung nước rút!"
+    },
+    "broadcast-surge": {
+      "start": 5592.47,
+      "end": 5593.44,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Cú tung nước rút!"
+    },
+    "broadcast-finish": {
+      "start": 5595.81,
+      "end": 5597.0,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Quá tuyệt vời!"
+    },
+    "broadcast-loss": {
+      "start": 5477.48,
+      "end": 5479.67,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Hẹn nhau ở mùa giải năm sau."
+    },
+    "broadcast-wait": {
+      "start": 5582.95,
+      "end": 5584.55,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Chúng ta vẫn đợi."
+    },
+    "broadcast-lead": {
+      "start": 5590.72,
+      "end": 5592.34,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Nhích trước, nhích trước!"
+    },
+    "khmer-intro": {
+      "start": 5403.8,
+      "end": 5407.9,
+      "channel": "khmer",
+      "lang": "km",
+      "text": "BLV Khmer · trích âm thanh gốc"
+    },
+    "khmer-cruise": {
+      "start": 5408.86,
+      "end": 5412.08,
+      "channel": "khmer",
+      "lang": "km",
+      "text": "BLV Khmer · trích âm thanh gốc"
+    },
+    "khmer-final": {
+      "start": 5412.44,
+      "end": 5415.7,
+      "channel": "khmer",
+      "lang": "km",
+      "text": "BLV Khmer · trích âm thanh gốc"
+    },
+    "khmer-surge": {
+      "start": 5415.94,
+      "end": 5417.38,
+      "channel": "khmer",
+      "lang": "km",
+      "text": "BLV Khmer · trích âm thanh gốc"
+    },
+    "drum-low": {
+      "start": 5576.8,
+      "end": 5577.17,
+      "channel": "drums",
+      "lang": null,
+      "text": "Nhịp trống/va đập gốc từ hiện trường"
+    },
+    "drum-open": {
+      "start": 5577.64,
+      "end": 5577.99,
+      "channel": "drums",
+      "lang": null,
+      "text": "Nhịp trống/va đập gốc từ hiện trường"
+    },
+    "drum-rim": {
+      "start": 5578.1,
+      "end": 5578.39,
+      "channel": "drums",
+      "lang": null,
+      "text": "Nhịp trống/va đập gốc từ hiện trường"
+    },
+    "broadcast-ambience": {
+      "start": 5574.68,
+      "end": 5578.55,
+      "channel": "crowd",
+      "lang": null,
+      "text": "Âm thanh hiện trường từ clip gốc"
+    }
+  }
+}

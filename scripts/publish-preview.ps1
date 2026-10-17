@@ -27,6 +27,18 @@ Get-ChildItem -LiteralPath (Join-Path $taskBuilt 'assets') -File | ForEach-Objec
 }
 # Carry existing source assets required by the preserved React studio.
 foreach ($taskAssetDir in @('festival-crowd','studio-kit','athlete-identities','athlete-master','race-audio')) {
+    if ($taskAssetDir -eq 'race-audio') {
+        $taskAudioTarget = [IO.Path]::GetFullPath((Join-Path $taskDeploy 'assets/race-audio'))
+        $taskOldManifest = Join-Path $taskAudioTarget 'manifest.json'
+        if (Test-Path -LiteralPath $taskOldManifest) {
+            $taskOldAudio = Get-Content -LiteralPath $taskOldManifest -Raw | ConvertFrom-Json
+            foreach ($taskClip in $taskOldAudio.clips.PSObject.Properties.Value) {
+                $taskOldAudioFile = [IO.Path]::GetFullPath((Join-Path $taskAudioTarget $taskClip.file))
+                if ([IO.Path]::GetDirectoryName($taskOldAudioFile) -ne $taskAudioTarget -or [IO.Path]::GetExtension($taskOldAudioFile) -ne '.mp3') { throw 'Invalid old audio path' }
+                if (!(Test-Path -LiteralPath (Join-Path $taskRepo ('public/assets/race-audio/' + $taskClip.file))) -and (Test-Path -LiteralPath $taskOldAudioFile)) { Remove-Item -LiteralPath $taskOldAudioFile }
+            }
+        }
+    }
     Copy-Item -LiteralPath (Join-Path $taskRepo ('public/assets/' + $taskAssetDir)) -Destination (Join-Path $taskDeploy 'assets') -Recurse -Force
     $taskPublishPaths += 'assets/' + $taskAssetDir
 }
