@@ -1,0 +1,17 @@
+[
+  {
+    "url": "https://machxanht.github.io/Tuk-Ngo/",
+    "status": 200,
+    "redirectsToCanonicalRoot": false
+  },
+  {
+    "url": "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/",
+    "status": 200,
+    "redirectsToCanonicalRoot": true
+  },
+  {
+    "url": "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/race.html?mode=cup",
+    "status": 200,
+    "redirectsToCanonicalRoot": false
+  }
+]

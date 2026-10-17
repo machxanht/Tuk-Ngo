@@ -1,0 +1,25 @@
+{
+  "sourceCommit": "69ea1d0",
+  "pagesCommit": "a9cc91249bf271720eb40e61928e83810d87738f",
+  "actionsRun": 39023994354,
+  "conclusion": "success",
+  "stableEntry": "https://machxanht.github.io/Tuk-Ngo/",
+  "physicalTabletTested": false,
+  "publicAssetsMatched": 17,
+  "continuousPlaybackWallSeconds": 120,
+  "publicBrowserErrors": [],
+  "tabletViewports": [
+    [
+      1024,
+      768
+    ],
+    [
+      768,
+      1024
+    ],
+    [
+      1180,
+      430
+    ]
+  ]
+}
