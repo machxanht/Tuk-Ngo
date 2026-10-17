@@ -2,19 +2,19 @@ import * as T from 'three';
 import {buildFestivalCrowd} from './festival-crowd.mjs';
 import {buildFestivalStreet} from './festival-street.mjs';
 import {buildFestivalTraffic} from './festival-traffic.mjs';
-import {courseZ,bridgeYaw,MASPERO_LAYOUT,DETAIL_RANGE} from './maspero-layout.mjs';
+import {courseZ,bridgeYaw,MASPERO_LAYOUT,DETAIL_RANGE,BRIDGE_POSITIONS,nearCourseBridge} from './maspero-layout.mjs';
 
 // All dimensions/coordinates below are authored approximations for the game.
 // Visual references: owner-supplied VTV10 2025 footage and real press photos.
 // No survey, GIS orientation, press-photo textures, or generated image sources.
-// The C247–30/4 festival reach is reported as about 400 m (Tuoi Tre, Aug 2026).
-// The race starts farther upstream; bridge positions remain authored estimates.
-export const COURSE=Object.freeze({length:1200,width:61,lanes:[-7.5,7.5],standX:1090,standZ:courseZ(1090,-54),bridgeStart:940,bridgeEnd:1340,finishX:1090,direction:-1});
+// The owner places 30/4 upstream of the start, outside the racing interval.
+// Game bridge positions are estimates; original mapped coordinates stay intact.
+export const COURSE=Object.freeze({length:1200,width:61,lanes:[-7.5,7.5],standX:1090,standZ:courseZ(1090,-54),bridgeStart:BRIDGE_POSITIONS.C247,bridgeEnd:BRIDGE_POSITIONS['30/4'],finishX:1090,direction:-1});
 // Positive race progress heads towards -X; the VIP stand is on the right.
 export const raceX=distance=>COURSE.finishX+COURSE.length-distance;
 const V=(x,y,z)=>new T.Vector3(x,y,z);
 const palette=['#e2bb64','#61979b','#bf5651','#517955','#faf0d6','#42688b','#987194'];
-const nearBridge=(x,margin)=>[COURSE.bridgeStart,COURSE.bridgeEnd].some(b=>Math.abs(x-b)<margin);
+const nearBridge=nearCourseBridge;
 
 export function buildMasperoSky(scene){
  const geometry=new T.SphereGeometry(900,20,12),material=new T.ShaderMaterial({side:T.BackSide,depthWrite:false,vertexShader:'varying vec3 vDir;void main(){vDir=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',fragmentShader:`varying vec3 vDir;
@@ -204,6 +204,7 @@ export function buildMasperoBanks(group,waterY,crowdAssets,bankMaterials={},opti
  const crowd=buildFestivalCrowd(group,people,crowdAssets,options),traffic=buildFestivalTraffic(group);
  group.userData={...group.userData,reference:'OWNER_VTV10_VIDEO_2025_REAL_PHOTOS_AND_OSM_LAYOUT',dimensions:'APPROXIMATE_GAME_SCALE',...totals,buildings,detailRange:DETAIL_RANGE,bankSource:MASPERO_LAYOUT.source,bankLicense:MASPERO_LAYOUT.license,bankOutlineGameSpanM:400,bridgeYawSource:'OSM bridge centre-lines',continuousLand:true,pitchedRoof:'ridge above eaves; corrugation follows both slopes',npcSource:'Quaternius CC0 civilian silhouettes with independently animated festival actions',signLanguage:'km',standRoof:'VIP double pitch; opposite low single pitch',bridgeC247:'teal curved steel portals',bridge30April:'concrete piers and silver arched truss, 2022 construction photo; finished decoration approximate'};
  group.userData.traffic=traffic.stats;group.userData.spectatorSpacingM=.56;group.userData.fullCourseCrowdRows=10;
+ group.userData.bridges={C247:{x:COURSE.bridgeStart,yaw:bridgeYaw(COURSE.bridgeStart)},'30/4':{x:COURSE.bridgeEnd,yaw:bridgeYaw(COURSE.bridgeEnd),beforeStartM:COURSE.bridgeEnd-raceX(0)},placement:'owner-corrected game placement; OSM angles retained'};
  group.userData.mainStand={bank:'right in race direction',lengthM:128,tiers:8,roofHeightM:16,roof:'shallow double pitch, pale green-grey sheet metal',reference:'https://baosoctrang.org.vn/van-hoa-the-thao-du-lich/202411/hao-huc-cho-ngay-khai-hoi-67c01d9/',measured:false};
  return {totals,update(time,cameraX,cameraZ){crowd.update(time,cameraX,cameraZ);street.update(time,cameraX,cameraZ);traffic.update(time,cameraX);},dispose(){crowd.dispose();street.dispose();traffic.dispose();}};
 }

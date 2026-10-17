@@ -8,6 +8,7 @@ import {buildMasperoSky,COURSE,raceX} from './maspero-course.mjs';
 import {courseZ} from './maspero-layout.mjs';
 import {loadFestivalCrowd} from './festival-crowd.mjs';
 import {ROWING_LAYOUT} from './rowing-pose.mjs';
+import {buildStartOfficial} from './start-official.mjs';
 
 // Both boats use the current continuous 3D athletes, independent role clocks,
 // one scene and one renderer. The old cup entry remains independently usable.
@@ -29,6 +30,7 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
  for(const r of rigs){const mask=r.scene.children.find(o=>o.isMesh&&o.material.colorWrite===false);if(mask)mask.visible=false;scene.add(r.boat);}
  river=buildRiver(scene,.28,{detailed:true,bright:true,crowdAssets:assets,crowdOptions:{vibrant:true,middleLimit:280,farLimit:12000,radius:430}});
  const courseOffset=racing?0:-(raceX(COURSE.length)+15.1);river.group.position.x=courseOffset;
+ const official=buildStartOfficial(scene,assets,{x:raceX(0)+8+courseOffset});
  sky=buildMasperoSky(scene);river.setBoats(rigs.map(r=>r.boat));
  const banks={group:river.group,stats:{people:river.group.userData.spectators,banks:2,peoplePerBank:river.group.userData.crowd.peoplePerBank,npcVariants:assets.models.length,crowd:river.group.userData.crowd},update(time,camera){river.update(time,camera.position.x-courseOffset,camera.position.z);}};
  const effects=rigs.map(()=>buildSplashes(scene,.28)),wakes=rigs.map(()=>buildBoatWake(scene,.28));
@@ -73,9 +75,11 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
    banks:{target:new T.Vector3(raceX(600),1,0),offset:[70,1000,560],span:1500},
    stand:{target:new T.Vector3(COURSE.standX,7.5,courseZ(COURSE.standX,-55)),offset:[50,3,100],span:150},
    crowd:{target:new T.Vector3(COURSE.standX-96,2.5,courseZ(COURSE.standX-96,-45.6)),offset:[2,1,8],span:10},
+   start:{target:new T.Vector3(raceX(0)+8,1.5,0),offset:[-38,29,28],span:64},
+   official:{target:new T.Vector3(raceX(0)+8,1.8,0),offset:[-16,7,17],span:23},
    bridge:{target:new T.Vector3(COURSE.bridgeEnd,8,0),offset:[65,30,65],span:110},
    finish:{target:new T.Vector3(COURSE.finishX+15,2,0),offset:[65,34,65],span:185}};
-  const v=views[view]||views.race;if(['banks','stand','crowd','bridge','finish'].includes(view))v.target.x+=courseOffset;controls.target.copy(v.target);
+  const v=views[view]||views.race;if(['banks','stand','crowd','bridge','finish','start','official'].includes(view))v.target.x+=courseOffset;controls.target.copy(v.target);
   const direction=new T.Vector3(...v.offset).normalize();if(['boat','top','crew','kneel','bow','stern'].includes(view))direction.applyQuaternion(boat.quaternion);
   const distance=v.span/(2*Math.tan(T.MathUtils.degToRad(camera.fov/2))*Math.min(1.7,camera.aspect));
   camera.position.copy(controls.target).addScaledVector(direction,distance);controls.update();lastView=view;
@@ -83,10 +87,10 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
  function resize(){width=Math.max(1,host.clientWidth);height=Math.max(1,host.clientHeight);renderer.setSize(width,height);camera.aspect=width/height;camera.updateProjectionMatrix();lastView='';}
  observer=new ResizeObserver(resize);observer.observe(host);place();resize();
  function reset(){Object.assign(race,{elapsed:0,countdown:3,distance:rigs.map(()=>0),speed:rigs.map(()=>0),phases:rigs.map((_,i)=>i?.17:.28),finishTimes:rigs.map(()=>null),state:'countdown'});effects.forEach(e=>e.reset());place();lastView='';settings.current.onRace?.(snapshot());}
- const api={rig,rigs,scene,boat,camera,controls,renderer,banks,sky,river,race,snapshot,advance,reset,
+ const api={rig,rigs,scene,boat,camera,controls,renderer,banks,sky,river,official,race,snapshot,advance,reset,
   seek(distance){const d=T.MathUtils.clamp(distance,0,COURSE.length);race.distance.fill(d);race.speed.fill(5.1);race.countdown=0;race.elapsed=d/5.1;race.finishTimes.fill(d===COURSE.length?race.elapsed:null);race.state=d===COURSE.length?'finished':'racing';effects.forEach(e=>e.reset());place();lastView='';settings.current.onRace?.(snapshot());},
   capture(){saveCanvas(renderer.domElement,'ghe-ngo-3d.png');},record(){return recordCanvas(renderer.domElement,'ghe-ngo-cheo-10s.webm');},
-  dispose(){if(disposed)return;disposed=true;cancelAnimationFrame(raf);observer.disconnect();controls.dispose();effects.forEach(e=>e.dispose());wakes.forEach(w=>w.dispose());sky.dispose();river.dispose();assets.dispose();for(const r of rigs.slice(1)){r.scene.add(r.boat);r.dispose();}rig.dispose();renderer.domElement.remove();if(host.boatPreview===api)delete host.boatPreview;}
+  dispose(){if(disposed)return;disposed=true;cancelAnimationFrame(raf);observer.disconnect();controls.dispose();effects.forEach(e=>e.dispose());wakes.forEach(w=>w.dispose());official.dispose();sky.dispose();river.dispose();assets.dispose();for(const r of rigs.slice(1)){r.scene.add(r.boat);r.dispose();}rig.dispose();renderer.domElement.remove();if(host.boatPreview===api)delete host.boatPreview;}
  };
  host.boatPreview=api;
  function frame(now){
@@ -94,11 +98,11 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
   if(s.playing){c.seconds+=dt;if(racing){advance(dt*(s.fast?3:1));c.phase=race.phases[0];}else c.phase=(c.phase+dt*s.cadence/60)%1;}
   place();
   if(lastView!==s.view){setView(s.view);effects.forEach(e=>e.reset());}
-  else if(!['banks','stand','crowd','bridge','finish'].includes(s.view)){const delta=center().sub(previous);camera.position.add(delta);controls.target.add(delta);}
+  else if(!['banks','stand','crowd','bridge','finish','start','official'].includes(s.view)){const delta=center().sub(previous);camera.position.add(delta);controls.target.add(delta);}
   controls.update();
   frameId++;
   rigs.forEach((r,i)=>r.render(racing?race.phases[i]:c.phase,c.seconds,{teamId:i?'prek-on-dok-2':'tum-nup-2',connectedKit:true,updateOnly:true,viewKey:'race-'+i,frameId,distance:camera.position.distanceTo(r.boat.position),nearest:i===0}));
-  sky.update(camera);banks.update(c.seconds,camera);
+  sky.update(camera);banks.update(c.seconds,camera);official.update(c.seconds,racing?race:{state:'racing'},camera);
   rigs.forEach((r,i)=>{const moving=s.playing&&(!racing||race.state==='racing'),strength=racing?(race.distance[i]>=950?1:race.distance[i]<200?.6:0):Math.max(0,(s.cadence-72)/24);effects[i].update(s.playing?dt:0,crews[i],racing?race.speed[i]:4.2,c.seconds,s.splash&&moving,strength);wakes[i].update(r.boat,c.seconds,moving);});
   renderer.render(scene,camera);
   frames++;if(now-lastStats>=1000){host.dataset.fps=(frames*1000/(now-lastStats)).toFixed(1);frames=0;lastStats=now;}

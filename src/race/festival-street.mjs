@@ -1,7 +1,7 @@
 import * as T from 'three';
 import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
-import { courseZ } from './maspero-layout.mjs';
+import { courseZ,nearCourseBridge } from './maspero-layout.mjs';
 import { trafficRoad } from './traffic.mjs';
 
 const hash = n => { let x=Math.imul(n+1,0x9e3779b9); x=Math.imul(x^(x>>>16),0x85ebca6b); return ((x^(x>>>13))>>>0)/4294967296; };
@@ -166,8 +166,8 @@ function stallTemplate() {
  for(let j=0;j<7;j++){add(new T.CylinderGeometry(.10,.12,.13,10),j%2?'clay':'trim',-.9+j*.3,1.34,-.1);}
  return finish();
 }
-function excluded(x,side){return Math.abs(x-940)<22||Math.abs(x-1340)<22||(side<0?x>994&&x<1184:x>981&&x<1184);}
-function bridgeGap(x){return Math.abs(x-940)<22||Math.abs(x-1340)<22;}
+function excluded(x,side){return nearCourseBridge(x,22)||(side<0?x>994&&x<1184:x>981&&x<1184);}
+function bridgeGap(x){return nearCourseBridge(x,22);}
 /** Detailed foreground street only; caller retains road/promena�de floors and mapped distant mass. */
 export function buildFestivalStreet(parent,bankMaterials={}) {
  const group=new T.Group();group.name='Festival_Street_V21';parent.add(group);
@@ -209,7 +209,7 @@ export function buildFestivalStreet(parent,bankMaterials={}) {
  }
  // Two busy sidewalk corridors remain outside road lanes and frontage piers.
  for(const side of[-1,1])for(let row=0;row<2;row++)for(let x=853,id=0;x<2436;x+=2.25,id++){
-   if(Math.abs(x-940)<27||Math.abs(x-1340)<27)continue;
+   if(nearCourseBridge(x,27))continue;
    const seed=5000+(side+1)*1801+row*997+id,extent=1.7+hash(seed+8)*.5;
    const px=x+(hash(seed+2)-.5)*.6,pz=trafficRoad(px,side)+side*(row===0?7.3:8.6)+(hash(seed+3)-.5)*.25;
    if(trees.some(t=>Math.abs(t.z-pz)<1.35&&Math.abs(t.x-px)<extent+1.2))continue;

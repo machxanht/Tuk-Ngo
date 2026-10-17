@@ -1,23 +1,23 @@
 {
   "physicalTabletTested": false,
   "load": {
-    "readyMs": 4236.5,
-    "bytes": 14977170,
+    "readyMs": 5128.899999991059,
+    "bytes": 14980882,
     "urls": [
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/index-mnYtsD-6.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/index-CUb_aCWB.js",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/index-Bo7mo07X.css",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/ArtPreview-CW8Dkxj-.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/ArtPreview-BdEVehNr.js",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/asset-digests-CQCD7ofi.js",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/rotate-ccw-2ew6RPJe.js",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/download-BZ3wT6pt.js",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/video-mgd8S-fo.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/rotate-ccw-lQsya7E-.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/download-i7tl9_S-.js",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/ArtPreview-Cw6GWYLI.css",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/boat-preview-rQR5Wg2e.js",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/three-addons-BnpvScye.js",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/three-renderer-3VrNaQXw.js",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/three-core-DFpmdtjz.js",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/race-crew-DN8KVpFB.js",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/boat-DqrC9toq.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/video-B2R-sinq.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/boat-preview-C0Y7BLT3.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/three-addons-DiBvLs_E.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/three-renderer-Xp2iZVDg.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/three-core-PKyBB6wc.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/race-crew-vPttIh9T.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/boat-BiZF45Jm.js",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/art-preview-CkWR3nbs.js",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/shirt-runtime-v32.json",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/athlete-rig-v27.glb",
@@ -40,33 +40,33 @@
       "boatCount": "2",
       "crewCount": "108",
       "masterRigs": "16",
-      "phase": "0.0032",
+      "phase": "0.9608",
       "view": "race",
-      "triangles": "5680247",
-      "drawCalls": "602",
-      "splashEvents": "4102",
+      "triangles": "5659606",
+      "drawCalls": "615",
+      "splashEvents": "4056",
       "banks": "2",
       "spectators": "55905",
       "daylight": "bright",
       "raceState": "racing",
       "courseLength": "1200",
-      "raceDistances": "[15.104296056501429,15.269180934669311]",
+      "raceDistances": "[14.945813524954929,15.109439273840932]",
       "fps": "32.0"
     },
     "race": {
-      "elapsed": 4.1877,
+      "elapsed": 4.156699999999999,
       "countdown": 0,
       "distance": [
-        15.104296056501429,
-        15.269180934669311
+        14.945813524954929,
+        15.109439273840932
       ],
       "speed": [
-        5.1125733285009165,
-        5.153194947756814
+        5.105072706198508,
+        5.145958072487832
       ],
       "phases": [
-        0.003189999999999582,
-        0.8443335
+        0.960823333333333,
+        0.8023284999999998
       ],
       "finishTimes": [
         null,
@@ -87,16 +87,16 @@
     "canvasCount": 1,
     "animation": [
       {
-        "updates": 230,
+        "updates": 229,
         "restores": 0,
         "byView": {
           "study": 1,
-          "race-0": 229
+          "race-0": 228
         }
       },
       {
         "updates": 116,
-        "restores": 114,
+        "restores": 113,
         "byView": {
           "study": 1,
           "race-1": 115
@@ -104,7 +104,7 @@
       }
     ],
     "camera": [
-      2328.2426172225287,
+      2328.401729318716,
       48.91169464764202,
       47.911694647642015
     ]
@@ -142,19 +142,19 @@
   "paddleInstances": [
     {
       "boatPosition": [
-        2289.3548751081876,
+        2289.353838190562,
         0,
         -7.5
       ],
-      "maxMeshInstanceDriftM": 3.2676141225933987e-07
+      "maxMeshInstanceDriftM": 4.3261268559539736e-07
     },
     {
       "boatPosition": [
-        2289.1850013230883,
+        2289.1839564124016,
         0,
         7.5
       ],
-      "maxMeshInstanceDriftM": 3.957612190395777e-07
+      "maxMeshInstanceDriftM": 3.404476462795663e-07
     }
   ],
   "environment": {
@@ -173,13 +173,13 @@
         "seated"
       ],
       "activityCounts": {
-        "clap": 10199,
-        "wave": 10156,
-        "cheer": 7599,
-        "idle": 18254,
-        "indicate": 5803,
-        "seated": 1958,
-        "walk": 1936
+        "clap": 10211,
+        "wave": 10144,
+        "cheer": 7603,
+        "idle": 18256,
+        "indicate": 5801,
+        "seated": 1960,
+        "walk": 1930
       },
       "active": 12304,
       "lodCounts": [
@@ -198,8 +198,8 @@
       "motion": "GPU bone palette interpolation; source idle/wave/walk + authored clap/cheer/indicate/seated",
       "randomization": "independent salted placement id and coordinates, clothes/hair/skin/face proportions/age styling",
       "peoplePerBank": [
-        28471,
-        27434
+        28467,
+        27438
       ],
       "outfits": {
         "independentTrousers": 8,
@@ -209,67 +209,67 @@
       },
       "demographicCounts": {
         "age": {
-          "adult": 39150,
-          "adolescent": 4474,
-          "older adult": 12281
+          "adult": 39113,
+          "adolescent": 4486,
+          "older adult": 12306
         },
         "gender": {
-          "men": 35545,
-          "women": 20360
+          "men": 35539,
+          "women": 20366
         },
         "model": {
-          "worker-man": 5034,
-          "casual-woman": 5106,
-          "suit-man": 5121,
-          "punk-man": 5040,
-          "farmer-man": 5058,
-          "suit-woman": 5140,
-          "beach-man": 5138,
-          "hoodie-man": 5220,
-          "formal-woman": 5057,
-          "casual-man": 4934,
-          "worker-woman": 5057
+          "worker-man": 5044,
+          "casual-woman": 5100,
+          "suit-man": 5156,
+          "punk-man": 5021,
+          "farmer-man": 5035,
+          "suit-woman": 5132,
+          "beach-man": 5128,
+          "hoodie-man": 5234,
+          "formal-woman": 5062,
+          "casual-man": 4921,
+          "worker-woman": 5072
         }
       },
-      "visibleTriangles": 2651743,
-      "lastPackMs": 9.200000002980232
+      "visibleTriangles": 2651682,
+      "lastPackMs": 11
     },
     "reference": "OWNER_VTV10_VIDEO_2025_REAL_PHOTOS_AND_OSM_LAYOUT",
     "dimensions": "APPROXIMATE_GAME_SCALE",
     "spectators": 55905,
     "seats": 1916,
     "trees": 168,
-    "houses": 432,
+    "houses": 431,
     "distantBlocks": 300,
     "umbrellas": 364,
     "stands": 2,
     "nationalFlags": 0,
     "buildings": {
       "version": 21,
-      "houses": 432,
+      "houses": 431,
       "frontageFamilies": {
         "modern-townhouse": 125,
-        "tin-local-house": 57,
-        "shutter-shophouse": 116,
-        "old-tiled-dwelling": 65,
+        "tin-local-house": 55,
+        "shutter-shophouse": 114,
+        "old-tiled-dwelling": 68,
         "open-front-shop": 69
       },
       "trees": 168,
       "treeSilhouettes": 5,
-      "foodStalls": 42,
+      "foodStalls": 44,
       "people": 3209,
-      "roadsidePeople": 2390,
+      "roadsidePeople": 2393,
       "activityCounts": {
-        "walk": 1936,
-        "talk": 639,
-        "vendor": 111,
-        "eat": 523
+        "walk": 1930,
+        "talk": 634,
+        "vendor": 113,
+        "eat": 532
       },
       "drawCalls": 30,
       "geometryTriangles": 23856,
-      "visibleHouses": 67,
-      "visibleInstances": 444,
-      "submittedTriangles": 216772,
+      "visibleHouses": 54,
+      "visibleInstances": 403,
+      "submittedTriangles": 179296,
       "range": {
         "detailedHouses": 125,
         "distantHouses": 440,
@@ -420,6 +420,18 @@
     },
     "spectatorSpacingM": 0.56,
     "fullCourseCrowdRows": 10,
+    "bridges": {
+      "C247": {
+        "x": 940,
+        "yaw": 0.32567183490548884
+      },
+      "30/4": {
+        "x": 2385,
+        "yaw": -0.05069861735281925,
+        "beforeStartM": 95
+      },
+      "placement": "owner-corrected game placement; OSM angles retained"
+    },
     "mainStand": {
       "bank": "right in race direction",
       "lengthM": 128,
@@ -430,6 +442,36 @@
       "measured": false
     }
   },
+  "startLayout": {
+    "startX": 2290,
+    "bridgeDeckCentres": [
+      940,
+      2385
+    ],
+    "shipPosition": [
+      2298,
+      0.28,
+      0
+    ],
+    "maxShipSideM": 1.769118938421146,
+    "minPaddleClearanceM": 4.087616979674319,
+    "officials": {
+      "age": {
+        "adult": 3
+      },
+      "gender": {
+        "men": 2,
+        "women": 1
+      },
+      "model": {
+        "casual-man": 1,
+        "suit-man": 1,
+        "casual-woman": 1
+      }
+    },
+    "officialCount": 3
+  },
+  "startSignal": "hold -> go, synchronized with countdown",
   "fullRace": {
     "monotone": true,
     "checkpoints": [
@@ -535,9 +577,9 @@
       ],
       "canvas": {
         "x": 0,
-        "y": 159,
+        "y": 221,
         "width": 1024,
-        "height": 482
+        "height": 420
       }
     },
     {
@@ -547,9 +589,9 @@
       ],
       "canvas": {
         "x": 0,
-        "y": 214,
+        "y": 258,
         "width": 768,
-        "height": 683
+        "height": 639
       }
     },
     {

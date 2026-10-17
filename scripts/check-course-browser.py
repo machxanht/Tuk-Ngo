@@ -59,6 +59,35 @@ with sync_playwright() as p:
     assert min(env['crowd']['peoplePerBank'])>20000 and env['crowd']['variantCount']==11
     assert env['crowd']['outfits']['combinations']>300 and len(env['traffic']['types'])==5
     assert env['nationalFlags']==0 and env['signLanguage']=='km'
+    report['startLayout']=page.evaluate('''()=>{
+      const a=document.querySelector('[data-testid=art-stage]').boatPreview,ship=a.official,decks=[];a.reset();
+      const matrix=a.boat.matrixWorld.clone(),position=a.boat.position.clone(),scale=position.clone(),rotation=a.boat.quaternion.clone();
+      a.river.group.traverse(o=>{if(o.name!=='Maspero_box'||!o.isInstancedMesh)return;for(let i=0;i<o.count;i++){o.getMatrixAt(i,matrix);matrix.decompose(position,rotation,scale);if(Math.abs(scale.x-12)<.001&&Math.abs(scale.y-.78)<.001&&Math.abs(scale.z-115)<.001)decks.push(position.x);}});
+      const startX=a.rigs[0].boat.position.x-15.1,shipPosition=ship.root.position.toArray();let minInnerPaddle=Infinity,maxShipSide=0;
+      ship.floating.traverse(o=>{if(!o.isMesh||o.isInstancedMesh)return;o.geometry.computeBoundingBox();const box=o.geometry.boundingBox;for(const x of [box.min.x,box.max.x])for(const y of [box.min.y,box.max.y])for(const z of [box.min.z,box.max.z]){position.set(x,y,z).applyMatrix4(o.matrixWorld);maxShipSide=Math.max(maxShipSide,Math.abs(position.z));}});
+      for(let phase=0;phase<96;phase++)for(const [lane,r]of a.rigs.entries()){
+       r.render(phase/96,phase/96,{nearest:true,updateOnly:true,connectedKit:true,teamId:lane?'prek-on-dok-2':'tum-nup-2'});
+       for(const p of r.actors.filter(p=>p.paddle)){const mesh=p.paddle.getObjectByName('Race_Paddle'),g=mesh.geometry;g.computeBoundingBox();for(const x of [g.boundingBox.min.x,g.boundingBox.max.x])for(const y of [g.boundingBox.min.y,g.boundingBox.max.y])for(const z of [g.boundingBox.min.z,g.boundingBox.max.z]){position.set(x,y,z).applyMatrix4(mesh.matrixWorld);minInnerPaddle=Math.min(minInnerPaddle,Math.abs(position.z));}}
+      }return {startX,bridgeDeckCentres:decks,shipPosition,maxShipSideM:maxShipSide,minPaddleClearanceM:minInnerPaddle-maxShipSide,officials:ship.stats.crew.demographicCounts,officialCount:ship.stats.officials};
+    }''')
+    start=report['startLayout'];assert len(start['bridgeDeckCentres'])==2
+    assert all(x<1090 or x>start['startX'] for x in start['bridgeDeckCentres']),start
+    assert max(start['bridgeDeckCentres'])-start['startX']>=90,start
+    assert start['shipPosition'][2]==0 and abs(start['shipPosition'][0]-start['startX']-8)<.001
+    assert start['officialCount']==3 and start['officials']['age']=={'adult':3}
+    assert start['minPaddleClearanceM']>2.5,start
+    page.wait_for_timeout(100)
+    assert page.evaluate("document.querySelector('[data-testid=art-stage]').boatPreview.official.stats.signal")=='hold'
+    page.evaluate("document.querySelector('[data-testid=art-stage]').boatPreview.advance(3.2)")
+    page.wait_for_timeout(100)
+    assert page.evaluate("document.querySelector('[data-testid=art-stage]').boatPreview.official.stats.signal")=='go'
+    assert page.evaluate("document.querySelector('[data-testid=art-stage]').boatPreview.official.root.position.toArray()")==start['shipPosition']
+    report['startSignal']='hold -> go, synchronized with countdown'
+    # Capture the starting arrangement while both race boats are still there.
+    page.evaluate("document.querySelector('[data-testid=art-stage]').boatPreview.reset()")
+    for label,name in [('Xuất phát','start-line'),('Trọng tài','official')]:
+        page.get_by_role('button',name=label,exact=True).tap();page.wait_for_timeout(250)
+        page.screenshot(path=str(out/(name+'.png')))
     # Drive the same integrator used by requestAnimationFrame through the whole
     # course; check monotone distance and both bow/finish crossings.
     report['fullRace']=page.evaluate('''()=>{
