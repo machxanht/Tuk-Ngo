@@ -1,6 +1,6 @@
 {
   "physicalTabletTested": false,
-  "start": {
+  "namePreview": {
     "drumHits": 0,
     "drumKinds": {
       "drum-low": 0,
@@ -8,24 +8,30 @@
       "drum-rim": 0
     },
     "voiceClips": 1,
-    "khmerClips": 0,
-    "cues": [
-      "ready"
-    ],
+    "khmerClips": 1,
+    "cues": [],
     "played": [
       {
-        "key": "broadcast-ready",
+        "key": "name-tum-nup-two-vi",
         "at": 0.02,
-        "match": [
-          "tum-nup-2",
-          "can_tho-28"
-        ]
+        "match": [],
+        "teamId": "tum-nup-2",
+        "registrationId": "can_tho-23",
+        "kind": "name"
+      },
+      {
+        "key": "name-tum-nup-km",
+        "at": 1.3599773242630384,
+        "match": [],
+        "teamId": "tum-nup-2",
+        "registrationId": "can_tho-23",
+        "kind": "name"
       }
     ],
     "errors": [],
-    "decoded": 13,
+    "decoded": 2,
     "context": "running",
-    "audioTime": 0.011609977324263039,
+    "audioTime": 1.761814058956916,
     "active": true,
     "mix": {
       "enabled": true,
@@ -35,161 +41,65 @@
       "crowd": true,
       "volume": 0.8
     },
-    "sources": 2,
+    "sources": 1,
     "queued": [],
     "speaking": true,
-    "outputRms": 0.006759726990323022,
-    "cached": 13,
-    "teams": [
-      "tum-nup-2",
-      "can_tho-28"
-    ],
+    "previewing": true,
+    "outputRms": 0.06029494329016155,
+    "cached": 2,
+    "teams": [],
     "disposed": false,
     "origin": "broadcast",
     "sourceVideo": "crZF3hghbgQ"
   },
-  "intro": {
-    "drumHits": 15,
+  "missingTeam": {
+    "drumHits": 0,
     "drumKinds": {
-      "drum-low": 3,
-      "drum-open": 12,
+      "drum-low": 0,
+      "drum-open": 0,
       "drum-rim": 0
     },
     "voiceClips": 3,
-    "khmerClips": 2,
-    "cues": [
-      "ready",
-      "go",
-      "intro"
-    ],
+    "khmerClips": 1,
+    "cues": [],
     "played": [
       {
-        "key": "broadcast-ready",
+        "key": "name-tum-nup-two-vi",
         "at": 0.02,
-        "match": [
-          "tum-nup-2",
-          "can_tho-28"
-        ]
+        "match": [],
+        "teamId": "tum-nup-2",
+        "registrationId": "can_tho-23",
+        "kind": "name"
       },
       {
-        "key": "broadcast-go",
-        "at": 2.6815873015873017,
-        "match": [
-          "tum-nup-2",
-          "can_tho-28"
-        ]
+        "key": "name-tum-nup-km",
+        "at": 1.3599773242630384,
+        "match": [],
+        "teamId": "tum-nup-2",
+        "registrationId": "can_tho-23",
+        "kind": "name"
       },
       {
-        "key": "khmer-go",
-        "at": 5.886587301587301,
-        "match": [
-          "tum-nup-2",
-          "can_tho-28"
-        ]
+        "key": "history-tum-nup-champion-vi",
+        "at": 2.072063492063492,
+        "match": [],
+        "teamId": "tum-nup-2",
+        "registrationId": "can_tho-23",
+        "kind": "history"
       },
       {
-        "key": "broadcast-intro",
-        "at": 8.28049886621315,
-        "match": [
-          "tum-nup-2",
-          "can_tho-28"
-        ]
-      },
-      {
-        "key": "khmer-intro",
-        "at": 10.53547619047619,
-        "match": [
-          "tum-nup-2",
-          "can_tho-28"
-        ]
+        "key": "history-sro-lon-third-vi",
+        "at": 2.690294784580499,
+        "match": [],
+        "teamId": "can_tho-06",
+        "registrationId": "can_tho-06",
+        "kind": "history"
       }
     ],
     "errors": [],
-    "decoded": 13,
+    "decoded": 4,
     "context": "running",
-    "audioTime": 12.350113378684807,
-    "active": true,
-    "mix": {
-      "enabled": true,
-      "voice": true,
-      "khmer": true,
-      "drums": true,
-      "crowd": true,
-      "volume": 0.8
-    },
-    "sources": 3,
-    "queued": [],
-    "speaking": true,
-    "outputRms": 0.14357248361196584,
-    "cached": 13,
-    "teams": [
-      "tum-nup-2",
-      "can_tho-28"
-    ],
-    "disposed": false,
-    "origin": "broadcast",
-    "sourceVideo": "crZF3hghbgQ"
-  },
-  "pause": {
-    "drumHits": 15,
-    "drumKinds": {
-      "drum-low": 3,
-      "drum-open": 12,
-      "drum-rim": 0
-    },
-    "voiceClips": 3,
-    "khmerClips": 2,
-    "cues": [
-      "ready",
-      "go",
-      "intro"
-    ],
-    "played": [
-      {
-        "key": "broadcast-ready",
-        "at": 0.02,
-        "match": [
-          "tum-nup-2",
-          "can_tho-28"
-        ]
-      },
-      {
-        "key": "broadcast-go",
-        "at": 2.6815873015873017,
-        "match": [
-          "tum-nup-2",
-          "can_tho-28"
-        ]
-      },
-      {
-        "key": "khmer-go",
-        "at": 5.886587301587301,
-        "match": [
-          "tum-nup-2",
-          "can_tho-28"
-        ]
-      },
-      {
-        "key": "broadcast-intro",
-        "at": 8.28049886621315,
-        "match": [
-          "tum-nup-2",
-          "can_tho-28"
-        ]
-      },
-      {
-        "key": "khmer-intro",
-        "at": 10.53547619047619,
-        "match": [
-          "tum-nup-2",
-          "can_tho-28"
-        ]
-      }
-    ],
-    "errors": [],
-    "decoded": 13,
-    "context": "running",
-    "audioTime": 12.680997732426304,
+    "audioTime": 2.8415419501133785,
     "active": false,
     "mix": {
       "enabled": true,
@@ -202,25 +112,118 @@
     "sources": 0,
     "queued": [],
     "speaking": false,
+    "previewing": false,
     "outputRms": 0,
-    "cached": 13,
+    "cached": 4,
+    "teams": [],
+    "disposed": false,
+    "origin": "broadcast",
+    "sourceVideo": "crZF3hghbgQ"
+  },
+  "profileViewports": [
+    [
+      1024,
+      768
+    ],
+    [
+      768,
+      1024
+    ],
+    [
+      1180,
+      430
+    ]
+  ],
+  "start": {
+    "drumHits": 0,
+    "drumKinds": {
+      "drum-low": 0,
+      "drum-open": 0,
+      "drum-rim": 0
+    },
+    "voiceClips": 4,
+    "khmerClips": 1,
+    "cues": [
+      "ready"
+    ],
+    "played": [
+      {
+        "key": "name-tum-nup-two-vi",
+        "at": 0.02,
+        "match": [],
+        "teamId": "tum-nup-2",
+        "registrationId": "can_tho-23",
+        "kind": "name"
+      },
+      {
+        "key": "name-tum-nup-km",
+        "at": 1.3599773242630384,
+        "match": [],
+        "teamId": "tum-nup-2",
+        "registrationId": "can_tho-23",
+        "kind": "name"
+      },
+      {
+        "key": "history-tum-nup-champion-vi",
+        "at": 2.072063492063492,
+        "match": [],
+        "teamId": "tum-nup-2",
+        "registrationId": "can_tho-23",
+        "kind": "history"
+      },
+      {
+        "key": "history-sro-lon-third-vi",
+        "at": 2.690294784580499,
+        "match": [],
+        "teamId": "can_tho-06",
+        "registrationId": "can_tho-06",
+        "kind": "history"
+      },
+      {
+        "key": "broadcast-ready",
+        "at": 3.8512925170068026,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
+        ]
+      }
+    ],
+    "errors": [],
+    "decoded": 18,
+    "context": "running",
+    "audioTime": 3.8922448979591837,
+    "active": true,
+    "mix": {
+      "enabled": true,
+      "voice": true,
+      "khmer": true,
+      "drums": true,
+      "crowd": true,
+      "volume": 0.8
+    },
+    "sources": 2,
+    "queued": [],
+    "speaking": true,
+    "previewing": false,
+    "outputRms": 0.043021822431339424,
+    "cached": 19,
     "teams": [
       "tum-nup-2",
-      "can_tho-28"
+      "can_tho-36"
     ],
     "disposed": false,
     "origin": "broadcast",
     "sourceVideo": "crZF3hghbgQ"
   },
-  "mute": {
-    "drumHits": 16,
+  "intro": {
+    "drumHits": 21,
     "drumKinds": {
-      "drum-low": 4,
-      "drum-open": 12,
+      "drum-low": 5,
+      "drum-open": 16,
       "drum-rim": 0
     },
-    "voiceClips": 3,
-    "khmerClips": 2,
+    "voiceClips": 8,
+    "khmerClips": 5,
     "cues": [
       "ready",
       "go",
@@ -228,50 +231,408 @@
     ],
     "played": [
       {
-        "key": "broadcast-ready",
+        "key": "name-tum-nup-two-vi",
         "at": 0.02,
+        "match": [],
+        "teamId": "tum-nup-2",
+        "registrationId": "can_tho-23",
+        "kind": "name"
+      },
+      {
+        "key": "name-tum-nup-km",
+        "at": 1.3599773242630384,
+        "match": [],
+        "teamId": "tum-nup-2",
+        "registrationId": "can_tho-23",
+        "kind": "name"
+      },
+      {
+        "key": "history-tum-nup-champion-vi",
+        "at": 2.072063492063492,
+        "match": [],
+        "teamId": "tum-nup-2",
+        "registrationId": "can_tho-23",
+        "kind": "history"
+      },
+      {
+        "key": "history-sro-lon-third-vi",
+        "at": 2.690294784580499,
+        "match": [],
+        "teamId": "can_tho-06",
+        "registrationId": "can_tho-06",
+        "kind": "history"
+      },
+      {
+        "key": "broadcast-ready",
+        "at": 3.8512925170068026,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
         ]
       },
       {
         "key": "broadcast-go",
-        "at": 2.6815873015873017,
+        "at": 6.852471655328798,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
         ]
       },
       {
         "key": "khmer-go",
-        "at": 5.886587301587301,
+        "at": 10.057471655328799,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-tum-nup-two-vi",
+        "at": 12.442675736961451,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-day-om-pu-vi",
+        "at": 13.73765306122449,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
         ]
       },
       {
         "key": "broadcast-intro",
-        "at": 8.28049886621315,
+        "at": 14.912630385487528,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-tum-nup-km",
+        "at": 17.16760770975057,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-day-om-pu-km",
+        "at": 17.762585034013608,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
         ]
       },
       {
         "key": "khmer-intro",
-        "at": 10.53547619047619,
+        "at": 18.657585034013607,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
         ]
       }
     ],
     "errors": [],
-    "decoded": 13,
+    "decoded": 19,
     "context": "running",
-    "audioTime": 13.130884353741497,
+    "audioTime": 20.48,
+    "active": true,
+    "mix": {
+      "enabled": true,
+      "voice": true,
+      "khmer": true,
+      "drums": true,
+      "crowd": true,
+      "volume": 0.8
+    },
+    "sources": 2,
+    "queued": [],
+    "speaking": true,
+    "previewing": false,
+    "outputRms": 0.13268102493984024,
+    "cached": 19,
+    "teams": [
+      "tum-nup-2",
+      "can_tho-36"
+    ],
+    "disposed": false,
+    "origin": "broadcast",
+    "sourceVideo": "crZF3hghbgQ"
+  },
+  "pause": {
+    "drumHits": 22,
+    "drumKinds": {
+      "drum-low": 5,
+      "drum-open": 17,
+      "drum-rim": 0
+    },
+    "voiceClips": 8,
+    "khmerClips": 5,
+    "cues": [
+      "ready",
+      "go",
+      "intro"
+    ],
+    "played": [
+      {
+        "key": "name-tum-nup-two-vi",
+        "at": 0.02,
+        "match": [],
+        "teamId": "tum-nup-2",
+        "registrationId": "can_tho-23",
+        "kind": "name"
+      },
+      {
+        "key": "name-tum-nup-km",
+        "at": 1.3599773242630384,
+        "match": [],
+        "teamId": "tum-nup-2",
+        "registrationId": "can_tho-23",
+        "kind": "name"
+      },
+      {
+        "key": "history-tum-nup-champion-vi",
+        "at": 2.072063492063492,
+        "match": [],
+        "teamId": "tum-nup-2",
+        "registrationId": "can_tho-23",
+        "kind": "history"
+      },
+      {
+        "key": "history-sro-lon-third-vi",
+        "at": 2.690294784580499,
+        "match": [],
+        "teamId": "can_tho-06",
+        "registrationId": "can_tho-06",
+        "kind": "history"
+      },
+      {
+        "key": "broadcast-ready",
+        "at": 3.8512925170068026,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "broadcast-go",
+        "at": 6.852471655328798,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "khmer-go",
+        "at": 10.057471655328799,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-tum-nup-two-vi",
+        "at": 12.442675736961451,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-day-om-pu-vi",
+        "at": 13.73765306122449,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "broadcast-intro",
+        "at": 14.912630385487528,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-tum-nup-km",
+        "at": 17.16760770975057,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-day-om-pu-km",
+        "at": 17.762585034013608,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "khmer-intro",
+        "at": 18.657585034013607,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
+        ]
+      }
+    ],
+    "errors": [],
+    "decoded": 19,
+    "context": "running",
+    "audioTime": 20.82249433106576,
+    "active": false,
+    "mix": {
+      "enabled": true,
+      "voice": true,
+      "khmer": true,
+      "drums": true,
+      "crowd": true,
+      "volume": 0.8
+    },
+    "sources": 0,
+    "queued": [],
+    "speaking": false,
+    "previewing": false,
+    "outputRms": 0,
+    "cached": 19,
+    "teams": [
+      "tum-nup-2",
+      "can_tho-36"
+    ],
+    "disposed": false,
+    "origin": "broadcast",
+    "sourceVideo": "crZF3hghbgQ"
+  },
+  "mute": {
+    "drumHits": 22,
+    "drumKinds": {
+      "drum-low": 5,
+      "drum-open": 17,
+      "drum-rim": 0
+    },
+    "voiceClips": 8,
+    "khmerClips": 5,
+    "cues": [
+      "ready",
+      "go",
+      "intro"
+    ],
+    "played": [
+      {
+        "key": "name-tum-nup-two-vi",
+        "at": 0.02,
+        "match": [],
+        "teamId": "tum-nup-2",
+        "registrationId": "can_tho-23",
+        "kind": "name"
+      },
+      {
+        "key": "name-tum-nup-km",
+        "at": 1.3599773242630384,
+        "match": [],
+        "teamId": "tum-nup-2",
+        "registrationId": "can_tho-23",
+        "kind": "name"
+      },
+      {
+        "key": "history-tum-nup-champion-vi",
+        "at": 2.072063492063492,
+        "match": [],
+        "teamId": "tum-nup-2",
+        "registrationId": "can_tho-23",
+        "kind": "history"
+      },
+      {
+        "key": "history-sro-lon-third-vi",
+        "at": 2.690294784580499,
+        "match": [],
+        "teamId": "can_tho-06",
+        "registrationId": "can_tho-06",
+        "kind": "history"
+      },
+      {
+        "key": "broadcast-ready",
+        "at": 3.8512925170068026,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "broadcast-go",
+        "at": 6.852471655328798,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "khmer-go",
+        "at": 10.057471655328799,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-tum-nup-two-vi",
+        "at": 12.442675736961451,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-day-om-pu-vi",
+        "at": 13.73765306122449,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "broadcast-intro",
+        "at": 14.912630385487528,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-tum-nup-km",
+        "at": 17.16760770975057,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-day-om-pu-km",
+        "at": 17.762585034013608,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "khmer-intro",
+        "at": 18.657585034013607,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
+        ]
+      }
+    ],
+    "errors": [],
+    "decoded": 19,
+    "context": "running",
+    "audioTime": 21.272380952380953,
     "active": true,
     "mix": {
       "enabled": false,
@@ -284,11 +645,12 @@
     "sources": 0,
     "queued": [],
     "speaking": false,
+    "previewing": false,
     "outputRms": 0,
-    "cached": 13,
+    "cached": 19,
     "teams": [
       "tum-nup-2",
-      "can_tho-28"
+      "can_tho-36"
     ],
     "disposed": false,
     "origin": "broadcast",
@@ -359,14 +721,14 @@
     }
   ],
   "final": {
-    "drumHits": 24,
+    "drumHits": 32,
     "drumKinds": {
-      "drum-low": 5,
-      "drum-open": 16,
+      "drum-low": 6,
+      "drum-open": 23,
       "drum-rim": 3
     },
-    "voiceClips": 4,
-    "khmerClips": 2,
+    "voiceClips": 9,
+    "khmerClips": 5,
     "cues": [
       "ready",
       "go",
@@ -375,58 +737,122 @@
     ],
     "played": [
       {
-        "key": "broadcast-ready",
+        "key": "name-tum-nup-two-vi",
         "at": 0.02,
+        "match": [],
+        "teamId": "tum-nup-2",
+        "registrationId": "can_tho-23",
+        "kind": "name"
+      },
+      {
+        "key": "name-tum-nup-km",
+        "at": 1.3599773242630384,
+        "match": [],
+        "teamId": "tum-nup-2",
+        "registrationId": "can_tho-23",
+        "kind": "name"
+      },
+      {
+        "key": "history-tum-nup-champion-vi",
+        "at": 2.072063492063492,
+        "match": [],
+        "teamId": "tum-nup-2",
+        "registrationId": "can_tho-23",
+        "kind": "history"
+      },
+      {
+        "key": "history-sro-lon-third-vi",
+        "at": 2.690294784580499,
+        "match": [],
+        "teamId": "can_tho-06",
+        "registrationId": "can_tho-06",
+        "kind": "history"
+      },
+      {
+        "key": "broadcast-ready",
+        "at": 3.8512925170068026,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
         ]
       },
       {
         "key": "broadcast-go",
-        "at": 2.6815873015873017,
+        "at": 6.852471655328798,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
         ]
       },
       {
         "key": "khmer-go",
-        "at": 5.886587301587301,
+        "at": 10.057471655328799,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-tum-nup-two-vi",
+        "at": 12.442675736961451,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-day-om-pu-vi",
+        "at": 13.73765306122449,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
         ]
       },
       {
         "key": "broadcast-intro",
-        "at": 8.28049886621315,
+        "at": 14.912630385487528,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-tum-nup-km",
+        "at": 17.16760770975057,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-day-om-pu-km",
+        "at": 17.762585034013608,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
         ]
       },
       {
         "key": "khmer-intro",
-        "at": 10.53547619047619,
+        "at": 18.657585034013607,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
         ]
       },
       {
         "key": "broadcast-sprint",
-        "at": 15.411927437641722,
+        "at": 23.55052154195011,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
         ]
       }
     ],
     "errors": [],
-    "decoded": 13,
+    "decoded": 19,
     "context": "running",
-    "audioTime": 16.761904761904763,
+    "audioTime": 24.891791383219953,
     "active": true,
     "mix": {
       "enabled": true,
@@ -439,25 +865,26 @@
     "sources": 4,
     "queued": [],
     "speaking": true,
-    "outputRms": 0.08277029632005697,
-    "cached": 13,
+    "previewing": false,
+    "outputRms": 0.0506033055273372,
+    "cached": 19,
     "teams": [
       "tum-nup-2",
-      "can_tho-28"
+      "can_tho-36"
     ],
     "disposed": false,
     "origin": "broadcast",
     "sourceVideo": "crZF3hghbgQ"
   },
   "surge": {
-    "drumHits": 24,
+    "drumHits": 32,
     "drumKinds": {
-      "drum-low": 5,
-      "drum-open": 16,
+      "drum-low": 6,
+      "drum-open": 23,
       "drum-rim": 3
     },
-    "voiceClips": 5,
-    "khmerClips": 2,
+    "voiceClips": 10,
+    "khmerClips": 5,
     "cues": [
       "ready",
       "go",
@@ -467,66 +894,130 @@
     ],
     "played": [
       {
-        "key": "broadcast-ready",
+        "key": "name-tum-nup-two-vi",
         "at": 0.02,
+        "match": [],
+        "teamId": "tum-nup-2",
+        "registrationId": "can_tho-23",
+        "kind": "name"
+      },
+      {
+        "key": "name-tum-nup-km",
+        "at": 1.3599773242630384,
+        "match": [],
+        "teamId": "tum-nup-2",
+        "registrationId": "can_tho-23",
+        "kind": "name"
+      },
+      {
+        "key": "history-tum-nup-champion-vi",
+        "at": 2.072063492063492,
+        "match": [],
+        "teamId": "tum-nup-2",
+        "registrationId": "can_tho-23",
+        "kind": "history"
+      },
+      {
+        "key": "history-sro-lon-third-vi",
+        "at": 2.690294784580499,
+        "match": [],
+        "teamId": "can_tho-06",
+        "registrationId": "can_tho-06",
+        "kind": "history"
+      },
+      {
+        "key": "broadcast-ready",
+        "at": 3.8512925170068026,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
         ]
       },
       {
         "key": "broadcast-go",
-        "at": 2.6815873015873017,
+        "at": 6.852471655328798,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
         ]
       },
       {
         "key": "khmer-go",
-        "at": 5.886587301587301,
+        "at": 10.057471655328799,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-tum-nup-two-vi",
+        "at": 12.442675736961451,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-day-om-pu-vi",
+        "at": 13.73765306122449,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
         ]
       },
       {
         "key": "broadcast-intro",
-        "at": 8.28049886621315,
+        "at": 14.912630385487528,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-tum-nup-km",
+        "at": 17.16760770975057,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-day-om-pu-km",
+        "at": 17.762585034013608,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
         ]
       },
       {
         "key": "khmer-intro",
-        "at": 10.53547619047619,
+        "at": 18.657585034013607,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
         ]
       },
       {
         "key": "broadcast-sprint",
-        "at": 15.411927437641722,
+        "at": 23.55052154195011,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
         ]
       },
       {
         "key": "broadcast-surge",
-        "at": 16.900907029478457,
+        "at": 25.022086167800452,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
         ]
       }
     ],
     "errors": [],
-    "decoded": 13,
+    "decoded": 19,
     "context": "running",
-    "audioTime": 16.91283446712018,
+    "audioTime": 25.042721088435375,
     "active": true,
     "mix": {
       "enabled": true,
@@ -539,25 +1030,26 @@
     "sources": 4,
     "queued": [],
     "speaking": true,
-    "outputRms": 0.06964612890003603,
-    "cached": 13,
+    "previewing": false,
+    "outputRms": 0.16999871303690825,
+    "cached": 19,
     "teams": [
       "tum-nup-2",
-      "can_tho-28"
+      "can_tho-36"
     ],
     "disposed": false,
     "origin": "broadcast",
     "sourceVideo": "crZF3hghbgQ"
   },
   "finish": {
-    "drumHits": 24,
+    "drumHits": 32,
     "drumKinds": {
-      "drum-low": 5,
-      "drum-open": 16,
+      "drum-low": 6,
+      "drum-open": 23,
       "drum-rim": 3
     },
-    "voiceClips": 6,
-    "khmerClips": 3,
+    "voiceClips": 12,
+    "khmerClips": 7,
     "cues": [
       "ready",
       "go",
@@ -568,82 +1060,162 @@
     ],
     "played": [
       {
-        "key": "broadcast-ready",
+        "key": "name-tum-nup-two-vi",
         "at": 0.02,
+        "match": [],
+        "teamId": "tum-nup-2",
+        "registrationId": "can_tho-23",
+        "kind": "name"
+      },
+      {
+        "key": "name-tum-nup-km",
+        "at": 1.3599773242630384,
+        "match": [],
+        "teamId": "tum-nup-2",
+        "registrationId": "can_tho-23",
+        "kind": "name"
+      },
+      {
+        "key": "history-tum-nup-champion-vi",
+        "at": 2.072063492063492,
+        "match": [],
+        "teamId": "tum-nup-2",
+        "registrationId": "can_tho-23",
+        "kind": "history"
+      },
+      {
+        "key": "history-sro-lon-third-vi",
+        "at": 2.690294784580499,
+        "match": [],
+        "teamId": "can_tho-06",
+        "registrationId": "can_tho-06",
+        "kind": "history"
+      },
+      {
+        "key": "broadcast-ready",
+        "at": 3.8512925170068026,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
         ]
       },
       {
         "key": "broadcast-go",
-        "at": 2.6815873015873017,
+        "at": 6.852471655328798,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
         ]
       },
       {
         "key": "khmer-go",
-        "at": 5.886587301587301,
+        "at": 10.057471655328799,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-tum-nup-two-vi",
+        "at": 12.442675736961451,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-day-om-pu-vi",
+        "at": 13.73765306122449,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
         ]
       },
       {
         "key": "broadcast-intro",
-        "at": 8.28049886621315,
+        "at": 14.912630385487528,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-tum-nup-km",
+        "at": 17.16760770975057,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-day-om-pu-km",
+        "at": 17.762585034013608,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
         ]
       },
       {
         "key": "khmer-intro",
-        "at": 10.53547619047619,
+        "at": 18.657585034013607,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
         ]
       },
       {
         "key": "broadcast-sprint",
-        "at": 15.411927437641722,
+        "at": 23.55052154195011,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
         ]
       },
       {
         "key": "broadcast-surge",
-        "at": 16.900907029478457,
+        "at": 25.022086167800452,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-tum-nup-two-vi",
+        "at": 25.11206349206349,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
         ]
       },
       {
         "key": "broadcast-finish",
-        "at": 16.970566893424035,
+        "at": 26.40704081632653,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-tum-nup-km",
+        "at": 27.40201814058957,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
         ]
       },
       {
         "key": "khmer-finish",
-        "at": 17.965544217687075,
+        "at": 27.996995464852606,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
         ]
       }
     ],
     "errors": [],
-    "decoded": 13,
+    "decoded": 19,
     "context": "running",
-    "audioTime": 17.972244897959182,
+    "audioTime": 28.011972789115646,
     "active": true,
     "mix": {
       "enabled": true,
@@ -656,11 +1228,12 @@
     "sources": 1,
     "queued": [],
     "speaking": true,
-    "outputRms": 0.00030704178743003494,
-    "cached": 13,
+    "previewing": false,
+    "outputRms": 0.01854261478025197,
+    "cached": 19,
     "teams": [
       "tum-nup-2",
-      "can_tho-28"
+      "can_tho-36"
     ],
     "disposed": false,
     "origin": "broadcast",
@@ -671,32 +1244,32 @@
     "difficulty": "normal",
     "pace": "steady",
     "countdown": 0,
-    "elapsed": 196.86666666656984,
+    "elapsed": 201.63749999989884,
     "distances": [
       1200,
-      1125.6461595653245
+      1150.151350703523
     ],
     "speeds": [
       0,
       0
     ],
     "finishTimes": [
-      196.86468325726727,
+      201.63351328544917,
       null
     ],
-    "beatPhase": 293.7308333332826,
-    "aiPhase": 0.6004166666673866,
-    "stamina": 24.241169769466776,
-    "power": 0.8867726289620268,
+    "beatPhase": 301.4033333333064,
+    "aiPhase": 0.7108333333340516,
+    "stamina": 18.720406762882874,
+    "power": 0.9367551596097976,
     "cohesion": 1,
-    "combo": 274,
-    "maxCombo": 274,
-    "perfect": 274,
+    "combo": 275,
+    "maxCombo": 275,
+    "perfect": 275,
     "good": 0,
-    "missed": 19,
-    "lastResolved": 293,
+    "missed": 26,
+    "lastResolved": 301,
     "feedback": "PERFECT · Chuẩn!",
-    "feedbackAt": 196.43749999990357,
+    "feedbackAt": 201.40416666656571,
     "result": "win",
     "pauseReason": "",
     "runId": 1,
@@ -706,34 +1279,34 @@
     "lastSpamAt": -10,
     "slipstream": false,
     "lastJudgement": "PERFECT",
-    "aiStamina": 12.630083333301574,
-    "aiSurgeCharge": 0.02800000000000045,
-    "aiSurgeRemaining": 3.0666666666666202,
+    "aiStamina": 9.290499999969244,
+    "aiSurgeCharge": 0.17200000000000043,
+    "aiSurgeRemaining": 0,
     "raceStage": "final",
     "stageLabel": "Nước rút về đích",
     "cadence": 102,
     "aiRaceStage": "final",
     "aiStageLabel": "Nước rút về đích",
     "aiCadence": 102,
-    "aiSurgeActive": true,
+    "aiSurgeActive": false,
     "judgement": "PERFECT",
     "surgeActive": false,
     "canSurge": false,
     "desyncIntensity": 0,
-    "rhythmProgress": 0.2308333332825896,
-    "accuracy": 94,
-    "gap": 74.35384043467548,
+    "rhythmProgress": 0.9033333333064206,
+    "accuracy": 91,
+    "gap": 49.848649296477106,
     "strength": 0
   },
   "nextHeat": {
-    "drumHits": 24,
+    "drumHits": 32,
     "drumKinds": {
-      "drum-low": 5,
-      "drum-open": 16,
+      "drum-low": 6,
+      "drum-open": 23,
       "drum-rim": 3
     },
-    "voiceClips": 6,
-    "khmerClips": 3,
+    "voiceClips": 12,
+    "khmerClips": 7,
     "cues": [
       "ready",
       "go",
@@ -744,82 +1317,162 @@
     ],
     "played": [
       {
-        "key": "broadcast-ready",
+        "key": "name-tum-nup-two-vi",
         "at": 0.02,
+        "match": [],
+        "teamId": "tum-nup-2",
+        "registrationId": "can_tho-23",
+        "kind": "name"
+      },
+      {
+        "key": "name-tum-nup-km",
+        "at": 1.3599773242630384,
+        "match": [],
+        "teamId": "tum-nup-2",
+        "registrationId": "can_tho-23",
+        "kind": "name"
+      },
+      {
+        "key": "history-tum-nup-champion-vi",
+        "at": 2.072063492063492,
+        "match": [],
+        "teamId": "tum-nup-2",
+        "registrationId": "can_tho-23",
+        "kind": "history"
+      },
+      {
+        "key": "history-sro-lon-third-vi",
+        "at": 2.690294784580499,
+        "match": [],
+        "teamId": "can_tho-06",
+        "registrationId": "can_tho-06",
+        "kind": "history"
+      },
+      {
+        "key": "broadcast-ready",
+        "at": 3.8512925170068026,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
         ]
       },
       {
         "key": "broadcast-go",
-        "at": 2.6815873015873017,
+        "at": 6.852471655328798,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
         ]
       },
       {
         "key": "khmer-go",
-        "at": 5.886587301587301,
+        "at": 10.057471655328799,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-tum-nup-two-vi",
+        "at": 12.442675736961451,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-day-om-pu-vi",
+        "at": 13.73765306122449,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
         ]
       },
       {
         "key": "broadcast-intro",
-        "at": 8.28049886621315,
+        "at": 14.912630385487528,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-tum-nup-km",
+        "at": 17.16760770975057,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-day-om-pu-km",
+        "at": 17.762585034013608,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
         ]
       },
       {
         "key": "khmer-intro",
-        "at": 10.53547619047619,
+        "at": 18.657585034013607,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
         ]
       },
       {
         "key": "broadcast-sprint",
-        "at": 15.411927437641722,
+        "at": 23.55052154195011,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
         ]
       },
       {
         "key": "broadcast-surge",
-        "at": 16.900907029478457,
+        "at": 25.022086167800452,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-tum-nup-two-vi",
+        "at": 25.11206349206349,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
         ]
       },
       {
         "key": "broadcast-finish",
-        "at": 16.970566893424035,
+        "at": 26.40704081632653,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-tum-nup-km",
+        "at": 27.40201814058957,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
         ]
       },
       {
         "key": "khmer-finish",
-        "at": 17.965544217687075,
+        "at": 27.996995464852606,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
         ]
       }
     ],
     "errors": [],
-    "decoded": 13,
+    "decoded": 19,
     "context": "running",
-    "audioTime": 18.07092970521542,
+    "audioTime": 28.122267573696146,
     "active": true,
     "mix": {
       "enabled": true,
@@ -832,25 +1485,26 @@
     "sources": 0,
     "queued": [],
     "speaking": false,
-    "outputRms": 0,
-    "cached": 13,
+    "previewing": false,
+    "outputRms": 0.15057991740476553,
+    "cached": 20,
     "teams": [
       "tum-nup-2",
-      "ca_mau-10"
+      "can_tho-28"
     ],
     "disposed": false,
     "origin": "broadcast",
     "sourceVideo": "crZF3hghbgQ"
   },
   "closedActiveContext": {
-    "drumHits": 24,
+    "drumHits": 32,
     "drumKinds": {
-      "drum-low": 5,
-      "drum-open": 16,
+      "drum-low": 6,
+      "drum-open": 23,
       "drum-rim": 3
     },
-    "voiceClips": 7,
-    "khmerClips": 3,
+    "voiceClips": 13,
+    "khmerClips": 7,
     "cues": [
       "ready",
       "go",
@@ -862,90 +1516,170 @@
     ],
     "played": [
       {
-        "key": "broadcast-ready",
+        "key": "name-tum-nup-two-vi",
         "at": 0.02,
+        "match": [],
+        "teamId": "tum-nup-2",
+        "registrationId": "can_tho-23",
+        "kind": "name"
+      },
+      {
+        "key": "name-tum-nup-km",
+        "at": 1.3599773242630384,
+        "match": [],
+        "teamId": "tum-nup-2",
+        "registrationId": "can_tho-23",
+        "kind": "name"
+      },
+      {
+        "key": "history-tum-nup-champion-vi",
+        "at": 2.072063492063492,
+        "match": [],
+        "teamId": "tum-nup-2",
+        "registrationId": "can_tho-23",
+        "kind": "history"
+      },
+      {
+        "key": "history-sro-lon-third-vi",
+        "at": 2.690294784580499,
+        "match": [],
+        "teamId": "can_tho-06",
+        "registrationId": "can_tho-06",
+        "kind": "history"
+      },
+      {
+        "key": "broadcast-ready",
+        "at": 3.8512925170068026,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
         ]
       },
       {
         "key": "broadcast-go",
-        "at": 2.6815873015873017,
+        "at": 6.852471655328798,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
         ]
       },
       {
         "key": "khmer-go",
-        "at": 5.886587301587301,
+        "at": 10.057471655328799,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-tum-nup-two-vi",
+        "at": 12.442675736961451,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-day-om-pu-vi",
+        "at": 13.73765306122449,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
         ]
       },
       {
         "key": "broadcast-intro",
-        "at": 8.28049886621315,
+        "at": 14.912630385487528,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-tum-nup-km",
+        "at": 17.16760770975057,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-day-om-pu-km",
+        "at": 17.762585034013608,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
         ]
       },
       {
         "key": "khmer-intro",
-        "at": 10.53547619047619,
+        "at": 18.657585034013607,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
         ]
       },
       {
         "key": "broadcast-sprint",
-        "at": 15.411927437641722,
+        "at": 23.55052154195011,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
         ]
       },
       {
         "key": "broadcast-surge",
-        "at": 16.900907029478457,
+        "at": 25.022086167800452,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-tum-nup-two-vi",
+        "at": 25.11206349206349,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
         ]
       },
       {
         "key": "broadcast-finish",
-        "at": 16.970566893424035,
+        "at": 26.40704081632653,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
+        ]
+      },
+      {
+        "key": "name-tum-nup-km",
+        "at": 27.40201814058957,
+        "match": [
+          "tum-nup-2",
+          "can_tho-36"
         ]
       },
       {
         "key": "khmer-finish",
-        "at": 17.965544217687075,
+        "at": 27.996995464852606,
         "match": [
           "tum-nup-2",
-          "can_tho-28"
+          "can_tho-36"
         ]
       },
       {
         "key": "broadcast-ready",
-        "at": 18.13156462585034,
+        "at": 28.162585034013606,
         "match": [
           "tum-nup-2",
-          "ca_mau-10"
+          "can_tho-28"
         ]
       }
     ],
     "errors": [],
-    "decoded": 13,
+    "decoded": 20,
     "context": "closed",
-    "audioTime": 18.63111111111111,
+    "audioTime": 28.650521541950113,
     "active": false,
     "mix": {
       "enabled": false,
@@ -958,11 +1692,12 @@
     "sources": 0,
     "queued": [],
     "speaking": false,
-    "outputRms": 0.006448167671658463,
+    "previewing": false,
+    "outputRms": 0.006923083500957999,
     "cached": 0,
     "teams": [
       "tum-nup-2",
-      "ca_mau-10"
+      "can_tho-28"
     ],
     "disposed": true,
     "origin": "broadcast",
@@ -995,6 +1730,7 @@
     "sources": 0,
     "queued": [],
     "speaking": false,
+    "previewing": false,
     "outputRms": 0,
     "cached": 0,
     "teams": [],
@@ -1029,6 +1765,7 @@
     "sources": 0,
     "queued": [],
     "speaking": false,
+    "previewing": false,
     "outputRms": 0,
     "cached": 0,
     "teams": [],
@@ -1042,23 +1779,19 @@
       "status": 200
     },
     {
-      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/broadcast-ambience.mp3?clip=0394384c18e1",
+      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/name-tum-nup-two-vi.mp3?clip=7d122a897dbd",
       "status": 200
     },
     {
-      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/broadcast-sprint.mp3?clip=28e52473d266",
+      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/name-tum-nup-km.mp3?clip=80c5fe8cdf9d",
       "status": 200
     },
     {
-      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/broadcast-surge.mp3?clip=5184f6265776",
+      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/history-tum-nup-champion-vi.mp3?clip=9e745955bc46",
       "status": 200
     },
     {
-      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/broadcast-finish.mp3?clip=2b463a470609",
-      "status": 200
-    },
-    {
-      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/khmer-finish.mp3?clip=37375bb2bbc3",
+      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/history-sro-lon-third-vi.mp3?clip=19d71b17724c",
       "status": 200
     },
     {
@@ -1066,7 +1799,7 @@
       "status": 200
     },
     {
-      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/broadcast-intro.mp3?clip=7f5b601728db",
+      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/khmer-intro.mp3?clip=be897d565f3b",
       "status": 200
     },
     {
@@ -1078,11 +1811,7 @@
       "status": 200
     },
     {
-      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/khmer-intro.mp3?clip=be897d565f3b",
-      "status": 200
-    },
-    {
-      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/drum-open.mp3?clip=8154937c7503",
+      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/broadcast-intro.mp3?clip=7f5b601728db",
       "status": 200
     },
     {
@@ -1090,7 +1819,43 @@
       "status": 200
     },
     {
+      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/broadcast-sprint.mp3?clip=28e52473d266",
+      "status": 200
+    },
+    {
       "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/khmer-go.mp3?clip=4d9ccca7426f",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/khmer-finish.mp3?clip=37375bb2bbc3",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/drum-open.mp3?clip=8154937c7503",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/name-day-om-pu-vi.mp3?clip=c95b7e963648",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/name-day-om-pu-km.mp3?clip=8385a5023933",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/broadcast-ambience.mp3?clip=0394384c18e1",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/broadcast-finish.mp3?clip=2b463a470609",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/broadcast-surge.mp3?clip=5184f6265776",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/name-day-ta-suos-vi.mp3?clip=152cbce20ac1",
       "status": 200
     }
   ],

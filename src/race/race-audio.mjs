@@ -34,24 +34,39 @@ export function createCommentaryDirector(){
     if(s.elapsed>30&&Math.abs(s.gap)<2)once('close-race');
     if(s.combo>=30)once('cohesion');
     if(s.stamina<20&&s.elapsed>20)once('fatigue',2);
+    if(!cues.length&&s.elapsed>=22&&s.elapsed<35)once('team-history');
+    if(!cues.length&&s.elapsed>=55&&s.elapsed<70)once('opponent-history');
    }
    previous={phase:s.phase,pace:s.pace,surgeActive:s.surgeActive};
    return cues.sort((a,b)=>b.priority-a.priority).slice(0,1);
   },
  };
 }
-// A recorded commentator cannot be made to say arbitrary team names. Original
-// cuts remain labelled excerpts; the actual teams/results are shown in the HUD.
-export function resolveBroadcastCue(cue,manifest){
+// Use only original recordings assigned to this registration. Shared pagoda
+// names do not invent a gender or number; historical standings stay separate
+// from the result of the current game.
+export function resolveTeamSpeech(team,manifest,kind='name'){
+ const registration=typeof team==='string'?team:team?.registrationId||team?.id;
+ const entry=manifest.teamProfiles?.[registration]?.[kind==='history'?'history':'names'];
+ const role=kind==='history'?'team-history':'team-name',selection={voice:[],khmer:[]};
+ for(const channel of ['voice','khmer'])selection[channel]=(entry?.[channel]||[]).filter(key=>{const c=manifest.clips[key];return c?.role===role&&c.channel===channel&&c.teamIds?.includes(registration);});
+ return selection;
+}
+export function resolveBroadcastCue(cue,manifest,teams=[]){
+ if(['team-history','opponent-history'].includes(cue.id))return resolveTeamSpeech(teams[cue.id==='team-history'?0:1],manifest,'history');
  const id=cue.id==='finish'&&['tie','dnf','loss'].includes(cue.result)?cue.result:cue.id.startsWith('lead-')?'lead':cue.id;
  const event=manifest.events[id]||{voice:[],khmer:[]};
- return {voice:[...event.voice],khmer:[...event.khmer]};
+ const selection={voice:[...event.voice],khmer:[...event.khmer]};
+ const named=cue.id==='intro'?teams:cue.id.startsWith('lead-')?[teams[cue.id==='lead--1'?1:0]]:cue.id==='finish'&&['win','loss'].includes(cue.result)?[teams[cue.result==='win'?0:1]]:[];
+ for(const channel of ['voice','khmer'])selection[channel]=[...named.flatMap(t=>resolveTeamSpeech(t,manifest)[channel]),...selection[channel]];
+ return selection;
 }
 
-export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{}}={}) {
+export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{},onPreviewState=()=>{}}={}) {
  const directory=baseUrl+'assets/race-audio/',director=createCommentaryDirector();
  let mix=normalizeAudioMix(),context=null,buses=null,manifest=null,manifestPromise=null;
  let active=false,disposed=false,epoch=0,queue=[],speaking=false,currentPriority=0;
+ let previewing=false,previewSerial=0;
  let teams=[],latest=null,lastBeat=null,crowdSource=null,crowdPending=false,voiceUntil=0,ambienceStage=0;
  const cache=new Map(),sources=new Set(),abort=new AbortController();
  const metrics={drumHits:0,drumKinds:{'drum-low':0,'drum-open':0,'drum-rim':0},voiceClips:0,khmerClips:0,cues:[],played:[],errors:[],decoded:0};
@@ -98,7 +113,7 @@ export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{}}={}
   const cue=queue.shift();if(!cue)return;
   speaking=true;currentPriority=cue.priority;const token=epoch;
   try{
-   const selection=resolveBroadcastCue(cue,await loadManifest());
+   const selection=resolveBroadcastCue(cue,await loadManifest(),teams);
    const keys=[...(mix.voice?selection.voice:[]),...(mix.khmer?selection.khmer:[])];
    // Fetch the phrase in parallel, then schedule it as one uninterrupted sentence.
    const buffers=await Promise.all(keys.map(load));if(token!==epoch||!active||!mix.enabled||disposed||latest.elapsed-cue.elapsed>(cue.priority>=4?20:9)||(cue.id==='ready'&&latest.phase!=='countdown'))return;
@@ -135,7 +150,7 @@ export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{}}={}
  }
  const api={
   // Call in the original touch/click handler, before any awaited GLB load.
-  unlock(){
+  unlock({warmup=true}={}){
    if(disposed||!mix.enabled)return Promise.resolve();
    try{
     if(!context){
@@ -146,32 +161,61 @@ export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{}}={}
      for(const key of ['voice','khmer','drums','crowd']){buses[key]=context.createGain();buses[key].connect(buses.master);}applyMix();
     }
     const resumed=context.resume();
-    return resumed.then(loadManifest).then(m=>Promise.allSettled(m.warmup.map(load))).catch(fail);
+    return resumed.then(loadManifest).then(m=>warmup?Promise.allSettled(m.warmup.map(load)):undefined).catch(fail);
    }catch(e){fail(e);return Promise.resolve();}
   },
   beginMatch(pair){
+   api.stopPreview();
    clearSpeech();captions=[];stopSources();director.reset();teams=pair;latest=null;lastBeat=null;
-   if(context&&mix.enabled)void loadManifest().then(m=>Promise.allSettled(['final','surge','finish'].flatMap(id=>{const e=m.events[id];return [...e.voice,...e.khmer];}).map(load))).catch(fail);
+   if(context&&mix.enabled)void loadManifest().then(m=>{const keys=['final','surge','finish'].flatMap(id=>{const e=m.events[id];return [...e.voice,...e.khmer];});for(const team of pair){const names=resolveTeamSpeech(team,m),history=resolveTeamSpeech(team,m,'history');keys.push(...names.voice,...names.khmer,...history.voice,...history.khmer);}return Promise.allSettled([...new Set(keys)].map(load));}).catch(fail);
   },
-  setMix(value){const previous=mix;mix=normalizeAudioMix(value);if(!mix.enabled){clearSpeech();captions=[];stopSources();}else{if(previous.voice!==mix.voice||previous.khmer!==mix.khmer){clearSpeech();captions=[];}if(!mix.drums)stopSources('drums');if(!mix.crowd)stopSources('crowd');}applyMix();void ambient();},
-  setActive(value){if(active===value)return;active=value;if(!active){clearSpeech();captions=[];stopSources();lastBeat=null;}applyMix();if(active)void ambient();},
+  async previewTeam(team,kind='name'){
+   if(disposed||latest&&!['ready','finished'].includes(latest.phase))return {status:'busy'};
+   api.stopPreview();clearSpeech();captions=[];stopSources();
+   const token=++previewSerial;previewing=true;active=true;onPreviewState({kind,state:'loading'});
+   try{
+    await api.unlock({warmup:false});const m=await loadManifest();if(token!==previewSerial||disposed)return {status:'cancelled'};
+    const registration=team.registrationId||team.id,profile=m.teamProfiles?.[registration],selection=resolveTeamSpeech(team,m,kind);
+    const available={voice:selection.voice.length>0,khmer:selection.khmer.length>0};
+    const keys=[...(mix.voice?selection.voice:[]),...(mix.khmer?selection.khmer:[])];
+    if(!keys.length){api.stopPreview();return {status:available.voice||available.khmer?'muted':'missing',available,profile};}
+    const buffers=await Promise.all(keys.map(load));if(token!==previewSerial||disposed||!previewing)return {status:'cancelled'};
+    let offset=.02,lastNode=null;speaking=true;currentPriority=3;
+    for(let i=0;i<keys.length;i++){
+     const key=keys[i],entry=m.clips[key],node=source(buffers[i],entry.channel,{when:offset});if(!node)continue;
+     lastNode=node;metrics[entry.channel==='voice'?'voiceClips':'khmerClips']++;metrics.played.push({key,at:context.currentTime+offset,match:[],teamId:team.id,registrationId:registration,kind});
+     captions.push({at:context.currentTime+offset,text:entry.text,token:epoch});offset+=buffers[i].duration+.12;
+    }
+    if(metrics.played.length>100)metrics.played.splice(0,metrics.played.length-100);
+    if(!lastNode){api.stopPreview();return {status:'cancelled'};}
+    voiceUntil=context.currentTime+offset;applyMix();onPreviewState({kind,state:'playing'});
+    lastNode.addEventListener('ended',()=>{if(token===previewSerial&&previewing)api.stopPreview();});
+    return {status:'playing',available,profile,languages:[...new Set(keys.map(key=>m.clips[key].lang))]};
+   }catch(e){if(token!==previewSerial||disposed)return {status:'cancelled'};fail(e);api.stopPreview();return {status:'error'};}
+  },
+  stopPreview(){previewSerial++;if(!previewing)return;previewing=false;active=false;clearSpeech();captions=[];stopSources();onPreviewState(null);},
+  setMix(value){const previous=mix;mix=normalizeAudioMix(value);if(previewing&&(!mix.enabled||previous.voice!==mix.voice||previous.khmer!==mix.khmer))api.stopPreview();if(!mix.enabled){clearSpeech();captions=[];stopSources();}else{if(previous.voice!==mix.voice||previous.khmer!==mix.khmer){clearSpeech();captions=[];}if(!mix.drums)stopSources('drums');if(!mix.crowd)stopSources('crowd');}applyMix();void ambient();},
+  setActive(value){if(!value)api.stopPreview();if(active===value)return;active=value;if(!active){clearSpeech();captions=[];stopSources();lastBeat=null;}applyMix();if(active)void ambient();},
   update(s){
-   latest=s;if(teams.length!==2||disposed)return;
+   latest=s;if(disposed)return;
+   if(!previewing&&teams.length===2){
    const intensity=s.raceStage==='final'||s.surgeActive?1:0;if(intensity!==ambienceStage){ambienceStage=intensity;applyMix();}
    const cues=director.update(s);
    if(!active||!mix.enabled||!context)return;
    if(s.phase==='finished'){stopSources('drums');stopSources('crowd');}else void ambient();
    for(const cue of cues)enqueue(cue);
    if(s.phase==='racing')drum(s);else lastBeat=null;
+   }
+   if(!active||!context)return;
    if(speaking&&voiceUntil>0&&context.currentTime>=voiceUntil){speaking=false;currentPriority=0;voiceUntil=0;onCaption('');applyMix();}
    let caption=null;while(captions.length&&captions[0].at<=context.currentTime){const c=captions.shift();if(c.token===epoch)caption=c.text;}
    if(caption)onCaption(caption);void pump();
   },
   stats(){
    let rms=0;if(context&&buses){const data=new Float32Array(buses.analyser.fftSize);buses.analyser.getFloatTimeDomainData(data);rms=Math.sqrt(data.reduce((n,v)=>n+v*v,0)/data.length);}
-   return {...metrics,drumKinds:{...metrics.drumKinds},cues:[...metrics.cues],played:[...metrics.played],context:context?.state||'uninitialized',audioTime:context?.currentTime||0,active,mix:{...mix},sources:sources.size,queued:queue.map(c=>c.id),speaking,outputRms:rms,cached:cache.size,teams:teams.map(t=>t.id),disposed,origin:manifest?.mode||'unloaded',sourceVideo:manifest?.source.videoId||null};
+   return {...metrics,drumKinds:{...metrics.drumKinds},cues:[...metrics.cues],played:[...metrics.played],context:context?.state||'uninitialized',audioTime:context?.currentTime||0,active,mix:{...mix},sources:sources.size,queued:queue.map(c=>c.id),speaking,previewing,outputRms:rms,cached:cache.size,teams:teams.map(t=>t.id),disposed,origin:manifest?.mode||'unloaded',sourceVideo:manifest?.source.videoId||null};
   },
-  dispose(){if(disposed)return;active=false;clearSpeech();captions=[];stopSources();disposed=true;abort.abort();cache.clear();if(context)void context.close().catch(()=>{});},
+  dispose(){if(disposed)return;api.stopPreview();active=false;clearSpeech();captions=[];stopSources();disposed=true;abort.abort();cache.clear();if(context)void context.close().catch(()=>{});},
  };
  return api;
 }

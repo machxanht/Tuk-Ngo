@@ -1,6 +1,7 @@
 """Real Web Audio decoding/output, race-linked cues and tablet audio controls."""
 import argparse,json
 from pathlib import Path
+from urllib.parse import urlsplit
 from playwright.sync_api import sync_playwright
 
 parser=argparse.ArgumentParser();parser.add_argument('--url',default='http://127.0.0.1:4173/Tuk-Ngo/');parser.add_argument('--out',default='docs/qa/race-audio/local');args=parser.parse_args()
@@ -17,8 +18,45 @@ with sync_playwright() as p:
  page.goto(args.url);page.wait_for_selector('[data-render-mode=race]',timeout=90000)
  assert page.evaluate(audio+'.stats().context')=='uninitialized'
  assert not responses,'Audio must not compete with initial GLBs'
+ # Real source-name/history playback in the setup, without advancing the cup.
+ page.get_by_role('button',name='Nghe tên Việt · Khmer',exact=True).tap()
+ page.wait_for_function("()=>{const s="+audio+".stats();return s.played.some(p=>p.key==='name-tum-nup-km'&&p.kind==='name'&&p.at+.4<s.audioTime);}",timeout=25000)
+ report['namePreview']=page.evaluate(audio+'.stats()')
+ assert {'name-tum-nup-two-vi','name-tum-nup-km'}.issubset(p['key'] for p in report['namePreview']['played'])
+ assert len([r for r in responses if '.mp3' in r['url']])==2,'Name audition loads only this team, not the full library'
+ assert page.evaluate(boat+".game.state.phase")=='ready'
+ page.wait_for_function(audio+'.stats().previewing===false')
+ page.get_by_role('button',name='Nghe lịch sử thi đấu',exact=True).tap()
+ page.wait_for_function("()=>{const s="+audio+".stats();return s.played.some(p=>p.key==='history-tum-nup-champion-vi'&&p.at+.2<s.audioTime);}")
+ assert page.get_by_role('link',name='Nguồn 2024',exact=True).count()==1
+ page.get_by_role('button',name='Dừng nghe lịch sử',exact=True).tap()
+ assert page.evaluate(audio+'.stats().sources')==0
+ page.get_by_role('listbox',name='Chọn đội ghe',exact=True).select_option('can_tho-05')
+ page.get_by_role('button',name='Nghe lịch sử thi đấu',exact=True).tap()
+ page.get_by_text('Chưa tìm được đoạn BLV kể thành tích cũ của đội này.',exact=True).wait_for()
+ assert page.evaluate(audio+'.stats().sources')==0
+ page.get_by_role('listbox',name='Chọn đội ghe',exact=True).select_option('can_tho-06')
+ page.get_by_role('button',name='Nghe lịch sử thi đấu',exact=True).tap()
+ page.wait_for_function(audio+".stats().played.some(p=>p.key==='history-sro-lon-third-vi'&&p.kind==='history')")
+ page.get_by_role('listbox',name='Chọn đội ghe',exact=True).select_option('can_tho-10')
+ page.wait_for_function(audio+'.stats().sources===0')
+ page.get_by_role('button',name='Nghe tên Việt · Khmer',exact=True).tap()
+ page.get_by_text('Chưa xác định được bản thu tên đội này trong clip.',exact=True).wait_for()
+ assert page.evaluate(audio+'.stats().sources')==0
+ report['missingTeam']=page.evaluate(audio+'.stats()')
+ page.get_by_role('listbox',name='Chọn đội ghe',exact=True).select_option('tum-nup-2')
+ report['profileViewports']=[]
+ for width,height in [(1024,768),(768,1024),(1180,430)]:
+  page.set_viewport_size({'width':width,'height':height})
+  for name in ['Nghe tên Việt · Khmer','Nghe lịch sử thi đấu']:
+   button=page.get_by_role('button',name=name,exact=True);button.scroll_into_view_if_needed();box=button.bounding_box()
+   assert box['height']>=44 and box['x']>=0 and box['x']+box['width']<=width
+  assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
+  page.screenshot(path=str(out/f'team-profile-{width}x{height}.png'))
+  report['profileViewports'].append([width,height])
+ page.set_viewport_size({'width':1180,'height':820})
  page.get_by_role('button',name='Bắt đầu cúp 61 ghe',exact=True).tap()
- page.wait_for_function(audio+".stats().voiceClips>=1",timeout=20000)
+ page.wait_for_function(audio+".stats().cues.includes('ready')",timeout=20000)
  page.wait_for_function(audio+".stats().outputRms>.004",timeout=15000)
  report['start']=page.evaluate(audio+'.stats()')
  assert report['start']['context']=='running' and report['start']['decoded']>=4
@@ -29,6 +67,7 @@ with sync_playwright() as p:
  assert report['intro']['origin']=='broadcast' and report['intro']['sourceVideo']=='crZF3hghbgQ'
  assert {'broadcast-intro','khmer-intro'}.issubset(p['key'] for p in report['intro']['played'])
  assert any(p['key']=='khmer-go' for p in report['intro']['played'])
+ assert any(p['key']=='name-tum-nup-two-vi' and not p.get('kind') and len(p['match'])==2 for p in report['intro']['played'])
  page.get_by_role('button',name='Tạm dừng cuộc đua',exact=True).tap();page.wait_for_timeout(200)
  report['pause']=page.evaluate(audio+'.stats()');assert report['pause']['sources']==0 and not report['pause']['queued'] and report['pause']['outputRms']<.0001
  page.get_by_role('button',name='Tiếp tục cuộc đua',exact=True).tap()
@@ -103,7 +142,9 @@ with sync_playwright() as p:
  page.wait_for_selector('.art-preview [data-render-mode=race]',timeout=90000)
  report['disposed']=page.evaluate('window.previousRaceAudio.stats()');assert report['disposed']['disposed'] and report['disposed']['context'] in ['closed','uninitialized'] and report['disposed']['sources']==0
  assert not errors,errors;assert all(r['status']==200 for r in responses),responses
- assert not any('name-' in r['url'] or 'chant-' in r['url'] for r in responses),'No synthetic speech requests'
+ manifest=page.request.get(args.url.rstrip('/')+'/assets/race-audio/manifest.json').json()
+ original={clip['file'] for clip in manifest['clips'].values() if clip['sourceType']=='broadcast'}
+ assert all(Path(urlsplit(r['url']).path).name in original for r in responses if '.mp3' in r['url']),'Only attributed source recordings'
  assert report['finish']['khmerClips']>=3
  report['responses']=responses;report['errors']=errors
  browser.close()

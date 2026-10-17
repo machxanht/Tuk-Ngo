@@ -27,7 +27,9 @@
     "khmer": "Selected complete short Khmer phrases from the original YouTube CC, with working Vietnamese translations and word-start evidence. Greeting is used at intro, started at go, congratulations only at a player win. No source team names in these selected CC phrases. No independent listening/native-language verification.",
     "percussion": "Recorded field transients during a gap in recognised commentary; filtered and faded, not isolated studio drum stems.",
     "rights": "Source attributed to broadcaster. No permission or reusable-content licence has been independently verified.",
-    "speakers": "Only source broadcast audio; no TTS, cloning, replacement narrator, pitch shift or time stretch. YouTube CC does not identify speakers; Vietnamese/Khmer speaker roles follow the two-commentator reference supplied by the user."
+    "speakers": "Only source broadcast audio; no TTS, cloning, replacement narrator, pitch shift or time stretch. YouTube CC does not identify speakers; Vietnamese/Khmer speaker roles follow the two-commentator reference supplied by the user.",
+    "teamNames": "Name identities were matched manually against the registration roster, local aliases and surrounding race/team context in automatic CC. Original speech only; no assembled syllables, invented team numbers or runtime TTS. Shared pagoda-name cuts contain no gender/entry claim; numbered cuts are used only for that number. Proper-name spelling in automatic CC can be wrong; this is not independent listening verification.",
+    "teamHistory": "Only complete original commentary phrases with externally corroborated 2024 results. Historical standings are restricted to the identified entry/gender, never used to decide a game result. Missing names/history remain explicitly unavailable; absent CC is not proof the audio never speaks that name."
   },
   "ambience": "broadcast-ambience",
   "warmup": [
@@ -725,6 +727,2615 @@
         "nextWordStart": 4684.28
       },
       "translationVi": "Chúng tôi xin chúc mừng."
+    },
+    "name-pothi-satharam-vi": {
+      "start": 5741.94,
+      "end": 5743.2,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Pôthi Satharam",
+      "role": "team-name",
+      "scope": "pagoda-name",
+      "teamIds": [
+        "can_tho-01"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            5742.0,
+            "botatagam"
+          ]
+        ],
+        "nextWordStart": 5743.28
+      }
+    },
+    "name-khleang-vi": {
+      "start": 4428.34,
+      "end": 4428.86,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Khleáng",
+      "role": "team-name",
+      "scope": "pagoda-name",
+      "teamIds": [
+        "can_tho-04"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            4428.4,
+            "Khơ"
+          ],
+          [
+            4428.6,
+            "Len"
+          ]
+        ],
+        "nextWordStart": 4428.88
+      }
+    },
+    "name-chroi-tum-chas-vi": {
+      "start": 5294.66,
+      "end": 5295.54,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Trà Tim cũ",
+      "role": "team-name",
+      "scope": "pagoda-name",
+      "teamIds": [
+        "can_tho-07"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            5294.719,
+            "trà"
+          ],
+          [
+            5294.92,
+            "tim"
+          ],
+          [
+            5295.159,
+            "cũ"
+          ]
+        ],
+        "nextWordStart": 5295.6
+      }
+    },
+    "name-xeo-me-vi": {
+      "start": 4113.54,
+      "end": 4114.42,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Xẻo Me",
+      "role": "team-name",
+      "scope": "pagoda-name",
+      "teamIds": [
+        "can_tho-08"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            4113.6,
+            "xẻo"
+          ],
+          [
+            4113.92,
+            "me"
+          ]
+        ],
+        "nextWordStart": 4114.52
+      }
+    },
+    "name-ong-kho-vi": {
+      "start": 4136.14,
+      "end": 4136.54,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Ông Kho",
+      "role": "team-name",
+      "scope": "pagoda-name",
+      "teamIds": [
+        "can_tho-12"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            4136.199,
+            "ông"
+          ],
+          [
+            4136.359,
+            "kho"
+          ]
+        ],
+        "nextWordStart": 4136.56
+      }
+    },
+    "name-pong-tuk-chas-vi": {
+      "start": 4137.7,
+      "end": 4138.38,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Pong Tứk Chắc",
+      "role": "team-name",
+      "scope": "pagoda-name",
+      "teamIds": [
+        "can_tho-13"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            4137.759,
+            "bông"
+          ],
+          [
+            4137.96,
+            "tức"
+          ],
+          [
+            4138.159,
+            "chắc"
+          ]
+        ],
+        "nextWordStart": 4138.4
+      }
+    },
+    "name-lo-moi-vi": {
+      "start": 16691.18,
+      "end": 16691.73,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Lộ Mới",
+      "role": "team-name",
+      "scope": "pagoda-name",
+      "teamIds": [
+        "can_tho-14"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            16691.24,
+            "lộ"
+          ],
+          [
+            16691.48,
+            "mới,"
+          ]
+        ],
+        "nextWordStart": 16691.76
+      }
+    },
+    "name-bon-mat-vi": {
+      "start": 4131.62,
+      "end": 4132.56,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Bốn Mặt",
+      "role": "team-name",
+      "scope": "pagoda-name",
+      "teamIds": [
+        "can_tho-18"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            4131.679,
+            "bốn"
+          ],
+          [
+            4131.92,
+            "mặt"
+          ]
+        ],
+        "nextWordStart": 4132.839
+      }
+    },
+    "name-tra-quyt-cu-vi": {
+      "start": 4129.74,
+      "end": 4131.2,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Trà Quýt cũ",
+      "role": "team-name",
+      "scope": "pagoda-name",
+      "teamIds": [
+        "can_tho-20"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            4129.799,
+            "trà"
+          ],
+          [
+            4130.04,
+            "quýt"
+          ],
+          [
+            4130.279,
+            "cũ"
+          ]
+        ],
+        "nextWordStart": 4131.48
+      }
+    },
+    "name-tum-nup-vi": {
+      "start": 8528.7,
+      "end": 8529.24,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Tum Núp",
+      "role": "team-name",
+      "scope": "pagoda-name",
+      "teamIds": [
+        "can_tho-22",
+        "can_tho-24"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            8528.76,
+            "tum"
+          ],
+          [
+            8529.0,
+            "núp"
+          ]
+        ],
+        "nextWordStart": 8529.28
+      }
+    },
+    "name-bang-kok-vi": {
+      "start": 3467.02,
+      "end": 3467.6,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Bâng Kók",
+      "role": "team-name",
+      "scope": "pagoda-name",
+      "teamIds": [
+        "can_tho-25"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            3467.079,
+            "Băng"
+          ],
+          [
+            3467.319,
+            "Cốc"
+          ]
+        ],
+        "nextWordStart": 3467.64
+      }
+    },
+    "name-day-ta-suos-vi": {
+      "start": 5296.94,
+      "end": 5297.81,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Đay Ta Suốs",
+      "role": "team-name",
+      "scope": "pagoda-name",
+      "teamIds": [
+        "can_tho-28"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            5297.0,
+            "đai"
+          ],
+          [
+            5297.239,
+            "tà"
+          ],
+          [
+            5297.48,
+            "súa"
+          ]
+        ],
+        "nextWordStart": 5297.84
+      }
+    },
+    "name-bet-ton-vi": {
+      "start": 4294.3,
+      "end": 4295.25,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Bét Tôn",
+      "role": "team-name",
+      "scope": "pagoda-name",
+      "teamIds": [
+        "can_tho-29"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            4294.36,
+            "bé"
+          ],
+          [
+            4294.64,
+            "tôn"
+          ]
+        ],
+        "nextWordStart": 4295.4
+      }
+    },
+    "name-tam-soc-vi": {
+      "start": 4124.74,
+      "end": 4125.3,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Tam Sóc",
+      "role": "team-name",
+      "scope": "pagoda-name",
+      "teamIds": [
+        "can_tho-31",
+        "can_tho-32"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            4124.799,
+            "tâm"
+          ],
+          [
+            4124.96,
+            "sóc"
+          ]
+        ],
+        "nextWordStart": 4125.48
+      }
+    },
+    "name-prek-on-dok-vi": {
+      "start": 5495.78,
+      "end": 5496.6,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Prêk On Đơk",
+      "role": "team-name",
+      "scope": "pagoda-name",
+      "teamIds": [
+        "can_tho-38"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            5495.84,
+            "rạch"
+          ],
+          [
+            5496.239,
+            "ô"
+          ],
+          [
+            5496.32,
+            "đợt"
+          ]
+        ],
+        "nextWordStart": 5496.639
+      }
+    },
+    "name-day-om-pu-vi": {
+      "start": 5575.78,
+      "end": 5576.88,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Đay Om Pu",
+      "role": "team-name",
+      "scope": "pagoda-name",
+      "teamIds": [
+        "can_tho-36"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            5575.84,
+            "đại"
+          ],
+          [
+            5576.119,
+            "ông"
+          ],
+          [
+            5576.28,
+            "bu"
+          ]
+        ],
+        "nextWordStart": 5579.08
+      }
+    },
+    "name-om-pou-year-vi": {
+      "start": 3476.82,
+      "end": 3477.24,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Om Pou Year",
+      "role": "team-name",
+      "scope": "pagoda-name",
+      "teamIds": [
+        "can_tho-37"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            3476.88,
+            "Buia"
+          ]
+        ],
+        "nextWordStart": 3477.28
+      }
+    },
+    "name-sang-ke-vi": {
+      "start": 4586.62,
+      "end": 4587.42,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Săng Ke",
+      "role": "team-name",
+      "scope": "pagoda-name",
+      "teamIds": [
+        "can_tho-45"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            4586.679,
+            "săn"
+          ],
+          [
+            4586.92,
+            "ké"
+          ]
+        ],
+        "nextWordStart": 4587.56
+      }
+    },
+    "name-pothi-khsach-vi": {
+      "start": 11817.42,
+      "end": 11818.33,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Pôthi Khsach",
+      "role": "team-name",
+      "scope": "pagoda-name",
+      "teamIds": [
+        "can_tho-46"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            11817.479,
+            "vô"
+          ],
+          [
+            11817.84,
+            "thi"
+          ],
+          [
+            11818.08,
+            "sách"
+          ]
+        ],
+        "nextWordStart": 11818.359
+      }
+    },
+    "name-rach-giong-vi": {
+      "start": 4408.66,
+      "end": 4409.18,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Rạch Giồng",
+      "role": "team-name",
+      "scope": "pagoda-name",
+      "teamIds": [
+        "ca_mau-02"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            4408.719,
+            "gạch"
+          ],
+          [
+            4409.0,
+            "dòng"
+          ]
+        ],
+        "nextWordStart": 4409.199
+      }
+    },
+    "name-ngan-dua-vi": {
+      "start": 12403.78,
+      "end": 12404.44,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Ngan Dừa",
+      "role": "team-name",
+      "scope": "pagoda-name",
+      "teamIds": [
+        "ca_mau-09",
+        "ca_mau-10"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            12403.84,
+            "ngang"
+          ],
+          [
+            12404.08,
+            "dừa"
+          ]
+        ],
+        "nextWordStart": 12404.479
+      }
+    },
+    "name-dau-sau-vi": {
+      "start": 5508.22,
+      "end": 5508.77,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Đầu Sấu",
+      "role": "team-name",
+      "scope": "pagoda-name",
+      "teamIds": [
+        "ca_mau-11",
+        "ca_mau-12"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            5508.28,
+            "đầu"
+          ],
+          [
+            5508.48,
+            "sấu"
+          ],
+          [
+            5508.613,
+            "[âm nhạc]"
+          ]
+        ],
+        "nextWordStart": 5508.8
+      }
+    },
+    "name-settodor-vi": {
+      "start": 3383.26,
+      "end": 3384.3,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Settodor",
+      "role": "team-name",
+      "scope": "pagoda-name",
+      "teamIds": [
+        "can_tho-48"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            3383.319,
+            "settor"
+          ]
+        ],
+        "nextWordStart": 3384.4
+      }
+    },
+    "name-phno-kambot-vi": {
+      "start": 4023.46,
+      "end": 4025.22,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Phônô Cambốth",
+      "role": "team-name",
+      "scope": "pagoda-name",
+      "teamIds": [
+        "can_tho-41"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            4023.52,
+            "Funer"
+          ],
+          [
+            4023.92,
+            "Compos"
+          ]
+        ],
+        "nextWordStart": 4025.359
+      }
+    },
+    "name-tum-nup-km": {
+      "start": 4480.62,
+      "end": 4481.14,
+      "channel": "khmer",
+      "lang": "km",
+      "text": "ទំនប់",
+      "role": "team-name",
+      "scope": "pagoda-name",
+      "teamIds": [
+        "can_tho-22",
+        "can_tho-23",
+        "can_tho-24"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            4480.679,
+            "ទំនប់"
+          ]
+        ],
+        "nextWordStart": 4481.159
+      },
+      "translationVi": "Tum Núp"
+    },
+    "name-kos-thum-km": {
+      "start": 5435.62,
+      "end": 5436.24,
+      "channel": "khmer",
+      "lang": "km",
+      "text": "កោះធំ",
+      "role": "team-name",
+      "scope": "pagoda-name",
+      "teamIds": [
+        "ca_mau-05",
+        "ca_mau-07"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            5435.679,
+            "កោះ"
+          ],
+          [
+            5435.92,
+            "ធំ"
+          ]
+        ],
+        "nextWordStart": 5436.28
+      },
+      "translationVi": "Kos Thum"
+    },
+    "name-sang-ke-km": {
+      "start": 4667.3,
+      "end": 4667.82,
+      "channel": "khmer",
+      "lang": "km",
+      "text": "សង្កែ",
+      "role": "team-name",
+      "scope": "pagoda-name",
+      "teamIds": [
+        "can_tho-45"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            4667.36,
+            "សង្កែ"
+          ]
+        ],
+        "nextWordStart": 4667.84
+      },
+      "translationVi": "Săng Ke"
+    },
+    "name-rach-giong-km": {
+      "start": 4365.78,
+      "end": 4366.92,
+      "channel": "khmer",
+      "lang": "km",
+      "text": "ជ្រុងខ្មែរ",
+      "role": "team-name",
+      "scope": "pagoda-name",
+      "teamIds": [
+        "ca_mau-02"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            4365.84,
+            "ជ្រុង"
+          ],
+          [
+            4366.12,
+            "ខ្មែរ"
+          ]
+        ],
+        "nextWordStart": 4368.04
+      },
+      "translationVi": "Rạch Giồng"
+    },
+    "name-day-om-pu-km": {
+      "start": 5438.9,
+      "end": 5439.72,
+      "channel": "khmer",
+      "lang": "km",
+      "text": "ដៃអំពូ",
+      "role": "team-name",
+      "scope": "pagoda-name",
+      "teamIds": [
+        "can_tho-36"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            5438.96,
+            "ដី"
+          ],
+          [
+            5439.159,
+            "អំពូ"
+          ]
+        ],
+        "nextWordStart": 5439.76
+      },
+      "translationVi": "Đay Om Pu"
+    },
+    "name-pothi-satharam-two-vi": {
+      "start": 5741.94,
+      "end": 5743.9,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Pôthi Satharam 2",
+      "role": "team-name",
+      "scope": "spoken-name-with-number",
+      "teamIds": [
+        "can_tho-02"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            5742.0,
+            "botatagam"
+          ],
+          [
+            5743.28,
+            "2"
+          ]
+        ],
+        "nextWordStart": 5744.159
+      }
+    },
+    "name-khleang-one-vi": {
+      "start": 4428.34,
+      "end": 4429.06,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Khleáng 1",
+      "role": "team-name",
+      "scope": "spoken-name-with-number",
+      "teamIds": [
+        "can_tho-03"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            4428.4,
+            "Khơ"
+          ],
+          [
+            4428.6,
+            "Len"
+          ],
+          [
+            4428.88,
+            "1"
+          ]
+        ],
+        "nextWordStart": 4429.08
+      }
+    },
+    "name-sro-lon-one-vi": {
+      "start": 5512.66,
+      "end": 5513.76,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Sro Lôn 1",
+      "role": "team-name",
+      "scope": "spoken-name-with-number",
+      "teamIds": [
+        "can_tho-05"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            5512.719,
+            "slon"
+          ],
+          [
+            5513.119,
+            "1"
+          ]
+        ],
+        "nextWordStart": 5514.0
+      }
+    },
+    "name-sro-lon-two-vi": {
+      "start": 3337.26,
+      "end": 3338.14,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Sro Lôn 2",
+      "role": "team-name",
+      "scope": "spoken-name-with-number",
+      "teamIds": [
+        "can_tho-06"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            3337.319,
+            "Salà"
+          ],
+          [
+            3337.52,
+            "Lô"
+          ],
+          [
+            3337.76,
+            "2"
+          ]
+        ],
+        "nextWordStart": 3338.24
+      }
+    },
+    "name-tum-nup-two-vi": {
+      "start": 8528.7,
+      "end": 8529.92,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Tum Núp 2",
+      "role": "team-name",
+      "scope": "spoken-name-with-number",
+      "teamIds": [
+        "can_tho-23"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            8528.76,
+            "tum"
+          ],
+          [
+            8529.0,
+            "núp"
+          ],
+          [
+            8529.28,
+            "hai"
+          ]
+        ],
+        "nextWordStart": 8530.0
+      }
+    },
+    "name-bang-kok-two-vi": {
+      "start": 3467.02,
+      "end": 3468.14,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Bâng Kók 2",
+      "role": "team-name",
+      "scope": "spoken-name-with-number",
+      "teamIds": [
+        "can_tho-26"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            3467.079,
+            "Băng"
+          ],
+          [
+            3467.319,
+            "Cốc"
+          ],
+          [
+            3467.64,
+            "2."
+          ]
+        ],
+        "nextWordStart": 3468.359
+      }
+    },
+    "name-prek-on-dok-two-vi": {
+      "start": 5495.78,
+      "end": 5497.12,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Prêk On Đơk 2",
+      "role": "team-name",
+      "scope": "spoken-name-with-number",
+      "teamIds": [
+        "can_tho-39"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            5495.84,
+            "rạch"
+          ],
+          [
+            5496.239,
+            "ô"
+          ],
+          [
+            5496.32,
+            "đợt"
+          ],
+          [
+            5496.639,
+            "2"
+          ]
+        ],
+        "nextWordStart": 5497.4
+      }
+    },
+    "name-kos-thum-one-vi": {
+      "start": 8471.1,
+      "end": 8471.82,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Kos Thum 1",
+      "role": "team-name",
+      "scope": "spoken-name-with-number",
+      "teamIds": [
+        "ca_mau-05",
+        "ca_mau-07"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            8471.16,
+            "costum"
+          ],
+          [
+            8471.6,
+            "1"
+          ]
+        ],
+        "nextWordStart": 8471.84
+      }
+    },
+    "name-kos-thum-two-vi": {
+      "start": 5523.02,
+      "end": 5523.7,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Kos Thum 2",
+      "role": "team-name",
+      "scope": "spoken-name-with-number",
+      "teamIds": [
+        "ca_mau-06",
+        "ca_mau-08"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            5523.08,
+            "cọt"
+          ],
+          [
+            5523.32,
+            "thơm"
+          ],
+          [
+            5523.56,
+            "hai"
+          ]
+        ],
+        "nextWordStart": 5523.719
+      }
+    },
+    "name-kos-thum-two-km": {
+      "start": 5435.62,
+      "end": 5437.2,
+      "channel": "khmer",
+      "lang": "km",
+      "text": "កោះធំ ទី ២",
+      "role": "team-name",
+      "scope": "spoken-name-with-number",
+      "teamIds": [
+        "ca_mau-06",
+        "ca_mau-08"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            5435.679,
+            "កោះ"
+          ],
+          [
+            5435.92,
+            "ធំ"
+          ],
+          [
+            5436.28,
+            "ទី"
+          ],
+          [
+            5436.48,
+            "2"
+          ]
+        ],
+        "nextWordStart": 5437.28
+      },
+      "translationVi": "Kos Thum 2"
+    },
+    "history-tum-nup-champion-vi": {
+      "start": 8528.7,
+      "end": 8532.38,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Tum Núp 2, nhà vô địch mùa giải 2024.",
+      "role": "team-history",
+      "scope": "specific-entry",
+      "teamIds": [
+        "can_tho-23"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            8528.76,
+            "tum"
+          ],
+          [
+            8529.0,
+            "núp"
+          ],
+          [
+            8529.28,
+            "hai"
+          ],
+          [
+            8530.0,
+            "nhà"
+          ],
+          [
+            8530.28,
+            "vô"
+          ],
+          [
+            8530.52,
+            "địch"
+          ],
+          [
+            8530.68,
+            "mùa"
+          ],
+          [
+            8530.84,
+            "giải"
+          ],
+          [
+            8531.76,
+            "2024"
+          ]
+        ],
+        "nextWordStart": 8532.439
+      },
+      "season": 2024
+    },
+    "history-kos-thum-runner-up-vi": {
+      "start": 8471.1,
+      "end": 8478.22,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Kos Thum 1 của Cà Mau, một chiếc ghe được đánh giá cao mùa giải năm nay, á quân mùa giải 2024.",
+      "role": "team-history",
+      "scope": "specific-entry",
+      "teamIds": [
+        "ca_mau-05"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            8471.16,
+            "costum"
+          ],
+          [
+            8471.6,
+            "1"
+          ],
+          [
+            8471.84,
+            "của"
+          ],
+          [
+            8472.16,
+            "C"
+          ],
+          [
+            8472.439,
+            "mau"
+          ],
+          [
+            8473.359,
+            "một"
+          ],
+          [
+            8473.52,
+            "chiếc"
+          ],
+          [
+            8473.72,
+            "ghe"
+          ],
+          [
+            8474.479,
+            "được"
+          ],
+          [
+            8474.64,
+            "đánh"
+          ],
+          [
+            8474.88,
+            "giá"
+          ],
+          [
+            8475.08,
+            "cao"
+          ],
+          [
+            8475.28,
+            "mùa"
+          ],
+          [
+            8475.52,
+            "giải"
+          ],
+          [
+            8475.72,
+            "năm"
+          ],
+          [
+            8475.92,
+            "nay"
+          ],
+          [
+            8476.399,
+            "á"
+          ],
+          [
+            8476.56,
+            "quân"
+          ],
+          [
+            8476.72,
+            "mùa"
+          ],
+          [
+            8476.92,
+            "giải"
+          ],
+          [
+            8477.68,
+            "2024"
+          ]
+        ],
+        "nextWordStart": 8478.28
+      },
+      "season": 2024
+    },
+    "history-sro-lon-third-vi": {
+      "start": 3438.62,
+      "end": 3440.25,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Sro Lôn 2 là đội hạng ba năm trước.",
+      "role": "team-history",
+      "scope": "specific-entry",
+      "teamIds": [
+        "can_tho-06"
+      ],
+      "captionEvidence": {
+        "words": [
+          [
+            3438.68,
+            "salà"
+          ],
+          [
+            3439.079,
+            "2"
+          ],
+          [
+            3439.2,
+            "là"
+          ],
+          [
+            3439.359,
+            "đội"
+          ],
+          [
+            3439.559,
+            "hàng"
+          ],
+          [
+            3439.68,
+            "ba"
+          ],
+          [
+            3439.799,
+            "năm"
+          ],
+          [
+            3440.0,
+            "trước"
+          ]
+        ],
+        "nextWordStart": 3440.28
+      },
+      "season": 2024
+    }
+  },
+  "teamProfiles": {
+    "can_tho-01": {
+      "registrationId": "can_tho-01",
+      "nameVi": "PôThiSaThaRam (Đội 1)",
+      "nameKm": "ពោធិសត្ថារាម",
+      "names": {
+        "voice": [
+          "name-pothi-satharam-vi"
+        ],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": true,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-02": {
+      "registrationId": "can_tho-02",
+      "nameVi": "PôThiSaThaRam (Đội 2)",
+      "nameKm": "ពោធិសត្ថារាម",
+      "names": {
+        "voice": [
+          "name-pothi-satharam-two-vi"
+        ],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": true,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-03": {
+      "registrationId": "can_tho-03",
+      "nameVi": "Khleáng (Đội 1)",
+      "nameKm": "ឃ្លាំង",
+      "names": {
+        "voice": [
+          "name-khleang-one-vi"
+        ],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": true,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-04": {
+      "registrationId": "can_tho-04",
+      "nameVi": "Khleáng (Đội 2)",
+      "nameKm": "ឃ្លាំង",
+      "names": {
+        "voice": [
+          "name-khleang-vi"
+        ],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": true,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-05": {
+      "registrationId": "can_tho-05",
+      "nameVi": "Sro Lôn (Đội 1)",
+      "nameKm": "ស្រឡូង",
+      "names": {
+        "voice": [
+          "name-sro-lon-one-vi"
+        ],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": true,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-06": {
+      "registrationId": "can_tho-06",
+      "nameVi": "Sro Lôn (Đội 2)",
+      "nameKm": "ស្រឡូង",
+      "names": {
+        "voice": [
+          "name-sro-lon-two-vi"
+        ],
+        "khmer": []
+      },
+      "history": {
+        "voice": [
+          "history-sro-lon-third-vi"
+        ],
+        "khmer": []
+      },
+      "historyFacts": [
+        {
+          "season": 2024,
+          "event": "Giải đua ghe Ngo Sóc Trăng, khu vực ĐBSCL lần VI",
+          "gender": "male",
+          "result": "third",
+          "sources": [
+            "https://baosoctrang.org.vn/multimedia/202411/media-ghe-ngo-chua-tum-nup-vo-dich-ca-nam-va-nu-f8b6c2a/",
+            "https://baosoctrang.org.vn/thoi-su/202411/doi-kos-thum-tinh-bac-lieu-va-doi-tum-nup-2-huyen-chau-thanh-vao-tran-chung-ket-giai-dua-ghe-ngo-nam-edc42ae/"
+          ],
+          "audioKey": "history-sro-lon-third-vi",
+          "textVi": "Hạng ba nội dung nam năm 2024."
+        }
+      ],
+      "availability": {
+        "nameVi": true,
+        "nameKm": false,
+        "historyVi": true,
+        "historyKm": false
+      }
+    },
+    "can_tho-07": {
+      "registrationId": "can_tho-07",
+      "nameVi": "Chrôi Tưm Chắs",
+      "nameKm": "ជ្រោយទឹមចាស់",
+      "names": {
+        "voice": [
+          "name-chroi-tum-chas-vi"
+        ],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": true,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-08": {
+      "registrationId": "can_tho-08",
+      "nameVi": "Đơm Om Prul (Xẻo Me)",
+      "nameKm": "ដើមអម្ពិល",
+      "names": {
+        "voice": [
+          "name-xeo-me-vi"
+        ],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": true,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-09": {
+      "registrationId": "can_tho-09",
+      "nameVi": "Sê Rây Kan Đal",
+      "nameKm": "សិរីកណ្តាល",
+      "names": {
+        "voice": [],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": false,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-10": {
+      "registrationId": "can_tho-10",
+      "nameVi": "Pích Măng Kol (Wáth Pích)",
+      "nameKm": null,
+      "names": {
+        "voice": [],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": false,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-11": {
+      "registrationId": "can_tho-11",
+      "nameVi": "Ô Chum - Prếk Chếk",
+      "nameKm": "អូរជុំអារាមព្រែកចេក",
+      "names": {
+        "voice": [],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": false,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-12": {
+      "registrationId": "can_tho-12",
+      "nameVi": "Nô Rên Răn Sây (Ông Kho)",
+      "nameKm": null,
+      "names": {
+        "voice": [
+          "name-ong-kho-vi"
+        ],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": true,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-13": {
+      "registrationId": "can_tho-13",
+      "nameVi": "Pong Tứk Chắc",
+      "nameKm": "ពងទឹកចាស់",
+      "names": {
+        "voice": [
+          "name-pong-tuk-chas-vi"
+        ],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": true,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-14": {
+      "registrationId": "can_tho-14",
+      "nameVi": "Buôl Mun (Lộ Mới)",
+      "nameKm": "ថ្នល់ថ្មី",
+      "names": {
+        "voice": [
+          "name-lo-moi-vi"
+        ],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": true,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-15": {
+      "registrationId": "can_tho-15",
+      "nameVi": "Muni Srắc Keo",
+      "nameKm": "មុនីស្រះកែវ",
+      "names": {
+        "voice": [],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": false,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-16": {
+      "registrationId": "can_tho-16",
+      "nameVi": "Phnôrôka",
+      "nameKm": "ផ្នោរកា",
+      "names": {
+        "voice": [],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": false,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-17": {
+      "registrationId": "can_tho-17",
+      "nameVi": "Tà Khvich Thmây (Trà Quýt Mới)",
+      "nameKm": "តាឃ្វិចថ្មី",
+      "names": {
+        "voice": [],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": false,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-18": {
+      "registrationId": "can_tho-18",
+      "nameVi": "Bốn Mặt (Buôl Preas Phek)",
+      "nameKm": "ព្រះបួនព្រះភ័ក្រ្ត",
+      "names": {
+        "voice": [
+          "name-bon-mat-vi"
+        ],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": true,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-19": {
+      "registrationId": "can_tho-19",
+      "nameVi": "Cham Pa",
+      "nameKm": "ចំប៉ា",
+      "names": {
+        "voice": [],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": false,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-20": {
+      "registrationId": "can_tho-20",
+      "nameVi": "Trà Quýt cũ (Ta Kh Vích Chăs)",
+      "nameKm": "តាគុជចាស់",
+      "names": {
+        "voice": [
+          "name-tra-quyt-cu-vi"
+        ],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": true,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-21": {
+      "registrationId": "can_tho-21",
+      "nameVi": "Kom Pong Tróp A",
+      "nameKm": "កំពង់ត្រប",
+      "names": {
+        "voice": [],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": false,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-22": {
+      "registrationId": "can_tho-22",
+      "nameVi": "Bô Tum Reangsey Tum Nup (Tum Núp 1)",
+      "nameKm": "ទំនប់",
+      "names": {
+        "voice": [
+          "name-tum-nup-vi"
+        ],
+        "khmer": [
+          "name-tum-nup-km"
+        ]
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": true,
+        "nameKm": true,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-23": {
+      "registrationId": "can_tho-23",
+      "nameVi": "Bô Tum Reangsey Tum Nup (Tum Núp 2)",
+      "nameKm": "ទំនប់",
+      "names": {
+        "voice": [
+          "name-tum-nup-two-vi"
+        ],
+        "khmer": [
+          "name-tum-nup-km"
+        ]
+      },
+      "history": {
+        "voice": [
+          "history-tum-nup-champion-vi"
+        ],
+        "khmer": []
+      },
+      "historyFacts": [
+        {
+          "season": 2024,
+          "event": "Giải đua ghe Ngo Sóc Trăng, khu vực ĐBSCL lần VI",
+          "gender": "male",
+          "result": "champion",
+          "sources": [
+            "https://baosoctrang.org.vn/multimedia/202411/media-ghe-ngo-chua-tum-nup-vo-dich-ca-nam-va-nu-f8b6c2a/"
+          ],
+          "audioKey": "history-tum-nup-champion-vi",
+          "textVi": "Vô địch nội dung nam năm 2024."
+        }
+      ],
+      "availability": {
+        "nameVi": true,
+        "nameKm": true,
+        "historyVi": true,
+        "historyKm": false
+      }
+    },
+    "can_tho-24": {
+      "registrationId": "can_tho-24",
+      "nameVi": "Bô Tum Reangsey Tum Nup",
+      "nameKm": "ទំនប់",
+      "names": {
+        "voice": [
+          "name-tum-nup-vi"
+        ],
+        "khmer": [
+          "name-tum-nup-km"
+        ]
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": true,
+        "nameKm": true,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-25": {
+      "registrationId": "can_tho-25",
+      "nameVi": "Bâng Kók (Đội 1)",
+      "nameKm": "បឹងកក់",
+      "names": {
+        "voice": [
+          "name-bang-kok-vi"
+        ],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": true,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-26": {
+      "registrationId": "can_tho-26",
+      "nameVi": "Bâng Kók (Đội 2)",
+      "nameKm": "បឹងកក់",
+      "names": {
+        "voice": [
+          "name-bang-kok-two-vi"
+        ],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": true,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-27": {
+      "registrationId": "can_tho-27",
+      "nameVi": "Bâng Khdon",
+      "nameKm": null,
+      "names": {
+        "voice": [],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": false,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-28": {
+      "registrationId": "can_tho-28",
+      "nameVi": "Đay Ta Suốs",
+      "nameKm": "ដៃតាសួស",
+      "names": {
+        "voice": [
+          "name-day-ta-suos-vi"
+        ],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": true,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-29": {
+      "registrationId": "can_tho-29",
+      "nameVi": "Prếk Pinh Tuang (Bét Tôn)",
+      "nameKm": "ព្រែកពិន្ទង",
+      "names": {
+        "voice": [
+          "name-bet-ton-vi"
+        ],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": true,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-30": {
+      "registrationId": "can_tho-30",
+      "nameVi": "Tà On",
+      "nameKm": null,
+      "names": {
+        "voice": [],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": false,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-31": {
+      "registrationId": "can_tho-31",
+      "nameVi": "TumPokSok (Đội nam)",
+      "nameKm": "ទំពក់សក់",
+      "names": {
+        "voice": [
+          "name-tam-soc-vi"
+        ],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": true,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-32": {
+      "registrationId": "can_tho-32",
+      "nameVi": "TumPokSok (Đội nữ)",
+      "nameKm": "ទំពក់សក់",
+      "names": {
+        "voice": [
+          "name-tam-soc-vi"
+        ],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": true,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-33": {
+      "registrationId": "can_tho-33",
+      "nameVi": "Bâng Tone Sa",
+      "nameKm": "បឹងទន្សា",
+      "names": {
+        "voice": [],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": false,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-34": {
+      "registrationId": "can_tho-34",
+      "nameVi": "Prếk Om Pu",
+      "nameKm": "ព្រែកអម្ពូរ",
+      "names": {
+        "voice": [],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": false,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-35": {
+      "registrationId": "can_tho-35",
+      "nameVi": "Prếk Ta Cuôl (Trà Cuôn)",
+      "nameKm": "ព្រែកត្រកួន",
+      "names": {
+        "voice": [],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": false,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-36": {
+      "registrationId": "can_tho-36",
+      "nameVi": "Đay Om Pu (Phú Giao)",
+      "nameKm": "ដៃអំពូ",
+      "names": {
+        "voice": [
+          "name-day-om-pu-vi"
+        ],
+        "khmer": [
+          "name-day-om-pu-km"
+        ]
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": true,
+        "nameKm": true,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-37": {
+      "registrationId": "can_tho-37",
+      "nameVi": "Om Pou Year",
+      "nameKm": "អំពូយារ",
+      "names": {
+        "voice": [
+          "name-om-pou-year-vi"
+        ],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": true,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-38": {
+      "registrationId": "can_tho-38",
+      "nameVi": "Prêk On Đơk (Đội 1)",
+      "nameKm": "ព្រែកអណ្ដើក",
+      "names": {
+        "voice": [
+          "name-prek-on-dok-vi"
+        ],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": true,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-39": {
+      "registrationId": "can_tho-39",
+      "nameVi": "Prêk On Đơk (Đội 2)",
+      "nameKm": "ព្រែកអណ្ដើក",
+      "names": {
+        "voice": [
+          "name-prek-on-dok-two-vi"
+        ],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": true,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-40": {
+      "registrationId": "can_tho-40",
+      "nameVi": "Phnô Kanh Chơ Thmây",
+      "nameKm": "ផ្នោរកញ្ជើថ្មី",
+      "names": {
+        "voice": [],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": false,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-41": {
+      "registrationId": "can_tho-41",
+      "nameVi": "Phônô Cambốth",
+      "nameKm": "ផ្នោរកំបុត",
+      "names": {
+        "voice": [
+          "name-phno-kambot-vi"
+        ],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": true,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-42": {
+      "registrationId": "can_tho-42",
+      "nameVi": "Bâng Cro Chap Thmây",
+      "nameKm": "បឹងក្រចាប់ថ្មី",
+      "names": {
+        "voice": [],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": false,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-43": {
+      "registrationId": "can_tho-43",
+      "nameVi": "Bâng Cro Chap Chắs",
+      "nameKm": "បឹងក្រចាប់ចាស់",
+      "names": {
+        "voice": [],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": false,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-44": {
+      "registrationId": "can_tho-44",
+      "nameVi": "Tứk Pray",
+      "nameKm": "ទឹកប្រៃ",
+      "names": {
+        "voice": [],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": false,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-45": {
+      "registrationId": "can_tho-45",
+      "nameVi": "Săng Ke",
+      "nameKm": "សង្កែ",
+      "names": {
+        "voice": [
+          "name-sang-ke-vi"
+        ],
+        "khmer": [
+          "name-sang-ke-km"
+        ]
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": true,
+        "nameKm": true,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-46": {
+      "registrationId": "can_tho-46",
+      "nameVi": "Pôthi Khsach",
+      "nameKm": "ពោធិ៍ខ្សាច់",
+      "names": {
+        "voice": [
+          "name-pothi-khsach-vi"
+        ],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": true,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-47": {
+      "registrationId": "can_tho-47",
+      "nameVi": "Pô Thi Thlâng",
+      "nameKm": "ពោធិ៍ថ្លឹង",
+      "names": {
+        "voice": [],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": false,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "can_tho-48": {
+      "registrationId": "can_tho-48",
+      "nameVi": "Settodor",
+      "nameKm": "សេតុត្តរ",
+      "names": {
+        "voice": [
+          "name-settodor-vi"
+        ],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": true,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "ca_mau-01": {
+      "registrationId": "ca_mau-01",
+      "nameVi": "Cao Dân",
+      "nameKm": "ក្របីឃ្លៀច",
+      "names": {
+        "voice": [],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": false,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "ca_mau-02": {
+      "registrationId": "ca_mau-02",
+      "nameVi": "Rạch Giồng",
+      "nameKm": "ជ្រុងខ្មែរ",
+      "names": {
+        "voice": [
+          "name-rach-giong-vi"
+        ],
+        "khmer": [
+          "name-rach-giong-km"
+        ]
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": true,
+        "nameKm": true,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "ca_mau-03": {
+      "registrationId": "ca_mau-03",
+      "nameVi": "Đìa Muồng (Đội nam)",
+      "nameKm": "ខ្វែងដង្ហិត",
+      "names": {
+        "voice": [],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": false,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "ca_mau-04": {
+      "registrationId": "ca_mau-04",
+      "nameVi": "Đìa Muồng (Đội nữ)",
+      "nameKm": "ខ្វែងដង្ហិត",
+      "names": {
+        "voice": [],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": false,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "ca_mau-05": {
+      "registrationId": "ca_mau-05",
+      "nameVi": "Kos Thum (Nam Đội 1)",
+      "nameKm": "កោះធំ",
+      "names": {
+        "voice": [
+          "name-kos-thum-one-vi"
+        ],
+        "khmer": [
+          "name-kos-thum-km"
+        ]
+      },
+      "history": {
+        "voice": [
+          "history-kos-thum-runner-up-vi"
+        ],
+        "khmer": []
+      },
+      "historyFacts": [
+        {
+          "season": 2024,
+          "event": "Giải đua ghe Ngo Sóc Trăng, khu vực ĐBSCL lần VI",
+          "gender": "male",
+          "result": "runner-up",
+          "sources": [
+            "https://baosoctrang.org.vn/multimedia/202411/media-ghe-ngo-chua-tum-nup-vo-dich-ca-nam-va-nu-f8b6c2a/",
+            "https://baocamau.vn/bac-lieu-doat-2-giai-cao-tai-giai-dua-ghe-ngo-tinh-soc-trang-a119729.html"
+          ],
+          "audioKey": "history-kos-thum-runner-up-vi",
+          "textVi": "Á quân nội dung nam năm 2024."
+        }
+      ],
+      "availability": {
+        "nameVi": true,
+        "nameKm": true,
+        "historyVi": true,
+        "historyKm": false
+      }
+    },
+    "ca_mau-06": {
+      "registrationId": "ca_mau-06",
+      "nameVi": "Kos Thum (Nam Đội 2)",
+      "nameKm": "កោះធំ",
+      "names": {
+        "voice": [
+          "name-kos-thum-two-vi"
+        ],
+        "khmer": [
+          "name-kos-thum-two-km"
+        ]
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": true,
+        "nameKm": true,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "ca_mau-07": {
+      "registrationId": "ca_mau-07",
+      "nameVi": "Kos Thum (Nữ Đội 1)",
+      "nameKm": "កោះធំ",
+      "names": {
+        "voice": [
+          "name-kos-thum-one-vi"
+        ],
+        "khmer": [
+          "name-kos-thum-km"
+        ]
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": true,
+        "nameKm": true,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "ca_mau-08": {
+      "registrationId": "ca_mau-08",
+      "nameVi": "Kos Thum (Nữ Đội 2)",
+      "nameKm": "កោះធំ",
+      "names": {
+        "voice": [
+          "name-kos-thum-two-vi"
+        ],
+        "khmer": [
+          "name-kos-thum-two-km"
+        ]
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": true,
+        "nameKm": true,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "ca_mau-09": {
+      "registrationId": "ca_mau-09",
+      "nameVi": "Ngan Dừa (Đội nam)",
+      "nameKm": "ង៉ាងយឿ",
+      "names": {
+        "voice": [
+          "name-ngan-dua-vi"
+        ],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": true,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "ca_mau-10": {
+      "registrationId": "ca_mau-10",
+      "nameVi": "Ngan Dừa (Đội nữ)",
+      "nameKm": "ង៉ាងយឿ",
+      "names": {
+        "voice": [
+          "name-ngan-dua-vi"
+        ],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": true,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "ca_mau-11": {
+      "registrationId": "ca_mau-11",
+      "nameVi": "Đầu Sấu (Đội 1)",
+      "nameKm": null,
+      "names": {
+        "voice": [
+          "name-dau-sau-vi"
+        ],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": true,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "ca_mau-12": {
+      "registrationId": "ca_mau-12",
+      "nameVi": "Đầu Sấu (Đội 2)",
+      "nameKm": null,
+      "names": {
+        "voice": [
+          "name-dau-sau-vi"
+        ],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": true,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
+    },
+    "ca_mau-13": {
+      "registrationId": "ca_mau-13",
+      "nameVi": "Đìa Chuối",
+      "nameKm": "អណ្តូងចេក",
+      "names": {
+        "voice": [],
+        "khmer": []
+      },
+      "history": {
+        "voice": [],
+        "khmer": []
+      },
+      "historyFacts": [],
+      "availability": {
+        "nameVi": false,
+        "nameKm": false,
+        "historyVi": false,
+        "historyKm": false
+      }
     }
   }
 }

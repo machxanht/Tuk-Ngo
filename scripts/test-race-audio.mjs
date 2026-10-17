@@ -1,10 +1,11 @@
 import assert from 'node:assert/strict';
 import {readFile,readdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
-import {createCommentaryDirector,resolveBroadcastCue,normalizeAudioMix} from '../src/race/race-audio.mjs';
+import {createCommentaryDirector,resolveBroadcastCue,resolveTeamSpeech,normalizeAudioMix} from '../src/race/race-audio.mjs';
+import {FESTIVAL_TEAMS,festivalTeam} from '../src/race/festival-teams.mjs';
 const folder=new URL('../public/assets/race-audio/',import.meta.url);
 const manifest=JSON.parse(await readFile(new URL('manifest.json',folder)));
-assert.equal(manifest.mode,'broadcast');assert.equal(Object.keys(manifest.clips).length,19);
+assert.equal(manifest.mode,'broadcast');assert.equal(Object.values(manifest.clips).filter(c=>!c.role).length,19);
 assert.equal(manifest.source.videoId,'crZF3hghbgQ');
 assert.equal(manifest.source.captions.provider,'YouTube');assert.equal(manifest.source.captions.kind,'automatic');
 assert.equal(manifest.source.captions.sha256,'a08fd520f7be92121755cf73dc3d8598f84c17be500aa403b5f1d6cf33008e6a');
@@ -26,7 +27,27 @@ for(const [key,clip]of Object.entries(manifest.clips)){
  }
 }
 for(const event of Object.values(manifest.events))for(const channel of ['voice','khmer'])for(const key of event[channel])assert.equal(manifest.clips[key].channel,channel,key);
-assert.equal(Object.values(manifest.clips).filter(c=>c.channel==='khmer').length,3);
+assert.equal(Object.values(manifest.clips).filter(c=>c.channel==='khmer'&&!c.role).length,3);
+assert.deepEqual(Object.keys(manifest.teamProfiles).sort(),FESTIVAL_TEAMS.map(t=>t.registrationId).sort(),'Exact 61-entry roster, including missing recordings');
+for(const team of FESTIVAL_TEAMS){
+ const profile=manifest.teamProfiles[team.registrationId];
+ for(const [kind,section]of [['name','names'],['history','history']]){
+  const selected=resolveTeamSpeech(team,manifest,kind);assert.deepEqual(selected,profile[section]);
+  for(const channel of ['voice','khmer'])for(const key of selected[channel])assert(manifest.clips[key].teamIds.includes(team.registrationId),'No other team recording');
+ }
+ for(const fact of profile.historyFacts){assert.equal(fact.season,2024);assert(fact.sources.length>0);assert(profile.history.voice.includes(fact.audioKey));}
+}
+const pair=[festivalTeam('tum-nup-2'),festivalTeam('kos-thum-1')];
+assert.deepEqual(resolveTeamSpeech(pair[0],manifest),{voice:['name-tum-nup-two-vi'],khmer:['name-tum-nup-km']});
+assert.deepEqual(resolveTeamSpeech(festivalTeam('can_tho-10'),manifest),{voice:[],khmer:[]},'Missing names never fall back to another team');
+assert.deepEqual(resolveTeamSpeech(festivalTeam('can_tho-05'),manifest,'history'),{voice:[],khmer:[]},'Sro Lon 1 does not inherit Sro Lon 2 history');
+assert.deepEqual(resolveTeamSpeech(festivalTeam('ca_mau-07'),manifest,'history'),{voice:[],khmer:[]},'Women do not inherit the male Kos Thum runner-up result');
+assert.deepEqual(resolveBroadcastCue({id:'team-history'},manifest,pair),{voice:['history-tum-nup-champion-vi'],khmer:[]});
+assert.deepEqual(resolveBroadcastCue({id:'opponent-history'},manifest,pair),{voice:['history-kos-thum-runner-up-vi'],khmer:[]});
+assert.equal(resolveBroadcastCue({id:'intro'},manifest,pair).voice[0],'name-tum-nup-two-vi');
+assert.equal(resolveBroadcastCue({id:'lead--1'},manifest,pair).voice[0],'name-kos-thum-one-vi');
+assert.equal(resolveBroadcastCue({id:'finish',result:'loss'},manifest,pair).voice[0],'name-kos-thum-one-vi');
+assert.equal(resolveBroadcastCue({id:'finish',result:'win'},manifest,pair).voice[0],'name-tum-nup-two-vi');
 assert.deepEqual(manifest.events.go.khmer,['khmer-go']);
 for(const id of ['cruise','halfway','final','surge'])assert.deepEqual(manifest.events[id].khmer,[],'No unrelated Khmer speech at '+id);
 const d=createCommentaryDirector(),state={phase:'countdown',elapsed:0,distances:[0,0],gap:0,pace:'steady',surgeActive:false,combo:0,stamina:100};
@@ -48,4 +69,4 @@ d.reset();assert.equal(step({phase:'countdown',elapsed:0})[0].id,'ready');
 assert.deepEqual(step({phase:'racing',elapsed:190,distances:[1160,1150],gap:10,surgeActive:false}).map(c=>c.id),['last-fifty']);
 assert.equal(normalizeAudioMix({volume:10,enabled:'no'}).volume,1);assert.equal(normalizeAudioMix({volume:NaN}).volume,.8);assert.equal(normalizeAudioMix(null).enabled,true);
 assert.equal(normalizeAudioMix({chants:false}).khmer,false);assert.equal(normalizeAudioMix({chants:false,khmer:true}).khmer,true);
-console.log('Broadcast audio: 19 hashed original excerpts; YouTube CC word evidence, language/context routing, no synthetic assets, result isolation, event priority and preference migration passed.');
+console.log('Broadcast audio: hashed original excerpts, CC word evidence, 61 team profiles, team/gender/number/history isolation, no synthetic assets, event priority and preferences passed.');
