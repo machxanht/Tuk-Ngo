@@ -22,6 +22,7 @@ for(const name of ['Race_Cap','Race_Hair','Race_Paddle'])assert.ok(equipment.nod
 const paddle=equipment.nodes.find(n=>n.name==='Race_Paddle'),positionsAccessor=equipment.accessors[equipment.meshes[paddle.mesh].primitives[0].attributes.POSITION];
 assert.ok(Math.abs(positionsAccessor.min[1]+1.52)<1e-5);assert.ok(Math.abs(positionsAccessor.max[1])<.01);
 const {doc:master,bin:masterBin}=await glb('public/assets/athlete-master/athlete-master.glb');
+const proofPaddle=master.nodes.find(n=>n.name==='Race_Paddle'),proofBounds=master.accessors[master.meshes[proofPaddle.mesh].primitives[0].attributes.POSITION];assert.ok(Math.abs(proofBounds.min[1]+1.22)<1e-5,'Low seated paddle must match the boat');
 assert.equal(master.animations.length,1,'Body, cloth and paddle must play in one clip');
 const animated=new Set(master.animations[0].channels.map(c=>master.nodes[c.target.node].name));
 assert.ok([...animated].some(n=>n.includes('Shirt')));assert.ok(animated.has('Dam_Wood_152cm'));assert.ok(animated.has('head'));

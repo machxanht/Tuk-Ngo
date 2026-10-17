@@ -32,9 +32,9 @@ export function ArtPreview({embedded=false}:{embedded?:boolean}) {
  function togglePlaying(){if(playing)setInspectedPhase(Math.round(clock.current.phase*100));setPlaying(!playing);}
  function inspectPhase(value:number){setPlaying(false);setInspectedPhase(value);clock.current.phase=value/100;}
  async function record(){setRecordError('');setRecording(true);setPlaying(true);try{await runtime.current?.record();}catch(e){setRecordError(e instanceof Error?e.message:String(e));}finally{setRecording(false);}}
- const views=mode==='athlete'?[['front','Trước'],['side','Ngang'],['back','Sau'],['paddle','Dằm']]:[['boat','Toàn ghe'],['banks','Hai bờ sông'],['top','Nhìn từ trên'],['crew','Cận tay bơi'],['kneel','Nhóm quỳ'],['bow','Đầu ghe'],['stern','Lái cuối ghe']];
+ const views=mode==='athlete'?[['front','Trước'],['side','Ngang'],['back','Sau'],['paddle','Dằm']]:[['boat','Toàn ghe'],['banks','Hai bờ sông'],['crowd','Khán giả'],['top','Nhìn từ trên'],['crew','Cận tay bơi'],['kneel','Nhóm quỳ'],['bow','Đầu ghe'],['stern','Lái cuối ghe']];
  return <section className={'art-preview'+(embedded?' art-embedded':'')}>
-  <header className="art-heading"><div><span className="art-kicker">GHE NGO · 3D</span><h1>{mode==='boat'?'Ghe Tum Núp 2 · 55 người':'VĐV Tum Núp 2'}</h1><p>Kéo để xoay · chụm hai ngón để phóng to</p></div><a className="art-back" href={import.meta.env.BASE_URL+'assets/illustrated-v22/race.html?mode=cup'}>Giải 8 ghe</a></header>
+  <header className="art-heading"><div><span className="art-kicker">GHE NGO · 3D</span><h1>{mode==='boat'?'Ghe Tum Núp 2 · 54 người':'VĐV Tum Núp 2'}</h1><p>Kéo để xoay · chụm hai ngón để phóng to</p></div><a className="art-back" href={import.meta.env.BASE_URL+'assets/illustrated-v22/race.html?mode=cup'}>Giải 8 ghe</a></header>
   <nav className="art-view-controls" aria-label="Chọn hình ảnh">
    <div className="art-segment" aria-label="Mô hình"><button disabled={recording} aria-pressed={mode==='boat'} onClick={()=>changeMode('boat')}>Cả ghe 3D</button><button disabled={recording} aria-pressed={mode==='athlete'} onClick={()=>changeMode('athlete')}>Một VĐV</button></div>
    <div className="art-segment" aria-label="Góc nhìn">{views.map(([v,label])=><button key={v} disabled={recording} aria-pressed={view===v} onClick={()=>setView(v)}>{label}</button>)}</div>

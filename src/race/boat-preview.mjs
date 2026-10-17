@@ -5,6 +5,7 @@ import {buildRiver,buildSplashes} from './river.mjs';
 import {saveCanvas,recordCanvas} from './art-preview.mjs';
 import {buildMasperoSky} from './maspero-course.mjs';
 import {loadFestivalBanks} from './festival-banks.mjs';
+import {ROWING_LAYOUT} from './rowing-pose.mjs';
 
 // Direct WebGL view of the same eight role masters used by the race. No
 // sprite atlases, painted scenery or separately exported crew are loaded.
@@ -19,20 +20,20 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
  try{banks=await loadFestivalBanks(scene,base);}catch(error){sky.dispose();river.dispose();rig.dispose();throw error;}
  const splashes=buildSplashes(scene,.28);
  const crew={root:boat,athletes:actors.filter(a=>a.role==='rower').map(a=>{
-  a.paddle.userData.length=a.posture==='standing'?1.75:1.52;
+  a.paddle.userData.length=a.posture==='standing'?1.75:ROWING_LAYOUT.seatedPaddleLength;
   return {root:a.group,paddle:a.paddle,role:'ROWER'};
  })};
- boat.userData.spec={paddleLength:1.52};
+ boat.userData.spec={paddleLength:ROWING_LAYOUT.seatedPaddleLength};
  const camera=new T.PerspectiveCamera(36,1,.04,1600);
  const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.dampingFactor=.08;
  controls.minDistance=1.2;controls.maxDistance=400;controls.maxPolarAngle=Math.PI*.48;controls.enablePan=true;
  renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));splashes.setDpr(renderer.getPixelRatio());
- renderer.domElement.setAttribute('aria-label','Ghe Ngo 3D đầy đủ 55 người: ngồi chèo phía trước, quỳ một gối phía sau, người đầu ghe, điều khiển và ba người lái. Kéo để xoay, chụm để phóng to.');host.appendChild(renderer.domElement);
+ renderer.domElement.setAttribute('aria-label','Ghe Ngo 3D đầy đủ 54 người: ngồi chèo phía trước, quỳ một gối phía sau, người đầu ghe, điều khiển và hai người lái. Kéo để xoay, chụm để phóng to.');host.appendChild(renderer.domElement);
  let disposed=false,raf=0,lastView='',width=1,height=1,frames=0,lastStats=performance.now();
  function resize(){width=Math.max(1,host.clientWidth);height=Math.max(1,host.clientHeight);renderer.setSize(width,height);camera.aspect=width/height;camera.updateProjectionMatrix();lastView='';}
  const observer=new ResizeObserver(resize);observer.observe(host);resize();
  function setView(view){
-  const views={boat:{target:[0,.65,0],offset:[24,20,26],span:39},banks:{target:[0,1,0],offset:[26,65,80],span:165},top:{target:[0,.65,0],offset:[0,30,.02],span:33},crew:{target:[7.5,.90,0],offset:[2.0,1.5,5],span:5.3},kneel:{target:[-3.2,.9,0],offset:[.8,1.3,4.8],span:4.8},bow:{target:[12,.95,0],offset:[2.8,1.9,5.5],span:6},stern:{target:[-11.3,1.0,0],offset:[-3,2.0,6.5],span:8}};
+  const views={boat:{target:[0,.65,0],offset:[24,20,26],span:39},crowd:{target:[19,2,-32],offset:[0,.8,6],span:8},banks:{target:[0,1,0],offset:[26,65,80],span:165},top:{target:[0,.65,0],offset:[0,30,.02],span:33},crew:{target:[7.5,.90,0],offset:[2.0,1.5,5],span:5.3},kneel:{target:[-3.2,.9,0],offset:[.8,1.3,4.8],span:4.8},bow:{target:[12,.95,0],offset:[2.8,1.9,5.5],span:6},stern:{target:[-11.3,1.0,0],offset:[-3,2.0,6.5],span:8}};
   const v=views[view]||views.boat;controls.target.fromArray(v.target);
   const direction=new T.Vector3(...v.offset).normalize(),distance=v.span/(2*Math.tan(T.MathUtils.degToRad(camera.fov/2))*Math.min(1.7,camera.aspect));
   camera.position.copy(controls.target).addScaledVector(direction,distance);controls.update();lastView=view;

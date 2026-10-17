@@ -4,6 +4,8 @@ import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
 import {mergeGeometries} from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 import {saveCanvas,recordCanvas} from './art-preview.mjs';
 import {athleteMasterDigest} from './asset-digests.mjs';
+import {ROWING_LAYOUT} from './rowing-pose.mjs';
+import {profile} from './boat.mjs';
 
 export async function startAthleteStudy(host,settings,clock,base,onReady){
  const loader=new GLTFLoader();
@@ -13,7 +15,7 @@ export async function startAthleteStudy(host,settings,clock,base,onReady){
  scene.add(new T.HemisphereLight('#e5eff4','#667069',1.7));
  const light=new T.DirectionalLight('#fff1df',3.3);light.position.set(3,5,4);scene.add(light);
  const rim=new T.DirectionalLight('#b8d8e7',1.9);rim.position.set(-3,3,-2);scene.add(rim);
- const root=gltf.scene;root.position.x=.16;scene.add(root);root.traverse(o=>{if(o.isMesh)o.frustumCulled=false;});
+ const root=gltf.scene;root.position.x=ROWING_LAYOUT.rowerOffset;root.scale.x=ROWING_LAYOUT.lateralScale;scene.add(root);root.traverse(o=>{if(o.isMesh)o.frustumCulled=false;});
  const mixer=new T.AnimationMixer(root);for(const clip of gltf.animations)mixer.clipAction(clip).play();
  const duration=Math.max(...gltf.animations.map(c=>c.duration));
  // Same scene handles used for render/export acceptance checks; no second rig.
@@ -25,8 +27,6 @@ export async function startAthleteStudy(host,settings,clock,base,onReady){
  const section=new T.Group();section.rotation.y=-Math.PI/2;hull.scene.position.x=-6;section.add(hull.scene);scene.add(section);
  const limits=[new T.Plane(new T.Vector3(0,0,1),1.35),new T.Plane(new T.Vector3(0,0,-1),1.35)];
  section.updateMatrixWorld(true);
- const ray=new T.Raycaster(),hullBody=hull.scene.getObjectByName('Hull_Watertight_30_20x1_12');let innerFloor=.07;
- for(const x of [root.position.x-.14,root.position.x+.14]){ray.set(new T.Vector3(x,3,.4),new T.Vector3(0,-1,0));const hit=ray.intersectObject(hullBody,true)[0];if(hit)innerFloor=Math.max(innerFloor,hit.point.y+.015);}
  const groups=new Map(),sourceGeometry=new Set(),probe=new T.Vector3();
  hull.scene.traverse(o=>{
   if(!o.isMesh)return;sourceGeometry.add(o.geometry);
@@ -60,9 +60,9 @@ export async function startAthleteStudy(host,settings,clock,base,onReady){
  root.traverse(o=>{if(!o.isSkinnedMesh)return;o.skeleton.update();const indices=o.geometry.getAttribute('skinIndex'),weights=o.geometry.getAttribute('skinWeight'),point=new T.Vector3();
   for(let i=0;i<indices.count;i++){let footWeight=0;for(let j=0;j<4;j++){const name=o.skeleton.bones[indices.getComponent(i,j)]?.name||'';if(/^(foot|ball|toe)_/.test(name))footWeight+=weights.getComponent(i,j);}if(footWeight>.7){o.getVertexPosition(i,point);footBounds.expandByPoint(o.localToWorld(point));}}
  });
- const lift=innerFloor+.002-(footBounds.isEmpty()?0:footBounds.min.y);root.position.y+=lift;root.updateMatrixWorld(true);footBounds.translate(new T.Vector3(0,lift,0));bench.position.y=.50+lift;
+ const seatTop=profile(6).g-ROWING_LAYOUT.seatedBarDrop,lift=seatTop-.515;root.position.y+=lift;root.updateMatrixWorld(true);footBounds.translate(new T.Vector3(0,lift,0));bench.position.y=seatTop-.0175;
  const footCenter=footBounds.isEmpty()?new T.Vector3(0,.072,.48):footBounds.getCenter(new T.Vector3());
- const rest=new T.Mesh(new T.BoxGeometry(.58,.035,.30),wood);rest.position.set(footCenter.x,(footBounds.isEmpty()?-.09:footBounds.min.y)-.0195,footCenter.z);scene.add(rest);
+ const size=footBounds.getSize(new T.Vector3()),rest=new T.Mesh(new T.BoxGeometry(size.x+.012,.016,size.z+.012),wood);rest.position.set(footCenter.x,(footBounds.isEmpty()?-.09:footBounds.min.y)-.010,footCenter.z);scene.add(rest);
  const floor=new T.Mesh(new T.PlaneGeometry(30,30),new T.MeshStandardMaterial({color:'#c7d4c6',roughness:1}));floor.rotation.x=-Math.PI/2;floor.position.y=-.26;scene.add(floor);
  const renderer=new T.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});renderer.localClippingEnabled=true;renderer.setPixelRatio(Math.min(devicePixelRatio,1.75));renderer.outputColorSpace=T.SRGBColorSpace;renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=.95;
  renderer.domElement.setAttribute('aria-label','Một vận động viên 3D, trang phục Tum Núp 2 và dằm gỗ. Kéo để xoay, chụm hai ngón để phóng to.');host.appendChild(renderer.domElement);

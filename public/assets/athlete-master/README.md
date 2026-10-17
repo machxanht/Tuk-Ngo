@@ -18,3 +18,7 @@ body/paddle samplers from its calibrated seated-port clip without resampling.
 The shirt surface is sampled at the same motion keys. It is not motion capture or
 a scan of a named competitor. Details, references and verification are recorded
 in `docs/asset-workflow.md` in the source repository.
+
+The current low seated proof uses tucked legs and a 1.22 m paddle. The original
+1.52 m `athlete-details.glb` remains stock equipment; the boat derives the seated
+paddle from it while retaining the two-hand grip.

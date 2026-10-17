@@ -1,33 +1,35 @@
 {
   "physicalTabletTested": false,
   "initialLoad": {
-    "readyMs": 3365.5,
-    "bytes": 14943021,
+    "readyMs": 3357.2000000029802,
+    "bytes": 14975726,
     "urls": [
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/index-Cm5Zzgj3.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/index-aJwbqLdu.js",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/index-Bo7mo07X.css",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/ArtPreview-ixdk-Tan.js",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/rotate-ccw-Q44o6Pvg.js",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/download-DJGrBzUJ.js",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/video-B0x_NGJA.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/ArtPreview-CZEnY3NE.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/asset-digests-D5Ydp7Sk.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/rotate-ccw-CrXWQwb-.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/download-DB43kJdV.js",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/ArtPreview-CLUOzjDj.css",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/boat-preview-DnnsPhNH.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/video-BYtZPNa0.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/boat-preview-8ivU8oIK.js",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/three-addons-BnpvScye.js",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/three-core-DFpmdtjz.js",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/three-renderer-3VrNaQXw.js",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/river-RkVkodVu.js",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/art-preview-DZCQDa8H.js",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/river-bank-BmHDUiE3.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/three-core-DFpmdtjz.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/boat-DqrC9toq.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/river-BuALb97a.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/art-preview-CkWR3nbs.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/river-bank-CAI9EGDz.js",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/shirt-runtime-v32.json",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/athlete-rig-v27.glb",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/hull-rig-v25.glb",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/athlete-master/athlete-details.glb",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/athlete-master/rowing-motion.glb?sha=704fcb2b93ad0010fa1b4450da3269116d96a956ef6dbf843b4b57649b9a70ee",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/athlete-master/rowing-motion.glb?sha=be7c31a1716d3e29a6c00b0c22b0f0bda3247cf421d0cb7928fc832742e5b53a",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/NotoSansKhmer.ttf",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/hull-slim-bow-v23.webp",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/teams-2025/tum-nup-2.svg",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/festival-crowd/crowd-compact.json",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/festival-crowd/crowd-compact.packed?sha=fdb0571743dfb52d5732c6c8c535c8930771ff220958a4c8b3ad23bf6f61ee9b",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/festival-crowd/crowd-compact.json?sha=f4079620e7ce9a820beefec26c24fa0fa9a3e30b1745f6ae2442d0156dcb9447",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/festival-crowd/crowd-compact.packed?sha=286bf615e7b2af5bc44787977914964cce41ff4637efe8474eed2c0514ce4b99",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/NotoSansKhmer.ttf"
     ]
   },
@@ -36,43 +38,43 @@
       "seated-port": {
         "footClearanceM": [
           0.0020000000000000018,
-          0.0020000000000000018
+          0.0020002857840016874
         ],
-        "paddleLengthM": 1.5199999809265137,
-        "maxWristAxisDistanceM": 0.09715412150653822,
-        "maxPalmGripGapM": 0.0008384506077911793
+        "paddleLengthM": 1.2200000286102295,
+        "maxWristAxisDistanceM": 0.09715412150653832,
+        "maxPalmGripGapM": 0.0008384506077922001
       },
       "seated-starboard": {
         "footClearanceM": [
-          0.0020000000000000018,
+          0.0019969161794937684,
           0.0020000000000000018
         ],
-        "paddleLengthM": 1.5199999809265137,
-        "maxWristAxisDistanceM": 0.0971541463193823,
-        "maxPalmGripGapM": 0.000838891450343194
+        "paddleLengthM": 1.2200000286102295,
+        "maxWristAxisDistanceM": 0.09715414631938313,
+        "maxPalmGripGapM": 0.0008388914503431569
       },
       "standing-port": {
         "footClearanceM": [
-          0.002000206795119752,
-          0.002000226436080943
+          0.001999997060250225,
+          0.002000016701211471
         ],
         "paddleLengthM": 1.75,
-        "maxWristAxisDistanceM": 0.09715423627861232,
-        "maxPalmGripGapM": 0.0008387447637839878
+        "maxWristAxisDistanceM": 0.0971542362786122,
+        "maxPalmGripGapM": 0.0008387447637843961
       },
       "standing-starboard": {
         "footClearanceM": [
-          0.0020002020230807105,
-          0.0020002360952690867
+          0.001999992288211183,
+          0.002000026360399587
         ],
         "paddleLengthM": 1.75,
-        "maxWristAxisDistanceM": 0.09715415066105663,
-        "maxPalmGripGapM": 0.0008388610016336585
+        "maxWristAxisDistanceM": 0.09715415066105665,
+        "maxPalmGripGapM": 0.0008388610016331988
       },
       "caller": {
         "footClearanceM": [
-          0.0020000000000000018,
-          0.0020000000000000018
+          0.0019999819963660292,
+          0.002000069942258542
         ],
         "paddleLengthM": null,
         "maxWristAxisDistanceM": 0,
@@ -80,8 +82,8 @@
       },
       "controller": {
         "footClearanceM": [
-          0.0020003479782688127,
-          0.0020003479782688127
+          0.0020001382433992854,
+          0.0020001382433992854
         ],
         "paddleLengthM": null,
         "maxWristAxisDistanceM": 0,
@@ -89,21 +91,21 @@
       },
       "helm": {
         "footClearanceM": [
-          0.0020003142991230627,
-          0.0020003713345050356
+          0.00200010456425348,
+          0.0020001618470971705
         ],
         "paddleLengthM": 4.199999809265137,
-        "maxWristAxisDistanceM": 0.09714213991584317,
-        "maxPalmGripGapM": 2.2818890770788132e-05
+        "maxWristAxisDistanceM": 0.09726342626629514,
+        "maxPalmGripGapM": 0.0006276491542083603
       },
       "helm-starboard": {
         "footClearanceM": [
-          0.002000225184651372,
-          0.0020002572680264397
+          0.0020000149845121884,
+          0.0020000449424013578
         ],
         "paddleLengthM": 4.199999809265137,
-        "maxWristAxisDistanceM": 0.09714227118515699,
-        "maxPalmGripGapM": 2.3316483965118176e-05
+        "maxWristAxisDistanceM": 0.09732173973142796,
+        "maxPalmGripGapM": 0.00048120288562563816
       }
     },
     "masters": 8,
@@ -116,8 +118,8 @@
         "study": 16
       },
       "geometryCacheSize": 12,
-      "triangles": 3202764,
-      "drawCalls": 392,
+      "triangles": 3184394,
+      "drawCalls": 389,
       "teamTextures": 1,
       "kitMaterials": 6,
       "vertexAttributes": 14,
@@ -127,16 +129,16 @@
   "placement": {
     "callerX": 12.35,
     "callerHipHeightDeltaM": 0,
-    "minRowingOutboardM": 0.6979999768259061,
+    "minRowingOutboardM": 0.6161999832068279,
     "helmTipY": [
-      0.1716162965172885,
-      0.4641123591456511
+      0.08928304975646739,
+      0.6144219878186854
     ],
-    "minHelmAftM": 3.4277745890092,
+    "minHelmAftM": 3.332365258063133,
     "kneelingActors": 34,
     "kneePadClearanceM": [
       0.002000000000000019,
-      0.002000082459464498
+      0.002000082459464387
     ]
   },
   "environment": {
@@ -193,6 +195,12 @@
       "paletteBytes": 6110720,
       "motion": "GPU bone palette interpolation; source idle/wave/walk + authored clap/cheer/indicate/seated",
       "randomization": "independent salted placement id and coordinates, clothes/hair/skin/face proportions/age styling",
+      "outfits": {
+        "independentTrousers": 8,
+        "independentShoes": 4,
+        "regionPolicy": "separate upper garments, trousers/skirts, footwear, hats and small trim",
+        "combinations": 381
+      },
       "demographicCounts": {
         "age": {
           "adult": 1561,
@@ -218,11 +226,38 @@
         }
       },
       "visibleTriangles": 1072016,
-      "lastPackMs": 3.699999999254942
+      "lastPackMs": 2.899999998509884
     },
-    "animatedPixels": 548,
+    "animatedPixels": 558,
     "khmerFont": true,
     "waterDaylight": 1
+  },
+  "crewLayout": {
+    "people": 54,
+    "helms": 2,
+    "pairSpacingM": 0.48,
+    "controllerYaw": -1.5707963267948966,
+    "barCount": 9,
+    "barHeightM": [
+      0.5268383908787762,
+      0.5268383908787762,
+      0.5070663992661484,
+      0.5070663992661484,
+      0.505,
+      0.505,
+      0.505,
+      0.505,
+      0.505,
+      0.505,
+      0.5059030006314887,
+      0.5059030006314887,
+      0.5075353807921275,
+      0.5075353807921275,
+      0.5069534758117306,
+      0.5069534758117306
+    ],
+    "minBarHullClearanceM": 0.016684506700018184,
+    "minSeatedFootHullClearanceM": 0.013891657122642828
   },
   "boatLayouts": [
     {
@@ -286,7 +321,7 @@
     "artSource": "BLENDER_MASTER",
     "crewCount": "1",
     "masterRigs": "8",
-    "phase": "0.6806",
+    "phase": "0.8004",
     "view": "front",
     "triangles": "21919",
     "drawCalls": "19",
@@ -299,26 +334,26 @@
   "motionAgreement": {
     "samples": 96,
     "maxBoneDriftM": {
-      "head": 2.2439049712357337e-16,
-      "spine_03": 2.2275803243216166e-16,
-      "pelvis": 1.1147273790058267e-16,
-      "hand_l": 4.449557262054371e-16,
-      "hand_r": 4.440892098500626e-16,
-      "foot_l": 1.415262216750919e-16
+      "head": 6.777779056894314e-17,
+      "spine_03": 5.777394712687099e-17,
+      "pelvis": 1.0010976524480169e-17,
+      "hand_l": 2.2887833992611187e-16,
+      "hand_r": 2.482534153247273e-16,
+      "foot_l": 6.938893903907228e-17
     },
-    "maxPalmGripGapM": 0.003058772062693758
+    "maxPalmGripGapM": 0.003058772062693804
   },
   "remount": {
     "testid": "art-stage",
     "renderMode": "boat",
     "artSource": "BLENDER_EQUIPMENT_APPROVED_ROLE_MASTERS",
-    "crewCount": "55",
+    "crewCount": "54",
     "masterRigs": "8",
-    "phase": "0.8804",
+    "phase": "0.0006",
     "view": "boat",
-    "triangles": "3215738",
-    "drawCalls": "386",
-    "splashEvents": "1110",
+    "triangles": "3197240",
+    "drawCalls": "384",
+    "splashEvents": "1230",
     "banks": "2",
     "spectators": "2214",
     "daylight": "bright",

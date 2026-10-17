@@ -37,21 +37,21 @@ with sync_playwright() as p:
       }}
       return {roles:result,masters:Object.keys(h.roles).length,stats:h.getDrawStats()};
     }''')
-    lengths={'seated-port':1.52,'seated-starboard':1.52,'standing-port':1.75,'standing-starboard':1.75,'helm':4.2,'helm-starboard':4.2}
+    lengths={'seated-port':1.22,'seated-starboard':1.22,'standing-port':1.75,'standing-starboard':1.75,'helm':4.2,'helm-starboard':4.2}
     for name,length in lengths.items():
         assert abs(report['geometry']['roles'][name]['paddleLengthM']-length)<.0001,(name,report['geometry'])
     assert report['geometry']['masters']==8
     for name,role in report['geometry']['roles'].items():
         assert all(abs(clearance-.002)<.0005 for clearance in role['footClearanceM']),(name,role)
         assert role['maxPalmGripGapM']<.02,(name,role)
-    report['placement']=page.evaluate("""()=>{const h=document.querySelector('[data-testid=art-stage]').boatPreview.rig,v=h.boat.position.clone(),caller=h.actors.find(a=>a.role==='caller'),first=h.actors.find(a=>a.id===2),p=a=>a.master.root.getObjectByName('pelvis').getWorldPosition(v).applyMatrix4(a.group.matrixWorld).y;const result={callerX:caller.group.position.x,callerHipHeightDeltaM:p(caller)-p(first),minRowingOutboardM:Infinity,helmTipY:[Infinity,-Infinity],minHelmAftM:Infinity,kneelingActors:h.actors.filter(a=>a.stance==='half-kneeling').length,kneePadClearanceM:[Infinity,-Infinity]};const candidates=new Map();for(const a of h.actors.filter(a=>a.kneeRest).slice(0,2)){const g=a.skin.geometry,ids=[];for(let i=0;i<g.attributes.position.count;i++)if(g.attributes.paintZone.getX(i)===1&&g.attributes.position.getY(i)>.35&&g.attributes.position.getY(i)<.63)ids.push(i);candidates.set(a,ids);}for(let i=0;i<24;i++){h.render(i/24,i/24/.45,{nearest:true});for(const a of h.actors){if(a.paddle){const length=a.role==='helm'?4.2:a.posture==='standing'?1.75:1.52,tip=v.set(0,-length,0).applyMatrix4(a.paddle.matrixWorld);if(a.role==='rower')result.minRowingOutboardM=Math.min(result.minRowingOutboardM,tip.z*a.side);if(a.role==='helm'){result.helmTipY=[Math.min(result.helmTipY[0],tip.y),Math.max(result.helmTipY[1],tip.y)];result.minHelmAftM=Math.min(result.minHelmAftM,a.group.position.x-tip.x);}}}for(const [a,ids]of candidates){const rest=a.kneeRest,knee=a.master.root.getObjectByName('calf_'+a.kneelingLeg).getWorldPosition(v).applyMatrix4(a.group.matrixWorld).clone();let min=Infinity;for(const id of ids){a.skin.getVertexPosition(id,v).applyMatrix4(a.group.matrixWorld);if(Math.abs(v.x-rest.position.x)<.11&&Math.abs(v.z-rest.position.z)<.09&&v.y>knee.y-.15&&v.y<knee.y+.02)min=Math.min(min,v.y);}const gap=min-rest.position.y-.02;result.kneePadClearanceM=[Math.min(result.kneePadClearanceM[0],gap),Math.max(result.kneePadClearanceM[1],gap)];}}return result;}""")
+    report['placement']=page.evaluate("""()=>{const h=document.querySelector('[data-testid=art-stage]').boatPreview.rig,v=h.boat.position.clone(),caller=h.actors.find(a=>a.role==='caller'),first=h.actors.find(a=>a.id===2),p=a=>a.master.root.getObjectByName('pelvis').getWorldPosition(v).applyMatrix4(a.group.matrixWorld).y;const result={callerX:caller.group.position.x,callerHipHeightDeltaM:p(caller)-p(first),minRowingOutboardM:Infinity,helmTipY:[Infinity,-Infinity],minHelmAftM:Infinity,kneelingActors:h.actors.filter(a=>a.stance==='half-kneeling').length,kneePadClearanceM:[Infinity,-Infinity]};const candidates=new Map();for(const a of h.actors.filter(a=>a.kneeRest).slice(0,2)){const g=a.skin.geometry,ids=[];for(let i=0;i<g.attributes.position.count;i++)if(g.attributes.paintZone.getX(i)===1&&g.attributes.position.getY(i)>.35&&g.attributes.position.getY(i)<.63)ids.push(i);candidates.set(a,ids);}for(let i=0;i<24;i++){h.render(i/24,i/24/.45,{nearest:true});for(const a of h.actors){if(a.paddle){const length=a.role==='helm'?4.2:a.posture==='standing'?1.75:1.22,tip=v.set(0,-length,0).applyMatrix4(a.paddle.matrixWorld);if(a.role==='rower')result.minRowingOutboardM=Math.min(result.minRowingOutboardM,tip.z*a.side);if(a.role==='helm'){result.helmTipY=[Math.min(result.helmTipY[0],tip.y),Math.max(result.helmTipY[1],tip.y)];result.minHelmAftM=Math.min(result.minHelmAftM,a.group.position.x-tip.x);}}}for(const [a,ids]of candidates){const rest=a.kneeRest,knee=a.master.root.getObjectByName('calf_'+a.kneelingLeg).getWorldPosition(v).applyMatrix4(a.group.matrixWorld).clone();let min=Infinity;for(const id of ids){a.skin.getVertexPosition(id,v).applyMatrix4(a.group.matrixWorld);if(Math.abs(v.x-rest.position.x)<.11&&Math.abs(v.z-rest.position.z)<.09&&v.y>knee.y-.15&&v.y<knee.y+.02)min=Math.min(min,v.y);}const gap=min-rest.position.y-.02;result.kneePadClearanceM=[Math.min(result.kneePadClearanceM[0],gap),Math.max(result.kneePadClearanceM[1],gap)];}}return result;}""")
     assert report['placement']['callerX']>=12.3
     assert abs(report['placement']['callerHipHeightDeltaM'])<.01
-    assert report['placement']['minRowingOutboardM']>.65
+    assert report['placement']['minRowingOutboardM']>.60
     assert report['placement']['kneelingActors']==34
     assert report['placement']['minHelmAftM']>3
-    assert .10<report['placement']['helmTipY'][0]<.28
-    assert .28<report['placement']['helmTipY'][1]<.51
+    assert .06<report['placement']['helmTipY'][0]<.28
+    assert .50<report['placement']['helmTipY'][1]<.80
     assert all(abs(gap-.002)<.001 for gap in report['placement']['kneePadClearanceM']),report['placement']
     report['environment']=page.evaluate('''()=>{const a=document.querySelector('[data-testid=art-stage]').boatPreview,s=a.banks.stats,c=document.createElement('canvas');c.width=320;c.height=180;const ctx=c.getContext('2d');function pixels(t){a.banks.update(t,a.camera);a.renderer.render(a.scene,a.camera);ctx.drawImage(a.renderer.domElement,0,0,320,180);return ctx.getImageData(0,0,320,180).data;}const first=pixels(20),second=pixels(20.4);let changed=0;for(let i=0;i<first.length;i+=4)if(Math.abs(first[i]-second[i])+Math.abs(first[i+1]-second[i+1])+Math.abs(first[i+2]-second[i+2])>10)changed++;return {...s,animatedPixels:changed,khmerFont:[...document.fonts].some(f=>f.family.includes('Noto Sans Khmer')&&f.status==='loaded'),waterDaylight:a.scene.getObjectByName('Maspero_River_And_Banks').children[0].material.uniforms.uDaylight.value};}''')
     assert report['environment']['banks']==2
@@ -62,13 +62,24 @@ with sync_playwright() as p:
     assert report['environment']['animatedPixels']>50,report['environment']
     assert report['environment']['khmerFont']
     assert report['environment']['waterDaylight']==1
+    report['crewLayout']=page.evaluate('''()=>{const h=document.querySelector('[data-testid=art-stage]').boatPreview.rig,v=h.boat.position.clone(),seated=h.actors.filter(a=>a.role==='rower'&&a.posture==='seated'),controller=h.actors.find(a=>a.role==='controller'),bars=h.boat.children.filter(o=>o.name.startsWith('Cross_Thwart_'));const result={people:h.actors.length,helms:h.actors.filter(a=>a.role==='helm').length,pairSpacingM:Math.abs(seated[0].group.position.z-seated[1].group.position.z),controllerYaw:controller.group.rotation.y,barCount:bars.length,barHeightM:seated.map(a=>a.seatTop),minBarHullClearanceM:Infinity,minSeatedFootHullClearanceM:Infinity};
+      for(const bar of bars){bar.geometry.computeBoundingBox();const box=bar.geometry.boundingBox;for(const dx of [-1,1])for(const dz of [-1,1]){v.set(dx*box.max.x,box.min.y,dz*box.max.z).applyMatrix4(bar.matrixWorld);result.minBarHullClearanceM=Math.min(result.minBarHullClearanceM,v.y-h.floorAt(v.x,v.z)+.015);}}
+      for(const a of [...seated,h.actors.find(a=>a.role==='caller')]){const g=a.skin.geometry;for(let i=0;i<g.attributes.position.count;i++){let w=0;for(let k=0;k<4;k++)if(/^(foot|ball|toe)_/.test(a.master.skeleton.bones[g.attributes.skinIndex.getComponent(i,k)].name))w+=g.attributes.skinWeight.getComponent(i,k);if(w>.65){a.skin.getVertexPosition(i,v).applyMatrix4(a.group.matrixWorld);if(v.y<a.footing+.04)result.minSeatedFootHullClearanceM=Math.min(result.minSeatedFootHullClearanceM,v.y-h.floorAt(v.x,v.z)+.015);}}}return result;}''')
+    assert report['crewLayout']['people']==54 and report['crewLayout']['helms']==2
+    assert abs(report['crewLayout']['pairSpacingM']-.48)<.0001
+    assert abs(report['crewLayout']['controllerYaw']+3.141592653589793/2)<.0001
+    assert report['crewLayout']['barCount']==9
+    assert max(report['crewLayout']['barHeightM'])<.54
+    assert report['crewLayout']['minBarHullClearanceM']>=0,report['crewLayout']
+    assert report['crewLayout']['minSeatedFootHullClearanceM']>=0,report['crewLayout']
+    assert report['environment']['crowd']['outfits']['combinations']>200
     page.get_by_role('button',name='Dừng',exact=True).click()
     # Keep an independent reference to the calibrated shared trajectories before
     # disposing the boat; the standalone export must agree at every phase.
     page.evaluate("""()=>{const h=document.querySelector('[data-testid=art-stage]').boatPreview.rig,m=h.roles['seated-port'];window.approvedMotion=[];for(let i=0;i<96;i++){m.mixer.setTime(i/96*m.clip.duration);m.root.updateMatrixWorld(true);approvedMotion.push(Object.fromEntries(['head','spine_03','pelvis','hand_l','hand_r','foot_l'].map(n=>[n,m.root.worldToLocal(m.root.getObjectByName(n).getWorldPosition(m.root.position.clone())).toArray()])));}window.approvedDuration=m.clip.duration;}""")
-    for name in ['Hai bờ sông','Toàn ghe','Nhìn từ trên','Cận tay bơi','Nhóm quỳ','Đầu ghe','Lái cuối ghe']:
+    for name in ['Khán giả','Hai bờ sông','Toàn ghe','Nhìn từ trên','Cận tay bơi','Nhóm quỳ','Đầu ghe','Lái cuối ghe']:
         page.get_by_role('button',name=name,exact=True).click()
-        page.wait_for_function("label=>document.querySelector('[data-testid=art-stage]').dataset.view===label",arg={'Hai bờ sông':'banks','Toàn ghe':'boat','Nhìn từ trên':'top','Cận tay bơi':'crew','Nhóm quỳ':'kneel','Đầu ghe':'bow','Lái cuối ghe':'stern'}[name])
+        page.wait_for_function("label=>document.querySelector('[data-testid=art-stage]').dataset.view===label",arg={'Khán giả':'crowd','Hai bờ sông':'banks','Toàn ghe':'boat','Nhìn từ trên':'top','Cận tay bơi':'crew','Nhóm quỳ':'kneel','Đầu ghe':'bow','Lái cuối ghe':'stern'}[name])
         page.screenshot(path=str(out/f'boat-{name}.png'))
     report['boatLayouts']=[]
     page.get_by_role('button',name='Toàn ghe',exact=True).click()
@@ -110,7 +121,7 @@ with sync_playwright() as p:
     page.get_by_role('button',name='Chèo',exact=True).click()
     page.wait_for_timeout(3000)
     report['remount']=page.locator('[data-testid=art-stage]').evaluate('(e)=>({...e.dataset})')
-    assert report['remount']['crewCount']=='55'
+    assert report['remount']['crewCount']=='54'
     assert report['remount']['masterRigs']=='8'
     assert int(report['remount']['splashEvents'])>0
     assert page.locator('[data-testid=art-stage] canvas').count()==1

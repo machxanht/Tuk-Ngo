@@ -1,6 +1,6 @@
 # Tuk-Ngo — hybrid ghe Ngo racing on Maspéro
 
-The canonical tablet entry is **https://machxanht.github.io/Tuk-Ngo/**. It opens a complete 3D boat with 55 people, corrected outboard rowing, half-kneeling rear rowers, bow caller and aft steering. **Hai bờ sông** shows the bright 3D festival reach: 2,214 animated spectators, two grandstands, Khmer banners and 42 house frontages. **Giải 8 ghe** opens the preserved cup. The previous tablet URL redirects to this same entry. Runtime modules have canonical unversioned names in `src/race/`.
+The canonical tablet entry is **https://machxanht.github.io/Tuk-Ngo/**. It opens a complete 3D boat with 54 people, low cross-thwarts inside the hull, separated paired rowers, half-kneeling rear rowers, a stern-facing coordinator and two helmsmen. **Hai bờ sông** shows the bright 3D festival reach: 2,214 animated spectators, two grandstands, Khmer banners and 42 house frontages. **Giải 8 ghe** opens the preserved cup. The previous tablet URL redirects to this same entry. Runtime modules have canonical unversioned names in `src/race/`.
 
 The race has three phases: explosive start (0–200 m), cruise (200–950 m), and final sprint (950–1,200 m). Chèo timing gives PERFECT / GOOD / BAD. PERFECT builds the charge for **Đạp**; its four-second final-phase surge requires 60% charge and 24% stamina. AI has its own cadence, stamina and charge. Team identity changes appearance only.
 

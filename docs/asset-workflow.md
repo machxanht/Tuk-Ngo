@@ -238,3 +238,28 @@ the local touch gate completed its three rounds. A separate 120-second local
 run kept identical camera/target values and stable geometry/texture counts after
 warm-up, with no browser errors (`boat/stability.json`). The main shader, asset
 bytes and application code were unchanged by this subsequent documentation gate.
+
+
+## Low cross-thwarts, separated crew and civilian outfits
+
+The current boat has 54 people: 50 rowers, one bow caller, a coordinator facing
+stern and two helmsmen. Seated rowers share eight transverse thwarts below the
+local gunwale; the caller has a ninth thwart at the first row's height. Thwart
+ends and foot supports are fitted against the actual interior mesh. Pair centres
+are 48 cm apart, with a 90% lateral body scale. Seated feet tuck toward the keel;
+the low stance uses a 1.22 m paddle. The standalone GLB and saved Blender source
+use the same seated leg motion and shortened paddle. The original 1.52 m equipment
+asset remains the unmodified stock mesh used to derive each paddle length.
+
+Steering uses two staggered-foot actors at x=-11 and -12 m. Their calibrated clips
+include torso weight transfer, a submerged aft/outboard sweep and raised recovery,
+with a small phase offset between the two. These are authored poses, not captured
+motion. Original body/hull, eight source clips and protected shirt data remain
+byte-for-byte unchanged.
+
+The compact civilian derivative classifies connected clothing parts into upper
+garments, trousers/skirts, footwear, hats and small trim. Shirts retain twelve
+bright tints; eight independent lower-garment colours and four shoe colours replace
+the former single full-body tint. Integer-safe palette lookup avoids noisy colour
+switches at fragment interpolation boundaries. Original NPC meshes and motion
+palettes are preserved. The **Khán giả** view inspects these garments directly.

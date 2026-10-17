@@ -219,6 +219,15 @@ for time in sample_times:
     if pivot:
         pivot.rotation_mode='QUATERNION';pivot.matrix_world=convert @ world[node_ids['Dam_Wood_152cm']] @ unconvert
         for prop in ('location','rotation_quaternion','scale'):pivot.keyframe_insert(data_path=prop,frame=frame)
+# Keep the hand grip and blade width, shortening only the shaft/blade reach
+# below the two-hand region for the low seated thwart. The pivot name remains
+# compatible with all original rig tracks. Re-running assembly is idempotent.
+paddle_mesh=scene.objects.get('Race_Paddle')
+if paddle_mesh:
+    old_length=-min(v.co.z for v in paddle_mesh.data.vertices)
+    for vertex in paddle_mesh.data.vertices:
+        z=vertex.co.z;vertex.co.z=z-(1.22-old_length)*max(0,min(1,(-z-.30)/.69))
+    paddle_mesh.data.update()
 scene.frame_set(8)
 # Frame the seated body and paddle with little unused space.
 camera=scene.camera;target=Vector((0,0,.60));camera.location=target+Vector((2.3,-3.8,1.1));camera.rotation_euler=(target-camera.location).to_track_quat('-Z','Y').to_euler();camera.data.ortho_scale=1.9
