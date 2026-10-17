@@ -107,7 +107,7 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
   frameId++;
   rigs.forEach((r,i)=>r.render(racing?race.phases[i]:c.phase,c.seconds,{teamId:teamIds[i],effort:game?(i?(game.aiRaceStage==='final'?.7:.1):Math.max(game.raceStage==='final'?.65:0,game.strength)):0,desyncIntensity:game&&i===0?game.desyncIntensity:0,connectedKit:true,updateOnly:true,viewKey:'race-'+i,frameId,distance:camera.position.distanceTo(r.boat.position),nearest:i===0}));
   sky.update(camera);banks.update(c.seconds,camera);official.update(c.seconds,racing?race:{state:'racing'},camera);
-  rigs.forEach((r,i)=>{const moving=s.playing&&(!racing||race.state==='racing'),strength=racing?(race.distance[i]>=950?.85:race.distance[i]<200?.45:.12):Math.max(0,(s.cadence-72)/24);effects[i].update(s.playing?dt:0,crews[i],racing?race.speed[i]:4.2,c.seconds,s.splash&&moving,Math.min(1,strength+((game&&(i?game.aiSurgeActive:game.surgeActive)) ? .15 : 0)));wakes[i].update(r.boat,c.seconds,moving);});
+  rigs.forEach((r,i)=>{const moving=s.playing&&(!racing||race.state==='racing'),strength=racing?(race.distance[i]>=950?.85:race.distance[i]<200?.45:.12):Math.max(0,(s.cadence-72)/24);effects[i].update(s.playing?dt:0,crews[i],racing?race.speed[i]:4.2,c.seconds,s.splash&&moving,Math.max(0,Math.min(1,strength+(game&&i===0?(game.pace==='recover'?-.18:game.pace==='sprint'?.5*game.strength:0):0)+((game&&(i?game.aiSurgeActive:game.surgeActive)) ? .15 : 0))));wakes[i].update(r.boat,c.seconds,moving);});
   renderer.render(scene,camera);
   frames++;if(now-lastStats>=1000){host.dataset.fps=(frames*1000/(now-lastStats)).toFixed(1);frames=0;lastStats=now;}
   if(game)s.onGameFrame?.(game);

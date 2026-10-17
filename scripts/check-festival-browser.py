@@ -31,6 +31,12 @@ with sync_playwright() as p:
  report['input']=page.evaluate("document.querySelector('[data-testid=art-stage]').boatPreview.game.snapshot()")
  assert report['input']['perfect']+report['input']['good']>=4,report['input']
  assert report['input']['distances'][0]>0
+ steady_force=page.evaluate("document.querySelector('[data-testid=art-stage]').boatPreview.effects[0].stats().strength")
+ page.get_by_role('button',name='Nước rút',exact=True).tap();page.wait_for_timeout(150)
+ sprint_force=page.evaluate("document.querySelector('[data-testid=art-stage]').boatPreview.effects[0].stats().strength")
+ assert sprint_force>steady_force+.1,(steady_force,sprint_force)
+ report['paceWater']={'steady':steady_force,'sprintBeforeFinal':sprint_force}
+ page.get_by_role('button',name='Đều nhịp',exact=True).tap()
  page.get_by_role('button',name='Bật âm thanh',exact=True).tap()
  page.wait_for_function('document.querySelector("audio").currentTime>0',timeout=20000)
  report['audio']={'playing':True,'source':page.locator('audio').get_attribute('src')}
