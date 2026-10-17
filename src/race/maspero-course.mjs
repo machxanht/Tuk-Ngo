@@ -24,11 +24,11 @@ export function buildMasperoSky(scene){
  #include <tonemapping_fragment>
  #include <colorspace_fragment>
  }`});
- const mesh=new T.Mesh(geometry,material);mesh.name='Maspero_Daylight_Sky';mesh.frustumCulled=false;scene.add(mesh);
+ const mesh=new T.Mesh(geometry,material);mesh.name='Maspero_Daylight_Sky';mesh.frustumCulled=false;mesh.renderOrder=-100;scene.add(mesh);
  return {update(camera){mesh.position.copy(camera.position);},dispose(){geometry.dispose();material.dispose();scene.remove(mesh);}};
 }
 
-export function buildMasperoBanks(group,waterY,crowdAssets,bankMaterials={}){
+export function buildMasperoBanks(group,waterY,crowdAssets,bankMaterials={},options={}){
  const meshes=new Map(),geometries={box:new T.BoxGeometry(1,1,1),pole:new T.CylinderGeometry(1,1,1,8),head:new T.SphereGeometry(1,9,7),crown:new T.SphereGeometry(1,20,14),cone:new T.ConeGeometry(1,1,12)},dummy=new T.Object3D();
  const material=new T.MeshStandardMaterial({color:'white',roughness:.85}),metal=new T.MeshStandardMaterial({color:'white',roughness:.55,metalness:.28});
  const people=[],totals={spectators:0,seats:0,trees:0,houses:0,distantBlocks:0,umbrellas:0,stands:2,nationalFlags:0};
@@ -116,22 +116,41 @@ export function buildMasperoBanks(group,waterY,crowdAssets,bankMaterials={}){
   for(let col=0;col<153;col++){
    if(col%31===0||col%31===1)continue;
    const x=cx-58.7+col*.77,color=col>46&&col<107?(r%2?'#eee6d6':'#be3f38'):'#447f9f';
-   box(x,y+.45,z,.57,.12,.53,color);box(x,y+.74,z-.24,.57,.55,.08,color);totals.seats++;
+   const vip=col>46&&col<107;
+   box(x,y+.45,z,.57,.12,.53,vip?'#faf7eb':color);box(x,y+.74,z-.24,.57,.55,.08,vip?'#faf7eb':color);
+   if(vip)box(x,y+.67,z-.188,.57,.16,.015,'#c53d3c');totals.seats++;
    person(x,y+.01,z,100+col*7+r,true,y+.56);
   }
  }
  for(const x of [cx-60,cx-40,cx-20,cx,cx+20,cx+40,cx+60]){
-  box(x,8,-63,.5,8.4,.5,'#dcded2');box(x,5.5,-48.2,.35,4.2,.35,'#dcded2');
-  const front=V(x,10.5,-45.6),ridge=V(x,12.0,-56.5),back=V(x,10.8,-68);
-  beam(front,ridge,.11,'#596b68');beam(ridge,back,.11,'#596b68');beam(front,back,.10,'#596b68');beam(V(x,8.2,-63),front,.08,'#596b68');beam(V(x,8.2,-63),ridge,.08,'#596b68');
+  box(x,10,-63,.5,12.4,.5,'#dcded2');box(x,7.5,-48.2,.35,8.2,.35,'#dcded2');
+  const front=V(x,14.5,-45.6),ridge=V(x,16.0,-56.5),back=V(x,14.8,-68);
+  beam(front,ridge,.11,'#596b68');beam(ridge,back,.11,'#596b68');beam(front,back,.10,'#596b68');beam(V(x,12.2,-63),front,.08,'#596b68');beam(V(x,12.2,-63),ridge,.08,'#596b68');
  }
- for(const side of [-1,1])box(cx,11.62,-56.5+side*5.75,132,.15,11.9,'#a2bab3',side*.105);
- for(let x=cx-65;x<cx+66;x+=3.6){for(const side of [-1,1])box(x,11.73,-56.5+side*5.75,.065,.035,11.9,'#c4cfbd',side*.105);}
- box(cx,9.62,-45.7,126,1.82,.08,'#992e25');for(const x of [cx-45,cx-15,cx+15,cx+45])text('ពិធីបុណ្យអកអំបុក · ប្រណាំងទូក-ង',30,1.82,x,9.62,-45.63);
+ for(const side of [-1,1])box(cx,15.62,-56.5+side*5.75,132,.15,11.9,'#a2bab3',side*.105);
+ for(let x=cx-65;x<cx+66;x+=3.6){for(const side of [-1,1])box(x,15.73,-56.5+side*5.75,.065,.035,11.9,'#c4cfbd',side*.105);}
+ box(cx,13.62,-45.7,126,1.82,.08,'#992e25');for(const x of [cx-45,cx-15,cx+15,cx+45])text('ពិធីបុណ្យអកអំបុក · ប្រណាំងទូក-ង',30,1.82,x,13.62,-45.63);
  for(const x of [cx-43,cx,cx+43])text('អបអរសាទរ · ប្រណាំងទូក-ង',39,2.05,x,3.05,-45.60,'#e1c271','#49301c');
  for(const x of [cx-64,cx+64]){
   box(x,4.9,-56,.25,5.7,20,'#e5e7dc');for(let i=0;i<15;i++)box(x-(x<cx?-1:1)*2,1.65+i*.32,-47-i*.83,3.7,.30,.82,'#cccfc3');
  }
+ // Photo-matched bay dividers, open rear concrete frame and roof webbing:
+ // Thach Pich's front / inside views (Báo Sóc Trăng, 13 Nov 2024).
+ for(let x=cx-60;x<=cx+60;x+=10){
+  box(x,10.25,-66,.6,10.9,.65,'#eeeee4');box(x,11.1,-66,9.4,.6,.65,'#e7e9df');
+  for(let z=-65;z<-46;z+=4){beam(V(x-4.8,14.65,z),V(x+4.8,15.25,z-2),.055,'#617878');beam(V(x-4.8,15.25,z-2),V(x+4.8,14.65,z),.055,'#617878');}
+ }
+ for(const dx of [-35,35]){
+  box(cx+dx,4.95,-55,.20,3.3,15.8,'#f3f1e6');
+  for(let r=0;r<8;r++)beam(V(cx+dx,4.5+r*.44,-48.7-r*1.26),V(cx+dx,4.5+(r+1)*.44,-48.7-(r+1)*1.26),.045,'#b9cacb');
+ }
+ // Low central ceremony platform at the water's edge, distinct from the
+ // grandstand roof. Reference photos are never pasted onto the meshes.
+ box(cx,1.8,-44.8,27,.75,4.5,'#e9e6d9');box(cx,5.95,-46.4,29,.13,6.6,'#e4e7df');
+ for(const dx of [-13.7,13.7]){beam(V(cx+dx,2.2,-43.5),V(cx+dx,6,-43.5),.085,'#c6cfcc');beam(V(cx+dx,2.2,-49.2),V(cx+dx,6,-49.2),.085,'#c6cfcc');}
+ for(let x=cx-13.5;x<cx+14;x+=1.1){beam(V(x,6,-43.5),V(x+1.1,6.5,-43.5),.032,'#bdc9c8');beam(V(x+1.1,6.5,-43.5),V(x+1.1,6,-43.5),.032,'#bdc9c8');}
+ text('ពិធីបុណ្យអកអំបុក · ប្រណាំងទូក-ង',26,.9,cx,2.05,-42.49,'#ae3534','#fff1aa');
+ for(let x=cx-22;x<cx+23;x+=3.2){box(x,4.9,-48.6,2.8,.10,.6,'#7c4d35');for(const dx of [-1.1,1.1])box(x+dx,4.5,-48.6,.07,.8,.4,'#7c4d35');}
  // Officials' booth, access stairs, tents and speaker stacks.
  // The opposite bank has a long low single-pitch covered spectator platform,
  // seen at 00:00 in the supplied livestream, not a mirrored VIP grandstand.
@@ -182,8 +201,9 @@ export function buildMasperoBanks(group,waterY,crowdAssets,bankMaterials={}){
  const street=buildFestivalStreet(group,bankMaterials),buildings=street.stats;
  totals.houses+=buildings.houses||buildings.buildings||0;totals.trees+=buildings.trees||0;
  people.push(...street.people);totals.spectators=people.length;
- const crowd=buildFestivalCrowd(group,people,crowdAssets),traffic=buildFestivalTraffic(group);
+ const crowd=buildFestivalCrowd(group,people,crowdAssets,options),traffic=buildFestivalTraffic(group);
  group.userData={...group.userData,reference:'OWNER_VTV10_VIDEO_2025_REAL_PHOTOS_AND_OSM_LAYOUT',dimensions:'APPROXIMATE_GAME_SCALE',...totals,buildings,detailRange:DETAIL_RANGE,bankSource:MASPERO_LAYOUT.source,bankLicense:MASPERO_LAYOUT.license,bankOutlineGameSpanM:400,bridgeYawSource:'OSM bridge centre-lines',continuousLand:true,pitchedRoof:'ridge above eaves; corrugation follows both slopes',npcSource:'Quaternius CC0 civilian silhouettes with independently animated festival actions',signLanguage:'km',standRoof:'VIP double pitch; opposite low single pitch',bridgeC247:'teal curved steel portals',bridge30April:'concrete piers and silver arched truss, 2022 construction photo; finished decoration approximate'};
  group.userData.traffic=traffic.stats;group.userData.spectatorSpacingM=.56;group.userData.fullCourseCrowdRows=10;
+ group.userData.mainStand={bank:'right in race direction',lengthM:128,tiers:8,roofHeightM:16,roof:'shallow double pitch, pale green-grey sheet metal',reference:'https://baosoctrang.org.vn/van-hoa-the-thao-du-lich/202411/hao-huc-cho-ngay-khai-hoi-67c01d9/',measured:false};
  return {totals,update(time,cameraX,cameraZ){crowd.update(time,cameraX,cameraZ);street.update(time,cameraX,cameraZ);traffic.update(time,cameraX);},dispose(){crowd.dispose();street.dispose();traffic.dispose();}};
 }

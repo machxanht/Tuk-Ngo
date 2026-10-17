@@ -20,7 +20,7 @@ export async function loadFestivalCrowd(base,{compact=false}={}){
  return{manifest,models,dispose(){/* Loader owns CPU buffers only; build owns GPU resources. */}};
 }
 
-export function buildFestivalCrowd(group,people,assets,{vibrant=false,middleLimit=600}={}){
+export function buildFestivalCrowd(group,people,assets,{vibrant=false,middleLimit=600,farLimit=16000,radius=430}={}){
  let disposed=false,lastX=Infinity,lastZ=Infinity;
  const uniforms={time:{value:0}},batches=[],resources=[],dummy=new T.Object3D();
  const records=people.map((p,index)=>{const seed=((p.id|0)^Math.imul(Math.round(p.x*100),73856093)^Math.imul(Math.round(p.z*100),19349663))>>>0;
@@ -28,8 +28,9 @@ export function buildFestivalCrowd(group,people,assets,{vibrant=false,middleLimi
   const palette=vibrant?['#ef5547','#ffbc35','#16b8a6','#39a4e3','#a478db','#f083b1','#e5e9e2','#73c553','#ef8952','#527ee0','#d45c97','#4cc6c0']:COLORS;
   return{p,index,seed,model,activity,age,phase:random(seed,3)*12,speed:.82+random(seed,4)*.34,width:(p.width||1)*(.94+random(seed,5)*.12),height:(p.height||1)*(.94+random(seed,6)*.12)*(age==='adolescent'?.80:age==='older adult'?.94:1),old:age==='older adult',color:new T.Color(palette[Math.floor(random(seed,8)*palette.length)]),outfit:Math.floor(random(seed,11)*TROUSERS.length)+Math.floor(random(seed,12)*SHOES.length)/16,skin:.85+random(seed,9)*.25,face:random(seed,10)};});
  const counts={};for(const r of records){const key=assets.manifest.motion[r.activity];counts[key]=(counts[key]||0)+1;}
- const stats={version:21,people:people.length,placed:people.length,variantCount:assets.models.length,activities:assets.manifest.motion,activityCounts:counts,active:0,lodCounts:[0,0,0],limits:{near:24,middle:middleLimit,far:16000,radius:430},drawCalls:0,paletteBytes:assets.models.reduce((s,m)=>s+m.bones.byteLength,0),motion:'GPU bone palette interpolation; source idle/wave/walk + authored clap/cheer/indicate/seated',randomization:'independent salted placement id and coordinates, clothes/hair/skin/face proportions/age styling'};
+ const stats={version:21,people:people.length,placed:people.length,variantCount:assets.models.length,activities:assets.manifest.motion,activityCounts:counts,active:0,lodCounts:[0,0,0],limits:{near:24,middle:middleLimit,far:farLimit,radius},drawCalls:0,paletteBytes:assets.models.reduce((s,m)=>s+m.bones.byteLength,0),motion:'GPU bone palette interpolation; source idle/wave/walk + authored clap/cheer/indicate/seated',randomization:'independent salted placement id and coordinates, clothes/hair/skin/face proportions/age styling'};
  group.userData.crowd=stats;
+ stats.peoplePerBank=[people.filter(p=>p.z<0).length,people.filter(p=>p.z>=0).length];
  stats.outfits={independentTrousers:TROUSERS.length,independentShoes:SHOES.length,regionPolicy:'separate upper garments, trousers/skirts, footwear, hats and small trim',combinations:new Set(records.map(r=>r.color.getHex()+':'+r.outfit)).size};
  stats.demographicCounts={age:{},gender:{},model:{}};for(const r of records)for(const [key,value]of [['age',r.age],['gender',assets.models[r.model].info.gender],['model',assets.models[r.model].meta.id]])stats.demographicCounts[key][value]=(stats.demographicCounts[key][value]||0)+1;
  for(let modelIndex=0;modelIndex<assets.models.length;modelIndex++){
@@ -77,8 +78,8 @@ export function buildFestivalCrowd(group,people,assets,{vibrant=false,middleLimi
  }
  function pack(cameraX,cameraZ){
   const started=performance.now();
-  const lists=[[],[],[]];const sorted=records.map(r=>({r,d:Math.hypot(cameraX-r.p.x,cameraZ-r.p.z)})).filter(q=>q.d<430).sort((a,b)=>a.d-b.d);
-  for(const q of sorted){const level=q.d<13&&lists[0].length<24?0:q.d<70&&lists[1].length<middleLimit?1:2;if(level===2&&lists[2].length>=16000)continue;lists[level].push(q.r);}
+  const lists=[[],[],[]];const sorted=records.map(r=>({r,d:Math.hypot(cameraX-r.p.x,cameraZ-r.p.z)})).filter(q=>q.d<radius).sort((a,b)=>a.d-b.d);
+  for(const q of sorted){const level=q.d<13&&lists[0].length<24?0:q.d<70&&lists[1].length<middleLimit?1:2;if(level===2&&lists[2].length>=farLimit)continue;lists[level].push(q.r);}
   for(const batch of batches){const chosen=lists[batch.level].filter(r=>r.model===batch.modelIndex);batch.mesh.count=chosen.length;
    chosen.forEach((r,i)=>{const p=r.p;dummy.position.set(p.x,p.seated&&p.seatY!=null?p.seatY-.55*r.height:(p.floor||0)-batch.meta.ground*batch.meta.scale*r.height,p.z);dummy.rotation.set(0,r.activity===2?Math.atan2(p.path?.dx??1,p.path?.dz??0):p.yaw??(p.z<0?0:Math.PI),0);dummy.scale.set(batch.meta.scale*r.width,batch.meta.scale*r.height,batch.meta.scale*r.width);dummy.updateMatrix();batch.mesh.setMatrixAt(i,dummy.matrix);
     batch.geo.attributes.aAct.setXYZW(i,r.activity,r.phase,r.speed,batch.level);batch.geo.attributes.aStyle.setXYZW(i,r.skin,r.old?1:0,r.outfit,r.face);batch.geo.attributes.aTint.setXYZ(i,r.color.r,r.color.g,r.color.b);

@@ -1,4 +1,4 @@
 // Generated content addresses; the page URL stays stable.
-export const rowingMotionDigest='be7c31a1716d3e29a6c00b0c22b0f0bda3247cf421d0cb7928fc832742e5b53a';
-export const athleteMasterDigest='58a47c08fbc60802e575322dd4f3647da7becf00ca13f36b3600f857984c0e9d';
+export const rowingMotionDigest='cac6212b159112857cbd6aa546e0822402eb29cdc41bcb2871643417ef3a2cb3';
+export const athleteMasterDigest='0d9c82fc382b37d90aa25e0c364b6175c366190c908d4f5fb18367e25f5c18ce';
 export const crowdAssetDigest='f4079620e7ce9a820beefec26c24fa0fa9a3e30b1745f6ae2442d0156dcb9447';

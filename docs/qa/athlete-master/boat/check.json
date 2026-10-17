@@ -1,36 +1,43 @@
 {
   "physicalTabletTested": false,
   "initialLoad": {
-    "readyMs": 3357.2000000029802,
-    "bytes": 14975726,
+    "readyMs": 5604.10000000149,
+    "bytes": 28390495,
     "urls": [
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/index-aJwbqLdu.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/index-D2yQGbLG.js",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/index-Bo7mo07X.css",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/ArtPreview-CZEnY3NE.js",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/asset-digests-D5Ydp7Sk.js",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/rotate-ccw-CrXWQwb-.js",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/download-DB43kJdV.js",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/ArtPreview-CLUOzjDj.css",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/video-BYtZPNa0.js",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/boat-preview-8ivU8oIK.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/ArtPreview-CT1Gcw_E.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/asset-digests-CQCD7ofi.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/rotate-ccw-Ga-OwFsq.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/download-BO-Lut58.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/video-DZ1DiKvM.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/ArtPreview-Cw6GWYLI.css",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/boat-preview-Mp1faHY5.js",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/three-addons-BnpvScye.js",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/three-renderer-3VrNaQXw.js",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/three-core-DFpmdtjz.js",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/boat-DqrC9toq.js",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/river-BuALb97a.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/race-crew-BJgEGqan.js",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/art-preview-CkWR3nbs.js",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/river-bank-CAI9EGDz.js",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/shirt-runtime-v32.json",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/athlete-rig-v27.glb",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/hull-rig-v25.glb",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/athlete-master/athlete-details.glb",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/athlete-master/rowing-motion.glb?sha=be7c31a1716d3e29a6c00b0c22b0f0bda3247cf421d0cb7928fc832742e5b53a",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/athlete-master/rowing-motion.glb?sha=cac6212b159112857cbd6aa546e0822402eb29cdc41bcb2871643417ef3a2cb3",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/NotoSansKhmer.ttf",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/hull-slim-bow-v23.webp",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/teams-2025/tum-nup-2.svg",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/teams-2025/prek-on-dok-2.svg",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/festival-crowd/crowd-compact.json?sha=f4079620e7ce9a820beefec26c24fa0fa9a3e30b1745f6ae2442d0156dcb9447",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/festival-crowd/crowd-compact.packed?sha=286bf615e7b2af5bc44787977914964cce41ff4637efe8474eed2c0514ce4b99",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/NotoSansKhmer.ttf"
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/NotoSansKhmer.ttf",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/shirt-runtime-v32.json",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/athlete-rig-v27.glb",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/hull-rig-v25.glb",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/athlete-master/athlete-details.glb",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/athlete-master/rowing-motion.glb?sha=cac6212b159112857cbd6aa546e0822402eb29cdc41bcb2871643417ef3a2cb3",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/festival-crowd/crowd-compact.json?sha=f4079620e7ce9a820beefec26c24fa0fa9a3e30b1745f6ae2442d0156dcb9447",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/festival-crowd/crowd-compact.packed?sha=286bf615e7b2af5bc44787977914964cce41ff4637efe8474eed2c0514ce4b99"
     ]
   },
   "geometry": {
@@ -41,7 +48,7 @@
           0.0020002857840016874
         ],
         "paddleLengthM": 1.2200000286102295,
-        "maxWristAxisDistanceM": 0.09715412150653832,
+        "maxWristAxisDistanceM": 0.09331578682243612,
         "maxPalmGripGapM": 0.0008384506077922001
       },
       "seated-starboard": {
@@ -50,7 +57,7 @@
           0.0020000000000000018
         ],
         "paddleLengthM": 1.2200000286102295,
-        "maxWristAxisDistanceM": 0.09715414631938313,
+        "maxWristAxisDistanceM": 0.0933160071487475,
         "maxPalmGripGapM": 0.0008388914503431569
       },
       "standing-port": {
@@ -59,7 +66,7 @@
           0.002000016701211471
         ],
         "paddleLengthM": 1.75,
-        "maxWristAxisDistanceM": 0.0971542362786122,
+        "maxWristAxisDistanceM": 0.0933159165411725,
         "maxPalmGripGapM": 0.0008387447637843961
       },
       "standing-starboard": {
@@ -68,7 +75,7 @@
           0.002000026360399587
         ],
         "paddleLengthM": 1.75,
-        "maxWristAxisDistanceM": 0.09715415066105665,
+        "maxWristAxisDistanceM": 0.09331602009400419,
         "maxPalmGripGapM": 0.0008388610016331988
       },
       "caller": {
@@ -95,8 +102,8 @@
           0.0020001618470971705
         ],
         "paddleLengthM": 4.199999809265137,
-        "maxWristAxisDistanceM": 0.09726342626629514,
-        "maxPalmGripGapM": 0.0006276491542083603
+        "maxWristAxisDistanceM": 0.0955313000612355,
+        "maxPalmGripGapM": 0.0004769435221897142
       },
       "helm-starboard": {
         "footClearanceM": [
@@ -104,22 +111,23 @@
           0.0020000449424013578
         ],
         "paddleLengthM": 4.199999809265137,
-        "maxWristAxisDistanceM": 0.09732173973142796,
-        "maxPalmGripGapM": 0.00048120288562563816
+        "maxWristAxisDistanceM": 0.09708459014930382,
+        "maxPalmGripGapM": 0.00031906844123922565
       }
     },
     "masters": 8,
     "stats": {
-      "gpuRenders": 15,
+      "gpuRenders": 12,
       "gpuReuses": 0,
       "poseUpdates": 16,
       "poseRestores": 0,
       "poseUpdatesByView": {
-        "study": 16
+        "study": 13,
+        "race-0": 3
       },
       "geometryCacheSize": 12,
-      "triangles": 3184394,
-      "drawCalls": 389,
+      "triangles": 4582606,
+      "drawCalls": 410,
       "teamTextures": 1,
       "kitMaterials": 6,
       "vertexAttributes": 14,
@@ -142,24 +150,17 @@
     ]
   },
   "environment": {
+    "people": 55905,
     "banks": 2,
-    "people": 2214,
     "peoplePerBank": [
-      1107,
-      1107
+      28471,
+      27434
     ],
-    "stands": 2,
-    "banners": 10,
-    "houses": 42,
-    "clothingColors": 12,
     "npcVariants": 11,
-    "riverWidthM": 61,
-    "continuousLand": true,
-    "source": "Quaternius CC0 people; existing authored Mekong street",
     "crowd": {
       "version": 21,
-      "people": 2214,
-      "placed": 2214,
+      "people": 55905,
+      "placed": 55905,
       "variantCount": 11,
       "activities": [
         "idle",
@@ -171,64 +172,68 @@
         "seated"
       ],
       "activityCounts": {
-        "seated": 352,
-        "indicate": 238,
-        "clap": 338,
-        "cheer": 226,
-        "idle": 544,
-        "wave": 314,
-        "walk": 202
+        "clap": 10199,
+        "wave": 10156,
+        "cheer": 7599,
+        "idle": 18254,
+        "indicate": 5803,
+        "seated": 1958,
+        "walk": 1936
       },
-      "active": 2214,
+      "active": 12304,
       "lodCounts": [
         24,
         280,
-        1910
+        12000
       ],
       "limits": {
         "near": 24,
         "middle": 280,
-        "far": 16000,
+        "far": 12000,
         "radius": 430
       },
       "drawCalls": 33,
       "paletteBytes": 6110720,
       "motion": "GPU bone palette interpolation; source idle/wave/walk + authored clap/cheer/indicate/seated",
       "randomization": "independent salted placement id and coordinates, clothes/hair/skin/face proportions/age styling",
+      "peoplePerBank": [
+        28471,
+        27434
+      ],
       "outfits": {
         "independentTrousers": 8,
         "independentShoes": 4,
         "regionPolicy": "separate upper garments, trousers/skirts, footwear, hats and small trim",
-        "combinations": 381
+        "combinations": 384
       },
       "demographicCounts": {
         "age": {
-          "adult": 1561,
-          "older adult": 501,
-          "adolescent": 152
+          "adult": 39150,
+          "adolescent": 4474,
+          "older adult": 12281
         },
         "gender": {
-          "women": 797,
-          "men": 1417
+          "men": 35545,
+          "women": 20360
         },
         "model": {
-          "formal-woman": 201,
-          "suit-woman": 199,
-          "worker-man": 198,
-          "farmer-man": 221,
-          "suit-man": 187,
-          "beach-man": 198,
-          "casual-man": 208,
-          "casual-woman": 197,
-          "hoodie-man": 195,
-          "worker-woman": 200,
-          "punk-man": 210
+          "worker-man": 5034,
+          "casual-woman": 5106,
+          "suit-man": 5121,
+          "punk-man": 5040,
+          "farmer-man": 5058,
+          "suit-woman": 5140,
+          "beach-man": 5138,
+          "hoodie-man": 5220,
+          "formal-woman": 5057,
+          "casual-man": 4934,
+          "worker-woman": 5057
         }
       },
-      "visibleTriangles": 1072016,
-      "lastPackMs": 2.899999998509884
+      "visibleTriangles": 2649974,
+      "lastPackMs": 12.100000001490116
     },
-    "animatedPixels": 558,
+    "animatedPixels": 4712,
     "khmerFont": true,
     "waterDaylight": 1
   },
@@ -257,7 +262,7 @@
       0.5069534758117306
     ],
     "minBarHullClearanceM": 0.016684506700018184,
-    "minSeatedFootHullClearanceM": 0.013891657122642828
+    "minSeatedFootHullClearanceM": 0.013891607056178298
   },
   "boatLayouts": [
     {
@@ -267,9 +272,9 @@
       ],
       "canvas": {
         "x": 0,
-        "y": 159,
+        "y": 221,
         "width": 1024,
-        "height": 516
+        "height": 454
       },
       "controls": {
         "x": 0,
@@ -285,9 +290,9 @@
       ],
       "canvas": {
         "x": 0,
-        "y": 214,
+        "y": 258,
         "width": 768,
-        "height": 717
+        "height": 673
       },
       "controls": {
         "x": 0,
@@ -318,18 +323,22 @@
   "standalone": {
     "testid": "art-stage",
     "renderMode": "athlete-study",
-    "artSource": "BLENDER_MASTER",
+    "boatCount": "1",
     "crewCount": "1",
     "masterRigs": "8",
-    "phase": "0.8004",
+    "phase": "0.7666",
     "view": "front",
     "triangles": "21919",
     "drawCalls": "19",
     "splashEvents": "0",
     "banks": "2",
-    "spectators": "2214",
+    "spectators": "55905",
     "daylight": "bright",
-    "fps": "32.0"
+    "raceState": "countdown",
+    "courseLength": "1200",
+    "raceDistances": "[0]",
+    "fps": "32.0",
+    "artSource": "BLENDER_MASTER"
   },
   "motionAgreement": {
     "samples": 96,
@@ -338,7 +347,7 @@
       "spine_03": 5.777394712687099e-17,
       "pelvis": 1.0010976524480169e-17,
       "hand_l": 2.2887833992611187e-16,
-      "hand_r": 2.482534153247273e-16,
+      "hand_r": 2.237726045655905e-16,
       "foot_l": 6.938893903907228e-17
     },
     "maxPalmGripGapM": 0.003058772062693804
@@ -346,18 +355,22 @@
   "remount": {
     "testid": "art-stage",
     "renderMode": "boat",
-    "artSource": "BLENDER_EQUIPMENT_APPROVED_ROLE_MASTERS",
+    "boatCount": "1",
     "crewCount": "54",
     "masterRigs": "8",
-    "phase": "0.0006",
+    "phase": "0.9532",
     "view": "boat",
-    "triangles": "3197240",
-    "drawCalls": "384",
-    "splashEvents": "1230",
+    "triangles": "4593738",
+    "drawCalls": "364",
+    "splashEvents": "1158",
     "banks": "2",
-    "spectators": "2214",
+    "spectators": "55905",
     "daylight": "bright",
-    "fps": "32.0"
+    "raceState": "countdown",
+    "courseLength": "1200",
+    "raceDistances": "[0]",
+    "fps": "32.0",
+    "artSource": "BLENDER_MASTER"
   },
   "errors": []
 }

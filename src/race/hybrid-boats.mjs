@@ -20,7 +20,7 @@ const materialCache=new WeakMap();
 function materialFrom(m){if(!materialCache.has(m))materialCache.set(m,new T.MeshLambertMaterial({color:m.color,map:m.map,vertexColors:m.vertexColors,side:T.DoubleSide,transparent:m.transparent,opacity:m.opacity,alphaTest:m.alphaTest}));return materialCache.get(m);}
 function regularAttribute(a,type=Float32Array){const array=new type(a.count*a.itemSize);for(let i=0;i<a.count;i++)for(let k=0;k<a.itemSize;k++)array[i*a.itemSize+k]=a.getComponent(i,k);return new T.BufferAttribute(array,a.itemSize);}
 
-export async function createHybridBoats(base='',{onProgress=()=>{}}={}){
+export async function createHybridBoats(base='',{onProgress=()=>{},sharedRenderer=null}={}){
  const loader=new GLTFLoader(),roles={};
  const motionFile='../athlete-master/rowing-motion.glb?sha='+rowingMotionDigest;
  let loaded=0;
@@ -86,8 +86,8 @@ export async function createHybridBoats(base='',{onProgress=()=>{}}={}){
  function faceFor(id,teamId){let seed=id*0x45d9f3b;for(const c of teamId||'prototype')seed=Math.imul(seed^c.charCodeAt(0),16777619);seed=Math.imul(seed^(seed>>>16),0x7feb352d);return ((seed^(seed>>>15))>>>0)%geometryVariants.length;}
  const scene=new T.Scene(),boat=new T.Group();scene.add(boat);
  scene.add(new T.HemisphereLight('#fff8e4','#d7c5a4',2.1));const sun=new T.DirectionalLight('#ffedcd',1.05);sun.position.set(5,12,-8);scene.add(sun);
- const renderer=new T.WebGLRenderer({alpha:true,antialias:true,powerPreference:'high-performance',preserveDrawingBuffer:true});renderer.setClearColor(0,0);renderer.outputColorSpace=T.SRGBColorSpace;renderer.toneMapping=T.NoToneMapping;
- renderer.setSize(1600,Math.round(1600*H/W),false);
+ const renderer=sharedRenderer||new T.WebGLRenderer({alpha:true,antialias:true,powerPreference:'high-performance',preserveDrawingBuffer:true});
+ if(!sharedRenderer){renderer.setClearColor(0,0);renderer.outputColorSpace=T.SRGBColorSpace;renderer.toneMapping=T.NoToneMapping;renderer.setSize(1600,Math.round(1600*H/W),false);}
  const camera=new T.OrthographicCamera(-15.8,18.7,34.5*H/W/2,-34.5*H/W/2,.1,120);
  function fullCamera(){camera.left=-15.8;camera.right=18.7;camera.top=34.5*H/W/2;camera.bottom=-camera.top;camera.position.set(9,13.2,-28);camera.lookAt(0,-.8,0);camera.updateProjectionMatrix();camera.updateMatrixWorld(true);}
  fullCamera();
@@ -230,7 +230,8 @@ export async function createHybridBoats(base='',{onProgress=()=>{}}={}){
  const tips=[],tipVector=new T.Vector3();
  let styleKey,studyOverride,gpuRenders=0,gpuReuses=0;
  const styles=new Map(),farImages=new Map();
- function render(phase,t,{study=false,posture='seated',kitColor='#23855e',teamId=null,faceVariant=null,skinDetail=1,focus='body',angle='three-quarter',effort=0,viewKey='study',frameId,distance=0,nearest=false,desyncIntensity=0,externalCamera=null,beforeRender=null,connectedKit=false}={}){
+ const boatInverse=new T.Matrix4(),accessoryMatrix=new T.Matrix4();
+ function render(phase,t,{study=false,posture='seated',kitColor='#23855e',teamId=null,faceVariant=null,skinDetail=1,focus='body',angle='three-quarter',effort=0,viewKey='study',frameId,distance=0,nearest=false,desyncIntensity=0,externalCamera=null,beforeRender=null,connectedKit=false,updateOnly=false}={}){
   if(studyOverride){studyOverride.variant=faceFor(studyOverride.id,studyOverride.teamId);studyOverride.skin.geometry=geometryFor(studyOverride.role,studyOverride.variant);studyOverride=null;}
   const team=teamId?window.TukNgoTeams.get(teamId):null,map=team?liveries.get(team.id):null;
   if(team&&!map)throw Error('Team livery is not loaded: '+teamId);
@@ -257,7 +258,11 @@ export async function createHybridBoats(base='',{onProgress=()=>{}}={}){
    const direction={front:[1,.10,0],side:[0,.10,-1],back:[-1,.10,0],'three-quarter':[.65,.18,-.75]}[angle]||[.65,.18,-.75],offset=new T.Vector3(...direction);if(target.role==='caller')offset.x*=-1;
    if(focus==='face'){const head=target.master.skeleton.bones.find(b=>b.name==='head').getWorldPosition(new T.Vector3()).applyMatrix4(target.group.matrixWorld);head.y+=.06;camera.position.copy(head).add(offset);camera.lookAt(head);}else{const center=new T.Vector3(x,y,0);camera.position.copy(center).add(offset.multiplyScalar(3.3)).add(new T.Vector3(0,.45,0));camera.lookAt(center);}camera.updateProjectionMatrix();camera.updateMatrixWorld(true);
   }else{actors.forEach(a=>a.group.visible=true);boardBatch.visible=true;boards.forEach(board=>board.visible=false);if(!externalCamera)fullCamera();}
-  for(const {batch,entries} of batches){let n=0;for(const {owner,mesh} of entries)if(owner.group.visible)batch.setMatrixAt(n++,mesh.matrixWorld);batch.count=n;batch.instanceMatrix.needsUpdate=true;}
+  // Instance matrices are local to the boat. A moving/rotating race boat must
+  // not apply its world transform to the paddles a second time.
+  boatInverse.copy(boat.matrixWorld).invert();
+  for(const {batch,entries} of batches){let n=0;for(const {owner,mesh} of entries)if(owner.group.visible)batch.setMatrixAt(n++,accessoryMatrix.multiplyMatrices(boatInverse,mesh.matrixWorld));batch.count=n;batch.instanceMatrix.needsUpdate=true;}
+  if(updateOnly)return renderer.domElement;
   const far=!study&&!nearest&&Number.isInteger(frameId)&&distance>animation.distanceThreshold;
   const imageKey=key+'|'+skinDetail,previous=farImages.get(viewKey),reuse=far&&frameId%2&&previous?.key===imageKey&&previous.canvas.width===renderer.domElement.width;
   beforeRender?.();
@@ -280,13 +285,13 @@ export async function createHybridBoats(base='',{onProgress=()=>{}}={}){
  return {render,bow,waterBow,stern,tips,actors,roles,boat,scene,renderer,camera,animation,floorAt:floor,prepareTeams:liveries.load,stats:{revision:'hybrid-v32',athletes:actors.length,geometryVariants:12,faceProfiles:FACE_PROFILES.map(p=>({name:p.name,hair:p.hair,beard:p.beard})),skinTexture:'Official MakeHuman CC0; original UVs and pixels',animation:'continuous-skinned-3d',sharedPoseRigs:roleNames.length,trianglesPerActor:merged.index.count/3,soleLiftM:soleLift},resize(width){const w=Math.min(1600,Math.max(640,Math.round(width)));renderer.setSize(w,Math.round(w*H/W),false);farImages.clear();animation.clear();},getDrawStats(){return {gpuRenders,gpuReuses,poseUpdates:animation.counters.updates,poseRestores:animation.counters.restores,poseUpdatesByView:{...animation.counters.byView},geometryCacheSize:geometryVariants.length,triangles:renderer.info.render.triangles,drawCalls:renderer.info.render.calls,teamTextures:liveries.textures.size,kitMaterials:materials.size,vertexAttributes:Math.max(...renderer.info.programs.map(p=>Object.values(p.getAttributes()).reduce((sum,a)=>sum+(a.locationSize||1),0))),vertexAttributeLimit:renderer.getContext().getParameter(renderer.getContext().MAX_VERTEX_ATTRIBS)};},dispose(){
    animation.clear();styles.clear();for(const {canvas} of farImages.values()){canvas.width=1;canvas.height=1;}farImages.clear();for(const master of Object.values(roles)){master.mixer.stopAllAction();master.mixer.uncacheRoot(master.root);master.skeleton.dispose();}
    const geometries=new Set(),meshMaterials=new Set(),maps=new Set();
-   scene.traverse(o=>{if(o.geometry)geometries.add(o.geometry);for(const m of Array.isArray(o.material)?o.material:o.material?[o.material]:[]){meshMaterials.add(m);for(const value of Object.values(m))if(value?.isTexture)maps.add(value);}});
+   scene.traverse(o=>{if(o.isInstancedMesh)o.dispose();if(o.geometry)geometries.add(o.geometry);for(const m of Array.isArray(o.material)?o.material:o.material?[o.material]:[]){meshMaterials.add(m);for(const value of Object.values(m))if(value?.isTexture)maps.add(value);}});
    equipment.scene.traverse(o=>{if(o.geometry)geometries.add(o.geometry);if(o.material)meshMaterials.add(o.material);});
    for(const o of sourcePaddles){geometries.add(o.geometry);meshMaterials.add(o.material);}
    for(const g of paddleGeometry.values())geometries.add(g);for(const d of decals)geometries.add(d.geometry);
    for(const o of boards)geometries.add(o.geometry);geometries.add(merged);for(const g of geometryVariants)geometries.add(g);
     geometries.forEach(g=>g.dispose());for(const slices of floorSlices.values())for(const {mesh}of slices)mesh.geometry.dispose();floorSlices.clear();meshMaterials.forEach(m=>m.dispose());maps.forEach(t=>t.dispose());
-   shirtAsset.dispose();materials.dispose();liveries.dispose();texture.dispose();skinMap.dispose();renderer.dispose();
+   shirtAsset.dispose();materials.dispose();liveries.dispose();texture.dispose();skinMap.dispose();if(!sharedRenderer)renderer.dispose();
    for(const file of ['shirt-runtime-v32.json','athlete-rig-v27.glb','hull-rig-v25.glb','../athlete-master/athlete-details.glb',motionFile])releaseAssetBytes(base+file);
    scene.clear();
   }};

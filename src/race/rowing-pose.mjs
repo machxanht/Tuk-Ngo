@@ -28,7 +28,10 @@ export function rowingPose(master,{role='rower',posture='seated',side=-1}={}){
   direction(thigh,calf,knee.sub(origin));direction(calf,foot,target.sub(pos(calf)));setQ(foot,restQ(foot));
  }
  function arm(arm,grip){
-  const origin=pos(arm.u),delta=grip.clone().sub(origin),distance=delta.length(),u=arm.ul,v=arm.fl+arm.pl,d=Math.min(distance,u+v-1e-6),unit=delta.normalize(),a=(u*u-v*v+d*d)/(2*d),pole=V(arm.sign,-.15,.2);pole.addScaledVector(unit,-pole.dot(unit)).normalize();
+  // The inboard upper arm folds forward, along the boat, instead of flaring
+  // sideways into its partner. Both palms still solve to the same shaft.
+  const outer=-side,inboard=arm.sign!==outer;
+  const origin=pos(arm.u),delta=grip.clone().sub(origin),distance=delta.length(),u=arm.ul,v=arm.fl+arm.pl,d=Math.min(distance,u+v-1e-6),unit=delta.normalize(),a=(u*u-v*v+d*d)/(2*d),pole=inboard?V(outer,-.15,.05):V(arm.sign,-.15,.2);pole.addScaledVector(unit,-pole.dot(unit)).normalize();
   const elbow=origin.clone().addScaledVector(unit,a).addScaledVector(pole,Math.sqrt(Math.max(0,u*u-a*a))),end=elbow.clone().addScaledVector(grip.clone().sub(elbow).normalize(),arm.fl),ud=elbow.clone().sub(origin).normalize(),fd=end.clone().sub(elbow).normalize(),hinge=ud.clone().cross(fd).normalize();
   setQ(arm.u,frame(hinge,ud).multiply(arm.uf));setQ(arm.f,frame(hinge,fd).multiply(arm.ff));setQ(arm.h,frame(hinge,grip.clone().sub(end)).multiply(arm.hf));
  }

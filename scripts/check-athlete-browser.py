@@ -17,6 +17,8 @@ with sync_playwright() as p:
     page.on('pageerror',lambda e:errors.append(str(e)))
     page.on('console',lambda msg:errors.append(msg.text) if msg.type=='error' else None)
     page.goto(args.url)
+    page.wait_for_selector('[data-render-mode=race]',timeout=90000)
+    page.get_by_role('button',name='Cả ghe 3D',exact=True).click()
     page.wait_for_selector('[data-render-mode=boat]',timeout=90000)
     report['initialLoad']=page.evaluate("()=>({readyMs:performance.now(),bytes:performance.getEntriesByType('resource').reduce((s,e)=>s+e.encodedBodySize,0),urls:performance.getEntriesByType('resource').map(e=>e.name)})")
     assert not any(name in url for url in report['initialLoad']['urls'] for name in ['festival-landscape','spectators-','rower-seated','mekong-buildings','festival-scene.js','ghe-ngo-crew-v18','App-']),report['initialLoad']
