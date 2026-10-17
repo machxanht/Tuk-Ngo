@@ -263,3 +263,15 @@ bright tints; eight independent lower-garment colours and four shoe colours repl
 the former single full-body tint. Integer-safe palette lookup avoids noisy colour
 switches at fragment interpolation boundaries. Original NPC meshes and motion
 palettes are preserved. The **Khán giả** view inspects these garments directly.
+
+
+Public verification for this revision passed on source `789cc79`, Pages commit
+`dba44b67f1887c48321e84d09446f6868b4685ac`, Actions run `39021620087`.
+The actual public renderer passed the crew-layout assertions, 96-phase GLB
+agreement, mode remounts, animated crowd and three tablet viewport checks with
+no browser errors. Seventeen public asset files match the local bytes. Local
+cup QA completed all three rounds and the renderer disposal check released all
+tracked GPU geometry and textures. Physical tablet performance remains untested.
+Evidence: `docs/qa/athlete-master/public-boat/check.json`, `asset-hashes.json`,
+`deployment.json`, plus the local `boat/floor-slices.json` and steering contact
+sheet. The 40-sample sliced/full hull-ray comparison measured zero drift.
