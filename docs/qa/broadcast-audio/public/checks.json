@@ -10,23 +10,22 @@
     "voiceClips": 1,
     "khmerClips": 0,
     "cues": [
-      "ready",
-      "go"
+      "ready"
     ],
     "played": [
       {
-        "key": "broadcast-go",
-        "at": 3.14,
+        "key": "broadcast-ready",
+        "at": 1.7208616780045352,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
         ]
       }
     ],
     "errors": [],
-    "decoded": 8,
+    "decoded": 11,
     "context": "running",
-    "audioTime": 3.1413333333333333,
+    "audioTime": 1.7414965986394557,
     "active": true,
     "mix": {
       "enabled": true,
@@ -36,28 +35,28 @@
       "crowd": true,
       "volume": 0.8
     },
-    "sources": 2,
+    "sources": 1,
     "queued": [],
     "speaking": true,
-    "outputRms": 0.008519719701073876,
+    "outputRms": 0.06602297583873443,
     "cached": 13,
     "teams": [
       "tum-nup-2",
-      "ca_mau-04"
+      "ca_mau-02"
     ],
     "disposed": false,
     "origin": "broadcast",
     "sourceVideo": "crZF3hghbgQ"
   },
   "intro": {
-    "drumHits": 4,
+    "drumHits": 17,
     "drumKinds": {
-      "drum-low": 1,
-      "drum-open": 3,
+      "drum-low": 4,
+      "drum-open": 13,
       "drum-rim": 0
     },
-    "voiceClips": 2,
-    "khmerClips": 1,
+    "voiceClips": 3,
+    "khmerClips": 2,
     "cues": [
       "ready",
       "go",
@@ -65,34 +64,50 @@
     ],
     "played": [
       {
-        "key": "broadcast-go",
-        "at": 3.14,
+        "key": "broadcast-ready",
+        "at": 1.7208616780045352,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
+        ]
+      },
+      {
+        "key": "broadcast-go",
+        "at": 3.7816326530612243,
+        "match": [
+          "tum-nup-2",
+          "ca_mau-02"
+        ]
+      },
+      {
+        "key": "khmer-go",
+        "at": 6.986632653061225,
+        "match": [
+          "tum-nup-2",
+          "ca_mau-02"
         ]
       },
       {
         "key": "broadcast-intro",
-        "at": 5.9319999999999995,
+        "at": 9.371836734693877,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
         ]
       },
       {
         "key": "khmer-intro",
-        "at": 8.257,
+        "at": 11.626814058956917,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
         ]
       }
     ],
     "errors": [],
     "decoded": 13,
     "context": "running",
-    "audioTime": 5.92,
+    "audioTime": 13.432743764172336,
     "active": true,
     "mix": {
       "enabled": true,
@@ -105,25 +120,25 @@
     "sources": 3,
     "queued": [],
     "speaking": true,
-    "outputRms": 0.012555071130781383,
+    "outputRms": 0.12170926220281679,
     "cached": 13,
     "teams": [
       "tum-nup-2",
-      "ca_mau-04"
+      "ca_mau-02"
     ],
     "disposed": false,
     "origin": "broadcast",
     "sourceVideo": "crZF3hghbgQ"
   },
   "pause": {
-    "drumHits": 4,
+    "drumHits": 17,
     "drumKinds": {
-      "drum-low": 1,
-      "drum-open": 3,
+      "drum-low": 4,
+      "drum-open": 13,
       "drum-rim": 0
     },
-    "voiceClips": 2,
-    "khmerClips": 1,
+    "voiceClips": 3,
+    "khmerClips": 2,
     "cues": [
       "ready",
       "go",
@@ -131,34 +146,50 @@
     ],
     "played": [
       {
-        "key": "broadcast-go",
-        "at": 3.14,
+        "key": "broadcast-ready",
+        "at": 1.7208616780045352,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
+        ]
+      },
+      {
+        "key": "broadcast-go",
+        "at": 3.7816326530612243,
+        "match": [
+          "tum-nup-2",
+          "ca_mau-02"
+        ]
+      },
+      {
+        "key": "khmer-go",
+        "at": 6.986632653061225,
+        "match": [
+          "tum-nup-2",
+          "ca_mau-02"
         ]
       },
       {
         "key": "broadcast-intro",
-        "at": 5.9319999999999995,
+        "at": 9.371836734693877,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
         ]
       },
       {
         "key": "khmer-intro",
-        "at": 8.257,
+        "at": 11.626814058956917,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
         ]
       }
     ],
     "errors": [],
     "decoded": 13,
     "context": "running",
-    "audioTime": 6.2,
+    "audioTime": 13.772335600907029,
     "active": false,
     "mix": {
       "enabled": true,
@@ -175,21 +206,21 @@
     "cached": 13,
     "teams": [
       "tum-nup-2",
-      "ca_mau-04"
+      "ca_mau-02"
     ],
     "disposed": false,
     "origin": "broadcast",
     "sourceVideo": "crZF3hghbgQ"
   },
   "mute": {
-    "drumHits": 5,
+    "drumHits": 17,
     "drumKinds": {
-      "drum-low": 1,
-      "drum-open": 4,
+      "drum-low": 4,
+      "drum-open": 13,
       "drum-rim": 0
     },
-    "voiceClips": 2,
-    "khmerClips": 1,
+    "voiceClips": 3,
+    "khmerClips": 2,
     "cues": [
       "ready",
       "go",
@@ -197,34 +228,50 @@
     ],
     "played": [
       {
-        "key": "broadcast-go",
-        "at": 3.14,
+        "key": "broadcast-ready",
+        "at": 1.7208616780045352,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
+        ]
+      },
+      {
+        "key": "broadcast-go",
+        "at": 3.7816326530612243,
+        "match": [
+          "tum-nup-2",
+          "ca_mau-02"
+        ]
+      },
+      {
+        "key": "khmer-go",
+        "at": 6.986632653061225,
+        "match": [
+          "tum-nup-2",
+          "ca_mau-02"
         ]
       },
       {
         "key": "broadcast-intro",
-        "at": 5.9319999999999995,
+        "at": 9.371836734693877,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
         ]
       },
       {
         "key": "khmer-intro",
-        "at": 8.257,
+        "at": 11.626814058956917,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
         ]
       }
     ],
     "errors": [],
     "decoded": 13,
     "context": "running",
-    "audioTime": 6.512,
+    "audioTime": 14.210612244897959,
     "active": true,
     "mix": {
       "enabled": false,
@@ -241,7 +288,7 @@
     "cached": 13,
     "teams": [
       "tum-nup-2",
-      "ca_mau-04"
+      "ca_mau-02"
     ],
     "disposed": false,
     "origin": "broadcast",
@@ -312,13 +359,13 @@
     }
   ],
   "final": {
-    "drumHits": 14,
+    "drumHits": 27,
     "drumKinds": {
-      "drum-low": 3,
-      "drum-open": 8,
+      "drum-low": 6,
+      "drum-open": 18,
       "drum-rim": 3
     },
-    "voiceClips": 3,
+    "voiceClips": 4,
     "khmerClips": 2,
     "cues": [
       "ready",
@@ -328,50 +375,58 @@
     ],
     "played": [
       {
-        "key": "broadcast-go",
-        "at": 3.14,
+        "key": "broadcast-ready",
+        "at": 1.7208616780045352,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
+        ]
+      },
+      {
+        "key": "broadcast-go",
+        "at": 3.7816326530612243,
+        "match": [
+          "tum-nup-2",
+          "ca_mau-02"
+        ]
+      },
+      {
+        "key": "khmer-go",
+        "at": 6.986632653061225,
+        "match": [
+          "tum-nup-2",
+          "ca_mau-02"
         ]
       },
       {
         "key": "broadcast-intro",
-        "at": 5.9319999999999995,
+        "at": 9.371836734693877,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
         ]
       },
       {
         "key": "khmer-intro",
-        "at": 8.257,
+        "at": 11.626814058956917,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
         ]
       },
       {
         "key": "broadcast-sprint",
-        "at": 8.54,
+        "at": 16.491655328798185,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
-        ]
-      },
-      {
-        "key": "khmer-final",
-        "at": 9.905,
-        "match": [
-          "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
         ]
       }
     ],
     "errors": [],
     "decoded": 13,
     "context": "running",
-    "audioTime": 9.941333333333333,
+    "audioTime": 17.830022675736963,
     "active": true,
     "mix": {
       "enabled": true,
@@ -384,25 +439,25 @@
     "sources": 4,
     "queued": [],
     "speaking": true,
-    "outputRms": 0.02327433800889365,
+    "outputRms": 0.05324894196584212,
     "cached": 13,
     "teams": [
       "tum-nup-2",
-      "ca_mau-04"
+      "ca_mau-02"
     ],
     "disposed": false,
     "origin": "broadcast",
     "sourceVideo": "crZF3hghbgQ"
   },
   "surge": {
-    "drumHits": 16,
+    "drumHits": 27,
     "drumKinds": {
-      "drum-low": 3,
-      "drum-open": 9,
-      "drum-rim": 4
+      "drum-low": 6,
+      "drum-open": 18,
+      "drum-rim": 3
     },
-    "voiceClips": 4,
-    "khmerClips": 3,
+    "voiceClips": 5,
+    "khmerClips": 2,
     "cues": [
       "ready",
       "go",
@@ -412,66 +467,66 @@
     ],
     "played": [
       {
-        "key": "broadcast-go",
-        "at": 3.14,
+        "key": "broadcast-ready",
+        "at": 1.7208616780045352,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
+        ]
+      },
+      {
+        "key": "broadcast-go",
+        "at": 3.7816326530612243,
+        "match": [
+          "tum-nup-2",
+          "ca_mau-02"
+        ]
+      },
+      {
+        "key": "khmer-go",
+        "at": 6.986632653061225,
+        "match": [
+          "tum-nup-2",
+          "ca_mau-02"
         ]
       },
       {
         "key": "broadcast-intro",
-        "at": 5.9319999999999995,
+        "at": 9.371836734693877,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
         ]
       },
       {
         "key": "khmer-intro",
-        "at": 8.257,
+        "at": 11.626814058956917,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
         ]
       },
       {
         "key": "broadcast-sprint",
-        "at": 8.54,
+        "at": 16.491655328798185,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
-        ]
-      },
-      {
-        "key": "khmer-final",
-        "at": 9.905,
-        "match": [
-          "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
         ]
       },
       {
         "key": "broadcast-surge",
-        "at": 10.030666666666667,
+        "at": 17.971927437641725,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
-        ]
-      },
-      {
-        "key": "khmer-surge",
-        "at": 11.075666666666667,
-        "match": [
-          "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
         ]
       }
     ],
     "errors": [],
     "decoded": 13,
     "context": "running",
-    "audioTime": 11.08,
+    "audioTime": 17.98095238095238,
     "active": true,
     "mix": {
       "enabled": true,
@@ -481,27 +536,27 @@
       "crowd": true,
       "volume": 0.55
     },
-    "sources": 3,
+    "sources": 4,
     "queued": [],
     "speaking": true,
-    "outputRms": 0.008648429606312511,
+    "outputRms": 0.030630850136475207,
     "cached": 13,
     "teams": [
       "tum-nup-2",
-      "ca_mau-04"
+      "ca_mau-02"
     ],
     "disposed": false,
     "origin": "broadcast",
     "sourceVideo": "crZF3hghbgQ"
   },
   "finish": {
-    "drumHits": 16,
+    "drumHits": 27,
     "drumKinds": {
-      "drum-low": 3,
-      "drum-open": 9,
-      "drum-rim": 4
+      "drum-low": 6,
+      "drum-open": 18,
+      "drum-rim": 3
     },
-    "voiceClips": 5,
+    "voiceClips": 6,
     "khmerClips": 3,
     "cues": [
       "ready",
@@ -513,74 +568,82 @@
     ],
     "played": [
       {
-        "key": "broadcast-go",
-        "at": 3.14,
+        "key": "broadcast-ready",
+        "at": 1.7208616780045352,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
+        ]
+      },
+      {
+        "key": "broadcast-go",
+        "at": 3.7816326530612243,
+        "match": [
+          "tum-nup-2",
+          "ca_mau-02"
+        ]
+      },
+      {
+        "key": "khmer-go",
+        "at": 6.986632653061225,
+        "match": [
+          "tum-nup-2",
+          "ca_mau-02"
         ]
       },
       {
         "key": "broadcast-intro",
-        "at": 5.9319999999999995,
+        "at": 9.371836734693877,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
         ]
       },
       {
         "key": "khmer-intro",
-        "at": 8.257,
+        "at": 11.626814058956917,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
         ]
       },
       {
         "key": "broadcast-sprint",
-        "at": 8.54,
+        "at": 16.491655328798185,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
-        ]
-      },
-      {
-        "key": "khmer-final",
-        "at": 9.905,
-        "match": [
-          "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
         ]
       },
       {
         "key": "broadcast-surge",
-        "at": 10.030666666666667,
+        "at": 17.971927437641725,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
-        ]
-      },
-      {
-        "key": "khmer-surge",
-        "at": 11.075666666666667,
-        "match": [
-          "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
         ]
       },
       {
         "key": "broadcast-finish",
-        "at": 11.132,
+        "at": 18.041587301587303,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
+        ]
+      },
+      {
+        "key": "khmer-finish",
+        "at": 19.036564625850342,
+        "match": [
+          "tum-nup-2",
+          "ca_mau-02"
         ]
       }
     ],
     "errors": [],
     "decoded": 13,
     "context": "running",
-    "audioTime": 11.32,
+    "audioTime": 19.051972789115645,
     "active": true,
     "mix": {
       "enabled": true,
@@ -593,11 +656,11 @@
     "sources": 1,
     "queued": [],
     "speaking": true,
-    "outputRms": 0.032791457738205416,
+    "outputRms": 0.019518548531445863,
     "cached": 13,
     "teams": [
       "tum-nup-2",
-      "ca_mau-04"
+      "ca_mau-02"
     ],
     "disposed": false,
     "origin": "broadcast",
@@ -608,32 +671,32 @@
     "difficulty": "normal",
     "pace": "steady",
     "countdown": 0,
-    "elapsed": 189.94166666657614,
+    "elapsed": 198.13749999990202,
     "distances": [
       1200,
-      1081.9203018771445
+      1132.6443946609681
     ],
     "speeds": [
       0,
       0
     ],
     "finishTimes": [
-      189.94070127102106,
+      198.13516913018225,
       null
     ],
-    "beatPhase": 282.6508333332493,
-    "aiPhase": 0.8279166666673888,
-    "stamina": 31.46581265196372,
-    "power": 0.8992747564592267,
+    "beatPhase": 295.7658333332889,
+    "aiPhase": 0.7608333333340528,
+    "stamina": 22.729165813387628,
+    "power": 0.8816148467834165,
     "cohesion": 1,
     "combo": 274,
     "maxCombo": 274,
     "perfect": 274,
     "good": 0,
-    "missed": 8,
-    "lastResolved": 282,
+    "missed": 21,
+    "lastResolved": 295,
     "feedback": "PERFECT · Chuẩn!",
-    "feedbackAt": 189.56249999990982,
+    "feedbackAt": 197.68749999990243,
     "result": "win",
     "pauseReason": "",
     "runId": 1,
@@ -643,33 +706,33 @@
     "lastSpamAt": -10,
     "slipstream": false,
     "lastJudgement": "PERFECT",
-    "aiStamina": 29.47758333330267,
-    "aiSurgeCharge": 0.4120000000000003,
-    "aiSurgeRemaining": 0,
+    "aiStamina": 11.740499999968508,
+    "aiSurgeCharge": 0.06400000000000045,
+    "aiSurgeRemaining": 1.7958333333332348,
     "raceStage": "final",
     "stageLabel": "Nước rút về đích",
     "cadence": 102,
     "aiRaceStage": "final",
     "aiStageLabel": "Nước rút về đích",
     "aiCadence": 102,
-    "aiSurgeActive": false,
+    "aiSurgeActive": true,
     "judgement": "PERFECT",
     "surgeActive": false,
     "canSurge": false,
     "desyncIntensity": 0,
-    "rhythmProgress": 0.15083333324929526,
-    "accuracy": 97,
-    "gap": 118.07969812285546,
+    "rhythmProgress": 0.2658333332889242,
+    "accuracy": 93,
+    "gap": 67.35560533903185,
     "strength": 0
   },
   "nextHeat": {
-    "drumHits": 16,
+    "drumHits": 27,
     "drumKinds": {
-      "drum-low": 3,
-      "drum-open": 9,
-      "drum-rim": 4
+      "drum-low": 6,
+      "drum-open": 18,
+      "drum-rim": 3
     },
-    "voiceClips": 5,
+    "voiceClips": 6,
     "khmerClips": 3,
     "cues": [
       "ready",
@@ -681,74 +744,82 @@
     ],
     "played": [
       {
-        "key": "broadcast-go",
-        "at": 3.14,
+        "key": "broadcast-ready",
+        "at": 1.7208616780045352,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
+        ]
+      },
+      {
+        "key": "broadcast-go",
+        "at": 3.7816326530612243,
+        "match": [
+          "tum-nup-2",
+          "ca_mau-02"
+        ]
+      },
+      {
+        "key": "khmer-go",
+        "at": 6.986632653061225,
+        "match": [
+          "tum-nup-2",
+          "ca_mau-02"
         ]
       },
       {
         "key": "broadcast-intro",
-        "at": 5.9319999999999995,
+        "at": 9.371836734693877,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
         ]
       },
       {
         "key": "khmer-intro",
-        "at": 8.257,
+        "at": 11.626814058956917,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
         ]
       },
       {
         "key": "broadcast-sprint",
-        "at": 8.54,
+        "at": 16.491655328798185,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
-        ]
-      },
-      {
-        "key": "khmer-final",
-        "at": 9.905,
-        "match": [
-          "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
         ]
       },
       {
         "key": "broadcast-surge",
-        "at": 10.030666666666667,
+        "at": 17.971927437641725,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
-        ]
-      },
-      {
-        "key": "khmer-surge",
-        "at": 11.075666666666667,
-        "match": [
-          "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
         ]
       },
       {
         "key": "broadcast-finish",
-        "at": 11.132,
+        "at": 18.041587301587303,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
+        ]
+      },
+      {
+        "key": "khmer-finish",
+        "at": 19.036564625850342,
+        "match": [
+          "tum-nup-2",
+          "ca_mau-02"
         ]
       }
     ],
     "errors": [],
     "decoded": 13,
     "context": "running",
-    "audioTime": 11.410666666666666,
+    "audioTime": 19.150657596371882,
     "active": true,
     "mix": {
       "enabled": true,
@@ -761,24 +832,24 @@
     "sources": 0,
     "queued": [],
     "speaking": false,
-    "outputRms": 0.011098160572741864,
+    "outputRms": 0.10128067789166545,
     "cached": 13,
     "teams": [
       "tum-nup-2",
-      "can_tho-31"
+      "can_tho-44"
     ],
     "disposed": false,
     "origin": "broadcast",
     "sourceVideo": "crZF3hghbgQ"
   },
   "closedActiveContext": {
-    "drumHits": 16,
+    "drumHits": 27,
     "drumKinds": {
-      "drum-low": 3,
-      "drum-open": 9,
-      "drum-rim": 4
+      "drum-low": 6,
+      "drum-open": 18,
+      "drum-rim": 3
     },
-    "voiceClips": 6,
+    "voiceClips": 7,
     "khmerClips": 3,
     "cues": [
       "ready",
@@ -791,82 +862,90 @@
     ],
     "played": [
       {
-        "key": "broadcast-go",
-        "at": 3.14,
+        "key": "broadcast-ready",
+        "at": 1.7208616780045352,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
+        ]
+      },
+      {
+        "key": "broadcast-go",
+        "at": 3.7816326530612243,
+        "match": [
+          "tum-nup-2",
+          "ca_mau-02"
+        ]
+      },
+      {
+        "key": "khmer-go",
+        "at": 6.986632653061225,
+        "match": [
+          "tum-nup-2",
+          "ca_mau-02"
         ]
       },
       {
         "key": "broadcast-intro",
-        "at": 5.9319999999999995,
+        "at": 9.371836734693877,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
         ]
       },
       {
         "key": "khmer-intro",
-        "at": 8.257,
+        "at": 11.626814058956917,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
         ]
       },
       {
         "key": "broadcast-sprint",
-        "at": 8.54,
+        "at": 16.491655328798185,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
-        ]
-      },
-      {
-        "key": "khmer-final",
-        "at": 9.905,
-        "match": [
-          "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
         ]
       },
       {
         "key": "broadcast-surge",
-        "at": 10.030666666666667,
+        "at": 17.971927437641725,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
-        ]
-      },
-      {
-        "key": "khmer-surge",
-        "at": 11.075666666666667,
-        "match": [
-          "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
         ]
       },
       {
         "key": "broadcast-finish",
-        "at": 11.132,
+        "at": 18.041587301587303,
         "match": [
           "tum-nup-2",
-          "ca_mau-04"
+          "ca_mau-02"
+        ]
+      },
+      {
+        "key": "khmer-finish",
+        "at": 19.036564625850342,
+        "match": [
+          "tum-nup-2",
+          "ca_mau-02"
         ]
       },
       {
         "key": "broadcast-ready",
-        "at": 11.452,
+        "at": 19.211292517006804,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-44"
         ]
       }
     ],
     "errors": [],
     "decoded": 13,
     "context": "closed",
-    "audioTime": 11.88,
+    "audioTime": 19.641179138321995,
     "active": false,
     "mix": {
       "enabled": false,
@@ -879,11 +958,11 @@
     "sources": 0,
     "queued": [],
     "speaking": false,
-    "outputRms": 0.005779942636927789,
+    "outputRms": 0.006471602802846838,
     "cached": 0,
     "teams": [
       "tum-nup-2",
-      "can_tho-31"
+      "can_tho-44"
     ],
     "disposed": true,
     "origin": "broadcast",
@@ -963,43 +1042,27 @@
       "status": 200
     },
     {
-      "url": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/broadcast-ambience.mp3?clip=0394384c18e1",
+      "url": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/drum-open.mp3?clip=8154937c7503",
       "status": 200
     },
     {
-      "url": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/broadcast-surge.mp3?clip=68ebc1a5040e",
+      "url": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/broadcast-finish.mp3?clip=2b463a470609",
       "status": 200
     },
     {
-      "url": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/broadcast-sprint.mp3?clip=ba1d425d7c67",
+      "url": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/drum-rim.mp3?clip=2d244543babb",
       "status": 200
     },
     {
-      "url": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/khmer-final.mp3?clip=8913612983a8",
+      "url": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/broadcast-surge.mp3?clip=5184f6265776",
       "status": 200
     },
     {
-      "url": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/broadcast-ready.mp3?clip=be21d80f7299",
+      "url": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/broadcast-sprint.mp3?clip=28e52473d266",
       "status": 200
     },
     {
-      "url": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/khmer-surge.mp3?clip=426b7d2e520b",
-      "status": 200
-    },
-    {
-      "url": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/broadcast-finish.mp3?clip=1eae051da1c1",
-      "status": 200
-    },
-    {
-      "url": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/broadcast-go.mp3?clip=e948c3c3b44e",
-      "status": 200
-    },
-    {
-      "url": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/broadcast-intro.mp3?clip=08620b4bbcf4",
-      "status": 200
-    },
-    {
-      "url": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/khmer-intro.mp3?clip=68a14fa7f013",
+      "url": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/khmer-go.mp3?clip=4d9ccca7426f",
       "status": 200
     },
     {
@@ -1007,11 +1070,27 @@
       "status": 200
     },
     {
-      "url": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/drum-open.mp3?clip=8154937c7503",
+      "url": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/khmer-finish.mp3?clip=37375bb2bbc3",
       "status": 200
     },
     {
-      "url": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/drum-rim.mp3?clip=2d244543babb",
+      "url": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/broadcast-intro.mp3?clip=7f5b601728db",
+      "status": 200
+    },
+    {
+      "url": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/broadcast-go.mp3?clip=ebe4a34ec119",
+      "status": 200
+    },
+    {
+      "url": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/broadcast-ready.mp3?clip=796be9354ec2",
+      "status": 200
+    },
+    {
+      "url": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/broadcast-ambience.mp3?clip=0394384c18e1",
+      "status": 200
+    },
+    {
+      "url": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/khmer-intro.mp3?clip=be897d565f3b",
       "status": 200
     }
   ],

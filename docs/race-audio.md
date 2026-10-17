@@ -84,3 +84,11 @@ user. Its playback/hash checks did not establish semantic correctness. Current
 technical checks are recorded in `docs/qa/broadcast-audio`; transcript/context
 evidence lives in the cut recipe and manifest. Do not present successful decoding
 or matching hashes as proof of accurate Khmer recognition or speaker identity.
+
+Current deployment: source `2a8b66b`, Pages `bf5cb1a396480969491973b5abe3e10fe2145658`,
+successful [Actions run 39045952469](https://github.com/machxanht/Tuk-Ngo/actions/runs/39045952469).
+All 19 public MP3 hashes match the manifest. The public browser completed a legal
+heat, played the three selected Khmer phrases, and passed pause/mute/preferences,
+next heat, disposal and three tablet layouts with no browser errors. A mismatched
+CC file is rejected before changing the audio set. These are technical/source
+checks; the listening and automatic-CC limitations above still apply.
