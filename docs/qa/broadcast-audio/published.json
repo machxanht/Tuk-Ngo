@@ -1,7 +1,8 @@
 {
-  "sourceCommit": "2a8b66b",
-  "pagesCommit": "bf5cb1a396480969491973b5abe3e10fe2145658",
-  "actionsRun": 39045952469,
+  "sourceCommit": "b435581",
+  "pagesCommit": "a55623bdce471d2c778e4ca66ef014a84e2fb47f",
+  "actionsRun": 39050535242,
+  "rootEntry": "assets/index-CXyjkeWC.js",
   "captionSource": {
     "provider": "YouTube",
     "kind": "automatic",
@@ -110,16 +111,238 @@
       "clip": "khmer-finish",
       "bytes": 24041,
       "sha256": "37375bb2bbc3703123e098ef7b7fcbc498bcb8f7ab9ed4ccd85a176f9e8b15f6"
+    },
+    {
+      "clip": "name-pothi-satharam-vi",
+      "bytes": 16265,
+      "sha256": "d337863f8b6f9e085e9d237beb1ab4c8a98eecadf757e4b898f4fc5cf50410b1"
+    },
+    {
+      "clip": "name-khleang-vi",
+      "bytes": 7337,
+      "sha256": "d4b50fc31f8f79d1e3b54162e4353a7d14b3fa702d80fdc280f86e696d32eca0"
+    },
+    {
+      "clip": "name-chroi-tum-chas-vi",
+      "bytes": 11657,
+      "sha256": "d61d7a6bf59966316e949b8c9106aec18ee358bbc547bedce1913b41b2cda5cb"
+    },
+    {
+      "clip": "name-xeo-me-vi",
+      "bytes": 11657,
+      "sha256": "0cf7692949d77128fa00f8ab03c116624a4827ae3729483b5385dda7b7039c41"
+    },
+    {
+      "clip": "name-ong-kho-vi",
+      "bytes": 5897,
+      "sha256": "de43415a67688686a40340a99d045d2319fde3a1cb01d68b1bd34d8ab5505ce5"
+    },
+    {
+      "clip": "name-pong-tuk-chas-vi",
+      "bytes": 9353,
+      "sha256": "0be785cadf3fd62a17526a67d98a6ba9a2e7c3f2b84ba5979b5a8ce11b330ec4"
+    },
+    {
+      "clip": "name-lo-moi-vi",
+      "bytes": 7625,
+      "sha256": "d2651fc41e73bc64447b729be52f21a7fef4aa4f83993ae46ee9481dc88ea302"
+    },
+    {
+      "clip": "name-bon-mat-vi",
+      "bytes": 12521,
+      "sha256": "6bd738cf161425aa2f8a8c72e01a081fadeb385e555ed4288113135336dd34fb"
+    },
+    {
+      "clip": "name-tra-quyt-cu-vi",
+      "bytes": 18569,
+      "sha256": "214e95d8f17d64b3e2712be9d8e168cdded5b40d80b5e8f38ca52ab2ce59d4d3"
+    },
+    {
+      "clip": "name-tum-nup-vi",
+      "bytes": 7625,
+      "sha256": "edcc5ad7a579fd58771b0c45d659a20cf3d26a06d75a270922fb28a51484504e"
+    },
+    {
+      "clip": "name-bang-kok-vi",
+      "bytes": 8201,
+      "sha256": "dcb4f507e50dfc6185257b4f2e8b250110a7cc37736e16a7bad0759ca615c6d2"
+    },
+    {
+      "clip": "name-day-ta-suos-vi",
+      "bytes": 11657,
+      "sha256": "152cbce20ac17e4759ad3939cc446894d02fbbcacb8407ae876ee3fa93232036"
+    },
+    {
+      "clip": "name-bet-ton-vi",
+      "bytes": 12521,
+      "sha256": "2c3c69e367f57d786489b3af7af3426590ca1bc30e010d49bb24d20040bffd4e"
+    },
+    {
+      "clip": "name-tam-soc-vi",
+      "bytes": 7913,
+      "sha256": "6e2ef77bcdd8004d694aec13f4493b71b8e90149c8d229ad479d2b873f0030e2"
+    },
+    {
+      "clip": "name-prek-on-dok-vi",
+      "bytes": 11081,
+      "sha256": "85b52bf741b2fa43bfa9369ffaf814904678dea7d88e3c88f11f73b1f1946a54"
+    },
+    {
+      "clip": "name-day-om-pu-vi",
+      "bytes": 14249,
+      "sha256": "c95b7e9636483212565a007988fa587df062e6c4f54ab4acbb2859126b08641d"
+    },
+    {
+      "clip": "name-om-pou-year-vi",
+      "bytes": 6185,
+      "sha256": "209d871861e30ae42ec630022e42e7ebaa081cb59f3e5bf8639462498938ac74"
+    },
+    {
+      "clip": "name-sang-ke-vi",
+      "bytes": 10793,
+      "sha256": "dd726623f239ac6ea83d3f1cc13f8116d3271ba3018fc5a103a915033a4f2cfe"
+    },
+    {
+      "clip": "name-pothi-khsach-vi",
+      "bytes": 11945,
+      "sha256": "ab0a483efe38201965638f9323fe90f441b8611d91f35f8c60d50b93c0f4f40a"
+    },
+    {
+      "clip": "name-rach-giong-vi",
+      "bytes": 7337,
+      "sha256": "5b9ecadb26387da65c295ec65fae5e844aa04c00364b40370bd4d0dadc863e2d"
+    },
+    {
+      "clip": "name-ngan-dua-vi",
+      "bytes": 9065,
+      "sha256": "030b76362b57287a4a3ec2152c780c33e97d61747dd8cf3752e8062d6cb656de"
+    },
+    {
+      "clip": "name-dau-sau-vi",
+      "bytes": 7625,
+      "sha256": "e62f56275d67214aa8ce9e3c119dfcaabf2a058b809ab6d7e6f98291679f5c3e"
+    },
+    {
+      "clip": "name-settodor-vi",
+      "bytes": 13673,
+      "sha256": "81a1039bea686f5bcdca609aa2db914d6d0018308138af707601176b5cbe8e21"
+    },
+    {
+      "clip": "name-phno-kambot-vi",
+      "bytes": 22313,
+      "sha256": "3c3ada95a9c5fdfffce8442ba5588cdd643b1329125596fc9713c7ebd6a2a887"
+    },
+    {
+      "clip": "name-tum-nup-km",
+      "bytes": 7337,
+      "sha256": "80c5fe8cdf9db1f58cb1e42e7e7167b6c22bbfe72bfed3208bff3a29780e90ba"
+    },
+    {
+      "clip": "name-kos-thum-km",
+      "bytes": 8489,
+      "sha256": "59e9c60858499e78c57e96235333521b3c4397ba33c4e17aeb64db1d4f9c4d3c"
+    },
+    {
+      "clip": "name-sang-ke-km",
+      "bytes": 7337,
+      "sha256": "4c8f413ae7d6ebd6d417cde65664d007560bbb1731c5886957b4bfbb9fbd93dd"
+    },
+    {
+      "clip": "name-rach-giong-km",
+      "bytes": 14825,
+      "sha256": "dedbd65b99829bf1a22902017e5300457dc138e79598e9f7c0f46bcdd58eeba8"
+    },
+    {
+      "clip": "name-day-om-pu-km",
+      "bytes": 11081,
+      "sha256": "8385a5023933f0c3779ad63337b6bb92302e2ba44313ff9fed27f0277c1d292c"
+    },
+    {
+      "clip": "name-pothi-satharam-two-vi",
+      "bytes": 24617,
+      "sha256": "f70c2e8b7a143f6ebce62ed8a689955f219caf8f7c7c8c3758405382930ae5e7"
+    },
+    {
+      "clip": "name-khleang-one-vi",
+      "bytes": 9641,
+      "sha256": "727978e2196b2ee766d562cfd6bb5c75b9c509226717d5a75f60dea1914f9126"
+    },
+    {
+      "clip": "name-sro-lon-one-vi",
+      "bytes": 14249,
+      "sha256": "15ce5b59050dd4ebc38540ac4ffba8015093f11c507816f88a7e343a0b7a4a3d"
+    },
+    {
+      "clip": "name-sro-lon-two-vi",
+      "bytes": 11657,
+      "sha256": "1130ce1b03f247d3d6b9ccc65e3b7e7cc5df14b6eb3ec3ccf0e9020e42eeaa2f"
+    },
+    {
+      "clip": "name-tum-nup-two-vi",
+      "bytes": 15689,
+      "sha256": "7d122a897dbd0928f8fe7d4cfaf73d76ae6f4a2e1fa1524ed64e2089998278ce"
+    },
+    {
+      "clip": "name-bang-kok-two-vi",
+      "bytes": 14537,
+      "sha256": "fca02da4a68652e835a532b7dc1af30b3d46f5160386f7bdd71a69e722b4d014"
+    },
+    {
+      "clip": "name-prek-on-dok-two-vi",
+      "bytes": 17129,
+      "sha256": "78fc61a9e5d27c4c764cf0d48624b6dca175332f7007338bd8e0955358e9f01b"
+    },
+    {
+      "clip": "name-kos-thum-one-vi",
+      "bytes": 9641,
+      "sha256": "4e096946e5c9f8b29a0b73cabd3b1a60db0cf7caf30d46d9e37fac461d7aaee7"
+    },
+    {
+      "clip": "name-kos-thum-two-vi",
+      "bytes": 9353,
+      "sha256": "b0fe7ccd59eb65cc81a5312beae7f013f64fda64ee79a48dcaf68725f8b53b6e"
+    },
+    {
+      "clip": "name-kos-thum-two-km",
+      "bytes": 20009,
+      "sha256": "85699e2b7f120b32aae9a555cec6ab06eddcc36b4ac671bcfa28f11fdb2a7aac"
+    },
+    {
+      "clip": "history-tum-nup-champion-vi",
+      "bytes": 45353,
+      "sha256": "9e745955bc46a2b48c8ba3a6c21333809579fba93dbeea6f779afcb1567daaa2"
+    },
+    {
+      "clip": "history-kos-thum-runner-up-vi",
+      "bytes": 86537,
+      "sha256": "a1f74fc89324d728fe0a0c824830569c8696c50ce18f176c26964be870601da9"
+    },
+    {
+      "clip": "history-sro-lon-third-vi",
+      "bytes": 20585,
+      "sha256": "19d71b17724c6e5c6829ae165b8802b9d401957c9d139126675d620deb18affb"
     }
   ],
-  "verifiedPublicMp3Count": 19,
+  "verifiedPublicMp3Count": 61,
+  "teamCoverage": {
+    "nameVi": 39,
+    "nameKm": 10,
+    "historyVi": 3,
+    "historyKm": 0
+  },
+  "archive": {
+    "file": "team-audio.zip",
+    "bytes": 737510,
+    "sha256": "e479c2e6172361ad4bf66dd41f6f3fb51b1fc0400019a3549a69e194ada9d425"
+  },
   "physicalTabletTested": false,
   "listeningVerified": false,
-  "contentBasis": "Original automatic YouTube CC with working Khmer translations; no independent speaker/listening verification.",
+  "contentBasis": "Automatic YouTube CC, manual name aliases/race context, and cited 2024 history sources. No independent listening/speaker verification.",
   "browserVerification": {
     "report": "public/checks.json",
     "errors": [],
-    "viewports": [
+    "raceResult": "win",
+    "profileViewports": [
       [
         1024,
         768
@@ -133,18 +356,29 @@
         430
       ]
     ],
-    "raceResult": "win",
-    "playedSpeech": [
-      "broadcast-ready",
-      "broadcast-go",
-      "khmer-go",
-      "broadcast-intro",
-      "khmer-intro",
-      "broadcast-sprint",
-      "broadcast-surge",
-      "broadcast-finish",
-      "khmer-finish"
+    "raceViewports": [
+      [
+        1024,
+        768
+      ],
+      [
+        768,
+        1024
+      ],
+      [
+        1180,
+        430
+      ]
     ],
-    "wrongCaptionTrackRejectedBeforeMutation": true
+    "previewNames": [
+      "name-tum-nup-two-vi",
+      "name-tum-nup-km"
+    ],
+    "missingTeamSources": 0,
+    "notes": [
+      "Original name audition, history playback, missing recordings and team-change cancellation passed.",
+      "An audition fetched only the two selected-team MP3s.",
+      "Pause/mute/preferences, full race, next heat and disposal passed."
+    ]
   }
 }

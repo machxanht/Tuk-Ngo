@@ -191,3 +191,11 @@ the name is absent from the full audio):
 | ca_mau-11 | Đầu Sấu (Đội 1) | yes | — | — |
 | ca_mau-12 | Đầu Sấu (Đội 2) | yes | — | — |
 | ca_mau-13 | Đìa Chuối | — | — | — |
+
+Current team-audio deployment: source `b435581`, Pages `a55623bdce471d2c778e4ca66ef014a84e2fb47f`,
+successful [Actions run 39050535242](https://github.com/machxanht/Tuk-Ngo/actions/runs/39050535242).
+All 61 public MP3 hashes and the 737,510-byte archive match the source manifest.
+Public browser checks passed name/history auditions, missing recording feedback,
+team-change cancellation, a full race, next heat, audio settings and disposal
+with no browser errors. Three setup/race tablet viewports were exercised.
+Coverage and independent-listening limitations above remain unchanged.
