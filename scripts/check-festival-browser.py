@@ -37,9 +37,9 @@ with sync_playwright() as p:
  assert sprint_force>steady_force+.1,(steady_force,sprint_force)
  report['paceWater']={'steady':steady_force,'sprintBeforeFinal':sprint_force}
  page.get_by_role('button',name='Đều nhịp',exact=True).tap()
- page.get_by_role('button',name='Bật âm thanh',exact=True).tap()
- page.wait_for_function('document.querySelector("audio").currentTime>0',timeout=20000)
- report['audio']={'playing':True,'source':page.locator('audio').get_attribute('src')}
+ page.wait_for_function("document.querySelector('[data-testid=art-stage]').boatPreview.audio.stats().drumHits>0",timeout=20000)
+ report['audio']=page.evaluate("document.querySelector('[data-testid=art-stage]').boatPreview.audio.stats()")
+ assert report['audio']['context']=='running' and not report['audio']['errors']
  page.get_by_role('button',name='Giữ sức',exact=True).tap();assert page.evaluate("document.querySelector('[data-testid=art-stage]').boatPreview.game.state.pace")=='recover'
  page.get_by_role('button',name='Đều nhịp',exact=True).tap()
  page.get_by_role('button',name='Tạm dừng cuộc đua',exact=True).tap()

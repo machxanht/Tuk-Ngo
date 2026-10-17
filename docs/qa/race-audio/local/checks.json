@@ -1,0 +1,1293 @@
+{
+  "physicalTabletTested": false,
+  "start": {
+    "drumHits": 0,
+    "drumKinds": {
+      "drum-low": 0,
+      "drum-open": 0,
+      "drum-rim": 0
+    },
+    "voiceClips": 1,
+    "chantClips": 0,
+    "cues": [
+      "ready"
+    ],
+    "played": [
+      {
+        "key": "ready",
+        "at": 0.02,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      }
+    ],
+    "errors": [],
+    "decoded": 18,
+    "context": "running",
+    "audioTime": 0.032,
+    "active": true,
+    "mix": {
+      "enabled": true,
+      "voice": true,
+      "chants": true,
+      "drums": true,
+      "crowd": true,
+      "volume": 0.8
+    },
+    "sources": 2,
+    "queued": [],
+    "speaking": true,
+    "outputRms": 0.00860745855591009,
+    "cached": 18,
+    "teams": [
+      "tum-nup-2",
+      "can_tho-33"
+    ],
+    "disposed": false
+  },
+  "intro": {
+    "drumHits": 4,
+    "drumKinds": {
+      "drum-low": 1,
+      "drum-open": 3,
+      "drum-rim": 0
+    },
+    "voiceClips": 6,
+    "chantClips": 0,
+    "cues": [
+      "ready",
+      "go",
+      "intro"
+    ],
+    "played": [
+      {
+        "key": "ready",
+        "at": 0.02,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "go",
+        "at": 3.372,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "intro",
+        "at": 5.937333333333333,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "name-tum-nup-2",
+        "at": 7.3088750000000005,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "versus",
+        "at": 8.295333333333334,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "name-can_tho-33",
+        "at": 9.503791666666666,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      }
+    ],
+    "errors": [],
+    "decoded": 18,
+    "context": "running",
+    "audioTime": 5.92,
+    "active": true,
+    "mix": {
+      "enabled": true,
+      "voice": true,
+      "chants": true,
+      "drums": true,
+      "crowd": true,
+      "volume": 0.8
+    },
+    "sources": 6,
+    "queued": [],
+    "speaking": true,
+    "outputRms": 0.0180270209205769,
+    "cached": 18,
+    "teams": [
+      "tum-nup-2",
+      "can_tho-33"
+    ],
+    "disposed": false
+  },
+  "pause": {
+    "drumHits": 4,
+    "drumKinds": {
+      "drum-low": 1,
+      "drum-open": 3,
+      "drum-rim": 0
+    },
+    "voiceClips": 6,
+    "chantClips": 0,
+    "cues": [
+      "ready",
+      "go",
+      "intro"
+    ],
+    "played": [
+      {
+        "key": "ready",
+        "at": 0.02,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "go",
+        "at": 3.372,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "intro",
+        "at": 5.937333333333333,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "name-tum-nup-2",
+        "at": 7.3088750000000005,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "versus",
+        "at": 8.295333333333334,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "name-can_tho-33",
+        "at": 9.503791666666666,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      }
+    ],
+    "errors": [],
+    "decoded": 18,
+    "context": "running",
+    "audioTime": 6.2,
+    "active": false,
+    "mix": {
+      "enabled": true,
+      "voice": true,
+      "chants": true,
+      "drums": true,
+      "crowd": true,
+      "volume": 0.8
+    },
+    "sources": 0,
+    "queued": [],
+    "speaking": false,
+    "outputRms": 0,
+    "cached": 18,
+    "teams": [
+      "tum-nup-2",
+      "can_tho-33"
+    ],
+    "disposed": false
+  },
+  "mute": {
+    "drumHits": 5,
+    "drumKinds": {
+      "drum-low": 1,
+      "drum-open": 4,
+      "drum-rim": 0
+    },
+    "voiceClips": 6,
+    "chantClips": 0,
+    "cues": [
+      "ready",
+      "go",
+      "intro"
+    ],
+    "played": [
+      {
+        "key": "ready",
+        "at": 0.02,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "go",
+        "at": 3.372,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "intro",
+        "at": 5.937333333333333,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "name-tum-nup-2",
+        "at": 7.3088750000000005,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "versus",
+        "at": 8.295333333333334,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "name-can_tho-33",
+        "at": 9.503791666666666,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      }
+    ],
+    "errors": [],
+    "decoded": 18,
+    "context": "running",
+    "audioTime": 6.541333333333333,
+    "active": true,
+    "mix": {
+      "enabled": false,
+      "voice": true,
+      "chants": true,
+      "drums": true,
+      "crowd": true,
+      "volume": 0.8
+    },
+    "sources": 0,
+    "queued": [],
+    "speaking": false,
+    "outputRms": 0,
+    "cached": 18,
+    "teams": [
+      "tum-nup-2",
+      "can_tho-33"
+    ],
+    "disposed": false
+  },
+  "mix": {
+    "enabled": true,
+    "voice": false,
+    "chants": true,
+    "drums": false,
+    "crowd": true,
+    "volume": 0.55
+  },
+  "viewports": [
+    {
+      "size": [
+        1024,
+        768
+      ],
+      "stage": {
+        "x": 0,
+        "y": 104,
+        "width": 1024,
+        "height": 529
+      },
+      "options": {
+        "x": 615.265625,
+        "y": 63,
+        "width": 270,
+        "height": 269
+      }
+    },
+    {
+      "size": [
+        768,
+        1024
+      ],
+      "stage": {
+        "x": 0,
+        "y": 109,
+        "width": 768,
+        "height": 780
+      },
+      "options": {
+        "x": 389.078125,
+        "y": 67.5,
+        "width": 270,
+        "height": 269
+      }
+    },
+    {
+      "size": [
+        1180,
+        430
+      ],
+      "stage": {
+        "x": 0,
+        "y": 82,
+        "width": 1180,
+        "height": 229
+      },
+      "options": {
+        "x": 779.265625,
+        "y": 55,
+        "width": 270,
+        "height": 269
+      }
+    }
+  ],
+  "final": {
+    "drumHits": 20,
+    "drumKinds": {
+      "drum-low": 4,
+      "drum-open": 10,
+      "drum-rim": 6
+    },
+    "voiceClips": 7,
+    "chantClips": 1,
+    "cues": [
+      "ready",
+      "go",
+      "intro",
+      "final"
+    ],
+    "played": [
+      {
+        "key": "ready",
+        "at": 0.02,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "go",
+        "at": 3.372,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "intro",
+        "at": 5.937333333333333,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "name-tum-nup-2",
+        "at": 7.3088750000000005,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "versus",
+        "at": 8.295333333333334,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "name-can_tho-33",
+        "at": 9.503791666666666,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "final",
+        "at": 8.510666666666665,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "chant-encourage",
+        "at": 11.879291666666667,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      }
+    ],
+    "errors": [],
+    "decoded": 18,
+    "context": "running",
+    "audioTime": 11.88,
+    "active": true,
+    "mix": {
+      "enabled": true,
+      "voice": true,
+      "chants": true,
+      "drums": true,
+      "crowd": true,
+      "volume": 0.55
+    },
+    "sources": 5,
+    "queued": [],
+    "speaking": true,
+    "outputRms": 0.01185058629579192,
+    "cached": 18,
+    "teams": [
+      "tum-nup-2",
+      "can_tho-33"
+    ],
+    "disposed": false
+  },
+  "surge": {
+    "drumHits": 28,
+    "drumKinds": {
+      "drum-low": 5,
+      "drum-open": 13,
+      "drum-rim": 10
+    },
+    "voiceClips": 8,
+    "chantClips": 2,
+    "cues": [
+      "ready",
+      "go",
+      "intro",
+      "final",
+      "surge"
+    ],
+    "played": [
+      {
+        "key": "ready",
+        "at": 0.02,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "go",
+        "at": 3.372,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "intro",
+        "at": 5.937333333333333,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "name-tum-nup-2",
+        "at": 7.3088750000000005,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "versus",
+        "at": 8.295333333333334,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "name-can_tho-33",
+        "at": 9.503791666666666,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "final",
+        "at": 8.510666666666665,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "chant-encourage",
+        "at": 11.879291666666667,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "surge",
+        "at": 11.990666666666666,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "chant-ho",
+        "at": 14.402833333333334,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      }
+    ],
+    "errors": [],
+    "decoded": 19,
+    "context": "running",
+    "audioTime": 14.421333333333333,
+    "active": true,
+    "mix": {
+      "enabled": true,
+      "voice": true,
+      "chants": true,
+      "drums": true,
+      "crowd": true,
+      "volume": 0.55
+    },
+    "sources": 5,
+    "queued": [],
+    "speaking": true,
+    "outputRms": 0.012716040783039631,
+    "cached": 19,
+    "teams": [
+      "tum-nup-2",
+      "can_tho-33"
+    ],
+    "disposed": false
+  },
+  "finish": {
+    "drumHits": 28,
+    "drumKinds": {
+      "drum-low": 5,
+      "drum-open": 13,
+      "drum-rim": 10
+    },
+    "voiceClips": 11,
+    "chantClips": 3,
+    "cues": [
+      "ready",
+      "go",
+      "intro",
+      "final",
+      "surge",
+      "finish"
+    ],
+    "played": [
+      {
+        "key": "ready",
+        "at": 0.02,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "go",
+        "at": 3.372,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "intro",
+        "at": 5.937333333333333,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "name-tum-nup-2",
+        "at": 7.3088750000000005,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "versus",
+        "at": 8.295333333333334,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "name-can_tho-33",
+        "at": 9.503791666666666,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "final",
+        "at": 8.510666666666665,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "chant-encourage",
+        "at": 11.879291666666667,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "surge",
+        "at": 11.990666666666666,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "chant-ho",
+        "at": 14.402833333333334,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "finish",
+        "at": 14.459999999999999,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "name-tum-nup-2",
+        "at": 15.100166666666667,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "winner",
+        "at": 16.086624999999998,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "chant-victory",
+        "at": 18.995583333333332,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      }
+    ],
+    "errors": [],
+    "decoded": 19,
+    "context": "running",
+    "audioTime": 19,
+    "active": true,
+    "mix": {
+      "enabled": true,
+      "voice": true,
+      "chants": true,
+      "drums": true,
+      "crowd": true,
+      "volume": 0.55
+    },
+    "sources": 1,
+    "queued": [],
+    "speaking": true,
+    "outputRms": 0,
+    "cached": 19,
+    "teams": [
+      "tum-nup-2",
+      "can_tho-33"
+    ],
+    "disposed": false
+  },
+  "result": {
+    "phase": "finished",
+    "difficulty": "normal",
+    "pace": "steady",
+    "countdown": 0,
+    "elapsed": 189.94166666657614,
+    "distances": [
+      1200,
+      1081.9203018771445
+    ],
+    "speeds": [
+      0,
+      0
+    ],
+    "finishTimes": [
+      189.94023818035697,
+      null
+    ],
+    "beatPhase": 282.6508333332493,
+    "aiPhase": 0.8279166666673888,
+    "stamina": 31.465880227346144,
+    "power": 0.8992747564592267,
+    "cohesion": 1,
+    "combo": 274,
+    "maxCombo": 274,
+    "perfect": 274,
+    "good": 0,
+    "missed": 8,
+    "lastResolved": 282,
+    "feedback": "PERFECT · Chuẩn!",
+    "feedbackAt": 189.56249999990982,
+    "result": "win",
+    "pauseReason": "",
+    "runId": 1,
+    "surgeCharge": 1,
+    "surgeRemaining": 0,
+    "desync": 0,
+    "lastSpamAt": -10,
+    "slipstream": false,
+    "lastJudgement": "PERFECT",
+    "aiStamina": 29.47758333330267,
+    "aiSurgeCharge": 0.4120000000000003,
+    "aiSurgeRemaining": 0,
+    "raceStage": "final",
+    "stageLabel": "Nước rút về đích",
+    "cadence": 102,
+    "aiRaceStage": "final",
+    "aiStageLabel": "Nước rút về đích",
+    "aiCadence": 102,
+    "aiSurgeActive": false,
+    "judgement": "PERFECT",
+    "surgeActive": false,
+    "canSurge": false,
+    "desyncIntensity": 0,
+    "rhythmProgress": 0.15083333324929526,
+    "accuracy": 97,
+    "gap": 118.07969812285546,
+    "strength": 0
+  },
+  "nextHeat": {
+    "drumHits": 28,
+    "drumKinds": {
+      "drum-low": 5,
+      "drum-open": 13,
+      "drum-rim": 10
+    },
+    "voiceClips": 12,
+    "chantClips": 3,
+    "cues": [
+      "ready",
+      "go",
+      "intro",
+      "final",
+      "surge",
+      "finish",
+      "ready"
+    ],
+    "played": [
+      {
+        "key": "ready",
+        "at": 0.02,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "go",
+        "at": 3.372,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "intro",
+        "at": 5.937333333333333,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "name-tum-nup-2",
+        "at": 7.3088750000000005,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "versus",
+        "at": 8.295333333333334,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "name-can_tho-33",
+        "at": 9.503791666666666,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "final",
+        "at": 8.510666666666665,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "chant-encourage",
+        "at": 11.879291666666667,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "surge",
+        "at": 11.990666666666666,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "chant-ho",
+        "at": 14.402833333333334,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "finish",
+        "at": 14.459999999999999,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "name-tum-nup-2",
+        "at": 15.100166666666667,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "winner",
+        "at": 16.086624999999998,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "chant-victory",
+        "at": 18.995583333333332,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "ready",
+        "at": 19.131999999999998,
+        "match": [
+          "tum-nup-2",
+          "can_tho-48"
+        ]
+      }
+    ],
+    "errors": [],
+    "decoded": 19,
+    "context": "running",
+    "audioTime": 19.12,
+    "active": true,
+    "mix": {
+      "enabled": true,
+      "voice": true,
+      "chants": true,
+      "drums": true,
+      "crowd": true,
+      "volume": 0.55
+    },
+    "sources": 2,
+    "queued": [],
+    "speaking": true,
+    "outputRms": 8.662401657610653e-07,
+    "cached": 20,
+    "teams": [
+      "tum-nup-2",
+      "can_tho-48"
+    ],
+    "disposed": false
+  },
+  "closedActiveContext": {
+    "drumHits": 28,
+    "drumKinds": {
+      "drum-low": 5,
+      "drum-open": 13,
+      "drum-rim": 10
+    },
+    "voiceClips": 12,
+    "chantClips": 3,
+    "cues": [
+      "ready",
+      "go",
+      "intro",
+      "final",
+      "surge",
+      "finish",
+      "ready"
+    ],
+    "played": [
+      {
+        "key": "ready",
+        "at": 0.02,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "go",
+        "at": 3.372,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "intro",
+        "at": 5.937333333333333,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "name-tum-nup-2",
+        "at": 7.3088750000000005,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "versus",
+        "at": 8.295333333333334,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "name-can_tho-33",
+        "at": 9.503791666666666,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "final",
+        "at": 8.510666666666665,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "chant-encourage",
+        "at": 11.879291666666667,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "surge",
+        "at": 11.990666666666666,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "chant-ho",
+        "at": 14.402833333333334,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "finish",
+        "at": 14.459999999999999,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "name-tum-nup-2",
+        "at": 15.100166666666667,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "winner",
+        "at": 16.086624999999998,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "chant-victory",
+        "at": 18.995583333333332,
+        "match": [
+          "tum-nup-2",
+          "can_tho-33"
+        ]
+      },
+      {
+        "key": "ready",
+        "at": 19.131999999999998,
+        "match": [
+          "tum-nup-2",
+          "can_tho-48"
+        ]
+      }
+    ],
+    "errors": [],
+    "decoded": 20,
+    "context": "closed",
+    "audioTime": 19.6,
+    "active": false,
+    "mix": {
+      "enabled": false,
+      "voice": true,
+      "chants": true,
+      "drums": true,
+      "crowd": true,
+      "volume": 0.55
+    },
+    "sources": 0,
+    "queued": [],
+    "speaking": false,
+    "outputRms": 0.0006453568974063934,
+    "cached": 0,
+    "teams": [
+      "tum-nup-2",
+      "can_tho-48"
+    ],
+    "disposed": true
+  },
+  "reload": {
+    "drumHits": 0,
+    "drumKinds": {
+      "drum-low": 0,
+      "drum-open": 0,
+      "drum-rim": 0
+    },
+    "voiceClips": 0,
+    "chantClips": 0,
+    "cues": [],
+    "played": [],
+    "errors": [],
+    "decoded": 0,
+    "context": "uninitialized",
+    "audioTime": 0,
+    "active": false,
+    "mix": {
+      "enabled": false,
+      "voice": true,
+      "chants": true,
+      "drums": true,
+      "crowd": true,
+      "volume": 0.55
+    },
+    "sources": 0,
+    "queued": [],
+    "speaking": false,
+    "outputRms": 0,
+    "cached": 0,
+    "teams": [],
+    "disposed": false
+  },
+  "disposed": {
+    "drumHits": 0,
+    "drumKinds": {
+      "drum-low": 0,
+      "drum-open": 0,
+      "drum-rim": 0
+    },
+    "voiceClips": 0,
+    "chantClips": 0,
+    "cues": [],
+    "played": [],
+    "errors": [],
+    "decoded": 0,
+    "context": "uninitialized",
+    "audioTime": 0,
+    "active": false,
+    "mix": {
+      "enabled": false,
+      "voice": true,
+      "chants": true,
+      "drums": true,
+      "crowd": true,
+      "volume": 0.55
+    },
+    "sources": 0,
+    "queued": [],
+    "speaking": false,
+    "outputRms": 0,
+    "cached": 0,
+    "teams": [],
+    "disposed": true
+  },
+  "responses": [
+    {
+      "url": "http://127.0.0.1:4174/Tuk-Ngo/assets/race-audio/manifest.json",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4174/Tuk-Ngo/assets/race-audio/ready.mp3",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4174/Tuk-Ngo/assets/race-audio/go.mp3",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4174/Tuk-Ngo/assets/race-audio/intro.mp3",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4174/Tuk-Ngo/assets/race-audio/versus.mp3",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4174/Tuk-Ngo/assets/race-audio/drum-low.mp3",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4174/Tuk-Ngo/assets/race-audio/drum-open.mp3",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4174/Tuk-Ngo/assets/race-audio/drum-rim.mp3",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4174/Tuk-Ngo/assets/race-audio/name-tum-nup-2.mp3",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4174/Tuk-Ngo/assets/race-audio/name-can_tho-33.mp3",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4174/Tuk-Ngo/assets/race-audio/final.mp3",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4174/Tuk-Ngo/assets/race-audio/last-hundred.mp3",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4174/Tuk-Ngo/assets/race-audio/last-fifty.mp3",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4174/Tuk-Ngo/assets/race-audio/finish.mp3",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4174/Tuk-Ngo/assets/race-audio/winner.mp3",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4174/Tuk-Ngo/assets/race-audio/chant-encourage.mp3",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4174/Tuk-Ngo/assets/race-audio/chant-ho.mp3",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4174/Tuk-Ngo/assets/race-audio/chant-victory.mp3",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4174/Tuk-Ngo/assets/race-audio/surge.mp3",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4174/Tuk-Ngo/assets/race-audio/name-can_tho-48.mp3",
+      "status": 200
+    }
+  ],
+  "errors": []
+}
