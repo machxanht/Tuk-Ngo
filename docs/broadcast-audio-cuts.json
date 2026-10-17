@@ -7,13 +7,27 @@
     "sha256": "2c443d23b71fe92cc191baca5bbc45ec12704d79a2ef1b31492839cd04654ed5",
     "bytes": 301668624,
     "duration": 18640,
-    "format": "YouTube audio 140, AAC 128 kbps stereo"
+    "format": "YouTube audio 140, AAC 128 kbps stereo",
+    "captions": {
+      "provider": "YouTube",
+      "kind": "automatic",
+      "track": "vi-orig",
+      "format": "json3",
+      "sha256": "a08fd520f7be92121755cf73dc3d8598f84c17be500aa403b5f1d6cf33008e6a",
+      "cueCount": 4434,
+      "languagesObserved": [
+        "vi",
+        "km"
+      ],
+      "speakerLabels": false
+    }
   },
   "review": {
-    "vietnamese": "Word boundaries selected from local Whisper small ASR; captions describe the excerpt and are not certified verbatim transcripts. Team-name portions excluded from Vietnamese cuts.",
-    "khmer": "Original Khmer-language broadcast passages; no reliable word-for-word translation or native review. May retain real broadcast context/team mentions. Played as labelled source excerpts, never used to announce a game winner.",
+    "vietnamese": "Re-cut against word starts in the original YouTube CC track. Automatic CC includes recognition errors; display text corrects obvious spelling and is not a certified verbatim transcript.",
+    "khmer": "Selected complete short Khmer phrases from the original YouTube CC, with working Vietnamese translations and word-start evidence. Greeting is used at intro, started at go, congratulations only at a player win. No source team names in these selected CC phrases. No independent listening/native-language verification.",
     "percussion": "Recorded field transients during a gap in recognised commentary; filtered and faded, not isolated studio drum stems.",
-    "rights": "Source attributed to broadcaster. No permission or reusable-content licence has been independently verified."
+    "rights": "Source attributed to broadcaster. No permission or reusable-content licence has been independently verified.",
+    "speakers": "Only source broadcast audio; no TTS, cloning, replacement narrator, pitch shift or time stretch. YouTube CC does not identify speakers; Vietnamese/Khmer speaker roles follow the two-commentator reference supplied by the user."
   },
   "ambience": "broadcast-ambience",
   "warmup": [
@@ -23,7 +37,8 @@
     "khmer-intro",
     "drum-low",
     "drum-open",
-    "drum-rim"
+    "drum-rim",
+    "khmer-go"
   ],
   "events": {
     "ready": {
@@ -36,7 +51,9 @@
       "voice": [
         "broadcast-go"
       ],
-      "khmer": []
+      "khmer": [
+        "khmer-go"
+      ]
     },
     "intro": {
       "voice": [
@@ -50,25 +67,19 @@
       "voice": [
         "broadcast-rhythm"
       ],
-      "khmer": [
-        "khmer-cruise"
-      ]
+      "khmer": []
     },
     "halfway": {
       "voice": [
         "broadcast-rhythm"
       ],
-      "khmer": [
-        "khmer-cruise"
-      ]
+      "khmer": []
     },
     "final": {
       "voice": [
         "broadcast-sprint"
       ],
-      "khmer": [
-        "khmer-final"
-      ]
+      "khmer": []
     },
     "last-hundred": {
       "voice": [
@@ -86,9 +97,7 @@
       "voice": [
         "broadcast-surge"
       ],
-      "khmer": [
-        "khmer-surge"
-      ]
+      "khmer": []
     },
     "pace-sprint": {
       "voice": [
@@ -130,7 +139,9 @@
       "voice": [
         "broadcast-finish"
       ],
-      "khmer": []
+      "khmer": [
+        "khmer-finish"
+      ]
     },
     "loss": {
       "voice": [
@@ -153,116 +164,485 @@
   },
   "cuts": {
     "broadcast-ready": {
-      "start": 5472.64,
-      "end": 5474.6,
+      "start": 5472.9,
+      "end": 5474.85,
       "channel": "voice",
       "lang": "vi",
-      "text": "Đúng như chúng ta đã chờ đợi."
+      "text": "Đúng như chúng ta đã chờ đợi.",
+      "captionEvidence": {
+        "words": [
+          [
+            5472.96,
+            "đúng"
+          ],
+          [
+            5473.199,
+            "như"
+          ],
+          [
+            5473.4,
+            "chúng"
+          ],
+          [
+            5473.56,
+            "ta"
+          ],
+          [
+            5473.76,
+            "đã"
+          ],
+          [
+            5473.96,
+            "chờ"
+          ],
+          [
+            5474.159,
+            "đợi"
+          ]
+        ],
+        "nextWordStart": 5475.08
+      }
     },
     "broadcast-go": {
-      "start": 5572.94,
-      "end": 5574.69,
+      "start": 3345.22,
+      "end": 3348.35,
       "channel": "voice",
       "lang": "vi",
-      "text": "Chúng ta cùng chờ xem điều gì xảy ra."
+      "text": "Hai đội vừa rời điểm xuất phát thôi.",
+      "captionEvidence": {
+        "words": [
+          [
+            3345.28,
+            "Hai"
+          ],
+          [
+            3345.48,
+            "đội"
+          ],
+          [
+            3345.76,
+            "vừa"
+          ],
+          [
+            3346.4,
+            "rời"
+          ],
+          [
+            3346.88,
+            "điểm"
+          ],
+          [
+            3347.119,
+            "xuất"
+          ],
+          [
+            3347.319,
+            "phát"
+          ],
+          [
+            3347.48,
+            "thôi."
+          ]
+        ],
+        "nextWordStart": 3349.68
+      }
     },
     "broadcast-intro": {
-      "start": 5474.72,
-      "end": 5476.97,
+      "start": 5475.02,
+      "end": 5477.2,
       "channel": "voice",
       "lang": "vi",
-      "text": "Vòng đấu thắng thì đi tiếp."
+      "text": "Vòng đấu thắng thì đi tiếp.",
+      "captionEvidence": {
+        "words": [
+          [
+            5475.08,
+            "dòng"
+          ],
+          [
+            5475.28,
+            "đấu"
+          ],
+          [
+            5476.0,
+            "thắng"
+          ],
+          [
+            5476.28,
+            "thì"
+          ],
+          [
+            5476.44,
+            "đi"
+          ],
+          [
+            5476.639,
+            "tiếp"
+          ]
+        ],
+        "nextWordStart": 5477.4
+      }
     },
     "broadcast-rhythm": {
-      "start": 5363.32,
-      "end": 5365.78,
+      "start": 5364.18,
+      "end": 5366.12,
       "channel": "voice",
       "lang": "vi",
-      "text": "Giữ nhịp trong thời điểm này."
+      "text": "Giữ nhịp trong thời điểm này thôi.",
+      "captionEvidence": {
+        "words": [
+          [
+            5364.239,
+            "giữ"
+          ],
+          [
+            5364.52,
+            "nhịp"
+          ],
+          [
+            5364.84,
+            "trong"
+          ],
+          [
+            5365.04,
+            "thời"
+          ],
+          [
+            5365.159,
+            "điểm"
+          ],
+          [
+            5365.36,
+            "này"
+          ],
+          [
+            5365.56,
+            "thôi"
+          ]
+        ],
+        "nextWordStart": 5366.28
+      }
     },
     "broadcast-recover": {
-      "start": 5360.88,
-      "end": 5363.38,
+      "start": 5361.94,
+      "end": 5363.46,
       "channel": "voice",
       "lang": "vi",
-      "text": "Những nhịp chèo nhẹ nhàng."
+      "text": "Nhẹ nhàng, nhẹ nhàng.",
+      "captionEvidence": {
+        "words": [
+          [
+            5362.0,
+            "nhẹ"
+          ],
+          [
+            5362.28,
+            "nhàng"
+          ],
+          [
+            5362.679,
+            "nhẹ"
+          ],
+          [
+            5363.04,
+            "nhàng"
+          ]
+        ],
+        "nextWordStart": 5363.52
+      }
     },
     "broadcast-close": {
-      "start": 5559.12,
-      "end": 5562.42,
+      "start": 5559.34,
+      "end": 5562.38,
       "channel": "voice",
       "lang": "vi",
-      "text": "Vẫn còn cân bằng, vẫn còn so kè."
+      "text": "Vẫn còn rất là cân bằng, vẫn còn so kè.",
+      "captionEvidence": {
+        "words": [
+          [
+            5559.4,
+            "vẫn"
+          ],
+          [
+            5559.719,
+            "còn"
+          ],
+          [
+            5560.04,
+            "rất"
+          ],
+          [
+            5560.28,
+            "là"
+          ],
+          [
+            5560.44,
+            "cân"
+          ],
+          [
+            5560.679,
+            "bằng"
+          ],
+          [
+            5561.28,
+            "vẫn"
+          ],
+          [
+            5561.6,
+            "còn"
+          ],
+          [
+            5561.92,
+            "so"
+          ],
+          [
+            5562.119,
+            "kè"
+          ]
+        ],
+        "nextWordStart": 5562.4
+      }
     },
     "broadcast-sprint": {
-      "start": 5568.56,
-      "end": 5569.85,
+      "start": 5567.9,
+      "end": 5570.2,
       "channel": "voice",
       "lang": "vi",
-      "text": "Tung nước rút!"
+      "text": "Đã bắt đầu tung nước rút!",
+      "captionEvidence": {
+        "words": [
+          [
+            5567.96,
+            "đã"
+          ],
+          [
+            5568.119,
+            "bắt"
+          ],
+          [
+            5568.32,
+            "đầu"
+          ],
+          [
+            5569.08,
+            "cùng"
+          ],
+          [
+            5569.32,
+            "nước"
+          ],
+          [
+            5569.52,
+            "rút"
+          ]
+        ],
+        "nextWordStart": 5570.28
+      }
     },
     "broadcast-surge": {
-      "start": 5592.47,
-      "end": 5593.44,
+      "start": 5592.78,
+      "end": 5593.51,
       "channel": "voice",
       "lang": "vi",
-      "text": "Cú tung nước rút!"
+      "text": "Tung nước rút!",
+      "captionEvidence": {
+        "words": [
+          [
+            5592.84,
+            "tung"
+          ],
+          [
+            5593.119,
+            "nước"
+          ],
+          [
+            5593.28,
+            "rút"
+          ]
+        ],
+        "nextWordStart": 5593.52
+      }
     },
     "broadcast-finish": {
-      "start": 5595.81,
-      "end": 5597.0,
+      "start": 5596.06,
+      "end": 5596.98,
       "channel": "voice",
       "lang": "vi",
-      "text": "Quá tuyệt vời!"
+      "text": "Quá tuyệt vời!",
+      "captionEvidence": {
+        "words": [
+          [
+            5596.119,
+            "quá"
+          ],
+          [
+            5596.36,
+            "tuyệt"
+          ],
+          [
+            5596.6,
+            "vời"
+          ]
+        ],
+        "nextWordStart": 5597.0
+      }
     },
     "broadcast-loss": {
-      "start": 5477.48,
-      "end": 5479.67,
+      "start": 5477.83,
+      "end": 5479.94,
       "channel": "voice",
       "lang": "vi",
-      "text": "Hẹn nhau ở mùa giải năm sau."
+      "text": "Hẹn nhau ở mùa giải năm sau.",
+      "captionEvidence": {
+        "words": [
+          [
+            5477.88,
+            "hẹn"
+          ],
+          [
+            5478.159,
+            "nhau"
+          ],
+          [
+            5478.44,
+            "ở"
+          ],
+          [
+            5478.719,
+            "mùa"
+          ],
+          [
+            5478.96,
+            "giải"
+          ],
+          [
+            5479.159,
+            "năm"
+          ],
+          [
+            5479.4,
+            "sau"
+          ]
+        ],
+        "nextWordStart": 5480.119
+      }
     },
     "broadcast-wait": {
-      "start": 5582.95,
-      "end": 5584.55,
+      "start": 5583.27,
+      "end": 5586.12,
       "channel": "voice",
       "lang": "vi",
-      "text": "Chúng ta vẫn đợi."
+      "text": "Chúng tôi vẫn đợi, đợi trọng tài kết luận.",
+      "captionEvidence": {
+        "words": [
+          [
+            5583.32,
+            "chúng"
+          ],
+          [
+            5583.52,
+            "tôi"
+          ],
+          [
+            5583.639,
+            "vẫn"
+          ],
+          [
+            5583.92,
+            "đợi"
+          ],
+          [
+            5584.56,
+            "đợi"
+          ],
+          [
+            5584.8,
+            "trọng"
+          ],
+          [
+            5585.0,
+            "tài"
+          ],
+          [
+            5585.239,
+            "kết"
+          ],
+          [
+            5585.4,
+            "luận"
+          ]
+        ],
+        "nextWordStart": 5586.239
+      }
     },
     "broadcast-lead": {
-      "start": 5590.72,
-      "end": 5592.34,
+      "start": 5590.7,
+      "end": 5592.35,
       "channel": "voice",
       "lang": "vi",
-      "text": "Nhích trước, nhích trước!"
+      "text": "Dẫn trước, dẫn trước, dẫn trước!",
+      "captionEvidence": {
+        "words": [
+          [
+            5590.76,
+            "dẫn"
+          ],
+          [
+            5591.199,
+            "trước"
+          ],
+          [
+            5591.56,
+            "dẫn"
+          ],
+          [
+            5591.8,
+            "trước"
+          ],
+          [
+            5592.04,
+            "dẫn"
+          ],
+          [
+            5592.199,
+            "trước"
+          ]
+        ],
+        "nextWordStart": 5592.4
+      }
     },
     "khmer-intro": {
-      "start": 5403.8,
-      "end": 5407.9,
+      "start": 11285.14,
+      "end": 11287.02,
       "channel": "khmer",
       "lang": "km",
-      "text": "BLV Khmer · trích âm thanh gốc"
-    },
-    "khmer-cruise": {
-      "start": 5408.86,
-      "end": 5412.08,
-      "channel": "khmer",
-      "lang": "km",
-      "text": "BLV Khmer · trích âm thanh gốc"
-    },
-    "khmer-final": {
-      "start": 5412.44,
-      "end": 5415.7,
-      "channel": "khmer",
-      "lang": "km",
-      "text": "BLV Khmer · trích âm thanh gốc"
-    },
-    "khmer-surge": {
-      "start": 5415.94,
-      "end": 5417.38,
-      "channel": "khmer",
-      "lang": "km",
-      "text": "BLV Khmer · trích âm thanh gốc"
+      "text": "ទស្សនិកជន ទាំងឡាយ ជា ទី មេត្រី",
+      "captionEvidence": {
+        "words": [
+          [
+            11285.2,
+            "ទស្សនិកជន"
+          ],
+          [
+            11285.92,
+            "ទាំងឡាយ"
+          ],
+          [
+            11286.279,
+            "ជា"
+          ],
+          [
+            11286.439,
+            "ទី"
+          ],
+          [
+            11286.6,
+            "មេត្រី"
+          ]
+        ],
+        "nextWordStart": 11287.04
+      },
+      "translationVi": "Quý khán giả thân mến."
     },
     "drum-low": {
       "start": 5576.8,
@@ -291,6 +671,60 @@
       "channel": "crowd",
       "lang": null,
       "text": "Âm thanh hiện trường từ clip gốc"
+    },
+    "khmer-go": {
+      "start": 11290.38,
+      "end": 11292.65,
+      "channel": "khmer",
+      "lang": "km",
+      "text": "ក៏ បាន ចាប់ផ្ដើម ហើយ",
+      "captionEvidence": {
+        "words": [
+          [
+            11290.439,
+            "ក៏"
+          ],
+          [
+            11290.6,
+            "បាន"
+          ],
+          [
+            11290.8,
+            "ចាប់ផ្ដើម"
+          ],
+          [
+            11291.68,
+            "ហើយ"
+          ]
+        ],
+        "nextWordStart": 11293.92
+      },
+      "translationVi": "Đã bắt đầu rồi."
+    },
+    "khmer-finish": {
+      "start": 4682.26,
+      "end": 4684.18,
+      "channel": "khmer",
+      "lang": "km",
+      "text": "យើង សូម អបអស",
+      "captionEvidence": {
+        "words": [
+          [
+            4682.32,
+            "យើង"
+          ],
+          [
+            4682.48,
+            "សូម"
+          ],
+          [
+            4682.639,
+            "អបអស"
+          ]
+        ],
+        "nextWordStart": 4684.28
+      },
+      "translationVi": "Chúng tôi xin chúc mừng."
     }
   }
 }

@@ -12,10 +12,28 @@ def main():
  parser=argparse.ArgumentParser(description=__doc__)
  parser.add_argument('--source',required=True,type=Path,help='Local original audio downloaded from the attributed broadcast')
  parser.add_argument('--recipe',type=Path,default=ROOT/'docs/broadcast-audio-cuts.json')
+ parser.add_argument('--captions',type=Path,help='Original YouTube JSON3 CC file used to verify the selected spoken words')
  args=parser.parse_args();source=args.source.resolve();recipe=json.loads(args.recipe.read_text(encoding='utf-8'))
  if not source.is_file():parser.error('Missing local source audio')
  digest=hashlib.sha256(source.read_bytes()).hexdigest()
  if digest!=recipe['source']['sha256']:parser.error('Source differs from the reviewed cut recipe; verify it before rebuilding')
+ caption_source=recipe['source'].get('captions')
+ if caption_source:
+  if not args.captions or not args.captions.is_file():parser.error('This recipe requires --captions with the original YouTube JSON3 CC file')
+  raw=args.captions.read_bytes()
+  if hashlib.sha256(raw).hexdigest()!=caption_source['sha256']:parser.error('Caption track differs from the reviewed cut recipe')
+  words=set()
+  for event in json.loads(raw)['events']:
+   for segment in event.get('segs',[]):
+    text=segment.get('utf8','').strip()
+    if text:words.add((round((event.get('tStartMs',0)+segment.get('tOffsetMs',0))/1000,3),text))
+  for key,cut in recipe['cuts'].items():
+   if cut['channel'] not in ['voice','khmer']:continue
+   evidence=cut.get('captionEvidence',{});selected=evidence.get('words',[])
+   if not selected or not all(tuple(word) in words and cut['start']<=word[0]<cut['end'] for word in selected):raise ValueError('Missing or mismatched caption words: '+key)
+   actual=sorted(word for word in words if cut['start']<=word[0]<cut['end'])
+   if actual!=sorted(tuple(word) for word in selected):raise ValueError('Unreviewed words inside cut: '+key)
+   if cut['end']>evidence['nextWordStart']:raise ValueError('Cut includes the following phrase: '+key)
  OUT.mkdir(parents=True,exist_ok=True)
  previous=json.loads((OUT/'manifest.json').read_text(encoding='utf-8')) if (OUT/'manifest.json').exists() else {'clips':{}}
  clips={}

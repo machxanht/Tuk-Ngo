@@ -15,17 +15,17 @@
     "played": [
       {
         "key": "broadcast-ready",
-        "at": 0.052000000000000005,
+        "at": 0.02,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
         ]
       }
     ],
     "errors": [],
     "decoded": 13,
     "context": "running",
-    "audioTime": 0.050666666666666665,
+    "audioTime": 0.011609977324263039,
     "active": true,
     "mix": {
       "enabled": true,
@@ -38,25 +38,25 @@
     "sources": 2,
     "queued": [],
     "speaking": true,
-    "outputRms": 0.02073150725195954,
+    "outputRms": 0.006759726990323022,
     "cached": 13,
     "teams": [
       "tum-nup-2",
-      "can_tho-31"
+      "can_tho-28"
     ],
     "disposed": false,
     "origin": "broadcast",
     "sourceVideo": "crZF3hghbgQ"
   },
   "intro": {
-    "drumHits": 4,
+    "drumHits": 15,
     "drumKinds": {
-      "drum-low": 1,
-      "drum-open": 3,
+      "drum-low": 3,
+      "drum-open": 12,
       "drum-rim": 0
     },
     "voiceClips": 3,
-    "khmerClips": 1,
+    "khmerClips": 2,
     "cues": [
       "ready",
       "go",
@@ -65,41 +65,49 @@
     "played": [
       {
         "key": "broadcast-ready",
-        "at": 0.052000000000000005,
+        "at": 0.02,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
         ]
       },
       {
         "key": "broadcast-go",
-        "at": 2.961333333333333,
+        "at": 2.6815873015873017,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
+        ]
+      },
+      {
+        "key": "khmer-go",
+        "at": 5.886587301587301,
+        "match": [
+          "tum-nup-2",
+          "can_tho-28"
         ]
       },
       {
         "key": "broadcast-intro",
-        "at": 5.9319999999999995,
+        "at": 8.28049886621315,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
         ]
       },
       {
         "key": "khmer-intro",
-        "at": 8.257,
+        "at": 10.53547619047619,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
         ]
       }
     ],
     "errors": [],
     "decoded": 13,
     "context": "running",
-    "audioTime": 5.92,
+    "audioTime": 12.350113378684807,
     "active": true,
     "mix": {
       "enabled": true,
@@ -112,25 +120,25 @@
     "sources": 3,
     "queued": [],
     "speaking": true,
-    "outputRms": 0.011240848021715783,
+    "outputRms": 0.14357248361196584,
     "cached": 13,
     "teams": [
       "tum-nup-2",
-      "can_tho-31"
+      "can_tho-28"
     ],
     "disposed": false,
     "origin": "broadcast",
     "sourceVideo": "crZF3hghbgQ"
   },
   "pause": {
-    "drumHits": 4,
+    "drumHits": 15,
     "drumKinds": {
-      "drum-low": 1,
-      "drum-open": 3,
+      "drum-low": 3,
+      "drum-open": 12,
       "drum-rim": 0
     },
     "voiceClips": 3,
-    "khmerClips": 1,
+    "khmerClips": 2,
     "cues": [
       "ready",
       "go",
@@ -139,41 +147,49 @@
     "played": [
       {
         "key": "broadcast-ready",
-        "at": 0.052000000000000005,
+        "at": 0.02,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
         ]
       },
       {
         "key": "broadcast-go",
-        "at": 2.961333333333333,
+        "at": 2.6815873015873017,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
+        ]
+      },
+      {
+        "key": "khmer-go",
+        "at": 5.886587301587301,
+        "match": [
+          "tum-nup-2",
+          "can_tho-28"
         ]
       },
       {
         "key": "broadcast-intro",
-        "at": 5.9319999999999995,
+        "at": 8.28049886621315,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
         ]
       },
       {
         "key": "khmer-intro",
-        "at": 8.257,
+        "at": 10.53547619047619,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
         ]
       }
     ],
     "errors": [],
     "decoded": 13,
     "context": "running",
-    "audioTime": 6.210666666666667,
+    "audioTime": 12.680997732426304,
     "active": false,
     "mix": {
       "enabled": true,
@@ -190,21 +206,21 @@
     "cached": 13,
     "teams": [
       "tum-nup-2",
-      "can_tho-31"
+      "can_tho-28"
     ],
     "disposed": false,
     "origin": "broadcast",
     "sourceVideo": "crZF3hghbgQ"
   },
   "mute": {
-    "drumHits": 5,
+    "drumHits": 16,
     "drumKinds": {
-      "drum-low": 1,
-      "drum-open": 4,
+      "drum-low": 4,
+      "drum-open": 12,
       "drum-rim": 0
     },
     "voiceClips": 3,
-    "khmerClips": 1,
+    "khmerClips": 2,
     "cues": [
       "ready",
       "go",
@@ -213,41 +229,49 @@
     "played": [
       {
         "key": "broadcast-ready",
-        "at": 0.052000000000000005,
+        "at": 0.02,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
         ]
       },
       {
         "key": "broadcast-go",
-        "at": 2.961333333333333,
+        "at": 2.6815873015873017,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
+        ]
+      },
+      {
+        "key": "khmer-go",
+        "at": 5.886587301587301,
+        "match": [
+          "tum-nup-2",
+          "can_tho-28"
         ]
       },
       {
         "key": "broadcast-intro",
-        "at": 5.9319999999999995,
+        "at": 8.28049886621315,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
         ]
       },
       {
         "key": "khmer-intro",
-        "at": 8.257,
+        "at": 10.53547619047619,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
         ]
       }
     ],
     "errors": [],
     "decoded": 13,
     "context": "running",
-    "audioTime": 6.52,
+    "audioTime": 13.130884353741497,
     "active": true,
     "mix": {
       "enabled": false,
@@ -264,7 +288,7 @@
     "cached": 13,
     "teams": [
       "tum-nup-2",
-      "can_tho-31"
+      "can_tho-28"
     ],
     "disposed": false,
     "origin": "broadcast",
@@ -335,10 +359,10 @@
     }
   ],
   "final": {
-    "drumHits": 14,
+    "drumHits": 24,
     "drumKinds": {
-      "drum-low": 3,
-      "drum-open": 8,
+      "drum-low": 5,
+      "drum-open": 16,
       "drum-rim": 3
     },
     "voiceClips": 4,
@@ -352,57 +376,57 @@
     "played": [
       {
         "key": "broadcast-ready",
-        "at": 0.052000000000000005,
+        "at": 0.02,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
         ]
       },
       {
         "key": "broadcast-go",
-        "at": 2.961333333333333,
+        "at": 2.6815873015873017,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
+        ]
+      },
+      {
+        "key": "khmer-go",
+        "at": 5.886587301587301,
+        "match": [
+          "tum-nup-2",
+          "can_tho-28"
         ]
       },
       {
         "key": "broadcast-intro",
-        "at": 5.9319999999999995,
+        "at": 8.28049886621315,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
         ]
       },
       {
         "key": "khmer-intro",
-        "at": 8.257,
+        "at": 10.53547619047619,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
         ]
       },
       {
         "key": "broadcast-sprint",
-        "at": 8.630666666666666,
+        "at": 15.411927437641722,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
-        ]
-      },
-      {
-        "key": "khmer-final",
-        "at": 9.995666666666667,
-        "match": [
-          "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
         ]
       }
     ],
     "errors": [],
     "decoded": 13,
     "context": "running",
-    "audioTime": 10.021333333333333,
+    "audioTime": 16.761904761904763,
     "active": true,
     "mix": {
       "enabled": true,
@@ -415,25 +439,25 @@
     "sources": 4,
     "queued": [],
     "speaking": true,
-    "outputRms": 0.017254496634949632,
+    "outputRms": 0.08277029632005697,
     "cached": 13,
     "teams": [
       "tum-nup-2",
-      "can_tho-31"
+      "can_tho-28"
     ],
     "disposed": false,
     "origin": "broadcast",
     "sourceVideo": "crZF3hghbgQ"
   },
   "surge": {
-    "drumHits": 16,
+    "drumHits": 24,
     "drumKinds": {
-      "drum-low": 3,
-      "drum-open": 9,
-      "drum-rim": 4
+      "drum-low": 5,
+      "drum-open": 16,
+      "drum-rim": 3
     },
     "voiceClips": 5,
-    "khmerClips": 3,
+    "khmerClips": 2,
     "cues": [
       "ready",
       "go",
@@ -444,73 +468,65 @@
     "played": [
       {
         "key": "broadcast-ready",
-        "at": 0.052000000000000005,
+        "at": 0.02,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
         ]
       },
       {
         "key": "broadcast-go",
-        "at": 2.961333333333333,
+        "at": 2.6815873015873017,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
+        ]
+      },
+      {
+        "key": "khmer-go",
+        "at": 5.886587301587301,
+        "match": [
+          "tum-nup-2",
+          "can_tho-28"
         ]
       },
       {
         "key": "broadcast-intro",
-        "at": 5.9319999999999995,
+        "at": 8.28049886621315,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
         ]
       },
       {
         "key": "khmer-intro",
-        "at": 8.257,
+        "at": 10.53547619047619,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
         ]
       },
       {
         "key": "broadcast-sprint",
-        "at": 8.630666666666666,
+        "at": 15.411927437641722,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
-        ]
-      },
-      {
-        "key": "khmer-final",
-        "at": 9.995666666666667,
-        "match": [
-          "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
         ]
       },
       {
         "key": "broadcast-surge",
-        "at": 10.110666666666667,
+        "at": 16.900907029478457,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
-        ]
-      },
-      {
-        "key": "khmer-surge",
-        "at": 11.155666666666667,
-        "match": [
-          "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
         ]
       }
     ],
     "errors": [],
     "decoded": 13,
     "context": "running",
-    "audioTime": 11.16,
+    "audioTime": 16.91283446712018,
     "active": true,
     "mix": {
       "enabled": true,
@@ -520,25 +536,25 @@
       "crowd": true,
       "volume": 0.55
     },
-    "sources": 3,
+    "sources": 4,
     "queued": [],
     "speaking": true,
-    "outputRms": 0.008519604833037861,
+    "outputRms": 0.06964612890003603,
     "cached": 13,
     "teams": [
       "tum-nup-2",
-      "can_tho-31"
+      "can_tho-28"
     ],
     "disposed": false,
     "origin": "broadcast",
     "sourceVideo": "crZF3hghbgQ"
   },
   "finish": {
-    "drumHits": 16,
+    "drumHits": 24,
     "drumKinds": {
-      "drum-low": 3,
-      "drum-open": 9,
-      "drum-rim": 4
+      "drum-low": 5,
+      "drum-open": 16,
+      "drum-rim": 3
     },
     "voiceClips": 6,
     "khmerClips": 3,
@@ -553,81 +569,81 @@
     "played": [
       {
         "key": "broadcast-ready",
-        "at": 0.052000000000000005,
+        "at": 0.02,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
         ]
       },
       {
         "key": "broadcast-go",
-        "at": 2.961333333333333,
+        "at": 2.6815873015873017,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
+        ]
+      },
+      {
+        "key": "khmer-go",
+        "at": 5.886587301587301,
+        "match": [
+          "tum-nup-2",
+          "can_tho-28"
         ]
       },
       {
         "key": "broadcast-intro",
-        "at": 5.9319999999999995,
+        "at": 8.28049886621315,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
         ]
       },
       {
         "key": "khmer-intro",
-        "at": 8.257,
+        "at": 10.53547619047619,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
         ]
       },
       {
         "key": "broadcast-sprint",
-        "at": 8.630666666666666,
+        "at": 15.411927437641722,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
-        ]
-      },
-      {
-        "key": "khmer-final",
-        "at": 9.995666666666667,
-        "match": [
-          "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
         ]
       },
       {
         "key": "broadcast-surge",
-        "at": 10.110666666666667,
+        "at": 16.900907029478457,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
-        ]
-      },
-      {
-        "key": "khmer-surge",
-        "at": 11.155666666666667,
-        "match": [
-          "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
         ]
       },
       {
         "key": "broadcast-finish",
-        "at": 11.212,
+        "at": 16.970566893424035,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
+        ]
+      },
+      {
+        "key": "khmer-finish",
+        "at": 17.965544217687075,
+        "match": [
+          "tum-nup-2",
+          "can_tho-28"
         ]
       }
     ],
     "errors": [],
     "decoded": 13,
     "context": "running",
-    "audioTime": 11.301333333333334,
+    "audioTime": 17.972244897959182,
     "active": true,
     "mix": {
       "enabled": true,
@@ -640,11 +656,11 @@
     "sources": 1,
     "queued": [],
     "speaking": true,
-    "outputRms": 0.04530519015966227,
+    "outputRms": 0.00030704178743003494,
     "cached": 13,
     "teams": [
       "tum-nup-2",
-      "can_tho-31"
+      "can_tho-28"
     ],
     "disposed": false,
     "origin": "broadcast",
@@ -655,32 +671,32 @@
     "difficulty": "normal",
     "pace": "steady",
     "countdown": 0,
-    "elapsed": 189.94166666657614,
+    "elapsed": 196.86666666656984,
     "distances": [
       1200,
-      1081.9203018771445
+      1125.6461595653245
     ],
     "speeds": [
       0,
       0
     ],
     "finishTimes": [
-      189.94070127102106,
+      196.86468325726727,
       null
     ],
-    "beatPhase": 282.6508333332493,
-    "aiPhase": 0.8279166666673888,
-    "stamina": 31.46581265196372,
-    "power": 0.8992747564592267,
+    "beatPhase": 293.7308333332826,
+    "aiPhase": 0.6004166666673866,
+    "stamina": 24.241169769466776,
+    "power": 0.8867726289620268,
     "cohesion": 1,
     "combo": 274,
     "maxCombo": 274,
     "perfect": 274,
     "good": 0,
-    "missed": 8,
-    "lastResolved": 282,
+    "missed": 19,
+    "lastResolved": 293,
     "feedback": "PERFECT · Chuẩn!",
-    "feedbackAt": 189.56249999990982,
+    "feedbackAt": 196.43749999990357,
     "result": "win",
     "pauseReason": "",
     "runId": 1,
@@ -690,33 +706,33 @@
     "lastSpamAt": -10,
     "slipstream": false,
     "lastJudgement": "PERFECT",
-    "aiStamina": 29.47758333330267,
-    "aiSurgeCharge": 0.4120000000000003,
-    "aiSurgeRemaining": 0,
+    "aiStamina": 12.630083333301574,
+    "aiSurgeCharge": 0.02800000000000045,
+    "aiSurgeRemaining": 3.0666666666666202,
     "raceStage": "final",
     "stageLabel": "Nước rút về đích",
     "cadence": 102,
     "aiRaceStage": "final",
     "aiStageLabel": "Nước rút về đích",
     "aiCadence": 102,
-    "aiSurgeActive": false,
+    "aiSurgeActive": true,
     "judgement": "PERFECT",
     "surgeActive": false,
     "canSurge": false,
     "desyncIntensity": 0,
-    "rhythmProgress": 0.15083333324929526,
-    "accuracy": 97,
-    "gap": 118.07969812285546,
+    "rhythmProgress": 0.2308333332825896,
+    "accuracy": 94,
+    "gap": 74.35384043467548,
     "strength": 0
   },
   "nextHeat": {
-    "drumHits": 16,
+    "drumHits": 24,
     "drumKinds": {
-      "drum-low": 3,
-      "drum-open": 9,
-      "drum-rim": 4
+      "drum-low": 5,
+      "drum-open": 16,
+      "drum-rim": 3
     },
-    "voiceClips": 7,
+    "voiceClips": 6,
     "khmerClips": 3,
     "cues": [
       "ready",
@@ -724,95 +740,86 @@
       "intro",
       "final",
       "surge",
-      "finish",
-      "ready"
+      "finish"
     ],
     "played": [
       {
         "key": "broadcast-ready",
-        "at": 0.052000000000000005,
+        "at": 0.02,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
         ]
       },
       {
         "key": "broadcast-go",
-        "at": 2.961333333333333,
+        "at": 2.6815873015873017,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
+        ]
+      },
+      {
+        "key": "khmer-go",
+        "at": 5.886587301587301,
+        "match": [
+          "tum-nup-2",
+          "can_tho-28"
         ]
       },
       {
         "key": "broadcast-intro",
-        "at": 5.9319999999999995,
+        "at": 8.28049886621315,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
         ]
       },
       {
         "key": "khmer-intro",
-        "at": 8.257,
+        "at": 10.53547619047619,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
         ]
       },
       {
         "key": "broadcast-sprint",
-        "at": 8.630666666666666,
+        "at": 15.411927437641722,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
-        ]
-      },
-      {
-        "key": "khmer-final",
-        "at": 9.995666666666667,
-        "match": [
-          "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
         ]
       },
       {
         "key": "broadcast-surge",
-        "at": 10.110666666666667,
+        "at": 16.900907029478457,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
-        ]
-      },
-      {
-        "key": "khmer-surge",
-        "at": 11.155666666666667,
-        "match": [
-          "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
         ]
       },
       {
         "key": "broadcast-finish",
-        "at": 11.212,
+        "at": 16.970566893424035,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
         ]
       },
       {
-        "key": "broadcast-ready",
-        "at": 11.459999999999999,
+        "key": "khmer-finish",
+        "at": 17.965544217687075,
         "match": [
           "tum-nup-2",
-          "prek-ta-cuol"
+          "can_tho-28"
         ]
       }
     ],
     "errors": [],
     "decoded": 13,
     "context": "running",
-    "audioTime": 11.450666666666667,
+    "audioTime": 18.07092970521542,
     "active": true,
     "mix": {
       "enabled": true,
@@ -822,25 +829,25 @@
       "crowd": true,
       "volume": 0.55
     },
-    "sources": 2,
+    "sources": 0,
     "queued": [],
-    "speaking": true,
-    "outputRms": 0.0007646529830050642,
+    "speaking": false,
+    "outputRms": 0,
     "cached": 13,
     "teams": [
       "tum-nup-2",
-      "prek-ta-cuol"
+      "ca_mau-10"
     ],
     "disposed": false,
     "origin": "broadcast",
     "sourceVideo": "crZF3hghbgQ"
   },
   "closedActiveContext": {
-    "drumHits": 16,
+    "drumHits": 24,
     "drumKinds": {
-      "drum-low": 3,
-      "drum-open": 9,
-      "drum-rim": 4
+      "drum-low": 5,
+      "drum-open": 16,
+      "drum-rim": 3
     },
     "voiceClips": 7,
     "khmerClips": 3,
@@ -856,89 +863,89 @@
     "played": [
       {
         "key": "broadcast-ready",
-        "at": 0.052000000000000005,
+        "at": 0.02,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
         ]
       },
       {
         "key": "broadcast-go",
-        "at": 2.961333333333333,
+        "at": 2.6815873015873017,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
+        ]
+      },
+      {
+        "key": "khmer-go",
+        "at": 5.886587301587301,
+        "match": [
+          "tum-nup-2",
+          "can_tho-28"
         ]
       },
       {
         "key": "broadcast-intro",
-        "at": 5.9319999999999995,
+        "at": 8.28049886621315,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
         ]
       },
       {
         "key": "khmer-intro",
-        "at": 8.257,
+        "at": 10.53547619047619,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
         ]
       },
       {
         "key": "broadcast-sprint",
-        "at": 8.630666666666666,
+        "at": 15.411927437641722,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
-        ]
-      },
-      {
-        "key": "khmer-final",
-        "at": 9.995666666666667,
-        "match": [
-          "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
         ]
       },
       {
         "key": "broadcast-surge",
-        "at": 10.110666666666667,
+        "at": 16.900907029478457,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
-        ]
-      },
-      {
-        "key": "khmer-surge",
-        "at": 11.155666666666667,
-        "match": [
-          "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
         ]
       },
       {
         "key": "broadcast-finish",
-        "at": 11.212,
+        "at": 16.970566893424035,
         "match": [
           "tum-nup-2",
-          "can_tho-31"
+          "can_tho-28"
+        ]
+      },
+      {
+        "key": "khmer-finish",
+        "at": 17.965544217687075,
+        "match": [
+          "tum-nup-2",
+          "can_tho-28"
         ]
       },
       {
         "key": "broadcast-ready",
-        "at": 11.459999999999999,
+        "at": 18.13156462585034,
         "match": [
           "tum-nup-2",
-          "prek-ta-cuol"
+          "ca_mau-10"
         ]
       }
     ],
     "errors": [],
     "decoded": 13,
     "context": "closed",
-    "audioTime": 11.92,
+    "audioTime": 18.63111111111111,
     "active": false,
     "mix": {
       "enabled": false,
@@ -951,11 +958,11 @@
     "sources": 0,
     "queued": [],
     "speaking": false,
-    "outputRms": 0.005778915965483598,
+    "outputRms": 0.006448167671658463,
     "cached": 0,
     "teams": [
       "tum-nup-2",
-      "prek-ta-cuol"
+      "ca_mau-10"
     ],
     "disposed": true,
     "origin": "broadcast",
@@ -1039,43 +1046,39 @@
       "status": 200
     },
     {
-      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/broadcast-sprint.mp3?clip=ba1d425d7c67",
+      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/broadcast-sprint.mp3?clip=28e52473d266",
       "status": 200
     },
     {
-      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/khmer-final.mp3?clip=8913612983a8",
+      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/broadcast-surge.mp3?clip=5184f6265776",
       "status": 200
     },
     {
-      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/broadcast-surge.mp3?clip=68ebc1a5040e",
+      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/broadcast-finish.mp3?clip=2b463a470609",
       "status": 200
     },
     {
-      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/khmer-surge.mp3?clip=426b7d2e520b",
+      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/khmer-finish.mp3?clip=37375bb2bbc3",
       "status": 200
     },
     {
-      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/broadcast-finish.mp3?clip=1eae051da1c1",
+      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/broadcast-ready.mp3?clip=796be9354ec2",
       "status": 200
     },
     {
-      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/broadcast-ready.mp3?clip=be21d80f7299",
+      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/broadcast-intro.mp3?clip=7f5b601728db",
       "status": 200
     },
     {
-      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/broadcast-go.mp3?clip=e948c3c3b44e",
-      "status": 200
-    },
-    {
-      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/broadcast-intro.mp3?clip=08620b4bbcf4",
-      "status": 200
-    },
-    {
-      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/khmer-intro.mp3?clip=68a14fa7f013",
+      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/broadcast-go.mp3?clip=ebe4a34ec119",
       "status": 200
     },
     {
       "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/drum-low.mp3?clip=7e43c413746a",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/khmer-intro.mp3?clip=be897d565f3b",
       "status": 200
     },
     {
@@ -1084,6 +1087,10 @@
     },
     {
       "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/drum-rim.mp3?clip=2d244543babb",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/khmer-go.mp3?clip=4d9ccca7426f",
       "status": 200
     }
   ],

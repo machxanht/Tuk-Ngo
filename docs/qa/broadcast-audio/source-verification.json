@@ -1,126 +1,157 @@
 {
   "sourceSha256": "2c443d23b71fe92cc191baca5bbc45ec12704d79a2ef1b31492839cd04654ed5",
-  "method": "Independently decode and process each original source interval; compare PCM to decoded published MP3. No synthesized reference or mock transport.",
-  "clips": {
-    "broadcast-ready": {
-      "sourceStart": 5472.64,
-      "sourceEnd": 5474.6,
-      "pcmCorrelation": 0.999745,
-      "mp3Sha256": "be21d80f72994726cd7d47ff02ba7b1a8070bfe501f32f2eae13c67dde00de2b"
+  "captionSource": {
+    "provider": "YouTube",
+    "kind": "automatic",
+    "track": "vi-orig",
+    "format": "json3",
+    "sha256": "a08fd520f7be92121755cf73dc3d8598f84c17be500aa403b5f1d6cf33008e6a",
+    "cueCount": 4434,
+    "languagesObserved": [
+      "vi",
+      "km"
+    ],
+    "speakerLabels": false
+  },
+  "cutCount": 19,
+  "minimumCorrelation": 0.99954962,
+  "clips": [
+    {
+      "clip": "broadcast-ready",
+      "sha256": "796be9354ec2613db6091ad9652f298fb76af0a099e3c1b23b42680cce40ee7f",
+      "sourceStart": 5472.9,
+      "sourceEnd": 5474.85,
+      "pcmCorrelation": 0.99954962
     },
-    "broadcast-go": {
-      "sourceStart": 5572.94,
-      "sourceEnd": 5574.69,
-      "pcmCorrelation": 0.999792,
-      "mp3Sha256": "e948c3c3b44e4ca07f83d4aedbb9a4a5cb1d519ff7be94f210f5fa13bca7ab69"
+    {
+      "clip": "broadcast-go",
+      "sha256": "ebe4a34ec1199c94230e87afa22d25702ba019946e8da7511b6ebd76c9b80f22",
+      "sourceStart": 3345.22,
+      "sourceEnd": 3348.35,
+      "pcmCorrelation": 0.99974884
     },
-    "broadcast-intro": {
-      "sourceStart": 5474.72,
-      "sourceEnd": 5476.97,
-      "pcmCorrelation": 0.999813,
-      "mp3Sha256": "08620b4bbcf4b977cd20c064f01e94607564f4aa950482b119362305ef3c794d"
+    {
+      "clip": "broadcast-intro",
+      "sha256": "7f5b601728db83fe3849c0b5de375f55dd3beb4ad1c44592d728dfd16ed11ae0",
+      "sourceStart": 5475.02,
+      "sourceEnd": 5477.2,
+      "pcmCorrelation": 0.99970836
     },
-    "broadcast-rhythm": {
-      "sourceStart": 5363.32,
-      "sourceEnd": 5365.78,
-      "pcmCorrelation": 0.999877,
-      "mp3Sha256": "73b4a1d653b58884d9b4a1c3b35c6d0858cfed63c0663ebe5b53be4991927376"
+    {
+      "clip": "broadcast-rhythm",
+      "sha256": "74665bea71713ef1db1930ab253e9ce335bde3120bc8a60e42a7a6f8707ce885",
+      "sourceStart": 5364.18,
+      "sourceEnd": 5366.12,
+      "pcmCorrelation": 0.9998924
     },
-    "broadcast-recover": {
-      "sourceStart": 5360.88,
-      "sourceEnd": 5363.38,
-      "pcmCorrelation": 0.999909,
-      "mp3Sha256": "655f954f60d6252ba419b524cd475b90d38b3144c71d25fa49b717df1fc71411"
+    {
+      "clip": "broadcast-recover",
+      "sha256": "62a94005868b508652b0195198ea2d554e2f4801e6c433969af39c0be96ba2b0",
+      "sourceStart": 5361.94,
+      "sourceEnd": 5363.46,
+      "pcmCorrelation": 0.99989081
     },
-    "broadcast-close": {
-      "sourceStart": 5559.12,
-      "sourceEnd": 5562.42,
-      "pcmCorrelation": 0.999816,
-      "mp3Sha256": "34072e58f646e7b1631b71ed250314eebd7cbb72bd17b27f37a7df3e038f0437"
+    {
+      "clip": "broadcast-close",
+      "sha256": "faab0ef7e22055635133d987d651281a7e86b3e77ed997ab0f254cd56a939c3c",
+      "sourceStart": 5559.34,
+      "sourceEnd": 5562.38,
+      "pcmCorrelation": 0.99984098
     },
-    "broadcast-sprint": {
-      "sourceStart": 5568.56,
-      "sourceEnd": 5569.85,
-      "pcmCorrelation": 0.999898,
-      "mp3Sha256": "ba1d425d7c67b63ead460398d2e167c0fe4b3e292c2e4ef9b457d319e24487e4"
+    {
+      "clip": "broadcast-sprint",
+      "sha256": "28e52473d26636fd4fef4e241ffd0af4fa17fe11cb5a7f941405dcb2d4f37034",
+      "sourceStart": 5567.9,
+      "sourceEnd": 5570.2,
+      "pcmCorrelation": 0.99988387
     },
-    "broadcast-surge": {
-      "sourceStart": 5592.47,
-      "sourceEnd": 5593.44,
-      "pcmCorrelation": 0.99986,
-      "mp3Sha256": "68ebc1a5040e4c3fb9060ff600e243586d750492af86c194460ce76bcfa1eae0"
+    {
+      "clip": "broadcast-surge",
+      "sha256": "5184f62657766c7d2b5c37e87acfd4604f3507e98231177222fcff858b7b0aef",
+      "sourceStart": 5592.78,
+      "sourceEnd": 5593.51,
+      "pcmCorrelation": 0.99978554
     },
-    "broadcast-finish": {
-      "sourceStart": 5595.81,
-      "sourceEnd": 5597.0,
-      "pcmCorrelation": 0.999718,
-      "mp3Sha256": "1eae051da1c136b77dc9c88ff6cec8e938288ddafe784de12c8655113740b9de"
+    {
+      "clip": "broadcast-finish",
+      "sha256": "2b463a470609bc34e5fd7db15ada43bea4fa7c17ae5e084d03756c1cf4d59ae1",
+      "sourceStart": 5596.06,
+      "sourceEnd": 5596.98,
+      "pcmCorrelation": 0.99969079
     },
-    "broadcast-loss": {
-      "sourceStart": 5477.48,
-      "sourceEnd": 5479.67,
-      "pcmCorrelation": 0.999857,
-      "mp3Sha256": "f983acf1a14e0830987f3b6bf0d3d26575c8af204af1aada3c2fa5b32e3f1479"
+    {
+      "clip": "broadcast-loss",
+      "sha256": "8da8687e967d98e2588481af4e6e30b7e539cdf6c9ad57f19d33ed1faca898f7",
+      "sourceStart": 5477.83,
+      "sourceEnd": 5479.94,
+      "pcmCorrelation": 0.99985417
     },
-    "broadcast-wait": {
-      "sourceStart": 5582.95,
-      "sourceEnd": 5584.55,
-      "pcmCorrelation": 0.999854,
-      "mp3Sha256": "f65488f03a114ca04fd726d9088d200feeb0e33fb6017f513ec6e84c540f352c"
+    {
+      "clip": "broadcast-wait",
+      "sha256": "e7f891dbf55c63b3ca83383ed65517c7a62a1862be8e1e3d3cc0d76da0f831a8",
+      "sourceStart": 5583.27,
+      "sourceEnd": 5586.12,
+      "pcmCorrelation": 0.99985145
     },
-    "broadcast-lead": {
-      "sourceStart": 5590.72,
-      "sourceEnd": 5592.34,
-      "pcmCorrelation": 0.999803,
-      "mp3Sha256": "68a0e1797112b137f74ee7a2553b047fdc80b52cb3fde792906aa63456683c55"
+    {
+      "clip": "broadcast-lead",
+      "sha256": "608aee400c97598531810fccfdee2a505a0de5e04392f83f716ee932616633dc",
+      "sourceStart": 5590.7,
+      "sourceEnd": 5592.35,
+      "pcmCorrelation": 0.99983232
     },
-    "khmer-intro": {
-      "sourceStart": 5403.8,
-      "sourceEnd": 5407.9,
-      "pcmCorrelation": 0.999755,
-      "mp3Sha256": "68a14fa7f0134f23cda0f0adc323135d0c23ac68fd9532b916ae3c2fa7e23c82"
+    {
+      "clip": "khmer-intro",
+      "sha256": "be897d565f3b470e5d2451dbfdcffee1649653ac9469c4c1174bafbbe074d16f",
+      "sourceStart": 11285.14,
+      "sourceEnd": 11287.02,
+      "pcmCorrelation": 0.99975059
     },
-    "khmer-cruise": {
-      "sourceStart": 5408.86,
-      "sourceEnd": 5412.08,
-      "pcmCorrelation": 0.999837,
-      "mp3Sha256": "8b589cad0d668a8945b6075c062f93662cc8e601ef79909b9d30dd9d1acf1a20"
-    },
-    "khmer-final": {
-      "sourceStart": 5412.44,
-      "sourceEnd": 5415.7,
-      "pcmCorrelation": 0.999807,
-      "mp3Sha256": "8913612983a82a7545f659beef4e5b75f62f247aaba0e5c16b89e2f53c85fa20"
-    },
-    "khmer-surge": {
-      "sourceStart": 5415.94,
-      "sourceEnd": 5417.38,
-      "pcmCorrelation": 0.999856,
-      "mp3Sha256": "426b7d2e520b2b6bbc79cb5eb95d047bb94c636634c9a590c63e67afed408ab7"
-    },
-    "drum-low": {
+    {
+      "clip": "drum-low",
+      "sha256": "7e43c413746ac5aee29397694913506545eb917047df639e2b4933cc7af02ee3",
       "sourceStart": 5576.8,
       "sourceEnd": 5577.17,
-      "pcmCorrelation": 0.999998,
-      "mp3Sha256": "7e43c413746ac5aee29397694913506545eb917047df639e2b4933cc7af02ee3"
+      "pcmCorrelation": 0.99999799
     },
-    "drum-open": {
+    {
+      "clip": "drum-open",
+      "sha256": "8154937c7503134aae0cd6af54dca4f25b824cfe174a134639046d1970c1a80c",
       "sourceStart": 5577.64,
       "sourceEnd": 5577.99,
-      "pcmCorrelation": 0.999995,
-      "mp3Sha256": "8154937c7503134aae0cd6af54dca4f25b824cfe174a134639046d1970c1a80c"
+      "pcmCorrelation": 0.99999488
     },
-    "drum-rim": {
+    {
+      "clip": "drum-rim",
+      "sha256": "2d244543babb4d7102d0390327ae55d93db3350a05951f0cd0e0706e4a55bebc",
       "sourceStart": 5578.1,
       "sourceEnd": 5578.39,
-      "pcmCorrelation": 0.999998,
-      "mp3Sha256": "2d244543babb4d7102d0390327ae55d93db3350a05951f0cd0e0706e4a55bebc"
+      "pcmCorrelation": 0.99999836
     },
-    "broadcast-ambience": {
+    {
+      "clip": "broadcast-ambience",
+      "sha256": "0394384c18e17b6044ae8f946fc3da251fb14e42c80063d84e6e84b43dd7086d",
       "sourceStart": 5574.68,
       "sourceEnd": 5578.55,
-      "pcmCorrelation": 0.999931,
-      "mp3Sha256": "0394384c18e17b6044ae8f946fc3da251fb14e42c80063d84e6e84b43dd7086d"
+      "pcmCorrelation": 0.99993139
+    },
+    {
+      "clip": "khmer-go",
+      "sha256": "4d9ccca7426fdead15a7264e5c1ebda67e829776dcd55497ed5b4bc7a588abf2",
+      "sourceStart": 11290.38,
+      "sourceEnd": 11292.65,
+      "pcmCorrelation": 0.99980365
+    },
+    {
+      "clip": "khmer-finish",
+      "sha256": "37375bb2bbc3703123e098ef7b7fcbc498bcb8f7ab9ed4ccd85a176f9e8b15f6",
+      "sourceStart": 4682.26,
+      "sourceEnd": 4684.18,
+      "pcmCorrelation": 0.99967628
     }
-  }
+  ],
+  "limitations": [
+    "PCM correlation verifies source and processing, not recognition accuracy or speaker identity.",
+    "Content selection follows automatic YouTube CC plus working Khmer translations, without independent listening verification."
+  ]
 }

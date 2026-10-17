@@ -23,11 +23,12 @@ with sync_playwright() as p:
  report['start']=page.evaluate(audio+'.stats()')
  assert report['start']['context']=='running' and report['start']['decoded']>=4
  assert 'ready' in report['start']['cues']
- page.wait_for_function(audio+".stats().played.some(p=>p.key==='khmer-intro')",timeout=25000)
+ page.wait_for_function("()=>{const s="+audio+".stats();return s.played.some(p=>p.key==='khmer-intro'&&p.at+1.8<s.audioTime);}",timeout=25000)
  page.wait_for_function(audio+'.stats().drumHits>=4',timeout=15000)
  report['intro']=page.evaluate(audio+'.stats()')
  assert report['intro']['origin']=='broadcast' and report['intro']['sourceVideo']=='crZF3hghbgQ'
  assert {'broadcast-intro','khmer-intro'}.issubset(p['key'] for p in report['intro']['played'])
+ assert any(p['key']=='khmer-go' for p in report['intro']['played'])
  page.get_by_role('button',name='Tạm dừng cuộc đua',exact=True).tap();page.wait_for_timeout(200)
  report['pause']=page.evaluate(audio+'.stats()');assert report['pause']['sources']==0 and not report['pause']['queued'] and report['pause']['outputRms']<.0001
  page.get_by_role('button',name='Tiếp tục cuộc đua',exact=True).tap()
@@ -67,18 +68,19 @@ with sync_playwright() as p:
  try:page.wait_for_function(audio+".stats().cues.includes('final')",timeout=15000)
  except Exception:
   diagnostic={'audio':page.evaluate(audio+'.stats()'),'race':page.evaluate(boat+'.game.snapshot()'),'errors':errors}
-  (out/'failure.json').write_text(json.dumps(diagnostic,ensure_ascii=False,indent=2),encoding='utf-8');page.screenshot(path=str(out/'failure.png'));raise
+  (out/'failure.json').write_text(json.dumps(diagnostic,ensure_ascii=False,indent=2),encoding='utf-8',newline='\n');page.screenshot(path=str(out/'failure.png'));raise
  page.wait_for_function(audio+".stats().drumKinds['drum-rim']>=3",timeout=15000)
- page.wait_for_function("()=>{const s="+audio+".stats();return s.played.some(p=>p.key==='khmer-final'&&p.at<s.audioTime);}",timeout=15000)
+ page.wait_for_function("()=>{const s="+audio+".stats();return s.played.some(p=>p.key==='broadcast-sprint'&&p.at<s.audioTime);}",timeout=15000)
  report['final']=page.evaluate(audio+'.stats()');assert not any(c in report['final']['queued'] for c in ['cruise','halfway'])
  page.get_by_role('button',name='ĐẠP!',exact=False).tap()
  page.wait_for_function(audio+".stats().cues.includes('surge')")
- page.wait_for_function("()=>{const s="+audio+".stats();return s.played.some(p=>p.key==='khmer-surge'&&p.at<s.audioTime);}",timeout=15000)
+ page.wait_for_function("()=>{const s="+audio+".stats();return s.played.some(p=>p.key==='broadcast-surge'&&p.at<s.audioTime);}",timeout=15000)
  report['surge']=page.evaluate(audio+'.stats()');assert report['surge']['drumHits']>report['intro']['drumHits']
  page.evaluate('''()=>{const a=document.querySelector('[data-testid=art-stage]').boatPreview,g=a.game;let next=Math.floor(g.state.beatPhase)+1;for(let i=0;i<70000&&g.state.phase!=='finished';i++){a.advance(1/240);if(g.state.phase==='racing'&&g.state.beatPhase>=next){g.stroke();next++;}}}''')
  page.wait_for_selector('[aria-label="Kết quả trận đua"]',timeout=15000)
  page.wait_for_function(audio+".stats().cues.includes('finish')")
  page.wait_for_function("()=>{const s="+audio+".stats();return s.played.some(p=>p.key==='broadcast-finish'&&p.at<s.audioTime);}",timeout=15000)
+ page.wait_for_function("()=>{const s="+audio+".stats();return s.played.some(p=>p.key==='khmer-finish'&&p.at<s.audioTime);}",timeout=15000)
  report['finish']=page.evaluate(audio+'.stats()');report['result']=page.evaluate(boat+'.game.snapshot()')
  assert report['result']['result']=='win'
  assert not report['finish']['errors'],report['finish']['errors']
@@ -105,5 +107,5 @@ with sync_playwright() as p:
  assert report['finish']['khmerClips']>=3
  report['responses']=responses;report['errors']=errors
  browser.close()
-(out/'checks.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
+(out/'checks.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8',newline='\n')
 print(json.dumps({'passed':True,'intro':report['intro']['teams'],'drumHits':report['finish']['drumHits'],'clipsDecoded':report['finish']['decoded'],'startOutputRms':report['start']['outputRms'],'result':report['result']['result'],'errors':errors}))
