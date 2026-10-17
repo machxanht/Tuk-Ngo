@@ -1,6 +1,6 @@
 # Current 3D crews and 1,200 m trial
 
-The canonical tablet URL is https://machxanht.github.io/Tuk-Ngo/. The root opens two current 54-person crews in a single WebGL scene, with independent eight-role animation sets. The automatic trial has a three-second start, distance-dependent start/cruise/sprint cadence, separate finish crossings/times, pause, restart and optional 3× viewing. This is a simulation for inspecting the current assets, not a recording or a reconstruction of the official result. The existing eight-boat cup remains available from its existing link.
+The canonical tablet URL is https://machxanht.github.io/Tuk-Ngo/. It now opens the [playable festival cup](festival-game.md). **Xem mô hình** or `?demo=race` opens the automatic inspection with two current 54-person crews in a single WebGL scene, with independent eight-role animation sets. The automatic trial has a three-second start, distance-dependent start/cruise/sprint cadence, separate finish crossings/times, pause, restart and optional 3× viewing. This is a simulation for inspecting the current assets, not a recording or a reconstruction of the official result. The existing eight-boat cup remains available from its existing link.
 
 ## Arm contact diagnosis and correction
 

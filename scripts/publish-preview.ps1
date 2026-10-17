@@ -41,7 +41,7 @@ if (!$PrepareOnly) {
 $taskParent = (& git -C $taskRepo rev-parse origin/gh-pages).Trim()
 if ($LASTEXITCODE -ne 0) { throw 'Cannot read Pages parent' }
 $taskRootHtml = [IO.File]::ReadAllText((Join-Path $taskBuilt 'index.html'))
-$taskDescription = 'Hai ghe Ngo 3D đua thử 1.200 m: 108 vận động viên, khán đài chính bên phải, cầu và khán giả hai bờ sông Maspéro.'
+$taskDescription = 'Chơi đua ghe Ngo 3D: cúp lễ hội 61 đội, chèo theo nhịp, giữ sức và đạp nước rút trên sông Maspéro 1.200 m.'
 $taskRootHtml = [regex]::Replace($taskRootHtml, '<meta name="description" content="[^"]*"\s*/?>', '<meta name="description" content="' + $taskDescription + '" />')
 $taskRootHtml = [regex]::Replace($taskRootHtml, '<meta property="og:description" content="[^"]*"\s*/?>', '<meta property="og:description" content="' + $taskDescription + '" />')
 $taskRootHtml = [regex]::Replace($taskRootHtml, '<meta property="og:title" content="[^"]*"\s*/?>', '<meta property="og:title" content="Đua Ghe Ngo — Sông Maspéro" />')

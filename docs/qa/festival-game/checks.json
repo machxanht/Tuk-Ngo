@@ -1,0 +1,2153 @@
+{
+  "physicalTabletTested": false,
+  "input": {
+    "phase": "racing",
+    "difficulty": "normal",
+    "pace": "steady",
+    "countdown": 0,
+    "elapsed": 3.954166666666802,
+    "distances": [
+      16.0972022694925,
+      21.28278150519327
+    ],
+    "speeds": [
+      7.084158845177114,
+      6.028432110603427
+    ],
+    "finishTimes": [
+      null,
+      null
+    ],
+    "beatPhase": 6.326666666666829,
+    "aiPhase": 0.4966666666667507,
+    "stamina": 98.45654584052755,
+    "power": 0.9323938199059486,
+    "cohesion": 1,
+    "combo": 6,
+    "maxCombo": 6,
+    "perfect": 5,
+    "good": 1,
+    "missed": 0,
+    "lastResolved": 5,
+    "feedback": "PERFECT · Chuẩn!",
+    "feedbackAt": 3.7041666666667896,
+    "result": null,
+    "pauseReason": "",
+    "runId": 1,
+    "surgeCharge": 0.16,
+    "surgeRemaining": 0,
+    "desync": 0,
+    "lastSpamAt": -10,
+    "slipstream": false,
+    "lastJudgement": "PERFECT",
+    "aiStamina": 98.10200000000441,
+    "aiSurgeCharge": 0.108,
+    "aiSurgeRemaining": 0,
+    "raceStage": "start",
+    "stageLabel": "Xuất phát bùng nổ",
+    "cadence": 96,
+    "aiRaceStage": "start",
+    "aiStageLabel": "Xuất phát bùng nổ",
+    "aiCadence": 96,
+    "aiSurgeActive": false,
+    "judgement": "PERFECT",
+    "surgeActive": false,
+    "canSurge": false,
+    "desyncIntensity": 0,
+    "rhythmProgress": 0.8266666666668288,
+    "accuracy": 100,
+    "gap": -5.1855792357007715,
+    "strength": 0
+  },
+  "audio": {
+    "playing": true,
+    "source": "/Tuk-Ngo/assets/illustrated-v22/crowd-cheer-cc0.mp3"
+  },
+  "viewports": [
+    {
+      "size": [
+        1024,
+        768
+      ],
+      "canvas": {
+        "x": 0,
+        "y": 104,
+        "width": 1024,
+        "height": 556
+      },
+      "strokeButton": {
+        "x": 147.796875,
+        "y": 698,
+        "width": 150,
+        "height": 62
+      }
+    },
+    {
+      "size": [
+        768,
+        1024
+      ],
+      "canvas": {
+        "x": 0,
+        "y": 109,
+        "width": 768,
+        "height": 807
+      },
+      "strokeButton": {
+        "x": 67.25,
+        "y": 954,
+        "width": 130,
+        "height": 62
+      }
+    },
+    {
+      "size": [
+        1180,
+        430
+      ],
+      "canvas": {
+        "x": 0,
+        "y": 82,
+        "width": 1180,
+        "height": 250
+      },
+      "strokeButton": {
+        "x": 225.796875,
+        "y": 364,
+        "width": 150,
+        "height": 61
+      }
+    }
+  ],
+  "rounds": [
+    {
+      "phase": "finished",
+      "difficulty": "normal",
+      "pace": "steady",
+      "countdown": 0,
+      "elapsed": 185.25833333324707,
+      "distances": [
+        1200,
+        1052.1903986811565
+      ],
+      "speeds": [
+        0,
+        0
+      ],
+      "finishTimes": [
+        185.25648117753866,
+        null
+      ],
+      "beatPhase": 275.364583333228,
+      "aiPhase": 0.8662500000007237,
+      "stamina": 10.761016574898731,
+      "power": 0.9422355335912304,
+      "cohesion": 1,
+      "combo": 52,
+      "maxCombo": 214,
+      "perfect": 271,
+      "good": 1,
+      "missed": 3,
+      "lastResolved": 274,
+      "feedback": "PERFECT · Chuẩn!",
+      "feedbackAt": 185.04583333324726,
+      "result": "win",
+      "pauseReason": "",
+      "runId": 1,
+      "surgeCharge": 0.8280000000000011,
+      "surgeRemaining": 0,
+      "desync": 0,
+      "lastSpamAt": -10,
+      "slipstream": false,
+      "lastJudgement": "PERFECT",
+      "aiStamina": 32.7559166666361,
+      "aiSurgeCharge": 0.2680000000000002,
+      "aiSurgeRemaining": 0,
+      "raceStage": "final",
+      "stageLabel": "Nước rút về đích",
+      "cadence": 102,
+      "aiRaceStage": "final",
+      "aiStageLabel": "Nước rút về đích",
+      "aiCadence": 102,
+      "aiSurgeActive": false,
+      "judgement": "PERFECT",
+      "surgeActive": false,
+      "canSurge": false,
+      "desyncIntensity": 0,
+      "rhythmProgress": 0.8645833332279835,
+      "accuracy": 99,
+      "gap": 147.80960131884353,
+      "strength": 0,
+      "surges": 2
+    },
+    {
+      "phase": "finished",
+      "difficulty": "normal",
+      "pace": "steady",
+      "countdown": 0,
+      "elapsed": 183.00416666658245,
+      "distances": [
+        1200,
+        1037.9564110576375
+      ],
+      "speeds": [
+        0,
+        0
+      ],
+      "finishTimes": [
+        183.00121128450078,
+        null
+      ],
+      "beatPhase": 271.45791666654935,
+      "aiPhase": 0.034166666667391224,
+      "stamina": 14.07172556608386,
+      "power": 0.9280527857043616,
+      "cohesion": 1,
+      "combo": 271,
+      "maxCombo": 271,
+      "perfect": 271,
+      "good": 0,
+      "missed": 0,
+      "lastResolved": 271,
+      "feedback": "PERFECT · Chuẩn!",
+      "feedbackAt": 182.73749999991603,
+      "result": "win",
+      "pauseReason": "",
+      "runId": 1,
+      "surgeCharge": 0.8960000000000011,
+      "surgeRemaining": 0,
+      "desync": 0,
+      "lastSpamAt": -10,
+      "slipstream": false,
+      "lastJudgement": "PERFECT",
+      "aiStamina": 34.33383333330133,
+      "aiSurgeCharge": 0.2140000000000002,
+      "aiSurgeRemaining": 0,
+      "raceStage": "final",
+      "stageLabel": "Nước rút về đích",
+      "cadence": 102,
+      "aiRaceStage": "final",
+      "aiStageLabel": "Nước rút về đích",
+      "aiCadence": 102,
+      "aiSurgeActive": false,
+      "judgement": "PERFECT",
+      "surgeActive": false,
+      "canSurge": false,
+      "desyncIntensity": 0,
+      "rhythmProgress": 0.9579166665493517,
+      "accuracy": 100,
+      "gap": 162.04358894236248,
+      "strength": 0,
+      "surges": 3
+    },
+    {
+      "phase": "finished",
+      "difficulty": "normal",
+      "pace": "steady",
+      "countdown": 0,
+      "elapsed": 183.00416666658245,
+      "distances": [
+        1200,
+        1037.9564110576375
+      ],
+      "speeds": [
+        0,
+        0
+      ],
+      "finishTimes": [
+        183.00121128450078,
+        null
+      ],
+      "beatPhase": 271.45791666654935,
+      "aiPhase": 0.034166666667391224,
+      "stamina": 14.07172556608386,
+      "power": 0.9280527857043616,
+      "cohesion": 1,
+      "combo": 271,
+      "maxCombo": 271,
+      "perfect": 271,
+      "good": 0,
+      "missed": 0,
+      "lastResolved": 271,
+      "feedback": "PERFECT · Chuẩn!",
+      "feedbackAt": 182.73749999991603,
+      "result": "win",
+      "pauseReason": "",
+      "runId": 1,
+      "surgeCharge": 0.8960000000000011,
+      "surgeRemaining": 0,
+      "desync": 0,
+      "lastSpamAt": -10,
+      "slipstream": false,
+      "lastJudgement": "PERFECT",
+      "aiStamina": 34.33383333330133,
+      "aiSurgeCharge": 0.2140000000000002,
+      "aiSurgeRemaining": 0,
+      "raceStage": "final",
+      "stageLabel": "Nước rút về đích",
+      "cadence": 102,
+      "aiRaceStage": "final",
+      "aiStageLabel": "Nước rút về đích",
+      "aiCadence": 102,
+      "aiSurgeActive": false,
+      "judgement": "PERFECT",
+      "surgeActive": false,
+      "canSurge": false,
+      "desyncIntensity": 0,
+      "rhythmProgress": 0.9579166665493517,
+      "accuracy": 100,
+      "gap": 162.04358894236248,
+      "strength": 0,
+      "surges": 3
+    },
+    {
+      "phase": "finished",
+      "difficulty": "normal",
+      "pace": "steady",
+      "countdown": 0,
+      "elapsed": 183.00416666658245,
+      "distances": [
+        1200,
+        1037.9564110576375
+      ],
+      "speeds": [
+        0,
+        0
+      ],
+      "finishTimes": [
+        183.00121128450078,
+        null
+      ],
+      "beatPhase": 271.45791666654935,
+      "aiPhase": 0.034166666667391224,
+      "stamina": 14.07172556608386,
+      "power": 0.9280527857043616,
+      "cohesion": 1,
+      "combo": 271,
+      "maxCombo": 271,
+      "perfect": 271,
+      "good": 0,
+      "missed": 0,
+      "lastResolved": 271,
+      "feedback": "PERFECT · Chuẩn!",
+      "feedbackAt": 182.73749999991603,
+      "result": "win",
+      "pauseReason": "",
+      "runId": 1,
+      "surgeCharge": 0.8960000000000011,
+      "surgeRemaining": 0,
+      "desync": 0,
+      "lastSpamAt": -10,
+      "slipstream": false,
+      "lastJudgement": "PERFECT",
+      "aiStamina": 34.33383333330133,
+      "aiSurgeCharge": 0.2140000000000002,
+      "aiSurgeRemaining": 0,
+      "raceStage": "final",
+      "stageLabel": "Nước rút về đích",
+      "cadence": 102,
+      "aiRaceStage": "final",
+      "aiStageLabel": "Nước rút về đích",
+      "aiCadence": 102,
+      "aiSurgeActive": false,
+      "judgement": "PERFECT",
+      "surgeActive": false,
+      "canSurge": false,
+      "desyncIntensity": 0,
+      "rhythmProgress": 0.9579166665493517,
+      "accuracy": 100,
+      "gap": 162.04358894236248,
+      "strength": 0,
+      "surges": 3
+    },
+    {
+      "phase": "finished",
+      "difficulty": "normal",
+      "pace": "steady",
+      "countdown": 0,
+      "elapsed": 183.00416666658245,
+      "distances": [
+        1200,
+        1037.9564110576375
+      ],
+      "speeds": [
+        0,
+        0
+      ],
+      "finishTimes": [
+        183.00121128450078,
+        null
+      ],
+      "beatPhase": 271.45791666654935,
+      "aiPhase": 0.034166666667391224,
+      "stamina": 14.07172556608386,
+      "power": 0.9280527857043616,
+      "cohesion": 1,
+      "combo": 271,
+      "maxCombo": 271,
+      "perfect": 271,
+      "good": 0,
+      "missed": 0,
+      "lastResolved": 271,
+      "feedback": "PERFECT · Chuẩn!",
+      "feedbackAt": 182.73749999991603,
+      "result": "win",
+      "pauseReason": "",
+      "runId": 1,
+      "surgeCharge": 0.8960000000000011,
+      "surgeRemaining": 0,
+      "desync": 0,
+      "lastSpamAt": -10,
+      "slipstream": false,
+      "lastJudgement": "PERFECT",
+      "aiStamina": 34.33383333330133,
+      "aiSurgeCharge": 0.2140000000000002,
+      "aiSurgeRemaining": 0,
+      "raceStage": "final",
+      "stageLabel": "Nước rút về đích",
+      "cadence": 102,
+      "aiRaceStage": "final",
+      "aiStageLabel": "Nước rút về đích",
+      "aiCadence": 102,
+      "aiSurgeActive": false,
+      "judgement": "PERFECT",
+      "surgeActive": false,
+      "canSurge": false,
+      "desyncIntensity": 0,
+      "rhythmProgress": 0.9579166665493517,
+      "accuracy": 100,
+      "gap": 162.04358894236248,
+      "strength": 0,
+      "surges": 3
+    },
+    {
+      "phase": "finished",
+      "difficulty": "normal",
+      "pace": "steady",
+      "countdown": 0,
+      "elapsed": 183.00416666658245,
+      "distances": [
+        1200,
+        1037.9564110576375
+      ],
+      "speeds": [
+        0,
+        0
+      ],
+      "finishTimes": [
+        183.00121128450078,
+        null
+      ],
+      "beatPhase": 271.45791666654935,
+      "aiPhase": 0.034166666667391224,
+      "stamina": 14.07172556608386,
+      "power": 0.9280527857043616,
+      "cohesion": 1,
+      "combo": 271,
+      "maxCombo": 271,
+      "perfect": 271,
+      "good": 0,
+      "missed": 0,
+      "lastResolved": 271,
+      "feedback": "PERFECT · Chuẩn!",
+      "feedbackAt": 182.73749999991603,
+      "result": "win",
+      "pauseReason": "",
+      "runId": 1,
+      "surgeCharge": 0.8960000000000011,
+      "surgeRemaining": 0,
+      "desync": 0,
+      "lastSpamAt": -10,
+      "slipstream": false,
+      "lastJudgement": "PERFECT",
+      "aiStamina": 34.33383333330133,
+      "aiSurgeCharge": 0.2140000000000002,
+      "aiSurgeRemaining": 0,
+      "raceStage": "final",
+      "stageLabel": "Nước rút về đích",
+      "cadence": 102,
+      "aiRaceStage": "final",
+      "aiStageLabel": "Nước rút về đích",
+      "aiCadence": 102,
+      "aiSurgeActive": false,
+      "judgement": "PERFECT",
+      "surgeActive": false,
+      "canSurge": false,
+      "desyncIntensity": 0,
+      "rhythmProgress": 0.9579166665493517,
+      "accuracy": 100,
+      "gap": 162.04358894236248,
+      "strength": 0,
+      "surges": 3
+    }
+  ],
+  "sprint": {
+    "state": {
+      "phase": "racing",
+      "difficulty": "normal",
+      "pace": "sprint",
+      "countdown": 0,
+      "elapsed": 154.36249999994183,
+      "distances": [
+        963.6217611859554,
+        863.6024032220132
+      ],
+      "speeds": [
+        7.683713677785556,
+        5.551570099357622
+      ],
+      "finishTimes": [
+        null,
+        null
+      ],
+      "beatPhase": 222.78541666653146,
+      "aiPhase": 0.030833333334001723,
+      "stamina": 56.10656405658137,
+      "power": 0.48539751624426974,
+      "cohesion": 0.925,
+      "combo": 0,
+      "maxCombo": 214,
+      "perfect": 219,
+      "good": 1,
+      "missed": 2,
+      "lastResolved": 222,
+      "feedback": "BAD · Lỡ nhịp",
+      "feedbackAt": 154.19999999994198,
+      "result": null,
+      "pauseReason": "",
+      "runId": 1,
+      "surgeCharge": 0.382,
+      "surgeRemaining": 3.7499999999999876,
+      "desync": 0.2317500000000007,
+      "lastSpamAt": -10,
+      "slipstream": false,
+      "lastJudgement": "BAD",
+      "aiStamina": 69.32049999996866,
+      "aiSurgeCharge": 1,
+      "aiSurgeRemaining": 0,
+      "raceStage": "final",
+      "stageLabel": "Nước rút về đích",
+      "cadence": 120,
+      "aiRaceStage": "cruise",
+      "aiStageLabel": "Giữ nhịp đường trường",
+      "aiCadence": 84,
+      "aiSurgeActive": false,
+      "judgement": "BAD",
+      "surgeActive": true,
+      "canSurge": false,
+      "desyncIntensity": 0.2317500000000007,
+      "rhythmProgress": 0.2854166665314608,
+      "accuracy": 99,
+      "gap": 100.01935796394218,
+      "strength": 1
+    },
+    "water": {
+      "events": 254,
+      "emitted": 5159,
+      "particles": 3448,
+      "strength": 1,
+      "catches": 67,
+      "releases": 67,
+      "drives": 120,
+      "capacity": 3600,
+      "sprayFans": 86
+    }
+  },
+  "cup": {
+    "version": 1,
+    "playerId": "can_tho-03",
+    "seed": 1281706847,
+    "teamIds": [
+      "can_tho-01",
+      "ca_mau-03",
+      "can_tho-19",
+      "ca_mau-07",
+      "can_tho-47",
+      "can_tho-15",
+      "can_tho-24",
+      "can_tho-43",
+      "can_tho-05",
+      "can_tho-11",
+      "can_tho-04",
+      "can_tho-41",
+      "ca_mau-09",
+      "om-pou-year",
+      "can_tho-29",
+      "ca_mau-11",
+      "can_tho-27",
+      "tum-nup-2",
+      "can_tho-21",
+      "can_tho-25",
+      "can_tho-38",
+      "can_tho-33",
+      "ca_mau-08",
+      "can_tho-28",
+      "ca_mau-02",
+      "can_tho-34",
+      "ca_mau-10",
+      "can_tho-40",
+      "prek-ta-cuol",
+      "ca_mau-06",
+      "can_tho-18",
+      "prek-on-dok-2",
+      "can_tho-20",
+      "ca_mau-01",
+      "chroi-tum-chas",
+      "pothi-satharam-2",
+      "kos-thum-1",
+      "can_tho-22",
+      "can_tho-48",
+      "can_tho-14",
+      "can_tho-13",
+      "can_tho-45",
+      "can_tho-31",
+      "can_tho-10",
+      "can_tho-42",
+      "can_tho-08",
+      "can_tho-17",
+      "can_tho-06",
+      "can_tho-12",
+      "can_tho-44",
+      "can_tho-03",
+      "ca_mau-12",
+      "pothi-khsach",
+      "ca_mau-13",
+      "can_tho-09",
+      "can_tho-30",
+      "can_tho-16",
+      "can_tho-36",
+      "can_tho-32",
+      "can_tho-26",
+      "ca_mau-04"
+    ],
+    "status": "champion",
+    "champion": "can_tho-03",
+    "bracket": [
+      {
+        "round": "round-of-64",
+        "matches": [
+          {
+            "id": "r0-m0",
+            "teams": [
+              "can_tho-01"
+            ],
+            "winner": "can_tho-01",
+            "result": "bye",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m1",
+            "teams": [
+              "ca_mau-03"
+            ],
+            "winner": "ca_mau-03",
+            "result": "bye",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m2",
+            "teams": [
+              "can_tho-19"
+            ],
+            "winner": "can_tho-19",
+            "result": "bye",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m3",
+            "teams": [
+              "ca_mau-07",
+              "can_tho-47"
+            ],
+            "winner": "can_tho-47",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m4",
+            "teams": [
+              "can_tho-15",
+              "can_tho-24"
+            ],
+            "winner": "can_tho-24",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m5",
+            "teams": [
+              "can_tho-43",
+              "can_tho-05"
+            ],
+            "winner": "can_tho-05",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m6",
+            "teams": [
+              "can_tho-11",
+              "can_tho-04"
+            ],
+            "winner": "can_tho-04",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m7",
+            "teams": [
+              "can_tho-41",
+              "ca_mau-09"
+            ],
+            "winner": "can_tho-41",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m8",
+            "teams": [
+              "om-pou-year",
+              "can_tho-29"
+            ],
+            "winner": "om-pou-year",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m9",
+            "teams": [
+              "ca_mau-11",
+              "can_tho-27"
+            ],
+            "winner": "ca_mau-11",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m10",
+            "teams": [
+              "tum-nup-2",
+              "can_tho-21"
+            ],
+            "winner": "tum-nup-2",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m11",
+            "teams": [
+              "can_tho-25",
+              "can_tho-38"
+            ],
+            "winner": "can_tho-25",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m12",
+            "teams": [
+              "can_tho-33",
+              "ca_mau-08"
+            ],
+            "winner": "ca_mau-08",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m13",
+            "teams": [
+              "can_tho-28",
+              "ca_mau-02"
+            ],
+            "winner": "ca_mau-02",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m14",
+            "teams": [
+              "can_tho-34",
+              "ca_mau-10"
+            ],
+            "winner": "ca_mau-10",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m15",
+            "teams": [
+              "can_tho-40",
+              "prek-ta-cuol"
+            ],
+            "winner": "can_tho-40",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m16",
+            "teams": [
+              "ca_mau-06",
+              "can_tho-18"
+            ],
+            "winner": "ca_mau-06",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m17",
+            "teams": [
+              "prek-on-dok-2",
+              "can_tho-20"
+            ],
+            "winner": "prek-on-dok-2",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m18",
+            "teams": [
+              "ca_mau-01",
+              "chroi-tum-chas"
+            ],
+            "winner": "ca_mau-01",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m19",
+            "teams": [
+              "pothi-satharam-2",
+              "kos-thum-1"
+            ],
+            "winner": "kos-thum-1",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m20",
+            "teams": [
+              "can_tho-22",
+              "can_tho-48"
+            ],
+            "winner": "can_tho-22",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m21",
+            "teams": [
+              "can_tho-14",
+              "can_tho-13"
+            ],
+            "winner": "can_tho-13",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m22",
+            "teams": [
+              "can_tho-45",
+              "can_tho-31"
+            ],
+            "winner": "can_tho-45",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m23",
+            "teams": [
+              "can_tho-10",
+              "can_tho-42"
+            ],
+            "winner": "can_tho-10",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m24",
+            "teams": [
+              "can_tho-08",
+              "can_tho-17"
+            ],
+            "winner": "can_tho-08",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m25",
+            "teams": [
+              "can_tho-06",
+              "can_tho-12"
+            ],
+            "winner": "can_tho-12",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m26",
+            "teams": [
+              "can_tho-44",
+              "can_tho-03"
+            ],
+            "winner": "can_tho-03",
+            "result": "win",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m27",
+            "teams": [
+              "ca_mau-12",
+              "pothi-khsach"
+            ],
+            "winner": "ca_mau-12",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m28",
+            "teams": [
+              "ca_mau-13",
+              "can_tho-09"
+            ],
+            "winner": "can_tho-09",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m29",
+            "teams": [
+              "can_tho-30",
+              "can_tho-16"
+            ],
+            "winner": "can_tho-30",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m30",
+            "teams": [
+              "can_tho-36",
+              "can_tho-32"
+            ],
+            "winner": "can_tho-36",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m31",
+            "teams": [
+              "can_tho-26",
+              "ca_mau-04"
+            ],
+            "winner": "ca_mau-04",
+            "result": "ai",
+            "attempt": 0
+          }
+        ]
+      },
+      {
+        "round": "round-of-32",
+        "matches": [
+          {
+            "id": "r1-m0",
+            "teams": [
+              "can_tho-01",
+              "ca_mau-03"
+            ],
+            "winner": "ca_mau-03",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r1-m1",
+            "teams": [
+              "can_tho-19",
+              "can_tho-47"
+            ],
+            "winner": "can_tho-19",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r1-m2",
+            "teams": [
+              "can_tho-24",
+              "can_tho-05"
+            ],
+            "winner": "can_tho-24",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r1-m3",
+            "teams": [
+              "can_tho-04",
+              "can_tho-41"
+            ],
+            "winner": "can_tho-04",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r1-m4",
+            "teams": [
+              "om-pou-year",
+              "ca_mau-11"
+            ],
+            "winner": "om-pou-year",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r1-m5",
+            "teams": [
+              "tum-nup-2",
+              "can_tho-25"
+            ],
+            "winner": "can_tho-25",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r1-m6",
+            "teams": [
+              "ca_mau-08",
+              "ca_mau-02"
+            ],
+            "winner": "ca_mau-08",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r1-m7",
+            "teams": [
+              "ca_mau-10",
+              "can_tho-40"
+            ],
+            "winner": "ca_mau-10",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r1-m8",
+            "teams": [
+              "ca_mau-06",
+              "prek-on-dok-2"
+            ],
+            "winner": "ca_mau-06",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r1-m9",
+            "teams": [
+              "ca_mau-01",
+              "kos-thum-1"
+            ],
+            "winner": "kos-thum-1",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r1-m10",
+            "teams": [
+              "can_tho-22",
+              "can_tho-13"
+            ],
+            "winner": "can_tho-22",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r1-m11",
+            "teams": [
+              "can_tho-45",
+              "can_tho-10"
+            ],
+            "winner": "can_tho-10",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r1-m12",
+            "teams": [
+              "can_tho-08",
+              "can_tho-12"
+            ],
+            "winner": "can_tho-12",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r1-m13",
+            "teams": [
+              "can_tho-03",
+              "ca_mau-12"
+            ],
+            "winner": "can_tho-03",
+            "result": "win",
+            "attempt": 0
+          },
+          {
+            "id": "r1-m14",
+            "teams": [
+              "can_tho-09",
+              "can_tho-30"
+            ],
+            "winner": "can_tho-30",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r1-m15",
+            "teams": [
+              "can_tho-36",
+              "ca_mau-04"
+            ],
+            "winner": "can_tho-36",
+            "result": "ai",
+            "attempt": 0
+          }
+        ]
+      },
+      {
+        "round": "round-of-16",
+        "matches": [
+          {
+            "id": "r2-m0",
+            "teams": [
+              "ca_mau-03",
+              "can_tho-19"
+            ],
+            "winner": "ca_mau-03",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r2-m1",
+            "teams": [
+              "can_tho-24",
+              "can_tho-04"
+            ],
+            "winner": "can_tho-24",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r2-m2",
+            "teams": [
+              "om-pou-year",
+              "can_tho-25"
+            ],
+            "winner": "can_tho-25",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r2-m3",
+            "teams": [
+              "ca_mau-08",
+              "ca_mau-10"
+            ],
+            "winner": "ca_mau-08",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r2-m4",
+            "teams": [
+              "ca_mau-06",
+              "kos-thum-1"
+            ],
+            "winner": "kos-thum-1",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r2-m5",
+            "teams": [
+              "can_tho-22",
+              "can_tho-10"
+            ],
+            "winner": "can_tho-22",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r2-m6",
+            "teams": [
+              "can_tho-12",
+              "can_tho-03"
+            ],
+            "winner": "can_tho-03",
+            "result": "win",
+            "attempt": 0
+          },
+          {
+            "id": "r2-m7",
+            "teams": [
+              "can_tho-30",
+              "can_tho-36"
+            ],
+            "winner": "can_tho-36",
+            "result": "ai",
+            "attempt": 0
+          }
+        ]
+      },
+      {
+        "round": "quarterfinal",
+        "matches": [
+          {
+            "id": "r3-m0",
+            "teams": [
+              "ca_mau-03",
+              "can_tho-24"
+            ],
+            "winner": "can_tho-24",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r3-m1",
+            "teams": [
+              "can_tho-25",
+              "ca_mau-08"
+            ],
+            "winner": "can_tho-25",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r3-m2",
+            "teams": [
+              "kos-thum-1",
+              "can_tho-22"
+            ],
+            "winner": "can_tho-22",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r3-m3",
+            "teams": [
+              "can_tho-03",
+              "can_tho-36"
+            ],
+            "winner": "can_tho-03",
+            "result": "win",
+            "attempt": 0
+          }
+        ]
+      },
+      {
+        "round": "semifinal",
+        "matches": [
+          {
+            "id": "r4-m0",
+            "teams": [
+              "can_tho-24",
+              "can_tho-25"
+            ],
+            "winner": "can_tho-24",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r4-m1",
+            "teams": [
+              "can_tho-22",
+              "can_tho-03"
+            ],
+            "winner": "can_tho-03",
+            "result": "win",
+            "attempt": 0
+          }
+        ]
+      },
+      {
+        "round": "final",
+        "matches": [
+          {
+            "id": "r5-m0",
+            "teams": [
+              "can_tho-24",
+              "can_tho-03"
+            ],
+            "winner": "can_tho-03",
+            "result": "win",
+            "attempt": 0
+          }
+        ]
+      }
+    ],
+    "history": [
+      {
+        "type": "finish",
+        "matchId": "r0-m26-a0",
+        "result": "win"
+      },
+      {
+        "type": "finish",
+        "matchId": "r1-m13-a0",
+        "result": "win"
+      },
+      {
+        "type": "finish",
+        "matchId": "r2-m6-a0",
+        "result": "win"
+      },
+      {
+        "type": "finish",
+        "matchId": "r3-m3-a0",
+        "result": "win"
+      },
+      {
+        "type": "finish",
+        "matchId": "r4-m1-a0",
+        "result": "win"
+      },
+      {
+        "type": "finish",
+        "matchId": "r5-m0-a0",
+        "result": "win"
+      }
+    ]
+  },
+  "water": {
+    "runs": [
+      {
+        "events": 1660,
+        "emitted": 11376,
+        "particles": 775,
+        "strength": 0.12,
+        "catches": 336,
+        "releases": 338,
+        "drives": 986,
+        "capacity": 3600,
+        "sprayFans": 18,
+        "maxHeightM": 0.19997066378593442,
+        "maxFans": 128
+      },
+      {
+        "events": 2164,
+        "emitted": 33668,
+        "particles": 3594,
+        "strength": 1,
+        "catches": 336,
+        "releases": 338,
+        "drives": 1490,
+        "capacity": 3600,
+        "sprayFans": 18,
+        "maxHeightM": 0.6804988694190979,
+        "maxFans": 128
+      }
+    ]
+  },
+  "eliminated": {
+    "version": 1,
+    "playerId": "ca_mau-13",
+    "seed": 3638927634,
+    "teamIds": [
+      "can_tho-38",
+      "ca_mau-09",
+      "can_tho-20",
+      "can_tho-08",
+      "can_tho-06",
+      "can_tho-18",
+      "chroi-tum-chas",
+      "can_tho-16",
+      "can_tho-29",
+      "can_tho-12",
+      "can_tho-41",
+      "prek-ta-cuol",
+      "ca_mau-04",
+      "can_tho-26",
+      "can_tho-19",
+      "can_tho-24",
+      "kos-thum-1",
+      "ca_mau-13",
+      "can_tho-31",
+      "ca_mau-03",
+      "can_tho-40",
+      "can_tho-36",
+      "can_tho-13",
+      "can_tho-32",
+      "pothi-satharam-2",
+      "ca_mau-06",
+      "can_tho-04",
+      "can_tho-33",
+      "can_tho-43",
+      "ca_mau-07",
+      "can_tho-10",
+      "can_tho-48",
+      "can_tho-09",
+      "pothi-khsach",
+      "can_tho-44",
+      "ca_mau-10",
+      "can_tho-30",
+      "ca_mau-02",
+      "can_tho-28",
+      "can_tho-17",
+      "can_tho-14",
+      "can_tho-27",
+      "prek-on-dok-2",
+      "om-pou-year",
+      "can_tho-45",
+      "can_tho-03",
+      "can_tho-15",
+      "ca_mau-11",
+      "can_tho-11",
+      "tum-nup-2",
+      "can_tho-22",
+      "ca_mau-08",
+      "can_tho-42",
+      "ca_mau-01",
+      "can_tho-05",
+      "can_tho-25",
+      "can_tho-47",
+      "ca_mau-12",
+      "can_tho-01",
+      "can_tho-21",
+      "can_tho-34"
+    ],
+    "status": "eliminated",
+    "champion": "can_tho-30",
+    "bracket": [
+      {
+        "round": "round-of-64",
+        "matches": [
+          {
+            "id": "r0-m0",
+            "teams": [
+              "can_tho-38"
+            ],
+            "winner": "can_tho-38",
+            "result": "bye",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m1",
+            "teams": [
+              "ca_mau-09"
+            ],
+            "winner": "ca_mau-09",
+            "result": "bye",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m2",
+            "teams": [
+              "can_tho-20"
+            ],
+            "winner": "can_tho-20",
+            "result": "bye",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m3",
+            "teams": [
+              "can_tho-08",
+              "can_tho-06"
+            ],
+            "winner": "can_tho-08",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m4",
+            "teams": [
+              "can_tho-18",
+              "chroi-tum-chas"
+            ],
+            "winner": "can_tho-18",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m5",
+            "teams": [
+              "can_tho-16",
+              "can_tho-29"
+            ],
+            "winner": "can_tho-29",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m6",
+            "teams": [
+              "can_tho-12",
+              "can_tho-41"
+            ],
+            "winner": "can_tho-12",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m7",
+            "teams": [
+              "prek-ta-cuol",
+              "ca_mau-04"
+            ],
+            "winner": "prek-ta-cuol",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m8",
+            "teams": [
+              "can_tho-26",
+              "can_tho-19"
+            ],
+            "winner": "can_tho-26",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m9",
+            "teams": [
+              "can_tho-24",
+              "kos-thum-1"
+            ],
+            "winner": "kos-thum-1",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m10",
+            "teams": [
+              "ca_mau-13",
+              "can_tho-31"
+            ],
+            "winner": "can_tho-31",
+            "result": "dnf",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m11",
+            "teams": [
+              "ca_mau-03",
+              "can_tho-40"
+            ],
+            "winner": "ca_mau-03",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m12",
+            "teams": [
+              "can_tho-36",
+              "can_tho-13"
+            ],
+            "winner": "can_tho-13",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m13",
+            "teams": [
+              "can_tho-32",
+              "pothi-satharam-2"
+            ],
+            "winner": "can_tho-32",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m14",
+            "teams": [
+              "ca_mau-06",
+              "can_tho-04"
+            ],
+            "winner": "ca_mau-06",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m15",
+            "teams": [
+              "can_tho-33",
+              "can_tho-43"
+            ],
+            "winner": "can_tho-33",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m16",
+            "teams": [
+              "ca_mau-07",
+              "can_tho-10"
+            ],
+            "winner": "can_tho-10",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m17",
+            "teams": [
+              "can_tho-48",
+              "can_tho-09"
+            ],
+            "winner": "can_tho-09",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m18",
+            "teams": [
+              "pothi-khsach",
+              "can_tho-44"
+            ],
+            "winner": "can_tho-44",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m19",
+            "teams": [
+              "ca_mau-10",
+              "can_tho-30"
+            ],
+            "winner": "can_tho-30",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m20",
+            "teams": [
+              "ca_mau-02",
+              "can_tho-28"
+            ],
+            "winner": "can_tho-28",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m21",
+            "teams": [
+              "can_tho-17",
+              "can_tho-14"
+            ],
+            "winner": "can_tho-17",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m22",
+            "teams": [
+              "can_tho-27",
+              "prek-on-dok-2"
+            ],
+            "winner": "can_tho-27",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m23",
+            "teams": [
+              "om-pou-year",
+              "can_tho-45"
+            ],
+            "winner": "om-pou-year",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m24",
+            "teams": [
+              "can_tho-03",
+              "can_tho-15"
+            ],
+            "winner": "can_tho-03",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m25",
+            "teams": [
+              "ca_mau-11",
+              "can_tho-11"
+            ],
+            "winner": "ca_mau-11",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m26",
+            "teams": [
+              "tum-nup-2",
+              "can_tho-22"
+            ],
+            "winner": "can_tho-22",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m27",
+            "teams": [
+              "ca_mau-08",
+              "can_tho-42"
+            ],
+            "winner": "ca_mau-08",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m28",
+            "teams": [
+              "ca_mau-01",
+              "can_tho-05"
+            ],
+            "winner": "ca_mau-01",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m29",
+            "teams": [
+              "can_tho-25",
+              "can_tho-47"
+            ],
+            "winner": "can_tho-47",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m30",
+            "teams": [
+              "ca_mau-12",
+              "can_tho-01"
+            ],
+            "winner": "can_tho-01",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r0-m31",
+            "teams": [
+              "can_tho-21",
+              "can_tho-34"
+            ],
+            "winner": "can_tho-21",
+            "result": "ai",
+            "attempt": 0
+          }
+        ]
+      },
+      {
+        "round": "round-of-32",
+        "matches": [
+          {
+            "id": "r1-m0",
+            "teams": [
+              "can_tho-38",
+              "ca_mau-09"
+            ],
+            "winner": "ca_mau-09",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r1-m1",
+            "teams": [
+              "can_tho-20",
+              "can_tho-08"
+            ],
+            "winner": "can_tho-20",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r1-m2",
+            "teams": [
+              "can_tho-18",
+              "can_tho-29"
+            ],
+            "winner": "can_tho-18",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r1-m3",
+            "teams": [
+              "can_tho-12",
+              "prek-ta-cuol"
+            ],
+            "winner": "prek-ta-cuol",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r1-m4",
+            "teams": [
+              "can_tho-26",
+              "kos-thum-1"
+            ],
+            "winner": "kos-thum-1",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r1-m5",
+            "teams": [
+              "can_tho-31",
+              "ca_mau-03"
+            ],
+            "winner": "can_tho-31",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r1-m6",
+            "teams": [
+              "can_tho-13",
+              "can_tho-32"
+            ],
+            "winner": "can_tho-13",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r1-m7",
+            "teams": [
+              "ca_mau-06",
+              "can_tho-33"
+            ],
+            "winner": "can_tho-33",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r1-m8",
+            "teams": [
+              "can_tho-10",
+              "can_tho-09"
+            ],
+            "winner": "can_tho-09",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r1-m9",
+            "teams": [
+              "can_tho-44",
+              "can_tho-30"
+            ],
+            "winner": "can_tho-30",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r1-m10",
+            "teams": [
+              "can_tho-28",
+              "can_tho-17"
+            ],
+            "winner": "can_tho-17",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r1-m11",
+            "teams": [
+              "can_tho-27",
+              "om-pou-year"
+            ],
+            "winner": "can_tho-27",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r1-m12",
+            "teams": [
+              "can_tho-03",
+              "ca_mau-11"
+            ],
+            "winner": "can_tho-03",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r1-m13",
+            "teams": [
+              "can_tho-22",
+              "ca_mau-08"
+            ],
+            "winner": "ca_mau-08",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r1-m14",
+            "teams": [
+              "ca_mau-01",
+              "can_tho-47"
+            ],
+            "winner": "ca_mau-01",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r1-m15",
+            "teams": [
+              "can_tho-01",
+              "can_tho-21"
+            ],
+            "winner": "can_tho-01",
+            "result": "ai",
+            "attempt": 0
+          }
+        ]
+      },
+      {
+        "round": "round-of-16",
+        "matches": [
+          {
+            "id": "r2-m0",
+            "teams": [
+              "ca_mau-09",
+              "can_tho-20"
+            ],
+            "winner": "can_tho-20",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r2-m1",
+            "teams": [
+              "can_tho-18",
+              "prek-ta-cuol"
+            ],
+            "winner": "can_tho-18",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r2-m2",
+            "teams": [
+              "kos-thum-1",
+              "can_tho-31"
+            ],
+            "winner": "can_tho-31",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r2-m3",
+            "teams": [
+              "can_tho-13",
+              "can_tho-33"
+            ],
+            "winner": "can_tho-13",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r2-m4",
+            "teams": [
+              "can_tho-09",
+              "can_tho-30"
+            ],
+            "winner": "can_tho-30",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r2-m5",
+            "teams": [
+              "can_tho-17",
+              "can_tho-27"
+            ],
+            "winner": "can_tho-17",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r2-m6",
+            "teams": [
+              "can_tho-03",
+              "ca_mau-08"
+            ],
+            "winner": "ca_mau-08",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r2-m7",
+            "teams": [
+              "ca_mau-01",
+              "can_tho-01"
+            ],
+            "winner": "ca_mau-01",
+            "result": "ai",
+            "attempt": 0
+          }
+        ]
+      },
+      {
+        "round": "quarterfinal",
+        "matches": [
+          {
+            "id": "r3-m0",
+            "teams": [
+              "can_tho-20",
+              "can_tho-18"
+            ],
+            "winner": "can_tho-18",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r3-m1",
+            "teams": [
+              "can_tho-31",
+              "can_tho-13"
+            ],
+            "winner": "can_tho-31",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r3-m2",
+            "teams": [
+              "can_tho-30",
+              "can_tho-17"
+            ],
+            "winner": "can_tho-30",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r3-m3",
+            "teams": [
+              "ca_mau-08",
+              "ca_mau-01"
+            ],
+            "winner": "ca_mau-08",
+            "result": "ai",
+            "attempt": 0
+          }
+        ]
+      },
+      {
+        "round": "semifinal",
+        "matches": [
+          {
+            "id": "r4-m0",
+            "teams": [
+              "can_tho-18",
+              "can_tho-31"
+            ],
+            "winner": "can_tho-31",
+            "result": "ai",
+            "attempt": 0
+          },
+          {
+            "id": "r4-m1",
+            "teams": [
+              "can_tho-30",
+              "ca_mau-08"
+            ],
+            "winner": "can_tho-30",
+            "result": "ai",
+            "attempt": 0
+          }
+        ]
+      },
+      {
+        "round": "final",
+        "matches": [
+          {
+            "id": "r5-m0",
+            "teams": [
+              "can_tho-31",
+              "can_tho-30"
+            ],
+            "winner": "can_tho-30",
+            "result": "ai",
+            "attempt": 0
+          }
+        ]
+      }
+    ],
+    "history": [
+      {
+        "type": "finish",
+        "matchId": "r0-m10-a0",
+        "result": "dnf"
+      },
+      {
+        "type": "resolve"
+      }
+    ]
+  },
+  "newCupAfterElimination": true,
+  "dispose": {
+    "geometries": 0,
+    "textures": 1
+  },
+  "inspectionNavigation": [
+    "two-boat trial",
+    "54-person boat",
+    "61-team game"
+  ],
+  "errors": [],
+  "loadUrls": [
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/index-6KNgmoeE.js",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/index-Bo7mo07X.css",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/ArtPreview-CzqXQzT7.js",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/asset-digests-CQCD7ofi.js",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/rotate-ccw-B8VOBpos.js",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/download-C2_1vaHX.js",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/video-802ZcBhi.js",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/ArtPreview-Cw6GWYLI.css",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/RaceGame-B9J49YK9.js",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/gameplay-ByBWbic9.js",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/teams-B-rAnYNg.js",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/trophy-B3ZfetNJ.js",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/festival-teams-DAIWZ5UE.js",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/RaceGame-Dh3F2yFQ.css",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/boat-preview-BwFO4rru.js",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/three-addons-DiBvLs_E.js",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/three-renderer-Xp2iZVDg.js",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/race-crew-BV-efFrY.js",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/three-core-PKyBB6wc.js",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/boat-BiZF45Jm.js",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/art-preview-CkWR3nbs.js",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/shirt-runtime-v32.json",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/athlete-rig-v27.glb",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/hull-rig-v25.glb",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/athlete-master/athlete-details.glb",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/athlete-master/rowing-motion.glb?sha=cac6212b159112857cbd6aa546e0822402eb29cdc41bcb2871643417ef3a2cb3",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/NotoSansKhmer.ttf",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/hull-slim-bow-v23.webp",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/teams-2025/tum-nup-2.svg",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/teams-2025/prek-on-dok-2.svg",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/festival-crowd/crowd-compact.json?sha=f4079620e7ce9a820beefec26c24fa0fa9a3e30b1745f6ae2442d0156dcb9447",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/festival-crowd/crowd-compact.packed?sha=286bf615e7b2af5bc44787977914964cce41ff4637efe8474eed2c0514ce4b99",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/NotoSansKhmer.ttf",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/shirt-runtime-v32.json",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/athlete-rig-v27.glb",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/hull-rig-v25.glb",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/athlete-master/athlete-details.glb",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/athlete-master/rowing-motion.glb?sha=cac6212b159112857cbd6aa546e0822402eb29cdc41bcb2871643417ef3a2cb3",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/festival-crowd/crowd-compact.json?sha=f4079620e7ce9a820beefec26c24fa0fa9a3e30b1745f6ae2442d0156dcb9447",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/festival-crowd/crowd-compact.packed?sha=286bf615e7b2af5bc44787977914964cce41ff4637efe8474eed2c0514ce4b99",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/shirt-runtime-v32.json",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/athlete-rig-v27.glb",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/hull-rig-v25.glb",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/athlete-master/athlete-details.glb",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/athlete-master/rowing-motion.glb?sha=cac6212b159112857cbd6aa546e0822402eb29cdc41bcb2871643417ef3a2cb3",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/festival-crowd/crowd-compact.json?sha=f4079620e7ce9a820beefec26c24fa0fa9a3e30b1745f6ae2442d0156dcb9447",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/festival-crowd/crowd-compact.packed?sha=286bf615e7b2af5bc44787977914964cce41ff4637efe8474eed2c0514ce4b99",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/shirt-runtime-v32.json",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/athlete-rig-v27.glb",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/hull-rig-v25.glb",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/athlete-master/athlete-details.glb",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/athlete-master/rowing-motion.glb?sha=cac6212b159112857cbd6aa546e0822402eb29cdc41bcb2871643417ef3a2cb3",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/festival-crowd/crowd-compact.json?sha=f4079620e7ce9a820beefec26c24fa0fa9a3e30b1745f6ae2442d0156dcb9447",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/festival-crowd/crowd-compact.packed?sha=286bf615e7b2af5bc44787977914964cce41ff4637efe8474eed2c0514ce4b99"
+  ]
+}

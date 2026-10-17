@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 // Canonical eight-team bracket and persistence gate.
 import {createTournament} from '../src/race/tournament.mjs';
 import {RACE_TEAMS_2025} from '../src/race/teams.mjs';
+import {FESTIVAL_TEAMS,shuffledFestivalIds} from '../src/race/festival-teams.mjs';
 
 for(const team of RACE_TEAMS_2025){
  const tournament=createTournament({playerId:team.id,seed:901});
@@ -50,3 +51,20 @@ for(const mutate of [s=>s.bracket[0].matches[1].winner='bogus',s=>s.teamIds[1]=s
 assert.throws(()=>createTournament({playerId:'unknown'}));
 assert.throws(()=>a.finish({matchId:'stale',result:'win'}));
 console.log('Tournament V31: all bracket, progression, replay, idempotency and restore invariants passed.');
+
+assert.equal(FESTIVAL_TEAMS.length,61);assert.equal(new Set(FESTIVAL_TEAMS.map(t=>t.id)).size,61);
+assert.equal(FESTIVAL_TEAMS.filter(t=>t.appearance==='reference').length,8);
+const festivalIds=shuffledFestivalIds(6142);
+for(const playerId of festivalIds){
+ const t=createTournament({playerId,seed:6142,teamIds:festivalIds});let played=0;
+ const first=t.snapshot().bracket[0];assert.equal(first.matches.length,32);assert.equal(first.matches.filter(m=>m.result==='bye').length,3);
+ assert.deepEqual(new Set(first.matches.flatMap(m=>m.teams)),new Set(festivalIds));
+ while(t.currentMatch()){const m=t.currentMatch();assert.notEqual(m.playerId,m.opponentId);assert(festivalIds.includes(m.opponentId));t.finish({matchId:m.matchId,result:'win'});played++;}
+ const s=t.snapshot();assert.equal(s.champion,playerId);assert(played===5||played===6);
+ assert.equal(s.bracket.flatMap(r=>r.matches).filter(m=>m.result!=='bye').length,60);
+ assert.deepEqual(createTournament().restore(s),s);
+}
+const eliminated=createTournament({playerId:festivalIds[4],seed:6142,teamIds:festivalIds});eliminated.finish({matchId:eliminated.currentMatch().matchId,result:'loss'});
+const complete=eliminated.resolveRemaining();assert(complete.champion&&complete.champion!==complete.playerId);assert.equal(complete.bracket.at(-1).matches.length,1);
+assert.deepEqual(eliminated.resolveRemaining(),complete);assert.deepEqual(createTournament().restore(complete),complete);
+console.log('Festival cup: all 61 playable selections, three honest byes, 60 decided races, elimination/champion resolution and restored history passed.');

@@ -13,12 +13,12 @@ import {buildStartOfficial} from './start-official.mjs';
 // Both boats use the current continuous 3D athletes, independent role clocks,
 // one scene and one renderer. The old cup entry remains independently usable.
 export async function startBoatPreview(host,settings,clock,base,onReady,onProgress=(_loaded,_total)=>{}){
- const racing=!!settings.current.racing,rigs=[];
+ const racing=!!settings.current.racing,rigs=[];let teamIds=[...(settings.current.teamIds||['tum-nup-2','prek-on-dok-2'])];
  let river,sky,assets,disposed=false,raf=0,observer,controls;
  try{
   rigs.push(await createHybridBoats(base+'assets/illustrated-v22/',{onProgress}));
   if(racing)rigs.push(await createHybridBoats(base+'assets/illustrated-v22/',{sharedRenderer:rigs[0].renderer}));
-  await Promise.all(rigs.map((r,i)=>r.prepareTeams([i?'prek-on-dok-2':'tum-nup-2'])));
+  await Promise.all(rigs.map((r,i)=>r.prepareTeams([teamIds[i]])));
   assets=await loadFestivalCrowd(base,{compact:true});
   if(![...document.fonts].some(f=>f.family.replace(/["']/g,'')==='Noto Sans Khmer')){
    const font=new FontFace('Noto Sans Khmer','url('+base+'assets/illustrated-v22/NotoSansKhmer.ttf)',{weight:'100 900'});document.fonts.add(await font.load());
@@ -42,10 +42,12 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
  renderer.domElement.setAttribute('aria-label',racing?'Hai ghe 3D tự đua 1.200 mét trên sông Maspéro, khán đài chính bên phải, cầu và khán giả hai bờ.':'Ghe Ngo 3D 54 người với thanh ngồi thấp trong lòng ghe, hai người lái và khán giả hai bờ.');host.appendChild(renderer.domElement);
  const race={elapsed:0,countdown:3,distance:rigs.map(()=>0),speed:rigs.map(()=>0),phases:rigs.map((_,i)=>i?.17:.28),finishTimes:rigs.map(()=>null),state:'countdown'};
  let lastView='',width=1,height=1,frames=0,frameId=0,lastStats=performance.now(),lastUi=0;
- const center=()=>{const p=boat.position.clone();if(racing){p.add(rigs[1].boat.position).multiplyScalar(.5);}return p;};
+ const center=()=>{const p=boat.position.clone();if(racing&&!settings.current.game){p.add(rigs[1].boat.position).multiplyScalar(.5);}return p;};
  function stage(distance){return distance<200?'Xuất phát':distance<950?'Đường trường':'Nước rút';}
- function snapshot(){return {...race,distance:[...race.distance],finishTimes:[...race.finishTimes],stages:race.distance.map(stage),length:COURSE.length,teams:['Tum Núp 2','Prêk On Đơk 2'].slice(0,rigs.length)};}
+ function snapshot(){return {...race,distance:[...race.distance],finishTimes:[...race.finishTimes],stages:race.distance.map(stage),length:COURSE.length,teams:teamIds.slice(0,rigs.length).map(id=>window.TukNgoTeams.get(id).name),game:settings.current.game?.snapshot()};}
+ function syncGame(){const s=settings.current.game?.state;if(!s)return;Object.assign(race,{elapsed:s.elapsed,countdown:s.countdown,distance:[...s.distances],speed:[...s.speeds],phases:[s.beatPhase%1,s.aiPhase],finishTimes:[...s.finishTimes],state:s.phase});}
  function advance(dt){
+  if(settings.current.game){settings.current.game.advance(dt);syncGame();return;}
   // Fixed-size integration also handles seeking / fast-view without a large
   // frame step overshooting the finish or starving a second boat's result.
   while(dt>1e-8){const step=Math.min(.05,dt);dt-=step;
@@ -71,7 +73,7 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
   scene.fog.near=view==='banks'?1000:190;scene.fog.far=view==='banks'?3800:650;
   camera.fov=view==='stand'?60:36;camera.updateProjectionMatrix();
   const anchor=center(),local=(x,y,z)=>new T.Vector3(x,y,z).applyMatrix4(boat.matrixWorld);
-  const views={race:{target:anchor.clone().setY(1),offset:[40,50,50],span:86},boat:{target:local(0,.65,0),offset:[24,20,26],span:39},top:{target:local(0,.65,0),offset:[0,30,.02],span:33},crew:{target:local(7.5,.9,0),offset:[2,1.5,5],span:5.3},kneel:{target:local(-3.2,.9,0),offset:[.8,1.3,4.8],span:4.8},bow:{target:local(12,.95,0),offset:[2.8,1.9,5.5],span:6},stern:{target:local(-11.3,1,0),offset:[-3,2,-6.5],span:8},
+  const views={race:{target:anchor.clone().setY(1),offset:settings.current.game?[40,30,40]:[40,50,50],span:settings.current.game?65:86},boat:{target:local(0,.65,0),offset:[24,20,26],span:39},top:{target:local(0,.65,0),offset:[0,30,.02],span:33},crew:{target:local(7.5,.9,0),offset:[2,1.5,5],span:5.3},kneel:{target:local(-3.2,.9,0),offset:[.8,1.3,4.8],span:4.8},bow:{target:local(12,.95,0),offset:[2.8,1.9,5.5],span:6},stern:{target:local(-11.3,1,0),offset:[-3,2,-6.5],span:8},
    banks:{target:new T.Vector3(raceX(600),1,0),offset:[70,1000,560],span:1500},
    stand:{target:new T.Vector3(COURSE.standX,7.5,courseZ(COURSE.standX,-55)),offset:[50,3,100],span:150},
    crowd:{target:new T.Vector3(COURSE.standX-96,2.5,courseZ(COURSE.standX-96,-45.6)),offset:[2,1,8],span:10},
@@ -86,8 +88,9 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
  }
  function resize(){width=Math.max(1,host.clientWidth);height=Math.max(1,host.clientHeight);renderer.setSize(width,height);camera.aspect=width/height;camera.updateProjectionMatrix();lastView='';}
  observer=new ResizeObserver(resize);observer.observe(host);place();resize();
- function reset(){Object.assign(race,{elapsed:0,countdown:3,distance:rigs.map(()=>0),speed:rigs.map(()=>0),phases:rigs.map((_,i)=>i?.17:.28),finishTimes:rigs.map(()=>null),state:'countdown'});effects.forEach(e=>e.reset());place();lastView='';settings.current.onRace?.(snapshot());}
- const api={rig,rigs,scene,boat,camera,controls,renderer,banks,sky,river,official,race,snapshot,advance,reset,
+ function reset(){if(settings.current.game){settings.current.game.reset(settings.current.game.state.difficulty);syncGame();}else Object.assign(race,{elapsed:0,countdown:3,distance:rigs.map(()=>0),speed:rigs.map(()=>0),phases:rigs.map((_,i)=>i?.17:.28),finishTimes:rigs.map(()=>null),state:'countdown'});effects.forEach(e=>e.reset());place();lastView='';settings.current.onRace?.(snapshot());}
+ const api={rig,rigs,scene,boat,camera,controls,renderer,banks,sky,river,official,effects,game:settings.current.game,race,snapshot,advance,reset,
+  async setTeams(ids){await Promise.all(rigs.map((r,i)=>r.prepareTeams([ids[i]])));if(disposed)return;teamIds=[...ids];effects.forEach(e=>e.reset());},
   seek(distance){const d=T.MathUtils.clamp(distance,0,COURSE.length);race.distance.fill(d);race.speed.fill(5.1);race.countdown=0;race.elapsed=d/5.1;race.finishTimes.fill(d===COURSE.length?race.elapsed:null);race.state=d===COURSE.length?'finished':'racing';effects.forEach(e=>e.reset());place();lastView='';settings.current.onRace?.(snapshot());},
   capture(){saveCanvas(renderer.domElement,'ghe-ngo-3d.png');},record(){return recordCanvas(renderer.domElement,'ghe-ngo-cheo-10s.webm');},
   dispose(){if(disposed)return;disposed=true;cancelAnimationFrame(raf);observer.disconnect();controls.dispose();effects.forEach(e=>e.dispose());wakes.forEach(w=>w.dispose());official.dispose();sky.dispose();river.dispose();assets.dispose();for(const r of rigs.slice(1)){r.scene.add(r.boat);r.dispose();}rig.dispose();renderer.domElement.remove();if(host.boatPreview===api)delete host.boatPreview;}
@@ -96,17 +99,19 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
  function frame(now){
   if(disposed)return;const s=settings.current,c=clock.current,dt=Math.min(.05,Math.max(0,(now-c.last)/1000));c.last=now;const previous=center();
   if(s.playing){c.seconds+=dt;if(racing){advance(dt*(s.fast?3:1));c.phase=race.phases[0];}else c.phase=(c.phase+dt*s.cadence/60)%1;}
+  syncGame();const game=s.game?.snapshot();
   place();
   if(lastView!==s.view){setView(s.view);effects.forEach(e=>e.reset());}
   else if(!['banks','stand','crowd','bridge','finish','start','official'].includes(s.view)){const delta=center().sub(previous);camera.position.add(delta);controls.target.add(delta);}
   controls.update();
   frameId++;
-  rigs.forEach((r,i)=>r.render(racing?race.phases[i]:c.phase,c.seconds,{teamId:i?'prek-on-dok-2':'tum-nup-2',connectedKit:true,updateOnly:true,viewKey:'race-'+i,frameId,distance:camera.position.distanceTo(r.boat.position),nearest:i===0}));
+  rigs.forEach((r,i)=>r.render(racing?race.phases[i]:c.phase,c.seconds,{teamId:teamIds[i],effort:game?(i?(game.aiRaceStage==='final'?.7:.1):Math.max(game.raceStage==='final'?.65:0,game.strength)):0,desyncIntensity:game&&i===0?game.desyncIntensity:0,connectedKit:true,updateOnly:true,viewKey:'race-'+i,frameId,distance:camera.position.distanceTo(r.boat.position),nearest:i===0}));
   sky.update(camera);banks.update(c.seconds,camera);official.update(c.seconds,racing?race:{state:'racing'},camera);
-  rigs.forEach((r,i)=>{const moving=s.playing&&(!racing||race.state==='racing'),strength=racing?(race.distance[i]>=950?1:race.distance[i]<200?.6:0):Math.max(0,(s.cadence-72)/24);effects[i].update(s.playing?dt:0,crews[i],racing?race.speed[i]:4.2,c.seconds,s.splash&&moving,strength);wakes[i].update(r.boat,c.seconds,moving);});
+  rigs.forEach((r,i)=>{const moving=s.playing&&(!racing||race.state==='racing'),strength=racing?(race.distance[i]>=950?.85:race.distance[i]<200?.45:.12):Math.max(0,(s.cadence-72)/24);effects[i].update(s.playing?dt:0,crews[i],racing?race.speed[i]:4.2,c.seconds,s.splash&&moving,Math.min(1,strength+((game&&(i?game.aiSurgeActive:game.surgeActive)) ? .15 : 0)));wakes[i].update(r.boat,c.seconds,moving);});
   renderer.render(scene,camera);
   frames++;if(now-lastStats>=1000){host.dataset.fps=(frames*1000/(now-lastStats)).toFixed(1);frames=0;lastStats=now;}
-  if(racing&&now-lastUi>250){s.onRace?.(snapshot());lastUi=now;}
+  if(game)s.onGameFrame?.(game);
+  if(racing&&now-lastUi>(game?100:250)){s.onRace?.(snapshot());lastUi=now;}
   Object.assign(host.dataset,{renderMode:racing?'race':'boat',boatCount:String(rigs.length),crewCount:String(actors.length*rigs.length),masterRigs:String(8*rigs.length),phase:c.phase.toFixed(4),view:s.view,triangles:String(renderer.info.render.triangles),drawCalls:String(renderer.info.render.calls),splashEvents:String(effects.reduce((n,e)=>n+e.stats().events,0)),banks:'2',spectators:String(banks.stats.people),daylight:'bright',raceState:race.state,courseLength:String(COURSE.length),raceDistances:JSON.stringify(race.distance)});
   raf=requestAnimationFrame(frame);
  }

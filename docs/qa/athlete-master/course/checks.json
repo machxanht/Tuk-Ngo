@@ -1,22 +1,24 @@
 {
   "physicalTabletTested": false,
   "load": {
-    "readyMs": 5128.899999991059,
-    "bytes": 14980882,
+    "readyMs": 4362.20000000298,
+    "bytes": 14986506,
     "urls": [
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/index-CUb_aCWB.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/index-Dm2t-oYv.js",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/index-Bo7mo07X.css",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/ArtPreview-BdEVehNr.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/ArtPreview-Dd3iiAqj.js",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/asset-digests-CQCD7ofi.js",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/rotate-ccw-lQsya7E-.js",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/download-i7tl9_S-.js",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/ArtPreview-Cw6GWYLI.css",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/video-B2R-sinq.js",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/boat-preview-C0Y7BLT3.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/rotate-ccw-DO4ge2xo.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/download-BZwH2ll-.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/video-C4-iVkj3.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/ArtPreview-BbgKZJMp.css",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/boat-preview-BwFO4rru.js",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/three-addons-DiBvLs_E.js",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/three-renderer-Xp2iZVDg.js",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/three-core-PKyBB6wc.js",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/race-crew-vPttIh9T.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/teams-B-rAnYNg.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/festival-teams-DAIWZ5UE.js",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/race-crew-BV-efFrY.js",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/boat-BiZF45Jm.js",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/art-preview-CkWR3nbs.js",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/shirt-runtime-v32.json",
@@ -26,8 +28,8 @@
       "http://127.0.0.1:4173/Tuk-Ngo/assets/athlete-master/rowing-motion.glb?sha=cac6212b159112857cbd6aa546e0822402eb29cdc41bcb2871643417ef3a2cb3",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/NotoSansKhmer.ttf",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/hull-slim-bow-v23.webp",
-      "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/teams-2025/prek-on-dok-2.svg",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/teams-2025/tum-nup-2.svg",
+      "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/teams-2025/prek-on-dok-2.svg",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/festival-crowd/crowd-compact.json?sha=f4079620e7ce9a820beefec26c24fa0fa9a3e30b1745f6ae2442d0156dcb9447",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/festival-crowd/crowd-compact.packed?sha=286bf615e7b2af5bc44787977914964cce41ff4637efe8474eed2c0514ce4b99",
       "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/NotoSansKhmer.ttf"
@@ -40,33 +42,33 @@
       "boatCount": "2",
       "crewCount": "108",
       "masterRigs": "16",
-      "phase": "0.9608",
+      "phase": "0.9600",
       "view": "race",
-      "triangles": "5659606",
-      "drawCalls": "615",
-      "splashEvents": "4056",
+      "triangles": "5664598",
+      "drawCalls": "617",
+      "splashEvents": "4058",
       "banks": "2",
       "spectators": "55905",
       "daylight": "bright",
       "raceState": "racing",
       "courseLength": "1200",
-      "raceDistances": "[14.945813524954929,15.109439273840932]",
+      "raceDistances": "[14.94277756351742,15.106377226467034]",
       "fps": "32.0"
     },
     "race": {
-      "elapsed": 4.156699999999999,
+      "elapsed": 4.156100000000001,
       "countdown": 0,
       "distance": [
-        14.945813524954929,
-        15.109439273840932
+        14.94277756351742,
+        15.106377226467034
       ],
       "speed": [
-        5.105072706198508,
-        5.145958072487832
+        5.10492638953595,
+        5.145816263013751
       ],
       "phases": [
-        0.960823333333333,
-        0.8023284999999998
+        0.9600033333333341,
+        0.8015155000000006
       ],
       "finishTimes": [
         null,
@@ -81,7 +83,8 @@
       "teams": [
         "Tum Núp 2",
         "Prêk On Đơk 2"
-      ]
+      ],
+      "game": null
     },
     "sharedRenderer": true,
     "canvasCount": 1,
@@ -104,7 +107,7 @@
       }
     ],
     "camera": [
-      2328.401729318716,
+      2328.404778323121,
       48.91169464764202,
       47.911694647642015
     ]
@@ -142,19 +145,19 @@
   "paddleInstances": [
     {
       "boatPosition": [
-        2289.353838190562,
+        2289.355351177368,
         0,
         -7.5
       ],
-      "maxMeshInstanceDriftM": 4.3261268559539736e-07
+      "maxMeshInstanceDriftM": 3.7358942118625864e-07
     },
     {
       "boatPosition": [
-        2289.1839564124016,
+        2289.1854829776375,
         0,
         7.5
       ],
-      "maxMeshInstanceDriftM": 3.404476462795663e-07
+      "maxMeshInstanceDriftM": 3.5213341811619945e-07
     }
   ],
   "environment": {
@@ -232,7 +235,7 @@
         }
       },
       "visibleTriangles": 2651682,
-      "lastPackMs": 11
+      "lastPackMs": 11.899999991059303
     },
     "reference": "OWNER_VTV10_VIDEO_2025_REAL_PHOTOS_AND_OSM_LAYOUT",
     "dimensions": "APPROXIMATE_GAME_SCALE",
@@ -323,7 +326,7 @@
         {
           "id": 140,
           "type": "pickup",
-          "x": 2110.2537315709615,
+          "x": 2110.254441070674,
           "y": 1.24,
           "z": -43.777,
           "yaw": 0
@@ -331,7 +334,7 @@
         {
           "id": 61,
           "type": "scooter",
-          "x": 2114.502456678427,
+          "x": 2114.5017115136143,
           "y": 1.24,
           "z": -48.077,
           "yaw": 3.141592653589793
@@ -339,7 +342,7 @@
         {
           "id": 64,
           "type": "scooter",
-          "x": 2257.965230301721,
+          "x": 2257.9644851369085,
           "y": 1.24,
           "z": -48.077,
           "yaw": 3.141592653589793
@@ -347,7 +350,7 @@
         {
           "id": 65,
           "type": "scooter",
-          "x": 2293.810421322705,
+          "x": 2293.8096761578927,
           "y": 1.24,
           "z": -48.077,
           "yaw": 3.141592653589793
@@ -355,7 +358,7 @@
         {
           "id": 143,
           "type": "scooter",
-          "x": 2256.275074715085,
+          "x": 2256.2757842147976,
           "y": 1.24,
           "z": -43.777,
           "yaw": 0
@@ -363,7 +366,7 @@
         {
           "id": 144,
           "type": "scooter",
-          "x": 2308.591134655114,
+          "x": 2308.5918441548265,
           "y": 1.24,
           "z": -43.777,
           "yaw": 0
@@ -371,7 +374,7 @@
         {
           "id": 145,
           "type": "scooter",
-          "x": 2354.6427743356317,
+          "x": 2354.6434838353443,
           "y": 1.24,
           "z": -43.777,
           "yaw": 0
@@ -379,7 +382,7 @@
         {
           "id": 146,
           "type": "scooter",
-          "x": 2393.4219825080936,
+          "x": 2393.4226920078063,
           "y": 1.24,
           "z": -43.777,
           "yaw": 0
@@ -387,7 +390,7 @@
         {
           "id": 221,
           "type": "scooter",
-          "x": 2109.1416445636078,
+          "x": 2109.1408089919278,
           "y": 1.24,
           "z": 47.409,
           "yaw": 3.141592653589793
@@ -395,7 +398,7 @@
         {
           "id": 224,
           "type": "scooter",
-          "x": 2256.273775795382,
+          "x": 2256.272940223702,
           "y": 1.24,
           "z": 47.409,
           "yaw": 3.141592653589793
@@ -403,7 +406,7 @@
         {
           "id": 301,
           "type": "scooter",
-          "x": 2157.04552361274,
+          "x": 2157.0463451806445,
           "y": 1.24,
           "z": 51.708999999999996,
           "yaw": 0
@@ -411,7 +414,7 @@
         {
           "id": 305,
           "type": "scooter",
-          "x": 2336.3934204428033,
+          "x": 2336.394242010708,
           "y": 1.24,
           "z": 51.708999999999996,
           "yaw": 0
@@ -453,8 +456,8 @@
       0.28,
       0
     ],
-    "maxShipSideM": 1.769118938421146,
-    "minPaddleClearanceM": 4.087616979674319,
+    "maxShipSideM": 1.7691188989809072,
+    "minPaddleClearanceM": 4.087617019114558,
     "officials": {
       "age": {
         "adult": 3
@@ -548,7 +551,8 @@
       "teams": [
         "Tum Núp 2",
         "Prêk On Đơk 2"
-      ]
+      ],
+      "game": null
     }
   },
   "finish": [
@@ -601,9 +605,9 @@
       ],
       "canvas": {
         "x": 0,
-        "y": 110,
+        "y": 172,
         "width": 1180,
-        "height": 206
+        "height": 144
       }
     }
   ],

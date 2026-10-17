@@ -1,7 +1,7 @@
 import {RACE_TEAMS_2025} from './teams.mjs';
 
 const copy=value=>JSON.parse(JSON.stringify(value));
-const rounds=['quarterfinal','semifinal','final'];
+const roundName=count=>count===2?'final':count===4?'semifinal':count===8?'quarterfinal':'round-of-'+count;
 const results=['win','loss','tie','dnf'];
 function aiWinner(seed,round,index){
  // Match-local seeded coin toss: no ranks, names or real team strength.
@@ -11,7 +11,7 @@ function aiWinner(seed,round,index){
 }
 function optionsValid({seed,playerId,teamIds}){
  if(!Number.isInteger(seed)||seed<0||seed>0xffffffff)throw Error('Seed must be uint32');
- if(!Array.isArray(teamIds)||teamIds.length!==8||new Set(teamIds).size!==8||teamIds.some(id=>typeof id!=='string'||!id.length))throw Error('Exactly eight unique team IDs required');
+ if(!Array.isArray(teamIds)||teamIds.length<2||teamIds.length>128||new Set(teamIds).size!==teamIds.length||teamIds.some(id=>typeof id!=='string'||!id.length))throw Error('Between two and 128 unique team IDs required');
  if(!teamIds.includes(playerId))throw Error('Player must be one of the eight teams');
 }
 
@@ -20,11 +20,14 @@ export function createTournament({playerId=RACE_TEAMS_2025[0].id,seed=31,teamIds
  function beginRound(participants){
   const r=state.bracket.length;
   const matches=[];
-  for(let i=0;i<participants.length;i+=2){
-   const teams=participants.slice(i,i+2),isPlayer=teams.includes(state.playerId);
-   matches.push({id:`r${r}-m${i/2}`,teams,winner:isPlayer?null:teams[aiWinner(state.seed,r,i/2)],result:isPlayer?null:'ai',attempt:0});
+  const slots=2**Math.ceil(Math.log2(participants.length)),byes=slots-participants.length;
+  for(let i=0;i<participants.length;){
+   const index=matches.length,teams=participants.slice(i,i+(index<byes?1:2)),isPlayer=teams.includes(state.playerId);i+=teams.length;
+   matches.push({id:`r${r}-m${index}`,teams,winner:teams.length===1?teams[0]:isPlayer?null:teams[aiWinner(state.seed,r,index)],result:teams.length===1?'bye':isPlayer?null:'ai',attempt:0});
   }
-  state.bracket.push({round:rounds[r],matches});
+  state.bracket.push({round:roundName(slots),matches});
+  // A bye grants progression, never an invented opponent/race result.
+  if(matches.some(m=>m.result==='bye'&&m.teams[0]===state.playerId))beginRound(matches.map(m=>m.winner));
  }
  function reset(config={}){
   const next={playerId:config.playerId??state?.playerId??playerId,seed:config.seed??state?.seed??seed,teamIds:copy(config.teamIds??state?.teamIds??teamIds)};
@@ -50,7 +53,7 @@ export function createTournament({playerId=RACE_TEAMS_2025[0].id,seed=31,teamIds
   else if(result==='loss'||result==='dnf'){match.winner=active.opponentId;state.status='eliminated';}
   else{
    match.winner=state.playerId;
-   if(state.bracket.length===3){state.status='champion';state.champion=state.playerId;}
+   if(state.bracket.at(-1).matches.length===1){state.status='champion';state.champion=state.playerId;}
    else beginRound(state.bracket.at(-1).matches.map(m=>m.winner));
   }
   return snapshot();
@@ -62,6 +65,13 @@ export function createTournament({playerId=RACE_TEAMS_2025[0].id,seed=31,teamIds
   return snapshot();
  }
  function snapshot(){return copy(state);}
+ function resolveRemaining(){
+  if(state.status!=='eliminated')throw Error('Only an eliminated player can resolve remaining races');
+  if(state.champion)return snapshot();
+  state.history.push({type:'resolve'});
+  while(state.bracket.at(-1).matches.length>1)beginRound(state.bracket.at(-1).matches.map(m=>m.winner));
+  state.champion=state.bracket.at(-1).matches[0].winner;return snapshot();
+ }
  function restore(saved){
   // Rebuild from validated events; never trust persisted winner/bracket fields.
   if(!saved||saved.version!==1||!Array.isArray(saved.history)||saved.history.length>128)throw Error('Invalid tournament snapshot');
@@ -71,6 +81,7 @@ export function createTournament({playerId=RACE_TEAMS_2025[0].id,seed=31,teamIds
    if(!event||typeof event!=='object')throw Error('Invalid history event');
    if(event.type==='finish')candidate.finish(event);
    else if(event.type==='retry')candidate.retryTie();
+   else if(event.type==='resolve')candidate.resolveRemaining();
    else throw Error('Invalid history event');
   }
   const rebuilt=candidate.snapshot();
@@ -84,5 +95,5 @@ export function createTournament({playerId=RACE_TEAMS_2025[0].id,seed=31,teamIds
   state=rebuilt;return snapshot();
  }
  reset();
- return {currentMatch:current,finish,retryTie,snapshot,restore,reset};
+ return {currentMatch:current,finish,retryTie,resolveRemaining,snapshot,restore,reset};
 }

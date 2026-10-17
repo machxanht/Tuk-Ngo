@@ -1,8 +1,9 @@
 import * as T from 'three';
-import {RACE_TEAMS_2025,DEFAULT_TEAM_IDS,team2025} from './teams.mjs';
+import {RACE_TEAMS_2025,DEFAULT_TEAM_IDS} from './teams.mjs';
+import {FESTIVAL_TEAMS,festivalTeam} from './festival-teams.mjs';
 
 // Visual choices never change a historical team's simulated strength.
-window.TukNgoTeams={list:RACE_TEAMS_2025,defaults:DEFAULT_TEAM_IDS,get:team2025};
+window.TukNgoTeams={list:RACE_TEAMS_2025,festivalList:FESTIVAL_TEAMS,defaults:DEFAULT_TEAM_IDS,get:festivalTeam};
 
 export function athletePalette(team,id,role,fallback){
  const leader=team?.roleKit?.[role==='caller'?'BOW_CALLER':role==='controller'?'MID_CONTROLLER':''];
@@ -143,7 +144,15 @@ export function shortSleeves(body,jointNames,skeleton,cuffAlong=.55){
 export function teamTextures(base){
  const textures=new Map(),ready=new Map(),loader=new T.TextureLoader();let disposed=false;
  async function load(ids){if(disposed)throw Error('Team textures were disposed');await Promise.all([...new Set(ids)].map(id=>{
-  team2025(id);if(!textures.has(id))textures.set(id,loader.loadAsync(base+'teams-2025/'+id+'.svg').then(texture=>{if(disposed){texture.dispose();throw Error('Team textures were disposed');}texture.colorSpace=T.SRGBColorSpace;texture.flipY=false;texture.anisotropy=4;ready.set(id,texture);return texture;}).catch(error=>{textures.delete(id);throw error;}));return textures.get(id);
+  const team=festivalTeam(id);if(!textures.has(id))textures.set(id,(team.appearance==='sample'?Promise.resolve(sampleLivery(team)):loader.loadAsync(base+'teams-2025/'+id+'.svg')).then(texture=>{if(disposed){texture.dispose();throw Error('Team textures were disposed');}texture.colorSpace=T.SRGBColorSpace;texture.flipY=false;texture.anisotropy=4;ready.set(id,texture);return texture;}).catch(error=>{textures.delete(id);throw error;}));return textures.get(id);
  }));}
  return {load,get(id){return ready.get(id);},textures,dispose(){disposed=true;for(const texture of ready.values())texture.dispose();ready.clear();textures.clear();}};
+}
+
+// Authored festival sample only: retain the eight researched SVGs unchanged.
+function sampleLivery(team){
+ const canvas=document.createElement('canvas');canvas.width=2048;canvas.height=256;const c=canvas.getContext('2d');
+ c.fillStyle=team.jersey;c.fillRect(0,0,2048,256);c.fillStyle='#202d32';c.fillRect(0,0,2048,24);c.fillRect(0,220,2048,36);c.strokeStyle=team.trim;c.lineWidth=5;
+ for(let x=0;x<2048;x+=96){c.beginPath();c.moveTo(x,40);c.bezierCurveTo(x+82,46,x+84,126,x+25,128);c.bezierCurveTo(x-4,130,x+11,193,x+82,204);c.stroke();for(const y of [32,212]){c.beginPath();c.moveTo(x,y-8);c.lineTo(x+14,y);c.lineTo(x,y+8);c.lineTo(x-14,y);c.closePath();c.stroke();}}
+ return new T.CanvasTexture(canvas);
 }

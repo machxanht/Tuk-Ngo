@@ -73,7 +73,7 @@ export function buildStartOfficial(scene,assets,{x,z=0,waterY=.28}){
  let disposed=false;
  return {root,floating,stats,update(time,race,camera){
   if(disposed)return;floating.position.y=Math.sin(time*.8)*.018;floating.rotation.x=Math.sin(time*.65)*.004;floating.rotation.z=Math.sin(time*.7)*.003;
-  const hold=race.state==='countdown';stats.signal=hold?'hold':'go';lampMaterial.color.set(hold?'#ee6643':'#58e66d');flagPivot.rotation.z=hold?-.04:-1.13;flag.rotation.y=Math.sin(time*2.8)*.13;
+  const hold=race.state==='countdown'||race.state==='ready'||race.countdown>0;stats.signal=hold?'hold':'go';lampMaterial.color.set(hold?'#ee6643':'#58e66d');flagPivot.rotation.z=hold?-.04:-1.13;flag.rotation.y=Math.sin(time*2.8)*.13;
   root.updateMatrixWorld(true);cameraLocal.copy(camera.position);floating.worldToLocal(cameraLocal);crew.update(time,cameraLocal.x,cameraLocal.z);
  },dispose(){if(disposed)return;disposed=true;crew.dispose();resources.forEach(r=>r.dispose());root.removeFromParent();}};
 }

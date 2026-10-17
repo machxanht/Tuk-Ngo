@@ -1,5 +1,5 @@
 {
-  "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/race.html",
+  "url": "http://127.0.0.1:4173/Tuk-Ngo/assets/illustrated-v22/race.html?mode=cup",
   "raceTiming": "accelerated legal beats; actual touch buttons; no injected distances/results",
   "physicalTabletTested": false,
   "reports": [
@@ -196,10 +196,10 @@
       "round": "semifinal",
       "roundIndex": 1,
       "playerId": "tum-nup-2",
-      "opponentId": "chroi-tum-chas",
+      "opponentId": "prek-ta-cuol",
       "teams": [
         "tum-nup-2",
-        "chroi-tum-chas"
+        "prek-ta-cuol"
       ],
       "blocked": false
     },

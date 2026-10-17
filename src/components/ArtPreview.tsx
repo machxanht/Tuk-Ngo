@@ -1,12 +1,13 @@
-import {useEffect, useRef, useState} from 'react';
+import {lazy, Suspense, useEffect, useRef, useState} from 'react';
 import {Camera, Download, Pause, Play, RotateCcw, Video} from 'lucide-react';
 import './ArtPreview.css';
 import {athleteMasterDigest} from '../race/asset-digests.mjs';
 
-type Mode = 'race' | 'boat' | 'athlete';
+const RaceGame=lazy(()=>import('./RaceGame').then(m=>({default:m.RaceGame})));
+type Mode = 'play' | 'race' | 'boat' | 'athlete';
 export function ArtPreview({embedded=false}:{embedded?:boolean}) {
  const host=useRef<HTMLDivElement>(null),runtime=useRef<any>(null);
- const [mode,setMode]=useState<Mode>('race'),[view,setView]=useState('race');
+ const [mode,setMode]=useState<Mode>(()=>embedded||new URLSearchParams(location.search).get('demo')==='race'?'race':'play'),[view,setView]=useState('race');
  const [playing,setPlaying]=useState(()=>!matchMedia('(prefers-reduced-motion: reduce)').matches);
  const [cadence,setCadence]=useState(64),[splash,setSplash]=useState(true),[fast,setFast]=useState(false);
  const [race,setRace]=useState<any>(null);
@@ -15,6 +16,7 @@ export function ArtPreview({embedded=false}:{embedded?:boolean}) {
  const clock=useRef({phase:.28,seconds:0,last:0});
  const settings=useRef({view,playing,cadence,splash,fast,racing:mode==='race',onRace:setRace});settings.current={view,playing,cadence,splash,fast,racing:mode==='race',onRace:setRace};
  useEffect(()=>{
+  if(mode==='play')return;
   let cancelled=false,stop=()=>{};const mount=host.current!;
   setReady(false);setStatus(mode==='athlete'?'Đang tải VĐV từ Blender…':'Đang tải ghe 3D và đường đua 1.200 m…');setRace(null);
   (async()=>{
@@ -33,11 +35,12 @@ export function ArtPreview({embedded=false}:{embedded?:boolean}) {
  function togglePlaying(){if(playing)setInspectedPhase(Math.round(clock.current.phase*100));setPlaying(!playing);}
  function inspectPhase(value:number){setPlaying(false);setInspectedPhase(value);clock.current.phase=value/100;}
  async function record(){setRecordError('');setRecording(true);setPlaying(true);try{await runtime.current?.record();}catch(e){setRecordError(e instanceof Error?e.message:String(e));}finally{setRecording(false);}}
+ if(mode==='play')return <Suspense fallback={<p role="status">Đang mở cúp 61 ghe…</p>}><RaceGame onInspect={()=>changeMode('race')}/></Suspense>;
  const views=mode==='race'?[['race','Theo cuộc đua'],['start','Xuất phát'],['official','Trọng tài'],['stand','Khán đài chính'],['finish','Vạch đích'],['bridge','Cầu 30/4'],['banks','Toàn tuyến 1.200 m'],['crew','Cận tay bơi']]:mode==='athlete'?[['front','Trước'],['side','Ngang'],['back','Sau'],['paddle','Dằm']]:[['boat','Toàn ghe'],['stand','Khán đài chính'],['banks','Hai bờ sông'],['crowd','Khán giả'],['top','Nhìn từ trên'],['crew','Cận tay bơi'],['kneel','Nhóm quỳ'],['bow','Đầu ghe'],['stern','Lái cuối ghe']];
  return <section className={'art-preview'+(embedded?' art-embedded':'')}>
   <header className="art-heading"><div><span className="art-kicker">GHE NGO · 3D</span><h1>{mode==='race'?'Đua thử hai ghe · 1.200 m':mode==='boat'?'Ghe Tum Núp 2 · 54 người':'VĐV Tum Núp 2'}</h1><p>Kéo để xoay · chụm hai ngón để phóng to</p></div><a className="art-back" href={import.meta.env.BASE_URL+'assets/illustrated-v22/race.html?mode=cup'}>Giải 8 ghe</a></header>
   <nav className="art-view-controls" aria-label="Chọn hình ảnh">
-   <div className="art-segment" aria-label="Mô hình"><button disabled={recording} aria-pressed={mode==='race'} onClick={()=>changeMode('race')}>Hai ghe đua</button><button disabled={recording} aria-pressed={mode==='boat'} onClick={()=>changeMode('boat')}>Cả ghe 3D</button><button disabled={recording} aria-pressed={mode==='athlete'} onClick={()=>changeMode('athlete')}>Một VĐV</button></div>
+   <div className="art-segment" aria-label="Mô hình"><button disabled={recording} onClick={()=>changeMode('play')}>Chơi cúp 61 ghe</button><button disabled={recording} aria-pressed={mode==='race'} onClick={()=>changeMode('race')}>Hai ghe đua</button><button disabled={recording} aria-pressed={mode==='boat'} onClick={()=>changeMode('boat')}>Cả ghe 3D</button><button disabled={recording} aria-pressed={mode==='athlete'} onClick={()=>changeMode('athlete')}>Một VĐV</button></div>
    <div className="art-segment" aria-label="Góc nhìn">{views.map(([v,label])=><button key={v} disabled={recording} aria-pressed={view===v} onClick={()=>setView(v)}>{label}</button>)}</div>
   </nav>
   <div className="art-canvas" ref={host} data-testid="art-stage" aria-busy={!ready}>{!ready&&<div className="art-loading" role="status">{status}</div>}</div>

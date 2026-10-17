@@ -5,7 +5,7 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 parser=argparse.ArgumentParser()
-parser.add_argument('--url',default='http://127.0.0.1:4173/Tuk-Ngo/')
+parser.add_argument('--url',default='http://127.0.0.1:4173/Tuk-Ngo/?demo=race')
 parser.add_argument('--out',default='docs/qa/athlete-master/course')
 parser.add_argument('--stability-seconds',type=int,default=0)
 args=parser.parse_args();out=Path(args.out);out.mkdir(parents=True,exist_ok=True)
@@ -115,6 +115,7 @@ with sync_playwright() as p:
         page.set_viewport_size({'width':width,'height':height});page.wait_for_timeout(200)
         canvas=page.locator('[data-testid=art-stage]').bounding_box();footer=page.locator('.art-controls').bounding_box();nav=page.locator('.art-view-controls').bounding_box()
         assert canvas['height']>=120 and canvas['y']>=nav['y']+nav['height']-.5 and canvas['y']+canvas['height']<=footer['y']+.5
+        assert footer['y']+footer['height']<=height+.5,('Clipped controls',footer,height)
         assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
         report['viewports'].append({'size':[width,height],'canvas':canvas});page.screenshot(path=str(out/f'tablet-{width}x{height}.png'))
     page.get_by_role('button',name='Đua lại từ xuất phát',exact=True).tap();page.wait_for_timeout(100)
