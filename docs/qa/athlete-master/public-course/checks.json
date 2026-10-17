@@ -1,24 +1,24 @@
 {
   "physicalTabletTested": false,
   "load": {
-    "readyMs": 11297.5,
-    "bytes": 11901327,
+    "readyMs": 12884.5,
+    "bytes": 11905005,
     "urls": [
-      "https://machxanht.github.io/Tuk-Ngo/assets/index-mnYtsD-6.js",
+      "https://machxanht.github.io/Tuk-Ngo/assets/index-CUb_aCWB.js",
       "https://machxanht.github.io/Tuk-Ngo/assets/index-Bo7mo07X.css",
-      "https://machxanht.github.io/Tuk-Ngo/assets/ArtPreview-CW8Dkxj-.js",
+      "https://machxanht.github.io/Tuk-Ngo/assets/ArtPreview-BdEVehNr.js",
       "https://machxanht.github.io/Tuk-Ngo/assets/asset-digests-CQCD7ofi.js",
-      "https://machxanht.github.io/Tuk-Ngo/assets/rotate-ccw-2ew6RPJe.js",
+      "https://machxanht.github.io/Tuk-Ngo/assets/rotate-ccw-lQsya7E-.js",
+      "https://machxanht.github.io/Tuk-Ngo/assets/download-i7tl9_S-.js",
+      "https://machxanht.github.io/Tuk-Ngo/assets/video-B2R-sinq.js",
       "https://machxanht.github.io/Tuk-Ngo/assets/ArtPreview-Cw6GWYLI.css",
-      "https://machxanht.github.io/Tuk-Ngo/assets/video-mgd8S-fo.js",
-      "https://machxanht.github.io/Tuk-Ngo/assets/download-BZ3wT6pt.js",
-      "https://machxanht.github.io/Tuk-Ngo/assets/boat-preview-rQR5Wg2e.js",
-      "https://machxanht.github.io/Tuk-Ngo/assets/three-addons-BnpvScye.js",
-      "https://machxanht.github.io/Tuk-Ngo/assets/three-renderer-3VrNaQXw.js",
-      "https://machxanht.github.io/Tuk-Ngo/assets/three-core-DFpmdtjz.js",
-      "https://machxanht.github.io/Tuk-Ngo/assets/race-crew-DN8KVpFB.js",
-      "https://machxanht.github.io/Tuk-Ngo/assets/boat-DqrC9toq.js",
+      "https://machxanht.github.io/Tuk-Ngo/assets/boat-preview-C0Y7BLT3.js",
+      "https://machxanht.github.io/Tuk-Ngo/assets/three-addons-DiBvLs_E.js",
+      "https://machxanht.github.io/Tuk-Ngo/assets/three-core-PKyBB6wc.js",
+      "https://machxanht.github.io/Tuk-Ngo/assets/three-renderer-Xp2iZVDg.js",
+      "https://machxanht.github.io/Tuk-Ngo/assets/race-crew-vPttIh9T.js",
       "https://machxanht.github.io/Tuk-Ngo/assets/art-preview-CkWR3nbs.js",
+      "https://machxanht.github.io/Tuk-Ngo/assets/boat-BiZF45Jm.js",
       "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/shirt-runtime-v32.json",
       "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/hull-rig-v25.glb",
       "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/athlete-rig-v27.glb",
@@ -26,8 +26,8 @@
       "https://machxanht.github.io/Tuk-Ngo/assets/athlete-master/rowing-motion.glb?sha=cac6212b159112857cbd6aa546e0822402eb29cdc41bcb2871643417ef3a2cb3",
       "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/NotoSansKhmer.ttf",
       "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/hull-slim-bow-v23.webp",
-      "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/teams-2025/prek-on-dok-2.svg",
       "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/teams-2025/tum-nup-2.svg",
+      "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/teams-2025/prek-on-dok-2.svg",
       "https://machxanht.github.io/Tuk-Ngo/assets/festival-crowd/crowd-compact.json?sha=f4079620e7ce9a820beefec26c24fa0fa9a3e30b1745f6ae2442d0156dcb9447",
       "https://machxanht.github.io/Tuk-Ngo/assets/festival-crowd/crowd-compact.packed?sha=286bf615e7b2af5bc44787977914964cce41ff4637efe8474eed2c0514ce4b99"
     ]
@@ -39,33 +39,33 @@
       "boatCount": "2",
       "crewCount": "108",
       "masterRigs": "16",
-      "phase": "0.9610",
+      "phase": "0.9603",
       "view": "race",
-      "triangles": "5680247",
-      "drawCalls": "602",
-      "splashEvents": "4064",
+      "triangles": "5659606",
+      "drawCalls": "615",
+      "splashEvents": "4066",
       "banks": "2",
       "spectators": "55905",
       "daylight": "bright",
       "raceState": "racing",
       "courseLength": "1200",
-      "raceDistances": "[14.946327517651106,15.10995734012094]",
+      "raceDistances": "[14.943760330661796,15.107369694652116]",
       "fps": "32.0"
     },
     "race": {
-      "elapsed": 4.156799999999998,
+      "elapsed": 4.156300000000001,
       "countdown": 0,
       "distance": [
-        14.946327517651106,
-        15.10995734012094
+        14.943760330661796,
+        15.107369694652116
       ],
       "speed": [
-        5.1050971435279715,
-        5.14598165543621
+        5.104974944739919,
+        5.145863725580146
       ],
       "phases": [
-        0.9609599999999995,
-        0.8024639999999992
+        0.960276666666669,
+        0.8017865000000011
       ],
       "finishTimes": [
         null,
@@ -103,7 +103,7 @@
       }
     ],
     "camera": [
-      2328.4012132892262,
+      2328.4037907054567,
       48.91169464764202,
       47.911694647642015
     ]
@@ -141,19 +141,19 @@
   "paddleInstances": [
     {
       "boatPosition": [
-        2289.5147610487,
+        2289.3553908596245,
         0,
         -7.5
       ],
-      "maxMeshInstanceDriftM": 3.967760708534467e-07
+      "maxMeshInstanceDriftM": 3.7358942128241467e-07
     },
     {
       "boatPosition": [
-        2289.3461165108324,
+        2289.1855209948544,
         0,
         7.5
       ],
-      "maxMeshInstanceDriftM": 4.852175116604589e-07
+      "maxMeshInstanceDriftM": 3.521334184659436e-07
     }
   ],
   "environment": {
@@ -172,13 +172,13 @@
         "seated"
       ],
       "activityCounts": {
-        "clap": 10199,
-        "wave": 10156,
-        "cheer": 7599,
-        "idle": 18254,
-        "indicate": 5803,
-        "seated": 1958,
-        "walk": 1936
+        "clap": 10211,
+        "wave": 10144,
+        "cheer": 7603,
+        "idle": 18256,
+        "indicate": 5801,
+        "seated": 1960,
+        "walk": 1930
       },
       "active": 12304,
       "lodCounts": [
@@ -197,8 +197,8 @@
       "motion": "GPU bone palette interpolation; source idle/wave/walk + authored clap/cheer/indicate/seated",
       "randomization": "independent salted placement id and coordinates, clothes/hair/skin/face proportions/age styling",
       "peoplePerBank": [
-        28471,
-        27434
+        28467,
+        27438
       ],
       "outfits": {
         "independentTrousers": 8,
@@ -208,67 +208,67 @@
       },
       "demographicCounts": {
         "age": {
-          "adult": 39150,
-          "adolescent": 4474,
-          "older adult": 12281
+          "adult": 39113,
+          "adolescent": 4486,
+          "older adult": 12306
         },
         "gender": {
-          "men": 35545,
-          "women": 20360
+          "men": 35539,
+          "women": 20366
         },
         "model": {
-          "worker-man": 5034,
-          "casual-woman": 5106,
-          "suit-man": 5121,
-          "punk-man": 5040,
-          "farmer-man": 5058,
-          "suit-woman": 5140,
-          "beach-man": 5138,
-          "hoodie-man": 5220,
-          "formal-woman": 5057,
-          "casual-man": 4934,
-          "worker-woman": 5057
+          "worker-man": 5044,
+          "casual-woman": 5100,
+          "suit-man": 5156,
+          "punk-man": 5021,
+          "farmer-man": 5035,
+          "suit-woman": 5132,
+          "beach-man": 5128,
+          "hoodie-man": 5234,
+          "formal-woman": 5062,
+          "casual-man": 4921,
+          "worker-woman": 5072
         }
       },
-      "visibleTriangles": 2651743,
-      "lastPackMs": 11.799999997019768
+      "visibleTriangles": 2651682,
+      "lastPackMs": 14
     },
     "reference": "OWNER_VTV10_VIDEO_2025_REAL_PHOTOS_AND_OSM_LAYOUT",
     "dimensions": "APPROXIMATE_GAME_SCALE",
     "spectators": 55905,
     "seats": 1916,
     "trees": 168,
-    "houses": 432,
+    "houses": 431,
     "distantBlocks": 300,
     "umbrellas": 364,
     "stands": 2,
     "nationalFlags": 0,
     "buildings": {
       "version": 21,
-      "houses": 432,
+      "houses": 431,
       "frontageFamilies": {
         "modern-townhouse": 125,
-        "tin-local-house": 57,
-        "shutter-shophouse": 116,
-        "old-tiled-dwelling": 65,
+        "tin-local-house": 55,
+        "shutter-shophouse": 114,
+        "old-tiled-dwelling": 68,
         "open-front-shop": 69
       },
       "trees": 168,
       "treeSilhouettes": 5,
-      "foodStalls": 42,
+      "foodStalls": 44,
       "people": 3209,
-      "roadsidePeople": 2390,
+      "roadsidePeople": 2393,
       "activityCounts": {
-        "walk": 1936,
-        "talk": 639,
-        "vendor": 111,
-        "eat": 523
+        "walk": 1930,
+        "talk": 634,
+        "vendor": 113,
+        "eat": 532
       },
       "drawCalls": 30,
       "geometryTriangles": 23856,
-      "visibleHouses": 67,
-      "visibleInstances": 444,
-      "submittedTriangles": 216772,
+      "visibleHouses": 54,
+      "visibleInstances": 403,
+      "submittedTriangles": 179296,
       "range": {
         "detailedHouses": 125,
         "distantHouses": 440,
@@ -322,7 +322,7 @@
         {
           "id": 140,
           "type": "pickup",
-          "x": 2110.2234595832306,
+          "x": 2110.2979570530388,
           "y": 1.24,
           "z": -43.777,
           "yaw": 0
@@ -330,7 +330,7 @@
         {
           "id": 61,
           "type": "scooter",
-          "x": 2114.534250377119,
+          "x": 2114.456008071744,
           "y": 1.24,
           "z": -48.077,
           "yaw": 3.141592653589793
@@ -338,7 +338,7 @@
         {
           "id": 64,
           "type": "scooter",
-          "x": 2257.997024000413,
+          "x": 2257.918781695038,
           "y": 1.24,
           "z": -48.077,
           "yaw": 3.141592653589793
@@ -346,7 +346,7 @@
         {
           "id": 65,
           "type": "scooter",
-          "x": 2293.8422150213974,
+          "x": 2293.763972716022,
           "y": 1.24,
           "z": -48.077,
           "yaw": 3.141592653589793
@@ -354,7 +354,7 @@
         {
           "id": 143,
           "type": "scooter",
-          "x": 2256.244802727353,
+          "x": 2256.3193001971613,
           "y": 1.24,
           "z": -43.777,
           "yaw": 0
@@ -362,7 +362,7 @@
         {
           "id": 144,
           "type": "scooter",
-          "x": 2308.560862667382,
+          "x": 2308.63536013719,
           "y": 1.24,
           "z": -43.777,
           "yaw": 0
@@ -370,7 +370,7 @@
         {
           "id": 145,
           "type": "scooter",
-          "x": 2354.6125023479,
+          "x": 2354.686999817708,
           "y": 1.24,
           "z": -43.777,
           "yaw": 0
@@ -378,7 +378,7 @@
         {
           "id": 146,
           "type": "scooter",
-          "x": 2393.391710520362,
+          "x": 2393.46620799017,
           "y": 1.24,
           "z": -43.777,
           "yaw": 0
@@ -386,7 +386,7 @@
         {
           "id": 221,
           "type": "scooter",
-          "x": 2109.177295621962,
+          "x": 2109.089560595543,
           "y": 1.24,
           "z": 47.409,
           "yaw": 3.141592653589793
@@ -394,7 +394,7 @@
         {
           "id": 224,
           "type": "scooter",
-          "x": 2256.309426853736,
+          "x": 2256.221691827317,
           "y": 1.24,
           "z": 47.409,
           "yaw": 3.141592653589793
@@ -402,7 +402,7 @@
         {
           "id": 301,
           "type": "scooter",
-          "x": 2157.010470048799,
+          "x": 2157.0967346788093,
           "y": 1.24,
           "z": 51.708999999999996,
           "yaw": 0
@@ -410,7 +410,7 @@
         {
           "id": 305,
           "type": "scooter",
-          "x": 2336.3583668788624,
+          "x": 2336.4446315088726,
           "y": 1.24,
           "z": 51.708999999999996,
           "yaw": 0
@@ -419,6 +419,18 @@
     },
     "spectatorSpacingM": 0.56,
     "fullCourseCrowdRows": 10,
+    "bridges": {
+      "C247": {
+        "x": 940,
+        "yaw": 0.32567183490548884
+      },
+      "30/4": {
+        "x": 2385,
+        "yaw": -0.05069861735281925,
+        "beforeStartM": 95
+      },
+      "placement": "owner-corrected game placement; OSM angles retained"
+    },
     "mainStand": {
       "bank": "right in race direction",
       "lengthM": 128,
@@ -429,6 +441,36 @@
       "measured": false
     }
   },
+  "startLayout": {
+    "startX": 2290,
+    "bridgeDeckCentres": [
+      940,
+      2385
+    ],
+    "shipPosition": [
+      2298,
+      0.28,
+      0
+    ],
+    "maxShipSideM": 1.769116178668692,
+    "minPaddleClearanceM": 4.087619739426773,
+    "officials": {
+      "age": {
+        "adult": 3
+      },
+      "gender": {
+        "men": 2,
+        "women": 1
+      },
+      "model": {
+        "casual-man": 1,
+        "suit-man": 1,
+        "casual-woman": 1
+      }
+    },
+    "officialCount": 3
+  },
+  "startSignal": "hold -> go, synchronized with countdown",
   "fullRace": {
     "monotone": true,
     "checkpoints": [
@@ -534,9 +576,9 @@
       ],
       "canvas": {
         "x": 0,
-        "y": 159,
+        "y": 221,
         "width": 1024,
-        "height": 482
+        "height": 420
       }
     },
     {
@@ -546,9 +588,9 @@
       ],
       "canvas": {
         "x": 0,
-        "y": 214,
+        "y": 258,
         "width": 768,
-        "height": 683
+        "height": 639
       }
     },
     {
@@ -562,296 +604,6 @@
         "width": 1180,
         "height": 206
       }
-    }
-  ],
-  "stability": [
-    {
-      "race": {
-        "elapsed": 61.0939999999989,
-        "countdown": 0,
-        "distance": [
-          317.5069879016698,
-          318.7511847170832
-        ],
-        "speed": [
-          5.159302964579468,
-          5.10313777354221
-        ],
-        "phases": [
-          0.899553333333328,
-          0.07678999999998407
-        ],
-        "finishTimes": [
-          null,
-          null
-        ],
-        "state": "racing",
-        "stages": [
-          "Đường trường",
-          "Đường trường"
-        ],
-        "length": 1200,
-        "teams": [
-          "Tum Núp 2",
-          "Prêk On Đơk 2"
-        ]
-      },
-      "camera": [
-        2025.3002694087388,
-        48.91169464764203,
-        47.911694647642044
-      ],
-      "target": [
-        1986.9709136906238,
-        0.9999999999999968,
-        0
-      ],
-      "cameraOffset": [
-        38.32935571811504,
-        47.91169464764203,
-        47.911694647642044
-      ],
-      "fps": "32.0"
-    },
-    {
-      "race": {
-        "elapsed": 121.18759999999871,
-        "countdown": 0,
-        "distance": [
-          624.4616863831623,
-          626.1550924188991
-        ],
-        "speed": [
-          5.1055734808383475,
-          5.068921397245432
-        ],
-        "phases": [
-          0.99939333333332,
-          0.475537999999968
-        ],
-        "finishTimes": [
-          null,
-          null
-        ],
-        "state": "racing",
-        "stages": [
-          "Đường trường",
-          "Đường trường"
-        ],
-        "length": 1200,
-        "teams": [
-          "Tum Núp 2",
-          "Prêk On Đơk 2"
-        ]
-      },
-      "camera": [
-        1718.120966317086,
-        48.91169464764203,
-        47.911694647642044
-      ],
-      "target": [
-        1679.791610598971,
-        0.9999999999999999,
-        0
-      ],
-      "cameraOffset": [
-        38.32935571811504,
-        47.91169464764203,
-        47.911694647642044
-      ],
-      "fps": "32.0"
-    },
-    {
-      "race": {
-        "elapsed": 181.18820000000625,
-        "countdown": 0,
-        "distance": [
-          930.0757615594496,
-          933.3713082570565
-        ],
-        "speed": [
-          5.041264446953447,
-          5.141485681941164
-        ],
-        "phases": [
-          3.33333333564223e-05,
-          0.7761709999999971
-        ],
-        "finishTimes": [
-          null,
-          null
-        ],
-        "state": "racing",
-        "stages": [
-          "Đường trường",
-          "Đường trường"
-        ],
-        "length": 1200,
-        "teams": [
-          "Tum Núp 2",
-          "Prêk On Đơk 2"
-        ]
-      },
-      "camera": [
-        1411.705820809867,
-        48.91169464764203,
-        47.911694647642044
-      ],
-      "target": [
-        1373.376465091752,
-        0.9999999999999999,
-        0
-      ],
-      "cameraOffset": [
-        38.32935571811504,
-        47.91169464764203,
-        47.911694647642044
-      ],
-      "fps": "32.0"
-    },
-    {
-      "race": {
-        "elapsed": 227.59430000001274,
-        "countdown": 0,
-        "distance": [
-          1200,
-          1200
-        ],
-        "speed": [
-          5.850264381793941,
-          5.816835531340448
-        ],
-        "phases": [
-          0.46731333333334674,
-          0.0019264999999930588
-        ],
-        "finishTimes": [
-          227.57239744386996,
-          227.5564700051524
-        ],
-        "state": "finished",
-        "stages": [
-          "Nước rút",
-          "Nước rút"
-        ],
-        "length": 1200,
-        "teams": [
-          "Tum Núp 2",
-          "Prêk On Đơk 2"
-        ]
-      },
-      "camera": [
-        1143.429355718121,
-        48.91169464764203,
-        47.911694647642044
-      ],
-      "target": [
-        1105.100000000006,
-        0.9999999999999992,
-        0
-      ],
-      "cameraOffset": [
-        38.32935571811504,
-        47.91169464764203,
-        47.911694647642044
-      ],
-      "fps": "32.0"
-    },
-    {
-      "race": {
-        "elapsed": 227.59430000001274,
-        "countdown": 0,
-        "distance": [
-          1200,
-          1200
-        ],
-        "speed": [
-          5.850264381793941,
-          5.816835531340448
-        ],
-        "phases": [
-          0.46731333333334674,
-          0.0019264999999930588
-        ],
-        "finishTimes": [
-          227.57239744386996,
-          227.5564700051524
-        ],
-        "state": "finished",
-        "stages": [
-          "Nước rút",
-          "Nước rút"
-        ],
-        "length": 1200,
-        "teams": [
-          "Tum Núp 2",
-          "Prêk On Đơk 2"
-        ]
-      },
-      "camera": [
-        1143.429355718121,
-        48.91169464764203,
-        47.911694647642044
-      ],
-      "target": [
-        1105.100000000006,
-        0.9999999999999992,
-        0
-      ],
-      "cameraOffset": [
-        38.32935571811504,
-        47.91169464764203,
-        47.911694647642044
-      ],
-      "fps": "32.0"
-    },
-    {
-      "race": {
-        "elapsed": 227.59430000001274,
-        "countdown": 0,
-        "distance": [
-          1200,
-          1200
-        ],
-        "speed": [
-          5.850264381793941,
-          5.816835531340448
-        ],
-        "phases": [
-          0.46731333333334674,
-          0.0019264999999930588
-        ],
-        "finishTimes": [
-          227.57239744386996,
-          227.5564700051524
-        ],
-        "state": "finished",
-        "stages": [
-          "Nước rút",
-          "Nước rút"
-        ],
-        "length": 1200,
-        "teams": [
-          "Tum Núp 2",
-          "Prêk On Đơk 2"
-        ]
-      },
-      "camera": [
-        1143.429355718121,
-        48.91169464764203,
-        47.911694647642044
-      ],
-      "target": [
-        1105.100000000006,
-        0.9999999999999992,
-        0
-      ],
-      "cameraOffset": [
-        38.32935571811504,
-        47.91169464764203,
-        47.911694647642044
-      ],
-      "fps": "32.0"
     }
   ],
   "errors": [],

@@ -1,12 +1,10 @@
 {
-  "sourceCommit": "69ea1d0",
-  "pagesCommit": "a9cc91249bf271720eb40e61928e83810d87738f",
-  "actionsRun": 39023994354,
+  "sourceCommit": "24b6b1409b57fa50f3197a6ed326b17ab871fc42",
+  "pagesCommit": "e109910947e5db52adb89de0acd9e09210c9d61a",
+  "actionsRun": 39027584474,
   "conclusion": "success",
   "stableEntry": "https://machxanht.github.io/Tuk-Ngo/",
   "physicalTabletTested": false,
-  "publicAssetsMatched": 17,
-  "continuousPlaybackWallSeconds": 120,
   "publicBrowserErrors": [],
   "tabletViewports": [
     [
@@ -21,5 +19,48 @@
       1180,
       430
     ]
-  ]
+  ],
+  "startLayout": {
+    "startX": 2290,
+    "bridgeDeckCentres": [
+      940,
+      2385
+    ],
+    "shipPosition": [
+      2298,
+      0.28,
+      0
+    ],
+    "maxShipSideM": 1.769116178668692,
+    "minPaddleClearanceM": 4.087619739426773,
+    "officials": {
+      "age": {
+        "adult": 3
+      },
+      "gender": {
+        "men": 2,
+        "women": 1
+      },
+      "model": {
+        "casual-man": 1,
+        "suit-man": 1,
+        "casual-woman": 1
+      }
+    },
+    "officialCount": 3
+  },
+  "startSignal": "hold -> go, synchronized with countdown",
+  "fullCourseBothBoatsFinished": true,
+  "preservedAssetHashEvidence": {
+    "sourceCommit": "69ea1d0",
+    "file": "asset-hashes.json",
+    "matches": 17,
+    "assetSourceFilesChangedInThisUpdate": false
+  },
+  "previousContinuousPlaybackEvidence": {
+    "sourceCommit": "69ea1d0",
+    "wallSeconds": 120,
+    "file": "stability-finish.png",
+    "actionsRun": 39023994354
+  }
 }
