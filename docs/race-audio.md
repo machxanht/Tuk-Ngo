@@ -49,3 +49,14 @@ Verification entry points:
 Browser automation uses desktop Edge with touch viewports and software WebGL.
 It does not establish physical tablet FPS, speaker quality, or native Khmer
 pronunciation. Browser checks report their actual evidence in `docs/qa/race-audio`.
+
+Verified public deployment: source `b3980e4`, Pages
+`6e00608cca6f1e8673afbd4b7ea835cf8638b25a`, successful Actions run
+[39039646701](https://github.com/machxanht/Tuk-Ngo/actions/runs/39039646701).
+The published manifest matches the source. Public browser checks decoded the
+active pair, measured nonzero audio output, played all three Khmer cue types,
+observed extra final-phase rim hits, finished a legal full heat with the correct
+winner, changed opponents, and verified pause/mute/preferences/disposal plus
+1024×768, 768×1024 and 1180×430 layouts, with zero browser errors.
+The full-cup local regression also reached champion and exercised elimination,
+new-cup reset, storage restore, water intensity and model-view navigation.

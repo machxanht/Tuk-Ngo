@@ -1,0 +1,24 @@
+{
+  "verifiedAt": "2026-10-17T14:13:24.171602+00:00",
+  "url": "https://machxanht.github.io/Tuk-Ngo/",
+  "sourceCommit": "b3980e4",
+  "pagesCommit": "6e00608cca6f1e8673afbd4b7ea835cf8638b25a",
+  "deployment": {
+    "id": 39039646701,
+    "url": "https://github.com/machxanht/Tuk-Ngo/actions/runs/39039646701",
+    "conclusion": "success"
+  },
+  "entry": "/Tuk-Ngo/assets/index-ClVw7D9c.js",
+  "manifestSha256": "15a6decc495e62f47e80d8b039d6ced5e2f679fd0b30741302a46958f31f92d3",
+  "httpAudioResponses": 19,
+  "allAudioResponses200": true,
+  "actualOutputRms": 0.006352257520340304,
+  "finishResult": "win",
+  "finalRimHits": 6,
+  "errors": [],
+  "physicalTabletTested": false,
+  "limitations": [
+    "Synthetic speech; native Khmer pronunciation not reviewed",
+    "No exact listening comparison with the broadcast; direct reference audio fetch returned 403"
+  ]
+}
