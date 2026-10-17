@@ -68,3 +68,13 @@ Verification:
 Browser automation does not establish physical tablet performance, subjective
 listening quality, or correctness of a native Khmer transcript. These limitations
 remain explicit in the cut recipe and evidence.
+
+Public verification: source `ae9471b`, Pages
+`2161770aaf97c26a4db96c23d1275da79823f614`, successful Actions run
+[39042615463](https://github.com/machxanht/Tuk-Ngo/actions/runs/39042615463).
+All 20 public MP3 hashes match the source manifest. Independent PCM comparison
+against the 20 original source intervals has minimum correlation 0.999718.
+The public browser exercised both commentators, final/surge percussion, legal
+full-heat progression, next opponent, audio settings/persistence, pause/mute and
+resource disposal, plus three tablet layouts, with zero browser errors. The Pages
+asset tree contains 20 MP3s and no preceding TTS/name/chant recordings.

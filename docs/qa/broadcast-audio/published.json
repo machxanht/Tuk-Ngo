@@ -1,0 +1,128 @@
+{
+  "verifiedAt": "2026-10-17T14:57:07.124190+00:00",
+  "url": "https://machxanht.github.io/Tuk-Ngo/",
+  "sourceCommit": "ae9471b",
+  "pagesCommit": "2161770aaf97c26a4db96c23d1275da79823f614",
+  "deployment": {
+    "id": 39042615463,
+    "url": "https://github.com/machxanht/Tuk-Ngo/actions/runs/39042615463",
+    "conclusion": "success"
+  },
+  "entry": "/Tuk-Ngo/assets/index-CbREtF4E.js",
+  "mode": "broadcast",
+  "sourceVideo": "crZF3hghbgQ",
+  "originalSourceSha256": "2c443d23b71fe92cc191baca5bbc45ec12704d79a2ef1b31492839cd04654ed5",
+  "audioFiles": [
+    {
+      "key": "broadcast-ready",
+      "status": 200,
+      "sha256": "be21d80f72994726cd7d47ff02ba7b1a8070bfe501f32f2eae13c67dde00de2b"
+    },
+    {
+      "key": "broadcast-go",
+      "status": 200,
+      "sha256": "e948c3c3b44e4ca07f83d4aedbb9a4a5cb1d519ff7be94f210f5fa13bca7ab69"
+    },
+    {
+      "key": "broadcast-intro",
+      "status": 200,
+      "sha256": "08620b4bbcf4b977cd20c064f01e94607564f4aa950482b119362305ef3c794d"
+    },
+    {
+      "key": "broadcast-rhythm",
+      "status": 200,
+      "sha256": "73b4a1d653b58884d9b4a1c3b35c6d0858cfed63c0663ebe5b53be4991927376"
+    },
+    {
+      "key": "broadcast-recover",
+      "status": 200,
+      "sha256": "655f954f60d6252ba419b524cd475b90d38b3144c71d25fa49b717df1fc71411"
+    },
+    {
+      "key": "broadcast-close",
+      "status": 200,
+      "sha256": "34072e58f646e7b1631b71ed250314eebd7cbb72bd17b27f37a7df3e038f0437"
+    },
+    {
+      "key": "broadcast-sprint",
+      "status": 200,
+      "sha256": "ba1d425d7c67b63ead460398d2e167c0fe4b3e292c2e4ef9b457d319e24487e4"
+    },
+    {
+      "key": "broadcast-surge",
+      "status": 200,
+      "sha256": "68ebc1a5040e4c3fb9060ff600e243586d750492af86c194460ce76bcfa1eae0"
+    },
+    {
+      "key": "broadcast-finish",
+      "status": 200,
+      "sha256": "1eae051da1c136b77dc9c88ff6cec8e938288ddafe784de12c8655113740b9de"
+    },
+    {
+      "key": "broadcast-loss",
+      "status": 200,
+      "sha256": "f983acf1a14e0830987f3b6bf0d3d26575c8af204af1aada3c2fa5b32e3f1479"
+    },
+    {
+      "key": "broadcast-wait",
+      "status": 200,
+      "sha256": "f65488f03a114ca04fd726d9088d200feeb0e33fb6017f513ec6e84c540f352c"
+    },
+    {
+      "key": "broadcast-lead",
+      "status": 200,
+      "sha256": "68a0e1797112b137f74ee7a2553b047fdc80b52cb3fde792906aa63456683c55"
+    },
+    {
+      "key": "khmer-intro",
+      "status": 200,
+      "sha256": "68a14fa7f0134f23cda0f0adc323135d0c23ac68fd9532b916ae3c2fa7e23c82"
+    },
+    {
+      "key": "khmer-cruise",
+      "status": 200,
+      "sha256": "8b589cad0d668a8945b6075c062f93662cc8e601ef79909b9d30dd9d1acf1a20"
+    },
+    {
+      "key": "khmer-final",
+      "status": 200,
+      "sha256": "8913612983a82a7545f659beef4e5b75f62f247aaba0e5c16b89e2f53c85fa20"
+    },
+    {
+      "key": "khmer-surge",
+      "status": 200,
+      "sha256": "426b7d2e520b2b6bbc79cb5eb95d047bb94c636634c9a590c63e67afed408ab7"
+    },
+    {
+      "key": "drum-low",
+      "status": 200,
+      "sha256": "7e43c413746ac5aee29397694913506545eb917047df639e2b4933cc7af02ee3"
+    },
+    {
+      "key": "drum-open",
+      "status": 200,
+      "sha256": "8154937c7503134aae0cd6af54dca4f25b824cfe174a134639046d1970c1a80c"
+    },
+    {
+      "key": "drum-rim",
+      "status": 200,
+      "sha256": "2d244543babb4d7102d0390327ae55d93db3350a05951f0cd0e0706e4a55bebc"
+    },
+    {
+      "key": "broadcast-ambience",
+      "status": 200,
+      "sha256": "0394384c18e17b6044ae8f946fc3da251fb14e42c80063d84e6e84b43dd7086d"
+    }
+  ],
+  "mp3Bytes": 502420,
+  "khmerClipsPlayed": 3,
+  "outputRms": 0.008519719701073876,
+  "finishResult": "win",
+  "minOriginalSourcePcmCorrelation": 0.999718,
+  "errors": [],
+  "physicalTabletTested": false,
+  "limitations": [
+    "Khmer is original broadcast context, not word-for-word reviewed commentary about selected game teams",
+    "Subjective listening and native Khmer transcript have not been verified"
+  ]
+}
