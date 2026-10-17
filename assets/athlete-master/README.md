@@ -11,8 +11,14 @@ The original body/skin/rig retain the MakeHuman CC0 attribution documented in
 and the owner-requested text កូនខ្មែរ. Cap, paddle and hair-shell fitting are
 authored for this project. Reference photographs are not included as textures.
 
-The game keeps the original eight role motions and exact connected-shirt
-skinning. This GLB preserves all 161 original body/paddle tracks byte-for-byte; only
-the shirt surface is sampled at the original keys. It is not motion capture or
+The eight source role GLBs and exact connected-shirt topology remain unchanged.
+`rowing-motion.glb` is the calibrated eight-clip runtime bundle: outboard rowing,
+half-kneeling rear rowers and aft steering. This standalone GLB copies all 161
+body/paddle samplers from its calibrated seated-port clip without resampling.
+The shirt surface is sampled at the same motion keys. It is not motion capture or
 a scan of a named competitor. Details, references and verification are recorded
 in `docs/asset-workflow.md` in the source repository.
+
+The current low seated proof uses tucked legs and a 1.22 m paddle. The original
+1.52 m `athlete-details.glb` remains stock equipment; the boat derives the seated
+paddle from it while retaining the two-hand grip.
