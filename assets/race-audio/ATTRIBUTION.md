@@ -11,28 +11,29 @@ JavaScript runtime. Its SHA-256 is
 It is kept outside the repository on the working machine. The five-hour source
 is not shipped with the game.
 
-The runtime set contains 12 Vietnamese commentary cuts, four Khmer commentator
+The runtime set contains 12 Vietnamese commentary cuts, three Khmer commentator
 cuts, three short recorded field-percussion hits and a short field-ambience loop.
 There are no generated voices, generated chants, cloned voices or synthesized
 drum samples in this set. Processing is limited to cuts, EQ, fades, loudness
 normalization and MP3 encoding. The percussion is cut from field sound, rather
 than being an isolated studio drum stem.
 
-Vietnamese word boundaries were selected using local Whisper small ASR. The
-captions are descriptive labels, not certified verbatim transcripts. Named-team
-portions were excluded from those Vietnamese cuts. Khmer passages are the
-original commentator speaking Khmer, not cheering calls. A reliable verbatim
-translation/native review is not available: they can retain context or names
-from the real event. They are labelled as source excerpts and are not used to
-announce a game winner or to read the selected team's name.
+Speech boundaries and content were selected from the original YouTube automatic
+CC track (`vi-orig`, 4,434 cues, containing both Vietnamese and Khmer). The recipe
+and manifest record its hash and each speech cut's CC words/timestamps. Khmer
+phrases have working Vietnamese translations: a viewer greeting, a statement
+that the race has started, and congratulations (only after a player win). Source
+team names and unrelated Khmer passages were excluded. Automatic CC can contain
+errors; independent listening/native review and speaker labels are not available.
+Nothing generates new speech or changes the original speakers' pitch/speed.
 
 `docs/broadcast-audio-cuts.json` contains all source ranges and event mappings.
 `manifest.json` adds decoded durations/peaks, sizes and hashes of generated MP3s.
 Rebuild with Python, numpy and imageio-ffmpeg:
 
-    python scripts/build-race-audio.py --source "path/to/broadcast-full.m4a"
+    python scripts/build-race-audio.py --source "path/to/broadcast-full.m4a" --captions "path/to/youtube-captions.vi-orig.json3"
 
-The baker verifies the exact source hash, changes only this generated audio set,
-and removes its obsolete synthetic recordings. It does not download or process
+The baker verifies source/CC hashes and selected CC words, changes only this
+generated audio set, and removes its obsolete recordings. It does not download or process
 media at runtime. The full source, ASR model and extraction tools remain on drive
 E outside the website.
