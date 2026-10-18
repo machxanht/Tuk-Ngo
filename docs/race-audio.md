@@ -42,6 +42,16 @@ Affected checks: `python scripts/test-commentary-trial.py`,
 checks in `scripts/check-broadcast-library.py`. Mocked/offline credential tests
 are not evidence of successful external synthesis.
 
+Published script trial: source `fc3f0dc`, Pages
+`4ce750df7c26de9259feed6efa61b97e6ccd57fb`, successful
+[Actions run 39152983921](https://github.com/machxanht/Tuk-Ngo/actions/runs/39152983921).
+The public library passed the original two-clip playback regression plus script
+filters, 20 bilingual situations, no audio fetch in the script view and tablet
+layouts at 1024×768, 768×1024 and 1180×430, with zero page errors. Public HTML,
+script, original audio manifest and original team ZIP hashes matched the local
+files; the main game bundle is still `assets/index-DvnLks7V.js`. Evidence is in
+`docs/qa/commentary-trial/published.json` and `public/library-checks.json`.
+
 The main game opens one AudioContext from an explicit Listen or Start touch/click,
 after 3D initialization. No audio is fetched before that gesture. Name audition
 loads only the selected team's clips; race launch prefetches the active pair. One promise cache

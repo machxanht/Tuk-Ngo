@@ -1,0 +1,13 @@
+{
+  "sourceCommit": "fc3f0dc",
+  "pagesCommit": "4ce750df7c26de9259feed6efa61b97e6ccd57fb",
+  "actionsRun": 39152983921,
+  "actionsConclusion": "success",
+  "files": {
+    "index.html": "e3e5b75e9341ecb9a998c4c8c4b00c6adca30c316d375e7bdba1f403096d90e5",
+    "commentary-script.json": "334a45e5826f3e04f57a5cc87648aef5d3d481b6be87206a68c26cdbb77d67c0",
+    "manifest.json": "37cbb1668a1a9b0d603ce7afca26fde4f88b95a5fbf5d5c174586cb435e9e5a8",
+    "team-audio.zip": "2d60a06ad43941bab270f6d408e4811703b1dec97065d14da095f88de517468e"
+  },
+  "gameBundle": "assets/index-DvnLks7V.js"
+}
