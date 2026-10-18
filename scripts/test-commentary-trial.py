@@ -87,6 +87,32 @@ class CommentaryTrialChecks(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'Silent, clipped or over-duration'):
                 trial.inspect_wav(buffer.getvalue(), 5)
 
+    def test_public_samples_match_script_and_never_replace_broadcast_manifest(self):
+        path = trial.ROOT / 'public/assets/race-audio/commentary-trial/manifest.json'
+        published = json.loads(path.read_text(encoding='utf-8'))
+        self.assertEqual(published['scriptSha256'], self.plan['scriptSha256'])
+        self.assertFalse(published['runtimeEnabled'])
+        self.assertEqual(published['sourceType'], 'azure-stock-neural')
+        self.assertEqual(len(published['samples']), 40)
+        self.assertEqual(len(self.original['clips']), 72)
+        expected = {s['id']: s for s in self.plan['samples']}
+        for sample in published['samples']:
+            self.assertEqual(sample['requestSha256'], expected[sample['id']]['requestSha256'])
+            self.assertEqual(sample['text'], expected[sample['id']]['text'])
+            self.assertLessEqual(sample['duration'], sample['maxSeconds'] + .1)
+            data = (trial.ROOT / 'public/assets/race-audio' / sample['file']).read_bytes()
+            self.assertEqual(trial.sha(data), sample['sha256'])
+        self.assertNotIn('key', published)
+        self.assertNotIn('endpoint', published)
+
+    def test_incomplete_synthesis_is_rejected_before_publication(self):
+        with tempfile.TemporaryDirectory() as directory:
+            out = Path(directory)
+            (out / 'manifest.json').write_text(json.dumps({'sourceType': 'azure-stock-neural',
+                'scriptSha256': self.plan['scriptSha256'], 'samples': []}))
+            with self.assertRaisesRegex(ValueError, 'Complete, current'):
+                trial.publish_samples(self.plan, out)
+
 
 if __name__ == '__main__':
     unittest.main()

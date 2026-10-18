@@ -11,6 +11,8 @@ import json
 import os
 from pathlib import Path
 import re
+import shutil
+import subprocess
 import sys
 import time
 import urllib.error
@@ -83,12 +85,16 @@ def make_plan(script):
 
 
 def write_doc(script, plan):
+    published_path = ROOT / 'public/assets/race-audio/commentary-trial/manifest.json'
+    published = json.loads(published_path.read_text(encoding='utf-8')) if published_path.exists() else {}
+    generated = len(published.get('samples', [])) if published.get('scriptSha256') == plan['scriptSha256'] else 0
     lines = [
         '# Kịch bản bình luận thử Việt–Khmer', '',
         'Nguồn biên soạn duy nhất: `public/assets/race-audio/commentary-script.json`.',
         'Tài liệu này được xuất bằng `python scripts/build-commentary-trial.py --write-doc`.', '',
         f"Có {len(script['cues'])} tình huống, {plan['sampleCount']} câu Việt–Khmer. Đây là kịch bản mới, không phải lời chép nguyên văn của hai BLV.",
-        'Chưa tạo voice; chưa nhân bản hai BLV. Bản Khmer là bản nháp chờ người rành tiếng thẩm định, gồm cả tên riêng và cách đọc số.', '',
+        (f'Đã xuất {generated} mẫu giọng stock qua Azure Speech REST API.' if generated else 'Chưa xuất voice mẫu công khai.') +
+        ' Chưa nhân bản hai BLV. Bản Khmer là bản nháp chờ người rành tiếng thẩm định, gồm cả tên riêng và cách đọc số.', '',
         '## Cách diễn đạt và thứ tự', '',
     ]
     lines.extend('- ' + value for value in script['direction'].values())
@@ -112,8 +118,9 @@ def write_doc(script, plan):
         f"Kế hoạch: {plan['textCharacters']} ký tự lời đọc, tối đa {plan['requestCharactersUpperBound']} ký tự nếu tính cả toàn bộ XML. Đây là ước lượng cho bộ mẫu, không phải số quota Azure còn lại.",
         'Chạy không có `--synthesize` chỉ kiểm tra/xuất kế hoạch, không gọi mạng hay dùng quota.', '',
         '```powershell',
-        'python scripts/build-commentary-trial.py --write-doc --out "E:/AI/Um Tuk/asset-studio/audio-references/commentary-trial"',
-        'python scripts/build-commentary-trial.py --synthesize --config "E:/AI/Um Tuk/asset-studio/audio-references/azure-speech.json" --out "E:/AI/Um Tuk/asset-studio/audio-references/commentary-trial"',
+        'python scripts/build-commentary-trial.py --write-doc --out "E:/AI/Um Tuk/asset-studio/audio-references/commentary-trial/api"',
+        'python scripts/build-commentary-trial.py --synthesize --config "E:/AI/Um Tuk/asset-studio/audio-references/azure-speech.json" --out "E:/AI/Um Tuk/asset-studio/audio-references/commentary-trial/api"',
+        'python scripts/build-commentary-trial.py --publish --write-doc --out "path/to/completed-api-trial"',
         '```', '',
         'Cấu hình riêng nằm ngoài repo, gồm `key`, `region`, `tier: "F0"`; không đưa key vào chat, website hoặc Git. Cũng hỗ trợ `AZURE_SPEECH_KEY`, `AZURE_SPEECH_REGION`, `AZURE_SPEECH_TIER` trong môi trường tiến trình.',
         'Công cụ kiểm tra danh sách voice của resource, gửi từng câu qua REST, giới hạn khoảng 18 request/phút, lưu cache theo SHA của SSML và kiểm tra WAV mono 24 kHz/16 bit, tín hiệu khác 0, thời lượng. Không tự nâng gói hoặc gọi batch API. Không tự retry POST sau lỗi mạng để tránh nhân đôi lượt tính phí không xác định.',
@@ -154,7 +161,8 @@ def inspect_wav(data, max_seconds):
         samples.byteswap()
     peak = max((abs(s) for s in samples), default=0) / 32768
     if not .15 <= duration <= max_seconds or not 0 < peak < 1:
-        raise ValueError('Silent, clipped or over-duration sample; review text/rate before retrying')
+        raise ValueError(f'Silent, clipped or over-duration sample: duration={duration:.4f}s, '
+                         f'limit={max_seconds:.4f}s, peak={peak:.6f}; review text/rate before retrying')
     return {'duration': round(duration, 4), 'peak': round(peak, 6)}
 
 
@@ -205,7 +213,13 @@ def synthesize(script, plan, out, config_path, budget):
         cached = (old and old.get('requestSha256') == sample['requestSha256'] and target.exists()
                   and sha(target.read_bytes()) == old.get('sha256'))
         data = target.read_bytes() if cached else request('/cognitiveservices/v1', sample['ssml'].encode('utf-8'))
-        signal = inspect_wav(data, sample['maxSeconds'])
+        try:
+            signal = inspect_wav(data, sample['maxSeconds'])
+        except ValueError:
+            rejected = out / 'rejected'
+            rejected.mkdir(exist_ok=True)
+            (rejected / sample['file']).write_bytes(data)
+            raise
         if not cached:
             temporary = target.with_suffix('.wav.tmp')
             temporary.write_bytes(data)
@@ -220,18 +234,61 @@ def synthesize(script, plan, out, config_path, budget):
     return result
 
 
+def publish_samples(plan, out):
+    """Package a complete validated local trial; copy only an explicit public field list."""
+    source = json.loads((out / 'manifest.json').read_text(encoding='utf-8'))
+    if source.get('sourceType') != 'azure-stock-neural' or source.get('scriptSha256') != plan['scriptSha256']:
+        raise ValueError('Local synthesis manifest does not match this script/provider')
+    entries = {s['id']: s for s in source.get('samples', [])}
+    # Validate every source before writing public assets. No credentials are copied.
+    for sample in plan['samples']:
+        entry = entries.get(sample['id'])
+        if not entry or entry.get('requestSha256') != sample['requestSha256']:
+            raise ValueError('Complete, current bilingual samples are required before publication')
+        data = (out / sample['file']).read_bytes()
+        if sha(data) != entry.get('sha256'):
+            raise ValueError('Local sample hash mismatch')
+        inspect_wav(data, sample['maxSeconds'])
+    ffmpeg = shutil.which('ffmpeg')
+    if not ffmpeg:
+        import imageio_ffmpeg
+        ffmpeg = imageio_ffmpeg.get_ffmpeg_exe()
+    destination = ROOT / 'public/assets/race-audio/commentary-trial'
+    destination.mkdir(parents=True, exist_ok=True)
+    result = {k: source[k] for k in ('schema', 'mode', 'runtimeEnabled', 'scriptSha256', 'sampleCount',
+                                     'textCharacters', 'requestCharactersUpperBound', 'sourceType', 'review')}
+    result.update(synthesisTransport='Azure Speech REST API', samples=[])
+    decoded = out / 'decoded-sample.wav'
+    for sample in plan['samples']:
+        target = destination / (sample['id'] + '.mp3')
+        subprocess.run([ffmpeg, '-v', 'error', '-y', '-i', str(out / sample['file']),
+                        '-ac', '1', '-ar', '24000', '-codec:a', 'libmp3lame', '-b:a', '96k', str(target)],
+                       check=True, capture_output=True)
+        subprocess.run([ffmpeg, '-v', 'error', '-y', '-i', str(target), '-ac', '1', '-ar', '24000',
+                        '-codec:a', 'pcm_s16le', str(decoded)], check=True, capture_output=True)
+        signal = inspect_wav(decoded.read_bytes(), sample['maxSeconds'] + .1)
+        result['samples'].append({k: sample[k] for k in ('id', 'cueId', 'language', 'provider', 'voice',
+                                                       'text', 'requestSha256', 'maxSeconds')} | signal | {
+            'file': 'commentary-trial/' + target.name, 'sha256': sha(target.read_bytes()),
+            'bytes': target.stat().st_size, 'sourceWavSha256': entries[sample['id']]['sha256'],
+            'listeningVerified': False})
+    result['totalBytes'] = sum(s['bytes'] for s in result['samples'])
+    (destination / 'manifest.json').write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n',
+                                             encoding='utf-8', newline='\n')
+    print(json.dumps({'publishedSamples': len(result['samples']), 'totalBytes': result['totalBytes']}))
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--out', type=Path, help='Local trial directory, preferably outside the repository')
     parser.add_argument('--config', help='Private Azure JSON outside the repository; never printed')
     parser.add_argument('--write-doc', action='store_true')
     parser.add_argument('--synthesize', action='store_true', help='Actually call Azure; default is offline plan only')
+    parser.add_argument('--publish', action='store_true', help='Package a complete local WAV trial as public review MP3s')
     parser.add_argument('--max-characters', type=int, default=15000, help='Conservative SSML request-character cap')
     args = parser.parse_args()
     script = load_script()
     plan = make_plan(script)
-    if args.write_doc:
-        write_doc(script, plan)
     if args.out:
         args.out.mkdir(parents=True, exist_ok=True)
         (args.out / 'plan.json').write_text(json.dumps(plan, ensure_ascii=False, indent=2) + '\n', encoding='utf-8', newline='\n')
@@ -240,6 +297,12 @@ def main():
         if not args.out:
             parser.error('--out is required for synthesis')
         synthesize(script, plan, args.out, args.config, args.max_characters)
+    if args.publish:
+        if not args.out:
+            parser.error('--out is required for publication')
+        publish_samples(plan, args.out)
+    if args.write_doc:
+        write_doc(script, plan)
 
 
 if __name__ == '__main__':

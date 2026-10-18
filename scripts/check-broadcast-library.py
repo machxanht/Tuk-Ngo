@@ -49,13 +49,20 @@ with sync_playwright() as p:
     page.locator('#rows button').nth(1).tap()
     page.wait_for_function("document.querySelector('#player').src.includes('name-pong-tuk-chas-km')&&document.querySelector('#player').currentTime>.2")
     report['teamPlayback'] = page.locator('#player').evaluate('(a)=>({src:a.src,duration:a.duration,currentTime:a.currentTime})')
-    # The script trial is a separate content review, with no pretend stock/cloned audio.
+    # Stock Azure samples remain separate from the original commentators/game manifest.
     page.goto(args.url.split('?')[0] + '?view=script')
     page.wait_for_function("document.querySelector('#script-review').hidden===false&&document.querySelectorAll('#rows tr').length===20")
-    assert page.get_by_text('Kịch bản mới · Chưa tạo audio · Chưa nhân bản hai BLV.', exact=True).is_visible()
-    assert page.locator('#rows button').count() == 0
+    assert page.get_by_text('40 mẫu giọng stock Azure · Chưa chuyển giọng hai BLV.', exact=True).is_visible()
+    assert page.locator('#rows button').count() == 40
     assert page.locator('#rows p:lang(vi)').count() == 20
     assert page.locator('#rows p:lang(km)').count() == 20
+    before_trial_playback = len(requests)
+    report['azurePlayback'] = []
+    for language, file in [('Việt', 'cruise-vi.mp3'), ('Khmer', 'cruise-km.mp3')]:
+        page.get_by_role('button', name=f'Nghe mẫu {language} · Vào đường trường', exact=True).tap()
+        page.wait_for_function('(file)=>document.querySelector("#player").src.includes("commentary-trial/"+file)&&document.querySelector("#player").currentTime>.2', arg=file)
+        report['azurePlayback'].append(page.locator('#player').evaluate('(a)=>({src:a.src,duration:a.duration,currentTime:a.currentTime})'))
+    assert len(requests) == before_trial_playback + 2, 'Only the two selected Azure samples should load'
     prior_requests = len(requests)
     page.get_by_label('Ngôn ngữ', exact=True).select_option('km')
     assert page.locator('#rows p:lang(vi)').count() == 0
@@ -76,7 +83,8 @@ with sync_playwright() as p:
         report['scriptViewports'].append([width, height])
     assert len(requests) == prior_requests, 'Script browsing must not request audio'
     report['scriptTrial'] = {'situations': 20, 'vietnameseLines': 20, 'khmerDraftLines': 20,
-                             'azureAudioCreated': False, 'commentatorsCloned': False, 'nativeReview': False}
+                             'azureAudioCreated': True, 'azureSampleCount': 40,
+                             'commentatorsCloned': False, 'nativeReview': False}
     assert not errors, errors
     report.update(passed=True, errors=errors, mp3Requests=requests)
     browser.close()

@@ -3,7 +3,7 @@
   "physicalTabletTested": false,
   "stagePlayback": {
     "duration": 2.481,
-    "currentTime": 0.277854,
+    "currentTime": 0.274462,
     "readyState": 4,
     "paused": false
   },
@@ -24,8 +24,20 @@
   "teamPlayback": {
     "src": "http://127.0.0.1:4175/Tuk-Ngo/assets/race-audio/name-pong-tuk-chas-km.mp3?clip=abc40d32f625",
     "duration": 0.72,
-    "currentTime": 0.209674
+    "currentTime": 0.207882
   },
+  "azurePlayback": [
+    {
+      "src": "http://127.0.0.1:4175/Tuk-Ngo/assets/race-audio/commentary-trial/cruise-vi.mp3?clip=6bbf2976821f",
+      "duration": 4.125,
+      "currentTime": 0.239069
+    },
+    {
+      "src": "http://127.0.0.1:4175/Tuk-Ngo/assets/race-audio/commentary-trial/cruise-km.mp3?clip=e8ca41db65bb",
+      "duration": 3.175,
+      "currentTime": 0.235453
+    }
+  ],
   "scriptViewports": [
     [
       1024,
@@ -44,7 +56,8 @@
     "situations": 20,
     "vietnameseLines": 20,
     "khmerDraftLines": 20,
-    "azureAudioCreated": false,
+    "azureAudioCreated": true,
+    "azureSampleCount": 40,
     "commentatorsCloned": false,
     "nativeReview": false
   },
@@ -52,6 +65,8 @@
   "errors": [],
   "mp3Requests": [
     "http://127.0.0.1:4175/Tuk-Ngo/assets/race-audio/khmer-full-effort.mp3?clip=b0c3dfcf6072",
-    "http://127.0.0.1:4175/Tuk-Ngo/assets/race-audio/name-pong-tuk-chas-km.mp3?clip=abc40d32f625"
+    "http://127.0.0.1:4175/Tuk-Ngo/assets/race-audio/name-pong-tuk-chas-km.mp3?clip=abc40d32f625",
+    "http://127.0.0.1:4175/Tuk-Ngo/assets/race-audio/commentary-trial/cruise-vi.mp3?clip=6bbf2976821f",
+    "http://127.0.0.1:4175/Tuk-Ngo/assets/race-audio/commentary-trial/cruise-km.mp3?clip=e8ca41db65bb"
   ]
 }

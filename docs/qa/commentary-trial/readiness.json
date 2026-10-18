@@ -1,22 +1,23 @@
 {
-  "scriptSha256": "334a45e5826f3e04f57a5cc87648aef5d3d481b6be87206a68c26cdbb77d67c0",
+  "scriptSha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39",
   "situations": 20,
   "vietnameseLines": 20,
   "khmerDraftLines": 20,
-  "offlineTextCharacters": 1406,
-  "ssmlCharactersUpperBound": 7872,
+  "offlineTextCharacters": 1391,
+  "ssmlCharactersUpperBound": 7857,
   "checks": {
-    "offlineTests": 6,
+    "offlineTests": 8,
     "lint": "passed",
     "npmTest": "passed",
     "build": "passed",
     "localLibraryBrowser": "passed"
   },
   "azure": {
-    "configured": false,
-    "requestsSent": 0,
-    "samplesCreated": 0,
-    "status": "stopped-before-request-missing-key-region"
+    "configured": true,
+    "observedTier": "Free",
+    "region": "eastus",
+    "samplesCreated": 40,
+    "status": "authenticated-rest-generation-passed"
   },
   "rvc": {
     "installedByThisChange": false,

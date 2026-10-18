@@ -1,0 +1,26 @@
+{
+  "accountApiVerified": true,
+  "observedResourceStatus": "Active",
+  "observedPricingTier": "Free",
+  "region": "eastus",
+  "provider": "azure-stock-neural",
+  "transport": "authenticated Azure Speech REST API",
+  "samplesCreated": 40,
+  "samplesPackagedBytes": 1697792,
+  "scriptSha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39",
+  "currentSetTextCharacters": 1391,
+  "currentSetSsmlCharacterUpperBound": 7857,
+  "notAccountUsageMeasurement": true,
+  "allMp3DecodeChecks": "passed",
+  "overDurationLinesShortened": [
+    "last-fifty-vi",
+    "last-fifty-km"
+  ],
+  "actualCredentialScan": "passed",
+  "credentialsInRepository": false,
+  "nativeKhmerReviewed": false,
+  "listeningVerified": false,
+  "originalCommentatorsCloned": false,
+  "gameAudioManifestChanged": false,
+  "offlineTestsPassed": 8
+}

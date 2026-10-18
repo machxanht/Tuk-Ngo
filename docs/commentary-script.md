@@ -4,7 +4,7 @@ Nguồn biên soạn duy nhất: `public/assets/race-audio/commentary-script.jso
 Tài liệu này được xuất bằng `python scripts/build-commentary-trial.py --write-doc`.
 
 Có 20 tình huống, 40 câu Việt–Khmer. Đây là kịch bản mới, không phải lời chép nguyên văn của hai BLV.
-Chưa tạo voice; chưa nhân bản hai BLV. Bản Khmer là bản nháp chờ người rành tiếng thẩm định, gồm cả tên riêng và cách đọc số.
+Đã xuất 40 mẫu giọng stock qua Azure Speech REST API. Chưa nhân bản hai BLV. Bản Khmer là bản nháp chờ người rành tiếng thẩm định, gồm cả tên riêng và cách đọc số.
 
 ## Cách diễn đạt và thứ tự
 
@@ -154,8 +154,8 @@ Thứ tự dưới đây là ví dụ có nhánh theo diễn biến, không ph�
 
 ### 50 m cuối (`last-fifty`)
 
-- Việt: Năm mươi mét cuối! Cố lên!
-- Khmer (nháp): ៥០ ម៉ែត្រចុងក្រោយ! ខំឡើង!
+- Việt: Năm mươi mét cuối!
+- Khmer (nháp): ៥០ ម៉ែត្រចុងក្រោយ!
 - Khi phát: 1150–1200 m, chỉ một câu ngắn rồi nhường kết quả.
 - Thời lượng tối đa mỗi câu: 3 giây; tốc độ SSML thử: +12%.
 
@@ -192,12 +192,13 @@ Thứ tự dưới đây là ví dụ có nhánh theo diễn biến, không ph�
 Chỉ dùng giọng stock `vi-VN-NamMinhNeural` và `km-KH-PisethNeural` để kiểm tra nội dung/cách đọc trước. Không gắn nhãn hai BLV thật cho mẫu Azure.
 Các giọng này không có style thể thao được xác minh; tăng tốc SSML không chứng minh có cảm xúc bình luận trực tiếp.
 
-Kế hoạch: 1406 ký tự lời đọc, tối đa 7872 ký tự nếu tính cả toàn bộ XML. Đây là ước lượng cho bộ mẫu, không phải số quota Azure còn lại.
+Kế hoạch: 1391 ký tự lời đọc, tối đa 7857 ký tự nếu tính cả toàn bộ XML. Đây là ước lượng cho bộ mẫu, không phải số quota Azure còn lại.
 Chạy không có `--synthesize` chỉ kiểm tra/xuất kế hoạch, không gọi mạng hay dùng quota.
 
 ```powershell
-python scripts/build-commentary-trial.py --write-doc --out "E:/AI/Um Tuk/asset-studio/audio-references/commentary-trial"
-python scripts/build-commentary-trial.py --synthesize --config "E:/AI/Um Tuk/asset-studio/audio-references/azure-speech.json" --out "E:/AI/Um Tuk/asset-studio/audio-references/commentary-trial"
+python scripts/build-commentary-trial.py --write-doc --out "E:/AI/Um Tuk/asset-studio/audio-references/commentary-trial/api"
+python scripts/build-commentary-trial.py --synthesize --config "E:/AI/Um Tuk/asset-studio/audio-references/azure-speech.json" --out "E:/AI/Um Tuk/asset-studio/audio-references/commentary-trial/api"
+python scripts/build-commentary-trial.py --publish --write-doc --out "path/to/completed-api-trial"
 ```
 
 Cấu hình riêng nằm ngoài repo, gồm `key`, `region`, `tier: "F0"`; không đưa key vào chat, website hoặc Git. Cũng hỗ trợ `AZURE_SPEECH_KEY`, `AZURE_SPEECH_REGION`, `AZURE_SPEECH_TIER` trong môi trường tiến trình.

@@ -30,19 +30,36 @@ describe a heat result, never invent an overall championship.
 voice generation. Optional synthesis uses Azure's standard Vietnamese/Khmer
 voices, checks voice availability, throttles individual REST calls, caches by
 SSML/audio hashes and rejects silent/overlong/wrong-format WAVs. Keys stay in
-environment variables or a private file outside the repo. No key/resource
-connection is currently present; no real Azure request or voice conversion has
-been completed. The F0 setting is a user declaration, not a verified ARM SKU or
-account-wide remaining quota. RVC is not installed/trained by this change and no
-speaker consent or listening review is established. The original game manifest,
-72 cuts, audio director and cup gameplay remain unchanged.
+environment variables or a private file outside the repo. The user's replacement
+Azure account has an existing active SpeechServices resource in East US, with
+the portal showing its pricing tier as Free. Actual authenticated REST calls
+listed the two stock voices and generated all 40 WAV samples. This verifies
+service access; it does not measure account-wide remaining monthly quota.
+RVC is not installed/trained by this change and no speaker consent or listening
+review is established. The original game manifest, 72 cuts, audio director and
+cup gameplay remain unchanged.
+
+`--publish` validates the complete WAV set against script/request/content hashes,
+encodes and decodes all 40 mono 24 kHz MP3s, then writes only public metadata to
+`public/assets/race-audio/commentary-trial/manifest.json`. The set is 1,697,792
+bytes. Two original 50 m lines exceeded the 3 s limit (Vietnamese 3.0911 s,
+Khmer 3.4464 s); removing the extra encouragement shortened them to 1.82 s and
+2.1092 s. The final script has 1,391 text characters / 7,857 conservative SSML
+characters; these figures describe the accepted set, not actual total Azure
+usage including rejected attempts or other applications.
+
+The script tab exposes one listen button per language/cue, using the existing
+user-started audio player. No trial MP3 loads on opening/filtering the page;
+only the selected file is fetched, with a content hash in its URL. Labels say
+Nam Minh/Piseth stock voices and explicitly keep Khmer/native listening review
+pending. No cloud account details or key is included in the public manifest.
 
 Affected checks: `python scripts/test-commentary-trial.py`,
 `python scripts/build-commentary-trial.py --write-doc`, and the script view
 checks in `scripts/check-broadcast-library.py`. Mocked/offline credential tests
 are not evidence of successful external synthesis.
 
-Published script trial: source `fc3f0dc`, Pages
+Previous script-only trial: source `fc3f0dc`, Pages
 `4ce750df7c26de9259feed6efa61b97e6ccd57fb`, successful
 [Actions run 39152983921](https://github.com/machxanht/Tuk-Ngo/actions/runs/39152983921).
 The public library passed the original two-clip playback regression plus script
