@@ -1,5 +1,20 @@
 # Original broadcast audio
 
+Current field-sound update: the original impact/tiny ambience cuts are removed;
+five longer Vietnamese excerpts and a separately attributed field pack are added.
+`field/manifest.json` records each field source, hash, licence and render process.
+The earlier broadcast-only counts below describe the preceding speech archive.
+
+- Coach whistle: [SpliceSound, Referee whistle blow, gymnasium](https://freesound.org/people/SpliceSound/sounds/218318/), CC0; trimmed, filtered and gain-adjusted.
+- Bank crowd: [SoundBiterSFX, Crowd Cheering](https://freesound.org/people/SoundBiterSFX/sounds/730908/), CC0; 40-second cut, EQ and loudness normalization.
+- Finish cheering: [FoolBoyMedia, Crowd Cheer](https://freesound.org/people/FoolBoyMedia/sounds/397434/), CC0; 20-second cut, EQ and loudness normalization.
+- Drum groove: percussion separated with Demucs htdemucs from [the 2025 racing passage](https://www.youtube.com/watch?v=XagC29Eyt_U&t=7886), 7886.443537415–7890.123900227 seconds; eight-beat bars stretched without pitch change to seven paddle cadences. Source broadcast rights remain with the broadcaster; no CC0 licence is asserted for that source.
+
+The whistle and crowd are separately licensed sports recordings, not Maspero
+field recordings. Machine classification checks are not independent listening
+verification. Trial broadcast crowd stems retained traffic/music and were not
+selected. Models and full originals are not shipped in the game.
+
 The 86 original broadcast excerpts are cut from these four Cần Thơ – Tiếng Dân tộc broadcasts:
 
 - [2023 opening/race day](https://www.youtube.com/watch?v=tnb7TdUVRkU)
