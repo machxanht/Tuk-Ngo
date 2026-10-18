@@ -94,7 +94,8 @@ class CommentaryTrialChecks(unittest.TestCase):
         self.assertFalse(published['runtimeEnabled'])
         self.assertEqual(published['sourceType'], 'azure-stock-neural')
         self.assertEqual(len(published['samples']), 40)
-        self.assertEqual(len(self.original['clips']), 72)
+        self.assertEqual(self.original['speechPolicy']['voice'], 'original-broadcast-only')
+        self.assertTrue(all(c['sourceType'] == 'broadcast' for c in self.original['clips'].values() if c['channel'] == 'voice'))
         expected = {s['id']: s for s in self.plan['samples']}
         for sample in published['samples']:
             self.assertEqual(sample['requestSha256'], expected[sample['id']]['requestSha256'])
@@ -136,7 +137,8 @@ class CommentaryTrialChecks(unittest.TestCase):
         control = voice['control']
         self.assertFalse(control['parameters']['convert_style'])
         self.assertEqual(trial.sha((folder / control['file']).read_bytes()), control['sha256'])
-        self.assertEqual(len(self.original['clips']), 72)
+        self.assertEqual(self.original['speechPolicy']['voice'], 'original-broadcast-only')
+        self.assertTrue(all(c['sourceType'] == 'broadcast' for c in self.original['clips'].values() if c['channel'] == 'voice'))
 
 
 if __name__ == '__main__':

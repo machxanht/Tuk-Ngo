@@ -1,6 +1,11 @@
 {
-  "schema": 3,
-  "mode": "broadcast",
+  "schema": 4,
+  "mode": "broadcast-vi-ai-km",
+  "speechPolicy": {
+    "voice": "original-broadcast-only",
+    "khmer": "pre-rendered-azure-stock-neural-with-original-broadcast-names",
+    "runtimeSynthesis": false
+  },
   "source": {
     "url": "https://www.youtube.com/watch?v=crZF3hghbgQ",
     "videoId": "crZF3hghbgQ",
@@ -132,16 +137,16 @@
     }
   },
   "review": {
-    "vietnamese": "Re-cut against word starts in the original YouTube CC track. Automatic CC includes recognition errors; display text corrects obvious spelling and is not a certified verbatim transcript.",
-    "khmer": "Original CC Khmer phrases with working Vietnamese translations. The new all-out-effort phrase is restricted to the final 250m. A seemingly level-race candidate was rejected because the second ASR includes finish-line context. No independent native listening review.",
+    "vietnamese": "Original complete-phrase cuts selected using word-level original CC and context; 14 additions also machine-transcribed with local Whisper. Four contradictory/incomplete candidates excluded. Automatic CC/ASR is not independent listening certification.",
+    "khmer": "Authored Azure Khmer situation cues, with explicit script/sample/hash provenance and live eligibility gates. Original-source Khmer names and greeting retained. Failed Seed-VC conversion trials are excluded. Native pronunciation/listening not independently verified.",
     "percussion": "Recorded field transients during a gap in recognised commentary; filtered and faded, not isolated studio drum stems.",
     "rights": "Source attributed to broadcaster. No permission or reusable-content licence has been independently verified.",
-    "speakers": "Only source broadcast audio; no TTS, cloning, replacement narrator, pitch shift or time stretch. YouTube CC does not identify speakers; Vietnamese/Khmer speaker roles follow the two-commentator reference supplied by the user.",
+    "speakers": "Vietnamese commentary is original broadcast speech only, with no synthesis, conversion, pitch shift, speed change or syllable assembly. Khmer situation cues use pre-rendered Azure Piseth Neural. Original Khmer team names and greeting remain broadcast recordings. No commentator clone is claimed.",
     "teamNames": "Name identities were matched manually against the registration roster, local aliases and surrounding race/team context in automatic CC. Original speech only; no assembled syllables, invented team numbers or runtime TTS. Shared pagoda-name cuts contain no gender/entry claim; numbered cuts are used only for that number. Proper-name spelling in automatic CC can be wrong; this is not independent listening verification.",
     "teamHistory": "Only complete original commentary phrases with externally corroborated 2024 results. Historical standings are restricted to the identified entry/gender, never used to decide a game result. Missing names/history remain explicitly unavailable; absent CC is not proof the audio never speaks that name.",
     "multiSeason": "Four complete hashed original recordings from 2023, 2024 and 2025. Video upload dates are separate from event years. Search references/candidate captions never automatically enter the runtime.",
     "asr": "Local faster-whisper large-v3-turbo and public Vatho/Khmer-ocm were tried on bounded excerpts. Results can hallucinate, especially short/music/bilingual contexts. Selected additions retain raw CC plus relevant machine evidence; inconclusive/contradictory candidates are excluded. This is not an independent listening or speaker-identity certification.",
-    "stages": "Per-recording eligibility is rechecked against actual player distance/pace/effort/gap/result, including after decoding. Generic event arrays are alternatives. Current excerpts finish before an urgent queued cue; stale/ineligible cues and rapid duplicate excerpts are skipped. No judge-wait statement is played after a confirmed tie."
+    "stages": "Per-recording eligibility is rechecked against actual player distance/pace/effort/gap/result, including after decoding. Generic event arrays are alternatives. Current excerpts finish before an urgent queued cue; stale/ineligible cues and rapid duplicate excerpts are skipped. No judge-wait statement is played after a confirmed tie. Recent phrases are excluded before alternative selection. Short countdown/start cues must fit their actual scheduling deadlines."
   },
   "ambience": "broadcast-ambience",
   "warmup": [
@@ -159,14 +164,19 @@
       "voice": [
         "broadcast-ready"
       ],
-      "khmer": []
+      "khmer": [
+        "ai-ready-km"
+      ]
     },
     "go": {
       "voice": [
-        "broadcast-go"
+        "broadcast-go",
+        "broadcast-start-pair",
+        "broadcast-start-opening",
+        "broadcast-start-cleared"
       ],
       "khmer": [
-        "khmer-go"
+        "ai-go-km"
       ]
     },
     "intro": {
@@ -179,115 +189,153 @@
     },
     "cruise": {
       "voice": [
-        "broadcast-rhythm"
+        "broadcast-rhythm",
+        "broadcast-long-course"
       ],
-      "khmer": []
+      "khmer": [
+        "ai-cruise-km"
+      ]
     },
     "halfway": {
       "voice": [
         "broadcast-rhythm"
       ],
-      "khmer": []
+      "khmer": [
+        "ai-halfway-km"
+      ]
     },
     "final": {
       "voice": [
         "broadcast-sprint",
-        "broadcast-final-contest"
+        "broadcast-final-contest",
+        "broadcast-keep-accelerating",
+        "broadcast-final-effort"
       ],
       "khmer": [
-        "khmer-full-effort"
+        "ai-final-km"
       ]
     },
     "last-hundred": {
       "voice": [
         "broadcast-sprint",
-        "broadcast-final-contest"
+        "broadcast-final-contest",
+        "broadcast-keep-accelerating",
+        "broadcast-final-effort"
       ],
       "khmer": [
-        "khmer-full-effort"
+        "ai-last-hundred-km"
       ]
     },
     "last-fifty": {
       "voice": [
         "broadcast-sprint",
-        "broadcast-final-contest"
+        "broadcast-final-contest",
+        "broadcast-final-effort"
       ],
       "khmer": [
-        "khmer-full-effort"
+        "ai-last-fifty-km"
       ]
     },
     "surge": {
       "voice": [
         "broadcast-surge",
-        "broadcast-stroke-strength"
+        "broadcast-stroke-strength",
+        "broadcast-keep-accelerating",
+        "broadcast-accelerating"
       ],
       "khmer": [
-        "khmer-full-effort"
+        "ai-surge-km"
       ]
     },
     "pace-sprint": {
       "voice": [
         "broadcast-sprint",
-        "broadcast-stroke-strength"
+        "broadcast-stroke-strength",
+        "broadcast-keep-accelerating",
+        "broadcast-accelerating"
       ],
       "khmer": []
     },
     "recover": {
       "voice": [
-        "broadcast-recover"
+        "broadcast-recover",
+        "broadcast-relaxed-strokes"
       ],
-      "khmer": []
+      "khmer": [
+        "ai-recover-km"
+      ]
     },
     "cohesion": {
       "voice": [
         "broadcast-rhythm"
       ],
-      "khmer": []
+      "khmer": [
+        "ai-cohesion-km"
+      ]
     },
     "fatigue": {
       "voice": [
-        "broadcast-recover"
+        "broadcast-recover",
+        "broadcast-relaxed-strokes"
       ],
-      "khmer": []
+      "khmer": [
+        "ai-recover-km"
+      ]
     },
     "close-race": {
       "voice": [
         "broadcast-close",
-        "broadcast-close-contest"
+        "broadcast-close-contest",
+        "broadcast-contest-pair",
+        "broadcast-contest-now",
+        "broadcast-exciting-race",
+        "broadcast-race-excitement"
       ],
-      "khmer": []
+      "khmer": [
+        "ai-close-race-km"
+      ]
     },
     "lead": {
       "voice": [
-        "broadcast-lead"
+        "broadcast-lead",
+        "broadcast-safe-margin"
       ],
-      "khmer": []
+      "khmer": [
+        "ai-lead-change-km"
+      ]
     },
     "finish": {
       "voice": [
-        "broadcast-finish"
+        "broadcast-finish",
+        "broadcast-victory-congratulations"
       ],
       "khmer": [
-        "khmer-finish"
+        "ai-finish-win-km"
       ]
     },
     "loss": {
       "voice": [
         "broadcast-finish"
       ],
-      "khmer": []
+      "khmer": [
+        "ai-finish-loss-km"
+      ]
     },
     "dnf": {
       "voice": [
         "broadcast-unfortunate"
       ],
-      "khmer": []
+      "khmer": [
+        "ai-finish-dnf-km"
+      ]
     },
     "tie": {
       "voice": [
         "broadcast-race-appraisal"
       ],
-      "khmer": []
+      "khmer": [
+        "ai-finish-tie-km"
+      ]
     }
   },
   "clips": {
@@ -3738,6 +3786,1587 @@
       "sourceEnd": 11056.8,
       "processing": {
         "normalization": "loudness"
+      }
+    },
+    "broadcast-start-pair": {
+      "start": 11835.44,
+      "end": 11838.3,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Hai đội cũng vừa rời điểm xuất phát thôi.",
+      "sourceId": "crZF3hghbgQ",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "maxElapsed": 8
+      },
+      "captionEvidence": {
+        "words": [
+          [
+            11835.52,
+            "hai"
+          ],
+          [
+            11835.72,
+            "đội"
+          ],
+          [
+            11835.92,
+            "cũng"
+          ],
+          [
+            11836.16,
+            "vừa"
+          ],
+          [
+            11836.8,
+            "rời"
+          ],
+          [
+            11837.04,
+            "điểm"
+          ],
+          [
+            11837.279,
+            "xuất"
+          ],
+          [
+            11837.439,
+            "phát"
+          ],
+          [
+            11837.64,
+            "thôi."
+          ]
+        ],
+        "nextWordStart": 11839.08
+      },
+      "asrEvidence": {
+        "backend": "faster-whisper-large-v3-turbo",
+        "text": "2 đội cũng vừa rời điểm xuất phát thôi",
+        "audioSha256": "b2f0f66ab743ea3fd46c925d1a6d8d6f93dfd7c1d0d9f9a22668994a9bc3f6f5",
+        "review": "CC/context plus machine cross-check; not independent listening."
+      },
+      "sourceUrl": "https://www.youtube.com/watch?v=crZF3hghbgQ",
+      "file": "broadcast-start-pair.mp3",
+      "duration": 2.86,
+      "peak": 0.5709,
+      "bytes": 35561,
+      "sha256": "d3217e85296c2b2adf46a282acd1b0d6ce662e150bb7e1b505d5e5eb1ec34ed8",
+      "sourceType": "broadcast",
+      "sourceStart": 11835.44,
+      "sourceEnd": 11838.3,
+      "processing": {
+        "normalization": "loudness"
+      }
+    },
+    "broadcast-start-opening": {
+      "start": 14100.02,
+      "end": 14104.2,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Đây chỉ là mới đoạn xuất phát thôi, đoạn đầu thôi.",
+      "sourceId": "crZF3hghbgQ",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "maxElapsed": 8
+      },
+      "captionEvidence": {
+        "words": [
+          [
+            14100.12,
+            "đây"
+          ],
+          [
+            14100.479,
+            "chỉ"
+          ],
+          [
+            14100.72,
+            "là"
+          ],
+          [
+            14101.479,
+            "mới"
+          ],
+          [
+            14102.08,
+            "đoạn"
+          ],
+          [
+            14102.52,
+            "xuất"
+          ],
+          [
+            14102.72,
+            "phát"
+          ],
+          [
+            14102.92,
+            "thôi,"
+          ],
+          [
+            14103.359,
+            "đoạn"
+          ],
+          [
+            14103.64,
+            "đầu"
+          ],
+          [
+            14103.84,
+            "thôi."
+          ]
+        ],
+        "nextWordStart": 14104.72
+      },
+      "asrEvidence": {
+        "backend": "faster-whisper-large-v3-turbo",
+        "text": "Đây chỉ là mới đoạn xuất phát thôi, đoạn đầu thôi.",
+        "audioSha256": "0dfc3ddb8f16dc9c1dcefa33fe077e929676197e5460b291993cfdd34d18c36f",
+        "review": "CC/context plus machine cross-check; not independent listening."
+      },
+      "sourceUrl": "https://www.youtube.com/watch?v=crZF3hghbgQ",
+      "file": "broadcast-start-opening.mp3",
+      "duration": 4.18,
+      "peak": 0.5531,
+      "bytes": 51401,
+      "sha256": "aa4ffdcf63bd0e6aeae30132cf92f6631cb28c460ccab0dd314f47b3b5fb1a80",
+      "sourceType": "broadcast",
+      "sourceStart": 14100.02,
+      "sourceEnd": 14104.2,
+      "processing": {
+        "normalization": "loudness"
+      }
+    },
+    "broadcast-start-cleared": {
+      "start": 11213.94,
+      "end": 11216.5,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Mới qua giai đoạn xuất phát thôi.",
+      "sourceId": "crZF3hghbgQ",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "maxElapsed": 8
+      },
+      "captionEvidence": {
+        "words": [
+          [
+            11214.0,
+            "mới"
+          ],
+          [
+            11214.84,
+            "qua"
+          ],
+          [
+            11215.08,
+            "giai"
+          ],
+          [
+            11215.279,
+            "đoạn"
+          ],
+          [
+            11215.52,
+            "xuất"
+          ],
+          [
+            11215.72,
+            "phát"
+          ],
+          [
+            11215.88,
+            "thôi"
+          ]
+        ],
+        "nextWordStart": 11216.72
+      },
+      "asrEvidence": {
+        "backend": "faster-whisper-large-v3-turbo",
+        "text": "mới qua giai đoạn xuất phát thôi.",
+        "audioSha256": "a7e76554897b401914d28b57b6c2fc226ffcc0931a89e13210fc8ec0b8053ee8",
+        "review": "CC/context plus machine cross-check; not independent listening."
+      },
+      "sourceUrl": "https://www.youtube.com/watch?v=crZF3hghbgQ",
+      "file": "broadcast-start-cleared.mp3",
+      "duration": 2.56,
+      "peak": 0.6352,
+      "bytes": 31817,
+      "sha256": "03f72ae9ae53c85d765773bed6e683ab9a3a2272cd4de6575f66e8e814c990d7",
+      "sourceType": "broadcast",
+      "sourceStart": 11213.94,
+      "sourceEnd": 11216.5,
+      "processing": {
+        "normalization": "loudness"
+      }
+    },
+    "broadcast-long-course": {
+      "start": 14107.66,
+      "end": 14109.9,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Đường đua vẫn còn khá là dài.",
+      "sourceId": "crZF3hghbgQ",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 200,
+        "maxDistance": 600
+      },
+      "captionEvidence": {
+        "words": [
+          [
+            14107.68,
+            "Đường"
+          ],
+          [
+            14107.96,
+            "đua"
+          ],
+          [
+            14108.279,
+            "vẫn"
+          ],
+          [
+            14108.52,
+            "còn"
+          ],
+          [
+            14108.76,
+            "khá"
+          ],
+          [
+            14109.04,
+            "là"
+          ],
+          [
+            14109.199,
+            "dài."
+          ]
+        ],
+        "nextWordStart": 14110.68
+      },
+      "asrEvidence": {
+        "backend": "faster-whisper-large-v3-turbo",
+        "text": "Đường đua vẫn còn khá là dài.",
+        "audioSha256": "1a56ac89732992a461096128485f91af33eb3b17857903f4e4af3900ee8d8051",
+        "review": "CC/context plus machine cross-check; not independent listening."
+      },
+      "sourceUrl": "https://www.youtube.com/watch?v=crZF3hghbgQ",
+      "file": "broadcast-long-course.mp3",
+      "duration": 2.24,
+      "peak": 0.5164,
+      "bytes": 28073,
+      "sha256": "a3e2e8f3765868424095c6063fd367c726017d97289eac009ad949c8f5b64d9f",
+      "sourceType": "broadcast",
+      "sourceStart": 14107.66,
+      "sourceEnd": 14109.9,
+      "processing": {
+        "normalization": "loudness"
+      }
+    },
+    "broadcast-contest-pair": {
+      "start": 7633.23,
+      "end": 7636.0,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Hiện tại thì cả hai vẫn đang so kè.",
+      "sourceId": "crZF3hghbgQ",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "maxAbsGap": 2
+      },
+      "captionEvidence": {
+        "words": [
+          [
+            7633.28,
+            "hiện"
+          ],
+          [
+            7633.48,
+            "tại"
+          ],
+          [
+            7633.639,
+            "thì"
+          ],
+          [
+            7633.96,
+            "cả"
+          ],
+          [
+            7634.199,
+            "hai"
+          ],
+          [
+            7634.88,
+            "vẫn"
+          ],
+          [
+            7635.119,
+            "đang"
+          ],
+          [
+            7635.559,
+            "so"
+          ],
+          [
+            7635.8,
+            "kè"
+          ]
+        ],
+        "nextWordStart": 7636.119
+      },
+      "asrEvidence": {
+        "backend": "faster-whisper-large-v3-turbo",
+        "text": "Hiện tại thì cả hai vẫn đang so kè",
+        "audioSha256": "68bea160dfecd6a6b3a0a64bc536ab4c4aa7a8de30090afc9f1a334e5c96b922",
+        "review": "CC/context plus machine cross-check; not independent listening."
+      },
+      "sourceUrl": "https://www.youtube.com/watch?v=crZF3hghbgQ",
+      "file": "broadcast-contest-pair.mp3",
+      "duration": 2.77,
+      "peak": 0.5545,
+      "bytes": 34409,
+      "sha256": "593b5a2cf4f280749f9272b2267d9fdb07ff57f21a99d34a6f710d3db6b6c5e1",
+      "sourceType": "broadcast",
+      "sourceStart": 7633.23,
+      "sourceEnd": 7636.0,
+      "processing": {
+        "normalization": "loudness"
+      }
+    },
+    "broadcast-contest-now": {
+      "start": 5151.74,
+      "end": 5153.9,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Hiện nay vẫn còn so kè.",
+      "sourceId": "crZF3hghbgQ",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "maxAbsGap": 2
+      },
+      "captionEvidence": {
+        "words": [
+          [
+            5151.8,
+            "Hiện"
+          ],
+          [
+            5152.0,
+            "nay"
+          ],
+          [
+            5152.639,
+            "vẫn"
+          ],
+          [
+            5152.92,
+            "còn"
+          ],
+          [
+            5153.199,
+            "so"
+          ],
+          [
+            5153.4,
+            "kè."
+          ]
+        ],
+        "nextWordStart": 5154.04
+      },
+      "asrEvidence": {
+        "backend": "faster-whisper-large-v3-turbo",
+        "text": "hiện nay vẫn còn so kè",
+        "audioSha256": "50fc428752cf572a190ef0caec1947cf6e6e5ee2cf9555ad48018aee723a53ab",
+        "review": "CC/context plus machine cross-check; not independent listening."
+      },
+      "sourceUrl": "https://www.youtube.com/watch?v=crZF3hghbgQ",
+      "file": "broadcast-contest-now.mp3",
+      "duration": 2.16,
+      "peak": 0.6484,
+      "bytes": 26921,
+      "sha256": "5b4dbce8e4c9dd51960ef55ad678343b32d02e6b446dd12c44a0cae81181ed0a",
+      "sourceType": "broadcast",
+      "sourceStart": 5151.74,
+      "sourceEnd": 5153.9,
+      "processing": {
+        "normalization": "loudness"
+      }
+    },
+    "broadcast-keep-accelerating": {
+      "start": 11668.54,
+      "end": 11671.55,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Tiếp tục tăng tốc, tiếp tục tăng tốc, tiếp tục tăng tốc!",
+      "sourceId": "crZF3hghbgQ",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "requiresHardEffort": true
+      },
+      "captionEvidence": {
+        "words": [
+          [
+            11668.56,
+            "tiếp"
+          ],
+          [
+            11668.72,
+            "tục"
+          ],
+          [
+            11668.88,
+            "tăng"
+          ],
+          [
+            11669.08,
+            "tốc"
+          ],
+          [
+            11669.319,
+            "tiếp"
+          ],
+          [
+            11669.52,
+            "tục"
+          ],
+          [
+            11669.68,
+            "tăng"
+          ],
+          [
+            11669.88,
+            "tốc"
+          ],
+          [
+            11670.16,
+            "tiếp"
+          ],
+          [
+            11670.399,
+            "tục"
+          ],
+          [
+            11670.64,
+            "tăng"
+          ],
+          [
+            11670.88,
+            "tốc"
+          ]
+        ],
+        "nextWordStart": 11671.84
+      },
+      "asrEvidence": {
+        "backend": "faster-whisper-large-v3-turbo",
+        "text": "Tiếp tục tăng tốc, tiếp tục tăng tốc, tiếp tục tăng tốc.",
+        "audioSha256": "b6c9892909375b1708c7dd56676c8c514c8beb15dda11182fb3173566eb582b0",
+        "review": "CC/context plus machine cross-check; not independent listening."
+      },
+      "sourceUrl": "https://www.youtube.com/watch?v=crZF3hghbgQ",
+      "file": "broadcast-keep-accelerating.mp3",
+      "duration": 3.01,
+      "peak": 0.5319,
+      "bytes": 37289,
+      "sha256": "4067c9ce2f6179503c25e101596c51fdc5c229c70f1fddd6929ce1622613bb3b",
+      "sourceType": "broadcast",
+      "sourceStart": 11668.54,
+      "sourceEnd": 11671.55,
+      "processing": {
+        "normalization": "loudness"
+      }
+    },
+    "broadcast-accelerating": {
+      "start": 7757.12,
+      "end": 7758.8,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Anh em cũng đang tăng tốc.",
+      "sourceId": "crZF3hghbgQ",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "requiresHardEffort": true
+      },
+      "captionEvidence": {
+        "words": [
+          [
+            7757.159,
+            "anh"
+          ],
+          [
+            7757.32,
+            "em"
+          ],
+          [
+            7757.48,
+            "cũng"
+          ],
+          [
+            7757.679,
+            "đang"
+          ],
+          [
+            7757.84,
+            "tăng"
+          ],
+          [
+            7758.079,
+            "tốc"
+          ]
+        ],
+        "nextWordStart": 7759.874
+      },
+      "asrEvidence": {
+        "backend": "faster-whisper-large-v3-turbo",
+        "text": "Anh em cũng đang tăng tốc",
+        "audioSha256": "3e05d93e4fe7a0fa4136de70d7e59b784f7ed2b3d117736802c8653af9eb1046",
+        "review": "CC/context plus machine cross-check; not independent listening."
+      },
+      "sourceUrl": "https://www.youtube.com/watch?v=crZF3hghbgQ",
+      "file": "broadcast-accelerating.mp3",
+      "duration": 1.68,
+      "peak": 0.802,
+      "bytes": 21161,
+      "sha256": "2c7c38770c79a0dd1896c1a040a6cb7e92bc9e888f3158513daebdfe6fcb8c6b",
+      "sourceType": "broadcast",
+      "sourceStart": 7757.12,
+      "sourceEnd": 7758.8,
+      "processing": {
+        "normalization": "loudness"
+      }
+    },
+    "broadcast-final-effort": {
+      "start": 13836.22,
+      "end": 13838.95,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Anh em tung nước rút trong thời điểm cuối cùng.",
+      "sourceId": "Y2fp9gYRIZ8",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 950,
+        "requiresHardEffort": true
+      },
+      "captionEvidence": {
+        "words": [
+          [
+            13836.319,
+            "anh"
+          ],
+          [
+            13836.56,
+            "em"
+          ],
+          [
+            13836.72,
+            "tung"
+          ],
+          [
+            13837.0,
+            "nước"
+          ],
+          [
+            13837.279,
+            "rút"
+          ],
+          [
+            13837.52,
+            "trong"
+          ],
+          [
+            13837.72,
+            "thời"
+          ],
+          [
+            13837.92,
+            "điểm"
+          ],
+          [
+            13838.12,
+            "cuối"
+          ],
+          [
+            13838.359,
+            "cùng"
+          ]
+        ],
+        "nextWordStart": 13839.159
+      },
+      "asrEvidence": {
+        "backend": "faster-whisper-large-v3-turbo",
+        "text": "Anh em tuân nước rút trong thời điểm cuối cùng",
+        "audioSha256": "781d3eda4e88e65dc4df82bcd0bdca63b11048ace7385e23b827231d1f7a1054",
+        "review": "CC/context plus machine cross-check; not independent listening."
+      },
+      "sourceUrl": "https://www.youtube.com/watch?v=Y2fp9gYRIZ8",
+      "file": "broadcast-final-effort.mp3",
+      "duration": 2.73,
+      "peak": 0.941,
+      "bytes": 33833,
+      "sha256": "aeb1cdce3c0e0c39832da05f7b62fbd05e219ee93dee7d04c99d0b4d9fe5a8e8",
+      "sourceType": "broadcast",
+      "sourceStart": 13836.22,
+      "sourceEnd": 13838.95,
+      "processing": {
+        "normalization": "loudness"
+      }
+    },
+    "broadcast-exciting-race": {
+      "start": 4756.18,
+      "end": 4758.4,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Một trận đấu cực kỳ hấp dẫn.",
+      "sourceId": "crZF3hghbgQ",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "maxAbsGap": 2
+      },
+      "captionEvidence": {
+        "words": [
+          [
+            4756.239,
+            "một"
+          ],
+          [
+            4756.44,
+            "trận"
+          ],
+          [
+            4756.6,
+            "đấu"
+          ],
+          [
+            4756.8,
+            "cực"
+          ],
+          [
+            4757.04,
+            "kỳ"
+          ],
+          [
+            4757.159,
+            "hấp"
+          ],
+          [
+            4757.4,
+            "dẫn"
+          ]
+        ],
+        "nextWordStart": 4758.84
+      },
+      "asrEvidence": {
+        "backend": "faster-whisper-large-v3-turbo",
+        "text": "Một trận đấu cực kỳ hấp dẫn",
+        "audioSha256": "2ad9e8e4fc4a5b07fffed094f865f9736ad6127b8808a70e6086e03fe733b377",
+        "review": "CC/context plus machine cross-check; not independent listening."
+      },
+      "sourceUrl": "https://www.youtube.com/watch?v=crZF3hghbgQ",
+      "file": "broadcast-exciting-race.mp3",
+      "duration": 2.22,
+      "peak": 0.8066,
+      "bytes": 27785,
+      "sha256": "95d370f14489fd403adafe54011c34eb66a3aef7d58769567a4a4507d89b529e",
+      "sourceType": "broadcast",
+      "sourceStart": 4756.18,
+      "sourceEnd": 4758.4,
+      "processing": {
+        "normalization": "loudness"
+      }
+    },
+    "broadcast-relaxed-strokes": {
+      "start": 4269.55,
+      "end": 4272.74,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Hiện nay nhịp dầm của anh em rất là nhàn nhã, rất là nhàn nhã.",
+      "sourceId": "Y2fp9gYRIZ8",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "paces": [
+          "recover"
+        ],
+        "maxDistance": 950
+      },
+      "captionEvidence": {
+        "words": [
+          [
+            4269.6,
+            "hiện"
+          ],
+          [
+            4269.8,
+            "nay"
+          ],
+          [
+            4269.96,
+            "nhịp"
+          ],
+          [
+            4270.239,
+            "dầm"
+          ],
+          [
+            4270.48,
+            "của"
+          ],
+          [
+            4270.56,
+            "anh"
+          ],
+          [
+            4270.76,
+            "em"
+          ],
+          [
+            4270.92,
+            "rất"
+          ],
+          [
+            4271.159,
+            "là"
+          ],
+          [
+            4271.28,
+            "nhàn"
+          ],
+          [
+            4271.56,
+            "nhã"
+          ],
+          [
+            4271.92,
+            "rất"
+          ],
+          [
+            4272.04,
+            "là"
+          ],
+          [
+            4272.199,
+            "nhàn"
+          ],
+          [
+            4272.56,
+            "nhã"
+          ]
+        ],
+        "nextWordStart": 4272.8
+      },
+      "asrEvidence": {
+        "backend": "faster-whisper-large-v3-turbo",
+        "text": "Thấy hiện nay, nhịp dầm của anh em rất là nhàn nhã, rất là nhàn nhã.",
+        "audioSha256": "b4b8ed63a998a2de7682ef02658aae4adfd01c3b13822120daf56507ab8e5c01",
+        "review": "CC/context plus machine cross-check; not independent listening."
+      },
+      "sourceUrl": "https://www.youtube.com/watch?v=Y2fp9gYRIZ8",
+      "file": "broadcast-relaxed-strokes.mp3",
+      "duration": 3.19,
+      "peak": 0.5455,
+      "bytes": 39305,
+      "sha256": "370f38053f0b424d8d4386c40a67cf1989983cd0dd85d633c7d09363ef2d943a",
+      "sourceType": "broadcast",
+      "sourceStart": 4269.55,
+      "sourceEnd": 4272.74,
+      "processing": {
+        "normalization": "loudness"
+      }
+    },
+    "broadcast-safe-margin": {
+      "start": 11524.0,
+      "end": 11525.85,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Rõ ràng là một khoảng cách an toàn.",
+      "sourceId": "crZF3hghbgQ",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minAbsGap": 10
+      },
+      "captionEvidence": {
+        "words": [
+          [
+            11524.0,
+            "Rõ"
+          ],
+          [
+            11524.239,
+            "ràng"
+          ],
+          [
+            11524.56,
+            "là"
+          ],
+          [
+            11524.72,
+            "một"
+          ],
+          [
+            11524.84,
+            "khoảng"
+          ],
+          [
+            11525.0,
+            "cách"
+          ],
+          [
+            11525.319,
+            "an"
+          ],
+          [
+            11525.52,
+            "toàn"
+          ]
+        ],
+        "nextWordStart": 11526.239
+      },
+      "asrEvidence": {
+        "backend": "faster-whisper-large-v3-turbo",
+        "text": "Rõ ràng là một khoảng cách an toàn",
+        "audioSha256": "1c58612a2964a0462c932495b8a17183406a173bc896b72cf140d0d94899f410",
+        "review": "CC/context plus machine cross-check; not independent listening."
+      },
+      "sourceUrl": "https://www.youtube.com/watch?v=crZF3hghbgQ",
+      "file": "broadcast-safe-margin.mp3",
+      "duration": 1.85,
+      "peak": 0.6951,
+      "bytes": 23465,
+      "sha256": "96e9392eaa317702e0f471d0ac7f0de7db0e6e758e8fbf9c18826a45b3ff8d0a",
+      "sourceType": "broadcast",
+      "sourceStart": 11524.0,
+      "sourceEnd": 11525.85,
+      "processing": {
+        "normalization": "loudness"
+      }
+    },
+    "broadcast-race-excitement": {
+      "start": 5555.43,
+      "end": 5556.55,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Một trận đấu hấp dẫn.",
+      "sourceId": "XagC29Eyt_U",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "maxAbsGap": 2
+      },
+      "captionEvidence": {
+        "words": [
+          [
+            5555.48,
+            "một"
+          ],
+          [
+            5555.639,
+            "trận"
+          ],
+          [
+            5555.84,
+            "đấu"
+          ],
+          [
+            5556.04,
+            "hấp"
+          ],
+          [
+            5556.28,
+            "dẫn."
+          ]
+        ],
+        "nextWordStart": 5556.56
+      },
+      "asrEvidence": {
+        "backend": "faster-whisper-large-v3-turbo",
+        "text": "Một trận đấu hấp dẫn",
+        "audioSha256": "b021719fb32174183d0c7321b0cb865cc2445a56c0861ecf76ed29bf695e0cb3",
+        "review": "CC/context plus machine cross-check; not independent listening."
+      },
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U",
+      "file": "broadcast-race-excitement.mp3",
+      "duration": 1.12,
+      "peak": 0.6826,
+      "bytes": 14537,
+      "sha256": "e20b45bc8f414107cd02cc766ded3c18614b16c18050e164eb81dab2bddcca27",
+      "sourceType": "broadcast",
+      "sourceStart": 5555.43,
+      "sourceEnd": 5556.55,
+      "processing": {
+        "normalization": "peak",
+        "gain": 1.107323958,
+        "targetPeak": 0.72
+      }
+    },
+    "broadcast-victory-congratulations": {
+      "start": 15069.5,
+      "end": 15072.65,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Trước tiên xin chúc mừng một chiến thắng quan trọng của anh em.",
+      "sourceId": "XagC29Eyt_U",
+      "conditions": {
+        "phases": [
+          "finished"
+        ],
+        "results": [
+          "win"
+        ]
+      },
+      "captionEvidence": {
+        "words": [
+          [
+            15069.56,
+            "Trước"
+          ],
+          [
+            15069.72,
+            "tiên"
+          ],
+          [
+            15069.96,
+            "xin"
+          ],
+          [
+            15070.159,
+            "chúc"
+          ],
+          [
+            15070.319,
+            "mừng"
+          ],
+          [
+            15070.56,
+            "một"
+          ],
+          [
+            15070.68,
+            "chiến"
+          ],
+          [
+            15070.84,
+            "thắng"
+          ],
+          [
+            15071.119,
+            "quan"
+          ],
+          [
+            15071.319,
+            "trọng"
+          ],
+          [
+            15071.64,
+            "của"
+          ],
+          [
+            15071.8,
+            "anh"
+          ],
+          [
+            15072.0,
+            "em"
+          ]
+        ],
+        "nextWordStart": 15073.688
+      },
+      "asrEvidence": {
+        "backend": "faster-whisper-large-v3-turbo",
+        "text": "Trước tiên xin chúc mừng một chiến thắng quan trọng của anh em",
+        "audioSha256": "6885d41b06bc5bb645f25c15bbd557f6314817b04fa34f393a0996df7e8f2786",
+        "review": "CC/context plus machine cross-check; not independent listening."
+      },
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U",
+      "file": "broadcast-victory-congratulations.mp3",
+      "duration": 3.15,
+      "peak": 0.5228,
+      "bytes": 39017,
+      "sha256": "8ff357eb33e50c851b8ab65165a230839ddf72603c940a357fc46270d3afa5b6",
+      "sourceType": "broadcast",
+      "sourceStart": 15069.5,
+      "sourceEnd": 15072.65,
+      "processing": {
+        "normalization": "loudness"
+      }
+    },
+    "ai-ready-km": {
+      "channel": "khmer",
+      "lang": "km",
+      "text": "ត្រៀមខ្លួន!",
+      "translationVi": "Chuẩn bị!",
+      "conditions": {
+        "phases": [
+          "countdown"
+        ]
+      },
+      "sourceType": "azure-stock-neural",
+      "aiSample": {
+        "manifest": "commentary-trial/manifest.json",
+        "manifestSha256": "a057e351dac3a6fa643742313d7702669a3cd78696439520e701d4bbe691f2da",
+        "id": "ready-km"
+      },
+      "file": "commentary-trial/ready-km.mp3",
+      "duration": 1.82,
+      "peak": 0.395466,
+      "bytes": 22796,
+      "sha256": "beec0f40ef882ddedf4ab9a24ea7fedc7eb164a79e49d87db8ba0a06f231bac6",
+      "synthesisEvidence": {
+        "manifest": "commentary-trial/manifest.json",
+        "manifestSha256": "a057e351dac3a6fa643742313d7702669a3cd78696439520e701d4bbe691f2da",
+        "id": "ready-km",
+        "voice": "km-KH-PisethNeural",
+        "requestSha256": "d54c435ceea7b1f9eab13f6d102282eed6e45978f85cfe28409a44dc1fdfd443",
+        "sourceWavSha256": "1ab9117d421e15fd7411f2fa7daed15863f9d7bb2b66e6b87ff1fbe866764a82",
+        "scriptSha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39",
+        "nativeListeningVerified": false
+      }
+    },
+    "ai-go-km": {
+      "channel": "khmer",
+      "lang": "km",
+      "text": "ចាប់ផ្តើមហើយ!",
+      "translationVi": "Xuất phát!",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minElapsed": 0,
+        "maxElapsed": 3,
+        "minDistance": 0,
+        "maxDistance": 200
+      },
+      "sourceType": "azure-stock-neural",
+      "aiSample": {
+        "manifest": "commentary-trial/manifest.json",
+        "manifestSha256": "a057e351dac3a6fa643742313d7702669a3cd78696439520e701d4bbe691f2da",
+        "id": "go-km"
+      },
+      "file": "commentary-trial/go-km.mp3",
+      "duration": 1.82,
+      "peak": 0.482225,
+      "bytes": 22796,
+      "sha256": "7a39e55f8bd8e1aa11581e4621b4170a8028c24c6b5548bdb55bce86f418ca0d",
+      "synthesisEvidence": {
+        "manifest": "commentary-trial/manifest.json",
+        "manifestSha256": "a057e351dac3a6fa643742313d7702669a3cd78696439520e701d4bbe691f2da",
+        "id": "go-km",
+        "voice": "km-KH-PisethNeural",
+        "requestSha256": "bfe0467706b37b0a213e7e3c7a9570a428ee059f8ad5d2d7903596df58fb29f3",
+        "sourceWavSha256": "12414aee02390180ad55d0b237b835f5e869f269e68cb6b48b1e6e5c75360b18",
+        "scriptSha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39",
+        "nativeListeningVerified": false
+      }
+    },
+    "ai-cruise-km": {
+      "channel": "khmer",
+      "lang": "km",
+      "text": "ឥឡូវត្រូវរក្សាចង្វាក់អុំឱ្យស្មើគ្នា។",
+      "translationVi": "Bước vào đường trường. Giữ đều nhịp dầm!",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 200,
+        "maxDistance": 600
+      },
+      "sourceType": "azure-stock-neural",
+      "aiSample": {
+        "manifest": "commentary-trial/manifest.json",
+        "manifestSha256": "a057e351dac3a6fa643742313d7702669a3cd78696439520e701d4bbe691f2da",
+        "id": "cruise-km"
+      },
+      "file": "commentary-trial/cruise-km.mp3",
+      "duration": 3.175,
+      "peak": 0.486748,
+      "bytes": 39212,
+      "sha256": "e8ca41db65bbcb607b7a7195f44d525a0b5ce902090bd292a32d976fbb5d7274",
+      "synthesisEvidence": {
+        "manifest": "commentary-trial/manifest.json",
+        "manifestSha256": "a057e351dac3a6fa643742313d7702669a3cd78696439520e701d4bbe691f2da",
+        "id": "cruise-km",
+        "voice": "km-KH-PisethNeural",
+        "requestSha256": "5949f8d8ef5aaef4919ffbb425602a444497207fb4f84c3efc3e8998fb7b521e",
+        "sourceWavSha256": "b2088936de66eea81c36d6aca87223240aead7090c5504a86f447a74517a8b5f",
+        "scriptSha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39",
+        "nativeListeningVerified": false
+      }
+    },
+    "ai-halfway-km": {
+      "channel": "khmer",
+      "lang": "km",
+      "text": "បានឆ្លងកាត់ពាក់កណ្តាលផ្លូវហើយ។ ត្រូវទុកកម្លាំងសម្រាប់ចុងផ្លូវ!",
+      "translationVi": "Đã qua nửa đường đua. Còn sức cho đoạn cuối!",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 600,
+        "maxDistance": 950
+      },
+      "sourceType": "azure-stock-neural",
+      "aiSample": {
+        "manifest": "commentary-trial/manifest.json",
+        "manifestSha256": "a057e351dac3a6fa643742313d7702669a3cd78696439520e701d4bbe691f2da",
+        "id": "halfway-km"
+      },
+      "file": "commentary-trial/halfway-km.mp3",
+      "duration": 4.375,
+      "peak": 0.439568,
+      "bytes": 53612,
+      "sha256": "f6739d84bba4149dbe1bf48c8708772c0162d03b982a1a0b833ac8d51fd85ef2",
+      "synthesisEvidence": {
+        "manifest": "commentary-trial/manifest.json",
+        "manifestSha256": "a057e351dac3a6fa643742313d7702669a3cd78696439520e701d4bbe691f2da",
+        "id": "halfway-km",
+        "voice": "km-KH-PisethNeural",
+        "requestSha256": "5f0c63e66dffb3bf0f1ab77e53b32a3b70c9cbf9f1537b459bf4335b3eb8e30a",
+        "sourceWavSha256": "83f033d490bff3d48eba95bc6010850ac79950403bd338973ce9d853b516724e",
+        "scriptSha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39",
+        "nativeListeningVerified": false
+      }
+    },
+    "ai-close-race-km": {
+      "channel": "khmer",
+      "lang": "km",
+      "text": "ទូកទាំងពីរកំពុងប្រកៀកប្រកិតគ្នា!",
+      "translationVi": "Hai ghe đang so kè! Chưa có cách biệt rõ ràng!",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minElapsed": 30,
+        "maxAbsGap": 2
+      },
+      "sourceType": "azure-stock-neural",
+      "aiSample": {
+        "manifest": "commentary-trial/manifest.json",
+        "manifestSha256": "a057e351dac3a6fa643742313d7702669a3cd78696439520e701d4bbe691f2da",
+        "id": "close-race-km"
+      },
+      "file": "commentary-trial/close-race-km.mp3",
+      "duration": 2.8365,
+      "peak": 0.515684,
+      "bytes": 35180,
+      "sha256": "08531309a36ada0f6e0e0f7da1c4c08c93ee61666809809856eb6349c12e9657",
+      "synthesisEvidence": {
+        "manifest": "commentary-trial/manifest.json",
+        "manifestSha256": "a057e351dac3a6fa643742313d7702669a3cd78696439520e701d4bbe691f2da",
+        "id": "close-race-km",
+        "voice": "km-KH-PisethNeural",
+        "requestSha256": "25cdc82df5506758b26899e5679a7aa955794ee1554d3f2b158d4589a467ba7d",
+        "sourceWavSha256": "28c773805fb50a3984c5629ad2f8f73268f0057c1074a9aa62d06690a90707ea",
+        "scriptSha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39",
+        "nativeListeningVerified": false
+      }
+    },
+    "ai-lead-change-km": {
+      "channel": "khmer",
+      "lang": "km",
+      "text": "មានការវ៉ាឡើងមុខ! ទូកនាំមុខបានផ្លាស់ប្តូរហើយ!",
+      "translationVi": "Vừa có pha vượt lên! Ngôi dẫn đầu đã đổi!",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "leadChanged": true,
+        "minAbsGap": 3.01
+      },
+      "sourceType": "azure-stock-neural",
+      "aiSample": {
+        "manifest": "commentary-trial/manifest.json",
+        "manifestSha256": "a057e351dac3a6fa643742313d7702669a3cd78696439520e701d4bbe691f2da",
+        "id": "lead-change-km"
+      },
+      "file": "commentary-trial/lead-change-km.mp3",
+      "duration": 4.2945,
+      "peak": 0.571238,
+      "bytes": 52460,
+      "sha256": "5e0aba27c5ed1508b2d114abffebd6a3380159041ae216b918a9825d92246eed",
+      "synthesisEvidence": {
+        "manifest": "commentary-trial/manifest.json",
+        "manifestSha256": "a057e351dac3a6fa643742313d7702669a3cd78696439520e701d4bbe691f2da",
+        "id": "lead-change-km",
+        "voice": "km-KH-PisethNeural",
+        "requestSha256": "8a8f018f49e5c581bce52892ded3f5b70b339874a3ca1101d46a81553a391b0a",
+        "sourceWavSha256": "a75ce5f5a3ff8c40dda29b950f122315bf2e4eabe6f206948efd54e933fe59a9",
+        "scriptSha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39",
+        "nativeListeningVerified": false
+      }
+    },
+    "ai-cohesion-km": {
+      "channel": "khmer",
+      "lang": "km",
+      "text": "ចង្វាក់អុំស្មើគ្នាល្អណាស់!",
+      "translationVi": "Nhịp dầm đang rất đều! Cả đội phối hợp nhịp nhàng!",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minCombo": 30,
+        "maxDistance": 950
+      },
+      "sourceType": "azure-stock-neural",
+      "aiSample": {
+        "manifest": "commentary-trial/manifest.json",
+        "manifestSha256": "a057e351dac3a6fa643742313d7702669a3cd78696439520e701d4bbe691f2da",
+        "id": "cohesion-km"
+      },
+      "file": "commentary-trial/cohesion-km.mp3",
+      "duration": 2.4625,
+      "peak": 0.522039,
+      "bytes": 30572,
+      "sha256": "9eaa92c8a08bc2955a8328dddb9b01e32df614e0e3b4a94e8d310dba6be6bcbe",
+      "synthesisEvidence": {
+        "manifest": "commentary-trial/manifest.json",
+        "manifestSha256": "a057e351dac3a6fa643742313d7702669a3cd78696439520e701d4bbe691f2da",
+        "id": "cohesion-km",
+        "voice": "km-KH-PisethNeural",
+        "requestSha256": "ab9201cfe4eb6fa049c2861f5174ee5ea44b2d55e135717a456f045955770657",
+        "sourceWavSha256": "2b84e74b2b244491f218b793d4a9e9338391aafda5a9016587c6ca4dc244ea97",
+        "scriptSha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39",
+        "nativeListeningVerified": false
+      }
+    },
+    "ai-recover-km": {
+      "channel": "khmer",
+      "lang": "km",
+      "text": "បន្ថយចង្វាក់ ដើម្បីទុកកម្លាំងសម្រាប់ចុងផ្លូវ។",
+      "translationVi": "Giảm nhịp để giữ sức cho chặng cuối.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "paces": [
+          "recover"
+        ],
+        "minDistance": 200,
+        "maxDistance": 950
+      },
+      "sourceType": "azure-stock-neural",
+      "aiSample": {
+        "manifest": "commentary-trial/manifest.json",
+        "manifestSha256": "a057e351dac3a6fa643742313d7702669a3cd78696439520e701d4bbe691f2da",
+        "id": "recover-km"
+      },
+      "file": "commentary-trial/recover-km.mp3",
+      "duration": 3.737,
+      "peak": 0.565241,
+      "bytes": 45836,
+      "sha256": "9225e9ca4ef3df736eae5d858f90d73fa70c69a972b692de14dad0ff26d6ff29",
+      "synthesisEvidence": {
+        "manifest": "commentary-trial/manifest.json",
+        "manifestSha256": "a057e351dac3a6fa643742313d7702669a3cd78696439520e701d4bbe691f2da",
+        "id": "recover-km",
+        "voice": "km-KH-PisethNeural",
+        "requestSha256": "e28b9229cce9ab7e8920b34a823ac782e47519d2e9d39fc98d662c0a0fa9826c",
+        "sourceWavSha256": "fcc26996398b17c915365b7be8232f460f3ca12f4e13f04ad62948cfacbfb799",
+        "scriptSha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39",
+        "nativeListeningVerified": false
+      }
+    },
+    "ai-final-km": {
+      "channel": "khmer",
+      "lang": "km",
+      "text": "ដល់ដំណាក់កាលចុងក្រោយហើយ! បង្កើនល្បឿន!",
+      "translationVi": "Vào đoạn nước rút! Tăng nhịp dầm!",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 950,
+        "maxDistance": 1100,
+        "requiresHardEffort": true
+      },
+      "sourceType": "azure-stock-neural",
+      "aiSample": {
+        "manifest": "commentary-trial/manifest.json",
+        "manifestSha256": "a057e351dac3a6fa643742313d7702669a3cd78696439520e701d4bbe691f2da",
+        "id": "final-km"
+      },
+      "file": "commentary-trial/final-km.mp3",
+      "duration": 3.9697,
+      "peak": 0.494325,
+      "bytes": 48716,
+      "sha256": "4dd77c74dfdee28a4bb4c07ffb18393e2563acff5d07592b02aec3d32f10da72",
+      "synthesisEvidence": {
+        "manifest": "commentary-trial/manifest.json",
+        "manifestSha256": "a057e351dac3a6fa643742313d7702669a3cd78696439520e701d4bbe691f2da",
+        "id": "final-km",
+        "voice": "km-KH-PisethNeural",
+        "requestSha256": "52a388b498cccc08476795095ebccb2ffc27b00b1733fb08df81cb2764566671",
+        "sourceWavSha256": "ae1efc02e1f7390c7c3caa7008a9f67bfff540760db4497146a4b1e7c555a826",
+        "scriptSha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39",
+        "nativeListeningVerified": false
+      }
+    },
+    "ai-surge-km": {
+      "channel": "khmer",
+      "lang": "km",
+      "text": "ប្រឹងអស់កម្លាំង!",
+      "translationVi": "Đạp! Dồn hết sức!",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 950,
+        "maxDistance": 1200,
+        "surgeActive": true,
+        "requiresHardEffort": true
+      },
+      "sourceType": "azure-stock-neural",
+      "aiSample": {
+        "manifest": "commentary-trial/manifest.json",
+        "manifestSha256": "a057e351dac3a6fa643742313d7702669a3cd78696439520e701d4bbe691f2da",
+        "id": "surge-km"
+      },
+      "file": "commentary-trial/surge-km.mp3",
+      "duration": 1.82,
+      "peak": 0.502496,
+      "bytes": 22796,
+      "sha256": "8827110d6f84fecc717303282ba70be595b9446f909ec6877fef68920df0d2c1",
+      "synthesisEvidence": {
+        "manifest": "commentary-trial/manifest.json",
+        "manifestSha256": "a057e351dac3a6fa643742313d7702669a3cd78696439520e701d4bbe691f2da",
+        "id": "surge-km",
+        "voice": "km-KH-PisethNeural",
+        "requestSha256": "0e8f2373de936a438e5c9874998d814dccdbf0c183e8f352c28ea835e0487708",
+        "sourceWavSha256": "47bf13fc725ade322bfd48464a853ed8b97356207d9cef2fa1f370326ae5164b",
+        "scriptSha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39",
+        "nativeListeningVerified": false
+      }
+    },
+    "ai-last-hundred-km": {
+      "channel": "khmer",
+      "lang": "km",
+      "text": "១០០ ម៉ែត្រចុងក្រោយ!",
+      "translationVi": "Một trăm mét cuối!",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 1100,
+        "maxDistance": 1150
+      },
+      "sourceType": "azure-stock-neural",
+      "aiSample": {
+        "manifest": "commentary-trial/manifest.json",
+        "manifestSha256": "a057e351dac3a6fa643742313d7702669a3cd78696439520e701d4bbe691f2da",
+        "id": "last-hundred-km"
+      },
+      "file": "commentary-trial/last-hundred-km.mp3",
+      "duration": 2.1817,
+      "peak": 0.460974,
+      "bytes": 27116,
+      "sha256": "940a7f76d7df3ce8bf323fda98c4b88e7a1e9f1e00af5e4998cb130f60d8566b",
+      "synthesisEvidence": {
+        "manifest": "commentary-trial/manifest.json",
+        "manifestSha256": "a057e351dac3a6fa643742313d7702669a3cd78696439520e701d4bbe691f2da",
+        "id": "last-hundred-km",
+        "voice": "km-KH-PisethNeural",
+        "requestSha256": "4fbecd3a7e47e0b5a1f765d177b905d28022b1bbf09501a628f773686ccb4ff6",
+        "sourceWavSha256": "5df426c04dc33edb381c10aea57a260162c2697d9d0dcd9b40b9348e6175eb74",
+        "scriptSha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39",
+        "nativeListeningVerified": false
+      }
+    },
+    "ai-last-fifty-km": {
+      "channel": "khmer",
+      "lang": "km",
+      "text": "៥០ ម៉ែត្រចុងក្រោយ!",
+      "translationVi": "Năm mươi mét cuối!",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 1150,
+        "maxDistance": 1200
+      },
+      "sourceType": "azure-stock-neural",
+      "aiSample": {
+        "manifest": "commentary-trial/manifest.json",
+        "manifestSha256": "a057e351dac3a6fa643742313d7702669a3cd78696439520e701d4bbe691f2da",
+        "id": "last-fifty-km"
+      },
+      "file": "commentary-trial/last-fifty-km.mp3",
+      "duration": 2.1092,
+      "peak": 0.419761,
+      "bytes": 26252,
+      "sha256": "9203bca38d35df608d967cdf5317e2eef248f3b2ad5ecbcd66ebbcbb3d0a79a5",
+      "synthesisEvidence": {
+        "manifest": "commentary-trial/manifest.json",
+        "manifestSha256": "a057e351dac3a6fa643742313d7702669a3cd78696439520e701d4bbe691f2da",
+        "id": "last-fifty-km",
+        "voice": "km-KH-PisethNeural",
+        "requestSha256": "0059c2e7306ce8ea6adbdebd0db3cfae8a755f3edd19beff8dd37045c8ae9fdd",
+        "sourceWavSha256": "52644af10969ac3f3d1d5b6eb6bdd84a2af518c21b41b3628e38ce75f4b2a112",
+        "scriptSha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39",
+        "nativeListeningVerified": false
+      }
+    },
+    "ai-finish-win-km": {
+      "channel": "khmer",
+      "lang": "km",
+      "text": "ដល់ទីហើយ! សូមអបអរសាទរក្រុមដែលឈ្នះជើងប្រណាំងនេះ!",
+      "translationVi": "Đã về đích! Xin chúc mừng đội thắng lượt đua này!",
+      "conditions": {
+        "phases": [
+          "finished"
+        ],
+        "results": [
+          "win"
+        ]
+      },
+      "sourceType": "azure-stock-neural",
+      "aiSample": {
+        "manifest": "commentary-trial/manifest.json",
+        "manifestSha256": "a057e351dac3a6fa643742313d7702669a3cd78696439520e701d4bbe691f2da",
+        "id": "finish-win-km"
+      },
+      "file": "commentary-trial/finish-win-km.mp3",
+      "duration": 4.8318,
+      "peak": 0.454965,
+      "bytes": 59084,
+      "sha256": "51377872f38085e991248ddd7c8967af54a4e8d7a7f8c91a793e4e64f5313ee2",
+      "synthesisEvidence": {
+        "manifest": "commentary-trial/manifest.json",
+        "manifestSha256": "a057e351dac3a6fa643742313d7702669a3cd78696439520e701d4bbe691f2da",
+        "id": "finish-win-km",
+        "voice": "km-KH-PisethNeural",
+        "requestSha256": "cd853ab8e0284f29a2eb637766be274356b4fddfb379341e64647ab8d0e89a80",
+        "sourceWavSha256": "00538125f6ef9936aafddaa01b9bb657b659776ec1f0527b1d9d5ad73fdfdf30",
+        "scriptSha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39",
+        "nativeListeningVerified": false
+      }
+    },
+    "ai-finish-loss-km": {
+      "channel": "khmer",
+      "lang": "km",
+      "text": "គួរឱ្យសោកស្តាយ! គូប្រកួតបានដល់ទីមុន ក្នុងជើងប្រណាំងនេះ។",
+      "translationVi": "Rất tiếc! Đối thủ đã về đích trước trong lượt này.",
+      "conditions": {
+        "phases": [
+          "finished"
+        ],
+        "results": [
+          "loss"
+        ]
+      },
+      "sourceType": "azure-stock-neural",
+      "aiSample": {
+        "manifest": "commentary-trial/manifest.json",
+        "manifestSha256": "a057e351dac3a6fa643742313d7702669a3cd78696439520e701d4bbe691f2da",
+        "id": "finish-loss-km"
+      },
+      "file": "commentary-trial/finish-loss-km.mp3",
+      "duration": 5.3965,
+      "peak": 0.534575,
+      "bytes": 65708,
+      "sha256": "3712f53d03bb299ed155caaa4d286c800c3a382aca5ade67ddd7eba58258befa",
+      "synthesisEvidence": {
+        "manifest": "commentary-trial/manifest.json",
+        "manifestSha256": "a057e351dac3a6fa643742313d7702669a3cd78696439520e701d4bbe691f2da",
+        "id": "finish-loss-km",
+        "voice": "km-KH-PisethNeural",
+        "requestSha256": "818b78c9d492d09383ccf131e4b3f7e6cda8335c351245b0b988688af5b4e8e8",
+        "sourceWavSha256": "08f182003a4ac5e0ce6f82b6565574f3dc749a327f298466c07f33202c6840ff",
+        "scriptSha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39",
+        "nativeListeningVerified": false
+      }
+    },
+    "ai-finish-tie-km": {
+      "channel": "khmer",
+      "lang": "km",
+      "text": "លទ្ធផលស្មើគ្នា! ទូកទាំងពីរដល់ទីប្រកៀកប្រកិតគ្នា!",
+      "translationVi": "Kết quả hòa! Hai ghe kết thúc sát nhau!",
+      "conditions": {
+        "phases": [
+          "finished"
+        ],
+        "results": [
+          "tie"
+        ]
+      },
+      "sourceType": "azure-stock-neural",
+      "aiSample": {
+        "manifest": "commentary-trial/manifest.json",
+        "manifestSha256": "a057e351dac3a6fa643742313d7702669a3cd78696439520e701d4bbe691f2da",
+        "id": "finish-tie-km"
+      },
+      "file": "commentary-trial/finish-tie-km.mp3",
+      "duration": 4.9875,
+      "peak": 0.537562,
+      "bytes": 60812,
+      "sha256": "cde59cd17fcc28c78788fbc26ab9005fba44257cd3f67f30b57e7ed73c0a38fd",
+      "synthesisEvidence": {
+        "manifest": "commentary-trial/manifest.json",
+        "manifestSha256": "a057e351dac3a6fa643742313d7702669a3cd78696439520e701d4bbe691f2da",
+        "id": "finish-tie-km",
+        "voice": "km-KH-PisethNeural",
+        "requestSha256": "3abe0256c8077d0fc7cc7116503e1ccd4ac695ab57725fddbea0f3a045d5760f",
+        "sourceWavSha256": "bb442443af71f4f0c29a6a4491c9f137be68963302a27f53e4cca3c96a9a19d5",
+        "scriptSha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39",
+        "nativeListeningVerified": false
+      }
+    },
+    "ai-finish-dnf-km": {
+      "channel": "khmer",
+      "lang": "km",
+      "text": "គួរឱ្យសោកស្តាយ ក្រុមមួយមិនបានបញ្ចប់ជើងប្រណាំងនេះទេ។",
+      "translationVi": "Rất tiếc, một đội đã không hoàn thành lượt đua.",
+      "conditions": {
+        "phases": [
+          "finished"
+        ],
+        "results": [
+          "dnf"
+        ]
+      },
+      "sourceType": "azure-stock-neural",
+      "aiSample": {
+        "manifest": "commentary-trial/manifest.json",
+        "manifestSha256": "a057e351dac3a6fa643742313d7702669a3cd78696439520e701d4bbe691f2da",
+        "id": "finish-dnf-km"
+      },
+      "file": "commentary-trial/finish-dnf-km.mp3",
+      "duration": 4.3111,
+      "peak": 0.46459,
+      "bytes": 52748,
+      "sha256": "d3fc4ee4acbbf50b456b1636ec8b7ab4b432857f1176c44886ac78e2d62a49c7",
+      "synthesisEvidence": {
+        "manifest": "commentary-trial/manifest.json",
+        "manifestSha256": "a057e351dac3a6fa643742313d7702669a3cd78696439520e701d4bbe691f2da",
+        "id": "finish-dnf-km",
+        "voice": "km-KH-PisethNeural",
+        "requestSha256": "401392520c034da11e4b64750974348ef2c7e4f00dd3b14a6cd64a839c2c6f0e",
+        "sourceWavSha256": "166399b38744e351fb593b7e81b8ee13d2d281e3b49f402ecef65ea4ccb4457e",
+        "scriptSha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39",
+        "nativeListeningVerified": false
       }
     }
   },

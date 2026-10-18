@@ -34,8 +34,10 @@ foreach ($taskAssetDir in @('festival-crowd','studio-kit','athlete-identities','
             $taskOldAudio = Get-Content -LiteralPath $taskOldManifest -Raw | ConvertFrom-Json
             foreach ($taskClip in $taskOldAudio.clips.PSObject.Properties.Value) {
                 $taskOldAudioFile = [IO.Path]::GetFullPath((Join-Path $taskAudioTarget $taskClip.file))
-                if ([IO.Path]::GetDirectoryName($taskOldAudioFile) -ne $taskAudioTarget -or [IO.Path]::GetExtension($taskOldAudioFile) -ne '.mp3') { throw 'Invalid old audio path' }
-                if (!(Test-Path -LiteralPath (Join-Path $taskRepo ('public/assets/race-audio/' + $taskClip.file))) -and (Test-Path -LiteralPath $taskOldAudioFile)) { Remove-Item -LiteralPath $taskOldAudioFile }
+                if (!$taskOldAudioFile.StartsWith($taskAudioTarget + [IO.Path]::DirectorySeparatorChar) -or [IO.Path]::GetExtension($taskOldAudioFile) -ne '.mp3') { throw 'Invalid old audio path' }
+                # Root excerpts are owned by this publisher. Imported samples remain
+                # owned by their nested source pack even when not selected in a heat.
+                if ([IO.Path]::GetDirectoryName($taskOldAudioFile) -eq $taskAudioTarget -and !(Test-Path -LiteralPath (Join-Path $taskRepo ('public/assets/race-audio/' + $taskClip.file))) -and (Test-Path -LiteralPath $taskOldAudioFile)) { Remove-Item -LiteralPath $taskOldAudioFile }
             }
         }
     }

@@ -1,4 +1,4 @@
-"""Cut actual Vietnamese/Khmer broadcast speech and field percussion, without TTS."""
+"""Build original Vietnamese cuts and explicitly sourced, pre-rendered Khmer AI cues."""
 import argparse,hashlib,json,subprocess,zipfile
 from pathlib import Path
 import numpy as np
@@ -7,6 +7,19 @@ import imageio_ffmpeg
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'public/assets/race-audio'
 FFMPEG=imageio_ffmpeg.get_ffmpeg_exe()
+
+def imported_khmer(cut):
+ evidence=cut['aiSample'];pack=(OUT/evidence['manifest']).resolve()
+ if not pack.is_relative_to(OUT.resolve()) or pack.suffix!='.json':raise ValueError('Unsafe AI manifest path')
+ raw=pack.read_bytes()
+ if hashlib.sha256(raw).hexdigest()!=evidence['manifestSha256']:raise ValueError('AI sample pack changed')
+ data=json.loads(raw);sample=next(s for s in data['samples'] if s['id']==evidence['id'])
+ if cut['channel']!='khmer' or cut['lang']!='km' or sample['language']!='km' or sample['text']!=cut['text'] or data['sourceType']!='azure-stock-neural':raise ValueError('Only matching Khmer stock AI may be imported')
+ path=(OUT/sample['file']).resolve()
+ if not path.is_relative_to(OUT.resolve()) or path.suffix!='.mp3':raise ValueError('Unsafe AI audio path')
+ if hashlib.sha256(path.read_bytes()).hexdigest()!=sample['sha256']:raise ValueError('AI audio bytes changed')
+ return {**cut,**{k:sample[k] for k in ['file','duration','peak','bytes','sha256']},'sourceType':'azure-stock-neural',
+         'synthesisEvidence':{**evidence,'voice':sample['voice'],'requestSha256':sample['requestSha256'],'sourceWavSha256':sample['sourceWavSha256'],'scriptSha256':data['scriptSha256'],'nativeListeningVerified':False}}
 
 def main():
  parser=argparse.ArgumentParser(description=__doc__)
@@ -18,7 +31,7 @@ def main():
  primary=recipe['source']['videoId'];sources=recipe.get('sources',{primary:recipe['source']})
  inputs=json.loads(args.inputs.read_text(encoding='utf-8')) if args.inputs else {}
  if args.source:inputs[primary]={'audio':str(args.source),'captions':str(args.captions) if args.captions else None}
- used={cut.get('sourceId',primary) for cut in recipe['cuts'].values()};local={};caption_words={}
+ used={cut.get('sourceId',primary) for cut in recipe['cuts'].values() if not cut.get('aiSample')};local={};caption_words={}
  for source_id in used:
   if source_id not in sources or source_id not in inputs:parser.error('Missing source metadata/local input: '+source_id)
   metadata=sources[source_id];source=Path(inputs[source_id]['audio']).resolve()
@@ -38,6 +51,9 @@ def main():
      if text:words.add((round((event.get('tStartMs',0)+segment.get('tOffsetMs',0))/1000,3),text))
    caption_words[source_id]=words
  for key,cut in recipe['cuts'].items():
+  if cut.get('aiSample'):
+   imported_khmer(cut)
+   continue
   if cut['channel'] not in ['voice','khmer']:continue
   words=caption_words.get(cut.get('sourceId',primary),set());evidence=cut.get('captionEvidence',{});selected=evidence.get('words',[])
   if not selected or not all(tuple(word) in words and cut['start']<=word[0]<cut['end'] for word in selected):raise ValueError('Missing or mismatched caption words: '+key)
@@ -61,6 +77,13 @@ def main():
  previous=json.loads((OUT/'manifest.json').read_text(encoding='utf-8')) if (OUT/'manifest.json').exists() else {'clips':{}}
  clips={}
  for key,cut in recipe['cuts'].items():
+  if cut.get('aiSample'):
+   clip=imported_khmer(cut)
+   raw=subprocess.run([FFMPEG,'-v','error','-i',str(OUT/clip['file']),'-ar','24000','-ac','1','-f','f32le','-'],check=True,capture_output=True)
+   pcm=np.frombuffer(raw.stdout,dtype='<f4');peak=float(np.max(np.abs(pcm)))
+   if not .01<peak<=1 or abs(len(pcm)/24000-clip['duration'])>.04:raise ValueError('Invalid pre-rendered Khmer audio '+key)
+   clips[key]={**clip,'peak':round(peak,6)}
+   continue
   source_id=cut.get('sourceId',primary);source=local[source_id]
   start,end=cut['start'],cut['end'];duration=end-start
   if not 0<=start<end<=sources[source_id]['duration'] or not .08<duration<15:raise ValueError('Invalid cut '+key)
@@ -83,12 +106,13 @@ def main():
   if peak>1:raise RuntimeError('Clipping after encoding '+key)
   clips[key]={**cut,'sourceId':source_id,'sourceUrl':sources[source_id]['url'],'file':path.name,'duration':round(len(pcm)/24000,4),'peak':round(peak,4),'bytes':path.stat().st_size,'sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'sourceType':'broadcast','sourceStart':start,'sourceEnd':end,'processing':processing}
  coverage={key:sum(bool(p['availability'][key]) for p in profiles.values()) for key in ['nameVi','nameKm','historyVi','historyKm']}
- manifest={'schema':3,'mode':'broadcast','source':recipe['source'],'sources':sources,'review':recipe['review'],'ambience':recipe['ambience'],'warmup':recipe['warmup'],'events':recipe['events'],'clips':clips,'teamProfiles':profiles,'teamCoverage':coverage}
+ manifest={'schema':4,'mode':'broadcast-vi-ai-km','speechPolicy':{'voice':'original-broadcast-only','khmer':'pre-rendered-azure-stock-neural-with-original-broadcast-names','runtimeSynthesis':False},'source':recipe['source'],'sources':sources,'review':recipe['review'],'ambience':recipe['ambience'],'warmup':recipe['warmup'],'events':recipe['events'],'clips':clips,'teamProfiles':profiles,'teamCoverage':coverage}
  # Remove only obsolete generated MP3s in this exact asset directory.
  for old in previous['clips'].values():
   path=(OUT/old['file']).resolve()
-  if path.parent!=OUT.resolve() or path.suffix!='.mp3':raise ValueError('Unsafe obsolete audio path')
-  if path.name not in {c['file'] for c in clips.values()} and path.exists():path.unlink()
+  if not path.is_relative_to(OUT.resolve()) or path.suffix!='.mp3':raise ValueError('Unsafe obsolete audio path')
+  # Imported trial assets have their own owner; this builder owns only root cuts.
+  if path.parent==OUT.resolve() and path.name not in {c['file'] for c in clips.values()} and path.exists():path.unlink()
  if profiles:
   archive=OUT/'team-audio.zip'
   with zipfile.ZipFile(archive,'w',compression=zipfile.ZIP_DEFLATED) as bundle:
@@ -101,6 +125,6 @@ def main():
     for key in keys:put(registration+'/'+clips[key]['file'],(OUT/clips[key]['file']).read_bytes())
   manifest['downloads']={'teamAudio':{'file':archive.name,'bytes':archive.stat().st_size,'sha256':hashlib.sha256(archive.read_bytes()).hexdigest()}}
  (OUT/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8',newline='\n')
- print(json.dumps({'clips':len(clips),'bytes':sum(c['bytes'] for c in clips.values()),'syntheticClips':0,'sources':len(used)}))
+ print(json.dumps({'clips':len(clips),'bytes':sum(c['bytes'] for c in clips.values()),'originalVietnamese':sum(c['channel']=='voice' and c['sourceType']=='broadcast' for c in clips.values()),'syntheticKhmer':sum(c['sourceType']=='azure-stock-neural' for c in clips.values()),'sources':len(used)}))
 
 if __name__=='__main__':main()

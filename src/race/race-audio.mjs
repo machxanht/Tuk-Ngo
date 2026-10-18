@@ -1,4 +1,4 @@
-// Original Vietnamese/Khmer broadcast cuts; no runtime TTS or generated voices.
+// Original Vietnamese broadcast cuts; pre-rendered Khmer AI and original names.
 export const DEFAULT_AUDIO_MIX={enabled:true,voice:true,khmer:true,drums:true,crowd:true,volume:.8};
 export function normalizeAudioMix(value={}){
  const mix={...DEFAULT_AUDIO_MIX};
@@ -12,7 +12,7 @@ export function createCommentaryDirector(){
  return {
   reset(){previous=null;seen=new Set();leader=0;lastLead=-20;lastPace=-20;},
   update(s){
-   const cues=[],emit=(id,priority=1)=>cues.push({id,priority,elapsed:s.elapsed,result:s.result||null,state:{phase:s.phase,raceStage:s.raceStage,distance:s.distances?.[0]||0,gap:s.gap,pace:s.pace,surgeActive:s.surgeActive}});
+   const cues=[],emit=(id,priority=1)=>cues.push({id,priority,elapsed:s.elapsed,result:s.result||null,state:{phase:s.phase,raceStage:s.raceStage,distance:s.distances?.[0]||0,gap:s.gap,pace:s.pace,surgeActive:s.surgeActive,elapsed:s.elapsed,combo:s.combo,stamina:s.stamina}});
    const once=(id,priority=1)=>{if(!seen.has(id)){seen.add(id);emit(id,priority);}};
    if(s.phase==='countdown')once('ready',2);
    if(s.phase==='finished')once('finish',5);
@@ -64,7 +64,11 @@ export function isBroadcastClipApplicable(clip,cue,state=cue.state){
  if(rules.maxAbsGap!=null&&!(Math.abs(state.gap)<=rules.maxAbsGap))return false;
  if(rules.minAbsGap!=null&&!(Math.abs(state.gap)>=rules.minAbsGap))return false;
  if(rules.surgeActive!=null&&state.surgeActive!==rules.surgeActive)return false;
+ if(rules.leadChanged&&!cue.id.startsWith('lead-'))return false;
+ if(rules.minCombo!=null&&!(state.combo>=rules.minCombo))return false;
+ if(rules.maxStamina!=null&&!(state.stamina<=rules.maxStamina))return false;
  if(rules.requiresHardEffort&&!(state.surgeActive||state.pace==='sprint'||distance>=950))return false;
+ if(rules.minElapsed!=null&&!((state.elapsed??cue.elapsed)>=rules.minElapsed))return false;
  if(rules.maxElapsed!=null&&!((state.elapsed??cue.elapsed)<=rules.maxElapsed))return false;
  return true;
 }
@@ -77,7 +81,7 @@ export function resolveBroadcastCue(cue,manifest,teams=[],state=cue.state){
  const id=cue.id==='finish'&&['tie','dnf','loss'].includes(cue.result)?cue.result:cue.id.startsWith('lead-')?'lead':cue.id;
  const event=manifest.events[id]||{voice:[],khmer:[]};
  // Event arrays are alternatives, not a sentence made by joining every recording.
- const choose=channel=>{const keys=event[channel].filter(key=>isBroadcastClipApplicable(manifest.clips[key],cue,state));return keys.length?[keys[(cue.variant||0)%keys.length]]:[];};
+ const choose=channel=>{const keys=event[channel].filter(key=>!cue.excludedKeys?.includes(key)&&isBroadcastClipApplicable(manifest.clips[key],cue,state));return keys.length?[keys[(cue.variant||0)%keys.length]]:[];};
  const selection={voice:choose('voice'),khmer:choose('khmer')};
  const named=cue.id==='intro'?teams:cue.id.startsWith('lead-')?[teams[cue.id==='lead--1'?1:0]]:cue.id==='finish'&&['win','loss'].includes(cue.result)?[teams[cue.result==='win'?0:1]]:[];
  for(const channel of ['voice','khmer'])selection[channel]=[...named.flatMap(t=>resolveTeamSpeech(t,manifest)[channel]),...selection[channel]];
@@ -94,7 +98,7 @@ export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{},onP
  const metrics={drumHits:0,drumKinds:{'drum-low':0,'drum-open':0,'drum-rim':0},voiceClips:0,khmerClips:0,cues:[],played:[],errors:[],decoded:0};
  function fail(error){if(disposed||error?.name==='AbortError')return;const message=String(error?.message||error);if(!metrics.errors.includes(message)){metrics.errors.push(message);onError(message);}}
  function loadManifest(){
-  if(!manifestPromise)manifestPromise=fetch(directory+'manifest.json',{signal:abort.signal,cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('Audio manifest: '+r.status);return r.json();}).then(m=>{if(m.mode!=='broadcast')throw Error('Cần tải lại bộ âm thanh gốc');return manifest=m;}).catch(e=>{manifestPromise=null;throw e;});
+  if(!manifestPromise)manifestPromise=fetch(directory+'manifest.json',{signal:abort.signal,cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('Audio manifest: '+r.status);return r.json();}).then(m=>{if(!['broadcast','broadcast-vi-ai-km'].includes(m.mode))throw Error('Cần tải lại bộ bình luận');return manifest=m;}).catch(e=>{manifestPromise=null;throw e;});
   return manifestPromise;
  }
  function load(key){
@@ -135,7 +139,10 @@ export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{},onP
   const cue=queue.shift();if(!cue)return;
   speaking=true;const token=epoch;
   try{
-   const selection=resolveBroadcastCue(cue,await loadManifest(),teams,latest);
+   await loadManifest();
+   // Try another eligible whole phrase when the first alternative is recent.
+   cue.excludedKeys=[...recentClips].filter(([key,at])=>context.currentTime-at<(manifest.clips[key].role==='team-name'?8:18)).map(([key])=>key);
+   const selection=resolveBroadcastCue(cue,manifest,teams,latest);
    const keys=[...(mix.voice?selection.voice:[]),...(mix.khmer?selection.khmer:[])].filter(key=>context.currentTime-(recentClips.get(key)??-Infinity)>=(manifest.clips[key].role==='team-name'?8:18));
    // Fetch the phrase in parallel, then schedule it as one uninterrupted sentence.
    const buffers=await Promise.all(keys.map(load));if(token!==epoch||!active||!mix.enabled||disposed||latest.elapsed-cue.elapsed>(cue.priority>=4?20:9)||(cue.id==='ready'&&latest.phase!=='countdown'))return;
@@ -143,8 +150,11 @@ export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{},onP
    let offset=.02;
    for(let i=0;i<keys.length;i++){
     const key=keys[i],channel=manifest.clips[key].channel;if(!permitted(channel))continue;
+    const entry=manifest.clips[key],deadline=entry.conditions?.maxElapsed;
+    if(cue.id==='ready'&&offset+buffers[i].duration>latest.countdown)continue;
+    if(deadline!=null&&latest.elapsed+offset>deadline)continue;
     const node=source(buffers[i],channel,{when:offset});if(!node)continue;
-    const entry=manifest.clips[key];metrics[channel==='voice'?'voiceClips':'khmerClips']++;
+    metrics[channel==='voice'?'voiceClips':'khmerClips']++;
     recentClips.set(key,context.currentTime+offset);
     metrics.played.push({key,cue:cue.id,sourceId:entry.sourceId,at:context.currentTime+offset,match:teams.map(t=>t.id),state:{phase:latest.phase,distance:latest.distances?.[0],gap:latest.gap,pace:latest.pace,surgeActive:latest.surgeActive,result:cue.result}});if(metrics.played.length>100)metrics.played.shift();
     offset+=buffers[i].duration+.075;
@@ -160,7 +170,7 @@ export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{},onP
   if(!mix.voice&&!mix.khmer)return;
   metrics.cues.push(cue.id);if(metrics.cues.length>100)metrics.cues.shift();
   // Finish the current excerpt. A new sprint/finish cue must not cut a word in half.
-  queue=queue.filter(c=>c.priority>=cue.priority);queue.push({...cue,variant:matchSerial});queue.sort((a,b)=>b.priority-a.priority);queue=queue.slice(0,3);void pump();
+  queue=queue.filter(c=>c.priority>=cue.priority);queue.push({...cue,variant:matchSerial+metrics.cues.length-1});queue.sort((a,b)=>b.priority-a.priority);queue=queue.slice(0,3);void pump();
  }
  function drum(s){
   const beat=Math.floor(s.beatPhase);if(lastBeat==null){lastBeat=beat;return;}

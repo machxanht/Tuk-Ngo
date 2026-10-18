@@ -64,9 +64,9 @@ with sync_playwright() as p:
  page.wait_for_function("()=>{const s="+audio+".stats();return s.played.some(p=>p.key==='khmer-intro'&&p.at+1.8<s.audioTime);}",timeout=25000)
  page.wait_for_function(audio+'.stats().drumHits>=4',timeout=15000)
  report['intro']=page.evaluate(audio+'.stats()')
- assert report['intro']['origin']=='broadcast' and report['intro']['sourceVideo']=='crZF3hghbgQ'
+ assert report['intro']['origin']=='broadcast-vi-ai-km' and report['intro']['sourceVideo']=='crZF3hghbgQ'
  assert {'broadcast-intro','khmer-intro'}.issubset(p['key'] for p in report['intro']['played'])
- assert any(p['key']=='khmer-go' for p in report['intro']['played'])
+ assert any(p.get('cue')=='go' and p['key'].startswith('broadcast-') for p in report['intro']['played'])
  assert any(p['key']=='name-tum-nup-two-vi' and not p.get('kind') and len(p['match'])==2 for p in report['intro']['played'])
  page.get_by_role('button',name='Tạm dừng cuộc đua',exact=True).tap();page.wait_for_timeout(200)
  report['pause']=page.evaluate(audio+'.stats()');assert report['pause']['sources']==0 and not report['pause']['queued'] and report['pause']['outputRms']<.0001
@@ -89,7 +89,7 @@ with sync_playwright() as p:
   options=page.locator('.game-audio-options>div').bounding_box()
   if width==1024:page.screenshot(path=str(out/'mix-controls.png'))
   assert options['x']>=0 and options['x']+options['width']<=width
-  for label in ['BLV Việt (âm gốc)','BLV Khmer (âm gốc)','Trống nhịp chèo','Âm thanh hiện trường']:
+  for label in ['BLV Việt (âm gốc)','Bình luận Khmer (AI)','Trống nhịp chèo','Âm thanh hiện trường']:
    box=page.get_by_label(label,exact=True).locator('..').bounding_box();assert box['height']>=44
   page.get_by_label('Tùy chỉnh âm thanh',exact=True).tap()
   stage=page.locator('.game-stage').bounding_box();footer=page.locator('.game-controls').bounding_box()
@@ -118,8 +118,8 @@ with sync_playwright() as p:
  page.evaluate('''()=>{const a=document.querySelector('[data-testid=art-stage]').boatPreview,g=a.game;let next=Math.floor(g.state.beatPhase)+1;for(let i=0;i<70000&&g.state.phase!=='finished';i++){a.advance(1/240);if(g.state.phase==='racing'&&g.state.beatPhase>=next){g.stroke();next++;}}}''')
  page.wait_for_selector('[aria-label="Kết quả trận đua"]',timeout=15000)
  page.wait_for_function(audio+".stats().cues.includes('finish')")
- page.wait_for_function("()=>{const s="+audio+".stats();return s.played.some(p=>p.key==='broadcast-finish'&&p.at<s.audioTime);}",timeout=15000)
- page.wait_for_function("()=>{const s="+audio+".stats();return s.played.some(p=>p.key==='khmer-finish'&&p.at<s.audioTime);}",timeout=15000)
+ page.wait_for_function("()=>{const s="+audio+".stats();return s.played.some(p=>p.cue==='finish'&&p.key.startsWith('broadcast-')&&p.at<s.audioTime);}",timeout=15000)
+ page.wait_for_function("()=>{const s="+audio+".stats();return s.played.some(p=>p.key==='ai-finish-win-km'&&p.at<s.audioTime);}",timeout=15000)
  report['finish']=page.evaluate(audio+'.stats()');report['result']=page.evaluate(boat+'.game.snapshot()')
  assert report['result']['result']=='win'
  assert not report['finish']['errors'],report['finish']['errors']
@@ -153,8 +153,10 @@ with sync_playwright() as p:
   if 'maxAbsGap' in rules:assert abs(state['gap'])<=rules['maxAbsGap'],played
   if 'results' in rules:assert state['result'] in rules['results'],played
  assert all(p['key']!='broadcast-wait' for p in report['finish']['played'])
- original={clip['file'] for clip in manifest['clips'].values() if clip['sourceType']=='broadcast'}
- assert all(Path(urlsplit(r['url']).path).name in original for r in responses if '.mp3' in r['url']),'Only attributed source recordings'
+ allowed={args.url.rstrip('/')+'/assets/race-audio/'+clip['file'] for clip in manifest['clips'].values()}
+ assert all(r['url'].split('?')[0] in allowed for r in responses if '.mp3' in r['url']),'Only attributed original recordings or explicit Khmer AI assets'
+ assert all(manifest['clips'][p['key']]['sourceType']=='broadcast' for p in report['finish']['played'] if manifest['clips'][p['key']]['channel']=='voice')
+ assert any(manifest['clips'][p['key']]['sourceType']=='azure-stock-neural' for p in report['finish']['played']), 'Khmer AI must actually play during the race'
  assert report['finish']['khmerClips']>=3
  report['responses']=responses;report['errors']=errors
  browser.close()

@@ -1,0 +1,112 @@
+{
+  "selected": 14,
+  "rejected": {
+    "broadcast-contest-repeated": "ASR omits the repeated clause; keep out until listening review.",
+    "broadcast-contest-uncertain": "ASR hallucinates an unrelated subscription promotion.",
+    "broadcast-contest-even": "ASR fails to recover the complete final words.",
+    "broadcast-congratulations": "ASR contradicts the caption (farewell vs congratulations)."
+  },
+  "vietnamesePolicy": "original-broadcast-only",
+  "khmerPolicy": "azure-stock-neural for 16 situations; original broadcast names and greeting",
+  "newVietnameseCuts": {
+    "broadcast-start-pair": {
+      "sourceId": "crZF3hghbgQ",
+      "start": 11835.44,
+      "end": 11838.3,
+      "text": "Hai đội cũng vừa rời điểm xuất phát thôi.",
+      "asrText": "2 đội cũng vừa rời điểm xuất phát thôi"
+    },
+    "broadcast-start-opening": {
+      "sourceId": "crZF3hghbgQ",
+      "start": 14100.02,
+      "end": 14104.2,
+      "text": "Đây chỉ là mới đoạn xuất phát thôi, đoạn đầu thôi.",
+      "asrText": "Đây chỉ là mới đoạn xuất phát thôi, đoạn đầu thôi."
+    },
+    "broadcast-start-cleared": {
+      "sourceId": "crZF3hghbgQ",
+      "start": 11213.94,
+      "end": 11216.5,
+      "text": "Mới qua giai đoạn xuất phát thôi.",
+      "asrText": "mới qua giai đoạn xuất phát thôi."
+    },
+    "broadcast-long-course": {
+      "sourceId": "crZF3hghbgQ",
+      "start": 14107.66,
+      "end": 14109.9,
+      "text": "Đường đua vẫn còn khá là dài.",
+      "asrText": "Đường đua vẫn còn khá là dài."
+    },
+    "broadcast-contest-pair": {
+      "sourceId": "crZF3hghbgQ",
+      "start": 7633.23,
+      "end": 7636.0,
+      "text": "Hiện tại thì cả hai vẫn đang so kè.",
+      "asrText": "Hiện tại thì cả hai vẫn đang so kè"
+    },
+    "broadcast-contest-now": {
+      "sourceId": "crZF3hghbgQ",
+      "start": 5151.74,
+      "end": 5153.9,
+      "text": "Hiện nay vẫn còn so kè.",
+      "asrText": "hiện nay vẫn còn so kè"
+    },
+    "broadcast-keep-accelerating": {
+      "sourceId": "crZF3hghbgQ",
+      "start": 11668.54,
+      "end": 11671.55,
+      "text": "Tiếp tục tăng tốc, tiếp tục tăng tốc, tiếp tục tăng tốc!",
+      "asrText": "Tiếp tục tăng tốc, tiếp tục tăng tốc, tiếp tục tăng tốc."
+    },
+    "broadcast-accelerating": {
+      "sourceId": "crZF3hghbgQ",
+      "start": 7757.12,
+      "end": 7758.8,
+      "text": "Anh em cũng đang tăng tốc.",
+      "asrText": "Anh em cũng đang tăng tốc"
+    },
+    "broadcast-final-effort": {
+      "sourceId": "Y2fp9gYRIZ8",
+      "start": 13836.22,
+      "end": 13838.95,
+      "text": "Anh em tung nước rút trong thời điểm cuối cùng.",
+      "asrText": "Anh em tuân nước rút trong thời điểm cuối cùng"
+    },
+    "broadcast-exciting-race": {
+      "sourceId": "crZF3hghbgQ",
+      "start": 4756.18,
+      "end": 4758.4,
+      "text": "Một trận đấu cực kỳ hấp dẫn.",
+      "asrText": "Một trận đấu cực kỳ hấp dẫn"
+    },
+    "broadcast-relaxed-strokes": {
+      "sourceId": "Y2fp9gYRIZ8",
+      "start": 4269.55,
+      "end": 4272.74,
+      "text": "Hiện nay nhịp dầm của anh em rất là nhàn nhã, rất là nhàn nhã.",
+      "asrText": "Thấy hiện nay, nhịp dầm của anh em rất là nhàn nhã, rất là nhàn nhã."
+    },
+    "broadcast-safe-margin": {
+      "sourceId": "crZF3hghbgQ",
+      "start": 11524.0,
+      "end": 11525.85,
+      "text": "Rõ ràng là một khoảng cách an toàn.",
+      "asrText": "Rõ ràng là một khoảng cách an toàn"
+    },
+    "broadcast-race-excitement": {
+      "sourceId": "XagC29Eyt_U",
+      "start": 5555.43,
+      "end": 5556.55,
+      "text": "Một trận đấu hấp dẫn.",
+      "asrText": "Một trận đấu hấp dẫn"
+    },
+    "broadcast-victory-congratulations": {
+      "sourceId": "XagC29Eyt_U",
+      "start": 15069.5,
+      "end": 15072.65,
+      "text": "Trước tiên xin chúc mừng một chiến thắng quan trọng của anh em.",
+      "asrText": "Trước tiên xin chúc mừng một chiến thắng quan trọng của anh em"
+    }
+  },
+  "independentListeningVerified": false
+}

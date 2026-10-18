@@ -23,6 +23,8 @@ with sync_playwright() as p:
     assert not requests, 'No audio download before choosing Listen'
     page.get_by_label('Ngôn ngữ', exact=True).select_option('km')
     page.get_by_label('Giai đoạn', exact=True).select_option('final')
+    assert page.locator('#rows tr').count() == 5
+    page.get_by_label('Tìm tên / nội dung', exact=True).fill('ត្រូវតែខំប្រឹង')
     assert page.locator('#rows tr').count() == 1
     assert 'ត្រូវតែខំប្រឹង' in page.locator('#rows').inner_text()
     page.locator('#rows button').tap()
@@ -30,6 +32,13 @@ with sync_playwright() as p:
     assert page.locator('#source a').get_attribute('href').startswith('https://www.youtube.com/watch?v=tnb7TdUVRkU&t=11054')
     assert len(requests) == 1 and 'khmer-full-effort.mp3' in requests[0]
     report['stagePlayback'] = page.locator('#player').evaluate('(a)=>({duration:a.duration,currentTime:a.currentTime,readyState:a.readyState,paused:a.paused})')
+    page.get_by_label('Tìm tên / nội dung', exact=True).fill('ai-surge-km')
+    assert page.locator('#rows tr').count() == 1
+    assert 'Khmer AI' in page.locator('#rows').inner_text()
+    page.locator('#rows button').tap()
+    page.wait_for_function("document.querySelector('#player').src.includes('commentary-trial/surge-km.mp3')&&document.querySelector('#player').currentTime>.2")
+    assert 'Giọng AI tổng hợp' in page.locator('#status').inner_text()
+    report['khmerAiPlayback'] = page.locator('#player').evaluate('(a)=>({src:a.src,duration:a.duration,currentTime:a.currentTime})')
     report['viewports'] = []
     for width, height in [(1024, 768), (768, 1024), (1180, 430)]:
         page.set_viewport_size({'width': width, 'height': height})
@@ -38,6 +47,7 @@ with sync_playwright() as p:
             assert button.bounding_box()['height'] >= 44
         page.screenshot(path=str(out / f'library-{width}x{height}.png'), full_page=True)
         report['viewports'].append([width, height])
+    page.get_by_label('Tìm tên / nội dung', exact=True).fill('')
     page.get_by_role('button', name='Nguồn video', exact=True).tap()
     assert page.locator('#rows tr').count() >= 70
     page.get_by_label('Tìm tên / nội dung', exact=True).fill('2022')

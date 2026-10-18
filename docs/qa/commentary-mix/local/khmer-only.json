@@ -1,0 +1,45 @@
+{
+  "passed": true,
+  "played": [
+    {
+      "key": "ai-ready-km",
+      "cue": "ready",
+      "sourceId": null,
+      "at": 0.34217687074829933,
+      "match": [
+        "tum-nup-2",
+        "can_tho-09"
+      ],
+      "state": {
+        "phase": "countdown",
+        "distance": 0,
+        "gap": 0,
+        "pace": "steady",
+        "surgeActive": false,
+        "result": null
+      }
+    },
+    {
+      "key": "ai-go-km",
+      "cue": "go",
+      "sourceId": null,
+      "at": 3.3723809523809525,
+      "match": [
+        "tum-nup-2",
+        "can_tho-09"
+      ],
+      "state": {
+        "phase": "racing",
+        "distance": 0,
+        "gap": -0.02500598950720897,
+        "pace": "steady",
+        "surgeActive": false,
+        "result": null
+      }
+    }
+  ],
+  "voiceClips": 0,
+  "khmerClips": 2,
+  "muteStopsAllSources": true,
+  "errors": []
+}

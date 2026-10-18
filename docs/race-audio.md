@@ -1,5 +1,37 @@
 # Original Vietnamese and Khmer broadcast commentary
 
+## Current mixed commentary policy
+
+The user chose original broadcast Vietnamese plus AI Khmer. Four full recordings
+and 21 downloaded caption tracks were searched. The canonical search pool in
+`docs/vietnamese-commentary-index.json` contains 42,333 Latin-script CC spans;
+this is not 42,333 verified Vietnamese utterances or every YouTube video.
+Fourteen new complete Vietnamese excerpts were selected using word-level CC,
+source context and local Whisper cross-checks. Four contradictory/incomplete
+candidates were withheld; see `docs/qa/commentary-mix/selection.json`.
+
+`docs/broadcast-audio-cuts.json` remains the canonical recipe. The builder checks
+all original source/CC hashes before producing cuts. A Khmer AI import must match
+its existing sample-pack hash, language, text and MP3 hash. Only Khmer AI imports
+are allowed. No duplicate MP3s, runtime API calls or new models are needed.
+The root manifest explicitly distinguishes `broadcast` from
+`azure-stock-neural`; failed voice-conversion trials remain outside runtime.
+Original names and the 61 exact registration profiles retain their prior gates.
+
+Sixteen Khmer AI cues cover countdown, go, cruise, halfway, close racing, actual
+lead changes, cohesion, recovery, sprint/surge, 100/50 metres and four distinct
+results. Recovery/praise/start/distance/gap/result conditions are checked again
+after decoding. Recent excerpts are excluded before choosing alternatives so a
+recent first choice does not suppress another eligible phrase. Countdown speech
+must fit the remaining countdown; start speech must fit its scheduling deadline.
+The stable game link and the independent language controls are retained.
+
+Source waveform correlation and sample-pack/hash/decode checks are recorded in
+`docs/qa/commentary-mix/source-verification.json`. This technical evidence does
+not certify human listening, Khmer pronunciation or speaker identity. Historical
+publication records below describe their respective earlier snapshots.
+
+
 The game at https://machxanht.github.io/Tuk-Ngo/ uses the actual audio of the
 [user's reference broadcast](https://www.youtube.com/watch?v=crZF3hghbgQ), from
 Cần Thơ – Tiếng Dân tộc. The current generated asset set replaces the preceding
@@ -7,7 +39,7 @@ TTS/chant/synthetic-drum set in place. The historical checks in `docs/qa/race-au
 refer to that earlier implementation; current checks are in
 `docs/qa/broadcast-audio`.
 
-There are 72 cuts, totalling 1,311,624 MP3 bytes, from four hashed original recordings spanning 2023–2025. These include 25 event/field cuts, 44 team-name cuts and three historical excerpts. Coverage of the 61 current registrations is 42 Vietnamese names, 12 Khmer names, three Vietnamese histories and zero Khmer histories. Missing entries remain unavailable. Complete originals stay outside the repository; the site ships only the selected excerpts. `sources` and every cut's `sourceId` identify the exact recording, source/CC hashes, event year and cut boundaries. Nothing is synthesized, cloned or assembled from syllables. Rights/source attribution is in `public/assets/race-audio/ATTRIBUTION.md`.
+The current runtime has 102 clips (2,421,894 referenced MP3 bytes): 86 original broadcast excerpts and 16 pre-rendered Khmer AI cues. The 86 originals contain 70 Vietnamese speech clips, eight Khmer team-name clips, four Khmer event clips and four field/percussion clips. Four hashed original recordings span 2023–2025. Coverage of the 61 current registrations is 42 Vietnamese names, 12 Khmer names, three Vietnamese histories and zero Khmer histories. Missing entries remain unavailable. Complete originals stay outside the repository; the site ships only the selected excerpts. `sources` and every cut's `sourceId` identify the exact recording, source/CC hashes, event year and cut boundaries. All Vietnamese speech remains original; Khmer AI cues are explicitly identified by synthesis provenance and never given a broadcast timestamp. Rights/source attribution is in `public/assets/race-audio/ATTRIBUTION.md`.
 
 The source catalog contains 76 deduplicated discoveries, 74 relevant race references, 21 downloaded original CC tracks, 51,237 nonempty cues and 6,585 cues containing Khmer writing. The search covers queries for 2008–2026; found archive titles include earlier years and unrelated/other-event references. This is a bounded discovery catalog, not every YouTube video or a verified season-by-season history. Event years in titles are explicitly unverified until reviewed. Upload dates are separate: the 2022 final `F3wU7YfIivk` was uploaded in 2024; some 2016/2019/2020 archive clips were uploaded later. There are 252 exact-text name candidates for further review, not automatically approved recordings or historical registrations.
 
@@ -125,7 +157,7 @@ Stage routing rechecks conditions against the actual player phase, own distance,
 
 Selected Khmer event phrases comprise the existing greeting, race-start and win-only congratulations plus the newly cross-checked all-out-effort instruction from the 2023 broadcast. Two new Khmer name cuts cover Cham Pa and Pong Tứk Chắc. New Vietnamese name cuts cover Tà On, Trà Quýt Mới and Trà Cuôn; pagoda-only cuts do not invent a team number or gender. Automatic CC can still be wrong; source hashes, ASR text and tests are technical/provenance evidence, not proof of correct pronunciation or human listening review.
 
-The header offers BLV Việt (âm gốc), BLV Khmer (âm gốc), rowing drums and field
+The header offers BLV Việt (âm gốc), Bình luận Khmer (AI), rowing drums and field
 ambience switches. Captions stay in the footer outside the canvas. All sound
 stops on pause, mute, bracket view, hidden page, new heat and navigation.
 
