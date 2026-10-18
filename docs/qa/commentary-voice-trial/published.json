@@ -1,0 +1,114 @@
+{
+  "schema": 1,
+  "sourceCommit": "52883e1",
+  "pagesCommit": "5f146e69cae2d6e473dd4385c44734ba54334f51",
+  "actionsRun": "https://github.com/machxanht/Tuk-Ngo/actions/runs/39160952984",
+  "actionsConclusion": "success",
+  "publicUrl": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/?view=voice",
+  "filesMatched": 20,
+  "files": [
+    {
+      "path": "assets/race-audio/voice-trial/contest-km-reference.mp3",
+      "bytes": 146924,
+      "sha256": "cab31154a368e391c515a84ff356db7cedefbb294d29d8a8d7828b360e21126b"
+    },
+    {
+      "path": "assets/race-audio/voice-trial/contest-km.mp3",
+      "bytes": 117548,
+      "sha256": "4b53df1767130aca62b610b7b780e73c5ebbf322cad61863996fb4a1891b9a30"
+    },
+    {
+      "path": "assets/race-audio/voice-trial/contest-vi-reference.mp3",
+      "bytes": 89900,
+      "sha256": "dd09850965a4a60638a17d99a848017f8828dc5687f2f26ec6b8c814dcbff629"
+    },
+    {
+      "path": "assets/race-audio/voice-trial/contest-vi.mp3",
+      "bytes": 51308,
+      "sha256": "1024eb134b3865deef28d95eb827648df3daf967a164bc7798ac1e89988efaff"
+    },
+    {
+      "path": "assets/race-audio/voice-trial/intro-km-reference.mp3",
+      "bytes": 95372,
+      "sha256": "f95fc148696289c6a122d89550ff90e4d87ba8c9aeb66370b584f3759946a601"
+    },
+    {
+      "path": "assets/race-audio/voice-trial/intro-km.mp3",
+      "bytes": 25388,
+      "sha256": "c6efdb6a7e5922bb2c7cf4fe5aa24c2b17dd7652c3ea86d5f674f610aa76cccc"
+    },
+    {
+      "path": "assets/race-audio/voice-trial/intro-vi-reference.mp3",
+      "bytes": 158156,
+      "sha256": "76adead229ca91017885cc2ce16e0e7ee9fd3afa840388cb08584aae8259d7a6"
+    },
+    {
+      "path": "assets/race-audio/voice-trial/intro-vi.mp3",
+      "bytes": 25676,
+      "sha256": "6c780d4cbfdf84f38deed46990fda6136acae43a46fa8855bedf0352e4a90f4a"
+    },
+    {
+      "path": "assets/race-audio/voice-trial/manifest.json",
+      "bytes": 10482,
+      "sha256": "00d0ba07c69177bdd976347414ce3afeedf97daf71a49c2e62a77096a2987a38"
+    },
+    {
+      "path": "assets/race-audio/voice-trial/sprint-km-reference.mp3",
+      "bytes": 213164,
+      "sha256": "faadc66046471c305e72cf01092a38cf825b8b20bbb3287ff55ae8d293ec54d3"
+    },
+    {
+      "path": "assets/race-audio/voice-trial/sprint-km.mp3",
+      "bytes": 42956,
+      "sha256": "ab051c190eaea99f55be65760804d483cec74db53e13013372405d10e1a4a5a3"
+    },
+    {
+      "path": "assets/race-audio/voice-trial/sprint-vi-reference.mp3",
+      "bytes": 136268,
+      "sha256": "5d56c709d001ac11386d56514c821aa00d54e26c307e983587a92d6eeb2a74d9"
+    },
+    {
+      "path": "assets/race-audio/voice-trial/sprint-vi.mp3",
+      "bytes": 35180,
+      "sha256": "13fbf574c45092854b4d63b51d503cc5f3a4ced4aa0d1ef0b265045a2878a4d8"
+    },
+    {
+      "path": "assets/race-audio/voice-trial/timbre-contest-vi.mp3",
+      "bytes": 52460,
+      "sha256": "1490321ed6135818048e58db762ed6a6e0d92004e450d027fa5ffb4366d3770d"
+    },
+    {
+      "path": "assets/race-audio/index.html",
+      "bytes": 21748,
+      "sha256": "6f81e6dc88c1806431da877cbbf4add7d04edbd343ba930f78703c5cbe79642b"
+    },
+    {
+      "path": "assets/race-audio/manifest.json",
+      "bytes": 126180,
+      "sha256": "37cbb1668a1a9b0d603ce7afca26fde4f88b95a5fbf5d5c174586cb435e9e5a8"
+    },
+    {
+      "path": "assets/race-audio/team-audio.zip",
+      "bytes": 799694,
+      "sha256": "2d60a06ad43941bab270f6d408e4811703b1dec97065d14da095f88de517468e"
+    },
+    {
+      "path": "assets/race-audio/commentary-script.json",
+      "bytes": 14081,
+      "sha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39"
+    },
+    {
+      "path": "assets/race-audio/commentary-trial/manifest.json",
+      "bytes": 29054,
+      "sha256": "a057e351dac3a6fa643742313d7702669a3cd78696439520e701d4bbe691f2da"
+    },
+    {
+      "path": "assets/index-DvnLks7V.js",
+      "bytes": 225948,
+      "sha256": "e65cc58f5b5619e012b5d5e68826769f5ff4016ceadb6160efc4deea0b60cfd9"
+    }
+  ],
+  "contentReviewApproved": false,
+  "independentListeningVerified": false,
+  "physicalTabletTested": false
+}

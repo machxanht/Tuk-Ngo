@@ -102,3 +102,16 @@ stock/reference comparisons and original regressions at three tablet viewports.
 Nine offline provenance/isolation tests and the original-audio check passed;
 the repository lint/test/build gate passed. These technical checks do not change
 the negative content-fidelity result above.
+
+Published comparison: [listen on the existing library](https://machxanht.github.io/Tuk-Ngo/assets/race-audio/?view=voice).
+Source `52883e1`, Pages `5f146e69cae2d6e473dd4385c44734ba54334f51`,
+successful [Actions run 39160952984](https://github.com/machxanht/Tuk-Ngo/actions/runs/39160952984).
+All 20 checked public files match local SHA-256, including the 13 trial/reference
+MP3s, voice manifest, library HTML, unchanged original manifest/team ZIP, stock
+script/manifest and main game bundle. The 14-file voice pack is 1,200,782 bytes.
+Public playback/tablet-layout checks also passed with zero page errors.
+
+The generator now writes manifest JSON with explicit LF newlines. Windows text
+translation had produced different raw bytes from GitHub Pages' normalized file;
+the offline regression checks canonical bytes, and the public hash check passes.
+No voice audio was regenerated for this newline-only correction.

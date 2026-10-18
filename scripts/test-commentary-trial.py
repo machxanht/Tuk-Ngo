@@ -116,6 +116,7 @@ class CommentaryTrialChecks(unittest.TestCase):
     def test_voice_experiment_is_unapproved_separate_and_source_bound(self):
         folder = trial.ROOT / 'public/assets/race-audio'
         voice = json.loads((folder / 'voice-trial/manifest.json').read_text(encoding='utf-8'))
+        self.assertNotIn(b'\r', (folder / 'voice-trial/manifest.json').read_bytes(), 'Canonical LF bytes must match GitHub Pages')
         self.assertEqual(voice['sourceType'], 'ai-reference-voice-conversion')
         self.assertEqual(voice['status'], 'unapproved-content-fidelity')
         self.assertEqual(voice['scriptSha256'], self.plan['scriptSha256'])
