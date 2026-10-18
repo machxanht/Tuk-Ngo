@@ -75,3 +75,19 @@ pause and phase transitions, with no browser errors. These figures describe the
 test, not independent listening quality or physical tablet performance.
 
 Evidence: `docs/qa/race-sound/{source-verification.json,sound-event-checks.json,local/checks.json,local-library/library-checks.json}`.
+
+## Public verification
+
+Implementation `97e054a` is published on Pages
+`ae887cea109c3d3adeb9eaaa2e38c4082bb250ef`, with successful
+[Actions run 39168815926](https://github.com/machxanht/Tuk-Ngo/actions/runs/39168815926).
+All 124 checked public files matched local SHA-256 bytes, including all 114
+runtime audio files, both manifests, root HTML, active game chunks and the team
+archive. The public game completed a legal winning heat and started the next
+heat, with 108 whistle cues, six groove starts and zero browser errors in the
+test. Complete longer paragraphs and a subsequent recurring passage played;
+whistle-only mute left the drum groove active. The library played all four new
+field samples and passed all three tablet viewport checks. Public evidence is
+under `docs/qa/race-sound/public/`, `public-library/` and `published.json`.
+Independent listening, native Khmer review and physical tablet performance remain
+unverified; this records source, scheduling, output and responsive-layout checks.

@@ -1,0 +1,167 @@
+{
+  "independentListeningVerified": false,
+  "physicalTabletTested": false,
+  "stagePlayback": {
+    "duration": 2.481,
+    "currentTime": 0.270663,
+    "readyState": 4,
+    "paused": false
+  },
+  "khmerAiPlayback": {
+    "src": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/commentary-trial/surge-km.mp3?clip=8827110d6f84",
+    "duration": 1.82,
+    "currentTime": 0.215316
+  },
+  "fieldPlayback": [
+    {
+      "src": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/field/coach-whistle-short.mp3?clip=999307ac912f",
+      "duration": 0.19,
+      "currentTime": 0.087195
+    },
+    {
+      "src": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/field/drum-groove-start.mp3?clip=bd3602ad23c1",
+      "duration": 5,
+      "currentTime": 0.09106
+    },
+    {
+      "src": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/field/river-bank-bed.mp3?clip=616cf92c7ac3",
+      "duration": 40,
+      "currentTime": 0.096825
+    },
+    {
+      "src": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/field/finish-crowd-bed.mp3?clip=132a9948171a",
+      "duration": 20,
+      "currentTime": 0.097334
+    }
+  ],
+  "viewports": [
+    [
+      1024,
+      768
+    ],
+    [
+      768,
+      1024
+    ],
+    [
+      1180,
+      430
+    ]
+  ],
+  "teamPlayback": {
+    "src": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/name-pong-tuk-chas-km.mp3?clip=abc40d32f625",
+    "duration": 0.72,
+    "currentTime": 0.236049
+  },
+  "azurePlayback": [
+    {
+      "src": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/commentary-trial/cruise-vi.mp3?clip=6bbf2976821f",
+      "duration": 4.125,
+      "currentTime": 0.244398
+    },
+    {
+      "src": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/commentary-trial/cruise-km.mp3?clip=e8ca41db65bb",
+      "duration": 3.175,
+      "currentTime": 0.238455
+    }
+  ],
+  "scriptViewports": [
+    [
+      1024,
+      768
+    ],
+    [
+      768,
+      1024
+    ],
+    [
+      1180,
+      430
+    ]
+  ],
+  "scriptTrial": {
+    "situations": 20,
+    "vietnameseLines": 20,
+    "khmerDraftLines": 20,
+    "azureAudioCreated": true,
+    "azureSampleCount": 40,
+    "commentatorsCloned": false,
+    "nativeReview": false
+  },
+  "voicePlayback": [
+    {
+      "src": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/voice-trial/intro-vi.mp3?clip=6c780d4cbfdf",
+      "duration": 2.055,
+      "currentTime": 0.212379
+    },
+    {
+      "src": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/voice-trial/contest-vi.mp3?clip=1024eb134b38",
+      "duration": 4.191208,
+      "currentTime": 0.233523
+    },
+    {
+      "src": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/voice-trial/sprint-vi.mp3?clip=13fbf574c450",
+      "duration": 2.844458,
+      "currentTime": 0.234113
+    },
+    {
+      "src": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/voice-trial/intro-km.mp3?clip=c6efdb6a7e59",
+      "duration": 2.03175,
+      "currentTime": 0.229789
+    },
+    {
+      "src": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/voice-trial/contest-km.mp3?clip=4b53df176713",
+      "duration": 9.717583,
+      "currentTime": 0.22789
+    },
+    {
+      "src": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/voice-trial/sprint-km.mp3?clip=ab051c190eae",
+      "duration": 3.494625,
+      "currentTime": 0.240865
+    }
+  ],
+  "voiceViewports": [
+    [
+      1024,
+      768
+    ],
+    [
+      768,
+      1024
+    ],
+    [
+      1180,
+      430
+    ]
+  ],
+  "voiceTrial": {
+    "referenceConditionedSamples": 6,
+    "timbreOnlyControl": 1,
+    "contentReviewApproved": false,
+    "trainedSpeakerModels": false,
+    "independentListeningVerified": false,
+    "emotionVerified": false
+  },
+  "passed": true,
+  "errors": [],
+  "mp3Requests": [
+    "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/khmer-full-effort.mp3?clip=b0c3dfcf6072",
+    "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/commentary-trial/surge-km.mp3?clip=8827110d6f84",
+    "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/field/coach-whistle-short.mp3?clip=999307ac912f",
+    "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/field/drum-groove-start.mp3?clip=bd3602ad23c1",
+    "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/field/river-bank-bed.mp3?clip=616cf92c7ac3",
+    "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/field/finish-crowd-bed.mp3?clip=132a9948171a",
+    "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/name-pong-tuk-chas-km.mp3?clip=abc40d32f625",
+    "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/commentary-trial/cruise-vi.mp3?clip=6bbf2976821f",
+    "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/commentary-trial/cruise-km.mp3?clip=e8ca41db65bb",
+    "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/voice-trial/intro-vi.mp3?clip=6c780d4cbfdf",
+    "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/voice-trial/contest-vi.mp3?clip=1024eb134b38",
+    "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/voice-trial/sprint-vi.mp3?clip=13fbf574c450",
+    "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/voice-trial/intro-km.mp3?clip=c6efdb6a7e59",
+    "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/voice-trial/contest-km.mp3?clip=4b53df176713",
+    "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/voice-trial/sprint-km.mp3?clip=ab051c190eae",
+    "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/commentary-trial/final-vi.mp3?clip=774cd3669014",
+    "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/voice-trial/sprint-km-reference.mp3?clip=faadc6604647",
+    "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/voice-trial/timbre-contest-vi.mp3?clip=1490321ed613"
+  ]
+}
