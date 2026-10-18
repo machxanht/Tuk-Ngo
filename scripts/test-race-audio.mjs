@@ -1,11 +1,12 @@
 import assert from 'node:assert/strict';
 import {readFile,readdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
-import {createCommentaryDirector,resolveBroadcastCue,resolveTeamSpeech,normalizeAudioMix} from '../src/race/race-audio.mjs';
+import {createCommentaryDirector,resolveBroadcastCue,resolveTeamSpeech,normalizeAudioMix,isBroadcastClipApplicable} from '../src/race/race-audio.mjs';
 import {FESTIVAL_TEAMS,festivalTeam} from '../src/race/festival-teams.mjs';
 const folder=new URL('../public/assets/race-audio/',import.meta.url);
 const manifest=JSON.parse(await readFile(new URL('manifest.json',folder)));
-assert.equal(manifest.mode,'broadcast');assert.equal(Object.values(manifest.clips).filter(c=>!c.role).length,19);
+assert.equal(manifest.mode,'broadcast');assert.equal(manifest.schema,3);assert.equal(Object.values(manifest.clips).filter(c=>!c.role).length,25);
+assert.deepEqual(Object.keys(manifest.sources).sort(),['crZF3hghbgQ','Y2fp9gYRIZ8','XagC29Eyt_U','tnb7TdUVRkU'].sort());
 assert.equal(manifest.source.videoId,'crZF3hghbgQ');
 assert.equal(manifest.source.captions.provider,'YouTube');assert.equal(manifest.source.captions.kind,'automatic');
 assert.equal(manifest.source.captions.sha256,'a08fd520f7be92121755cf73dc3d8598f84c17be500aa403b5f1d6cf33008e6a');
@@ -14,7 +15,8 @@ for(const [key,clip]of Object.entries(manifest.clips)){
  const bytes=await readFile(new URL(clip.file,folder));
  assert.equal(createHash('sha256').update(bytes).digest('hex'),clip.sha256,key);
  assert(clip.duration>.08&&clip.duration<15&&clip.peak>.01&&clip.peak<=1,key);
- assert.equal(clip.sourceType,'broadcast');assert(clip.sourceStart>=0&&clip.sourceEnd>clip.sourceStart&&clip.sourceEnd<=manifest.source.duration);
+ const origin=manifest.sources[clip.sourceId];assert(origin,key+' has an identified source');
+ assert.equal(clip.sourceUrl,origin.url);assert.equal(clip.sourceType,'broadcast');assert(clip.sourceStart>=0&&clip.sourceEnd>clip.sourceStart&&clip.sourceEnd<=origin.duration);
  assert(Math.abs(clip.duration-(clip.sourceEnd-clip.sourceStart))<.04,key);
  if(['voice','khmer'].includes(clip.channel)){
   const evidence=clip.captionEvidence;assert(evidence?.words.length>0,key+' has original CC evidence');
@@ -27,7 +29,7 @@ for(const [key,clip]of Object.entries(manifest.clips)){
  }
 }
 for(const event of Object.values(manifest.events))for(const channel of ['voice','khmer'])for(const key of event[channel])assert.equal(manifest.clips[key].channel,channel,key);
-assert.equal(Object.values(manifest.clips).filter(c=>c.channel==='khmer'&&!c.role).length,3);
+assert.equal(Object.values(manifest.clips).filter(c=>c.channel==='khmer'&&!c.role).length,4);
 assert.deepEqual(Object.keys(manifest.teamProfiles).sort(),FESTIVAL_TEAMS.map(t=>t.registrationId).sort(),'Exact 61-entry roster, including missing recordings');
 for(const team of FESTIVAL_TEAMS){
  const profile=manifest.teamProfiles[team.registrationId];
@@ -49,7 +51,8 @@ assert.equal(resolveBroadcastCue({id:'lead--1'},manifest,pair).voice[0],'name-ko
 assert.equal(resolveBroadcastCue({id:'finish',result:'loss'},manifest,pair).voice[0],'name-kos-thum-one-vi');
 assert.equal(resolveBroadcastCue({id:'finish',result:'win'},manifest,pair).voice[0],'name-tum-nup-two-vi');
 assert.deepEqual(manifest.events.go.khmer,['khmer-go']);
-for(const id of ['cruise','halfway','final','surge'])assert.deepEqual(manifest.events[id].khmer,[],'No unrelated Khmer speech at '+id);
+for(const id of ['cruise','halfway'])assert.deepEqual(manifest.events[id].khmer,[],'No unrelated Khmer speech at '+id);
+for(const id of ['final','surge'])assert.deepEqual(manifest.events[id].khmer,['khmer-full-effort'],'Contextual Khmer effort cue at '+id);
 const d=createCommentaryDirector(),state={phase:'countdown',elapsed:0,distances:[0,0],gap:0,pace:'steady',surgeActive:false,combo:0,stamina:100};
 const step=changes=>d.update(Object.assign(state,changes));
 assert.equal(step({})[0].id,'ready');assert.deepEqual(step({}),[]);
@@ -65,6 +68,26 @@ for(const result of ['win','loss','dnf','tie']){
  d.reset();const cue=step({phase:'finished',result})[0],selection=resolveBroadcastCue(cue,manifest);
  assert.equal(cue.result,result);assert(selection.voice.length>0);assert.deepEqual(selection.khmer,result==='win'?['khmer-finish']:[],'Congratulations only follows a player win');
 }
+
+// Do not announce the player's final sprint when only the rival crossed 950 m.
+d.reset();assert(!step({phase:'racing',elapsed:160,distances:[400,960],gap:-560,surgeActive:false}).some(c=>c.id==='final'));
+const racing={phase:'racing',elapsed:160,distances:[960,970],distance:960,gap:-10,pace:'steady',surgeActive:false};
+assert.deepEqual(resolveBroadcastCue({id:'go',elapsed:0},manifest,[],racing),{voice:[],khmer:[]},'Drop a stale start cue');
+assert.deepEqual(resolveBroadcastCue({id:'lead-1'},manifest,pair,racing),{voice:[],khmer:[]},'Do not announce a former leader');
+assert.deepEqual(resolveBroadcastCue({id:'close-race'},manifest,[],racing),{voice:[],khmer:[]},'No level-race statement at a ten-metre gap');
+assert.deepEqual(resolveBroadcastCue({id:'surge'},manifest,[],{...racing,distances:[500,510],pace:'steady'}),{voice:[],khmer:[]},'No hard-effort statement during steady mid-race paddling');
+assert.deepEqual(resolveBroadcastCue({id:'team-history'},manifest,pair,{...racing,phase:'finished'}),{voice:[],khmer:[]},'Do not play historical standings after the current finish');
+const variantA=resolveBroadcastCue({id:'final',variant:0},manifest,[],racing),variantB=resolveBroadcastCue({id:'final',variant:1},manifest,[],racing);
+assert.equal(variantA.voice.length,1);assert.equal(variantB.voice.length,1);assert.notEqual(variantA.voice[0],variantB.voice[0],'Play one alternative, not all excerpts in sequence');
+assert(!isBroadcastClipApplicable(manifest.clips['khmer-full-effort'],{id:'surge'},{...racing,distances:[900,905],surgeActive:true}),'New Khmer effort phrase is final-only');
+assert.deepEqual(resolveBroadcastCue({id:'finish',result:'tie'},manifest,[],{phase:'finished'}).voice,['broadcast-race-appraisal'],'A confirmed tie is not waiting for a judge');
+assert.deepEqual(resolveBroadcastCue({id:'finish',result:'dnf'},manifest,[],{phase:'finished'}).voice,['broadcast-unfortunate']);
+assert.equal(manifest.clips['name-pong-tuk-chas-km'].sourceId,'tnb7TdUVRkU');
+assert.equal(manifest.clips['name-ta-on-vi'].sourceId,'Y2fp9gYRIZ8');
+const catalog=JSON.parse(await readFile(new URL('catalog.json',folder)));
+assert.equal(catalog.scope.completeYouTubeArchive,false);assert.equal(new Set(catalog.videos.map(v=>v.videoId)).size,catalog.videos.length);
+assert(catalog.coverage.captionSources>=20&&catalog.coverage.captionCues>50000);
+assert.equal(catalog.videos.find(v=>v.videoId==='F3wU7YfIivk').uploadYearDiffersFromTitle,true,'Do not infer a 2024 season from a 2022 reupload');
 d.reset();assert.equal(step({phase:'countdown',elapsed:0})[0].id,'ready');
 assert.deepEqual(step({phase:'racing',elapsed:190,distances:[1160,1150],gap:10,surgeActive:false}).map(c=>c.id),['last-fifty']);
 assert.equal(normalizeAudioMix({volume:10,enabled:'no'}).volume,1);assert.equal(normalizeAudioMix({volume:NaN}).volume,.8);assert.equal(normalizeAudioMix(null).enabled,true);

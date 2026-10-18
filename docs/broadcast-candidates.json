@@ -1,0 +1,3650 @@
+{
+  "schema": 1,
+  "notes": "CC search candidates only. No automatic runtime eligibility or historical team-number/gender assignment.",
+  "candidates": [
+    {
+      "sourceId": "3se1jgzDDpo",
+      "sourceUrl": "https://www.youtube.com/watch?v=3se1jgzDDpo&t=45",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 45.399,
+      "rawCaption": "và dành hạng nhì 2015 gặp chiếc bốn mặt",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "3se1jgzDDpo",
+      "sourceUrl": "https://www.youtube.com/watch?v=3se1jgzDDpo&t=71",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 71.56,
+      "rawCaption": "năm nay thì ngay Giai đoạn hai bốn mặt",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "3se1jgzDDpo",
+      "sourceUrl": "https://www.youtube.com/watch?v=3se1jgzDDpo&t=76",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 76.52,
+      "rawCaption": "đoạn đấu bản bốn mặt xếp ở vị trí thứ tư",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "3se1jgzDDpo",
+      "sourceUrl": "https://www.youtube.com/watch?v=3se1jgzDDpo&t=112",
+      "language": "vi",
+      "pagodaDisplayName": "Tà On",
+      "currentPagodaReferences": [
+        "can_tho-30"
+      ],
+      "at": 112.84,
+      "rawCaption": "chẳng hạn như là tà ông chng",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "3se1jgzDDpo",
+      "sourceUrl": "https://www.youtube.com/watch?v=3se1jgzDDpo&t=1882",
+      "language": "vi",
+      "pagodaDisplayName": "Tà On",
+      "currentPagodaReferences": [
+        "can_tho-30"
+      ],
+      "at": 1882.36,
+      "rawCaption": "với đường đua trận thi đấu giữa tà ông",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "3se1jgzDDpo",
+      "sourceUrl": "https://www.youtube.com/watch?v=3se1jgzDDpo&t=1891",
+      "language": "vi",
+      "pagodaDisplayName": "Tà On",
+      "currentPagodaReferences": [
+        "can_tho-30"
+      ],
+      "at": 1891.399,
+      "rawCaption": "chiếc tà Ông của Mỹ Tú trong trang phục",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "xRrcWmg9aGE",
+      "sourceUrl": "https://www.youtube.com/watch?v=xRrcWmg9aGE&t=531",
+      "language": "vi",
+      "pagodaDisplayName": "Đầu Sấu",
+      "currentPagodaReferences": [
+        "ca_mau-11",
+        "ca_mau-12"
+      ],
+      "at": 531.08,
+      "rawCaption": "có mặt ở trận đấu sau cùng trận tranh",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "xRrcWmg9aGE",
+      "sourceUrl": "https://www.youtube.com/watch?v=xRrcWmg9aGE&t=633",
+      "language": "km",
+      "pagodaDisplayName": "ដៃអំពូ",
+      "currentPagodaReferences": [
+        "can_tho-36"
+      ],
+      "at": 633.24,
+      "rawCaption": "ទូក វត្ត ដៃ អំពូយ ជាមួយ នឹង ទូក វត្ត បឹង",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "AlvWo89HEBQ",
+      "sourceUrl": "https://www.youtube.com/watch?v=AlvWo89HEBQ&t=1116",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 1116.25,
+      "rawCaption": "khả năng chiến thắng đã thuộc về bốn mặt",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "AlvWo89HEBQ",
+      "sourceUrl": "https://www.youtube.com/watch?v=AlvWo89HEBQ&t=1711",
+      "language": "vi",
+      "pagodaDisplayName": "Trà Quýt cũ",
+      "currentPagodaReferences": [
+        "can_tho-20"
+      ],
+      "at": 1711.94,
+      "rawCaption": "trà bất hủ của Châu Thành Trà quýt cũ số",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "AlvWo89HEBQ",
+      "sourceUrl": "https://www.youtube.com/watch?v=AlvWo89HEBQ&t=190",
+      "language": "vi",
+      "pagodaDisplayName": "Ngan Dừa",
+      "currentPagodaReferences": [
+        "ca_mau-09",
+        "ca_mau-10"
+      ],
+      "at": 190.75,
+      "rawCaption": "thành sẽ gặp Ngan Dừa Bạc Liêu ở trận",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "AlvWo89HEBQ",
+      "sourceUrl": "https://www.youtube.com/watch?v=AlvWo89HEBQ&t=310",
+      "language": "vi",
+      "pagodaDisplayName": "Ngan Dừa",
+      "currentPagodaReferences": [
+        "ca_mau-09",
+        "ca_mau-10"
+      ],
+      "at": 310.83,
+      "rawCaption": "tôi là Ngan Dừa Bạc Liêu Ngan Dừa các",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "IBBmMGp7_6I",
+      "sourceUrl": "https://www.youtube.com/watch?v=IBBmMGp7_6I&t=272",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 272.41,
+      "rawCaption": "Thành phố Sóc Trăng bốn mặt của Châu",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "IBBmMGp7_6I",
+      "sourceUrl": "https://www.youtube.com/watch?v=IBBmMGp7_6I&t=1642",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 1642.07,
+      "rawCaption": "ra tiếng tâm ngày xưa đó là bốn mặt của",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "IBBmMGp7_6I",
+      "sourceUrl": "https://www.youtube.com/watch?v=IBBmMGp7_6I&t=1644",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 1644.83,
+      "rawCaption": "châu thành bốn mặt bơm khí đăng đề chúng",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "IBBmMGp7_6I",
+      "sourceUrl": "https://www.youtube.com/watch?v=IBBmMGp7_6I&t=159",
+      "language": "vi",
+      "pagodaDisplayName": "Tà On",
+      "currentPagodaReferences": [
+        "can_tho-30"
+      ],
+      "at": 159.63,
+      "rawCaption": "suốt của Mỹ Tú 4 tạ Ông tiếp tục là một",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "IBBmMGp7_6I",
+      "sourceUrl": "https://www.youtube.com/watch?v=IBBmMGp7_6I&t=191",
+      "language": "vi",
+      "pagodaDisplayName": "Tà On",
+      "currentPagodaReferences": [
+        "can_tho-30"
+      ],
+      "at": 191.78,
+      "rawCaption": "sẽ gặp tạ Ông của Mỹ Tú trận thứ hai",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "IBBmMGp7_6I",
+      "sourceUrl": "https://www.youtube.com/watch?v=IBBmMGp7_6I&t=395",
+      "language": "vi",
+      "pagodaDisplayName": "Tà On",
+      "currentPagodaReferences": [
+        "can_tho-30"
+      ],
+      "at": 395.949,
+      "rawCaption": "nhẫn hơn quý vị và các bạn ta ông có bia",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "IBBmMGp7_6I",
+      "sourceUrl": "https://www.youtube.com/watch?v=IBBmMGp7_6I&t=251",
+      "language": "vi",
+      "pagodaDisplayName": "Ngan Dừa",
+      "currentPagodaReferences": [
+        "ca_mau-09",
+        "ca_mau-10"
+      ],
+      "at": 251.05,
+      "rawCaption": "ở Ngan Dừa Bạc Liêu gặp Tam sóc hay tiếp",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "IBBmMGp7_6I",
+      "sourceUrl": "https://www.youtube.com/watch?v=IBBmMGp7_6I&t=1696",
+      "language": "vi",
+      "pagodaDisplayName": "Đầu Sấu",
+      "currentPagodaReferences": [
+        "ca_mau-11",
+        "ca_mau-12"
+      ],
+      "at": 1696.649,
+      "rawCaption": "đội cũng là dòng đấu sau cùng của các",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "IBBmMGp7_6I",
+      "sourceUrl": "https://www.youtube.com/watch?v=IBBmMGp7_6I&t=1729",
+      "language": "vi",
+      "pagodaDisplayName": "Đầu Sấu",
+      "currentPagodaReferences": [
+        "ca_mau-11",
+        "ca_mau-12"
+      ],
+      "at": 1729.35,
+      "rawCaption": "bây giờ là trận đấu sau cùng có giai",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "Nlz8JxkH3Ek",
+      "sourceUrl": "https://www.youtube.com/watch?v=Nlz8JxkH3Ek&t=836",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 836.94,
+      "rawCaption": "đang xem và bốn mặt đưa sáo bên trái khi",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "Nlz8JxkH3Ek",
+      "sourceUrl": "https://www.youtube.com/watch?v=Nlz8JxkH3Ek&t=1113",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 1113.11,
+      "rawCaption": "bốn mặt tập 3 Đông nay rất nhiều kì vọng",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "Nlz8JxkH3Ek",
+      "sourceUrl": "https://www.youtube.com/watch?v=Nlz8JxkH3Ek&t=1464",
+      "language": "vi",
+      "pagodaDisplayName": "Trà Quýt cũ",
+      "currentPagodaReferences": [
+        "can_tho-20"
+      ],
+      "at": 1464.99,
+      "rawCaption": "gặp chiếc trà quýt cũ của Châu Thành bên",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "Nlz8JxkH3Ek",
+      "sourceUrl": "https://www.youtube.com/watch?v=Nlz8JxkH3Ek&t=1535",
+      "language": "vi",
+      "pagodaDisplayName": "Trà Quýt cũ",
+      "currentPagodaReferences": [
+        "can_tho-20"
+      ],
+      "at": 1535.66,
+      "rawCaption": "màu xanh trong khi trà quýt Cửu bơi bên",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "Nlz8JxkH3Ek",
+      "sourceUrl": "https://www.youtube.com/watch?v=Nlz8JxkH3Ek&t=42",
+      "language": "vi",
+      "pagodaDisplayName": "Ngan Dừa",
+      "currentPagodaReferences": [
+        "ca_mau-09",
+        "ca_mau-10"
+      ],
+      "at": 42.39,
+      "rawCaption": "Ngan Dừa Bạc Liêu như chúng ta đã biết",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "Nlz8JxkH3Ek",
+      "sourceUrl": "https://www.youtube.com/watch?v=Nlz8JxkH3Ek&t=66",
+      "language": "vi",
+      "pagodaDisplayName": "Ngan Dừa",
+      "currentPagodaReferences": [
+        "ca_mau-09",
+        "ca_mau-10"
+      ],
+      "at": 66.7,
+      "rawCaption": "sẽ gặp Ngan Dừa Bạc Liêu",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "Nlz8JxkH3Ek",
+      "sourceUrl": "https://www.youtube.com/watch?v=Nlz8JxkH3Ek&t=115",
+      "language": "vi",
+      "pagodaDisplayName": "Ngan Dừa",
+      "currentPagodaReferences": [
+        "ca_mau-09",
+        "ca_mau-10"
+      ],
+      "at": 115.33,
+      "rawCaption": "câu hiện nay đang để cho Ngan Dừa Bạc",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "boELWvQiyrg",
+      "sourceUrl": "https://www.youtube.com/watch?v=boELWvQiyrg&t=255",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 255.349,
+      "rawCaption": "Phường 7 Thành phố Sóc Trăng bốn mặt của",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "boELWvQiyrg",
+      "sourceUrl": "https://www.youtube.com/watch?v=boELWvQiyrg&t=1446",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 1446.52,
+      "rawCaption": "tiếng tâm ngày xưa đó là bốn mặt của",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "boELWvQiyrg",
+      "sourceUrl": "https://www.youtube.com/watch?v=boELWvQiyrg&t=1449",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 1449.13,
+      "rawCaption": "châu thành bốn mặt bơm khí đánh đề chúng",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "boELWvQiyrg",
+      "sourceUrl": "https://www.youtube.com/watch?v=boELWvQiyrg&t=175",
+      "language": "vi",
+      "pagodaDisplayName": "Tà On",
+      "currentPagodaReferences": [
+        "can_tho-30"
+      ],
+      "at": 175.91,
+      "rawCaption": "tạ Ông của Mỹ Tú trận thứ 2 Logan xây",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "boELWvQiyrg",
+      "sourceUrl": "https://www.youtube.com/watch?v=boELWvQiyrg&t=300",
+      "language": "vi",
+      "pagodaDisplayName": "Tà On",
+      "currentPagodaReferences": [
+        "can_tho-30"
+      ],
+      "at": 300.5,
+      "rawCaption": "ở hồ ly đang gặp tạ Ông của Mỹ Tú trên",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "boELWvQiyrg",
+      "sourceUrl": "https://www.youtube.com/watch?v=boELWvQiyrg&t=1690",
+      "language": "vi",
+      "pagodaDisplayName": "Tà On",
+      "currentPagodaReferences": [
+        "can_tho-30"
+      ],
+      "at": 1690.99,
+      "rawCaption": "thủ con coi là tà Ông của Mỹ Tú chúng ta",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "boELWvQiyrg",
+      "sourceUrl": "https://www.youtube.com/watch?v=boELWvQiyrg&t=1676",
+      "language": "vi",
+      "pagodaDisplayName": "Cao Dân",
+      "currentPagodaReferences": [
+        "ca_mau-01"
+      ],
+      "at": 1676.28,
+      "rawCaption": "Và bây giờ quý vị và cao đẳng thân mến",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "boELWvQiyrg",
+      "sourceUrl": "https://www.youtube.com/watch?v=boELWvQiyrg&t=1500",
+      "language": "vi",
+      "pagodaDisplayName": "Đầu Sấu",
+      "currentPagodaReferences": [
+        "ca_mau-11",
+        "ca_mau-12"
+      ],
+      "at": 1500.14,
+      "rawCaption": "dùng 32 đội cũng là dòng đấu sau cùng",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "boELWvQiyrg",
+      "sourceUrl": "https://www.youtube.com/watch?v=boELWvQiyrg&t=1532",
+      "language": "vi",
+      "pagodaDisplayName": "Đầu Sấu",
+      "currentPagodaReferences": [
+        "ca_mau-11",
+        "ca_mau-12"
+      ],
+      "at": 1532.649,
+      "rawCaption": "và bây giờ là trận đấu sau cùng của giai",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "boELWvQiyrg",
+      "sourceUrl": "https://www.youtube.com/watch?v=boELWvQiyrg&t=2241",
+      "language": "vi",
+      "pagodaDisplayName": "Đầu Sấu",
+      "currentPagodaReferences": [
+        "ca_mau-11",
+        "ca_mau-12"
+      ],
+      "at": 2241.799,
+      "rawCaption": "thả đám nước Campuchia ạ ở trận đấu sau",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "mzeY8c9avVE",
+      "sourceUrl": "https://www.youtube.com/watch?v=mzeY8c9avVE&t=911",
+      "language": "vi",
+      "pagodaDisplayName": "Ngan Dừa",
+      "currentPagodaReferences": [
+        "ca_mau-09",
+        "ca_mau-10"
+      ],
+      "at": 911.209,
+      "rawCaption": "Kiên Giang sẽ là Ngan Dừa Bạc Liêu gặp",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "mzeY8c9avVE",
+      "sourceUrl": "https://www.youtube.com/watch?v=mzeY8c9avVE&t=1061",
+      "language": "vi",
+      "pagodaDisplayName": "Ngan Dừa",
+      "currentPagodaReferences": [
+        "ca_mau-09",
+        "ca_mau-10"
+      ],
+      "at": 1061.26,
+      "rawCaption": "sẽ tiếp tục là trận đấu của Ngan Dừa Bạc",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "mzeY8c9avVE",
+      "sourceUrl": "https://www.youtube.com/watch?v=mzeY8c9avVE&t=1090",
+      "language": "vi",
+      "pagodaDisplayName": "Ngan Dừa",
+      "currentPagodaReferences": [
+        "ca_mau-09",
+        "ca_mau-10"
+      ],
+      "at": 1090.27,
+      "rawCaption": "là Ngan Dừa bù Ly sống trâu ba độ ra đến",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "mzeY8c9avVE",
+      "sourceUrl": "https://www.youtube.com/watch?v=mzeY8c9avVE&t=1470",
+      "language": "vi",
+      "pagodaDisplayName": "Đầu Sấu",
+      "currentPagodaReferences": [
+        "ca_mau-11",
+        "ca_mau-12"
+      ],
+      "at": 1470.62,
+      "rawCaption": "để bơi hiện nay trận đấu sau cùng mang",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "o_mwXbooQIw",
+      "sourceUrl": "https://www.youtube.com/watch?v=o_mwXbooQIw&t=99",
+      "language": "vi",
+      "pagodaDisplayName": "Cao Dân",
+      "currentPagodaReferences": [
+        "ca_mau-01"
+      ],
+      "at": 99.57,
+      "rawCaption": "Và bây giờ mới vậy và cao đẳng thằng mến",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "o_mwXbooQIw",
+      "sourceUrl": "https://www.youtube.com/watch?v=o_mwXbooQIw&t=713",
+      "language": "vi",
+      "pagodaDisplayName": "Đầu Sấu",
+      "currentPagodaReferences": [
+        "ca_mau-11",
+        "ca_mau-12"
+      ],
+      "at": 713.08,
+      "rawCaption": "là trận đấu sau cùng của giai đoạn",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "VCiFJynnRjc",
+      "sourceUrl": "https://www.youtube.com/watch?v=VCiFJynnRjc&t=80",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 80.7,
+      "rawCaption": "Ember da sheseido Trum tiếp tục bốn mặt",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "VCiFJynnRjc",
+      "sourceUrl": "https://www.youtube.com/watch?v=VCiFJynnRjc&t=625",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 625.97,
+      "rawCaption": "16 đội khi vượt qua bốn mặt chúng ta",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "VCiFJynnRjc",
+      "sourceUrl": "https://www.youtube.com/watch?v=VCiFJynnRjc&t=640",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 640.399,
+      "rawCaption": "phải màn hình đang dẫn trước bốn mặt",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "k5-uLaPw7kA",
+      "sourceUrl": "https://www.youtube.com/watch?v=k5-uLaPw7kA&t=96",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 96.91,
+      "rawCaption": "seitoku Trum tiếp tục bốn mặt Mỹ Tú sẽ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "k5-uLaPw7kA",
+      "sourceUrl": "https://www.youtube.com/watch?v=k5-uLaPw7kA&t=749",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 749.82,
+      "rawCaption": "chờ tim Cửu và bốn mặt của Châu Thành",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "k5-uLaPw7kA",
+      "sourceUrl": "https://www.youtube.com/watch?v=k5-uLaPw7kA&t=777",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 777.579,
+      "rawCaption": "đến vòng 16 đội khi vượt qua bốn mặt",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "k5-uLaPw7kA",
+      "sourceUrl": "https://www.youtube.com/watch?v=k5-uLaPw7kA&t=160",
+      "language": "vi",
+      "pagodaDisplayName": "Đầu Sấu",
+      "currentPagodaReferences": [
+        "ca_mau-11",
+        "ca_mau-12"
+      ],
+      "at": 160.98,
+      "rawCaption": "chỉ khi đến trận đấu sau Cùng trong đó",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "m0NIgeDSCJY",
+      "sourceUrl": "https://www.youtube.com/watch?v=m0NIgeDSCJY&t=2502",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 2502.16,
+      "rawCaption": "Trung Ngã Năm Gặp bốn mặt khơ l thành",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "m0NIgeDSCJY",
+      "sourceUrl": "https://www.youtube.com/watch?v=m0NIgeDSCJY&t=3940",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 3940.119,
+      "rawCaption": "đài gặp bốn mặt của Châu Thành trước đây",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "m0NIgeDSCJY",
+      "sourceUrl": "https://www.youtube.com/watch?v=m0NIgeDSCJY&t=3951",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 3951.52,
+      "rawCaption": "trận đấu đầu tiên này thì bốn mặt đã",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "m0NIgeDSCJY",
+      "sourceUrl": "https://www.youtube.com/watch?v=m0NIgeDSCJY&t=5041",
+      "language": "vi",
+      "pagodaDisplayName": "Trà Quýt cũ",
+      "currentPagodaReferences": [
+        "can_tho-20"
+      ],
+      "at": 5041.28,
+      "rawCaption": "Châu Thắng trà quýt cũ của Châu Thành",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "m0NIgeDSCJY",
+      "sourceUrl": "https://www.youtube.com/watch?v=m0NIgeDSCJY&t=8267",
+      "language": "vi",
+      "pagodaDisplayName": "Trà Quýt cũ",
+      "currentPagodaReferences": [
+        "can_tho-20"
+      ],
+      "at": 8267.84,
+      "rawCaption": "đang dẫn trước so với trà quýt cũ của CH",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "m0NIgeDSCJY",
+      "sourceUrl": "https://www.youtube.com/watch?v=m0NIgeDSCJY&t=8376",
+      "language": "vi",
+      "pagodaDisplayName": "Trà Quýt cũ",
+      "currentPagodaReferences": [
+        "can_tho-20"
+      ],
+      "at": 8376.359,
+      "rawCaption": "thi đấu cuối cùng sẽ gặp trà quýt cũ Đây",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "m0NIgeDSCJY",
+      "sourceUrl": "https://www.youtube.com/watch?v=m0NIgeDSCJY&t=2498",
+      "language": "vi",
+      "pagodaDisplayName": "Tà On",
+      "currentPagodaReferences": [
+        "can_tho-30"
+      ],
+      "at": 2498.72,
+      "rawCaption": "Trầm ba đìa chuối Bạc Liêu gặp tà ông Ô",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "m0NIgeDSCJY",
+      "sourceUrl": "https://www.youtube.com/watch?v=m0NIgeDSCJY&t=3814",
+      "language": "vi",
+      "pagodaDisplayName": "Tà On",
+      "currentPagodaReferences": [
+        "can_tho-30"
+      ],
+      "at": 3814.88,
+      "rawCaption": "phải màn hình quý vị đang xem gặp tà Ông",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "m0NIgeDSCJY",
+      "sourceUrl": "https://www.youtube.com/watch?v=m0NIgeDSCJY&t=3836",
+      "language": "vi",
+      "pagodaDisplayName": "Tà On",
+      "currentPagodaReferences": [
+        "can_tho-30"
+      ],
+      "at": 3836.319,
+      "rawCaption": "chuối đìa chuối đang gặp tà Ông của Mỹ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "m0NIgeDSCJY",
+      "sourceUrl": "https://www.youtube.com/watch?v=m0NIgeDSCJY&t=2504",
+      "language": "vi",
+      "pagodaDisplayName": "Đìa Muồng",
+      "currentPagodaReferences": [
+        "ca_mau-03",
+        "ca_mau-04"
+      ],
+      "at": 2504.68,
+      "rawCaption": "phố sóp tră gặp bé tôn Mỹ Tú địa muồng",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "m0NIgeDSCJY",
+      "sourceUrl": "https://www.youtube.com/watch?v=m0NIgeDSCJY&t=6872",
+      "language": "vi",
+      "pagodaDisplayName": "Đầu Sấu",
+      "currentPagodaReferences": [
+        "ca_mau-11",
+        "ca_mau-12"
+      ],
+      "at": 6872.079,
+      "rawCaption": "s me trong trận đấu sau cùng ở lật trận",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "m0NIgeDSCJY",
+      "sourceUrl": "https://www.youtube.com/watch?v=m0NIgeDSCJY&t=13156",
+      "language": "vi",
+      "pagodaDisplayName": "Đầu Sấu",
+      "currentPagodaReferences": [
+        "ca_mau-11",
+        "ca_mau-12"
+      ],
+      "at": 13156.6,
+      "rawCaption": "nhau ở trận đấu sau cùng đó là trận",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "m0NIgeDSCJY",
+      "sourceUrl": "https://www.youtube.com/watch?v=m0NIgeDSCJY&t=13509",
+      "language": "vi",
+      "pagodaDisplayName": "Đầu Sấu",
+      "currentPagodaReferences": [
+        "ca_mau-11",
+        "ca_mau-12"
+      ],
+      "at": 13509.12,
+      "rawCaption": "bản thi đấu này bởi ở trận đấu sau chúng",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "m0NIgeDSCJY",
+      "sourceUrl": "https://www.youtube.com/watch?v=m0NIgeDSCJY&t=2498",
+      "language": "vi",
+      "pagodaDisplayName": "Đìa Chuối",
+      "currentPagodaReferences": [
+        "ca_mau-13"
+      ],
+      "at": 2498.72,
+      "rawCaption": "Trầm ba đìa chuối Bạc Liêu gặp tà ông Ô",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "m0NIgeDSCJY",
+      "sourceUrl": "https://www.youtube.com/watch?v=m0NIgeDSCJY&t=3810",
+      "language": "vi",
+      "pagodaDisplayName": "Đìa Chuối",
+      "currentPagodaReferences": [
+        "ca_mau-13"
+      ],
+      "at": 3810.88,
+      "rawCaption": "nha các bạn đó là đìa chuối của Bạc Liêu",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "m0NIgeDSCJY",
+      "sourceUrl": "https://www.youtube.com/watch?v=m0NIgeDSCJY&t=3819",
+      "language": "vi",
+      "pagodaDisplayName": "Đìa Chuối",
+      "currentPagodaReferences": [
+        "ca_mau-13"
+      ],
+      "at": 3819.96,
+      "rawCaption": "vàng nhưng trên Ghe của đìa chuối Bạc",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "F3wU7YfIivk",
+      "sourceUrl": "https://www.youtube.com/watch?v=F3wU7YfIivk&t=1760",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 1760.24,
+      "rawCaption": "bốn mặt của Châu Thành sẽ gặp Tức Ray",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "F3wU7YfIivk",
+      "sourceUrl": "https://www.youtube.com/watch?v=F3wU7YfIivk&t=2756",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 2756.04,
+      "rawCaption": "bốn mặt thì tức ray đang dẫn trước và",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "F3wU7YfIivk",
+      "sourceUrl": "https://www.youtube.com/watch?v=F3wU7YfIivk&t=2789",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 2789.0,
+      "rawCaption": "bốn mặt ở mùa giải năm sau. Một lời cảm",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "F3wU7YfIivk",
+      "sourceUrl": "https://www.youtube.com/watch?v=F3wU7YfIivk&t=8151",
+      "language": "vi",
+      "pagodaDisplayName": "Tà On",
+      "currentPagodaReferences": [
+        "can_tho-30"
+      ],
+      "at": 8151.599,
+      "rawCaption": "nghĩa tạ ơn các đấng siêu nhiên cầu cho",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "F3wU7YfIivk",
+      "sourceUrl": "https://www.youtube.com/watch?v=F3wU7YfIivk&t=8193",
+      "language": "vi",
+      "pagodaDisplayName": "Tà On",
+      "currentPagodaReferences": [
+        "can_tho-30"
+      ],
+      "at": 8193.559,
+      "rawCaption": "tạ ơn thần mặt trăng cầu mong một năm",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "F3wU7YfIivk",
+      "sourceUrl": "https://www.youtube.com/watch?v=F3wU7YfIivk&t=2740",
+      "language": "vi",
+      "pagodaDisplayName": "Săng Ke",
+      "currentPagodaReferences": [
+        "can_tho-45"
+      ],
+      "at": 2740.559,
+      "rawCaption": "thì sằng ke đã dừng lại trước băng cốc",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "F3wU7YfIivk",
+      "sourceUrl": "https://www.youtube.com/watch?v=F3wU7YfIivk&t=4450",
+      "language": "vi",
+      "pagodaDisplayName": "Đầu Sấu",
+      "currentPagodaReferences": [
+        "ca_mau-11",
+        "ca_mau-12"
+      ],
+      "at": 4450.159,
+      "rawCaption": "nhịp dầm từng dòng đấu sau đây chúng ta",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "F3wU7YfIivk",
+      "sourceUrl": "https://www.youtube.com/watch?v=F3wU7YfIivk&t=6695",
+      "language": "vi",
+      "pagodaDisplayName": "Đầu Sấu",
+      "currentPagodaReferences": [
+        "ca_mau-11",
+        "ca_mau-12"
+      ],
+      "at": 6695.199,
+      "rawCaption": "nhất, gai cắn nhất chính là trận đấu sau",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "F3wU7YfIivk",
+      "sourceUrl": "https://www.youtube.com/watch?v=F3wU7YfIivk&t=7342",
+      "language": "vi",
+      "pagodaDisplayName": "Đầu Sấu",
+      "currentPagodaReferences": [
+        "ca_mau-11",
+        "ca_mau-12"
+      ],
+      "at": 7342.079,
+      "rawCaption": "mặt ở trận đấu sau cùng [âm nhạc] của",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "F3wU7YfIivk",
+      "sourceUrl": "https://www.youtube.com/watch?v=F3wU7YfIivk&t=4002",
+      "language": "km",
+      "pagodaDisplayName": "ពងទឹកចាស់",
+      "currentPagodaReferences": [
+        "can_tho-13"
+      ],
+      "at": 4002.88,
+      "rawCaption": "ទី 4 ក្រុម វត្ត ពងទឹក ចាស់ បាន យក ឈ្នះ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "F3wU7YfIivk",
+      "sourceUrl": "https://www.youtube.com/watch?v=F3wU7YfIivk&t=6867",
+      "language": "km",
+      "pagodaDisplayName": "ពងទឹកចាស់",
+      "currentPagodaReferences": [
+        "can_tho-13"
+      ],
+      "at": 6867.719,
+      "rawCaption": "10ពង ទឹកចាស់ ស្រុក និងគ្រឺ រវាង ក្រុមវត្",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "F3wU7YfIivk",
+      "sourceUrl": "https://www.youtube.com/watch?v=F3wU7YfIivk&t=9102",
+      "language": "km",
+      "pagodaDisplayName": "ពងទឹកចាស់",
+      "currentPagodaReferences": [
+        "can_tho-13"
+      ],
+      "at": 9102.84,
+      "rawCaption": "ថា លទ្ធផល ក្រុម ទម្ងរវត្ត ពង ទឹក ចាស់",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "F3wU7YfIivk",
+      "sourceUrl": "https://www.youtube.com/watch?v=F3wU7YfIivk&t=5635",
+      "language": "km",
+      "pagodaDisplayName": "ចំប៉ា",
+      "currentPagodaReferences": [
+        "can_tho-19"
+      ],
+      "at": 5635.119,
+      "rawCaption": "ចំប៉ា ស្រុក ចៅ បាទ នេះ ជា គូ ប្រកួត រវាង",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "F3wU7YfIivk",
+      "sourceUrl": "https://www.youtube.com/watch?v=F3wU7YfIivk&t=6455",
+      "language": "km",
+      "pagodaDisplayName": "ចំប៉ា",
+      "currentPagodaReferences": [
+        "can_tho-19"
+      ],
+      "at": 6455.88,
+      "rawCaption": "អងខជួប ជាមួយ ក្រុមវត ចំប៉ាវណារ ឃុំ ភូតំ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "F3wU7YfIivk",
+      "sourceUrl": "https://www.youtube.com/watch?v=F3wU7YfIivk&t=6494",
+      "language": "km",
+      "pagodaDisplayName": "ចំប៉ា",
+      "currentPagodaReferences": [
+        "can_tho-19"
+      ],
+      "at": 6494.52,
+      "rawCaption": "ហើយ លើក នេះ វត្ត ចំប៉ាវារ មិន អាច យក",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "F3wU7YfIivk",
+      "sourceUrl": "https://www.youtube.com/watch?v=F3wU7YfIivk&t=6302",
+      "language": "km",
+      "pagodaDisplayName": "ទំនប់",
+      "currentPagodaReferences": [
+        "can_tho-22",
+        "can_tho-23",
+        "can_tho-24"
+      ],
+      "at": 6302.0,
+      "rawCaption": "ទំនប់ ពី ផ្ដាច់ ជាង មួយ ទះក្រទិតខាត",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "F3wU7YfIivk",
+      "sourceUrl": "https://www.youtube.com/watch?v=F3wU7YfIivk&t=10213",
+      "language": "km",
+      "pagodaDisplayName": "ទំនប់",
+      "currentPagodaReferences": [
+        "can_tho-22",
+        "can_tho-23",
+        "can_tho-24"
+      ],
+      "at": 10213.439,
+      "rawCaption": "ជាមួយ នឹង ក្រុម ទង វត្ត តើ បើ ទំនប់ ឬ ក៏",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "F3wU7YfIivk",
+      "sourceUrl": "https://www.youtube.com/watch?v=F3wU7YfIivk&t=11029",
+      "language": "km",
+      "pagodaDisplayName": "ទំនប់",
+      "currentPagodaReferences": [
+        "can_tho-22",
+        "can_tho-23",
+        "can_tho-24"
+      ],
+      "at": 11029.64,
+      "rawCaption": "ក្នុង រវង បកណ្តា រវាង ក្រុមវត្ ទំនប់ នង",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "F3wU7YfIivk",
+      "sourceUrl": "https://www.youtube.com/watch?v=F3wU7YfIivk&t=4052",
+      "language": "km",
+      "pagodaDisplayName": "ដៃអំពូ",
+      "currentPagodaReferences": [
+        "can_tho-36"
+      ],
+      "at": 4052.16,
+      "rawCaption": "វត្ត ដៃ អំពូ ឈ្នះ ក្រឹមទ្រម",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "F3wU7YfIivk",
+      "sourceUrl": "https://www.youtube.com/watch?v=F3wU7YfIivk&t=2795",
+      "language": "km",
+      "pagodaDisplayName": "ទឹកប្រៃ",
+      "currentPagodaReferences": [
+        "can_tho-44"
+      ],
+      "at": 2795.4,
+      "rawCaption": "រវាង វត្ត បួន ប្រភេទ និង វត្ត ទឹក ប្រៃ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "F3wU7YfIivk",
+      "sourceUrl": "https://www.youtube.com/watch?v=F3wU7YfIivk&t=2035",
+      "language": "km",
+      "pagodaDisplayName": "សង្កែ",
+      "currentPagodaReferences": [
+        "can_tho-45"
+      ],
+      "at": 2035.08,
+      "rawCaption": "ក្រុម ទង វត្ត សង្កែ គឺ ថា ស្រុក រំភូ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "F3wU7YfIivk",
+      "sourceUrl": "https://www.youtube.com/watch?v=F3wU7YfIivk&t=2044",
+      "language": "km",
+      "pagodaDisplayName": "សង្កែ",
+      "currentPagodaReferences": [
+        "can_tho-45"
+      ],
+      "at": 2044.559,
+      "rawCaption": "ក្រុមវត្ សង្កែ ដែល ជាទូធ៌ ចំណាប់ លេខ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "F3wU7YfIivk",
+      "sourceUrl": "https://www.youtube.com/watch?v=F3wU7YfIivk&t=2052",
+      "language": "km",
+      "pagodaDisplayName": "សង្កែ",
+      "currentPagodaReferences": [
+        "can_tho-45"
+      ],
+      "at": 2052.32,
+      "rawCaption": "ចាត្នោត បាន ជួប ក្នុង នេះ តើ សង្កែ និង",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "F3wU7YfIivk",
+      "sourceUrl": "https://www.youtube.com/watch?v=F3wU7YfIivk&t=2957",
+      "language": "km",
+      "pagodaDisplayName": "ជ្រុងខ្មែរ",
+      "currentPagodaReferences": [
+        "ca_mau-02"
+      ],
+      "at": 2957.92,
+      "rawCaption": "រវាង ក្រុមទ្ ជ្រុង ខ្មែរ មក ពីខាង នឹង",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "F3wU7YfIivk",
+      "sourceUrl": "https://www.youtube.com/watch?v=F3wU7YfIivk&t=4025",
+      "language": "km",
+      "pagodaDisplayName": "ជ្រុងខ្មែរ",
+      "currentPagodaReferences": [
+        "ca_mau-02"
+      ],
+      "at": 4025.359,
+      "rawCaption": "រវាង វត្ត ជ្រុង ខ្មែរ និង វត្ត ព្រៃយ គៀង",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "F3wU7YfIivk",
+      "sourceUrl": "https://www.youtube.com/watch?v=F3wU7YfIivk&t=6108",
+      "language": "km",
+      "pagodaDisplayName": "ជ្រុងខ្មែរ",
+      "currentPagodaReferences": [
+        "ca_mau-02"
+      ],
+      "at": 6108.56,
+      "rawCaption": "កំតែ វត្ត ព្រឹតគុណ ឬ ក៏ វត្ត ជ្រុង ខ្មែរ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "F3wU7YfIivk",
+      "sourceUrl": "https://www.youtube.com/watch?v=F3wU7YfIivk&t=7028",
+      "language": "km",
+      "pagodaDisplayName": "កោះធំ",
+      "currentPagodaReferences": [
+        "ca_mau-05",
+        "ca_mau-06",
+        "ca_mau-07",
+        "ca_mau-08"
+      ],
+      "at": 7028.4,
+      "rawCaption": "កោះ ធំ តំណាង ឲ្យ បាកលីវ ចាប់ផ្ដើម ប្រកួត",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "wI7VrFiAUYs",
+      "sourceUrl": "https://www.youtube.com/watch?v=wI7VrFiAUYs&t=2850",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 2850.92,
+      "rawCaption": "bốn mặt của Châu Thành Botilan của kế",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "wI7VrFiAUYs",
+      "sourceUrl": "https://www.youtube.com/watch?v=wI7VrFiAUYs&t=3781",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 3781.319,
+      "rawCaption": "kháng đài đó là bốn mặt và bây giờ bốn",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "wI7VrFiAUYs",
+      "sourceUrl": "https://www.youtube.com/watch?v=wI7VrFiAUYs&t=3785",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 3785.799,
+      "rawCaption": "khoảng 10 m nữa thôi thì bốn mặt đã vượt",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "wI7VrFiAUYs",
+      "sourceUrl": "https://www.youtube.com/watch?v=wI7VrFiAUYs&t=2865",
+      "language": "vi",
+      "pagodaDisplayName": "Tà On",
+      "currentPagodaReferences": [
+        "can_tho-30"
+      ],
+      "at": 2865.4,
+      "rawCaption": "chớp của Châu Thành, tạ ông của Mỹ Tú da",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "wI7VrFiAUYs",
+      "sourceUrl": "https://www.youtube.com/watch?v=wI7VrFiAUYs&t=4368",
+      "language": "vi",
+      "pagodaDisplayName": "Tà On",
+      "currentPagodaReferences": [
+        "can_tho-30"
+      ],
+      "at": 4368.56,
+      "rawCaption": "ông tà ông và Conông Ch. Thưa quý vị và",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "wI7VrFiAUYs",
+      "sourceUrl": "https://www.youtube.com/watch?v=wI7VrFiAUYs&t=4372",
+      "language": "vi",
+      "pagodaDisplayName": "Tà On",
+      "currentPagodaReferences": [
+        "can_tho-30"
+      ],
+      "at": 4372.239,
+      "rawCaption": "chúng tôi nói là trận đấu giữa Tà Ông Mỹ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "wI7VrFiAUYs",
+      "sourceUrl": "https://www.youtube.com/watch?v=wI7VrFiAUYs&t=13864",
+      "language": "vi",
+      "pagodaDisplayName": "Săng Ke",
+      "currentPagodaReferences": [
+        "can_tho-45"
+      ],
+      "at": 13864.439,
+      "rawCaption": "trí đó gần như đã thuộc về Sầng Keội ghe",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "wI7VrFiAUYs",
+      "sourceUrl": "https://www.youtube.com/watch?v=wI7VrFiAUYs&t=18081",
+      "language": "vi",
+      "pagodaDisplayName": "Săng Ke",
+      "currentPagodaReferences": [
+        "can_tho-45"
+      ],
+      "at": 18081.92,
+      "rawCaption": "sáng chiều sáng kéo tạ rèn thể lực trên",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "wI7VrFiAUYs",
+      "sourceUrl": "https://www.youtube.com/watch?v=wI7VrFiAUYs&t=12682",
+      "language": "vi",
+      "pagodaDisplayName": "Đìa Muồng",
+      "currentPagodaReferences": [
+        "ca_mau-03",
+        "ca_mau-04"
+      ],
+      "at": 12682.16,
+      "rawCaption": "thắng trước địa muồng của Bạc Liêu. Như",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "wI7VrFiAUYs",
+      "sourceUrl": "https://www.youtube.com/watch?v=wI7VrFiAUYs&t=14369",
+      "language": "vi",
+      "pagodaDisplayName": "Đìa Muồng",
+      "currentPagodaReferences": [
+        "ca_mau-03",
+        "ca_mau-04"
+      ],
+      "at": 14369.72,
+      "rawCaption": "bên kia thắng đài địa mương đang tăng",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "wI7VrFiAUYs",
+      "sourceUrl": "https://www.youtube.com/watch?v=wI7VrFiAUYs&t=4914",
+      "language": "vi",
+      "pagodaDisplayName": "Ngan Dừa",
+      "currentPagodaReferences": [
+        "ca_mau-09",
+        "ca_mau-10"
+      ],
+      "at": 4914.639,
+      "rawCaption": "Len số 3 bơi ở đường bơi số 2 ngăn dừa",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "wI7VrFiAUYs",
+      "sourceUrl": "https://www.youtube.com/watch?v=wI7VrFiAUYs&t=10552",
+      "language": "vi",
+      "pagodaDisplayName": "Đầu Sấu",
+      "currentPagodaReferences": [
+        "ca_mau-11",
+        "ca_mau-12"
+      ],
+      "at": 10552.84,
+      "rawCaption": "vọng đi tiếp bằng trận đấu sau cùng để h",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "wI7VrFiAUYs",
+      "sourceUrl": "https://www.youtube.com/watch?v=wI7VrFiAUYs&t=12373",
+      "language": "vi",
+      "pagodaDisplayName": "Đầu Sấu",
+      "currentPagodaReferences": [
+        "ca_mau-11",
+        "ca_mau-12"
+      ],
+      "at": 12373.56,
+      "rawCaption": "trung của ngã năm, đầu sấu của Bạc Liêu,",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "wI7VrFiAUYs",
+      "sourceUrl": "https://www.youtube.com/watch?v=wI7VrFiAUYs&t=12457",
+      "language": "vi",
+      "pagodaDisplayName": "Đầu Sấu",
+      "currentPagodaReferences": [
+        "ca_mau-11",
+        "ca_mau-12"
+      ],
+      "at": 12457.399,
+      "rawCaption": "Chum vừa làm trước đầu sấu của Bạc Liêu.",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "wI7VrFiAUYs",
+      "sourceUrl": "https://www.youtube.com/watch?v=wI7VrFiAUYs&t=2870",
+      "language": "vi",
+      "pagodaDisplayName": "Đìa Chuối",
+      "currentPagodaReferences": [
+        "ca_mau-13"
+      ],
+      "at": 2870.8,
+      "rawCaption": "đìa chuối của Bạc Liêu, Ronoka của Châu",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "wI7VrFiAUYs",
+      "sourceUrl": "https://www.youtube.com/watch?v=wI7VrFiAUYs&t=4480",
+      "language": "vi",
+      "pagodaDisplayName": "Đìa Chuối",
+      "currentPagodaReferences": [
+        "ca_mau-13"
+      ],
+      "at": 4480.36,
+      "rawCaption": "là giữa địa chuối của bạc liêu gặp gạch",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "wI7VrFiAUYs",
+      "sourceUrl": "https://www.youtube.com/watch?v=wI7VrFiAUYs&t=4487",
+      "language": "vi",
+      "pagodaDisplayName": "Đìa Chuối",
+      "currentPagodaReferences": [
+        "ca_mau-13"
+      ],
+      "at": 4487.56,
+      "rawCaption": "bên phía kháng đài địa chuối của bạc",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "wI7VrFiAUYs",
+      "sourceUrl": "https://www.youtube.com/watch?v=wI7VrFiAUYs&t=3570",
+      "language": "km",
+      "pagodaDisplayName": "ពងទឹកចាស់",
+      "currentPagodaReferences": [
+        "can_tho-13"
+      ],
+      "at": 3570.44,
+      "rawCaption": "ទឹកចាទ គឺថា ពង ទឹកចាស់ ស្លាក លេខ 33 ជួប",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "wI7VrFiAUYs",
+      "sourceUrl": "https://www.youtube.com/watch?v=wI7VrFiAUYs&t=8795",
+      "language": "km",
+      "pagodaDisplayName": "ពងទឹកចាស់",
+      "currentPagodaReferences": [
+        "can_tho-13"
+      ],
+      "at": 8795.96,
+      "rawCaption": "នេះ ទូក វត្ត បភេទ និង វត្ត ពង ទឹកចាស់",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "wI7VrFiAUYs",
+      "sourceUrl": "https://www.youtube.com/watch?v=wI7VrFiAUYs&t=5993",
+      "language": "km",
+      "pagodaDisplayName": "ចំប៉ា",
+      "currentPagodaReferences": [
+        "can_tho-19"
+      ],
+      "at": 5993.08,
+      "rawCaption": "វត្ត ចំប៉ា",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "wI7VrFiAUYs",
+      "sourceUrl": "https://www.youtube.com/watch?v=wI7VrFiAUYs&t=12926",
+      "language": "km",
+      "pagodaDisplayName": "ចំប៉ា",
+      "currentPagodaReferences": [
+        "can_tho-19"
+      ],
+      "at": 12926.12,
+      "rawCaption": "និងគ្រណ ទៀត រវាង ក្រុមវត ចំប៉ាវារភ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "wI7VrFiAUYs",
+      "sourceUrl": "https://www.youtube.com/watch?v=wI7VrFiAUYs&t=15902",
+      "language": "km",
+      "pagodaDisplayName": "ចំប៉ា",
+      "currentPagodaReferences": [
+        "can_tho-19"
+      ],
+      "at": 15902.159,
+      "rawCaption": "ក្រុម ទង វត្ត ចំប៉ា ឆ្នាំ នេះ មាន ការ លត",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "wI7VrFiAUYs",
+      "sourceUrl": "https://www.youtube.com/watch?v=wI7VrFiAUYs&t=8116",
+      "language": "km",
+      "pagodaDisplayName": "ទំនប់",
+      "currentPagodaReferences": [
+        "can_tho-22",
+        "can_tho-23",
+        "can_tho-24"
+      ],
+      "at": 8116.76,
+      "rawCaption": "ទំនប់ ទីក្រុង",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "wI7VrFiAUYs",
+      "sourceUrl": "https://www.youtube.com/watch?v=wI7VrFiAUYs&t=8140",
+      "language": "km",
+      "pagodaDisplayName": "ទំនប់",
+      "currentPagodaReferences": [
+        "can_tho-22",
+        "can_tho-23",
+        "can_tho-24"
+      ],
+      "at": 8140.28,
+      "rawCaption": "ទំនប់ ទី ជួប ជាមួយ នឹង វត្ត មី តើ លើក",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "wI7VrFiAUYs",
+      "sourceUrl": "https://www.youtube.com/watch?v=wI7VrFiAUYs&t=18713",
+      "language": "km",
+      "pagodaDisplayName": "ទំនប់",
+      "currentPagodaReferences": [
+        "can_tho-22",
+        "can_tho-23",
+        "can_tho-24"
+      ],
+      "at": 18713.958,
+      "rawCaption": "ទំនប់ នង ទងវត្ត កោះ ធំខេត បាកលាវការ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "wI7VrFiAUYs",
+      "sourceUrl": "https://www.youtube.com/watch?v=wI7VrFiAUYs&t=9658",
+      "language": "km",
+      "pagodaDisplayName": "ដៃអំពូ",
+      "currentPagodaReferences": [
+        "can_tho-36"
+      ],
+      "at": 9658.08,
+      "rawCaption": "ក្រុម ទកង វត្ត ដៃ អំពូ បាទ លិតផល គឺ ថា",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "wI7VrFiAUYs",
+      "sourceUrl": "https://www.youtube.com/watch?v=wI7VrFiAUYs&t=9663",
+      "language": "km",
+      "pagodaDisplayName": "ដៃអំពូ",
+      "currentPagodaReferences": [
+        "can_tho-36"
+      ],
+      "at": 9663.2,
+      "rawCaption": "ក្រម ទង វត្ត [âm nhạc] ដៃ អំពូ តំណាង",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "wI7VrFiAUYs",
+      "sourceUrl": "https://www.youtube.com/watch?v=wI7VrFiAUYs&t=3372",
+      "language": "km",
+      "pagodaDisplayName": "សង្កែ",
+      "currentPagodaReferences": [
+        "can_tho-45"
+      ],
+      "at": 3372.28,
+      "rawCaption": "ទងវត្ត សង្កែ នុភុម ចងខិន មក ស្រុក ស្លា",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "wI7VrFiAUYs",
+      "sourceUrl": "https://www.youtube.com/watch?v=wI7VrFiAUYs&t=3517",
+      "language": "km",
+      "pagodaDisplayName": "សង្កែ",
+      "currentPagodaReferences": [
+        "can_tho-45"
+      ],
+      "at": 3517.2,
+      "rawCaption": "សង្កែ ដូចជា",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "wI7VrFiAUYs",
+      "sourceUrl": "https://www.youtube.com/watch?v=wI7VrFiAUYs&t=3544",
+      "language": "km",
+      "pagodaDisplayName": "សង្កែ",
+      "currentPagodaReferences": [
+        "can_tho-45"
+      ],
+      "at": 3544.64,
+      "rawCaption": "ូច សង្កែ ដូច",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "wI7VrFiAUYs",
+      "sourceUrl": "https://www.youtube.com/watch?v=wI7VrFiAUYs&t=4587",
+      "language": "km",
+      "pagodaDisplayName": "ជ្រុងខ្មែរ",
+      "currentPagodaReferences": [
+        "ca_mau-02"
+      ],
+      "at": 4587.32,
+      "rawCaption": "វត្ត ជ្រុង ខ្មែរឲ្យ កាម៉ា ក៏ បាន យប់",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "wI7VrFiAUYs",
+      "sourceUrl": "https://www.youtube.com/watch?v=wI7VrFiAUYs&t=9788",
+      "language": "km",
+      "pagodaDisplayName": "ជ្រុងខ្មែរ",
+      "currentPagodaReferences": [
+        "ca_mau-02"
+      ],
+      "at": 9788.8,
+      "rawCaption": "ទាំង ពី លើក ដំបូង វត្ត ជ្រុង ខ្មែរ បាន",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "wI7VrFiAUYs",
+      "sourceUrl": "https://www.youtube.com/watch?v=wI7VrFiAUYs&t=9795",
+      "language": "km",
+      "pagodaDisplayName": "ជ្រុងខ្មែរ",
+      "currentPagodaReferences": [
+        "ca_mau-02"
+      ],
+      "at": 9795.64,
+      "rawCaption": "នេះ វត្ត ជ្រុង ខ្មែរ កំ បន្ត យក ឈ្នះ លើ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "wI7VrFiAUYs",
+      "sourceUrl": "https://www.youtube.com/watch?v=wI7VrFiAUYs&t=3359",
+      "language": "km",
+      "pagodaDisplayName": "កោះធំ",
+      "currentPagodaReferences": [
+        "ca_mau-05",
+        "ca_mau-06",
+        "ca_mau-07",
+        "ca_mau-08"
+      ],
+      "at": 3359.839,
+      "rawCaption": "ចំពោះការ ចូលរួម របស់ ក្រុម ទម្ងរវត កោះធំ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "wI7VrFiAUYs",
+      "sourceUrl": "https://www.youtube.com/watch?v=wI7VrFiAUYs&t=13510",
+      "language": "km",
+      "pagodaDisplayName": "កោះធំ",
+      "currentPagodaReferences": [
+        "ca_mau-05",
+        "ca_mau-06",
+        "ca_mau-07",
+        "ca_mau-08"
+      ],
+      "at": 13510.56,
+      "rawCaption": "ទូកទូក វត្ត កោះ ធំ និង វត្ត ដៃទស តើ ទូក",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "wI7VrFiAUYs",
+      "sourceUrl": "https://www.youtube.com/watch?v=wI7VrFiAUYs&t=16999",
+      "language": "km",
+      "pagodaDisplayName": "កោះធំ",
+      "currentPagodaReferences": [
+        "ca_mau-05",
+        "ca_mau-06",
+        "ca_mau-07",
+        "ca_mau-08"
+      ],
+      "at": 16999.84,
+      "rawCaption": "ទម្ងរវ កោះ ធំ និង ទងវត្តខ្វែង នឹង",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "kQ2as2kBDxk",
+      "sourceUrl": "https://www.youtube.com/watch?v=kQ2as2kBDxk&t=3007",
+      "language": "vi",
+      "pagodaDisplayName": "Tà On",
+      "currentPagodaReferences": [
+        "can_tho-30"
+      ],
+      "at": 3007.16,
+      "rawCaption": "thời của tam sóc sau thời của tà on thì",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "kQ2as2kBDxk",
+      "sourceUrl": "https://www.youtube.com/watch?v=kQ2as2kBDxk&t=3838",
+      "language": "vi",
+      "pagodaDisplayName": "Đìa Muồng",
+      "currentPagodaReferences": [
+        "ca_mau-03",
+        "ca_mau-04"
+      ],
+      "at": 3838.839,
+      "rawCaption": "vàng cam đó là đìa muồng của Bạc Liêu",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "kQ2as2kBDxk",
+      "sourceUrl": "https://www.youtube.com/watch?v=kQ2as2kBDxk&t=1577",
+      "language": "vi",
+      "pagodaDisplayName": "Đầu Sấu",
+      "currentPagodaReferences": [
+        "ca_mau-11",
+        "ca_mau-12"
+      ],
+      "at": 1577.52,
+      "rawCaption": "thi đấu sau cùng này đã thuộc về l lộ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "kQ2as2kBDxk",
+      "sourceUrl": "https://www.youtube.com/watch?v=kQ2as2kBDxk&t=13166",
+      "language": "vi",
+      "pagodaDisplayName": "Đầu Sấu",
+      "currentPagodaReferences": [
+        "ca_mau-11",
+        "ca_mau-12"
+      ],
+      "at": 13166.56,
+      "rawCaption": "kho trong trận thi đấu này trận đấu Sau",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "kQ2as2kBDxk",
+      "sourceUrl": "https://www.youtube.com/watch?v=kQ2as2kBDxk&t=14011",
+      "language": "vi",
+      "pagodaDisplayName": "Đầu Sấu",
+      "currentPagodaReferences": [
+        "ca_mau-11",
+        "ca_mau-12"
+      ],
+      "at": 14011.88,
+      "rawCaption": "đây là lạt đấu sau cùng để xác định các",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "kQ2as2kBDxk",
+      "sourceUrl": "https://www.youtube.com/watch?v=kQ2as2kBDxk&t=678",
+      "language": "vi",
+      "pagodaDisplayName": "Đìa Chuối",
+      "currentPagodaReferences": [
+        "ca_mau-13"
+      ],
+      "at": 678.48,
+      "rawCaption": "chùa đìa chuối và cum Bạc",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "kQ2as2kBDxk",
+      "sourceUrl": "https://www.youtube.com/watch?v=kQ2as2kBDxk&t=9507",
+      "language": "vi",
+      "pagodaDisplayName": "Đìa Chuối",
+      "currentPagodaReferences": [
+        "ca_mau-13"
+      ],
+      "at": 9507.92,
+      "rawCaption": "Thành và đìa chuối của Bạc Liêu và trên",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "kQ2as2kBDxk",
+      "sourceUrl": "https://www.youtube.com/watch?v=kQ2as2kBDxk&t=15587",
+      "language": "vi",
+      "pagodaDisplayName": "Đìa Chuối",
+      "currentPagodaReferences": [
+        "ca_mau-13"
+      ],
+      "at": 15587.479,
+      "rawCaption": "ạ giải tư dành cho ghe địa chuỗi đến từ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "tnb7TdUVRkU",
+      "sourceUrl": "https://www.youtube.com/watch?v=tnb7TdUVRkU&t=2740",
+      "language": "vi",
+      "pagodaDisplayName": "Tà On",
+      "currentPagodaReferences": [
+        "can_tho-30"
+      ],
+      "at": 2740.599,
+      "rawCaption": "Và trận thứ chí là phun k th gặp tà ông",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "tnb7TdUVRkU",
+      "sourceUrl": "https://www.youtube.com/watch?v=tnb7TdUVRkU&t=4651",
+      "language": "vi",
+      "pagodaDisplayName": "Tà On",
+      "currentPagodaReferences": [
+        "can_tho-30"
+      ],
+      "at": 4651.199,
+      "rawCaption": "số 25 bởi đường bơi số 2 tà on của Mỹ Tú",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "tnb7TdUVRkU",
+      "sourceUrl": "https://www.youtube.com/watch?v=tnb7TdUVRkU&t=4664",
+      "language": "vi",
+      "pagodaDisplayName": "Tà On",
+      "currentPagodaReferences": [
+        "can_tho-30"
+      ],
+      "at": 4664.0,
+      "rawCaption": "đang dẫn trước so với tà on của Mỹ Tú",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "tnb7TdUVRkU",
+      "sourceUrl": "https://www.youtube.com/watch?v=tnb7TdUVRkU&t=15407",
+      "language": "vi",
+      "pagodaDisplayName": "Săng Ke",
+      "currentPagodaReferences": [
+        "can_tho-45"
+      ],
+      "at": 15407.8,
+      "rawCaption": "Và bây giờ sang ke Trường Khánh Long Phú",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "tnb7TdUVRkU",
+      "sourceUrl": "https://www.youtube.com/watch?v=tnb7TdUVRkU&t=15411",
+      "language": "vi",
+      "pagodaDisplayName": "Săng Ke",
+      "currentPagodaReferences": [
+        "can_tho-45"
+      ],
+      "at": 15411.199,
+      "rawCaption": "slông 2 Mỹ Xuyên Sang Ke Trường Khánh",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "tnb7TdUVRkU",
+      "sourceUrl": "https://www.youtube.com/watch?v=tnb7TdUVRkU&t=16864",
+      "language": "vi",
+      "pagodaDisplayName": "Đìa Muồng",
+      "currentPagodaReferences": [
+        "ca_mau-03",
+        "ca_mau-04"
+      ],
+      "at": 16864.44,
+      "rawCaption": "thứ nhì đó là địa muồng của Bạc Liêu,",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "tnb7TdUVRkU",
+      "sourceUrl": "https://www.youtube.com/watch?v=tnb7TdUVRkU&t=5557",
+      "language": "vi",
+      "pagodaDisplayName": "Ngan Dừa",
+      "currentPagodaReferences": [
+        "ca_mau-09",
+        "ca_mau-10"
+      ],
+      "at": 5557.92,
+      "rawCaption": "និង វត្ត Ngân dưa khách Bắc Liêu.",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "tnb7TdUVRkU",
+      "sourceUrl": "https://www.youtube.com/watch?v=tnb7TdUVRkU&t=16476",
+      "language": "vi",
+      "pagodaDisplayName": "Đầu Sấu",
+      "currentPagodaReferences": [
+        "ca_mau-11",
+        "ca_mau-12"
+      ],
+      "at": 16476.279,
+      "rawCaption": "đấu sau cùng ở bảng J trầm ba của Châu",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "tnb7TdUVRkU",
+      "sourceUrl": "https://www.youtube.com/watch?v=tnb7TdUVRkU&t=2768",
+      "language": "vi",
+      "pagodaDisplayName": "Đìa Chuối",
+      "currentPagodaReferences": [
+        "ca_mau-13"
+      ],
+      "at": 2768.599,
+      "rawCaption": "địa chuối của Bạc Liêu. Ở bảng B là ct",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "tnb7TdUVRkU",
+      "sourceUrl": "https://www.youtube.com/watch?v=tnb7TdUVRkU&t=8268",
+      "language": "vi",
+      "pagodaDisplayName": "Đìa Chuối",
+      "currentPagodaReferences": [
+        "ca_mau-13"
+      ],
+      "at": 8268.16,
+      "rawCaption": "chiếc địa chuối của Bạc Liêu.",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "tnb7TdUVRkU",
+      "sourceUrl": "https://www.youtube.com/watch?v=tnb7TdUVRkU&t=8440",
+      "language": "vi",
+      "pagodaDisplayName": "Đìa Chuối",
+      "currentPagodaReferences": [
+        "ca_mau-13"
+      ],
+      "at": 8440.0,
+      "rawCaption": "năm thì địa chuối của Bạc Liêu cũng đã",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "tnb7TdUVRkU",
+      "sourceUrl": "https://www.youtube.com/watch?v=tnb7TdUVRkU&t=5184",
+      "language": "km",
+      "pagodaDisplayName": "ពងទឹកចាស់",
+      "currentPagodaReferences": [
+        "can_tho-13"
+      ],
+      "at": 5184.679,
+      "rawCaption": "ស្រុក បាទ ឮ សួរ ដល់ វត្ត ពង ទឹកចាស់ ណា",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "tnb7TdUVRkU",
+      "sourceUrl": "https://www.youtube.com/watch?v=tnb7TdUVRkU&t=5198",
+      "language": "km",
+      "pagodaDisplayName": "ពងទឹកចាស់",
+      "currentPagodaReferences": [
+        "can_tho-13"
+      ],
+      "at": 5198.8,
+      "rawCaption": "ក្រឹមទ ទង វត្ត ពងទឹក ចាស់ វត្ត លើក ដំបូង",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "tnb7TdUVRkU",
+      "sourceUrl": "https://www.youtube.com/watch?v=tnb7TdUVRkU&t=5202",
+      "language": "km",
+      "pagodaDisplayName": "ពងទឹកចាស់",
+      "currentPagodaReferences": [
+        "can_tho-13"
+      ],
+      "at": 5202.04,
+      "rawCaption": "ជួប ជាមួយ ក្រុម ទង វត្ត ពង ទឹកចាស់",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "tnb7TdUVRkU",
+      "sourceUrl": "https://www.youtube.com/watch?v=tnb7TdUVRkU&t=4438",
+      "language": "km",
+      "pagodaDisplayName": "ផ្នោរកា",
+      "currentPagodaReferences": [
+        "can_tho-16"
+      ],
+      "at": 4438.92,
+      "rawCaption": "វត្ត ផ្នោរកា ឃុំ ភតម ស្រុកទ្នំ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "tnb7TdUVRkU",
+      "sourceUrl": "https://www.youtube.com/watch?v=tnb7TdUVRkU&t=9768",
+      "language": "km",
+      "pagodaDisplayName": "ផ្នោរកា",
+      "currentPagodaReferences": [
+        "can_tho-16"
+      ],
+      "at": 9768.319,
+      "rawCaption": "រវាង ទកងវត្ត ផ្នោរកា មក ពី ចៅ ជួប ជាមួយ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "tnb7TdUVRkU",
+      "sourceUrl": "https://www.youtube.com/watch?v=tnb7TdUVRkU&t=9788",
+      "language": "km",
+      "pagodaDisplayName": "ផ្នោរកា",
+      "currentPagodaReferences": [
+        "can_tho-16"
+      ],
+      "at": 9788.08,
+      "rawCaption": "ផ្នោរកា បក ឈ្នះ នៅ Đ bឃើញឺទា",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "tnb7TdUVRkU",
+      "sourceUrl": "https://www.youtube.com/watch?v=tnb7TdUVRkU&t=6057",
+      "language": "km",
+      "pagodaDisplayName": "ចំប៉ា",
+      "currentPagodaReferences": [
+        "can_tho-19"
+      ],
+      "at": 6057.28,
+      "rawCaption": "ចំប៉ា សាកល",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "tnb7TdUVRkU",
+      "sourceUrl": "https://www.youtube.com/watch?v=tnb7TdUVRkU&t=6105",
+      "language": "km",
+      "pagodaDisplayName": "ចំប៉ា",
+      "currentPagodaReferences": [
+        "can_tho-19"
+      ],
+      "at": 6105.639,
+      "rawCaption": "យើង ក៏ ធ្លាប់ ដឹងគឺក្រវ ចំប៉ា ហើយ ជា",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "tnb7TdUVRkU",
+      "sourceUrl": "https://www.youtube.com/watch?v=tnb7TdUVRkU&t=11489",
+      "language": "km",
+      "pagodaDisplayName": "ចំប៉ា",
+      "currentPagodaReferences": [
+        "can_tho-19"
+      ],
+      "at": 11489.92,
+      "rawCaption": "វត្ត ចំប៉ា មក ពី ស្រុក ចៅ ដូច យើង បានឃើញ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "tnb7TdUVRkU",
+      "sourceUrl": "https://www.youtube.com/watch?v=tnb7TdUVRkU&t=3477",
+      "language": "km",
+      "pagodaDisplayName": "ទំនប់",
+      "currentPagodaReferences": [
+        "can_tho-22",
+        "can_tho-23",
+        "can_tho-24"
+      ],
+      "at": 3477.039,
+      "rawCaption": "ទំនប់",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "tnb7TdUVRkU",
+      "sourceUrl": "https://www.youtube.com/watch?v=tnb7TdUVRkU&t=11870",
+      "language": "km",
+      "pagodaDisplayName": "ទំនប់",
+      "currentPagodaReferences": [
+        "can_tho-22",
+        "can_tho-23",
+        "can_tho-24"
+      ],
+      "at": 11870.12,
+      "rawCaption": "ស្រលង ទី ស្រុក មីសៀង បាន យក ទងវត្ ទំនប់",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "tnb7TdUVRkU",
+      "sourceUrl": "https://www.youtube.com/watch?v=tnb7TdUVRkU&t=14934",
+      "language": "km",
+      "pagodaDisplayName": "បឹងទន្សា",
+      "currentPagodaReferences": [
+        "can_tho-33"
+      ],
+      "at": 14934.84,
+      "rawCaption": "ទុប វត្ត បឹង ទន្សារ និង វត្ត ផ្នោតមី",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "tnb7TdUVRkU",
+      "sourceUrl": "https://www.youtube.com/watch?v=tnb7TdUVRkU&t=4959",
+      "language": "km",
+      "pagodaDisplayName": "សង្កែ",
+      "currentPagodaReferences": [
+        "can_tho-45"
+      ],
+      "at": 4959.32,
+      "rawCaption": "ជួប ជាមួយ ក្រុម វត្ត សង្កែ ឃុំ ស្រុក យើង",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "tnb7TdUVRkU",
+      "sourceUrl": "https://www.youtube.com/watch?v=tnb7TdUVRkU&t=4980",
+      "language": "km",
+      "pagodaDisplayName": "សង្កែ",
+      "currentPagodaReferences": [
+        "can_tho-45"
+      ],
+      "at": 4980.199,
+      "rawCaption": "អំពូជា ទូក វត្តសង្កែហើយ ទូក វត្តសង្កែ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "tnb7TdUVRkU",
+      "sourceUrl": "https://www.youtube.com/watch?v=tnb7TdUVRkU&t=5139",
+      "language": "km",
+      "pagodaDisplayName": "សង្កែ",
+      "currentPagodaReferences": [
+        "can_tho-45"
+      ],
+      "at": 5139.48,
+      "rawCaption": "ចំពោះ របស់ ក្រុមទង វត្តសង្កែ ដូច យើង បាន",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "tnb7TdUVRkU",
+      "sourceUrl": "https://www.youtube.com/watch?v=tnb7TdUVRkU&t=6059",
+      "language": "km",
+      "pagodaDisplayName": "ជ្រុងខ្មែរ",
+      "currentPagodaReferences": [
+        "ca_mau-02"
+      ],
+      "at": 6059.76,
+      "rawCaption": "ជួប ជាមួយ នឹង ក្រុមវត្ត ជ្រុង ខ្មែរ អំពី",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "tnb7TdUVRkU",
+      "sourceUrl": "https://www.youtube.com/watch?v=tnb7TdUVRkU&t=6119",
+      "language": "km",
+      "pagodaDisplayName": "ជ្រុងខ្មែរ",
+      "currentPagodaReferences": [
+        "ca_mau-02"
+      ],
+      "at": 6119.76,
+      "rawCaption": "គឺ ក្រុមវត្ ចំបា អាច យក ឈ្នះ ជ្រុង ខ្មែរ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "tnb7TdUVRkU",
+      "sourceUrl": "https://www.youtube.com/watch?v=tnb7TdUVRkU&t=6221",
+      "language": "km",
+      "pagodaDisplayName": "ជ្រុងខ្មែរ",
+      "currentPagodaReferences": [
+        "ca_mau-02"
+      ],
+      "at": 6221.719,
+      "rawCaption": "ហើយ ក្រម ទង វត្ត ជ្រុង ខ្មែរ នេះ ក្នុង",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "tnb7TdUVRkU",
+      "sourceUrl": "https://www.youtube.com/watch?v=tnb7TdUVRkU&t=3090",
+      "language": "km",
+      "pagodaDisplayName": "ខ្វែងដង្ហិត",
+      "currentPagodaReferences": [
+        "ca_mau-03",
+        "ca_mau-04"
+      ],
+      "at": 3090.68,
+      "rawCaption": "ទងវត្តខ្វែង ដង្ហិត មក អំពី",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "tnb7TdUVRkU",
+      "sourceUrl": "https://www.youtube.com/watch?v=tnb7TdUVRkU&t=3096",
+      "language": "km",
+      "pagodaDisplayName": "កោះធំ",
+      "currentPagodaReferences": [
+        "ca_mau-05",
+        "ca_mau-06",
+        "ca_mau-07",
+        "ca_mau-08"
+      ],
+      "at": 3096.92,
+      "rawCaption": "ក្រុមទងរ វត្តកោះធំ គឺ ថា នរី វត្តធំ មក",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "tnb7TdUVRkU",
+      "sourceUrl": "https://www.youtube.com/watch?v=tnb7TdUVRkU&t=3107",
+      "language": "km",
+      "pagodaDisplayName": "កោះធំ",
+      "currentPagodaReferences": [
+        "ca_mau-05",
+        "ca_mau-06",
+        "ca_mau-07",
+        "ca_mau-08"
+      ],
+      "at": 3107.64,
+      "rawCaption": "កោះធំ តំណាង ឲ្យ បកលីវ ដែល ជា ក្រុមទូក",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "tnb7TdUVRkU",
+      "sourceUrl": "https://www.youtube.com/watch?v=tnb7TdUVRkU&t=3760",
+      "language": "km",
+      "pagodaDisplayName": "កោះធំ",
+      "currentPagodaReferences": [
+        "ca_mau-05",
+        "ca_mau-06",
+        "ca_mau-07",
+        "ca_mau-08"
+      ],
+      "at": 3760.48,
+      "rawCaption": "ប្រណាំង បនឺ រវាង ក្រុម ទង វត្ត កោះធំ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "CRdgAAg7Mo0",
+      "sourceUrl": "https://www.youtube.com/watch?v=CRdgAAg7Mo0&t=756",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 756.88,
+      "rawCaption": "Châu dau Mỹ Xuyên bốn mặt Châu Thành",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "CRdgAAg7Mo0",
+      "sourceUrl": "https://www.youtube.com/watch?v=CRdgAAg7Mo0&t=2176",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 2176.839,
+      "rawCaption": "bốn mặt của Châu Thành m sắ keo của",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "CRdgAAg7Mo0",
+      "sourceUrl": "https://www.youtube.com/watch?v=CRdgAAg7Mo0&t=3072",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 3072.96,
+      "rawCaption": "giống như là tam sóc với bốn mặt gặp",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "CRdgAAg7Mo0",
+      "sourceUrl": "https://www.youtube.com/watch?v=CRdgAAg7Mo0&t=5436",
+      "language": "vi",
+      "pagodaDisplayName": "Tà On",
+      "currentPagodaReferences": [
+        "can_tho-30"
+      ],
+      "at": 5436.239,
+      "rawCaption": "ra cúng tạ ơn thần mặt trăng người cúng",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "CRdgAAg7Mo0",
+      "sourceUrl": "https://www.youtube.com/watch?v=CRdgAAg7Mo0&t=5460",
+      "language": "vi",
+      "pagodaDisplayName": "Tà On",
+      "currentPagodaReferences": [
+        "can_tho-30"
+      ],
+      "at": 5460.119,
+      "rawCaption": "phước lành Sau Lời khấn vái tạ ơn và Đọc",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "CRdgAAg7Mo0",
+      "sourceUrl": "https://www.youtube.com/watch?v=CRdgAAg7Mo0&t=726",
+      "language": "vi",
+      "pagodaDisplayName": "Cao Dân",
+      "currentPagodaReferences": [
+        "ca_mau-01"
+      ],
+      "at": 726.8,
+      "rawCaption": "đã được xác định bao gồm CaO dân Cà Mao",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "CRdgAAg7Mo0",
+      "sourceUrl": "https://www.youtube.com/watch?v=CRdgAAg7Mo0&t=2068",
+      "language": "vi",
+      "pagodaDisplayName": "Cao Dân",
+      "currentPagodaReferences": [
+        "ca_mau-01"
+      ],
+      "at": 2068.399,
+      "rawCaption": "trận đấu đầu tiên cao dân của Cà Mau gặp",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "CRdgAAg7Mo0",
+      "sourceUrl": "https://www.youtube.com/watch?v=CRdgAAg7Mo0&t=2080",
+      "language": "vi",
+      "pagodaDisplayName": "Cao Dân",
+      "currentPagodaReferences": [
+        "ca_mau-01"
+      ],
+      "at": 2080.679,
+      "rawCaption": "bạn cào mau cao dân ghe số 7 bơi ở phía",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "CRdgAAg7Mo0",
+      "sourceUrl": "https://www.youtube.com/watch?v=CRdgAAg7Mo0&t=3659",
+      "language": "vi",
+      "pagodaDisplayName": "Đầu Sấu",
+      "currentPagodaReferences": [
+        "ca_mau-11",
+        "ca_mau-12"
+      ],
+      "at": 3659.88,
+      "rawCaption": "em đầu sấu bạc cả ơn anh em đã đế với",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "CRdgAAg7Mo0",
+      "sourceUrl": "https://www.youtube.com/watch?v=CRdgAAg7Mo0&t=4396",
+      "language": "vi",
+      "pagodaDisplayName": "Đầu Sấu",
+      "currentPagodaReferences": [
+        "ca_mau-11",
+        "ca_mau-12"
+      ],
+      "at": 4396.52,
+      "rawCaption": "và giờ là trậ đấu sau cùng của gia đ 3",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "CRdgAAg7Mo0",
+      "sourceUrl": "https://www.youtube.com/watch?v=CRdgAAg7Mo0&t=4516",
+      "language": "vi",
+      "pagodaDisplayName": "Đầu Sấu",
+      "currentPagodaReferences": [
+        "ca_mau-11",
+        "ca_mau-12"
+      ],
+      "at": 4516.76,
+      "rawCaption": "trọng Chúng ta cùng chờ trận đấu sau",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "Y2fp9gYRIZ8",
+      "sourceUrl": "https://www.youtube.com/watch?v=Y2fp9gYRIZ8&t=1884",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 1884.88,
+      "rawCaption": "anh xin mời đại diện chùa bốn mặt",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "Y2fp9gYRIZ8",
+      "sourceUrl": "https://www.youtube.com/watch?v=Y2fp9gYRIZ8&t=3248",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 3248.48,
+      "rawCaption": "thời là đối thủ của bốn mặt và bẩn đi",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "Y2fp9gYRIZ8",
+      "sourceUrl": "https://www.youtube.com/watch?v=Y2fp9gYRIZ8&t=4501",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 4501.48,
+      "rawCaption": "diện cho hai thời bốn mặt và bò tiếng",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "Y2fp9gYRIZ8",
+      "sourceUrl": "https://www.youtube.com/watch?v=Y2fp9gYRIZ8&t=13985",
+      "language": "vi",
+      "pagodaDisplayName": "Trà Quýt cũ",
+      "currentPagodaReferences": [
+        "can_tho-20"
+      ],
+      "at": 13985.359,
+      "rawCaption": "và trà quýt cũ là một trận đấu quyết",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "Y2fp9gYRIZ8",
+      "sourceUrl": "https://www.youtube.com/watch?v=Y2fp9gYRIZ8&t=3912",
+      "language": "vi",
+      "pagodaDisplayName": "Tà On",
+      "currentPagodaReferences": [
+        "can_tho-30"
+      ],
+      "at": 3912.359,
+      "rawCaption": "Long Phú gặp tà ông của xã Thượng Hưng",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "Y2fp9gYRIZ8",
+      "sourceUrl": "https://www.youtube.com/watch?v=Y2fp9gYRIZ8&t=3915",
+      "language": "vi",
+      "pagodaDisplayName": "Tà On",
+      "currentPagodaReferences": [
+        "can_tho-30"
+      ],
+      "at": 3915.799,
+      "rawCaption": "Mỹ Tú t tà ông là bơi ở đường bơi số 1",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "Y2fp9gYRIZ8",
+      "sourceUrl": "https://www.youtube.com/watch?v=Y2fp9gYRIZ8&t=9479",
+      "language": "vi",
+      "pagodaDisplayName": "Tà On",
+      "currentPagodaReferences": [
+        "can_tho-30"
+      ],
+      "at": 9479.16,
+      "rawCaption": "trọng không kém giống như là tà ông và",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "Y2fp9gYRIZ8",
+      "sourceUrl": "https://www.youtube.com/watch?v=Y2fp9gYRIZ8&t=2542",
+      "language": "vi",
+      "pagodaDisplayName": "Cao Dân",
+      "currentPagodaReferences": [
+        "ca_mau-01"
+      ],
+      "at": 2542.96,
+      "rawCaption": "vô thi vong X của Hậu Giang cao dân của",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "Y2fp9gYRIZ8",
+      "sourceUrl": "https://www.youtube.com/watch?v=Y2fp9gYRIZ8&t=2550",
+      "language": "vi",
+      "pagodaDisplayName": "Cao Dân",
+      "currentPagodaReferences": [
+        "ca_mau-01"
+      ],
+      "at": 2550.2,
+      "rawCaption": "trang phục màu xanh còn cao dân Cà Mau",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "Y2fp9gYRIZ8",
+      "sourceUrl": "https://www.youtube.com/watch?v=Y2fp9gYRIZ8&t=2557",
+      "language": "vi",
+      "pagodaDisplayName": "Cao Dân",
+      "currentPagodaReferences": [
+        "ca_mau-01"
+      ],
+      "at": 2557.839,
+      "rawCaption": "mau cao dân một sự trở lại hơn 10 năm",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "Y2fp9gYRIZ8",
+      "sourceUrl": "https://www.youtube.com/watch?v=Y2fp9gYRIZ8&t=4106",
+      "language": "vi",
+      "pagodaDisplayName": "Đầu Sấu",
+      "currentPagodaReferences": [
+        "ca_mau-11",
+        "ca_mau-12"
+      ],
+      "at": 4106.759,
+      "rawCaption": "đầu sấu của BC đã dươ lên đầu sấu của BC",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "Y2fp9gYRIZ8",
+      "sourceUrl": "https://www.youtube.com/watch?v=Y2fp9gYRIZ8&t=4118",
+      "language": "vi",
+      "pagodaDisplayName": "Đầu Sấu",
+      "currentPagodaReferences": [
+        "ca_mau-11",
+        "ca_mau-12"
+      ],
+      "at": 4118.08,
+      "rawCaption": "sấu đã vượt lên đầu sấu đã vượt lên",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "Y2fp9gYRIZ8",
+      "sourceUrl": "https://www.youtube.com/watch?v=Y2fp9gYRIZ8&t=4120",
+      "language": "vi",
+      "pagodaDisplayName": "Đầu Sấu",
+      "currentPagodaReferences": [
+        "ca_mau-11",
+        "ca_mau-12"
+      ],
+      "at": 4120.08,
+      "rawCaption": "chúng ta cùng chờ xem đầu sấu đã vượt",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "Y2fp9gYRIZ8",
+      "sourceUrl": "https://www.youtube.com/watch?v=Y2fp9gYRIZ8&t=16951",
+      "language": "vi",
+      "pagodaDisplayName": "Đìa Chuối",
+      "currentPagodaReferences": [
+        "ca_mau-13"
+      ],
+      "at": 16951.44,
+      "rawCaption": "qua chiếc đia chuối cũng chính người",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "Y2fp9gYRIZ8",
+      "sourceUrl": "https://www.youtube.com/watch?v=Y2fp9gYRIZ8&t=19251",
+      "language": "vi",
+      "pagodaDisplayName": "Đìa Chuối",
+      "currentPagodaReferences": [
+        "ca_mau-13"
+      ],
+      "at": 19251.84,
+      "rawCaption": "gặp Địa Chuối của Bạc Liêu đây cũng sẽ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=3086",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 3086.16,
+      "rawCaption": "dừa thơ len 2 và bốn mặt và trên màn",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=6762",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 6762.199,
+      "rawCaption": "rồi có thum hai thì vượt qua bốn mặt với",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=6938",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 6938.28,
+      "rawCaption": "th hai thắng bốn mặt và vừa rồi chúng ta",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=4553",
+      "language": "vi",
+      "pagodaDisplayName": "Trà Quýt cũ",
+      "currentPagodaReferences": [
+        "can_tho-20"
+      ],
+      "at": 4553.12,
+      "rawCaption": "Tố gặp trà quýt cửu",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=4561",
+      "language": "vi",
+      "pagodaDisplayName": "Trà Quýt cũ",
+      "currentPagodaReferences": [
+        "can_tho-20"
+      ],
+      "at": 4561.84,
+      "rawCaption": "Trà quýt cửu năm nay trở lại với dòng",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=4602",
+      "language": "vi",
+      "pagodaDisplayName": "Trà Quýt cũ",
+      "currentPagodaReferences": [
+        "can_tho-20"
+      ],
+      "at": 4602.08,
+      "rawCaption": "phía kháng đài đó là trà quýt cũ. Trà",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=3003",
+      "language": "vi",
+      "pagodaDisplayName": "Tà On",
+      "currentPagodaReferences": [
+        "can_tho-30"
+      ],
+      "at": 3003.96,
+      "rawCaption": "cần nước hai tà ông ở bán D là địa muồn",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=3137",
+      "language": "vi",
+      "pagodaDisplayName": "Tà On",
+      "currentPagodaReferences": [
+        "can_tho-30"
+      ],
+      "at": 3137.0,
+      "rawCaption": "cơ bông chớp gặp tà ongisách",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=3945",
+      "language": "vi",
+      "pagodaDisplayName": "Tà On",
+      "currentPagodaReferences": [
+        "can_tho-30"
+      ],
+      "at": 3945.92,
+      "rawCaption": "của an ninh tà ông của Mỹ Hương Quốc Khở",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=3061",
+      "language": "vi",
+      "pagodaDisplayName": "Cao Dân",
+      "currentPagodaReferences": [
+        "ca_mau-01"
+      ],
+      "at": 3061.76,
+      "rawCaption": "j chúng ta có cao dân chúng ta có cần",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=3168",
+      "language": "vi",
+      "pagodaDisplayName": "Cao Dân",
+      "currentPagodaReferences": [
+        "ca_mau-01"
+      ],
+      "at": 3168.48,
+      "rawCaption": "bí gặp tôn băng ch gặp tù n cao dân gặp",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=6911",
+      "language": "vi",
+      "pagodaDisplayName": "Cao Dân",
+      "currentPagodaReferences": [
+        "ca_mau-01"
+      ],
+      "at": 6911.239,
+      "rawCaption": "Trận thứ 19 sẻo me thắng cao dân trận",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=12480",
+      "language": "vi",
+      "pagodaDisplayName": "Ngan Dừa",
+      "currentPagodaReferences": [
+        "ca_mau-09",
+        "ca_mau-10"
+      ],
+      "at": 12480.04,
+      "rawCaption": "Ngán dừa của Cà Mau vượt qua custom thum",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=3150",
+      "language": "vi",
+      "pagodaDisplayName": "Đầu Sấu",
+      "currentPagodaReferences": [
+        "ca_mau-11",
+        "ca_mau-12"
+      ],
+      "at": 3150.04,
+      "rawCaption": "chấp gặp đầu sấu phono campos gặp trà",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=4535",
+      "language": "vi",
+      "pagodaDisplayName": "Đầu Sấu",
+      "currentPagodaReferences": [
+        "ca_mau-11",
+        "ca_mau-12"
+      ],
+      "at": 4535.92,
+      "rawCaption": "dễ dàng cho anh em đầu sấu của Cào Mau ở",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=4710",
+      "language": "vi",
+      "pagodaDisplayName": "Đầu Sấu",
+      "currentPagodaReferences": [
+        "ca_mau-11",
+        "ca_mau-12"
+      ],
+      "at": 4710.32,
+      "rawCaption": "đó có đầu sấu và chúng ta vừa rồi đã xem",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=11937",
+      "language": "vi",
+      "pagodaDisplayName": "Đìa Chuối",
+      "currentPagodaReferences": [
+        "ca_mau-13"
+      ],
+      "at": 11937.239,
+      "rawCaption": "A. Địa chuối của Cà Mau và Costum 2 cũng",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=12056",
+      "language": "vi",
+      "pagodaDisplayName": "Đìa Chuối",
+      "currentPagodaReferences": [
+        "ca_mau-13"
+      ],
+      "at": 12056.72,
+      "rawCaption": "nội dung bản A địa chuối của Cà Mau",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=12101",
+      "language": "vi",
+      "pagodaDisplayName": "Đìa Chuối",
+      "currentPagodaReferences": [
+        "ca_mau-13"
+      ],
+      "at": 12101.6,
+      "rawCaption": "Còn chiếc K06 là đia chuối của C Mau các",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=5369",
+      "language": "km",
+      "pagodaDisplayName": "ឃ្លាំង",
+      "currentPagodaReferences": [
+        "can_tho-03",
+        "can_tho-04"
+      ],
+      "at": 5369.4,
+      "rawCaption": "ចុះ ឈ្មោះ ពី ទូក គឺ ទីឃ្លាំង ទី ឥឡូវ លើ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=9391",
+      "language": "km",
+      "pagodaDisplayName": "ផ្នោរកា",
+      "currentPagodaReferences": [
+        "can_tho-16"
+      ],
+      "at": 9391.68,
+      "rawCaption": "ដៃ នៅ ខាង ឆ្វេង ដៃ គឺ ផ្នោរកាពផ្លេ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=9398",
+      "language": "km",
+      "pagodaDisplayName": "ផ្នោរកា",
+      "currentPagodaReferences": [
+        "can_tho-16"
+      ],
+      "at": 9398.84,
+      "rawCaption": "ឆ្ងាយ ចំពោះ បងប្អូន ផ្នោរកា ហើយ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=5409",
+      "language": "km",
+      "pagodaDisplayName": "ចំប៉ា",
+      "currentPagodaReferences": [
+        "can_tho-19"
+      ],
+      "at": 5409.4,
+      "rawCaption": "ជា ដំបង លើក នេះ ចំប៉ា យ៉ាង ណា ដែរ ដូចជា",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=5414",
+      "language": "km",
+      "pagodaDisplayName": "ចំប៉ា",
+      "currentPagodaReferences": [
+        "can_tho-19"
+      ],
+      "at": 5414.679,
+      "rawCaption": "បងប្អូន ចំប៉ា យើងហើយ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=15000",
+      "language": "km",
+      "pagodaDisplayName": "ចំប៉ា",
+      "currentPagodaReferences": [
+        "can_tho-19"
+      ],
+      "at": 15000.52,
+      "rawCaption": "ពី លើក គឺ ថា ចំប៉ា និង ដៃតែ លើក នេះ ដៃទស",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=14718",
+      "language": "km",
+      "pagodaDisplayName": "ទំនប់",
+      "currentPagodaReferences": [
+        "can_tho-22",
+        "can_tho-23",
+        "can_tho-24"
+      ],
+      "at": 14718.96,
+      "rawCaption": "យើងឃើញ ថា ទំនប់ ឯកសណ្ឋាន [âm nhạc]",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=15434",
+      "language": "km",
+      "pagodaDisplayName": "ទំនប់",
+      "currentPagodaReferences": [
+        "can_tho-22",
+        "can_tho-23",
+        "can_tho-24"
+      ],
+      "at": 15434.84,
+      "rawCaption": "ទី មួយ ក្នុង ឆ្នាំ នេះ គឺ ថា ទំនប់ ទី",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=17090",
+      "language": "km",
+      "pagodaDisplayName": "ទំនប់",
+      "currentPagodaReferences": [
+        "can_tho-22",
+        "can_tho-23",
+        "can_tho-24"
+      ],
+      "at": 17090.28,
+      "rawCaption": "នឹង រង់ចាំ តែ ព្រោះថា ទំនប់ ទង រូប ដែល",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=5253",
+      "language": "km",
+      "pagodaDisplayName": "សង្កែ",
+      "currentPagodaReferences": [
+        "can_tho-45"
+      ],
+      "at": 5253.679,
+      "rawCaption": "បន គឺ នៅ ក្នុងហក គឺ វត្ត សង្កែ មក ពី ជួប",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=5263",
+      "language": "km",
+      "pagodaDisplayName": "សង្កែ",
+      "currentPagodaReferences": [
+        "can_tho-45"
+      ],
+      "at": 5263.159,
+      "rawCaption": "សង្កែ ឆ្នាំ នេះ យើង មាន វិនិយោគ បកុង",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=14856",
+      "language": "km",
+      "pagodaDisplayName": "សង្កែ",
+      "currentPagodaReferences": [
+        "can_tho-45"
+      ],
+      "at": 14856.88,
+      "rawCaption": "ទក កំពង ដំណើរការ ក្រុម វត្ត សង្កែ បាទ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=5061",
+      "language": "km",
+      "pagodaDisplayName": "ជ្រុងខ្មែរ",
+      "currentPagodaReferences": [
+        "ca_mau-02"
+      ],
+      "at": 5061.52,
+      "rawCaption": "នៅ ជួប ជាមួយ នឹង វត្ត ជ្រុង ខ្មែរ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=5248",
+      "language": "km",
+      "pagodaDisplayName": "ជ្រុងខ្មែរ",
+      "currentPagodaReferences": [
+        "ca_mau-02"
+      ],
+      "at": 5248.679,
+      "rawCaption": "របស់ ទង ជ្រុង ខ្មែរ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=9290",
+      "language": "km",
+      "pagodaDisplayName": "ជ្រុងខ្មែរ",
+      "currentPagodaReferences": [
+        "ca_mau-02"
+      ],
+      "at": 9290.16,
+      "rawCaption": "ជ្រុង ខ្មែរ យើង",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=2566",
+      "language": "km",
+      "pagodaDisplayName": "កោះធំ",
+      "currentPagodaReferences": [
+        "ca_mau-05",
+        "ca_mau-06",
+        "ca_mau-07",
+        "ca_mau-08"
+      ],
+      "at": 2566.0,
+      "rawCaption": "កោះធំ ទីវង ngវាំង ទីភu",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=6679",
+      "language": "km",
+      "pagodaDisplayName": "កោះធំ",
+      "currentPagodaReferences": [
+        "ca_mau-05",
+        "ca_mau-06",
+        "ca_mau-07",
+        "ca_mau-08"
+      ],
+      "at": 6679.04,
+      "rawCaption": "កោះ ធំ ទីធម ទី យើង ធ្វើ បាន លើយ កោះធំ ទី",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U&t=9121",
+      "language": "km",
+      "pagodaDisplayName": "កោះធំ",
+      "currentPagodaReferences": [
+        "ca_mau-05",
+        "ca_mau-06",
+        "ca_mau-07",
+        "ca_mau-08"
+      ],
+      "at": 9121.399,
+      "rawCaption": "ស្ថាន ពណ៌ ស្វាយ អនៅ ខាង ស្ដាំ ដៃ កោះ ធំ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "crZF3hghbgQ",
+      "sourceUrl": "https://www.youtube.com/watch?v=crZF3hghbgQ&t=4127",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 4127.839,
+      "rawCaption": "kỷ 21 thì đó là trà quýt cũ với bốn mặt",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "crZF3hghbgQ",
+      "sourceUrl": "https://www.youtube.com/watch?v=crZF3hghbgQ&t=14176",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 14176.12,
+      "rawCaption": "chức vô địch. Sau thời của bốn mặt 2002,",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "crZF3hghbgQ",
+      "sourceUrl": "https://www.youtube.com/watch?v=crZF3hghbgQ&t=14180",
+      "language": "vi",
+      "pagodaDisplayName": "Bốn Mặt",
+      "currentPagodaReferences": [
+        "can_tho-18"
+      ],
+      "at": 14180.6,
+      "rawCaption": "Bốn mặt dành bốn chức đô địch liên tiếp",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "crZF3hghbgQ",
+      "sourceUrl": "https://www.youtube.com/watch?v=crZF3hghbgQ&t=4111",
+      "language": "vi",
+      "pagodaDisplayName": "Trà Quýt cũ",
+      "currentPagodaReferences": [
+        "can_tho-20"
+      ],
+      "at": 4111.319,
+      "rawCaption": "vàờ là trà quýt cũ xẻo me sẻo me bên",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "crZF3hghbgQ",
+      "sourceUrl": "https://www.youtube.com/watch?v=crZF3hghbgQ&t=4116",
+      "language": "vi",
+      "pagodaDisplayName": "Trà Quýt cũ",
+      "currentPagodaReferences": [
+        "can_tho-20"
+      ],
+      "at": 4116.88,
+      "rawCaption": "trà quýt cũ trong trang phục màu vàng",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "crZF3hghbgQ",
+      "sourceUrl": "https://www.youtube.com/watch?v=crZF3hghbgQ&t=4127",
+      "language": "vi",
+      "pagodaDisplayName": "Trà Quýt cũ",
+      "currentPagodaReferences": [
+        "can_tho-20"
+      ],
+      "at": 4127.839,
+      "rawCaption": "kỷ 21 thì đó là trà quýt cũ với bốn mặt",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "crZF3hghbgQ",
+      "sourceUrl": "https://www.youtube.com/watch?v=crZF3hghbgQ&t=5507",
+      "language": "vi",
+      "pagodaDisplayName": "Đầu Sấu",
+      "currentPagodaReferences": [
+        "ca_mau-11",
+        "ca_mau-12"
+      ],
+      "at": 5507.48,
+      "rawCaption": "ke đầu sấu [âm nhạc] 1 botisaragam 2 bô",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "crZF3hghbgQ",
+      "sourceUrl": "https://www.youtube.com/watch?v=crZF3hghbgQ&t=5518",
+      "language": "vi",
+      "pagodaDisplayName": "Đầu Sấu",
+      "currentPagodaReferences": [
+        "ca_mau-11",
+        "ca_mau-12"
+      ],
+      "at": 5518.48,
+      "rawCaption": "đấu sau cùng này giữa c th 2 và ôm bu",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "crZF3hghbgQ",
+      "sourceUrl": "https://www.youtube.com/watch?v=crZF3hghbgQ&t=7609",
+      "language": "vi",
+      "pagodaDisplayName": "Đầu Sấu",
+      "currentPagodaReferences": [
+        "ca_mau-11",
+        "ca_mau-12"
+      ],
+      "at": 7609.92,
+      "rawCaption": "Chỉ có đặc biệt ở trận đấu sau cùng của",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "crZF3hghbgQ",
+      "sourceUrl": "https://www.youtube.com/watch?v=crZF3hghbgQ&t=4480",
+      "language": "km",
+      "pagodaDisplayName": "ទំនប់",
+      "currentPagodaReferences": [
+        "can_tho-22",
+        "can_tho-23",
+        "can_tho-24"
+      ],
+      "at": 4480.159,
+      "rawCaption": "ទង្ ទំនប់ ដែល ជា ទងឈរ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "crZF3hghbgQ",
+      "sourceUrl": "https://www.youtube.com/watch?v=crZF3hghbgQ&t=4667",
+      "language": "km",
+      "pagodaDisplayName": "សង្កែ",
+      "currentPagodaReferences": [
+        "can_tho-45"
+      ],
+      "at": 4667.12,
+      "rawCaption": "បាទ សង្កែ បាន យក ឈ្នះ លោក គ្រឹមទេ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "crZF3hghbgQ",
+      "sourceUrl": "https://www.youtube.com/watch?v=crZF3hghbgQ&t=4677",
+      "language": "km",
+      "pagodaDisplayName": "សង្កែ",
+      "currentPagodaReferences": [
+        "can_tho-45"
+      ],
+      "at": 4677.719,
+      "rawCaption": "ចំពោះ ទង វត្ត សង្កែ និង បនត ចូល ប្រកួត",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "crZF3hghbgQ",
+      "sourceUrl": "https://www.youtube.com/watch?v=crZF3hghbgQ&t=4807",
+      "language": "km",
+      "pagodaDisplayName": "សង្កែ",
+      "currentPagodaReferences": [
+        "can_tho-45"
+      ],
+      "at": 4807.0,
+      "rawCaption": "ហើយ វត្ត សង្កែ និង វត្ត រង្សី អងខំ នេះ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "crZF3hghbgQ",
+      "sourceUrl": "https://www.youtube.com/watch?v=crZF3hghbgQ&t=4364",
+      "language": "km",
+      "pagodaDisplayName": "ជ្រុងខ្មែរ",
+      "currentPagodaReferences": [
+        "ca_mau-02"
+      ],
+      "at": 4364.76,
+      "rawCaption": "កាណា ដែរ គឺវត្ត ជ្រុង ខ្មែរ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "crZF3hghbgQ",
+      "sourceUrl": "https://www.youtube.com/watch?v=crZF3hghbgQ&t=4444",
+      "language": "km",
+      "pagodaDisplayName": "ជ្រុងខ្មែរ",
+      "currentPagodaReferences": [
+        "ca_mau-02"
+      ],
+      "at": 4444.36,
+      "rawCaption": "ទីម បាន យក ឆ្នឹម ទង្វរ វត្ត ជ្រុង ខ្មែរ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "crZF3hghbgQ",
+      "sourceUrl": "https://www.youtube.com/watch?v=crZF3hghbgQ&t=5434",
+      "language": "km",
+      "pagodaDisplayName": "កោះធំ",
+      "currentPagodaReferences": [
+        "ca_mau-05",
+        "ca_mau-06",
+        "ca_mau-07",
+        "ca_mau-08"
+      ],
+      "at": 5434.48,
+      "rawCaption": "រវាង ក្រុម ទងវត្ត កោះ ធំ ទី 2 រវាង ជាមួយ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "crZF3hghbgQ",
+      "sourceUrl": "https://www.youtube.com/watch?v=crZF3hghbgQ&t=8271",
+      "language": "km",
+      "pagodaDisplayName": "កោះធំ",
+      "currentPagodaReferences": [
+        "ca_mau-05",
+        "ca_mau-06",
+        "ca_mau-07",
+        "ca_mau-08"
+      ],
+      "at": 8271.16,
+      "rawCaption": "ថា កោះ ធំ ទី កន្លង យើង បាន បង អង ដំណើរ",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    },
+    {
+      "sourceId": "crZF3hghbgQ",
+      "sourceUrl": "https://www.youtube.com/watch?v=crZF3hghbgQ&t=8273",
+      "language": "km",
+      "pagodaDisplayName": "កោះធំ",
+      "currentPagodaReferences": [
+        "ca_mau-05",
+        "ca_mau-06",
+        "ca_mau-07",
+        "ca_mau-08"
+      ],
+      "at": 8273.8,
+      "rawCaption": "ហើយ លើក នេះ កោះ ធំ ទី ជួប ជាមួយ នឹង ទង",
+      "status": "candidate-only",
+      "identityLevel": "text-name-match-not-historical-registration",
+      "speakerIdentityVerified": false
+    }
+  ]
+}

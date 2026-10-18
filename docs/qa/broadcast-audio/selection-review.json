@@ -1,0 +1,774 @@
+{
+  "schema": 1,
+  "independentListeningVerified": false,
+  "speakerIdentityVerifiedAcrossSeasons": false,
+  "selectedAdditions": [
+    {
+      "sourceId": "Y2fp9gYRIZ8",
+      "sourceStart": 3913.559,
+      "sourceEnd": 3914.72,
+      "text": "Tà On",
+      "translationVi": null,
+      "captionEvidence": {
+        "words": [
+          [
+            3913.559,
+            "tà"
+          ],
+          [
+            3914.2,
+            "ông"
+          ]
+        ],
+        "nextWordStart": 3914.76
+      },
+      "asrEvidence": {
+        "backend": "local-whisper",
+        "text": " Giữa băng gô chấp chấp của xã Châu Khánh, quyện Long Phú gặp tà ông của xã Thượng Hưng, Mỹ Tú. Tầng tà ông là bơi ở đường bơi số 1 trong trang phục màu vàng.",
+        "audioSha256": "e0b2e8bb6a1d1702ac527775c193115961fdcff66f7631346d484cf4f80edc90",
+        "reviewStatus": "machine-transcript-only"
+      },
+      "reviewStatus": "cc-and-context-reviewed-not-listening-certified",
+      "clip": "name-ta-on-vi"
+    },
+    {
+      "sourceId": "Y2fp9gYRIZ8",
+      "sourceStart": 4040.44,
+      "sourceEnd": 4042.3,
+      "text": "Trà Quýt Mới",
+      "translationVi": null,
+      "captionEvidence": {
+        "words": [
+          [
+            4040.44,
+            "trà"
+          ],
+          [
+            4041.079,
+            "quýt"
+          ],
+          [
+            4041.4,
+            "mới"
+          ]
+        ],
+        "nextWordStart": 4042.359
+      },
+      "asrEvidence": {
+        "backend": "local-whisper",
+        "text": " Trà quýt mới Trà quýt mới",
+        "audioSha256": "04e200bdc1f1879516bf99b3fb9aacb0005b43200c15c3782301a9f7701c6973",
+        "reviewStatus": "machine-transcript-only"
+      },
+      "reviewStatus": "cc-and-context-reviewed-not-listening-certified",
+      "clip": "name-tra-quyt-moi-vi"
+    },
+    {
+      "sourceId": "Y2fp9gYRIZ8",
+      "sourceStart": 6010.36,
+      "sourceEnd": 6011.04,
+      "text": "Trà Cuôn",
+      "translationVi": null,
+      "captionEvidence": {
+        "words": [
+          [
+            6010.36,
+            "trà"
+          ],
+          [
+            6010.679,
+            "cuô"
+          ]
+        ],
+        "nextWordStart": 6011.08
+      },
+      "asrEvidence": {
+        "backend": "local-whisper",
+        "text": " Đó là Sê Gây Căn Đan của Vĩnh Châu 20 là Trà Cung 2 Ghe số 4 là Sê Gây Căn Đan Và chúng ta thấy Sê Gây Căn Đan",
+        "audioSha256": "9d8a76524e6c92ddeb2f967d55db7ff699e09d92bbe1f6ad69da30ae124d4bf7",
+        "reviewStatus": "machine-transcript-only"
+      },
+      "reviewStatus": "cc-and-context-reviewed-not-listening-certified",
+      "clip": "name-tra-cuon-vi"
+    },
+    {
+      "sourceId": "XagC29Eyt_U",
+      "sourceStart": 5411.719,
+      "sourceEnd": 5412.12,
+      "text": "ចំប៉ា",
+      "translationVi": "Cham Pa",
+      "captionEvidence": {
+        "words": [
+          [
+            5411.719,
+            "ចំប៉ា"
+          ]
+        ],
+        "nextWordStart": 5412.159
+      },
+      "asrEvidence": {
+        "backend": "khmer-service",
+        "model": "https://huggingface.co/Vatho/Khmer-ocm",
+        "text": "ដើលើកនេះចំប៉ាយ៉ាងណាដែរហាក់ដូចជាលំបាកឲ្យបងប្អូនចំបុាយើងហើយ",
+        "audioSha256": "1ad656322c28183abeecb7b1216ab7a45fcbbf410080fdafe7592bf2724ca3e5",
+        "reviewStatus": "machine-transcript-only"
+      },
+      "reviewStatus": "cc-and-context-reviewed-not-listening-certified",
+      "clip": "name-cham-pa-km"
+    },
+    {
+      "sourceId": "tnb7TdUVRkU",
+      "sourceStart": 5186.52,
+      "sourceEnd": 5187.24,
+      "text": "ពងទឹកចាស់",
+      "translationVi": "Pong Tứk Chắc",
+      "captionEvidence": {
+        "words": [
+          [
+            5186.52,
+            "ពង"
+          ],
+          [
+            5186.719,
+            "ទឹកចាស់"
+          ]
+        ],
+        "nextWordStart": 5187.28
+      },
+      "asrEvidence": {
+        "backend": "khmer-service",
+        "model": "https://huggingface.co/Vatho/Khmer-ocm",
+        "text": "ក្រុមទាំងរវត្តពងទឹកចាស់ស្រុកធិន្ត្រីបាទើសូរដល់វត្តពងទឹកចាស់នរណាក៏ដឹងហើយ",
+        "audioSha256": "0c74e75f5d1426a3e5e1244706c5854e5d78d7840846787a0d7036f00d55e26f",
+        "reviewStatus": "machine-transcript-only"
+      },
+      "reviewStatus": "cc-and-context-reviewed-not-listening-certified",
+      "clip": "name-pong-tuk-chas-km"
+    },
+    {
+      "sourceId": "Y2fp9gYRIZ8",
+      "sourceStart": 3682.0,
+      "sourceEnd": 3685.8,
+      "text": "Chúng ta thấy nhịp dầm của anh em đã được đẩy mạnh hơn rồi.",
+      "translationVi": null,
+      "captionEvidence": {
+        "words": [
+          [
+            3682.0,
+            "chúng"
+          ],
+          [
+            3682.16,
+            "ta"
+          ],
+          [
+            3682.28,
+            "thấy"
+          ],
+          [
+            3682.48,
+            "nhịp"
+          ],
+          [
+            3682.76,
+            "dầm"
+          ],
+          [
+            3682.96,
+            "của"
+          ],
+          [
+            3683.119,
+            "anh"
+          ],
+          [
+            3683.28,
+            "em"
+          ],
+          [
+            3683.48,
+            "đã"
+          ],
+          [
+            3683.64,
+            "được"
+          ],
+          [
+            3683.799,
+            "đẩy"
+          ],
+          [
+            3684.119,
+            "mạnh"
+          ],
+          [
+            3684.359,
+            "hơn"
+          ],
+          [
+            3684.92,
+            "rồi"
+          ]
+        ],
+        "nextWordStart": 3686.0
+      },
+      "asrEvidence": {
+        "backend": "local-whisper",
+        "text": " Ở trận thi đấu này, băng toàn xa bắt đầu tung nước rút, chúng ta thấy nhịp dầm của anh em đã được đẩy mạnh hơn rồi. Băng toàn xa, băng toàn xa, nhịp dầm của anh em đã đẩy mạnh hơn, băng kha giòn cũng không hề.",
+        "audioSha256": "14d92bf1ca4fea127fc63bee7176c196e0cd6cfa57845e371035ba614f1e02cb",
+        "reviewStatus": "machine-transcript-only"
+      },
+      "reviewStatus": "cc-and-context-reviewed-not-listening-certified",
+      "clip": "broadcast-stroke-strength"
+    },
+    {
+      "sourceId": "Y2fp9gYRIZ8",
+      "sourceStart": 6025.0,
+      "sourceEnd": 6028.5,
+      "text": "Sẽ là những cú nước rút để phân định thắng thua.",
+      "translationVi": null,
+      "captionEvidence": {
+        "words": [
+          [
+            6025.0,
+            "sẽ"
+          ],
+          [
+            6025.32,
+            "là"
+          ],
+          [
+            6025.56,
+            "những"
+          ],
+          [
+            6025.76,
+            "cú"
+          ],
+          [
+            6026.0,
+            "nước"
+          ],
+          [
+            6026.159,
+            "rút"
+          ],
+          [
+            6026.4,
+            "để"
+          ],
+          [
+            6026.719,
+            "phân"
+          ],
+          [
+            6027.08,
+            "định"
+          ],
+          [
+            6027.32,
+            "thắng"
+          ],
+          [
+            6027.679,
+            "thua"
+          ]
+        ],
+        "nextWordStart": 6028.679
+      },
+      "asrEvidence": {
+        "backend": "local-whisper",
+        "text": " Sẽ là những túi nước rút để thân định thắng thua",
+        "audioSha256": "7549f94658c8102bfc4e6ae55eda903428ccd2b738b09284eaacbc9a8f27d349",
+        "reviewStatus": "machine-transcript-only"
+      },
+      "reviewStatus": "cc-and-context-reviewed-not-listening-certified",
+      "clip": "broadcast-final-contest"
+    },
+    {
+      "sourceId": "Y2fp9gYRIZ8",
+      "sourceStart": 3673.2,
+      "sourceEnd": 3676.37,
+      "text": "Còn rất là so kè. Một trận đấu cực kỳ hấp dẫn.",
+      "translationVi": null,
+      "captionEvidence": {
+        "words": [
+          [
+            3673.2,
+            "còn"
+          ],
+          [
+            3673.52,
+            "rất"
+          ],
+          [
+            3673.76,
+            "là"
+          ],
+          [
+            3673.92,
+            "so"
+          ],
+          [
+            3674.319,
+            "kè"
+          ],
+          [
+            3674.88,
+            "một"
+          ],
+          [
+            3675.079,
+            "trận"
+          ],
+          [
+            3675.319,
+            "đấu"
+          ],
+          [
+            3675.599,
+            "cực"
+          ],
+          [
+            3675.799,
+            "kỳ"
+          ],
+          [
+            3675.96,
+            "hấp"
+          ],
+          [
+            3676.2,
+            "dẫn"
+          ]
+        ],
+        "nextWordStart": 3676.4
+      },
+      "asrEvidence": null,
+      "reviewStatus": "cc-and-context-reviewed-not-listening-certified",
+      "clip": "broadcast-close-contest"
+    },
+    {
+      "sourceId": "Y2fp9gYRIZ8",
+      "sourceStart": 3674.88,
+      "sourceEnd": 3676.37,
+      "text": "Một trận đấu cực kỳ hấp dẫn.",
+      "translationVi": null,
+      "captionEvidence": {
+        "words": [
+          [
+            3674.88,
+            "một"
+          ],
+          [
+            3675.079,
+            "trận"
+          ],
+          [
+            3675.319,
+            "đấu"
+          ],
+          [
+            3675.599,
+            "cực"
+          ],
+          [
+            3675.799,
+            "kỳ"
+          ],
+          [
+            3675.96,
+            "hấp"
+          ],
+          [
+            3676.2,
+            "dẫn"
+          ]
+        ],
+        "nextWordStart": 3676.4
+      },
+      "asrEvidence": null,
+      "reviewStatus": "cc-and-context-reviewed-not-listening-certified",
+      "clip": "broadcast-race-appraisal"
+    },
+    {
+      "sourceId": "Y2fp9gYRIZ8",
+      "sourceStart": 17615.958,
+      "sourceEnd": 17616.95,
+      "text": "Rất là tiếc.",
+      "translationVi": null,
+      "captionEvidence": {
+        "words": [
+          [
+            17615.958,
+            "Rất"
+          ],
+          [
+            17616.2,
+            "là"
+          ],
+          [
+            17616.4,
+            "tiếc"
+          ]
+        ],
+        "nextWordStart": 17617.08
+      },
+      "asrEvidence": null,
+      "reviewStatus": "cc-and-context-reviewed-not-listening-certified",
+      "clip": "broadcast-unfortunate"
+    },
+    {
+      "sourceId": "tnb7TdUVRkU",
+      "sourceStart": 11054.319,
+      "sourceEnd": 11056.8,
+      "text": "ត្រូវតែខំប្រឹងអស់ពីសមត្ថភាព",
+      "translationVi": "Phải cố gắng hết sức mình.",
+      "captionEvidence": {
+        "words": [
+          [
+            11054.319,
+            "ត្រូវតែ"
+          ],
+          [
+            11054.8,
+            "ខំ"
+          ],
+          [
+            11055.08,
+            "ប្រឹង"
+          ],
+          [
+            11055.359,
+            "អស់"
+          ],
+          [
+            11055.479,
+            "ពី"
+          ],
+          [
+            11055.6,
+            "សមត្ថភាព"
+          ]
+        ],
+        "nextWordStart": 11058.12
+      },
+      "asrEvidence": {
+        "backend": "khmer-service",
+        "model": "https://huggingface.co/Vatho/Khmer-ocm",
+        "text": "លើកបបួនលោកនេះគឺបងប្អូនត្រូវតែខំប្រឹងអត់ពីសមិត្ថភាពនិយាយដល់ទុកវវត្តស្រីកណ្ដាលដូចជា",
+        "audioSha256": "9f7bc3d7bba1ae16b23cc62917a35535b922990f2302e0b40ab866a83b9d4057",
+        "reviewStatus": "machine-transcript-only"
+      },
+      "reviewStatus": "cc-and-context-reviewed-not-listening-certified",
+      "clip": "khmer-full-effort"
+    }
+  ],
+  "withheldCandidates": [
+    {
+      "excerptId": "khmer-level-race",
+      "sourceId": "tnb7TdUVRkU",
+      "start": 3436.5,
+      "end": 3443,
+      "machineText": "ខ្វែងនិងហិតខេត្តបាកលាវគទូកទាំងពីរមកកាន់ខ្សែប្រតស្មៅខ្នះបើតាមយើងទស្សនាដោយភ្នែកផ្ទល់",
+      "reason": "Secondary ASR contains finish-line context; cannot safely use as generic level-race commentary."
+    },
+    {
+      "excerptId": "cao-dan",
+      "start": 2544.9,
+      "end": 2547,
+      "sourceId": "Y2fp9gYRIZ8",
+      "machineText": " Hãy subscribe cho kênh La La School Để không bỏ lỡ những video hấp dẫn",
+      "status": "inconclusive-not-used-as-semantic-proof",
+      "reason": "Unrelated stock promotional sentence disagrees with the original CC/race context."
+    },
+    {
+      "excerptId": "wat-pich",
+      "start": 4856.7,
+      "end": 4864,
+      "sourceId": "Y2fp9gYRIZ8",
+      "machineText": " Hãy subscribe cho kênh Ghiền Mì Gõ Để không bỏ lỡ những video hấp dẫn",
+      "status": "inconclusive-not-used-as-semantic-proof",
+      "reason": "Unrelated stock promotional sentence disagrees with the original CC/race context."
+    },
+    {
+      "excerptId": "cao-dan-context",
+      "start": 2540.9,
+      "end": 2552,
+      "sourceId": "Y2fp9gYRIZ8",
+      "machineText": " Hãy subscribe cho kênh Ghiền Mì Gõ Để không bỏ lỡ những video hấp dẫn",
+      "status": "inconclusive-not-used-as-semantic-proof",
+      "reason": "Unrelated stock promotional sentence disagrees with the original CC/race context."
+    },
+    {
+      "excerptId": "wat-pich-context",
+      "start": 4852.7,
+      "end": 4869,
+      "sourceId": "Y2fp9gYRIZ8",
+      "machineText": " Hãy subscribe cho kênh Ghiền Mì Gõ Để không bỏ lỡ những video hấp dẫn",
+      "status": "inconclusive-not-used-as-semantic-proof",
+      "reason": "Unrelated stock promotional sentence disagrees with the original CC/race context."
+    },
+    {
+      "excerptId": "tra-quyt-moi-context",
+      "start": 4035.8,
+      "end": 4049.1,
+      "sourceId": "Y2fp9gYRIZ8",
+      "machineText": " Hãy subscribe cho kênh La La School Để không bỏ lỡ những video hấp dẫn",
+      "status": "inconclusive-not-used-as-semantic-proof",
+      "reason": "Unrelated stock promotional sentence disagrees with the original CC/race context."
+    },
+    {
+      "excerptId": "cham-pa-vi-context",
+      "start": 5423.6,
+      "end": 5437.7,
+      "sourceId": "Y2fp9gYRIZ8",
+      "machineText": " Hãy subscribe cho kênh Ghiền Mì Gõ Để không bỏ lỡ những video hấp dẫn",
+      "status": "inconclusive-not-used-as-semantic-proof",
+      "reason": "Unrelated stock promotional sentence disagrees with the original CC/race context."
+    },
+    {
+      "excerptId": "dia-chuoi-context",
+      "start": 19247.7,
+      "end": 19258.7,
+      "sourceId": "Y2fp9gYRIZ8",
+      "machineText": " Hãy subscribe cho kênh Ghiền Mì Gõ Để không bỏ lỡ những video hấp dẫn",
+      "status": "inconclusive-not-used-as-semantic-proof",
+      "reason": "Unrelated stock promotional sentence disagrees with the original CC/race context."
+    },
+    {
+      "excerptId": "rowing-relax-context",
+      "start": 4265.95,
+      "end": 4277.78,
+      "sourceId": "Y2fp9gYRIZ8",
+      "machineText": " Hãy subscribe cho kênh Ghiền Mì Gõ Để không bỏ lỡ những video hấp dẫn",
+      "status": "inconclusive-not-used-as-semantic-proof",
+      "reason": "Unrelated stock promotional sentence disagrees with the original CC/race context."
+    },
+    {
+      "excerptId": "sprint-generic-context",
+      "start": 6021,
+      "end": 6033.6,
+      "sourceId": "Y2fp9gYRIZ8",
+      "machineText": " Hãy subscribe cho kênh Ghiền Mì Gõ Để không bỏ lỡ những video hấp dẫn",
+      "status": "inconclusive-not-used-as-semantic-proof",
+      "reason": "Unrelated stock promotional sentence disagrees with the original CC/race context."
+    }
+  ],
+  "negativeControl": {
+    "sourceId": "crZF3hghbgQ",
+    "start": 3345,
+    "end": 3349,
+    "knownLanguage": "vi",
+    "forcedKhmerASR": "ហើយដោយយកហយដេមសឺក្វាថូយ",
+    "finding": "Khmer-only CTC emits Khmer-looking output for Vietnamese audio. It is not a language detector."
+  },
+  "verifiedHistoryAwaitingUsableAudio": [
+    {
+      "pagoda": "Pích Măng Kol / Wáth Pích",
+      "season": 2022,
+      "gender": "male",
+      "result": "champion",
+      "source": "https://baosoctrang.org.vn/van-hoa-the-thao/202211/chuyen-ve-doi-ghe-ngo-nam-nu-cua-soc-trang-soan-ngoi-vo-dich-d8d1b62/",
+      "audioStatus": "No additional original dated history cut accepted in this expansion."
+    }
+  ],
+  "remainingMissing": {
+    "nameVi": [
+      "can_tho-09",
+      "can_tho-10",
+      "can_tho-11",
+      "can_tho-15",
+      "can_tho-16",
+      "can_tho-19",
+      "can_tho-21",
+      "can_tho-27",
+      "can_tho-33",
+      "can_tho-34",
+      "can_tho-40",
+      "can_tho-42",
+      "can_tho-43",
+      "can_tho-44",
+      "can_tho-47",
+      "ca_mau-01",
+      "ca_mau-03",
+      "ca_mau-04",
+      "ca_mau-13"
+    ],
+    "nameKm": [
+      "can_tho-01",
+      "can_tho-02",
+      "can_tho-03",
+      "can_tho-04",
+      "can_tho-05",
+      "can_tho-06",
+      "can_tho-07",
+      "can_tho-08",
+      "can_tho-09",
+      "can_tho-10",
+      "can_tho-11",
+      "can_tho-12",
+      "can_tho-14",
+      "can_tho-15",
+      "can_tho-16",
+      "can_tho-17",
+      "can_tho-18",
+      "can_tho-20",
+      "can_tho-21",
+      "can_tho-25",
+      "can_tho-26",
+      "can_tho-27",
+      "can_tho-28",
+      "can_tho-29",
+      "can_tho-30",
+      "can_tho-31",
+      "can_tho-32",
+      "can_tho-33",
+      "can_tho-34",
+      "can_tho-35",
+      "can_tho-37",
+      "can_tho-38",
+      "can_tho-39",
+      "can_tho-40",
+      "can_tho-41",
+      "can_tho-42",
+      "can_tho-43",
+      "can_tho-44",
+      "can_tho-46",
+      "can_tho-47",
+      "can_tho-48",
+      "ca_mau-01",
+      "ca_mau-03",
+      "ca_mau-04",
+      "ca_mau-09",
+      "ca_mau-10",
+      "ca_mau-11",
+      "ca_mau-12",
+      "ca_mau-13"
+    ],
+    "historyVi": [
+      "can_tho-01",
+      "can_tho-02",
+      "can_tho-03",
+      "can_tho-04",
+      "can_tho-05",
+      "can_tho-07",
+      "can_tho-08",
+      "can_tho-09",
+      "can_tho-10",
+      "can_tho-11",
+      "can_tho-12",
+      "can_tho-13",
+      "can_tho-14",
+      "can_tho-15",
+      "can_tho-16",
+      "can_tho-17",
+      "can_tho-18",
+      "can_tho-19",
+      "can_tho-20",
+      "can_tho-21",
+      "can_tho-22",
+      "can_tho-24",
+      "can_tho-25",
+      "can_tho-26",
+      "can_tho-27",
+      "can_tho-28",
+      "can_tho-29",
+      "can_tho-30",
+      "can_tho-31",
+      "can_tho-32",
+      "can_tho-33",
+      "can_tho-34",
+      "can_tho-35",
+      "can_tho-36",
+      "can_tho-37",
+      "can_tho-38",
+      "can_tho-39",
+      "can_tho-40",
+      "can_tho-41",
+      "can_tho-42",
+      "can_tho-43",
+      "can_tho-44",
+      "can_tho-45",
+      "can_tho-46",
+      "can_tho-47",
+      "can_tho-48",
+      "ca_mau-01",
+      "ca_mau-02",
+      "ca_mau-03",
+      "ca_mau-04",
+      "ca_mau-06",
+      "ca_mau-07",
+      "ca_mau-08",
+      "ca_mau-09",
+      "ca_mau-10",
+      "ca_mau-11",
+      "ca_mau-12",
+      "ca_mau-13"
+    ],
+    "historyKm": [
+      "can_tho-01",
+      "can_tho-02",
+      "can_tho-03",
+      "can_tho-04",
+      "can_tho-05",
+      "can_tho-06",
+      "can_tho-07",
+      "can_tho-08",
+      "can_tho-09",
+      "can_tho-10",
+      "can_tho-11",
+      "can_tho-12",
+      "can_tho-13",
+      "can_tho-14",
+      "can_tho-15",
+      "can_tho-16",
+      "can_tho-17",
+      "can_tho-18",
+      "can_tho-19",
+      "can_tho-20",
+      "can_tho-21",
+      "can_tho-22",
+      "can_tho-23",
+      "can_tho-24",
+      "can_tho-25",
+      "can_tho-26",
+      "can_tho-27",
+      "can_tho-28",
+      "can_tho-29",
+      "can_tho-30",
+      "can_tho-31",
+      "can_tho-32",
+      "can_tho-33",
+      "can_tho-34",
+      "can_tho-35",
+      "can_tho-36",
+      "can_tho-37",
+      "can_tho-38",
+      "can_tho-39",
+      "can_tho-40",
+      "can_tho-41",
+      "can_tho-42",
+      "can_tho-43",
+      "can_tho-44",
+      "can_tho-45",
+      "can_tho-46",
+      "can_tho-47",
+      "can_tho-48",
+      "ca_mau-01",
+      "ca_mau-02",
+      "ca_mau-03",
+      "ca_mau-04",
+      "ca_mau-05",
+      "ca_mau-06",
+      "ca_mau-07",
+      "ca_mau-08",
+      "ca_mau-09",
+      "ca_mau-10",
+      "ca_mau-11",
+      "ca_mau-12",
+      "ca_mau-13"
+    ]
+  },
+  "scope": "CC/context/machine cross-check evidence, not a claim of complete names, all historical audio, every YouTube link or native listening certification."
+}

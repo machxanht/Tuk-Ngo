@@ -12,13 +12,13 @@ export function createCommentaryDirector(){
  return {
   reset(){previous=null;seen=new Set();leader=0;lastLead=-20;lastPace=-20;},
   update(s){
-   const cues=[],emit=(id,priority=1)=>cues.push({id,priority,elapsed:s.elapsed,result:s.result||null});
+   const cues=[],emit=(id,priority=1)=>cues.push({id,priority,elapsed:s.elapsed,result:s.result||null,state:{phase:s.phase,raceStage:s.raceStage,distance:s.distances?.[0]||0,gap:s.gap,pace:s.pace,surgeActive:s.surgeActive}});
    const once=(id,priority=1)=>{if(!seen.has(id)){seen.add(id);emit(id,priority);}};
    if(s.phase==='countdown')once('ready',2);
    if(s.phase==='finished')once('finish',5);
    else if(s.phase==='racing'){
     if(!seen.has('go')){seen.add('go');if(s.elapsed<3)emit('go',3);}
-    const distance=Math.max(...s.distances),milestones=[[200,'cruise'],[600,'halfway'],[950,'final'],[1100,'last-hundred'],[1150,'last-fifty']];
+    const distance=s.distances[0],milestones=[[200,'cruise'],[600,'halfway'],[950,'final'],[1100,'last-hundred'],[1150,'last-fifty']];
     const crossed=milestones.filter(([m,id])=>distance>=m&&!seen.has(id));
     for(const [,id]of crossed)seen.add(id);
     if(crossed.length)emit(crossed.at(-1)[1],distance>=950?4:2);
@@ -33,9 +33,9 @@ export function createCommentaryDirector(){
     if(nextLeader!==leader){if(leader!==0&&s.elapsed-lastLead>=12){emit('lead-'+nextLeader,3);lastLead=s.elapsed;}leader=nextLeader;}
     if(s.elapsed>30&&Math.abs(s.gap)<2)once('close-race');
     if(s.combo>=30)once('cohesion');
-    if(s.stamina<20&&s.elapsed>20)once('fatigue',2);
-    if(!cues.length&&s.elapsed>=22&&s.elapsed<35)once('team-history');
-    if(!cues.length&&s.elapsed>=55&&s.elapsed<70)once('opponent-history');
+    if(s.stamina<20&&s.elapsed>20&&distance<950&&s.pace!=='sprint')once('fatigue',2);
+    if(!cues.length&&distance>=200&&distance<450)once('team-history');
+    if(!cues.length&&distance>=450&&distance<750)once('opponent-history');
    }
    previous={phase:s.phase,pace:s.pace,surgeActive:s.surgeActive};
    return cues.sort((a,b)=>b.priority-a.priority).slice(0,1);
@@ -52,11 +52,33 @@ export function resolveTeamSpeech(team,manifest,kind='name'){
  for(const channel of ['voice','khmer'])selection[channel]=(entry?.[channel]||[]).filter(key=>{const c=manifest.clips[key];return c?.role===role&&c.channel===channel&&c.teamIds?.includes(registration);});
  return selection;
 }
-export function resolveBroadcastCue(cue,manifest,teams=[]){
- if(['team-history','opponent-history'].includes(cue.id))return resolveTeamSpeech(teams[cue.id==='team-history'?0:1],manifest,'history');
+export function isBroadcastClipApplicable(clip,cue,state=cue.state){
+ const rules=clip?.conditions;if(!rules)return true;
+ if(!state)return false;
+ if(rules.phases&&!rules.phases.includes(state.phase))return false;
+ if(rules.paces&&!rules.paces.includes(state.pace))return false;
+ if(rules.results&&!rules.results.includes(cue.result))return false;
+ const distance=state.distances?.[0]??state.distance;
+ if(rules.minDistance!=null&&!(distance>=rules.minDistance))return false;
+ if(rules.maxDistance!=null&&!(distance<rules.maxDistance))return false;
+ if(rules.maxAbsGap!=null&&!(Math.abs(state.gap)<=rules.maxAbsGap))return false;
+ if(rules.minAbsGap!=null&&!(Math.abs(state.gap)>=rules.minAbsGap))return false;
+ if(rules.surgeActive!=null&&state.surgeActive!==rules.surgeActive)return false;
+ if(rules.requiresHardEffort&&!(state.surgeActive||state.pace==='sprint'||distance>=950))return false;
+ if(rules.maxElapsed!=null&&!((state.elapsed??cue.elapsed)<=rules.maxElapsed))return false;
+ return true;
+}
+export function resolveBroadcastCue(cue,manifest,teams=[],state=cue.state){
+ if(['team-history','opponent-history'].includes(cue.id)){
+  if(state&&(state.phase!=='racing'||(state.distances?.[0]??state.distance)>=950))return {voice:[],khmer:[]};
+  return resolveTeamSpeech(teams[cue.id==='team-history'?0:1],manifest,'history');
+ }
+ if(state&&cue.id.startsWith('lead-')&&(cue.id==='lead--1'?!(state.gap< -3):!(state.gap>3)))return {voice:[],khmer:[]};
  const id=cue.id==='finish'&&['tie','dnf','loss'].includes(cue.result)?cue.result:cue.id.startsWith('lead-')?'lead':cue.id;
  const event=manifest.events[id]||{voice:[],khmer:[]};
- const selection={voice:[...event.voice],khmer:[...event.khmer]};
+ // Event arrays are alternatives, not a sentence made by joining every recording.
+ const choose=channel=>{const keys=event[channel].filter(key=>isBroadcastClipApplicable(manifest.clips[key],cue,state));return keys.length?[keys[(cue.variant||0)%keys.length]]:[];};
+ const selection={voice:choose('voice'),khmer:choose('khmer')};
  const named=cue.id==='intro'?teams:cue.id.startsWith('lead-')?[teams[cue.id==='lead--1'?1:0]]:cue.id==='finish'&&['win','loss'].includes(cue.result)?[teams[cue.result==='win'?0:1]]:[];
  for(const channel of ['voice','khmer'])selection[channel]=[...named.flatMap(t=>resolveTeamSpeech(t,manifest)[channel]),...selection[channel]];
  return selection;
@@ -65,14 +87,14 @@ export function resolveBroadcastCue(cue,manifest,teams=[]){
 export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{},onPreviewState=()=>{}}={}) {
  const directory=baseUrl+'assets/race-audio/',director=createCommentaryDirector();
  let mix=normalizeAudioMix(),context=null,buses=null,manifest=null,manifestPromise=null;
- let active=false,disposed=false,epoch=0,queue=[],speaking=false,currentPriority=0;
+ let active=false,disposed=false,epoch=0,queue=[],speaking=false,matchSerial=0;
  let previewing=false,previewSerial=0;
  let teams=[],latest=null,lastBeat=null,crowdSource=null,crowdPending=false,voiceUntil=0,ambienceStage=0;
- const cache=new Map(),sources=new Set(),abort=new AbortController();
+ const cache=new Map(),recentClips=new Map(),sources=new Set(),abort=new AbortController();
  const metrics={drumHits:0,drumKinds:{'drum-low':0,'drum-open':0,'drum-rim':0},voiceClips:0,khmerClips:0,cues:[],played:[],errors:[],decoded:0};
  function fail(error){if(disposed||error?.name==='AbortError')return;const message=String(error?.message||error);if(!metrics.errors.includes(message)){metrics.errors.push(message);onError(message);}}
  function loadManifest(){
-  if(!manifestPromise)manifestPromise=fetch(directory+'manifest.json?source=2c443d23b71f',{signal:abort.signal,cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('Audio manifest: '+r.status);return r.json();}).then(m=>{if(m.mode!=='broadcast')throw Error('Cần tải lại bộ âm thanh gốc');return manifest=m;}).catch(e=>{manifestPromise=null;throw e;});
+  if(!manifestPromise)manifestPromise=fetch(directory+'manifest.json',{signal:abort.signal,cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('Audio manifest: '+r.status);return r.json();}).then(m=>{if(m.mode!=='broadcast')throw Error('Cần tải lại bộ âm thanh gốc');return manifest=m;}).catch(e=>{manifestPromise=null;throw e;});
   return manifestPromise;
  }
  function load(key){
@@ -91,7 +113,7 @@ export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{},onP
   for(const item of [...sources])if(!channel||item.channel===channel){try{item.node.stop();}catch{/* Already ended. */}item.node.disconnect();sources.delete(item);}
   if(!channel||channel==='crowd')crowdSource=null;
  }
- function clearSpeech(){epoch++;queue=[];speaking=false;currentPriority=0;voiceUntil=0;stopSources('voice');stopSources('khmer');onCaption('');applyMix();}
+ function clearSpeech(){epoch++;queue=[];speaking=false;voiceUntil=0;stopSources('voice');stopSources('khmer');onCaption('');applyMix();}
  function applyMix(){
   if(!context)return;const t=context.currentTime,duck=voiceUntil>t;
   buses.master.gain.setTargetAtTime(active&&mix.enabled?mix.volume:0,t,.025);
@@ -111,32 +133,34 @@ export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{},onP
   if(speaking||!active||!mix.enabled||disposed)return;
   queue=queue.filter(c=>latest&&latest.elapsed-c.elapsed<(c.priority>=4?20:9));
   const cue=queue.shift();if(!cue)return;
-  speaking=true;currentPriority=cue.priority;const token=epoch;
+  speaking=true;const token=epoch;
   try{
-   const selection=resolveBroadcastCue(cue,await loadManifest(),teams);
-   const keys=[...(mix.voice?selection.voice:[]),...(mix.khmer?selection.khmer:[])];
+   const selection=resolveBroadcastCue(cue,await loadManifest(),teams,latest);
+   const keys=[...(mix.voice?selection.voice:[]),...(mix.khmer?selection.khmer:[])].filter(key=>context.currentTime-(recentClips.get(key)??-Infinity)>=(manifest.clips[key].role==='team-name'?8:18));
    // Fetch the phrase in parallel, then schedule it as one uninterrupted sentence.
    const buffers=await Promise.all(keys.map(load));if(token!==epoch||!active||!mix.enabled||disposed||latest.elapsed-cue.elapsed>(cue.priority>=4?20:9)||(cue.id==='ready'&&latest.phase!=='countdown'))return;
+   const current=resolveBroadcastCue(cue,manifest,teams,latest);if(keys.some(key=>!current.voice.includes(key)&&!current.khmer.includes(key)))return;
    let offset=.02;
    for(let i=0;i<keys.length;i++){
     const key=keys[i],channel=manifest.clips[key].channel;if(!permitted(channel))continue;
     const node=source(buffers[i],channel,{when:offset});if(!node)continue;
     const entry=manifest.clips[key];metrics[channel==='voice'?'voiceClips':'khmerClips']++;
-    metrics.played.push({key,at:context.currentTime+offset,match:teams.map(t=>t.id)});if(metrics.played.length>100)metrics.played.shift();
+    recentClips.set(key,context.currentTime+offset);
+    metrics.played.push({key,cue:cue.id,sourceId:entry.sourceId,at:context.currentTime+offset,match:teams.map(t=>t.id),state:{phase:latest.phase,distance:latest.distances?.[0],gap:latest.gap,pace:latest.pace,surgeActive:latest.surgeActive,result:cue.result}});if(metrics.played.length>100)metrics.played.shift();
     offset+=buffers[i].duration+.075;
     // Captions are updated at actual clip boundaries by update(), with no timers.
     captions.push({at:context.currentTime+offset-buffers[i].duration-.075,text:entry.text,token});
    }
    voiceUntil=context.currentTime+offset;applyMix();
   }catch(e){fail(e);voiceUntil=0;}
-  finally{if(token===epoch){if(voiceUntil<=context.currentTime){speaking=false;currentPriority=0;}}}
+  finally{if(token===epoch&&voiceUntil<=context.currentTime)speaking=false;}
  }
  let captions=[];
  function enqueue(cue){
   if(!mix.voice&&!mix.khmer)return;
   metrics.cues.push(cue.id);if(metrics.cues.length>100)metrics.cues.shift();
-  if(cue.priority>=4&&cue.priority>=currentPriority){clearSpeech();captions=[];}
-  queue=queue.filter(c=>c.priority>=cue.priority);queue.push(cue);queue.sort((a,b)=>b.priority-a.priority);queue=queue.slice(0,3);void pump();
+  // Finish the current excerpt. A new sprint/finish cue must not cut a word in half.
+  queue=queue.filter(c=>c.priority>=cue.priority);queue.push({...cue,variant:matchSerial});queue.sort((a,b)=>b.priority-a.priority);queue=queue.slice(0,3);void pump();
  }
  function drum(s){
   const beat=Math.floor(s.beatPhase);if(lastBeat==null){lastBeat=beat;return;}
@@ -166,7 +190,7 @@ export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{},onP
   },
   beginMatch(pair){
    api.stopPreview();
-   clearSpeech();captions=[];stopSources();director.reset();teams=pair;latest=null;lastBeat=null;
+   clearSpeech();captions=[];stopSources();director.reset();recentClips.clear();teams=pair;latest=null;lastBeat=null;matchSerial++;
    if(context&&mix.enabled)void loadManifest().then(m=>{const keys=['final','surge','finish'].flatMap(id=>{const e=m.events[id];return [...e.voice,...e.khmer];});for(const team of pair){const names=resolveTeamSpeech(team,m),history=resolveTeamSpeech(team,m,'history');keys.push(...names.voice,...names.khmer,...history.voice,...history.khmer);}return Promise.allSettled([...new Set(keys)].map(load));}).catch(fail);
   },
   async previewTeam(team,kind='name'){
@@ -180,7 +204,7 @@ export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{},onP
     const keys=[...(mix.voice?selection.voice:[]),...(mix.khmer?selection.khmer:[])];
     if(!keys.length){api.stopPreview();return {status:available.voice||available.khmer?'muted':'missing',available,profile};}
     const buffers=await Promise.all(keys.map(load));if(token!==previewSerial||disposed||!previewing)return {status:'cancelled'};
-    let offset=.02,lastNode=null;speaking=true;currentPriority=3;
+    let offset=.02,lastNode=null;speaking=true;
     for(let i=0;i<keys.length;i++){
      const key=keys[i],entry=m.clips[key],node=source(buffers[i],entry.channel,{when:offset});if(!node)continue;
      lastNode=node;metrics[entry.channel==='voice'?'voiceClips':'khmerClips']++;metrics.played.push({key,at:context.currentTime+offset,match:[],teamId:team.id,registrationId:registration,kind});
@@ -207,7 +231,7 @@ export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{},onP
    if(s.phase==='racing')drum(s);else lastBeat=null;
    }
    if(!active||!context)return;
-   if(speaking&&voiceUntil>0&&context.currentTime>=voiceUntil){speaking=false;currentPriority=0;voiceUntil=0;onCaption('');applyMix();}
+   if(speaking&&voiceUntil>0&&context.currentTime>=voiceUntil){speaking=false;voiceUntil=0;onCaption('');applyMix();}
    let caption=null;while(captions.length&&captions[0].at<=context.currentTime){const c=captions.shift();if(c.token===epoch)caption=c.text;}
    if(caption)onCaption(caption);void pump();
   },

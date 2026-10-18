@@ -1,0 +1,2322 @@
+{
+  "schema": 1,
+  "searchedAt": "2026-10-18T15:40:00.479640+00:00",
+  "scope": {
+    "firstYear": 2008,
+    "lastYear": 2026,
+    "resultsPerQuery": 8,
+    "completeYouTubeArchive": false,
+    "queries": [
+      "đua ghe ngo Sóc Trăng 2008 trực tiếp STV",
+      "đua ghe ngo Sóc Trăng 2009 trực tiếp STV",
+      "đua ghe ngo Sóc Trăng 2010 trực tiếp STV",
+      "đua ghe ngo Sóc Trăng 2011 trực tiếp STV",
+      "đua ghe ngo Sóc Trăng 2012 trực tiếp STV",
+      "đua ghe ngo Sóc Trăng 2013 trực tiếp STV",
+      "đua ghe ngo Sóc Trăng 2014 trực tiếp STV",
+      "đua ghe ngo Sóc Trăng 2015 trực tiếp STV",
+      "đua ghe ngo Sóc Trăng 2016 trực tiếp STV",
+      "đua ghe ngo Sóc Trăng 2017 trực tiếp STV",
+      "đua ghe ngo Sóc Trăng 2018 trực tiếp STV",
+      "đua ghe ngo Sóc Trăng 2019 trực tiếp STV",
+      "đua ghe ngo Sóc Trăng 2020 trực tiếp STV",
+      "đua ghe ngo Sóc Trăng 2021 trực tiếp STV",
+      "đua ghe ngo Sóc Trăng 2022 trực tiếp STV",
+      "đua ghe ngo Sóc Trăng 2023 trực tiếp STV",
+      "đua ghe ngo Sóc Trăng 2024 trực tiếp STV",
+      "đua ghe ngo Sóc Trăng 2025 trực tiếp STV",
+      "đua ghe ngo Sóc Trăng 2026 trực tiếp STV",
+      "STV đua ghe ngo bình luận tiếng Khmer",
+      "đua ghe ngo Sóc Trăng chung kết truyền hình trực tiếp"
+    ]
+  },
+  "notes": [
+    "Deduplicated discovery catalog, not a claim to all YouTube videos.",
+    "A year in a title or query does not verify the event year.",
+    "Same channel does not establish the same commentators; captions do not label speakers.",
+    "Only separately reviewed cuts can enter the game; historical participation does not assign current registration IDs."
+  ],
+  "failures": [],
+  "videos": [
+    {
+      "videoId": "0Rf2bUy5icE",
+      "url": "https://www.youtube.com/watch?v=0Rf2bUy5icE",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng chung kết truyền hình trực tiếp"
+      ],
+      "title": "TRUYỀN HÌNH TRỰC TIẾP LỄ HỘI OÓC OM BÓC - ĐUA GHE NGO SÓC TRĂNG ( VÒNG CHUNG KẾT 2 )",
+      "duration": 14793,
+      "channel": "Hoàng Nguyễn",
+      "channel_id": "UC0uKwI2SFUKPg-KwW-PEK2w",
+      "live_status": null,
+      "yearsInTitle": [],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "9IJxLw2xfPg",
+      "url": "https://www.youtube.com/watch?v=9IJxLw2xfPg",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2008 trực tiếp STV"
+      ],
+      "title": "Trực Tiếp Lễ Hội Lôi Pro tít Đua ghe Ngo Sóc Trăng",
+      "duration": 6641,
+      "channel": "THANH TÂM TV",
+      "channel_id": "UCJYP66DsOxlXbuqAL0fq89Q",
+      "live_status": "was_live",
+      "yearsInTitle": [],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "F82ofhNI2i0",
+      "url": "https://www.youtube.com/watch?v=F82ofhNI2i0",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2025 trực tiếp STV"
+      ],
+      "title": "Đua ghe Ngo - Ooc Om Bóc Sóc Trăng diễn ra vào ngày 26-27/11 DL",
+      "duration": 236,
+      "channel": "Đua ghe Ngo",
+      "channel_id": "UC0x9aANgZ4R5_zN5rXyvXpg",
+      "live_status": null,
+      "yearsInTitle": [],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "RTdgqmQx8qM",
+      "url": "https://www.youtube.com/watch?v=RTdgqmQx8qM",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2012 trực tiếp STV"
+      ],
+      "title": "🔴TRỰC TIẾP QUAY GHE NGO ÔNG KHO NHÀ ĐƯƠNG KIM VÔ ĐỊCH TEST TỐC ĐỘ TRÊN SÔNG MASEPRO",
+      "duration": 604,
+      "channel": "THÁI GIÀU ",
+      "channel_id": "UCXgMaIgi_lJ55cHG-IrWSKw",
+      "live_status": null,
+      "yearsInTitle": [],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "VYHctibNMTI",
+      "url": "https://www.youtube.com/watch?v=VYHctibNMTI",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2026 trực tiếp STV",
+        "STV đua ghe ngo bình luận tiếng Khmer"
+      ],
+      "title": "Mr. Kho recruited Cang Long to come home. The fateful match - the most dramatic of the Ngo Soc Tr...",
+      "duration": 136,
+      "channel": " Mận đường Tám Hội",
+      "channel_id": "UCb2UW-698_8dmW0Cq8Rm0LQ",
+      "live_status": null,
+      "yearsInTitle": [],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "XKC6neptwEk",
+      "url": "https://www.youtube.com/watch?v=XKC6neptwEk",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2013 trực tiếp STV"
+      ],
+      "title": "Ghe Ngo Ngày Hội Tưng Bừng Thi Đấu - Thể Thao Truyền Hình Sóc Trăng",
+      "duration": 756,
+      "channel": "Truyền Hình Sóc Trăng - STV",
+      "channel_id": "UCzDjla_rU_rcN2q_-nKBB3A",
+      "live_status": null,
+      "yearsInTitle": [],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "upload_date": "20170222",
+      "release_timestamp": null,
+      "metadataStatus": "youtube-metadata-fetched",
+      "captionTracks": [],
+      "manualCaptionTracks": [],
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "YlRj-SHIOc4",
+      "url": "https://www.youtube.com/watch?v=YlRj-SHIOc4",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2009 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2011 trực tiếp STV"
+      ],
+      "title": "Chân Dung Nhà Vô Địch Giải Đua Ghe Ngo - Du Lịch Sóc Trăng",
+      "duration": 171,
+      "channel": "Truyền Hình Sóc Trăng - STV",
+      "channel_id": "UCzDjla_rU_rcN2q_-nKBB3A",
+      "live_status": null,
+      "yearsInTitle": [],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "upload_date": "20170222",
+      "release_timestamp": null,
+      "metadataStatus": "youtube-metadata-fetched",
+      "captionTracks": [
+        "vi-orig"
+      ],
+      "manualCaptionTracks": [],
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "indexed",
+      "captions": {
+        "sha256": "0eff31282e640564e0a7711f2e1e921253233911f5859eb90534edf0c55a321f",
+        "cueCount": 65,
+        "khmerCues": 0,
+        "kind": "automatic",
+        "speakerLabels": false
+      }
+    },
+    {
+      "videoId": "bUZXzC71REA",
+      "url": "https://www.youtube.com/watch?v=bUZXzC71REA",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2022 trực tiếp STV"
+      ],
+      "title": "Trực Tiếp Lượt Trận Cuối Đua ghe ngo Sóc Trăng Xác Định Đội Bị Loại",
+      "duration": 6487,
+      "channel": "THANH TÂM TV",
+      "channel_id": "UCJYP66DsOxlXbuqAL0fq89Q",
+      "live_status": "was_live",
+      "yearsInTitle": [],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "qip2LKu00Y0",
+      "url": "https://www.youtube.com/watch?v=qip2LKu00Y0",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2008 trực tiếp STV"
+      ],
+      "title": "Khán đài đua ghe Ngo Sóc Trăng được bố trí ra sao và độ hoành tráng như thế nào I Cận cảnh khán đài.",
+      "duration": 746,
+      "channel": "Quang Trần TV",
+      "channel_id": "UClRx2LYSQUrrpkTNLPV8FNA",
+      "live_status": null,
+      "yearsInTitle": [],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "qq4CkoOfCeE",
+      "url": "https://www.youtube.com/watch?v=qq4CkoOfCeE",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2011 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2012 trực tiếp STV"
+      ],
+      "title": "Trực tiếp: Đua ghe ngo VÒNG LOẠI NAM 2a - SÓC TRĂNG| OKOMBOK",
+      "duration": 5987,
+      "channel": "Góc Nhỏ Cuộc Sống Vlog",
+      "channel_id": "UCaEkGxaPOyt_ph1XxurJasg",
+      "live_status": "was_live",
+      "yearsInTitle": [],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "zQkDz503m2A",
+      "url": "https://www.youtube.com/watch?v=zQkDz503m2A",
+      "discoveredBy": [
+        "STV đua ghe ngo bình luận tiếng Khmer"
+      ],
+      "title": "Tiếng Khmer căn bản theo SGK Campuchia #8luuvlogs #daytiengkhmercanban",
+      "duration": 1103,
+      "channel": "8Luu Vlogs",
+      "channel_id": "UCzCgwOA-SHSGSW6lqFevEiQ",
+      "live_status": null,
+      "yearsInTitle": [],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "excluded-unrelated-search-result",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "NLwfLAzh1bU",
+      "url": "https://www.youtube.com/watch?v=NLwfLAzh1bU",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2009 trực tiếp STV"
+      ],
+      "title": "#shorts ghe ngo cựu vô địch 2007, 2009 #shorts",
+      "duration": 33,
+      "channel": "Khmer Sóc Khleng",
+      "channel_id": "UCRElyJ5UKQS8W4rBrTOfc1A",
+      "live_status": null,
+      "yearsInTitle": [
+        2007,
+        2009
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "gx2lcI8Tjhg",
+      "url": "https://www.youtube.com/watch?v=gx2lcI8Tjhg",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2009 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2008 trực tiếp STV"
+      ],
+      "title": "Đua ghe ngo 2008, Bốn Mặt vô địch, Nhì Trà Quýt, 3 kostung, 4 Xẻo Me.",
+      "duration": 633,
+      "channel": "Khmer Sóc Khleng",
+      "channel_id": "UCRElyJ5UKQS8W4rBrTOfc1A",
+      "live_status": null,
+      "yearsInTitle": [
+        2008
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "r_0He1dkrEY",
+      "url": "https://www.youtube.com/watch?v=r_0He1dkrEY",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2008 trực tiếp STV"
+      ],
+      "title": "ghe ngo chùa watpich thời vàng son năm 2008",
+      "duration": 37,
+      "channel": "Vĩnh Hiệp Quê Tôi-TV",
+      "channel_id": "UCRUQjfkViGow6iHYspbts7A",
+      "live_status": null,
+      "yearsInTitle": [
+        2008
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "1hO_h-vmyXw",
+      "url": "https://www.youtube.com/watch?v=1hO_h-vmyXw",
+      "discoveredBy": [
+        "STV đua ghe ngo bình luận tiếng Khmer"
+      ],
+      "title": "Đua ghe ngo Bốn Mặt - Lộ Mới đơn kim vô địch ghe ngo 2010| rất kịch tính và hấp dẫn.",
+      "duration": 122,
+      "channel": "Khmer Sóc Khleng",
+      "channel_id": "UCRElyJ5UKQS8W4rBrTOfc1A",
+      "live_status": null,
+      "yearsInTitle": [
+        2010
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "qD74hVEE1-s",
+      "url": "https://www.youtube.com/watch?v=qD74hVEE1-s",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2011 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2010 trực tiếp STV"
+      ],
+      "title": "Đua ghe Ngo toàn quốc 2011 |1200m Nam - 1000m Nữ| [Khmer]",
+      "duration": 2270,
+      "channel": "Ghe Ngo ĐBSCL",
+      "channel_id": "UCQeI3CJuZu_P6sb0DGYbkiA",
+      "live_status": null,
+      "yearsInTitle": [
+        2011
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "L-t51EbnKt8",
+      "url": "https://www.youtube.com/watch?v=L-t51EbnKt8",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2012 trực tiếp STV"
+      ],
+      "title": "Ghe ngo xưa, Vòng loại trực tiếp ghe ngo 2012.",
+      "duration": 1578,
+      "channel": "Khmer Sóc Khleng",
+      "channel_id": "UCRElyJ5UKQS8W4rBrTOfc1A",
+      "live_status": null,
+      "yearsInTitle": [
+        2012
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "zP4W0nASf2I",
+      "url": "https://www.youtube.com/watch?v=zP4W0nASf2I",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2010 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2012 trực tiếp STV"
+      ],
+      "title": "Đua ghe ngo 2012 | Cùng Xem Top 8 đội mạnh, bán kết và chung kết",
+      "duration": 1162,
+      "channel": "Ghe Ngo Tập Rèn TV",
+      "channel_id": "UCMLCmj3wCtGsiRTxcjeQrow",
+      "live_status": null,
+      "yearsInTitle": [
+        2012
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "9ZRyW5xATlo",
+      "url": "https://www.youtube.com/watch?v=9ZRyW5xATlo",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2013 trực tiếp STV"
+      ],
+      "title": "Xem Lại Đua Ghe Ngo 2013 - Festival Đua Ghe Ngo I - ĐGN TV",
+      "duration": 1752,
+      "channel": "ĐGN TV",
+      "channel_id": "UCZ-YuWdh6EgfdeJRdeGEwmQ",
+      "live_status": null,
+      "yearsInTitle": [
+        2013
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "Jx4dW-kyzzY",
+      "url": "https://www.youtube.com/watch?v=Jx4dW-kyzzY",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2009 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2012 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2013 trực tiếp STV"
+      ],
+      "title": "Đua Ghe Ngo 2013 - Giải Đoạn lại trực tiếp Phần 2",
+      "duration": 1476,
+      "channel": "ĐGN TV",
+      "channel_id": "UCZ-YuWdh6EgfdeJRdeGEwmQ",
+      "live_status": null,
+      "yearsInTitle": [
+        2013
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "K8jK_7cPOBA",
+      "url": "https://www.youtube.com/watch?v=K8jK_7cPOBA",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2010 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2014 trực tiếp STV"
+      ],
+      "title": "Trực tiếp giải đua ghe ngo Sóc Trăng năm 2014",
+      "duration": 18530,
+      "channel": "Phan Chư",
+      "channel_id": "UCsOpadkWGB1hM8BoBdAtU2w",
+      "live_status": null,
+      "yearsInTitle": [
+        2014
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "RHIE4YP-jRY",
+      "url": "https://www.youtube.com/watch?v=RHIE4YP-jRY",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2015 trực tiếp STV"
+      ],
+      "title": "Đua ghe ngo tỉnh Sóc Trăng lần II năm 2015 Vòng Loại",
+      "duration": 3758,
+      "channel": "Relax everywhere",
+      "channel_id": "UCqvQqR-IUA_YEt2-t8zMimA",
+      "live_status": null,
+      "yearsInTitle": [
+        2015
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "WvtWibq-sJ4",
+      "url": "https://www.youtube.com/watch?v=WvtWibq-sJ4",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2015 trực tiếp STV"
+      ],
+      "title": "Ghe ngo Càng Long vô địch Sóc Trăng 2015",
+      "duration": 582,
+      "channel": "TAN TV",
+      "channel_id": "UCbg7Lx3vOZ63qkBIth5l1jw",
+      "live_status": null,
+      "yearsInTitle": [
+        2015
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "kUcuzm1qVCg",
+      "url": "https://www.youtube.com/watch?v=kUcuzm1qVCg",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2015 trực tiếp STV"
+      ],
+      "title": "DUA GHE NGO 2015 PHAN 1",
+      "duration": 5686,
+      "channel": "Tô Tuyết Sang CK1-CĐHA",
+      "channel_id": "UCfjlezlJL-cN0WrPEVxYNzA",
+      "live_status": null,
+      "yearsInTitle": [
+        2015
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "sVgc6e7-x1k",
+      "url": "https://www.youtube.com/watch?v=sVgc6e7-x1k",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2009 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2008 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2011 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2010 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2014 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2015 trực tiếp STV"
+      ],
+      "title": "Đua ghe ngo tỉnh Sóc Trăng Festival lần II năm 2015 OocOmBok Càng Long PongTuk",
+      "duration": 962,
+      "channel": "Relax everywhere",
+      "channel_id": "UCqvQqR-IUA_YEt2-t8zMimA",
+      "live_status": null,
+      "yearsInTitle": [
+        2015
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "xpBEUPNDDTM",
+      "url": "https://www.youtube.com/watch?v=xpBEUPNDDTM",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2009 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2010 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2015 trực tiếp STV"
+      ],
+      "title": "Đua ghe ngo tỉnh Sóc Trăng lần II năm 2015 Vòng Loại Trực Tiếp OocOmBok",
+      "duration": 3344,
+      "channel": "Relax everywhere",
+      "channel_id": "UCqvQqR-IUA_YEt2-t8zMimA",
+      "live_status": null,
+      "yearsInTitle": [
+        2015
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "3se1jgzDDpo",
+      "url": "https://www.youtube.com/watch?v=3se1jgzDDpo",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2016 trực tiếp STV"
+      ],
+      "title": "Lượt Đua 1 - Vòng 2 Bảng Nam - Giải Đua Ghe Ngo OOC OM BOC 2016",
+      "duration": 1963,
+      "channel": "Truyền Hình Sóc Trăng - STV",
+      "channel_id": "UCzDjla_rU_rcN2q_-nKBB3A",
+      "live_status": null,
+      "yearsInTitle": [
+        2016
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "upload_date": "20170222",
+      "release_timestamp": null,
+      "metadataStatus": "youtube-metadata-fetched",
+      "captionTracks": [
+        "vi-orig"
+      ],
+      "manualCaptionTracks": [],
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": true,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "indexed",
+      "captions": {
+        "sha256": "5f50ca9d5ce55c736d145977aa83888dc907075b5f06a242080b064d6984e3be",
+        "cueCount": 592,
+        "khmerCues": 0,
+        "kind": "automatic",
+        "speakerLabels": false
+      }
+    },
+    {
+      "videoId": "b5h7PGNdnS0",
+      "url": "https://www.youtube.com/watch?v=b5h7PGNdnS0",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2016 trực tiếp STV"
+      ],
+      "title": "Lễ Bế Mạc & Trao Giải - Giải Đua Ghe Ngo OOC OM BOC 2016",
+      "duration": 562,
+      "channel": "Truyền Hình Sóc Trăng - STV",
+      "channel_id": "UCzDjla_rU_rcN2q_-nKBB3A",
+      "live_status": null,
+      "yearsInTitle": [
+        2016
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "upload_date": "20170222",
+      "release_timestamp": null,
+      "metadataStatus": "youtube-metadata-fetched",
+      "captionTracks": [
+        "vi-orig"
+      ],
+      "manualCaptionTracks": [],
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": true,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "indexed",
+      "captions": {
+        "sha256": "a52ff52f78cf9b1df7b4d633c8f40b360feaf24c03ca5b88cfc60b0099808b79",
+        "cueCount": 123,
+        "khmerCues": 0,
+        "kind": "automatic",
+        "speakerLabels": false
+      }
+    },
+    {
+      "videoId": "k-t7vV6PBS0",
+      "url": "https://www.youtube.com/watch?v=k-t7vV6PBS0",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2016 trực tiếp STV"
+      ],
+      "title": "Ghe ngo Ong Kho vô địch Sóc Trăng 2016",
+      "duration": 892,
+      "channel": "TAN TV",
+      "channel_id": "UCbg7Lx3vOZ63qkBIth5l1jw",
+      "live_status": null,
+      "yearsInTitle": [
+        2016
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "poyuCpxazoM",
+      "url": "https://www.youtube.com/watch?v=poyuCpxazoM",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2016 trực tiếp STV"
+      ],
+      "title": "Lễ Hội Đua Ghe Ngo   Ooc Bom Boc Sóc Trăng 2016",
+      "duration": 17529,
+      "channel": "A Bé Sóc Trăng",
+      "channel_id": "UCNHclVafVgki5l1laT9yuaQ",
+      "live_status": null,
+      "yearsInTitle": [
+        2016
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "xRrcWmg9aGE",
+      "url": "https://www.youtube.com/watch?v=xRrcWmg9aGE",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2016 trực tiếp STV"
+      ],
+      "title": "Bán Kết Nam - Giải Đua Ghe Ngo OOC OM BOC 2016",
+      "duration": 1054,
+      "channel": "Truyền Hình Sóc Trăng - STV",
+      "channel_id": "UCzDjla_rU_rcN2q_-nKBB3A",
+      "live_status": null,
+      "yearsInTitle": [
+        2016
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "upload_date": "20170222",
+      "release_timestamp": null,
+      "metadataStatus": "youtube-metadata-fetched",
+      "captionTracks": [
+        "vi-orig"
+      ],
+      "manualCaptionTracks": [],
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": true,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "indexed",
+      "captions": {
+        "sha256": "6f92a074a4d2e23577a55ee3c56476d6248f7eb028d296657cc8c61f287a3c77",
+        "cueCount": 399,
+        "khmerCues": 67,
+        "kind": "automatic",
+        "speakerLabels": false
+      }
+    },
+    {
+      "videoId": "yXopPsDdiDc",
+      "url": "https://www.youtube.com/watch?v=yXopPsDdiDc",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2016 trực tiếp STV"
+      ],
+      "title": "đua Ghe Ngo 2016 | 8 trận đấu của Pong Tưk Chas",
+      "duration": 929,
+      "channel": "Ghe Ngo Tập Rèn TV",
+      "channel_id": "UCMLCmj3wCtGsiRTxcjeQrow",
+      "live_status": null,
+      "yearsInTitle": [
+        2016
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "z-GpimeCaUQ",
+      "url": "https://www.youtube.com/watch?v=z-GpimeCaUQ",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2015 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2016 trực tiếp STV"
+      ],
+      "title": "Lượt Đua Thứ 1 - Vòng Bảng Nam - Giải Đua Ghe Ngo OOC OM BOC 2016",
+      "duration": 2616,
+      "channel": "Truyền Hình Sóc Trăng - STV",
+      "channel_id": "UCzDjla_rU_rcN2q_-nKBB3A",
+      "live_status": null,
+      "yearsInTitle": [
+        2016
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "upload_date": "20170222",
+      "release_timestamp": null,
+      "metadataStatus": "youtube-metadata-fetched",
+      "captionTracks": [],
+      "manualCaptionTracks": [],
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": true,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "ErQtpIwrvBI",
+      "url": "https://www.youtube.com/watch?v=ErQtpIwrvBI",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2017 trực tiếp STV"
+      ],
+      "title": "Ghe ngo Ong Kho vô địch Sóc Trăng 2017",
+      "duration": 862,
+      "channel": "TAN TV",
+      "channel_id": "UCbg7Lx3vOZ63qkBIth5l1jw",
+      "live_status": null,
+      "yearsInTitle": [
+        2017
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "9q-e6_nlZQs",
+      "url": "https://www.youtube.com/watch?v=9q-e6_nlZQs",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2018 trực tiếp STV"
+      ],
+      "title": "Trực Tiếp Lễ Hội Ooc Om Boc- Đua Ghe Ngo Sóc Trăng 2018 HD",
+      "duration": 4094,
+      "channel": "Danh Thứ",
+      "channel_id": "UCT99mgUhL-CElvnT6qD3XZA",
+      "live_status": "was_live",
+      "yearsInTitle": [
+        2018
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "YZzpIvX4Rhw",
+      "url": "https://www.youtube.com/watch?v=YZzpIvX4Rhw",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2018 trực tiếp STV"
+      ],
+      "title": "Lễ Hội Oóc Om Bóc - Đua Ghe Ngo Sóc Trăng 2018- Ngày thi đấu thứ I-P2",
+      "duration": 4927,
+      "channel": "Dara",
+      "channel_id": "UCc90-TlFDSG2NNm7lzbMmkQ",
+      "live_status": "was_live",
+      "yearsInTitle": [
+        2018
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "ofzVKadFwdw",
+      "url": "https://www.youtube.com/watch?v=ofzVKadFwdw",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2018 trực tiếp STV"
+      ],
+      "title": "Lễ Hội Oóc Om Bóc - Đua Ghe Ngo Sóc Trăng 2018- Ngày thi đấu thứ I - P1",
+      "duration": 9185,
+      "channel": "Dara",
+      "channel_id": "UCc90-TlFDSG2NNm7lzbMmkQ",
+      "live_status": "was_live",
+      "yearsInTitle": [
+        2018
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "opfNRLzlafA",
+      "url": "https://www.youtube.com/watch?v=opfNRLzlafA",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2011 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2010 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2013 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2014 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2015 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2016 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2018 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2020 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng chung kết truyền hình trực tiếp"
+      ],
+      "title": "VÒNG CHUNG KẾT ĐUA GHE NGO SÓC TRĂNG 2018",
+      "duration": 9615,
+      "channel": "Truyền Hình Sóc Trăng - STV",
+      "channel_id": "UCzDjla_rU_rcN2q_-nKBB3A",
+      "live_status": "was_live",
+      "yearsInTitle": [
+        2018
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "upload_date": "20181122",
+      "release_timestamp": 1542863579,
+      "metadataStatus": "youtube-metadata-fetched",
+      "captionTracks": [],
+      "manualCaptionTracks": [
+        "live_chat"
+      ],
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "qUsUSJ82wK0",
+      "url": "https://www.youtube.com/watch?v=qUsUSJ82wK0",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2018 trực tiếp STV"
+      ],
+      "title": "Lễ Hội Oóc Om Bóc - Đua Ghe Ngo Sóc Trăng 2018- Ngày thi đấu thứ 2",
+      "duration": 10609,
+      "channel": "Dara",
+      "channel_id": "UCc90-TlFDSG2NNm7lzbMmkQ",
+      "live_status": "was_live",
+      "yearsInTitle": [
+        2018
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "7fnot7SeK3k",
+      "url": "https://www.youtube.com/watch?v=7fnot7SeK3k",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2011 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2010 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2014 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2017 trực tiếp STV"
+      ],
+      "title": "Xem Lại Trận Đấu Hay Ghe Ngo CÀNG LONG 2019_ ĐUA GHE NGO Sóc Trăng 2019 Chùa viseyvararam càng long",
+      "duration": 666,
+      "channel": "Hieu 2k VLogs",
+      "channel_id": "UC8Zlmy4X8ZHm1uQQB7pP-Uw",
+      "live_status": null,
+      "yearsInTitle": [
+        2019
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "AlvWo89HEBQ",
+      "url": "https://www.youtube.com/watch?v=AlvWo89HEBQ",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2019 trực tiếp STV"
+      ],
+      "title": "STV - Oóc-om-bóc 2019 I Trích tường thuật Lượt trận thứ 1 - Vòng Bảng",
+      "duration": 1866,
+      "channel": "STV - Giải Trí ",
+      "channel_id": "UCMR70fmpVmyzmNMUVBNLDPw",
+      "live_status": null,
+      "yearsInTitle": [
+        2019
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "upload_date": "20211109",
+      "release_timestamp": null,
+      "metadataStatus": "youtube-metadata-fetched",
+      "captionTracks": [
+        "vi-orig"
+      ],
+      "manualCaptionTracks": [],
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": true,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "indexed",
+      "captions": {
+        "sha256": "37504a56835c643a1ff1995a590544c936657691d7b8a067647e3ee78a57c8e9",
+        "cueCount": 711,
+        "khmerCues": 0,
+        "kind": "automatic",
+        "speakerLabels": false
+      }
+    },
+    {
+      "videoId": "IBBmMGp7_6I",
+      "url": "https://www.youtube.com/watch?v=IBBmMGp7_6I",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2009 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2008 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2011 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2012 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2013 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2014 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2015 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2019 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2021 trực tiếp STV"
+      ],
+      "title": "STV - Oóc-om-bóc 2019 I Trích tường thuật Vòng đấu chéo - 32 đội",
+      "duration": 1787,
+      "channel": "STV - Giải Trí ",
+      "channel_id": "UCMR70fmpVmyzmNMUVBNLDPw",
+      "live_status": null,
+      "yearsInTitle": [
+        2019
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "upload_date": "20211112",
+      "release_timestamp": null,
+      "metadataStatus": "youtube-metadata-fetched",
+      "captionTracks": [
+        "vi-orig"
+      ],
+      "manualCaptionTracks": [],
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": true,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "indexed",
+      "captions": {
+        "sha256": "efc788a5a58097aa43900739b4c755bb6cbc7b2c9ba4a89eea911ae8a1f430d8",
+        "cueCount": 718,
+        "khmerCues": 0,
+        "kind": "automatic",
+        "speakerLabels": false
+      }
+    },
+    {
+      "videoId": "Nlz8JxkH3Ek",
+      "url": "https://www.youtube.com/watch?v=Nlz8JxkH3Ek",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2019 trực tiếp STV"
+      ],
+      "title": "STV - Oóc-om-bóc 2019 I Trích tường thuật Lượt trận thứ 2 - Vòng Bảng",
+      "duration": 1785,
+      "channel": "STV - Giải Trí ",
+      "channel_id": "UCMR70fmpVmyzmNMUVBNLDPw",
+      "live_status": null,
+      "yearsInTitle": [
+        2019
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "upload_date": "20211109",
+      "release_timestamp": null,
+      "metadataStatus": "youtube-metadata-fetched",
+      "captionTracks": [
+        "vi-orig"
+      ],
+      "manualCaptionTracks": [],
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": true,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "indexed",
+      "captions": {
+        "sha256": "c4e99076ed93db7d8d328af91567b13801fafefa91812a5218bef8a889c52d30",
+        "cueCount": 685,
+        "khmerCues": 0,
+        "kind": "automatic",
+        "speakerLabels": false
+      }
+    },
+    {
+      "videoId": "SIT-n1dGxcg",
+      "url": "https://www.youtube.com/watch?v=SIT-n1dGxcg",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2019 trực tiếp STV"
+      ],
+      "title": "Trực Tiếp Chung Kết Đua Ghe Ngo 2019",
+      "duration": 5498,
+      "channel": "RB Vlogs",
+      "channel_id": "UCdqskjjJy8Cgf-AI35cbfJw",
+      "live_status": "was_live",
+      "yearsInTitle": [
+        2019
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "boELWvQiyrg",
+      "url": "https://www.youtube.com/watch?v=boELWvQiyrg",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2012 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2013 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2014 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2017 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2018 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2019 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2020 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2021 trực tiếp STV"
+      ],
+      "title": "STV - Trích tường thuật Giải Đua ghe Ngo - Oóc-om-bóc Sóc Trăng, lần thứ IV, khu vực ĐBSCL 2019",
+      "duration": 3469,
+      "channel": "STV Thể thao ",
+      "channel_id": "UCBo11h465ShjOeYUViAyiKQ",
+      "live_status": null,
+      "yearsInTitle": [
+        2019
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "upload_date": "20211118",
+      "release_timestamp": null,
+      "metadataStatus": "youtube-metadata-fetched",
+      "captionTracks": [
+        "vi-orig"
+      ],
+      "manualCaptionTracks": [],
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": true,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "indexed",
+      "captions": {
+        "sha256": "3261066cdd54f3043b26eb510c88f052b77565ace56200a785102e77a8632568",
+        "cueCount": 1372,
+        "khmerCues": 0,
+        "kind": "automatic",
+        "speakerLabels": false
+      }
+    },
+    {
+      "videoId": "mzeY8c9avVE",
+      "url": "https://www.youtube.com/watch?v=mzeY8c9avVE",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2019 trực tiếp STV"
+      ],
+      "title": "STV - Oóc-om-bóc 2019 I Trích tường thuật Lượt trận thứ IV & V - Vòng Bảng",
+      "duration": 1557,
+      "channel": "STV - Giải Trí ",
+      "channel_id": "UCMR70fmpVmyzmNMUVBNLDPw",
+      "live_status": null,
+      "yearsInTitle": [
+        2019
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "upload_date": "20211111",
+      "release_timestamp": null,
+      "metadataStatus": "youtube-metadata-fetched",
+      "captionTracks": [
+        "vi-orig"
+      ],
+      "manualCaptionTracks": [],
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": true,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "indexed",
+      "captions": {
+        "sha256": "fcb683e6f9f80880557e3371ec9bc809bdb56a2c315b73f384c88ddb1eac8053",
+        "cueCount": 537,
+        "khmerCues": 0,
+        "kind": "automatic",
+        "speakerLabels": false
+      }
+    },
+    {
+      "videoId": "o_mwXbooQIw",
+      "url": "https://www.youtube.com/watch?v=o_mwXbooQIw",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2009 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2014 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2017 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2019 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2021 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2024 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng chung kết truyền hình trực tiếp"
+      ],
+      "title": "STV- Oóc-om-bóc Sóc Trăng năm 2019 l Vòng 16 đội, Tứ kết, Bán kết, Chung kết",
+      "duration": 1758,
+      "channel": "STV - Giải Trí ",
+      "channel_id": "UCMR70fmpVmyzmNMUVBNLDPw",
+      "live_status": null,
+      "yearsInTitle": [
+        2019
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "upload_date": "20211114",
+      "release_timestamp": null,
+      "metadataStatus": "youtube-metadata-fetched",
+      "captionTracks": [
+        "vi-orig"
+      ],
+      "manualCaptionTracks": [],
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": true,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "indexed",
+      "captions": {
+        "sha256": "d4468970b4a15604378a527aa1dbff87191f8ed56287e2e909bf0f1f2c5372b9",
+        "cueCount": 695,
+        "khmerCues": 0,
+        "kind": "automatic",
+        "speakerLabels": false
+      }
+    },
+    {
+      "videoId": "Amg1wxmM_R4",
+      "url": "https://www.youtube.com/watch?v=Amg1wxmM_R4",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2010 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2018 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2020 trực tiếp STV"
+      ],
+      "title": "Quarter-Final Match of the 2020 Ngo Boat Race - Ooc Om Boc Festival, Soc Trang 2020. Camera Studi...",
+      "duration": 733,
+      "channel": "Tiger tv",
+      "channel_id": "UCyixd4hemEIMJGFg9okVZvw",
+      "live_status": null,
+      "yearsInTitle": [
+        2020
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "VCiFJynnRjc",
+      "url": "https://www.youtube.com/watch?v=VCiFJynnRjc",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2008 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2013 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2017 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2018 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2019 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2020 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2021 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2025 trực tiếp STV"
+      ],
+      "title": "STV - Oóc-om-bóc 2020 I Trích tường thuật Giải Đua ghe Ngo - Oóc-om-bóc Sóc Trăng 2020",
+      "duration": 3497,
+      "channel": "STV Thể thao ",
+      "channel_id": "UCBo11h465ShjOeYUViAyiKQ",
+      "live_status": null,
+      "yearsInTitle": [
+        2020
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "upload_date": "20211120",
+      "release_timestamp": null,
+      "metadataStatus": "youtube-metadata-fetched",
+      "captionTracks": [
+        "vi-orig"
+      ],
+      "manualCaptionTracks": [],
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": true,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "indexed",
+      "captions": {
+        "sha256": "3bdfdd62d9e15a2db131a96dcda00b684a35a33ecd37ad16001078ce2e4c197a",
+        "cueCount": 1378,
+        "khmerCues": 0,
+        "kind": "automatic",
+        "speakerLabels": false
+      }
+    },
+    {
+      "videoId": "k5-uLaPw7kA",
+      "url": "https://www.youtube.com/watch?v=k5-uLaPw7kA",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2020 trực tiếp STV"
+      ],
+      "title": "STV - Oóc-om-bóc 2020 I Trích tường thuật Vòng đấu chéo - 32 đội",
+      "duration": 1756,
+      "channel": "STV Thể thao ",
+      "channel_id": "UCBo11h465ShjOeYUViAyiKQ",
+      "live_status": null,
+      "yearsInTitle": [
+        2020
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "upload_date": "20211118",
+      "release_timestamp": null,
+      "metadataStatus": "youtube-metadata-fetched",
+      "captionTracks": [
+        "vi-orig"
+      ],
+      "manualCaptionTracks": [],
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": true,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "indexed",
+      "captions": {
+        "sha256": "142edd3476228383f10d8546306c787a7b4dfe324a5cc5d170e14dcefe1e4922",
+        "cueCount": 702,
+        "khmerCues": 0,
+        "kind": "automatic",
+        "speakerLabels": false
+      }
+    },
+    {
+      "videoId": "m0NIgeDSCJY",
+      "url": "https://www.youtube.com/watch?v=m0NIgeDSCJY",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2020 trực tiếp STV"
+      ],
+      "title": "THTT Giải đua Ghe Ngo Oóc Om Bóc Sóc Trăng 2020 - Tranh cúp Bia Sài Gòn",
+      "duration": 17672,
+      "channel": "Cần Thơ Dân Tộc",
+      "channel_id": "UC_uc1EYYYSni8_fllgFQavg",
+      "live_status": "was_live",
+      "yearsInTitle": [
+        2020
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "upload_date": "20201030",
+      "release_timestamp": 1604034140,
+      "metadataStatus": "youtube-metadata-fetched",
+      "captionTracks": [
+        "vi-orig"
+      ],
+      "manualCaptionTracks": [
+        "live_chat"
+      ],
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "indexed",
+      "captions": {
+        "sha256": "a87a519a77d83ac636ad59c585ecef33d559fe251ada8d456681927304dbc2dd",
+        "cueCount": 4632,
+        "khmerCues": 0,
+        "kind": "automatic",
+        "speakerLabels": false
+      }
+    },
+    {
+      "videoId": "qdOIwR4kIg4",
+      "url": "https://www.youtube.com/watch?v=qdOIwR4kIg4",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2020 trực tiếp STV"
+      ],
+      "title": "The 2020 Ngo Boat Race Final at the Ooc Om Boc Festival in Soc Trang - Camera operator NEN NARY 0...",
+      "duration": 613,
+      "channel": "Tiger tv",
+      "channel_id": "UCyixd4hemEIMJGFg9okVZvw",
+      "live_status": null,
+      "yearsInTitle": [
+        2020
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "fzNJwW9MBSw",
+      "url": "https://www.youtube.com/watch?v=fzNJwW9MBSw",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2021 trực tiếp STV"
+      ],
+      "title": "Thống báo mới về việc không tổ chức đua ghe ngo Sóc Trăng 2021",
+      "duration": 155,
+      "channel": "Tập rèn TV",
+      "channel_id": "UC5N5TjMB35dj3kq_y_TxBaw",
+      "live_status": null,
+      "yearsInTitle": [
+        2021
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "-CsoL7UbvXc",
+      "url": "https://www.youtube.com/watch?v=-CsoL7UbvXc",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2017 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2021 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2026 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng chung kết truyền hình trực tiếp"
+      ],
+      "title": "Semi-Finals & Finals of Ngo Festival Boat Racing 2022 Soc Trang",
+      "duration": 1020,
+      "channel": "Qui lam",
+      "channel_id": "UCtvhz8Ekc-5UCV2SNC61L0Q",
+      "live_status": null,
+      "yearsInTitle": [
+        2022
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "3qCcJ0OVfSs",
+      "url": "https://www.youtube.com/watch?v=3qCcJ0OVfSs",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2026 trực tiếp STV"
+      ],
+      "title": "GHE NGO CHAM PA - CHÂU THÀNH - OÓC OM BÓC 2022",
+      "duration": 629,
+      "channel": "UT THANH ST TV",
+      "channel_id": "UCx7bsIQmDcErqLyWl__UjhA",
+      "live_status": null,
+      "yearsInTitle": [
+        2022
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "BLLn5OWaN10",
+      "url": "https://www.youtube.com/watch?v=BLLn5OWaN10",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2022 trực tiếp STV"
+      ],
+      "title": "Trực Tiếp 🔴 Festival Ghe Ngo Sóc Trăng 2022 Ở Sông Maspero",
+      "duration": 19090,
+      "channel": "Thiện Xứ Dừa",
+      "channel_id": "UC_BcNkMo8q9GOImmfXciGQA",
+      "live_status": "was_live",
+      "yearsInTitle": [
+        2022
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "BMYKXBNWcyQ",
+      "url": "https://www.youtube.com/watch?v=BMYKXBNWcyQ",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2022 trực tiếp STV"
+      ],
+      "title": "Trực tiếp  đua ghe ngo Ooc Om Booc Sóc Trăng 2022, Ngày hội VHTT Khmer Năm Bô lần 8,  Festival lần V",
+      "duration": 3352,
+      "channel": "Quốc Tuấn TV",
+      "channel_id": "UCWoA5TJGRZQJn7AlBVFq0ew",
+      "live_status": null,
+      "yearsInTitle": [
+        2022
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "F3wU7YfIivk",
+      "url": "https://www.youtube.com/watch?v=F3wU7YfIivk",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2017 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2022 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2023 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2024 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2025 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2026 trực tiếp STV"
+      ],
+      "title": "STV - TRỰC TIẾP GIẢI ĐUA GHE NGO OÓC OM BÓC SÓC TRĂNG – CUP BIA SÀI GÒN NĂM 2022 (VÒNG CHUNG KẾT)",
+      "duration": 18251,
+      "channel": "Cần Thơ - Tiếng Dân tộc",
+      "channel_id": "UCNBvVM7nAXZIdFgwPJKMigQ",
+      "live_status": "was_live",
+      "yearsInTitle": [
+        2022
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-broadcaster",
+      "audioEligibility": "reference-only-not-reviewed",
+      "upload_date": "20241010",
+      "release_timestamp": 1667883538,
+      "metadataStatus": "youtube-metadata-fetched",
+      "captionTracks": [
+        "vi-orig"
+      ],
+      "manualCaptionTracks": [],
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": true,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "indexed",
+      "captions": {
+        "sha256": "b0e10f99e9727a2e512ea92fbf93c8257004aac4d727384b8d9fcf4600349992",
+        "cueCount": 5655,
+        "khmerCues": 1263,
+        "kind": "automatic",
+        "speakerLabels": false
+      }
+    },
+    {
+      "videoId": "KVH6mmNuHg8",
+      "url": "https://www.youtube.com/watch?v=KVH6mmNuHg8",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2022 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2023 trực tiếp STV"
+      ],
+      "title": "Trực tiếp thi đấu đua Ghe Ngo tỉnh Sóc Trăng 2022. Vòng xếp bảng các đội hấp dẫn",
+      "duration": 3103,
+      "channel": "Đằng Miền Tây",
+      "channel_id": "UC1-gCL3gY-xZ83PF_9_f-NQ",
+      "live_status": null,
+      "yearsInTitle": [
+        2022
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "a3Uw-OYi7sw",
+      "url": "https://www.youtube.com/watch?v=a3Uw-OYi7sw",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2022 trực tiếp STV"
+      ],
+      "title": "🛑 Trực Tiếp Đua Ghe Ngo Sóc Trăng 2022 Mừng Lễ Ok Om Bok quá kịch tính và hấp dẫn",
+      "duration": 6543,
+      "channel": "Cao Tùng Vlog",
+      "channel_id": "UCFEnyeyqB8Mo90EEo8IASdA",
+      "live_status": null,
+      "yearsInTitle": [
+        2022
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "fixDhwf-H94",
+      "url": "https://www.youtube.com/watch?v=fixDhwf-H94",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2008 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2011 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2014 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2021 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2023 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2026 trực tiếp STV"
+      ],
+      "title": "Hành Trình Vô Địch Của Ghe Ngo Chùa Wáth Pích 2022 '' Đua Ghe Ngo Sóc Trăng 2022'' Festival",
+      "duration": 922,
+      "channel": "Chùa Xẻo Me - Vĩnh Châu Quê Tôi",
+      "channel_id": "UCSsZ7MdqJdn9uNwAF1HRY-A",
+      "live_status": null,
+      "yearsInTitle": [
+        2022
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "lH_IBA-GgdY",
+      "url": "https://www.youtube.com/watch?v=lH_IBA-GgdY",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2023 trực tiếp STV"
+      ],
+      "title": "đua ghe ngo sóc Trăng 2022 vòng 32 đội loại trực tiếp @Chanhtayga #ghengosoctrang",
+      "duration": 542,
+      "channel": "Chanh tayga",
+      "channel_id": "UC3n4Q0_qU8RfVdPCuPH001A",
+      "live_status": null,
+      "yearsInTitle": [
+        2022
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "wI7VrFiAUYs",
+      "url": "https://www.youtube.com/watch?v=wI7VrFiAUYs",
+      "discoveredBy": [
+        "user-reference-or-official-broadcast",
+        "đua ghe ngo Sóc Trăng 2012 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2013 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2020 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2021 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2022 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2023 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2024 trực tiếp STV"
+      ],
+      "title": "STV - TRỰC TIẾP GIẢI ĐUA GHE NGO OÓC OM BÓC SÓC TRĂNG NĂM 2022",
+      "duration": 19869,
+      "channel": "Cần Thơ - Tiếng Dân tộc",
+      "channel_id": "UCNBvVM7nAXZIdFgwPJKMigQ",
+      "live_status": "was_live",
+      "yearsInTitle": [
+        2022
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-broadcaster",
+      "audioEligibility": "reference-only-not-reviewed",
+      "upload_date": "20221107",
+      "release_timestamp": 1667797173,
+      "metadataStatus": "youtube-metadata-fetched",
+      "captionTracks": [
+        "vi-orig"
+      ],
+      "manualCaptionTracks": [],
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "indexed",
+      "captions": {
+        "sha256": "ae4ea2cac4281b45b5afb62d76ddde5229f50ffe882d73fb945ac70c02a1e37d",
+        "cueCount": 5948,
+        "khmerCues": 1457,
+        "kind": "automatic",
+        "speakerLabels": false
+      }
+    },
+    {
+      "videoId": "xSUma34Vfk0",
+      "url": "https://www.youtube.com/watch?v=xSUma34Vfk0",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2022 trực tiếp STV"
+      ],
+      "title": "Trực Tiếp Đua Ghe Ngo Sóc Trăng 2022 Trước Giờ Thi Đấu Vòng loại Chung kết Xếp Hạng",
+      "duration": 6645,
+      "channel": "THANH TÂM TV",
+      "channel_id": "UCJYP66DsOxlXbuqAL0fq89Q",
+      "live_status": "was_live",
+      "yearsInTitle": [
+        2022
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "kQ2as2kBDxk",
+      "url": "https://www.youtube.com/watch?v=kQ2as2kBDxk",
+      "discoveredBy": [
+        "user-reference-or-official-broadcast",
+        "đua ghe ngo Sóc Trăng 2023 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng chung kết truyền hình trực tiếp"
+      ],
+      "title": "27-11-2023 Trực tiếp Giải đua Ghe Ngo Oóc om bóc tỉnh Sóc Trăng năm 2023",
+      "duration": 16142,
+      "channel": "Cần Thơ - Tiếng Dân tộc",
+      "channel_id": "UCNBvVM7nAXZIdFgwPJKMigQ",
+      "live_status": "was_live",
+      "yearsInTitle": [
+        2023
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-broadcaster",
+      "audioEligibility": "reference-only-not-reviewed",
+      "upload_date": "20231127",
+      "release_timestamp": 1701061053,
+      "metadataStatus": "youtube-metadata-fetched",
+      "captionTracks": [
+        "vi-orig"
+      ],
+      "manualCaptionTracks": [],
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "indexed",
+      "captions": {
+        "sha256": "4b3e5333e9c882b78050a97d8250d84dccb8b44a931263c09ab971ed06b50ffd",
+        "cueCount": 4110,
+        "khmerCues": 0,
+        "kind": "automatic",
+        "speakerLabels": false
+      }
+    },
+    {
+      "videoId": "tnb7TdUVRkU",
+      "url": "https://www.youtube.com/watch?v=tnb7TdUVRkU",
+      "discoveredBy": [
+        "user-reference-or-official-broadcast",
+        "đua ghe ngo Sóc Trăng 2023 trực tiếp STV"
+      ],
+      "title": "26-11-2023 Truyền Hình Trực Tiếp: Khai mạc Giải đua Ghe Ngo tỉnh Sóc Trăng năm 2023",
+      "duration": 17102,
+      "channel": "Cần Thơ - Tiếng Dân tộc",
+      "channel_id": "UCNBvVM7nAXZIdFgwPJKMigQ",
+      "live_status": "was_live",
+      "yearsInTitle": [
+        2023
+      ],
+      "eventYearStatus": "broadcast-title-and-event-context-reviewed",
+      "sourceClass": "reference-broadcaster",
+      "audioEligibility": "contains-cc-reviewed-cuts-not-listening-certified",
+      "upload_date": "20231126",
+      "release_timestamp": 1700974585,
+      "metadataStatus": "youtube-metadata-fetched",
+      "captionTracks": [
+        "vi-orig"
+      ],
+      "manualCaptionTracks": [],
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [
+        "name-pong-tuk-chas-km",
+        "khmer-full-effort"
+      ],
+      "eventYear": 2023,
+      "captionIndexStatus": "indexed",
+      "captions": {
+        "sha256": "4abce470dbdf29b3954d5bb9a7669efaa25758a16af8a1f233c17209cdede697",
+        "cueCount": 5225,
+        "khmerCues": 1426,
+        "kind": "automatic",
+        "speakerLabels": false
+      }
+    },
+    {
+      "videoId": "CRdgAAg7Mo0",
+      "url": "https://www.youtube.com/watch?v=CRdgAAg7Mo0",
+      "discoveredBy": [
+        "user-reference-or-official-broadcast",
+        "đua ghe ngo Sóc Trăng 2023 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2024 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2025 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng chung kết truyền hình trực tiếp"
+      ],
+      "title": "Trực tiếp Giải Đua Ghe ngo Oóc Om Bóc Sóc Trăng khu vực ĐBSCL lần thứ VI - Năm 2024",
+      "duration": 17334,
+      "channel": "Cần Thơ - Tiếng Dân tộc",
+      "channel_id": "UCNBvVM7nAXZIdFgwPJKMigQ",
+      "live_status": "was_live",
+      "yearsInTitle": [
+        2024
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-broadcaster",
+      "audioEligibility": "reference-only-not-reviewed",
+      "upload_date": "20241115",
+      "release_timestamp": 1731646538,
+      "metadataStatus": "youtube-metadata-fetched",
+      "captionTracks": [
+        "vi-orig"
+      ],
+      "manualCaptionTracks": [],
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "indexed",
+      "captions": {
+        "sha256": "4cffbdb7be96474501cd4f564cb12f8db9e6dbea2d13222ff2907a3c49fd1629",
+        "cueCount": 4295,
+        "khmerCues": 0,
+        "kind": "automatic",
+        "speakerLabels": false
+      }
+    },
+    {
+      "videoId": "Y2fp9gYRIZ8",
+      "url": "https://www.youtube.com/watch?v=Y2fp9gYRIZ8",
+      "discoveredBy": [
+        "user-reference-or-official-broadcast",
+        "đua ghe ngo Sóc Trăng 2024 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2025 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2026 trực tiếp STV"
+      ],
+      "title": "Trực tiếp Lễ khai mạc giải Đua Ghe ngo Oóc Om Bóc khu vực ĐBSCL lần thứ VI - Năm 2024",
+      "duration": 19799,
+      "channel": "Cần Thơ - Tiếng Dân tộc",
+      "channel_id": "UCNBvVM7nAXZIdFgwPJKMigQ",
+      "live_status": "was_live",
+      "yearsInTitle": [
+        2024
+      ],
+      "eventYearStatus": "broadcast-title-and-event-context-reviewed",
+      "sourceClass": "reference-broadcaster",
+      "audioEligibility": "contains-cc-reviewed-cuts-not-listening-certified",
+      "upload_date": "20241114",
+      "release_timestamp": 1731560282,
+      "metadataStatus": "youtube-metadata-fetched",
+      "captionTracks": [
+        "vi-orig"
+      ],
+      "manualCaptionTracks": [],
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [
+        "name-ta-on-vi",
+        "name-tra-quyt-moi-vi",
+        "name-tra-cuon-vi",
+        "broadcast-stroke-strength",
+        "broadcast-final-contest",
+        "broadcast-close-contest",
+        "broadcast-race-appraisal",
+        "broadcast-unfortunate"
+      ],
+      "eventYear": 2024,
+      "captionIndexStatus": "indexed",
+      "captions": {
+        "sha256": "139be62898806a8de27993832fee58b2127a0eb6b716d9479e500836eae5a12d",
+        "cueCount": 3921,
+        "khmerCues": 0,
+        "kind": "automatic",
+        "speakerLabels": false
+      }
+    },
+    {
+      "videoId": "Zg8ERv67q0c",
+      "url": "https://www.youtube.com/watch?v=Zg8ERv67q0c",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2024 trực tiếp STV"
+      ],
+      "title": "Trực tiếp.giải đua ghe ngo sóc trăng Bình Lan 83 TV 14/11/2024",
+      "duration": 8551,
+      "channel": "Bình Lan  83 TV",
+      "channel_id": "UC8rNOtbr18cv5OeZQkAZVow",
+      "live_status": "was_live",
+      "yearsInTitle": [
+        2024
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "EGnmR_qxkJY",
+      "url": "https://www.youtube.com/watch?v=EGnmR_qxkJY",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2025 trực tiếp STV"
+      ],
+      "title": "11-4-2025 LỄ KHAI MẠC GIẢI BÓNG ĐÁ NÔNG DÂN KHMER TRANH CÚP TRUYỀN HÌNH SÓC TRĂNG-BÌNH ĐIỀN NĂM 2025",
+      "duration": 8858,
+      "channel": "Cần Thơ - Tiếng Dân tộc",
+      "channel_id": "UCNBvVM7nAXZIdFgwPJKMigQ",
+      "live_status": "was_live",
+      "yearsInTitle": [
+        2025
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-broadcaster",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "excluded-unrelated-search-result",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "R2WNFNR8wJw",
+      "url": "https://www.youtube.com/watch?v=R2WNFNR8wJw",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng chung kết truyền hình trực tiếp"
+      ],
+      "title": "🔴 Livestream TRUYỀN HÌNH TRỰC TIẾP: LỄ KHAI MẠC GIẢI ĐUA GHE NGO TP. CẦN THƠ NĂM 2025",
+      "duration": 18546,
+      "channel": "VTV10 - Đài Truyền hình Việt Nam",
+      "channel_id": "UCk2LTxj-wLiAnmgjnZ_a8Iw",
+      "live_status": "was_live",
+      "yearsInTitle": [
+        2025
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "XagC29Eyt_U",
+      "url": "https://www.youtube.com/watch?v=XagC29Eyt_U",
+      "discoveredBy": [
+        "đua ghe ngo Sóc Trăng 2017 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2024 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2025 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2026 trực tiếp STV",
+        "STV đua ghe ngo bình luận tiếng Khmer"
+      ],
+      "title": "[🔴Live] Khai mạc Giải Đua ghe Ngo Lễ hội Oóc Om Bóc – Đua ghe Ngo Thành phố Cần Thơ năm 2025",
+      "duration": 18220,
+      "channel": "Cần Thơ - Tiếng Dân tộc",
+      "channel_id": "UCNBvVM7nAXZIdFgwPJKMigQ",
+      "live_status": "was_live",
+      "yearsInTitle": [
+        2025
+      ],
+      "eventYearStatus": "broadcast-title-and-event-context-reviewed",
+      "sourceClass": "reference-broadcaster",
+      "audioEligibility": "contains-cc-reviewed-cuts-not-listening-certified",
+      "upload_date": "20251104",
+      "release_timestamp": 1762232151,
+      "metadataStatus": "youtube-metadata-fetched",
+      "captionTracks": [
+        "vi-orig"
+      ],
+      "manualCaptionTracks": [],
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [
+        "name-cham-pa-km"
+      ],
+      "eventYear": 2025,
+      "captionIndexStatus": "indexed",
+      "captions": {
+        "sha256": "1856b1307fd29ba0fe80dc03280d7c0c998c9e966e6ca75fdf374c7c1a9a52e9",
+        "cueCount": 5040,
+        "khmerCues": 1642,
+        "kind": "automatic",
+        "speakerLabels": false
+      }
+    },
+    {
+      "videoId": "crZF3hghbgQ",
+      "url": "https://www.youtube.com/watch?v=crZF3hghbgQ",
+      "discoveredBy": [
+        "user-reference-or-official-broadcast",
+        "đua ghe ngo Sóc Trăng 2024 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2025 trực tiếp STV",
+        "đua ghe ngo Sóc Trăng 2026 trực tiếp STV",
+        "STV đua ghe ngo bình luận tiếng Khmer",
+        "đua ghe ngo Sóc Trăng chung kết truyền hình trực tiếp"
+      ],
+      "title": "[🔴Live] Ngày thi đấu thứ 2 Giải Đua ghe Ngo Lễ hội Oóc Om Bóc – Đua ghe Ngo TP Cần Thơ năm 2025",
+      "duration": 18640,
+      "channel": "Cần Thơ - Tiếng Dân tộc",
+      "channel_id": "UCNBvVM7nAXZIdFgwPJKMigQ",
+      "live_status": "was_live",
+      "yearsInTitle": [
+        2025
+      ],
+      "eventYearStatus": "broadcast-title-and-event-context-reviewed",
+      "sourceClass": "reference-broadcaster",
+      "audioEligibility": "contains-cc-reviewed-cuts-not-listening-certified",
+      "upload_date": "20251105",
+      "release_timestamp": 1762318546,
+      "metadataStatus": "youtube-metadata-fetched",
+      "captionTracks": [
+        "vi-orig"
+      ],
+      "manualCaptionTracks": [],
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [
+        "broadcast-ready",
+        "broadcast-go",
+        "broadcast-intro",
+        "broadcast-rhythm",
+        "broadcast-recover",
+        "broadcast-close",
+        "broadcast-sprint",
+        "broadcast-surge",
+        "broadcast-finish",
+        "broadcast-loss",
+        "broadcast-wait",
+        "broadcast-lead",
+        "khmer-intro",
+        "drum-low",
+        "drum-open",
+        "drum-rim",
+        "broadcast-ambience",
+        "khmer-go",
+        "khmer-finish",
+        "name-pothi-satharam-vi",
+        "name-khleang-vi",
+        "name-chroi-tum-chas-vi",
+        "name-xeo-me-vi",
+        "name-ong-kho-vi",
+        "name-pong-tuk-chas-vi",
+        "name-lo-moi-vi",
+        "name-bon-mat-vi",
+        "name-tra-quyt-cu-vi",
+        "name-tum-nup-vi",
+        "name-bang-kok-vi",
+        "name-day-ta-suos-vi",
+        "name-bet-ton-vi",
+        "name-tam-soc-vi",
+        "name-prek-on-dok-vi",
+        "name-day-om-pu-vi",
+        "name-om-pou-year-vi",
+        "name-sang-ke-vi",
+        "name-pothi-khsach-vi",
+        "name-rach-giong-vi",
+        "name-ngan-dua-vi",
+        "name-dau-sau-vi",
+        "name-settodor-vi",
+        "name-phno-kambot-vi",
+        "name-tum-nup-km",
+        "name-kos-thum-km",
+        "name-sang-ke-km",
+        "name-rach-giong-km",
+        "name-day-om-pu-km",
+        "name-pothi-satharam-two-vi",
+        "name-khleang-one-vi",
+        "name-sro-lon-one-vi",
+        "name-sro-lon-two-vi",
+        "name-tum-nup-two-vi",
+        "name-bang-kok-two-vi",
+        "name-prek-on-dok-two-vi",
+        "name-kos-thum-one-vi",
+        "name-kos-thum-two-vi",
+        "name-kos-thum-two-km",
+        "history-tum-nup-champion-vi",
+        "history-kos-thum-runner-up-vi",
+        "history-sro-lon-third-vi"
+      ],
+      "eventYear": 2025,
+      "captionIndexStatus": "indexed",
+      "captions": {
+        "sha256": "a08fd520f7be92121755cf73dc3d8598f84c17be500aa403b5f1d6cf33008e6a",
+        "cueCount": 4434,
+        "khmerCues": 730,
+        "kind": "automatic",
+        "speakerLabels": false
+      }
+    },
+    {
+      "videoId": "zbxHkGnQsgE",
+      "url": "https://www.youtube.com/watch?v=zbxHkGnQsgE",
+      "discoveredBy": [
+        "STV đua ghe ngo bình luận tiếng Khmer"
+      ],
+      "title": "Trận đấu Nam giữa 2 đội Khleang và Sang Ke | Đua Ghe Ngo Sóc Trăng Cần Thơ 2025",
+      "duration": 40,
+      "channel": "Bạc Liêu Quê Mình",
+      "channel_id": "UCjJTxGLSecBlvIl52CIkPXw",
+      "live_status": null,
+      "yearsInTitle": [
+        2025
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "M2-83Btqeqo",
+      "url": "https://www.youtube.com/watch?v=M2-83Btqeqo",
+      "discoveredBy": [
+        "STV đua ghe ngo bình luận tiếng Khmer"
+      ],
+      "title": "Ngo Boat Race Soc Trang _ 2025-2026 on the Maspero River #khmertrande #tonyfilming #youtubetrends",
+      "duration": 937,
+      "channel": "Quayphim Tony",
+      "channel_id": "UC7ExcssCos-7fDMBAyoPrLQ",
+      "live_status": null,
+      "yearsInTitle": [
+        2025,
+        2026
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    },
+    {
+      "videoId": "JIxAeWHQwIo",
+      "url": "https://www.youtube.com/watch?v=JIxAeWHQwIo",
+      "discoveredBy": [
+        "STV đua ghe ngo bình luận tiếng Khmer"
+      ],
+      "title": "EXCITING KHMER BOAT RACE AT OLD XA XIEM PAGODA 2026 | CELEBRATING SEN DOLTA FESTIVAL",
+      "duration": 1421,
+      "channel": "WAT KHMER TV",
+      "channel_id": "UCLNzgVk5PJQIUh3TVDfjuJQ",
+      "live_status": null,
+      "yearsInTitle": [
+        2026
+      ],
+      "eventYearStatus": "title-only-unverified",
+      "sourceClass": "reference-only",
+      "audioEligibility": "reference-only-not-reviewed",
+      "metadataStatus": "youtube-search-metadata-only",
+      "referenceStatus": "race-reference",
+      "uploadYearDiffersFromTitle": false,
+      "speakerIdentityVerified": false,
+      "runtimeCuts": [],
+      "captionIndexStatus": "no-original-cc-found-or-not-yet-inspected"
+    }
+  ],
+  "coverage": {
+    "discoveredVideos": 76,
+    "raceReferences": 74,
+    "captionSources": 21,
+    "captionCues": 51237,
+    "khmerCaptionCues": 6585,
+    "nameCandidates": 252,
+    "runtimeAudioSources": 4
+  }
+}

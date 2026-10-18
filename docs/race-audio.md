@@ -7,18 +7,13 @@ TTS/chant/synthetic-drum set in place. The historical checks in `docs/qa/race-au
 refer to that earlier implementation; current checks are in
 `docs/qa/broadcast-audio`.
 
-There are 61 cuts, totalling 1,055,813 MP3 bytes: the existing 19 event/field
-recordings, 39 name recordings and three historical commentary excerpts. The
-61 registration profiles currently have Vietnamese names for 39 entries, Khmer
-names for 10 entries, and Vietnamese historical audio for three entries. Khmer
-historical audio remains unavailable. Missing entries are not filled with another
-team's recording or synthetic speech. The complete source stays outside the repository; its
-SHA-256 and each cut's precise source range are recorded in
-`docs/broadcast-audio-cuts.json` and the public audio manifest. Nothing is
-synthesized or cloned. EQ, fades, normalization and encoding are applied to the
-original recordings. Field percussion can include other field noise; it is not
-an isolated drum studio recording. Rights/source attribution is documented in
-`public/assets/race-audio/ATTRIBUTION.md`.
+There are 72 cuts, totalling 1,311,624 MP3 bytes, from four hashed original recordings spanning 2023–2025. These include 25 event/field cuts, 44 team-name cuts and three historical excerpts. Coverage of the 61 current registrations is 42 Vietnamese names, 12 Khmer names, three Vietnamese histories and zero Khmer histories. Missing entries remain unavailable. Complete originals stay outside the repository; the site ships only the selected excerpts. `sources` and every cut's `sourceId` identify the exact recording, source/CC hashes, event year and cut boundaries. Nothing is synthesized, cloned or assembled from syllables. Rights/source attribution is in `public/assets/race-audio/ATTRIBUTION.md`.
+
+The source catalog contains 76 deduplicated discoveries, 74 relevant race references, 21 downloaded original CC tracks, 51,237 nonempty cues and 6,585 cues containing Khmer writing. The search covers queries for 2008–2026; found archive titles include earlier years and unrelated/other-event references. This is a bounded discovery catalog, not every YouTube video or a verified season-by-season history. Event years in titles are explicitly unverified until reviewed. Upload dates are separate: the 2022 final `F3wU7YfIivk` was uploaded in 2024; some 2016/2019/2020 archive clips were uploaded later. There are 252 exact-text name candidates for further review, not automatically approved recordings or historical registrations.
+
+Tools: yt-dlp with Node/EJS for metadata/CC/audio; FFmpeg for bounded decoding/cuts; local faster-whisper large-v3-turbo (fully downloaded to E) and the public Vatho/Khmer-ocm ASR service for bounded machine cross-checks. Short/bilingual/noisy excerpts sometimes yielded unrelated stock YouTube phrases; a forced Khmer decoder also produces Khmer-looking output for Vietnamese speech. These results are not language/speaker verification. Conflicting candidates are not automatically used. A level-race candidate was withheld because secondary ASR adds finish-line context absent from CC. New Khmer all-out-effort audio is restricted to the final 250 m. No independent listening/native review or certification of the same two speakers across seasons has been obtained.
+
+The review/listening page is `/assets/race-audio/`: one user-started audio element, no automatic audio fetch, filters for stage/language/name, original YouTube timestamps, exact source years/upload dates and missing registration coverage. It links back to the stable game root; it is not a new game version.
 
 The main game opens one AudioContext from an explicit Listen or Start touch/click,
 after 3D initialization. No audio is fetched before that gesture. Name audition
@@ -34,7 +29,7 @@ that event has a Khmer excerpt, with no overlap of the two commentators. The
 Khmer commentator is an independent audio channel. Existing `chants` preferences
 migrate to `khmer`, and volume remains saved separately from the cup.
 
-Speech selection now uses the original YouTube automatic CC track (`vi-orig`).
+The primary 2025 source uses its original YouTube automatic CC track (`vi-orig`).
 Although labelled Vietnamese, it contains both Vietnamese and Khmer writing:
 4,434 nonempty cues. The track hash is recorded under `source.captions` and each
 speech cut includes the exact CC tokens/word starts in `captionEvidence`.
@@ -42,31 +37,23 @@ The baker checks that the supplied CC file matches, all speech inside each cut
 was included in review, and the following phrase is excluded. Display text fixes
 obvious recognition spelling errors and is not a certified verbatim transcript.
 
-The previous unrelated Khmer cuts were removed. The selected phrases now mean
-"Dear viewers" (intro), "It has started" (go) and "We congratulate" (a player win
-only). Their working Vietnamese translations are stored alongside the original
-CC text. No selected CC phrase contains a team name or numeric distance. There
-is no Khmer congratulation at cruise, sprint, surge, a player loss, DNF or tie.
-CC is still automatic, has no speaker labels, and has not received independent
-listening/native review. Original sound and pitch are preserved; the two speaker
-roles follow the user's reference. Actual teams, distances and results still
-come from gameplay and the HUD.
+Stage routing rechecks conditions against the actual player phase, own distance, pace/effort, gap and result before playback and again after decoding. Crossing 950 m on the opposing boat no longer triggers the player's final milestone. Event arrays choose one alternative rather than joining every variant. Generic history plays during the middle distance only; queued history cannot follow a finish. Urgent cues wait for the current complete phrase, with bounded queue expiry and rapid-repeat suppression. Confirmed ties no longer play a statement waiting for the judge; DNF uses a neutral expression of regret. Pauses/mute/navigation still stop speech immediately as requested by the user.
+
+Selected Khmer event phrases comprise the existing greeting, race-start and win-only congratulations plus the newly cross-checked all-out-effort instruction from the 2023 broadcast. Two new Khmer name cuts cover Cham Pa and Pong Tứk Chắc. New Vietnamese name cuts cover Tà On, Trà Quýt Mới and Trà Cuôn; pagoda-only cuts do not invent a team number or gender. Automatic CC can still be wrong; source hashes, ASR text and tests are technical/provenance evidence, not proof of correct pronunciation or human listening review.
 
 The header offers BLV Việt (âm gốc), BLV Khmer (âm gốc), rowing drums and field
 ambience switches. Captions stay in the footer outside the canvas. All sound
 stops on pause, mute, bracket view, hidden page, new heat and navigation.
 
-Rebuild:
+Rebuild/research (originals/model remain under `E:/AI/Um Tuk/asset-studio/audio-references/`):
 
-    python -m yt_dlp --js-runtimes node --skip-download --write-auto-subs --sub-langs vi-orig --sub-format json3 --no-progress -o "path/to/youtube-captions.%(ext)s" "https://www.youtube.com/watch?v=crZF3hghbgQ"
-    python scripts/build-race-audio.py --source "path/to/broadcast-full.m4a" --captions "path/to/youtube-captions.vi-orig.json3"
+    python scripts/collect-broadcast-sources.py --first-year 2008 --last-year 2026
+    python scripts/index-broadcast-sources.py --cache "path/to/originals-and-cc"
+    python scripts/transcribe-broadcast.py --requests "path/to/bounded-review-requests.json" --output "path/to/asr-review.json"
+    python scripts/transcribe-broadcast.py --backend local-whisper --model "path/to/complete-model" --requests "path/to/bounded-review-requests.json" --output "path/to/asr-review.json"
+    python scripts/build-race-audio.py --inputs "path/to/broadcast-inputs.json"
 
-The source must match the reviewed 301,668,624-byte AAC recording. A fresh source
-requires checking its cut ranges/hash before baking. Updated yt-dlp with
-`--js-runtimes node`, its matching EJS dependency and FFmpeg were used to retrieve
-the recording. No transcription API or new voice generation is required for
-this CC-based selection. No ASR or model is shipped with the site. Tools and original
-source are under `E:/AI/Um Tuk/asset-studio/audio-references/`.
+`--inputs` is a local JSON map of video ID to `{audio: originalPath, captions: originalJson3Path}`. Every source and CC hash must match the reviewed recipe. The old `--source`/`--captions` arguments still identify the primary recording, but the expanded recipe requires its other used originals through `--inputs` as well. The baker checks every CC word inside a speech cut and excludes the following phrase. Short speech/name excerpts use filtered peak normalization with MP3 headroom; longer phrases use loudness normalization. No ASR, model, full broadcast or transcription account is loaded by the game.
 
 Verification:
 
@@ -104,7 +91,7 @@ from race bib numbers and from the eight appearance preset IDs. Runtime resolves
 `team.registrationId`; it never guesses a name from a kit, lane or colour.
 The intro reads available names of both actual participants. Lead changes and
 finish results select the correct participant, while missing recordings remain
-silent. Historical phrases can play during the early/cruise period and cannot
+silent. Historical phrases can play during the cruise period and cannot
 change the cup result. History is entry/gender specific: Sro Lôn 1 does not
 inherit Sro Lôn 2's medal, and female Kos Thum entries do not inherit the male
 runner-up result. Shared pagoda-name cuts make no unspoken number/gender claim.
@@ -142,13 +129,13 @@ the name is absent from the full audio):
 | can_tho-10 | Pích Măng Kol (Wáth Pích) | — | — | — |
 | can_tho-11 | Ô Chum - Prếk Chếk | — | — | — |
 | can_tho-12 | Nô Rên Răn Sây (Ông Kho) | yes | — | — |
-| can_tho-13 | Pong Tứk Chắc | yes | — | — |
+| can_tho-13 | Pong Tứk Chắc | yes | yes | — |
 | can_tho-14 | Buôl Mun (Lộ Mới) | yes | — | — |
 | can_tho-15 | Muni Srắc Keo | — | — | — |
 | can_tho-16 | Phnôrôka | — | — | — |
-| can_tho-17 | Tà Khvich Thmây (Trà Quýt Mới) | — | — | — |
+| can_tho-17 | Tà Khvich Thmây (Trà Quýt Mới) | yes | — | — |
 | can_tho-18 | Bốn Mặt (Buôl Preas Phek) | yes | — | — |
-| can_tho-19 | Cham Pa | — | — | — |
+| can_tho-19 | Cham Pa | — | yes | — |
 | can_tho-20 | Trà Quýt cũ (Ta Kh Vích Chăs) | yes | — | — |
 | can_tho-21 | Kom Pong Tróp A | — | — | — |
 | can_tho-22 | Bô Tum Reangsey Tum Nup (Tum Núp 1) | yes | yes | — |
@@ -159,12 +146,12 @@ the name is absent from the full audio):
 | can_tho-27 | Bâng Khdon | — | — | — |
 | can_tho-28 | Đay Ta Suốs | yes | — | — |
 | can_tho-29 | Prếk Pinh Tuang (Bét Tôn) | yes | — | — |
-| can_tho-30 | Tà On | — | — | — |
+| can_tho-30 | Tà On | yes | — | — |
 | can_tho-31 | TumPokSok (Đội nam) | yes | — | — |
 | can_tho-32 | TumPokSok (Đội nữ) | yes | — | — |
 | can_tho-33 | Bâng Tone Sa | — | — | — |
 | can_tho-34 | Prếk Om Pu | — | — | — |
-| can_tho-35 | Prếk Ta Cuôl (Trà Cuôn) | — | — | — |
+| can_tho-35 | Prếk Ta Cuôl (Trà Cuôn) | yes | — | — |
 | can_tho-36 | Đay Om Pu (Phú Giao) | yes | yes | — |
 | can_tho-37 | Om Pou Year | yes | — | — |
 | can_tho-38 | Prêk On Đơk (Đội 1) | yes | — | — |
@@ -192,10 +179,4 @@ the name is absent from the full audio):
 | ca_mau-12 | Đầu Sấu (Đội 2) | yes | — | — |
 | ca_mau-13 | Đìa Chuối | — | — | — |
 
-Current team-audio deployment: source `b435581`, Pages `a55623bdce471d2c778e4ca66ef014a84e2fb47f`,
-successful [Actions run 39050535242](https://github.com/machxanht/Tuk-Ngo/actions/runs/39050535242).
-All 61 public MP3 hashes and the 737,510-byte archive match the source manifest.
-Public browser checks passed name/history auditions, missing recording feedback,
-team-change cancellation, a full race, next heat, audio settings and disposal
-with no browser errors. Three setup/race tablet viewports were exercised.
-Coverage and independent-listening limitations above remain unchanged.
+Current runtime and public verification are recorded in `docs/qa/broadcast-audio/published.json`. The earlier 61-cut deployment is superseded by this source/library expansion after its new deployment checks. The archived technical source-correlation evidence must be refreshed for the expanded 72-cut manifest before claiming current external verification.

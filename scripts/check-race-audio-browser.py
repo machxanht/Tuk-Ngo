@@ -109,11 +109,11 @@ with sync_playwright() as p:
   diagnostic={'audio':page.evaluate(audio+'.stats()'),'race':page.evaluate(boat+'.game.snapshot()'),'errors':errors}
   (out/'failure.json').write_text(json.dumps(diagnostic,ensure_ascii=False,indent=2),encoding='utf-8',newline='\n');page.screenshot(path=str(out/'failure.png'));raise
  page.wait_for_function(audio+".stats().drumKinds['drum-rim']>=3",timeout=15000)
- page.wait_for_function("()=>{const s="+audio+".stats();return s.played.some(p=>p.key==='broadcast-sprint'&&p.at<s.audioTime);}",timeout=15000)
+ page.wait_for_function("()=>{const s="+audio+".stats();return s.played.some(p=>p.cue==='final'&&p.at<s.audioTime);}",timeout=15000)
  report['final']=page.evaluate(audio+'.stats()');assert not any(c in report['final']['queued'] for c in ['cruise','halfway'])
  page.get_by_role('button',name='ĐẠP!',exact=False).tap()
  page.wait_for_function(audio+".stats().cues.includes('surge')")
- page.wait_for_function("()=>{const s="+audio+".stats();return s.played.some(p=>p.key==='broadcast-surge'&&p.at<s.audioTime);}",timeout=15000)
+ page.wait_for_function("()=>{const s="+audio+".stats();return s.played.some(p=>p.cue==='surge'&&p.at<s.audioTime);}",timeout=15000)
  report['surge']=page.evaluate(audio+'.stats()');assert report['surge']['drumHits']>report['intro']['drumHits']
  page.evaluate('''()=>{const a=document.querySelector('[data-testid=art-stage]').boatPreview,g=a.game;let next=Math.floor(g.state.beatPhase)+1;for(let i=0;i<70000&&g.state.phase!=='finished';i++){a.advance(1/240);if(g.state.phase==='racing'&&g.state.beatPhase>=next){g.stroke();next++;}}}''')
  page.wait_for_selector('[aria-label="Kết quả trận đua"]',timeout=15000)
@@ -143,6 +143,16 @@ with sync_playwright() as p:
  report['disposed']=page.evaluate('window.previousRaceAudio.stats()');assert report['disposed']['disposed'] and report['disposed']['context'] in ['closed','uninitialized'] and report['disposed']['sources']==0
  assert not errors,errors;assert all(r['status']==200 for r in responses),responses
  manifest=page.request.get(args.url.rstrip('/')+'/assets/race-audio/manifest.json').json()
+ # The records capture the actual state at scheduling, after fetch/decode.
+ for played in report['finish']['played']:
+  if played.get('kind') or not played.get('state'):continue
+  clip=manifest['clips'][played['key']];rules=clip.get('conditions',{});state=played['state']
+  if 'phases' in rules:assert state['phase'] in rules['phases'],played
+  if 'minDistance' in rules:assert state['distance']>=rules['minDistance'],played
+  if 'maxDistance' in rules:assert state['distance']<rules['maxDistance'],played
+  if 'maxAbsGap' in rules:assert abs(state['gap'])<=rules['maxAbsGap'],played
+  if 'results' in rules:assert state['result'] in rules['results'],played
+ assert all(p['key']!='broadcast-wait' for p in report['finish']['played'])
  original={clip['file'] for clip in manifest['clips'].values() if clip['sourceType']=='broadcast'}
  assert all(Path(urlsplit(r['url']).path).name in original for r in responses if '.mp3' in r['url']),'Only attributed source recordings'
  assert report['finish']['khmerClips']>=3

@@ -20,16 +20,21 @@
         "km"
       ],
       "speakerLabels": false
-    }
+    },
+    "eventYear": 2025,
+    "title": "Ngày thi đấu thứ 2 Giải Đua ghe Ngo Lễ hội Óc Om Bóc – Đua ghe Ngo TP Cần Thơ năm 2025"
   },
   "review": {
     "vietnamese": "Re-cut against word starts in the original YouTube CC track. Automatic CC includes recognition errors; display text corrects obvious spelling and is not a certified verbatim transcript.",
-    "khmer": "Selected complete short Khmer phrases from the original YouTube CC, with working Vietnamese translations and word-start evidence. Greeting is used at intro, started at go, congratulations only at a player win. No source team names in these selected CC phrases. No independent listening/native-language verification.",
+    "khmer": "Original CC Khmer phrases with working Vietnamese translations. The new all-out-effort phrase is restricted to the final 250m. A seemingly level-race candidate was rejected because the second ASR includes finish-line context. No independent native listening review.",
     "percussion": "Recorded field transients during a gap in recognised commentary; filtered and faded, not isolated studio drum stems.",
     "rights": "Source attributed to broadcaster. No permission or reusable-content licence has been independently verified.",
     "speakers": "Only source broadcast audio; no TTS, cloning, replacement narrator, pitch shift or time stretch. YouTube CC does not identify speakers; Vietnamese/Khmer speaker roles follow the two-commentator reference supplied by the user.",
     "teamNames": "Name identities were matched manually against the registration roster, local aliases and surrounding race/team context in automatic CC. Original speech only; no assembled syllables, invented team numbers or runtime TTS. Shared pagoda-name cuts contain no gender/entry claim; numbered cuts are used only for that number. Proper-name spelling in automatic CC can be wrong; this is not independent listening verification.",
-    "teamHistory": "Only complete original commentary phrases with externally corroborated 2024 results. Historical standings are restricted to the identified entry/gender, never used to decide a game result. Missing names/history remain explicitly unavailable; absent CC is not proof the audio never speaks that name."
+    "teamHistory": "Only complete original commentary phrases with externally corroborated 2024 results. Historical standings are restricted to the identified entry/gender, never used to decide a game result. Missing names/history remain explicitly unavailable; absent CC is not proof the audio never speaks that name.",
+    "multiSeason": "Four complete hashed original recordings from 2023, 2024 and 2025. Video upload dates are separate from event years. Search references/candidate captions never automatically enter the runtime.",
+    "asr": "Local faster-whisper large-v3-turbo and public Vatho/Khmer-ocm were tried on bounded excerpts. Results can hallucinate, especially short/music/bilingual contexts. Selected additions retain raw CC plus relevant machine evidence; inconclusive/contradictory candidates are excluded. This is not an independent listening or speaker-identity certification.",
+    "stages": "Per-recording eligibility is rechecked against actual player distance/pace/effort/gap/result, including after decoding. Generic event arrays are alternatives. Current excerpts finish before an urgent queued cue; stale/ineligible cues and rapid duplicate excerpts are skipped. No judge-wait statement is played after a confirmed tie."
   },
   "ambience": "broadcast-ambience",
   "warmup": [
@@ -79,31 +84,44 @@
     },
     "final": {
       "voice": [
-        "broadcast-sprint"
+        "broadcast-sprint",
+        "broadcast-final-contest"
       ],
-      "khmer": []
+      "khmer": [
+        "khmer-full-effort"
+      ]
     },
     "last-hundred": {
       "voice": [
-        "broadcast-surge"
+        "broadcast-sprint",
+        "broadcast-final-contest"
       ],
-      "khmer": []
+      "khmer": [
+        "khmer-full-effort"
+      ]
     },
     "last-fifty": {
       "voice": [
-        "broadcast-sprint"
+        "broadcast-sprint",
+        "broadcast-final-contest"
       ],
-      "khmer": []
+      "khmer": [
+        "khmer-full-effort"
+      ]
     },
     "surge": {
       "voice": [
-        "broadcast-surge"
+        "broadcast-surge",
+        "broadcast-stroke-strength"
       ],
-      "khmer": []
+      "khmer": [
+        "khmer-full-effort"
+      ]
     },
     "pace-sprint": {
       "voice": [
-        "broadcast-sprint"
+        "broadcast-sprint",
+        "broadcast-stroke-strength"
       ],
       "khmer": []
     },
@@ -127,7 +145,8 @@
     },
     "close-race": {
       "voice": [
-        "broadcast-close"
+        "broadcast-close",
+        "broadcast-close-contest"
       ],
       "khmer": []
     },
@@ -153,13 +172,13 @@
     },
     "dnf": {
       "voice": [
-        "broadcast-loss"
+        "broadcast-unfortunate"
       ],
       "khmer": []
     },
     "tie": {
       "voice": [
-        "broadcast-wait"
+        "broadcast-race-appraisal"
       ],
       "khmer": []
     }
@@ -203,6 +222,12 @@
           ]
         ],
         "nextWordStart": 5475.08
+      },
+      "sourceId": "crZF3hghbgQ",
+      "conditions": {
+        "phases": [
+          "countdown"
+        ]
       }
     },
     "broadcast-go": {
@@ -247,6 +272,13 @@
           ]
         ],
         "nextWordStart": 3349.68
+      },
+      "sourceId": "crZF3hghbgQ",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "maxElapsed": 8
       }
     },
     "broadcast-intro": {
@@ -283,6 +315,13 @@
           ]
         ],
         "nextWordStart": 5477.4
+      },
+      "sourceId": "crZF3hghbgQ",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "maxElapsed": 24
       }
     },
     "broadcast-rhythm": {
@@ -323,6 +362,13 @@
           ]
         ],
         "nextWordStart": 5366.28
+      },
+      "sourceId": "crZF3hghbgQ",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "maxDistance": 950
       }
     },
     "broadcast-recover": {
@@ -351,6 +397,12 @@
           ]
         ],
         "nextWordStart": 5363.52
+      },
+      "sourceId": "crZF3hghbgQ",
+      "conditions": {
+        "phases": [
+          "racing"
+        ]
       }
     },
     "broadcast-close": {
@@ -403,6 +455,13 @@
           ]
         ],
         "nextWordStart": 5562.4
+      },
+      "sourceId": "crZF3hghbgQ",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "maxAbsGap": 2
       }
     },
     "broadcast-sprint": {
@@ -439,6 +498,13 @@
           ]
         ],
         "nextWordStart": 5570.28
+      },
+      "sourceId": "crZF3hghbgQ",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "requiresHardEffort": true
       }
     },
     "broadcast-surge": {
@@ -463,6 +529,13 @@
           ]
         ],
         "nextWordStart": 5593.52
+      },
+      "sourceId": "crZF3hghbgQ",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "requiresHardEffort": true
       }
     },
     "broadcast-finish": {
@@ -487,6 +560,16 @@
           ]
         ],
         "nextWordStart": 5597.0
+      },
+      "sourceId": "crZF3hghbgQ",
+      "conditions": {
+        "phases": [
+          "finished"
+        ],
+        "results": [
+          "win",
+          "loss"
+        ]
       }
     },
     "broadcast-loss": {
@@ -527,6 +610,16 @@
           ]
         ],
         "nextWordStart": 5480.119
+      },
+      "sourceId": "crZF3hghbgQ",
+      "conditions": {
+        "phases": [
+          "finished"
+        ],
+        "results": [
+          "loss",
+          "dnf"
+        ]
       }
     },
     "broadcast-wait": {
@@ -575,6 +668,12 @@
           ]
         ],
         "nextWordStart": 5586.239
+      },
+      "sourceId": "crZF3hghbgQ",
+      "conditions": {
+        "phases": [
+          "awaiting-judge"
+        ]
       }
     },
     "broadcast-lead": {
@@ -611,6 +710,13 @@
           ]
         ],
         "nextWordStart": 5592.4
+      },
+      "sourceId": "crZF3hghbgQ",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minAbsGap": 3
       }
     },
     "khmer-intro": {
@@ -644,35 +750,46 @@
         ],
         "nextWordStart": 11287.04
       },
-      "translationVi": "Quý khán giả thân mến."
+      "translationVi": "Quý khán giả thân mến.",
+      "sourceId": "crZF3hghbgQ",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "maxElapsed": 24
+      }
     },
     "drum-low": {
       "start": 5576.8,
       "end": 5577.17,
       "channel": "drums",
       "lang": null,
-      "text": "Nhịp trống/va đập gốc từ hiện trường"
+      "text": "Nhịp trống/va đập gốc từ hiện trường",
+      "sourceId": "crZF3hghbgQ"
     },
     "drum-open": {
       "start": 5577.64,
       "end": 5577.99,
       "channel": "drums",
       "lang": null,
-      "text": "Nhịp trống/va đập gốc từ hiện trường"
+      "text": "Nhịp trống/va đập gốc từ hiện trường",
+      "sourceId": "crZF3hghbgQ"
     },
     "drum-rim": {
       "start": 5578.1,
       "end": 5578.39,
       "channel": "drums",
       "lang": null,
-      "text": "Nhịp trống/va đập gốc từ hiện trường"
+      "text": "Nhịp trống/va đập gốc từ hiện trường",
+      "sourceId": "crZF3hghbgQ"
     },
     "broadcast-ambience": {
       "start": 5574.68,
       "end": 5578.55,
       "channel": "crowd",
       "lang": null,
-      "text": "Âm thanh hiện trường từ clip gốc"
+      "text": "Âm thanh hiện trường từ clip gốc",
+      "sourceId": "crZF3hghbgQ"
     },
     "khmer-go": {
       "start": 11290.38,
@@ -701,7 +818,14 @@
         ],
         "nextWordStart": 11293.92
       },
-      "translationVi": "Đã bắt đầu rồi."
+      "translationVi": "Đã bắt đầu rồi.",
+      "sourceId": "crZF3hghbgQ",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "maxElapsed": 8
+      }
     },
     "khmer-finish": {
       "start": 4682.26,
@@ -726,7 +850,16 @@
         ],
         "nextWordStart": 4684.28
       },
-      "translationVi": "Chúng tôi xin chúc mừng."
+      "translationVi": "Chúng tôi xin chúc mừng.",
+      "sourceId": "crZF3hghbgQ",
+      "conditions": {
+        "phases": [
+          "finished"
+        ],
+        "results": [
+          "win"
+        ]
+      }
     },
     "name-pothi-satharam-vi": {
       "start": 5741.94,
@@ -747,7 +880,8 @@
           ]
         ],
         "nextWordStart": 5743.28
-      }
+      },
+      "sourceId": "crZF3hghbgQ"
     },
     "name-khleang-vi": {
       "start": 4428.34,
@@ -772,7 +906,8 @@
           ]
         ],
         "nextWordStart": 4428.88
-      }
+      },
+      "sourceId": "crZF3hghbgQ"
     },
     "name-chroi-tum-chas-vi": {
       "start": 5294.66,
@@ -801,7 +936,8 @@
           ]
         ],
         "nextWordStart": 5295.6
-      }
+      },
+      "sourceId": "crZF3hghbgQ"
     },
     "name-xeo-me-vi": {
       "start": 4113.54,
@@ -826,7 +962,8 @@
           ]
         ],
         "nextWordStart": 4114.52
-      }
+      },
+      "sourceId": "crZF3hghbgQ"
     },
     "name-ong-kho-vi": {
       "start": 4136.14,
@@ -851,7 +988,8 @@
           ]
         ],
         "nextWordStart": 4136.56
-      }
+      },
+      "sourceId": "crZF3hghbgQ"
     },
     "name-pong-tuk-chas-vi": {
       "start": 4137.7,
@@ -880,7 +1018,8 @@
           ]
         ],
         "nextWordStart": 4138.4
-      }
+      },
+      "sourceId": "crZF3hghbgQ"
     },
     "name-lo-moi-vi": {
       "start": 16691.18,
@@ -905,7 +1044,8 @@
           ]
         ],
         "nextWordStart": 16691.76
-      }
+      },
+      "sourceId": "crZF3hghbgQ"
     },
     "name-bon-mat-vi": {
       "start": 4131.62,
@@ -930,7 +1070,8 @@
           ]
         ],
         "nextWordStart": 4132.839
-      }
+      },
+      "sourceId": "crZF3hghbgQ"
     },
     "name-tra-quyt-cu-vi": {
       "start": 4129.74,
@@ -959,7 +1100,8 @@
           ]
         ],
         "nextWordStart": 4131.48
-      }
+      },
+      "sourceId": "crZF3hghbgQ"
     },
     "name-tum-nup-vi": {
       "start": 8528.7,
@@ -985,7 +1127,8 @@
           ]
         ],
         "nextWordStart": 8529.28
-      }
+      },
+      "sourceId": "crZF3hghbgQ"
     },
     "name-bang-kok-vi": {
       "start": 3467.02,
@@ -1010,7 +1153,8 @@
           ]
         ],
         "nextWordStart": 3467.64
-      }
+      },
+      "sourceId": "crZF3hghbgQ"
     },
     "name-day-ta-suos-vi": {
       "start": 5296.94,
@@ -1039,7 +1183,8 @@
           ]
         ],
         "nextWordStart": 5297.84
-      }
+      },
+      "sourceId": "crZF3hghbgQ"
     },
     "name-bet-ton-vi": {
       "start": 4294.3,
@@ -1064,7 +1209,8 @@
           ]
         ],
         "nextWordStart": 4295.4
-      }
+      },
+      "sourceId": "crZF3hghbgQ"
     },
     "name-tam-soc-vi": {
       "start": 4124.74,
@@ -1090,7 +1236,8 @@
           ]
         ],
         "nextWordStart": 4125.48
-      }
+      },
+      "sourceId": "crZF3hghbgQ"
     },
     "name-prek-on-dok-vi": {
       "start": 5495.78,
@@ -1119,7 +1266,8 @@
           ]
         ],
         "nextWordStart": 5496.639
-      }
+      },
+      "sourceId": "crZF3hghbgQ"
     },
     "name-day-om-pu-vi": {
       "start": 5575.78,
@@ -1148,7 +1296,8 @@
           ]
         ],
         "nextWordStart": 5579.08
-      }
+      },
+      "sourceId": "crZF3hghbgQ"
     },
     "name-om-pou-year-vi": {
       "start": 3476.82,
@@ -1169,7 +1318,8 @@
           ]
         ],
         "nextWordStart": 3477.28
-      }
+      },
+      "sourceId": "crZF3hghbgQ"
     },
     "name-sang-ke-vi": {
       "start": 4586.62,
@@ -1194,7 +1344,8 @@
           ]
         ],
         "nextWordStart": 4587.56
-      }
+      },
+      "sourceId": "crZF3hghbgQ"
     },
     "name-pothi-khsach-vi": {
       "start": 11817.42,
@@ -1223,7 +1374,8 @@
           ]
         ],
         "nextWordStart": 11818.359
-      }
+      },
+      "sourceId": "crZF3hghbgQ"
     },
     "name-rach-giong-vi": {
       "start": 4408.66,
@@ -1248,7 +1400,8 @@
           ]
         ],
         "nextWordStart": 4409.199
-      }
+      },
+      "sourceId": "crZF3hghbgQ"
     },
     "name-ngan-dua-vi": {
       "start": 12403.78,
@@ -1274,7 +1427,8 @@
           ]
         ],
         "nextWordStart": 12404.479
-      }
+      },
+      "sourceId": "crZF3hghbgQ"
     },
     "name-dau-sau-vi": {
       "start": 5508.22,
@@ -1304,7 +1458,8 @@
           ]
         ],
         "nextWordStart": 5508.8
-      }
+      },
+      "sourceId": "crZF3hghbgQ"
     },
     "name-settodor-vi": {
       "start": 3383.26,
@@ -1325,7 +1480,8 @@
           ]
         ],
         "nextWordStart": 3384.4
-      }
+      },
+      "sourceId": "crZF3hghbgQ"
     },
     "name-phno-kambot-vi": {
       "start": 4023.46,
@@ -1350,7 +1506,8 @@
           ]
         ],
         "nextWordStart": 4025.359
-      }
+      },
+      "sourceId": "crZF3hghbgQ"
     },
     "name-tum-nup-km": {
       "start": 4480.62,
@@ -1374,7 +1531,8 @@
         ],
         "nextWordStart": 4481.159
       },
-      "translationVi": "Tum Núp"
+      "translationVi": "Tum Núp",
+      "sourceId": "crZF3hghbgQ"
     },
     "name-kos-thum-km": {
       "start": 5435.62,
@@ -1401,7 +1559,8 @@
         ],
         "nextWordStart": 5436.28
       },
-      "translationVi": "Kos Thum"
+      "translationVi": "Kos Thum",
+      "sourceId": "crZF3hghbgQ"
     },
     "name-sang-ke-km": {
       "start": 4667.3,
@@ -1423,7 +1582,8 @@
         ],
         "nextWordStart": 4667.84
       },
-      "translationVi": "Săng Ke"
+      "translationVi": "Săng Ke",
+      "sourceId": "crZF3hghbgQ"
     },
     "name-rach-giong-km": {
       "start": 4365.78,
@@ -1449,7 +1609,8 @@
         ],
         "nextWordStart": 4368.04
       },
-      "translationVi": "Rạch Giồng"
+      "translationVi": "Rạch Giồng",
+      "sourceId": "crZF3hghbgQ"
     },
     "name-day-om-pu-km": {
       "start": 5438.9,
@@ -1475,7 +1636,8 @@
         ],
         "nextWordStart": 5439.76
       },
-      "translationVi": "Đay Om Pu"
+      "translationVi": "Đay Om Pu",
+      "sourceId": "crZF3hghbgQ"
     },
     "name-pothi-satharam-two-vi": {
       "start": 5741.94,
@@ -1500,7 +1662,8 @@
           ]
         ],
         "nextWordStart": 5744.159
-      }
+      },
+      "sourceId": "crZF3hghbgQ"
     },
     "name-khleang-one-vi": {
       "start": 4428.34,
@@ -1529,7 +1692,8 @@
           ]
         ],
         "nextWordStart": 4429.08
-      }
+      },
+      "sourceId": "crZF3hghbgQ"
     },
     "name-sro-lon-one-vi": {
       "start": 5512.66,
@@ -1554,7 +1718,8 @@
           ]
         ],
         "nextWordStart": 5514.0
-      }
+      },
+      "sourceId": "crZF3hghbgQ"
     },
     "name-sro-lon-two-vi": {
       "start": 3337.26,
@@ -1583,7 +1748,8 @@
           ]
         ],
         "nextWordStart": 3338.24
-      }
+      },
+      "sourceId": "crZF3hghbgQ"
     },
     "name-tum-nup-two-vi": {
       "start": 8528.7,
@@ -1612,7 +1778,8 @@
           ]
         ],
         "nextWordStart": 8530.0
-      }
+      },
+      "sourceId": "crZF3hghbgQ"
     },
     "name-bang-kok-two-vi": {
       "start": 3467.02,
@@ -1641,7 +1808,8 @@
           ]
         ],
         "nextWordStart": 3468.359
-      }
+      },
+      "sourceId": "crZF3hghbgQ"
     },
     "name-prek-on-dok-two-vi": {
       "start": 5495.78,
@@ -1674,7 +1842,8 @@
           ]
         ],
         "nextWordStart": 5497.4
-      }
+      },
+      "sourceId": "crZF3hghbgQ"
     },
     "name-kos-thum-one-vi": {
       "start": 8471.1,
@@ -1700,7 +1869,8 @@
           ]
         ],
         "nextWordStart": 8471.84
-      }
+      },
+      "sourceId": "crZF3hghbgQ"
     },
     "name-kos-thum-two-vi": {
       "start": 5523.02,
@@ -1730,7 +1900,8 @@
           ]
         ],
         "nextWordStart": 5523.719
-      }
+      },
+      "sourceId": "crZF3hghbgQ"
     },
     "name-kos-thum-two-km": {
       "start": 5435.62,
@@ -1765,7 +1936,8 @@
         ],
         "nextWordStart": 5437.28
       },
-      "translationVi": "Kos Thum 2"
+      "translationVi": "Kos Thum 2",
+      "sourceId": "crZF3hghbgQ"
     },
     "history-tum-nup-champion-vi": {
       "start": 8528.7,
@@ -1819,7 +1991,8 @@
         ],
         "nextWordStart": 8532.439
       },
-      "season": 2024
+      "season": 2024,
+      "sourceId": "crZF3hghbgQ"
     },
     "history-kos-thum-runner-up-vi": {
       "start": 8471.1,
@@ -1921,7 +2094,8 @@
         ],
         "nextWordStart": 8478.28
       },
-      "season": 2024
+      "season": 2024,
+      "sourceId": "crZF3hghbgQ"
     },
     "history-sro-lon-third-vi": {
       "start": 3438.62,
@@ -1971,7 +2145,533 @@
         ],
         "nextWordStart": 3440.28
       },
-      "season": 2024
+      "season": 2024,
+      "sourceId": "crZF3hghbgQ"
+    },
+    "name-ta-on-vi": {
+      "start": 3913.559,
+      "end": 3914.72,
+      "sourceId": "Y2fp9gYRIZ8",
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Tà On",
+      "reviewStatus": "cc-and-context-reviewed-not-listening-certified",
+      "captionEvidence": {
+        "words": [
+          [
+            3913.559,
+            "tà"
+          ],
+          [
+            3914.2,
+            "ông"
+          ]
+        ],
+        "nextWordStart": 3914.76
+      },
+      "role": "team-name",
+      "scope": "pagoda-name",
+      "teamIds": [
+        "can_tho-30"
+      ],
+      "asrEvidence": {
+        "backend": "local-whisper",
+        "text": " Giữa băng gô chấp chấp của xã Châu Khánh, quyện Long Phú gặp tà ông của xã Thượng Hưng, Mỹ Tú. Tầng tà ông là bơi ở đường bơi số 1 trong trang phục màu vàng.",
+        "audioSha256": "e0b2e8bb6a1d1702ac527775c193115961fdcff66f7631346d484cf4f80edc90",
+        "reviewStatus": "machine-transcript-only"
+      }
+    },
+    "name-tra-quyt-moi-vi": {
+      "start": 4040.44,
+      "end": 4042.3,
+      "sourceId": "Y2fp9gYRIZ8",
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Trà Quýt Mới",
+      "reviewStatus": "cc-and-context-reviewed-not-listening-certified",
+      "captionEvidence": {
+        "words": [
+          [
+            4040.44,
+            "trà"
+          ],
+          [
+            4041.079,
+            "quýt"
+          ],
+          [
+            4041.4,
+            "mới"
+          ]
+        ],
+        "nextWordStart": 4042.359
+      },
+      "role": "team-name",
+      "scope": "pagoda-name",
+      "teamIds": [
+        "can_tho-17"
+      ],
+      "asrEvidence": {
+        "backend": "local-whisper",
+        "text": " Trà quýt mới Trà quýt mới",
+        "audioSha256": "04e200bdc1f1879516bf99b3fb9aacb0005b43200c15c3782301a9f7701c6973",
+        "reviewStatus": "machine-transcript-only"
+      }
+    },
+    "name-tra-cuon-vi": {
+      "start": 6010.36,
+      "end": 6011.04,
+      "sourceId": "Y2fp9gYRIZ8",
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Trà Cuôn",
+      "reviewStatus": "cc-and-context-reviewed-not-listening-certified",
+      "captionEvidence": {
+        "words": [
+          [
+            6010.36,
+            "trà"
+          ],
+          [
+            6010.679,
+            "cuô"
+          ]
+        ],
+        "nextWordStart": 6011.08
+      },
+      "role": "team-name",
+      "scope": "pagoda-name",
+      "teamIds": [
+        "can_tho-35"
+      ],
+      "asrEvidence": {
+        "backend": "local-whisper",
+        "text": " Đó là Sê Gây Căn Đan của Vĩnh Châu 20 là Trà Cung 2 Ghe số 4 là Sê Gây Căn Đan Và chúng ta thấy Sê Gây Căn Đan",
+        "audioSha256": "9d8a76524e6c92ddeb2f967d55db7ff699e09d92bbe1f6ad69da30ae124d4bf7",
+        "reviewStatus": "machine-transcript-only"
+      }
+    },
+    "name-cham-pa-km": {
+      "start": 5411.719,
+      "end": 5412.12,
+      "sourceId": "XagC29Eyt_U",
+      "channel": "khmer",
+      "lang": "km",
+      "text": "ចំប៉ា",
+      "reviewStatus": "cc-and-context-reviewed-not-listening-certified",
+      "captionEvidence": {
+        "words": [
+          [
+            5411.719,
+            "ចំប៉ា"
+          ]
+        ],
+        "nextWordStart": 5412.159
+      },
+      "role": "team-name",
+      "scope": "pagoda-name",
+      "teamIds": [
+        "can_tho-19"
+      ],
+      "translationVi": "Cham Pa",
+      "asrEvidence": {
+        "backend": "khmer-service",
+        "model": "https://huggingface.co/Vatho/Khmer-ocm",
+        "text": "ដើលើកនេះចំប៉ាយ៉ាងណាដែរហាក់ដូចជាលំបាកឲ្យបងប្អូនចំបុាយើងហើយ",
+        "audioSha256": "1ad656322c28183abeecb7b1216ab7a45fcbbf410080fdafe7592bf2724ca3e5",
+        "reviewStatus": "machine-transcript-only"
+      }
+    },
+    "name-pong-tuk-chas-km": {
+      "start": 5186.52,
+      "end": 5187.24,
+      "sourceId": "tnb7TdUVRkU",
+      "channel": "khmer",
+      "lang": "km",
+      "text": "ពងទឹកចាស់",
+      "reviewStatus": "cc-and-context-reviewed-not-listening-certified",
+      "captionEvidence": {
+        "words": [
+          [
+            5186.52,
+            "ពង"
+          ],
+          [
+            5186.719,
+            "ទឹកចាស់"
+          ]
+        ],
+        "nextWordStart": 5187.28
+      },
+      "role": "team-name",
+      "scope": "pagoda-name",
+      "teamIds": [
+        "can_tho-13"
+      ],
+      "translationVi": "Pong Tứk Chắc",
+      "asrEvidence": {
+        "backend": "khmer-service",
+        "model": "https://huggingface.co/Vatho/Khmer-ocm",
+        "text": "ក្រុមទាំងរវត្តពងទឹកចាស់ស្រុកធិន្ត្រីបាទើសូរដល់វត្តពងទឹកចាស់នរណាក៏ដឹងហើយ",
+        "audioSha256": "0c74e75f5d1426a3e5e1244706c5854e5d78d7840846787a0d7036f00d55e26f",
+        "reviewStatus": "machine-transcript-only"
+      }
+    },
+    "broadcast-stroke-strength": {
+      "start": 3682.0,
+      "end": 3685.8,
+      "sourceId": "Y2fp9gYRIZ8",
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Chúng ta thấy nhịp dầm của anh em đã được đẩy mạnh hơn rồi.",
+      "reviewStatus": "cc-and-context-reviewed-not-listening-certified",
+      "captionEvidence": {
+        "words": [
+          [
+            3682.0,
+            "chúng"
+          ],
+          [
+            3682.16,
+            "ta"
+          ],
+          [
+            3682.28,
+            "thấy"
+          ],
+          [
+            3682.48,
+            "nhịp"
+          ],
+          [
+            3682.76,
+            "dầm"
+          ],
+          [
+            3682.96,
+            "của"
+          ],
+          [
+            3683.119,
+            "anh"
+          ],
+          [
+            3683.28,
+            "em"
+          ],
+          [
+            3683.48,
+            "đã"
+          ],
+          [
+            3683.64,
+            "được"
+          ],
+          [
+            3683.799,
+            "đẩy"
+          ],
+          [
+            3684.119,
+            "mạnh"
+          ],
+          [
+            3684.359,
+            "hơn"
+          ],
+          [
+            3684.92,
+            "rồi"
+          ]
+        ],
+        "nextWordStart": 3686.0
+      },
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "requiresHardEffort": true
+      },
+      "asrEvidence": {
+        "backend": "local-whisper",
+        "text": " Ở trận thi đấu này, băng toàn xa bắt đầu tung nước rút, chúng ta thấy nhịp dầm của anh em đã được đẩy mạnh hơn rồi. Băng toàn xa, băng toàn xa, nhịp dầm của anh em đã đẩy mạnh hơn, băng kha giòn cũng không hề.",
+        "audioSha256": "14d92bf1ca4fea127fc63bee7176c196e0cd6cfa57845e371035ba614f1e02cb",
+        "reviewStatus": "machine-transcript-only"
+      }
+    },
+    "broadcast-final-contest": {
+      "start": 6025.0,
+      "end": 6028.5,
+      "sourceId": "Y2fp9gYRIZ8",
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Sẽ là những cú nước rút để phân định thắng thua.",
+      "reviewStatus": "cc-and-context-reviewed-not-listening-certified",
+      "captionEvidence": {
+        "words": [
+          [
+            6025.0,
+            "sẽ"
+          ],
+          [
+            6025.32,
+            "là"
+          ],
+          [
+            6025.56,
+            "những"
+          ],
+          [
+            6025.76,
+            "cú"
+          ],
+          [
+            6026.0,
+            "nước"
+          ],
+          [
+            6026.159,
+            "rút"
+          ],
+          [
+            6026.4,
+            "để"
+          ],
+          [
+            6026.719,
+            "phân"
+          ],
+          [
+            6027.08,
+            "định"
+          ],
+          [
+            6027.32,
+            "thắng"
+          ],
+          [
+            6027.679,
+            "thua"
+          ]
+        ],
+        "nextWordStart": 6028.679
+      },
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 950
+      },
+      "asrEvidence": {
+        "backend": "local-whisper",
+        "text": " Sẽ là những túi nước rút để thân định thắng thua",
+        "audioSha256": "7549f94658c8102bfc4e6ae55eda903428ccd2b738b09284eaacbc9a8f27d349",
+        "reviewStatus": "machine-transcript-only"
+      }
+    },
+    "broadcast-close-contest": {
+      "start": 3673.2,
+      "end": 3676.37,
+      "sourceId": "Y2fp9gYRIZ8",
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Còn rất là so kè. Một trận đấu cực kỳ hấp dẫn.",
+      "reviewStatus": "cc-and-context-reviewed-not-listening-certified",
+      "captionEvidence": {
+        "words": [
+          [
+            3673.2,
+            "còn"
+          ],
+          [
+            3673.52,
+            "rất"
+          ],
+          [
+            3673.76,
+            "là"
+          ],
+          [
+            3673.92,
+            "so"
+          ],
+          [
+            3674.319,
+            "kè"
+          ],
+          [
+            3674.88,
+            "một"
+          ],
+          [
+            3675.079,
+            "trận"
+          ],
+          [
+            3675.319,
+            "đấu"
+          ],
+          [
+            3675.599,
+            "cực"
+          ],
+          [
+            3675.799,
+            "kỳ"
+          ],
+          [
+            3675.96,
+            "hấp"
+          ],
+          [
+            3676.2,
+            "dẫn"
+          ]
+        ],
+        "nextWordStart": 3676.4
+      },
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "maxAbsGap": 2
+      }
+    },
+    "broadcast-race-appraisal": {
+      "start": 3674.88,
+      "end": 3676.37,
+      "sourceId": "Y2fp9gYRIZ8",
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Một trận đấu cực kỳ hấp dẫn.",
+      "reviewStatus": "cc-and-context-reviewed-not-listening-certified",
+      "captionEvidence": {
+        "words": [
+          [
+            3674.88,
+            "một"
+          ],
+          [
+            3675.079,
+            "trận"
+          ],
+          [
+            3675.319,
+            "đấu"
+          ],
+          [
+            3675.599,
+            "cực"
+          ],
+          [
+            3675.799,
+            "kỳ"
+          ],
+          [
+            3675.96,
+            "hấp"
+          ],
+          [
+            3676.2,
+            "dẫn"
+          ]
+        ],
+        "nextWordStart": 3676.4
+      },
+      "conditions": {
+        "phases": [
+          "finished"
+        ],
+        "results": [
+          "tie"
+        ]
+      }
+    },
+    "broadcast-unfortunate": {
+      "start": 17615.958,
+      "end": 17616.95,
+      "sourceId": "Y2fp9gYRIZ8",
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Rất là tiếc.",
+      "reviewStatus": "cc-and-context-reviewed-not-listening-certified",
+      "captionEvidence": {
+        "words": [
+          [
+            17615.958,
+            "Rất"
+          ],
+          [
+            17616.2,
+            "là"
+          ],
+          [
+            17616.4,
+            "tiếc"
+          ]
+        ],
+        "nextWordStart": 17617.08
+      },
+      "conditions": {
+        "phases": [
+          "finished"
+        ],
+        "results": [
+          "dnf"
+        ]
+      }
+    },
+    "khmer-full-effort": {
+      "start": 11054.319,
+      "end": 11056.8,
+      "sourceId": "tnb7TdUVRkU",
+      "channel": "khmer",
+      "lang": "km",
+      "text": "ត្រូវតែខំប្រឹងអស់ពីសមត្ថភាព",
+      "reviewStatus": "cc-and-context-reviewed-not-listening-certified",
+      "captionEvidence": {
+        "words": [
+          [
+            11054.319,
+            "ត្រូវតែ"
+          ],
+          [
+            11054.8,
+            "ខំ"
+          ],
+          [
+            11055.08,
+            "ប្រឹង"
+          ],
+          [
+            11055.359,
+            "អស់"
+          ],
+          [
+            11055.479,
+            "ពី"
+          ],
+          [
+            11055.6,
+            "សមត្ថភាព"
+          ]
+        ],
+        "nextWordStart": 11058.12
+      },
+      "translationVi": "Phải cố gắng hết sức mình.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 950
+      },
+      "asrEvidence": {
+        "backend": "khmer-service",
+        "model": "https://huggingface.co/Vatho/Khmer-ocm",
+        "text": "លើកបបួនលោកនេះគឺបងប្អូនត្រូវតែខំប្រឹងអត់ពីសមិត្ថភាពនិយាយដល់ទុកវវត្តស្រីកណ្ដាលដូចជា",
+        "audioSha256": "9f7bc3d7bba1ae16b23cc62917a35535b922990f2302e0b40ab866a83b9d4057",
+        "reviewStatus": "machine-transcript-only"
+      }
     }
   },
   "teamProfiles": {
@@ -2256,7 +2956,9 @@
         "voice": [
           "name-pong-tuk-chas-vi"
         ],
-        "khmer": []
+        "khmer": [
+          "name-pong-tuk-chas-km"
+        ]
       },
       "history": {
         "voice": [],
@@ -2337,7 +3039,9 @@
       "nameVi": "Tà Khvich Thmây (Trà Quýt Mới)",
       "nameKm": "តាឃ្វិចថ្មី",
       "names": {
-        "voice": [],
+        "voice": [
+          "name-tra-quyt-moi-vi"
+        ],
         "khmer": []
       },
       "history": {
@@ -2380,7 +3084,9 @@
       "nameKm": "ចំប៉ា",
       "names": {
         "voice": [],
-        "khmer": []
+        "khmer": [
+          "name-cham-pa-km"
+        ]
       },
       "history": {
         "voice": [],
@@ -2635,7 +3341,9 @@
       "nameVi": "Tà On",
       "nameKm": null,
       "names": {
-        "voice": [],
+        "voice": [
+          "name-ta-on-vi"
+        ],
         "khmer": []
       },
       "history": {
@@ -2739,7 +3447,9 @@
       "nameVi": "Prếk Ta Cuôl (Trà Cuôn)",
       "nameKm": "ព្រែកត្រកួន",
       "names": {
-        "voice": [],
+        "voice": [
+          "name-tra-cuon-vi"
+        ],
         "khmer": []
       },
       "history": {
@@ -3335,6 +4045,113 @@
         "nameKm": false,
         "historyVi": false,
         "historyKm": false
+      }
+    }
+  },
+  "rosterSeason": 2025,
+  "sources": {
+    "crZF3hghbgQ": {
+      "url": "https://www.youtube.com/watch?v=crZF3hghbgQ",
+      "videoId": "crZF3hghbgQ",
+      "channel": "Cần Thơ – Tiếng Dân tộc",
+      "sha256": "2c443d23b71fe92cc191baca5bbc45ec12704d79a2ef1b31492839cd04654ed5",
+      "bytes": 301668624,
+      "duration": 18640,
+      "format": "YouTube audio 140, AAC 128 kbps stereo",
+      "captions": {
+        "provider": "YouTube",
+        "kind": "automatic",
+        "track": "vi-orig",
+        "format": "json3",
+        "sha256": "a08fd520f7be92121755cf73dc3d8598f84c17be500aa403b5f1d6cf33008e6a",
+        "cueCount": 4434,
+        "languagesObserved": [
+          "vi",
+          "km"
+        ],
+        "speakerLabels": false
+      },
+      "eventYear": 2025,
+      "title": "Ngày thi đấu thứ 2 Giải Đua ghe Ngo Lễ hội Óc Om Bóc – Đua ghe Ngo TP Cần Thơ năm 2025"
+    },
+    "Y2fp9gYRIZ8": {
+      "url": "https://www.youtube.com/watch?v=Y2fp9gYRIZ8",
+      "videoId": "Y2fp9gYRIZ8",
+      "title": "Trực tiếp Lễ khai mạc giải Đua Ghe ngo Oóc Om Bóc khu vực ĐBSCL lần thứ VI - Năm 2024",
+      "eventYear": 2024,
+      "channel": "Cần Thơ - Tiếng Dân tộc",
+      "channelId": "UCNBvVM7nAXZIdFgwPJKMigQ",
+      "uploadDate": "20241114",
+      "duration": 19799,
+      "sha256": "06e481a525da0b8f78e1d37d9162a37ef00b1331258409a19ae1480e040f8634",
+      "bytes": 320422549,
+      "format": "YouTube audio 140, AAC 128 kbps stereo",
+      "speakerIdentityVerified": false,
+      "captions": {
+        "provider": "YouTube",
+        "kind": "automatic",
+        "track": "vi-orig",
+        "format": "json3",
+        "sha256": "139be62898806a8de27993832fee58b2127a0eb6b716d9479e500836eae5a12d",
+        "cueCount": 3921,
+        "languagesObserved": [
+          "vi"
+        ],
+        "speakerLabels": false
+      }
+    },
+    "XagC29Eyt_U": {
+      "url": "https://www.youtube.com/watch?v=XagC29Eyt_U",
+      "videoId": "XagC29Eyt_U",
+      "title": "[🔴Live] Khai mạc Giải Đua ghe Ngo Lễ hội Oóc Om Bóc – Đua ghe Ngo Thành phố Cần Thơ năm 2025",
+      "eventYear": 2025,
+      "channel": "Cần Thơ - Tiếng Dân tộc",
+      "channelId": "UCNBvVM7nAXZIdFgwPJKMigQ",
+      "uploadDate": "20251104",
+      "duration": 18220,
+      "sha256": "7468899d9a3a37dda2c8776bbef6c0284943ada6a476f4992e43352b360e9ca5",
+      "bytes": 294872441,
+      "format": "YouTube audio 140, AAC 128 kbps stereo",
+      "speakerIdentityVerified": false,
+      "captions": {
+        "provider": "YouTube",
+        "kind": "automatic",
+        "track": "vi-orig",
+        "format": "json3",
+        "sha256": "1856b1307fd29ba0fe80dc03280d7c0c998c9e966e6ca75fdf374c7c1a9a52e9",
+        "cueCount": 5040,
+        "languagesObserved": [
+          "vi",
+          "km"
+        ],
+        "speakerLabels": false
+      }
+    },
+    "tnb7TdUVRkU": {
+      "url": "https://www.youtube.com/watch?v=tnb7TdUVRkU",
+      "videoId": "tnb7TdUVRkU",
+      "title": "26-11-2023 Truyền Hình Trực Tiếp: Khai mạc Giải đua Ghe Ngo tỉnh Sóc Trăng năm 2023",
+      "eventYear": 2023,
+      "channel": "Cần Thơ - Tiếng Dân tộc",
+      "channelId": "UCNBvVM7nAXZIdFgwPJKMigQ",
+      "uploadDate": "20231126",
+      "duration": 17102,
+      "sha256": "9febbb7108c54eca2fe7bc32621f4f74833019efaa705799fd714c980100befd",
+      "bytes": 276781774,
+      "format": "YouTube audio 140, AAC 128 kbps stereo",
+      "speakerIdentityVerified": false,
+      "captions": {
+        "provider": "YouTube",
+        "kind": "automatic",
+        "track": "vi-orig",
+        "format": "json3",
+        "sha256": "4abce470dbdf29b3954d5bb9a7669efaa25758a16af8a1f233c17209cdede697",
+        "cueCount": 5225,
+        "languagesObserved": [
+          "vi",
+          "km"
+        ],
+        "speakerLabels": false
       }
     }
   }
