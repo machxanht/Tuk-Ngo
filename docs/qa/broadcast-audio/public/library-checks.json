@@ -1,0 +1,35 @@
+{
+  "independentListeningVerified": false,
+  "physicalTabletTested": false,
+  "stagePlayback": {
+    "duration": 2.481,
+    "currentTime": 0.276449,
+    "readyState": 4,
+    "paused": false
+  },
+  "viewports": [
+    [
+      1024,
+      768
+    ],
+    [
+      768,
+      1024
+    ],
+    [
+      1180,
+      430
+    ]
+  ],
+  "teamPlayback": {
+    "src": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/name-pong-tuk-chas-km.mp3?clip=abc40d32f625",
+    "duration": 0.72,
+    "currentTime": 0.232381
+  },
+  "passed": true,
+  "errors": [],
+  "mp3Requests": [
+    "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/khmer-full-effort.mp3?clip=b0c3dfcf6072",
+    "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/name-pong-tuk-chas-km.mp3?clip=abc40d32f625"
+  ]
+}

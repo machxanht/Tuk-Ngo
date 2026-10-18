@@ -53,6 +53,8 @@ Rebuild/research (originals/model remain under `E:/AI/Um Tuk/asset-studio/audio-
     python scripts/transcribe-broadcast.py --backend local-whisper --model "path/to/complete-model" --requests "path/to/bounded-review-requests.json" --output "path/to/asr-review.json"
     python scripts/build-race-audio.py --inputs "path/to/broadcast-inputs.json"
 
+On this Windows machine, the optional local ASR dependencies are installed outside the repo. Before its local backend, set PowerShell `$env:PYTHONPATH='E:/AI/Um Tuk/asset-studio/audio-references/speech-runtime'` and use model path `E:/AI/Um Tuk/asset-studio/audio-references/models/turbo`. The Khmer-service backend is already callable without a new account. Local Python/FFmpeg/numpy and yt-dlp/Node commands were exercised; no transcription backend is included in the website.
+
 `--inputs` is a local JSON map of video ID to `{audio: originalPath, captions: originalJson3Path}`. Every source and CC hash must match the reviewed recipe. The old `--source`/`--captions` arguments still identify the primary recording, but the expanded recipe requires its other used originals through `--inputs` as well. The baker checks every CC word inside a speech cut and excludes the following phrase. Short speech/name excerpts use filtered peak normalization with MP3 headroom; longer phrases use loudness normalization. No ASR, model, full broadcast or transcription account is loaded by the game.
 
 Verification:
@@ -179,4 +181,8 @@ the name is absent from the full audio):
 | ca_mau-12 | Đầu Sấu (Đội 2) | yes | — | — |
 | ca_mau-13 | Đìa Chuối | — | — | — |
 
-Current runtime and public verification are recorded in `docs/qa/broadcast-audio/published.json`. The earlier 61-cut deployment is superseded by this source/library expansion after its new deployment checks. The archived technical source-correlation evidence must be refreshed for the expanded 72-cut manifest before claiming current external verification.
+Current runtime source: `b15a0c3`; Pages `2036305da8520eb52b2e9018be3b47d4066083b1`;
+successful [Actions run 39143930300](https://github.com/machxanht/Tuk-Ngo/actions/runs/39143930300).
+All 72 public MP3 hashes, the 799,694-byte team archive, listening HTML and 74-reference catalog match the source artifacts. Public browser checks completed a legal heat and next heat, selected-team name/history auditions, final/surge speech, pause/mute/preferences/disposal, three setup/race tablet viewports and actual new Khmer media playback in the source library. No browser errors were observed. Full evidence is in `docs/qa/broadcast-audio/published.json`, `public/checks.json` and `public/library-checks.json`.
+
+Local source-correlation checks cover all four originals and 72 excerpts: minimum PCM correlation 0.9977907 and maximum decoded peak 0.948662. A deliberately mismatched source CC file was rejected without modifying output files. These are provenance/playback/technical checks. Independent native listening, cross-season speaker certification, complete 61-team bilingual names/history, and a claim to every YouTube video remain incomplete. The actual remaining registrations are listed in `selection-review.json`; candidates are not automatically published.
