@@ -54,10 +54,28 @@ only the selected file is fetched, with a content hash in its URL. Labels say
 Nam Minh/Piseth stock voices and explicitly keep Khmer/native listening review
 pending. No cloud account details or key is included in the public manifest.
 
+Credential handling: Azure's visible key fields can include the full secret in
+their accessible label after **Show Keys**. Do not dump input labels, page
+snapshots or screenshots in that state. Read only the specifically selected
+field into private local storage and hide the keys again. Never regenerate a
+shared resource's keys as part of testing or publishing this game.
+
 Affected checks: `python scripts/test-commentary-trial.py`,
 `python scripts/build-commentary-trial.py --write-doc`, and the script view
 checks in `scripts/check-broadcast-library.py`. Mocked/offline credential tests
 are not evidence of successful external synthesis.
+
+Published Azure sample set: source `de07597`, Pages
+`9d35b128eabd87e9cdbbeff158a28e2bf7d2744e`, successful
+[Actions run 39156279698](https://github.com/machxanht/Tuk-Ngo/actions/runs/39156279698).
+All 45 public files checked (40 sample MP3s, trial/script/library metadata,
+original broadcast manifest and original team ZIP) matched local SHA-256 hashes.
+The public browser played stock Vietnamese and Khmer samples plus the original
+two-clip regression, passed script filters and three tablet viewports with zero
+page errors. No sample loads before a listen gesture or during filtering.
+`docs/qa/commentary-trial/api.json`, `published.json` and
+`public/library-checks.json` hold the current evidence. Human listening, native
+Khmer review, RVC conversion and physical tablet performance remain unverified.
 
 Previous script-only trial: source `fc3f0dc`, Pages
 `4ce750df7c26de9259feed6efa61b97e6ccd57fb`, successful
