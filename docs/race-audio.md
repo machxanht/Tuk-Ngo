@@ -15,6 +15,33 @@ Tools: yt-dlp with Node/EJS for metadata/CC/audio; FFmpeg for bounded decoding/c
 
 The review/listening page is `/assets/race-audio/`: one user-started audio element, no automatic audio fetch, filters for stage/language/name, original YouTube timestamps, exact source years/upload dates and missing registration coverage. It links back to the stable game root; it is not a new game version.
 
+## Script-first bilingual voice trial
+
+The same library now has a **Kịch bản thử** view, deep-linked with
+`/assets/race-audio/?view=script`. Its canonical source is
+`public/assets/race-audio/commentary-script.json`; the readable generated script
+and workflow are in [commentary-script.md](commentary-script.md). There are 20
+situations and 40 authored Vietnamese/Khmer lines, not verbatim transcripts.
+Khmer wording/pronunciation remains a draft awaiting native review. Two sample
+registrations have explicitly dated, men's-only 2024 history; finish scripts
+describe a heat result, never invent an overall championship.
+
+`scripts/build-commentary-trial.py` produces an offline SSML plan before any
+voice generation. Optional synthesis uses Azure's standard Vietnamese/Khmer
+voices, checks voice availability, throttles individual REST calls, caches by
+SSML/audio hashes and rejects silent/overlong/wrong-format WAVs. Keys stay in
+environment variables or a private file outside the repo. No key/resource
+connection is currently present; no real Azure request or voice conversion has
+been completed. The F0 setting is a user declaration, not a verified ARM SKU or
+account-wide remaining quota. RVC is not installed/trained by this change and no
+speaker consent or listening review is established. The original game manifest,
+72 cuts, audio director and cup gameplay remain unchanged.
+
+Affected checks: `python scripts/test-commentary-trial.py`,
+`python scripts/build-commentary-trial.py --write-doc`, and the script view
+checks in `scripts/check-broadcast-library.py`. Mocked/offline credential tests
+are not evidence of successful external synthesis.
+
 The main game opens one AudioContext from an explicit Listen or Start touch/click,
 after 3D initialization. No audio is fetched before that gesture. Name audition
 loads only the selected team's clips; race launch prefetches the active pair. One promise cache

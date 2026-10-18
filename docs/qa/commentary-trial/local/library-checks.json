@@ -1,0 +1,57 @@
+{
+  "independentListeningVerified": false,
+  "physicalTabletTested": false,
+  "stagePlayback": {
+    "duration": 2.481,
+    "currentTime": 0.277854,
+    "readyState": 4,
+    "paused": false
+  },
+  "viewports": [
+    [
+      1024,
+      768
+    ],
+    [
+      768,
+      1024
+    ],
+    [
+      1180,
+      430
+    ]
+  ],
+  "teamPlayback": {
+    "src": "http://127.0.0.1:4175/Tuk-Ngo/assets/race-audio/name-pong-tuk-chas-km.mp3?clip=abc40d32f625",
+    "duration": 0.72,
+    "currentTime": 0.209674
+  },
+  "scriptViewports": [
+    [
+      1024,
+      768
+    ],
+    [
+      768,
+      1024
+    ],
+    [
+      1180,
+      430
+    ]
+  ],
+  "scriptTrial": {
+    "situations": 20,
+    "vietnameseLines": 20,
+    "khmerDraftLines": 20,
+    "azureAudioCreated": false,
+    "commentatorsCloned": false,
+    "nativeReview": false
+  },
+  "passed": true,
+  "errors": [],
+  "mp3Requests": [
+    "http://127.0.0.1:4175/Tuk-Ngo/assets/race-audio/khmer-full-effort.mp3?clip=b0c3dfcf6072",
+    "http://127.0.0.1:4175/Tuk-Ngo/assets/race-audio/name-pong-tuk-chas-km.mp3?clip=abc40d32f625"
+  ]
+}

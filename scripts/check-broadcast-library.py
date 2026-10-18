@@ -49,6 +49,34 @@ with sync_playwright() as p:
     page.locator('#rows button').nth(1).tap()
     page.wait_for_function("document.querySelector('#player').src.includes('name-pong-tuk-chas-km')&&document.querySelector('#player').currentTime>.2")
     report['teamPlayback'] = page.locator('#player').evaluate('(a)=>({src:a.src,duration:a.duration,currentTime:a.currentTime})')
+    # The script trial is a separate content review, with no pretend stock/cloned audio.
+    page.goto(args.url.split('?')[0] + '?view=script')
+    page.wait_for_function("document.querySelector('#script-review').hidden===false&&document.querySelectorAll('#rows tr').length===20")
+    assert page.get_by_text('Kịch bản mới · Chưa tạo audio · Chưa nhân bản hai BLV.', exact=True).is_visible()
+    assert page.locator('#rows button').count() == 0
+    assert page.locator('#rows p:lang(vi)').count() == 20
+    assert page.locator('#rows p:lang(km)').count() == 20
+    prior_requests = len(requests)
+    page.get_by_label('Ngôn ngữ', exact=True).select_option('km')
+    assert page.locator('#rows p:lang(vi)').count() == 0
+    page.get_by_label('Giai đoạn', exact=True).select_option('result')
+    assert page.locator('#rows tr').count() == 4
+    page.get_by_label('Giai đoạn', exact=True).select_option('team-history')
+    assert page.locator('#rows tr').count() == 2
+    assert '២០២៤' in page.locator('#rows').inner_text()
+    page.get_by_label('Giai đoạn', exact=True).select_option('')
+    page.get_by_label('Ngôn ngữ', exact=True).select_option('')
+    report['scriptViewports'] = []
+    for width, height in [(1024, 768), (768, 1024), (1180, 430)]:
+        page.set_viewport_size({'width': width, 'height': height})
+        assert page.evaluate('document.documentElement.scrollWidth<=innerWidth'), 'Script causes body overflow'
+        assert page.locator('#rows p:lang(km)').first.evaluate('(e)=>parseFloat(getComputedStyle(e).fontSize)') >= 18
+        assert page.get_by_role('button', name='Kịch bản thử', exact=True).bounding_box()['height'] >= 44
+        page.screenshot(path=str(out / f'script-{width}-{height}.png'), full_page=True)
+        report['scriptViewports'].append([width, height])
+    assert len(requests) == prior_requests, 'Script browsing must not request audio'
+    report['scriptTrial'] = {'situations': 20, 'vietnameseLines': 20, 'khmerDraftLines': 20,
+                             'azureAudioCreated': False, 'commentatorsCloned': False, 'nativeReview': False}
     assert not errors, errors
     report.update(passed=True, errors=errors, mp3Requests=requests)
     browser.close()
