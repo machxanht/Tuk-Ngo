@@ -85,6 +85,46 @@ with sync_playwright() as p:
     report['scriptTrial'] = {'situations': 20, 'vietnameseLines': 20, 'khmerDraftLines': 20,
                              'azureAudioCreated': True, 'azureSampleCount': 40,
                              'commentatorsCloned': False, 'nativeReview': False}
+    before_voice = len(requests)
+    page.goto(args.url.split('?')[0] + '?view=voice')
+    page.wait_for_function("document.querySelector('#voice-review').hidden===false&&document.querySelectorAll('#rows tr').length===6")
+    assert page.locator('#rows button').count() == 18
+    assert len(requests) == before_voice, 'Voice review must not preload audio'
+    report['voicePlayback'] = []
+    for language in ['Việt', 'Khmer']:
+        for level in ['Giới thiệu', 'Giằng co', 'Nước rút']:
+            page.get_by_role('button', name=f'AI chuyển giọng · {level} · {language}', exact=True).tap()
+            page.wait_for_function("document.querySelector('#player').src.includes('/voice-trial/')&&document.querySelector('#player').currentTime>.2")
+            report['voicePlayback'].append(page.locator('#player').evaluate('(a)=>({src:a.src,duration:a.duration,currentTime:a.currentTime})'))
+    page.get_by_role('button', name='Azure · Nước rút · Việt', exact=True).tap()
+    page.wait_for_function("document.querySelector('#player').src.includes('/commentary-trial/final-vi.mp3')&&document.querySelector('#player').currentTime>.2")
+    page.get_by_role('button', name='Giọng gốc · lời khác · Nước rút · Khmer', exact=True).tap()
+    page.wait_for_function("document.querySelector('#player').src.includes('/voice-trial/sprint-km-reference.mp3')&&document.querySelector('#player').currentTime>.2")
+    page.get_by_role('button', name='Nghe đối chứng chỉ đổi chất giọng', exact=True).tap()
+    page.wait_for_function("document.querySelector('#player').src.includes('/voice-trial/timbre-contest-vi.mp3')&&document.querySelector('#player').currentTime>.2")
+    assert page.get_by_text('6 mẫu AI thử — chưa đạt kiểm tra giữ lời, chưa ghép vào game.', exact=True).is_visible()
+    assert len(requests) == before_voice + 9, 'Fetch exactly the nine selected comparison files'
+    before_filters = len(requests)
+    page.get_by_label('Ngôn ngữ', exact=True).select_option('km')
+    assert page.locator('#rows tr').count() == 3
+    page.get_by_label('Giai đoạn', exact=True).select_option('final')
+    assert page.locator('#rows tr').count() == 1
+    page.get_by_label('Ngôn ngữ', exact=True).select_option('')
+    page.get_by_label('Giai đoạn', exact=True).select_option('')
+    report['voiceViewports'] = []
+    for width, height in [(1024, 768), (768, 1024), (1180, 430)]:
+        page.set_viewport_size({'width': width, 'height': height})
+        assert page.evaluate('document.documentElement.scrollWidth<=innerWidth'), 'Voice view causes body overflow'
+        for button in page.locator('#rows button').all():
+            assert button.bounding_box()['height'] >= 48
+        assert page.locator('#rows p:lang(km)').first.evaluate('(e)=>parseFloat(getComputedStyle(e).fontSize)') >= 18
+        page.screenshot(path=str(out / f'voice-{width}-{height}.png'), full_page=True)
+        report['voiceViewports'].append([width, height])
+    assert len(requests) == before_filters, 'Filtering/resizing must not fetch audio'
+    page.get_by_role('button', name='Bản thu', exact=True).tap()
+    assert page.locator('#player').evaluate('(a)=>a.paused'), 'Navigation must pause audio'
+    report['voiceTrial'] = {'referenceConditionedSamples': 6, 'timbreOnlyControl': 1, 'contentReviewApproved': False, 'trainedSpeakerModels': False,
+                            'independentListeningVerified': False, 'emotionVerified': False}
     assert not errors, errors
     report.update(passed=True, errors=errors, mp3Requests=requests)
     browser.close()

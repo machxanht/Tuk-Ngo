@@ -1,0 +1,146 @@
+[
+  {
+    "repo": "facebook/hubert-large-ll60k",
+    "revision": "ff022d095678a2995f3c49bab18a96a9e553f782",
+    "file": "config.json",
+    "bytes": 1600,
+    "sha256": null,
+    "gitBlob": "ff2572ee9f62b3b1956f65469b09b22e96720208"
+  },
+  {
+    "repo": "facebook/hubert-large-ll60k",
+    "revision": "ff022d095678a2995f3c49bab18a96a9e553f782",
+    "file": "preprocessor_config.json",
+    "bytes": 212,
+    "sha256": null,
+    "gitBlob": "36ebe8b7c1cc967b3059f0494ae8a1069dd67655"
+  },
+  {
+    "repo": "facebook/hubert-large-ll60k",
+    "revision": "ff022d095678a2995f3c49bab18a96a9e553f782",
+    "file": "pytorch_model.bin",
+    "bytes": 1261920069,
+    "sha256": "45a299050945479a68cffe2ab7a63fd08931718ba18f05a42dbb86a5164178e0",
+    "gitBlob": "07893a9d391441b8ce9c58c374c231a0e2b3950d"
+  },
+  {
+    "repo": "openai/whisper-small",
+    "revision": "973afd24965f72e36ca33b3055d56a652f456b4d",
+    "file": "config.json",
+    "bytes": 1967,
+    "sha256": null,
+    "gitBlob": "113bb3efe3a7396f2ea629eef12637bd8085238d"
+  },
+  {
+    "repo": "openai/whisper-small",
+    "revision": "973afd24965f72e36ca33b3055d56a652f456b4d",
+    "file": "tokenizer_config.json",
+    "bytes": 282683,
+    "sha256": null,
+    "gitBlob": "d13b786c04765fb1a06492b53587752cd67665ea"
+  },
+  {
+    "repo": "openai/whisper-small",
+    "revision": "973afd24965f72e36ca33b3055d56a652f456b4d",
+    "file": "tokenizer.json",
+    "bytes": 2480466,
+    "sha256": null,
+    "gitBlob": "1e95340ff836fad1b5932e800fb7b8c5e6d78a74"
+  },
+  {
+    "repo": "openai/whisper-small",
+    "revision": "973afd24965f72e36ca33b3055d56a652f456b4d",
+    "file": "special_tokens_map.json",
+    "bytes": 2194,
+    "sha256": null,
+    "gitBlob": "bf69932dca4b3719b59fdd8f6cc1978109509f6c"
+  },
+  {
+    "repo": "openai/whisper-small",
+    "revision": "973afd24965f72e36ca33b3055d56a652f456b4d",
+    "file": "vocab.json",
+    "bytes": 835550,
+    "sha256": null,
+    "gitBlob": "d7016e21da8776c8a9d577d0f559600f09a240eb"
+  },
+  {
+    "repo": "openai/whisper-small",
+    "revision": "973afd24965f72e36ca33b3055d56a652f456b4d",
+    "file": "merges.txt",
+    "bytes": 493869,
+    "sha256": null,
+    "gitBlob": "6038932a2a1f09a66991b1c2adae0d14066fa29e"
+  },
+  {
+    "repo": "openai/whisper-small",
+    "revision": "973afd24965f72e36ca33b3055d56a652f456b4d",
+    "file": "normalizer.json",
+    "bytes": 52666,
+    "sha256": null,
+    "gitBlob": "dd6ae819ad738ac1a546e9f9282ef325c33b9ea0"
+  },
+  {
+    "repo": "openai/whisper-small",
+    "revision": "973afd24965f72e36ca33b3055d56a652f456b4d",
+    "file": "added_tokens.json",
+    "bytes": 34604,
+    "sha256": null,
+    "gitBlob": "e3d256c988462aa153dcabe2aa38b8e9b436c06f"
+  },
+  {
+    "repo": "nvidia/bigvgan_v2_22khz_80band_256x",
+    "revision": "633ff708ed5b74903e86ff1298cf4a98e921c513",
+    "file": "config.json",
+    "bytes": 1405,
+    "sha256": null,
+    "gitBlob": "635bd8975629bd6d4b51c409986944a281cfe7be"
+  },
+  {
+    "repo": "nvidia/bigvgan_v2_22khz_80band_256x",
+    "revision": "633ff708ed5b74903e86ff1298cf4a98e921c513",
+    "file": "bigvgan_generator.pt",
+    "bytes": 449228171,
+    "sha256": "e95ba25972d3de0628d99cd156e9315a9c018899bf739988959ebe3544080ced",
+    "gitBlob": "8d615250f07a44490d74033318fd330be67f4a86"
+  },
+  {
+    "repo": "Plachta/Seed-VC",
+    "revision": "257283f9f41585055e8f858fba4fd044e5caed6e",
+    "file": "v2/cfm_small.pth",
+    "bytes": 353349694,
+    "sha256": "73ae18615dc8cb01710086629973198226dedc63ebeaab0aee17863d767b3474",
+    "gitBlob": "5b8e939e33744dbc79a4ecc593d11360a40b7fd1"
+  },
+  {
+    "repo": "Plachta/Seed-VC",
+    "revision": "257283f9f41585055e8f858fba4fd044e5caed6e",
+    "file": "v2/ar_base.pth",
+    "bytes": 358846893,
+    "sha256": "42e2afabf97e5d856580af1f81a9705423b4fb21bb9475cece9925b62355cc5c",
+    "gitBlob": "d9d2d0faa8d278753c929dbf85c707fad6494eaa"
+  },
+  {
+    "repo": "Plachta/ASTRAL-quantization",
+    "revision": "4a2e9679f76eb03753adc8c503e3c23bb9c22f26",
+    "file": "bsq32/bsq32_light.pth",
+    "bytes": 78156693,
+    "sha256": "b01d6ba14a7af57ecc02b3eb5897a7e2abdaefab06b3f218d6709dc98b0e83a3",
+    "gitBlob": "c6e2e723bbdde572f785f6df6e2e4e9364b53a4b"
+  },
+  {
+    "repo": "Plachta/ASTRAL-quantization",
+    "revision": "4a2e9679f76eb03753adc8c503e3c23bb9c22f26",
+    "file": "bsq2048/bsq2048_light.pth",
+    "bytes": 78181599,
+    "sha256": "d7953115a60609c72a50bc79e88aa7248ffd4444b3912f89e8375ec1c6485fc6",
+    "gitBlob": "8c12ee8c0447069c230a1584f157f11dfebda73c"
+  },
+  {
+    "repo": "funasr/campplus",
+    "revision": "e4b6ede7ce16997aff4ae69fbca1f0175e2afede",
+    "file": "campplus_cn_common.bin",
+    "bytes": 28036335,
+    "sha256": "3388cf5fd3493c9ac9c69851d8e7a8badcfb4f3dc631020c4961371646d5ada8",
+    "gitBlob": "ccc729ec7f373f8d2351be91c9efdc7b21c00384"
+  }
+]

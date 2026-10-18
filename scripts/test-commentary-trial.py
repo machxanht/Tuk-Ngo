@@ -113,6 +113,30 @@ class CommentaryTrialChecks(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'Complete, current'):
                 trial.publish_samples(self.plan, out)
 
+    def test_voice_experiment_is_unapproved_separate_and_source_bound(self):
+        folder = trial.ROOT / 'public/assets/race-audio'
+        voice = json.loads((folder / 'voice-trial/manifest.json').read_text(encoding='utf-8'))
+        self.assertEqual(voice['sourceType'], 'ai-reference-voice-conversion')
+        self.assertEqual(voice['status'], 'unapproved-content-fidelity')
+        self.assertEqual(voice['scriptSha256'], self.plan['scriptSha256'])
+        for key in ('runtimeEnabled', 'trainedSpeakerModels', 'independentListeningVerified',
+                    'emotionVerified', 'speakerIdentityVerified', 'khmerPronunciationVerified'):
+            self.assertFalse(voice[key])
+        self.assertEqual(len(voice['samples']), 6)
+        stock = {s['id']: s for s in json.loads((folder / 'commentary-trial/manifest.json').read_text(encoding='utf-8'))['samples']}
+        self.assertEqual({s['language'] for s in voice['samples']}, {'vi', 'km'})
+        for s in voice['samples']:
+            source = stock[s['cueId'] + '-' + s['language']]
+            self.assertEqual(s['text'], source['text'])
+            self.assertEqual(s['stockSha256'], source['sha256'])
+            self.assertFalse(s['asr']['nativeReviewed'])
+            for file, digest in [(s['file'], s['sha256']), (s['referenceFile'], s['referenceSha256'])]:
+                self.assertEqual(trial.sha((folder / file).read_bytes()), digest)
+        control = voice['control']
+        self.assertFalse(control['parameters']['convert_style'])
+        self.assertEqual(trial.sha((folder / control['file']).read_bytes()), control['sha256'])
+        self.assertEqual(len(self.original['clips']), 72)
+
 
 if __name__ == '__main__':
     unittest.main()

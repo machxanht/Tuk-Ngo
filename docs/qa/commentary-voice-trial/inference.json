@@ -1,0 +1,225 @@
+{
+  "schema": 1,
+  "engine": "Seed-VC",
+  "engineCommit": "51383efd921027683c89e5348211d93ff12ac2a8",
+  "modelInventorySha256": "634d69c1e52578e6fab8e7d8d2a5ad3c9b084b70ac000ae76a67d3bf0e065cd4",
+  "sourceSha256": "2c443d23b71fe92cc191baca5bbc45ec12704d79a2ef1b31492839cd04654ed5",
+  "parameters": {
+    "diffusion_steps": 30,
+    "length_adjust": 1.0,
+    "intelligebility_cfg_rate": 0.7,
+    "similarity_cfg_rate": 0.7,
+    "top_p": 0.9,
+    "temperature": 0.8,
+    "repetition_penalty": 1.1,
+    "convert_style": true,
+    "anonymization_only": false
+  },
+  "processing": {
+    "vocoderOutputPeakLimit": 0.9,
+    "gainBeforeClamp": true
+  },
+  "originalBroadcastManifestSha256": "37cbb1668a1a9b0d603ce7afca26fde4f88b95a5fbf5d5c174586cb435e9e5a8",
+  "originalTeamZipSha256": "2d60a06ad43941bab270f6d408e4811703b1dec97065d14da095f88de517468e",
+  "sampleCount": 6,
+  "timbreOnlyControlCount": 1,
+  "mp3Count": 13,
+  "packBytes": 1201020,
+  "newAzureRequests": 0,
+  "speakerModelsTrained": false,
+  "independentListeningVerified": false,
+  "contentReviewApproved": false,
+  "emotionVerified": false,
+  "nativeKhmerReviewed": false,
+  "physicalTabletTested": false,
+  "samples": [
+    {
+      "id": "intro-vi",
+      "requestSha256": "d0fe70ad3fead4f47efb0cd9b685945634025f9c2731c175120c4bf590431729",
+      "sha256": "56ce15d22ca8e8373b0282db190768b2deb93094d1e6b76f775007ac68591e7d",
+      "secondsToConvert": 65.64,
+      "device": "cpu",
+      "modelInventorySha256": "634d69c1e52578e6fab8e7d8d2a5ad3c9b084b70ac000ae76a67d3bf0e065cd4",
+      "vocoderHeadroom": [
+        {
+          "rawPeak": 0.9561392664909363,
+          "gain": 0.9412854712086355,
+          "rawOverRangeFraction": 0.0
+        }
+      ],
+      "duration": 2.05497,
+      "sampleRate": 22050,
+      "peak": 0.899994,
+      "rms": 0.167759,
+      "pcmNearPeakFraction": 4.4138418079096045e-05,
+      "asr": {
+        "backend": "local-whisper",
+        "text": "Nói kết thúc như phái",
+        "baselineText": "Đội ghe tung núp 2.",
+        "detectedLanguage": "vi",
+        "nativeReviewed": false,
+        "note": "Machine transcript only; neither voice identity nor emotion is verified."
+      }
+    },
+    {
+      "id": "contest-vi",
+      "requestSha256": "d6beac231c235d01aaf88c37a3214705cc1bbc54dc22cedbbeee3041a30fbd2d",
+      "sha256": "12dd991461e346e0cec1b6bbd50fa18d62d440ea1f898dbb7688e856ecea5462",
+      "secondsToConvert": 51.89,
+      "device": "cpu",
+      "modelInventorySha256": "634d69c1e52578e6fab8e7d8d2a5ad3c9b084b70ac000ae76a67d3bf0e065cd4",
+      "vocoderHeadroom": [
+        {
+          "rawPeak": 1.4214589595794678,
+          "gain": 0.6331522932369859,
+          "rawOverRangeFraction": 0.0402635894715786
+        }
+      ],
+      "duration": 4.1912,
+      "sampleRate": 22050,
+      "peak": 0.900024,
+      "rms": 0.282166,
+      "pcmNearPeakFraction": 1.0820637119113573e-05,
+      "asr": {
+        "backend": "local-whisper",
+        "text": "Hãy subscribe cho kênh Ghiền Mì Gõ Để không bỏ lỡ những video hấp dẫn",
+        "baselineText": "Hai ghe đang sao kè. Chưa có cách biệt rõ ràng.",
+        "detectedLanguage": "vi",
+        "nativeReviewed": false,
+        "note": "Machine transcript only; neither voice identity nor emotion is verified."
+      }
+    },
+    {
+      "id": "sprint-vi",
+      "requestSha256": "db4652d3c43279312d776d4675971d7dcbbb7fa4e1b002f8724656a0ca27c584",
+      "sha256": "03b9db4cccea0b6e1aa74721b5170b80e031fac06bda86370b6184c6bf81c9fd",
+      "secondsToConvert": 61.08,
+      "device": "cpu",
+      "modelInventorySha256": "634d69c1e52578e6fab8e7d8d2a5ad3c9b084b70ac000ae76a67d3bf0e065cd4",
+      "vocoderHeadroom": [
+        {
+          "rawPeak": 0.9602193832397461,
+          "gain": 0.9372858075031062,
+          "rawOverRangeFraction": 0.0
+        }
+      ],
+      "duration": 2.84444,
+      "sampleRate": 22050,
+      "peak": 0.900024,
+      "rms": 0.133541,
+      "pcmNearPeakFraction": 1.594387755102041e-05,
+      "asr": {
+        "backend": "local-whisper",
+        "text": "Báo đoán mất tốt, tăng dịp dầm",
+        "baselineText": "Vào đoạn nước rút, tăng nhịp dâm.",
+        "detectedLanguage": "vi",
+        "nativeReviewed": false,
+        "note": "Machine transcript only; neither voice identity nor emotion is verified."
+      }
+    },
+    {
+      "id": "intro-km",
+      "requestSha256": "22315f28bd230940f6825d2b57593e7cde6019909e55c0992fac7e4ef8f1042d",
+      "sha256": "3acc45c8dea12999eca81f14fd183f4b378fc140e598f4906895fea495d3c3e8",
+      "secondsToConvert": 47.05,
+      "device": "cpu",
+      "modelInventorySha256": "634d69c1e52578e6fab8e7d8d2a5ad3c9b084b70ac000ae76a67d3bf0e065cd4",
+      "vocoderHeadroom": [
+        {
+          "rawPeak": 0.974210262298584,
+          "gain": 0.923825209843828,
+          "rawOverRangeFraction": 0.0
+        }
+      ],
+      "duration": 2.03175,
+      "sampleRate": 22050,
+      "peak": 0.899994,
+      "rms": 0.118977,
+      "pcmNearPeakFraction": 2.232142857142857e-05,
+      "asr": {
+        "backend": "khmer-service",
+        "text": "ក្រុមនទុក្ខទំណុប់ពេ",
+        "baselineText": "ក្រុមទូកទំនប់ពីរ",
+        "detectedLanguage": null,
+        "nativeReviewed": false,
+        "note": "Machine transcript only; neither voice identity nor emotion is verified."
+      }
+    },
+    {
+      "id": "contest-km",
+      "requestSha256": "286e0a315872bd1ad8021f12ae363321eccec63013f6186ba572460a9ccfe343",
+      "sha256": "f7d85ff70240cd7be874680570b30df1929be5db6e671a9e89b8c53d93e80b3b",
+      "secondsToConvert": 130.95,
+      "device": "cpu",
+      "modelInventorySha256": "634d69c1e52578e6fab8e7d8d2a5ad3c9b084b70ac000ae76a67d3bf0e065cd4",
+      "vocoderHeadroom": [
+        {
+          "rawPeak": 0.8911057710647583,
+          "gain": 1.0,
+          "rawOverRangeFraction": 0.0
+        }
+      ],
+      "duration": 9.71755,
+      "sampleRate": 22050,
+      "peak": 0.891083,
+      "rms": 0.079771,
+      "pcmNearPeakFraction": 4.666965352449223e-06,
+      "asr": {
+        "backend": "khmer-service",
+        "text": "ស្កុបទាំពីរបំបុំប្រតជាក្រប់កើត់គ្នា",
+        "baselineText": "ទូកទាំងពីរកំពុងប្រកាបប្រគិតគ្នា",
+        "detectedLanguage": null,
+        "nativeReviewed": false,
+        "note": "Machine transcript only; neither voice identity nor emotion is verified."
+      }
+    },
+    {
+      "id": "sprint-km",
+      "requestSha256": "5a5082f5815e97a10bfb4a523f7a291d8be4577e762cd5f2a842704efd87122f",
+      "sha256": "e94eb8f48304b406f431ee71cb4ae8fa17dc8479cf54234dc02b710825ca9fe7",
+      "secondsToConvert": 99.69,
+      "device": "cpu",
+      "modelInventorySha256": "634d69c1e52578e6fab8e7d8d2a5ad3c9b084b70ac000ae76a67d3bf0e065cd4",
+      "vocoderHeadroom": [
+        {
+          "rawPeak": 0.9241854548454285,
+          "gain": 0.9738305177617478,
+          "rawOverRangeFraction": 0.0
+        }
+      ],
+      "duration": 3.4946,
+      "sampleRate": 22050,
+      "peak": 0.899994,
+      "rms": 0.134406,
+      "pcmNearPeakFraction": 1.2977574750830565e-05,
+      "asr": {
+        "backend": "khmer-service",
+        "text": "ដក់រំណើរការសង្គ្រោយហើយបង្កបួន",
+        "baselineText": "ដល់ដំណាក់ការចុងក្រោយហើយបង្កើនល្បឿន",
+        "detectedLanguage": null,
+        "nativeReviewed": false,
+        "note": "Machine transcript only; neither voice identity nor emotion is verified."
+      }
+    }
+  ],
+  "control": {
+    "id": "contest-vi",
+    "requestSha256": "03d6d8791ece54b3a37026e3801c875ad249bc8a095364a83e8e6097d3c4243e",
+    "sha256": "63b19544f793549243cde390d459ed1f66dabda722bc360eebbaea554b49bb66",
+    "secondsToConvert": 44.88,
+    "device": "cpu",
+    "modelInventorySha256": "634d69c1e52578e6fab8e7d8d2a5ad3c9b084b70ac000ae76a67d3bf0e065cd4",
+    "vocoderHeadroom": [
+      {
+        "rawPeak": 1.5192234516143799,
+        "gain": 0.5924079167179973,
+        "rawOverRangeFraction": 0.04922930896282196
+      }
+    ],
+    "duration": 4.29569,
+    "sampleRate": 22050,
+    "peak": 0.900024,
+    "rms": 0.272023
+  },
+  "outcome": "Not approved: ASR transcripts depart materially from stock inputs in style conversion and in the timbre-only control. Technical generation/playback success does not establish usable cloned commentary."
+}

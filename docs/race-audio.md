@@ -87,6 +87,18 @@ script, original audio manifest and original team ZIP hashes matched the local
 files; the main game bundle is still `assets/index-DvnLks7V.js`. Evidence is in
 `docs/qa/commentary-trial/published.json` and `public/library-checks.json`.
 
+## Six-sample reference-conditioned voice experiment
+
+The existing library also offers `?view=voice`: three Vietnamese and three Khmer
+AI samples, with stock Azure and short original-reference buttons beside each.
+Seed-VC performs offline conversion conditioned on the user's 2025 broadcast;
+this is not two trained RVC models. AI labels, original timestamps, source/model
+hashes and machine-only transcript comparisons remain explicit. Voice identity,
+emotion, Khmer pronunciation and speaker permission are not independently verified.
+The experiment is not enabled in the game. See
+[commentary-voice-trial.md](commentary-voice-trial.md) for exact ranges, the pinned
+runtime, generation procedure and the pre-clamp vocoder headroom correction.
+
 The main game opens one AudioContext from an explicit Listen or Start touch/click,
 after 3D initialization. No audio is fetched before that gesture. Name audition
 loads only the selected team's clips; race launch prefetches the active pair. One promise cache

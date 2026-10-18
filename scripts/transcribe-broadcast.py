@@ -67,6 +67,10 @@ def main():
             if model:
                 decoded = subprocess.run([imageio_ffmpeg.get_ffmpeg_exe(), '-v', 'error', '-i', str(wav), '-f', 'f32le', '-'], check=True, capture_output=True)
                 segments, info = model.transcribe(np.frombuffer(decoded.stdout, dtype='<f4'), language=item.get('language'), beam_size=5, condition_on_previous_text=False, word_timestamps=True)
+                result['detectedLanguage'] = info.language
+                result['languageProbability'] = info.language_probability
+                if not item.get('language'):
+                    result['note'] = 'Automatic language detection/transcript is machine evidence, not a speaker-identity or native-pronunciation review.'
                 result['segments'] = [{'start': s.start + item['start'], 'end': s.end + item['start'], 'text': s.text, 'averageLogProbability': s.avg_logprob, 'words': [{'start': w.start + item['start'], 'end': w.end + item['start'], 'word': w.word, 'probability': w.probability} for w in s.words or []]} for s in segments]
                 result['text'] = ''.join(s['text'] for s in result['segments'])
             else:
