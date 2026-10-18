@@ -11,16 +11,16 @@
 <a href="../../">← Về game trên link đang dùng</a>
 <h1>Kho lời bình ghe Ngo</h1>
 <p>Nghe từng bản thu gốc, kiểm tra đội ghe, giai đoạn và mốc YouTube. Các video tìm được là tư liệu tham khảo; chỉ những đoạn có trong danh mục bản thu mới được ghép vào game.</p>
-<p class="warning">Phụ đề và nhận dạng giọng nói có thể sai. Các đoạn đã đối chiếu văn bản/ngữ cảnh vẫn chưa được người nghe thẩm định độc lập về phát âm Khmer hoặc danh tính BLV. Không tạo giọng mới, không ghép âm tiết để bịa tên đội.</p>
+<p class="warning">Kho bản thu dùng audio gốc, với hạn chế của phụ đề/nhận dạng tự động. Mục Kịch bản thử dùng giọng stock Azure để duyệt lời mới; chưa chuyển giọng hai BLV. Phát âm Khmer và danh tính người nói chưa được thẩm định nghe độc lập.</p>
 <nav aria-label="Chọn nội dung"><button data-view="clips" aria-pressed="true">Bản thu</button><button data-view="teams" aria-pressed="false">Đội ghe</button><button data-view="sources" aria-pressed="false">Nguồn video</button><button data-view="script" aria-pressed="false">Kịch bản thử</button></nav>
-<section id="script-review" class="panel" hidden aria-label="Trạng thái kịch bản"><p class="warning"><strong>Kịch bản mới · Chưa tạo audio · Chưa nhân bản hai BLV.</strong><br>20 tình huống / 40 câu Việt–Khmer. Phần Khmer là bản nháp chờ người rành tiếng duyệt. Các câu dưới đây được biên soạn cho game, không phải lời chép nguyên văn từ YouTube. Chọn một ngôn ngữ cho mỗi câu để hai BLV luân phiên, không nói chồng nhau.</p><details><summary>Thứ tự bình luận mẫu có nhánh theo trận đua</summary><ol id="script-sequence"></ol></details><p><a href="commentary-script.json">Tải kịch bản và điều kiện phát</a></p></section>
+<section id="script-review" class="panel" hidden aria-label="Trạng thái kịch bản"><p class="warning"><strong id="script-status">Đang kiểm tra mẫu Azure…</strong><br>20 tình huống / 40 câu Việt–Khmer. Phần Khmer là bản nháp chờ người rành tiếng duyệt. Các câu dưới đây được biên soạn cho game, không phải lời chép nguyên văn từ YouTube. Nghe từng câu bằng Nam Minh / Piseth; đây là mẫu duyệt, chưa ghép vào âm thanh thi đấu.</p><details><summary>Thứ tự bình luận mẫu có nhánh theo trận đua</summary><ol id="script-sequence"></ol></details><p><a href="commentary-script.json">Tải kịch bản và điều kiện phát</a></p></section>
 <section class="panel" aria-label="Trình nghe bản thu"><div id="playing">Chọn một đoạn để nghe</div><audio id="player" controls preload="none"></audio><div id="source"></div><p id="status" role="status"></p></section>
 <div class="filters"><label>Tìm tên / nội dung<input id="query" type="search" placeholder="Tum Núp, ពងទឹកចាស់, nước rút…"></label><label>Ngôn ngữ<select id="language" aria-label="Ngôn ngữ"><option value="">Tất cả</option><option value="vi">Tiếng Việt</option><option value="km">Tiếng Khmer</option></select></label><label>Giai đoạn<select id="stage" aria-label="Giai đoạn"><option value="">Tất cả</option><option value="start">Chuẩn bị / xuất phát</option><option value="cruise">Đường trường</option><option value="final">Nước rút</option><option value="result">Kết quả</option><option value="race-event">Diễn biến so kè / vượt lên</option><option value="team-name">Tên đội</option><option value="team-history">Lịch sử</option></select></label></div>
 <p id="count" role="status">Đang tải danh mục…</p><div class="panel scroll"><table><thead id="head"></thead><tbody id="rows"></tbody></table></div>
 <footer><a href="team-audio.zip">Tải audio hiện có theo 61 hồ sơ đội ghe</a> · <a href="catalog.json">Tải danh sách nguồn YouTube</a> · <a href="manifest.json">Mốc cắt và bằng chứng phụ đề</a> · <a href="ATTRIBUTION.md">Ghi nguồn</a><br>Kho nguồn không phải tuyên bố đã tìm hết mọi video YouTube. Năm trong tiêu đề được phân biệt với ngày đăng lại; hồ sơ đội hiện tại không chứng minh số đội/giới tính ở mùa cũ.</footer>
 </main>
 <script type="module">
-const $=id=>document.getElementById(id),player=$('player');let manifest,catalog,draft,view='clips',viewSerial=0;
+const $=id=>document.getElementById(id),player=$('player');let manifest,catalog,draft,trial,trialSamples=new Map(),view='clips',viewSerial=0;
 const node=(tag,text)=>{const e=document.createElement(tag);if(text!=null)e.textContent=text;return e;};
 const time=s=>`${Math.floor(s/3600)}:${String(Math.floor(s/60)%60).padStart(2,'0')}:${(s%60).toFixed(2).padStart(5,'0')}`;
 const labels={ready:'Chuẩn bị',go:'Xuất phát',intro:'Giới thiệu',cruise:'Đường trường',halfway:'Giữa đường',final:'Nước rút',surge:'Đạp', 'last-hundred':'100 m cuối','last-fifty':'50 m cuối','pace-sprint':'Tăng nhịp',recover:'Hồi sức',cohesion:'Đồng đều',fatigue:'Thể lực thấp','close-race':'So kè',lead:'Đổi dẫn đầu',finish:'Thắng',loss:'Thua',dnf:'Không hoàn thành',tie:'Hòa'};
@@ -31,9 +31,17 @@ const link=(text,url)=>{const a=node('a',text);a.href=url;a.target='_blank';a.re
 function listen(key){const c=manifest.clips[key],s=manifest.sources[c.sourceId];player.pause();player.src=c.file+'?clip='+c.sha256.slice(0,12);$('playing').textContent=(c.channel==='khmer'?'Khmer · ':'Việt · ')+c.text;$('source').replaceChildren(link(`${s.eventYear} · ${s.channel} · ${time(c.start)}–${time(c.end)}`,s.url+'&t='+Math.floor(c.start)));$('status').textContent=c.translationVi?'Nghĩa làm việc: '+c.translationVi:'Đoạn thu gốc, giữ tốc độ và cao độ.';player.play().catch(e=>$('status').textContent='Chưa phát được: '+e.message);}
 function cell(row,value){const td=node('td');if(value instanceof Node)td.append(value);else td.textContent=value;row.append(td);return td;}
 function playButton(key,label='Nghe'){const b=node('button',label);b.addEventListener('click',()=>listen(key));return b;}
+function listenTrial(sample){
+ player.pause();player.src=sample.file+'?clip='+sample.sha256.slice(0,12);
+ $('playing').textContent=(sample.language==='km'?'Khmer · Piseth: ':'Việt · Nam Minh: ')+sample.text;
+ $('source').replaceChildren(link('Giọng stock · Azure Speech REST API','https://learn.microsoft.com/en-us/azure/ai-services/speech-service/rest-text-to-speech'));
+ $('status').textContent='Mẫu đọc kịch bản, chưa chuyển giọng BLV; tiếng Khmer chưa được duyệt bởi người bản ngữ.';
+ player.play().catch(e=>$('status').textContent='Chưa phát được: '+e.message);
+}
 function render(){
  const query=$('query').value.trim().toLocaleLowerCase(),language=$('language').value,stage=$('stage').value;let count=0;const rows=[];
- $('script-review').hidden=view!=='script';player.parentElement.hidden=view==='script';document.body.dataset.view=view;
+ $('script-review').hidden=view!=='script';document.body.dataset.view=view;
+ if(view==='script')$('script-status').textContent=`${trialSamples.size} mẫu giọng stock Azure · Chưa chuyển giọng hai BLV.`;
  const columns=view==='script'?['Tình huống','Lời bình thử','Khi phát / đối chiếu']:view==='clips'?['Nội dung / ngữ cảnh','Ngôn ngữ','Được phát lúc','Nguồn gốc','Nghe']:view==='teams'?['Đội ghe','Tên Việt','Tên Khmer','Lịch sử đã có']:['Video','Năm / ngày đăng','Phụ đề gốc','Trạng thái'];
  const h=node('tr');for(const col of columns)h.append(node('th',col));$('head').replaceChildren(h);
  if(view==='clips')for(const [key,c]of Object.entries(manifest.clips)){
@@ -54,17 +62,27 @@ function render(){
  if(view==='script')for(const cue of draft.cues){
   if(stage&&cue.stage!==stage||query&&!(cue.label+' '+cue.text.vi+' '+cue.text.km+' '+cue.whenVi).toLocaleLowerCase().includes(query))continue;
   const tr=node('tr');cell(tr,cue.label);const words=cell(tr,'');
-  for(const lang of ['vi','km'])if(!language||language===lang){const p=node('p',cue.text[lang]);p.lang=lang;const label=node('strong',lang==='vi'?'Việt: ':'Khmer (nháp): ');p.prepend(label);words.append(p);}
-  const context=cell(tr,cue.whenVi);context.append(node('small',`Tối đa ${cue.maxSeconds} giây mỗi câu · Chưa có voice mẫu.`));
+  for(const lang of ['vi','km'])if(!language||language===lang){
+   const p=node('p',cue.text[lang]);p.lang=lang;const label=node('strong',lang==='vi'?'Việt: ':'Khmer (nháp): ');p.prepend(label);words.append(p);
+   const sample=trialSamples.get(cue.id+'-'+lang);
+   if(sample){const b=node('button',lang==='vi'?'Nghe Việt · Nam Minh':'Nghe Khmer · Piseth');b.setAttribute('aria-label',`Nghe mẫu ${lang==='vi'?'Việt':'Khmer'} · ${cue.label}`);b.addEventListener('click',()=>listenTrial(sample));words.append(b,node('small',`${sample.duration.toFixed(2)} giây · Giọng Azure mặc định`));}
+   else words.append(node('small','Mẫu đọc chưa tải được hoặc không khớp kịch bản.'));
+  }
+  const context=cell(tr,cue.whenVi);context.append(node('small',`Tối đa ${cue.maxSeconds} giây mỗi câu.`));
   for(const id of cue.referenceIds)context.append(link('Nguồn đối chiếu · '+id,draft.references[id].url),node('br'));
   rows.push(tr);count++;
  }
- $('rows').replaceChildren(...rows);$('count').textContent=view==='script'?`${count} tình huống đang hiển thị · 20 câu Việt / 20 câu Khmer · chưa tạo voice`:`${count} mục đang hiển thị · ${catalog.coverage.raceReferences} nguồn tham khảo · ${Object.keys(manifest.clips).length} bản thu · ${manifest.teamCoverage.nameVi}/61 tên Việt · ${manifest.teamCoverage.nameKm}/61 tên Khmer`;
+ $('rows').replaceChildren(...rows);$('count').textContent=view==='script'?`${count} tình huống đang hiển thị · 20 câu Việt / 20 câu Khmer · ${trialSamples.size} mẫu Azure có thể nghe`:`${count} mục đang hiển thị · ${catalog.coverage.raceReferences} nguồn tham khảo · ${Object.keys(manifest.clips).length} bản thu · ${manifest.teamCoverage.nameVi}/61 tên Việt · ${manifest.teamCoverage.nameKm}/61 tên Khmer`;
  $('language').disabled=!['clips','script'].includes(view);$('stage').disabled=!['clips','script'].includes(view);
 }
 async function selectView(next){
  const serial=++viewSerial;
- if(next==='script'&&!draft){const r=await fetch('commentary-script.json',{cache:'no-cache'});if(!r.ok)throw Error('Kịch bản: '+r.status);draft=await r.json();$('script-sequence').replaceChildren(...draft.sampleSequence.map(item=>node('li',`${draft.cues.find(c=>c.id===item.cueId).label} · ${item.language==='vi'?'Việt':'Khmer'}: ${item.note}`)));}
+ if(next==='script'&&!draft){
+  const r=await fetch('commentary-script.json',{cache:'no-cache'});if(!r.ok)throw Error('Kịch bản: '+r.status);draft=await r.json();
+  trial=await fetch('commentary-trial/manifest.json',{cache:'no-cache'}).then(r=>r.ok?r.json():null).catch(()=>null);
+  if(trial?.sourceType==='azure-stock-neural')for(const sample of trial.samples){const cue=draft.cues.find(c=>c.id===sample.cueId);if(cue&&sample.text===cue.text[sample.language]&&sample.voice===draft.voices[sample.language]?.name&&/^commentary-trial\/[a-z-]+\.mp3$/.test(sample.file))trialSamples.set(sample.id,sample);}
+  $('script-sequence').replaceChildren(...draft.sampleSequence.map(item=>node('li',`${draft.cues.find(c=>c.id===item.cueId).label} · ${item.language==='vi'?'Việt':'Khmer'}: ${item.note}`)));
+ }
  if(serial!==viewSerial)return;
  player.pause();view=next;for(const x of document.querySelectorAll('[data-view]'))x.setAttribute('aria-pressed',String(x.dataset.view===view));render();
 }
