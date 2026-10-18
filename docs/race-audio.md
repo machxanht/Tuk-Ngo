@@ -31,6 +31,24 @@ Source waveform correlation and sample-pack/hash/decode checks are recorded in
 not certify human listening, Khmer pronunciation or speaker identity. Historical
 publication records below describe their respective earlier snapshots.
 
+Published implementation `046d1e3`, Pages
+`a5ace87b22da93280a280833e8bd5098f76cd015`, successful
+[Actions run 39163496551](https://github.com/machxanht/Tuk-Ngo/actions/runs/39163496551).
+All 111 checked public assets match local SHA-256 bytes, including all 102
+runtime recordings, the original team ZIP, source-pack manifest and current
+root/game/audio chunks. Public browser checks completed a legal winning heat,
+next-heat progression, actual Vietnamese original / Khmer AI playback,
+pause/mute/preferences/disposal and three tablet viewports without game errors.
+The source-library check passed after one short-media wait timeout; an isolated
+probe of that same file returned HTTP 206, readyState 4 and no media error, and
+the complete serial check passed without a production change. Local Khmer-only
+start playback verified that Vietnamese stays silent and muting Khmer stops its
+sources. Source waveform checks cover all 86 originals (minimum correlation
+0.9977907); the 16 Khmer AI files pass separate synthesis-pack/hash/decode checks.
+Lint, tests, build and nine commentary-trial checks passed. Evidence is under
+`docs/qa/commentary-mix/`. Physical tablet performance, independent listening,
+native pronunciation and all possible YouTube broadcasts remain unverified.
+
 
 The game at https://machxanht.github.io/Tuk-Ngo/ uses the actual audio of the
 [user's reference broadcast](https://www.youtube.com/watch?v=crZF3hghbgQ), from
