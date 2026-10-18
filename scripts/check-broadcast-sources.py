@@ -33,9 +33,22 @@ def main():
         assert hashlib.sha256(Path(inputs[key]['captions']).read_bytes()).hexdigest() == source['captions']['sha256'], key
         sources[key] = {'url': source['url'], 'eventYear': source['eventYear'], 'sha256': digest, 'captionsSha256': source['captions']['sha256']}
     checks, ai_checks = [], []
+    field_raw=(folder/manifest['fieldPack']['file']).read_bytes()
+    assert hashlib.sha256(field_raw).hexdigest()==manifest['fieldPack']['sha256']
+    field=json.loads(field_raw);field_checks=[]
     for key, clip in manifest['clips'].items():
         mp3 = folder / clip['file']
         assert hashlib.sha256(mp3.read_bytes()).hexdigest() == clip['sha256'], key
+        if clip['sourceType'] in ['broadcast-separated','licensed-recording']:
+            assert clip['channel'] in ['drums','crowd','whistle'] and field['clips'][key]==clip
+            if clip['sourceType']=='broadcast-separated':
+                assert clip['separation']['parentSourceSha256']==manifest['sources'][clip['sourceId']]['sha256']
+            else:assert clip['recording']['license']=='CC0-1.0'
+            encoded=decode(['-i',str(mp3)]);peak=float(np.max(np.abs(encoded)))
+            assert .01<peak<=1 and abs(len(encoded)/24000-clip['duration'])<.001
+            if clip['channel']=='drums':assert abs(clip['duration']-clip['beats']*60/clip['bpm'])<.002
+            field_checks.append({'clip':key,'sourceType':clip['sourceType'],'sha256':clip['sha256'],'decodedPeak':round(peak,6),'duration':clip['duration']})
+            continue
         if clip['sourceType'] == 'azure-stock-neural':
             assert clip['channel'] == 'khmer' and clip['lang'] == 'km', key
             evidence = clip['synthesisEvidence']
@@ -71,7 +84,7 @@ def main():
             for recording in profile['recordings'].values():
                 payload = bundle.read(name.removesuffix('profile.json') + recording['file'])
                 assert hashlib.sha256(payload).hexdigest() == recording['sha256']
-    result = {'sources': sources, 'cutCount': len(checks), 'syntheticKhmerCount': len(ai_checks), 'syntheticKhmer': ai_checks, 'minimumCorrelation': min(c['pcmCorrelation'] for c in checks), 'maxDecodedPeak': max(c['decodedPeak'] for c in checks+ai_checks), 'clips': checks,
+    result = {'sources': sources, 'cutCount': len(checks), 'fieldCount':len(field_checks),'fieldChecks':field_checks,'syntheticKhmerCount': len(ai_checks), 'syntheticKhmer': ai_checks, 'minimumCorrelation': min(c['pcmCorrelation'] for c in checks), 'maxDecodedPeak': max(c['decodedPeak'] for c in checks+ai_checks+field_checks), 'clips': checks,
               'archive': download, 'archiveProfiles': len(profiles), 'coverage': manifest['teamCoverage'], 'independentListeningVerified': False,
               'scope': 'Original excerpts: waveform correlation/hash/decode/archive. Khmer AI: synthesis-pack/hash/decode. Does not certify transcription, native pronunciation or commentator identity.'}
     args.out.parent.mkdir(parents=True, exist_ok=True)

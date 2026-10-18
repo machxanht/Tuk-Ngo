@@ -139,25 +139,29 @@
   "review": {
     "vietnamese": "Original complete-phrase cuts selected using word-level original CC and context; 14 additions also machine-transcribed with local Whisper. Four contradictory/incomplete candidates excluded. Automatic CC/ASR is not independent listening certification.",
     "khmer": "Authored Azure Khmer situation cues, with explicit script/sample/hash provenance and live eligibility gates. Original-source Khmer names and greeting retained. Failed Seed-VC conversion trials are excluded. Native pronunciation/listening not independently verified.",
-    "percussion": "Recorded field transients during a gap in recognised commentary; filtered and faded, not isolated studio drum stems.",
+    "percussion": "Drums are now a separated percussion groove from the original broadcast, baked at seven paddle cadences with pitch-preserving atempo. The former impact snippets were removed. Coach whistle is a real CC0 sports whistle recording with independent mix toggle and audio-clock scheduling.",
     "rights": "Source attributed to broadcaster. No permission or reusable-content licence has been independently verified.",
     "speakers": "Vietnamese commentary is original broadcast speech only, with no synthesis, conversion, pitch shift, speed change or syllable assembly. Khmer situation cues use pre-rendered Azure Piseth Neural. Original Khmer team names and greeting remain broadcast recordings. No commentator clone is claimed.",
     "teamNames": "Name identities were matched manually against the registration roster, local aliases and surrounding race/team context in automatic CC. Original speech only; no assembled syllables, invented team numbers or runtime TTS. Shared pagoda-name cuts contain no gender/entry claim; numbered cuts are used only for that number. Proper-name spelling in automatic CC can be wrong; this is not independent listening verification.",
     "teamHistory": "Only complete original commentary phrases with externally corroborated 2024 results. Historical standings are restricted to the identified entry/gender, never used to decide a game result. Missing names/history remain explicitly unavailable; absent CC is not proof the audio never speaks that name.",
     "multiSeason": "Four complete hashed original recordings from 2023, 2024 and 2025. Video upload dates are separate from event years. Search references/candidate captions never automatically enter the runtime.",
     "asr": "Local faster-whisper large-v3-turbo and public Vatho/Khmer-ocm were tried on bounded excerpts. Results can hallucinate, especially short/music/bilingual contexts. Selected additions retain raw CC plus relevant machine evidence; inconclusive/contradictory candidates are excluded. This is not an independent listening or speaker-identity certification.",
-    "stages": "Per-recording eligibility is rechecked against actual player distance/pace/effort/gap/result, including after decoding. Generic event arrays are alternatives. Current excerpts finish before an urgent queued cue; stale/ineligible cues and rapid duplicate excerpts are skipped. No judge-wait statement is played after a confirmed tie. Recent phrases are excluded before alternative selection. Short countdown/start cues must fit their actual scheduling deadlines."
+    "stages": "Per-recording eligibility is rechecked against actual player distance/pace/effort/gap/result, including after decoding. Generic event arrays are alternatives. Current excerpts finish before an urgent queued cue; stale/ineligible cues and rapid duplicate excerpts are skipped. No judge-wait statement is played after a confirmed tie. Recent phrases are excluded before alternative selection. Short countdown/start cues must fit their actual scheduling deadlines. Complete sentence blocks now run for roughly 7–20 seconds, with recurring context calls instead of only milestone one-liners. No speech is time-stretched. Longer paragraphs have an 85-second reuse cooldown.",
+    "field": "40/20-second licensed nonverbal sports crowd beds replace the old 3.87-second broadcast loop. Broadcast separation trials retained traffic/music and were withheld. Crowd/whistle are credited CC0 sports recordings, not Maspero field recordings."
   },
-  "ambience": "broadcast-ambience",
+  "ambience": "river-bank-bed",
   "warmup": [
     "broadcast-ready",
     "broadcast-go",
+    "broadcast-shore-paragraph",
     "broadcast-intro",
     "khmer-intro",
-    "drum-low",
-    "drum-open",
-    "drum-rim",
-    "khmer-go"
+    "ai-go-km",
+    "coach-whistle-short",
+    "coach-whistle-strong",
+    "drum-groove-start",
+    "drum-groove-cruise",
+    "drum-groove-final"
   ],
   "events": {
     "ready": {
@@ -181,96 +185,193 @@
     },
     "intro": {
       "voice": [
+        "broadcast-shore-paragraph",
         "broadcast-intro"
       ],
       "khmer": [
         "khmer-intro"
+      ],
+      "voiceBlocks": [
+        [
+          "broadcast-shore-paragraph",
+          "broadcast-intro"
+        ]
       ]
     },
     "cruise": {
       "voice": [
+        "broadcast-course-paragraph",
+        "broadcast-festival-paragraph",
         "broadcast-rhythm",
         "broadcast-long-course"
       ],
       "khmer": [
         "ai-cruise-km"
+      ],
+      "voiceBlocks": [
+        [
+          "broadcast-course-paragraph"
+        ],
+        [
+          "broadcast-festival-paragraph",
+          "broadcast-rhythm"
+        ],
+        [
+          "broadcast-long-course",
+          "broadcast-rhythm"
+        ]
       ]
     },
     "halfway": {
       "voice": [
-        "broadcast-rhythm"
+        "broadcast-festival-paragraph",
+        "broadcast-rhythm",
+        "broadcast-rhythm-paragraph"
       ],
       "khmer": [
         "ai-halfway-km"
+      ],
+      "voiceBlocks": [
+        [
+          "broadcast-festival-paragraph",
+          "broadcast-rhythm"
+        ],
+        [
+          "broadcast-rhythm-paragraph",
+          "broadcast-rhythm"
+        ]
       ]
     },
     "final": {
       "voice": [
-        "broadcast-sprint",
         "broadcast-final-contest",
+        "broadcast-stroke-strength",
         "broadcast-keep-accelerating",
+        "broadcast-sprint",
+        "broadcast-coach-effort",
         "broadcast-final-effort"
       ],
       "khmer": [
         "ai-final-km"
+      ],
+      "voiceBlocks": [
+        [
+          "broadcast-final-contest",
+          "broadcast-stroke-strength",
+          "broadcast-keep-accelerating"
+        ],
+        [
+          "broadcast-sprint",
+          "broadcast-coach-effort",
+          "broadcast-final-effort"
+        ]
       ]
     },
     "last-hundred": {
       "voice": [
-        "broadcast-sprint",
         "broadcast-final-contest",
         "broadcast-keep-accelerating",
-        "broadcast-final-effort"
+        "broadcast-coach-effort",
+        "broadcast-final-effort",
+        "broadcast-sprint"
       ],
       "khmer": [
         "ai-last-hundred-km"
+      ],
+      "voiceBlocks": [
+        [
+          "broadcast-final-contest",
+          "broadcast-keep-accelerating"
+        ],
+        [
+          "broadcast-coach-effort",
+          "broadcast-final-effort"
+        ]
       ]
     },
     "last-fifty": {
       "voice": [
         "broadcast-sprint",
-        "broadcast-final-contest",
-        "broadcast-final-effort"
+        "broadcast-final-effort",
+        "broadcast-final-contest"
       ],
       "khmer": [
         "ai-last-fifty-km"
+      ],
+      "voiceBlocks": [
+        [
+          "broadcast-sprint",
+          "broadcast-final-effort"
+        ]
       ]
     },
     "surge": {
       "voice": [
-        "broadcast-surge",
         "broadcast-stroke-strength",
         "broadcast-keep-accelerating",
-        "broadcast-accelerating"
+        "broadcast-accelerating",
+        "broadcast-coach-effort",
+        "broadcast-surge"
       ],
       "khmer": [
         "ai-surge-km"
+      ],
+      "voiceBlocks": [
+        [
+          "broadcast-stroke-strength",
+          "broadcast-keep-accelerating",
+          "broadcast-accelerating"
+        ],
+        [
+          "broadcast-coach-effort",
+          "broadcast-accelerating"
+        ]
       ]
     },
     "pace-sprint": {
       "voice": [
-        "broadcast-sprint",
         "broadcast-stroke-strength",
         "broadcast-keep-accelerating",
+        "broadcast-sprint",
         "broadcast-accelerating"
       ],
-      "khmer": []
+      "khmer": [],
+      "voiceBlocks": [
+        [
+          "broadcast-stroke-strength",
+          "broadcast-keep-accelerating"
+        ]
+      ]
     },
     "recover": {
       "voice": [
-        "broadcast-recover",
-        "broadcast-relaxed-strokes"
+        "broadcast-rhythm-paragraph",
+        "broadcast-relaxed-strokes",
+        "broadcast-recover"
       ],
       "khmer": [
         "ai-recover-km"
+      ],
+      "voiceBlocks": [
+        [
+          "broadcast-rhythm-paragraph",
+          "broadcast-relaxed-strokes"
+        ]
       ]
     },
     "cohesion": {
       "voice": [
+        "broadcast-rhythm-paragraph",
         "broadcast-rhythm"
       ],
       "khmer": [
         "ai-cohesion-km"
+      ],
+      "voiceBlocks": [
+        [
+          "broadcast-rhythm-paragraph",
+          "broadcast-rhythm"
+        ]
       ]
     },
     "fatigue": {
@@ -284,15 +385,27 @@
     },
     "close-race": {
       "voice": [
-        "broadcast-close",
-        "broadcast-close-contest",
         "broadcast-contest-pair",
-        "broadcast-contest-now",
+        "broadcast-close-contest",
         "broadcast-exciting-race",
+        "broadcast-contest-now",
+        "broadcast-close",
         "broadcast-race-excitement"
       ],
       "khmer": [
         "ai-close-race-km"
+      ],
+      "voiceBlocks": [
+        [
+          "broadcast-contest-pair",
+          "broadcast-close-contest",
+          "broadcast-exciting-race"
+        ],
+        [
+          "broadcast-contest-now",
+          "broadcast-close",
+          "broadcast-race-excitement"
+        ]
       ]
     },
     "lead": {
@@ -306,11 +419,17 @@
     },
     "finish": {
       "voice": [
-        "broadcast-finish",
-        "broadcast-victory-congratulations"
+        "broadcast-victory-congratulations",
+        "broadcast-finish"
       ],
       "khmer": [
         "ai-finish-win-km"
+      ],
+      "voiceBlocks": [
+        [
+          "broadcast-victory-congratulations",
+          "broadcast-finish"
+        ]
       ]
     },
     "loss": {
@@ -1070,86 +1189,6 @@
       "sourceType": "broadcast",
       "sourceStart": 11285.14,
       "sourceEnd": 11287.02,
-      "processing": {
-        "normalization": "loudness"
-      }
-    },
-    "drum-low": {
-      "start": 5576.8,
-      "end": 5577.17,
-      "channel": "drums",
-      "lang": null,
-      "text": "Nhịp trống/va đập gốc từ hiện trường",
-      "sourceId": "crZF3hghbgQ",
-      "sourceUrl": "https://www.youtube.com/watch?v=crZF3hghbgQ",
-      "file": "drum-low.mp3",
-      "duration": 0.37,
-      "peak": 0.8889,
-      "bytes": 5609,
-      "sha256": "7e43c413746ac5aee29397694913506545eb917047df639e2b4933cc7af02ee3",
-      "sourceType": "broadcast",
-      "sourceStart": 5576.8,
-      "sourceEnd": 5577.17,
-      "processing": {
-        "normalization": "loudness"
-      }
-    },
-    "drum-open": {
-      "start": 5577.64,
-      "end": 5577.99,
-      "channel": "drums",
-      "lang": null,
-      "text": "Nhịp trống/va đập gốc từ hiện trường",
-      "sourceId": "crZF3hghbgQ",
-      "sourceUrl": "https://www.youtube.com/watch?v=crZF3hghbgQ",
-      "file": "drum-open.mp3",
-      "duration": 0.35,
-      "peak": 0.8302,
-      "bytes": 5321,
-      "sha256": "8154937c7503134aae0cd6af54dca4f25b824cfe174a134639046d1970c1a80c",
-      "sourceType": "broadcast",
-      "sourceStart": 5577.64,
-      "sourceEnd": 5577.99,
-      "processing": {
-        "normalization": "loudness"
-      }
-    },
-    "drum-rim": {
-      "start": 5578.1,
-      "end": 5578.39,
-      "channel": "drums",
-      "lang": null,
-      "text": "Nhịp trống/va đập gốc từ hiện trường",
-      "sourceId": "crZF3hghbgQ",
-      "sourceUrl": "https://www.youtube.com/watch?v=crZF3hghbgQ",
-      "file": "drum-rim.mp3",
-      "duration": 0.29,
-      "peak": 0.9487,
-      "bytes": 4745,
-      "sha256": "2d244543babb4d7102d0390327ae55d93db3350a05951f0cd0e0706e4a55bebc",
-      "sourceType": "broadcast",
-      "sourceStart": 5578.1,
-      "sourceEnd": 5578.39,
-      "processing": {
-        "normalization": "loudness"
-      }
-    },
-    "broadcast-ambience": {
-      "start": 5574.68,
-      "end": 5578.55,
-      "channel": "crowd",
-      "lang": null,
-      "text": "Âm thanh hiện trường từ clip gốc",
-      "sourceId": "crZF3hghbgQ",
-      "sourceUrl": "https://www.youtube.com/watch?v=crZF3hghbgQ",
-      "file": "broadcast-ambience.mp3",
-      "duration": 3.87,
-      "peak": 0.3241,
-      "bytes": 47657,
-      "sha256": "0394384c18e17b6044ae8f946fc3da251fb14e42c80063d84e6e84b43dd7086d",
-      "sourceType": "broadcast",
-      "sourceStart": 5574.68,
-      "sourceEnd": 5578.55,
       "processing": {
         "normalization": "loudness"
       }
@@ -5368,6 +5407,1267 @@
         "scriptSha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39",
         "nativeListeningVerified": false
       }
+    },
+    "broadcast-shore-paragraph": {
+      "start": 3317.46,
+      "end": 3324.45,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Quý khán giả thân mến, những hình ảnh rất là quen thuộc: khán đài và dọc bên dòng sông Maspéro đều đầy ắp khán giả.",
+      "sourceId": "crZF3hghbgQ",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "maxElapsed": 25
+      },
+      "captionEvidence": {
+        "words": [
+          [
+            3317.52,
+            "Quý"
+          ],
+          [
+            3317.68,
+            "khán"
+          ],
+          [
+            3317.799,
+            "giả"
+          ],
+          [
+            3317.96,
+            "thân"
+          ],
+          [
+            3318.119,
+            "mến,"
+          ],
+          [
+            3318.44,
+            "những"
+          ],
+          [
+            3318.64,
+            "hình"
+          ],
+          [
+            3318.88,
+            "ảnh"
+          ],
+          [
+            3318.96,
+            "rất"
+          ],
+          [
+            3319.119,
+            "là"
+          ],
+          [
+            3319.24,
+            "quen"
+          ],
+          [
+            3319.48,
+            "thuộc"
+          ],
+          [
+            3320.24,
+            "kháng"
+          ],
+          [
+            3320.48,
+            "đài"
+          ],
+          [
+            3321.119,
+            "và"
+          ],
+          [
+            3321.359,
+            "dọc"
+          ],
+          [
+            3321.599,
+            "bên"
+          ],
+          [
+            3321.76,
+            "dòng"
+          ],
+          [
+            3321.96,
+            "sông"
+          ],
+          [
+            3322.2,
+            "Marbro"
+          ],
+          [
+            3323.039,
+            "đều"
+          ],
+          [
+            3323.48,
+            "đầy"
+          ],
+          [
+            3323.799,
+            "ấp"
+          ],
+          [
+            3323.92,
+            "khán"
+          ],
+          [
+            3324.119,
+            "giả"
+          ]
+        ],
+        "nextWordStart": 3324.48
+      },
+      "asrEvidence": {
+        "backend": "local-whisper-large-v3-turbo",
+        "text": "Quý khán giả thân mến, những hình ảnh rất là quen thuộc, kháng đài và dọc bên dòng sông Maduro đều đầy ấp khán giả.",
+        "audioSha256": "7859874d18fa68a74855adcd49775971d9d260193fd7065c298b8d7ae88aef6c",
+        "reviewStatus": "CC/context and machine transcript; independent listening unverified"
+      },
+      "sourceUrl": "https://www.youtube.com/watch?v=crZF3hghbgQ",
+      "file": "broadcast-shore-paragraph.mp3",
+      "duration": 6.99,
+      "peak": 0.7636,
+      "bytes": 85097,
+      "sha256": "bfc59c0685de0f0dbea49d129afe171db90b69ed1a7f70cc3e37845752fcd136",
+      "sourceType": "broadcast",
+      "sourceStart": 3317.46,
+      "sourceEnd": 3324.45,
+      "processing": {
+        "normalization": "loudness"
+      }
+    },
+    "broadcast-course-paragraph": {
+      "start": 14104.65,
+      "end": 14118.1,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Mọi việc vẫn còn có thể xảy ra. Đường đua vẫn còn khá là dài. Một nghìn hai trăm mét, thử thách thực sự cho sự dẻo dai, bền bỉ và nỗ lực cho đến những mét nước cuối cùng.",
+      "sourceId": "crZF3hghbgQ",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 150,
+        "maxDistance": 800
+      },
+      "captionEvidence": {
+        "words": [
+          [
+            14104.72,
+            "Mọi"
+          ],
+          [
+            14105.04,
+            "việc"
+          ],
+          [
+            14105.52,
+            "vẫn"
+          ],
+          [
+            14105.84,
+            "còn"
+          ],
+          [
+            14106.08,
+            "có"
+          ],
+          [
+            14106.239,
+            "thể"
+          ],
+          [
+            14106.399,
+            "xảy"
+          ],
+          [
+            14106.64,
+            "ra."
+          ],
+          [
+            14107.68,
+            "Đường"
+          ],
+          [
+            14107.96,
+            "đua"
+          ],
+          [
+            14108.279,
+            "vẫn"
+          ],
+          [
+            14108.52,
+            "còn"
+          ],
+          [
+            14108.76,
+            "khá"
+          ],
+          [
+            14109.04,
+            "là"
+          ],
+          [
+            14109.199,
+            "dài."
+          ],
+          [
+            14110.68,
+            "1200"
+          ],
+          [
+            14111.399,
+            "m"
+          ],
+          [
+            14112.0,
+            "thử"
+          ],
+          [
+            14112.199,
+            "thách"
+          ],
+          [
+            14112.52,
+            "thực"
+          ],
+          [
+            14112.72,
+            "sự"
+          ],
+          [
+            14112.92,
+            "cho"
+          ],
+          [
+            14113.12,
+            "sự"
+          ],
+          [
+            14113.319,
+            "dẻo"
+          ],
+          [
+            14113.64,
+            "dài,"
+          ],
+          [
+            14114.479,
+            "bền"
+          ],
+          [
+            14114.76,
+            "bỉ"
+          ],
+          [
+            14115.12,
+            "và"
+          ],
+          [
+            14115.279,
+            "nỗ"
+          ],
+          [
+            14115.52,
+            "lực"
+          ],
+          [
+            14115.72,
+            "cho"
+          ],
+          [
+            14115.92,
+            "đến"
+          ],
+          [
+            14116.08,
+            "những"
+          ],
+          [
+            14116.279,
+            "mét"
+          ],
+          [
+            14116.479,
+            "nước"
+          ],
+          [
+            14116.76,
+            "cuối"
+          ],
+          [
+            14117.04,
+            "cùng."
+          ]
+        ],
+        "nextWordStart": 14119.8
+      },
+      "asrEvidence": {
+        "backend": "local-whisper-large-v3-turbo",
+        "text": "Mọi việc vẫn còn có thể xảy ra, đường đua vẫn còn khá là dài. 1.200 mét, một thử thách thực sự cho sự dẻo dài, bền bỉ và nỗ lực cho đến những mét nước cuối cùng.",
+        "audioSha256": "212773acc70e6e72e05b68bb8010d3879078476cb7d9c6839aa768fc9db3a8ed",
+        "reviewStatus": "CC/context and machine transcript; independent listening unverified"
+      },
+      "sourceUrl": "https://www.youtube.com/watch?v=crZF3hghbgQ",
+      "file": "broadcast-course-paragraph.mp3",
+      "duration": 13.45,
+      "peak": 0.5241,
+      "bytes": 162569,
+      "sha256": "a5b2acc47d1713ef7d1b936b74d42a3804a5c712884a40170b2dc322af48b713",
+      "sourceType": "broadcast",
+      "sourceStart": 14104.65,
+      "sourceEnd": 14118.1,
+      "processing": {
+        "normalization": "loudness"
+      }
+    },
+    "broadcast-rhythm-paragraph": {
+      "start": 5361.05,
+      "end": 5366.2,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Những nhịp dầm nhẹ nhàng, nhẹ nhàng, chủ yếu là giữ nhịp trong thời điểm này thôi.",
+      "sourceId": "crZF3hghbgQ",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "maxDistance": 950,
+        "paces": [
+          "steady",
+          "recover"
+        ]
+      },
+      "captionEvidence": {
+        "words": [
+          [
+            5361.119,
+            "những"
+          ],
+          [
+            5361.4,
+            "nhịp"
+          ],
+          [
+            5361.639,
+            "nhầm"
+          ],
+          [
+            5362.0,
+            "nhẹ"
+          ],
+          [
+            5362.28,
+            "nhàng"
+          ],
+          [
+            5362.679,
+            "nhẹ"
+          ],
+          [
+            5363.04,
+            "nhàng"
+          ],
+          [
+            5363.52,
+            "chủ"
+          ],
+          [
+            5363.719,
+            "yếu"
+          ],
+          [
+            5363.88,
+            "là"
+          ],
+          [
+            5364.239,
+            "giữ"
+          ],
+          [
+            5364.52,
+            "nhịp"
+          ],
+          [
+            5364.84,
+            "trong"
+          ],
+          [
+            5365.04,
+            "thời"
+          ],
+          [
+            5365.159,
+            "điểm"
+          ],
+          [
+            5365.36,
+            "này"
+          ],
+          [
+            5365.56,
+            "thôi"
+          ]
+        ],
+        "nextWordStart": 5366.28
+      },
+      "asrEvidence": {
+        "backend": "local-whisper-large-v3-turbo",
+        "text": "Những nhịp nhầm nhẹ nhàng, nhẹ nhàng, chủ yếu là giữ nhịp trong địa điểm này thôi.",
+        "audioSha256": "003b5c3264f8f792100e4878bf5e9b6061ccc3ec74fc48ca4696b0a1eb5295a1",
+        "reviewStatus": "CC/context and machine transcript; independent listening unverified"
+      },
+      "sourceUrl": "https://www.youtube.com/watch?v=crZF3hghbgQ",
+      "file": "broadcast-rhythm-paragraph.mp3",
+      "duration": 5.15,
+      "peak": 0.5229,
+      "bytes": 62921,
+      "sha256": "73a920b29f9f9b155b1b55403d23abb0746e9c8942c9ddec6f77d13e4719876f",
+      "sourceType": "broadcast",
+      "sourceStart": 5361.05,
+      "sourceEnd": 5366.2,
+      "processing": {
+        "normalization": "loudness"
+      }
+    },
+    "broadcast-festival-paragraph": {
+      "start": 13355.9,
+      "end": 13371.27,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Nơi mà mỗi hội đua đều năm, sáu mươi đội tham gia. Cùng với đó là hàng chục ngàn khán giả ken dày hai bên bờ sông. Tất cả đã tạo nên những vũ điệu trên sông nước, những sắc màu của lễ hội rất khó có nơi nào có được.",
+      "sourceId": "XagC29Eyt_U",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 200,
+        "maxDistance": 950
+      },
+      "captionEvidence": {
+        "words": [
+          [
+            13355.96,
+            "nơi"
+          ],
+          [
+            13356.239,
+            "mà"
+          ],
+          [
+            13356.439,
+            "mỗi"
+          ],
+          [
+            13356.68,
+            "hội"
+          ],
+          [
+            13356.88,
+            "đua"
+          ],
+          [
+            13357.12,
+            "đều"
+          ],
+          [
+            13357.52,
+            "5"
+          ],
+          [
+            13357.76,
+            "60"
+          ],
+          [
+            13358.04,
+            "đội"
+          ],
+          [
+            13358.239,
+            "tham"
+          ],
+          [
+            13358.399,
+            "gia"
+          ],
+          [
+            13358.92,
+            "cùng"
+          ],
+          [
+            13359.159,
+            "với"
+          ],
+          [
+            13359.279,
+            "đó"
+          ],
+          [
+            13359.439,
+            "là"
+          ],
+          [
+            13359.6,
+            "hàng"
+          ],
+          [
+            13359.8,
+            "chục"
+          ],
+          [
+            13360.12,
+            "hàng"
+          ],
+          [
+            13360.359,
+            "chục"
+          ],
+          [
+            13360.56,
+            "ngàn"
+          ],
+          [
+            13360.8,
+            "khán"
+          ],
+          [
+            13361.04,
+            "giả"
+          ],
+          [
+            13361.319,
+            "ken"
+          ],
+          [
+            13361.56,
+            "dày"
+          ],
+          [
+            13361.84,
+            "hai"
+          ],
+          [
+            13362.0,
+            "bên"
+          ],
+          [
+            13362.159,
+            "bờ"
+          ],
+          [
+            13362.359,
+            "sông"
+          ],
+          [
+            13363.399,
+            "tất"
+          ],
+          [
+            13363.64,
+            "cả"
+          ],
+          [
+            13363.88,
+            "đã"
+          ],
+          [
+            13364.08,
+            "quò"
+          ],
+          [
+            13365.199,
+            "tạo"
+          ],
+          [
+            13365.479,
+            "nên"
+          ],
+          [
+            13366.68,
+            "những"
+          ],
+          [
+            13366.96,
+            "vũ"
+          ],
+          [
+            13367.159,
+            "điệu"
+          ],
+          [
+            13367.399,
+            "trên"
+          ],
+          [
+            13367.6,
+            "sông"
+          ],
+          [
+            13367.8,
+            "nước"
+          ],
+          [
+            13368.359,
+            "những"
+          ],
+          [
+            13368.64,
+            "sắc"
+          ],
+          [
+            13368.88,
+            "màu"
+          ],
+          [
+            13369.12,
+            "của"
+          ],
+          [
+            13369.239,
+            "lễ"
+          ],
+          [
+            13369.439,
+            "hội"
+          ],
+          [
+            13369.96,
+            "rất"
+          ],
+          [
+            13370.199,
+            "khó"
+          ],
+          [
+            13370.439,
+            "có"
+          ],
+          [
+            13370.6,
+            "nơi"
+          ],
+          [
+            13370.76,
+            "nào"
+          ],
+          [
+            13370.96,
+            "có"
+          ],
+          [
+            13371.12,
+            "được"
+          ]
+        ],
+        "nextWordStart": 13371.319
+      },
+      "asrEvidence": {
+        "backend": "local-whisper-large-v3-turbo",
+        "text": "Nơi mà mỗi hội đua đều 5, 60 đội tham gia, cùng với đó là hàng chục, hàng chục ngàn khán giả khen dày hai bên bờ sông. Tất cả đã qua tạo nên những vũ điệu trên sông nước, những sắc màu của lễ hội rất khó có nơi nào có được.",
+        "audioSha256": "4a4da3f397d8396683d124c6258a71e82c330550a68768dca4cb9654573261f6",
+        "reviewStatus": "CC/context and machine transcript; independent listening unverified"
+      },
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U",
+      "file": "broadcast-festival-paragraph.mp3",
+      "duration": 15.37,
+      "peak": 0.5572,
+      "bytes": 185609,
+      "sha256": "e774b88c0a753d74c24d631971f689ea84fdfa6761db3bf6c762b67447d69d66",
+      "sourceType": "broadcast",
+      "sourceStart": 13355.9,
+      "sourceEnd": 13371.27,
+      "processing": {
+        "normalization": "loudness"
+      }
+    },
+    "broadcast-coach-effort": {
+      "start": 15681.05,
+      "end": 15685.85,
+      "channel": "voice",
+      "lang": "vi",
+      "text": "Những động tác của các huấn luyện viên trên ghe cũng vậy, cho thấy là tăng tốc.",
+      "sourceId": "tnb7TdUVRkU",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "requiresHardEffort": true
+      },
+      "captionEvidence": {
+        "words": [
+          [
+            15681.119,
+            "Những"
+          ],
+          [
+            15681.439,
+            "động"
+          ],
+          [
+            15681.68,
+            "tác"
+          ],
+          [
+            15682.04,
+            "của"
+          ],
+          [
+            15682.76,
+            "các"
+          ],
+          [
+            15683.0,
+            "huấn"
+          ],
+          [
+            15683.199,
+            "luyện"
+          ],
+          [
+            15683.399,
+            "viên"
+          ],
+          [
+            15683.6,
+            "trên"
+          ],
+          [
+            15683.8,
+            "ghe"
+          ],
+          [
+            15684.04,
+            "cũng"
+          ],
+          [
+            15684.239,
+            "vậy"
+          ],
+          [
+            15684.56,
+            "cho"
+          ],
+          [
+            15684.76,
+            "thấy"
+          ],
+          [
+            15684.96,
+            "là"
+          ],
+          [
+            15685.119,
+            "tăng"
+          ],
+          [
+            15685.319,
+            "tốc"
+          ]
+        ],
+        "nextWordStart": 15685.96
+      },
+      "asrEvidence": {
+        "backend": "local-whisper-large-v3-turbo",
+        "text": "Những động tác của các quân liên viên trên ghe cũng vậy cho thấy là tăng tốc.",
+        "audioSha256": "b30661df6c0b1ecf2d262ad4af5cd6d71faaa288089df56fc4bfdb31f940e844",
+        "reviewStatus": "CC/context and machine transcript; independent listening unverified"
+      },
+      "sourceUrl": "https://www.youtube.com/watch?v=tnb7TdUVRkU",
+      "file": "broadcast-coach-effort.mp3",
+      "duration": 4.8,
+      "peak": 0.5279,
+      "bytes": 58601,
+      "sha256": "c79c9ae21ad0e0e21dd3e7f561980b340bb46dc01634278c9befe699816f147f",
+      "sourceType": "broadcast",
+      "sourceStart": 15681.05,
+      "sourceEnd": 15685.85,
+      "processing": {
+        "normalization": "loudness"
+      }
+    },
+    "drum-groove-recover": {
+      "sourceType": "broadcast-separated",
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U",
+      "sourceStart": 7886.443537415,
+      "sourceEnd": 7890.123900227,
+      "separation": {
+        "engine": "Demucs htdemucs",
+        "modelSha256": "8726e21a993978c7ba086d3872e7608d7d5bfca646ca4aca459ffda844faa8b4",
+        "stem": "drums",
+        "parentSourceSha256": "7468899d9a3a37dda2c8776bbef6c0284943ada6a476f4992e43352b360e9ca5"
+      },
+      "channel": "drums",
+      "lang": null,
+      "text": "Nhịp trống tách từ bản thu giải đấu",
+      "bpm": 72,
+      "beats": 8,
+      "timeStretch": 0.5520544218,
+      "file": "field/drum-groove-recover.mp3",
+      "duration": 6.666667,
+      "peak": 0.949048,
+      "bytes": 80972,
+      "sha256": "61f254e77c4decaa4e800b762c88ff99cbfcd932029f1e95efd23fe3127285b2",
+      "render": {
+        "inputSha256": "886708ee2fda7ea76963ffc684571110726ae723ef5cee1af2e7b18cbda2133f",
+        "start": 0,
+        "requestedDuration": 6.666666666666667,
+        "filters": [
+          "atrim=start=6.443537415:end=10.123900227",
+          "asetpts=PTS-STARTPTS",
+          "highpass=f=55",
+          "lowpass=f=6500",
+          "atempo=0.5520544218",
+          "apad",
+          "atrim=duration=6.6666666667",
+          "loudnorm=I=-21:TP=-3:LRA=7",
+          "aresample=24000",
+          "apad",
+          "atrim=end_sample=160000",
+          "asetpts=PTS-STARTPTS",
+          "afade=t=in:d=0.008",
+          "afade=t=out:st=6.654667:d=0.012"
+        ],
+        "channels": 1
+      }
+    },
+    "drum-groove-cruise": {
+      "sourceType": "broadcast-separated",
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U",
+      "sourceStart": 7886.443537415,
+      "sourceEnd": 7890.123900227,
+      "separation": {
+        "engine": "Demucs htdemucs",
+        "modelSha256": "8726e21a993978c7ba086d3872e7608d7d5bfca646ca4aca459ffda844faa8b4",
+        "stem": "drums",
+        "parentSourceSha256": "7468899d9a3a37dda2c8776bbef6c0284943ada6a476f4992e43352b360e9ca5"
+      },
+      "channel": "drums",
+      "lang": null,
+      "text": "Nhịp trống tách từ bản thu giải đấu",
+      "bpm": 84,
+      "beats": 8,
+      "timeStretch": 0.6440634921,
+      "file": "field/drum-groove-cruise.mp3",
+      "duration": 5.714292,
+      "peak": 0.952816,
+      "bytes": 69740,
+      "sha256": "7d8eaa6656a76615116701968ef812751cfcc8ca83d58620bb6cb00001b146f7",
+      "render": {
+        "inputSha256": "886708ee2fda7ea76963ffc684571110726ae723ef5cee1af2e7b18cbda2133f",
+        "start": 0,
+        "requestedDuration": 5.714285714285714,
+        "filters": [
+          "atrim=start=6.443537415:end=10.123900227",
+          "asetpts=PTS-STARTPTS",
+          "highpass=f=55",
+          "lowpass=f=6500",
+          "atempo=0.6440634921",
+          "apad",
+          "atrim=duration=5.7142857143",
+          "loudnorm=I=-21:TP=-3:LRA=7",
+          "aresample=24000",
+          "apad",
+          "atrim=end_sample=137143",
+          "asetpts=PTS-STARTPTS",
+          "afade=t=in:d=0.008",
+          "afade=t=out:st=5.702286:d=0.012"
+        ],
+        "channels": 1
+      }
+    },
+    "drum-groove-gentle": {
+      "sourceType": "broadcast-separated",
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U",
+      "sourceStart": 7886.443537415,
+      "sourceEnd": 7890.123900227,
+      "separation": {
+        "engine": "Demucs htdemucs",
+        "modelSha256": "8726e21a993978c7ba086d3872e7608d7d5bfca646ca4aca459ffda844faa8b4",
+        "stem": "drums",
+        "parentSourceSha256": "7468899d9a3a37dda2c8776bbef6c0284943ada6a476f4992e43352b360e9ca5"
+      },
+      "channel": "drums",
+      "lang": null,
+      "text": "Nhịp trống tách từ bản thu giải đấu",
+      "bpm": 90,
+      "beats": 8,
+      "timeStretch": 0.6900680273,
+      "file": "field/drum-groove-gentle.mp3",
+      "duration": 5.333333,
+      "peak": 0.953326,
+      "bytes": 65132,
+      "sha256": "286fba93cbb7aece60816f59a78a4aa92a647499c52a0b19e1c288f5c5c2fca1",
+      "render": {
+        "inputSha256": "886708ee2fda7ea76963ffc684571110726ae723ef5cee1af2e7b18cbda2133f",
+        "start": 0,
+        "requestedDuration": 5.333333333333333,
+        "filters": [
+          "atrim=start=6.443537415:end=10.123900227",
+          "asetpts=PTS-STARTPTS",
+          "highpass=f=55",
+          "lowpass=f=6500",
+          "atempo=0.6900680273",
+          "apad",
+          "atrim=duration=5.3333333333",
+          "loudnorm=I=-21:TP=-3:LRA=7",
+          "aresample=24000",
+          "apad",
+          "atrim=end_sample=128000",
+          "asetpts=PTS-STARTPTS",
+          "afade=t=in:d=0.008",
+          "afade=t=out:st=5.321333:d=0.012"
+        ],
+        "channels": 1
+      }
+    },
+    "drum-groove-start": {
+      "sourceType": "broadcast-separated",
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U",
+      "sourceStart": 7886.443537415,
+      "sourceEnd": 7890.123900227,
+      "separation": {
+        "engine": "Demucs htdemucs",
+        "modelSha256": "8726e21a993978c7ba086d3872e7608d7d5bfca646ca4aca459ffda844faa8b4",
+        "stem": "drums",
+        "parentSourceSha256": "7468899d9a3a37dda2c8776bbef6c0284943ada6a476f4992e43352b360e9ca5"
+      },
+      "channel": "drums",
+      "lang": null,
+      "text": "Nhịp trống tách từ bản thu giải đấu",
+      "bpm": 96,
+      "beats": 8,
+      "timeStretch": 0.7360725624,
+      "file": "field/drum-groove-start.mp3",
+      "duration": 5.0,
+      "peak": 0.955406,
+      "bytes": 61100,
+      "sha256": "bd3602ad23c19ffa4ee31c6edeeb95be80451d28061dc01198b1f25a290452ec",
+      "render": {
+        "inputSha256": "886708ee2fda7ea76963ffc684571110726ae723ef5cee1af2e7b18cbda2133f",
+        "start": 0,
+        "requestedDuration": 5.0,
+        "filters": [
+          "atrim=start=6.443537415:end=10.123900227",
+          "asetpts=PTS-STARTPTS",
+          "highpass=f=55",
+          "lowpass=f=6500",
+          "atempo=0.7360725624",
+          "apad",
+          "atrim=duration=5.0000000000",
+          "loudnorm=I=-21:TP=-3:LRA=7",
+          "aresample=24000",
+          "apad",
+          "atrim=end_sample=120000",
+          "asetpts=PTS-STARTPTS",
+          "afade=t=in:d=0.008",
+          "afade=t=out:st=4.988000:d=0.012"
+        ],
+        "channels": 1
+      }
+    },
+    "drum-groove-final": {
+      "sourceType": "broadcast-separated",
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U",
+      "sourceStart": 7886.443537415,
+      "sourceEnd": 7890.123900227,
+      "separation": {
+        "engine": "Demucs htdemucs",
+        "modelSha256": "8726e21a993978c7ba086d3872e7608d7d5bfca646ca4aca459ffda844faa8b4",
+        "stem": "drums",
+        "parentSourceSha256": "7468899d9a3a37dda2c8776bbef6c0284943ada6a476f4992e43352b360e9ca5"
+      },
+      "channel": "drums",
+      "lang": null,
+      "text": "Nhịp trống tách từ bản thu giải đấu",
+      "bpm": 102,
+      "beats": 8,
+      "timeStretch": 0.7820770976,
+      "file": "field/drum-groove-final.mp3",
+      "duration": 4.705958,
+      "peak": 0.94978,
+      "bytes": 57644,
+      "sha256": "e50184ea591b3de74dd09e4ca1c449e4cf2869b6561d216a7d15381528a8fccc",
+      "render": {
+        "inputSha256": "886708ee2fda7ea76963ffc684571110726ae723ef5cee1af2e7b18cbda2133f",
+        "start": 0,
+        "requestedDuration": 4.705882352941177,
+        "filters": [
+          "atrim=start=6.443537415:end=10.123900227",
+          "asetpts=PTS-STARTPTS",
+          "highpass=f=55",
+          "lowpass=f=6500",
+          "atempo=0.7820770976",
+          "apad",
+          "atrim=duration=4.7058823529",
+          "loudnorm=I=-21:TP=-3:LRA=7",
+          "aresample=24000",
+          "apad",
+          "atrim=end_sample=112941",
+          "asetpts=PTS-STARTPTS",
+          "afade=t=in:d=0.008",
+          "afade=t=out:st=4.693882:d=0.012"
+        ],
+        "channels": 1
+      }
+    },
+    "drum-groove-power": {
+      "sourceType": "broadcast-separated",
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U",
+      "sourceStart": 7886.443537415,
+      "sourceEnd": 7890.123900227,
+      "separation": {
+        "engine": "Demucs htdemucs",
+        "modelSha256": "8726e21a993978c7ba086d3872e7608d7d5bfca646ca4aca459ffda844faa8b4",
+        "stem": "drums",
+        "parentSourceSha256": "7468899d9a3a37dda2c8776bbef6c0284943ada6a476f4992e43352b360e9ca5"
+      },
+      "channel": "drums",
+      "lang": null,
+      "text": "Nhịp trống tách từ bản thu giải đấu",
+      "bpm": 114,
+      "beats": 8,
+      "timeStretch": 0.8740861679,
+      "file": "field/drum-groove-power.mp3",
+      "duration": 4.210542,
+      "peak": 0.958546,
+      "bytes": 51596,
+      "sha256": "3fde3c9c858e164b27843ef51490761370a6dad0382a236ec9ba6e1a8a1f886d",
+      "render": {
+        "inputSha256": "886708ee2fda7ea76963ffc684571110726ae723ef5cee1af2e7b18cbda2133f",
+        "start": 0,
+        "requestedDuration": 4.2105263157894735,
+        "filters": [
+          "atrim=start=6.443537415:end=10.123900227",
+          "asetpts=PTS-STARTPTS",
+          "highpass=f=55",
+          "lowpass=f=6500",
+          "atempo=0.8740861679",
+          "apad",
+          "atrim=duration=4.2105263158",
+          "loudnorm=I=-21:TP=-3:LRA=7",
+          "aresample=24000",
+          "apad",
+          "atrim=end_sample=101053",
+          "asetpts=PTS-STARTPTS",
+          "afade=t=in:d=0.008",
+          "afade=t=out:st=4.198526:d=0.012"
+        ],
+        "channels": 1
+      }
+    },
+    "drum-groove-sprint": {
+      "sourceType": "broadcast-separated",
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U",
+      "sourceStart": 7886.443537415,
+      "sourceEnd": 7890.123900227,
+      "separation": {
+        "engine": "Demucs htdemucs",
+        "modelSha256": "8726e21a993978c7ba086d3872e7608d7d5bfca646ca4aca459ffda844faa8b4",
+        "stem": "drums",
+        "parentSourceSha256": "7468899d9a3a37dda2c8776bbef6c0284943ada6a476f4992e43352b360e9ca5"
+      },
+      "channel": "drums",
+      "lang": null,
+      "text": "Nhịp trống tách từ bản thu giải đấu",
+      "bpm": 120,
+      "beats": 8,
+      "timeStretch": 0.920090703,
+      "file": "field/drum-groove-sprint.mp3",
+      "duration": 4.0,
+      "peak": 0.951877,
+      "bytes": 49004,
+      "sha256": "0d816a7b64def042e097ce95f16e6bef81330bdf2c53eab8a471f78beea69474",
+      "render": {
+        "inputSha256": "886708ee2fda7ea76963ffc684571110726ae723ef5cee1af2e7b18cbda2133f",
+        "start": 0,
+        "requestedDuration": 4.0,
+        "filters": [
+          "atrim=start=6.443537415:end=10.123900227",
+          "asetpts=PTS-STARTPTS",
+          "highpass=f=55",
+          "lowpass=f=6500",
+          "atempo=0.9200907030",
+          "apad",
+          "atrim=duration=4.0000000000",
+          "loudnorm=I=-21:TP=-3:LRA=7",
+          "aresample=24000",
+          "apad",
+          "atrim=end_sample=96000",
+          "asetpts=PTS-STARTPTS",
+          "afade=t=in:d=0.008",
+          "afade=t=out:st=3.988000:d=0.012"
+        ],
+        "channels": 1
+      }
+    },
+    "river-bank-bed": {
+      "sourceType": "licensed-recording",
+      "sourceUrl": "https://freesound.org/people/SoundBiterSFX/sounds/730908/",
+      "recording": {
+        "url": "https://freesound.org/people/SoundBiterSFX/sounds/730908/",
+        "audioUrl": "https://cdn.freesound.org/previews/730/730908_15857333-hq.mp3",
+        "author": "SoundBiterSFX",
+        "title": "Crowd Cheering",
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "10422b61bbd5665d60a3248e4457b6b4172883ca811ae27687bd70bc83685e43"
+      },
+      "channel": "crowd",
+      "lang": null,
+      "text": "Khán giả cổ vũ — bản thu thể thao CC0, không phải audio tại Maspéro",
+      "file": "field/river-bank-bed.mp3",
+      "duration": 40.0,
+      "peak": 0.283869,
+      "bytes": 641324,
+      "sha256": "616cf92c7ac324ec36f5473cfbbb237f31d5ce63c43878f362d3b4ac6ec86520",
+      "render": {
+        "inputSha256": "10422b61bbd5665d60a3248e4457b6b4172883ca811ae27687bd70bc83685e43",
+        "start": 0,
+        "requestedDuration": 40,
+        "filters": [
+          "highpass=f=130",
+          "lowpass=f=7000",
+          "loudnorm=I=-23:TP=-3:LRA=8",
+          "aresample=24000",
+          "apad",
+          "atrim=end_sample=960000",
+          "asetpts=PTS-STARTPTS",
+          "afade=t=in:d=0.008",
+          "afade=t=out:st=39.988000:d=0.012"
+        ],
+        "channels": 2
+      }
+    },
+    "finish-crowd-bed": {
+      "sourceType": "licensed-recording",
+      "sourceUrl": "https://freesound.org/people/FoolBoyMedia/sounds/397434/",
+      "recording": {
+        "url": "https://freesound.org/people/FoolBoyMedia/sounds/397434/",
+        "audioUrl": "https://cdn.freesound.org/previews/397/397434_4019029-hq.mp3",
+        "author": "FoolBoyMedia",
+        "title": "Crowd Cheer",
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "b621e391cb850ff79d8c215faf295119e747340803429ffbb383b5eaf4a132d2"
+      },
+      "channel": "crowd",
+      "lang": null,
+      "text": "Khán giả cổ vũ — bản thu thể thao CC0, không phải audio tại Maspéro",
+      "file": "field/finish-crowd-bed.mp3",
+      "duration": 20.0,
+      "peak": 0.317963,
+      "bytes": 321452,
+      "sha256": "132a9948171a398854ee9a2708ce5b4f1c0d3a89c64792dda672507071475e50",
+      "render": {
+        "inputSha256": "b621e391cb850ff79d8c215faf295119e747340803429ffbb383b5eaf4a132d2",
+        "start": 0,
+        "requestedDuration": 20,
+        "filters": [
+          "highpass=f=130",
+          "lowpass=f=7000",
+          "loudnorm=I=-23:TP=-3:LRA=8",
+          "aresample=24000",
+          "apad",
+          "atrim=end_sample=480000",
+          "asetpts=PTS-STARTPTS",
+          "afade=t=in:d=0.008",
+          "afade=t=out:st=19.988000:d=0.012"
+        ],
+        "channels": 2
+      }
+    },
+    "coach-whistle-short": {
+      "sourceType": "licensed-recording",
+      "sourceUrl": "https://freesound.org/people/SpliceSound/sounds/218318/",
+      "recording": {
+        "url": "https://freesound.org/people/SpliceSound/sounds/218318/",
+        "audioUrl": "https://cdn.freesound.org/previews/218/218318_1480854-hq.mp3",
+        "author": "SpliceSound",
+        "title": "Referee whistle blow, gymnasium.wav",
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "7392e39a07d47ffbbf174677e7b82ab91fe936dbcf17a9c8d947ca763d1ad0b3"
+      },
+      "channel": "whistle",
+      "lang": null,
+      "text": "Còi HLV theo nhịp dầm — bản thu còi thật SpliceSound (CC0)",
+      "file": "field/coach-whistle-short.mp3",
+      "duration": 0.19,
+      "peak": 0.377778,
+      "bytes": 3212,
+      "sha256": "999307ac912f47b52ea625127310717b9a8fe05fea1840a4f916df34cd746dcf",
+      "render": {
+        "inputSha256": "7392e39a07d47ffbbf174677e7b82ab91fe936dbcf17a9c8d947ca763d1ad0b3",
+        "start": 0.14,
+        "requestedDuration": 0.19,
+        "filters": [
+          "highpass=f=1400",
+          "lowpass=f=7500",
+          "volume=0.72",
+          "aresample=24000",
+          "apad",
+          "atrim=end_sample=4560",
+          "asetpts=PTS-STARTPTS",
+          "afade=t=in:d=0.008",
+          "afade=t=out:st=0.178000:d=0.012"
+        ],
+        "channels": 1
+      }
+    },
+    "coach-whistle-strong": {
+      "sourceType": "licensed-recording",
+      "sourceUrl": "https://freesound.org/people/SpliceSound/sounds/218318/",
+      "recording": {
+        "url": "https://freesound.org/people/SpliceSound/sounds/218318/",
+        "audioUrl": "https://cdn.freesound.org/previews/218/218318_1480854-hq.mp3",
+        "author": "SpliceSound",
+        "title": "Referee whistle blow, gymnasium.wav",
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "7392e39a07d47ffbbf174677e7b82ab91fe936dbcf17a9c8d947ca763d1ad0b3"
+      },
+      "channel": "whistle",
+      "lang": null,
+      "text": "Còi HLV theo nhịp dầm — bản thu còi thật SpliceSound (CC0)",
+      "file": "field/coach-whistle-strong.mp3",
+      "duration": 0.3,
+      "peak": 0.385783,
+      "bytes": 4652,
+      "sha256": "0a0507f6b6cecbf0a03deadb9356d54aa8e9456e9c2447f4a3bcc3c403ea8333",
+      "render": {
+        "inputSha256": "7392e39a07d47ffbbf174677e7b82ab91fe936dbcf17a9c8d947ca763d1ad0b3",
+        "start": 0.14,
+        "requestedDuration": 0.3,
+        "filters": [
+          "highpass=f=1400",
+          "lowpass=f=7500",
+          "volume=0.72",
+          "aresample=24000",
+          "apad",
+          "atrim=end_sample=7200",
+          "asetpts=PTS-STARTPTS",
+          "afade=t=in:d=0.008",
+          "afade=t=out:st=0.288000:d=0.012"
+        ],
+        "channels": 1
+      }
     }
   },
   "teamProfiles": {
@@ -6749,6 +8049,57 @@
     "nameKm": 12,
     "historyVi": 3,
     "historyKm": 0
+  },
+  "field": {
+    "grooves": [
+      {
+        "key": "drum-groove-recover",
+        "bpm": 72,
+        "beats": 8
+      },
+      {
+        "key": "drum-groove-cruise",
+        "bpm": 84,
+        "beats": 8
+      },
+      {
+        "key": "drum-groove-gentle",
+        "bpm": 90,
+        "beats": 8
+      },
+      {
+        "key": "drum-groove-start",
+        "bpm": 96,
+        "beats": 8
+      },
+      {
+        "key": "drum-groove-final",
+        "bpm": 102,
+        "beats": 8
+      },
+      {
+        "key": "drum-groove-power",
+        "bpm": 114,
+        "beats": 8
+      },
+      {
+        "key": "drum-groove-sprint",
+        "bpm": 120,
+        "beats": 8
+      }
+    ],
+    "ambience": {
+      "cruise": "river-bank-bed",
+      "final": "finish-crowd-bed"
+    },
+    "whistle": {
+      "normal": "coach-whistle-short",
+      "strong": "coach-whistle-strong"
+    }
+  },
+  "fieldPack": {
+    "file": "field/manifest.json",
+    "sha256": "c5d99841b881f3ed8f60e19fa78a98bb957c2e523936931364881e82595aefbf"
   },
   "downloads": {
     "teamAudio": {

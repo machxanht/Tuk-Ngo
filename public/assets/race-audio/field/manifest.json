@@ -1,0 +1,526 @@
+{
+  "schema": 1,
+  "scope": "Real recordings: Demucs-separated broadcast drums; separately licensed sports whistle and nonverbal crowd beds. Broadcast ambience separation trials were withheld because of residual traffic/music. Crowd recordings are not from Maspero. Machine-assisted checks, not independent listening certification.",
+  "clips": {
+    "drum-groove-recover": {
+      "sourceType": "broadcast-separated",
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U",
+      "sourceStart": 7886.443537415,
+      "sourceEnd": 7890.123900227,
+      "separation": {
+        "engine": "Demucs htdemucs",
+        "modelSha256": "8726e21a993978c7ba086d3872e7608d7d5bfca646ca4aca459ffda844faa8b4",
+        "stem": "drums",
+        "parentSourceSha256": "7468899d9a3a37dda2c8776bbef6c0284943ada6a476f4992e43352b360e9ca5"
+      },
+      "channel": "drums",
+      "lang": null,
+      "text": "Nhịp trống tách từ bản thu giải đấu",
+      "bpm": 72,
+      "beats": 8,
+      "timeStretch": 0.5520544218,
+      "file": "field/drum-groove-recover.mp3",
+      "duration": 6.666667,
+      "peak": 0.949048,
+      "bytes": 80972,
+      "sha256": "61f254e77c4decaa4e800b762c88ff99cbfcd932029f1e95efd23fe3127285b2",
+      "render": {
+        "inputSha256": "886708ee2fda7ea76963ffc684571110726ae723ef5cee1af2e7b18cbda2133f",
+        "start": 0,
+        "requestedDuration": 6.666666666666667,
+        "filters": [
+          "atrim=start=6.443537415:end=10.123900227",
+          "asetpts=PTS-STARTPTS",
+          "highpass=f=55",
+          "lowpass=f=6500",
+          "atempo=0.5520544218",
+          "apad",
+          "atrim=duration=6.6666666667",
+          "loudnorm=I=-21:TP=-3:LRA=7",
+          "aresample=24000",
+          "apad",
+          "atrim=end_sample=160000",
+          "asetpts=PTS-STARTPTS",
+          "afade=t=in:d=0.008",
+          "afade=t=out:st=6.654667:d=0.012"
+        ],
+        "channels": 1
+      }
+    },
+    "drum-groove-cruise": {
+      "sourceType": "broadcast-separated",
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U",
+      "sourceStart": 7886.443537415,
+      "sourceEnd": 7890.123900227,
+      "separation": {
+        "engine": "Demucs htdemucs",
+        "modelSha256": "8726e21a993978c7ba086d3872e7608d7d5bfca646ca4aca459ffda844faa8b4",
+        "stem": "drums",
+        "parentSourceSha256": "7468899d9a3a37dda2c8776bbef6c0284943ada6a476f4992e43352b360e9ca5"
+      },
+      "channel": "drums",
+      "lang": null,
+      "text": "Nhịp trống tách từ bản thu giải đấu",
+      "bpm": 84,
+      "beats": 8,
+      "timeStretch": 0.6440634921,
+      "file": "field/drum-groove-cruise.mp3",
+      "duration": 5.714292,
+      "peak": 0.952816,
+      "bytes": 69740,
+      "sha256": "7d8eaa6656a76615116701968ef812751cfcc8ca83d58620bb6cb00001b146f7",
+      "render": {
+        "inputSha256": "886708ee2fda7ea76963ffc684571110726ae723ef5cee1af2e7b18cbda2133f",
+        "start": 0,
+        "requestedDuration": 5.714285714285714,
+        "filters": [
+          "atrim=start=6.443537415:end=10.123900227",
+          "asetpts=PTS-STARTPTS",
+          "highpass=f=55",
+          "lowpass=f=6500",
+          "atempo=0.6440634921",
+          "apad",
+          "atrim=duration=5.7142857143",
+          "loudnorm=I=-21:TP=-3:LRA=7",
+          "aresample=24000",
+          "apad",
+          "atrim=end_sample=137143",
+          "asetpts=PTS-STARTPTS",
+          "afade=t=in:d=0.008",
+          "afade=t=out:st=5.702286:d=0.012"
+        ],
+        "channels": 1
+      }
+    },
+    "drum-groove-gentle": {
+      "sourceType": "broadcast-separated",
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U",
+      "sourceStart": 7886.443537415,
+      "sourceEnd": 7890.123900227,
+      "separation": {
+        "engine": "Demucs htdemucs",
+        "modelSha256": "8726e21a993978c7ba086d3872e7608d7d5bfca646ca4aca459ffda844faa8b4",
+        "stem": "drums",
+        "parentSourceSha256": "7468899d9a3a37dda2c8776bbef6c0284943ada6a476f4992e43352b360e9ca5"
+      },
+      "channel": "drums",
+      "lang": null,
+      "text": "Nhịp trống tách từ bản thu giải đấu",
+      "bpm": 90,
+      "beats": 8,
+      "timeStretch": 0.6900680273,
+      "file": "field/drum-groove-gentle.mp3",
+      "duration": 5.333333,
+      "peak": 0.953326,
+      "bytes": 65132,
+      "sha256": "286fba93cbb7aece60816f59a78a4aa92a647499c52a0b19e1c288f5c5c2fca1",
+      "render": {
+        "inputSha256": "886708ee2fda7ea76963ffc684571110726ae723ef5cee1af2e7b18cbda2133f",
+        "start": 0,
+        "requestedDuration": 5.333333333333333,
+        "filters": [
+          "atrim=start=6.443537415:end=10.123900227",
+          "asetpts=PTS-STARTPTS",
+          "highpass=f=55",
+          "lowpass=f=6500",
+          "atempo=0.6900680273",
+          "apad",
+          "atrim=duration=5.3333333333",
+          "loudnorm=I=-21:TP=-3:LRA=7",
+          "aresample=24000",
+          "apad",
+          "atrim=end_sample=128000",
+          "asetpts=PTS-STARTPTS",
+          "afade=t=in:d=0.008",
+          "afade=t=out:st=5.321333:d=0.012"
+        ],
+        "channels": 1
+      }
+    },
+    "drum-groove-start": {
+      "sourceType": "broadcast-separated",
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U",
+      "sourceStart": 7886.443537415,
+      "sourceEnd": 7890.123900227,
+      "separation": {
+        "engine": "Demucs htdemucs",
+        "modelSha256": "8726e21a993978c7ba086d3872e7608d7d5bfca646ca4aca459ffda844faa8b4",
+        "stem": "drums",
+        "parentSourceSha256": "7468899d9a3a37dda2c8776bbef6c0284943ada6a476f4992e43352b360e9ca5"
+      },
+      "channel": "drums",
+      "lang": null,
+      "text": "Nhịp trống tách từ bản thu giải đấu",
+      "bpm": 96,
+      "beats": 8,
+      "timeStretch": 0.7360725624,
+      "file": "field/drum-groove-start.mp3",
+      "duration": 5.0,
+      "peak": 0.955406,
+      "bytes": 61100,
+      "sha256": "bd3602ad23c19ffa4ee31c6edeeb95be80451d28061dc01198b1f25a290452ec",
+      "render": {
+        "inputSha256": "886708ee2fda7ea76963ffc684571110726ae723ef5cee1af2e7b18cbda2133f",
+        "start": 0,
+        "requestedDuration": 5.0,
+        "filters": [
+          "atrim=start=6.443537415:end=10.123900227",
+          "asetpts=PTS-STARTPTS",
+          "highpass=f=55",
+          "lowpass=f=6500",
+          "atempo=0.7360725624",
+          "apad",
+          "atrim=duration=5.0000000000",
+          "loudnorm=I=-21:TP=-3:LRA=7",
+          "aresample=24000",
+          "apad",
+          "atrim=end_sample=120000",
+          "asetpts=PTS-STARTPTS",
+          "afade=t=in:d=0.008",
+          "afade=t=out:st=4.988000:d=0.012"
+        ],
+        "channels": 1
+      }
+    },
+    "drum-groove-final": {
+      "sourceType": "broadcast-separated",
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U",
+      "sourceStart": 7886.443537415,
+      "sourceEnd": 7890.123900227,
+      "separation": {
+        "engine": "Demucs htdemucs",
+        "modelSha256": "8726e21a993978c7ba086d3872e7608d7d5bfca646ca4aca459ffda844faa8b4",
+        "stem": "drums",
+        "parentSourceSha256": "7468899d9a3a37dda2c8776bbef6c0284943ada6a476f4992e43352b360e9ca5"
+      },
+      "channel": "drums",
+      "lang": null,
+      "text": "Nhịp trống tách từ bản thu giải đấu",
+      "bpm": 102,
+      "beats": 8,
+      "timeStretch": 0.7820770976,
+      "file": "field/drum-groove-final.mp3",
+      "duration": 4.705958,
+      "peak": 0.94978,
+      "bytes": 57644,
+      "sha256": "e50184ea591b3de74dd09e4ca1c449e4cf2869b6561d216a7d15381528a8fccc",
+      "render": {
+        "inputSha256": "886708ee2fda7ea76963ffc684571110726ae723ef5cee1af2e7b18cbda2133f",
+        "start": 0,
+        "requestedDuration": 4.705882352941177,
+        "filters": [
+          "atrim=start=6.443537415:end=10.123900227",
+          "asetpts=PTS-STARTPTS",
+          "highpass=f=55",
+          "lowpass=f=6500",
+          "atempo=0.7820770976",
+          "apad",
+          "atrim=duration=4.7058823529",
+          "loudnorm=I=-21:TP=-3:LRA=7",
+          "aresample=24000",
+          "apad",
+          "atrim=end_sample=112941",
+          "asetpts=PTS-STARTPTS",
+          "afade=t=in:d=0.008",
+          "afade=t=out:st=4.693882:d=0.012"
+        ],
+        "channels": 1
+      }
+    },
+    "drum-groove-power": {
+      "sourceType": "broadcast-separated",
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U",
+      "sourceStart": 7886.443537415,
+      "sourceEnd": 7890.123900227,
+      "separation": {
+        "engine": "Demucs htdemucs",
+        "modelSha256": "8726e21a993978c7ba086d3872e7608d7d5bfca646ca4aca459ffda844faa8b4",
+        "stem": "drums",
+        "parentSourceSha256": "7468899d9a3a37dda2c8776bbef6c0284943ada6a476f4992e43352b360e9ca5"
+      },
+      "channel": "drums",
+      "lang": null,
+      "text": "Nhịp trống tách từ bản thu giải đấu",
+      "bpm": 114,
+      "beats": 8,
+      "timeStretch": 0.8740861679,
+      "file": "field/drum-groove-power.mp3",
+      "duration": 4.210542,
+      "peak": 0.958546,
+      "bytes": 51596,
+      "sha256": "3fde3c9c858e164b27843ef51490761370a6dad0382a236ec9ba6e1a8a1f886d",
+      "render": {
+        "inputSha256": "886708ee2fda7ea76963ffc684571110726ae723ef5cee1af2e7b18cbda2133f",
+        "start": 0,
+        "requestedDuration": 4.2105263157894735,
+        "filters": [
+          "atrim=start=6.443537415:end=10.123900227",
+          "asetpts=PTS-STARTPTS",
+          "highpass=f=55",
+          "lowpass=f=6500",
+          "atempo=0.8740861679",
+          "apad",
+          "atrim=duration=4.2105263158",
+          "loudnorm=I=-21:TP=-3:LRA=7",
+          "aresample=24000",
+          "apad",
+          "atrim=end_sample=101053",
+          "asetpts=PTS-STARTPTS",
+          "afade=t=in:d=0.008",
+          "afade=t=out:st=4.198526:d=0.012"
+        ],
+        "channels": 1
+      }
+    },
+    "drum-groove-sprint": {
+      "sourceType": "broadcast-separated",
+      "sourceId": "XagC29Eyt_U",
+      "sourceUrl": "https://www.youtube.com/watch?v=XagC29Eyt_U",
+      "sourceStart": 7886.443537415,
+      "sourceEnd": 7890.123900227,
+      "separation": {
+        "engine": "Demucs htdemucs",
+        "modelSha256": "8726e21a993978c7ba086d3872e7608d7d5bfca646ca4aca459ffda844faa8b4",
+        "stem": "drums",
+        "parentSourceSha256": "7468899d9a3a37dda2c8776bbef6c0284943ada6a476f4992e43352b360e9ca5"
+      },
+      "channel": "drums",
+      "lang": null,
+      "text": "Nhịp trống tách từ bản thu giải đấu",
+      "bpm": 120,
+      "beats": 8,
+      "timeStretch": 0.920090703,
+      "file": "field/drum-groove-sprint.mp3",
+      "duration": 4.0,
+      "peak": 0.951877,
+      "bytes": 49004,
+      "sha256": "0d816a7b64def042e097ce95f16e6bef81330bdf2c53eab8a471f78beea69474",
+      "render": {
+        "inputSha256": "886708ee2fda7ea76963ffc684571110726ae723ef5cee1af2e7b18cbda2133f",
+        "start": 0,
+        "requestedDuration": 4.0,
+        "filters": [
+          "atrim=start=6.443537415:end=10.123900227",
+          "asetpts=PTS-STARTPTS",
+          "highpass=f=55",
+          "lowpass=f=6500",
+          "atempo=0.9200907030",
+          "apad",
+          "atrim=duration=4.0000000000",
+          "loudnorm=I=-21:TP=-3:LRA=7",
+          "aresample=24000",
+          "apad",
+          "atrim=end_sample=96000",
+          "asetpts=PTS-STARTPTS",
+          "afade=t=in:d=0.008",
+          "afade=t=out:st=3.988000:d=0.012"
+        ],
+        "channels": 1
+      }
+    },
+    "river-bank-bed": {
+      "sourceType": "licensed-recording",
+      "sourceUrl": "https://freesound.org/people/SoundBiterSFX/sounds/730908/",
+      "recording": {
+        "url": "https://freesound.org/people/SoundBiterSFX/sounds/730908/",
+        "audioUrl": "https://cdn.freesound.org/previews/730/730908_15857333-hq.mp3",
+        "author": "SoundBiterSFX",
+        "title": "Crowd Cheering",
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "10422b61bbd5665d60a3248e4457b6b4172883ca811ae27687bd70bc83685e43"
+      },
+      "channel": "crowd",
+      "lang": null,
+      "text": "Khán giả cổ vũ — bản thu thể thao CC0, không phải audio tại Maspéro",
+      "file": "field/river-bank-bed.mp3",
+      "duration": 40.0,
+      "peak": 0.283869,
+      "bytes": 641324,
+      "sha256": "616cf92c7ac324ec36f5473cfbbb237f31d5ce63c43878f362d3b4ac6ec86520",
+      "render": {
+        "inputSha256": "10422b61bbd5665d60a3248e4457b6b4172883ca811ae27687bd70bc83685e43",
+        "start": 0,
+        "requestedDuration": 40,
+        "filters": [
+          "highpass=f=130",
+          "lowpass=f=7000",
+          "loudnorm=I=-23:TP=-3:LRA=8",
+          "aresample=24000",
+          "apad",
+          "atrim=end_sample=960000",
+          "asetpts=PTS-STARTPTS",
+          "afade=t=in:d=0.008",
+          "afade=t=out:st=39.988000:d=0.012"
+        ],
+        "channels": 2
+      }
+    },
+    "finish-crowd-bed": {
+      "sourceType": "licensed-recording",
+      "sourceUrl": "https://freesound.org/people/FoolBoyMedia/sounds/397434/",
+      "recording": {
+        "url": "https://freesound.org/people/FoolBoyMedia/sounds/397434/",
+        "audioUrl": "https://cdn.freesound.org/previews/397/397434_4019029-hq.mp3",
+        "author": "FoolBoyMedia",
+        "title": "Crowd Cheer",
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "b621e391cb850ff79d8c215faf295119e747340803429ffbb383b5eaf4a132d2"
+      },
+      "channel": "crowd",
+      "lang": null,
+      "text": "Khán giả cổ vũ — bản thu thể thao CC0, không phải audio tại Maspéro",
+      "file": "field/finish-crowd-bed.mp3",
+      "duration": 20.0,
+      "peak": 0.317963,
+      "bytes": 321452,
+      "sha256": "132a9948171a398854ee9a2708ce5b4f1c0d3a89c64792dda672507071475e50",
+      "render": {
+        "inputSha256": "b621e391cb850ff79d8c215faf295119e747340803429ffbb383b5eaf4a132d2",
+        "start": 0,
+        "requestedDuration": 20,
+        "filters": [
+          "highpass=f=130",
+          "lowpass=f=7000",
+          "loudnorm=I=-23:TP=-3:LRA=8",
+          "aresample=24000",
+          "apad",
+          "atrim=end_sample=480000",
+          "asetpts=PTS-STARTPTS",
+          "afade=t=in:d=0.008",
+          "afade=t=out:st=19.988000:d=0.012"
+        ],
+        "channels": 2
+      }
+    },
+    "coach-whistle-short": {
+      "sourceType": "licensed-recording",
+      "sourceUrl": "https://freesound.org/people/SpliceSound/sounds/218318/",
+      "recording": {
+        "url": "https://freesound.org/people/SpliceSound/sounds/218318/",
+        "audioUrl": "https://cdn.freesound.org/previews/218/218318_1480854-hq.mp3",
+        "author": "SpliceSound",
+        "title": "Referee whistle blow, gymnasium.wav",
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "7392e39a07d47ffbbf174677e7b82ab91fe936dbcf17a9c8d947ca763d1ad0b3"
+      },
+      "channel": "whistle",
+      "lang": null,
+      "text": "Còi HLV theo nhịp dầm — bản thu còi thật SpliceSound (CC0)",
+      "file": "field/coach-whistle-short.mp3",
+      "duration": 0.19,
+      "peak": 0.377778,
+      "bytes": 3212,
+      "sha256": "999307ac912f47b52ea625127310717b9a8fe05fea1840a4f916df34cd746dcf",
+      "render": {
+        "inputSha256": "7392e39a07d47ffbbf174677e7b82ab91fe936dbcf17a9c8d947ca763d1ad0b3",
+        "start": 0.14,
+        "requestedDuration": 0.19,
+        "filters": [
+          "highpass=f=1400",
+          "lowpass=f=7500",
+          "volume=0.72",
+          "aresample=24000",
+          "apad",
+          "atrim=end_sample=4560",
+          "asetpts=PTS-STARTPTS",
+          "afade=t=in:d=0.008",
+          "afade=t=out:st=0.178000:d=0.012"
+        ],
+        "channels": 1
+      }
+    },
+    "coach-whistle-strong": {
+      "sourceType": "licensed-recording",
+      "sourceUrl": "https://freesound.org/people/SpliceSound/sounds/218318/",
+      "recording": {
+        "url": "https://freesound.org/people/SpliceSound/sounds/218318/",
+        "audioUrl": "https://cdn.freesound.org/previews/218/218318_1480854-hq.mp3",
+        "author": "SpliceSound",
+        "title": "Referee whistle blow, gymnasium.wav",
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "sha256": "7392e39a07d47ffbbf174677e7b82ab91fe936dbcf17a9c8d947ca763d1ad0b3"
+      },
+      "channel": "whistle",
+      "lang": null,
+      "text": "Còi HLV theo nhịp dầm — bản thu còi thật SpliceSound (CC0)",
+      "file": "field/coach-whistle-strong.mp3",
+      "duration": 0.3,
+      "peak": 0.385783,
+      "bytes": 4652,
+      "sha256": "0a0507f6b6cecbf0a03deadb9356d54aa8e9456e9c2447f4a3bcc3c403ea8333",
+      "render": {
+        "inputSha256": "7392e39a07d47ffbbf174677e7b82ab91fe936dbcf17a9c8d947ca763d1ad0b3",
+        "start": 0.14,
+        "requestedDuration": 0.3,
+        "filters": [
+          "highpass=f=1400",
+          "lowpass=f=7500",
+          "volume=0.72",
+          "aresample=24000",
+          "apad",
+          "atrim=end_sample=7200",
+          "asetpts=PTS-STARTPTS",
+          "afade=t=in:d=0.008",
+          "afade=t=out:st=0.288000:d=0.012"
+        ],
+        "channels": 1
+      }
+    }
+  },
+  "grooves": [
+    {
+      "key": "drum-groove-recover",
+      "bpm": 72,
+      "beats": 8
+    },
+    {
+      "key": "drum-groove-cruise",
+      "bpm": 84,
+      "beats": 8
+    },
+    {
+      "key": "drum-groove-gentle",
+      "bpm": 90,
+      "beats": 8
+    },
+    {
+      "key": "drum-groove-start",
+      "bpm": 96,
+      "beats": 8
+    },
+    {
+      "key": "drum-groove-final",
+      "bpm": 102,
+      "beats": 8
+    },
+    {
+      "key": "drum-groove-power",
+      "bpm": 114,
+      "beats": 8
+    },
+    {
+      "key": "drum-groove-sprint",
+      "bpm": 120,
+      "beats": 8
+    }
+  ],
+  "ambience": {
+    "cruise": "river-bank-bed",
+    "final": "finish-crowd-bed"
+  },
+  "whistle": {
+    "normal": "coach-whistle-short",
+    "strong": "coach-whistle-strong"
+  },
+  "basePercussionBpm": 130.421924
+}

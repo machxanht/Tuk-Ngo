@@ -1,0 +1,1057 @@
+{
+  "sources": {
+    "crZF3hghbgQ": {
+      "url": "https://www.youtube.com/watch?v=crZF3hghbgQ",
+      "eventYear": 2025,
+      "sha256": "2c443d23b71fe92cc191baca5bbc45ec12704d79a2ef1b31492839cd04654ed5",
+      "captionsSha256": "a08fd520f7be92121755cf73dc3d8598f84c17be500aa403b5f1d6cf33008e6a"
+    },
+    "Y2fp9gYRIZ8": {
+      "url": "https://www.youtube.com/watch?v=Y2fp9gYRIZ8",
+      "eventYear": 2024,
+      "sha256": "06e481a525da0b8f78e1d37d9162a37ef00b1331258409a19ae1480e040f8634",
+      "captionsSha256": "139be62898806a8de27993832fee58b2127a0eb6b716d9479e500836eae5a12d"
+    },
+    "XagC29Eyt_U": {
+      "url": "https://www.youtube.com/watch?v=XagC29Eyt_U",
+      "eventYear": 2025,
+      "sha256": "7468899d9a3a37dda2c8776bbef6c0284943ada6a476f4992e43352b360e9ca5",
+      "captionsSha256": "1856b1307fd29ba0fe80dc03280d7c0c998c9e966e6ca75fdf374c7c1a9a52e9"
+    },
+    "tnb7TdUVRkU": {
+      "url": "https://www.youtube.com/watch?v=tnb7TdUVRkU",
+      "eventYear": 2023,
+      "sha256": "9febbb7108c54eca2fe7bc32621f4f74833019efaa705799fd714c980100befd",
+      "captionsSha256": "4abce470dbdf29b3954d5bb9a7669efaa25758a16af8a1f233c17209cdede697"
+    }
+  },
+  "cutCount": 87,
+  "fieldCount": 11,
+  "fieldChecks": [
+    {
+      "clip": "drum-groove-recover",
+      "sourceType": "broadcast-separated",
+      "sha256": "61f254e77c4decaa4e800b762c88ff99cbfcd932029f1e95efd23fe3127285b2",
+      "decodedPeak": 0.949048,
+      "duration": 6.666667
+    },
+    {
+      "clip": "drum-groove-cruise",
+      "sourceType": "broadcast-separated",
+      "sha256": "7d8eaa6656a76615116701968ef812751cfcc8ca83d58620bb6cb00001b146f7",
+      "decodedPeak": 0.952816,
+      "duration": 5.714292
+    },
+    {
+      "clip": "drum-groove-gentle",
+      "sourceType": "broadcast-separated",
+      "sha256": "286fba93cbb7aece60816f59a78a4aa92a647499c52a0b19e1c288f5c5c2fca1",
+      "decodedPeak": 0.953326,
+      "duration": 5.333333
+    },
+    {
+      "clip": "drum-groove-start",
+      "sourceType": "broadcast-separated",
+      "sha256": "bd3602ad23c19ffa4ee31c6edeeb95be80451d28061dc01198b1f25a290452ec",
+      "decodedPeak": 0.955406,
+      "duration": 5.0
+    },
+    {
+      "clip": "drum-groove-final",
+      "sourceType": "broadcast-separated",
+      "sha256": "e50184ea591b3de74dd09e4ca1c449e4cf2869b6561d216a7d15381528a8fccc",
+      "decodedPeak": 0.94978,
+      "duration": 4.705958
+    },
+    {
+      "clip": "drum-groove-power",
+      "sourceType": "broadcast-separated",
+      "sha256": "3fde3c9c858e164b27843ef51490761370a6dad0382a236ec9ba6e1a8a1f886d",
+      "decodedPeak": 0.958546,
+      "duration": 4.210542
+    },
+    {
+      "clip": "drum-groove-sprint",
+      "sourceType": "broadcast-separated",
+      "sha256": "0d816a7b64def042e097ce95f16e6bef81330bdf2c53eab8a471f78beea69474",
+      "decodedPeak": 0.951877,
+      "duration": 4.0
+    },
+    {
+      "clip": "river-bank-bed",
+      "sourceType": "licensed-recording",
+      "sha256": "616cf92c7ac324ec36f5473cfbbb237f31d5ce63c43878f362d3b4ac6ec86520",
+      "decodedPeak": 0.283869,
+      "duration": 40.0
+    },
+    {
+      "clip": "finish-crowd-bed",
+      "sourceType": "licensed-recording",
+      "sha256": "132a9948171a398854ee9a2708ce5b4f1c0d3a89c64792dda672507071475e50",
+      "decodedPeak": 0.317963,
+      "duration": 20.0
+    },
+    {
+      "clip": "coach-whistle-short",
+      "sourceType": "licensed-recording",
+      "sha256": "999307ac912f47b52ea625127310717b9a8fe05fea1840a4f916df34cd746dcf",
+      "decodedPeak": 0.377778,
+      "duration": 0.19
+    },
+    {
+      "clip": "coach-whistle-strong",
+      "sourceType": "licensed-recording",
+      "sha256": "0a0507f6b6cecbf0a03deadb9356d54aa8e9456e9c2447f4a3bcc3c403ea8333",
+      "decodedPeak": 0.385783,
+      "duration": 0.3
+    }
+  ],
+  "syntheticKhmerCount": 16,
+  "syntheticKhmer": [
+    {
+      "clip": "ai-ready-km",
+      "sourceType": "azure-stock-neural",
+      "sha256": "beec0f40ef882ddedf4ab9a24ea7fedc7eb164a79e49d87db8ba0a06f231bac6",
+      "voice": "km-KH-PisethNeural",
+      "decodedPeak": 0.395466,
+      "duration": 1.82,
+      "nativeListeningVerified": false
+    },
+    {
+      "clip": "ai-go-km",
+      "sourceType": "azure-stock-neural",
+      "sha256": "7a39e55f8bd8e1aa11581e4621b4170a8028c24c6b5548bdb55bce86f418ca0d",
+      "voice": "km-KH-PisethNeural",
+      "decodedPeak": 0.482225,
+      "duration": 1.82,
+      "nativeListeningVerified": false
+    },
+    {
+      "clip": "ai-cruise-km",
+      "sourceType": "azure-stock-neural",
+      "sha256": "e8ca41db65bbcb607b7a7195f44d525a0b5ce902090bd292a32d976fbb5d7274",
+      "voice": "km-KH-PisethNeural",
+      "decodedPeak": 0.486748,
+      "duration": 3.175,
+      "nativeListeningVerified": false
+    },
+    {
+      "clip": "ai-halfway-km",
+      "sourceType": "azure-stock-neural",
+      "sha256": "f6739d84bba4149dbe1bf48c8708772c0162d03b982a1a0b833ac8d51fd85ef2",
+      "voice": "km-KH-PisethNeural",
+      "decodedPeak": 0.439568,
+      "duration": 4.375,
+      "nativeListeningVerified": false
+    },
+    {
+      "clip": "ai-close-race-km",
+      "sourceType": "azure-stock-neural",
+      "sha256": "08531309a36ada0f6e0e0f7da1c4c08c93ee61666809809856eb6349c12e9657",
+      "voice": "km-KH-PisethNeural",
+      "decodedPeak": 0.515684,
+      "duration": 2.8365,
+      "nativeListeningVerified": false
+    },
+    {
+      "clip": "ai-lead-change-km",
+      "sourceType": "azure-stock-neural",
+      "sha256": "5e0aba27c5ed1508b2d114abffebd6a3380159041ae216b918a9825d92246eed",
+      "voice": "km-KH-PisethNeural",
+      "decodedPeak": 0.571238,
+      "duration": 4.2945,
+      "nativeListeningVerified": false
+    },
+    {
+      "clip": "ai-cohesion-km",
+      "sourceType": "azure-stock-neural",
+      "sha256": "9eaa92c8a08bc2955a8328dddb9b01e32df614e0e3b4a94e8d310dba6be6bcbe",
+      "voice": "km-KH-PisethNeural",
+      "decodedPeak": 0.522039,
+      "duration": 2.4625,
+      "nativeListeningVerified": false
+    },
+    {
+      "clip": "ai-recover-km",
+      "sourceType": "azure-stock-neural",
+      "sha256": "9225e9ca4ef3df736eae5d858f90d73fa70c69a972b692de14dad0ff26d6ff29",
+      "voice": "km-KH-PisethNeural",
+      "decodedPeak": 0.565241,
+      "duration": 3.737,
+      "nativeListeningVerified": false
+    },
+    {
+      "clip": "ai-final-km",
+      "sourceType": "azure-stock-neural",
+      "sha256": "4dd77c74dfdee28a4bb4c07ffb18393e2563acff5d07592b02aec3d32f10da72",
+      "voice": "km-KH-PisethNeural",
+      "decodedPeak": 0.494325,
+      "duration": 3.9697,
+      "nativeListeningVerified": false
+    },
+    {
+      "clip": "ai-surge-km",
+      "sourceType": "azure-stock-neural",
+      "sha256": "8827110d6f84fecc717303282ba70be595b9446f909ec6877fef68920df0d2c1",
+      "voice": "km-KH-PisethNeural",
+      "decodedPeak": 0.502496,
+      "duration": 1.82,
+      "nativeListeningVerified": false
+    },
+    {
+      "clip": "ai-last-hundred-km",
+      "sourceType": "azure-stock-neural",
+      "sha256": "940a7f76d7df3ce8bf323fda98c4b88e7a1e9f1e00af5e4998cb130f60d8566b",
+      "voice": "km-KH-PisethNeural",
+      "decodedPeak": 0.460974,
+      "duration": 2.1817,
+      "nativeListeningVerified": false
+    },
+    {
+      "clip": "ai-last-fifty-km",
+      "sourceType": "azure-stock-neural",
+      "sha256": "9203bca38d35df608d967cdf5317e2eef248f3b2ad5ecbcd66ebbcbb3d0a79a5",
+      "voice": "km-KH-PisethNeural",
+      "decodedPeak": 0.419761,
+      "duration": 2.1092,
+      "nativeListeningVerified": false
+    },
+    {
+      "clip": "ai-finish-win-km",
+      "sourceType": "azure-stock-neural",
+      "sha256": "51377872f38085e991248ddd7c8967af54a4e8d7a7f8c91a793e4e64f5313ee2",
+      "voice": "km-KH-PisethNeural",
+      "decodedPeak": 0.454965,
+      "duration": 4.8318,
+      "nativeListeningVerified": false
+    },
+    {
+      "clip": "ai-finish-loss-km",
+      "sourceType": "azure-stock-neural",
+      "sha256": "3712f53d03bb299ed155caaa4d286c800c3a382aca5ade67ddd7eba58258befa",
+      "voice": "km-KH-PisethNeural",
+      "decodedPeak": 0.534575,
+      "duration": 5.3965,
+      "nativeListeningVerified": false
+    },
+    {
+      "clip": "ai-finish-tie-km",
+      "sourceType": "azure-stock-neural",
+      "sha256": "cde59cd17fcc28c78788fbc26ab9005fba44257cd3f67f30b57e7ed73c0a38fd",
+      "voice": "km-KH-PisethNeural",
+      "decodedPeak": 0.537562,
+      "duration": 4.9875,
+      "nativeListeningVerified": false
+    },
+    {
+      "clip": "ai-finish-dnf-km",
+      "sourceType": "azure-stock-neural",
+      "sha256": "d3fc4ee4acbbf50b456b1636ec8b7ab4b432857f1176c44886ac78e2d62a49c7",
+      "voice": "km-KH-PisethNeural",
+      "decodedPeak": 0.46459,
+      "duration": 4.3111,
+      "nativeListeningVerified": false
+    }
+  ],
+  "minimumCorrelation": 0.99593529,
+  "maxDecodedPeak": 0.958546,
+  "clips": [
+    {
+      "clip": "broadcast-ready",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 5472.9,
+      "sourceEnd": 5474.85,
+      "sha256": "796be9354ec2613db6091ad9652f298fb76af0a099e3c1b23b42680cce40ee7f",
+      "pcmCorrelation": 0.99953592,
+      "decodedPeak": 0.723108
+    },
+    {
+      "clip": "broadcast-go",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 3345.22,
+      "sourceEnd": 3348.35,
+      "sha256": "ebe4a34ec1199c94230e87afa22d25702ba019946e8da7511b6ebd76c9b80f22",
+      "pcmCorrelation": 0.99973039,
+      "decodedPeak": 0.638436
+    },
+    {
+      "clip": "broadcast-intro",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 5475.02,
+      "sourceEnd": 5477.2,
+      "sha256": "7f5b601728db83fe3849c0b5de375f55dd3beb4ad1c44592d728dfd16ed11ae0",
+      "pcmCorrelation": 0.99964224,
+      "decodedPeak": 0.714784
+    },
+    {
+      "clip": "broadcast-rhythm",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 5364.18,
+      "sourceEnd": 5366.12,
+      "sha256": "74665bea71713ef1db1930ab253e9ce335bde3120bc8a60e42a7a6f8707ce885",
+      "pcmCorrelation": 0.9998619,
+      "decodedPeak": 0.606533
+    },
+    {
+      "clip": "broadcast-recover",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 5361.94,
+      "sourceEnd": 5363.46,
+      "sha256": "62a94005868b508652b0195198ea2d554e2f4801e6c433969af39c0be96ba2b0",
+      "pcmCorrelation": 0.99988978,
+      "decodedPeak": 0.718031
+    },
+    {
+      "clip": "broadcast-close",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 5559.34,
+      "sourceEnd": 5562.38,
+      "sha256": "faab0ef7e22055635133d987d651281a7e86b3e77ed997ab0f254cd56a939c3c",
+      "pcmCorrelation": 0.99981456,
+      "decodedPeak": 0.529931
+    },
+    {
+      "clip": "broadcast-sprint",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 5567.9,
+      "sourceEnd": 5570.2,
+      "sha256": "28e52473d26636fd4fef4e241ffd0af4fa17fe11cb5a7f941405dcb2d4f37034",
+      "pcmCorrelation": 0.99978076,
+      "decodedPeak": 0.630525
+    },
+    {
+      "clip": "broadcast-surge",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 5592.78,
+      "sourceEnd": 5593.51,
+      "sha256": "e1fbb8d40cc3368171d4ba7d0b70de30a746f1ea2a1ba331056b517b923917be",
+      "pcmCorrelation": 0.9997856,
+      "decodedPeak": 0.677785
+    },
+    {
+      "clip": "broadcast-finish",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 5596.06,
+      "sourceEnd": 5596.98,
+      "sha256": "87d805da8793ad2418a48f1a9600afc08650e8d42e63d6da338f63a3dfa79c87",
+      "pcmCorrelation": 0.99982741,
+      "decodedPeak": 0.684673
+    },
+    {
+      "clip": "broadcast-loss",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 5477.83,
+      "sourceEnd": 5479.94,
+      "sha256": "8da8687e967d98e2588481af4e6e30b7e539cdf6c9ad57f19d33ed1faca898f7",
+      "pcmCorrelation": 0.99981916,
+      "decodedPeak": 0.645383
+    },
+    {
+      "clip": "broadcast-wait",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 5583.27,
+      "sourceEnd": 5586.12,
+      "sha256": "e7f891dbf55c63b3ca83383ed65517c7a62a1862be8e1e3d3cc0d76da0f831a8",
+      "pcmCorrelation": 0.99960371,
+      "decodedPeak": 0.512828
+    },
+    {
+      "clip": "broadcast-lead",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 5590.7,
+      "sourceEnd": 5592.35,
+      "sha256": "608aee400c97598531810fccfdee2a505a0de5e04392f83f716ee932616633dc",
+      "pcmCorrelation": 0.99982517,
+      "decodedPeak": 0.63658
+    },
+    {
+      "clip": "khmer-intro",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 11285.14,
+      "sourceEnd": 11287.02,
+      "sha256": "be897d565f3b470e5d2451dbfdcffee1649653ac9469c4c1174bafbbe074d16f",
+      "pcmCorrelation": 0.99970953,
+      "decodedPeak": 0.811624
+    },
+    {
+      "clip": "khmer-go",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 11290.38,
+      "sourceEnd": 11292.65,
+      "sha256": "4d9ccca7426fdead15a7264e5c1ebda67e829776dcd55497ed5b4bc7a588abf2",
+      "pcmCorrelation": 0.99967973,
+      "decodedPeak": 0.786323
+    },
+    {
+      "clip": "khmer-finish",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 4682.26,
+      "sourceEnd": 4684.18,
+      "sha256": "37375bb2bbc3703123e098ef7b7fcbc498bcb8f7ab9ed4ccd85a176f9e8b15f6",
+      "pcmCorrelation": 0.99960508,
+      "decodedPeak": 0.753495
+    },
+    {
+      "clip": "name-pothi-satharam-vi",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 5741.94,
+      "sourceEnd": 5743.2,
+      "sha256": "d337863f8b6f9e085e9d237beb1ab4c8a98eecadf757e4b898f4fc5cf50410b1",
+      "pcmCorrelation": 0.99984085,
+      "decodedPeak": 0.680714
+    },
+    {
+      "clip": "name-khleang-vi",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 4428.34,
+      "sourceEnd": 4428.86,
+      "sha256": "d4b50fc31f8f79d1e3b54162e4353a7d14b3fa702d80fdc280f86e696d32eca0",
+      "pcmCorrelation": 0.99975691,
+      "decodedPeak": 0.681959
+    },
+    {
+      "clip": "name-chroi-tum-chas-vi",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 5294.66,
+      "sourceEnd": 5295.54,
+      "sha256": "d61d7a6bf59966316e949b8c9106aec18ee358bbc547bedce1913b41b2cda5cb",
+      "pcmCorrelation": 0.99992155,
+      "decodedPeak": 0.68447
+    },
+    {
+      "clip": "name-xeo-me-vi",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 4113.54,
+      "sourceEnd": 4114.42,
+      "sha256": "0cf7692949d77128fa00f8ab03c116624a4827ae3729483b5385dda7b7039c41",
+      "pcmCorrelation": 0.99961576,
+      "decodedPeak": 0.686487
+    },
+    {
+      "clip": "name-ong-kho-vi",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 4136.14,
+      "sourceEnd": 4136.54,
+      "sha256": "de43415a67688686a40340a99d045d2319fde3a1cb01d68b1bd34d8ab5505ce5",
+      "pcmCorrelation": 0.99985346,
+      "decodedPeak": 0.685038
+    },
+    {
+      "clip": "name-pong-tuk-chas-vi",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 4137.7,
+      "sourceEnd": 4138.38,
+      "sha256": "0be785cadf3fd62a17526a67d98a6ba9a2e7c3f2b84ba5979b5a8ce11b330ec4",
+      "pcmCorrelation": 0.99981467,
+      "decodedPeak": 0.687158
+    },
+    {
+      "clip": "name-lo-moi-vi",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 16691.18,
+      "sourceEnd": 16691.73,
+      "sha256": "d2651fc41e73bc64447b729be52f21a7fef4aa4f83993ae46ee9481dc88ea302",
+      "pcmCorrelation": 0.99974507,
+      "decodedPeak": 0.669111
+    },
+    {
+      "clip": "name-bon-mat-vi",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 4131.62,
+      "sourceEnd": 4132.56,
+      "sha256": "6bd738cf161425aa2f8a8c72e01a081fadeb385e555ed4288113135336dd34fb",
+      "pcmCorrelation": 0.99970927,
+      "decodedPeak": 0.682955
+    },
+    {
+      "clip": "name-tra-quyt-cu-vi",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 4129.74,
+      "sourceEnd": 4131.2,
+      "sha256": "214e95d8f17d64b3e2712be9d8e168cdded5b40d80b5e8f38ca52ab2ce59d4d3",
+      "pcmCorrelation": 0.99982018,
+      "decodedPeak": 0.689633
+    },
+    {
+      "clip": "name-tum-nup-vi",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 8528.7,
+      "sourceEnd": 8529.24,
+      "sha256": "edcc5ad7a579fd58771b0c45d659a20cf3d26a06d75a270922fb28a51484504e",
+      "pcmCorrelation": 0.9997018,
+      "decodedPeak": 0.693113
+    },
+    {
+      "clip": "name-bang-kok-vi",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 3467.02,
+      "sourceEnd": 3467.6,
+      "sha256": "dcb4f507e50dfc6185257b4f2e8b250110a7cc37736e16a7bad0759ca615c6d2",
+      "pcmCorrelation": 0.99954979,
+      "decodedPeak": 0.696306
+    },
+    {
+      "clip": "name-day-ta-suos-vi",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 5296.94,
+      "sourceEnd": 5297.81,
+      "sha256": "152cbce20ac17e4759ad3939cc446894d02fbbcacb8407ae876ee3fa93232036",
+      "pcmCorrelation": 0.99968856,
+      "decodedPeak": 0.684796
+    },
+    {
+      "clip": "name-bet-ton-vi",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 4294.3,
+      "sourceEnd": 4295.25,
+      "sha256": "2c3c69e367f57d786489b3af7af3426590ca1bc30e010d49bb24d20040bffd4e",
+      "pcmCorrelation": 0.99986548,
+      "decodedPeak": 0.686823
+    },
+    {
+      "clip": "name-tam-soc-vi",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 4124.74,
+      "sourceEnd": 4125.3,
+      "sha256": "6e2ef77bcdd8004d694aec13f4493b71b8e90149c8d229ad479d2b873f0030e2",
+      "pcmCorrelation": 0.99976373,
+      "decodedPeak": 0.68523
+    },
+    {
+      "clip": "name-prek-on-dok-vi",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 5495.78,
+      "sourceEnd": 5496.6,
+      "sha256": "85b52bf741b2fa43bfa9369ffaf814904678dea7d88e3c88f11f73b1f1946a54",
+      "pcmCorrelation": 0.99986514,
+      "decodedPeak": 0.682732
+    },
+    {
+      "clip": "name-day-om-pu-vi",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 5575.78,
+      "sourceEnd": 5576.88,
+      "sha256": "c95b7e9636483212565a007988fa587df062e6c4f54ab4acbb2859126b08641d",
+      "pcmCorrelation": 0.99990186,
+      "decodedPeak": 0.685771
+    },
+    {
+      "clip": "name-om-pou-year-vi",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 3476.82,
+      "sourceEnd": 3477.24,
+      "sha256": "209d871861e30ae42ec630022e42e7ebaa081cb59f3e5bf8639462498938ac74",
+      "pcmCorrelation": 0.99995856,
+      "decodedPeak": 0.680551
+    },
+    {
+      "clip": "name-sang-ke-vi",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 4586.62,
+      "sourceEnd": 4587.42,
+      "sha256": "dd726623f239ac6ea83d3f1cc13f8116d3271ba3018fc5a103a915033a4f2cfe",
+      "pcmCorrelation": 0.9998614,
+      "decodedPeak": 0.683906
+    },
+    {
+      "clip": "name-pothi-khsach-vi",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 11817.42,
+      "sourceEnd": 11818.33,
+      "sha256": "ab0a483efe38201965638f9323fe90f441b8611d91f35f8c60d50b93c0f4f40a",
+      "pcmCorrelation": 0.99976962,
+      "decodedPeak": 0.691624
+    },
+    {
+      "clip": "name-rach-giong-vi",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 4408.66,
+      "sourceEnd": 4409.18,
+      "sha256": "5b9ecadb26387da65c295ec65fae5e844aa04c00364b40370bd4d0dadc863e2d",
+      "pcmCorrelation": 0.99992307,
+      "decodedPeak": 0.687089
+    },
+    {
+      "clip": "name-ngan-dua-vi",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 12403.78,
+      "sourceEnd": 12404.44,
+      "sha256": "030b76362b57287a4a3ec2152c780c33e97d61747dd8cf3752e8062d6cb656de",
+      "pcmCorrelation": 0.99968041,
+      "decodedPeak": 0.686132
+    },
+    {
+      "clip": "name-dau-sau-vi",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 5508.22,
+      "sourceEnd": 5508.77,
+      "sha256": "e62f56275d67214aa8ce9e3c119dfcaabf2a058b809ab6d7e6f98291679f5c3e",
+      "pcmCorrelation": 0.99983948,
+      "decodedPeak": 0.682577
+    },
+    {
+      "clip": "name-settodor-vi",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 3383.26,
+      "sourceEnd": 3384.3,
+      "sha256": "81a1039bea686f5bcdca609aa2db914d6d0018308138af707601176b5cbe8e21",
+      "pcmCorrelation": 0.99960189,
+      "decodedPeak": 0.682659
+    },
+    {
+      "clip": "name-phno-kambot-vi",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 4023.46,
+      "sourceEnd": 4025.22,
+      "sha256": "3c3ada95a9c5fdfffce8442ba5588cdd643b1329125596fc9713c7ebd6a2a887",
+      "pcmCorrelation": 0.99994429,
+      "decodedPeak": 0.684594
+    },
+    {
+      "clip": "name-tum-nup-km",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 4480.62,
+      "sourceEnd": 4481.14,
+      "sha256": "80c5fe8cdf9db1f58cb1e42e7e7167b6c22bbfe72bfed3208bff3a29780e90ba",
+      "pcmCorrelation": 0.99990156,
+      "decodedPeak": 0.687436
+    },
+    {
+      "clip": "name-kos-thum-km",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 5435.62,
+      "sourceEnd": 5436.24,
+      "sha256": "59e9c60858499e78c57e96235333521b3c4397ba33c4e17aeb64db1d4f9c4d3c",
+      "pcmCorrelation": 0.99988264,
+      "decodedPeak": 0.684051
+    },
+    {
+      "clip": "name-sang-ke-km",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 4667.3,
+      "sourceEnd": 4667.82,
+      "sha256": "4c8f413ae7d6ebd6d417cde65664d007560bbb1731c5886957b4bfbb9fbd93dd",
+      "pcmCorrelation": 0.99980151,
+      "decodedPeak": 0.688691
+    },
+    {
+      "clip": "name-rach-giong-km",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 4365.78,
+      "sourceEnd": 4366.92,
+      "sha256": "dedbd65b99829bf1a22902017e5300457dc138e79598e9f7c0f46bcdd58eeba8",
+      "pcmCorrelation": 0.99960469,
+      "decodedPeak": 0.676855
+    },
+    {
+      "clip": "name-day-om-pu-km",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 5438.9,
+      "sourceEnd": 5439.72,
+      "sha256": "8385a5023933f0c3779ad63337b6bb92302e2ba44313ff9fed27f0277c1d292c",
+      "pcmCorrelation": 0.99984267,
+      "decodedPeak": 0.682788
+    },
+    {
+      "clip": "name-pothi-satharam-two-vi",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 5741.94,
+      "sourceEnd": 5743.9,
+      "sha256": "f70c2e8b7a143f6ebce62ed8a689955f219caf8f7c7c8c3758405382930ae5e7",
+      "pcmCorrelation": 0.99984326,
+      "decodedPeak": 0.680714
+    },
+    {
+      "clip": "name-khleang-one-vi",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 4428.34,
+      "sourceEnd": 4429.06,
+      "sha256": "727978e2196b2ee766d562cfd6bb5c75b9c509226717d5a75f60dea1914f9126",
+      "pcmCorrelation": 0.99980445,
+      "decodedPeak": 0.681959
+    },
+    {
+      "clip": "name-sro-lon-one-vi",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 5512.66,
+      "sourceEnd": 5513.76,
+      "sha256": "15ce5b59050dd4ebc38540ac4ffba8015093f11c507816f88a7e343a0b7a4a3d",
+      "pcmCorrelation": 0.9998285,
+      "decodedPeak": 0.680961
+    },
+    {
+      "clip": "name-sro-lon-two-vi",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 3337.26,
+      "sourceEnd": 3338.14,
+      "sha256": "1130ce1b03f247d3d6b9ccc65e3b7e7cc5df14b6eb3ec3ccf0e9020e42eeaa2f",
+      "pcmCorrelation": 0.99989858,
+      "decodedPeak": 0.682089
+    },
+    {
+      "clip": "name-tum-nup-two-vi",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 8528.7,
+      "sourceEnd": 8529.92,
+      "sha256": "7d122a897dbd0928f8fe7d4cfaf73d76ae6f4a2e1fa1524ed64e2089998278ce",
+      "pcmCorrelation": 0.99975751,
+      "decodedPeak": 0.693113
+    },
+    {
+      "clip": "name-bang-kok-two-vi",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 3467.02,
+      "sourceEnd": 3468.14,
+      "sha256": "fca02da4a68652e835a532b7dc1af30b3d46f5160386f7bdd71a69e722b4d014",
+      "pcmCorrelation": 0.99976828,
+      "decodedPeak": 0.696306
+    },
+    {
+      "clip": "name-prek-on-dok-two-vi",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 5495.78,
+      "sourceEnd": 5497.12,
+      "sha256": "78fc61a9e5d27c4c764cf0d48624b6dca175332f7007338bd8e0955358e9f01b",
+      "pcmCorrelation": 0.99986639,
+      "decodedPeak": 0.682732
+    },
+    {
+      "clip": "name-kos-thum-one-vi",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 8471.1,
+      "sourceEnd": 8471.82,
+      "sha256": "4e096946e5c9f8b29a0b73cabd3b1a60db0cf7caf30d46d9e37fac461d7aaee7",
+      "pcmCorrelation": 0.99967925,
+      "decodedPeak": 0.68039
+    },
+    {
+      "clip": "name-kos-thum-two-vi",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 5523.02,
+      "sourceEnd": 5523.7,
+      "sha256": "b0fe7ccd59eb65cc81a5312beae7f013f64fda64ee79a48dcaf68725f8b53b6e",
+      "pcmCorrelation": 0.99967994,
+      "decodedPeak": 0.685759
+    },
+    {
+      "clip": "name-kos-thum-two-km",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 5435.62,
+      "sourceEnd": 5437.2,
+      "sha256": "85699e2b7f120b32aae9a555cec6ab06eddcc36b4ac671bcfa28f11fdb2a7aac",
+      "pcmCorrelation": 0.99987191,
+      "decodedPeak": 0.684051
+    },
+    {
+      "clip": "history-tum-nup-champion-vi",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 8528.7,
+      "sourceEnd": 8532.38,
+      "sha256": "9e745955bc46a2b48c8ba3a6c21333809579fba93dbeea6f779afcb1567daaa2",
+      "pcmCorrelation": 0.99974768,
+      "decodedPeak": 0.558064
+    },
+    {
+      "clip": "history-kos-thum-runner-up-vi",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 8471.1,
+      "sourceEnd": 8478.22,
+      "sha256": "a1f74fc89324d728fe0a0c824830569c8696c50ce18f176c26964be870601da9",
+      "pcmCorrelation": 0.9993351,
+      "decodedPeak": 0.558496
+    },
+    {
+      "clip": "history-sro-lon-third-vi",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 3438.62,
+      "sourceEnd": 3440.25,
+      "sha256": "19d71b17724c6e5c6829ae165b8802b9d401957c9d139126675d620deb18affb",
+      "pcmCorrelation": 0.99987002,
+      "decodedPeak": 0.762896
+    },
+    {
+      "clip": "name-ta-on-vi",
+      "sourceId": "Y2fp9gYRIZ8",
+      "sourceStart": 3913.559,
+      "sourceEnd": 3914.72,
+      "sha256": "037f70c7ff96a375527c7cd55cf23fbcddc0d9b643d638efee83f0dc48dd5817",
+      "pcmCorrelation": 0.99987893,
+      "decodedPeak": 0.674803
+    },
+    {
+      "clip": "name-tra-quyt-moi-vi",
+      "sourceId": "Y2fp9gYRIZ8",
+      "sourceStart": 4040.44,
+      "sourceEnd": 4042.3,
+      "sha256": "012f7b3a96714c44c176a7f2b573b91c10b3ca0f1693c613957bfe7e90b114c9",
+      "pcmCorrelation": 0.999915,
+      "decodedPeak": 0.68327
+    },
+    {
+      "clip": "name-tra-cuon-vi",
+      "sourceId": "Y2fp9gYRIZ8",
+      "sourceStart": 6010.36,
+      "sourceEnd": 6011.04,
+      "sha256": "a2d4c4c172b99981e2901d137502ca958f066335efc3be9e91d17856a072ab16",
+      "pcmCorrelation": 0.99994541,
+      "decodedPeak": 0.682473
+    },
+    {
+      "clip": "name-cham-pa-km",
+      "sourceId": "XagC29Eyt_U",
+      "sourceStart": 5411.719,
+      "sourceEnd": 5412.12,
+      "sha256": "90d5d9d69ae594c876488e9dd1d3dc03a56692026362db48b262fc0fb35ecec9",
+      "pcmCorrelation": 0.99979324,
+      "decodedPeak": 0.666001
+    },
+    {
+      "clip": "name-pong-tuk-chas-km",
+      "sourceId": "tnb7TdUVRkU",
+      "sourceStart": 5186.52,
+      "sourceEnd": 5187.24,
+      "sha256": "abc40d32f62542ba4465fc2225eaa16cc4c50197242e5265b285ee1e5e49878f",
+      "pcmCorrelation": 0.99938124,
+      "decodedPeak": 0.68412
+    },
+    {
+      "clip": "broadcast-stroke-strength",
+      "sourceId": "Y2fp9gYRIZ8",
+      "sourceStart": 3682.0,
+      "sourceEnd": 3685.8,
+      "sha256": "893cd6d67d8a31fa7fd96c74d4fe50f270dae15cd1574d02b093ecaf8c09c4e1",
+      "pcmCorrelation": 0.99979574,
+      "decodedPeak": 0.6282
+    },
+    {
+      "clip": "broadcast-final-contest",
+      "sourceId": "Y2fp9gYRIZ8",
+      "sourceStart": 6025.0,
+      "sourceEnd": 6028.5,
+      "sha256": "6fbc9d574bdc4e8a596c533f35e08a9f0ca526b7b9000630f0f5d6607e3b1721",
+      "pcmCorrelation": 0.99949567,
+      "decodedPeak": 0.544995
+    },
+    {
+      "clip": "broadcast-close-contest",
+      "sourceId": "Y2fp9gYRIZ8",
+      "sourceStart": 3673.2,
+      "sourceEnd": 3676.37,
+      "sha256": "c922cb484b08ef24bf322490d53fd060ef4f0cdb044a7603c09787a550a51ae2",
+      "pcmCorrelation": 0.99990996,
+      "decodedPeak": 0.583072
+    },
+    {
+      "clip": "broadcast-race-appraisal",
+      "sourceId": "Y2fp9gYRIZ8",
+      "sourceStart": 3674.88,
+      "sourceEnd": 3676.37,
+      "sha256": "371b1646f0264ae95f355e9947aaea25e07d66f16647b314ee210690a806bfb9",
+      "pcmCorrelation": 0.99990287,
+      "decodedPeak": 0.690523
+    },
+    {
+      "clip": "broadcast-unfortunate",
+      "sourceId": "Y2fp9gYRIZ8",
+      "sourceStart": 17615.958,
+      "sourceEnd": 17616.95,
+      "sha256": "3c46ae4b370136ab3fdd66a7719049fbf4e83438d9122c5443fc7385fd452a06",
+      "pcmCorrelation": 0.99980743,
+      "decodedPeak": 0.680153
+    },
+    {
+      "clip": "khmer-full-effort",
+      "sourceId": "tnb7TdUVRkU",
+      "sourceStart": 11054.319,
+      "sourceEnd": 11056.8,
+      "sha256": "b0c3dfcf6072ff98fd06a1e194cc5e68b9bddec52a76659d06bb65f6666be311",
+      "pcmCorrelation": 0.99971053,
+      "decodedPeak": 0.681835
+    },
+    {
+      "clip": "broadcast-start-pair",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 11835.44,
+      "sourceEnd": 11838.3,
+      "sha256": "d3217e85296c2b2adf46a282acd1b0d6ce662e150bb7e1b505d5e5eb1ec34ed8",
+      "pcmCorrelation": 0.99970377,
+      "decodedPeak": 0.570919
+    },
+    {
+      "clip": "broadcast-start-opening",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 14100.02,
+      "sourceEnd": 14104.2,
+      "sha256": "aa4ffdcf63bd0e6aeae30132cf92f6631cb28c460ccab0dd314f47b3b5fb1a80",
+      "pcmCorrelation": 0.9992402,
+      "decodedPeak": 0.55311
+    },
+    {
+      "clip": "broadcast-start-cleared",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 11213.94,
+      "sourceEnd": 11216.5,
+      "sha256": "03f72ae9ae53c85d765773bed6e683ab9a3a2272cd4de6575f66e8e814c990d7",
+      "pcmCorrelation": 0.99921275,
+      "decodedPeak": 0.635249
+    },
+    {
+      "clip": "broadcast-long-course",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 14107.66,
+      "sourceEnd": 14109.9,
+      "sha256": "a3e2e8f3765868424095c6063fd367c726017d97289eac009ad949c8f5b64d9f",
+      "pcmCorrelation": 0.99980758,
+      "decodedPeak": 0.516441
+    },
+    {
+      "clip": "broadcast-contest-pair",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 7633.23,
+      "sourceEnd": 7636.0,
+      "sha256": "593b5a2cf4f280749f9272b2267d9fdb07ff57f21a99d34a6f710d3db6b6c5e1",
+      "pcmCorrelation": 0.999638,
+      "decodedPeak": 0.554527
+    },
+    {
+      "clip": "broadcast-contest-now",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 5151.74,
+      "sourceEnd": 5153.9,
+      "sha256": "5b4dbce8e4c9dd51960ef55ad678343b32d02e6b446dd12c44a0cae81181ed0a",
+      "pcmCorrelation": 0.9997359,
+      "decodedPeak": 0.648378
+    },
+    {
+      "clip": "broadcast-keep-accelerating",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 11668.54,
+      "sourceEnd": 11671.55,
+      "sha256": "4067c9ce2f6179503c25e101596c51fdc5c229c70f1fddd6929ce1622613bb3b",
+      "pcmCorrelation": 0.99974286,
+      "decodedPeak": 0.531919
+    },
+    {
+      "clip": "broadcast-accelerating",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 7757.12,
+      "sourceEnd": 7758.8,
+      "sha256": "2c7c38770c79a0dd1896c1a040a6cb7e92bc9e888f3158513daebdfe6fcb8c6b",
+      "pcmCorrelation": 0.99974372,
+      "decodedPeak": 0.801951
+    },
+    {
+      "clip": "broadcast-final-effort",
+      "sourceId": "Y2fp9gYRIZ8",
+      "sourceStart": 13836.22,
+      "sourceEnd": 13838.95,
+      "sha256": "aeb1cdce3c0e0c39832da05f7b62fbd05e219ee93dee7d04c99d0b4d9fe5a8e8",
+      "pcmCorrelation": 0.99914221,
+      "decodedPeak": 0.94105
+    },
+    {
+      "clip": "broadcast-exciting-race",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 4756.18,
+      "sourceEnd": 4758.4,
+      "sha256": "95d370f14489fd403adafe54011c34eb66a3aef7d58769567a4a4507d89b529e",
+      "pcmCorrelation": 0.99977019,
+      "decodedPeak": 0.806566
+    },
+    {
+      "clip": "broadcast-relaxed-strokes",
+      "sourceId": "Y2fp9gYRIZ8",
+      "sourceStart": 4269.55,
+      "sourceEnd": 4272.74,
+      "sha256": "370f38053f0b424d8d4386c40a67cf1989983cd0dd85d633c7d09363ef2d943a",
+      "pcmCorrelation": 0.99985325,
+      "decodedPeak": 0.545528
+    },
+    {
+      "clip": "broadcast-safe-margin",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 11524.0,
+      "sourceEnd": 11525.85,
+      "sha256": "96e9392eaa317702e0f471d0ac7f0de7db0e6e758e8fbf9c18826a45b3ff8d0a",
+      "pcmCorrelation": 0.99977926,
+      "decodedPeak": 0.695128
+    },
+    {
+      "clip": "broadcast-race-excitement",
+      "sourceId": "XagC29Eyt_U",
+      "sourceStart": 5555.43,
+      "sourceEnd": 5556.55,
+      "sha256": "e20b45bc8f414107cd02cc766ded3c18614b16c18050e164eb81dab2bddcca27",
+      "pcmCorrelation": 0.99987844,
+      "decodedPeak": 0.682638
+    },
+    {
+      "clip": "broadcast-victory-congratulations",
+      "sourceId": "XagC29Eyt_U",
+      "sourceStart": 15069.5,
+      "sourceEnd": 15072.65,
+      "sha256": "8ff357eb33e50c851b8ab65165a230839ddf72603c940a357fc46270d3afa5b6",
+      "pcmCorrelation": 0.99984091,
+      "decodedPeak": 0.522784
+    },
+    {
+      "clip": "broadcast-shore-paragraph",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 3317.46,
+      "sourceEnd": 3324.45,
+      "sha256": "bfc59c0685de0f0dbea49d129afe171db90b69ed1a7f70cc3e37845752fcd136",
+      "pcmCorrelation": 0.99593529,
+      "decodedPeak": 0.763597
+    },
+    {
+      "clip": "broadcast-course-paragraph",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 14104.65,
+      "sourceEnd": 14118.1,
+      "sha256": "a5b2acc47d1713ef7d1b936b74d42a3804a5c712884a40170b2dc322af48b713",
+      "pcmCorrelation": 0.99941477,
+      "decodedPeak": 0.524105
+    },
+    {
+      "clip": "broadcast-rhythm-paragraph",
+      "sourceId": "crZF3hghbgQ",
+      "sourceStart": 5361.05,
+      "sourceEnd": 5366.2,
+      "sha256": "73a920b29f9f9b155b1b55403d23abb0746e9c8942c9ddec6f77d13e4719876f",
+      "pcmCorrelation": 0.99981832,
+      "decodedPeak": 0.522946
+    },
+    {
+      "clip": "broadcast-festival-paragraph",
+      "sourceId": "XagC29Eyt_U",
+      "sourceStart": 13355.9,
+      "sourceEnd": 13371.27,
+      "sha256": "e774b88c0a753d74c24d631971f689ea84fdfa6761db3bf6c762b67447d69d66",
+      "pcmCorrelation": 0.99951814,
+      "decodedPeak": 0.557154
+    },
+    {
+      "clip": "broadcast-coach-effort",
+      "sourceId": "tnb7TdUVRkU",
+      "sourceStart": 15681.05,
+      "sourceEnd": 15685.85,
+      "sha256": "c79c9ae21ad0e0e21dd3e7f561980b340bb46dc01634278c9befe699816f147f",
+      "pcmCorrelation": 0.99969693,
+      "decodedPeak": 0.527916
+    }
+  ],
+  "archive": {
+    "file": "team-audio.zip",
+    "bytes": 799694,
+    "sha256": "2d60a06ad43941bab270f6d408e4811703b1dec97065d14da095f88de517468e"
+  },
+  "archiveProfiles": 61,
+  "coverage": {
+    "nameVi": 42,
+    "nameKm": 12,
+    "historyVi": 3,
+    "historyKm": 0
+  },
+  "independentListeningVerified": false,
+  "scope": "Original excerpts: waveform correlation/hash/decode/archive. Khmer AI: synthesis-pack/hash/decode. Does not certify transcription, native pronunciation or commentator identity."
+}

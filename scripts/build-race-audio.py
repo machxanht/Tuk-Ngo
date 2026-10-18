@@ -28,6 +28,13 @@ def main():
  parser.add_argument('--recipe',type=Path,default=ROOT/'docs/broadcast-audio-cuts.json')
  parser.add_argument('--captions',type=Path,help='Original YouTube JSON3 CC file used to verify the selected spoken words')
  args=parser.parse_args();recipe=json.loads(args.recipe.read_text(encoding='utf-8'))
+ field_path=OUT/recipe['fieldPack']['file'];field_raw=field_path.read_bytes()
+ if hashlib.sha256(field_raw).hexdigest()!=recipe['fieldPack']['sha256']:raise ValueError('Changed field sound pack')
+ field=json.loads(field_raw)
+ for key,clip in field['clips'].items():
+  path=(OUT/clip['file']).resolve()
+  if not path.is_relative_to((OUT/'field').resolve()) or path.suffix!='.mp3' or clip['channel'] not in ['drums','crowd','whistle']:raise ValueError('Unsafe field asset '+key)
+  if clip['sourceType'] not in ['broadcast-separated','licensed-recording'] or hashlib.sha256(path.read_bytes()).hexdigest()!=clip['sha256']:raise ValueError('Changed field recording '+key)
  primary=recipe['source']['videoId'];sources=recipe.get('sources',{primary:recipe['source']})
  inputs=json.loads(args.inputs.read_text(encoding='utf-8')) if args.inputs else {}
  if args.source:inputs[primary]={'audio':str(args.source),'captions':str(args.captions) if args.captions else None}
@@ -86,7 +93,7 @@ def main():
    continue
   source_id=cut.get('sourceId',primary);source=local[source_id]
   start,end=cut['start'],cut['end'];duration=end-start
-  if not 0<=start<end<=sources[source_id]['duration'] or not .08<duration<15:raise ValueError('Invalid cut '+key)
+  if not 0<=start<end<=sources[source_id]['duration'] or not .08<duration<24:raise ValueError('Invalid cut '+key)
   voice=cut['channel'] in ['voice','khmer'];path=OUT/(key+'.mp3')
   filters=['highpass=f=75','lowpass=f=9000'] if voice else ['highpass=f=55','lowpass=f=1100'] if cut['channel']=='drums' else ['highpass=f=90','lowpass=f=7000']
   filters += ['afade=t=in:d=0.008',f'afade=t=out:st={max(0,duration-.045):.4f}:d=0.045']
@@ -105,8 +112,12 @@ def main():
   if peak<.01 or len(pcm)<1920:raise RuntimeError('Empty cut '+key)
   if peak>1:raise RuntimeError('Clipping after encoding '+key)
   clips[key]={**cut,'sourceId':source_id,'sourceUrl':sources[source_id]['url'],'file':path.name,'duration':round(len(pcm)/24000,4),'peak':round(peak,4),'bytes':path.stat().st_size,'sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'sourceType':'broadcast','sourceStart':start,'sourceEnd':end,'processing':processing}
+ if set(clips)&set(field['clips']):raise ValueError('Duplicate sound pack key')
+ clips.update(field['clips'])
  coverage={key:sum(bool(p['availability'][key]) for p in profiles.values()) for key in ['nameVi','nameKm','historyVi','historyKm']}
  manifest={'schema':4,'mode':'broadcast-vi-ai-km','speechPolicy':{'voice':'original-broadcast-only','khmer':'pre-rendered-azure-stock-neural-with-original-broadcast-names','runtimeSynthesis':False},'source':recipe['source'],'sources':sources,'review':recipe['review'],'ambience':recipe['ambience'],'warmup':recipe['warmup'],'events':recipe['events'],'clips':clips,'teamProfiles':profiles,'teamCoverage':coverage}
+ manifest['field']={key:field[key] for key in ['grooves','ambience','whistle']}
+ manifest['fieldPack']=recipe['fieldPack']
  # Remove only obsolete generated MP3s in this exact asset directory.
  for old in previous['clips'].values():
   path=(OUT/old['file']).resolve()

@@ -39,6 +39,11 @@ with sync_playwright() as p:
     page.wait_for_function("document.querySelector('#player').src.includes('commentary-trial/surge-km.mp3')&&document.querySelector('#player').currentTime>.2")
     assert 'Giọng AI tổng hợp' in page.locator('#status').inner_text()
     report['khmerAiPlayback'] = page.locator('#player').evaluate('(a)=>({src:a.src,duration:a.duration,currentTime:a.currentTime})')
+    report['fieldPlayback'] = []
+    for label, file in [('Nghe còi HLV','coach-whistle-short.mp3'),('Nghe groove trống','drum-groove-start.mp3'),('Nghe khán giả hai bờ','river-bank-bed.mp3'),('Nghe cổ vũ nước rút','finish-crowd-bed.mp3')]:
+        page.get_by_role('button',name=label,exact=True).tap()
+        page.wait_for_function('(file)=>document.querySelector("#player").src.includes("/field/"+file)&&document.querySelector("#player").currentTime>.06',arg=file)
+        report['fieldPlayback'].append(page.locator('#player').evaluate('(a)=>({src:a.src,duration:a.duration,currentTime:a.currentTime})'))
     report['viewports'] = []
     for width, height in [(1024, 768), (768, 1024), (1180, 430)]:
         page.set_viewport_size({'width': width, 'height': height})

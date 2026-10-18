@@ -1,11 +1,11 @@
 import assert from 'node:assert/strict';
 import {readFile,readdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
-import {createCommentaryDirector,resolveBroadcastCue,resolveTeamSpeech,normalizeAudioMix,isBroadcastClipApplicable} from '../src/race/race-audio.mjs';
+import {createCommentaryDirector,resolveBroadcastCue,resolveTeamSpeech,normalizeAudioMix,isBroadcastClipApplicable,rowingWhistleSchedule} from '../src/race/race-audio.mjs';
 import {FESTIVAL_TEAMS,festivalTeam} from '../src/race/festival-teams.mjs';
 const folder=new URL('../public/assets/race-audio/',import.meta.url);
 const manifest=JSON.parse(await readFile(new URL('manifest.json',folder)));
-assert.equal(manifest.mode,'broadcast-vi-ai-km');assert.equal(manifest.schema,4);assert.equal(manifest.speechPolicy.voice,'original-broadcast-only');assert.equal(Object.values(manifest.clips).filter(c=>!c.role).length,55);
+assert.equal(manifest.mode,'broadcast-vi-ai-km');assert.equal(manifest.schema,4);assert.equal(manifest.speechPolicy.voice,'original-broadcast-only');assert.equal(Object.values(manifest.clips).filter(c=>!c.role).length,67);
 const stock=JSON.parse(await readFile(new URL('commentary-trial/manifest.json',folder)));
 assert.equal(Object.values(manifest.clips).filter(c=>c.sourceType==='azure-stock-neural').length,16);
 assert.deepEqual(Object.keys(manifest.sources).sort(),['crZF3hghbgQ','Y2fp9gYRIZ8','XagC29Eyt_U','tnb7TdUVRkU'].sort());
@@ -16,7 +16,13 @@ assert.deepEqual((await readdir(folder)).filter(f=>f.endsWith('.mp3')).sort(),Ob
 for(const [key,clip]of Object.entries(manifest.clips)){
  const bytes=await readFile(new URL(clip.file,folder));
  assert.equal(createHash('sha256').update(bytes).digest('hex'),clip.sha256,key);
- assert(clip.duration>.08&&clip.duration<15&&clip.peak>.01&&clip.peak<=1,key);
+ assert(clip.duration>.08&&clip.duration<45&&clip.peak>.01&&clip.peak<=1,key);
+ if(['broadcast-separated','licensed-recording'].includes(clip.sourceType)){
+  assert(['drums','crowd','whistle'].includes(clip.channel));assert(clip.file.startsWith('field/'));
+  const pack=JSON.parse(await readFile(new URL(manifest.fieldPack.file,folder)));assert.equal(pack.clips[key].sha256,clip.sha256);
+  if(clip.sourceType==='broadcast-separated')assert.equal(clip.separation.parentSourceSha256,manifest.sources[clip.sourceId].sha256);
+  else assert.equal(clip.recording.license,'CC0-1.0');continue;
+ }
  if(clip.sourceType==='azure-stock-neural'){
   assert.equal(clip.channel,'khmer','Vietnamese synthesis is prohibited');assert.equal(clip.lang,'km');
   const evidence=clip.synthesisEvidence,sample=stock.samples.find(s=>s.id===evidence.id);
@@ -67,7 +73,7 @@ const d=createCommentaryDirector(),state={phase:'countdown',elapsed:0,distances:
 const step=changes=>d.update(Object.assign(state,changes));
 assert.equal(step({})[0].id,'ready');assert.deepEqual(step({}),[]);
 assert.equal(step({phase:'racing',elapsed:.01})[0].id,'go');
-assert.deepEqual(resolveBroadcastCue(step({elapsed:4})[0],manifest),{voice:['broadcast-intro'],khmer:['khmer-intro']});
+assert.deepEqual(resolveBroadcastCue(step({elapsed:4})[0],manifest),{voice:['broadcast-shore-paragraph','broadcast-intro'],khmer:['khmer-intro']});
 assert.equal(step({elapsed:40,distances:[205,200],gap:5})[0].id,'cruise');
 assert.equal(step({elapsed:55,distances:[280,284],gap:-4})[0].id,'lead--1');
 assert.equal(step({elapsed:70,distances:[370,364],gap:6})[0].id,'lead-1');
@@ -88,9 +94,10 @@ assert.deepEqual(resolveBroadcastCue({id:'close-race'},manifest,[],racing),{voic
 assert.deepEqual(resolveBroadcastCue({id:'surge'},manifest,[],{...racing,distances:[500,510],pace:'steady'}),{voice:[],khmer:[]},'No hard-effort statement during steady mid-race paddling');
 assert.deepEqual(resolveBroadcastCue({id:'team-history'},manifest,pair,{...racing,phase:'finished'}),{voice:[],khmer:[]},'Do not play historical standings after the current finish');
 const variantA=resolveBroadcastCue({id:'final',variant:0},manifest,[],racing),variantB=resolveBroadcastCue({id:'final',variant:1},manifest,[],racing);
-assert.equal(variantA.voice.length,1);assert.equal(variantB.voice.length,1);assert.notEqual(variantA.voice[0],variantB.voice[0],'Play one alternative, not all excerpts in sequence');
+assert(variantA.voice.length>=2&&variantB.voice.length>=2);assert.notDeepEqual(variantA.voice,variantB.voice,'Choose one complete sentence block, not every event alternative');
+assert(variantA.voice.reduce((n,k)=>n+manifest.clips[k].duration,0)>=9,'Sprint commentary must be a sustained passage');
 const notRecent=resolveBroadcastCue({id:'final',variant:0,excludedKeys:variantA.voice},manifest,[],racing);
-assert(notRecent.voice.length===1&&!variantA.voice.includes(notRecent.voice[0]),'Select another eligible phrase instead of falling silent after a repeat');
+assert(notRecent.voice.length>0&&notRecent.voice.every(k=>!variantA.voice.includes(k)),'Select another eligible block after a repeat');
 assert(!isBroadcastClipApplicable(manifest.clips['ai-cohesion-km'],{id:'cohesion'},{...racing,distances:[400,410],combo:0}),'Drop a stale praise cue after losing the combo');
 assert(!isBroadcastClipApplicable(manifest.clips['ai-last-fifty-km'],{id:'last-fifty'},racing),'Do not say 50 metres when 240 remain');
 for(const clip of Object.values(manifest.clips).filter(c=>c.channel==='voice'))assert.equal(clip.sourceType,'broadcast','No Vietnamese TTS/conversion in the runtime manifest');
@@ -108,3 +115,19 @@ assert.deepEqual(step({phase:'racing',elapsed:190,distances:[1160,1150],gap:10,s
 assert.equal(normalizeAudioMix({volume:10,enabled:'no'}).volume,1);assert.equal(normalizeAudioMix({volume:NaN}).volume,.8);assert.equal(normalizeAudioMix(null).enabled,true);
 assert.equal(normalizeAudioMix({chants:false}).khmer,false);assert.equal(normalizeAudioMix({chants:false,khmer:true}).khmer,true);
 console.log('Broadcast audio: hashed original excerpts, CC word evidence, 61 team profiles, team/gender/number/history isolation, Vietnamese original-only / explicit Khmer AI provenance, event priority and preferences passed.');
+
+// A cadence change moves real whistle onsets with the paddle catch. Render FPS
+// only determines how early notes are submitted; it must not change their times.
+for(const cadence of [72,84,90,96,102,114,120]){
+ const capture=fps=>{let last=-1;const onsets=[];for(let i=0;i<fps*4;i++){const t=i/fps,s={phase:'racing',finishTimes:[null,null],cadence,beatPhase:t*cadence/60,raceStage:'cruise'};for(const n of rowingWhistleSchedule(s,last)){onsets.push({beat:n.beat,at:t+n.delay});last=n.beat;}}return onsets;};
+ const fast=capture(60),slow=capture(15);for(const a of fast.filter(a=>a.beat>=1&&a.beat<4*cadence/60)){const b=slow.find(b=>b.beat===a.beat);assert(b&&Math.abs(a.at-b.at)<.001,'Whistle timing independent of render FPS');assert(Math.abs(a.at-(a.beat*60/cadence-.06))<.001,'Coach cue leads the catch by 60ms');}
+}
+assert.deepEqual(rowingWhistleSchedule({phase:'paused'}),[]);
+assert.deepEqual(rowingWhistleSchedule({phase:'racing',finishTimes:[12,null]}),[]);
+assert.equal(manifest.clips['river-bank-bed'].duration,40);assert.equal(manifest.clips['finish-crowd-bed'].duration,20);
+assert(!manifest.clips['drum-low']&&!manifest.clips['broadcast-ambience'],'Old impact samples and tiny ambience loop are removed');
+for(const groove of manifest.field.grooves)assert(Math.abs(manifest.clips[groove.key].duration-groove.beats*60/groove.bpm)<.002,'Eight-beat groove fits the paddle clock');
+const recurring=createCommentaryDirector();const mid={...racing,elapsed:35,distances:[300,310],combo:0,stamina:90,surgeActive:false};recurring.update(mid,{history:[false,false]});
+assert(recurring.update({...mid,elapsed:51},{history:[false,false]}).some(c=>c.id==='race-call'),'Fill quiet stretches with contextual commentary');
+assert.deepEqual(recurring.update({...mid,elapsed:70},{history:[false,false],speaking:true}),[],'Do not queue routine calls over an active passage');
+console.log('Recorded whistle timing, eight-beat grooves, longer beds and recurring sentence blocks passed.');

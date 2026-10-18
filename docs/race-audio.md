@@ -2,6 +2,12 @@
 
 ## Current mixed commentary policy
 
+The current sound pass replaces the old impact samples/tiny ambience loop with
+recorded coach whistle, cadence-matched separated race drums and licensed crowd
+beds, plus sustained original sentence blocks and recurring commentary. See
+[race-sound.md](race-sound.md) for current counts, exact sources and checks;
+the earlier snapshot records below retain their historical counts.
+
 The user chose original broadcast Vietnamese plus AI Khmer. Four full recordings
 and 21 downloaded caption tracks were searched. The canonical search pool in
 `docs/vietnamese-commentary-index.json` contains 42,333 Latin-script CC spans;

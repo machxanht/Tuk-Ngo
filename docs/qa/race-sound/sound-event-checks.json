@@ -1,0 +1,127 @@
+{
+  "backend": "PANNs Cnn6",
+  "results": [
+    {
+      "clip": "drum-groove-start",
+      "top": [
+        [
+          "Music",
+          0.4015
+        ],
+        [
+          "Percussion",
+          0.2544
+        ],
+        [
+          "Drum",
+          0.201
+        ],
+        [
+          "Wood block",
+          0.1923
+        ],
+        [
+          "Musical instrument",
+          0.1467
+        ],
+        [
+          "Tap",
+          0.0956
+        ]
+      ],
+      "machineOnly": true
+    },
+    {
+      "clip": "river-bank-bed",
+      "top": [
+        [
+          "Speech",
+          0.1216
+        ],
+        [
+          "Crowd",
+          0.1109
+        ],
+        [
+          "Vehicle",
+          0.108
+        ],
+        [
+          "Cheering",
+          0.1027
+        ],
+        [
+          "Music",
+          0.077
+        ],
+        [
+          "Children shouting",
+          0.0588
+        ]
+      ],
+      "machineOnly": true
+    },
+    {
+      "clip": "finish-crowd-bed",
+      "top": [
+        [
+          "Applause",
+          0.9198
+        ],
+        [
+          "Speech",
+          0.6562
+        ],
+        [
+          "Run",
+          0.2208
+        ],
+        [
+          "Crowd",
+          0.126
+        ],
+        [
+          "Outside, urban or manmade",
+          0.1049
+        ],
+        [
+          "Clapping",
+          0.0623
+        ]
+      ],
+      "machineOnly": true
+    },
+    {
+      "clip": "coach-whistle-strong",
+      "top": [
+        [
+          "Whistle",
+          0.3083
+        ],
+        [
+          "Buzzer",
+          0.2198
+        ],
+        [
+          "Fire alarm",
+          0.1368
+        ],
+        [
+          "Frog",
+          0.0948
+        ],
+        [
+          "Beep, bleep",
+          0.0486
+        ],
+        [
+          "Squeal",
+          0.0446
+        ]
+      ],
+      "machineOnly": true
+    }
+  ],
+  "independentListeningVerified": false,
+  "withheld": "Broadcast other-stem ambience trials retained traffic/music; opening percussion was not a racing passage."
+}

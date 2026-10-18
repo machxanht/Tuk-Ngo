@@ -61,11 +61,11 @@ with sync_playwright() as p:
  report['start']=page.evaluate(audio+'.stats()')
  assert report['start']['context']=='running' and report['start']['decoded']>=4
  assert 'ready' in report['start']['cues']
- page.wait_for_function("()=>{const s="+audio+".stats();return s.played.some(p=>p.key==='khmer-intro'&&p.at+1.8<s.audioTime);}",timeout=25000)
- page.wait_for_function(audio+'.stats().drumHits>=4',timeout=15000)
+ page.wait_for_function("()=>{const s="+audio+".stats();return s.played.some(p=>p.key==='broadcast-shore-paragraph'&&p.at+6.5<s.audioTime);}",timeout=25000)
+ page.wait_for_function(audio+'.stats().whistleBlows>=4',timeout=15000)
  report['intro']=page.evaluate(audio+'.stats()')
  assert report['intro']['origin']=='broadcast-vi-ai-km' and report['intro']['sourceVideo']=='crZF3hghbgQ'
- assert {'broadcast-intro','khmer-intro'}.issubset(p['key'] for p in report['intro']['played'])
+ assert {'broadcast-intro','broadcast-shore-paragraph'}.issubset(p['key'] for p in report['intro']['played'])
  assert any(p.get('cue')=='go' and p['key'].startswith('broadcast-') for p in report['intro']['played'])
  assert any(p['key']=='name-tum-nup-two-vi' and not p.get('kind') and len(p['match'])==2 for p in report['intro']['played'])
  page.get_by_role('button',name='Tạm dừng cuộc đua',exact=True).tap();page.wait_for_timeout(200)
@@ -89,7 +89,7 @@ with sync_playwright() as p:
   options=page.locator('.game-audio-options>div').bounding_box()
   if width==1024:page.screenshot(path=str(out/'mix-controls.png'))
   assert options['x']>=0 and options['x']+options['width']<=width
-  for label in ['BLV Việt (âm gốc)','Bình luận Khmer (AI)','Trống nhịp chèo','Âm thanh hiện trường']:
+  for label in ['BLV Việt (âm gốc)','Bình luận Khmer (AI)','Còi HLV theo nhịp dầm','Trống nhịp chèo','Khán giả hai bờ']:
    box=page.get_by_label(label,exact=True).locator('..').bounding_box();assert box['height']>=44
   page.get_by_label('Tùy chỉnh âm thanh',exact=True).tap()
   stage=page.locator('.game-stage').bounding_box();footer=page.locator('.game-controls').bounding_box()
@@ -101,6 +101,18 @@ with sync_playwright() as p:
  page.get_by_label('Tùy chỉnh âm thanh',exact=True).tap()
  # Continue legal timed strokes during the real-time final audio wait.
  page.evaluate('''()=>{let last=-1;window.audioCheckStrokeTimer=setInterval(()=>{const a=document.querySelector('[data-testid=art-stage]')?.boatPreview;if(!a)return;const s=a.game.state,b=Math.round(s.beatPhase);if(s.phase==='racing'&&b>=1&&b>last&&Math.abs(s.beatPhase-b)<.08){a.game.stroke();last=b;}},20);}''')
+ # Hear a complete mid-course passage and the following routine call in real time.
+ page.evaluate('''()=>{const a=document.querySelector('[data-testid=art-stage]').boatPreview,g=a.game;let next=Math.floor(g.state.beatPhase)+1;for(let i=0;i<90000&&g.state.distances[0]<205;i++){a.advance(1/240);if(g.state.phase==='racing'&&g.state.beatPhase>=next){g.stroke();next++;}}}''')
+ page.wait_for_function("()=>{const s="+audio+".stats();return s.played.some(p=>p.cue==='cruise'&&p.duration>=6&&p.at+p.duration<s.audioTime);}",timeout=40000)
+ page.wait_for_function("()=>{const s="+audio+".stats();return s.played.some(p=>p.cue==='race-call'&&p.duration>=5&&p.at<s.audioTime);}",timeout=40000)
+ report['continuous']=page.evaluate(audio+'.stats()')
+ assert report['continuous']['drumLoops']>=1 and report['continuous']['whistleBlows']>=20
+ page.get_by_label('Tùy chỉnh âm thanh',exact=True).tap()
+ page.get_by_label('Còi HLV theo nhịp dầm',exact=True).uncheck();page.wait_for_timeout(120)
+ assert page.evaluate(audio+".stats().sourcesByChannel.whistle")==0
+ assert page.evaluate(audio+".stats().sourcesByChannel.drums")>=1
+ page.get_by_label('Còi HLV theo nhịp dầm',exact=True).check()
+ page.get_by_label('Tùy chỉnh âm thanh',exact=True).tap()
  # Advance the actual fixed-step race using legal strokes, without injecting
  # distance, charge or result. Skipped milestones must not become an audio queue.
  page.evaluate('''()=>{const a=document.querySelector('[data-testid=art-stage]').boatPreview,g=a.game;let next=Math.floor(g.state.beatPhase)+1;for(let i=0;i<90000&&g.state.distances[0]<960;i++){a.advance(1/240);if(g.state.phase==='racing'&&g.state.beatPhase>=next){g.stroke();next++;}}}''')
@@ -108,13 +120,13 @@ with sync_playwright() as p:
  except Exception:
   diagnostic={'audio':page.evaluate(audio+'.stats()'),'race':page.evaluate(boat+'.game.snapshot()'),'errors':errors}
   (out/'failure.json').write_text(json.dumps(diagnostic,ensure_ascii=False,indent=2),encoding='utf-8',newline='\n');page.screenshot(path=str(out/'failure.png'));raise
- page.wait_for_function(audio+".stats().drumKinds['drum-rim']>=3",timeout=15000)
+ page.wait_for_function(audio+".stats().strongWhistles>=1&&"+audio+".stats().drumBpm>=102",timeout=15000)
  page.wait_for_function("()=>{const s="+audio+".stats();return s.played.some(p=>p.cue==='final'&&p.at<s.audioTime);}",timeout=15000)
  report['final']=page.evaluate(audio+'.stats()');assert not any(c in report['final']['queued'] for c in ['cruise','halfway'])
  page.get_by_role('button',name='ĐẠP!',exact=False).tap()
  page.wait_for_function(audio+".stats().cues.includes('surge')")
  page.wait_for_function("()=>{const s="+audio+".stats();return s.played.some(p=>p.cue==='surge'&&p.at<s.audioTime);}",timeout=15000)
- report['surge']=page.evaluate(audio+'.stats()');assert report['surge']['drumHits']>report['intro']['drumHits']
+ report['surge']=page.evaluate(audio+'.stats()');assert report['surge']['whistleBlows']>report['intro']['whistleBlows']
  page.evaluate('''()=>{const a=document.querySelector('[data-testid=art-stage]').boatPreview,g=a.game;let next=Math.floor(g.state.beatPhase)+1;for(let i=0;i<70000&&g.state.phase!=='finished';i++){a.advance(1/240);if(g.state.phase==='racing'&&g.state.beatPhase>=next){g.stroke();next++;}}}''')
  page.wait_for_selector('[aria-label="Kết quả trận đua"]',timeout=15000)
  page.wait_for_function(audio+".stats().cues.includes('finish')")
@@ -161,4 +173,4 @@ with sync_playwright() as p:
  report['responses']=responses;report['errors']=errors
  browser.close()
 (out/'checks.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8',newline='\n')
-print(json.dumps({'passed':True,'intro':report['intro']['teams'],'drumHits':report['finish']['drumHits'],'clipsDecoded':report['finish']['decoded'],'startOutputRms':report['start']['outputRms'],'result':report['result']['result'],'errors':errors}))
+print(json.dumps({'passed':True,'intro':report['intro']['teams'],'whistleBlows':report['finish']['whistleBlows'],'drumLoops':report['finish']['drumLoops'],'clipsDecoded':report['finish']['decoded'],'startOutputRms':report['start']['outputRms'],'result':report['result']['result'],'errors':errors}))
