@@ -93,7 +93,7 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
   const direction=new T.Vector3(...v.offset).normalize();if(['boat','top','crew','kneel','bow','stern'].includes(view))direction.applyQuaternion(boat.quaternion);
   const distance=v.span/(2*Math.tan(T.MathUtils.degToRad(camera.fov/2))*Math.min(1.7,camera.aspect));
   camera.position.copy(controls.target).addScaledVector(direction,distance);
-  if(view==='menu'){controls.target.set(1360,1,0);camera.position.set(1690,210,115);}
+  if(view==='menu'){controls.target.set(1350,1,0);camera.position.set(1450,100,115);}
   controls.update();lastView=view;
  }
  function resize(){width=Math.max(1,host.clientWidth);height=Math.max(1,host.clientHeight);renderer.setSize(width,height);camera.aspect=width/height;camera.updateProjectionMatrix();lastView='';}
