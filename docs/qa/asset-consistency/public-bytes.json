@@ -1,0 +1,26 @@
+[
+  {
+    "file": "assets/athlete-master/rowing-motion.glb",
+    "bytes": 1139744,
+    "sha256": "94832f4e121b6d790045b7b3e7bb1a77b030004775e15dd975c29030403c14a6",
+    "matches": true
+  },
+  {
+    "file": "assets/athlete-master/athlete-master.glb",
+    "bytes": 6334328,
+    "sha256": "30a8c87e5d8466a3e7c27450ff2bf581e0632084904283d28e213e98013a6ead",
+    "matches": true
+  },
+  {
+    "file": "assets/festival/festival-logo.svg",
+    "bytes": 939,
+    "sha256": "ab96426524fd82a034ed218fe1879196d7f7ef9696abd20a1cc9f59fda64c334",
+    "matches": true
+  },
+  {
+    "file": "assets/boat-preview-UOJvJR2q.js",
+    "bytes": 77087,
+    "sha256": "1af250d9edac443e580a26c048b84f8a7cf9457c41e800157bd3e5df844f0570",
+    "matches": true
+  }
+]

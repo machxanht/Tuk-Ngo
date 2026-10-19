@@ -1,0 +1,105 @@
+{
+  "checkedAt": "2026-10-19T22:04:14.383063+00:00",
+  "url": "https://machxanht.github.io/Tuk-Ngo/",
+  "sourceCommit": "7f4ac47",
+  "pagesCommit": "abe44d1afb9a458c521a4f358761fdfbe71dcb84",
+  "pagesAction": {
+    "id": 39331320573,
+    "conclusion": "success"
+  },
+  "commands": {
+    "npm run lint": "passed",
+    "npm test": "passed",
+    "npm run build": "passed without warnings"
+  },
+  "runtimeSurface": {
+    "pass": true,
+    "phasesPerConstruction": 96,
+    "actors": 54,
+    "minRailGapM": 0.04886387521677027,
+    "maxFootPenetrationM": 0,
+    "maxShinPenetrationM": 0,
+    "shaftIntersections": 0
+  },
+  "publicAssetsAllMatch": true,
+  "raceDemo": {
+    "mode": "two autonomous boats",
+    "lengthM": 1200,
+    "distanceM": [
+      1200,
+      1200
+    ],
+    "finishTimesS": [
+      227.5652277873595,
+      227.55264403685123
+    ],
+    "method": "simulation advanced through full race; actual runtime scene and finish HUD inspected"
+  },
+  "selectionRoundTrip": {
+    "testedTeam": "prek-on-dok-2",
+    "construction": "dugout",
+    "gameToInspection": "passed; title, team IDs and construction retained",
+    "returnToMainGame": "passed"
+  },
+  "viewports": [
+    {
+      "width": 1180,
+      "height": 820,
+      "views": [
+        "menu",
+        "coach",
+        "stern",
+        "bow"
+      ]
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "views": [
+        "bow",
+        "Khmer menu",
+        "Khmer setup",
+        "Khmer race"
+      ],
+      "horizontalOverflow": false,
+      "inspectionCanvas": {
+        "x": 0,
+        "y": 326.4,
+        "width": 768,
+        "height": 605
+      }
+    },
+    {
+      "width": 1180,
+      "height": 430,
+      "views": [
+        "bow"
+      ],
+      "horizontalOverflow": false,
+      "inspectionCanvas": {
+        "x": 0,
+        "y": 179.2,
+        "width": 1180,
+        "height": 171
+      }
+    }
+  ],
+  "publicBrowserWarnings": [],
+  "publicBrowserErrors": [],
+  "limits": [
+    "Browser viewport emulation; no FPS measurement on a physical tablet.",
+    "Geometric clearance sampled at 96 phases; motion is reconstructed from reference, not motion capture."
+  ],
+  "screenshots": [
+    "public-menu.png",
+    "public-coach.png",
+    "public-stern.png",
+    "public-dugout-bow.png",
+    "public-bow-portrait.png",
+    "public-bow-short-landscape.png",
+    "public-menu-km-portrait.png",
+    "public-setup-km-portrait.png",
+    "public-race-km-portrait.png",
+    "local-two-boat-finish.png"
+  ]
+}
