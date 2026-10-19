@@ -1,0 +1,445 @@
+{
+  "physicalTabletTested": false,
+  "ceremony": {
+    "boats": 61,
+    "athletes": 3050,
+    "crewTriangles": 403,
+    "drawCalls": 6,
+    "source": "MakeHuman/MPFB CC0, existing assembled athlete; distant seated ceremony LOD"
+  },
+  "world": {
+    "crowd": {
+      "version": 21,
+      "people": 55893,
+      "placed": 55893,
+      "variantCount": 11,
+      "activities": [
+        "idle",
+        "wave",
+        "walk",
+        "clap",
+        "cheer",
+        "indicate",
+        "seated"
+      ],
+      "activityCounts": {
+        "clap": 10211,
+        "wave": 10144,
+        "cheer": 7603,
+        "idle": 18267,
+        "indicate": 5839,
+        "seated": 1926,
+        "walk": 1903
+      },
+      "active": 12280,
+      "lodCounts": [
+        0,
+        280,
+        12000
+      ],
+      "limits": {
+        "near": 24,
+        "middle": 280,
+        "far": 12000,
+        "radius": 430
+      },
+      "drawCalls": 22,
+      "paletteBytes": 6110720,
+      "motion": "GPU bone palette interpolation; source idle/wave/walk + authored clap/cheer/indicate/seated",
+      "randomization": "independent salted placement id and coordinates, clothes/hair/skin/face proportions/age styling",
+      "peoplePerBank": [
+        28478,
+        27415
+      ],
+      "outfits": {
+        "independentTrousers": 8,
+        "independentShoes": 4,
+        "regionPolicy": "separate upper garments, trousers/skirts, footwear, hats and small trim",
+        "combinations": 384
+      },
+      "demographicCounts": {
+        "age": {
+          "adult": 39093,
+          "adolescent": 4462,
+          "older adult": 12338
+        },
+        "gender": {
+          "men": 35542,
+          "women": 20351
+        },
+        "model": {
+          "worker-man": 5047,
+          "casual-woman": 5108,
+          "suit-man": 5150,
+          "punk-man": 5018,
+          "farmer-man": 5042,
+          "suit-woman": 5122,
+          "beach-man": 5134,
+          "hoodie-man": 5238,
+          "formal-woman": 5041,
+          "casual-man": 4913,
+          "worker-woman": 5080
+        }
+      },
+      "visibleTriangles": 2586084,
+      "lastPackMs": 15.400000005960464
+    },
+    "reference": "OWNER_VTV10_VIDEO_2025_REAL_PHOTOS_AND_OSM_LAYOUT",
+    "dimensions": "APPROXIMATE_GAME_SCALE",
+    "spectators": 55893,
+    "seats": 1916,
+    "trees": 808,
+    "houses": 397,
+    "distantBlocks": 204,
+    "umbrellas": 364,
+    "stands": 2,
+    "nationalFlags": 0,
+    "buildings": {
+      "version": 21,
+      "houses": 397,
+      "backgroundHomes": 1116,
+      "frontageFamilies": {
+        "tin-local-house": 24,
+        "raised-wood-house": 31,
+        "modern-townhouse": 66,
+        "corner-cafe": 37,
+        "garden-veranda": 36,
+        "old-tiled-dwelling": 37,
+        "balcony-shophouse": 37,
+        "shutter-shophouse": 52,
+        "covered-market": 35,
+        "open-front-shop": 42
+      },
+      "trees": 808,
+      "treeSilhouettes": 9,
+      "frontageTemplates": 12,
+      "foodStalls": 10,
+      "people": 3197,
+      "roadsidePeople": 2393,
+      "activityCounts": {
+        "walk": 1903,
+        "talk": 661,
+        "vendor": 124,
+        "eat": 509
+      },
+      "drawCalls": 59,
+      "geometryTriangles": 42096,
+      "visibleHouses": 68,
+      "visibleInstances": 3231,
+      "submittedTriangles": 836240,
+      "range": {
+        "detailedHouses": 125,
+        "distantHouses": 660,
+        "trees": 440,
+        "stalls": 180
+      },
+      "source": "Regional architectural study: 12 frontages, 9 plant silhouettes; authored dimensions"
+    },
+    "detailRange": [
+      850,
+      1400
+    ],
+    "bankSource": "OpenStreetMap contributors",
+    "bankLicense": "ODbL-1.0",
+    "bankOutlineGameSpanM": 400,
+    "bridgeYawSource": "OSM bridge centre-lines",
+    "continuousLand": true,
+    "pitchedRoof": "ridge above eaves; corrugation follows both slopes",
+    "npcSource": "Quaternius CC0 civilian silhouettes with independently animated festival actions",
+    "signLanguage": "km",
+    "standRoof": "VIP double pitch; opposite low single pitch",
+    "bridgeC247": "teal curved steel portals",
+    "bridge30April": "concrete piers and silver arched truss, 2022 construction photo; finished decoration approximate",
+    "traffic": {
+      "version": 21,
+      "count": 320,
+      "types": {
+        "sedan": 27,
+        "pickup": 14,
+        "scooter": 110,
+        "motorcycle": 56,
+        "bicycle": 42,
+        "delivery-scooter": 33,
+        "van": 27,
+        "minibus": 11
+      },
+      "riders": 241,
+      "drawCalls": 19,
+      "geometryTriangles": 22040,
+      "visible": 38,
+      "submittedTriangles": 149420,
+      "roadY": 1.24,
+      "range": {
+        "bodies": 220,
+        "wheels": 220
+      },
+      "laneOffsets": {
+        "motor": 2.15,
+        "bicycle": 4.35
+      },
+      "streamSpeed": "Shared per direction/bank/category to preserve spacing; cyclists on outer lane",
+      "source": "Original rounded rider and vehicle geometry; sedan/pickup reused from approved V20 study",
+      "samples": [
+        {
+          "id": 121,
+          "type": "sedan",
+          "x": 1226.4525016645048,
+          "y": 1.24,
+          "z": -44.960618458899134,
+          "yaw": -0.24807019393771118
+        },
+        {
+          "id": 284,
+          "type": "sedan",
+          "x": 1359.5596759888886,
+          "y": 1.24,
+          "z": 51.590375049567406,
+          "yaw": -0.0029333249201258897
+        },
+        {
+          "id": 126,
+          "type": "pickup",
+          "x": 1451.3109300401848,
+          "y": 1.24,
+          "z": -43.777,
+          "yaw": 0
+        },
+        {
+          "id": 205,
+          "type": "pickup",
+          "x": 1408.5759906599742,
+          "y": 1.24,
+          "z": 47.409,
+          "yaw": 3.141592653589793
+        },
+        {
+          "id": 45,
+          "type": "scooter",
+          "x": 1393.0685851483722,
+          "y": 1.24,
+          "z": -48.07884837729377,
+          "yaw": 3.1413259869294814
+        },
+        {
+          "id": 46,
+          "type": "scooter",
+          "x": 1436.475501485169,
+          "y": 1.24,
+          "z": -48.077,
+          "yaw": 3.141592653589793
+        },
+        {
+          "id": 48,
+          "type": "scooter",
+          "x": 1531.978553648165,
+          "y": 1.24,
+          "z": -48.077,
+          "yaw": 3.141592653589793
+        },
+        {
+          "id": 120,
+          "type": "scooter",
+          "x": 1183.0955528169134,
+          "y": 1.24,
+          "z": -65.30682659098343,
+          "yaw": -0.3426243504105131
+        },
+        {
+          "id": 122,
+          "type": "scooter",
+          "x": 1261.8995939949373,
+          "y": 1.24,
+          "z": -43.81497761165139,
+          "yaw": -0.00027499999308394315
+        },
+        {
+          "id": 207,
+          "type": "scooter",
+          "x": 1495.627523528503,
+          "y": 1.24,
+          "z": 47.409,
+          "yaw": 3.141592653589793
+        },
+        {
+          "id": 208,
+          "type": "scooter",
+          "x": 1536.0103630309204,
+          "y": 1.24,
+          "z": 47.409,
+          "yaw": 3.141592653589793
+        },
+        {
+          "id": 281,
+          "type": "scooter",
+          "x": 1209.0362703426817,
+          "y": 1.24,
+          "z": 53.25661104821856,
+          "yaw": 0.12921173053896895
+        }
+      ]
+    },
+    "spectatorSpacingM": 0.56,
+    "fullCourseCrowdRows": 10,
+    "bridges": {
+      "C247": {
+        "x": 940,
+        "yaw": 0.32567183490548884
+      },
+      "30/4": {
+        "x": 2385,
+        "yaw": -0.05069861735281925,
+        "beforeStartM": 95
+      },
+      "placement": "owner-corrected game placement; OSM angles retained"
+    },
+    "mainStand": {
+      "bank": "right in race direction",
+      "lengthM": 128,
+      "tiers": 8,
+      "roofHeightM": 16,
+      "roof": "shallow double pitch, pale green-grey sheet metal",
+      "reference": "https://baosoctrang.org.vn/van-hoa-the-thao-du-lich/202411/hao-huc-cho-ngay-khai-hoi-67c01d9/",
+      "measured": false
+    }
+  },
+  "menuMusic": {
+    "active": true,
+    "unlocked": true,
+    "playing": true,
+    "starts": 1,
+    "time": 0.503732,
+    "loop": true,
+    "volume": 0.30400000000000005,
+    "source": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/menu/festival.mp3"
+  },
+  "countdown": {
+    "phase": "countdown",
+    "difficulty": "normal",
+    "pace": "steady",
+    "countdown": 2.9916666666666663,
+    "elapsed": 0,
+    "distances": [
+      0,
+      0
+    ],
+    "speeds": [
+      0,
+      0
+    ],
+    "finishTimes": [
+      null,
+      null
+    ],
+    "beatPhase": 0,
+    "aiPhase": 0.17,
+    "stamina": 100,
+    "power": 0,
+    "cohesion": 0.72,
+    "combo": 0,
+    "maxCombo": 0,
+    "perfect": 0,
+    "good": 0,
+    "missed": 0,
+    "lastResolved": 0,
+    "feedback": "Chạm khi vạch vào vùng sáng",
+    "feedbackAt": -10,
+    "result": null,
+    "pauseReason": "",
+    "runId": 1,
+    "surgeCharge": 0,
+    "surgeRemaining": 0,
+    "desync": 0,
+    "lastSpamAt": -10,
+    "slipstream": false,
+    "lastJudgement": null,
+    "lastTiming": "wait",
+    "lastStrokeBeat": -1,
+    "aiStamina": 100,
+    "aiSurgeCharge": 0,
+    "aiSurgeRemaining": 0,
+    "introRemaining": 0,
+    "introElapsed": 9.999999999999753,
+    "strokeAvailable": false,
+    "raceStage": "start",
+    "stageLabel": "Xuất phát bùng nổ",
+    "cadence": 96,
+    "aiRaceStage": "start",
+    "aiStageLabel": "Xuất phát bùng nổ",
+    "aiCadence": 96,
+    "aiSurgeActive": false,
+    "judgement": null,
+    "surgeActive": false,
+    "canSurge": false,
+    "desyncIntensity": 0,
+    "rhythmProgress": 0.5,
+    "accuracy": 0,
+    "gap": 0,
+    "strength": 0
+  },
+  "input": {
+    "acceptedBeforeRelease": true,
+    "dispatchToObservedMs": 61.51,
+    "judgement": "PERFECT"
+  },
+  "keyboardAcceptedBeforeRelease": true,
+  "raceViewports": [
+    [
+      "vi",
+      1024,
+      768
+    ],
+    [
+      "vi",
+      768,
+      1024
+    ],
+    [
+      "vi",
+      1180,
+      430
+    ],
+    [
+      "vi",
+      390,
+      844
+    ],
+    [
+      "km",
+      1024,
+      768
+    ],
+    [
+      "km",
+      768,
+      1024
+    ],
+    [
+      "km",
+      1180,
+      430
+    ],
+    [
+      "km",
+      390,
+      844
+    ]
+  ],
+  "musicReturned": {
+    "active": true,
+    "unlocked": true,
+    "playing": true,
+    "starts": 2,
+    "time": 0.113678,
+    "loop": true,
+    "volume": 0.30400000000000005,
+    "source": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/menu/festival.mp3"
+  },
+  "skipIntro": true,
+  "errors": [],
+  "musicResponses": [
+    {
+      "url": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/menu/festival.mp3",
+      "status": 206
+    }
+  ]
+}

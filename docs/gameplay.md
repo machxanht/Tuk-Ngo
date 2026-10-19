@@ -37,4 +37,4 @@ python scripts/check-race-audio-browser.py --url http://127.0.0.1:4175/Tuk-Ngo/ 
 
 The flow check covers both languages, menu/help/setup/race layouts at desktop, tablet portrait/landscape and phone sizes, Esc pause, frozen simulation while paused, overview camera, legal sprint/surge, quick-race/cup separation, a completed cup heat, next heat, bracket navigation and restored language/cup history. Screenshot inspection is required in addition to assertions. These are Edge browser viewport checks with software rendering, not performance measurements on a physical tablet.
 
-Public verification: Pages deployment `2beacaa0e8bcc1c5140372bf003a27b7e877e9b7` succeeded in Actions run `39226755034`. The public entry and 31 build assets match the verified build byte-for-byte. Both-language browser flow passed again on the public URL; evidence is under `docs/qa/game-flow/public/` and `docs/qa/game-flow/published.json`.
+Current public verification is recorded in [race-presentation.md](race-presentation.md). The preceding release's flow evidence remains under `docs/qa/game-flow/public/` and `docs/qa/game-flow/published.json`.

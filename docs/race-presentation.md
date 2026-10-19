@@ -37,3 +37,11 @@ The media element is lazy and does not load before user interaction. A browser m
 - Existing full game-flow and race-audio browser checks remain regression gates.
 
 Browser input timing includes automation/dispatch overhead; it is not a measurement of physical tablet latency. Browser viewport checks and software rendering do not establish FPS on a physical tablet. Khmer copy still benefits from native editorial review.
+
+## Published verification
+
+Source `00de2f8c7b4b2a154b9f53c747777ecba5b90cd5` is published at the existing root URL. Pages commit `40a65fdd874e78faffa9aa426be736cac797a712` completed in [Actions run 39239135454](https://github.com/machxanht/Tuk-Ngo/actions/runs/39239135454).
+
+All 35 checked public files match the local build, including the root document, JavaScript/CSS chunks, derived ceremony crew and actual menu music. The public presentation check passed: 61 moving boats, real looped media, stop/resume/mute, intro/pause/skip/countdown ordering, touch-down and keyboard-down recognition without release duplicates, and eight race language/viewport combinations. There were no browser errors. Evidence is in `docs/qa/race-presentation/public/`.
+
+The existing full browser flow also passed against the public site: 18 layout cases, a completed quick race, a saved cup heat, the next heat, pause/resume, sprint/surge, bracket navigation and persisted language/history. It reported no browser errors; evidence is in `docs/qa/race-presentation/public-flow/checks.json`. The local race-audio regression passed with 38 decoded clips, 108 coach-whistle events and six drum loops.
