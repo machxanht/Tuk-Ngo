@@ -84,7 +84,7 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
   scene.fog.near=['banks','menu'].includes(view)?1000:280;scene.fog.far=['banks','menu'].includes(view)?3800:1000;
   camera.fov=view==='stand'?60:view==='menu'?50:36;camera.updateProjectionMatrix();
   const anchor=center(),local=(x,y,z)=>new T.Vector3(x,y,z).applyMatrix4(boat.matrixWorld);
-  const views={menu:{target:new T.Vector3(1395,1,0),offset:[120,220,230],span:690},race:{target:anchor.clone().setY(1),offset:settings.current.game?[40,30,40]:[40,50,50],span:settings.current.game?72:86},boat:{target:local(0,.65,0),offset:[24,20,26],span:39},top:{target:local(0,.65,0),offset:[0,30,.02],span:33},crew:{target:local(7.5,.9,0),offset:[2,1.5,5],span:5.3},kneel:{target:local(-3.2,.9,0),offset:[.8,1.3,4.8],span:4.8},bow:{target:local(12,.95,0),offset:[2.8,1.9,5.5],span:6},stern:{target:local(-11.3,1,0),offset:[-3,2,-6.5],span:8},
+  const views={menu:{target:new T.Vector3(1395,1,0),offset:[120,220,230],span:690},race:{target:anchor.clone().setY(1),offset:settings.current.game?[40,30,40]:[40,50,50],span:settings.current.game?72:86},boat:{target:local(0,.65,0),offset:[24,20,26],span:39},top:{target:local(0,.65,0),offset:[0,30,.02],span:33},crew:{target:local(7.5,.9,0),offset:[2,1.5,5],span:5.3},kneel:{target:local(-3.2,.9,0),offset:[.8,1.3,4.8],span:4.8},bow:{target:local(12,rig.construction==='dugout'?1.5:.95,0),offset:[2.8,1.9,5.5],span:rig.construction==='dugout'?7:6},stern:{target:local(-11.3,1,0),offset:[-3,2,-6.5],span:8},
    kbach:{target:local(1,.35,0),offset:[0,.28,-3],span:3.8},
    banks:{target:new T.Vector3(raceX(600),1,0),offset:[70,1000,560],span:1500},
    stand:{target:new T.Vector3(COURSE.standX,7.5,courseZ(COURSE.standX,-55)),offset:[50,3,100],span:150},
@@ -104,7 +104,7 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
  observer=new ResizeObserver(resize);observer.observe(host);place();resize();
  function reset(){if(settings.current.game){settings.current.game.reset(settings.current.game.state.difficulty);syncGame();}else Object.assign(race,{elapsed:0,countdown:3,distance:rigs.map(()=>0),speed:rigs.map(()=>0),phases:rigs.map((_,i)=>i?.17:.28),finishTimes:rigs.map(()=>null),state:'countdown'});effects.forEach(e=>e.reset());place();lastView='';settings.current.onRace?.(snapshot());}
  const api={rig,rigs,scene,boat,camera,controls,renderer,banks,sky,river,official,effects,ceremony,game:settings.current.game,race,snapshot,advance,reset,
-  setConstruction(types){rigs.forEach((r,i)=>r.setConstruction(types[i]||constructionForLane(i)));},
+  setConstruction(types){rigs.forEach((r,i)=>r.setConstruction(types[i]||constructionForLane(i)));lastView='';},
   async setTeams(ids){await Promise.all(rigs.map((r,i)=>r.prepareTeams([ids[i]])));if(disposed)return;teamIds=[...ids];effects.forEach(e=>e.reset());},
   async setKbach(ids){
    const request=Symbol();api.kbachRequest=request;
