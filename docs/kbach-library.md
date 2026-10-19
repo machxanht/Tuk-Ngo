@@ -75,3 +75,29 @@ include changing all five supplied designs, actual 8192 × 512 texture sizes,
 stable GPU geometry/texture/material counts after successive swaps, mode
 switching, and layouts at 768 × 1024, 1180 × 430 and 390 × 844. Public deployment
 checks are recorded separately after release. No physical tablet FPS claim.
+
+Release verification on 20 October 2026:
+
+- `npm run lint`, `npm test` and `npm run build` passed. The production build
+  emitted no Vite warnings; the protected shirt and eight master role sources
+  retained their hashes.
+- The first Pages release from source `b878e48` succeeded in
+  [Actions run 39303594751](https://github.com/machxanht/Tuk-Ngo/actions/runs/39303594751).
+  Public manifest equality and downloaded hashes of all five supplied full
+  textures plus the atlas matched local assets.
+- Public main menu requested only the catalog (18,877 transferred bytes) and
+  fleet atlas (1,145,812 transferred bytes) from the library. No full inspection
+  textures or source-comparison images were requested at menu initialization.
+- Public cup team `can_tho-01` used atlas row 15, then entered the intro and
+  countdown. Returning to menu and switching Vietnamese/Khmer worked.
+- The public library exposed all 39 designs and the five-item filter. A source
+  comparison loaded at 3864 × 2172. Selecting the bronze design applied its
+  8192 × 512 texture on the actual hull; no browser errors were recorded.
+- The local two-boat demo completed both 1200 m distances with independent
+  materials and two selected textures. Successive source-design swaps retained
+  284 GPU geometries, 46 textures and four kit materials in that inspection scene.
+- The final compact-source CSS fix was checked at 1180 × 430: dialog content
+  height 405 px, dialog viewport 405 px, independently scrollable provenance
+  145 px and design grid 133 px. The close button remained 44 px tall.
+
+These are viewport/browser measurements, not physical-tablet performance results.

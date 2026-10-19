@@ -1,0 +1,38 @@
+{
+  "url": "https://machxanht.github.io/Tuk-Ngo/assets/ghe-ngo/kbach-library/",
+  "manifestMatches": true,
+  "designs": 39,
+  "sourcePanels": 187,
+  "verifiedFiles": [
+    {
+      "file": "7669657553378282770.webp",
+      "bytes": 879036,
+      "sha256": "e4631090d7609a353824afb9b943d9b3daad7b5ac4b4bccdaa7f95db63b4b9da"
+    },
+    {
+      "file": "7681583457654295826.webp",
+      "bytes": 914040,
+      "sha256": "8de6e4ca371d2265f37b3777fd165003557464e921b6c95ef27c7257e1b0bbf2"
+    },
+    {
+      "file": "7691171048493944071.webp",
+      "bytes": 1090848,
+      "sha256": "c5fdd7f630c8cd953cf2b9a63aaf616ee82b0f6eb0a09bb1621a0105b2da7d0d"
+    },
+    {
+      "file": "7689300429460507956.webp",
+      "bytes": 932518,
+      "sha256": "3ab4e3b05d950d323951610877bba15be9a03be4fd8b998401c861d43fa1c38d"
+    },
+    {
+      "file": "7686697282644888840.webp",
+      "bytes": 1051076,
+      "sha256": "5f2a20e26c1ee6cc62002be720d0553456e6225d89c0ddd71dc1b2988297e71b"
+    },
+    {
+      "file": "fleet.webp",
+      "bytes": 1145512,
+      "sha256": "2beae55a0a969c225115d651f47157126d260dbb08cdcdd850990db409f80160"
+    }
+  ]
+}

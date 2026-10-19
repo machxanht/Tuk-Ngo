@@ -195,5 +195,13 @@
       227.5678585096462,
       227.55199049355767
     ]
+  },
+  "compactSourceCompare": {
+    "width": 1180,
+    "height": 430,
+    "sheetHeight": 405,
+    "dialogHeight": 405,
+    "provenanceHeight": 145,
+    "gridHeight": 133
   }
 }
