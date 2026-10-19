@@ -101,3 +101,22 @@ Release verification on 20 October 2026:
   145 px and design grid 133 px. The close button remained 44 px tall.
 
 These are viewport/browser measurements, not physical-tablet performance results.
+
+Final release: source `6b762b8`, Pages `50da1c314c6c98a5ccba07696120ee70249eb171`,
+[successful Actions run 39305553486](https://github.com/machxanht/Tuk-Ngo/actions/runs/39305553486).
+The root loaded `index-B5JAjvyy.js`; the compact comparison loaded
+`KbachPicker-B5pPLS1S.css`.
+
+All 39 public full-texture hashes and the fleet atlas now match local output.
+All 39 designs were selected through the public UI and verified on the painted
+hull mesh, each at 8192 × 512. The inspection scene retained four kit materials
+and stable GPU resource counts across successive selections; no browser errors
+were recorded. The final public source-comparison check at 1180 × 430 measured
+405 px content within a 405 px dialog, 133 px for the design grid, a 44 px close
+button and a loaded source image 3864 px wide. Evidence is in
+`public-assets.json`, `public-checks.json` and `public-source-1180x430.png`.
+
+React review: the picker is lazy-loaded, catalog requests are deduplicated,
+effects ignore completion after unmount, item keys are stable, the native modal
+provides focus containment/Escape handling, and texture switching does not
+rebuild the athlete kit. No unrelated component refactor was needed.

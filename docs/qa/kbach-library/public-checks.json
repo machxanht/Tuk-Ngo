@@ -1,0 +1,638 @@
+{
+  "url": "https://machxanht.github.io/Tuk-Ngo/",
+  "sourceCommit": "b878e48",
+  "pagesCommit": "e3a1f38c2398d1e724c2393aadd502e819c8ea8a",
+  "physicalTabletTested": false,
+  "menu": {
+    "kbach": {
+      "sharedAtlas": true,
+      "texture": [
+        2048,
+        2048
+      ],
+      "designs": 39,
+      "source": "https://www.tiktok.com/@karn_chinda"
+    },
+    "requests": [
+      {
+        "file": "manifest.json",
+        "bytes": 18877
+      },
+      {
+        "file": "fleet.webp",
+        "bytes": 1145812
+      }
+    ]
+  },
+  "cup": {
+    "stage": {
+      "testid": "art-stage",
+      "renderMode": "race",
+      "boatCount": "2",
+      "crewCount": "108",
+      "masterRigs": "16",
+      "phase": "0.0000",
+      "view": "intro",
+      "triangles": "6456348",
+      "drawCalls": "370",
+      "splashEvents": "0",
+      "banks": "2",
+      "spectators": "60123",
+      "daylight": "bright",
+      "raceState": "intro",
+      "courseLength": "1200",
+      "raceDistances": "[0,0]",
+      "fps": "1.0"
+    },
+    "atlasRows": [
+      [
+        15
+      ],
+      []
+    ]
+  },
+  "khmerMenu": 1,
+  "libraryCount": 39,
+  "sourceCompare": {
+    "height": 2172,
+    "src": "https://machxanht.github.io/Tuk-Ngo/assets/ghe-ngo/kbach-library/7689300429460507956-source.webp",
+    "width": 3864
+  },
+  "suppliedCount": 5,
+  "selected": {
+    "id": "7689300429460507956",
+    "size": [
+      8192,
+      512
+    ],
+    "memory": {
+      "geometries": 284,
+      "textures": 46
+    }
+  },
+  "allDesignSwaps": [
+    {
+      "index": 1,
+      "applied": true,
+      "id": "7669657553378282770",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 43
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 2,
+      "applied": true,
+      "id": "7681583457654295826",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 3,
+      "applied": true,
+      "id": "7691171048493944071",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 4,
+      "applied": true,
+      "id": "7689300429460507956",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 5,
+      "applied": true,
+      "id": "7686697282644888840",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 6,
+      "applied": true,
+      "id": "7696458532652109057",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 7,
+      "applied": true,
+      "id": "7693773564478016786",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 8,
+      "applied": true,
+      "id": "7691922609935600904",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 9,
+      "applied": true,
+      "id": "7691251814745885959",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 10,
+      "applied": true,
+      "id": "7688664407185820946",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 11,
+      "applied": true,
+      "id": "7686441177616239890",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 12,
+      "applied": true,
+      "id": "7686353294033276168",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 13,
+      "applied": true,
+      "id": "7686054291920014600",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 14,
+      "applied": true,
+      "id": "7685699576690511122",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 15,
+      "applied": true,
+      "id": "7685363762848730386",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 16,
+      "applied": true,
+      "id": "7685339747337768210",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 17,
+      "applied": true,
+      "id": "7685252634227313928",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 18,
+      "applied": true,
+      "id": "7681682010024201479",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 19,
+      "applied": true,
+      "id": "7681434899798117639",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 20,
+      "applied": true,
+      "id": "7680466659349400839",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 21,
+      "applied": true,
+      "id": "7680203132374191378",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 22,
+      "applied": true,
+      "id": "7678906973391293703",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 23,
+      "applied": true,
+      "id": "7678688407928737031",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 24,
+      "applied": true,
+      "id": "7677786457540611335",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 25,
+      "applied": true,
+      "id": "7676315847576620296",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 26,
+      "applied": true,
+      "id": "7675981534519758088",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 27,
+      "applied": true,
+      "id": "7675590936516250887",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 28,
+      "applied": true,
+      "id": "7673739107096399111",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 29,
+      "applied": true,
+      "id": "7673115627405528328",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 30,
+      "applied": true,
+      "id": "7673114656898125074",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 31,
+      "applied": true,
+      "id": "7672365998481083666",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 32,
+      "applied": true,
+      "id": "7672222616580590866",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 33,
+      "applied": true,
+      "id": "7671081054760865032",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 34,
+      "applied": true,
+      "id": "7670853454142754056",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 35,
+      "applied": true,
+      "id": "7670487140735782162",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 36,
+      "applied": true,
+      "id": "7670014002583325970",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 37,
+      "applied": true,
+      "id": "7669769756798356743",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 38,
+      "applied": true,
+      "id": "7652956356688891143",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    },
+    {
+      "index": 39,
+      "applied": true,
+      "id": "7651813175519612167",
+      "kitMaterials": 4,
+      "memory": {
+        "geometries": 282,
+        "textures": 44
+      },
+      "size": [
+        8192,
+        512
+      ]
+    }
+  ],
+  "finalSourceCommit": "6b762b8",
+  "finalPagesCommit": "50da1c314c6c98a5ccba07696120ee70249eb171",
+  "finalActionsRun": 39305553486,
+  "errors": [],
+  "finalCompact": {
+    "width": 1180,
+    "height": 430,
+    "sheetHeight": 405,
+    "dialogHeight": 405,
+    "sourceWidth": 3864,
+    "gridHeight": 133,
+    "closeHeight": 44,
+    "styles": [
+      "https://machxanht.github.io/Tuk-Ngo/assets/KbachPicker-B5pPLS1S.css"
+    ]
+  },
+  "all39Applied": true
+}
