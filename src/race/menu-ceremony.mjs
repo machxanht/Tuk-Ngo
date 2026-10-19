@@ -12,7 +12,7 @@ function hullGeometry(){
  const p=[],uv=[],ix=[],n=84,sides=10;
  for(let i=0;i<=n;i++){
   const x=-15.095+i/n*30.19,section=profile(x);
-  for(let j=0;j<=sides;j++){const a=j/sides*Math.PI,y=section.g-(section.g-section.k)*Math.sin(a),z=section.b*Math.cos(a);p.push(x,y,z);uv.push(i/n,Math.sin(a)*.8);}
+  for(let j=0;j<=sides;j++){const a=j/sides*Math.PI,y=section.g-(section.g-section.k)*Math.sin(a),z=section.b*Math.cos(a);p.push(x,y,z);uv.push(i/n,Math.sin(a));}
  }
  for(let i=0;i<n;i++)for(let j=0;j<sides;j++){const a=i*(sides+1)+j,b=a+sides+1;ix.push(a,b,a+1,a+1,b,b+1);}
  const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(p,3));g.setAttribute('uv',new T.Float32BufferAttribute(uv,2));g.setIndex(ix);g.computeVertexNormals();return g;
@@ -21,12 +21,11 @@ export async function buildMenuCeremony(scene,base){
  const url=base+'assets/athlete-master/ceremony-crew.json?sha='+ceremonyCrewDigest,data=JSON.parse(new TextDecoder().decode(await assetBytes(url)));releaseAssetBytes(url);
  const group=new T.Group();group.name='Festival_Ceremony_61_Boats';group.visible=false;scene.add(group);
  const resources=[],geometries=[],meshes=[],uniform={value:0};
- const atlas=document.createElement('canvas');atlas.width=4096;atlas.height=512;const ctx=atlas.getContext('2d');
- FESTIVAL_TEAMS.forEach((team,i)=>{ctx.save();ctx.setTransform(.25,0,0,.25,(i%8)*512,Math.floor(i/8)*64);paintFestivalLivery(ctx,team);ctx.restore();});
- const texture=new T.CanvasTexture(atlas);texture.colorSpace=T.SRGBColorSpace;texture.anisotropy=4;resources.push(texture);
- const hullGeo=hullGeometry(),tile=new Float32Array(61);for(let i=0;i<61;i++)tile[i]=i;hullGeo.setAttribute('aTile',new T.InstancedBufferAttribute(tile,1));geometries.push(hullGeo);
+ const atlas=document.createElement('canvas');atlas.width=4096;atlas.height=512;const ctx=atlas.getContext('2d');ctx.scale(2,2);paintFestivalLivery(ctx,null);
+ const texture=new T.CanvasTexture(atlas);texture.colorSpace=T.SRGBColorSpace;texture.flipY=false;texture.anisotropy=8;resources.push(texture);
+ const hullGeo=hullGeometry(),bandTints=new Float32Array(61*3);FESTIVAL_TEAMS.forEach((team,i)=>new T.Color(team.jersey).toArray(bandTints,i*3));hullGeo.setAttribute('aBandTint',new T.InstancedBufferAttribute(bandTints,3));geometries.push(hullGeo);
  const hullMat=new T.MeshLambertMaterial({map:texture,side:T.DoubleSide});
- hullMat.onBeforeCompile=s=>{s.vertexShader='attribute float aTile;\n'+s.vertexShader;s.vertexShader=s.vertexShader.replace('#include <uv_vertex>','#include <uv_vertex>\n vMapUv=(vMapUv+vec2(mod(aTile,8.),7.-floor(aTile/8.)))/8.;');};resources.push(hullMat);
+ hullMat.onBeforeCompile=s=>{s.vertexShader='attribute vec3 aBandTint;varying vec3 vBandTint;\n'+s.vertexShader;s.vertexShader=s.vertexShader.replace('#include <uv_vertex>','#include <uv_vertex>\n vBandTint=aBandTint;');s.fragmentShader='varying vec3 vBandTint;\n'+s.fragmentShader;s.fragmentShader=s.fragmentShader.replace('#include <map_fragment>','#include <map_fragment>\n float bandMask=step(.25,sampledDiffuseColor.r)*step(sampledDiffuseColor.g*2.8,sampledDiffuseColor.r)*step(sampledDiffuseColor.b*2.8,sampledDiffuseColor.r);diffuseColor.rgb=mix(diffuseColor.rgb,vBandTint,bandMask);');};resources.push(hullMat);
  const hulls=new T.InstancedMesh(hullGeo,hullMat,61);hulls.name='Ceremony_Painted_Hulls';hulls.frustumCulled=false;group.add(hulls);meshes.push(hulls);
  const crewGeo=new T.BufferGeometry();for(const [name,a]of Object.entries(data.attributes))crewGeo.setAttribute(name,new T.Float32BufferAttribute(a.array,a.size));crewGeo.setIndex(data.indices);
  const count=61*50,tints=new Float32Array(count*3),motions=new Float32Array(count*4);
@@ -77,6 +76,6 @@ export async function buildMenuCeremony(scene,base){
   }
   meshes.forEach(mesh=>mesh.instanceMatrix.needsUpdate=true);
  }
- const stats={boats:61,athletes:count,crewTriangles:data.triangles,capTriangles:data.cap.triangles,saluteVariants:data.motion.variants,saluteFrames:data.motion.frames,handheldCaps:count,capColors:capColors.length,hair:data.hair,formation:'irregular tightly packed raft at the main grandstand',reference:'https://www.youtube.com/watch?v=hNSDABjJ6GU',drawCalls:meshes.length,source:data.source};group.userData=stats;
+ const stats={boats:61,athletes:count,crewTriangles:data.triangles,capTriangles:data.cap.triangles,saluteVariants:data.motion.variants,saluteFrames:data.motion.frames,handheldCaps:count,capColors:capColors.length,hair:data.hair,kbach:{sharedMaster:true,texture:[4096,512],paletteVariants:61,source:'owner-supplied graphic clip; vector contours'},formation:'irregular tightly packed raft at the main grandstand',reference:'https://www.youtube.com/watch?v=hNSDABjJ6GU',drawCalls:meshes.length,source:data.source};group.userData=stats;
  return {group,stats,update,dispose(){group.removeFromParent();meshes.forEach(m=>m.dispose());geometries.forEach(g=>g.dispose());resources.forEach(r=>r.dispose());}};
 }

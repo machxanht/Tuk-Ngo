@@ -1,4 +1,7 @@
 import {build} from 'esbuild';
+import {writeFile} from 'node:fs/promises';
+import {kbachSvg} from '../src/race/kbach-livery.mjs';
+await writeFile('public/assets/ghe-ngo/kbach-master.svg',kbachSvg());
 await import('./build-crowd-preview.mjs');
 await import('./build-rowing-motion.mjs');
 await import('./build-ceremony-crew.mjs');

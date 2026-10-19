@@ -92,26 +92,13 @@ export async function createHybridBoats(base='',{onProgress=()=>{},sharedRendere
  function fullCamera(){camera.left=-15.8;camera.right=18.7;camera.top=34.5*H/W/2;camera.bottom=-camera.top;camera.position.set(9,13.2,-28);camera.lookAt(0,-.8,0);camera.updateProjectionMatrix();camera.updateMatrixWorld(true);}
  fullCamera();
  hull.scene.updateMatrixWorld(true);const hullBody=hull.scene.getObjectByName('Hull_Watertight_30_20x1_12');
- const texture=await new T.TextureLoader().loadAsync(base+'hull-slim-bow-v23.webp');texture.colorSpace=T.SRGBColorSpace;texture.flipY=false;
- const paintCanvas=document.createElement('canvas');paintCanvas.width=texture.image.width;paintCanvas.height=texture.image.height;const pc=paintCanvas.getContext('2d');pc.drawImage(texture.image,0,0);const pixels=pc.getImageData(0,0,paintCanvas.width,paintCanvas.height).data,bands=new Map();
- function bandAt(column){
-  const x=T.MathUtils.clamp(Math.round(column),0,paintCanvas.width-1);if(bands.has(x))return bands.get(x);
-  let top=paintCanvas.height,bottom=0,rail=-1;
-  for(let y=0;y<paintCanvas.height;y++){const i=(y*paintCanvas.width+x)*4;if(pixels[i+3]<160)continue;top=Math.min(top,y);bottom=y;if(pixels[i]>120&&pixels[i]>pixels[i+1]*1.6&&pixels[i]>pixels[i+2]*1.6)rail=y;}
-  const value=[rail>=0?Math.max(top,rail-3):top,Math.max(bottom,top+1)];bands.set(x,value);return value;
- }
  const paintedHull=[],hullInteriors=[],hullEnds=[];
  hull.scene.traverse(o=>{
   if(!o.isMesh)return;
   if(/Bench|Command_Platform/.test(o.name)){o.visible=false;return;}
   const old=o.material;o.material=materialFrom(old);
   if(old.map&&hullBody){
-   const g=o.geometry.clone(),uv=g.attributes.uv,p=g.attributes.position,originalUV=uv.clone();
-   for(let i=0;i<p.count;i++){
-    v.fromBufferAttribute(p,i).applyMatrix4(o.matrixWorld);const sourceX=T.MathUtils.clamp((15.1-v.x)/30.2*2120+30,30,2150),band=bandAt(sourceX),depth=T.MathUtils.clamp(uv.getY(i),0,1);
-    uv.setXY(i,sourceX/paintCanvas.width,(band[0]+(band[1]-band[0])*depth)/paintCanvas.height);
-   }
-   o.geometry=g;o.material.map=texture;o.material.color.set('white');paintedHull.push({mesh:o,originalUV,paintedUV:uv});
+   o.geometry=o.geometry.clone();o.material.color.set('white');paintedHull.push({mesh:o});
   }else if(/Wood|Timber|Rib|Beam/.test(old.name))o.material.color.set('#b9844d');
   if(/Red_Integrated_Prow|Red_Integrated_Stern/.test(o.name))hullEnds.push(o);
   // The optimized hull GLB strips material names. Identify its two untextured
@@ -231,13 +218,13 @@ export async function createHybridBoats(base='',{onProgress=()=>{},sharedRendere
  let styleKey,studyOverride,gpuRenders=0,gpuReuses=0;
  const styles=new Map(),farImages=new Map();
  const boatInverse=new T.Matrix4(),accessoryMatrix=new T.Matrix4();
- function render(phase,t,{study=false,posture='seated',kitColor='#23855e',teamId=null,faceVariant=null,skinDetail=1,focus='body',angle='three-quarter',effort=0,viewKey='study',frameId,distance=0,nearest=false,desyncIntensity=0,externalCamera=null,beforeRender=null,connectedKit=false,updateOnly=false}={}){
+ function render(phase,t,{study=false,posture='seated',kitColor='#23855e',teamId=null,referenceKbach=false,faceVariant=null,skinDetail=1,focus='body',angle='three-quarter',effort=0,viewKey='study',frameId,distance=0,nearest=false,desyncIntensity=0,externalCamera=null,beforeRender=null,connectedKit=false,updateOnly=false}={}){
   if(studyOverride){studyOverride.variant=faceFor(studyOverride.id,studyOverride.teamId);studyOverride.skin.geometry=geometryFor(studyOverride.role,studyOverride.variant);studyOverride=null;}
   const team=teamId?window.TukNgoTeams.get(teamId):null,map=team?liveries.get(team.id):null;
   if(team&&!map)throw Error('Team livery is not loaded: '+teamId);
-  const key=teamId+'|'+kitColor+'|'+connectedKit;
+  const key=teamId+'|'+kitColor+'|'+connectedKit+'|'+referenceKbach;
   if(styleKey!==key){
-   for(const {mesh,originalUV,paintedUV} of paintedHull){mesh.geometry.setAttribute('uv',team?originalUV:paintedUV);mesh.material.map=team?map:texture;}
+   for(const {mesh} of paintedHull){mesh.material.map=referenceKbach||!team?liveries.reference():map;mesh.material.map.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());}
    for(const mesh of hullEnds)mesh.material.color.set(team?.pattern==='om-scroll'?'#ed6826':'#c83239');
    for(const {mesh,color} of hullInteriors)mesh.material.color.copy(team?.interior?new T.Color(team.interior):color);
    let prepared=styles.get(key);
@@ -291,7 +278,7 @@ export async function createHybridBoats(base='',{onProgress=()=>{},sharedRendere
    for(const g of paddleGeometry.values())geometries.add(g);for(const d of decals)geometries.add(d.geometry);
    for(const o of boards)geometries.add(o.geometry);geometries.add(merged);for(const g of geometryVariants)geometries.add(g);
     geometries.forEach(g=>g.dispose());for(const slices of floorSlices.values())for(const {mesh}of slices)mesh.geometry.dispose();floorSlices.clear();meshMaterials.forEach(m=>m.dispose());maps.forEach(t=>t.dispose());
-   shirtAsset.dispose();materials.dispose();liveries.dispose();texture.dispose();skinMap.dispose();if(!sharedRenderer)renderer.dispose();
+   shirtAsset.dispose();materials.dispose();liveries.dispose();skinMap.dispose();if(!sharedRenderer)renderer.dispose();
    for(const file of ['shirt-runtime-v32.json','athlete-rig-v27.glb','hull-rig-v25.glb','../athlete-master/athlete-details.glb',motionFile])releaseAssetBytes(base+file);
    scene.clear();
   }};

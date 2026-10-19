@@ -82,6 +82,7 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
   camera.fov=view==='stand'?60:view==='menu'?50:36;camera.updateProjectionMatrix();
   const anchor=center(),local=(x,y,z)=>new T.Vector3(x,y,z).applyMatrix4(boat.matrixWorld);
   const views={menu:{target:new T.Vector3(1395,1,0),offset:[120,220,230],span:690},race:{target:anchor.clone().setY(1),offset:settings.current.game?[40,30,40]:[40,50,50],span:settings.current.game?72:86},boat:{target:local(0,.65,0),offset:[24,20,26],span:39},top:{target:local(0,.65,0),offset:[0,30,.02],span:33},crew:{target:local(7.5,.9,0),offset:[2,1.5,5],span:5.3},kneel:{target:local(-3.2,.9,0),offset:[.8,1.3,4.8],span:4.8},bow:{target:local(12,.95,0),offset:[2.8,1.9,5.5],span:6},stern:{target:local(-11.3,1,0),offset:[-3,2,-6.5],span:8},
+   kbach:{target:local(1,.35,0),offset:[0,.28,-3],span:3.8},
    banks:{target:new T.Vector3(raceX(600),1,0),offset:[70,1000,560],span:1500},
    stand:{target:new T.Vector3(COURSE.standX,7.5,courseZ(COURSE.standX,-55)),offset:[50,3,100],span:150},
    crowd:{target:new T.Vector3(COURSE.standX-96,2.5,courseZ(COURSE.standX-96,-45.6)),offset:[2,1,8],span:10},
@@ -90,7 +91,7 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
    bridge:{target:new T.Vector3(COURSE.bridgeEnd,8,0),offset:[65,30,65],span:110},
    finish:{target:new T.Vector3(COURSE.finishX+15,2,0),offset:[65,34,65],span:185}};
   const v=views[view]||views.race;if(['banks','stand','crowd','bridge','finish','start','official'].includes(view))v.target.x+=courseOffset;controls.target.copy(v.target);
-  const direction=new T.Vector3(...v.offset).normalize();if(['boat','top','crew','kneel','bow','stern'].includes(view))direction.applyQuaternion(boat.quaternion);
+  const direction=new T.Vector3(...v.offset).normalize();if(['boat','top','crew','kneel','bow','stern','kbach'].includes(view))direction.applyQuaternion(boat.quaternion);
   const distance=v.span/(2*Math.tan(T.MathUtils.degToRad(camera.fov/2))*Math.min(1.7,camera.aspect));
   camera.position.copy(controls.target).addScaledVector(direction,distance);
   if(view==='menu'){controls.target.set(1350,1,0);camera.position.set(1450,100,115);}
@@ -121,7 +122,7 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
   else if(!['banks','stand','crowd','bridge','finish','start','official'].includes(s.view)){const delta=center().sub(previous);camera.position.add(delta);controls.target.add(delta);}
   if(!introducing&&!inCeremony)controls.update();
   frameId++;
-  rigs.forEach((r,i)=>r.render(racing?race.phases[i]:c.phase,c.seconds,{teamId:teamIds[i],effort:game?(i?(game.aiRaceStage==='final'?.7:.1):Math.max(game.raceStage==='final'?.65:0,game.strength)):0,desyncIntensity:game&&i===0?game.desyncIntensity:0,connectedKit:true,updateOnly:true,viewKey:'race-'+i,frameId,distance:camera.position.distanceTo(r.boat.position),nearest:i===0}));
+  rigs.forEach((r,i)=>r.render(racing?race.phases[i]:c.phase,c.seconds,{teamId:teamIds[i],referenceKbach:!racing&&!!s.referenceKbach,effort:game?(i?(game.aiRaceStage==='final'?.7:.1):Math.max(game.raceStage==='final'?.65:0,game.strength)):0,desyncIntensity:game&&i===0?game.desyncIntensity:0,connectedKit:true,updateOnly:true,viewKey:'race-'+i,frameId,distance:camera.position.distanceTo(r.boat.position),nearest:i===0}));
   sky.update(camera);banks.update(c.seconds,inCeremony||introducing?{position:controls.target}:camera);official.update(c.seconds,racing?race:{state:'racing'},camera);
   rigs.forEach((r,i)=>{const moving=s.playing&&(!racing||race.state==='racing'),strength=racing?(race.distance[i]>=950?.85:race.distance[i]<200?.45:.12):Math.max(0,(s.cadence-72)/24);effects[i].update(s.playing?dt:0,crews[i],racing?race.speed[i]:4.2,c.seconds,s.splash&&moving,Math.max(0,Math.min(1,strength+(game&&i===0?(game.pace==='recover'?-.18:game.pace==='sprint'?.5*game.strength:0):0)+((game&&(i?game.aiSurgeActive:game.surgeActive)) ? .15 : 0))));wakes[i].update(r.boat,c.seconds,moving);});
   renderer.render(scene,camera);

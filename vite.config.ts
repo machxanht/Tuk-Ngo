@@ -22,6 +22,8 @@ export default defineConfig(() => {
           if (id.includes('/three/build/three.core.js')) return 'three-core';
           if (id.includes('/three/build/three.module.js')) return 'three-renderer';
           if (id.includes('/three/examples/')) return 'three-addons';
+          // Share the traced ornament data without folding it into the scene code.
+          if (id.endsWith('/src/race/kbach-motifs.mjs')) return 'kbach-motifs';
         },
       },
     },

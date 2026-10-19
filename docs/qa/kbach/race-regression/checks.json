@@ -1,0 +1,1464 @@
+{
+  "physicalTabletTested": false,
+  "ceremony": {
+    "boats": 61,
+    "athletes": 3050,
+    "crewTriangles": 667,
+    "capTriangles": 69,
+    "saluteVariants": 2,
+    "saluteFrames": 24,
+    "handheldCaps": 3050,
+    "capColors": 8,
+    "hair": {
+      "vertices": 64,
+      "styles": 4,
+      "strategy": "painted anatomical scalp plus raised source hair shell"
+    },
+    "kbach": {
+      "sharedMaster": true,
+      "texture": [
+        4096,
+        512
+      ],
+      "paletteVariants": 61,
+      "source": "owner-supplied graphic clip; vector contours"
+    },
+    "formation": "irregular tightly packed raft at the main grandstand",
+    "reference": "https://www.youtube.com/watch?v=hNSDABjJ6GU",
+    "drawCalls": 6,
+    "source": "MakeHuman/MPFB CC0, existing assembled athlete; derived seated hat salute",
+    "cameraShot": "fleet",
+    "cameraSeconds": 0.0814000000000001
+  },
+  "world": {
+    "crowd": {
+      "version": 21,
+      "people": 60123,
+      "placed": 60123,
+      "variantCount": 11,
+      "activities": [
+        "idle",
+        "wave",
+        "walk",
+        "clap",
+        "cheer",
+        "indicate",
+        "seated"
+      ],
+      "activityCounts": {
+        "clap": 10401,
+        "wave": 10331,
+        "cheer": 7797,
+        "idle": 18203,
+        "indicate": 5755,
+        "seated": 1926,
+        "walk": 5710
+      },
+      "active": 12280,
+      "lodCounts": [
+        0,
+        280,
+        12000
+      ],
+      "limits": {
+        "near": 24,
+        "middle": 280,
+        "far": 12000,
+        "radius": 430
+      },
+      "drawCalls": 22,
+      "paletteBytes": 6110720,
+      "motion": "GPU bone palette interpolation; source idle/wave/walk + authored clap/cheer/indicate/seated",
+      "randomization": "independent salted placement id and coordinates, clothes/hair/skin/face proportions/age styling",
+      "peoplePerBank": [
+        30589,
+        29534
+      ],
+      "outfits": {
+        "independentTrousers": 8,
+        "independentShoes": 4,
+        "regionPolicy": "separate upper garments, trousers/skirts, footwear, hats and small trim",
+        "combinations": 384
+      },
+      "demographicCounts": {
+        "age": {
+          "adult": 42205,
+          "adolescent": 4732,
+          "older adult": 13186
+        },
+        "gender": {
+          "men": 38242,
+          "women": 21881
+        },
+        "model": {
+          "worker-man": 5434,
+          "casual-woman": 5462,
+          "suit-man": 5553,
+          "punk-man": 5351,
+          "farmer-man": 5446,
+          "suit-woman": 5539,
+          "beach-man": 5502,
+          "hoodie-man": 5646,
+          "formal-woman": 5431,
+          "casual-man": 5310,
+          "worker-woman": 5449
+        }
+      },
+      "visibleTriangles": 2582802,
+      "lastPackMs": 13.599999994039536
+    },
+    "reference": "OWNER_VTV10_VIDEO_2025_REAL_PHOTOS_AND_OSM_LAYOUT",
+    "dimensions": "APPROXIMATE_GAME_SCALE",
+    "spectators": 60123,
+    "seats": 1916,
+    "trees": 808,
+    "houses": 397,
+    "distantBlocks": 204,
+    "umbrellas": 364,
+    "stands": 2,
+    "nationalFlags": 0,
+    "buildings": {
+      "version": 21,
+      "houses": 397,
+      "backgroundHomes": 1116,
+      "frontageFamilies": {
+        "tin-local-house": 24,
+        "raised-wood-house": 31,
+        "modern-townhouse": 66,
+        "corner-cafe": 37,
+        "garden-veranda": 36,
+        "old-tiled-dwelling": 37,
+        "balcony-shophouse": 37,
+        "shutter-shophouse": 52,
+        "covered-market": 35,
+        "open-front-shop": 42
+      },
+      "trees": 808,
+      "treeSilhouettes": 9,
+      "frontageTemplates": 12,
+      "foodStalls": 10,
+      "people": 6856,
+      "roadsidePeople": 6052,
+      "activityCounts": {
+        "walk": 5710,
+        "talk": 577,
+        "vendor": 124,
+        "eat": 445
+      },
+      "drawCalls": 59,
+      "geometryTriangles": 42096,
+      "visibleHouses": 66,
+      "visibleInstances": 2477,
+      "submittedTriangles": 647832,
+      "range": {
+        "detailedHouses": 125,
+        "distantHouses": 660,
+        "trees": 440,
+        "stalls": 180
+      },
+      "source": "Regional architectural study: 12 frontages, 9 plant silhouettes; authored dimensions"
+    },
+    "detailRange": [
+      850,
+      1400
+    ],
+    "bankSource": "OpenStreetMap contributors",
+    "bankLicense": "ODbL-1.0",
+    "bankOutlineGameSpanM": 400,
+    "bridgeYawSource": "OSM bridge centre-lines",
+    "continuousLand": true,
+    "pitchedRoof": "ridge above eaves; corrugation follows both slopes",
+    "npcSource": "Quaternius CC0 civilian silhouettes with independently animated festival actions",
+    "signLanguage": "km",
+    "standRoof": "VIP double pitch; opposite low single pitch",
+    "bridgeC247": "teal curved steel portals",
+    "bridge30April": "concrete piers and silver arched truss, 2022 construction photo; finished decoration approximate",
+    "traffic": {
+      "version": 21,
+      "count": 1280,
+      "types": {
+        "sedan": 69,
+        "pickup": 42,
+        "scooter": 560,
+        "motorcycle": 283,
+        "bicycle": 115,
+        "delivery-scooter": 142,
+        "van": 49,
+        "minibus": 20
+      },
+      "riders": 1100,
+      "drawCalls": 19,
+      "geometryTriangles": 22040,
+      "visible": 152,
+      "submittedTriangles": 602612,
+      "roadY": 1.24,
+      "range": {
+        "bodies": 220,
+        "wheels": 220
+      },
+      "laneOffsets": {
+        "cars": 1.6,
+        "motor": 3.6,
+        "bicycle": 5.4
+      },
+      "streamSpeed": "Shared per direction/bank/category to preserve spacing; cyclists on outer lane",
+      "source": "Original rounded rider and vehicle geometry; sedan/pickup reused from approved V20 study",
+      "samples": [
+        {
+          "id": 148,
+          "type": "sedan",
+          "x": 1012.2898511998374,
+          "y": 1.24,
+          "z": -71.63385120882671,
+          "yaw": 3.1413093202639755
+        },
+        {
+          "id": 156,
+          "type": "sedan",
+          "x": 1105.2824966459684,
+          "y": 1.24,
+          "z": -71.60802655087204,
+          "yaw": 3.141332653595669
+        },
+        {
+          "id": 159,
+          "type": "sedan",
+          "x": 1140.3606898516518,
+          "y": 1.24,
+          "z": -71.59889780454202,
+          "yaw": 3.1413093202639755
+        },
+        {
+          "id": 466,
+          "type": "sedan",
+          "x": 990.8500443409994,
+          "y": 1.24,
+          "z": -63.417934480917694,
+          "yaw": 0.43122889594145813
+        },
+        {
+          "id": 491,
+          "type": "sedan",
+          "x": 1280.553458239603,
+          "y": 1.24,
+          "z": -44.35984318683211,
+          "yaw": -0.00028333332574673843
+        },
+        {
+          "id": 797,
+          "type": "sedan",
+          "x": 1117.9390876136622,
+          "y": 1.24,
+          "z": 52.696798797345764,
+          "yaw": 3.129753206809111
+        },
+        {
+          "id": 799,
+          "type": "sedan",
+          "x": 1140.6466564743114,
+          "y": 1.24,
+          "z": 52.96247270728066,
+          "yaw": 3.134676097218398
+        },
+        {
+          "id": 1119,
+          "type": "sedan",
+          "x": 1141.4675902803474,
+          "y": 1.24,
+          "z": 56.1681508327724,
+          "yaw": -0.006916556371430818
+        },
+        {
+          "id": 137,
+          "type": "pickup",
+          "x": 886.985544841923,
+          "y": 1.24,
+          "z": -48.74091970372074,
+          "yaw": 3.102891986372371
+        },
+        {
+          "id": 458,
+          "type": "pickup",
+          "x": 898.1089108254728,
+          "y": 1.24,
+          "z": -45.11022297283769,
+          "yaw": -0.03870066721742196
+        },
+        {
+          "id": 1126,
+          "type": "pickup",
+          "x": 1222.0725035360865,
+          "y": 1.24,
+          "z": 51.25515059816614,
+          "yaw": 0.08511247030276317
+        },
+        {
+          "id": 136,
+          "type": "scooter",
+          "x": 874.8762244479776,
+          "y": 1.24,
+          "z": -51.20979258937431,
+          "yaw": 3.102891986372371
+        }
+      ]
+    },
+    "spectatorSpacingM": 0.56,
+    "fullCourseCrowdRows": 10,
+    "finishWaterCrowd": {
+      "count": 571,
+      "banks": 2,
+      "raceProgressM": [
+        1000,
+        1200
+      ],
+      "waterY": 0.28,
+      "waistDepthM": 0.9,
+      "activities": [
+        "wave",
+        "cheer",
+        "clap"
+      ],
+      "placement": "both shallow banks, clear of the racing lanes",
+      "samples": [
+        {
+          "x": 1099.5676410376327,
+          "z": -24.04748145499235,
+          "activity": "clap",
+          "submergedHeight": 0.9
+        },
+        {
+          "x": 1232.8234866373673,
+          "z": -24.27507775017988,
+          "activity": "clap",
+          "submergedHeight": 0.9
+        },
+        {
+          "x": 1170.0757840437097,
+          "z": -25.526608419929047,
+          "activity": "wave",
+          "submergedHeight": 0.9
+        },
+        {
+          "x": 1108.6247206585945,
+          "z": -26.963629107998518,
+          "activity": "clap",
+          "submergedHeight": 0.9
+        },
+        {
+          "x": 1235.1135401694069,
+          "z": -27.008638371247358,
+          "activity": "clap",
+          "submergedHeight": 0.9
+        },
+        {
+          "x": 1202.6740736224663,
+          "z": 26.825170100878417,
+          "activity": "cheer",
+          "submergedHeight": 0.9
+        },
+        {
+          "x": 1143.2456837214286,
+          "z": 27.92234280870366,
+          "activity": "cheer",
+          "submergedHeight": 0.9
+        },
+        {
+          "x": 1277.9502597831843,
+          "z": 28.61580971457133,
+          "activity": "cheer",
+          "submergedHeight": 0.9
+        },
+        {
+          "x": 1220.2530354566375,
+          "z": 30.024745590300505,
+          "activity": "cheer",
+          "submergedHeight": 0.9
+        }
+      ]
+    },
+    "banners": {
+      "count": 97,
+      "textureCount": 20,
+      "language": "km",
+      "placements": [
+        {
+          "text": "ពិធីបុណ្យអកអំបុក · ប្រណាំងទូក-ង",
+          "width": 30,
+          "height": 1.82,
+          "x": 1045,
+          "y": 13.62,
+          "z": -31.642000000000003,
+          "bank": -1
+        },
+        {
+          "text": "ពិធីបុណ្យអកអំបុក · ប្រណាំងទូក-ង",
+          "width": 30,
+          "height": 1.82,
+          "x": 1075,
+          "y": 13.62,
+          "z": -31.642000000000003,
+          "bank": -1
+        },
+        {
+          "text": "ពិធីបុណ្យអកអំបុក · ប្រណាំងទូក-ង",
+          "width": 30,
+          "height": 1.82,
+          "x": 1105,
+          "y": 13.62,
+          "z": -31.642000000000003,
+          "bank": -1
+        },
+        {
+          "text": "ពិធីបុណ្យអកអំបុក · ប្រណាំងទូក-ង",
+          "width": 30,
+          "height": 1.82,
+          "x": 1135,
+          "y": 13.62,
+          "z": -31.642000000000003,
+          "bank": -1
+        },
+        {
+          "text": "អបអរសាទរ · ប្រណាំងទូក-ង",
+          "width": 39,
+          "height": 2.05,
+          "x": 1047,
+          "y": 3.05,
+          "z": -31.612000000000002,
+          "bank": -1
+        },
+        {
+          "text": "អបអរសាទរ · ប្រណាំងទូក-ង",
+          "width": 39,
+          "height": 2.05,
+          "x": 1090,
+          "y": 3.05,
+          "z": -31.612000000000002,
+          "bank": -1
+        },
+        {
+          "text": "អបអរសាទរ · ប្រណាំងទូក-ង",
+          "width": 39,
+          "height": 2.05,
+          "x": 1133,
+          "y": 3.05,
+          "z": -31.612000000000002,
+          "bank": -1
+        },
+        {
+          "text": "ពិធីបុណ្យអកអំបុក · ប្រណាំងទូក-ង",
+          "width": 26,
+          "height": 0.9,
+          "x": 1090,
+          "y": 2.05,
+          "z": -28.667904186046513,
+          "bank": -1
+        },
+        {
+          "text": "ប្រណាំងទូក-ង · សូមស្វាគមន៍",
+          "width": 25.1,
+          "height": 1.55,
+          "x": 1017.25,
+          "y": 2.07,
+          "z": 33.4476,
+          "bank": 1
+        },
+        {
+          "text": "ប្រណាំងទូក-ង · សូមស្វាគមន៍",
+          "width": 25.1,
+          "height": 1.55,
+          "x": 1042.35,
+          "y": 2.07,
+          "z": 33.4476,
+          "bank": 1
+        },
+        {
+          "text": "ប្រណាំងទូក-ង · សូមស្វាគមន៍",
+          "width": 25.1,
+          "height": 1.55,
+          "x": 1067.45,
+          "y": 2.07,
+          "z": 33.4476,
+          "bank": 1
+        },
+        {
+          "text": "ប្រណាំងទូក-ង · សូមស្វាគមន៍",
+          "width": 25.1,
+          "height": 1.55,
+          "x": 1092.55,
+          "y": 2.07,
+          "z": 33.4476,
+          "bank": 1
+        },
+        {
+          "text": "ប្រណាំងទូក-ង · សូមស្វាគមន៍",
+          "width": 25.1,
+          "height": 1.55,
+          "x": 1117.65,
+          "y": 2.07,
+          "z": 33.4476,
+          "bank": 1
+        },
+        {
+          "text": "ប្រណាំងទូក-ង · សូមស្វាគមន៍",
+          "width": 25.1,
+          "height": 1.55,
+          "x": 1142.75,
+          "y": 2.07,
+          "z": 33.4476,
+          "bank": 1
+        },
+        {
+          "text": "អាជ្ញាកណ្តាល",
+          "width": 7,
+          "height": 0.7,
+          "x": 1190,
+          "y": 2.4,
+          "z": -31.854833333333332,
+          "bank": -1
+        },
+        {
+          "text": "ស្ពាន C247",
+          "width": 10,
+          "height": 1.1,
+          "x": 934.2111661024676,
+          "y": 4.8999999999999995,
+          "z": 1.9548662631444444,
+          "bank": 0
+        },
+        {
+          "text": "ស្ពាន ៣០/៤",
+          "width": 10,
+          "height": 1.1,
+          "x": 2378.8978507368324,
+          "y": 7.199999999999999,
+          "z": -0.3096358668232148,
+          "bank": 0
+        },
+        {
+          "text": "ចំណុចចាប់ផ្តើម",
+          "width": 7,
+          "height": 1.1,
+          "x": 2290,
+          "y": 7.7,
+          "z": -29.726999999999997,
+          "bank": -1
+        },
+        {
+          "text": "ចំណុចចាប់ផ្តើម",
+          "width": 7,
+          "height": 1.1,
+          "x": 2290,
+          "y": 7.7,
+          "z": 33.358999999999995,
+          "bank": 1
+        },
+        {
+          "text": "៣០០ ម៉ែត្រ",
+          "width": 5,
+          "height": 1.1,
+          "x": 1990,
+          "y": 7.7,
+          "z": -29.726999999999997,
+          "bank": -1
+        },
+        {
+          "text": "៣០០ ម៉ែត្រ",
+          "width": 5,
+          "height": 1.1,
+          "x": 1990,
+          "y": 7.7,
+          "z": 33.358999999999995,
+          "bank": 1
+        },
+        {
+          "text": "៦០០ ម៉ែត្រ",
+          "width": 5,
+          "height": 1.1,
+          "x": 1690,
+          "y": 7.7,
+          "z": -29.726999999999997,
+          "bank": -1
+        },
+        {
+          "text": "៦០០ ម៉ែត្រ",
+          "width": 5,
+          "height": 1.1,
+          "x": 1690,
+          "y": 7.7,
+          "z": 33.358999999999995,
+          "bank": 1
+        },
+        {
+          "text": "៩០០ ម៉ែត្រ",
+          "width": 5,
+          "height": 1.1,
+          "x": 1390,
+          "y": 7.7,
+          "z": -29.729666666666663,
+          "bank": -1
+        },
+        {
+          "text": "៩០០ ម៉ែត្រ",
+          "width": 5,
+          "height": 1.1,
+          "x": 1390,
+          "y": 7.7,
+          "z": 33.32966666666666,
+          "bank": 1
+        },
+        {
+          "text": "ទីបញ្ចប់",
+          "width": 5,
+          "height": 1.1,
+          "x": 1090,
+          "y": 7.7,
+          "z": -29.811999999999998,
+          "bank": -1
+        },
+        {
+          "text": "ទីបញ្ចប់",
+          "width": 5,
+          "height": 1.1,
+          "x": 1090,
+          "y": 7.7,
+          "z": 31.766,
+          "bank": 1
+        },
+        {
+          "text": "សូមស្វាគមន៍",
+          "width": 18,
+          "height": 2.4,
+          "x": 854,
+          "y": 5.4,
+          "z": -33.16812,
+          "bank": -1
+        },
+        {
+          "text": "ប្រណាំងទូក-ង",
+          "width": 15,
+          "height": 1.55,
+          "x": 892,
+          "y": 2.05,
+          "z": -31.69676,
+          "bank": -1
+        },
+        {
+          "text": "ពិធីបុណ្យអុំទូក",
+          "width": 18,
+          "height": 2.4,
+          "x": 968,
+          "y": 5.4,
+          "z": -30.7963,
+          "bank": -1
+        },
+        {
+          "text": "ប្រណាំងទូក-ង",
+          "width": 18,
+          "height": 2.4,
+          "x": 1196,
+          "y": 5.4,
+          "z": -30.73313333333333,
+          "bank": -1
+        },
+        {
+          "text": "អបអរសាទរ",
+          "width": 15,
+          "height": 1.55,
+          "x": 1234,
+          "y": 2.05,
+          "z": -30.72265,
+          "bank": -1
+        },
+        {
+          "text": "ពិធីបុណ្យអុំទូក",
+          "width": 15,
+          "height": 1.55,
+          "x": 1272,
+          "y": 2.05,
+          "z": -30.7122,
+          "bank": -1
+        },
+        {
+          "text": "សូមស្វាគមន៍",
+          "width": 18,
+          "height": 2.4,
+          "x": 1310,
+          "y": 5.4,
+          "z": -30.701500000000003,
+          "bank": -1
+        },
+        {
+          "text": "ប្រណាំងទូក-ង",
+          "width": 15,
+          "height": 1.55,
+          "x": 1348,
+          "y": 2.05,
+          "z": -30.69086666666667,
+          "bank": -1
+        },
+        {
+          "text": "អបអរសាទរ",
+          "width": 15,
+          "height": 1.55,
+          "x": 1386,
+          "y": 2.05,
+          "z": -30.680733333333333,
+          "bank": -1
+        },
+        {
+          "text": "ពិធីបុណ្យអុំទូក",
+          "width": 18,
+          "height": 2.4,
+          "x": 1424,
+          "y": 5.4,
+          "z": -30.677,
+          "bank": -1
+        },
+        {
+          "text": "សូមស្វាគមន៍",
+          "width": 15,
+          "height": 1.55,
+          "x": 1462,
+          "y": 2.05,
+          "z": -30.677,
+          "bank": -1
+        },
+        {
+          "text": "ប្រណាំងទូក-ង",
+          "width": 15,
+          "height": 1.55,
+          "x": 1500,
+          "y": 2.05,
+          "z": -30.677,
+          "bank": -1
+        },
+        {
+          "text": "អបអរសាទរ",
+          "width": 18,
+          "height": 2.4,
+          "x": 1538,
+          "y": 5.4,
+          "z": -30.677,
+          "bank": -1
+        },
+        {
+          "text": "ពិធីបុណ្យអុំទូក",
+          "width": 15,
+          "height": 1.55,
+          "x": 1576,
+          "y": 2.05,
+          "z": -30.677,
+          "bank": -1
+        },
+        {
+          "text": "សូមស្វាគមន៍",
+          "width": 15,
+          "height": 1.55,
+          "x": 1614,
+          "y": 2.05,
+          "z": -30.677,
+          "bank": -1
+        },
+        {
+          "text": "ប្រណាំងទូក-ង",
+          "width": 18,
+          "height": 2.4,
+          "x": 1652,
+          "y": 5.4,
+          "z": -30.677,
+          "bank": -1
+        },
+        {
+          "text": "អបអរសាទរ",
+          "width": 15,
+          "height": 1.55,
+          "x": 1690,
+          "y": 2.05,
+          "z": -30.677,
+          "bank": -1
+        },
+        {
+          "text": "ពិធីបុណ្យអុំទូក",
+          "width": 15,
+          "height": 1.55,
+          "x": 1728,
+          "y": 2.05,
+          "z": -30.677,
+          "bank": -1
+        },
+        {
+          "text": "សូមស្វាគមន៍",
+          "width": 18,
+          "height": 2.4,
+          "x": 1766,
+          "y": 5.4,
+          "z": -30.677,
+          "bank": -1
+        },
+        {
+          "text": "ប្រណាំងទូក-ង",
+          "width": 15,
+          "height": 1.55,
+          "x": 1804,
+          "y": 2.05,
+          "z": -30.677,
+          "bank": -1
+        },
+        {
+          "text": "អបអរសាទរ",
+          "width": 15,
+          "height": 1.55,
+          "x": 1842,
+          "y": 2.05,
+          "z": -30.677,
+          "bank": -1
+        },
+        {
+          "text": "ពិធីបុណ្យអុំទូក",
+          "width": 18,
+          "height": 2.4,
+          "x": 1880,
+          "y": 5.4,
+          "z": -30.677,
+          "bank": -1
+        },
+        {
+          "text": "សូមស្វាគមន៍",
+          "width": 15,
+          "height": 1.55,
+          "x": 1918,
+          "y": 2.05,
+          "z": -30.677,
+          "bank": -1
+        },
+        {
+          "text": "ប្រណាំងទូក-ង",
+          "width": 15,
+          "height": 1.55,
+          "x": 1956,
+          "y": 2.05,
+          "z": -30.677,
+          "bank": -1
+        },
+        {
+          "text": "អបអរសាទរ",
+          "width": 18,
+          "height": 2.4,
+          "x": 1994,
+          "y": 5.4,
+          "z": -30.677,
+          "bank": -1
+        },
+        {
+          "text": "ពិធីបុណ្យអុំទូក",
+          "width": 15,
+          "height": 1.55,
+          "x": 2032,
+          "y": 2.05,
+          "z": -30.677,
+          "bank": -1
+        },
+        {
+          "text": "សូមស្វាគមន៍",
+          "width": 15,
+          "height": 1.55,
+          "x": 2070,
+          "y": 2.05,
+          "z": -30.677,
+          "bank": -1
+        },
+        {
+          "text": "ប្រណាំងទូក-ង",
+          "width": 18,
+          "height": 2.4,
+          "x": 2108,
+          "y": 5.4,
+          "z": -30.677,
+          "bank": -1
+        },
+        {
+          "text": "អបអរសាទរ",
+          "width": 15,
+          "height": 1.55,
+          "x": 2146,
+          "y": 2.05,
+          "z": -30.677,
+          "bank": -1
+        },
+        {
+          "text": "ពិធីបុណ្យអុំទូក",
+          "width": 15,
+          "height": 1.55,
+          "x": 2184,
+          "y": 2.05,
+          "z": -30.677,
+          "bank": -1
+        },
+        {
+          "text": "សូមស្វាគមន៍",
+          "width": 18,
+          "height": 2.4,
+          "x": 2222,
+          "y": 5.4,
+          "z": -30.677,
+          "bank": -1
+        },
+        {
+          "text": "ប្រណាំងទូក-ង",
+          "width": 15,
+          "height": 1.55,
+          "x": 2260,
+          "y": 2.05,
+          "z": -30.677,
+          "bank": -1
+        },
+        {
+          "text": "អបអរសាទរ",
+          "width": 15,
+          "height": 1.55,
+          "x": 2298,
+          "y": 2.05,
+          "z": -30.677,
+          "bank": -1
+        },
+        {
+          "text": "ពិធីបុណ្យអុំទូក",
+          "width": 18,
+          "height": 2.4,
+          "x": 2336,
+          "y": 5.4,
+          "z": -30.677,
+          "bank": -1
+        },
+        {
+          "text": "ប្រណាំងទូក-ង",
+          "width": 15,
+          "height": 1.55,
+          "x": 2412,
+          "y": 2.05,
+          "z": -30.677,
+          "bank": -1
+        },
+        {
+          "text": "សូមស្វាគមន៍",
+          "width": 18,
+          "height": 2.4,
+          "x": 854,
+          "y": 5.4,
+          "z": 29.92236,
+          "bank": 1
+        },
+        {
+          "text": "ប្រណាំងទូក-ង",
+          "width": 15,
+          "height": 1.55,
+          "x": 892,
+          "y": 2.05,
+          "z": 30.37228,
+          "bank": 1
+        },
+        {
+          "text": "ពិធីបុណ្យអុំទូក",
+          "width": 18,
+          "height": 2.4,
+          "x": 968,
+          "y": 5.4,
+          "z": 31.271800000000002,
+          "bank": 1
+        },
+        {
+          "text": "ប្រណាំងទូក-ង",
+          "width": 18,
+          "height": 2.4,
+          "x": 1196,
+          "y": 5.4,
+          "z": 33.69533333333334,
+          "bank": 1
+        },
+        {
+          "text": "អបអរសាទរ",
+          "width": 15,
+          "height": 1.55,
+          "x": 1234,
+          "y": 2.05,
+          "z": 33.822449999999996,
+          "bank": 1
+        },
+        {
+          "text": "ពិធីបុណ្យអុំទូក",
+          "width": 15,
+          "height": 1.55,
+          "x": 1272,
+          "y": 2.05,
+          "z": 33.9336,
+          "bank": 1
+        },
+        {
+          "text": "សូមស្វាគមន៍",
+          "width": 18,
+          "height": 2.4,
+          "x": 1310,
+          "y": 5.4,
+          "z": 34.045,
+          "bank": 1
+        },
+        {
+          "text": "ប្រណាំងទូក-ង",
+          "width": 15,
+          "height": 1.55,
+          "x": 1348,
+          "y": 2.05,
+          "z": 34.15646666666667,
+          "bank": 1
+        },
+        {
+          "text": "អបអរសាទរ",
+          "width": 15,
+          "height": 1.55,
+          "x": 1386,
+          "y": 2.05,
+          "z": 34.26793333333333,
+          "bank": 1
+        },
+        {
+          "text": "ពិធីបុណ្យអុំទូក",
+          "width": 18,
+          "height": 2.4,
+          "x": 1424,
+          "y": 5.4,
+          "z": 34.309,
+          "bank": 1
+        },
+        {
+          "text": "សូមស្វាគមន៍",
+          "width": 15,
+          "height": 1.55,
+          "x": 1462,
+          "y": 2.05,
+          "z": 34.309,
+          "bank": 1
+        },
+        {
+          "text": "ប្រណាំងទូក-ង",
+          "width": 15,
+          "height": 1.55,
+          "x": 1500,
+          "y": 2.05,
+          "z": 34.309,
+          "bank": 1
+        },
+        {
+          "text": "អបអរសាទរ",
+          "width": 18,
+          "height": 2.4,
+          "x": 1538,
+          "y": 5.4,
+          "z": 34.309,
+          "bank": 1
+        },
+        {
+          "text": "ពិធីបុណ្យអុំទូក",
+          "width": 15,
+          "height": 1.55,
+          "x": 1576,
+          "y": 2.05,
+          "z": 34.309,
+          "bank": 1
+        },
+        {
+          "text": "សូមស្វាគមន៍",
+          "width": 15,
+          "height": 1.55,
+          "x": 1614,
+          "y": 2.05,
+          "z": 34.309,
+          "bank": 1
+        },
+        {
+          "text": "ប្រណាំងទូក-ង",
+          "width": 18,
+          "height": 2.4,
+          "x": 1652,
+          "y": 5.4,
+          "z": 34.309,
+          "bank": 1
+        },
+        {
+          "text": "អបអរសាទរ",
+          "width": 15,
+          "height": 1.55,
+          "x": 1690,
+          "y": 2.05,
+          "z": 34.309,
+          "bank": 1
+        },
+        {
+          "text": "ពិធីបុណ្យអុំទូក",
+          "width": 15,
+          "height": 1.55,
+          "x": 1728,
+          "y": 2.05,
+          "z": 34.309,
+          "bank": 1
+        },
+        {
+          "text": "សូមស្វាគមន៍",
+          "width": 18,
+          "height": 2.4,
+          "x": 1766,
+          "y": 5.4,
+          "z": 34.309,
+          "bank": 1
+        },
+        {
+          "text": "ប្រណាំងទូក-ង",
+          "width": 15,
+          "height": 1.55,
+          "x": 1804,
+          "y": 2.05,
+          "z": 34.309,
+          "bank": 1
+        },
+        {
+          "text": "អបអរសាទរ",
+          "width": 15,
+          "height": 1.55,
+          "x": 1842,
+          "y": 2.05,
+          "z": 34.309,
+          "bank": 1
+        },
+        {
+          "text": "ពិធីបុណ្យអុំទូក",
+          "width": 18,
+          "height": 2.4,
+          "x": 1880,
+          "y": 5.4,
+          "z": 34.309,
+          "bank": 1
+        },
+        {
+          "text": "សូមស្វាគមន៍",
+          "width": 15,
+          "height": 1.55,
+          "x": 1918,
+          "y": 2.05,
+          "z": 34.309,
+          "bank": 1
+        },
+        {
+          "text": "ប្រណាំងទូក-ង",
+          "width": 15,
+          "height": 1.55,
+          "x": 1956,
+          "y": 2.05,
+          "z": 34.309,
+          "bank": 1
+        },
+        {
+          "text": "អបអរសាទរ",
+          "width": 18,
+          "height": 2.4,
+          "x": 1994,
+          "y": 5.4,
+          "z": 34.309,
+          "bank": 1
+        },
+        {
+          "text": "ពិធីបុណ្យអុំទូក",
+          "width": 15,
+          "height": 1.55,
+          "x": 2032,
+          "y": 2.05,
+          "z": 34.309,
+          "bank": 1
+        },
+        {
+          "text": "សូមស្វាគមន៍",
+          "width": 15,
+          "height": 1.55,
+          "x": 2070,
+          "y": 2.05,
+          "z": 34.309,
+          "bank": 1
+        },
+        {
+          "text": "ប្រណាំងទូក-ង",
+          "width": 18,
+          "height": 2.4,
+          "x": 2108,
+          "y": 5.4,
+          "z": 34.309,
+          "bank": 1
+        },
+        {
+          "text": "អបអរសាទរ",
+          "width": 15,
+          "height": 1.55,
+          "x": 2146,
+          "y": 2.05,
+          "z": 34.309,
+          "bank": 1
+        },
+        {
+          "text": "ពិធីបុណ្យអុំទូក",
+          "width": 15,
+          "height": 1.55,
+          "x": 2184,
+          "y": 2.05,
+          "z": 34.309,
+          "bank": 1
+        },
+        {
+          "text": "សូមស្វាគមន៍",
+          "width": 18,
+          "height": 2.4,
+          "x": 2222,
+          "y": 5.4,
+          "z": 34.309,
+          "bank": 1
+        },
+        {
+          "text": "ប្រណាំងទូក-ង",
+          "width": 15,
+          "height": 1.55,
+          "x": 2260,
+          "y": 2.05,
+          "z": 34.309,
+          "bank": 1
+        },
+        {
+          "text": "អបអរសាទរ",
+          "width": 15,
+          "height": 1.55,
+          "x": 2298,
+          "y": 2.05,
+          "z": 34.309,
+          "bank": 1
+        },
+        {
+          "text": "ពិធីបុណ្យអុំទូក",
+          "width": 18,
+          "height": 2.4,
+          "x": 2336,
+          "y": 5.4,
+          "z": 34.309,
+          "bank": 1
+        },
+        {
+          "text": "ប្រណាំងទូក-ង",
+          "width": 15,
+          "height": 1.55,
+          "x": 2412,
+          "y": 2.05,
+          "z": 34.309,
+          "bank": 1
+        }
+      ],
+      "railHeightM": 1.55,
+      "overheadHeightM": 2.4
+    },
+    "bridges": {
+      "C247": {
+        "x": 940,
+        "yaw": 0.32567183490548884
+      },
+      "30/4": {
+        "x": 2385,
+        "yaw": -0.05069861735281925,
+        "beforeStartM": 95
+      },
+      "placement": "owner-corrected game placement; OSM angles retained"
+    },
+    "mainStand": {
+      "bank": "right in race direction",
+      "lengthM": 128,
+      "tiers": 8,
+      "roofHeightM": 16,
+      "roof": "shallow double pitch, pale green-grey sheet metal",
+      "reference": "https://baosoctrang.org.vn/van-hoa-the-thao-du-lich/202411/hao-huc-cho-ngay-khai-hoi-67c01d9/",
+      "measured": false
+    },
+    "flotsam": {
+      "hyacinthPatches": 32,
+      "fallenBananaStems": 8,
+      "drawCalls": 2,
+      "placement": "near banks, outside the racing lanes",
+      "flowMps": 0.24,
+      "samples": [
+        {
+          "id": 0,
+          "x": 839.9760000000006,
+          "y": 0.0023714292158639326,
+          "z": -25.331825581395346,
+          "yaw": 0.0011999712002073596,
+          "scale": 0.7
+        },
+        {
+          "id": 1,
+          "x": 877.6859999999997,
+          "y": 0.022223206220885566,
+          "z": 23.556273482418604,
+          "yaw": 2.4947893871688493,
+          "scale": 0.8799999999999999
+        },
+        {
+          "id": 2,
+          "x": 915.3960000000006,
+          "y": 0.021643069913991383,
+          "z": -25.103314909534877,
+          "yaw": 4.9104238316007445,
+          "scale": 1.06
+        },
+        {
+          "id": 32,
+          "x": 2046.696,
+          "y": 0.01570180762962012,
+          "z": -24.89067441860465,
+          "yaw": 77.17613974190687,
+          "scale": 1.12
+        }
+      ]
+    }
+  },
+  "menuMusic": {
+    "active": true,
+    "unlocked": true,
+    "playing": true,
+    "starts": 1,
+    "time": 0.510536,
+    "loop": true,
+    "volume": 0.30400000000000005,
+    "source": "http://127.0.0.1:4175/Tuk-Ngo/assets/race-audio/menu/festival.mp3"
+  },
+  "countdown": {
+    "phase": "countdown",
+    "difficulty": "normal",
+    "pace": "steady",
+    "countdown": 2.9749999999999988,
+    "elapsed": 0,
+    "distances": [
+      0,
+      0
+    ],
+    "speeds": [
+      0,
+      0
+    ],
+    "finishTimes": [
+      null,
+      null
+    ],
+    "beatPhase": 0,
+    "aiPhase": 0.17,
+    "stamina": 100,
+    "power": 0,
+    "cohesion": 0.72,
+    "combo": 0,
+    "maxCombo": 0,
+    "perfect": 0,
+    "good": 0,
+    "missed": 0,
+    "lastResolved": 0,
+    "feedback": "Chạm khi vạch vào vùng sáng",
+    "feedbackAt": -10,
+    "result": null,
+    "pauseReason": "",
+    "runId": 1,
+    "surgeCharge": 0,
+    "surgeRemaining": 0,
+    "desync": 0,
+    "lastSpamAt": -10,
+    "slipstream": false,
+    "lastJudgement": null,
+    "lastTiming": "wait",
+    "lastStrokeBeat": -1,
+    "aiStamina": 100,
+    "aiSurgeCharge": 0,
+    "aiSurgeRemaining": 0,
+    "introRemaining": 0,
+    "introElapsed": 9.999999999999753,
+    "strokeAvailable": false,
+    "raceStage": "start",
+    "stageLabel": "Xuất phát bùng nổ",
+    "cadence": 96,
+    "aiRaceStage": "start",
+    "aiStageLabel": "Xuất phát bùng nổ",
+    "aiCadence": 96,
+    "aiSurgeActive": false,
+    "judgement": null,
+    "surgeActive": false,
+    "canSurge": false,
+    "desyncIntensity": 0,
+    "rhythmProgress": 0.5,
+    "accuracy": 0,
+    "gap": 0,
+    "strength": 0
+  },
+  "input": {
+    "acceptedBeforeRelease": true,
+    "dispatchToObservedMs": 67.82,
+    "judgement": "PERFECT"
+  },
+  "keyboardAcceptedBeforeRelease": true,
+  "raceViewports": [
+    [
+      "vi",
+      1024,
+      768
+    ],
+    [
+      "vi",
+      768,
+      1024
+    ],
+    [
+      "vi",
+      1180,
+      430
+    ],
+    [
+      "vi",
+      390,
+      844
+    ],
+    [
+      "km",
+      1024,
+      768
+    ],
+    [
+      "km",
+      768,
+      1024
+    ],
+    [
+      "km",
+      1180,
+      430
+    ],
+    [
+      "km",
+      390,
+      844
+    ]
+  ],
+  "musicReturned": {
+    "active": true,
+    "unlocked": true,
+    "playing": true,
+    "starts": 2,
+    "time": 0.113009,
+    "loop": true,
+    "volume": 0.30400000000000005,
+    "source": "http://127.0.0.1:4175/Tuk-Ngo/assets/race-audio/menu/festival.mp3"
+  },
+  "skipIntro": true,
+  "errors": [],
+  "musicResponses": [
+    {
+      "url": "http://127.0.0.1:4175/Tuk-Ngo/assets/race-audio/menu/festival.mp3",
+      "status": 206
+    }
+  ]
+}
