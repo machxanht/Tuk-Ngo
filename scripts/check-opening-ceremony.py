@@ -42,7 +42,8 @@ with sync_playwright() as p:
   report['shots'].append(page.evaluate('''()=>{const a=document.querySelector('[data-testid=art-stage]').boatPreview;return {name:a.ceremony.stats.cameraShot,seconds:a.ceremony.stats.cameraSeconds,position:a.camera.position.toArray(),target:a.controls.target.toArray(),calls:a.renderer.info.render.calls,triangles:a.renderer.info.render.triangles};}'''))
  for w,h in [(768,1024),(1180,430),(390,844)]:
   page.set_viewport_size({'width':w,'height':h});page.wait_for_timeout(180);assert page.evaluate('document.documentElement.scrollWidth<=innerWidth');assert abs(page.locator('.game-stage').bounding_box()['height']-h)<1
-  box=page.get_by_role('button',name='Hiện menu',exact=True).bounding_box();assert box['height']>=44 and box['x']>=0 and box['x']+box['width']<=w
+  # CSS reports 44px; a transitioning translateY can yield 43.999998px in DOMRect.
+  box=page.get_by_role('button',name='Hiện menu',exact=True).bounding_box();assert box['height']>=44-.01 and box['x']>=0 and box['x']+box['width']<=w+.01
   page.screenshot(path=str(out/f'cinema-{w}x{h}.png'));page.get_by_role('button',name='Hiện menu',exact=True).tap();assert page.get_by_test_id('main-menu').is_visible();page.screenshot(path=str(out/f'menu-{w}x{h}.png'));page.get_by_role('button',name='Ẩn menu',exact=True).tap()
  page.get_by_role('button',name='Hiện menu',exact=True).tap();page.set_viewport_size({'width':1180,'height':820})
  page.get_by_role('button',name='Đua nhanh · 2 ghe',exact=True).tap();page.get_by_role('button',name='Bắt đầu đua nhanh',exact=True).tap();page.get_by_role('button',name='Bỏ qua giới thiệu',exact=True).tap();page.wait_for_function(api+".game.state.phase==='racing'")

@@ -4,24 +4,29 @@
   "ceremony": {
     "boats": 61,
     "athletes": 3050,
-    "crewTriangles": 610,
+    "crewTriangles": 667,
     "capTriangles": 69,
     "saluteVariants": 2,
     "saluteFrames": 24,
     "handheldCaps": 3050,
     "capColors": 8,
-    "formation": "dense raft at the main grandstand",
+    "hair": {
+      "vertices": 64,
+      "styles": 4,
+      "strategy": "painted anatomical scalp plus raised source hair shell"
+    },
+    "formation": "irregular tightly packed raft at the main grandstand",
     "reference": "https://www.youtube.com/watch?v=hNSDABjJ6GU",
     "drawCalls": 6,
     "source": "MakeHuman/MPFB CC0, existing assembled athlete; derived seated hat salute",
     "cameraShot": "fleet",
-    "cameraSeconds": 0.081
+    "cameraSeconds": 0.0815
   },
   "world": {
     "crowd": {
       "version": 21,
-      "people": 59552,
-      "placed": 59552,
+      "people": 60123,
+      "placed": 60123,
       "variantCount": 11,
       "activities": [
         "idle",
@@ -33,9 +38,9 @@
         "seated"
       ],
       "activityCounts": {
-        "clap": 10211,
-        "wave": 10144,
-        "cheer": 7603,
+        "clap": 10401,
+        "wave": 10331,
+        "cheer": 7797,
         "idle": 18203,
         "indicate": 5755,
         "seated": 1926,
@@ -58,8 +63,8 @@
       "motion": "GPU bone palette interpolation; source idle/wave/walk + authored clap/cheer/indicate/seated",
       "randomization": "independent salted placement id and coordinates, clothes/hair/skin/face proportions/age styling",
       "peoplePerBank": [
-        30297,
-        29255
+        30589,
+        29534
       ],
       "outfits": {
         "independentTrousers": 8,
@@ -69,34 +74,34 @@
       },
       "demographicCounts": {
         "age": {
-          "adult": 41634,
+          "adult": 42205,
           "adolescent": 4732,
           "older adult": 13186
         },
         "gender": {
-          "men": 37877,
-          "women": 21675
+          "men": 38242,
+          "women": 21881
         },
         "model": {
-          "worker-man": 5385,
-          "casual-woman": 5406,
-          "suit-man": 5510,
-          "punk-man": 5305,
-          "farmer-man": 5396,
-          "suit-woman": 5487,
-          "beach-man": 5442,
-          "hoodie-man": 5583,
-          "formal-woman": 5381,
-          "casual-man": 5256,
-          "worker-woman": 5401
+          "worker-man": 5434,
+          "casual-woman": 5462,
+          "suit-man": 5553,
+          "punk-man": 5351,
+          "farmer-man": 5446,
+          "suit-woman": 5539,
+          "beach-man": 5502,
+          "hoodie-man": 5646,
+          "formal-woman": 5431,
+          "casual-man": 5310,
+          "worker-woman": 5449
         }
       },
-      "visibleTriangles": 2581285,
-      "lastPackMs": 14.900000005960464
+      "visibleTriangles": 2582802,
+      "lastPackMs": 15.899999991059303
     },
     "reference": "OWNER_VTV10_VIDEO_2025_REAL_PHOTOS_AND_OSM_LAYOUT",
     "dimensions": "APPROXIMATE_GAME_SCALE",
-    "spectators": 59552,
+    "spectators": 60123,
     "seats": 1916,
     "trees": 808,
     "houses": 397,
@@ -194,103 +199,175 @@
         {
           "id": 148,
           "type": "sedan",
-          "x": 1012.3680935052125,
+          "x": 1012.3668515638574,
           "y": 1.24,
-          "z": -71.63382904017351,
-          "yaw": 3.1413093202640465
+          "z": -71.6338293920569,
+          "yaw": 3.1413093202639755
         },
         {
           "id": 156,
           "type": "sedan",
-          "x": 1105.3607389513436,
+          "x": 1105.3594970099884,
           "y": 1.24,
-          "z": -71.60800620787265,
+          "z": -71.6080065307774,
           "yaw": 3.141332653595669
         },
         {
           "id": 159,
           "type": "sedan",
-          "x": 1140.438932157027,
+          "x": 1140.4376902156728,
           "y": 1.24,
-          "z": -71.59887563588883,
+          "z": -71.59887598777222,
           "yaw": 3.1413093202640465
         },
         {
           "id": 466,
           "type": "sedan",
-          "x": 990.7755468711912,
+          "x": 990.776729370712,
           "y": 1.24,
-          "z": -63.383618599265546,
-          "yaw": 0.43208691379025416
+          "z": -63.38416390043429,
+          "yaw": 0.4320733372444896
         },
         {
           "id": 491,
           "type": "sedan",
-          "x": 1280.4789607697949,
+          "x": 1280.4801432693157,
           "y": 1.24,
-          "z": -44.359864294448556,
-          "yaw": -0.00028333332578226556
+          "z": -44.35986395940702,
+          "yaw": -0.00028333332574673843
         },
         {
           "id": 797,
           "type": "sedan",
-          "x": 1118.0268226400813,
+          "x": 1118.0254300206143,
           "y": 1.24,
-          "z": 52.69783758005857,
-          "yaw": 3.1297532068090756
+          "z": 52.697821091444084,
+          "yaw": 3.129753206809111
         },
         {
           "id": 799,
           "type": "sedan",
-          "x": 1140.7343915007305,
+          "x": 1140.7329988812635,
           "y": 1.24,
-          "z": 52.96307954121339,
+          "z": 52.963069908928745,
           "yaw": 3.1346760972183625
         },
         {
           "id": 1119,
           "type": "sedan",
-          "x": 1141.3813256503372,
+          "x": 1141.3826949301783,
           "y": 1.24,
-          "z": 56.1675541690815,
+          "z": 56.16756363993373,
           "yaw": -0.006916556371395293
         },
         {
           "id": 137,
           "type": "pickup",
-          "x": 887.0637871472991,
+          "x": 887.062545205943,
           "y": 1.24,
-          "z": -48.73789016165658,
-          "yaw": 3.1028919863724065
+          "z": -48.737938249625884,
+          "yaw": 3.102891986372371
         },
         {
           "id": 458,
           "type": "pickup",
-          "x": 898.0344133556646,
+          "x": 898.0355958551854,
           "y": 1.24,
-          "z": -45.113107514868666,
+          "z": -45.113061728487224,
           "yaw": -0.03870066721742196
         },
         {
           "id": 1126,
           "type": "pickup",
-          "x": 1221.9862389060772,
+          "x": 1221.9876081859184,
           "y": 1.24,
-          "z": 51.2625296773813,
-          "yaw": 0.08555094777292195
+          "z": 51.26241225175614,
+          "yaw": 0.08554400319731163
         },
         {
           "id": 136,
           "type": "scooter",
-          "x": 874.9544667533528,
+          "x": 874.9532248119976,
           "y": 1.24,
-          "z": -51.20676304731018,
+          "z": -51.20681113527945,
           "yaw": 3.102891986372371
         }
       ]
     },
     "spectatorSpacingM": 0.56,
     "fullCourseCrowdRows": 10,
+    "finishWaterCrowd": {
+      "count": 571,
+      "banks": 2,
+      "raceProgressM": [
+        1000,
+        1200
+      ],
+      "waterY": 0.28,
+      "waistDepthM": 0.9,
+      "activities": [
+        "wave",
+        "cheer",
+        "clap"
+      ],
+      "placement": "both shallow banks, clear of the racing lanes",
+      "samples": [
+        {
+          "x": 1099.5676410376327,
+          "z": -24.04748145499235,
+          "activity": "clap",
+          "submergedHeight": 0.9
+        },
+        {
+          "x": 1232.8234866373673,
+          "z": -24.27507775017988,
+          "activity": "clap",
+          "submergedHeight": 0.9
+        },
+        {
+          "x": 1170.0757840437097,
+          "z": -25.526608419929047,
+          "activity": "wave",
+          "submergedHeight": 0.9
+        },
+        {
+          "x": 1108.6247206585945,
+          "z": -26.963629107998518,
+          "activity": "clap",
+          "submergedHeight": 0.9
+        },
+        {
+          "x": 1235.1135401694069,
+          "z": -27.008638371247358,
+          "activity": "clap",
+          "submergedHeight": 0.9
+        },
+        {
+          "x": 1202.6740736224663,
+          "z": 26.825170100878417,
+          "activity": "cheer",
+          "submergedHeight": 0.9
+        },
+        {
+          "x": 1143.2456837214286,
+          "z": 27.92234280870366,
+          "activity": "cheer",
+          "submergedHeight": 0.9
+        },
+        {
+          "x": 1277.9502597831843,
+          "z": 28.61580971457133,
+          "activity": "cheer",
+          "submergedHeight": 0.9
+        },
+        {
+          "x": 1220.2530354566375,
+          "z": 30.024745590300505,
+          "activity": "cheer",
+          "submergedHeight": 0.9
+        }
+      ]
+    },
     "banners": {
       "count": 97,
       "textureCount": 20,
@@ -1237,10 +1314,16 @@
     }
   },
   "pinkCanopyVertices": 0,
+  "cinema": {
+    "bothLanguages": true,
+    "escapeRestores": true,
+    "musicAndCameraContinue": true,
+    "fullHeight": true
+  },
   "shots": [
     {
       "name": "fleet",
-      "seconds": 1.2558000000000011,
+      "seconds": 2.7374999999999994,
       "position": [
         1185,
         70,
@@ -1251,12 +1334,12 @@
         2,
         0
       ],
-      "calls": 147,
-      "triangles": 6560885
+      "calls": 149,
+      "triangles": 6766864
     },
     {
       "name": "grandstand",
-      "seconds": 5.974300000000006,
+      "seconds": 5.987799999999997,
       "position": [
         1125,
         20,
@@ -1267,12 +1350,12 @@
         8,
         -42.012
       ],
-      "calls": 155,
-      "triangles": 6615889
+      "calls": 156,
+      "triangles": 6818791
     },
     {
       "name": "right-crowd",
-      "seconds": 11.443299999999999,
+      "seconds": 11.425199999999995,
       "position": [
         1102,
         6,
@@ -1283,28 +1366,28 @@
         3,
         -33.01044
       ],
-      "calls": 155,
-      "triangles": 6623534
+      "calls": 157,
+      "triangles": 6826002
     },
     {
       "name": "athletes",
-      "seconds": 16.97459999999999,
+      "seconds": 17.019099999999987,
       "position": [
-        1081.7312433222735,
+        1082.5661956917556,
         4.7,
-        -7.023772866968853
+        -22.572702350686498
       ],
       "target": [
-        1089.7312433222735,
+        1090.5661956917556,
         1.25,
-        -0.023772866968853026
+        -15.572702350686498
       ],
-      "calls": 149,
-      "triangles": 6561538
+      "calls": 158,
+      "triangles": 6785404
     },
     {
       "name": "left-crowd",
-      "seconds": 22.412299999999995,
+      "seconds": 22.42509999999999,
       "position": [
         1044,
         7.5,
@@ -1315,12 +1398,12 @@
         3,
         35.232
       ],
-      "calls": 155,
-      "triangles": 6540338
+      "calls": 156,
+      "triangles": 6742761
     },
     {
       "name": "aerial",
-      "seconds": 27.974599999999974,
+      "seconds": 28.01890000000001,
       "position": [
         1105,
         126,
@@ -1331,10 +1414,11 @@
         1,
         0
       ],
-      "calls": 149,
-      "triangles": 6575026
+      "calls": 150,
+      "triangles": 6783390
     }
   ],
+  "wadingViews": "paused diagnostic camera, pause dialog hidden; actual in-world crowd and water",
   "errors": [],
   "passed": true
 }
