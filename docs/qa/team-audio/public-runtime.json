@@ -1,0 +1,70 @@
+{
+  "audio": {
+    "active": false,
+    "ambience": null,
+    "audioTime": 27.361814058956917,
+    "cached": 1,
+    "context": "running",
+    "cues": [],
+    "decoded": 1,
+    "disposed": false,
+    "drumBpm": 0,
+    "drumHits": 0,
+    "drumKinds": {
+      "drum-low": 0,
+      "drum-open": 0,
+      "drum-rim": 0
+    },
+    "drumLoops": 0,
+    "errors": [],
+    "groovesPlayed": [],
+    "khmerClips": 0,
+    "mix": {
+      "crowd": true,
+      "drums": true,
+      "enabled": true,
+      "khmer": true,
+      "voice": true,
+      "volume": 0.8,
+      "whistle": true
+    },
+    "origin": "broadcast-vi-ai-km",
+    "outputRms": 0,
+    "played": [
+      {
+        "at": 0.7427210884353742,
+        "key": "supplied-name-can_tho-10-vi",
+        "kind": "name",
+        "match": [],
+        "registrationId": "can_tho-10",
+        "teamId": "can_tho-10"
+      }
+    ],
+    "previewing": false,
+    "queued": [],
+    "sourceVideo": "crZF3hghbgQ",
+    "sources": 0,
+    "sourcesByChannel": {
+      "crowd": 0,
+      "drums": 0,
+      "khmer": 0,
+      "voice": 0,
+      "whistle": 0
+    },
+    "speaking": false,
+    "strongWhistles": 0,
+    "teams": [],
+    "voiceClips": 1,
+    "whistleBlows": 0
+  },
+  "nameRequests": [
+    "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/team-names/vi/can_tho-10.mp3?clip=60ed253ae89e"
+  ],
+  "url": "https://machxanht.github.io/Tuk-Ngo/",
+  "viewport": {
+    "height": 768,
+    "overflow": false,
+    "width": 1024
+  },
+  "browserWarnings": []
+}

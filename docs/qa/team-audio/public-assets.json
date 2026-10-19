@@ -1,0 +1,393 @@
+{
+  "checkedAt": "2026-10-19T22:29:16.195693+00:00",
+  "url": "https://machxanht.github.io/Tuk-Ngo/",
+  "sourceCommit": "c325bb8",
+  "pagesCommit": "c4e87c22f971688b454ce5bcacb1479ab2ae6984",
+  "actionId": 39334974238,
+  "actionConclusion": "success",
+  "manifestMatches": true,
+  "files": [
+    {
+      "key": "supplied-name-can_tho-36-vi",
+      "status": 200,
+      "bytes": 28533,
+      "sha256": "2e75c1acf8f33c429a80e6268d1b9f2ce9226ca0965521b56453c3f528c2f3e7",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-33-vi",
+      "status": 200,
+      "bytes": 15021,
+      "sha256": "00cb7fb17cea8ffec5e47c898d92d931e9273b1b0163ebef72072a7a20ba9867",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-13-vi",
+      "status": 200,
+      "bytes": 15309,
+      "sha256": "c4b1c53014d74e1ae7446f348084539247b37ae0a0abb82b7de8c00f4cc28c1e",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-02-vi",
+      "status": 200,
+      "bytes": 20061,
+      "sha256": "217e9f5e03efe9088480000d6fd041bd2c4b48c8d0eff1fac83c39c98cacc14b",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-06-vi",
+      "status": 200,
+      "bytes": 14397,
+      "sha256": "0ab88e3c7be6a6a114de40d3611b8baaf00fe5e7674e5a05a2d9d93a4c09e3d9",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-14-vi",
+      "status": 200,
+      "bytes": 13413,
+      "sha256": "9683a7aa96f7a178f2e75077ee06ed60fa7dc15bd2fa252aa44f0b6d92e69138",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-47-vi",
+      "status": 200,
+      "bytes": 14397,
+      "sha256": "f9b0bb99a3ffaa9de889cbb57b9f92b7b61fd79e0674b46f5809f3ddad95d32e",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-37-vi",
+      "status": 200,
+      "bytes": 12357,
+      "sha256": "bbc3c66da7d358efa96c8fecc99ced2862f88902fab11e775353d0087c4da54d",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-05-vi",
+      "status": 200,
+      "bytes": 11613,
+      "sha256": "060734beaf6bcfcdab3f10aeb91d24e653a2c4d3e207052df15523ad0e769b88",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-21-vi",
+      "status": 200,
+      "bytes": 17037,
+      "sha256": "c5617e5f85883ab009b4b0215810cff919bc64bfc6490635a0268236f1a717fc",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-46-vi",
+      "status": 200,
+      "bytes": 10845,
+      "sha256": "517ad5a5b4f18fcd657bdc95854f93a452b96b34a14d9022d726d8b092ba679b",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-39-vi",
+      "status": 200,
+      "bytes": 17229,
+      "sha256": "c58e5613886bb3d411fb53a3b8f5201f362397c38b8c5e924ccc76df6b1b573b",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-30-vi",
+      "status": 200,
+      "bytes": 12573,
+      "sha256": "7cc1098648906b5bad659bd28f67905171d0f6825c7b342bf6474e16b5e65e2c",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-ca_mau-03-vi",
+      "status": 200,
+      "bytes": 12261,
+      "sha256": "b63f55d9bedaba86feed907e0156ecc51983a4ab569a0bc0ddb32dd572acfe83",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-34-vi",
+      "status": 200,
+      "bytes": 17517,
+      "sha256": "73fd4911c8ff807e551bdff85b3035527a4e14b9d0d62e10114f18a4e10baafb",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-17-vi",
+      "status": 200,
+      "bytes": 21573,
+      "sha256": "205557decbb7f7dd535414182f42fbcdf0fbfd44ff63063d7c3c0f4a80130474",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-35-vi",
+      "status": 200,
+      "bytes": 12189,
+      "sha256": "a0d51c661e0936aa0793fdec6e642a582131d378424ab95bf9a50ff44fe3530a",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-43-vi",
+      "status": 200,
+      "bytes": 13389,
+      "sha256": "dcfaf7bb2f73932f30361ba04eb85708136f3675f481ffd2a65d58091331cb3c",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-41-vi",
+      "status": 200,
+      "bytes": 13533,
+      "sha256": "e1175ea994623f642510fa75a1739c9376c827c79b7bf194aa92091985c08516",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-20-vi",
+      "status": 200,
+      "bytes": 19197,
+      "sha256": "42c3b0ece46cb76c7ede6a335d0953d14143de8b219d2ebc886550c865ef5487",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-ca_mau-11-vi",
+      "status": 200,
+      "bytes": 9549,
+      "sha256": "dab0c0e7ce84351b560bab25caa5c5abc863985df3d0456d40f1bf47af8f4d2b",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-ca_mau-12-vi",
+      "status": 200,
+      "bytes": 14877,
+      "sha256": "0b0845e22b14732ee7f8d93957f50284e74a785be9de9da2201a6f3e695ee78e",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-ca_mau-05-vi",
+      "status": 200,
+      "bytes": 12573,
+      "sha256": "a686e6b38454de9d14f51eda8755f71cebeb560ae4a8495bbc2de8373342643e",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-48-vi",
+      "status": 200,
+      "bytes": 9069,
+      "sha256": "83afde17bb62c7daa8f4591863e5bd560f8836ffaa0b8779c55525732c5a3a3f",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-12-vi",
+      "status": 200,
+      "bytes": 12357,
+      "sha256": "b334d8e6510a1ff48189f71f3fe9fc35186e2233b8315791f808d0843d3a37a4",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-23-vi",
+      "status": 200,
+      "bytes": 12813,
+      "sha256": "0b4ba1a408dff32022daccf3776da1f1763fbd643f477b836fb976e8b121e651",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-16-vi",
+      "status": 200,
+      "bytes": 16413,
+      "sha256": "bbe61b713ce53ae223ddb2fb5fc353ed0afc8c72e6bd16bf957b3c4b2467d134",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-ca_mau-02-vi",
+      "status": 200,
+      "bytes": 10701,
+      "sha256": "14d078fe565a0ab5cc54c4bbfa7025a623bfcb6963cb65889cf85ec8b36231a1",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-27-vi",
+      "status": 200,
+      "bytes": 11661,
+      "sha256": "31764bf725667e74ea0078771ce530386e5a5387402624407c2c581e64a8326c",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-45-vi",
+      "status": 200,
+      "bytes": 8973,
+      "sha256": "effe2cd36c3e0c4edbac9e413d35725cac47cae1f2a5d327176a84f45f6daf35",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-03-vi",
+      "status": 200,
+      "bytes": 13725,
+      "sha256": "93a81d47088d0092dd2e3c5b6d69b0f58d28b2308f9c1ed682a12879120a0903",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-19-vi",
+      "status": 200,
+      "bytes": 13437,
+      "sha256": "3a1a5a03b319e417ac0f6da3b2cbb9c388ba717aac5aa9b243cd87ea80dc34b9",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-28-vi",
+      "status": 200,
+      "bytes": 12285,
+      "sha256": "d0d500221a44e30426a7255b3425d74e7280b488329dc92cd939d8bf4ce9fd3f",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-10-vi",
+      "status": 200,
+      "bytes": 13077,
+      "sha256": "60ed253ae89e57072fe8ccf8a15c9e3fd554f2e2ff51ee3603a66967fb6f2b3b",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-42-vi",
+      "status": 200,
+      "bytes": 16989,
+      "sha256": "3b863a3d40bb1574d117bc6accbe8c01d99abe2a837816a4a480c086308e7e1b",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-22-vi",
+      "status": 200,
+      "bytes": 11565,
+      "sha256": "4c0250f8a38bbbd6540be18921c9dda796db2455a0519bf994d8fbce377df921",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-29-vi",
+      "status": 200,
+      "bytes": 10845,
+      "sha256": "0b727fbaf65dd31735e9b073ee5160e4d92034c6b428c3f6c634e2a52f2d2851",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-ca_mau-01-vi",
+      "status": 200,
+      "bytes": 14589,
+      "sha256": "b13027bdf76162a6044aceb01b30ca8dc49cfdecc59f8ba5cd517a31bb4ddf86",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-38-vi",
+      "status": 200,
+      "bytes": 16221,
+      "sha256": "2c419233aab80c7047040c2fc46b77dbb1ca8d9cdc307653fa99128e3d1dc256",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-25-vi",
+      "status": 200,
+      "bytes": 13101,
+      "sha256": "cedfddff4d85bc62b239961bfec298dfc3615d4f5f7bfe614b887f5b034a3c08",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-08-vi",
+      "status": 200,
+      "bytes": 9453,
+      "sha256": "1b28370b4e0501e78e879ab5b42ab7bbd4557288f1d6afad708eb633c1409cae",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-40-vi",
+      "status": 200,
+      "bytes": 18237,
+      "sha256": "dbe5ac2c4367ff4bb60488015db2273b7bf29aebff075595072202b7b372a6f4",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-44-vi",
+      "status": 200,
+      "bytes": 10797,
+      "sha256": "70e98901446cbe1c15767f1a9690ff219e63ec7f98fc4ad57c4940bca8d4d89e",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-09-vi",
+      "status": 200,
+      "bytes": 14157,
+      "sha256": "26a6e3bf43b1893c03dc924341eb895f199e5f666488cf972852ccd656cc9066",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-01-vi",
+      "status": 200,
+      "bytes": 19725,
+      "sha256": "786372ea26c433a94d2ae7c81ce1ed85693a9c68568dbe69c11769edfaf78bde",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-26-vi",
+      "status": 200,
+      "bytes": 13557,
+      "sha256": "4a3baff80fae3f1d67e8fdfacba476e2b2455f4a85e4bc3e867cfe656afdebe9",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-31-vi",
+      "status": 200,
+      "bytes": 12045,
+      "sha256": "2c779a53f4e5807b2ba2c74d94c0d7642fb9f68ffbf20cc24db7b2f872590164",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-07-vi",
+      "status": 200,
+      "bytes": 15645,
+      "sha256": "14cd117a53e612187bea386322950a9b01bc11b7d8e67ef1386dcc080145f3a3",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-15-vi",
+      "status": 200,
+      "bytes": 13917,
+      "sha256": "7d3751b47a8a27145f74fe3d6a45302206526f4f40185693ae71b39f5e2f2242",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-ca_mau-06-vi",
+      "status": 200,
+      "bytes": 16461,
+      "sha256": "5e3035bb0ad10cecde7654c5c39a15f893513bc8d0f149783cfd3d89595d1cdd",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-ca_mau-09-vi",
+      "status": 200,
+      "bytes": 14205,
+      "sha256": "5f71540d64ff7d1fe11b6d3f212772076f5509bc16aa7259e4432f8f14b6331b",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-04-vi",
+      "status": 200,
+      "bytes": 12165,
+      "sha256": "b2e76fd005e4c9edc14d73bca40c4ed8cc29dfce51b1005931de9fd913ebe34d",
+      "matches": true
+    },
+    {
+      "key": "supplied-name-can_tho-18-vi",
+      "status": 200,
+      "bytes": 13773,
+      "sha256": "60224cc1a963f5d7f77648d35382001183790d153fe4fd5061deb04827fa5ce7",
+      "matches": true
+    }
+  ],
+  "archiveMatches": true,
+  "fullAudioRebuild": "identical runtime manifest and ZIP",
+  "commands": {
+    "npm run lint": "passed",
+    "npm test": "passed",
+    "npm run build": "passed without warnings"
+  },
+  "limits": [
+    "Owner-provided labels; no independent pronunciation/listening verification.",
+    "Tablet viewport emulation is not a physical-tablet measurement."
+  ]
+}
