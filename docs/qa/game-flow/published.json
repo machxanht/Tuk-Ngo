@@ -1,0 +1,173 @@
+{
+  "url": "https://machxanht.github.io/Tuk-Ngo/",
+  "sourceCommit": "55c08de",
+  "pagesCommit": "2beacaa0e8bcc1c5140372bf003a27b7e877e9b7",
+  "actionsRun": 39226755034,
+  "deployment": "success",
+  "checkedAt": "2026-10-19T09:02:02.565013+00:00",
+  "publicFlow": "public/checks.json",
+  "localAudio": "audio/checks.json",
+  "physicalTabletTested": false,
+  "verifiedFiles": [
+    {
+      "path": "assets/App-CHupyO5J.js",
+      "sha256": "587caa6804e5baf2c68a7759a3aa36fee5d662c38f707d4a63686871b1eb196a",
+      "bytes": 128664
+    },
+    {
+      "path": "assets/art-preview-CkWR3nbs.js",
+      "sha256": "abe7ac310e6c23c55b81680229b0d1d402d9ae403e41e67170baa8604bbf4c46",
+      "bytes": 1240
+    },
+    {
+      "path": "assets/ArtPreview-BbgKZJMp.css",
+      "sha256": "c3f6ec28e9ac0e13f08b64684bd0e9ff796e9559099c4c3ba6c69180cde512fa",
+      "bytes": 4397
+    },
+    {
+      "path": "assets/ArtPreview-BcnB7GyI.js",
+      "sha256": "1d8b2db1912bfe4d0ad52462ca686d351050e2a98b6b3827ec9a03aaa8c62589",
+      "bytes": 9622
+    },
+    {
+      "path": "assets/asset-digests-CQCD7ofi.js",
+      "sha256": "42c860536d0c9b8cb115e3fec1d1617804c632ef077c1edb55212ebd7bf21d84",
+      "bytes": 243
+    },
+    {
+      "path": "assets/athlete-study-preview-DGlOoYLq.js",
+      "sha256": "2809a9e7a02e55bc76cdc768e1c0fc3c29e6757b41329904b4d2b51b81373ca9",
+      "bytes": 6190
+    },
+    {
+      "path": "assets/bank-materials-CJ_b_t9m.js",
+      "sha256": "65bb210aaded06a123abfc7b986bb783978f58202fbae0af1a5f753202a0ec37",
+      "bytes": 1115
+    },
+    {
+      "path": "assets/boat-BiZF45Jm.js",
+      "sha256": "35d52380e8a069bc009ef8ba0ecafc97b3ff46c4d2381b0f2d3093a432b910c2",
+      "bytes": 3170
+    },
+    {
+      "path": "assets/boat-preview-B_09NL52.js",
+      "sha256": "068bdfcf5c03ed8aa4a0a1d28ba199cbce7285602d5a3cacbc839b88ce71de74",
+      "bytes": 62199
+    },
+    {
+      "path": "assets/CoherentSample-B2c5mXVE.css",
+      "sha256": "86b1d5e2384829181d01e62b08044302defd243ecd959066d0d8d9d4bc20af4c",
+      "bytes": 2465
+    },
+    {
+      "path": "assets/CoherentSample-qS7Dm5Y3.js",
+      "sha256": "feec3779b6507812c9f4e3abc936ed0410fc9c7fb08fef0c01776b6402eedf3e",
+      "bytes": 24315
+    },
+    {
+      "path": "assets/download-B5I-xSzF.js",
+      "sha256": "fe78f284f274a71b80c49ed576ee20d9aa4e8d9025c15b5d4b0e561d191b9591",
+      "bytes": 2673
+    },
+    {
+      "path": "assets/festival-teams-CbPpwK1i.js",
+      "sha256": "668079d798ffec65bc6f52c27101d97176fa0fd7831c1c355a40586708158ed4",
+      "bytes": 34856
+    },
+    {
+      "path": "assets/gameplay-frEMWbKT.js",
+      "sha256": "30bbb6b41bbe499c996ff173683895fe1ad1e85602075d3a491109389d14e37a",
+      "bytes": 8289
+    },
+    {
+      "path": "assets/index-DRiMroCS.js",
+      "sha256": "16c304f5a2d1fd9c3fdef39f387dfa84cfdc9fa62cf6fc12abe4af251bf2ee7c",
+      "bytes": 225947
+    },
+    {
+      "path": "assets/index-H4n6jmUM.css",
+      "sha256": "97b6b3c4799d7b153ae234d7278f5bb0ef3fed2a8b2b666574685ef5b721d360",
+      "bytes": 63612
+    },
+    {
+      "path": "assets/Interactive3DBlueprint-BmOMVDkM.js",
+      "sha256": "f743376c18786e6acff709988b5326f744d15b6649487d533adc1a8290f88c15",
+      "bytes": 75083
+    },
+    {
+      "path": "assets/MasperoRaceCourseStudio-Cn88r5DG.js",
+      "sha256": "874c0553a24823f1ca7f5fb3eb28fcaaca4014a19e94bc82b14a88bb37f754f3",
+      "bytes": 23449
+    },
+    {
+      "path": "assets/race-crew-DNBKVNVO.js",
+      "sha256": "032b9afec54f513eb7ef24352d842064fc830f6232adce815c1ca870b36e145b",
+      "bytes": 85140
+    },
+    {
+      "path": "assets/RaceGame-BkarE4wu.js",
+      "sha256": "094e40f849718d83bb8c1915b3e2e348da8557fca9a8faeea1edd82dbfd33f3f",
+      "bytes": 58556
+    },
+    {
+      "path": "assets/RaceGame-DEcb3oLm.css",
+      "sha256": "86df0d2a88f554af4e7e515fa51a6c848f61e62e77352445e205e502a2b06f44",
+      "bytes": 16644
+    },
+    {
+      "path": "assets/rotate-ccw-CMv3k5pf.js",
+      "sha256": "21a809c79a7edb09a56ed26d06734792581222d8706b7b7adcd7948c32879277",
+      "bytes": 1025
+    },
+    {
+      "path": "assets/TabletRaceDemo-DQDvDTs0.js",
+      "sha256": "d407f17f5f692af04f89e3a5c1a8fabf94ea69d070cdbf53b198150847855637",
+      "bytes": 36974
+    },
+    {
+      "path": "assets/TabletRaceDemo-DwxGRcfj.css",
+      "sha256": "300beda0b8a451a90b637b642c063af6a46e32209f580eb421c9ce1323c025cb",
+      "bytes": 19097
+    },
+    {
+      "path": "assets/teams-B-rAnYNg.js",
+      "sha256": "36d597205770ff03ecb203ac4cc9da1f607e51772b4e36b6931cceb63c9c977e",
+      "bytes": 2702
+    },
+    {
+      "path": "assets/three-addons-DiBvLs_E.js",
+      "sha256": "fe9803bc77fe951d9bfe2fa8155cd2555fb5b5244254de77ffbc8b9ea21e8568",
+      "bytes": 73553
+    },
+    {
+      "path": "assets/three-core-PKyBB6wc.js",
+      "sha256": "01f215fa7dc8b2f2d50bda1b51d8089ed9c97c74062dceb2d29aa6363f442d6c",
+      "bytes": 283474
+    },
+    {
+      "path": "assets/three-renderer-Xp2iZVDg.js",
+      "sha256": "65ba11a7a41db22a6d05d7b2a27d6b9545b3832677cffa689174080afcd50887",
+      "bytes": 357178
+    },
+    {
+      "path": "assets/tumNup2CrewBuilder-CDIQfUnS.js",
+      "sha256": "45b2a2c8523d5db5b4ec39a4862132e8fa931d341b2f0ce8fc0a488f43ca0bc5",
+      "bytes": 20498
+    },
+    {
+      "path": "assets/video-Cw4FGxQr.js",
+      "sha256": "37502e73b85b9a99d6f756ad45faee31b160a77434f432ff50f3070503106ad8",
+      "bytes": 424
+    },
+    {
+      "path": "assets/waves-DxzgYsnz.js",
+      "sha256": "d2a6a6bb84234093db079ff260b890fa7d699e08743b10b0747b45b6d4477878",
+      "bytes": 1954
+    },
+    {
+      "path": "index.html",
+      "sha256": "a0c8060e76459a149e39be5878a5ed0dbb413fcdff6da4d878902c0d8db4e811",
+      "bytes": 1021
+    }
+  ]
+}
