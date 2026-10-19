@@ -37,7 +37,7 @@ Screenshots must be inspected in addition to these assertions. The isolated vege
 
 ## Public release
 
-The stable [game URL](https://machxanht.github.io/Tuk-Ngo/) serves source `4710b21`, Pages commit `9fa2cd5c9149458db93e611326665625b32f147f`. [Actions run 39272172691](https://github.com/machxanht/Tuk-Ngo/actions/runs/39272172691) succeeded. All 35 checked public files match the verified build, including the content-addressed ceremony animation. The page URL remains unchanged.
+The opening-scene release at the stable [game URL](https://machxanht.github.io/Tuk-Ngo/) was verified at source `4710b21`, Pages commit `9fa2cd5c9149458db93e611326665625b32f147f`. [Actions run 39272172691](https://github.com/machxanht/Tuk-Ngo/actions/runs/39272172691) succeeded, and all 35 checked public files matched that build. The subsequent shared kbach artwork and its current release evidence are documented in [kbach-master.md](kbach-master.md); the page URL remains unchanged.
 
 Local lint, full Node tests, production build, opening visual checks and race-presentation regression passed. The fresh public opening check also passed: all six live camera angles, hair/caps, floating vegetation, both banks' signs and populations, menu hide/show/Escape in both languages, continuing camera/music, three full-scene viewport sizes and shallow spectator closeups on both banks, with no browser errors. Evidence is in `docs/qa/opening-ceremony/public/`; its selected screenshots were directly inspected.
 

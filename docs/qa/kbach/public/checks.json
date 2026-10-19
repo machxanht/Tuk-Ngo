@@ -1,0 +1,64 @@
+{
+  "url": "https://machxanht.github.io/Tuk-Ngo/",
+  "physicalTabletTested": false,
+  "ceremony": {
+    "boats": 61,
+    "athletes": 3050,
+    "crewTriangles": 667,
+    "capTriangles": 69,
+    "saluteVariants": 2,
+    "saluteFrames": 24,
+    "handheldCaps": 3050,
+    "capColors": 8,
+    "hair": {
+      "vertices": 64,
+      "styles": 4,
+      "strategy": "painted anatomical scalp plus raised source hair shell"
+    },
+    "kbach": {
+      "sharedMaster": true,
+      "texture": [
+        4096,
+        512
+      ],
+      "paletteVariants": 61,
+      "source": "owner-supplied graphic clip; vector contours"
+    },
+    "formation": "irregular tightly packed raft at the main grandstand",
+    "reference": "https://www.youtube.com/watch?v=hNSDABjJ6GU",
+    "drawCalls": 6,
+    "source": "MakeHuman/MPFB CC0, existing assembled athlete; derived seated hat salute",
+    "cameraShot": "fleet",
+    "cameraSeconds": 0.08130000000000108
+  },
+  "reference": {
+    "texture": [
+      4096,
+      512
+    ],
+    "anisotropy": 8,
+    "flipY": false,
+    "uuid": "b92cd88d-4017-435f-bc55-20b272a567b3",
+    "rigs": null,
+    "uvCount": 36480
+  },
+  "switchReusesTexture": true,
+  "viewports": [
+    [
+      768,
+      1024
+    ],
+    [
+      1180,
+      430
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "svgBytes": 444701,
+  "comparison": "same camera and hull; old original clip bitmap vs source-contour master",
+  "errors": [],
+  "passed": true
+}

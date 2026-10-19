@@ -17,3 +17,9 @@ From the stable game menu, choose **Xem mô hình → Cả ghe 3D → Cận hoa 
 - `scripts/check-race-presentation.py`: menu music, intro/countdown/skip, touch-down and keyboard-down stroke input, both race languages at four viewport sizes.
 
 Screenshots are inspected directly in addition to these checks. The before/after pair compares the original clip bitmap against the reconstructed master under the same current hull, UVs, camera and light; it is an isolated material comparison, not a claim that the whole earlier game had that exact view. Physical tablet frame rate is not measured.
+
+## Public release
+
+The stable [game URL](https://machxanht.github.io/Tuk-Ngo/) serves source `68494bc`, Pages commit `8cc931436d3e064559684ddd34e2c1aac2235590`. [Actions run 39294820936](https://github.com/machxanht/Tuk-Ngo/actions/runs/39294820936) succeeded. All 35 checked published files match the verified build, including the source-contour chunk, SVG download and standalone boat bundle.
+
+The fresh public `check-kbach.py` passed: live 61-boat master texture and palette data, close and bow views, original-bitmap comparison, cached livery switching, three touch viewport layouts and the vector-only download, with zero browser errors. The public detail and bow screenshots were inspected directly. Evidence is in `docs/qa/kbach/public/`; the local race-input/music/intro regression report is in `docs/qa/kbach/race-regression/`.
