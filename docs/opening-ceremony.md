@@ -30,3 +30,11 @@ Thirty-two water-hyacinth patches have rosette leaves, swollen stalks and small 
 - `scripts/check-race-presentation.py`: touch-down input, music, intro/countdown and both race languages on eight viewport combinations.
 
 Screenshots must be inspected in addition to these assertions. The isolated vegetation, banner and street closeups use a paused inspection camera with the pause dialog hidden; they are art diagnostics, not the normal menu composition. Browser checks use Edge with software rendering; no physical-tablet FPS claim is made.
+
+## Public release
+
+The existing [game URL](https://machxanht.github.io/Tuk-Ngo/) serves source `8d9f942`, Pages commit `559c6000b8db48b9ad030a134dba02da2c1a447d`. [Actions run 39248455390](https://github.com/machxanht/Tuk-Ngo/actions/runs/39248455390) succeeded. All 35 checked files match the verified build, including the new content-addressed ceremony animation. The page URL remains unchanged.
+
+The public opening check passed through all six live camera angles, cap and vegetation movement, both banks' signs, population counts and responsive menus, with no browser errors. Evidence is in `docs/qa/opening-ceremony/public/`. An initial public attempt exceeded the readiness timeout; a subsequent diagnostic loaded without request/browser errors, and the fresh complete opening check passed. The initial timeout is not evidence of a diagnosed or fixed loading defect.
+
+The public race-presentation regression also passed: real menu music, intro/countdown ordering, touch-down and keyboard-down input without duplicate releases, and both race UI languages at four viewport sizes. Its report is in `docs/qa/opening-ceremony/public-race/checks.json`.
