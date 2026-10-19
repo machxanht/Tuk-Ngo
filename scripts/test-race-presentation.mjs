@@ -6,6 +6,8 @@ import {introShot,ceremonyShot} from '../src/race/race-camera.mjs';
 import {COURSE} from '../src/race/maspero-course.mjs';
 import {flotsamPlacement} from '../src/race/river-flotsam.mjs';
 import {ceremonyCrewDigest} from '../src/race/asset-digests.mjs';
+import {ceremonyHullOverlaps} from '../src/race/ceremony-layout.mjs';
+import {finishSpectatorPositions} from '../src/race/finish-spectators.mjs';
 globalThis.window??={};
 const {ceremonyPlacement}=await import('../src/race/menu-ceremony.mjs');
 for(const fps of[15,30,60,144]){
@@ -17,12 +19,15 @@ for(const fps of[15,30,60,144]){
 }
 for(let i=0;i<=600;i++){const p=introShot(i/60);assert([...p.position,...p.target,p.fov].every(Number.isFinite));assert(p.position[1]>20);if(i){const before=introShot((i-1)/60);assert(Math.hypot(...p.position.map((n,k)=>n-before.position[k]))<15);}}
 assert(introShot(0).target[2]<-40);assert(introShot(10).target[0]>2200);
-for(const time of[0,17,300])for(let i=0;i<61;i++){const p=ceremonyPlacement(i,time);assert(Math.abs(p.x-COURSE.standX)<110);assert(Math.abs(p.yaw-Math.PI)<.04);for(let j=0;j<i;j++){const q=ceremonyPlacement(j,time);assert(Math.abs(p.x-q.x)>31||Math.abs(p.z-q.z)>2.2,'Ceremony hulls must remain separate');}}
+for(const time of[0,17,300])for(let i=0;i<61;i++){const p=ceremonyPlacement(i,time);assert(Math.abs(p.x-COURSE.standX)<111);assert(Math.abs(p.yaw-Math.PI)<.14);for(let j=0;j<i;j++)assert(!ceremonyHullOverlaps(p,ceremonyPlacement(j,time)),'Angled ceremony hulls must remain separate');}
+const raft=Array.from({length:61},(_,i)=>ceremonyPlacement(i));assert(new Set(raft.map(p=>Math.round(p.x))).size>40);assert(new Set(raft.map(p=>Math.round(p.z))).size>25);assert(Math.max(...raft.map(p=>p.yaw))-Math.min(...raft.map(p=>p.yaw))>.20);
 const angles=new Set();for(let i=0;i<=1980;i++){const p=ceremonyShot(i/60);angles.add(p.name);assert([...p.position,...p.target,p.fov].every(Number.isFinite));assert(p.position[1]>4);if(i){const prev=ceremonyShot((i-1)/60);assert(Math.hypot(...p.position.map((n,k)=>n-prev.position[k]))<3);}}assert.equal(angles.size,6);
 const crew=JSON.parse(await readFile('public/assets/athlete-master/ceremony-crew.json','utf8'));
 assert(crew.vertices>=200&&crew.triangles<700);assert.equal(crew.sourceSha256,createHash('sha256').update(await readFile('public/assets/athlete-master/athlete-master.glb')).digest('hex'));
 assert.equal(ceremonyCrewDigest,createHash('sha256').update(await readFile('public/assets/athlete-master/ceremony-crew.json')).digest('hex'));
+assert(crew.hair.vertices>=60);assert.equal(crew.hair.styles,4);assert.equal(crew.attributes.aScalp.array.length,crew.vertices*4);assert(crew.attributes.aScalp.array.some((v,i)=>i%4===3&&v>.8&&v<1.5));
 assert.equal(crew.motion.variants,2);assert.equal(crew.motion.frames,24);const samples=Buffer.from(crew.motion.pixels,'base64'),poses=new Float32Array(samples.buffer,samples.byteOffset,samples.byteLength/4);assert.equal(poses.length,crew.motion.width*crew.motion.height*4);assert(poses.every(Number.isFinite));assert(crew.cap.triangles>30&&crew.cap.triangles<180);assert(Math.max(...crew.motion.hatFrames.map(p=>p[1]))>1.45);assert(Math.abs(crew.motion.hatFrames[0][0]-crew.motion.hatFrames[6][0])>.05);
 for(let i=0;i<40;i++){const p=flotsamPlacement(i,0),q=flotsamPlacement(i,10);assert(Math.abs(p.z)>20);assert(Math.abs(p.x-q.x-2.4)<1e-6);}
+const waders=finishSpectatorPositions(COURSE.finishX,.28);assert(waders.length>500);assert(waders.some(p=>p.z<0)&&waders.some(p=>p.z>0));for(const p of waders){assert(p.x>COURSE.finishX&&p.x<COURSE.finishX+200);assert(Math.abs(p.z)>21);assert.equal(p.waterY,.28);assert.equal(p.submergedHeight,.9);assert(['wave','cheer','clap'].includes(p.activity));}
 const music=JSON.parse(await readFile('public/assets/race-audio/menu/source.json','utf8'));assert.equal(music.id,'TCpeiecnktg');assert.equal(music.sha256,createHash('sha256').update(await readFile('public/assets/race-audio/menu/festival.mp3')).digest('hex'));
-console.log('Presentation passed: race intro, six opening-film camera angles, dense separated 61-boat raft, animated hand-attached caps, bank-side drifting vegetation and exact menu music.');
+console.log('Presentation passed: race intro, six camera angles, irregular separated 61-boat raft, scalp/hair coverage, animated handheld caps, final-200m wading spectators, drifting vegetation and exact menu music.');

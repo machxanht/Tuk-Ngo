@@ -2,6 +2,7 @@ import * as T from 'three';
 import {buildFestivalCrowd} from './festival-crowd.mjs';
 import {buildFestivalStreet} from './festival-street.mjs';
 import {buildFestivalTraffic} from './festival-traffic.mjs';
+import {buildFinishSpectators} from './finish-spectators.mjs';
 import {courseZ,bridgeYaw,MASPERO_LAYOUT,DETAIL_RANGE,BRIDGE_POSITIONS,nearCourseBridge} from './maspero-layout.mjs';
 
 // All dimensions/coordinates below are authored approximations for the game.
@@ -209,12 +210,14 @@ export function buildMasperoBanks(group,waterY,crowdAssets,bankMaterials={},opti
  for(const batch of signs.values()){const mesh=new T.InstancedMesh(batch.geometry,batch.material,batch.list.length);batch.list.forEach((matrix,i)=>mesh.setMatrixAt(i,matrix));mesh.name='CourseSign_'+batch.text;mesh.userData={language:'km',worldText:batch.text,width:batch.width,height:batch.height};mesh.computeBoundingSphere();group.add(mesh);}
  const street=buildFestivalStreet(group,bankMaterials),buildings=street.stats;
  totals.houses+=buildings.houses||buildings.buildings||0;totals.trees+=buildings.trees||0;
- people.push(...street.people);totals.spectators=people.length;
+ const shallows=buildFinishSpectators(group,COURSE.finishX,waterY);
+ people.push(...street.people,...shallows.people);totals.spectators=people.length;
  const crowd=buildFestivalCrowd(group,people,crowdAssets,options),traffic=buildFestivalTraffic(group);
  group.userData={...group.userData,reference:'OWNER_VTV10_VIDEO_2025_REAL_PHOTOS_AND_OSM_LAYOUT',dimensions:'APPROXIMATE_GAME_SCALE',...totals,buildings,detailRange:DETAIL_RANGE,bankSource:MASPERO_LAYOUT.source,bankLicense:MASPERO_LAYOUT.license,bankOutlineGameSpanM:400,bridgeYawSource:'OSM bridge centre-lines',continuousLand:true,pitchedRoof:'ridge above eaves; corrugation follows both slopes',npcSource:'Quaternius CC0 civilian silhouettes with independently animated festival actions',signLanguage:'km',standRoof:'VIP double pitch; opposite low single pitch',bridgeC247:'teal curved steel portals',bridge30April:'concrete piers and silver arched truss, 2022 construction photo; finished decoration approximate'};
  group.userData.traffic=traffic.stats;group.userData.spectatorSpacingM=.56;group.userData.fullCourseCrowdRows=10;
+ group.userData.finishWaterCrowd=shallows.stats;
  group.userData.banners={count:signPlacements.length,textureCount:signs.size,language:'km',placements:signPlacements,railHeightM:1.55,overheadHeightM:2.4};
  group.userData.bridges={C247:{x:COURSE.bridgeStart,yaw:bridgeYaw(COURSE.bridgeStart)},'30/4':{x:COURSE.bridgeEnd,yaw:bridgeYaw(COURSE.bridgeEnd),beforeStartM:COURSE.bridgeEnd-raceX(0)},placement:'owner-corrected game placement; OSM angles retained'};
  group.userData.mainStand={bank:'right in race direction',lengthM:128,tiers:8,roofHeightM:16,roof:'shallow double pitch, pale green-grey sheet metal',reference:'https://baosoctrang.org.vn/van-hoa-the-thao-du-lich/202411/hao-huc-cho-ngay-khai-hoi-67c01d9/',measured:false};
- return {totals,update(time,cameraX,cameraZ){crowd.update(time,cameraX,cameraZ);street.update(time,cameraX,cameraZ);traffic.update(time,cameraX);},dispose(){crowd.dispose();street.dispose();traffic.dispose();}};
+ return {totals,update(time,cameraX,cameraZ){crowd.update(time,cameraX,cameraZ);street.update(time,cameraX,cameraZ);traffic.update(time,cameraX);shallows.update(time);},dispose(){crowd.dispose();street.dispose();traffic.dispose();shallows.dispose();}};
 }

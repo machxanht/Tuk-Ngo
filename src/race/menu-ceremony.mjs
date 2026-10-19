@@ -32,15 +32,24 @@ export async function buildMenuCeremony(scene,base){
  const count=61*50,tints=new Float32Array(count*3),motions=new Float32Array(count*4);
  for(let i=0;i<count;i++){new T.Color(FESTIVAL_TEAMS[Math.floor(i/50)].jersey).toArray(tints,i*3);motions.set([(i*1.713)%data.motion.duration,.86+(i%13)*.023,i%3?0:1,i%2?1:-1],i*4);}
  crewGeo.setAttribute('aTint',new T.InstancedBufferAttribute(tints,3));crewGeo.setAttribute('aMotion',new T.InstancedBufferAttribute(motions,4));crewGeo.setAttribute('aVertexId',new T.Float32BufferAttribute(Array.from({length:data.vertices},(_,i)=>i),1));geometries.push(crewGeo);
+ crewGeo.setAttribute('aHairStyle',new T.InstancedBufferAttribute(Float32Array.from({length:count},(_,i)=>(i*7+Math.floor(i/50))%4),1));
  const bytes=Uint8Array.from(atob(data.motion.pixels),c=>c.charCodeAt(0)),poses=new T.DataTexture(new Float32Array(bytes.buffer),data.motion.width,data.motion.height,T.RGBAFormat,T.FloatType);poses.needsUpdate=true;poses.minFilter=poses.magFilter=T.NearestFilter;poses.generateMipmaps=false;resources.push(poses);
  const crewMat=new T.MeshLambertMaterial({vertexColors:true,side:T.DoubleSide});resources.push(crewMat);
  crewMat.onBeforeCompile=s=>{
   s.uniforms.uCeremonyTime=uniform;s.uniforms.uCeremonyPoses={value:poses};
-  s.vertexShader=`attribute float aKit;attribute vec3 aTint;attribute vec4 aMotion;attribute float aVertexId;varying float vKit;varying vec3 vTint;uniform float uCeremonyTime;uniform sampler2D uCeremonyPoses;
+  s.vertexShader=`attribute float aKit;attribute vec3 aTint;attribute vec4 aMotion;attribute float aVertexId;attribute vec4 aScalp;attribute float aHairStyle;varying vec4 vScalp;varying float vHairStyle;varying float vKit;varying vec3 vTint;uniform float uCeremonyTime;uniform sampler2D uCeremonyPoses;
    vec3 ceremonyPose(float normalRow){float f=mod((uCeremonyTime*aMotion.y+aMotion.x)/${data.motion.duration.toFixed(4)}*${data.motion.frames}.,${data.motion.frames}.);float row=aMotion.z*${data.motion.frames}.+normalRow;float x=(aVertexId+.5)/${data.vertices}.;vec3 a=texture2D(uCeremonyPoses,vec2(x,(row+floor(f)+.5)/${data.motion.height}.)).xyz,b=texture2D(uCeremonyPoses,vec2(x,(row+mod(floor(f)+1.,${data.motion.frames}.)+.5)/${data.motion.height}.)).xyz;vec3 p=mix(a,b,fract(f));p.x*=aMotion.w;return p;}
   `+s.vertexShader;
-  s.vertexShader=s.vertexShader.replace('#include <beginnormal_vertex>',`vec3 objectNormal=normalize(ceremonyPose(${data.motion.frames*data.motion.variants}.))*aMotion.w;`).replace('#include <begin_vertex>','vec3 transformed=ceremonyPose(0.);vKit=aKit;vTint=aTint;');
-  s.fragmentShader='varying float vKit;varying vec3 vTint;\n'+s.fragmentShader;s.fragmentShader=s.fragmentShader.replace('#include <color_fragment>','#include <color_fragment>\n diffuseColor.rgb=mix(diffuseColor.rgb,vTint,vKit);');
+  s.vertexShader=s.vertexShader.replace('#include <beginnormal_vertex>',`vec3 objectNormal=normalize(ceremonyPose(${data.motion.frames*data.motion.variants}.))*aMotion.w;`).replace('#include <begin_vertex>','vec3 transformed=ceremonyPose(0.);vKit=aKit;vTint=aTint;vScalp=aScalp;vHairStyle=aHairStyle;');
+  s.fragmentShader='varying float vKit;varying vec3 vTint;varying vec4 vScalp;varying float vHairStyle;\n'+s.fragmentShader;s.fragmentShader=s.fragmentShader.replace('#include <color_fragment>',`#include <color_fragment>
+   diffuseColor.rgb=mix(diffuseColor.rgb,vTint,vKit);
+   float front=smoothstep(-.005,.055,vScalp.z),hairline=mix(.014,.071,front);
+   if(vHairStyle>.5&&vHairStyle<1.5)hairline-=.015;
+   if(vHairStyle>1.5&&vHairStyle<2.5)hairline+=vScalp.x*.22;
+   if(vHairStyle>2.5)hairline+=sin(vScalp.x*65.)*.008-.006;
+   float hairMask=vScalp.w>1.5?1.:smoothstep(.72,.88,vScalp.w)*smoothstep(hairline-.002,hairline+.002,vScalp.y);
+   diffuseColor.rgb=mix(diffuseColor.rgb,mix(vec3(.018,.014,.012),vec3(.065,.035,.020),vHairStyle/3.),hairMask);
+  `);
  };
  const crew=new T.InstancedMesh(crewGeo,crewMat,count);crew.name='Ceremony_Hat_Salute_Athletes';crew.frustumCulled=false;group.add(crew);meshes.push(crew);
  const capGeo=new T.BufferGeometry();for(const [name,a]of Object.entries(data.cap.attributes))capGeo.setAttribute(name,new T.Float32BufferAttribute(a.array,a.size));capGeo.setIndex(data.cap.indices);geometries.push(capGeo);
@@ -68,6 +77,6 @@ export async function buildMenuCeremony(scene,base){
   }
   meshes.forEach(mesh=>mesh.instanceMatrix.needsUpdate=true);
  }
- const stats={boats:61,athletes:count,crewTriangles:data.triangles,capTriangles:data.cap.triangles,saluteVariants:data.motion.variants,saluteFrames:data.motion.frames,handheldCaps:count,capColors:capColors.length,formation:'dense raft at the main grandstand',reference:'https://www.youtube.com/watch?v=hNSDABjJ6GU',drawCalls:meshes.length,source:data.source};group.userData=stats;
+ const stats={boats:61,athletes:count,crewTriangles:data.triangles,capTriangles:data.cap.triangles,saluteVariants:data.motion.variants,saluteFrames:data.motion.frames,handheldCaps:count,capColors:capColors.length,hair:data.hair,formation:'irregular tightly packed raft at the main grandstand',reference:'https://www.youtube.com/watch?v=hNSDABjJ6GU',drawCalls:meshes.length,source:data.source};group.userData=stats;
  return {group,stats,update,dispose(){group.removeFromParent();meshes.forEach(m=>m.dispose());geometries.forEach(g=>g.dispose());resources.forEach(r=>r.dispose());}};
 }

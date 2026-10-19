@@ -2,6 +2,7 @@ export type GameLanguage = 'vi' | 'km';
 // Proper team names and quoted broadcast captions retain their source language.
 export const GAME_COPY = {
  vi: {
+  hideMenu:'Ẩn menu',showMenu:'Hiện menu',
   early:'Sớm · chờ vòng về tâm',late:'Muộn · chạm sớm hơn',spam:'Mỗi nhịp chạm một lần',tapNow:'CHẠM NGAY',tapNear:'Sắp tới nhịp',tapWait:'Chờ nhịp kế',ringHint:'Chạm khi vòng ngoài khớp vòng trong',intro:'Toàn cảnh lễ hội',introStand:'Khán đài chính · Hai bờ sông',introCourse:'Sông Maspéro · Toàn tuyến 1.200 m',introStart:'Về vạch xuất phát',skipIntro:'Bỏ qua giới thiệu',music:'Nhạc lễ hội',playMusic:'Chạm để bật nhạc',ceremony:'61 ghe hội tụ · Lễ hội trên sông',brand:'GHE NGO',festival:'LỄ HỘI TRÊN SÔNG MASPÉRO',tagline:'Giữ chung một nhịp. Cùng nhau về đích.',
   menu:'Menu chính',quick:'Đua nhanh · 2 ghe',cup:'Cúp lễ hội · 61 ghe',continueCup:'Tiếp tục cúp đã lưu',how:'Cách chơi',choose:'Chọn ghe của bạn',setup:'Chuẩn bị xuất phát',
   quickInfo:'Một lượt đua 1.200 m. Tập nhịp, giữ sức và bứt tốc ở chặng cuối.',cupInfo:'61 đội · 6 vòng · loại trực tiếp. Tiến trình cúp tự lưu trên trình duyệt này.',
@@ -27,6 +28,7 @@ export const GAME_COPY = {
   loading:'Đang tải ghe và sông đấu…',loadingModel:'Đang tải mô hình',loadError:'Không tải được cảnh 3D',retry:'Tải lại',noTeams:'Không có ghe phù hợp. Hãy thử tên khác.',fullCourse:'Toàn tuyến 1.200 m',follow:'Theo ghe',view:'Góc nhìn',
  },
  km: {
+  hideMenu:'លាក់ម៉ឺនុយ',showMenu:'បង្ហាញម៉ឺនុយ',
   early:'ឆាប់ពេក · រង់ចាំរង្វង់',late:'យឺតពេក · ចុចឱ្យលឿនជាងនេះ',spam:'ចុចម្ដងក្នុងមួយចង្វាក់',tapNow:'ចុចឥឡូវ!',tapNear:'ជិតដល់ចង្វាក់',tapWait:'រង់ចាំចង្វាក់បន្ទាប់',ringHint:'ចុចពេលរង្វង់ទាំងពីរត្រូវគ្នា',intro:'ទិដ្ឋភាពពិធីបុណ្យ',introStand:'វេទិកាធំ · ច្រាំងទាំងពីរ',introCourse:'ទន្លេ Maspéro · ចម្ងាយ ១.២០០ ម',introStart:'ឆ្ពោះទៅទីចេញដំណើរ',skipIntro:'រំលងការណែនាំ',music:'តន្ត្រីពិធីបុណ្យ',playMusic:'ចុចដើម្បីបើកតន្ត្រី',ceremony:'៦១ ទូកជួបជុំ · ពិធីបុណ្យលើទន្លេ',brand:'ទូកង',festival:'ពិធីបុណ្យលើទន្លេ MASPÉRO',tagline:'ចង្វាក់តែមួយ។ ឆ្ពោះទៅទីព្រ័ត្រជាមួយគ្នា។',
   menu:'ម៉ឺនុយដើម',quick:'ប្រណាំងរហ័ស · ២ ទូក',cup:'ពានរង្វាន់បុណ្យ · ៦១ ទូក',continueCup:'បន្តពានរង្វាន់ដែលបានរក្សាទុក',how:'របៀបលេង',choose:'ជ្រើសរើសទូករបស់អ្នក',setup:'ត្រៀមចេញដំណើរ',
   quickInfo:'ប្រណាំងចម្ងាយ ១.២០០ ម។ ហាត់ចង្វាក់ រក្សាកម្លាំង និងបង្កើនល្បឿននៅចុងផ្លូវ។',cupInfo:'៦១ ក្រុម · ៦ ជុំ · ចាញ់ធ្លាក់។ វឌ្ឍនភាពត្រូវបានរក្សាទុកក្នុងកម្មវិធីរុករកនេះ។',
