@@ -6186,5 +6186,9 @@
   "fieldPack": {
     "file": "field/manifest.json",
     "sha256": "c5d99841b881f3ed8f60e19fa78a98bb957c2e523936931364881e82595aefbf"
+  },
+  "teamNamePack": {
+    "file": "team-names/manifest.json",
+    "sha256": "ff0773131dc746939ee6b466e5fca2ca2f2fb17b3af06cee308fe910008fdb61"
   }
 }

@@ -1,8 +1,9 @@
 """Build original Vietnamese cuts and explicitly sourced, pre-rendered Khmer AI cues."""
-import argparse,hashlib,json,subprocess,zipfile
+import argparse,hashlib,json,subprocess
 from pathlib import Path
 import numpy as np
 import imageio_ffmpeg
+from team_audio import apply_team_name_pack,write_team_archive
 
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'public/assets/race-audio'
@@ -118,6 +119,7 @@ def main():
  manifest={'schema':4,'mode':'broadcast-vi-ai-km','speechPolicy':{'voice':'original-broadcast-only','khmer':'pre-rendered-azure-stock-neural-with-original-broadcast-names','runtimeSynthesis':False},'source':recipe['source'],'sources':sources,'review':recipe['review'],'ambience':recipe['ambience'],'warmup':recipe['warmup'],'events':recipe['events'],'clips':clips,'teamProfiles':profiles,'teamCoverage':coverage}
  manifest['field']={key:field[key] for key in ['grooves','ambience','whistle']}
  manifest['fieldPack']=recipe['fieldPack']
+ apply_team_name_pack(manifest,recipe.get('teamNamePack'),OUT)
  # Remove only obsolete generated MP3s in this exact asset directory.
  for old in previous['clips'].values():
   path=(OUT/old['file']).resolve()
@@ -125,16 +127,7 @@ def main():
   # Imported trial assets have their own owner; this builder owns only root cuts.
   if path.parent==OUT.resolve() and path.name not in {c['file'] for c in clips.values()} and path.exists():path.unlink()
  if profiles:
-  archive=OUT/'team-audio.zip'
-  with zipfile.ZipFile(archive,'w',compression=zipfile.ZIP_DEFLATED) as bundle:
-   def put(name,data):
-    info=zipfile.ZipInfo(name,date_time=(1980,1,1,0,0,0));info.compress_type=zipfile.ZIP_DEFLATED;info.external_attr=0o100644<<16;bundle.writestr(info,data)
-   put('README.txt','Original recordings from:\n'+'\n'.join(s['url'] for s in sources.values())+'\n'+json.dumps(coverage)+'\nEach folder is one current registration, not a race bib. Missing audio stays missing; profiles record per-clip source ranges, CC/ASR evidence and historical sources. Automatic CC/ASR/name matching is not independent listening verification. Copyright remains with the broadcaster.\n')
-   for registration,profile in sorted(profiles.items()):
-    keys=sorted({key for section in ['names','history'] for channel in ['voice','khmer'] for key in profile[section][channel]})
-    put(registration+'/profile.json',json.dumps({**profile,'sources':{clips[key]['sourceId']:sources[clips[key]['sourceId']] for key in keys},'recordings':{key:clips[key] for key in keys}},ensure_ascii=False,indent=2)+'\n')
-    for key in keys:put(registration+'/'+clips[key]['file'],(OUT/clips[key]['file']).read_bytes())
-  manifest['downloads']={'teamAudio':{'file':archive.name,'bytes':archive.stat().st_size,'sha256':hashlib.sha256(archive.read_bytes()).hexdigest()}}
+  write_team_archive(manifest,OUT)
  (OUT/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8',newline='\n')
  print(json.dumps({'clips':len(clips),'bytes':sum(c['bytes'] for c in clips.values()),'originalVietnamese':sum(c['channel']=='voice' and c['sourceType']=='broadcast' for c in clips.values()),'syntheticKhmer':sum(c['sourceType']=='azure-stock-neural' for c in clips.values()),'sources':len(used)}))
 

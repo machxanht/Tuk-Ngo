@@ -1,0 +1,653 @@
+{
+  "audio": {
+    "active": false,
+    "ambience": null,
+    "audioTime": 108.20208616780046,
+    "cached": 32,
+    "context": "running",
+    "cues": [
+      "ready",
+      "go",
+      "intro",
+      "race-call",
+      "race-call",
+      "race-call",
+      "race-call"
+    ],
+    "decoded": 32,
+    "disposed": false,
+    "drumBpm": 96,
+    "drumHits": 0,
+    "drumKinds": {
+      "drum-low": 0,
+      "drum-open": 0,
+      "drum-rim": 0
+    },
+    "drumLoops": 1,
+    "errors": [],
+    "groovesPlayed": [
+      {
+        "at": 46.570521541950114,
+        "bpm": 96,
+        "key": "drum-groove-start"
+      }
+    ],
+    "khmerClips": 3,
+    "mix": {
+      "crowd": true,
+      "drums": true,
+      "enabled": true,
+      "khmer": true,
+      "voice": true,
+      "volume": 0.8,
+      "whistle": true
+    },
+    "origin": "broadcast-vi-ai-km",
+    "outputRms": 0,
+    "played": [
+      {
+        "at": 0.05192743764172336,
+        "key": "supplied-name-can_tho-23-vi",
+        "kind": "name",
+        "match": [],
+        "registrationId": "can_tho-23",
+        "teamId": "tum-nup-2"
+      },
+      {
+        "at": 1.0219274376417231,
+        "key": "name-tum-nup-km",
+        "kind": "name",
+        "match": [],
+        "registrationId": "can_tho-23",
+        "teamId": "tum-nup-2"
+      },
+      {
+        "at": 43.560317460317464,
+        "cue": "ready",
+        "duration": 1.9499773242630385,
+        "key": "broadcast-ready",
+        "match": [
+          "tum-nup-2",
+          "prek-on-dok-2"
+        ],
+        "sourceId": "crZF3hghbgQ",
+        "state": {
+          "distance": 0,
+          "gap": 0,
+          "pace": "steady",
+          "phase": "countdown",
+          "result": null,
+          "surgeActive": false
+        }
+      },
+      {
+        "at": 46.610839002267575,
+        "cue": "go",
+        "duration": 4.179977324263039,
+        "key": "broadcast-start-opening",
+        "match": [
+          "tum-nup-2",
+          "prek-on-dok-2"
+        ],
+        "sourceId": "crZF3hghbgQ",
+        "state": {
+          "distance": 0,
+          "gap": -0.021742489830479397,
+          "pace": "steady",
+          "phase": "racing",
+          "result": null,
+          "surgeActive": false
+        }
+      },
+      {
+        "at": 50.89201814058957,
+        "cue": "intro",
+        "duration": 0.85,
+        "key": "supplied-name-can_tho-23-vi",
+        "match": [
+          "tum-nup-2",
+          "prek-on-dok-2"
+        ],
+        "state": {
+          "distance": 0,
+          "gap": -23.770287391439737,
+          "pace": "steady",
+          "phase": "racing",
+          "result": null,
+          "surgeActive": false
+        }
+      },
+      {
+        "at": 51.81701814058957,
+        "cue": "intro",
+        "duration": 1.1499773242630384,
+        "key": "supplied-name-can_tho-39-vi",
+        "match": [
+          "tum-nup-2",
+          "prek-on-dok-2"
+        ],
+        "state": {
+          "distance": 0,
+          "gap": -23.770287391439737,
+          "pace": "steady",
+          "phase": "racing",
+          "result": null,
+          "surgeActive": false
+        }
+      },
+      {
+        "at": 53.04199546485261,
+        "cue": "intro",
+        "duration": 6.99,
+        "key": "broadcast-shore-paragraph",
+        "match": [
+          "tum-nup-2",
+          "prek-on-dok-2"
+        ],
+        "sourceId": "crZF3hghbgQ",
+        "state": {
+          "distance": 0,
+          "gap": -23.770287391439737,
+          "pace": "steady",
+          "phase": "racing",
+          "result": null,
+          "surgeActive": false
+        }
+      },
+      {
+        "at": 60.1069954648526,
+        "cue": "intro",
+        "duration": 2.1799773242630387,
+        "key": "broadcast-intro",
+        "match": [
+          "tum-nup-2",
+          "prek-on-dok-2"
+        ],
+        "sourceId": "crZF3hghbgQ",
+        "state": {
+          "distance": 0,
+          "gap": -23.770287391439737,
+          "pace": "steady",
+          "phase": "racing",
+          "result": null,
+          "surgeActive": false
+        }
+      },
+      {
+        "at": 62.36197278911564,
+        "cue": "intro",
+        "duration": 0.5199773242630386,
+        "key": "name-tum-nup-km",
+        "match": [
+          "tum-nup-2",
+          "prek-on-dok-2"
+        ],
+        "sourceId": "crZF3hghbgQ",
+        "state": {
+          "distance": 0,
+          "gap": -23.770287391439737,
+          "pace": "steady",
+          "phase": "racing",
+          "result": null,
+          "surgeActive": false
+        }
+      },
+      {
+        "at": 62.95695011337868,
+        "cue": "intro",
+        "duration": 1.8799773242630389,
+        "key": "khmer-intro",
+        "match": [
+          "tum-nup-2",
+          "prek-on-dok-2"
+        ],
+        "sourceId": "crZF3hghbgQ",
+        "state": {
+          "distance": 0,
+          "gap": -23.770287391439737,
+          "pace": "steady",
+          "phase": "racing",
+          "result": null,
+          "surgeActive": false
+        }
+      },
+      {
+        "at": 64.98072562358276,
+        "cue": "race-call",
+        "duration": 1.9399773242630385,
+        "key": "broadcast-rhythm",
+        "match": [
+          "tum-nup-2",
+          "prek-on-dok-2"
+        ],
+        "sourceId": "crZF3hghbgQ",
+        "state": {
+          "distance": 0,
+          "gap": -108.70131842206298,
+          "pace": "steady",
+          "phase": "racing",
+          "result": null,
+          "surgeActive": false
+        }
+      },
+      {
+        "at": 90.281768707483,
+        "cue": "race-call",
+        "duration": 1.9399773242630385,
+        "key": "broadcast-rhythm",
+        "match": [
+          "tum-nup-2",
+          "prek-on-dok-2"
+        ],
+        "sourceId": "crZF3hghbgQ",
+        "state": {
+          "distance": 0,
+          "gap": -277.43359376353214,
+          "pace": "steady",
+          "phase": "racing",
+          "result": null,
+          "surgeActive": false
+        }
+      }
+    ],
+    "previewing": false,
+    "queued": [],
+    "sourceVideo": "crZF3hghbgQ",
+    "sources": 0,
+    "sourcesByChannel": {
+      "crowd": 0,
+      "drums": 0,
+      "khmer": 0,
+      "voice": 0,
+      "whistle": 0
+    },
+    "speaking": false,
+    "strongWhistles": 0,
+    "teams": [
+      "tum-nup-2",
+      "prek-on-dok-2"
+    ],
+    "voiceClips": 9,
+    "whistleBlows": 100
+  },
+  "nameRequests": [
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/team-names/vi/can_tho-23.mp3?clip=0b4ba1a408df",
+    "http://127.0.0.1:4173/Tuk-Ngo/assets/race-audio/team-names/vi/can_tho-39.mp3?clip=c58e5613886b"
+  ],
+  "note": "Initial menu requested zero team-name files. Team preview and actual intro selected the supplied files. A developer advance of 4 seconds was applied after the intro had already played.",
+  "phase": "paused",
+  "url": "http://127.0.0.1:4173/Tuk-Ngo/",
+  "decodedNames": [
+    {
+      "channels": 2,
+      "frames": 88199,
+      "key": "supplied-name-can_tho-36-vi",
+      "seconds": 1.9999773242630383,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 44099,
+      "key": "supplied-name-can_tho-33-vi",
+      "seconds": 0.9999773242630384,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 46304,
+      "key": "supplied-name-can_tho-13-vi",
+      "seconds": 1.0499773242630386,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 59534,
+      "key": "supplied-name-can_tho-02-vi",
+      "seconds": 1.3499773242630386,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 41894,
+      "key": "supplied-name-can_tho-06-vi",
+      "seconds": 0.9499773242630386,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 39690,
+      "key": "supplied-name-can_tho-14-vi",
+      "seconds": 0.9,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 41894,
+      "key": "supplied-name-can_tho-47-vi",
+      "seconds": 0.9499773242630386,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 35280,
+      "key": "supplied-name-can_tho-37-vi",
+      "seconds": 0.8,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 33075,
+      "key": "supplied-name-can_tho-05-vi",
+      "seconds": 0.75,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 50714,
+      "key": "supplied-name-can_tho-21-vi",
+      "seconds": 1.1499773242630384,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 30869,
+      "key": "supplied-name-can_tho-46-vi",
+      "seconds": 0.6999773242630386,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 50714,
+      "key": "supplied-name-can_tho-39-vi",
+      "seconds": 1.1499773242630384,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 37485,
+      "key": "supplied-name-can_tho-30-vi",
+      "seconds": 0.85,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 35280,
+      "key": "supplied-name-ca_mau-03-vi",
+      "seconds": 0.8,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 52919,
+      "key": "supplied-name-can_tho-34-vi",
+      "seconds": 1.1999773242630385,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 66150,
+      "key": "supplied-name-can_tho-17-vi",
+      "seconds": 1.5,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 35280,
+      "key": "supplied-name-can_tho-35-vi",
+      "seconds": 0.8,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 37485,
+      "key": "supplied-name-can_tho-43-vi",
+      "seconds": 0.85,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 39690,
+      "key": "supplied-name-can_tho-41-vi",
+      "seconds": 0.9,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 57329,
+      "key": "supplied-name-can_tho-20-vi",
+      "seconds": 1.2999773242630386,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 26459,
+      "key": "supplied-name-ca_mau-11-vi",
+      "seconds": 0.5999773242630385,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 41894,
+      "key": "supplied-name-ca_mau-12-vi",
+      "seconds": 0.9499773242630386,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 37485,
+      "key": "supplied-name-ca_mau-05-vi",
+      "seconds": 0.85,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 24254,
+      "key": "supplied-name-can_tho-48-vi",
+      "seconds": 0.5499773242630386,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 35280,
+      "key": "supplied-name-can_tho-12-vi",
+      "seconds": 0.8,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 37485,
+      "key": "supplied-name-can_tho-23-vi",
+      "seconds": 0.85,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 48509,
+      "key": "supplied-name-can_tho-16-vi",
+      "seconds": 1.0999773242630386,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 30869,
+      "key": "supplied-name-ca_mau-02-vi",
+      "seconds": 0.6999773242630386,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 33075,
+      "key": "supplied-name-can_tho-27-vi",
+      "seconds": 0.75,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 24254,
+      "key": "supplied-name-can_tho-45-vi",
+      "seconds": 0.5499773242630386,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 41894,
+      "key": "supplied-name-can_tho-03-vi",
+      "seconds": 0.9499773242630386,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 39690,
+      "key": "supplied-name-can_tho-19-vi",
+      "seconds": 0.9,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 35280,
+      "key": "supplied-name-can_tho-28-vi",
+      "seconds": 0.8,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 37485,
+      "key": "supplied-name-can_tho-10-vi",
+      "seconds": 0.85,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 48509,
+      "key": "supplied-name-can_tho-42-vi",
+      "seconds": 1.0999773242630386,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 33075,
+      "key": "supplied-name-can_tho-22-vi",
+      "seconds": 0.75,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 30869,
+      "key": "supplied-name-can_tho-29-vi",
+      "seconds": 0.6999773242630386,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 41894,
+      "key": "supplied-name-ca_mau-01-vi",
+      "seconds": 0.9499773242630386,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 48509,
+      "key": "supplied-name-can_tho-38-vi",
+      "seconds": 1.0999773242630386,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 37485,
+      "key": "supplied-name-can_tho-25-vi",
+      "seconds": 0.85,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 26459,
+      "key": "supplied-name-can_tho-08-vi",
+      "seconds": 0.5999773242630385,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 52919,
+      "key": "supplied-name-can_tho-40-vi",
+      "seconds": 1.1999773242630385,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 30869,
+      "key": "supplied-name-can_tho-44-vi",
+      "seconds": 0.6999773242630386,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 39690,
+      "key": "supplied-name-can_tho-09-vi",
+      "seconds": 0.9,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 59534,
+      "key": "supplied-name-can_tho-01-vi",
+      "seconds": 1.3499773242630386,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 39690,
+      "key": "supplied-name-can_tho-26-vi",
+      "seconds": 0.9,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 35280,
+      "key": "supplied-name-can_tho-31-vi",
+      "seconds": 0.8,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 46304,
+      "key": "supplied-name-can_tho-07-vi",
+      "seconds": 1.0499773242630386,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 39690,
+      "key": "supplied-name-can_tho-15-vi",
+      "seconds": 0.9,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 46304,
+      "key": "supplied-name-ca_mau-06-vi",
+      "seconds": 1.0499773242630386,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 41894,
+      "key": "supplied-name-ca_mau-09-vi",
+      "seconds": 0.9499773242630386,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 35280,
+      "key": "supplied-name-can_tho-04-vi",
+      "seconds": 0.8,
+      "status": 200
+    },
+    {
+      "channels": 2,
+      "frames": 39690,
+      "key": "supplied-name-can_tho-18-vi",
+      "seconds": 0.9,
+      "status": 200
+    }
+  ]
+}

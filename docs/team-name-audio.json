@@ -1,0 +1,325 @@
+{
+  "schema": 1,
+  "language": "vi",
+  "review": "Owner-prepared Vietnamese recordings from audio/output_audio/tieng_viet. Filenames and labels matched explicitly to current registration IDs, never by bib or gender inheritance. Original MP3 bytes are preserved. Labels are supplied metadata, not independent listening or CC certification. Khmer recordings, existing Khmer cues and historical claims are outside this import.",
+  "recordings": [
+    {
+      "file": "01_Day_Om_Pu.mp3",
+      "registrationId": "can_tho-36",
+      "label": "Đay Om Pu",
+      "rosterName": "Đay Om Pu (Phú Giao)"
+    },
+    {
+      "file": "02_Bang_Ton_Sa.mp3",
+      "registrationId": "can_tho-33",
+      "label": "Bâng Ton Sa",
+      "rosterName": "Bâng Tone Sa"
+    },
+    {
+      "file": "03_Pong_Tuk_Chas.mp3",
+      "registrationId": "can_tho-13",
+      "label": "Pong Tứk Chăs",
+      "rosterName": "Pong Tứk Chắc"
+    },
+    {
+      "file": "04_Pothi_Sath_Thamram_2.mp3",
+      "registrationId": "can_tho-02",
+      "label": "Pôthi Sath Thamram 2",
+      "rosterName": "PôThiSaThaRam (Đội 2)"
+    },
+    {
+      "file": "05_Sro_Lon_2.mp3",
+      "registrationId": "can_tho-06",
+      "label": "Sro Lôn 2 (Chén Kiểu 2)",
+      "rosterName": "Sro Lôn (Đội 2)"
+    },
+    {
+      "file": "06_Buol_Mum.mp3",
+      "registrationId": "can_tho-14",
+      "label": "Buôl Mum",
+      "rosterName": "Buôl Mun (Lộ Mới)"
+    },
+    {
+      "file": "07_Pothi_Thlang.mp3",
+      "registrationId": "can_tho-47",
+      "label": "Pôthi Thlâng",
+      "rosterName": "Pô Thi Thlâng"
+    },
+    {
+      "file": "08_Om_Pu_Year.mp3",
+      "registrationId": "can_tho-37",
+      "label": "Om Pu Year",
+      "rosterName": "Om Pou Year"
+    },
+    {
+      "file": "09_Sro_Lon_1.mp3",
+      "registrationId": "can_tho-05",
+      "label": "Sro Lôn 1 (Chén Kiểu 1)",
+      "rosterName": "Sro Lôn (Đội 1)"
+    },
+    {
+      "file": "10_Kompong_Trop.mp3",
+      "registrationId": "can_tho-21",
+      "label": "Kompong Trop",
+      "rosterName": "Kom Pong Tróp A"
+    },
+    {
+      "file": "11_Pothi_Khsach.mp3",
+      "registrationId": "can_tho-46",
+      "label": "Pôthi Khsach",
+      "rosterName": "Pôthi Khsach"
+    },
+    {
+      "file": "12_Prek_On_Dok_2.mp3",
+      "registrationId": "can_tho-39",
+      "label": "Prêk On Đớk 2",
+      "rosterName": "Prêk On Đơk (Đội 2)"
+    },
+    {
+      "file": "13_Ta_Ong.mp3",
+      "registrationId": "can_tho-30",
+      "label": "Tà Ông",
+      "rosterName": "Tà On"
+    },
+    {
+      "file": "14_Dia_Muong.mp3",
+      "registrationId": "ca_mau-03",
+      "label": "Đìa Muống",
+      "rosterName": "Đìa Muồng (Đội nam)"
+    },
+    {
+      "file": "15_Prek_Om_Pu.mp3",
+      "registrationId": "can_tho-34",
+      "label": "Prêk Om Pu",
+      "rosterName": "Prếk Om Pu"
+    },
+    {
+      "file": "16_Ta_Khvich_Thmay.mp3",
+      "registrationId": "can_tho-17",
+      "label": "Ta Khvich Thmây",
+      "rosterName": "Tà Khvich Thmây (Trà Quýt Mới)"
+    },
+    {
+      "file": "17_Prek_Ta_Cuol.mp3",
+      "registrationId": "can_tho-35",
+      "label": "Prêk Tà Cuôl",
+      "rosterName": "Prếk Ta Cuôl (Trà Cuôn)"
+    },
+    {
+      "file": "18_Bang_Crochap_Chas.mp3",
+      "registrationId": "can_tho-43",
+      "label": "Bâng Crôcháp Chăs",
+      "rosterName": "Bâng Cro Chap Chắs"
+    },
+    {
+      "file": "19_Phno_Com_Pot.mp3",
+      "registrationId": "can_tho-41",
+      "label": "Phnô Com Pốt",
+      "rosterName": "Phônô Cambốth"
+    },
+    {
+      "file": "20_Ta_Khvich_Chas.mp3",
+      "registrationId": "can_tho-20",
+      "label": "Ta Khvich Chăs",
+      "rosterName": "Trà Quýt cũ (Ta Kh Vích Chăs)"
+    },
+    {
+      "file": "21_Dau_Sau_1.mp3",
+      "registrationId": "ca_mau-11",
+      "label": "Đầu Sấu 1",
+      "rosterName": "Đầu Sấu (Đội 1)"
+    },
+    {
+      "file": "22_Dau_Sau_2.mp3",
+      "registrationId": "ca_mau-12",
+      "label": "Đầu Sấu 2",
+      "rosterName": "Đầu Sấu (Đội 2)"
+    },
+    {
+      "file": "23_Kos_Thum_1.mp3",
+      "registrationId": "ca_mau-05",
+      "label": "Kos Thum 1",
+      "rosterName": "Kos Thum (Nam Đội 1)"
+    },
+    {
+      "file": "24_Settodor.mp3",
+      "registrationId": "can_tho-48",
+      "label": "Settodor",
+      "rosterName": "Settodor"
+    },
+    {
+      "file": "25_Noren_Rangsay_Ong_Kho.mp3",
+      "registrationId": "can_tho-12",
+      "label": "Noren Rangsay (Ông Kho)",
+      "rosterName": "Nô Rên Răn Sây (Ông Kho)"
+    },
+    {
+      "file": "26_Tum_Nup_2.mp3",
+      "registrationId": "can_tho-23",
+      "label": "Tum Núp 2",
+      "rosterName": "Bô Tum Reangsey Tum Nup (Tum Núp 2)"
+    },
+    {
+      "file": "27_Phno_Roca.mp3",
+      "registrationId": "can_tho-16",
+      "label": "Phnô Rôca",
+      "rosterName": "Phnôrôka"
+    },
+    {
+      "file": "28_Rach_Giong.mp3",
+      "registrationId": "ca_mau-02",
+      "label": "Rạch Giống",
+      "rosterName": "Rạch Giồng"
+    },
+    {
+      "file": "29_Bang_Khdon.mp3",
+      "registrationId": "can_tho-27",
+      "label": "Bâng Khdon",
+      "rosterName": "Bâng Khdon"
+    },
+    {
+      "file": "30_Sang_Ke.mp3",
+      "registrationId": "can_tho-45",
+      "label": "Săng Ke",
+      "rosterName": "Săng Ke"
+    },
+    {
+      "file": "31_Khleang_1.mp3",
+      "registrationId": "can_tho-03",
+      "label": "Khleang 1",
+      "rosterName": "Khleáng (Đội 1)"
+    },
+    {
+      "file": "32_Champa.mp3",
+      "registrationId": "can_tho-19",
+      "label": "Champa",
+      "rosterName": "Cham Pa"
+    },
+    {
+      "file": "33_Day_Ta_Suos.mp3",
+      "registrationId": "can_tho-28",
+      "label": "Đay Tà Suốs",
+      "rosterName": "Đay Ta Suốs"
+    },
+    {
+      "file": "34_Wath_Pich.mp3",
+      "registrationId": "can_tho-10",
+      "label": "Wath Pích",
+      "rosterName": "Pích Măng Kol (Wáth Pích)"
+    },
+    {
+      "file": "35_Bang_Crochap_Thmay.mp3",
+      "registrationId": "can_tho-42",
+      "label": "Bâng Crôcháp Thmây",
+      "rosterName": "Bâng Cro Chap Thmây"
+    },
+    {
+      "file": "36_Tum_Nup_1.mp3",
+      "registrationId": "can_tho-22",
+      "label": "Tum Núp 1",
+      "rosterName": "Bô Tum Reangsey Tum Nup (Tum Núp 1)"
+    },
+    {
+      "file": "37_Prek_Pinh_Taung.mp3",
+      "registrationId": "can_tho-29",
+      "label": "Prêk Pinh Taung",
+      "rosterName": "Prếk Pinh Tuang (Bét Tôn)"
+    },
+    {
+      "file": "38_Cao_Dan.mp3",
+      "registrationId": "ca_mau-01",
+      "label": "Cao Dân",
+      "rosterName": "Cao Dân"
+    },
+    {
+      "file": "39_Prek_On_Dok_1.mp3",
+      "registrationId": "can_tho-38",
+      "label": "Prêk On Đớk 1",
+      "rosterName": "Prêk On Đơk (Đội 1)"
+    },
+    {
+      "file": "40_Bang_Cok_1.mp3",
+      "registrationId": "can_tho-25",
+      "label": "Bâng Cók 1",
+      "rosterName": "Bâng Kók (Đội 1)"
+    },
+    {
+      "file": "41_Dom_Umpul.mp3",
+      "registrationId": "can_tho-08",
+      "label": "Đơm Ưmpưl",
+      "rosterName": "Đơm Om Prul (Xẻo Me)"
+    },
+    {
+      "file": "42_Phno_Canh_Cho_Thmay.mp3",
+      "registrationId": "can_tho-40",
+      "label": "Phnô Canh Chơ Thmây",
+      "rosterName": "Phnô Kanh Chơ Thmây"
+    },
+    {
+      "file": "43_Tuk_Pray.mp3",
+      "registrationId": "can_tho-44",
+      "label": "Tứk Pray",
+      "rosterName": "Tứk Pray"
+    },
+    {
+      "file": "44_Serey_Kandal.mp3",
+      "registrationId": "can_tho-09",
+      "label": "Sêrey Kandal",
+      "rosterName": "Sê Rây Kan Đal"
+    },
+    {
+      "file": "45_Pothi_Sath_Thamram_1.mp3",
+      "registrationId": "can_tho-01",
+      "label": "Pôthi Sath Thamram 1",
+      "rosterName": "PôThiSaThaRam (Đội 1)"
+    },
+    {
+      "file": "46_Bang_Cok_2.mp3",
+      "registrationId": "can_tho-26",
+      "label": "Bâng Cók 2",
+      "rosterName": "Bâng Kók (Đội 2)"
+    },
+    {
+      "file": "47_Tumpuk_Sok.mp3",
+      "registrationId": "can_tho-31",
+      "label": "Tumpuk Sók",
+      "rosterName": "TumPokSok (Đội nam)"
+    },
+    {
+      "file": "48_Chroi_Tum_Chas.mp3",
+      "registrationId": "can_tho-07",
+      "label": "Chrôi Tưm Chăs",
+      "rosterName": "Chrôi Tưm Chắs"
+    },
+    {
+      "file": "49_Monisrackeo.mp3",
+      "registrationId": "can_tho-15",
+      "label": "Monisrackeo",
+      "rosterName": "Muni Srắc Keo"
+    },
+    {
+      "file": "50_Kos_Thum_2.mp3",
+      "registrationId": "ca_mau-06",
+      "label": "Kos Thum 2",
+      "rosterName": "Kos Thum (Nam Đội 2)"
+    },
+    {
+      "file": "51_Ngan_Dua.mp3",
+      "registrationId": "ca_mau-09",
+      "label": "Ngan Dừa",
+      "rosterName": "Ngan Dừa (Đội nam)"
+    },
+    {
+      "file": "52_Khleang_2.mp3",
+      "registrationId": "can_tho-04",
+      "label": "Khleang 2",
+      "rosterName": "Khleáng (Đội 2)"
+    },
+    {
+      "file": "53_Buol_Pres_Phek.mp3",
+      "registrationId": "can_tho-18",
+      "label": "Buôl Pres Phek (Bốn Mặt)",
+      "rosterName": "Bốn Mặt (Buôl Preas Phek)"
+    }
+  ]
+}
