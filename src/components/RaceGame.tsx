@@ -16,17 +16,17 @@ function makeCup(){
  try{const saved=JSON.parse(localStorage.getItem(STORAGE)||'null');if(saved?.teamIds?.length===61&&saved.teamIds.every((id:string)=>FESTIVAL_TEAMS.some(t=>t.id===id)))cup.restore(saved);}catch{/* Invalid or unavailable storage starts a fresh cup. */}
  return cup;
 }
-export function RaceGame({onInspect}:{onInspect:()=>void}){
+export function RaceGame({onInspect,initialSelection}:{onInspect:(selection:{teamIds:string[];constructionTypes:string[]})=>void;initialSelection?:{teamIds:string[];constructionTypes:string[]}}){
  const [language,setLanguage]=useState(readGameLanguage),c=GAME_COPY[language];
  const textRef=useRef(c);textRef.current=c;
  const [mode,setMode]=useState<'cup'|'quick'>('cup'),modeRef=useRef(mode);modeRef.current=mode;
  const [view,setView]=useState('race'),[helpFrom,setHelpFrom]=useState<'menu'|'setup'>('menu');
  const [game]=useState(createRaceGame),[tournament]=useState(makeCup);
  const [cup,setCup]=useState(()=>tournament.snapshot()),[hud,setHud]=useState(()=>game.snapshot());
- const [selected,setSelected]=useState(cup.playerId),[query,setQuery]=useState(''),[difficulty,setDifficulty]=useState('normal');
+ const [selected,setSelected]=useState(initialSelection?.teamIds[0]||cup.playerId),[query,setQuery]=useState(''),[difficulty,setDifficulty]=useState('normal');
  const [panel,setPanel]=useState<'menu'|'setup'|'help'|'bracket'|null>('menu'),[ready,setReady]=useState(false),[busy,setBusy]=useState(false),[playing,setPlaying]=useState(true);
  const [menuHidden,setMenuHidden]=useState(false);
- const [construction,setConstruction]=useState('plywood');
+ const [construction,setConstruction]=useState(initialSelection?.constructionTypes[0]||'plywood');
  useEffect(()=>{if(ready)runtime.current?.setConstruction([construction,construction==='plywood'?'dugout':'plywood']);},[construction,ready]);
  const [loadProgress,setLoadProgress]=useState(''),[loadError,setLoadError]=useState(''),[error,setError]=useState(''),[activeMatch,setActiveMatch]=useState(()=>tournament.currentMatch());
  const [mix,setMix]=useState(audioPreferences),[caption,setCaption]=useState(''),[audioError,setAudioError]=useState('');
@@ -53,7 +53,7 @@ export function RaceGame({onInspect}:{onInspect:()=>void}){
  useEffect(()=>{
   let cancelled=false,stop=()=>{};const mount=host.current!;
   (async()=>{const {startBoatPreview}=await import('../race/boat-preview.mjs');if(cancelled)return;
-   const match=tournament.currentMatch();settings.current.teamIds=match?[match.playerId,match.opponentId]:['tum-nup-2','prek-on-dok-2'];clock.current.last=performance.now();
+   const match=tournament.currentMatch();settings.current.teamIds=initialSelection?.teamIds||(match?[match.playerId,match.opponentId]:['tum-nup-2','prek-on-dok-2']);clock.current.last=performance.now();
    await startBoatPreview(mount,settings,clock,import.meta.env.BASE_URL,(api:any)=>{if(cancelled){api.dispose();return;}api.audio=audio;api.menuMusic=music;runtime.current=api;stop=api.dispose;setReady(true);},(n:number,total:number)=>{if(!cancelled)setLoadProgress(`${n}/${total}`);});
   })().catch((e:Error)=>{if(!cancelled)setLoadError(e.message);});
   return()=>{cancelled=true;audio.dispose();music.dispose();stop();runtime.current=null;};
@@ -116,7 +116,7 @@ export function RaceGame({onInspect}:{onInspect:()=>void}){
  const audioOptions=<details className="game-audio-options"><summary aria-label={c.audioSettings}>{c.audio}</summary><div><b>{c.atmosphere}</b>{(['voice','khmer','whistle','drums','crowd'] as const).map(key=><label key={key}><input type="checkbox" checked={(mix as any)[key]} onChange={e=>changeMix({[key]:e.target.checked})}/>{c[key]}</label>)}<label>{c.volume}<input aria-label={c.volume} type="range" min="0" max="1" step=".05" value={mix.volume} onChange={e=>changeMix({volume:Number(e.target.value)})}/></label>{audioError&&<p role="status">{c.audioError}</p>}</div></details>;
  return <section className={'race-game'+(!inRace?' game-browsing':'')+(intro?' game-intro':'')+(panel==='menu'&&menuHidden?' game-cinema':'')} data-testid="festival-game" lang={language} onPointerDownCapture={()=>{if(game.state.phase==='ready'&&mix.enabled)void music.unlock();}}>
   <header className="game-heading">
-   <div className="game-brand"><Waves size={28}/><div><span>{c.festival}</span><h1>{c.brand} <small>{inRace?round:'1.200 m · Maspéro'}</small></h1></div></div>
+   <div className="game-brand"><img className="festival-logo" src={import.meta.env.BASE_URL+'assets/festival/festival-logo.svg'} alt="" width="68" height="36"/><div><span>{c.festival}</span><h1>{c.brand} <small>{inRace?round:'1.200 m · Maspéro'}</small></h1></div></div>
    <div className="game-heading-actions">{languageControl}{mode==='cup'&&<button onClick={bracket} aria-label={c.bracket}><Trophy size={17}/><span>{c.bracket}</span></button>}<button onClick={()=>changeMix({enabled:!mix.enabled})} aria-label={mix.enabled?c.mute:c.unmute}>{mix.enabled?<Volume2 size={18}/>:<VolumeX size={18}/>}</button>{audioOptions}{panel==='setup'&&<button onClick={()=>{audio.stopPreview();setPanel('menu');}} aria-label={c.menu}><Home size={18}/></button>}</div>
   </header>
   {inRace&&!intro&&<div className="game-score" aria-label={c.progress}>
@@ -127,7 +127,7 @@ export function RaceGame({onInspect}:{onInspect:()=>void}){
    <div className="game-canvas" ref={host} data-testid="art-stage" aria-busy={!ready}/>
    {panel==='menu'&&<button className="menu-visibility-toggle" aria-expanded={!menuHidden} aria-controls="opening-menu-controls" onClick={()=>setMenuHidden(hidden=>!hidden)}>{menuHidden?<Eye size={18}/>:<EyeOff size={18}/>}<span>{menuHidden?c.showMenu:c.hideMenu}</span></button>}
    {!ready&&<div className={'game-loading'+(panel==='menu'?' menu-loading':'')} role="status">{loadError?<>{c.loadError}: {loadError}<button onClick={()=>location.reload()}>{c.retry}</button></>:<><span className="loading-wheel"/>{loadProgress?c.loadingModel+' '+loadProgress:c.loading}</>}</div>}
-   {panel==='menu'&&<div id="opening-menu-controls" className="game-menu" data-testid="main-menu" hidden={menuHidden}><div className="game-menu-card"><span className="game-eyebrow">{c.location}</span><h2>{c.brand}<span>2026 · 1.200 m</span></h2><p className="menu-tagline">{c.tagline}</p><div className="menu-actions"><button className="game-primary" onClick={()=>chooseMode('cup')}><Trophy size={21}/><span>{cup.history.length&&tournament.currentMatch()?c.continueCup:c.cup}</span><ArrowRight size={19}/></button><button className="game-quick" onClick={()=>chooseMode('quick')}><Flag size={21}/><span>{c.quick}</span><ArrowRight size={19}/></button><button onClick={()=>{setHelpFrom('menu');setPanel('help');}}><HelpCircle size={19}/>{c.how}</button></div><p className="game-note">{c.ceremony}</p><button className="menu-music" onClick={()=>{changeMix({enabled:true});void music.unlock();}}><Volume2 size={15}/>{musicState.playing?c.music:c.playMusic}</button><button className="menu-inspect" onClick={onInspect}>{c.inspect}</button></div><div className="menu-race-label"><span className="live-dot"/>{c.festival}<b>61 {c.teams.toLocaleLowerCase()} · 1.200 m</b></div></div>}
+   {panel==='menu'&&<div id="opening-menu-controls" className="game-menu" data-testid="main-menu" hidden={menuHidden}><div className="game-menu-card"><img className="festival-menu-logo" src={import.meta.env.BASE_URL+'assets/festival/festival-logo.svg'} alt="" width="140" height="75"/><span className="game-eyebrow">{c.location}</span><h2>{c.brand}<span>2026 · 1.200 m</span></h2><p className="menu-tagline">{c.tagline}</p><div className="menu-actions"><button className="game-primary" onClick={()=>chooseMode('cup')}><Trophy size={21}/><span>{cup.history.length&&tournament.currentMatch()?c.continueCup:c.cup}</span><ArrowRight size={19}/></button><button className="game-quick" onClick={()=>chooseMode('quick')}><Flag size={21}/><span>{c.quick}</span><ArrowRight size={19}/></button><button onClick={()=>{setHelpFrom('menu');setPanel('help');}}><HelpCircle size={19}/>{c.how}</button></div><p className="game-note">{c.ceremony}</p><button className="menu-music" onClick={()=>{changeMix({enabled:true});void music.unlock();}}><Volume2 size={15}/>{musicState.playing?c.music:c.playMusic}</button><button className="menu-inspect" onClick={()=>onInspect(runtime.current?.assetSelection||{teamIds:[selected,'prek-on-dok-2'],constructionTypes:[construction,construction==='plywood'?'dugout':'plywood']})}>{c.inspect}</button></div><div className="menu-race-label"><span className="live-dot"/>{c.festival}<b>61 {c.teams.toLocaleLowerCase()} · 1.200 m</b></div></div>}
    {panel==='help'&&<section className="game-dialog game-help" role="dialog" aria-modal="true" aria-label={c.how}><button onClick={()=>setPanel(helpFrom)}><ArrowLeft size={18}/>{c.back}</button><h2>{c.helpTitle}</h2><p>{c.helpIntro}</p><ol className="help-steps">{[1,2,3].map(n=><li key={n}><span>{n}</span><div><h3>{c['step'+n]}</h3><p>{c['step'+n+'Body']}</p></div></li>)}</ol><button className="game-primary" onClick={()=>helpFrom==='setup'?setPanel('setup'):chooseMode('quick')}>{c.play}<ArrowRight size={18}/></button></section>}
    {panel==='setup'&&<section className="game-dialog game-setup" role="dialog" aria-modal="true" aria-label={c.choose}>
     <header className="setup-header"><div><span className="game-eyebrow">{mode==='cup'?c.cup:c.quick}</span><h2>{c.setup}</h2></div><button onClick={()=>{audio.stopPreview();setPanel('menu');}}><ArrowLeft size={17}/>{c.back}</button></header>

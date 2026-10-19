@@ -10,8 +10,12 @@ export function buildConstructionDetails(boat){
  const timber=new T.MeshLambertMaterial({color:'#b56d32'}),seam=new T.MeshLambertMaterial({color:'#75451f'}),carved=new T.MeshLambertMaterial({color:'#d99b4c'});
  variants.plywood.name='Plywood_Panel_Seams';variants.dugout.name='Dugout_Continuous_Carved_Gunwale';
  function rail(parent,side,drop,radius,material){
-  const points=[];for(let i=0;i<=80;i++){const x=-14.65+i*29.3/80,p=profile(x);points.push(new T.Vector3(x,p.g-drop,side*Math.max(.035,p.b-.025)));}
-  parent.add(new T.Mesh(new T.TubeGeometry(new T.CatmullRomCurve3(points),100,radius,6,false),material));
+  const points=[];for(let i=0;i<=128;i++){const x=-15.09+i*30.18/128,p=profile(x);points.push(new T.Vector3(x,p.g-Math.min(drop,(p.g-p.k)*.6),side*Math.max(.001,p.b-.025)));}
+  const path=new T.CatmullRomCurve3(points),geometry=new T.TubeGeometry(path,128,radius,6,false),positions=geometry.attributes.position,point=new T.Vector3();
+  // Finish the carved rim at the actual tip. A constant-radius tube cut off
+  // half a metre early looked like a separate square timber on the prow.
+  for(let i=0;i<=128;i++){const center=path.getPointAt(i/128),scale=Math.max(.015,Math.min(1,profile(center.x).b/.10));for(let j=0;j<=6;j++){const index=i*7+j;point.fromBufferAttribute(positions,index).sub(center).multiplyScalar(scale).add(center);positions.setXYZ(index,point.x,point.y,point.z);}}
+  geometry.computeVertexNormals();parent.add(new T.Mesh(geometry,material));
  }
  for(const side of[-1,1]){
   rail(variants.dugout,side,0,.045,carved);

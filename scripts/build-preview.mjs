@@ -1,5 +1,8 @@
+import {mkdir,writeFile} from 'node:fs/promises';
+import {festivalLogoSvg} from '../src/race/festival-branding.mjs';
+await mkdir('public/assets/festival',{recursive:true});
+await writeFile('public/assets/festival/festival-logo.svg',festivalLogoSvg());
 import {build} from 'esbuild';
-import {writeFile} from 'node:fs/promises';
 import {kbachSvg} from '../src/race/kbach-livery.mjs';
 await writeFile('public/assets/ghe-ngo/kbach-master.svg',kbachSvg());
 await import('./build-crowd-preview.mjs');

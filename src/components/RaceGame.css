@@ -28,3 +28,6 @@
 /* Full bilingual festival title remains readable without covering the river. */
 .game-brand h1{font-size:clamp(15px,1.7vw,23px)}.game-menu h2{font-size:clamp(23px,2.6vw,31px);line-height:1.25}.game-menu h2 span{font-size:14px}.game-eyebrow{line-height:1.5}.game-menu-card{overflow:auto}
 @media(max-height:550px){.game-menu h2{font-size:23px}.game-menu-card{padding:14px}.game-menu .menu-tagline{margin:8px 0}}
+
+/* The same festival mark appears on the UI and Khmer river banners. */
+.festival-logo{display:block;flex:none;border-radius:5px;object-fit:contain}.festival-menu-logo{display:block;width:112px;height:auto;margin:0 0 12px;border-radius:8px}.game-menu-card .game-eyebrow{display:block}@media(max-height:600px){.festival-menu-logo{width:76px;margin-bottom:6px}}@media(max-width:620px){.festival-logo{width:46px;height:25px}.festival-menu-logo{width:88px;margin-bottom:8px}}

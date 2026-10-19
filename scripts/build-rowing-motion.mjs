@@ -27,9 +27,9 @@ for(const name of names){
  const source=role==='rower'?posture+(side<0?'-starboard':'-port'):role==='helm'?(side<0?'helm-starboard':'helm'):name==='bow-spear'?'controller':name;
  const file=await glb(base+'motion-'+source+'-v25.glb'),gltf=await loader.parseAsync(file.raw.buffer.slice(file.raw.byteOffset,file.raw.byteOffset+file.raw.byteLength),'');
  const master=context();master.clip=gltf.animations[0];
- if(name==='bow-spear'||name==='caller'){
+ if(['bow-spear','caller','controller'].includes(name)){
   const grip=await glb(base+'motion-seated-starboard-v25.glb'),reference=await loader.parseAsync(grip.raw.buffer.slice(grip.raw.byteOffset,grip.raw.byteOffset+grip.raw.byteLength),'');
-  const fingers=new Map(reference.animations[0].tracks.filter(t=>/^(index|middle|ring|pinky|thumb)_\d\d_[lr]\.quaternion$/.test(t.name)).map(t=>[t.name,Array.from(t.createInterpolant().evaluate(reference.animations[0].duration*.28))]));
+  const fingers=new Map(reference.animations[0].tracks.filter(t=>/^(index|middle|ring|pinky|thumb)_\d\d_[lr]\.quaternion$/.test(t.name)&&(name!=='controller'||t.name.includes('_l.'))).map(t=>[t.name,Array.from(t.createInterpolant().evaluate(reference.animations[0].duration*.28))]));
   master.clip.tracks=master.clip.tracks.map(t=>fingers.has(t.name)?new T.QuaternionKeyframeTrack(t.name,Float32Array.of(0,master.clip.duration),Float32Array.from([...fingers.get(t.name),...fingers.get(t.name)])):t);
  }
  master.mixer=new T.AnimationMixer(master.root);master.mixer.clipAction(master.clip).play();

@@ -26,7 +26,7 @@ Get-ChildItem -LiteralPath (Join-Path $taskBuilt 'assets') -File | ForEach-Objec
     $taskPublishPaths += 'assets/' + $_.Name
 }
 # Carry existing source assets required by the preserved React studio.
-foreach ($taskAssetDir in @('festival-crowd','studio-kit','athlete-identities','athlete-master','race-audio')) {
+foreach ($taskAssetDir in @('festival','festival-crowd','studio-kit','athlete-identities','athlete-master','race-audio')) {
     if ($taskAssetDir -eq 'race-audio') {
         $taskAudioTarget = [IO.Path]::GetFullPath((Join-Path $taskDeploy 'assets/race-audio'))
         $taskOldManifest = Join-Path $taskAudioTarget 'manifest.json'

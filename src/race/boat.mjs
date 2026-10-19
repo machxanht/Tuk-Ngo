@@ -37,7 +37,19 @@ for(const side of [-1,1])for(const key of ['g']){
  const a0=y0,a1=d0*length,a2=.5*dd0*length*length,r0=y1-a0-a1-a2,r1=(side>0?.18:.24)*length-a1-2*a2,r2=-.20*length*length-2*a2;
  endCurves.set(side+key,[a0,a1,a2,10*r0-4*r1+.5*r2,-15*r0+7*r1-r2,6*r0-3*r1+.5*r2]);
 }
-export function profile(x){const p=legacyProfile(x),r=Math.abs(x);if(r<=END_FAIRING_START)return p;const t=Math.min(1,(r-END_FAIRING_START)/(15.1-END_FAIRING_START)),a=endCurves.get(Math.sign(x)+'g');p.g=a.reduceRight((value,c)=>value*t+c,0);return p;}
+// Stern contour measured from @karn_chinda / 7691171048493944071,
+// slide 4. Scale uses the existing 0.58 m middle depth, not field metrology.
+// Monotone Hermite interpolation avoids the old flattened/clipped end.
+const sternX=[7.55,8.305,9.06,9.815,10.57,11.325,12.08,12.835,13.59,14.194,14.647,14.949,15.1];
+const sternG=[.58,.58,.58,.587,.610,.641,.686,.755,.898,1.047,1.249,1.443,1.52],sternK=[0,0,0,.028,.067,.130,.221,.351,.545,.766,1.013,1.257,1.43];
+function monotoneContour(values,x){
+ const slopes=values.slice(1).map((y,i)=>(y-values[i])/(sternX[i+1]-sternX[i]));
+ const tangent=i=>i===0?slopes[0]:i===values.length-1?slopes.at(-1):slopes[i-1]*slopes[i]<=0?0:2/(1/slopes[i-1]+1/slopes[i]);
+ let i=0;while(i<sternX.length-2&&x>sternX[i+1])i++;
+ const h=sternX[i+1]-sternX[i],t=T.MathUtils.clamp((x-sternX[i])/h,0,1);
+ return (2*t**3-3*t*t+1)*values[i]+(t**3-2*t*t+t)*h*tangent(i)+(-2*t**3+3*t*t)*values[i+1]+(t**3-t*t)*h*tangent(i+1);
+}
+export function profile(x){const p=legacyProfile(x),r=Math.abs(x);if(x<0){p.g=monotoneContour(sternG,Math.max(7.55,r));p.k=monotoneContour(sternK,Math.max(7.55,r));return p;}if(r<=END_FAIRING_START)return p;const t=Math.min(1,(r-END_FAIRING_START)/(15.1-END_FAIRING_START)),a=endCurves.get(Math.sign(x)+'g');p.g=a.reduceRight((value,c)=>value*t+c,0);return p;}
 let designTexture;
 export async function prepareDesign(textureUrl,actorUrl){const result=await Promise.all([new T.TextureLoader().loadAsync(textureUrl),prepareActors(actorUrl)]);designTexture=result[0];designTexture.colorSpace=T.SRGBColorSpace;designTexture.anisotropy=8;}
 export function section(x,s){
@@ -45,6 +57,29 @@ export function section(x,s){
  const slope=Math.min(.85,d*Math.tan(14.5*Math.PI/180)/Math.max(p.b,.001)),coef=slope-1/p.p;
  const f=q===0?0:Math.pow(q,1/p.p)*(1-coef+coef*q);
  return new T.Vector3(x,p.k+d*q,Math.sign(s)*p.b*f);
+}
+
+// One hull surface for the race, inspection and the opening ceremony. The
+// ceremony changes tessellation only; silhouette, section and UVs stay shared.
+export function boatHullGeometry({segments=192,sections=24,interior=true}={}){
+ const positions=[],uv=[],outer=[],inside=[],rim=[],stride=sections+1,layers=interior?2:1,ring=stride*layers;
+ for(let i=0;i<=segments;i++){
+  const x=-15.099+30.198*i/segments,p=profile(x);
+  for(let layer=0;layer<layers;layer++)for(let j=0;j<=sections;j++){
+   const s=2*j/sections-1,point=section(x,s);
+   if(layer){const tangent=section(x,Math.min(1,s+.001)).sub(section(x,Math.max(-1,s-.001))),normal=new T.Vector3(0,tangent.z,-tangent.y).normalize();point.addScaledVector(normal,Math.min(.024,(p.g-p.k)*.25,p.b*.25));point.y=Math.min(p.g,point.y);}
+   positions.push(...point.toArray());uv.push(1-i/segments,1-Math.pow(Math.abs(s),p.p));
+  }
+ }
+ for(let i=0;i<segments;i++)for(let j=0;j<sections;j++){
+  const a=i*ring+j,b=a+ring;outer.push(a,b,a+1,b,b+1,a+1);
+  if(interior){const c=a+stride,e=b+stride;inside.push(c,c+1,e,e,c+1,e+1);}
+ }
+ if(interior){
+  for(let i=0;i<segments;i++)for(const j of[0,sections]){const a=i*ring+j,b=a+ring,c=a+stride,d=b+stride;rim.push(a,c,b,b,c,d);}
+  for(const i of[0,segments])for(let j=0;j<sections;j++){const a=i*ring+j,b=a+stride;rim.push(a,a+1,b,b,a+1,b+1);}
+ }
+ const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(positions,3));g.setAttribute('uv',new T.Float32BufferAttribute(uv,2));g.setIndex([...outer,...inside,...rim]);g.addGroup(0,outer.length,0);if(interior){g.addGroup(outer.length,inside.length,1);g.addGroup(outer.length+inside.length,rim.length,2);}g.computeVertexNormals();return g;
 }
 const V=(x,y,z)=>new T.Vector3(x,y,z),Y=V(0,1,0);
 const sphereGeo=new T.SphereGeometry(1,12,8),cylinderGeo=new T.CylinderGeometry(1,1,1,10),boxGeo=new T.BoxGeometry(1,1,1);

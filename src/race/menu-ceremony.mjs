@@ -1,5 +1,5 @@
 import * as T from 'three';
-import {profile} from './boat.mjs';
+import {boatHullGeometry} from './boat.mjs';
 import {courseZ} from './maspero-layout.mjs';
 import {FESTIVAL_TEAMS} from './festival-teams.mjs';
 import {acquireKbachAtlas} from './kbach-library.mjs';
@@ -8,21 +8,12 @@ import {ceremonyCrewDigest} from './asset-digests.mjs';
 import {ceremonyPlacement} from './ceremony-layout.mjs';
 export {ceremonyPlacement} from './ceremony-layout.mjs';
 
-function hullGeometry(){
- const p=[],uv=[],ix=[],n=84,sides=10;
- for(let i=0;i<=n;i++){
-  const x=-15.095+i/n*30.19,section=profile(x);
-  for(let j=0;j<=sides;j++){const a=j/sides*Math.PI,y=section.g-(section.g-section.k)*Math.sin(a),z=section.b*Math.cos(a);p.push(x,y,z);uv.push(i/n,Math.sin(a));}
- }
- for(let i=0;i<n;i++)for(let j=0;j<sides;j++){const a=i*(sides+1)+j,b=a+sides+1;ix.push(a,b,a+1,a+1,b,b+1);}
- const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(p,3));g.setAttribute('uv',new T.Float32BufferAttribute(uv,2));g.setIndex(ix);g.computeVertexNormals();return g;
-}
 export async function buildMenuCeremony(scene,base){
  const url=base+'assets/athlete-master/ceremony-crew.json?sha='+ceremonyCrewDigest,data=JSON.parse(new TextDecoder().decode(await assetBytes(url)));releaseAssetBytes(url);
  const group=new T.Group();group.name='Festival_Ceremony_61_Boats';group.visible=false;scene.add(group);
  const resources=[],geometries=[],meshes=[],uniform={value:0};
  const libraryRoot=base+'assets/ghe-ngo/kbach-library/',sharedAtlas=acquireKbachAtlas(libraryRoot),{catalog,texture}=await sharedAtlas.ready;
- const hullGeo=hullGeometry(),kbachRows=Float32Array.from({length:61},(_,i)=>i%catalog.items.length);hullGeo.setAttribute('aKbachRow',new T.InstancedBufferAttribute(kbachRows,1));geometries.push(hullGeo);
+ const hullGeo=boatHullGeometry({segments:84,sections:10,interior:false}),kbachRows=Float32Array.from({length:61},(_,i)=>i%catalog.items.length);hullGeo.setAttribute('aKbachRow',new T.InstancedBufferAttribute(kbachRows,1));geometries.push(hullGeo);
  const hullMat=new T.MeshLambertMaterial({map:texture,side:T.DoubleSide});
  hullMat.onBeforeCompile=s=>{s.vertexShader='attribute float aKbachRow;\n'+s.vertexShader;s.vertexShader=s.vertexShader.replace('#include <uv_vertex>',`#include <uv_vertex>
  vMapUv.y=(aKbachRow*${catalog.atlas.cellHeight.toFixed(1)}+${catalog.atlas.padding.toFixed(1)}+vMapUv.y*${(catalog.atlas.cellHeight-2*catalog.atlas.padding).toFixed(1)})/${catalog.atlas.size[1].toFixed(1)};

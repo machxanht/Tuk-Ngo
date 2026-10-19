@@ -1,7 +1,7 @@
 import * as T from 'three';
 
 const V=(x=0,y=0,z=0)=>new T.Vector3(x,y,z),Y=V(0,1,0);
-export const ROWING_LAYOUT={callerX:12.35,controllerX:5.42,sternDeckY:.50,rowerOffset:.24,lateralScale:.90,seatedPaddleLength:1.22,steeringPaddleLength:2.05,seatedBarDrop:.075};
+export const ROWING_LAYOUT={callerX:12.35,controllerX:5.42,sternDeckY:.50,rowerOffset:.24,lateralScale:.90,seatedPaddleLength:1.22,steeringPaddleLength:2.05,seatedBarDrop:.075,spearLength:1.48,spearTop:.36,spearBottom:-1.12};
 function frame(x,y){y=y.clone().normalize();x=x.clone().addScaledVector(y,-x.dot(y)).normalize();return new T.Quaternion().setFromRotationMatrix(new T.Matrix4().makeBasis(x,y,x.clone().cross(y).normalize()));}
 function curve(values,t,knots=[0,.12,.43,.57,.72,.90,1]){for(let i=0;i<knots.length-1;i++)if(t<=knots[i+1]){const a=T.MathUtils.smoothstep(t,knots[i],knots[i+1]);return T.MathUtils.lerp(values[i],values[i+1],a);}return values.at(-1);}
 
@@ -23,7 +23,7 @@ export function rowingPose(master,{role='rower',posture='seated',side=-1}={}){
  function direction(n,child,delta){const bone=bones[n],q=bone.getWorldQuaternion(new T.Quaternion()),from=pos(child).sub(pos(n)).normalize();setQ(n,new T.Quaternion().setFromUnitVectors(from,delta.clone().normalize()).multiply(q));}
  function leg(s,z,x=restPos('thigh_'+s).x,y=.075){
   const thigh='thigh_'+s,calf='calf_'+s,foot='foot_'+s,origin=pos(thigh),target=V(x,y,z),u=restPos(calf).distanceTo(restPos(thigh)),v=restPos(foot).distanceTo(restPos(calf));
-  const delta=target.clone().sub(origin),d=T.MathUtils.clamp(delta.length(),Math.abs(u-v)+1e-5,u+v-1e-5),unit=delta.normalize(),a=(u*u-v*v+d*d)/(2*d),pole=V(s==='l'?.08:-.08,0,1);pole.addScaledVector(unit,-pole.dot(unit)).normalize();
+  const delta=target.clone().sub(origin),d=T.MathUtils.clamp(delta.length(),Math.abs(u-v)+1e-5,u+v-1e-5),unit=delta.normalize(),a=(u*u-v*v+d*d)/(2*d),pole=V((s==='l'?.06:-.06)+(role==='rower'?side*.28:0),0,1);pole.addScaledVector(unit,-pole.dot(unit)).normalize();
   const knee=origin.clone().addScaledVector(unit,a).addScaledVector(pole,Math.sqrt(Math.max(0,u*u-a*a)));
   direction(thigh,calf,knee.sub(origin));direction(calf,foot,target.sub(pos(calf)));setQ(foot,restQ(foot));
  }
@@ -31,7 +31,7 @@ export function rowingPose(master,{role='rower',posture='seated',side=-1}={}){
   // The inboard upper arm folds forward, along the boat, instead of flaring
   // sideways into its partner. Both palms still solve to the same shaft.
   const outer=-side,inboard=arm.sign!==outer;
-  const origin=pos(arm.u),delta=grip.clone().sub(origin),distance=delta.length(),u=arm.ul,v=arm.fl+arm.pl,d=Math.min(distance,u+v-1e-6),unit=delta.normalize(),a=(u*u-v*v+d*d)/(2*d),pole=inboard?V(outer*.85,-.15,1.5):V(arm.sign,-.15,.35);pole.addScaledVector(unit,-pole.dot(unit)).normalize();
+  const origin=pos(arm.u),delta=grip.clone().sub(origin),distance=delta.length(),u=arm.ul,v=arm.fl+arm.pl,d=Math.min(distance,u+v-1e-6),unit=delta.normalize(),a=(u*u-v*v+d*d)/(2*d),pole=['controller','bow-spear'].includes(role)?V(arm.sign*.8,-1,.3):inboard?V(outer*.85,-.15,1.5):V(arm.sign,-.15,.35);pole.addScaledVector(unit,-pole.dot(unit)).normalize();
   const center=origin.clone().addScaledVector(unit,a),radius=Math.sqrt(Math.max(0,u*u-a*a));
   if(inboard&&['rower','caller'].includes(role)){
    // The elbow lies on a two-bone reach circle. Choose its forwardmost point,
@@ -60,14 +60,16 @@ export function rowingPose(master,{role='rower',posture='seated',side=-1}={}){
   if(role==='controller'){
    // One hand keeps the whistle at the lips; the free hand marks the drive.
    const mouth=pos('head').add(V(.055,-.10,.14));
-   arm(arms.l,mouth);arm(arms.r,V(-.25,hip+curve([.57,.49,.24,.28,.56,.62,.57],phase),curve([.45,.55,.30,.24,.40,.48,.45],phase)));
+   arm(arms.l,mouth);arm(arms.r,V(-.31,hip+curve([.30,.24,.10,.14,.34,.38,.30],phase),curve([.48,.54,.35,.30,.43,.51,.48],phase)));
    return;
   }
   // The seated caller follows the same imaginary shaft with staggered hands.
   // No visible paddle is attached: this is a rowing cue to the crew.
   const angle=T.MathUtils.degToRad(curve([27,12,-29,-35,52,58,50,27],phase,[0,.12,.43,.57,.68,.72,.90,1]));
-  let axis=V(-outer*.40,Math.cos(angle)*Math.sqrt(.84),-Math.sin(angle)*Math.sqrt(.84)).normalize();
-  let top=V(-outer*.07,hip+curve([.62,.56,.48,.59,.72,.68,.62],phase),curve([.50,.53,.32,.28,.35,.49,.50],phase));
+  // The shaft crosses gunwale HEIGHT outside the painted skin. Testing only
+  // its tip hid a collision halfway up the old, too-upright paddle.
+  let axis=V(-outer*.52,Math.cos(angle)*Math.sqrt(1-.52**2),-Math.sin(angle)*Math.sqrt(1-.52**2)).normalize();
+  let top=V(outer*.09,hip+curve([.62,.56,.48,.59,.72,.68,.62],phase),curve([.50,.53,.32,.28,.35,.49,.50],phase));
   if(role==='helm'){
    // A nearly upright rudder makes small corrections beside the stern.
    const spine=bones.spine_01;spine.quaternion.multiply(new T.Quaternion().setFromAxisAngle(V(1,0,0),T.MathUtils.degToRad(curve([8,10,-8,-12,-3,8,8],phase))));spine.updateMatrixWorld(true);
@@ -75,16 +77,16 @@ export function rowingPose(master,{role='rower',posture='seated',side=-1}={}){
    axis=V(-outer*.22,1,curve([.08,.12,.20,.22,.15,.10,.08],phase)).normalize();
   }
   if(role==='bow-spear'){
-   top=V(.19,hip+.65,.35);axis=V(.025,1,.035).normalize();
+   top=V(.23,hip+.20,.30);axis=V(.025,1,.035).normalize();
   }
-  const upper=outer>0?'r':'l',ordered=[arms[upper],arms[upper==='l'?'r':'l']];
+  const upper=outer>0?'r':'l',ordered=[arms[upper],arms[upper==='l'?'r':'l']],gripSpacing=role==='bow-spear'?.34:.53;
   // Project the common upper grip into both arm reach volumes, so changing
   // stance never detaches a hand or straightens an elbow beyond its limit.
   for(let step=0;step<24;step++)for(let i=0;i<2;i++){
-   const a=ordered[i],center=pos(a.u).addScaledVector(axis,i*.53),u=a.ul,v=a.fl+a.pl,delta=top.clone().sub(center),lo=Math.sqrt(u*u+v*v-2*u*v*Math.cos(T.MathUtils.degToRad(55))),hi=Math.sqrt(u*u+v*v-2*u*v*Math.cos(T.MathUtils.degToRad(145)));
+   const a=ordered[i],center=pos(a.u).addScaledVector(axis,i*gripSpacing),u=a.ul,v=a.fl+a.pl,delta=top.clone().sub(center),lo=Math.sqrt(u*u+v*v-2*u*v*Math.cos(T.MathUtils.degToRad(55))),hi=Math.sqrt(u*u+v*v-2*u*v*Math.cos(T.MathUtils.degToRad(145)));
    const distance=delta.length();top.copy(center).addScaledVector(delta.normalize(),T.MathUtils.clamp(distance,lo,hi));
   }
-  ordered.forEach((a,i)=>arm(a,top.clone().addScaledVector(axis,-i*.53)));
+  ordered.forEach((a,i)=>arm(a,top.clone().addScaledVector(axis,-i*gripSpacing)));
   // Equipment local -Y runs from its T grip down to the blade.
   const width=V(1,0,0).addScaledVector(axis,-axis.x).normalize(),q=frame(width,axis);
   const world=new T.Matrix4().compose(top,q,V(1,1,1)),local=master.paddle.parent.matrixWorld.clone().invert().multiply(world);local.decompose(master.paddle.position,master.paddle.quaternion,master.paddle.scale);master.paddle.updateMatrixWorld(true);

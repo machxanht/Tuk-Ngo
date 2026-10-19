@@ -6,6 +6,12 @@ import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {validateBytes} from 'gltf-validator';
 import {rowingMotionDigest,athleteMasterDigest} from '../src/race/asset-digests.mjs';
 import {ROWING_LAYOUT} from '../src/race/rowing-pose.mjs';
+import {profile,boatHullGeometry} from '../src/race/boat.mjs';
+import {festivalLogoSvg,FESTIVAL_MARK} from '../src/race/festival-branding.mjs';
+
+for(let x=.01;x<=15.09;x+=.01){const before=profile(-x+.001),p=profile(-x);assert.ok(p.g>=p.k&&p.b>=0);assert.ok(Math.abs(p.g-before.g)<.002&&Math.abs(p.k-before.k)<.003,'Stern contour has a kink');}
+const low=boatHullGeometry({segments:84,sections:10,interior:false}),high=boatHullGeometry();assert.ok([...high.attributes.position.array].every(Number.isFinite));assert.equal(high.groups.length,3);assert.equal(low.groups.length,1);low.dispose();high.dispose();
+const logo=await readFile('public/assets/festival/festival-logo.svg','utf8');assert.equal(logo,festivalLogoSvg());assert.ok(logo.includes(FESTIVAL_MARK.boat));
 
 const raw=await readFile('public/assets/athlete-master/rowing-motion.glb'),validated=await validateBytes(new Uint8Array(raw));
 assert.equal(validated.issues.numErrors,0,JSON.stringify(validated.issues.messages));assert.equal(validated.issues.numWarnings,0);
@@ -32,9 +38,9 @@ for(const clip of model.animations){
   const hand=root.getObjectByName('hand_l').getWorldPosition(new T.Vector3());stats.handZ=[Math.min(stats.handZ[0],hand.z),Math.max(stats.handZ[1],hand.z)];
   if(['caller','bow-spear'].includes(clip.name)){
    const inverse=root.getObjectByName('Dam_Wood_152cm').matrixWorld.clone().invert(),palms=['l','r'].map(s=>root.getObjectByName('hand_'+s).getWorldPosition(new T.Vector3()).lerp(root.getObjectByName('middle_01_'+s).getWorldPosition(new T.Vector3()),.9).applyMatrix4(inverse));
-   assert.ok(Math.min(...palms.map((p,i)=>Math.max(p.length(),palms[1-i].distanceTo(new T.Vector3(0,-.53,0)))))<.005,clip.name+' hands must grip the real or mimed shaft');
+   assert.ok(Math.min(...palms.map((p,i)=>Math.max(p.length(),palms[1-i].distanceTo(new T.Vector3(0,clip.name==='bow-spear'?-.34:-.53,0)))))<.005,clip.name+' hands must grip the real or mimed shaft');
   }
-  if(clip.name==='controller'){const mouth=root.getObjectByName('head').getWorldPosition(new T.Vector3()).add(new T.Vector3(.055,-.10,.14));const palm=hand.lerp(root.getObjectByName('middle_01_l').getWorldPosition(new T.Vector3()),.9);assert.ok(palm.distanceTo(mouth)<.012,'Coach whistle hand misses lips');}
+  if(clip.name==='controller'){const head=root.getObjectByName('head').getWorldPosition(new T.Vector3()),mouth=head.clone().add(new T.Vector3(.055,-.10,.14));const palm=hand.lerp(root.getObjectByName('middle_01_l').getWorldPosition(new T.Vector3()),.9);assert.ok(palm.distanceTo(mouth)<.012,'Coach whistle hand misses lips');for(const [side,sign]of [['l',1],['r',-1]]){const elbow=root.getObjectByName('lowerarm_'+side).getWorldPosition(new T.Vector3());assert.ok(elbow.x*sign>.12,'Coach elbow folds across the chest');assert.ok(elbow.y<head.y-.20,'Coach elbow is raised unnaturally');}}
   if(clip.name==='bow-spear')assert.ok(Math.abs(root.getObjectByName('pelvis').getWorldPosition(new T.Vector3()).y-.94)<.01,'Dugout commander must stand');
   if(kneeling){
    const rear=outer>0?'l':'r',front=rear==='l'?'r':'l',knee=root.getObjectByName('calf_'+rear).getWorldPosition(point),frontKnee=root.getObjectByName('calf_'+front).getWorldPosition(point.clone());

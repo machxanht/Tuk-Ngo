@@ -11,7 +11,7 @@ import {crewAnimation} from './crew-animation.mjs';
 import {finishAthleteShirt} from './athlete-finish.mjs';
 import {ROWING_LAYOUT} from './rowing-pose.mjs';
 import {rowingMotionDigest} from './asset-digests.mjs';
-import {profile} from './boat.mjs';
+import {profile,boatHullGeometry} from './boat.mjs';
 import {buildConstructionDetails,BOAT_CONSTRUCTIONS} from './boat-construction.mjs';
 
 const W=2400,H=860;
@@ -92,21 +92,28 @@ export async function createHybridBoats(base='',{onProgress=()=>{},sharedRendere
  const camera=new T.OrthographicCamera(-15.8,18.7,34.5*H/W/2,-34.5*H/W/2,.1,120);
  function fullCamera(){camera.left=-15.8;camera.right=18.7;camera.top=34.5*H/W/2;camera.bottom=-camera.top;camera.position.set(9,13.2,-28);camera.lookAt(0,-.8,0);camera.updateProjectionMatrix();camera.updateMatrixWorld(true);}
  fullCamera();
- hull.scene.updateMatrixWorld(true);const hullBody=hull.scene.getObjectByName('Hull_Watertight_30_20x1_12');
+ hull.scene.updateMatrixWorld(true);const sourceHull=hull.scene.getObjectByName('Hull_Watertight_30_20x1_12');
+ const hullBody=new T.Group();hullBody.name='Canonical_Boat_Hull';
  const paintedHull=[],hullInteriors=[],hullEnds=[];
  hull.scene.traverse(o=>{
   if(!o.isMesh)return;
-  if(/Bench|Command_Platform/.test(o.name)){o.visible=false;return;}
+  let parent=o;while(parent&&parent!==sourceHull)parent=parent.parent;
+  if(parent===sourceHull||/Bench|Command_Platform|Foredeck|SternDeck|Red_Integrated_Prow|Red_Integrated_Stern/.test(o.name)){o.visible=false;return;}
   const old=o.material;o.material=materialFrom(old);
-  if(old.map&&hullBody){
+  if(old.map){
    o.geometry=o.geometry.clone();o.material.color.set('white');paintedHull.push({mesh:o});
   }else if(/Wood|Timber|Rib|Beam/.test(old.name))o.material.color.set('#b9844d');
   if(/Red_Integrated_Prow|Red_Integrated_Stern/.test(o.name))hullEnds.push(o);
   // The optimized hull GLB strips material names. Identify its two untextured
   // inner primitives by ancestry, and isolate them from shared timber paint.
-  let ancestor=o;while(ancestor&&ancestor!==hullBody)ancestor=ancestor.parent;
-  if(!old.map&&ancestor===hullBody){o.material=o.material.clone();hullInteriors.push({mesh:o,color:o.material.color.clone()});}
  });
+ const hullGeometry=boatHullGeometry(),hullMaterials=[new T.MeshLambertMaterial({color:'white',side:T.DoubleSide}),new T.MeshLambertMaterial({color:'#b9844d',side:T.DoubleSide}),new T.MeshLambertMaterial({color:'#e6b455',side:T.DoubleSide})];
+ for(const [i,part]of hullGeometry.groups.entries()){
+  const geometry=new T.BufferGeometry();for(const [name,attribute]of Object.entries(hullGeometry.attributes))geometry.setAttribute(name,attribute);
+  geometry.setIndex(new T.BufferAttribute(hullGeometry.index.array.slice(part.start,part.start+part.count),1));const mesh=new T.Mesh(geometry,hullMaterials[i]);mesh.name=['Painted_Hull','Inner_Hull','Rounded_Rim'][i];hullBody.add(mesh);
+  if(i===0)paintedHull.push({mesh});if(i===1)hullInteriors.push({mesh,color:mesh.material.color.clone()});
+ }
+ hullGeometry.dispose();hull.scene.add(hullBody);hull.scene.updateMatrixWorld(true);
  boat.add(hull.scene);
  const constructionDetails=buildConstructionDetails(boat);let construction='plywood';
  // Keep the real hull depth. A depth-only water plane hides submerged mesh
@@ -149,7 +156,7 @@ export async function createHybridBoats(base='',{onProgress=()=>{},sharedRendere
   if(role==='rower')group.scale.x=ROWING_LAYOUT.lateralScale;
   const forward=['caller','controller'].includes(role)?-1:1,seated=posture==='seated';
   const seatTop=seated?(role==='caller'?actors[0].seatTop:profile(x).g-ROWING_LAYOUT.seatedBarDrop):null;
-  let footing=role==='helm'?ROWING_LAYOUT.sternDeckY:Math.max(floor(x+forward*.12,group.position.z-.14),floor(x+forward*.12,group.position.z+.14))+(role==='controller'?.16:0);
+  let footing=role==='helm'?ROWING_LAYOUT.sternDeckY:role==='rower'?floor(x,.13):floor(x,0)+.16;
   group.position.y=seated?seatTop-.515:footing;
   const variant=faceFor(id,null),geometry=geometryFor(role,variant);
   const skin=new T.SkinnedMesh(geometry,skinMaterial);skin.bindMode='detached';skin.bind(master.skeleton,identity);skin.frustumCulled=false;group.add(skin);
@@ -168,6 +175,17 @@ export async function createHybridBoats(base='',{onProgress=()=>{},sharedRendere
    paddle.traverse(o=>{if(o.isMesh)o.material=materialFrom(o.material);});group.add(paddle);
   }
   boat.add(group);group.updateMatrixWorld(true);
+  // Fit the actual soles/shins to this hull section. The previous placement
+  // sampled an outboard point beside the feet, lifting rear rows onto the rim.
+  // Keep seated hips on their low cross-thwart; their legs tuck in via IK.
+  if(!seated&&role==='rower'){
+   let clearance=-Infinity;const g=skin.geometry,point=new T.Vector3();
+   for(let i=0;i<g.attributes.position.count;i++){
+    let weight=0;for(let k=0;k<4;k++)if(/^(calf|foot|ball|toe)_/.test(jointNames[g.attributes.skinIndex.getComponent(i,k)]))weight+=g.attributes.skinWeight.getComponent(i,k);
+    if(weight>.45){skin.getVertexPosition(i,point).applyMatrix4(group.matrixWorld);clearance=Math.max(clearance,floor(point.x,point.z)-point.y);}
+   }
+   group.position.y+=clearance+.012;footing=group.position.y;group.updateMatrixWorld(true);
+  }
   const feet=new T.Box3(),point=new T.Vector3();
   if(seated){const g=skin.geometry;for(let i=0;i<g.attributes.position.count;i++){let w=0;for(let k=0;k<4;k++)if(/^(foot|ball|toe)_/.test(jointNames[g.attributes.skinIndex.getComponent(i,k)]))w+=g.attributes.skinWeight.getComponent(i,k);if(w>.65)feet.expandByPoint(skin.getVertexPosition(i,point).applyMatrix4(group.matrixWorld));}footing=feet.min.y-.002;}
   const feetSize=seated?feet.getSize(new T.Vector3()):null;
@@ -213,9 +231,14 @@ export async function createHybridBoats(base='',{onProgress=()=>{},sharedRendere
  const caller=actors.find(a=>a.role==='caller'),coach=actors.find(a=>a.role==='controller');
  const seatedCallerY=caller.group.position.y;
  const spear=new T.Group();spear.name='Dugout_Bow_Command_Spear';spear.matrixAutoUpdate=false;
- const shaft=new T.Mesh(new T.CylinderGeometry(.018,.023,2.15,8),wood);shaft.position.y=-.38;spear.add(shaft);
- const spearhead=new T.Mesh(new T.ConeGeometry(.075,.28,4),new T.MeshLambertMaterial({color:'#e9c873'}));spearhead.position.y=.83;spear.add(spearhead);caller.group.add(spear);spear.visible=false;
+ const shaft=new T.Mesh(new T.CylinderGeometry(.014,.018,1.16,8),wood);shaft.position.y=-.54;spear.add(shaft);
+ const bladeShape=new T.Shape();bladeShape.moveTo(-.025,.10);bladeShape.quadraticCurveTo(-.09,.26,-.026,.36);bladeShape.quadraticCurveTo(.075,.32,.045,.10);bladeShape.closePath();
+ const spearhead=new T.Mesh(new T.ExtrudeGeometry(bladeShape,{depth:.016,bevelEnabled:false}),new T.MeshLambertMaterial({color:'#272c2a'}));spearhead.position.z=-.008;spear.add(spearhead);
+ const collar=new T.Mesh(new T.BoxGeometry(.11,.075,.045),new T.MeshLambertMaterial({color:'#dc3539'}));collar.position.y=.065;spear.add(collar);
+ for(const [i,color]of ['#ee3b4b','#f6ca43','#6dc64e'].entries()){const ribbon=new T.Mesh(new T.PlaneGeometry(.022,.35+i*.035),new T.MeshLambertMaterial({color,side:T.DoubleSide}));ribbon.position.set((i-1)*.035,-.16-i*.018,.027);ribbon.rotation.z=(i-1)*.12;spear.add(ribbon);}
+ caller.group.add(spear);spear.visible=false;
  const whistle=new T.Mesh(new T.BoxGeometry(.032,.025,.065),new T.MeshLambertMaterial({color:'#e8d259'}));whistle.name='Coach_Whistle';coach.group.add(whistle);
+ const callerWhistle=whistle.clone();callerWhistle.name='Bow_Caller_Whistle';caller.group.add(callerWhistle);
  function setConstruction(type){
   if(!BOAT_CONSTRUCTIONS.includes(type))throw Error('Unknown boat construction '+type);
   construction=type;constructionDetails.set(type);boat.userData.construction=type;
@@ -230,6 +253,7 @@ export async function createHybridBoats(base='',{onProgress=()=>{},sharedRendere
   for(const a of actors)if(a.paddle){a.paddle.matrix.copy(a.master.paddle.matrixWorld);a.paddle.matrixWorldNeedsUpdate=true;}
   if(spear.visible){spear.matrix.copy(roles.caller.paddle.matrixWorld);spear.matrixWorldNeedsUpdate=true;}
   roles.controller.root.getObjectByName('head').getWorldPosition(whistle.position);whistle.position.add(new T.Vector3(.055,-.10,.17));
+  roles.caller.root.getObjectByName('head').getWorldPosition(callerWhistle.position);callerWhistle.position.add(new T.Vector3(.025,-.10,construction==='dugout'?.08:.14));
   boat.updateMatrixWorld(true);
  }
  function project(point){const p=point.clone().project(camera);return [(p.x+1)*W/2,(1-p.y)*H/2];}

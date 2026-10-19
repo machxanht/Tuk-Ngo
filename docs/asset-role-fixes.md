@@ -1,5 +1,7 @@
 # Festival asset roles
 
+Latest corrections and source evidence: [shared asset, motion, stern and branding](asset-consistency.md).
+
 The game title is **Lễ hội đua ghe Ngo · ពិធីបុណ្យអុំទូក 2026**, with **Tỉnh Sóc Trăng · ខេត្តឃ្លាំង** as the requested in-game location label.
 
 ## Crew
@@ -18,7 +20,7 @@ The inspection view and race setup offer **Ván ép / Độc mộc**. Plywood ha
 
 - 128 hyacinth patches and 28 fallen banana stems drift at 0.24 m/s in seeded, irregular clusters outside the two racing lanes. The two instanced batches remain two vegetation draw calls.
 - 572 waist-deep cheering spectators occupy ten compact, separated groups, five per bank, exclusively in the final 100 metres. Position rejection maintains space between people inside each group.
-- Khmer banners use high-resolution canvas vector lotus, paddle and longboat illustrations with bright colors. Added ads retain the requested **Kuon Khmer** and **Angkor Soul** brand names, with Khmer supporting copy.
+- Khmer banners use the shared red/white/gold festival boat logo and layout. Added ads retain the requested **Kuon Khmer** and **Angkor Soul** brand names, with Khmer supporting copy.
 - Festival spelling reference: [Cambodian government festival notice](https://pursat.info.gov.kh/km/article/01a1349f-5bf3-7330-b36f-88957cd3534b). Construction/role choices above follow the owner's requested game interpretation.
 
 ## Verification
