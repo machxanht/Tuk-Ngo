@@ -32,7 +32,7 @@ export function buildMasperoBanks(group,waterY,crowdAssets,bankMaterials={},opti
  const meshes=new Map(),geometries={box:new T.BoxGeometry(1,1,1),pole:new T.CylinderGeometry(1,1,1,8),head:new T.SphereGeometry(1,9,7),crown:new T.SphereGeometry(1,20,14),cone:new T.ConeGeometry(1,1,12)},dummy=new T.Object3D();
  const material=new T.MeshStandardMaterial({color:'white',roughness:.85}),metal=new T.MeshStandardMaterial({color:'white',roughness:.55,metalness:.28});
  const people=[],totals={spectators:0,seats:0,trees:0,houses:0,distantBlocks:0,umbrellas:0,stands:2,nationalFlags:0};
- let bridgeFrame=null,bankAnchor=null;
+ let bridgeFrame=null,bankAnchor=null;const signs=new Map(),signPlacements=[];
  const mappedZ=(x,z)=>courseZ(bankAnchor??x,z);
  // Feathered coconut fronds and irregular broadleaf crowns, rather than solid
  // paddle-shaped leaves and five smooth balls per tree.
@@ -54,8 +54,9 @@ export function buildMasperoBanks(group,waterY,crowdAssets,bankMaterials={},opti
  }
  function beam(a,b,r,color){const d=b.clone().sub(a);dummy.quaternion.setFromUnitVectors(V(0,1,0),d.clone().normalize());const e=new T.Euler().setFromQuaternion(dummy.quaternion);add('pole',(a.x+b.x)/2,(a.y+b.y)/2,(a.z+b.z)/2,r,d.length(),r,color,e.x,e.y,e.z,true);}
  function text(text,width,height,x,y,z,background='#8c2321',fg='#f6d880',ry=0){
-  const c=document.createElement('canvas');c.width=2048;c.height=Math.max(64,Math.round(c.width*height/width));const p=c.getContext('2d'),pad=c.height*.08;p.fillStyle=background;p.fillRect(0,0,c.width,c.height);p.strokeStyle=fg;p.lineWidth=Math.max(2,c.height*.025);p.strokeRect(pad,pad,c.width-pad*2,c.height-pad*2);p.fillStyle=fg;p.textAlign='center';p.textBaseline='middle';const base=c.height*.52;p.font='700 '+base+'px "Noto Sans Khmer"';const size=Math.min(base,base*(c.width-pad*4)/p.measureText(text).width);p.font='700 '+size+'px "Noto Sans Khmer"';p.fillText(text,c.width/2,c.height*.52);
-  const tx=new T.CanvasTexture(c);tx.colorSpace=T.SRGBColorSpace;tx.anisotropy=4;const m=new T.MeshBasicMaterial({map:tx,side:T.FrontSide}),o=new T.Mesh(new T.PlaneGeometry(width,height),m);o.position.set(x,y,bridgeFrame?z:mappedZ(x,z));o.rotation.y=ry;if(bridgeFrame){const dx=x-bridgeFrame.x;cDummyPosition(o,dx,z,bridgeFrame);o.rotation.y+=bridgeFrame.yaw;}o.name='CourseSign_'+text;o.userData={language:'km',width,height,worldText:text};group.add(o);return o;
+  const key=JSON.stringify([text,width,height,background,fg]);let batch=signs.get(key);
+  if(!batch){const c=document.createElement('canvas');c.width=2048;c.height=Math.max(128,Math.round(c.width*height/width));const p=c.getContext('2d'),pad=c.height*.1;p.fillStyle=background;p.fillRect(0,0,c.width,c.height);p.strokeStyle=fg;p.lineWidth=Math.max(2,c.height*.025);p.strokeRect(pad,pad,c.width-pad*2,c.height-pad*2);p.fillStyle=fg;p.textAlign='center';p.textBaseline='middle';const base=c.height*.49;p.font='700 '+base+'px "Noto Sans Khmer"';const size=Math.min(base,base*(c.width-pad*4)/p.measureText(text).width);p.font='700 '+size+'px "Noto Sans Khmer"';p.fillText(text,c.width/2,c.height*.54);const tx=new T.CanvasTexture(c);tx.colorSpace=T.SRGBColorSpace;tx.anisotropy=8;batch={geometry:new T.PlaneGeometry(width,height),material:new T.MeshBasicMaterial({map:tx,side:T.FrontSide}),text,width,height,list:[]};signs.set(key,batch);}
+  const o=new T.Object3D();o.position.set(x,y,bridgeFrame?z:mappedZ(x,z));o.rotation.y=ry;if(bridgeFrame){const dx=x-bridgeFrame.x;cDummyPosition(o,dx,z,bridgeFrame);o.rotation.y+=bridgeFrame.yaw;}o.updateMatrix();batch.list.push(o.matrix.clone());signPlacements.push({text,width,height,x:o.position.x,y,z:o.position.z,bank:Math.sign(z)});return o;
  }
  function cDummyPosition(o,dx,z,frame){o.position.x=frame.x+dx*Math.cos(frame.yaw)+z*Math.sin(frame.yaw);o.position.z=-dx*Math.sin(frame.yaw)+z*Math.cos(frame.yaw);}
  function person(x,floor,z,id,seated=false,seatY=null){
@@ -194,16 +195,25 @@ export function buildMasperoBanks(group,waterY,crowdAssets,bankMaterials={},opti
   const x=raceX(distance),numerals=String(distance).replace(/\d/g,n=>'០១២៣៤៥៦៧៨៩'[Number(n)]);add('pole',x,4.7,side*43.8,.07,7,.07,'#d4d4c5');text(distance===1200?'ទីបញ្ចប់':distance===0?'ចំណុចចាប់ផ្តើម':numerals+' ម៉ែត្រ',distance===0?7:5,1.1,x,7.7,side*43.8,'#8c2c27','#f0dc92');
  }
  beam(V(COURSE.finishX,8, -43.8),V(COURSE.finishX,8,43.8),.015,'#737f74');
+ const phrases=['សូមស្វាគមន៍','ប្រណាំងទូក-ង','អបអរសាទរ','ពិធីបុណ្យអុំទូក'];
+ for(const side of[-1,1])for(let x=854,id=0;x<2430;x+=38,id++){
+  if(nearBridge(x,24)||x>990&&x<1190)continue;
+  const high=id%3===0,width=high?18:15,height=high?2.4:1.55,y=high?5.4:2.05,z=side*44.75,phrase=phrases[id%phrases.length];
+  if(high)for(const dx of[-9.3,9.3])add('pole',x+dx,3.55,z,.055,5.5,.055,'#d5ddd2');
+  text(phrase,width,height,x,y,z,id%2?'#0c6d66':'#a7382e','#fff4c5',side<0?0:Math.PI);
+ }
  for(let z=-40,i=0;z<42;z+=2.2,i++)box(COURSE.finishX,7.68,z,.04,.55,.75,palette[i%palette.length]);
  for(const {type,shiny,list} of meshes.values()){
   const mesh=new T.InstancedMesh(geometries[type],shiny?metal:material,list.length);if(type==='leaf')mesh.material=material.clone(),mesh.material.side=T.DoubleSide;mesh.name='Maspero_'+type+(shiny?'_metal':'');for(let i=0;i<list.length;i++){mesh.setMatrixAt(i,list[i].matrix);mesh.setColorAt(i,list[i].color);}mesh.computeBoundingSphere();group.add(mesh);
  }
+ for(const batch of signs.values()){const mesh=new T.InstancedMesh(batch.geometry,batch.material,batch.list.length);batch.list.forEach((matrix,i)=>mesh.setMatrixAt(i,matrix));mesh.name='CourseSign_'+batch.text;mesh.userData={language:'km',worldText:batch.text,width:batch.width,height:batch.height};mesh.computeBoundingSphere();group.add(mesh);}
  const street=buildFestivalStreet(group,bankMaterials),buildings=street.stats;
  totals.houses+=buildings.houses||buildings.buildings||0;totals.trees+=buildings.trees||0;
  people.push(...street.people);totals.spectators=people.length;
  const crowd=buildFestivalCrowd(group,people,crowdAssets,options),traffic=buildFestivalTraffic(group);
  group.userData={...group.userData,reference:'OWNER_VTV10_VIDEO_2025_REAL_PHOTOS_AND_OSM_LAYOUT',dimensions:'APPROXIMATE_GAME_SCALE',...totals,buildings,detailRange:DETAIL_RANGE,bankSource:MASPERO_LAYOUT.source,bankLicense:MASPERO_LAYOUT.license,bankOutlineGameSpanM:400,bridgeYawSource:'OSM bridge centre-lines',continuousLand:true,pitchedRoof:'ridge above eaves; corrugation follows both slopes',npcSource:'Quaternius CC0 civilian silhouettes with independently animated festival actions',signLanguage:'km',standRoof:'VIP double pitch; opposite low single pitch',bridgeC247:'teal curved steel portals',bridge30April:'concrete piers and silver arched truss, 2022 construction photo; finished decoration approximate'};
  group.userData.traffic=traffic.stats;group.userData.spectatorSpacingM=.56;group.userData.fullCourseCrowdRows=10;
+ group.userData.banners={count:signPlacements.length,textureCount:signs.size,language:'km',placements:signPlacements,railHeightM:1.55,overheadHeightM:2.4};
  group.userData.bridges={C247:{x:COURSE.bridgeStart,yaw:bridgeYaw(COURSE.bridgeStart)},'30/4':{x:COURSE.bridgeEnd,yaw:bridgeYaw(COURSE.bridgeEnd),beforeStartM:COURSE.bridgeEnd-raceX(0)},placement:'owner-corrected game placement; OSM angles retained'};
  group.userData.mainStand={bank:'right in race direction',lengthM:128,tiers:8,roofHeightM:16,roof:'shallow double pitch, pale green-grey sheet metal',reference:'https://baosoctrang.org.vn/van-hoa-the-thao-du-lich/202411/hao-huc-cho-ngay-khai-hoi-67c01d9/',measured:false};
  return {totals,update(time,cameraX,cameraZ){crowd.update(time,cameraX,cameraZ);street.update(time,cameraX,cameraZ);traffic.update(time,cameraX);},dispose(){crowd.dispose();street.dispose();traffic.dispose();}};

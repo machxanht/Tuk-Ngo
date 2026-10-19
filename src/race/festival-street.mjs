@@ -144,7 +144,7 @@ function houseTemplate(templateId) {
       shell(l,13.5,6.8);door(0,13.4,false);
       for(const y of[3.1,5.8]){box('trim',0,y,12.75,l.w+.2,.17,1.65);rail(0,y+.14,11.93,l.w-.2);for(const dx of[-1.35,1.35])window(dx,y+1.28,13.4,1.05,1.85,true);}
       box('trim',0,l.h+.35,13.5,l.w+.2,.7,.2);for(const dx of[-2.55,2.55])box('trim',dx,4.35,13.25,.2,8.7,.25);roof(l,'roofTin',8.55,17,7,.12);
-      add(new T.CylinderGeometry(.24,.18,.4,8),'clay',1.8,3.4,12.1);add(new T.SphereGeometry(.48,10,6),'#e46e9e',1.8,3.8,12.1);
+      add(new T.CylinderGeometry(.24,.18,.4,8),'clay',1.8,3.4,12.1);add(new T.SphereGeometry(.48,10,6),'green',1.8,3.8,12.1);
     } else if(l.family==='covered-market') {
       box('cream',0,.1,16.5,l.w,.2,7.5);box('ivory',0,2.2,20.1,l.w,4.4,.22);roof(l,'roofTile',4.45,16.5,8.2,.38);
       for(const dx of[-4,-1.4,1.4,4])rod('teal',[dx,.1,12.75],[dx,4.4,12.75],.075);
@@ -189,7 +189,7 @@ function plantTemplate(kind) {
    const count=kind===3?10:7;
    for(let i=0;i<count;i++){const a=i*2.4+kind,r=kind===0?1.4:kind===1?.75:kind===2?1.05:1.9, x=Math.cos(a)*r*(i%3?.9:.4),z=Math.sin(a)*r,y=trunk+(i%3)*.4;
      rod('wood',[.1,trunk*.65,0],[x,y,z],.07,.025);
-     const g=new T.SphereGeometry(1,10,7);g.scale(kind===8?2.1:kind===7?.85:kind===1?.75:kind===2?.95:1.4,kind===8?.7:kind===1?1.45:kind===2?1.5:.85,kind===8?1.9:kind===7?.75:kind===1?.75:kind===2?.95:1.3);add(g,kind===7?(i%3?'#e976aa':'#af5dab'):i%2?'green':'#79a855',x,y,z);
+     const g=new T.SphereGeometry(1,10,7);g.scale(kind===8?2.1:kind===7?.85:kind===1?.75:kind===2?.95:1.4,kind===8?.7:kind===1?1.45:kind===2?1.5:.85,kind===8?1.9:kind===7?.75:kind===1?.75:kind===2?.95:1.3);add(g,kind===7?(i%3?'#5a9c42':'#83ad51'):i%2?'green':'#79a855',x,y,z);
    }
  }
  if(kind!==4)box('concrete',0,.13,0,1.2,.26,1.2,.04);
@@ -251,13 +251,13 @@ export function buildFestivalStreet(parent,bankMaterials={}) {
    people.push({x:x+(side<0?-2.35:2.35),floor:1.4,z:z-.05,id:31002+(side+1)*700+id*8,seated:true,seatY:1.92,activity:'eat',yaw:side<0?Math.PI/2:-Math.PI/2});
  }
  // Two busy sidewalk corridors remain outside road lanes and frontage piers.
- for(const side of[-1,1])for(let row=0;row<2;row++)for(let x=853,id=0;x<2436;x+=2.25,id++){
+ for(const side of[-1,1])for(let row=0;row<3;row++)for(let x=853,id=0;x<2436;x+=1.35,id++){
    if(nearCourseBridge(x,27))continue;
    const seed=5000+(side+1)*1801+row*997+id,extent=1.7+hash(seed+8)*.5;
-   const px=x+(hash(seed+2)-.5)*.6,pz=trafficRoad(px,side)+side*(row===0?7.3:8.6)+(hash(seed+3)-.5)*.25;
+   const px=x+(hash(seed+2)-.5)*.4,pz=trafficRoad(px,side)+side*(7.3+row*1.15)+(hash(seed+3)-.5)*.2;
    if(trees.some(t=>Math.abs(t.z-pz)<1.35&&Math.abs(t.x-px)<extent+1.2))continue;
    if(stalls.some(t=>Math.hypot(t.x-px,t.z-pz)<1.5))continue;
-   const walking=hash(seed+7)<.68,slope=(trafficRoad(x+.2,side)-trafficRoad(x-.2,side))/.4;
+   const walking=hash(seed+7)<.90,slope=(trafficRoad(x+.2,side)-trafficRoad(x-.2,side))/.4;
    people.push({x:px,floor:1.4,z:pz,id:60000+seed,zone:'roadside-sidewalk',seated:false,activity:walking?'walk':hash(seed+9)<.5?'talk':'eat',yaw:walking?(hash(seed+10)<.5?Math.PI/2:-Math.PI/2):side<0?0:Math.PI,...(walking?{path:{dx:1,dz:slope,extent}}:{})});
  }
  for(const p of people){p.width=.92;p.height=1;p.shirt='#c6aa7c';}

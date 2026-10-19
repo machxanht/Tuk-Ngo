@@ -1,6 +1,7 @@
 import * as T from 'three';
 import {COURSE,raceX} from './maspero-course.mjs';
 import {courseZ} from './maspero-layout.mjs';
+import {ceremonyPlacement} from './ceremony-layout.mjs';
 
 const lerp=(a,b,t)=>a+(b-a)*t,smooth=t=>t*t*(3-2*t);
 // The sequence is timed by the simulation; pausing freezes the shot as well.
@@ -18,4 +19,22 @@ export function introShot(seconds){
 }
 export function applyIntroCamera(camera,controls,seconds){
  const shot=introShot(seconds);camera.position.fromArray(shot.position);controls.target.fromArray(shot.target);camera.fov=shot.fov;camera.lookAt(controls.target);camera.updateProjectionMatrix();return shot;
+}
+
+// Opening-film coverage: raft, VIP stand, both crowds and handheld-cap salutes.
+export function ceremonyShot(seconds){
+ const x=COURSE.standX,boat=ceremonyPlacement(31,seconds),points=[
+  {name:'fleet',p:[x+95,70,95],t:[x,2,0],f:54},
+  {name:'grandstand',p:[x+35,20,courseZ(x,23)],t:[x,8,courseZ(x,-56)],f:55},
+  {name:'right-crowd',p:[x+12,6,courseZ(x+12,-31)],t:[x+6,3,courseZ(x+6,-47)],f:49},
+  {name:'athletes',p:[boat.x-8,4.7,boat.z-7],t:[boat.x,1.25,boat.z],f:45},
+  {name:'left-crowd',p:[x-46,7.5,courseZ(x-46,30)],t:[x-62,3,courseZ(x-62,48)],f:54},
+  {name:'aerial',p:[x+15,126,28],t:[x+2,1,0],f:56},
+ ];
+ const segment=5.5,cycle=points.length*segment,t=((seconds%cycle)+cycle)%cycle,index=Math.floor(t/segment),a=points[index],b=points[(index+1)%points.length],within=t-index*segment,u=smooth(T.MathUtils.clamp((within-3.6)/1.9,0,1));
+ const position=a.p.map((v,j)=>lerp(v,b.p[j],u));position[1]+=Math.sin(u*Math.PI)*8;
+ return {position,target:a.t.map((v,j)=>lerp(v,b.t[j],u)),fov:lerp(a.f,b.f,u),name:a.name,index,cycle};
+}
+export function applyCeremonyCamera(camera,controls,seconds){
+ const shot=ceremonyShot(seconds);camera.position.fromArray(shot.position);controls.target.fromArray(shot.target);camera.fov=shot.fov;camera.lookAt(controls.target);camera.updateProjectionMatrix();return shot;
 }

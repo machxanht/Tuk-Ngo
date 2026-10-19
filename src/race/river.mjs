@@ -2,6 +2,7 @@ import * as T from 'three';
 import {buildMasperoBanks} from './maspero-course.mjs';
 import {profile} from './boat.mjs';
 import {courseZ} from './maspero-layout.mjs';
+import {buildRiverFlotsam} from './river-flotsam.mjs';
 
 const V=(x,y,z)=>new T.Vector3(x,y,z);
 export function buildRiver(scene,waterY=.28,{detailed=false,crowdAssets=null,bankMaterials=null,waterOnly=false,bright=false,crowdOptions={}}={}){
@@ -60,8 +61,8 @@ export function buildRiver(scene,waterY=.28,{detailed=false,crowdAssets=null,ban
   return {group,water,setBoats,update(time){updateBoatMasks();material.uniforms.uTime.value=time;},dispose(){sectionTexture.dispose();geo.dispose();material.dispose();scene.remove(group);}};
  }
  const geo=new T.PlaneGeometry(detailed?2800:1600,86,detailed?560:320,32);geo.rotateX(-Math.PI/2);if(detailed){const p=geo.attributes.position;for(let i=0;i<p.count;i++){const x=p.getX(i)+1150;p.setXYZ(i,x,p.getY(i),courseZ(x,p.getZ(i)));}geo.computeVertexNormals();}const water=new T.Mesh(geo,material);water.position.set(detailed?0:650,waterY,0);group.add(water);
- if(detailed){const banks=buildMasperoBanks(group,waterY,crowdAssets,bankMaterials||{},crowdOptions),floatGeo=new T.SphereGeometry(1,7,5),floatMat=new T.MeshStandardMaterial({color:'#547445',roughness:1}),floating=new T.InstancedMesh(floatGeo,floatMat,330),d=new T.Object3D();group.add(floating);
-  return {group,water,setBoats,update(time,cameraX=1020,cameraZ=0){updateBoatMasks();material.uniforms.uTime.value=time;banks.update(time,cameraX,cameraZ);for(let i=0;i<330;i++){const cluster=Math.floor(i/6),x=-30+(cluster*29+time*.35)%1370,z=(cluster%2?1:-1)*(34+cluster%7);d.position.set(x+Math.sin(i*7)*.55,waterY+.025+Math.sin(time*1.4+i)*.017,courseZ(x,z)+Math.cos(i*4)*.3);d.scale.set(.15+Math.abs(Math.sin(i))*.19,.06,.21);d.updateMatrix();floating.setMatrixAt(i,d.matrix);}floating.instanceMatrix.needsUpdate=true;},dispose(){banks.dispose();sectionTexture.dispose();const geometries=new Set(),materials=new Set(),textures=new Set();group.traverse(o=>{if(o.geometry)geometries.add(o.geometry);for(const m of Array.isArray(o.material)?o.material:o.material?[o.material]:[]){materials.add(m);if(m.map)textures.add(m.map);if(m.normalMap)textures.add(m.normalMap);}});geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());textures.forEach(t=>t.dispose());scene.remove(group);}};}
+ if(detailed){const banks=buildMasperoBanks(group,waterY,crowdAssets,bankMaterials||{},crowdOptions),flotsam=buildRiverFlotsam(group,waterY);
+  return {group,water,setBoats,flotsam,update(time,cameraX=1020,cameraZ=0){updateBoatMasks();material.uniforms.uTime.value=time;banks.update(time,cameraX,cameraZ);flotsam.update(time);},dispose(){banks.dispose();flotsam.dispose();sectionTexture.dispose();const geometries=new Set(),materials=new Set(),textures=new Set();group.traverse(o=>{if(o.geometry)geometries.add(o.geometry);for(const m of Array.isArray(o.material)?o.material:o.material?[o.material]:[]){materials.add(m);if(m.map)textures.add(m.map);if(m.normalMap)textures.add(m.normalMap);}});geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());textures.forEach(t=>t.dispose());scene.remove(group);}};}
  const bankMat=new T.MeshStandardMaterial({color:'#8d958c',roughness:.96}),grassMat=new T.MeshStandardMaterial({color:'#44704b',roughness:1});
  for(const side of [-1,1]){
   const bank=new T.Mesh(new T.BoxGeometry(1600,1.5,8),bankMat);bank.position.set(650,.1,side*46);group.add(bank);

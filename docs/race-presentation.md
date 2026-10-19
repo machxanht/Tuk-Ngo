@@ -17,7 +17,7 @@ The existing public entry is https://machxanht.github.io/Tuk-Ngo/.
 
 The intro is an explicit simulation phase lasting ten seconds. Race distance, elapsed race time and countdown stay frozen during it. Pause freezes the shot; skip transitions to a fresh three-second countdown. Camera interpolation lives in `race-camera.mjs`; the active race view resumes afterward. Countdown audio is activated before its first cue is scheduled.
 
-`menu-ceremony.mjs` batches 61 painted hulls, colored interiors, 3,050 seated athletes and paddles. The distant athlete is a derived 298-vertex/403-triangle static pose built from the existing CC0 assembled athlete, with mirrored static geometry for the opposite bank-facing side. These copies do not alter the verified connected shirt or eight race rigs. Bodies sway, paddles move, boats bob, and the existing crowd, traffic, foliage and water continue animating. The ceremony's all-team colors are game presentation, not a claim that every historical boat's interior paint has been verified.
+`menu-ceremony.mjs` batches 61 painted hulls, colored interiors and 3,050 seated athletes. The revised opening-film formation, animated handheld caps and six moving camera angles are documented in [opening-ceremony.md](opening-ceremony.md). These derived copies do not alter the verified connected shirt or eight race rigs. The ceremony's all-team colors are game presentation, not a claim that every historical boat's interior paint has been verified.
 
 The supplied photograph informs the fleet, river corridor and bank density. The town remains an authored approximation; neither this photograph nor the implementation establishes surveyed coordinates or identical Maspéro facades. New side streets and low-detail inland roofs fill the neighborhood behind the riverfront, with canopy trunks separated from roof rows.
 
@@ -38,9 +38,9 @@ The media element is lazy and does not load before user interaction. A browser m
 
 Browser input timing includes automation/dispatch overhead; it is not a measurement of physical tablet latency. Browser viewport checks and software rendering do not establish FPS on a physical tablet. Khmer copy still benefits from native editorial review.
 
-## Published verification
+## Preceding release verification
 
-Source `00de2f8c7b4b2a154b9f53c747777ecba5b90cd5` is published at the existing root URL. Pages commit `40a65fdd874e78faffa9aa426be736cac797a712` completed in [Actions run 39239135454](https://github.com/machxanht/Tuk-Ngo/actions/runs/39239135454).
+The preceding release published source `00de2f8c7b4b2a154b9f53c747777ecba5b90cd5` at the existing root URL. Pages commit `40a65fdd874e78faffa9aa426be736cac797a712` completed in [Actions run 39239135454](https://github.com/machxanht/Tuk-Ngo/actions/runs/39239135454). See [opening-ceremony.md](opening-ceremony.md) for the later opening-film revision.
 
 All 35 checked public files match the local build, including the root document, JavaScript/CSS chunks, derived ceremony crew and actual menu music. The public presentation check passed: 61 moving boats, real looped media, stop/resume/mute, intro/pause/skip/countdown ordering, touch-down and keyboard-down recognition without release duplicates, and eight race language/viewport combinations. There were no browser errors. Evidence is in `docs/qa/race-presentation/public/`.
 
