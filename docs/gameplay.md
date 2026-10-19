@@ -8,11 +8,13 @@ The public entry remains https://machxanht.github.io/Tuk-Ngo/.
 - Setup: search all 61 registered entries by Vietnamese/Khmer name, select difficulty, inspect the selected team's sourced/sample appearance status, and optionally audition commentary.
 - Quick race: one 1,200 m heat with an opponent; its result does not alter the saved cup.
 - Festival cup: existing 61-team elimination bracket, three first-round byes, persistent completed rounds, tie retry, elimination and championship.
-- Race: countdown, both distances, time, speed, gap, phase prompt, rhythm judgement, three paces, endurance, surge charge, pause and course overview.
+- Race: a skippable grandstand/river/start flyover, then countdown, both distances, time, speed, gap, phase prompt, rhythm judgement, three paces, endurance, surge charge, pause and course overview.
 - Pause: resume, restart the current uncompleted heat, or return to the main menu. Leaving discards the current heat, retaining completed cup rounds.
 - Results: finish times, accuracy, best combo, stroke counts, next round/retry/new cup, or quick-race replay.
 
 The actual race simulation and the eight role rigs are retained. Start is 0–200 m, cruise is 200–950 m, and final sprint is 950–1,200 m. A surge requires 60% charge and at least 24% endurance and lasts four seconds. Automated browser runs advance this real fixed-step simulation with legal timed strokes; they do not inject a winning result or distance.
+
+The current cockpit accepts strokes on finger contact and uses contracting rings to indicate timing. The menu contains a 61-boat ceremony and user-selected looped music. See [race-presentation.md](race-presentation.md) for implementation, source and verification details.
 
 ## Languages
 

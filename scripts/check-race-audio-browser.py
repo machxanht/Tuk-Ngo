@@ -14,7 +14,7 @@ with sync_playwright() as p:
  page=browser.new_page(viewport={'width':1180,'height':820},has_touch=True)
  page.on('pageerror',lambda e:errors.append(str(e)))
  page.on('console',lambda m:errors.append(m.text) if m.type=='error' else None)
- page.on('response',lambda r:responses.append({'url':r.url,'status':r.status}) if '/race-audio/' in r.url else None)
+ page.on('response',lambda r:responses.append({'url':r.url,'status':r.status}) if '/race-audio/' in r.url and '/menu/' not in r.url else None)
  page.goto(args.url);page.wait_for_selector('[data-render-mode=race]',timeout=90000)
  page.get_by_role('button',name='Cúp lễ hội · 61 ghe',exact=True).tap()
  page.locator('.team-profile>summary').tap()

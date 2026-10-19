@@ -157,6 +157,9 @@ export function teamTextures(base){
 // Authored festival sample only: retain the eight researched SVGs unchanged.
 function sampleLivery(team){
  const canvas=document.createElement('canvas');canvas.width=2048;canvas.height=256;const c=canvas.getContext('2d');
+ paintFestivalLivery(c,team);return new T.CanvasTexture(canvas);
+}
+export function paintFestivalLivery(c,team){
  c.fillStyle=team.jersey;c.fillRect(0,0,2048,256);c.fillStyle='#163d57';c.fillRect(0,0,2048,24);c.fillRect(0,220,2048,36);
  const colors=['#ffda5b','#ed6fa3','#72e0c3','#ff9563'];
  for(let x=0;x<2048;x+=96){
@@ -166,5 +169,4 @@ function sampleLivery(team){
   c.strokeStyle='#ffeaa0';c.lineWidth=3;for(const y of [32,212]){c.beginPath();c.moveTo(x,y-8);c.lineTo(x+14,y);c.lineTo(x,y+8);c.lineTo(x-14,y);c.closePath();c.fillStyle=colors[(x/96+1|0)%colors.length];c.fill();c.stroke();}
  }
  for(const y of [7,20,228,249]){c.fillStyle='#ffda5b';c.fillRect(0,y,2048,3);}
- return new T.CanvasTexture(canvas);
 }

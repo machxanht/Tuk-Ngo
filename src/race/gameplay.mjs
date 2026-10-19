@@ -27,14 +27,15 @@ export function createRaceGame(){
   reset(difficulty='normal'){
    consumed=new Set();previousPhase='racing';accumulator=0;tapBeat=-1;taps=0;
    this.state={phase:'ready',difficulty:DIFFICULTIES[difficulty]?difficulty:'normal',pace:'steady',countdown:3,elapsed:0,distances:[0,0],speeds:[0,0],finishTimes:[null,null],beatPhase:0,aiPhase:.17,stamina:100,power:0,cohesion:.72,combo:0,maxCombo:0,perfect:0,good:0,missed:0,lastResolved:0,feedback:'Chạm theo vùng sáng',feedbackAt:-10,result:null,pauseReason:'',runId:0};
-   Object.assign(this.state,{surgeCharge:0,surgeRemaining:0,desync:0,lastSpamAt:-10,slipstream:false,lastJudgement:null,aiStamina:100,aiSurgeCharge:0,aiSurgeRemaining:0});
+    Object.assign(this.state,{surgeCharge:0,surgeRemaining:0,desync:0,lastSpamAt:-10,slipstream:false,lastJudgement:null,lastTiming:'wait',lastStrokeBeat:-1,aiStamina:100,aiSurgeCharge:0,aiSurgeRemaining:0});
    return this.snapshot();
   },
-  start(difficulty=this.state.difficulty){
-   const id=this.state.runId+1;this.reset(difficulty);this.state.runId=id;this.state.phase='countdown';
+  start(difficulty=this.state.difficulty,{intro=false}={}){
+   const id=this.state.runId+1;this.reset(difficulty);this.state.runId=id;this.state.phase=intro?'intro':'countdown';
+   this.state.introRemaining=intro?10:0;this.state.introElapsed=0;
   },
   pause(reason=''){
-   if(!['racing','countdown'].includes(this.state.phase))return;
+   if(!['intro','racing','countdown'].includes(this.state.phase))return;
    previousPhase=this.state.phase;this.state.phase='paused';this.state.pauseReason=reason;
   },
   resume(){if(this.state.phase==='paused'){this.state.phase=previousPhase;this.state.pauseReason='';}},
@@ -44,16 +45,16 @@ export function createRaceGame(){
    const beat=Math.round(s.beatPhase);
    if(tapBeat!==beat){tapBeat=beat;taps=0;}taps++;
    // One harmless double tap; repeated mashing has a bounded penalty.
-   if(taps>2&&s.elapsed-s.lastSpamAt>=.5){s.lastSpamAt=s.elapsed;s.stamina=clamp(s.stamina-.8,0,100);s.desync=clamp(s.desync+.22,0,1);s.cohesion=clamp(s.cohesion-.025,.15,1);s.lastJudgement='BAD';s.feedback='BAD · Dồn nhịp';s.feedbackAt=s.elapsed;}
+   if(taps>2&&s.elapsed-s.lastSpamAt>=.5){s.lastSpamAt=s.elapsed;s.stamina=clamp(s.stamina-.8,0,100);s.desync=clamp(s.desync+.22,0,1);s.cohesion=clamp(s.cohesion-.025,.15,1);s.lastJudgement='BAD';s.lastTiming='spam';s.feedback='BAD · Dồn nhịp';s.feedbackAt=s.elapsed;}
    if(beat<1||consumed.has(beat)||beat<=s.lastResolved)return null;
-   consumed.add(beat);
+   consumed.add(beat);s.lastStrokeBeat=beat;
    const error=(s.beatPhase-beat)*60/cadenceFor(s),delta=Math.abs(error);
    const quality=delta<=.10?'perfect':delta<=DIFFICULTIES[s.difficulty].window?'good':'missed';
    s.lastJudgement=quality==='missed'?'BAD':quality.toUpperCase();
    if(quality==='missed'){
     this.miss(error<0?'Sớm nhịp':'Muộn nhịp');
    }else{
-    s[quality]++;s.combo++;s.maxCombo=Math.max(s.maxCombo,s.combo);
+    s.lastTiming=quality;s[quality]++;s.combo++;s.maxCombo=Math.max(s.maxCombo,s.combo);
     s.power=clamp(s.power+(quality==='perfect'?.64:.17),0,1);
     s.cohesion=clamp(s.cohesion+(quality==='perfect'?.065:0),.15,1);
     s.stamina=clamp(s.stamina-(quality==='perfect'?.015:s.pace==='sprint'?.32:.08),0,100);
@@ -63,7 +64,7 @@ export function createRaceGame(){
    return {quality,judgement:quality==='missed'?'BAD':quality.toUpperCase(),error,beat};
   },
   miss(message='Lỡ nhịp'){
-   const s=this.state;s.missed++;s.combo=0;s.lastJudgement='BAD';s.desync=clamp(s.desync+.3,0,1);s.stamina=clamp(s.stamina-.65,0,100);s.surgeCharge=Math.max(0,s.surgeCharge-.018);s.power*=.64;s.cohesion=clamp(s.cohesion-.075,.15,1);s.feedback='BAD · '+message;s.feedbackAt=s.elapsed;
+   const s=this.state;s.missed++;s.combo=0;s.lastJudgement='BAD';s.lastTiming=message==='Sớm nhịp'?'early':message==='Muộn nhịp'?'late':'missed';s.desync=clamp(s.desync+.3,0,1);s.stamina=clamp(s.stamina-.65,0,100);s.surgeCharge=Math.max(0,s.surgeCharge-.018);s.power*=.64;s.cohesion=clamp(s.cohesion-.075,.15,1);s.feedback='BAD · '+message;s.feedbackAt=s.elapsed;
   },
   surge(){
    const s=this.state;if(!this.snapshot().canSurge)return false;
@@ -71,13 +72,18 @@ export function createRaceGame(){
   },
   advance(seconds){
    if(!Number.isFinite(seconds)||seconds<=0)return;
-   if(!['countdown','racing'].includes(this.state.phase))return;
+   if(!['intro','countdown','racing'].includes(this.state.phase))return;
    // Fixed simulation ticks make renderer frame grouping irrelevant.
    accumulator+=seconds;
    while(accumulator+1e-10>=1/240){accumulator-=1/240;this.step(1/240);if(this.state.phase==='finished'){accumulator=0;break;}}
   },
   step(dt){
    const s=this.state;
+   if(s.phase==='intro'){
+    const used=Math.min(dt,s.introRemaining);s.introRemaining-=used;s.introElapsed+=used;
+    if(s.introRemaining<=1e-8){s.introRemaining=0;s.phase='countdown';if(dt>used)this.step(dt-used);}
+    return;
+   }
    if(s.phase==='countdown'){
     const used=Math.min(dt,s.countdown);s.countdown-=used;
     if(s.countdown<=1e-8){s.countdown=0;s.phase='racing';if(dt>used)this.step(dt-used);}
@@ -129,9 +135,10 @@ export function createRaceGame(){
    s.result=player==null?'dnf':ai==null||player<ai-.03?'win':Math.abs(player-ai)<=.03?'tie':'loss';
    s.phase='finished';s.speeds=[0,0];
   },
+  skipIntro(){if(this.state.phase==='intro'){this.state.introRemaining=0;this.state.introElapsed=10;this.state.phase='countdown';}},
   snapshot(){
    const s=this.state,total=s.perfect+s.good+s.missed;
-   return {...s,distances:[...s.distances],speeds:[...s.speeds],finishTimes:[...s.finishTimes],raceStage:stageAt(s.distances[0]),stageLabel:RACE_STAGES[stageAt(s.distances[0])].label,cadence:cadenceFor(s),aiRaceStage:stageAt(s.distances[1]),aiStageLabel:RACE_STAGES[stageAt(s.distances[1])].label,aiCadence:RACE_STAGES[stageAt(s.distances[1])].cadence,aiSurgeActive:s.aiSurgeRemaining>0,judgement:s.elapsed-s.feedbackAt<1.1?s.lastJudgement:null,surgeActive:s.surgeRemaining>0,canSurge:s.phase==='racing'&&s.finishTimes[0]==null&&stageAt(s.distances[0])==='final'&&s.surgeRemaining<=0&&s.surgeCharge>=.6&&s.stamina>=24,desyncIntensity:s.desync,rhythmProgress:(s.beatPhase+.5)%1,accuracy:total?Math.round((s.perfect+s.good)/total*100):0,gap:s.distances[0]-s.distances[1],strength:s.surgeRemaining>0?1:s.pace==='sprint'?clamp(s.power*s.stamina/24,0,1):0,feedback:s.elapsed-s.feedbackAt<1.1?s.feedback:'Chạm khi vạch vào vùng sáng'};
+   return {...s,strokeAvailable:s.phase==='racing'&&Math.round(s.beatPhase)>=1&&!consumed.has(Math.round(s.beatPhase))&&Math.round(s.beatPhase)>s.lastResolved,distances:[...s.distances],speeds:[...s.speeds],finishTimes:[...s.finishTimes],raceStage:stageAt(s.distances[0]),stageLabel:RACE_STAGES[stageAt(s.distances[0])].label,cadence:cadenceFor(s),aiRaceStage:stageAt(s.distances[1]),aiStageLabel:RACE_STAGES[stageAt(s.distances[1])].label,aiCadence:RACE_STAGES[stageAt(s.distances[1])].cadence,aiSurgeActive:s.aiSurgeRemaining>0,judgement:s.elapsed-s.feedbackAt<1.1?s.lastJudgement:null,surgeActive:s.surgeRemaining>0,canSurge:s.phase==='racing'&&s.finishTimes[0]==null&&stageAt(s.distances[0])==='final'&&s.surgeRemaining<=0&&s.surgeCharge>=.6&&s.stamina>=24,desyncIntensity:s.desync,rhythmProgress:(s.beatPhase+.5)%1,accuracy:total?Math.round((s.perfect+s.good)/total*100):0,gap:s.distances[0]-s.distances[1],strength:s.surgeRemaining>0?1:s.pace==='sprint'?clamp(s.power*s.stamina/24,0,1):0,feedback:s.elapsed-s.feedbackAt<1.1?s.feedback:'Chạm khi vạch vào vùng sáng'};
   },
  };
  game.reset();return game;

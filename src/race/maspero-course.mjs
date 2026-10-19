@@ -75,7 +75,7 @@ export function buildMasperoBanks(group,waterY,crowdAssets,bankMaterials={},opti
   // Quiet low-detail city mass behind the front street, with no window/
   // crowd detail. Its heights are authored context, not mapped elevations.
   for(let x=-120,id=0;x<2450;x+=27,id++)for(let row=0;row<2;row++){
-   if(x>=DETAIL_RANGE[0]&&x<=DETAIL_RANGE[1])continue;
+   if(x>=850&&x<=2050)continue;
    const height=3.3+(id%4)*1.1,width=17+id%3*3,z=side*(112+row*36+(id%3)*3),wall=['#bdc8bf','#ccd0bf','#b8c4bf'][id%3];
    box(x+row*9,1.39+height/2,z,width,height,16,wall);box(x+row*9,1.39+height+.07,z,width+.3,.14,16.4,'#adbeb6');totals.distantBlocks++;
   }
