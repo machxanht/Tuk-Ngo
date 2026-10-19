@@ -26,7 +26,12 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
   await document.fonts.load('700 64px "Noto Sans Khmer"');
  }catch(error){rigs.reverse().forEach(r=>r.dispose());assets?.dispose();throw error;}
  const rig=rigs[0],{scene,boat,renderer,actors}=rig;
- scene.background=new T.Color('#c4e9fc');scene.fog=new T.Fog('#d2edf4',190,650);
+ scene.background=new T.Color('#b9e9ff');scene.fog=new T.Fog('#d5f2fc',280,1000);
+ // Broad daylight fill keeps the unlit sides readable without a post-process
+ // pass, extra shadow maps, or changes to the verified athlete geometry.
+ scene.children.filter(o=>o.isHemisphereLight).forEach(o=>{o.color.set('#fffefa');o.groundColor.set('#b4dce4');o.intensity=2.6;});
+ scene.children.filter(o=>o.isDirectionalLight).forEach(o=>{o.color.set('#fff3d6');o.intensity=1.6;});
+ const fill=new T.DirectionalLight('#d8f0ff',.7);fill.position.set(-8,9,12);scene.add(fill);
  for(const r of rigs){const mask=r.scene.children.find(o=>o.isMesh&&o.material.colorWrite===false);if(mask)mask.visible=false;scene.add(r.boat);}
  river=buildRiver(scene,.28,{detailed:true,bright:true,crowdAssets:assets,crowdOptions:{vibrant:true,middleLimit:280,farLimit:12000,radius:430}});
  const courseOffset=racing?0:-(raceX(COURSE.length)+15.1);river.group.position.x=courseOffset;
@@ -42,7 +47,7 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
  renderer.domElement.setAttribute('aria-label',racing?'Hai ghe 3D tự đua 1.200 mét trên sông Maspéro, khán đài chính bên phải, cầu và khán giả hai bờ.':'Ghe Ngo 3D 54 người với thanh ngồi thấp trong lòng ghe, hai người lái và khán giả hai bờ.');host.appendChild(renderer.domElement);
  const race={elapsed:0,countdown:3,distance:rigs.map(()=>0),speed:rigs.map(()=>0),phases:rigs.map((_,i)=>i?.17:.28),finishTimes:rigs.map(()=>null),state:'countdown'};
  let lastView='',width=1,height=1,frames=0,frameId=0,lastStats=performance.now(),lastUi=0;
- const center=()=>{const p=boat.position.clone();if(racing&&!settings.current.game){p.add(rigs[1].boat.position).multiplyScalar(.5);}return p;};
+ const center=()=>{const p=boat.position.clone();if(racing){const other=rigs[1].boat.position,gap=Math.abs(other.x-p.x);p.lerp(other,settings.current.game?.state?.phase==='ready'?.5:settings.current.game?Math.max(0,.45-gap/200):.5);}return p;};
  function stage(distance){return distance<200?'Xuất phát':distance<950?'Đường trường':'Nước rút';}
  function snapshot(){return {...race,distance:[...race.distance],finishTimes:[...race.finishTimes],stages:race.distance.map(stage),length:COURSE.length,teams:teamIds.slice(0,rigs.length).map(id=>window.TukNgoTeams.get(id).name),game:settings.current.game?.snapshot()};}
  function syncGame(){const s=settings.current.game?.state;if(!s)return;Object.assign(race,{elapsed:s.elapsed,countdown:s.countdown,distance:[...s.distances],speed:[...s.speeds],phases:[s.beatPhase%1,s.aiPhase],finishTimes:[...s.finishTimes],state:s.phase});}
@@ -70,10 +75,10 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
  }
  function place(){rigs.forEach((r,i)=>{r.boat.rotation.y=racing?Math.PI:0;r.boat.position.set(racing?raceX(race.distance[i])+15.1:0,0,racing?COURSE.lanes[i]:0);r.boat.updateMatrixWorld(true);});}
  function setView(view){
-  scene.fog.near=view==='banks'?1000:190;scene.fog.far=view==='banks'?3800:650;
+  scene.fog.near=view==='banks'?1000:280;scene.fog.far=view==='banks'?3800:1000;
   camera.fov=view==='stand'?60:36;camera.updateProjectionMatrix();
   const anchor=center(),local=(x,y,z)=>new T.Vector3(x,y,z).applyMatrix4(boat.matrixWorld);
-  const views={race:{target:anchor.clone().setY(1),offset:settings.current.game?[40,30,40]:[40,50,50],span:settings.current.game?65:86},boat:{target:local(0,.65,0),offset:[24,20,26],span:39},top:{target:local(0,.65,0),offset:[0,30,.02],span:33},crew:{target:local(7.5,.9,0),offset:[2,1.5,5],span:5.3},kneel:{target:local(-3.2,.9,0),offset:[.8,1.3,4.8],span:4.8},bow:{target:local(12,.95,0),offset:[2.8,1.9,5.5],span:6},stern:{target:local(-11.3,1,0),offset:[-3,2,-6.5],span:8},
+  const views={menu:{target:anchor.clone().add(new T.Vector3(-12,0,6)),offset:[38,29,46],span:79},race:{target:anchor.clone().setY(1),offset:settings.current.game?[40,30,40]:[40,50,50],span:settings.current.game?72:86},boat:{target:local(0,.65,0),offset:[24,20,26],span:39},top:{target:local(0,.65,0),offset:[0,30,.02],span:33},crew:{target:local(7.5,.9,0),offset:[2,1.5,5],span:5.3},kneel:{target:local(-3.2,.9,0),offset:[.8,1.3,4.8],span:4.8},bow:{target:local(12,.95,0),offset:[2.8,1.9,5.5],span:6},stern:{target:local(-11.3,1,0),offset:[-3,2,-6.5],span:8},
    banks:{target:new T.Vector3(raceX(600),1,0),offset:[70,1000,560],span:1500},
    stand:{target:new T.Vector3(COURSE.standX,7.5,courseZ(COURSE.standX,-55)),offset:[50,3,100],span:150},
    crowd:{target:new T.Vector3(COURSE.standX-96,2.5,courseZ(COURSE.standX-96,-45.6)),offset:[2,1,8],span:10},
@@ -98,7 +103,8 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
  host.boatPreview=api;
  function frame(now){
   if(disposed)return;const s=settings.current,c=clock.current,dt=Math.min(.05,Math.max(0,(now-c.last)/1000));c.last=now;const previous=center();
-  if(s.playing){c.seconds+=dt;if(racing){advance(dt*(s.fast?3:1));c.phase=race.phases[0];}else c.phase=(c.phase+dt*s.cadence/60)%1;}
+  if(s.playing||s.ambientPlaying)c.seconds+=dt;
+  if(s.playing){if(racing){advance(dt*(s.fast?3:1));c.phase=race.phases[0];}else c.phase=(c.phase+dt*s.cadence/60)%1;}
   syncGame();const game=s.game?.snapshot();
   place();
   if(lastView!==s.view){setView(s.view);effects.forEach(e=>e.reset());}

@@ -16,6 +16,8 @@ with sync_playwright() as p:
  page.on('console',lambda m:errors.append(m.text) if m.type=='error' else None)
  page.on('response',lambda r:responses.append({'url':r.url,'status':r.status}) if '/race-audio/' in r.url else None)
  page.goto(args.url);page.wait_for_selector('[data-render-mode=race]',timeout=90000)
+ page.get_by_role('button',name='Cúp lễ hội · 61 ghe',exact=True).tap()
+ page.locator('.team-profile>summary').tap()
  assert page.evaluate(audio+'.stats().context')=='uninitialized'
  assert not responses,'Audio must not compete with initial GLBs'
  # Real source-name/history playback in the setup, without advancing the cup.
@@ -70,7 +72,7 @@ with sync_playwright() as p:
  assert any(p['key']=='name-tum-nup-two-vi' and not p.get('kind') and len(p['match'])==2 for p in report['intro']['played'])
  page.get_by_role('button',name='Tạm dừng cuộc đua',exact=True).tap();page.wait_for_timeout(200)
  report['pause']=page.evaluate(audio+'.stats()');assert report['pause']['sources']==0 and not report['pause']['queued'] and report['pause']['outputRms']<.0001
- page.get_by_role('button',name='Tiếp tục cuộc đua',exact=True).tap()
+ page.get_by_role('dialog',name='Nghỉ một nhịp',exact=True).get_by_role('button',name='Tiếp tục cuộc đua',exact=True).tap()
  page.wait_for_function(audio+'.stats().sources>0')
  page.get_by_role('button',name='Tắt âm thanh',exact=True).tap();page.wait_for_timeout(150)
  report['mute']=page.evaluate(audio+'.stats()');assert report['mute']['sources']==0 and report['mute']['outputRms']<.0001

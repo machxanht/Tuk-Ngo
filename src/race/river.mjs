@@ -43,7 +43,7 @@ export function buildRiver(scene,waterY=.28,{detailed=false,crowdAssets=null,ban
    vec3 sediment=mix(vec3(.035,.095,.065),vec3(.09,.19,.13),ripple*.32);
    float patches=noise(flow*.24)*.6+noise(flow*.77)*.4;
    sediment=mix(sediment,mix(vec3(.235,.175,.095),vec3(.34,.265,.155),patches),uSediment);
-   sediment=mix(sediment,mix(vec3(.16,.32,.27),vec3(.29,.40,.29),patches),uDaylight);
+   sediment=mix(sediment,mix(vec3(.065,.34,.35),vec3(.15,.46,.40),patches),uDaylight);
    float streak=smoothstep(.70,.89,surface(small*1.6));
    vec3 sky=vec3(.55,.76,.94);float shine=pow(max(dot(reflect(-normalize(vec3(-.4,1.,.4)),n),view),0.),36.);
    float glints=smoothstep(.65,.92,ripple)*smoothstep(.53,.80,h);

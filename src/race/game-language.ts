@@ -1,0 +1,58 @@
+export type GameLanguage = 'vi' | 'km';
+// Proper team names and quoted broadcast captions retain their source language.
+export const GAME_COPY = {
+ vi: {
+  brand:'GHE NGO',festival:'LỄ HỘI TRÊN SÔNG MASPÉRO',tagline:'Giữ chung một nhịp. Cùng nhau về đích.',
+  menu:'Menu chính',quick:'Đua nhanh · 2 ghe',cup:'Cúp lễ hội · 61 ghe',continueCup:'Tiếp tục cúp đã lưu',how:'Cách chơi',choose:'Chọn ghe của bạn',setup:'Chuẩn bị xuất phát',
+  quickInfo:'Một lượt đua 1.200 m. Tập nhịp, giữ sức và bứt tốc ở chặng cuối.',cupInfo:'61 đội · 6 vòng · loại trực tiếp. Tiến trình cúp tự lưu trên trình duyệt này.',
+  helpTitle:'Một ghe, một nhịp',helpIntro:'Bạn điều khiển nhịp chèo của cả đội. Chạm đúng lúc để ghe tăng tốc; bấm liên tục sẽ làm đội mất nhịp.',
+  step1:'Chạm đúng nhịp',step1Body:'Chạm CHÈO hoặc phím Space khi vạch chạy vào giữa vùng vàng. PERFECT tích lực, GOOD giữ nhịp, BAD làm mất đà.',
+  step2:'Giữ sức đường trường',step2Body:'Chặng đầu 0–200 m cần bắt nhịp. Từ 200–950 m, dùng Giữ sức khi sức bền xuống thấp rồi trở lại Đều nhịp.',
+  step3:'Đạp nước rút',step3Body:'Từ 950 m, chuyển Nước rút. Khi lực đạt 60% và sức còn ít nhất 24%, nhấn ĐẠP để bứt tốc trong 4 giây.',
+  back:'Quay lại',play:'Vào cuộc đua',startCup:'Bắt đầu cúp 61 ghe',startQuick:'Bắt đầu đua nhanh',continue:'Tiếp tục giải',newDraw:'Bốc thăm giải mới',preparing:'Đang chuẩn bị…',
+  search:'Tìm ghe',searchHint:'Tên tiếng Việt hoặc Khmer',team:'Chọn đội ghe',teams:'Đội ghe',difficulty:'Độ khó',easy:'Làm quen',normal:'Thi đấu',hard:'Thử thách',
+  reference:'Màu và hoa văn có tư liệu tham khảo.',sample:'Phối màu lễ hội trong game; chưa xác minh bộ màu thật.',unknownKm:'Tên Khmer chưa xác minh',
+  saved:'Nhánh đấu được lưu trên trình duyệt này.',cupFormat:'Cúp game có đủ 61 ghe, đua từng cặp và loại trực tiếp. Ba ghe được miễn vòng đầu. Kết quả do bạn chơi, không theo thứ hạng thật.',
+  audio:'Âm thanh',audioSettings:'Tùy chỉnh âm thanh',atmosphere:'Không khí cuộc đua',voice:'BLV Việt (âm gốc)',khmer:'Bình luận Khmer (AI)',whistle:'Còi HLV theo nhịp dầm',drums:'Trống nhịp chèo',crowd:'Khán giả hai bờ',volume:'Âm lượng',mute:'Tắt âm thanh',unmute:'Bật âm thanh',
+  audioError:'Chưa tải được một số âm thanh. Hãy bật lại tiếng để thử lại.',audioIdle:'BLV Việt gốc · Khmer AI · Còi theo nhịp dầm',muted:'Đã tắt âm thanh',
+  hearName:'Nghe tên Việt · Khmer',stopName:'Dừng nghe tên',hearHistory:'Nghe lịch sử thi đấu',stopHistory:'Dừng nghe lịch sử',profile:'Bình luận về đội ghe',profileNote:'Bản thu giọng BLV gốc. Tên chùa có thể dùng chung cho các đội cùng chùa.',
+  stopped:'Đã dừng nghe.',loadingAudio:'Đang tải bản thu…',name:'Tên ghe',history:'Lịch sử thi đấu',voiceLabel:'giọng',missingOther:'Chưa xác định được bản thu bằng ngôn ngữ còn lại.',missingHistory:'Chưa tìm được đoạn BLV kể thành tích cũ của đội này.',missingName:'Chưa xác định được bản thu tên đội này trong clip.',enableVoice:'Bật kênh BLV Việt hoặc Khmer trong Âm thanh để nghe.',audioRetry:'Chưa phát được bản thu. Hãy thử lại.',source:'Nguồn',
+  bracket:'Nhánh đấu',bracketTitle:'Nhánh đấu · 61 ghe',closeBracket:'Đóng nhánh đấu',simulated:'Các trận khác được mô phỏng theo bốc thăm; không dùng thứ hạng lịch sử để quyết định thắng thua.',bye:'Miễn vòng đầu',tieReplay:'Hòa · đua lại',champion:'Đội vô địch giải',
+  round64:'Vòng 61 ghe',round32:'Vòng 32',round16:'Vòng 16',quarter:'Tứ kết',semi:'Bán kết',final:'Chung kết',quickRound:'Đua nhanh',
+  progress:'Tiến độ trận đua',you:'Bạn',rival:'Đối thủ',ready:'Sẵn sàng',countdown:'Xuất phát sau',paused:'Tạm dừng',pause:'Tạm dừng cuộc đua',resume:'Tiếp tục cuộc đua',pauseTitle:'Nghỉ một nhịp',pauseBody:'Cuộc đua và âm thanh đã tạm dừng.',leave:'Về menu chính',restart:'Đua lại lượt này',leaveNote:'Về menu sẽ hủy lượt đang đua. Các vòng cúp đã hoàn thành vẫn được giữ.',
+  startStage:'Xuất phát',cruiseStage:'Đường trường',finalStage:'Nước rút',startHint:'Bắt nhịp thật chắc',cruiseHint:'Giữ đều nhịp · tiết kiệm sức',finalHint:'Dồn sức · đạp về đích',
+  time:'Thời gian',speed:'Tốc độ',gap:'Khoảng cách',ahead:'Dẫn',behind:'Sau',level:'Ngang nhau',combo:'Chuỗi nhịp',stamina:'Sức',endurance:'Sức bền',charge:'Lực đạp',pace:'Cách chèo',recover:'Giữ sức',steady:'Đều nhịp',sprint:'Nước rút',stroke:'CHÈO',tap:'Space / chạm',surge:'ĐẠP!',unlock:'Mở ở 950 m',power:'lực',
+  rhythm:'Nhịp chèo: chạm khi vạch vào giữa vùng sáng',getReady:'Chuẩn bị nhịp đầu',tapHint:'Chạm khi vạch vào vùng vàng',perfect:'PERFECT · Chuẩn!',good:'GOOD · Đúng nhịp',bad:'BAD · Lỡ nhịp',surging:'ĐẠP · Bứt tốc!',
+  results:'Kết quả trận đua',win:'Thắng lượt đua!',loss:'Ghe bạn dừng bước',tie:'Hai ghe hòa nhau',dnf:'Chưa hoàn thành cự ly',cupWin:'Bạn đã vô địch!',accuracy:'Độ chính xác',bestCombo:'Chuỗi tốt nhất',perfectCount:'Chuẩn',goodCount:'Đúng',missCount:'Lỡ',next:'Đua vòng tiếp theo',retryTie:'Đua lại lượt hòa',again:'Đua thêm lượt nữa',newCup:'Chọn ghe · chơi giải mới',allBracket:'Xem toàn bộ nhánh đấu',inspect:'Xem mô hình',
+  loading:'Đang tải ghe và sông đấu…',loadingModel:'Đang tải mô hình',loadError:'Không tải được cảnh 3D',retry:'Tải lại',noTeams:'Không có ghe phù hợp. Hãy thử tên khác.',fullCourse:'Toàn tuyến 1.200 m',follow:'Theo ghe',view:'Góc nhìn',
+ },
+ km: {
+  brand:'ទូកង',festival:'ពិធីបុណ្យលើទន្លេ MASPÉRO',tagline:'ចង្វាក់តែមួយ។ ឆ្ពោះទៅទីព្រ័ត្រជាមួយគ្នា។',
+  menu:'ម៉ឺនុយដើម',quick:'ប្រណាំងរហ័ស · ២ ទូក',cup:'ពានរង្វាន់បុណ្យ · ៦១ ទូក',continueCup:'បន្តពានរង្វាន់ដែលបានរក្សាទុក',how:'របៀបលេង',choose:'ជ្រើសរើសទូករបស់អ្នក',setup:'ត្រៀមចេញដំណើរ',
+  quickInfo:'ប្រណាំងចម្ងាយ ១.២០០ ម។ ហាត់ចង្វាក់ រក្សាកម្លាំង និងបង្កើនល្បឿននៅចុងផ្លូវ។',cupInfo:'៦១ ក្រុម · ៦ ជុំ · ចាញ់ធ្លាក់។ វឌ្ឍនភាពត្រូវបានរក្សាទុកក្នុងកម្មវិធីរុករកនេះ។',
+  helpTitle:'ទូកតែមួយ ចង្វាក់តែមួយ',helpIntro:'អ្នកគ្រប់គ្រងចង្វាក់ចែវរបស់ក្រុម។ ចុចឱ្យត្រូវពេល ដើម្បីបង្កើនល្បឿន។ ការចុចញឹកញាប់ពេកធ្វើឱ្យខូចចង្វាក់។',
+  step1:'ចុចតាមចង្វាក់',step1Body:'ចុច ចែវ ឬគ្រាប់ចុច Space ពេលសញ្ញាចូលកណ្ដាលតំបន់ពណ៌លឿង។ PERFECT បង្កើនកម្លាំង GOOD រក្សាចង្វាក់ BAD បាត់សន្ទុះ។',
+  step2:'រក្សាកម្លាំង',step2Body:'ពី ០–២០០ ម ចាប់ចង្វាក់ឱ្យបានល្អ។ ពី ២០០–៩៥០ ម ប្រើ រក្សាកម្លាំង ពេលកម្លាំងទាប រួចត្រឡប់ទៅ ចង្វាក់ថេរ។',
+  step3:'បង្កើនល្បឿនចុងផ្លូវ',step3Body:'ចាប់ពី ៩៥០ ម ប្រើ ល្បឿនលឿន។ ពេលថាមពលដល់ ៦០% និងកម្លាំងនៅសល់យ៉ាងតិច ២៤% ចុច សម្រុក ដើម្បីបង្កើនល្បឿនរយៈពេល ៤ វិនាទី។',
+  back:'ត្រឡប់',play:'ចូលប្រណាំង',startCup:'ចាប់ផ្ដើមពានរង្វាន់ ៦១ ទូក',startQuick:'ចាប់ផ្ដើមប្រណាំងរហ័ស',continue:'បន្តពានរង្វាន់',newDraw:'ចាប់ឆ្នោតថ្មី',preparing:'កំពុងរៀបចំ…',
+  search:'ស្វែងរកទូក',searchHint:'ឈ្មោះជាភាសាវៀតណាម ឬខ្មែរ',team:'ជ្រើសរើសក្រុមទូក',teams:'ក្រុមទូក',difficulty:'កម្រិតលំបាក',easy:'ហាត់ដំបូង',normal:'ប្រកួត',hard:'ប្រកួតប្រជែង',
+  reference:'ពណ៌ និងក្បាច់មានឯកសារយោង។',sample:'ពណ៌បុណ្យក្នុងហ្គេម មិនទាន់ផ្ទៀងផ្ទាត់នឹងក្រុមពិត។',unknownKm:'ឈ្មោះខ្មែរមិនទាន់ផ្ទៀងផ្ទាត់',
+  saved:'តារាងប្រកួតត្រូវបានរក្សាទុកក្នុងកម្មវិធីរុករកនេះ។',cupFormat:'ហ្គេមមាន ៦១ ទូក ប្រកួតជាគូ ចាញ់ធ្លាក់។ ៣ ទូកឆ្លងជុំដំបូងដោយស្វ័យប្រវត្តិ។ លទ្ធផលអាស្រ័យលើការលេងរបស់អ្នក។',
+  audio:'សំឡេង',audioSettings:'កំណត់សំឡេង',atmosphere:'បរិយាកាសប្រណាំង',voice:'អ្នកអត្ថាធិប្បាយវៀតណាម (សំឡេងដើម)',khmer:'អត្ថាធិប្បាយខ្មែរ (AI)',whistle:'កញ្ចែគ្រូតាមចង្វាក់ចែវ',drums:'ស្គរតាមចង្វាក់ចែវ',crowd:'អ្នកទស្សនាទាំងពីរច្រាំង',volume:'កម្រិតសំឡេង',mute:'បិទសំឡេង',unmute:'បើកសំឡេង',
+  audioError:'សំឡេងខ្លះមិនអាចផ្ទុកបាន។ សូមបិទហើយបើកសំឡេងម្ដងទៀត។',audioIdle:'សំឡេងវៀតណាមដើម · ខ្មែរ AI · កញ្ចែតាមចង្វាក់ចែវ',muted:'បានបិទសំឡេង',
+  hearName:'ស្ដាប់ឈ្មោះ វៀតណាម · ខ្មែរ',stopName:'ឈប់ស្ដាប់ឈ្មោះ',hearHistory:'ស្ដាប់ប្រវត្តិប្រកួត',stopHistory:'ឈប់ស្ដាប់ប្រវត្តិ',profile:'អត្ថាធិប្បាយអំពីក្រុមទូក',profileNote:'សំឡេងដើមរបស់អ្នកអត្ថាធិប្បាយ។ ក្រុមពីវត្តដូចគ្នាអាចប្រើឈ្មោះវត្តរួម។',
+  stopped:'បានឈប់ស្ដាប់។',loadingAudio:'កំពុងផ្ទុកសំឡេង…',name:'ឈ្មោះទូក',history:'ប្រវត្តិប្រកួត',voiceLabel:'សំឡេង',missingOther:'មិនទាន់រកឃើញសំឡេងជាភាសាមួយទៀត។',missingHistory:'មិនទាន់រកឃើញសំឡេងរៀបរាប់ស្នាដៃចាស់របស់ក្រុមនេះ។',missingName:'មិនទាន់ផ្ទៀងផ្ទាត់សំឡេងឈ្មោះក្រុមនេះក្នុងវីដេអូ។',enableVoice:'បើកសំឡេងអ្នកអត្ថាធិប្បាយវៀតណាម ឬខ្មែរដើម្បីស្ដាប់។',audioRetry:'មិនអាចចាក់សំឡេងបាន។ សូមសាកម្ដងទៀត។',source:'ប្រភព',
+  bracket:'តារាងប្រកួត',bracketTitle:'តារាងប្រកួត · ៦១ ទូក',closeBracket:'បិទតារាងប្រកួត',simulated:'ការប្រកួតផ្សេងទៀតត្រូវបានគណនាក្នុងហ្គេម មិនផ្អែកលើចំណាត់ថ្នាក់ប្រវត្តិសាស្ត្រ។',bye:'ឆ្លងជុំដោយស្វ័យប្រវត្តិ',tieReplay:'ស្មើ · ប្រណាំងឡើងវិញ',champion:'ក្រុមជើងឯក',
+  round64:'ជុំ ៦១ ទូក',round32:'ជុំ ៣២',round16:'ជុំ ១៦',quarter:'វគ្គ ៨ ក្រុម',semi:'វគ្គពាក់កណ្ដាលផ្ដាច់ព្រ័ត្រ',final:'វគ្គផ្ដាច់ព្រ័ត្រ',quickRound:'ប្រណាំងរហ័ស',
+  progress:'វឌ្ឍនភាពប្រណាំង',you:'អ្នក',rival:'គូប្រកួត',ready:'ត្រៀមរួច',countdown:'ចេញដំណើរក្នុង',paused:'បានផ្អាក',pause:'ផ្អាកការប្រណាំង',resume:'បន្តការប្រណាំង',pauseTitle:'សម្រាកមួយចង្វាក់',pauseBody:'ការប្រណាំង និងសំឡេងត្រូវបានផ្អាក។',leave:'ទៅម៉ឺនុយដើម',restart:'ប្រណាំងជុំនេះឡើងវិញ',leaveNote:'ការត្រឡប់ទៅម៉ឺនុយនឹងបញ្ឈប់ជុំបច្ចុប្បន្ន។ ជុំពានរង្វាន់ដែលបានបញ្ចប់នៅរក្សាដដែល។',
+  startStage:'ចេញដំណើរ',cruiseStage:'រក្សាចង្វាក់',finalStage:'សម្រុកទៅទីព្រ័ត្រ',startHint:'ចាប់ចង្វាក់ឱ្យច្បាស់',cruiseHint:'ចង្វាក់ថេរ · សន្សំកម្លាំង',finalHint:'ប្រើកម្លាំង · ឆ្ពោះទៅទីព្រ័ត្រ',
+  time:'រយៈពេល',speed:'ល្បឿន',gap:'គម្លាត',ahead:'នាំមុខ',behind:'នៅក្រោយ',level:'ស្មើគ្នា',combo:'ចង្វាក់ជាប់គ្នា',stamina:'កម្លាំង',endurance:'កម្លាំងស៊ូទ្រាំ',charge:'ថាមពលសម្រុក',pace:'របៀបចែវ',recover:'រក្សាកម្លាំង',steady:'ចង្វាក់ថេរ',sprint:'ល្បឿនលឿន',stroke:'ចែវ',tap:'Space / ប៉ះ',surge:'សម្រុក!',unlock:'បើកនៅ ៩៥០ ម',power:'ថាមពល',
+  rhythm:'ចង្វាក់ចែវ៖ ចុចពេលសញ្ញាចូលកណ្ដាលតំបន់ភ្លឺ',getReady:'ត្រៀមចង្វាក់ដំបូង',tapHint:'ចុចពេលសញ្ញាចូលតំបន់លឿង',perfect:'PERFECT · ល្អឥតខ្ចោះ!',good:'GOOD · ត្រូវចង្វាក់',bad:'BAD · ខុសចង្វាក់',surging:'សម្រុក · បង្កើនល្បឿន!',
+  results:'លទ្ធផលប្រណាំង',win:'ឈ្នះជុំនេះ!',loss:'ក្រុមរបស់អ្នកត្រូវបានជម្រុះ',tie:'ទូកទាំងពីរស្មើគ្នា',dnf:'មិនទាន់បញ្ចប់ចម្ងាយ',cupWin:'អ្នកជាជើងឯក!',accuracy:'ភាពត្រឹមត្រូវ',bestCombo:'ចង្វាក់ជាប់គ្នាខ្ពស់បំផុត',perfectCount:'ល្អឥតខ្ចោះ',goodCount:'ត្រូវ',missCount:'ខក',next:'ប្រណាំងជុំបន្ទាប់',retryTie:'ប្រណាំងជុំស្មើឡើងវិញ',again:'ប្រណាំងម្ដងទៀត',newCup:'ជ្រើសទូក · ពានរង្វាន់ថ្មី',allBracket:'មើលតារាងប្រកួតទាំងអស់',inspect:'មើលគំរូ 3D',
+  loading:'កំពុងផ្ទុកទូក និងទន្លេប្រណាំង…',loadingModel:'កំពុងផ្ទុកគំរូ',loadError:'មិនអាចផ្ទុកឆាក 3D',retry:'ផ្ទុកឡើងវិញ',noTeams:'រកមិនឃើញទូក។ សូមសាកឈ្មោះផ្សេង។',fullCourse:'ផ្លូវប្រណាំង ១.២០០ ម',follow:'តាមទូក',view:'មុំមើល',
+ },
+};
+export const ROUND_KEYS = {'round-of-64':'round64','round-of-32':'round32','round-of-16':'round16',quarterfinal:'quarter',semifinal:'semi',final:'final'} as const;
+export function readGameLanguage(): GameLanguage {
+ try {return localStorage.getItem('tukngo-language') === 'km' ? 'km' : 'vi';} catch {return 'vi';}
+}

@@ -13,7 +13,7 @@ export const COURSE=Object.freeze({length:1200,width:61,lanes:[-7.5,7.5],standX:
 // Positive race progress heads towards -X; the VIP stand is on the right.
 export const raceX=distance=>COURSE.finishX+COURSE.length-distance;
 const V=(x,y,z)=>new T.Vector3(x,y,z);
-const palette=['#e2bb64','#61979b','#bf5651','#517955','#faf0d6','#42688b','#987194'];
+const palette=['#ffd05a','#32b9ba','#f36d5f','#5fb768','#fff3cf','#4f98df','#b482d4'];
 const nearBridge=nearCourseBridge;
 
 export function buildMasperoSky(scene){
