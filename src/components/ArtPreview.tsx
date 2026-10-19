@@ -2,8 +2,10 @@ import {lazy, Suspense, useEffect, useRef, useState} from 'react';
 import {Camera, Download, Pause, Play, RotateCcw, Video} from 'lucide-react';
 import './ArtPreview.css';
 import {athleteMasterDigest} from '../race/asset-digests.mjs';
+import {DEFAULT_KBACH_ID} from '../race/kbach-library.mjs';
 
 const RaceGame=lazy(()=>import('./RaceGame').then(m=>({default:m.RaceGame})));
+const KbachPicker=lazy(()=>import('./KbachPicker').then(m=>({default:m.KbachPicker})));
 type Mode = 'play' | 'race' | 'boat' | 'athlete';
 export function ArtPreview({embedded=false}:{embedded?:boolean}) {
  const host=useRef<HTMLDivElement>(null),runtime=useRef<any>(null);
@@ -11,11 +13,18 @@ export function ArtPreview({embedded=false}:{embedded?:boolean}) {
  const [playing,setPlaying]=useState(()=>!matchMedia('(prefers-reduced-motion: reduce)').matches);
  const [cadence,setCadence]=useState(64),[splash,setSplash]=useState(true),[fast,setFast]=useState(false);
  const [referenceKbach,setReferenceKbach]=useState(true);
+ const [libraryKbach,setLibraryKbach]=useState(true),[kbachIds,setKbachIds]=useState([DEFAULT_KBACH_ID,'7681583457654295826']),[pickerBoat,setPickerBoat]=useState<number|null>(null),[kbachLoading,setKbachLoading]=useState(false),[kbachError,setKbachError]=useState('');
  const [race,setRace]=useState<any>(null);
  const [inspectedPhase,setInspectedPhase]=useState(28),[status,setStatus]=useState('Đang tải ghe 3D…');
  const [ready,setReady]=useState(false),[recording,setRecording]=useState(false),[recordError,setRecordError]=useState('');
  const clock=useRef({phase:.28,seconds:0,last:0});
- const settings=useRef({view,playing,cadence,splash,fast,referenceKbach,racing:mode==='race',onRace:setRace});settings.current={view,playing,cadence,splash,fast,referenceKbach:mode==='boat'&&referenceKbach,racing:mode==='race',onRace:setRace};
+ const settings=useRef({view,playing,cadence,splash,fast,referenceKbach,kbachIds:libraryKbach?kbachIds:undefined,racing:mode==='race',onRace:setRace});settings.current={view,playing,cadence,splash,fast,referenceKbach:mode==='boat'&&referenceKbach,kbachIds:libraryKbach?kbachIds:undefined,racing:mode==='race',onRace:setRace};
+ useEffect(()=>{
+  const preview=runtime.current;if(!ready||mode==='athlete'||mode==='play'||!preview?.setKbach)return;
+  let cancelled=false;setKbachLoading(true);setKbachError('');
+  preview.setKbach(libraryKbach?kbachIds:[]).then(()=>{if(!cancelled)setKbachLoading(false);},(error:Error)=>{if(!cancelled){setKbachLoading(false);setKbachError('Không tải được mẫu kbach: '+error.message);}});
+  return()=>{cancelled=true;};
+ },[ready,mode,kbachIds,libraryKbach]);
  useEffect(()=>{
   if(mode==='play')return;
   let cancelled=false,stop=()=>{};const mount=host.current!;
@@ -39,10 +48,10 @@ export function ArtPreview({embedded=false}:{embedded?:boolean}) {
  if(mode==='play')return <Suspense fallback={<p role="status">Đang mở cúp 61 ghe…</p>}><RaceGame onInspect={()=>changeMode('race')}/></Suspense>;
  const views=mode==='race'?[['race','Theo cuộc đua'],['start','Xuất phát'],['official','Trọng tài'],['stand','Khán đài chính'],['finish','Vạch đích'],['bridge','Cầu 30/4'],['banks','Toàn tuyến 1.200 m'],['crew','Cận tay bơi']]:mode==='athlete'?[['front','Trước'],['side','Ngang'],['back','Sau'],['paddle','Dằm']]:[['boat','Toàn ghe'],['kbach','Cận hoa văn'],['stand','Khán đài chính'],['banks','Hai bờ sông'],['crowd','Khán giả'],['top','Nhìn từ trên'],['crew','Cận tay bơi'],['kneel','Nhóm quỳ'],['bow','Đầu ghe'],['stern','Lái cuối ghe']];
  return <section className={'art-preview'+(embedded?' art-embedded':'')}>
-  <header className="art-heading"><div><span className="art-kicker">GHE NGO · 3D</span><h1>{mode==='race'?'Đua thử hai ghe · 1.200 m':mode==='boat'?(referenceKbach?'Ghe mẫu kbach từ clip · 54 người':'Ghe Tum Núp 2 · 54 người'):'VĐV Tum Núp 2'}</h1><p>Kéo để xoay · chụm hai ngón để phóng to</p></div><a className="art-back" href={import.meta.env.BASE_URL+'assets/illustrated-v22/race.html?mode=cup'}>Giải 8 ghe</a></header>
+  <header className="art-heading"><div><span className="art-kicker">GHE NGO · 3D</span><h1>{mode==='race'?'Đua thử hai ghe · 1.200 m':mode==='boat'?(libraryKbach?'Ghe thử kbach từ ảnh TikTok · 54 người':referenceKbach?'Ghe mẫu kbach từ clip · 54 người':'Ghe Tum Núp 2 · 54 người'):'VĐV Tum Núp 2'}</h1><p>Kéo để xoay · chụm hai ngón để phóng to</p></div><a className="art-back" href={import.meta.env.BASE_URL+'assets/illustrated-v22/race.html?mode=cup'}>Giải 8 ghe</a></header>
   <nav className="art-view-controls" aria-label="Chọn hình ảnh">
    <div className="art-segment" aria-label="Mô hình"><button disabled={recording} onClick={()=>changeMode('play')}>Chơi cúp 61 ghe</button><button disabled={recording} aria-pressed={mode==='race'} onClick={()=>changeMode('race')}>Hai ghe đua</button><button disabled={recording} aria-pressed={mode==='boat'} onClick={()=>changeMode('boat')}>Cả ghe 3D</button><button disabled={recording} aria-pressed={mode==='athlete'} onClick={()=>changeMode('athlete')}>Một VĐV</button></div>
-   {mode==='boat'&&<div className="art-segment" role="group" aria-label="Hoa văn ghe"><button aria-pressed={referenceKbach} onClick={()=>setReferenceKbach(true)}>Kbach từ clip</button><button aria-pressed={!referenceKbach} onClick={()=>setReferenceKbach(false)}>Màu đội Tum Núp 2</button></div>}
+   {(mode==='boat'||mode==='race')&&<div className="art-segment art-kbach-controls" role="group" aria-label="Hoa văn ghe"><button disabled={!ready||kbachLoading} aria-pressed={libraryKbach} onClick={()=>setPickerBoat(0)}>{mode==='race'?'Kbach ghe 1':'Thư viện kbach'}</button>{mode==='race'&&<button disabled={!ready||kbachLoading} onClick={()=>setPickerBoat(1)}>Kbach ghe 2</button>}{mode==='boat'&&<button aria-pressed={!libraryKbach&&referenceKbach} onClick={()=>{setLibraryKbach(false);setReferenceKbach(true);}}>Kbach từ clip</button>}<button aria-pressed={!libraryKbach&&!referenceKbach} onClick={()=>{setLibraryKbach(false);setReferenceKbach(false);}}>{mode==='race'?'Màu hai đội':'Màu đội Tum Núp 2'}</button></div>}
    <div className="art-segment" aria-label="Góc nhìn">{views.map(([v,label])=><button key={v} disabled={recording} aria-pressed={view===v} onClick={()=>setView(v)}>{label}</button>)}</div>
   </nav>
   <div className="art-canvas" ref={host} data-testid="art-stage" aria-busy={!ready}>{!ready&&<div className="art-loading" role="status">{status}</div>}</div>
@@ -57,12 +66,14 @@ export function ArtPreview({embedded=false}:{embedded?:boolean}) {
    <details className="art-tools"><summary>Kiểm tra pha chèo · tải asset · nguồn tham khảo</summary><div className="art-tool-content">
     <label className="art-cadence">Chu kỳ <input aria-label="Xem từng pha chèo" disabled={!ready||recording} type="range" min="0" max="100" step="1" value={inspectedPhase} onChange={e=>inspectPhase(Number(e.target.value))}/><strong>{inspectedPhase}%</strong></label>
     <div className="art-control-links"><button disabled={!ready} onClick={()=>runtime.current?.capture()}><Camera size={16}/> Chụp ảnh</button><button disabled={!ready||recording} onClick={record}><Video size={16}/> {recording?'Đang ghi…':'Clip 10s'}</button><a href={import.meta.env.BASE_URL+'assets/athlete-master/athlete-master.glb?sha='+athleteMasterDigest} download><Download size={16}/> GLB VĐV</a></div>
-    {mode==='boat'&&<p><a href={import.meta.env.BASE_URL+'assets/ghe-ngo/kbach-master.svg'} download>Tải mẫu kbach SVG</a> · Nét vector dựng lại từ đoạn quay cận trong clip bạn cung cấp; mẫu phối màu dùng trong game.</p>}
+    {(mode==='boat'||mode==='race')&&<p>Thư viện kbach lấy từ các album của <a href="https://www.tiktok.com/@karn_chinda" target="_blank" rel="noreferrer">@karn_chinda</a>; xem nguồn từng bộ trong thư viện. Các mẫu là bản thử mỹ thuật; tám bộ màu đội có tư liệu vẫn được giữ riêng. <a href={import.meta.env.BASE_URL+'assets/ghe-ngo/kbach-master.svg'} download>Tải mẫu SVG từ clip trước</a>.</p>}
     <p>Ghe dùng chung 8 bộ động tác với bản đua. VĐV đơn dùng cùng bộ động tác đã sửa hướng chèo với cả ghe, gồm cả áo và dằm. Nón, tóc và dằm dựng trong Blender; cơ thể MakeHuman/MPFB CC0. Hai bờ dùng nhân vật Quaternius CC0 có chuyển động và phố 3D. Hai ghe 3D chạy từ xuất phát đến đích đủ 1.200 m. Đây là trận đua thử tự động; giải 8 ghe vẫn ở nút riêng phía trên.</p>
     <p>Khán đài theo <a href="https://baosoctrang.org.vn/van-hoa-the-thao-du-lich/202411/hao-huc-cho-ngay-khai-hoi-67c01d9/" target="_blank" rel="noreferrer">ảnh thực tế trước và trong khán đài</a>; cự ly theo <a href="https://duaghengo.cantho.gov.vn/uploads/filedinhkem/nvchon_04%20KH-BTC%2009102025%20%28FINAL%29.pdf" target="_blank" rel="noreferrer">kế hoạch giải 2025</a>. Toàn cảnh theo <a href="https://vnexpress.net/hang-chuc-nghin-nguoi-xem-dua-ghe-ngo-lon-nhat-mien-tay-4816604.html" target="_blank" rel="noreferrer">ảnh VnExpress bạn cung cấp</a>. Cầu đầu tuyến nằm ngoài cự ly đua; ghe hàng giữa hai làn làm trọng tài xuất phát. Hình dáng theo tư liệu; kích thước công trình và bố trí phố ước lượng. © OpenStreetMap contributors, ODbL, <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">nguồn đường bờ</a>.</p>
     <p><a href="https://thanhnien.vn/chua-tum-nup-doat-cu-dup-vo-dich-ghe-ngo-nam-va-nu-185241115184726094.htm" target="_blank" rel="noreferrer">Ảnh trang phục và dằm</a> · <a href="https://baosoctrang.org.vn/multimedia/202411/media-ghe-ngo-chua-tum-nup-vo-dich-ca-nam-va-nu-f8b6c2a/" target="_blank" rel="noreferrer">Video thi đấu</a></p>
    </div></details>
    {(recording||recordError)&&<p role="status">{recording?'Đang ghi 10 giây…':recordError}</p>}
+   {(kbachLoading||kbachError)&&<p className="art-kbach-status" role="status">{kbachError||'Đang áp dụng ảnh kbach 8K…'}</p>}
   </footer>
+  {pickerBoat!==null&&<Suspense fallback={<p role="status">Đang mở thư viện kbach…</p>}><KbachPicker selected={kbachIds[pickerBoat]} onSelect={id=>{setKbachIds(ids=>ids.map((value,i)=>i===pickerBoat?id:value));setLibraryKbach(true);}} onClose={()=>setPickerBoat(null)}/></Suspense>}
  </section>;
 }

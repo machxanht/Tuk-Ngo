@@ -21,6 +21,7 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
   rigs.push(await createHybridBoats(base+'assets/illustrated-v22/',{onProgress}));
   if(racing)rigs.push(await createHybridBoats(base+'assets/illustrated-v22/',{sharedRenderer:rigs[0].renderer}));
   await Promise.all(rigs.map((r,i)=>r.prepareTeams([teamIds[i]])));
+  if(settings.current.kbachIds)await Promise.all(rigs.map((r,i)=>settings.current.kbachIds[i]?r.kbachLibrary.load(settings.current.kbachIds[i]).then(texture=>r.previewKbach=texture):null));
   assets=await loadFestivalCrowd(base,{compact:true});
   if(![...document.fonts].some(f=>f.family.replace(/["']/g,'')==='Noto Sans Khmer')){
    const font=new FontFace('Noto Sans Khmer','url('+base+'assets/illustrated-v22/NotoSansKhmer.ttf)',{weight:'100 900'});document.fonts.add(await font.load());
@@ -102,6 +103,12 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
  function reset(){if(settings.current.game){settings.current.game.reset(settings.current.game.state.difficulty);syncGame();}else Object.assign(race,{elapsed:0,countdown:3,distance:rigs.map(()=>0),speed:rigs.map(()=>0),phases:rigs.map((_,i)=>i?.17:.28),finishTimes:rigs.map(()=>null),state:'countdown'});effects.forEach(e=>e.reset());place();lastView='';settings.current.onRace?.(snapshot());}
  const api={rig,rigs,scene,boat,camera,controls,renderer,banks,sky,river,official,effects,ceremony,game:settings.current.game,race,snapshot,advance,reset,
   async setTeams(ids){await Promise.all(rigs.map((r,i)=>r.prepareTeams([ids[i]])));if(disposed)return;teamIds=[...ids];effects.forEach(e=>e.reset());},
+  async setKbach(ids){
+   const request=Symbol();api.kbachRequest=request;
+   const maps=await Promise.all(rigs.map((r,i)=>ids[i]?r.kbachLibrary.load(ids[i]):null));
+   if(disposed||api.kbachRequest!==request)return false;
+   rigs.forEach((r,i)=>r.previewKbach=maps[i]);return true;
+  },
   seek(distance){const d=T.MathUtils.clamp(distance,0,COURSE.length);race.distance.fill(d);race.speed.fill(5.1);race.countdown=0;race.elapsed=d/5.1;race.finishTimes.fill(d===COURSE.length?race.elapsed:null);race.state=d===COURSE.length?'finished':'racing';effects.forEach(e=>e.reset());place();lastView='';settings.current.onRace?.(snapshot());},
   capture(){saveCanvas(renderer.domElement,'ghe-ngo-3d.png');},record(){return recordCanvas(renderer.domElement,'ghe-ngo-cheo-10s.webm');},
   dispose(){if(disposed)return;disposed=true;cancelAnimationFrame(raf);observer.disconnect();controls.dispose();ceremony?.dispose();effects.forEach(e=>e.dispose());wakes.forEach(w=>w.dispose());official.dispose();sky.dispose();river.dispose();assets.dispose();for(const r of rigs.slice(1)){r.scene.add(r.boat);r.dispose();}rig.dispose();renderer.domElement.remove();if(host.boatPreview===api)delete host.boatPreview;}
@@ -122,7 +129,7 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
   else if(!['banks','stand','crowd','bridge','finish','start','official'].includes(s.view)){const delta=center().sub(previous);camera.position.add(delta);controls.target.add(delta);}
   if(!introducing&&!inCeremony)controls.update();
   frameId++;
-  rigs.forEach((r,i)=>r.render(racing?race.phases[i]:c.phase,c.seconds,{teamId:teamIds[i],referenceKbach:!racing&&!!s.referenceKbach,effort:game?(i?(game.aiRaceStage==='final'?.7:.1):Math.max(game.raceStage==='final'?.65:0,game.strength)):0,desyncIntensity:game&&i===0?game.desyncIntensity:0,connectedKit:true,updateOnly:true,viewKey:'race-'+i,frameId,distance:camera.position.distanceTo(r.boat.position),nearest:i===0}));
+  rigs.forEach((r,i)=>r.render(racing?race.phases[i]:c.phase,c.seconds,{teamId:teamIds[i],referenceKbach:!racing&&!!s.referenceKbach,kbachTexture:r.previewKbach,effort:game?(i?(game.aiRaceStage==='final'?.7:.1):Math.max(game.raceStage==='final'?.65:0,game.strength)):0,desyncIntensity:game&&i===0?game.desyncIntensity:0,connectedKit:true,updateOnly:true,viewKey:'race-'+i,frameId,distance:camera.position.distanceTo(r.boat.position),nearest:i===0}));
   sky.update(camera);banks.update(c.seconds,inCeremony||introducing?{position:controls.target}:camera);official.update(c.seconds,racing?race:{state:'racing'},camera);
   rigs.forEach((r,i)=>{const moving=s.playing&&(!racing||race.state==='racing'),strength=racing?(race.distance[i]>=950?.85:race.distance[i]<200?.45:.12):Math.max(0,(s.cadence-72)/24);effects[i].update(s.playing?dt:0,crews[i],racing?race.speed[i]:4.2,c.seconds,s.splash&&moving,Math.max(0,Math.min(1,strength+(game&&i===0?(game.pace==='recover'?-.18:game.pace==='sprint'?.5*game.strength:0):0)+((game&&(i?game.aiSurgeActive:game.surgeActive)) ? .15 : 0))));wakes[i].update(r.boat,c.seconds,moving);});
   renderer.render(scene,camera);

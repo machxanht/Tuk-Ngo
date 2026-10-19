@@ -2,6 +2,7 @@ import * as T from 'three';
 import {RACE_TEAMS_2025,DEFAULT_TEAM_IDS} from './teams.mjs';
 import {FESTIVAL_TEAMS,festivalTeam} from './festival-teams.mjs';
 import {paintKbachLivery} from './kbach-livery.mjs';
+import {createKbachLibrary,atlasKbachTexture,kbachIndex} from './kbach-library.mjs';
 
 // Visual choices never change a historical team's simulated strength.
 window.TukNgoTeams={list:RACE_TEAMS_2025,festivalList:FESTIVAL_TEAMS,defaults:DEFAULT_TEAM_IDS,get:festivalTeam};
@@ -143,16 +144,16 @@ export function shortSleeves(body,jointNames,skeleton,cuffAlong=.55){
 }
 
 export function teamTextures(base){
- const textures=new Map(),ready=new Map(),loader=new T.TextureLoader();let disposed=false,reference;
+ const textures=new Map(),ready=new Map(),loader=new T.TextureLoader(),library=createKbachLibrary(base);let disposed=false,reference;
  async function load(ids){if(disposed)throw Error('Team textures were disposed');await Promise.all([...new Set(ids)].map(id=>{
-  const team=festivalTeam(id);if(!textures.has(id))textures.set(id,(team.appearance==='sample'?Promise.resolve(sampleLivery(team)):loader.loadAsync(base+'teams-2025/'+id+'.svg').then(source=>{
+  const team=festivalTeam(id);if(!textures.has(id))textures.set(id,(team.appearance==='sample'?library.fleet().then(({catalog,texture})=>atlasKbachTexture(texture,catalog.atlas,kbachIndex(id,catalog.items.length))):loader.loadAsync(base+'teams-2025/'+id+'.svg').then(source=>{
    // Preserve the researched artwork/UVs; only its game presentation changes.
    const canvas=document.createElement('canvas');canvas.width=source.image.width;canvas.height=source.image.height;
    const context=canvas.getContext('2d');context.filter='saturate(135%) brightness(112%)';context.drawImage(source.image,0,0);
    source.dispose();return new T.CanvasTexture(canvas);
   })).then(texture=>{if(disposed){texture.dispose();throw Error('Team textures were disposed');}texture.colorSpace=T.SRGBColorSpace;texture.flipY=false;texture.anisotropy=4;ready.set(id,texture);return texture;}).catch(error=>{textures.delete(id);throw error;}));return textures.get(id);
  }));}
- return {load,get(id){return ready.get(id);},reference(){if(disposed)throw Error('Team textures were disposed');if(!reference){reference=sampleLivery(null);reference.colorSpace=T.SRGBColorSpace;reference.flipY=false;reference.anisotropy=8;}return reference;},textures,dispose(){disposed=true;for(const texture of ready.values())texture.dispose();reference?.dispose();ready.clear();textures.clear();}};
+ return {load,get(id){return ready.get(id);},library,reference(){if(disposed)throw Error('Team textures were disposed');if(!reference){reference=sampleLivery(null);reference.colorSpace=T.SRGBColorSpace;reference.flipY=false;reference.anisotropy=8;}return reference;},textures,dispose(){disposed=true;for(const texture of ready.values())texture.dispose();reference?.dispose();library.dispose();ready.clear();textures.clear();}};
 }
 
 // Authored festival sample only: retain the eight researched SVGs unchanged.

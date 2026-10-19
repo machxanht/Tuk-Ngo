@@ -49,6 +49,8 @@ foreach ($taskCrewPath in @('assets/ghe-ngo/festival-crew.glb','assets/ghe-ngo/k
     Copy-Item -LiteralPath (Join-Path $taskRepo ('public/' + $taskCrewPath)) -Destination (Join-Path $taskDeploy $taskCrewPath) -Force
     $taskPublishPaths += $taskCrewPath
 }
+Copy-Item -LiteralPath (Join-Path $taskRepo 'public/assets/ghe-ngo/kbach-library') -Destination (Join-Path $taskDeploy 'assets/ghe-ngo') -Recurse -Force
+$taskPublishPaths += 'assets/ghe-ngo/kbach-library'
 if (!$PrepareOnly) {
     & git -C $taskRepo fetch origin 'refs/heads/gh-pages:refs/remotes/origin/gh-pages'
     if ($LASTEXITCODE -ne 0) { throw 'Cannot fetch current Pages parent' }

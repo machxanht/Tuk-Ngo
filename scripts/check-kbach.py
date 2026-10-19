@@ -9,10 +9,11 @@ with sync_playwright() as p:
  browser=p.chromium.launch(channel='msedge',headless=True,args=['--enable-unsafe-swiftshader']);page=browser.new_page(viewport={'width':1180,'height':820},has_touch=True)
  page.on('pageerror',lambda e:errors.append(str(e)));page.on('console',lambda m:errors.append(m.text) if m.type=='error' else None)
  page.goto(args.url,wait_until='domcontentloaded');page.wait_for_selector('[data-boat-count="61"]',timeout=90000)
- report['ceremony']=page.evaluate(api+'.ceremony.stats');assert report['ceremony']['kbach']['texture']==[4096,512] and report['ceremony']['kbach']['paletteVariants']==61
+ report['ceremony']=page.evaluate(api+'.ceremony.stats');assert report['ceremony']['kbach']['texture']==[2048,2048] and report['ceremony']['kbach']['designs']==39
  page.get_by_role('button',name='Ẩn menu',exact=True).tap();page.wait_for_function(api+".ceremony.stats.cameraShot==='athletes'",timeout=90000);page.screenshot(path=str(out/'ceremony.png'))
  page.get_by_role('button',name='Hiện menu',exact=True).tap();page.get_by_role('button',name='Xem mô hình',exact=True).tap();page.wait_for_selector('[data-render-mode="race"]',timeout=90000)
  page.get_by_role('button',name='Cả ghe 3D',exact=True).tap();page.wait_for_selector('[data-render-mode="boat"]',timeout=90000)
+ page.get_by_role('button',name='Kbach từ clip',exact=True).tap();page.wait_for_timeout(200)
  page.get_by_role('button',name='Dừng',exact=True).tap();page.get_by_role('button',name='Cận hoa văn',exact=True).tap();page.wait_for_timeout(300)
  hull=api+".boat.getObjectByName('Hull_Watertight_30_20x1_12')"
  report['reference']=page.evaluate('''()=>{const a=document.querySelector('[data-testid=art-stage]').boatPreview;let painted;a.boat.getObjectByName('Hull_Watertight_30_20x1_12').traverse(o=>{if(o.isMesh&&o.material.map)painted=o;});window.kbachMesh=painted;return {texture:[painted.material.map.image.width,painted.material.map.image.height],anisotropy:painted.material.map.anisotropy,flipY:painted.material.map.flipY,uuid:painted.material.map.uuid,rigs:a.rig.animation.stats,uvCount:painted.geometry.attributes.uv.count};}''')

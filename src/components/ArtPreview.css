@@ -13,3 +13,4 @@
 @media(max-height:500px){.art-heading{padding-top:4px;padding-bottom:2px}.art-heading h1{font-size:20px}.art-heading p,.art-kicker{display:none}.art-view-controls{padding-bottom:4px}.art-controls{padding-top:3px}.art-tools summary{min-height:28px}.art-preview{min-height:360px;grid-template-rows:auto auto minmax(120px,1fr) auto}}
 
 .art-race-status{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:0 auto 4px;font-size:12px}.art-race-status>label{display:grid;gap:2px;min-width:140px}.art-race-status>label:last-child{display:flex;align-items:center;min-height:30px;min-width:0}.art-race-status span strong{margin-left:8px}.art-race-status progress{width:100%;height:7px;accent-color:#258765}.art-race-status label:nth-of-type(2) progress{accent-color:#d3aa24}
+.art-kbach-controls{gap:8px}.art-kbach-status{text-align:center;margin:3px;font-size:12px}
