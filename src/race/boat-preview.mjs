@@ -8,6 +8,7 @@ import {buildMasperoSky,COURSE,raceX} from './maspero-course.mjs';
 import {courseZ} from './maspero-layout.mjs';
 import {loadFestivalCrowd} from './festival-crowd.mjs';
 import {ROWING_LAYOUT} from './rowing-pose.mjs';
+import {constructionForLane} from './boat-construction.mjs';
 import {buildStartOfficial} from './start-official.mjs';
 import {buildMenuCeremony} from './menu-ceremony.mjs';
 import {applyIntroCamera,applyCeremonyCamera} from './race-camera.mjs';
@@ -29,6 +30,7 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
   await document.fonts.load('700 64px "Noto Sans Khmer"');
  }catch(error){rigs.reverse().forEach(r=>r.dispose());assets?.dispose();throw error;}
  const rig=rigs[0],{scene,boat,renderer,actors}=rig;
+ rigs.forEach((r,i)=>r.setConstruction(settings.current.constructionTypes?.[i]||constructionForLane(i)));
  scene.background=new T.Color('#b9e9ff');scene.fog=new T.Fog('#d5f2fc',280,1000);
  // Broad daylight fill keeps the unlit sides readable without a post-process
  // pass, extra shadow maps, or changes to the verified athlete geometry.
@@ -102,6 +104,7 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
  observer=new ResizeObserver(resize);observer.observe(host);place();resize();
  function reset(){if(settings.current.game){settings.current.game.reset(settings.current.game.state.difficulty);syncGame();}else Object.assign(race,{elapsed:0,countdown:3,distance:rigs.map(()=>0),speed:rigs.map(()=>0),phases:rigs.map((_,i)=>i?.17:.28),finishTimes:rigs.map(()=>null),state:'countdown'});effects.forEach(e=>e.reset());place();lastView='';settings.current.onRace?.(snapshot());}
  const api={rig,rigs,scene,boat,camera,controls,renderer,banks,sky,river,official,effects,ceremony,game:settings.current.game,race,snapshot,advance,reset,
+  setConstruction(types){rigs.forEach((r,i)=>r.setConstruction(types[i]||constructionForLane(i)));},
   async setTeams(ids){await Promise.all(rigs.map((r,i)=>r.prepareTeams([ids[i]])));if(disposed)return;teamIds=[...ids];effects.forEach(e=>e.reset());},
   async setKbach(ids){
    const request=Symbol();api.kbachRequest=request;

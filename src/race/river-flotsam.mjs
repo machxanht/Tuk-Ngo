@@ -24,14 +24,20 @@ function template(banana=false){
  }
  const geometry=mergeGeometries(parts,false);parts.forEach(g=>g.dispose());return geometry;
 }
+export const FLOTSAM_COUNTS={hyacinth:128,banana:28};
+const random=n=>{let x=Math.imul(n+1,0x9e3779b9);x=Math.imul(x^(x>>>16),0x85ebca6b);return((x^(x>>>13))>>>0)/4294967296;};
 export function flotsamPlacement(index,time=0){
- const banana=index>=32,x=-600+((1440+index*37.71-time*.24)%3600+3600)%3600,side=index%2?1:-1,z=side*(banana?37:34.5+(index%4)*1.1);
- return {x,y:Math.sin(time*.95+index)*.025,z:courseZ(x,z),yaw:index*2.41+Math.sin(time*.12+index)*.10,scale:banana?.72+(index%3)*.2:.70+(index%5)*.18};
+ const banana=index>=FLOTSAM_COUNTS.hyacinth,cluster=Math.floor(random(index*17+193)*31),seed=cluster*97+4401;
+ const cx=910+random(seed)*1500,side=random(seed+1)<.5?-1:1,cz=side*(22+random(seed+2)*14);
+ const radius=Math.sqrt(random(index*23+15)),angle=random(index*23+16)*Math.PI*2;
+ const x=810+((cx-810+Math.cos(angle)*radius*(8+random(seed+4)*24)-time*.24)%1700+1700)%1700;
+ const z=T.MathUtils.clamp(cz+Math.sin(angle)*radius*3.2,-39,39);
+ return {x,y:Math.sin(time*.95+index)*.025,z:courseZ(x,z),yaw:random(index*11+17)*Math.PI*2+Math.sin(time*.12+index)*.10,scale:banana?.68+random(index+9)*.65:.55+random(index+7)*.90,cluster};
 }
 export function buildRiverFlotsam(parent,waterY){
  const group=new T.Group();group.name='River_Hyacinth_And_Fallen_Banana';parent.add(group);
- const material=new T.MeshLambertMaterial({vertexColors:true,side:T.DoubleSide}),geometries=[template(),template(true)],counts=[32,8],dummy=new T.Object3D(),batches=geometries.map((g,i)=>{const m=new T.InstancedMesh(g,material,counts[i]);m.name=i?'Floating_Fallen_Banana_Stems':'Floating_Water_Hyacinth_Patches';m.frustumCulled=false;group.add(m);return m;});
- const stats={hyacinthPatches:32,fallenBananaStems:8,drawCalls:2,placement:'near banks, outside the racing lanes',flowMps:.24,samples:[]};parent.userData.flotsam=stats;let last=-Infinity;
- function update(time){if(time-last<.08)return;last=time;stats.samples=[];for(let i=0;i<40;i++){const p=flotsamPlacement(i,time);dummy.position.set(p.x,waterY+p.y,p.z);dummy.rotation.set(Math.sin(time*.6+i)*.025,p.yaw,Math.sin(time*.7+i)*.025);dummy.scale.setScalar(p.scale);dummy.updateMatrix();batches[i>=32?1:0].setMatrixAt(i>=32?i-32:i,dummy.matrix);if(i<3||i===32)stats.samples.push({id:i,...p});}batches.forEach(b=>b.instanceMatrix.needsUpdate=true);}
+ const material=new T.MeshLambertMaterial({vertexColors:true,side:T.DoubleSide}),geometries=[template(),template(true)],counts=[FLOTSAM_COUNTS.hyacinth,FLOTSAM_COUNTS.banana],dummy=new T.Object3D(),batches=geometries.map((g,i)=>{const m=new T.InstancedMesh(g,material,counts[i]);m.name=i?'Floating_Fallen_Banana_Stems':'Floating_Water_Hyacinth_Patches';m.frustumCulled=false;group.add(m);return m;});
+ const stats={hyacinthPatches:counts[0],fallenBananaStems:counts[1],drawCalls:2,placement:'31 irregular drifting clusters outside the racing lanes',flowMps:.24,samples:[]};parent.userData.flotsam=stats;let last=-Infinity;
+ function update(time){if(time-last<.08)return;last=time;stats.samples=[];for(let i=0;i<counts[0]+counts[1];i++){const p=flotsamPlacement(i,time),banana=i>=counts[0];dummy.position.set(p.x,waterY+p.y,p.z);dummy.rotation.set(Math.sin(time*.6+i)*.025,p.yaw,Math.sin(time*.7+i)*.025);dummy.scale.setScalar(p.scale);dummy.updateMatrix();batches[banana?1:0].setMatrixAt(banana?i-counts[0]:i,dummy.matrix);if(i<3||i===counts[0])stats.samples.push({id:i,...p});}batches.forEach(b=>b.instanceMatrix.needsUpdate=true);}
  update(0);return{group,stats,update,dispose(){group.removeFromParent();batches.forEach(b=>b.dispose());geometries.forEach(g=>g.dispose());material.dispose();}};
 }

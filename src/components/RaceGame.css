@@ -24,3 +24,7 @@
 
 .race-game .menu-music,.race-game .menu-inspect{min-height:44px}@media(max-height:550px){.menu-tagline,.game-menu-card>.game-note{display:none}.game-menu-card{padding:10px 14px}.race-game .menu-music,.race-game .menu-inspect{min-height:44px}}
 .race-game .menu-visibility-toggle{position:absolute;top:max(14px,env(safe-area-inset-top));right:max(14px,env(safe-area-inset-right));z-index:12;min-height:44px;padding:10px 14px;background:#f8fcfff2;border-color:#c7e2ec;box-shadow:0 3px 12px #15364e22;font-size:13px}.race-game .game-menu[hidden]{display:none}.race-game.game-cinema{grid-template-rows:minmax(100px,1fr)}.race-game.game-cinema>.game-heading{display:none}@media(max-width:620px){.race-game .menu-visibility-toggle{top:max(10px,env(safe-area-inset-top));right:max(10px,env(safe-area-inset-right));padding:10px 12px;font-size:12px}}
+
+/* Full bilingual festival title remains readable without covering the river. */
+.game-brand h1{font-size:clamp(15px,1.7vw,23px)}.game-menu h2{font-size:clamp(23px,2.6vw,31px);line-height:1.25}.game-menu h2 span{font-size:14px}.game-eyebrow{line-height:1.5}.game-menu-card{overflow:auto}
+@media(max-height:550px){.game-menu h2{font-size:23px}.game-menu-card{padding:14px}.game-menu .menu-tagline{margin:8px 0}}

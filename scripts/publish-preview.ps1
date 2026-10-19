@@ -61,7 +61,7 @@ $taskRootHtml = [IO.File]::ReadAllText((Join-Path $taskBuilt 'index.html'))
 $taskDescription = 'Chơi đua ghe Ngo 3D: cúp lễ hội 61 đội, chèo theo nhịp, giữ sức và đạp nước rút trên sông Maspéro 1.200 m.'
 $taskRootHtml = [regex]::Replace($taskRootHtml, '<meta name="description" content="[^"]*"\s*/?>', '<meta name="description" content="' + $taskDescription + '" />')
 $taskRootHtml = [regex]::Replace($taskRootHtml, '<meta property="og:description" content="[^"]*"\s*/?>', '<meta property="og:description" content="' + $taskDescription + '" />')
-$taskRootHtml = [regex]::Replace($taskRootHtml, '<meta property="og:title" content="[^"]*"\s*/?>', '<meta property="og:title" content="Đua Ghe Ngo — Sông Maspéro" />')
+$taskRootHtml = [regex]::Replace($taskRootHtml, '<meta property="og:title" content="[^"]*"\s*/?>', '<meta property="og:title" content="Lễ hội đua ghe Ngo · ពិធីបុណ្យអុំទូក 2026 · Sóc Trăng / ខេត្តឃ្លាំង" />')
 [IO.File]::WriteAllText((Join-Path $taskDeploy 'index.html'), $taskRootHtml + "`n", [Text.UTF8Encoding]::new($false))
 if ($PrepareOnly) { Write-Output ('Prepared canonical root and assets: ' + $taskDeploy); return }
 

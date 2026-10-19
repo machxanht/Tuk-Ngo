@@ -4,11 +4,13 @@ import {createHash} from 'node:crypto';
 import {createRaceGame} from '../src/race/gameplay.mjs';
 import {introShot,ceremonyShot} from '../src/race/race-camera.mjs';
 import {COURSE} from '../src/race/maspero-course.mjs';
-import {flotsamPlacement} from '../src/race/river-flotsam.mjs';
+import {flotsamPlacement,FLOTSAM_COUNTS} from '../src/race/river-flotsam.mjs';
 import {ceremonyCrewDigest} from '../src/race/asset-digests.mjs';
 import {ceremonyHullOverlaps} from '../src/race/ceremony-layout.mjs';
 import {finishSpectatorPositions} from '../src/race/finish-spectators.mjs';
+import {FESTIVAL,FESTIVAL_BRANDS} from '../src/race/festival-branding.mjs';
 globalThis.window??={};
+assert.equal(FESTIVAL.year,'2026');assert.equal(FESTIVAL.titleKm,'ពិធីបុណ្យអុំទូក');assert.equal(FESTIVAL.provinceKm,'ខេត្តឃ្លាំង');assert.deepEqual(FESTIVAL_BRANDS,['Kuon Khmer','Angkor Soul']);
 const {ceremonyPlacement}=await import('../src/race/menu-ceremony.mjs');
 for(const fps of[15,30,60,144]){
  const g=createRaceGame();g.start('normal',{intro:true});
@@ -27,7 +29,8 @@ assert(crew.vertices>=200&&crew.triangles<700);assert.equal(crew.sourceSha256,cr
 assert.equal(ceremonyCrewDigest,createHash('sha256').update(await readFile('public/assets/athlete-master/ceremony-crew.json')).digest('hex'));
 assert(crew.hair.vertices>=60);assert.equal(crew.hair.styles,4);assert.equal(crew.attributes.aScalp.array.length,crew.vertices*4);assert(crew.attributes.aScalp.array.some((v,i)=>i%4===3&&v>.8&&v<1.5));
 assert.equal(crew.motion.variants,2);assert.equal(crew.motion.frames,24);const samples=Buffer.from(crew.motion.pixels,'base64'),poses=new Float32Array(samples.buffer,samples.byteOffset,samples.byteLength/4);assert.equal(poses.length,crew.motion.width*crew.motion.height*4);assert(poses.every(Number.isFinite));assert(crew.cap.triangles>30&&crew.cap.triangles<180);assert(Math.max(...crew.motion.hatFrames.map(p=>p[1]))>1.45);assert(Math.abs(crew.motion.hatFrames[0][0]-crew.motion.hatFrames[6][0])>.05);
-for(let i=0;i<40;i++){const p=flotsamPlacement(i,0),q=flotsamPlacement(i,10);assert(Math.abs(p.z)>20);assert(Math.abs(p.x-q.x-2.4)<1e-6);}
-const waders=finishSpectatorPositions(COURSE.finishX,.28);assert(waders.length>500);assert(waders.some(p=>p.z<0)&&waders.some(p=>p.z>0));for(const p of waders){assert(p.x>COURSE.finishX&&p.x<COURSE.finishX+200);assert(Math.abs(p.z)>21);assert.equal(p.waterY,.28);assert.equal(p.submergedHeight,.9);assert(['wave','cheer','clap'].includes(p.activity));}
+const drift=Array.from({length:FLOTSAM_COUNTS.hyacinth+FLOTSAM_COUNTS.banana},(_,i)=>flotsamPlacement(i));assert(drift.length>150);assert(new Set(drift.map(p=>p.cluster)).size>25);assert(new Set(drift.map(p=>Math.round(Math.abs(p.z)*10))).size>60);
+for(let i=0;i<drift.length;i++){const p=drift[i],q=flotsamPlacement(i,10);assert(Math.min(...COURSE.lanes.map(lane=>Math.abs(p.z-lane)))>4,'Floating plants must clear both racing lanes');assert(Math.abs(p.x-q.x-2.4)<1e-6);}
+const waders=finishSpectatorPositions(COURSE.finishX,.28);assert(waders.length>500);assert.equal(new Set(waders.map(p=>p.cluster)).size,10);assert(waders.some(p=>p.z<0)&&waders.some(p=>p.z>0));for(const p of waders){assert(p.x>COURSE.finishX&&p.x<COURSE.finishX+100);assert(Math.abs(p.z)>21);assert.equal(p.waterY,.28);assert.equal(p.submergedHeight,.9);assert(['wave','cheer','clap'].includes(p.activity));}
 const music=JSON.parse(await readFile('public/assets/race-audio/menu/source.json','utf8'));assert.equal(music.id,'TCpeiecnktg');assert.equal(music.sha256,createHash('sha256').update(await readFile('public/assets/race-audio/menu/festival.mp3')).digest('hex'));
-console.log('Presentation passed: race intro, six camera angles, irregular separated 61-boat raft, scalp/hair coverage, animated handheld caps, final-200m wading spectators, drifting vegetation and exact menu music.');
+console.log('Presentation passed: race intro, six camera angles, irregular separated 61-boat raft, scalp/hair coverage, animated handheld caps, ten final-100m spectator clusters, drifting vegetation and exact menu music.');

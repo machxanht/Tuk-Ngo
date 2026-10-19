@@ -1,4 +1,5 @@
 import * as T from 'three';
+import {FESTIVAL,FESTIVAL_BRANDS,paintFestivalBanner} from './festival-branding.mjs';
 import {buildFestivalCrowd} from './festival-crowd.mjs';
 import {buildFestivalStreet} from './festival-street.mjs';
 import {buildFestivalTraffic} from './festival-traffic.mjs';
@@ -56,7 +57,7 @@ export function buildMasperoBanks(group,waterY,crowdAssets,bankMaterials={},opti
  function beam(a,b,r,color){const d=b.clone().sub(a);dummy.quaternion.setFromUnitVectors(V(0,1,0),d.clone().normalize());const e=new T.Euler().setFromQuaternion(dummy.quaternion);add('pole',(a.x+b.x)/2,(a.y+b.y)/2,(a.z+b.z)/2,r,d.length(),r,color,e.x,e.y,e.z,true);}
  function text(text,width,height,x,y,z,background='#8c2321',fg='#f6d880',ry=0){
   const key=JSON.stringify([text,width,height,background,fg]);let batch=signs.get(key);
-  if(!batch){const c=document.createElement('canvas');c.width=2048;c.height=Math.max(128,Math.round(c.width*height/width));const p=c.getContext('2d'),pad=c.height*.1;p.fillStyle=background;p.fillRect(0,0,c.width,c.height);p.strokeStyle=fg;p.lineWidth=Math.max(2,c.height*.025);p.strokeRect(pad,pad,c.width-pad*2,c.height-pad*2);p.fillStyle=fg;p.textAlign='center';p.textBaseline='middle';const base=c.height*.49;p.font='700 '+base+'px "Noto Sans Khmer"';const size=Math.min(base,base*(c.width-pad*4)/p.measureText(text).width);p.font='700 '+size+'px "Noto Sans Khmer"';p.fillText(text,c.width/2,c.height*.54);const tx=new T.CanvasTexture(c);tx.colorSpace=T.SRGBColorSpace;tx.anisotropy=8;batch={geometry:new T.PlaneGeometry(width,height),material:new T.MeshBasicMaterial({map:tx,side:T.FrontSide}),text,width,height,list:[]};signs.set(key,batch);}
+  if(!batch){const c=document.createElement('canvas');c.width=2048;c.height=Math.max(128,Math.round(c.width*height/width));paintFestivalBanner(c,text,background,fg);const tx=new T.CanvasTexture(c);tx.colorSpace=T.SRGBColorSpace;tx.anisotropy=8;batch={geometry:new T.PlaneGeometry(width,height),material:new T.MeshBasicMaterial({map:tx,side:T.FrontSide}),text,width,height,list:[]};signs.set(key,batch);}
   const o=new T.Object3D();o.position.set(x,y,bridgeFrame?z:mappedZ(x,z));o.rotation.y=ry;if(bridgeFrame){const dx=x-bridgeFrame.x;cDummyPosition(o,dx,z,bridgeFrame);o.rotation.y+=bridgeFrame.yaw;}o.updateMatrix();batch.list.push(o.matrix.clone());signPlacements.push({text,width,height,x:o.position.x,y,z:o.position.z,bank:Math.sign(z)});return o;
  }
  function cDummyPosition(o,dx,z,frame){o.position.x=frame.x+dx*Math.cos(frame.yaw)+z*Math.sin(frame.yaw);o.position.z=-dx*Math.sin(frame.yaw)+z*Math.cos(frame.yaw);}
@@ -196,12 +197,17 @@ export function buildMasperoBanks(group,waterY,crowdAssets,bankMaterials={},opti
   const x=raceX(distance),numerals=String(distance).replace(/\d/g,n=>'០១២៣៤៥៦៧៨៩'[Number(n)]);add('pole',x,4.7,side*43.8,.07,7,.07,'#d4d4c5');text(distance===1200?'ទីបញ្ចប់':distance===0?'ចំណុចចាប់ផ្តើម':numerals+' ម៉ែត្រ',distance===0?7:5,1.1,x,7.7,side*43.8,'#8c2c27','#f0dc92');
  }
  beam(V(COURSE.finishX,8, -43.8),V(COURSE.finishX,8,43.8),.015,'#737f74');
- const phrases=['សូមស្វាគមន៍','ប្រណាំងទូក-ង','អបអរសាទរ','ពិធីបុណ្យអុំទូក'];
+ const phrases=['សូមស្វាគមន៍','ប្រណាំងទូក-ង','អបអរសាទរ',FESTIVAL.titleKm];
  for(const side of[-1,1])for(let x=854,id=0;x<2430;x+=38,id++){
   if(nearBridge(x,24)||x>990&&x<1190)continue;
   const high=id%3===0,width=high?18:15,height=high?2.4:1.55,y=high?5.4:2.05,z=side*44.75,phrase=phrases[id%phrases.length];
   if(high)for(const dx of[-9.3,9.3])add('pole',x+dx,3.55,z,.055,5.5,.055,'#d5ddd2');
-  text(phrase,width,height,x,y,z,id%2?'#0c6d66':'#a7382e','#fff4c5',side<0?0:Math.PI);
+  text(phrase,width,height,x,y,z,['#087c83','#c33a52','#4347ac','#a33789'][id%4],'#fff7d1',side<0?0:Math.PI);
+  if(high)text(FESTIVAL_BRANDS[id%2],13,2.7,x,8.2,z,id%2?'#9e284b':'#1d5b95','#fff5cf',side<0?0:Math.PI);
+ }
+ for(const side of[-1,1]){
+  text(FESTIVAL.titleKm,32,3.1,COURSE.standX,10.4,side*45.8,'#a52952','#fff1bb',side<0?0:Math.PI);
+  FESTIVAL_BRANDS.forEach((brand,i)=>text(brand,17,3.2,COURSE.standX+(i?78:-78),6.4,side*45.8,i?'#832e9d':'#0e7b84','#fff1bb',side<0?0:Math.PI));
  }
  for(let z=-40,i=0;z<42;z+=2.2,i++)box(COURSE.finishX,7.68,z,.04,.55,.75,palette[i%palette.length]);
  for(const {type,shiny,list} of meshes.values()){

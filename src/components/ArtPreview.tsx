@@ -13,12 +13,14 @@ export function ArtPreview({embedded=false}:{embedded?:boolean}) {
  const [playing,setPlaying]=useState(()=>!matchMedia('(prefers-reduced-motion: reduce)').matches);
  const [cadence,setCadence]=useState(64),[splash,setSplash]=useState(true),[fast,setFast]=useState(false);
  const [referenceKbach,setReferenceKbach]=useState(true);
+ const [constructionTypes,setConstructionTypes]=useState(['plywood','dugout']);
  const [libraryKbach,setLibraryKbach]=useState(true),[kbachIds,setKbachIds]=useState([DEFAULT_KBACH_ID,'7681583457654295826']),[pickerBoat,setPickerBoat]=useState<number|null>(null),[kbachLoading,setKbachLoading]=useState(false),[kbachError,setKbachError]=useState('');
  const [race,setRace]=useState<any>(null);
  const [inspectedPhase,setInspectedPhase]=useState(28),[status,setStatus]=useState('Đang tải ghe 3D…');
  const [ready,setReady]=useState(false),[recording,setRecording]=useState(false),[recordError,setRecordError]=useState('');
  const clock=useRef({phase:.28,seconds:0,last:0});
- const settings=useRef({view,playing,cadence,splash,fast,referenceKbach,kbachIds:libraryKbach?kbachIds:undefined,racing:mode==='race',onRace:setRace});settings.current={view,playing,cadence,splash,fast,referenceKbach:mode==='boat'&&referenceKbach,kbachIds:libraryKbach?kbachIds:undefined,racing:mode==='race',onRace:setRace};
+ const settings=useRef({view,playing,cadence,splash,fast,referenceKbach,constructionTypes,kbachIds:libraryKbach?kbachIds:undefined,racing:mode==='race',onRace:setRace});settings.current={view,playing,cadence,splash,fast,referenceKbach:mode==='boat'&&referenceKbach,constructionTypes,kbachIds:libraryKbach?kbachIds:undefined,racing:mode==='race',onRace:setRace};
+ useEffect(()=>{if(ready&&mode!=='athlete'&&mode!=='play')runtime.current?.setConstruction(constructionTypes);},[constructionTypes,ready,mode]);
  useEffect(()=>{
   const preview=runtime.current;if(!ready||mode==='athlete'||mode==='play'||!preview?.setKbach)return;
   let cancelled=false;setKbachLoading(true);setKbachError('');
@@ -52,6 +54,7 @@ export function ArtPreview({embedded=false}:{embedded?:boolean}) {
   <nav className="art-view-controls" aria-label="Chọn hình ảnh">
    <div className="art-segment" aria-label="Mô hình"><button disabled={recording} onClick={()=>changeMode('play')}>Chơi cúp 61 ghe</button><button disabled={recording} aria-pressed={mode==='race'} onClick={()=>changeMode('race')}>Hai ghe đua</button><button disabled={recording} aria-pressed={mode==='boat'} onClick={()=>changeMode('boat')}>Cả ghe 3D</button><button disabled={recording} aria-pressed={mode==='athlete'} onClick={()=>changeMode('athlete')}>Một VĐV</button></div>
    {(mode==='boat'||mode==='race')&&<div className="art-segment art-kbach-controls" role="group" aria-label="Hoa văn ghe"><button disabled={!ready||kbachLoading} aria-pressed={libraryKbach} onClick={()=>setPickerBoat(0)}>{mode==='race'?'Kbach ghe 1':'Thư viện kbach'}</button>{mode==='race'&&<button disabled={!ready||kbachLoading} onClick={()=>setPickerBoat(1)}>Kbach ghe 2</button>}{mode==='boat'&&<button aria-pressed={!libraryKbach&&referenceKbach} onClick={()=>{setLibraryKbach(false);setReferenceKbach(true);}}>Kbach từ clip</button>}<button aria-pressed={!libraryKbach&&!referenceKbach} onClick={()=>{setLibraryKbach(false);setReferenceKbach(false);}}>{mode==='race'?'Màu hai đội':'Màu đội Tum Núp 2'}</button></div>}
+   {(mode==='boat'||mode==='race')&&<div className="art-segment" role="group" aria-label="Kết cấu ghe">{constructionTypes.slice(0,mode==='race'?2:1).map((type,i)=><label key={i}>Ghe {i+1} <select aria-label={'Kết cấu ghe '+(i+1)} value={type} onChange={e=>setConstructionTypes(types=>types.map((old,k)=>k===i?e.target.value:old))}><option value="plywood">Ván ép · ngồi điều nhịp</option><option value="dugout">Độc mộc · đứng cầm thương</option></select></label>)}</div>}
    <div className="art-segment" aria-label="Góc nhìn">{views.map(([v,label])=><button key={v} disabled={recording} aria-pressed={view===v} onClick={()=>setView(v)}>{label}</button>)}</div>
   </nav>
   <div className="art-canvas" ref={host} data-testid="art-stage" aria-busy={!ready}>{!ready&&<div className="art-loading" role="status">{status}</div>}</div>
