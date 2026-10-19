@@ -1,0 +1,90 @@
+{
+  "sourceCommit": "d0be1e1",
+  "pagesCommit": "7056d923a494005192ecb453a3432d788c621718",
+  "pagesAction": 39317893046,
+  "deployment": "success",
+  "url": "https://machxanht.github.io/Tuk-Ngo/",
+  "checks": {
+    "lint": "passed",
+    "tests": "passed",
+    "build": "passed",
+    "gltfValidation": "zero errors / zero warnings",
+    "posePhasesPerClip": 96,
+    "derivedClips": 9,
+    "protectedMasterRigs": 8,
+    "shirt": {
+      "vertices": 533,
+      "triangles": 896,
+      "boundaryLoops": 4
+    },
+    "viewports": [
+      [
+        1180,
+        820
+      ],
+      [
+        768,
+        1024
+      ],
+      [
+        1180,
+        430
+      ]
+    ],
+    "physicalTabletMeasured": false
+  },
+  "publicScene": {
+    "coachX": 5.42,
+    "construction": "dugout",
+    "crew": 54,
+    "flotsam": {
+      "banana": 28,
+      "drawCalls": 2,
+      "hyacinth": 128
+    },
+    "helms": 2,
+    "masters": 8,
+    "motionURL": "https://machxanht.github.io/Tuk-Ngo/assets/athlete-master/rowing-motion.glb?sha=497084e74dd9e03ffbbdd0d6d352b89d4d09c2245af6598bade3c2e2f9c1867b",
+    "signs": {
+      "angkorSoul": 16,
+      "kuonKhmer": 14,
+      "language": "km",
+      "total": 129
+    },
+    "waterCrowd": {
+      "clusters": 10,
+      "count": 572,
+      "progress": [
+        1100,
+        1200
+      ]
+    }
+  },
+  "publicRaceAdvanced": {
+    "callers": [
+      "seated",
+      "standing"
+    ],
+    "distance": [
+      1200,
+      1200
+    ],
+    "finishTimes": [
+      227.5652277873595,
+      227.55264403685123
+    ],
+    "state": "finished",
+    "types": [
+      "plywood",
+      "dugout"
+    ]
+  },
+  "publicBrowserWarningsAndErrors": [],
+  "loadedBoatModule": "boat-preview-DEyIti0H.js",
+  "publicAssetHashes": {
+    "rowingMotion": "497084e74dd9e03ffbbdd0d6d352b89d4d09c2245af6598bade3c2e2f9c1867b",
+    "athleteMaster": "72cf449f42a2b8dbc73bf698e0fdb643416f63010f69f00af8a5ca2c5fc92fe6",
+    "ceremonyCrew": "4ce93c7158d18554bd1b31d94f5097f8a6d14c81c2d0d0ad8425d95667795e3e"
+  },
+  "publicAssetsMatchLocal": true
+}
