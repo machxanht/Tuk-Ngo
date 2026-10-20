@@ -175,7 +175,7 @@ def bundle_files(data, media):
                         'placeholders': [p for p in ['player_name', 'opponent_name', 'winner_name']
                                          if '{' + p + '}' in text],
                         'reviewRequired': True, 'autoApprove': False})
-    files['script.md'] = ('\n'.join(lines) + '\n').encode()
+    files['script.md'] = ('\n'.join(lines).rstrip() + '\n').encode()
     files['cue-sheet.csv'] = csv_bytes(['cue_id', 'stage', 'language', 'title', 'when',
         'conditions_json', 'priority', 'cooldown_seconds', 'script_text', 'actual_audio_text',
         'audio_keys', 'status'], cue_rows)

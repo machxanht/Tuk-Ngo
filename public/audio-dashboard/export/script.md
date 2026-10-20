@@ -311,4 +311,3 @@ Cự ly 1.200 m. Một giọng nói tại một thời điểm. Tiếng Việt d
 **Khmer:** សូមអបអរសាទរ {winner_name} ដែលបានឈ្នះជើងឯកពានរង្វាន់នេះ!
 
 **Lưu ý:** Cần audio đúng tình huống. Không tự dùng câu thắng lượt thay câu vô địch.
-
