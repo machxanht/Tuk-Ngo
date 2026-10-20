@@ -1,0 +1,1970 @@
+{
+  "schema": 1,
+  "packageId": "khmer-audio-handover-2026",
+  "language": "km",
+  "voice": "km-KH-PisethNeural",
+  "summary": {
+    "totalCues": 29,
+    "reusedCues": 22,
+    "newlySynthesizedCues": 7,
+    "uncompletedCues": 0,
+    "totalAudioClips": 89,
+    "allFilesDecodedCleanly": true
+  },
+  "playbackPolicy": {
+    "revalidateBeforePlay": true,
+    "noAudioWhilePaused": true,
+    "stopOldMatchQueueOnRestart": true,
+    "minimumGapSeconds": 0.15,
+    "duckAmbienceDb": -8,
+    "discardExpired": true,
+    "historyNeverInterruptsAction": true,
+    "doNotSpeakMissingPlaceholders": true,
+    "finishCancelsPendingRaceSpeech": true,
+    "nameCooldownSeconds": 20
+  },
+  "cues": {
+    "ceremony-welcome": {
+      "stage": "ceremony",
+      "title": "Chào khán giả bên sông",
+      "conditions": {
+        "phases": [
+          "ceremony"
+        ]
+      },
+      "priority": 2,
+      "primaryAudio": "audio/khmer-intro.mp3",
+      "variants": [
+        "audio/khmer-intro.mp3"
+      ],
+      "status": "reused-verified"
+    },
+    "ceremony-teams": {
+      "stage": "ceremony",
+      "title": "Các đội ghe hội tụ",
+      "conditions": {
+        "phases": [
+          "ceremony"
+        ]
+      },
+      "priority": 2,
+      "primaryAudio": "audio/ai-ceremony-teams-km.mp3",
+      "variants": [
+        "audio/ai-ceremony-teams-km.mp3"
+      ],
+      "status": "newly-synthesized"
+    },
+    "flyover": {
+      "stage": "intro",
+      "title": "Toàn cảnh lễ hội 1.200 m",
+      "conditions": {
+        "phases": [
+          "intro"
+        ]
+      },
+      "priority": 1,
+      "primaryAudio": "audio/khmer-intro.mp3",
+      "variants": [
+        "audio/khmer-intro.mp3"
+      ],
+      "status": "reused-verified"
+    },
+    "team-introduction": {
+      "stage": "intro",
+      "title": "Gọi đúng hai đội trong lượt",
+      "conditions": {
+        "phases": [
+          "intro",
+          "ready"
+        ]
+      },
+      "priority": 2,
+      "primaryAudio": "audio/ai-intro-match-tum-nup-kos-thum-km.mp3",
+      "variants": [
+        "audio/ai-intro-match-tum-nup-kos-thum-km.mp3",
+        "audio/ai-intro-carrier-km.mp3"
+      ],
+      "status": "newly-synthesized-resolved"
+    },
+    "ready": {
+      "stage": "countdown",
+      "title": "Chuẩn bị",
+      "conditions": {
+        "phases": [
+          "countdown"
+        ]
+      },
+      "priority": 2,
+      "primaryAudio": "audio/ai-ready-km.mp3",
+      "variants": [
+        "audio/ai-ready-km.mp3"
+      ],
+      "status": "reused-verified"
+    },
+    "go": {
+      "stage": "start",
+      "title": "Xuất phát",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minElapsed": 0,
+        "maxElapsed": 3,
+        "minDistance": 0,
+        "maxDistance": 200
+      },
+      "priority": 3,
+      "primaryAudio": "audio/ai-go-km.mp3",
+      "variants": [
+        "audio/ai-go-km.mp3",
+        "audio/khmer-go.mp3"
+      ],
+      "status": "reused-verified"
+    },
+    "start-drive": {
+      "stage": "start",
+      "title": "Bắt nhịp sau xuất phát",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minElapsed": 3,
+        "maxElapsed": 15,
+        "maxDistance": 200
+      },
+      "priority": 2,
+      "primaryAudio": "audio/ai-start-drive-km.mp3",
+      "variants": [
+        "audio/ai-start-drive-km.mp3"
+      ],
+      "status": "newly-synthesized"
+    },
+    "cruise": {
+      "stage": "cruise",
+      "title": "Vào đường trường",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 200,
+        "maxDistance": 600
+      },
+      "priority": 2,
+      "primaryAudio": "audio/ai-cruise-km.mp3",
+      "variants": [
+        "audio/ai-cruise-km.mp3"
+      ],
+      "status": "reused-verified"
+    },
+    "cruise-context": {
+      "stage": "cruise",
+      "title": "Thử thách cự ly và khán giả",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 200,
+        "maxDistance": 550
+      },
+      "priority": 1,
+      "primaryAudio": "audio/ai-cruise-context-km.mp3",
+      "variants": [
+        "audio/ai-cruise-context-km.mp3"
+      ],
+      "status": "newly-synthesized"
+    },
+    "fatigue": {
+      "stage": "cruise",
+      "title": "Sức bền xuống thấp",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 200,
+        "maxDistance": 950,
+        "maxStamina": 20
+      },
+      "priority": 2,
+      "primaryAudio": "audio/ai-recover-km.mp3",
+      "variants": [
+        "audio/ai-recover-km.mp3"
+      ],
+      "status": "reused-verified"
+    },
+    "cohesion": {
+      "stage": "cruise",
+      "title": "Nhịp dầm đồng đều",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 200,
+        "maxDistance": 950,
+        "minCohesion": 80
+      },
+      "priority": 2,
+      "primaryAudio": "audio/ai-cohesion-km.mp3",
+      "variants": [
+        "audio/ai-cohesion-km.mp3"
+      ],
+      "status": "reused-verified"
+    },
+    "recover": {
+      "stage": "cruise",
+      "title": "Hồi sức giữ nhịp",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 200,
+        "maxDistance": 950,
+        "maxStamina": 35
+      },
+      "priority": 2,
+      "primaryAudio": "audio/ai-recover-km.mp3",
+      "variants": [
+        "audio/ai-recover-km.mp3"
+      ],
+      "status": "reused-verified"
+    },
+    "halfway": {
+      "stage": "halfway",
+      "title": "Qua nửa đường",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 550,
+        "maxDistance": 750
+      },
+      "priority": 2,
+      "primaryAudio": "audio/ai-halfway-km.mp3",
+      "variants": [
+        "audio/ai-halfway-km.mp3"
+      ],
+      "status": "reused-verified"
+    },
+    "close-race": {
+      "stage": "duel",
+      "title": "Hai ghe so kè",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 200,
+        "maxDistance": 950,
+        "maxAbsGap": 3
+      },
+      "priority": 2,
+      "primaryAudio": "audio/ai-close-race-km.mp3",
+      "variants": [
+        "audio/ai-close-race-km.mp3"
+      ],
+      "status": "reused-verified"
+    },
+    "lead-change": {
+      "stage": "duel",
+      "title": "Đổi dẫn đầu",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 200,
+        "maxDistance": 950,
+        "onLeadChange": true
+      },
+      "priority": 3,
+      "primaryAudio": "audio/ai-lead-change-km.mp3",
+      "variants": [
+        "audio/ai-lead-change-km.mp3"
+      ],
+      "status": "reused-verified"
+    },
+    "safe-margin": {
+      "stage": "duel",
+      "title": "Khoảng cách dẫn rõ",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minAbsGap": 8
+      },
+      "priority": 2,
+      "primaryAudio": "audio/ai-safe-margin-km.mp3",
+      "variants": [
+        "audio/ai-safe-margin-km.mp3"
+      ],
+      "status": "newly-synthesized"
+    },
+    "history-tum-nup": {
+      "stage": "history",
+      "title": "Lịch sử Tum Núp 2",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 200,
+        "maxDistance": 750,
+        "teamIds": [
+          "can_tho-23"
+        ]
+      },
+      "priority": 0,
+      "primaryAudio": "audio/trial-history-tum-nup-km.mp3",
+      "variants": [
+        "audio/trial-history-tum-nup-km.mp3"
+      ],
+      "status": "reused-verified"
+    },
+    "history-kos-thum": {
+      "stage": "history",
+      "title": "Lịch sử Kos Thum 1",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 200,
+        "maxDistance": 750,
+        "teamIds": [
+          "ca_mau-05"
+        ]
+      },
+      "priority": 0,
+      "primaryAudio": "audio/trial-history-kos-thum-km.mp3",
+      "variants": [
+        "audio/trial-history-kos-thum-km.mp3"
+      ],
+      "status": "reused-verified"
+    },
+    "history-sro-lon": {
+      "stage": "history",
+      "title": "Lịch sử Sro Lôn 2",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 200,
+        "maxDistance": 750,
+        "teamIds": [
+          "can_tho-06"
+        ]
+      },
+      "priority": 0,
+      "primaryAudio": "audio/trial-history-sro-lon-km.mp3",
+      "variants": [
+        "audio/trial-history-sro-lon-km.mp3"
+      ],
+      "status": "newly-synthesized"
+    },
+    "final": {
+      "stage": "final",
+      "title": "Bắt đầu nước rút",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 950,
+        "maxDistance": 1100
+      },
+      "priority": 3,
+      "primaryAudio": "audio/ai-final-km.mp3",
+      "variants": [
+        "audio/ai-final-km.mp3"
+      ],
+      "status": "reused-verified"
+    },
+    "sprint-effort": {
+      "stage": "final",
+      "title": "Nhịp dầm mạnh hơn",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 950,
+        "maxDistance": 1150,
+        "requiresHardEffort": true
+      },
+      "priority": 4,
+      "primaryAudio": "audio/ai-final-km.mp3",
+      "variants": [
+        "audio/ai-final-km.mp3"
+      ],
+      "status": "reused-verified"
+    },
+    "surge": {
+      "stage": "final",
+      "title": "Đạp nước rút",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 950,
+        "maxDistance": 1200,
+        "surgeActive": true
+      },
+      "priority": 4,
+      "primaryAudio": "audio/ai-surge-km.mp3",
+      "variants": [
+        "audio/ai-surge-km.mp3",
+        "audio/khmer-full-effort.mp3"
+      ],
+      "status": "reused-verified"
+    },
+    "last-hundred": {
+      "stage": "final",
+      "title": "100 mét cuối",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 1100,
+        "maxDistance": 1150
+      },
+      "priority": 4,
+      "primaryAudio": "audio/ai-last-hundred-km.mp3",
+      "variants": [
+        "audio/ai-last-hundred-km.mp3"
+      ],
+      "status": "reused-verified"
+    },
+    "last-fifty": {
+      "stage": "final",
+      "title": "50 mét cuối",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 1150,
+        "maxDistance": 1200
+      },
+      "priority": 4,
+      "primaryAudio": "audio/ai-last-fifty-km.mp3",
+      "variants": [
+        "audio/ai-last-fifty-km.mp3"
+      ],
+      "status": "reused-verified"
+    },
+    "finish-win": {
+      "stage": "result",
+      "title": "Thắng lượt",
+      "conditions": {
+        "phases": [
+          "finished"
+        ],
+        "results": [
+          "win"
+        ],
+        "cupChampion": false
+      },
+      "priority": 5,
+      "primaryAudio": "audio/ai-finish-win-km.mp3",
+      "variants": [
+        "audio/ai-finish-win-km.mp3",
+        "audio/khmer-finish.mp3"
+      ],
+      "status": "reused-verified"
+    },
+    "finish-loss": {
+      "stage": "result",
+      "title": "Thua lượt",
+      "conditions": {
+        "phases": [
+          "finished"
+        ],
+        "results": [
+          "loss"
+        ]
+      },
+      "priority": 5,
+      "primaryAudio": "audio/ai-finish-loss-km.mp3",
+      "variants": [
+        "audio/ai-finish-loss-km.mp3"
+      ],
+      "status": "reused-verified"
+    },
+    "finish-tie": {
+      "stage": "result",
+      "title": "Kết quả hòa",
+      "conditions": {
+        "phases": [
+          "finished"
+        ],
+        "results": [
+          "tie"
+        ]
+      },
+      "priority": 5,
+      "primaryAudio": "audio/ai-finish-tie-km.mp3",
+      "variants": [
+        "audio/ai-finish-tie-km.mp3"
+      ],
+      "status": "reused-verified"
+    },
+    "finish-dnf": {
+      "stage": "result",
+      "title": "Không hoàn thành",
+      "conditions": {
+        "phases": [
+          "finished"
+        ],
+        "results": [
+          "dnf"
+        ]
+      },
+      "priority": 5,
+      "primaryAudio": "audio/ai-finish-dnf-km.mp3",
+      "variants": [
+        "audio/ai-finish-dnf-km.mp3"
+      ],
+      "status": "reused-verified"
+    },
+    "cup-champion": {
+      "stage": "result",
+      "title": "Vô địch cả cúp",
+      "conditions": {
+        "phases": [
+          "finished"
+        ],
+        "results": [
+          "win"
+        ],
+        "cupChampion": true
+      },
+      "priority": 6,
+      "primaryAudio": "audio/ai-champion-tum-nup-km.mp3",
+      "variants": [
+        "audio/ai-champion-tum-nup-km.mp3",
+        "audio/ai-champion-kos-thum-km.mp3",
+        "audio/ai-champion-carrier-km.mp3"
+      ],
+      "status": "newly-synthesized-resolved"
+    }
+  },
+  "clips": {
+    "ai-ceremony-teams-km.mp3": {
+      "file": "audio/ai-ceremony-teams-km.mp3",
+      "cueId": "ceremony-teams",
+      "language": "km",
+      "text": "ក្រុមទូកទាំងអស់បានមកជួបជុំគ្នានៅមុខវេទិកា។ ទស្សនិកជននៅតាមដងទន្លេកំពុងរង់ចាំការប្រកួត។",
+      "textVi": "Các đội ghe đã hội tụ trước khán đài. Khán giả hai bờ sông đang chờ những lượt tranh tài.",
+      "duration": 6.936,
+      "peak": 0.5723,
+      "rms": 0.0763,
+      "bytes": 83232,
+      "sha256": "93de39045dac44b02354475ab42ad8818b9925ba758b2563b7999929d34fbfd2",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-champion-carrier-km.mp3": {
+      "file": "audio/ai-champion-carrier-km.mp3",
+      "cueId": "cup-champion",
+      "language": "km",
+      "text": "សូមអបអរសាទរ ទុំនុប ២ ដែលបានឈ្នះជើងឯកពានរង្វាន់នេះ!",
+      "textVi": "Xin chúc mừng {winner_name}, đội vô địch cúp lễ hội!",
+      "duration": 3.888,
+      "peak": 0.4621,
+      "rms": 0.0735,
+      "bytes": 46656,
+      "sha256": "30cfe1165d8ed876d0715bcad1cf966cb8115be8b9006ddc5230fb039beb67f9",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-champion-kos-thum-km.mp3": {
+      "file": "audio/ai-champion-kos-thum-km.mp3",
+      "cueId": "cup-champion",
+      "language": "km",
+      "text": "សូមអបអរសាទរ ទុំនុប ២ ដែលបានឈ្នះជើងឯកពានរង្វាន់នេះ!",
+      "textVi": "Xin chúc mừng {winner_name}, đội vô địch cúp lễ hội!",
+      "duration": 4.56,
+      "peak": 0.4769,
+      "rms": 0.0755,
+      "bytes": 54720,
+      "sha256": "e9f9bfd849596db6d4b19dc09895c4ee078dbddfa8049b785558d3ebab6e4feb",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-champion-tum-nup-km.mp3": {
+      "file": "audio/ai-champion-tum-nup-km.mp3",
+      "cueId": "cup-champion",
+      "language": "km",
+      "text": "សូមអបអរសាទរ ទុំនុប ២ ដែលបានឈ្នះជើងឯកពានរង្វាន់នេះ!",
+      "textVi": "Xin chúc mừng {winner_name}, đội vô địch cúp lễ hội!",
+      "duration": 4.512,
+      "peak": 0.4772,
+      "rms": 0.0771,
+      "bytes": 54144,
+      "sha256": "7ae1036526212bf32914895e60efae472e0ef4b3cf0ee081c0307178e0f805ce",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-close-race-km.mp3": {
+      "file": "audio/ai-close-race-km.mp3",
+      "cueId": "close-race",
+      "language": "km",
+      "text": "ទូកទាំងពីរកំពុងប្រកៀកប្រកិតគ្នា!",
+      "textVi": "Hiện tại thì cả hai vẫn đang so kè.",
+      "duration": 2.8365,
+      "peak": 0.5157,
+      "rms": 0.0733,
+      "bytes": 35180,
+      "sha256": "08531309a36ada0f6e0e0f7da1c4c08c93ee61666809809856eb6349c12e9657",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-cohesion-km.mp3": {
+      "file": "audio/ai-cohesion-km.mp3",
+      "cueId": "cohesion",
+      "language": "km",
+      "text": "ចង្វាក់អុំស្មើគ្នាល្អណាស់!",
+      "textVi": "Nhẹ nhàng, nhẹ nhàng.",
+      "duration": 2.4625,
+      "peak": 0.522,
+      "rms": 0.0693,
+      "bytes": 30572,
+      "sha256": "9eaa92c8a08bc2955a8328dddb9b01e32df614e0e3b4a94e8d310dba6be6bcbe",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-cruise-context-km.mp3": {
+      "file": "audio/ai-cruise-context-km.mp3",
+      "cueId": "cruise-context",
+      "language": "km",
+      "text": "ផ្លូវប្រណាំងនៅវែងទៀត។ ត្រូវរក្សាចង្វាក់ និងសន្សំកម្លាំងសម្រាប់ចុងផ្លូវ។",
+      "textVi": "Mọi việc vẫn còn có thể xảy ra. Đường đua vẫn còn khá là dài. Một nghìn hai trăm mét, thử thách thực sự cho sự dẻo dai, bền bỉ và nỗ lực cho đến những mét nước cuối cùng.",
+      "duration": 5.136,
+      "peak": 0.5145,
+      "rms": 0.0784,
+      "bytes": 61632,
+      "sha256": "1966009c625d38d18c552353f1cb6d5ac332759c86abec6e64bfb93baf3bda43",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-cruise-km.mp3": {
+      "file": "audio/ai-cruise-km.mp3",
+      "cueId": "cruise",
+      "language": "km",
+      "text": "ឥឡូវត្រូវរក្សាចង្វាក់អុំឱ្យស្មើគ្នា។",
+      "textVi": "Mọi việc vẫn còn có thể xảy ra. Đường đua vẫn còn khá là dài. Một nghìn hai trăm mét, thử thách thực sự cho sự dẻo dai, bền bỉ và nỗ lực cho đến những mét nước cuối cùng.",
+      "duration": 3.175,
+      "peak": 0.4867,
+      "rms": 0.0729,
+      "bytes": 39212,
+      "sha256": "e8ca41db65bbcb607b7a7195f44d525a0b5ce902090bd292a32d976fbb5d7274",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-final-km.mp3": {
+      "file": "audio/ai-final-km.mp3",
+      "cueId": "final",
+      "language": "km",
+      "text": "ដល់ដំណាក់កាលចុងក្រោយហើយ! បង្កើនល្បឿន!",
+      "textVi": "Chúng ta thấy nhịp dầm của anh em đã được đẩy mạnh hơn rồi.",
+      "duration": 3.9697,
+      "peak": 0.4943,
+      "rms": 0.072,
+      "bytes": 48716,
+      "sha256": "4dd77c74dfdee28a4bb4c07ffb18393e2563acff5d07592b02aec3d32f10da72",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-finish-dnf-km.mp3": {
+      "file": "audio/ai-finish-dnf-km.mp3",
+      "cueId": "finish-dnf",
+      "language": "km",
+      "text": "គួរឱ្យសោកស្តាយ ក្រុមមួយមិនបានបញ្ចប់ជើងប្រណាំងនេះទេ។",
+      "textVi": "Rất là tiếc.",
+      "duration": 4.3111,
+      "peak": 0.4646,
+      "rms": 0.0784,
+      "bytes": 52748,
+      "sha256": "d3fc4ee4acbbf50b456b1636ec8b7ab4b432857f1176c44886ac78e2d62a49c7",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-finish-loss-km.mp3": {
+      "file": "audio/ai-finish-loss-km.mp3",
+      "cueId": "finish-loss",
+      "language": "km",
+      "text": "គួរឱ្យសោកស្តាយ! គូប្រកួតបានដល់ទីមុន ក្នុងជើងប្រណាំងនេះ។",
+      "textVi": "Quá tuyệt vời!",
+      "duration": 5.3965,
+      "peak": 0.5346,
+      "rms": 0.0757,
+      "bytes": 65708,
+      "sha256": "3712f53d03bb299ed155caaa4d286c800c3a382aca5ade67ddd7eba58258befa",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-finish-tie-km.mp3": {
+      "file": "audio/ai-finish-tie-km.mp3",
+      "cueId": "finish-tie",
+      "language": "km",
+      "text": "លទ្ធផលស្មើគ្នា! ទូកទាំងពីរដល់ទីប្រកៀកប្រកិតគ្នា!",
+      "textVi": "Một trận đấu cực kỳ hấp dẫn.",
+      "duration": 4.9875,
+      "peak": 0.5376,
+      "rms": 0.0713,
+      "bytes": 60812,
+      "sha256": "cde59cd17fcc28c78788fbc26ab9005fba44257cd3f67f30b57e7ed73c0a38fd",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-finish-win-km.mp3": {
+      "file": "audio/ai-finish-win-km.mp3",
+      "cueId": "finish-win",
+      "language": "km",
+      "text": "ដល់ទីហើយ! សូមអបអរសាទរក្រុមដែលឈ្នះជើងប្រណាំងនេះ!",
+      "textVi": "Trước tiên xin chúc mừng một chiến thắng quan trọng của anh em.",
+      "duration": 4.8318,
+      "peak": 0.455,
+      "rms": 0.071,
+      "bytes": 59084,
+      "sha256": "51377872f38085e991248ddd7c8967af54a4e8d7a7f8c91a793e4e64f5313ee2",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-go-km.mp3": {
+      "file": "audio/ai-go-km.mp3",
+      "cueId": "go",
+      "language": "km",
+      "text": "ចាប់ផ្តើមហើយ!",
+      "textVi": "Hai đội vừa rời điểm xuất phát thôi.",
+      "duration": 1.82,
+      "peak": 0.4822,
+      "rms": 0.0627,
+      "bytes": 22796,
+      "sha256": "7a39e55f8bd8e1aa11581e4621b4170a8028c24c6b5548bdb55bce86f418ca0d",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-halfway-km.mp3": {
+      "file": "audio/ai-halfway-km.mp3",
+      "cueId": "halfway",
+      "language": "km",
+      "text": "បានឆ្លងកាត់ពាក់កណ្តាលផ្លូវហើយ។ ត្រូវទុកកម្លាំងសម្រាប់ចុងផ្លូវ!",
+      "textVi": "Nơi mà mỗi hội đua đều năm, sáu mươi đội tham gia. Cùng với đó là hàng chục ngàn khán giả ken dày hai bên bờ sông. Tất cả đã tạo nên những vũ điệu trên sông nước, những sắc màu của lễ hội rất khó có nơi nào có được.",
+      "duration": 4.375,
+      "peak": 0.4396,
+      "rms": 0.0728,
+      "bytes": 53612,
+      "sha256": "f6739d84bba4149dbe1bf48c8708772c0162d03b982a1a0b833ac8d51fd85ef2",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-intro-carrier-km.mp3": {
+      "file": "audio/ai-intro-carrier-km.mp3",
+      "cueId": "team-introduction",
+      "language": "km",
+      "text": "ទុំនុប ២ ប្រកួតជាមួយ កោះធំ ១។ ក្រុមទាំងពីរកំពុងត្រៀមចេញដំណើរ។",
+      "textVi": "{player_name} gặp {opponent_name}. Hai đội đang chuẩn bị xuất phát.",
+      "duration": 3.816,
+      "peak": 0.4966,
+      "rms": 0.0831,
+      "bytes": 45792,
+      "sha256": "84eccfca70cb606b99f22b78794066fb611eec974efb353079d8199a4ec58aab",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-intro-match-tum-nup-kos-thum-km.mp3": {
+      "file": "audio/ai-intro-match-tum-nup-kos-thum-km.mp3",
+      "cueId": "team-introduction",
+      "language": "km",
+      "text": "ទុំនុប ២ ប្រកួតជាមួយ កោះធំ ១។ ក្រុមទាំងពីរកំពុងត្រៀមចេញដំណើរ។",
+      "textVi": "{player_name} gặp {opponent_name}. Hai đội đang chuẩn bị xuất phát.",
+      "duration": 4.896,
+      "peak": 0.506,
+      "rms": 0.0828,
+      "bytes": 58752,
+      "sha256": "3786ed0365c7574ed7071d68b2013406b3a16277ab72d8b22b96f790cb5b94b4",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-last-fifty-km.mp3": {
+      "file": "audio/ai-last-fifty-km.mp3",
+      "cueId": "last-fifty",
+      "language": "km",
+      "text": "៥០ ម៉ែត្រចុងក្រោយ!",
+      "textVi": "Năm mươi mét cuối!",
+      "duration": 2.1092,
+      "peak": 0.4198,
+      "rms": 0.0675,
+      "bytes": 26252,
+      "sha256": "9203bca38d35df608d967cdf5317e2eef248f3b2ad5ecbcd66ebbcbb3d0a79a5",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-last-hundred-km.mp3": {
+      "file": "audio/ai-last-hundred-km.mp3",
+      "cueId": "last-hundred",
+      "language": "km",
+      "text": "១០០ ម៉ែត្រចុងក្រោយ!",
+      "textVi": "Một trăm mét cuối!",
+      "duration": 2.1817,
+      "peak": 0.461,
+      "rms": 0.0824,
+      "bytes": 27116,
+      "sha256": "940a7f76d7df3ce8bf323fda98c4b88e7a1e9f1e00af5e4998cb130f60d8566b",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-lead-change-km.mp3": {
+      "file": "audio/ai-lead-change-km.mp3",
+      "cueId": "lead-change",
+      "language": "km",
+      "text": "មានការវ៉ាឡើងមុខ! ទូកនាំមុខបានផ្លាស់ប្តូរហើយ!",
+      "textVi": "Dẫn trước, dẫn trước",
+      "duration": 4.2945,
+      "peak": 0.5712,
+      "rms": 0.0778,
+      "bytes": 52460,
+      "sha256": "5e0aba27c5ed1508b2d114abffebd6a3380159041ae216b918a9825d92246eed",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-ca_mau-01-km.mp3": {
+      "file": "audio/ai-name-ca_mau-01-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-ca_mau-01-km.mp3",
+      "textVi": "",
+      "duration": 2.525,
+      "peak": 0.4972,
+      "rms": 0.0794,
+      "bytes": 31436,
+      "sha256": "b80e47b36ba720a06138a6896468e6779f81cd782ae2b13ef27cd36fdae7eeca",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-ca_mau-03-km.mp3": {
+      "file": "audio/ai-name-ca_mau-03-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-ca_mau-03-km.mp3",
+      "textVi": "",
+      "duration": 2.9375,
+      "peak": 0.4219,
+      "rms": 0.0715,
+      "bytes": 36332,
+      "sha256": "83c6ad304be67a766609dab7f7c86c4e375e5323c0b4a70c2ee8de68117e5b07",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-ca_mau-04-km.mp3": {
+      "file": "audio/ai-name-ca_mau-04-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-ca_mau-04-km.mp3",
+      "textVi": "",
+      "duration": 2.304,
+      "peak": 0.5098,
+      "rms": 0.0651,
+      "bytes": 27648,
+      "sha256": "180096fa4f34fa3ea5181dc9ad60309608107a523c35f537a07c29ef0d577527",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-ca_mau-09-km.mp3": {
+      "file": "audio/ai-name-ca_mau-09-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-ca_mau-09-km.mp3",
+      "textVi": "",
+      "duration": 2.025,
+      "peak": 0.4661,
+      "rms": 0.0734,
+      "bytes": 25388,
+      "sha256": "828f4846b7c9d1225a9061e4f736fbda38030d23208ce106498cf733317c9c5e",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-ca_mau-10-km.mp3": {
+      "file": "audio/ai-name-ca_mau-10-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-ca_mau-10-km.mp3",
+      "textVi": "",
+      "duration": 2.4,
+      "peak": 0.4961,
+      "rms": 0.077,
+      "bytes": 28800,
+      "sha256": "26beba4b1d1d684738287ba7c86d965ba4d65772753088fd32f178d63436efdc",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-ca_mau-11-km.mp3": {
+      "file": "audio/ai-name-ca_mau-11-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-ca_mau-11-km.mp3",
+      "textVi": "",
+      "duration": 2.8,
+      "peak": 0.5136,
+      "rms": 0.0736,
+      "bytes": 34604,
+      "sha256": "83f6974034e414929e35f54d18398523b4d1647e8a6796957e866d0c087e54c3",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-ca_mau-12-km.mp3": {
+      "file": "audio/ai-name-ca_mau-12-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-ca_mau-12-km.mp3",
+      "textVi": "",
+      "duration": 2.725,
+      "peak": 0.5097,
+      "rms": 0.0698,
+      "bytes": 33740,
+      "sha256": "05a992d31d302772c9492a9e3c409c39ffc66b1f541c632d8d42dbc58b0a4141",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-ca_mau-13-km.mp3": {
+      "file": "audio/ai-name-ca_mau-13-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-ca_mau-13-km.mp3",
+      "textVi": "",
+      "duration": 1.872,
+      "peak": 0.4907,
+      "rms": 0.0648,
+      "bytes": 22464,
+      "sha256": "1824fad29ebcd2e34e6647c64a3976b689ad87e2be8a46b89cfc215e7de8697b",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-01-km.mp3": {
+      "file": "audio/ai-name-can_tho-01-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-01-km.mp3",
+      "textVi": "",
+      "duration": 2.714,
+      "peak": 0.4926,
+      "rms": 0.0662,
+      "bytes": 33740,
+      "sha256": "63cef2e1098e631e40e9c651e27fd34374f65b3a3ff1f0c49b8405b6ef9bb479",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-02-km.mp3": {
+      "file": "audio/ai-name-can_tho-02-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-02-km.mp3",
+      "textVi": "",
+      "duration": 2.625,
+      "peak": 0.4753,
+      "rms": 0.064,
+      "bytes": 32588,
+      "sha256": "f117cd28f8f03639697373e303b0e09269dc79d727135a1f8bcf65c717384e98",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-03-km.mp3": {
+      "file": "audio/ai-name-can_tho-03-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-03-km.mp3",
+      "textVi": "",
+      "duration": 1.85,
+      "peak": 0.5082,
+      "rms": 0.073,
+      "bytes": 23372,
+      "sha256": "2d349fa7a66e3073c1bae6b36a6b1bca79a5b653a12d8abc1712228de6db36e0",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-04-km.mp3": {
+      "file": "audio/ai-name-can_tho-04-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-04-km.mp3",
+      "textVi": "",
+      "duration": 1.82,
+      "peak": 0.4882,
+      "rms": 0.0627,
+      "bytes": 22796,
+      "sha256": "0172162f5f321fab8f13600908f8554033b56f373dce0d798670079371afaca3",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-05-km.mp3": {
+      "file": "audio/ai-name-can_tho-05-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-05-km.mp3",
+      "textVi": "",
+      "duration": 2.9125,
+      "peak": 0.4579,
+      "rms": 0.0735,
+      "bytes": 36044,
+      "sha256": "5c010d485a996b743b6847d039259f140664821cea373c31cdcca103881fd47a",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-06-km.mp3": {
+      "file": "audio/ai-name-can_tho-06-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-06-km.mp3",
+      "textVi": "",
+      "duration": 2.8,
+      "peak": 0.4621,
+      "rms": 0.0721,
+      "bytes": 34604,
+      "sha256": "ca633e0da6fe797a3c266b78fc829c59e0dc2d97d72da3ea72e3cd5968833c18",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-07-km.mp3": {
+      "file": "audio/ai-name-can_tho-07-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-07-km.mp3",
+      "textVi": "",
+      "duration": 1.875,
+      "peak": 0.4834,
+      "rms": 0.0723,
+      "bytes": 23660,
+      "sha256": "f5069c2313923683784dc6be92c2cabc23e3843ad47f3311493dfecbc0235fc8",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-08-km.mp3": {
+      "file": "audio/ai-name-can_tho-08-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-08-km.mp3",
+      "textVi": "",
+      "duration": 1.875,
+      "peak": 0.4746,
+      "rms": 0.0673,
+      "bytes": 23660,
+      "sha256": "91fa7d8639e122d4713fc56a10027778998d6d4cced2f98b8d1166db0af0232d",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-09-km.mp3": {
+      "file": "audio/ai-name-can_tho-09-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-09-km.mp3",
+      "textVi": "",
+      "duration": 1.9875,
+      "peak": 0.4332,
+      "rms": 0.0622,
+      "bytes": 24812,
+      "sha256": "d33763bcb2681b3c5a159e31c27d3ada381e42339831218a18514c26e47e955e",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-10-km.mp3": {
+      "file": "audio/ai-name-can_tho-10-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-10-km.mp3",
+      "textVi": "",
+      "duration": 1.82,
+      "peak": 0.5064,
+      "rms": 0.0481,
+      "bytes": 22796,
+      "sha256": "356dae546000758d0e1d40a72fab26d3257cf7da6017f83fa1f9c97c9f02f82f",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-11-km.mp3": {
+      "file": "audio/ai-name-can_tho-11-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-11-km.mp3",
+      "textVi": "",
+      "duration": 2.496,
+      "peak": 0.481,
+      "rms": 0.0724,
+      "bytes": 29952,
+      "sha256": "c98cca26e5ab4fd4d66a5d86a00e8e6129927b6dae0cfd6e374bce0d8a595c11",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-12-km.mp3": {
+      "file": "audio/ai-name-can_tho-12-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-12-km.mp3",
+      "textVi": "",
+      "duration": 2.5,
+      "peak": 0.4812,
+      "rms": 0.0696,
+      "bytes": 31148,
+      "sha256": "c44ee64fa5260932af849ad4fbac42fad43cfc6a6b108c7ba533bfedaba778ad",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-14-km.mp3": {
+      "file": "audio/ai-name-can_tho-14-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-14-km.mp3",
+      "textVi": "",
+      "duration": 1.82,
+      "peak": 0.4783,
+      "rms": 0.0751,
+      "bytes": 22796,
+      "sha256": "2716e6e110deede2b1dc6e25076a1c62600230cf89cf2ba5135a8c2e27b5beb4",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-15-km.mp3": {
+      "file": "audio/ai-name-can_tho-15-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-15-km.mp3",
+      "textVi": "",
+      "duration": 2.125,
+      "peak": 0.4541,
+      "rms": 0.062,
+      "bytes": 26540,
+      "sha256": "b8c0a36466355b5068a6500d2c2fe9adb3a31463cc95901da6183badc7202fdf",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-16-km.mp3": {
+      "file": "audio/ai-name-can_tho-16-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-16-km.mp3",
+      "textVi": "",
+      "duration": 1.826,
+      "peak": 0.4813,
+      "rms": 0.0609,
+      "bytes": 23084,
+      "sha256": "155098824a2ed3999efca77be5f5d57d8b4e13f734dc0e218f7ab80497603606",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-17-km.mp3": {
+      "file": "audio/ai-name-can_tho-17-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-17-km.mp3",
+      "textVi": "",
+      "duration": 2.0,
+      "peak": 0.479,
+      "rms": 0.0554,
+      "bytes": 25100,
+      "sha256": "22a4dcdd94b5154a0f76a0e61c4339200a7ac0d67ea605a8d9d8fd5ec13a5788",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-18-km.mp3": {
+      "file": "audio/ai-name-can_tho-18-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-18-km.mp3",
+      "textVi": "",
+      "duration": 1.82,
+      "peak": 0.482,
+      "rms": 0.0662,
+      "bytes": 22796,
+      "sha256": "ad4ceabe1668c56292ab57c68a27c49ebdfc2cbeb92b4ee7930df801ee216d4f",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-20-km.mp3": {
+      "file": "audio/ai-name-can_tho-20-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-20-km.mp3",
+      "textVi": "",
+      "duration": 1.8625,
+      "peak": 0.4178,
+      "rms": 0.0535,
+      "bytes": 23372,
+      "sha256": "52255c02d9336699a5b1399e6a940d1159498dc839fd417b4115e6a75d7c6612",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-21-km.mp3": {
+      "file": "audio/ai-name-can_tho-21-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-21-km.mp3",
+      "textVi": "",
+      "duration": 1.82,
+      "peak": 0.4285,
+      "rms": 0.059,
+      "bytes": 22796,
+      "sha256": "a5bbbea9637bb7f260a0521460aa2920bc9c61976910537965358fd978d7e640",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-25-km.mp3": {
+      "file": "audio/ai-name-can_tho-25-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-25-km.mp3",
+      "textVi": "",
+      "duration": 1.975,
+      "peak": 0.5145,
+      "rms": 0.0697,
+      "bytes": 24812,
+      "sha256": "f6859ff36309d70ee5611984b3914104f0a99e53df8b12f174869c0a9ff60caa",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-26-km.mp3": {
+      "file": "audio/ai-name-can_tho-26-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-26-km.mp3",
+      "textVi": "",
+      "duration": 1.8875,
+      "peak": 0.5029,
+      "rms": 0.0658,
+      "bytes": 23660,
+      "sha256": "6b29386b06fa3b17ddb907a9d4e5e11d485c65cc92faed1205c9ce356e5ea301",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-27-km.mp3": {
+      "file": "audio/ai-name-can_tho-27-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-27-km.mp3",
+      "textVi": "",
+      "duration": 1.82,
+      "peak": 0.4876,
+      "rms": 0.0612,
+      "bytes": 22796,
+      "sha256": "26d30a8bdf5ab27e8538104bf8187afa5d7b2e86eef1a134c70877ae2c57536a",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-28-km.mp3": {
+      "file": "audio/ai-name-can_tho-28-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-28-km.mp3",
+      "textVi": "",
+      "duration": 1.826,
+      "peak": 0.4296,
+      "rms": 0.061,
+      "bytes": 23084,
+      "sha256": "d2ec8aa6aad4e961f91b5dad35d21c46608439b1568b03251f303bbd1cdcba1e",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-29-km.mp3": {
+      "file": "audio/ai-name-can_tho-29-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-29-km.mp3",
+      "textVi": "",
+      "duration": 1.9875,
+      "peak": 0.4745,
+      "rms": 0.0753,
+      "bytes": 24812,
+      "sha256": "7a5c33d5f241020759a223b097c770bc47f5088e5e029a1ae88ac25ddf49d085",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-30-km.mp3": {
+      "file": "audio/ai-name-can_tho-30-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-30-km.mp3",
+      "textVi": "",
+      "duration": 1.82,
+      "peak": 0.4449,
+      "rms": 0.0493,
+      "bytes": 22796,
+      "sha256": "1dcf601792550d131d616d6965734bbc11e92dab48be140b1d6bdc30b4d6e11d",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-31-km.mp3": {
+      "file": "audio/ai-name-can_tho-31-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-31-km.mp3",
+      "textVi": "",
+      "duration": 1.82,
+      "peak": 0.4648,
+      "rms": 0.0605,
+      "bytes": 22796,
+      "sha256": "f715222b9731d9dd0a0d6e693867a5218d792780b7d0e04504e6599bab1f773a",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-32-km.mp3": {
+      "file": "audio/ai-name-can_tho-32-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-32-km.mp3",
+      "textVi": "",
+      "duration": 2.328,
+      "peak": 0.4932,
+      "rms": 0.0686,
+      "bytes": 27936,
+      "sha256": "dc56529bd1f1c07ae4ac5f02849f69a49d4581a1b4dc3f542daf2138fc1ddd37",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-33-km.mp3": {
+      "file": "audio/ai-name-can_tho-33-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-33-km.mp3",
+      "textVi": "",
+      "duration": 1.9625,
+      "peak": 0.5231,
+      "rms": 0.0603,
+      "bytes": 24524,
+      "sha256": "88df01f670f4b5c04bcc183da552104aaa81872862256e79e8f224d4bf35f529",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-34-km.mp3": {
+      "file": "audio/ai-name-can_tho-34-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-34-km.mp3",
+      "textVi": "",
+      "duration": 1.9625,
+      "peak": 0.4742,
+      "rms": 0.0719,
+      "bytes": 24524,
+      "sha256": "b3cc491085544a89731485ca6a6d735246500626d2ed43d3f8dc2b622be4ceb3",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-35-km.mp3": {
+      "file": "audio/ai-name-can_tho-35-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-35-km.mp3",
+      "textVi": "",
+      "duration": 1.975,
+      "peak": 0.4868,
+      "rms": 0.0681,
+      "bytes": 24812,
+      "sha256": "e24698cc863fbf25017b5ed01da8918b6e4cf38e53193e9730127014fbb9a46a",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-37-km.mp3": {
+      "file": "audio/ai-name-can_tho-37-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-37-km.mp3",
+      "textVi": "",
+      "duration": 1.925,
+      "peak": 0.4791,
+      "rms": 0.0626,
+      "bytes": 24236,
+      "sha256": "c67dbb5c83ffcf286110d964906d782332522487f5b71255017c1c78e1646c84",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-38-km.mp3": {
+      "file": "audio/ai-name-can_tho-38-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-38-km.mp3",
+      "textVi": "",
+      "duration": 2.2125,
+      "peak": 0.5208,
+      "rms": 0.0734,
+      "bytes": 27692,
+      "sha256": "d0f67f8d4a6f32e98085f182dbe32a8963674bb2667d9ab4cd70c1baa5ec6806",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-39-km.mp3": {
+      "file": "audio/ai-name-can_tho-39-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-39-km.mp3",
+      "textVi": "",
+      "duration": 2.0625,
+      "peak": 0.484,
+      "rms": 0.0686,
+      "bytes": 25676,
+      "sha256": "23f3e2fe0d49861aa8fc999bf8f19e987339790c96a48a151ac97c2699fcd0aa",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-40-km.mp3": {
+      "file": "audio/ai-name-can_tho-40-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-40-km.mp3",
+      "textVi": "",
+      "duration": 2.175,
+      "peak": 0.5171,
+      "rms": 0.0711,
+      "bytes": 27116,
+      "sha256": "372ca0822b4ca3752106450c3477d15b8203ba2cc051583efc0aaa6d56b84c2e",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-41-km.mp3": {
+      "file": "audio/ai-name-can_tho-41-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-41-km.mp3",
+      "textVi": "",
+      "duration": 1.82,
+      "peak": 0.4635,
+      "rms": 0.0653,
+      "bytes": 22796,
+      "sha256": "a16d3fb0629209915ea7ce9eb3ccd1fd4167403c57633ab2cc7101a99ef28982",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-42-km.mp3": {
+      "file": "audio/ai-name-can_tho-42-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-42-km.mp3",
+      "textVi": "",
+      "duration": 2.1625,
+      "peak": 0.5153,
+      "rms": 0.064,
+      "bytes": 27116,
+      "sha256": "81162c7fa49c70681ce5f13581fd83223aee1a989ba2a62ce3902fa505339c9d",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-43-km.mp3": {
+      "file": "audio/ai-name-can_tho-43-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-43-km.mp3",
+      "textVi": "",
+      "duration": 2.0375,
+      "peak": 0.4679,
+      "rms": 0.0619,
+      "bytes": 25388,
+      "sha256": "7381dc99c2087cfb6a1657a9a10e3fdec529199f873e28aeb6547cf603cf9155",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-44-km.mp3": {
+      "file": "audio/ai-name-can_tho-44-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-44-km.mp3",
+      "textVi": "",
+      "duration": 1.82,
+      "peak": 0.4815,
+      "rms": 0.0554,
+      "bytes": 22796,
+      "sha256": "d8267fc8f16bdf68c5dd3524b3a6452b8d6a5302329ea050b15eeb5055dc282e",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-46-km.mp3": {
+      "file": "audio/ai-name-can_tho-46-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-46-km.mp3",
+      "textVi": "",
+      "duration": 1.82,
+      "peak": 0.4397,
+      "rms": 0.0529,
+      "bytes": 22796,
+      "sha256": "a2bb5e89cf0100e548ba3492d78084eb1a9c3a72c5690b3ab3768772f044ccb4",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-47-km.mp3": {
+      "file": "audio/ai-name-can_tho-47-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-47-km.mp3",
+      "textVi": "",
+      "duration": 1.875,
+      "peak": 0.4836,
+      "rms": 0.0632,
+      "bytes": 23660,
+      "sha256": "f15288194b9bf111ab342603ee3712712bde47c581b1d04894188832d62d31bb",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-name-can_tho-48-km.mp3": {
+      "file": "audio/ai-name-can_tho-48-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "ai-name-can_tho-48-km.mp3",
+      "textVi": "",
+      "duration": 1.826,
+      "peak": 0.4791,
+      "rms": 0.0557,
+      "bytes": 23084,
+      "sha256": "f498974f77110f8e726e282f2237623d141c03b3fa041ada1f1404ad5f8cf883",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-ready-km.mp3": {
+      "file": "audio/ai-ready-km.mp3",
+      "cueId": "ready",
+      "language": "km",
+      "text": "ត្រៀមខ្លួន!",
+      "textVi": "Đúng như chúng ta đã chờ đợi.",
+      "duration": 1.82,
+      "peak": 0.3955,
+      "rms": 0.0736,
+      "bytes": 22796,
+      "sha256": "beec0f40ef882ddedf4ab9a24ea7fedc7eb164a79e49d87db8ba0a06f231bac6",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-recover-km.mp3": {
+      "file": "audio/ai-recover-km.mp3",
+      "cueId": "fatigue",
+      "language": "km",
+      "text": "បន្ថយចង្វាក់ ដើម្បីទុកកម្លាំងសម្រាប់ចុងផ្លូវ។",
+      "textVi": "Nhẹ nhàng, nhẹ nhàng.",
+      "duration": 3.737,
+      "peak": 0.5652,
+      "rms": 0.0726,
+      "bytes": 45836,
+      "sha256": "9225e9ca4ef3df736eae5d858f90d73fa70c69a972b692de14dad0ff26d6ff29",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-safe-margin-km.mp3": {
+      "file": "audio/ai-safe-margin-km.mp3",
+      "cueId": "safe-margin",
+      "language": "km",
+      "text": "ទូកនាំមុខកំពុងបង្កើនគម្លាត ប៉ុន្តែការប្រកួតមិនទាន់បញ្ចប់ទេ។",
+      "textVi": "Rõ ràng là một khoảng cách an toàn.",
+      "duration": 4.704,
+      "peak": 0.5377,
+      "rms": 0.075,
+      "bytes": 56448,
+      "sha256": "5f5b34dc4a02116464247ba8fa50bba7d1b6b3034c584b8e799436504234fc10",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-start-drive-km.mp3": {
+      "file": "audio/ai-start-drive-km.mp3",
+      "cueId": "start-drive",
+      "language": "km",
+      "text": "ក្រុមទាំងពីរបានចេញដំណើរហើយ។ ត្រូវចាប់ចង្វាក់ឱ្យស្មើគ្នា!",
+      "textVi": "Đây chỉ là mới đoạn xuất phát thôi, đoạn đầu thôi.",
+      "duration": 4.248,
+      "peak": 0.5073,
+      "rms": 0.0766,
+      "bytes": 50976,
+      "sha256": "35922288e6e040ca3320e903e794bf0fc33169a2e6eb0de1cef66fd34fe8d50a",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "ai-surge-km.mp3": {
+      "file": "audio/ai-surge-km.mp3",
+      "cueId": "surge",
+      "language": "km",
+      "text": "ប្រឹងអស់កម្លាំង!",
+      "textVi": "Đạp rồi, đạp rồi",
+      "duration": 1.82,
+      "peak": 0.5025,
+      "rms": 0.0571,
+      "bytes": 22796,
+      "sha256": "8827110d6f84fecc717303282ba70be595b9446f909ec6877fef68920df0d2c1",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "khmer-finish.mp3": {
+      "file": "audio/khmer-finish.mp3",
+      "cueId": "finish-win",
+      "language": "km",
+      "text": "ដល់ទីហើយ! សូមអបអរសាទរក្រុមដែលឈ្នះជើងប្រណាំងនេះ!",
+      "textVi": "Trước tiên xin chúc mừng một chiến thắng quan trọng của anh em.",
+      "duration": 1.92,
+      "peak": 0.7535,
+      "rms": 0.1681,
+      "bytes": 24041,
+      "sha256": "37375bb2bbc3703123e098ef7b7fcbc498bcb8f7ab9ed4ccd85a176f9e8b15f6",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "khmer-full-effort.mp3": {
+      "file": "audio/khmer-full-effort.mp3",
+      "cueId": "surge",
+      "language": "km",
+      "text": "ប្រឹងអស់កម្លាំង!",
+      "textVi": "Đạp rồi, đạp rồi",
+      "duration": 2.481,
+      "peak": 0.6818,
+      "rms": 0.1437,
+      "bytes": 30953,
+      "sha256": "b0c3dfcf6072ff98fd06a1e194cc5e68b9bddec52a76659d06bb65f6666be311",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "khmer-go.mp3": {
+      "file": "audio/khmer-go.mp3",
+      "cueId": "go",
+      "language": "km",
+      "text": "ចាប់ផ្តើមហើយ!",
+      "textVi": "Hai đội vừa rời điểm xuất phát thôi.",
+      "duration": 2.27,
+      "peak": 0.7863,
+      "rms": 0.1455,
+      "bytes": 28361,
+      "sha256": "4d9ccca7426fdead15a7264e5c1ebda67e829776dcd55497ed5b4bc7a588abf2",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "khmer-intro.mp3": {
+      "file": "audio/khmer-intro.mp3",
+      "cueId": "ceremony-welcome",
+      "language": "km",
+      "text": "ទស្សនិកជន ទាំងឡាយ ជា ទី មេត្រី",
+      "textVi": "Quý khán giả thân mến, những hình ảnh rất là quen thuộc: khán đài và dọc bên dòng sông Maspéro đều đầy ắp khán giả.",
+      "duration": 1.88,
+      "peak": 0.8116,
+      "rms": 0.1645,
+      "bytes": 23753,
+      "sha256": "be897d565f3b470e5d2451dbfdcffee1649653ac9469c4c1174bafbbe074d16f",
+      "sourceType": "original-broadcast",
+      "voice": null,
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "name-cham-pa-km.mp3": {
+      "file": "audio/name-cham-pa-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "name-cham-pa-km.mp3",
+      "textVi": "",
+      "duration": 0.401,
+      "peak": 0.666,
+      "rms": 0.152,
+      "bytes": 5897,
+      "sha256": "90d5d9d69ae594c876488e9dd1d3dc03a56692026362db48b262fc0fb35ecec9",
+      "sourceType": "broadcast-archive",
+      "voice": null,
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "name-day-om-pu-km.mp3": {
+      "file": "audio/name-day-om-pu-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "name-day-om-pu-km.mp3",
+      "textVi": "",
+      "duration": 0.82,
+      "peak": 0.6828,
+      "rms": 0.1776,
+      "bytes": 11081,
+      "sha256": "8385a5023933f0c3779ad63337b6bb92302e2ba44313ff9fed27f0277c1d292c",
+      "sourceType": "broadcast-archive",
+      "voice": null,
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "name-kos-thum-km.mp3": {
+      "file": "audio/name-kos-thum-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "name-kos-thum-km.mp3",
+      "textVi": "",
+      "duration": 0.62,
+      "peak": 0.6841,
+      "rms": 0.1547,
+      "bytes": 8489,
+      "sha256": "59e9c60858499e78c57e96235333521b3c4397ba33c4e17aeb64db1d4f9c4d3c",
+      "sourceType": "broadcast-archive",
+      "voice": null,
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "name-kos-thum-two-km.mp3": {
+      "file": "audio/name-kos-thum-two-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "name-kos-thum-two-km.mp3",
+      "textVi": "",
+      "duration": 1.58,
+      "peak": 0.6841,
+      "rms": 0.1349,
+      "bytes": 20009,
+      "sha256": "85699e2b7f120b32aae9a555cec6ab06eddcc36b4ac671bcfa28f11fdb2a7aac",
+      "sourceType": "broadcast-archive",
+      "voice": null,
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "name-pong-tuk-chas-km.mp3": {
+      "file": "audio/name-pong-tuk-chas-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "name-pong-tuk-chas-km.mp3",
+      "textVi": "",
+      "duration": 0.72,
+      "peak": 0.6841,
+      "rms": 0.1285,
+      "bytes": 9641,
+      "sha256": "abc40d32f62542ba4465fc2225eaa16cc4c50197242e5265b285ee1e5e49878f",
+      "sourceType": "broadcast-archive",
+      "voice": null,
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "name-rach-giong-km.mp3": {
+      "file": "audio/name-rach-giong-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "name-rach-giong-km.mp3",
+      "textVi": "",
+      "duration": 1.14,
+      "peak": 0.6769,
+      "rms": 0.1261,
+      "bytes": 14825,
+      "sha256": "dedbd65b99829bf1a22902017e5300457dc138e79598e9f7c0f46bcdd58eeba8",
+      "sourceType": "broadcast-archive",
+      "voice": null,
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "name-sang-ke-km.mp3": {
+      "file": "audio/name-sang-ke-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "name-sang-ke-km.mp3",
+      "textVi": "",
+      "duration": 0.52,
+      "peak": 0.6887,
+      "rms": 0.1544,
+      "bytes": 7337,
+      "sha256": "4c8f413ae7d6ebd6d417cde65664d007560bbb1731c5886957b4bfbb9fbd93dd",
+      "sourceType": "broadcast-archive",
+      "voice": null,
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "name-tum-nup-km.mp3": {
+      "file": "audio/name-tum-nup-km.mp3",
+      "cueId": "team-name",
+      "language": "km",
+      "text": "name-tum-nup-km.mp3",
+      "textVi": "",
+      "duration": 0.52,
+      "peak": 0.6874,
+      "rms": 0.1977,
+      "bytes": 7337,
+      "sha256": "80c5fe8cdf9db1f58cb1e42e7e7167b6c22bbfe72bfed3208bff3a29780e90ba",
+      "sourceType": "broadcast-archive",
+      "voice": null,
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "trial-history-kos-thum-km.mp3": {
+      "file": "audio/trial-history-kos-thum-km.mp3",
+      "cueId": "history-kos-thum",
+      "language": "km",
+      "text": "ក្រុមទូកកោះធំ ១ បានជាប់ចំណាត់ថ្នាក់លេខពីរ ផ្នែកបុរស នៅឆ្នាំ ២០២៤។",
+      "textVi": "Kos Thum 1 là đội á quân nội dung nam năm 2024.",
+      "duration": 5.8907,
+      "peak": 0.5756,
+      "rms": 0.0803,
+      "bytes": 71756,
+      "sha256": "94bfb492023427ee5591fb53e855096b2e98e2f5105771b3546ce04a5debaee7",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "trial-history-sro-lon-km.mp3": {
+      "file": "audio/trial-history-sro-lon-km.mp3",
+      "cueId": "history-sro-lon",
+      "language": "km",
+      "text": "ក្រុមទូកសរឡូន ២ បានជាប់ចំណាត់ថ្នាក់លេខបី ផ្នែកបុរស នៅឆ្នាំ ២០២៤។",
+      "textVi": "Sro Lôn 2 là đội hạng ba năm trước.",
+      "duration": 5.808,
+      "peak": 0.5443,
+      "rms": 0.0813,
+      "bytes": 69696,
+      "sha256": "6fad0c804b1248fdef7685522ed6079fe8a62c437e9b66fe581aee28f3836650",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    },
+    "trial-history-tum-nup-km.mp3": {
+      "file": "audio/trial-history-tum-nup-km.mp3",
+      "cueId": "history-tum-nup",
+      "language": "km",
+      "text": "នៅឆ្នាំ ២០២៤ ក្រុមទូកទំនប់ ២ បានឈ្នះជើងឯកផ្នែកបុរស។",
+      "textVi": "Tum Núp 2 là đương kim vô địch năm 2024.",
+      "duration": 5.2583,
+      "peak": 0.5495,
+      "rms": 0.0842,
+      "bytes": 64268,
+      "sha256": "04be4509b416f61b6a918d17080da7a558a424acb412a948fdc5066dc6bc3491",
+      "sourceType": "azure-stock-neural",
+      "voice": "km-KH-PisethNeural",
+      "nativeListeningVerified": false,
+      "pronunciationReview": "Khmer drafts require native review"
+    }
+  },
+  "review": "Toàn bộ 89 tệp âm thanh đã được xác thực qua FFmpeg: không im lặng (peak > 0.01), không vỡ tiếng / clipping (peak <= 1.05), bảo toàn nguyên vẹn đầu/cuối câu. Phát âm tiếng Khmer cần được chuyên gia bản ngữ kiểm duyệt trước khi đưa vào bản phát hành thương mại."
+}
