@@ -5,6 +5,7 @@ import csv
 import hashlib
 import io
 import json
+import re
 import shutil
 import zipfile
 from pathlib import Path
@@ -14,6 +15,10 @@ PUBLIC = ROOT / 'public'
 AUDIO = PUBLIC / 'assets/race-audio'
 DESK = PUBLIC / 'audio-dashboard'
 EVIDENCE_FILES = {
+    'roster.json': PUBLIC / 'assets/data/roster-2025.json',
+    'docs/roster.md': ROOT / 'docs/roster-2025.md',
+    'docs/team-name-candidates.json': ROOT / 'docs/team-name-candidates.json',
+    'team-audio-prompt.md': ROOT / 'docs/antigravity-team-audio-prompt.md',
     'team-names/manifest.json': AUDIO / 'team-names/manifest.json',
     'team-names/khmer.json': AUDIO / 'team-names/khmer.json',
     'commentary-trial/manifest.json': AUDIO / 'commentary-trial/manifest.json',
@@ -45,6 +50,132 @@ def csv_bytes(header, rows):
     writer.writerow(header)
     writer.writerows(rows)
     return ('\ufeff' + stream.getvalue()).encode('utf-8')
+
+
+def team_reference_files(data):
+    """Export attestations and unverified audio labels without conflating them."""
+    roster = read(EVIDENCE_FILES['roster.json'])
+    candidates = read(EVIDENCE_FILES['docs/team-name-candidates.json'])
+    prepared = {r['registrationId']: r for r in candidates['records']}
+    registrations = {r['id'] for r in roster['records']}
+    if len(registrations) != len(roster['records']) or not set(prepared) <= registrations:
+        raise ValueError('Duplicate or unknown reference registration')
+    if len(prepared) != len(candidates['records']) or registrations != set(data['teams']):
+        raise ValueError('Candidate/reference team mismatch')
+
+    def pagoda_key(row):
+        base = row.get('khmerBaseName') or row.get('nameKm')
+        return ('km', base) if base else (
+            'vi', row['nameVi'].split('(')[0].strip())
+
+    def presentation(text):
+        # Only presentation changes: never transliterate, drop Khmer vowels or fuzzy-match.
+        text = re.sub(r'[\s\u200b\ufeff]', '', text or '')
+        return (text[4:] if text.startswith('វត្ត') else text).rstrip('0123456789០១២៣៤៥៦៧៨៩')
+
+    records = []
+    for row in roster['records']:
+        registration = row['id']
+        base = row.get('khmerBaseName') or row.get('nameKm')
+        candidate = prepared.get(registration, {})
+        name_candidate = candidate.get('candidateNameKm')
+        siblings = [r['id'] for r in roster['records'] if pagoda_key(r) == pagoda_key(row)]
+        comparison = (None if not base or not name_candidate else
+                      presentation(base) == presentation(name_candidate))
+        flags = ['independent-audio-content-review-pending']
+        if not base:
+            flags.append('missing-khmer-attestation')
+        if row['khmerStatus'] == 'attested_community_pagoda_directory':
+            flags.append('community-source-only')
+        if comparison is False:
+            flags.append('prepared-text-differs-check-alias')
+        if not row['gender']:
+            flags.append('gender-unresolved')
+        if len(siblings) > 1:
+            flags.append('pagoda-name-does-not-disambiguate-registration')
+        audio = []
+        for language, channel in [('vi', 'voice'), ('km', 'khmer')]:
+            for key in data['teams'][registration]['names'][channel]:
+                clip = data['clips'][key]
+                audio.append({'clipId': key, 'language': language,
+                    **{field: clip.get(field) for field in ['text', 'file', 'sourceFile',
+                        'sourceType', 'sourceUrl', 'sourceStart', 'sourceEnd', 'scope',
+                        'duration', 'sha256', 'review']},
+                    'independentContentVerification': 'pending',
+                    'nativeListeningVerified': False})
+        records.append({'registrationId': registration, 'nameVi': row['nameVi'],
+            'gender': row['gender'], 'genderStatus': row['genderStatus'],
+            'teamNumber': row.get('teamNumber'), 'teamNumberKm': row.get('teamNumberKm'),
+            'raceBib': row['raceBib'], 'sourceOrdinal': row['sourceOrdinal'],
+            'registrationSourceUrl': row['sourceUrl'], 'registrationSourceDate': row['sourceDate'],
+            'khmerBaseName': base, 'khmerNameStatus': row['khmerStatus'],
+            'khmerSourceUrl': row.get('khmerSourceUrl'),
+            'nameKmDisplayAuthored': (base + (' ' + row['teamNumberKm']
+                if row.get('teamNumberKm') else '')) if base else None,
+            'nameKmDisplayStatus': 'base-name-with-authored-numeric-suffix' if base else 'unresolved',
+            'officialFullTeamNameKm': None,
+            'candidateNameKm': name_candidate,
+            'candidateNameStatus': candidate.get('status'),
+            'candidateInputFile': candidate.get('inputFile'),
+            'candidateLabelVi': candidate.get('labelVi'),
+            'candidateMatchesBaseAfterPresentationOnly': comparison,
+            'samePagodaRegistrationIds': siblings, 'audioCandidates': audio, 'reviewFlags': flags})
+    counts = {status: sum(r['khmerNameStatus'] == status for r in records) for status in
+              ['verified_pagoda_name', 'attested_community_pagoda_directory', 'unverified']}
+    result = {'schema': 1, 'rosterYear': 2025, 'count': len(records),
+        'coverage': {'khmerAttestation': counts,
+            'gender': {gender or 'unresolved': sum(r['gender'] == gender for r in records)
+                       for gender in ['male', 'female', None]},
+            'preparedNameCandidates': len(prepared)},
+        'evidenceFiles': [{'file': name, 'sha256': sha(EVIDENCE_FILES[name].read_bytes())}
+                          for name in ['roster.json', 'docs/roster.md',
+                                       'docs/team-name-candidates.json', 'docs/team-name-audio.json']],
+        'limits': [
+            'Khmer attestations concern pagoda base names, not full official race inscriptions.',
+            'Press/community statuses preserve existing research; not all URLs were rechecked for this export.',
+            'Organizer live pages returned 502 during the export research; see docs/roster.md.',
+            'Prepared Khmer labels and supplied filenames do not verify audio content or pronunciation.',
+            'Different prepared/attested strings may be aliases; they require identity research, not automatic rejection.',
+            'A shared pagoda name alone cannot identify team number, gender, race bib or historical result.',
+            'sourceOrdinal is not a bib; the unresolved genders must not be inferred to force 53/8 totals.',
+            'officialFullTeamNameKm stays null until full registration-specific wording is evidenced.'],
+        'records': records}
+    header = ['registration_id', 'name_vi', 'khmer_base_attested', 'khmer_status',
+        'name_km_display_authored', 'candidate_km_unverified', 'gender', 'team_number',
+        'team_number_km', 'registration_source', 'khmer_source', 'same_pagoda_registration_ids',
+        'candidate_input_file', 'candidate_label_vi', 'review_flags']
+    rows = [[r['registrationId'], r['nameVi'], r['khmerBaseName'], r['khmerNameStatus'],
+        r['nameKmDisplayAuthored'], r['candidateNameKm'], r['gender'] or 'unresolved',
+        r['teamNumber'], r['teamNumberKm'], r['registrationSourceUrl'], r['khmerSourceUrl'],
+        ';'.join(r['samePagodaRegistrationIds']), r['candidateInputFile'], r['candidateLabelVi'],
+        ';'.join(r['reviewFlags'])] for r in records]
+    lines = ['# Tên đội ghe Việt–Khmer · bảng đối chiếu audio', '',
+        '61 đăng ký giải 2025: 45 tên chùa có nguồn báo địa phương, 10 có nguồn danh bạ cộng đồng, '
+        '6 chưa xác minh. Chữ Khmer ứng viên là văn bản chuẩn bị trước, không phải tên đã xác nhận.', '',
+        '49 nam, 7 nữ ghi rõ; 5 dòng chưa rõ giới tính. Số đầu file và thứ tự trong nguồn không phải số báo danh. '
+        'Đội cùng chùa vẫn là các đăng ký riêng. Xem JSON để kiểm tra audio, SHA-256 và nguồn từng mục.', '',
+        'Các URL/tên đã được nghiên cứu trước đây; lần xuất này không xác nhận lại toàn bộ nguồn. '
+        'Trang ban tổ chức hiện trả 502. Tên chùa có nguồn chưa đồng nghĩa tên đội đầy đủ hay phát âm đã duyệt.', '',
+        '| ID | Tên Việt trong nguồn | Tên chùa Khmer có nguồn | Ứng viên Khmer chưa xác minh | '
+        'Giới tính / đội | Cấp nguồn |', '| --- | --- | --- | --- | --- | --- |']
+    labels = {'verified_pagoda_name': 'Báo địa phương',
+              'attested_community_pagoda_directory': 'Danh bạ cộng đồng', 'unverified': 'Chưa xác minh'}
+    for r in records:
+        identity = {'male': 'Nam', 'female': 'Nữ', None: 'Chưa rõ'}[r['gender']]
+        if r['teamNumber']:
+            identity += ' / ' + str(r['teamNumber'])
+        source = labels[r['khmerNameStatus']]
+        if r['khmerSourceUrl']:
+            source = f"[{source}]({r['khmerSourceUrl']})"
+        lines.append('| ' + ' | '.join([r['registrationId'], r['nameVi'],
+            r['khmerBaseName'] or '—', r['candidateNameKm'] or '—', identity, source]) + ' |')
+    lines += ['', '## Chưa đủ nguồn tên Khmer', '']
+    lines += [f"- `{r['registrationId']}` — {r['nameVi']}." for r in records if not r['khmerBaseName']]
+    lines += ['', 'Làm theo [prompt đối chiếu](team-audio-prompt.md). '
+        'Audio trong bảng là ứng viên cần nghe/đối chiếu, chưa tự động nhận vào game.', '']
+    return {'team-reference.json': dump(result).encode(),
+            'team-reference.csv': csv_bytes(header, rows),
+            'team-reference.md': '\n'.join(lines).encode()}
 
 
 def collect():
@@ -125,8 +256,9 @@ def collect():
                 for name, section, channel in [('nameVi', 'names', 'voice'),
                     ('nameKm', 'names', 'khmer'), ('historyVi', 'history', 'voice'),
                     ('historyKm', 'history', 'khmer')]}
+    evidence_digest = ''.join(sha(path.read_bytes()) for path in EVIDENCE_FILES.values()).encode()
     data = {'schema': 1, 'packageId': sha(script_raw + ''.join(
-        c['sha256'] for c in clips.values()).encode())[:16], 'scriptSha256': sha(script_raw),
+        c['sha256'] for c in clips.values()).encode() + evidence_digest)[:16], 'scriptSha256': sha(script_raw),
         'script': script, 'clips': clips, 'teams': teams, 'coverage': coverage,
         'beds': beds, 'sources': runtime['sources'],
         'provenanceFiles': [{'file': name, 'sha256': sha(path.read_bytes())}
@@ -146,6 +278,7 @@ def bundle_files(data, media):
              'script.json': dump(script).encode()}
     for name, source in EVIDENCE_FILES.items():
         files[name] = source.read_bytes()
+    files.update(team_reference_files(data))
     cue_rows, requests = [], []
     lines = ['# Kịch bản audio · Lễ hội đua ghe Ngo', '',
         'Cự ly 1.200 m. Một giọng nói tại một thời điểm. Tiếng Việt dùng bản thu gốc; '
@@ -187,7 +320,7 @@ def bundle_files(data, media):
             ';'.join(p['names']['khmer'])] for reg, p in data['teams'].items()])
     files['ANTIGRAVITY.md'] = ('''# Audio handoff for Antigravity
 
-Read `manifest.json`, `script.json`, `requests.json` and `cue-sheet.csv` first.
+Read `team-audio-prompt.md`, `team-reference.json`, `manifest.json`, `script.json`, `requests.json` and `cue-sheet.csv` first.
 This is a separate review/export dashboard. Do not assume these files have been integrated into the game.
 
 1. Match each team by `registrationId`. Never use source ordinal as a bib, infer gender from colours, or transfer male/female or team-1/team-2 histories.
@@ -207,6 +340,8 @@ Open `dashboard/index.html` directly for offline review. The browser downloads n
 Package `{data['packageId']}` · {len(script['cues'])} situations · {len(data['teams'])} registrations.
 
 Open [the dashboard](dashboard/index.html). Read [the script](script.md), [Antigravity instructions](ANTIGRAVITY.md), [CSV cue sheet](cue-sheet.csv), [team list](teams.csv), and [remaining requests](requests.json).
+
+For team-name verification use [the bilingual reference](team-reference.md), [CSV](team-reference.csv), [JSON](team-reference.json), and [the team-audio prompt](team-audio-prompt.md). This reference separates 45 press-attested and 10 community-attested Khmer pagoda names from six unresolved names, unverified prepared labels, and audio content review. `teams.csv` is only a legacy summary; labels there are not an independent name or pronunciation certification.
 
 Vietnamese name coverage: {data['coverage']['nameVi']}/61. Khmer name coverage in this review package: {data['coverage']['nameKm']}/61. The 44 new Khmer names are stock Azure recordings for review/handoff; the game's runtime manifest is unchanged. Do not call these a verified imitation of the original commentators.
 

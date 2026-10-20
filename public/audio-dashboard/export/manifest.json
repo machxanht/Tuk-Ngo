@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "packageId": "5098fac91c66fb06",
+  "packageId": "21316553c270c077",
   "scriptSha256": "7115ad1e385d8781e8b635d675b840e58fd245cce49f5435ee8fff469d3ad252",
   "clips": {
     "broadcast-ready": {
@@ -11220,6 +11220,22 @@
     }
   },
   "provenanceFiles": [
+    {
+      "file": "roster.json",
+      "sha256": "3d8d846a168375cd1d0d97225d8c7b55967d691f0270a3b098980805acd652ad"
+    },
+    {
+      "file": "docs/roster.md",
+      "sha256": "b3eda44b3a199742fb1750a9f4f13a7954b74a114b7e705b39a49cfb71ed9652"
+    },
+    {
+      "file": "docs/team-name-candidates.json",
+      "sha256": "6e26c03ea3d2224f930d6e047135b8f5f558b85518829ea05a5af6a1dcf3e701"
+    },
+    {
+      "file": "team-audio-prompt.md",
+      "sha256": "e3448bd267e68960016b76022eb0ea7a71988e5fb69cd5b112dbbb6f120a6edb"
+    },
     {
       "file": "team-names/manifest.json",
       "sha256": "ff0773131dc746939ee6b466e5fca2ca2f2fb17b3af06cee308fe910008fdb61"

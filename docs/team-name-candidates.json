@@ -1,0 +1,382 @@
+{
+  "schema": 1,
+  "kind": "team-name-search-candidates",
+  "source": "audio/teams_data.py:TEAMS_53 (literal data only; script not executed)",
+  "sourceSha256": "bea87ecd725e04bad43007f7d02841df6abf7945ded635a29e3d0fc0f1c64f33",
+  "mappingSource": "docs/team-name-audio.json",
+  "mappingSha256": "e52923596a8ab04e1b81b0fd27f68944891d9bbf00d2f754d2ab866c97379194",
+  "notice": "Owner-prepared text is a search candidate, not independent Khmer attestation or proof of what any MP3 says. Source group, bib and locality hints are intentionally excluded because they are not verified for this roster.",
+  "records": [
+    {
+      "registrationId": "can_tho-36",
+      "inputFile": "01_Day_Om_Pu.mp3",
+      "labelVi": "Đay Om Pu",
+      "candidateNameKm": "វត្តដៃអុំពូ",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-33",
+      "inputFile": "02_Bang_Ton_Sa.mp3",
+      "labelVi": "Bâng Ton Sa",
+      "candidateNameKm": "វត្តបឹងទន្សា",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-13",
+      "inputFile": "03_Pong_Tuk_Chas.mp3",
+      "labelVi": "Pong Tứk Chăs",
+      "candidateNameKm": "វត្តពងទឹកចាស់",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-02",
+      "inputFile": "04_Pothi_Sath_Thamram_2.mp3",
+      "labelVi": "Pôthi Sath Thamram 2",
+      "candidateNameKm": "វត្តពោធិសត្ថាធម្មរាម ២",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-06",
+      "inputFile": "05_Sro_Lon_2.mp3",
+      "labelVi": "Sro Lôn 2 (Chén Kiểu 2)",
+      "candidateNameKm": "វត្តសិរីរតនត្រ័យ សរឡូន ២",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-14",
+      "inputFile": "06_Buol_Mum.mp3",
+      "labelVi": "Buôl Mum",
+      "candidateNameKm": "វត្តពពូលមុំ",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-47",
+      "inputFile": "07_Pothi_Thlang.mp3",
+      "labelVi": "Pôthi Thlâng",
+      "candidateNameKm": "វត្តពោធិថ្លឹង",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-37",
+      "inputFile": "08_Om_Pu_Year.mp3",
+      "labelVi": "Om Pu Year",
+      "candidateNameKm": "វត្តអុំពូយ៉ា",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-05",
+      "inputFile": "09_Sro_Lon_1.mp3",
+      "labelVi": "Sro Lôn 1 (Chén Kiểu 1)",
+      "candidateNameKm": "វត្តសិរីរតនត្រ័យ សរឡូន ១",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-21",
+      "inputFile": "10_Kompong_Trop.mp3",
+      "labelVi": "Kompong Trop",
+      "candidateNameKm": "វត្តកំពង់ត្រប់",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-46",
+      "inputFile": "11_Pothi_Khsach.mp3",
+      "labelVi": "Pôthi Khsach",
+      "candidateNameKm": "វត្តពោធិខ្សាច់",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-39",
+      "inputFile": "12_Prek_On_Dok_2.mp3",
+      "labelVi": "Prêk On Đớk 2",
+      "candidateNameKm": "វត្តព្រែកអណ្តើក ២",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-30",
+      "inputFile": "13_Ta_Ong.mp3",
+      "labelVi": "Tà Ông",
+      "candidateNameKm": "វត្តតាអុង",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "ca_mau-03",
+      "inputFile": "14_Dia_Muong.mp3",
+      "labelVi": "Đìa Muống",
+      "candidateNameKm": "វត្តសិរីវង្សាជយារាម (ដីមួង)",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-34",
+      "inputFile": "15_Prek_Om_Pu.mp3",
+      "labelVi": "Prêk Om Pu",
+      "candidateNameKm": "វត្តព្រែកអុំពូ",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-17",
+      "inputFile": "16_Ta_Khvich_Thmay.mp3",
+      "labelVi": "Ta Khvich Thmây",
+      "candidateNameKm": "វត្តតាខ្វិតថ្មី",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-35",
+      "inputFile": "17_Prek_Ta_Cuol.mp3",
+      "labelVi": "Prêk Tà Cuôl",
+      "candidateNameKm": "វត្តព្រែកតាគួល",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-43",
+      "inputFile": "18_Bang_Crochap_Chas.mp3",
+      "labelVi": "Bâng Crôcháp Chăs",
+      "candidateNameKm": "វត្តបឹងក្រចាប់ចាស់",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-41",
+      "inputFile": "19_Phno_Com_Pot.mp3",
+      "labelVi": "Phnô Com Pốt",
+      "candidateNameKm": "វត្តភ្នំកំប៉ូត",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-20",
+      "inputFile": "20_Ta_Khvich_Chas.mp3",
+      "labelVi": "Ta Khvich Chăs",
+      "candidateNameKm": "វត្តតាខ្វិតចាស់",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "ca_mau-11",
+      "inputFile": "21_Dau_Sau_1.mp3",
+      "labelVi": "Đầu Sấu 1",
+      "candidateNameKm": "វត្តរម្ភាវណ្ណ ក្បាលក្រពើ ១",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "ca_mau-12",
+      "inputFile": "22_Dau_Sau_2.mp3",
+      "labelVi": "Đầu Sấu 2",
+      "candidateNameKm": "វត្តរម្ភាវណ្ណ ក្បាលក្រពើ ២",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "ca_mau-05",
+      "inputFile": "23_Kos_Thum_1.mp3",
+      "labelVi": "Kos Thum 1",
+      "candidateNameKm": "វត្តក្រពុំមានជ័យ កោះធំ ១",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-48",
+      "inputFile": "24_Settodor.mp3",
+      "labelVi": "Settodor",
+      "candidateNameKm": "វត្តសិទ្ធោទរ",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-12",
+      "inputFile": "25_Noren_Rangsay_Ong_Kho.mp3",
+      "labelVi": "Noren Rangsay (Ông Kho)",
+      "candidateNameKm": "វត្តនរិន្ទរង្សី (លោកខោ)",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-23",
+      "inputFile": "26_Tum_Nup_2.mp3",
+      "labelVi": "Tum Núp 2",
+      "candidateNameKm": "វត្តទុំនុប ២",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-16",
+      "inputFile": "27_Phno_Roca.mp3",
+      "labelVi": "Phnô Rôca",
+      "candidateNameKm": "វត្តភ្នំរការ",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "ca_mau-02",
+      "inputFile": "28_Rach_Giong.mp3",
+      "labelVi": "Rạch Giống",
+      "candidateNameKm": "វត្តសិរីមង្គល (រាជជើង)",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-27",
+      "inputFile": "29_Bang_Khdon.mp3",
+      "labelVi": "Bâng Khdon",
+      "candidateNameKm": "វត្តបឹងខ្វន់",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-45",
+      "inputFile": "30_Sang_Ke.mp3",
+      "labelVi": "Săng Ke",
+      "candidateNameKm": "វត្តសង្កែ",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-03",
+      "inputFile": "31_Khleang_1.mp3",
+      "labelVi": "Khleang 1",
+      "candidateNameKm": "វត្តឃ្លាំង ១",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-19",
+      "inputFile": "32_Champa.mp3",
+      "labelVi": "Champa",
+      "candidateNameKm": "វត្តចម្ប៉ា",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-28",
+      "inputFile": "33_Day_Ta_Suos.mp3",
+      "labelVi": "Đay Tà Suốs",
+      "candidateNameKm": "វត្តដៃតាសួស",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-10",
+      "inputFile": "34_Wath_Pich.mp3",
+      "labelVi": "Wath Pích",
+      "candidateNameKm": "វត្តពេជ្រ",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-42",
+      "inputFile": "35_Bang_Crochap_Thmay.mp3",
+      "labelVi": "Bâng Crôcháp Thmây",
+      "candidateNameKm": "វត្តបឹងក្រចាប់ថ្មី",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-22",
+      "inputFile": "36_Tum_Nup_1.mp3",
+      "labelVi": "Tum Núp 1",
+      "candidateNameKm": "វត្តទុំនុប ១",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-29",
+      "inputFile": "37_Prek_Pinh_Taung.mp3",
+      "labelVi": "Prêk Pinh Taung",
+      "candidateNameKm": "វត្តព្រែកពេញតូង",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "ca_mau-01",
+      "inputFile": "38_Cao_Dan.mp3",
+      "labelVi": "Cao Dân",
+      "candidateNameKm": "វត្តសិរីមានជ័យ ចៅដូន",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-38",
+      "inputFile": "39_Prek_On_Dok_1.mp3",
+      "labelVi": "Prêk On Đớk 1",
+      "candidateNameKm": "វត្តព្រែកអណ្តើក ១",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-25",
+      "inputFile": "40_Bang_Cok_1.mp3",
+      "labelVi": "Bâng Cók 1",
+      "candidateNameKm": "វត្តបឹងកក់ ១",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-08",
+      "inputFile": "41_Dom_Umpul.mp3",
+      "labelVi": "Đơm Ưmpưl",
+      "candidateNameKm": "វត្តដើមអំពិល",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-40",
+      "inputFile": "42_Phno_Canh_Cho_Thmay.mp3",
+      "labelVi": "Phnô Canh Chơ Thmây",
+      "candidateNameKm": "វត្តភ្នំកញ្ជើថ្មី",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-44",
+      "inputFile": "43_Tuk_Pray.mp3",
+      "labelVi": "Tứk Pray",
+      "candidateNameKm": "វត្តទឹកប្រៃ",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-09",
+      "inputFile": "44_Serey_Kandal.mp3",
+      "labelVi": "Sêrey Kandal",
+      "candidateNameKm": "វត្តសិរីកណ្តាល",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-01",
+      "inputFile": "45_Pothi_Sath_Thamram_1.mp3",
+      "labelVi": "Pôthi Sath Thamram 1",
+      "candidateNameKm": "វត្តពោធិសត្ថាធម្មរាម ១",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-26",
+      "inputFile": "46_Bang_Cok_2.mp3",
+      "labelVi": "Bâng Cók 2",
+      "candidateNameKm": "វត្តបឹងកក់ ២",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-31",
+      "inputFile": "47_Tumpuk_Sok.mp3",
+      "labelVi": "Tumpuk Sók",
+      "candidateNameKm": "វត្តទំពូងសុក",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-07",
+      "inputFile": "48_Chroi_Tum_Chas.mp3",
+      "labelVi": "Chrôi Tưm Chăs",
+      "candidateNameKm": "វត្តជ្រោយទឹមចាស់",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-15",
+      "inputFile": "49_Monisrackeo.mp3",
+      "labelVi": "Monisrackeo",
+      "candidateNameKm": "វត្តមុនីស្រះកែវ",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "ca_mau-06",
+      "inputFile": "50_Kos_Thum_2.mp3",
+      "labelVi": "Kos Thum 2",
+      "candidateNameKm": "វត្តក្រពុំមានជ័យ កោះធំ ២",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "ca_mau-09",
+      "inputFile": "51_Ngan_Dua.mp3",
+      "labelVi": "Ngan Dừa",
+      "candidateNameKm": "វត្តចាស់ ង៉ានដូង",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-04",
+      "inputFile": "52_Khleang_2.mp3",
+      "labelVi": "Khleang 2",
+      "candidateNameKm": "វត្តឃ្លាំង ២",
+      "status": "unverified_owner_prepared_text"
+    },
+    {
+      "registrationId": "can_tho-18",
+      "inputFile": "53_Buol_Pres_Phek.mp3",
+      "labelVi": "Buôl Pres Phek (Bốn Mặt)",
+      "candidateNameKm": "វត្តពពូលព្រះភក្ត្រ",
+      "status": "unverified_owner_prepared_text"
+    }
+  ]
+}

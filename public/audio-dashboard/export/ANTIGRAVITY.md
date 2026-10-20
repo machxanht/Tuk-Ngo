@@ -1,6 +1,6 @@
 # Audio handoff for Antigravity
 
-Read `manifest.json`, `script.json`, `requests.json` and `cue-sheet.csv` first.
+Read `team-audio-prompt.md`, `team-reference.json`, `manifest.json`, `script.json`, `requests.json` and `cue-sheet.csv` first.
 This is a separate review/export dashboard. Do not assume these files have been integrated into the game.
 
 1. Match each team by `registrationId`. Never use source ordinal as a bib, infer gender from colours, or transfer male/female or team-1/team-2 histories.
