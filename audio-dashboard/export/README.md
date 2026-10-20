@@ -1,6 +1,6 @@
 # Ghe Ngo · Audio Studio
 
-Package `4eb292862781ff97` · 29 situations · 61 registrations.
+Package `ec696e987b7168bd` · 29 situations · 61 registrations.
 
 Open [the dashboard](dashboard/index.html). Read [the script](script.md), [Antigravity instructions](ANTIGRAVITY.md), [CSV cue sheet](cue-sheet.csv), [team list](teams.csv), and [remaining requests](requests.json).
 
