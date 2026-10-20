@@ -27,3 +27,5 @@ The game's runtime manifest and canonical script are unchanged. The dashboard ov
 - `docs/qa/audio-dashboard/simple-review-browser.json`: real Edge playback, offline file playback, 89 browser audio decodes, review persistence/export, text-change invalidation, variant warnings and six responsive viewport sizes.
 
 Generated evidence snapshots use `-text` attributes so Git cannot change their hashed line endings. Dashboard CSS/JS use a content-derived query token at the same canonical URLs to refresh cached UI assets.
+
+Published verification: Pages commit `93f3f16fd492130309c084d0230821019dd3c9d2`, package `4eb292862781ff97`. The first Pages build errored; a single API rebuild succeeded. Actual playback, review auto-advance and stopping the old recording were checked on the public route. All 15 new MP3 hashes, all 19 evidence-file hashes and the 11,640,093-byte public ZIP match the local artifacts. `docs/qa/audio-dashboard/public-simple-review.json` records the result. Physical-tablet performance and native Khmer pronunciation remain unverified.
