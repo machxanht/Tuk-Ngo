@@ -1,0 +1,15 @@
+{
+  "packageId": "ec696e987b7168bd",
+  "pagesCommit": "5cbd9b9370cd1e527c483f2d51e72eb028838e46",
+  "realPublicPlayback": true,
+  "damagedStorageRecovery": true,
+  "notePersistence": true,
+  "variantSelectionRecovery": true,
+  "cancelledPromiseIsolation": true,
+  "simulated404BlocksApproval": true,
+  "retryLoadsRealPublicAudio": true,
+  "phoneOverflow": false,
+  "zipBytes": 11640545,
+  "zipHashMatched": true,
+  "errors": []
+}
