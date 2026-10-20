@@ -1,0 +1,1203 @@
+{
+  "schema": 1,
+  "language": "km",
+  "sourceType": "azure-stock-neural",
+  "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+  "review": {
+    "textSource": "owner-prepared teams_data.py labels matched to the existing Vietnamese registration mapping",
+    "sourceLabelsSha256": "bea87ecd725e04bad43007f7d02841df6abf7945ded635a29e3d0fc0f1c64f33",
+    "nativeListeningVerified": false,
+    "originalCommentatorsCloned": false,
+    "purpose": "Fill only missing Khmer team names; preserve original broadcast names and Vietnamese recordings."
+  },
+  "clips": {
+    "ai-name-can_tho-33-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-33"
+      ],
+      "text": "វត្តបឹងទន្សា",
+      "translationVi": "Bâng Tone Sa",
+      "file": "team-names/km/can_tho-33.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 1.9625,
+      "peak": 0.523052,
+      "bytes": 24524,
+      "sha256": "88df01f670f4b5c04bcc183da552104aaa81872862256e79e8f224d4bf35f529",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-33-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "df0173772be0d077729940df73836bb49b2c54e6adb6396b079b4b71a07c3c5d",
+        "sourceWavSha256": "317f8c85da852eed2ad335caaffafa1f4cfccda33e29f88d0c576e966b5a6378",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-02-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-02"
+      ],
+      "text": "វត្តពោធិសត្ថាធម្មរាម ២",
+      "translationVi": "PôThiSaThaRam (Đội 2)",
+      "file": "team-names/km/can_tho-02.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 2.625,
+      "peak": 0.475337,
+      "bytes": 32588,
+      "sha256": "f117cd28f8f03639697373e303b0e09269dc79d727135a1f8bcf65c717384e98",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-02-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "4517c2b00212f1bc3ab23747ac76a1d677a382230471f42321a2b363bc1eba9b",
+        "sourceWavSha256": "30480cc4f74d472f51032be2278a02e2aa25e16b62da7497d2f72e94657eef01",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-06-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-06"
+      ],
+      "text": "វត្តសិរីរតនត្រ័យ សរឡូន ២",
+      "translationVi": "Sro Lôn (Đội 2)",
+      "file": "team-names/km/can_tho-06.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 2.8,
+      "peak": 0.46208,
+      "bytes": 34604,
+      "sha256": "ca633e0da6fe797a3c266b78fc829c59e0dc2d97d72da3ea72e3cd5968833c18",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-06-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "e63542dc447dc7b7e4891936363df53f3aeae7e0600a17cd29b82fd8d76f045c",
+        "sourceWavSha256": "1159dc47955ee4cb45bf6a1507488d22b7cce4893249ce207f653a670dce6ea0",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-14-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-14"
+      ],
+      "text": "វត្តពពូលមុំ",
+      "translationVi": "Buôl Mun (Lộ Mới)",
+      "file": "team-names/km/can_tho-14.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 1.82,
+      "peak": 0.47826,
+      "bytes": 22796,
+      "sha256": "2716e6e110deede2b1dc6e25076a1c62600230cf89cf2ba5135a8c2e27b5beb4",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-14-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "2390716a1c20ffd59456675c0cd3e7e5104d9fdfe165a29c94b88c2a7ea1807d",
+        "sourceWavSha256": "c79c4f8067cbfc55a115c75a780e2b1029bab0d207fc7d847e580d7280ccb4db",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-47-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-47"
+      ],
+      "text": "វត្តពោធិថ្លឹង",
+      "translationVi": "Pô Thi Thlâng",
+      "file": "team-names/km/can_tho-47.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 1.875,
+      "peak": 0.483618,
+      "bytes": 23660,
+      "sha256": "f15288194b9bf111ab342603ee3712712bde47c581b1d04894188832d62d31bb",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-47-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "eab60f40794633de40b8b899dd39fb36ad56109518dd25b26a54e9e52effc916",
+        "sourceWavSha256": "63f73d3a52dc09d41866dd64cad657a01723042322611df8687e8b2b4e784265",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-37-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-37"
+      ],
+      "text": "វត្តអុំពូយ៉ា",
+      "translationVi": "Om Pou Year",
+      "file": "team-names/km/can_tho-37.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 1.925,
+      "peak": 0.479105,
+      "bytes": 24236,
+      "sha256": "c67dbb5c83ffcf286110d964906d782332522487f5b71255017c1c78e1646c84",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-37-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "8fd4e85bc0fe05e05af3e19156b8506f66a99d59021111f3988bc487e12863ea",
+        "sourceWavSha256": "6fbc9c8840a1a1776a3adb6095a700ad14dfbec9447b517b60df0b598fc8eccf",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-05-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-05"
+      ],
+      "text": "វត្តសិរីរតនត្រ័យ សរឡូន ១",
+      "translationVi": "Sro Lôn (Đội 1)",
+      "file": "team-names/km/can_tho-05.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 2.9125,
+      "peak": 0.457898,
+      "bytes": 36044,
+      "sha256": "5c010d485a996b743b6847d039259f140664821cea373c31cdcca103881fd47a",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-05-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "dc5b7d21fb40e0f19321cbfd0f72e326d628c88dd97eae498b0665df7d45dffb",
+        "sourceWavSha256": "263a9131f3c0cf39fdc50789fa5b09ed13cab0bc7474279278bdd3871593f329",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-21-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-21"
+      ],
+      "text": "វត្តកំពង់ត្រប់",
+      "translationVi": "Kom Pong Tróp A",
+      "file": "team-names/km/can_tho-21.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 1.82,
+      "peak": 0.428512,
+      "bytes": 22796,
+      "sha256": "a5bbbea9637bb7f260a0521460aa2920bc9c61976910537965358fd978d7e640",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-21-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "c49f3bc46c30ffb89ed3e41400bfeb74e201c526b36a7d8079f621361361840c",
+        "sourceWavSha256": "ef4e9d6fdd8cf254e71e44a3fa78980d443a631ab2126f7a4c05126420b27fc8",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-46-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-46"
+      ],
+      "text": "វត្តពោធិខ្សាច់",
+      "translationVi": "Pôthi Khsach",
+      "file": "team-names/km/can_tho-46.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 1.82,
+      "peak": 0.439744,
+      "bytes": 22796,
+      "sha256": "a2bb5e89cf0100e548ba3492d78084eb1a9c3a72c5690b3ab3768772f044ccb4",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-46-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "f792d7ce621f71fc4daf175f7c4ba5d5387dd846ce81d8cbdf98f7b78d07cd0b",
+        "sourceWavSha256": "704679ba8b65e67be787d91ca98430e4bb876c42e7fca42a1d27fff6b54cc1f8",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-39-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-39"
+      ],
+      "text": "វត្តព្រែកអណ្តើក ២",
+      "translationVi": "Prêk On Đơk (Đội 2)",
+      "file": "team-names/km/can_tho-39.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 2.0625,
+      "peak": 0.483975,
+      "bytes": 25676,
+      "sha256": "23f3e2fe0d49861aa8fc999bf8f19e987339790c96a48a151ac97c2699fcd0aa",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-39-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "22b2e3f8b050af9932abad5bfa20176fb2ef0edafb326e345b3edb23c15bf51a",
+        "sourceWavSha256": "2fa665ad2ea0c28274de515ad3aa74efb5303f18d7a055dfb56669d4c26b148e",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-30-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-30"
+      ],
+      "text": "វត្តតាអុង",
+      "translationVi": "Tà On",
+      "file": "team-names/km/can_tho-30.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 1.82,
+      "peak": 0.444887,
+      "bytes": 22796,
+      "sha256": "1dcf601792550d131d616d6965734bbc11e92dab48be140b1d6bdc30b4d6e11d",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-30-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "b283685bed62f54aac8171dd8b0ca72726ecfbdb60dd437cecd49a69bbb152c9",
+        "sourceWavSha256": "f7a3d274f779315fd1731c37cc9fd83586d9bd562b53a63df6120fe9344566f7",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-ca_mau-03-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "ca_mau-03"
+      ],
+      "text": "វត្តសិរីវង្សាជយារាម (ដីមួង)",
+      "translationVi": "Đìa Muồng (Đội nam)",
+      "file": "team-names/km/ca_mau-03.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 2.9375,
+      "peak": 0.421885,
+      "bytes": 36332,
+      "sha256": "83c6ad304be67a766609dab7f7c86c4e375e5323c0b4a70c2ee8de68117e5b07",
+      "synthesisEvidence": {
+        "id": "ai-name-ca_mau-03-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "6e80658e5f278a688e7c927aa000ad3ed58d9ee2a211ba68bd6fc8f6b46a4284",
+        "sourceWavSha256": "2397bfb252926c61bb8382414a0dc575c5ebaa807b63c402827ff264c523b44d",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-34-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-34"
+      ],
+      "text": "វត្តព្រែកអុំពូ",
+      "translationVi": "Prếk Om Pu",
+      "file": "team-names/km/can_tho-34.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 1.9625,
+      "peak": 0.474223,
+      "bytes": 24524,
+      "sha256": "b3cc491085544a89731485ca6a6d735246500626d2ed43d3f8dc2b622be4ceb3",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-34-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "78d42b2f2aa0b263b620439b524aeef452477c7168c540132c65e5182486fbdb",
+        "sourceWavSha256": "d9bc5a7cce81130c716b33c8d5a03e94381314c9fde996246ee15b8a11ea19a3",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-17-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-17"
+      ],
+      "text": "វត្តតាខ្វិតថ្មី",
+      "translationVi": "Tà Khvich Thmây (Trà Quýt Mới)",
+      "file": "team-names/km/can_tho-17.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 2.0,
+      "peak": 0.479043,
+      "bytes": 25100,
+      "sha256": "22a4dcdd94b5154a0f76a0e61c4339200a7ac0d67ea605a8d9d8fd5ec13a5788",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-17-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "1e73b070444565a3d827b3a902f458dbe48330c0fbd416362b8b02e3fdaaa310",
+        "sourceWavSha256": "787bdd7f86410728d80a0b1deefcc196a5b16a6aea4e9d9a7bdfb1888bf26378",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-35-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-35"
+      ],
+      "text": "វត្តព្រែកតាគួល",
+      "translationVi": "Prếk Ta Cuôl (Trà Cuôn)",
+      "file": "team-names/km/can_tho-35.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 1.975,
+      "peak": 0.486836,
+      "bytes": 24812,
+      "sha256": "e24698cc863fbf25017b5ed01da8918b6e4cf38e53193e9730127014fbb9a46a",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-35-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "7e86399400d94e0ca787d4faa11c2931e09a2811e241f719a54717f23045e9da",
+        "sourceWavSha256": "94e5210d50b04a526631ece5b165edb5684ab533359b5ad9e439db8989300fa4",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-43-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-43"
+      ],
+      "text": "វត្តបឹងក្រចាប់ចាស់",
+      "translationVi": "Bâng Cro Chap Chắs",
+      "file": "team-names/km/can_tho-43.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 2.0375,
+      "peak": 0.467925,
+      "bytes": 25388,
+      "sha256": "7381dc99c2087cfb6a1657a9a10e3fdec529199f873e28aeb6547cf603cf9155",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-43-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "12abcf61b7556912ddb7c1516fbca5fc6090ab504908e25571fd32dc2445f51a",
+        "sourceWavSha256": "40595c602bac2935fe58b39ea35cd40ba994268e2b40e9b6b5abaf8be61db7b9",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-41-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-41"
+      ],
+      "text": "វត្តភ្នំកំប៉ូត",
+      "translationVi": "Phônô Cambốth",
+      "file": "team-names/km/can_tho-41.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 1.82,
+      "peak": 0.463515,
+      "bytes": 22796,
+      "sha256": "a16d3fb0629209915ea7ce9eb3ccd1fd4167403c57633ab2cc7101a99ef28982",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-41-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "9b62524fb3686a0f012d0e536f613e7b372970a2000aeee27a9912c2e6024428",
+        "sourceWavSha256": "168345d53e7996195d1e957088e630890625c968d49de132ad0ca84768995376",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-20-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-20"
+      ],
+      "text": "វត្តតាខ្វិតចាស់",
+      "translationVi": "Trà Quýt cũ (Ta Kh Vích Chăs)",
+      "file": "team-names/km/can_tho-20.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 1.8625,
+      "peak": 0.417847,
+      "bytes": 23372,
+      "sha256": "52255c02d9336699a5b1399e6a940d1159498dc839fd417b4115e6a75d7c6612",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-20-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "92954538252e53c2ae6d1289c6341e8ca5f6d8e4bedc48c9e46dab69bcf8c776",
+        "sourceWavSha256": "8ee01791a21955b49eb941aebf58aa82763ab2bb7b0993bb553dd68dd971bcd0",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-ca_mau-11-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "ca_mau-11"
+      ],
+      "text": "វត្តរម្ភាវណ្ណ ក្បាលក្រពើ ១",
+      "translationVi": "Đầu Sấu (Đội 1)",
+      "file": "team-names/km/ca_mau-11.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 2.8,
+      "peak": 0.51362,
+      "bytes": 34604,
+      "sha256": "83f6974034e414929e35f54d18398523b4d1647e8a6796957e866d0c087e54c3",
+      "synthesisEvidence": {
+        "id": "ai-name-ca_mau-11-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "6fe80cf7015db96d0c448237c5e6b074904e7910b18f12db7eeabded0f3e980c",
+        "sourceWavSha256": "3c34a0b7dc383425786d80efb88a2b1d0f983969998706d1158aa2e4b3b489ca",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-ca_mau-12-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "ca_mau-12"
+      ],
+      "text": "វត្តរម្ភាវណ្ណ ក្បាលក្រពើ ២",
+      "translationVi": "Đầu Sấu (Đội 2)",
+      "file": "team-names/km/ca_mau-12.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 2.725,
+      "peak": 0.509745,
+      "bytes": 33740,
+      "sha256": "05a992d31d302772c9492a9e3c409c39ffc66b1f541c632d8d42dbc58b0a4141",
+      "synthesisEvidence": {
+        "id": "ai-name-ca_mau-12-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "7909f75d85c69080667bd349aea6ad469c47b702026e1d819801c04daa3390ea",
+        "sourceWavSha256": "917f57512d0c4a48b854f018b9deea9b4d2b3380b6dbc46de3d3a40baafa973a",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-48-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-48"
+      ],
+      "text": "វត្តសិទ្ធោទរ",
+      "translationVi": "Settodor",
+      "file": "team-names/km/can_tho-48.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 1.826,
+      "peak": 0.479053,
+      "bytes": 23084,
+      "sha256": "f498974f77110f8e726e282f2237623d141c03b3fa041ada1f1404ad5f8cf883",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-48-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "89f4d4913696944a098a2e8b58ea743b511d2e61c4c7c0c88eb1f33b786fea1d",
+        "sourceWavSha256": "59c7def3a8ecc1082bad160f1df337a82029b00080517b4595e1cf31afb9a0a6",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-12-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-12"
+      ],
+      "text": "វត្តនរិន្ទរង្សី (លោកខោ)",
+      "translationVi": "Nô Rên Răn Sây (Ông Kho)",
+      "file": "team-names/km/can_tho-12.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 2.5,
+      "peak": 0.481208,
+      "bytes": 31148,
+      "sha256": "c44ee64fa5260932af849ad4fbac42fad43cfc6a6b108c7ba533bfedaba778ad",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-12-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "e15a449c6deff58fb8d76048e1cdb33c199a0fe65b822d5b3ee689945ac20d12",
+        "sourceWavSha256": "542cabb64bc789a2315afe36e5273526a4523bef4bc05a0e69ec2e275d406513",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-16-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-16"
+      ],
+      "text": "វត្តភ្នំរការ",
+      "translationVi": "Phnôrôka",
+      "file": "team-names/km/can_tho-16.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 1.826,
+      "peak": 0.481306,
+      "bytes": 23084,
+      "sha256": "155098824a2ed3999efca77be5f5d57d8b4e13f734dc0e218f7ab80497603606",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-16-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "049de48297beb98a93e8cc0b3b0eb81cd491e4b27b4d0c974fa9ebb7cbc63118",
+        "sourceWavSha256": "bf349a5e23f8b2882fd3f56436d7e11c26660c5b0494bb353fd5ac0c9ac6fe9a",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-27-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-27"
+      ],
+      "text": "វត្តបឹងខ្វន់",
+      "translationVi": "Bâng Khdon",
+      "file": "team-names/km/can_tho-27.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 1.82,
+      "peak": 0.487622,
+      "bytes": 22796,
+      "sha256": "26d30a8bdf5ab27e8538104bf8187afa5d7b2e86eef1a134c70877ae2c57536a",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-27-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "213d3170e408aba16fc67041cdb09387f5d23163471462bda8b5ebaf497538a6",
+        "sourceWavSha256": "3f9ea694ecc31f80d3d8cfad4f21cf713b568bfd5787a637829f4be5b07fdb2e",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-03-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-03"
+      ],
+      "text": "វត្តឃ្លាំង ១",
+      "translationVi": "Khleáng (Đội 1)",
+      "file": "team-names/km/can_tho-03.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 1.85,
+      "peak": 0.508159,
+      "bytes": 23372,
+      "sha256": "2d349fa7a66e3073c1bae6b36a6b1bca79a5b653a12d8abc1712228de6db36e0",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-03-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "2776c7b108fa7e07bfb1286c229709a5ab24cfc964a972ba06952e4f66c833b0",
+        "sourceWavSha256": "1bbcf50af2bc3399a6860d75be4633f550eb1aafb2bafbae3bd02f019ac7eb27",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-28-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-28"
+      ],
+      "text": "វត្តដៃតាសួស",
+      "translationVi": "Đay Ta Suốs",
+      "file": "team-names/km/can_tho-28.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 1.826,
+      "peak": 0.429573,
+      "bytes": 23084,
+      "sha256": "d2ec8aa6aad4e961f91b5dad35d21c46608439b1568b03251f303bbd1cdcba1e",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-28-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "9f377e1da66d2da56632d84d7220a6c49cfc92a993009910e955b234ac1914c3",
+        "sourceWavSha256": "2ed5d9ca2a96b78ca8cc2d997e0913f05d19c8a7ab1389d8f53fcdbbd5a51819",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-10-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-10"
+      ],
+      "text": "វត្តពេជ្រ",
+      "translationVi": "Pích Măng Kol (Wáth Pích)",
+      "file": "team-names/km/can_tho-10.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 1.82,
+      "peak": 0.506415,
+      "bytes": 22796,
+      "sha256": "356dae546000758d0e1d40a72fab26d3257cf7da6017f83fa1f9c97c9f02f82f",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-10-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "5c7e43d24261ebfb21da6aeea6d04b02653ecb285671ab631288c9d9f86cdda9",
+        "sourceWavSha256": "27cb68b688b3643b7b00ec7341135356d185bf965bfff3faf971113512962bea",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-42-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-42"
+      ],
+      "text": "វត្តបឹងក្រចាប់ថ្មី",
+      "translationVi": "Bâng Cro Chap Thmây",
+      "file": "team-names/km/can_tho-42.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 2.1625,
+      "peak": 0.515308,
+      "bytes": 27116,
+      "sha256": "81162c7fa49c70681ce5f13581fd83223aee1a989ba2a62ce3902fa505339c9d",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-42-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "23b4cdf2ded868ef7ce364cdf7ce85ccbd157cb47d21fefc278a19dcaef8a6ba",
+        "sourceWavSha256": "904c8ac55b8dec5ac25bfa0d3ee9a68fec63b3bd2cf92d26ae29b87562d86aa6",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-29-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-29"
+      ],
+      "text": "វត្តព្រែកពេញតូង",
+      "translationVi": "Prếk Pinh Tuang (Bét Tôn)",
+      "file": "team-names/km/can_tho-29.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 1.9875,
+      "peak": 0.474523,
+      "bytes": 24812,
+      "sha256": "7a5c33d5f241020759a223b097c770bc47f5088e5e029a1ae88ac25ddf49d085",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-29-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "adb2b359d815c1b93214f76f2993933285b47ba19e39b5275597524d609b2eb3",
+        "sourceWavSha256": "97d16e0caea9c59eeb5c6379b343c0d0319fa86bcb54bbdb8f1732e33f8a23b1",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-ca_mau-01-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "ca_mau-01"
+      ],
+      "text": "វត្តសិរីមានជ័យ ចៅដូន",
+      "translationVi": "Cao Dân",
+      "file": "team-names/km/ca_mau-01.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 2.525,
+      "peak": 0.497226,
+      "bytes": 31436,
+      "sha256": "b80e47b36ba720a06138a6896468e6779f81cd782ae2b13ef27cd36fdae7eeca",
+      "synthesisEvidence": {
+        "id": "ai-name-ca_mau-01-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "4fb438e85114d279a8bd9cc770afd4092bc5845bb585314fb4ff228bfe9ff24f",
+        "sourceWavSha256": "3a7a3b613cefac3bc5ea257306acfd5d18dc50ce8e5540e66bca172018603b61",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-38-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-38"
+      ],
+      "text": "វត្តព្រែកអណ្តើក ១",
+      "translationVi": "Prêk On Đơk (Đội 1)",
+      "file": "team-names/km/can_tho-38.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 2.2125,
+      "peak": 0.520787,
+      "bytes": 27692,
+      "sha256": "d0f67f8d4a6f32e98085f182dbe32a8963674bb2667d9ab4cd70c1baa5ec6806",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-38-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "96ede49b87eb9e27e5f4e4d135f2c4e7fed4fbacbbef58427057bf221e03b21c",
+        "sourceWavSha256": "9f2f03c1b8ce7508f7854fbb4e460cb21ccd642679ab8d64cd18855759b66290",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-25-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-25"
+      ],
+      "text": "វត្តបឹងកក់ ១",
+      "translationVi": "Bâng Kók (Đội 1)",
+      "file": "team-names/km/can_tho-25.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 1.975,
+      "peak": 0.51447,
+      "bytes": 24812,
+      "sha256": "f6859ff36309d70ee5611984b3914104f0a99e53df8b12f174869c0a9ff60caa",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-25-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "f00213aced5b625d2f45cf670c02924c2e90abdc4402ec0d2149a5491c7f03b0",
+        "sourceWavSha256": "e2c6543f45d2744b648ef37132bf29b71ebcebd1138053d9a13d4a09ac0fb10d",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-08-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-08"
+      ],
+      "text": "វត្តដើមអំពិល",
+      "translationVi": "Đơm Om Prul (Xẻo Me)",
+      "file": "team-names/km/can_tho-08.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 1.875,
+      "peak": 0.474637,
+      "bytes": 23660,
+      "sha256": "91fa7d8639e122d4713fc56a10027778998d6d4cced2f98b8d1166db0af0232d",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-08-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "82bc6e8aeceb69b2893433347fc31884313e9fd78e422886a1e9c23768f0db1c",
+        "sourceWavSha256": "f078bdcebac664e0256bca78e2922407cca440a2f606c48e0ee046cb12641168",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-40-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-40"
+      ],
+      "text": "វត្តភ្នំកញ្ជើថ្មី",
+      "translationVi": "Phnô Kanh Chơ Thmây",
+      "file": "team-names/km/can_tho-40.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 2.175,
+      "peak": 0.517057,
+      "bytes": 27116,
+      "sha256": "372ca0822b4ca3752106450c3477d15b8203ba2cc051583efc0aaa6d56b84c2e",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-40-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "d3351d67cbaca5c63971b61b1ec75b51519c123e0a53b65eb875837e10df899d",
+        "sourceWavSha256": "ecfebeac252adc45e1668a930b096359b2d3014f12e8321eac103bdaae391e6f",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-44-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-44"
+      ],
+      "text": "វត្តទឹកប្រៃ",
+      "translationVi": "Tứk Pray",
+      "file": "team-names/km/can_tho-44.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 1.82,
+      "peak": 0.481483,
+      "bytes": 22796,
+      "sha256": "d8267fc8f16bdf68c5dd3524b3a6452b8d6a5302329ea050b15eeb5055dc282e",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-44-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "7218ac559b6ed8d3b25d67efcdca5eb88fd45bd9b25d2d85f04896576532ad23",
+        "sourceWavSha256": "4877effae70fe6b40bc525b2c46187a63e2d3b1893a1f5d1135257816b03fc93",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-09-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-09"
+      ],
+      "text": "វត្តសិរីកណ្តាល",
+      "translationVi": "Sê Rây Kan Đal",
+      "file": "team-names/km/can_tho-09.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 1.9875,
+      "peak": 0.433246,
+      "bytes": 24812,
+      "sha256": "d33763bcb2681b3c5a159e31c27d3ada381e42339831218a18514c26e47e955e",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-09-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "e15c456008895886b349cc5e6762349a1077731d53fc358283f628a380927b2f",
+        "sourceWavSha256": "c66ec22381b767bb90af5138730551f74f2cbbd8b711b3442b6787de4375843c",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-01-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-01"
+      ],
+      "text": "វត្តពោធិសត្ថាធម្មរាម ១",
+      "translationVi": "PôThiSaThaRam (Đội 1)",
+      "file": "team-names/km/can_tho-01.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 2.714,
+      "peak": 0.492577,
+      "bytes": 33740,
+      "sha256": "63cef2e1098e631e40e9c651e27fd34374f65b3a3ff1f0c49b8405b6ef9bb479",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-01-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "ae24f70d81b2db3ed5cac320cdaf70b03105477aaed7e5ef3756da8efa394d72",
+        "sourceWavSha256": "a7dfba395ff5a48b7ba02e3de132172ae7fa0e44ede04a0b3826fbeabed5b80f",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-26-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-26"
+      ],
+      "text": "វត្តបឹងកក់ ២",
+      "translationVi": "Bâng Kók (Đội 2)",
+      "file": "team-names/km/can_tho-26.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 1.8875,
+      "peak": 0.502914,
+      "bytes": 23660,
+      "sha256": "6b29386b06fa3b17ddb907a9d4e5e11d485c65cc92faed1205c9ce356e5ea301",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-26-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "5d831b0fb9278376af65517b940499ed981987be3d57c40adedc92e8e350d2e8",
+        "sourceWavSha256": "e0e28b611004c36f74fc652c6be9fb1574929859c1388a4f55bfbcfc82079e0e",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-31-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-31"
+      ],
+      "text": "វត្តទំពូងសុក",
+      "translationVi": "TumPokSok (Đội nam)",
+      "file": "team-names/km/can_tho-31.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 1.82,
+      "peak": 0.464802,
+      "bytes": 22796,
+      "sha256": "f715222b9731d9dd0a0d6e693867a5218d792780b7d0e04504e6599bab1f773a",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-31-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "bf2a97058fbdb62116e03c13c825d6f562c60b51874efa010529a0b94eb9e505",
+        "sourceWavSha256": "33250fa6fdda4dabdb2a90cae1f494febf41c7e71ebe858e226827608204a6bd",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-07-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-07"
+      ],
+      "text": "វត្តជ្រោយទឹមចាស់",
+      "translationVi": "Chrôi Tưm Chắs",
+      "file": "team-names/km/can_tho-07.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 1.875,
+      "peak": 0.483403,
+      "bytes": 23660,
+      "sha256": "f5069c2313923683784dc6be92c2cabc23e3843ad47f3311493dfecbc0235fc8",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-07-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "0ebffeea6c8a4241e0da073edd4dfdb5976a0be16899f73e64d1c41132e5cce9",
+        "sourceWavSha256": "3705840304b0a639def1400a450546ac8945866cb937d4a28c9f3f053771aa31",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-15-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-15"
+      ],
+      "text": "វត្តមុនីស្រះកែវ",
+      "translationVi": "Muni Srắc Keo",
+      "file": "team-names/km/can_tho-15.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 2.125,
+      "peak": 0.454057,
+      "bytes": 26540,
+      "sha256": "b8c0a36466355b5068a6500d2c2fe9adb3a31463cc95901da6183badc7202fdf",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-15-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "eba5528fd0f1f1eb9389f3d72c8af685da8999556b64ce823622e87ed2db8889",
+        "sourceWavSha256": "225802881b6d69e4aa99bd82ae0142f98255e1d225c7f44517b5887ebda1775b",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-ca_mau-09-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "ca_mau-09"
+      ],
+      "text": "វត្តចាស់ ង៉ានដូង",
+      "translationVi": "Ngan Dừa (Đội nam)",
+      "file": "team-names/km/ca_mau-09.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 2.025,
+      "peak": 0.46609,
+      "bytes": 25388,
+      "sha256": "828f4846b7c9d1225a9061e4f736fbda38030d23208ce106498cf733317c9c5e",
+      "synthesisEvidence": {
+        "id": "ai-name-ca_mau-09-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "186d3e63f7583bf8f46a4d7088855a987516906bd0da2cd5f42fc86a2002cb5a",
+        "sourceWavSha256": "c0725e57db1260db98be7bbac467d387d90d321e38494f283947e2ecd7f7f35a",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-04-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-04"
+      ],
+      "text": "វត្តឃ្លាំង ២",
+      "translationVi": "Khleáng (Đội 2)",
+      "file": "team-names/km/can_tho-04.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 1.82,
+      "peak": 0.488158,
+      "bytes": 22796,
+      "sha256": "0172162f5f321fab8f13600908f8554033b56f373dce0d798670079371afaca3",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-04-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "9c62c93e0b6c04e212b11a2b12968dfe6c03a5105b3e62595e47d0a82fff9a2a",
+        "sourceWavSha256": "45d0d0409feabb14c98cf780f6648fb50d338e4712e5089f64076478120b9bda",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    },
+    "ai-name-can_tho-18-km": {
+      "role": "team-name",
+      "channel": "khmer",
+      "lang": "km",
+      "teamIds": [
+        "can_tho-18"
+      ],
+      "text": "វត្តពពូលព្រះភក្ត្រ",
+      "translationVi": "Bốn Mặt (Buôl Preas Phek)",
+      "file": "team-names/km/can_tho-18.mp3",
+      "sourceType": "azure-stock-neural",
+      "duration": 1.82,
+      "peak": 0.48205,
+      "bytes": 22796,
+      "sha256": "ad4ceabe1668c56292ab57c68a27c49ebdfc2cbeb92b4ee7930df801ee216d4f",
+      "synthesisEvidence": {
+        "id": "ai-name-can_tho-18-km",
+        "manifest": "team-names/khmer.json",
+        "voice": "km-KH-PisethNeural",
+        "scriptFile": "docs/khmer-team-audio.json",
+        "scriptSha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+        "requestSha256": "1e00f5819d41ecea0bbe5959ab0b5b5b59744eebd8f157f19aeff2aeb0ad4833",
+        "sourceWavSha256": "7a7637744817ecd19fc5fe129a56b09dc90fdab95c9cf13678932015f8a299fe",
+        "nativeListeningVerified": false,
+        "originalCommentatorsCloned": false
+      }
+    }
+  }
+}

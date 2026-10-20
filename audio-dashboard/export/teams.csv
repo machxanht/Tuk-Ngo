@@ -1,0 +1,62 @@
+﻿registration_id,name_vi,name_km,gender,vi_audio_keys,km_audio_keys
+can_tho-01,PôThiSaThaRam (Đội 1),ពោធិសត្ថារាម,male,supplied-name-can_tho-01-vi,ai-name-can_tho-01-km
+can_tho-02,PôThiSaThaRam (Đội 2),ពោធិសត្ថារាម,male,supplied-name-can_tho-02-vi,ai-name-can_tho-02-km
+can_tho-03,Khleáng (Đội 1),ឃ្លាំង,male,supplied-name-can_tho-03-vi,ai-name-can_tho-03-km
+can_tho-04,Khleáng (Đội 2),ឃ្លាំង,male,supplied-name-can_tho-04-vi,ai-name-can_tho-04-km
+can_tho-05,Sro Lôn (Đội 1),ស្រឡូង,male,supplied-name-can_tho-05-vi,ai-name-can_tho-05-km
+can_tho-06,Sro Lôn (Đội 2),ស្រឡូង,male,supplied-name-can_tho-06-vi,ai-name-can_tho-06-km
+can_tho-07,Chrôi Tưm Chắs,ជ្រោយទឹមចាស់,male,supplied-name-can_tho-07-vi,ai-name-can_tho-07-km
+can_tho-08,Đơm Om Prul (Xẻo Me),ដើមអម្ពិល,male,supplied-name-can_tho-08-vi,ai-name-can_tho-08-km
+can_tho-09,Sê Rây Kan Đal,សិរីកណ្តាល,male,supplied-name-can_tho-09-vi,ai-name-can_tho-09-km
+can_tho-10,Pích Măng Kol (Wáth Pích),,male,supplied-name-can_tho-10-vi,ai-name-can_tho-10-km
+can_tho-11,Ô Chum - Prếk Chếk,អូរជុំអារាមព្រែកចេក,female,,
+can_tho-12,Nô Rên Răn Sây (Ông Kho),,male,supplied-name-can_tho-12-vi,ai-name-can_tho-12-km
+can_tho-13,Pong Tứk Chắc,ពងទឹកចាស់,male,supplied-name-can_tho-13-vi,name-pong-tuk-chas-km
+can_tho-14,Buôl Mun (Lộ Mới),ថ្នល់ថ្មី,male,supplied-name-can_tho-14-vi,ai-name-can_tho-14-km
+can_tho-15,Muni Srắc Keo,មុនីស្រះកែវ,male,supplied-name-can_tho-15-vi,ai-name-can_tho-15-km
+can_tho-16,Phnôrôka,ផ្នោរកា,male,supplied-name-can_tho-16-vi,ai-name-can_tho-16-km
+can_tho-17,Tà Khvich Thmây (Trà Quýt Mới),តាឃ្វិចថ្មី,male,supplied-name-can_tho-17-vi,ai-name-can_tho-17-km
+can_tho-18,Bốn Mặt (Buôl Preas Phek),ព្រះបួនព្រះភ័ក្រ្ត,male,supplied-name-can_tho-18-vi,ai-name-can_tho-18-km
+can_tho-19,Cham Pa,ចំប៉ា,male,supplied-name-can_tho-19-vi,name-cham-pa-km
+can_tho-20,Trà Quýt cũ (Ta Kh Vích Chăs),តាគុជចាស់,male,supplied-name-can_tho-20-vi,ai-name-can_tho-20-km
+can_tho-21,Kom Pong Tróp A,កំពង់ត្រប,male,supplied-name-can_tho-21-vi,ai-name-can_tho-21-km
+can_tho-22,Bô Tum Reangsey Tum Nup (Tum Núp 1),ទំនប់,male,supplied-name-can_tho-22-vi,name-tum-nup-km
+can_tho-23,Bô Tum Reangsey Tum Nup (Tum Núp 2),ទំនប់,male,supplied-name-can_tho-23-vi,name-tum-nup-km
+can_tho-24,Bô Tum Reangsey Tum Nup,ទំនប់,female,name-tum-nup-vi,name-tum-nup-km
+can_tho-25,Bâng Kók (Đội 1),បឹងកក់,male,supplied-name-can_tho-25-vi,ai-name-can_tho-25-km
+can_tho-26,Bâng Kók (Đội 2),បឹងកក់,male,supplied-name-can_tho-26-vi,ai-name-can_tho-26-km
+can_tho-27,Bâng Khdon,,male,supplied-name-can_tho-27-vi,ai-name-can_tho-27-km
+can_tho-28,Đay Ta Suốs,ដៃតាសួស,male,supplied-name-can_tho-28-vi,ai-name-can_tho-28-km
+can_tho-29,Prếk Pinh Tuang (Bét Tôn),ព្រែកពិន្ទង,male,supplied-name-can_tho-29-vi,ai-name-can_tho-29-km
+can_tho-30,Tà On,,male,supplied-name-can_tho-30-vi,ai-name-can_tho-30-km
+can_tho-31,TumPokSok (Đội nam),ទំពក់សក់,male,supplied-name-can_tho-31-vi,ai-name-can_tho-31-km
+can_tho-32,TumPokSok (Đội nữ),ទំពក់សក់,female,name-tam-soc-vi,
+can_tho-33,Bâng Tone Sa,បឹងទន្សា,male,supplied-name-can_tho-33-vi,ai-name-can_tho-33-km
+can_tho-34,Prếk Om Pu,ព្រែកអម្ពូរ,male,supplied-name-can_tho-34-vi,ai-name-can_tho-34-km
+can_tho-35,Prếk Ta Cuôl (Trà Cuôn),ព្រែកត្រកួន,male,supplied-name-can_tho-35-vi,ai-name-can_tho-35-km
+can_tho-36,Đay Om Pu (Phú Giao),ដៃអំពូ,male,supplied-name-can_tho-36-vi,name-day-om-pu-km
+can_tho-37,Om Pou Year,អំពូយារ,male,supplied-name-can_tho-37-vi,ai-name-can_tho-37-km
+can_tho-38,Prêk On Đơk (Đội 1),ព្រែកអណ្ដើក,male,supplied-name-can_tho-38-vi,ai-name-can_tho-38-km
+can_tho-39,Prêk On Đơk (Đội 2),ព្រែកអណ្ដើក,male,supplied-name-can_tho-39-vi,ai-name-can_tho-39-km
+can_tho-40,Phnô Kanh Chơ Thmây,ផ្នោរកញ្ជើថ្មី,male,supplied-name-can_tho-40-vi,ai-name-can_tho-40-km
+can_tho-41,Phônô Cambốth,ផ្នោរកំបុត,male,supplied-name-can_tho-41-vi,ai-name-can_tho-41-km
+can_tho-42,Bâng Cro Chap Thmây,បឹងក្រចាប់ថ្មី,male,supplied-name-can_tho-42-vi,ai-name-can_tho-42-km
+can_tho-43,Bâng Cro Chap Chắs,បឹងក្រចាប់ចាស់,male,supplied-name-can_tho-43-vi,ai-name-can_tho-43-km
+can_tho-44,Tứk Pray,ទឹកប្រៃ,male,supplied-name-can_tho-44-vi,ai-name-can_tho-44-km
+can_tho-45,Săng Ke,សង្កែ,male,supplied-name-can_tho-45-vi,name-sang-ke-km
+can_tho-46,Pôthi Khsach,ពោធិ៍ខ្សាច់,male,supplied-name-can_tho-46-vi,ai-name-can_tho-46-km
+can_tho-47,Pô Thi Thlâng,ពោធិ៍ថ្លឹង,male,supplied-name-can_tho-47-vi,ai-name-can_tho-47-km
+can_tho-48,Settodor,សេតុត្តរ,male,supplied-name-can_tho-48-vi,ai-name-can_tho-48-km
+ca_mau-01,Cao Dân,ក្របីឃ្លៀច,unresolved,supplied-name-ca_mau-01-vi,ai-name-ca_mau-01-km
+ca_mau-02,Rạch Giồng,ជ្រុងខ្មែរ,unresolved,supplied-name-ca_mau-02-vi,name-rach-giong-km
+ca_mau-03,Đìa Muồng (Đội nam),ខ្វែងដង្ហិត,male,supplied-name-ca_mau-03-vi,ai-name-ca_mau-03-km
+ca_mau-04,Đìa Muồng (Đội nữ),ខ្វែងដង្ហិត,female,,
+ca_mau-05,Kos Thum (Nam Đội 1),កោះធំ,male,supplied-name-ca_mau-05-vi,name-kos-thum-km
+ca_mau-06,Kos Thum (Nam Đội 2),កោះធំ,male,supplied-name-ca_mau-06-vi,name-kos-thum-two-km
+ca_mau-07,Kos Thum (Nữ Đội 1),កោះធំ,female,name-kos-thum-one-vi,name-kos-thum-km
+ca_mau-08,Kos Thum (Nữ Đội 2),កោះធំ,female,name-kos-thum-two-vi,name-kos-thum-two-km
+ca_mau-09,Ngan Dừa (Đội nam),ង៉ាងយឿ,male,supplied-name-ca_mau-09-vi,ai-name-ca_mau-09-km
+ca_mau-10,Ngan Dừa (Đội nữ),ង៉ាងយឿ,female,name-ngan-dua-vi,
+ca_mau-11,Đầu Sấu (Đội 1),,unresolved,supplied-name-ca_mau-11-vi,ai-name-ca_mau-11-km
+ca_mau-12,Đầu Sấu (Đội 2),,unresolved,supplied-name-ca_mau-12-vi,ai-name-ca_mau-12-km
+ca_mau-13,Đìa Chuối,អណ្តូងចេក,unresolved,,

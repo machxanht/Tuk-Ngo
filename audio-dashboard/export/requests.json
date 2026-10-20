@@ -1,0 +1,213 @@
+{
+  "schema": 1,
+  "packageId": "5098fac91c66fb06",
+  "vietnameseTtsAllowed": false,
+  "requests": [
+    {
+      "cueId": "ceremony-teams",
+      "language": "vi",
+      "text": "Các đội ghe đã hội tụ trước khán đài. Khán giả hai bờ sông đang chờ những lượt tranh tài.",
+      "action": "find-and-cut-original",
+      "voice": null,
+      "conditions": {
+        "phases": [
+          "ceremony"
+        ]
+      },
+      "names": "participants",
+      "placeholders": [],
+      "reviewRequired": true,
+      "autoApprove": false
+    },
+    {
+      "cueId": "ceremony-teams",
+      "language": "km",
+      "text": "ក្រុមទូកទាំងអស់បានមកជួបជុំគ្នានៅមុខវេទិកា។ ទស្សនិកជននៅតាមដងទន្លេកំពុងរង់ចាំការប្រកួត។",
+      "action": "synthesize-stock-khmer",
+      "voice": "km-KH-PisethNeural",
+      "conditions": {
+        "phases": [
+          "ceremony"
+        ]
+      },
+      "names": "participants",
+      "placeholders": [],
+      "reviewRequired": true,
+      "autoApprove": false
+    },
+    {
+      "cueId": "team-introduction",
+      "language": "vi",
+      "text": "{player_name} gặp {opponent_name}. Hai đội đang chuẩn bị xuất phát.",
+      "action": "find-and-cut-original",
+      "voice": null,
+      "conditions": {
+        "phases": [
+          "intro",
+          "ready"
+        ]
+      },
+      "names": "participants",
+      "placeholders": [
+        "player_name",
+        "opponent_name"
+      ],
+      "reviewRequired": true,
+      "autoApprove": false
+    },
+    {
+      "cueId": "team-introduction",
+      "language": "km",
+      "text": "{player_name} ប្រកួតជាមួយ {opponent_name}។ ក្រុមទាំងពីរកំពុងត្រៀមចេញដំណើរ។",
+      "action": "synthesize-stock-khmer",
+      "voice": "km-KH-PisethNeural",
+      "conditions": {
+        "phases": [
+          "intro",
+          "ready"
+        ]
+      },
+      "names": "participants",
+      "placeholders": [
+        "player_name",
+        "opponent_name"
+      ],
+      "reviewRequired": true,
+      "autoApprove": false
+    },
+    {
+      "cueId": "start-drive",
+      "language": "km",
+      "text": "ក្រុមទាំងពីរបានចេញដំណើរហើយ។ ត្រូវចាប់ចង្វាក់ឱ្យស្មើគ្នា!",
+      "action": "synthesize-stock-khmer",
+      "voice": "km-KH-PisethNeural",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minElapsed": 3,
+        "maxElapsed": 15,
+        "maxDistance": 200
+      },
+      "names": null,
+      "placeholders": [],
+      "reviewRequired": true,
+      "autoApprove": false
+    },
+    {
+      "cueId": "cruise-context",
+      "language": "km",
+      "text": "ផ្លូវប្រណាំងនៅវែងទៀត។ ត្រូវរក្សាចង្វាក់ និងសន្សំកម្លាំងសម្រាប់ចុងផ្លូវ។",
+      "action": "synthesize-stock-khmer",
+      "voice": "km-KH-PisethNeural",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 200,
+        "maxDistance": 550
+      },
+      "names": null,
+      "placeholders": [],
+      "reviewRequired": true,
+      "autoApprove": false
+    },
+    {
+      "cueId": "safe-margin",
+      "language": "km",
+      "text": "ទូកនាំមុខកំពុងបង្កើនគម្លាត ប៉ុន្តែការប្រកួតមិនទាន់បញ្ចប់ទេ។",
+      "action": "synthesize-stock-khmer",
+      "voice": "km-KH-PisethNeural",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minAbsGap": 8
+      },
+      "names": "leader",
+      "placeholders": [],
+      "reviewRequired": true,
+      "autoApprove": false
+    },
+    {
+      "cueId": "last-hundred",
+      "language": "vi",
+      "text": "Một trăm mét cuối!",
+      "action": "find-and-cut-original",
+      "voice": null,
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 1100,
+        "maxDistance": 1150
+      },
+      "names": null,
+      "placeholders": [],
+      "reviewRequired": true,
+      "autoApprove": false
+    },
+    {
+      "cueId": "last-fifty",
+      "language": "vi",
+      "text": "Năm mươi mét cuối!",
+      "action": "find-and-cut-original",
+      "voice": null,
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 1150,
+        "maxDistance": 1200
+      },
+      "names": null,
+      "placeholders": [],
+      "reviewRequired": true,
+      "autoApprove": false
+    },
+    {
+      "cueId": "cup-champion",
+      "language": "vi",
+      "text": "Xin chúc mừng {winner_name}, đội vô địch cúp lễ hội!",
+      "action": "find-and-cut-original",
+      "voice": null,
+      "conditions": {
+        "phases": [
+          "finished"
+        ],
+        "results": [
+          "win"
+        ],
+        "cupChampion": true
+      },
+      "names": "winner",
+      "placeholders": [
+        "winner_name"
+      ],
+      "reviewRequired": true,
+      "autoApprove": false
+    },
+    {
+      "cueId": "cup-champion",
+      "language": "km",
+      "text": "សូមអបអរសាទរ {winner_name} ដែលបានឈ្នះជើងឯកពានរង្វាន់នេះ!",
+      "action": "synthesize-stock-khmer",
+      "voice": "km-KH-PisethNeural",
+      "conditions": {
+        "phases": [
+          "finished"
+        ],
+        "results": [
+          "win"
+        ],
+        "cupChampion": true
+      },
+      "names": "winner",
+      "placeholders": [
+        "winner_name"
+      ],
+      "reviewRequired": true,
+      "autoApprove": false
+    }
+  ]
+}
