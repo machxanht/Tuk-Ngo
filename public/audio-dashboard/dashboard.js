@@ -1,148 +1,196 @@
 (function(){
  'use strict';
- const data=window.AUDIO_STUDIO_DATA,rules=window.AudioStudioRules;
- const $=id=>document.getElementById(id),esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- const searchText=v=>String(v).toLocaleLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d');
- if(!data||!rules){$('summary').textContent='Chưa mở được bộ dữ liệu. Hãy xuất lại dashboard.';return;}
- const baseline=structuredClone(data.script),storageKey='tukngo-audio-desk-'+data.packageId;
- let script=structuredClone(baseline),selected='go',stage='',tab='script',lang='vi',serial=0,queue=[],activeSimulation=null;
- const state={phase:'racing',distance:960,elapsed:170,gap:1,pace:'sprint',combo:35,stamina:45,surgeActive:false,leadChanged:false,result:'win',cupChampion:false,player:'can_tho-23',opponent:'ca_mau-05'};
- const player=$('player');
- try{
-  const saved=JSON.parse(localStorage.getItem(storageKey)||'null');
-  if(saved?.schema===1&&Array.isArray(saved.cues))for(const c of script.cues){const old=saved.cues.find(x=>x.id===c.id);if(old&&typeof old.text?.vi==='string'&&typeof old.text?.km==='string')c.text={vi:old.text.vi.slice(0,4000),km:old.text.km.slice(0,4000)};}
- }catch{}
- const current=()=>script.cues.find(c=>c.id===selected)||script.cues[0];
- const edited=c=>JSON.stringify(c.text)!==JSON.stringify(baseline.cues.find(x=>x.id===c.id)?.text);
- const statusLabel=s=>({ready:'Có audio', 'needs-audio':'Cần audio','reference-only':'Cần khớp lời','not-scripted':'Chưa soạn',invalid:'Lỗi liên kết'}[s]);
- const sourceLabel=c=>c.sourceType==='azure-stock-neural'?'Khmer AI · Azure Piseth':c.sourceType==='user-supplied-recording'?'Bản tên ghe bạn cung cấp':c.sourceType==='licensed-recording'?'Bản thu thể thao · CC0':c.sourceType==='broadcast-separated'?'Trống tách từ giải đấu':'BLV · bản thu gốc';
- function save(){
-  try{localStorage.setItem(storageKey,JSON.stringify({schema:1,cues:script.cues.map(c=>({id:c.id,text:c.text}))}));$('save-status').textContent=script.cues.filter(edited).length+' câu chỉnh · đã lưu trên trình duyệt này';}
-  catch{$('save-status').textContent='Chưa lưu được trên trình duyệt. Hãy xuất JSON để giữ bản chỉnh.';}
+ const data=window.AUDIO_STUDIO_DATA,$=id=>document.getElementById(id);
+ const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const searchText=v=>String(v??'').toLocaleLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d');
+ if(!data){$('item-title').textContent='Chưa mở được dữ liệu audio.';return;}
+ const handoff=data.khmerHandoff||{},storageKey='tukngo-audio-review',player=$('player');
+ const script=structuredClone(data.script),clips={...data.clips},fileNotes={};
+ for(const cue of script.cues)if(handoff.cues?.[cue.id])cue.text=structuredClone(handoff.cues[cue.id].text);
+ const baseline=structuredClone(script);
+ let saved={};try{saved=JSON.parse(localStorage.getItem(storageKey)||'{}')||{};}catch{}
+ if(saved.schema!==2)saved={};
+ const reviews=saved.reviews||{},choices=saved.choices||{},edits=saved.edits||{};
+ for(const cue of script.cues)for(const l of ['vi','km'])if(typeof edits[cue.id]?.[l]==='string')cue.text[l]=edits[cue.id][l].slice(0,4000);
+ let view=['cues','teams','field'].includes(saved.view)?saved.view:'cues',lang=saved.lang==='vi'?'vi':'km';
+ const selected={cues:'ceremony-teams',teams:'can_tho-23',field:null,...saved.selected};
+ let playingKey=null,playSerial=0,autoListen=!!saved.autoListen;
+ $('advance').checked=saved.advance!==false;$('auto-listen').checked=autoListen;
+ for(const file of Object.values(handoff.files||{}))fileNotes[file.clipId]=[...new Set([...(fileNotes[file.clipId]||[]),...file.reviewWarnings])];
+ if(data.beds?.menuMusic)clips['menu-music']={...data.beds.menuMusic,lang:'music',text:'Nhạc main menu · chỉ phát trước khi vào trận.',sourceType:'music',role:'menu-music'};
+ const unique=arr=>[...new Set(arr||[])].filter(k=>clips[k]);
+ const phaseName=id=>script.stages.find(s=>s.id===id)?.title||id;
+ const sourceName=c=>c?.sourceType==='azure-stock-neural'?'AI Khmer · Azure':c?.sourceType==='user-supplied-recording'?'Bản tên đội đã cung cấp':c?.sourceType==='music'?'Nhạc menu':c?.sourceType==='licensed-recording'?'Bản thu CC0':'Bản thu gốc';
+ const statusName=s=>({pending:'Chưa duyệt',pass:'Đạt',fix:'Cần sửa'}[s]||'Chưa duyệt');
+ function items(which=view){
+  if(which==='cues')return script.cues.map(c=>({id:c.id,title:c.title,subtitle:phaseName(c.stage),stage:c.stage,when:c.when,cue:c,text:c.text,
+   audio:{vi:unique(c.audio.vi),km:unique([...(handoff.cues?.[c.id]?.variantKeys||[]),...c.audio.km])}}));
+  if(which==='teams')return Object.entries(data.teams).map(([id,t])=>({id,title:t.nameVi,subtitle:(t.gender==='male'?'Nam':t.gender==='female'?'Nữ':'Chưa rõ nam/nữ')+' · '+id,
+   when:'Đối chiếu đúng tên, số đội và nam/nữ. Tên chùa chung có thể xuất hiện ở nhiều đăng ký.',text:{vi:t.nameVi,km:t.nameKm||''},
+   audio:{vi:unique(t.names.voice),km:unique([...(handoff.names?.[id]||[]),...t.names.khmer])}}));
+  return Object.entries(clips).filter(([,c])=>!['voice','khmer'].includes(c.channel)&&c.lang!=='vi'&&c.lang!=='km').map(([key,c])=>({id:key,
+   title:c.role==='menu-music'?'Nhạc main menu':c.text||key,subtitle:sourceName(c),when:c.role==='menu-music'?'Lặp ở menu, dừng trước khi vào trận.':'Nghe riêng để kiểm tra tiếng trống, còi, khán giả và môi trường.',text:{vi:c.text||'',km:''},audio:{vi:[key],km:[key]}}));
  }
- function renderSummary(){
-  const missing=script.cues.filter(c=>['vi','km'].some(l=>['needs-audio','reference-only'].includes(rules.lineStatus(c,l,data.clips)))).length;
-  $('summary').innerHTML=[[script.cues.length,'tình huống','10 chặng · khai mạc đến kết quả'],[Object.keys(data.clips).length,'đoạn audio','Bản thu gốc / Khmer AI có nguồn'],[data.coverage.nameVi+'/61','tên Việt',data.coverage.nameKm+'/61 tên Khmer trong bộ xuất'],[missing,'câu cần xử lý','Thiếu audio hoặc chưa khớp kịch bản']].map(([v,t,n])=>`<div class="metric"><strong>${v}</strong><span>${t}</span><p>${n}</p></div>`).join('');
-  $('cue-count').textContent=script.cues.length;
+ const slot=(item,l=lang,which=view)=>which+':'+item.id+':'+(which==='field'?'field':l);
+ const keysFor=(item,l=lang)=>item?item.audio[l]||[]:[];
+ const keyFor=(item,l=lang,which=view)=>{const keys=keysFor(item,l);return keys.includes(choices[slot(item,l,which)])?choices[slot(item,l,which)]:keys[0]||null;};
+ const expected=item=>JSON.stringify(item.text);
+ const reviewId=(item,key,l=lang,which=view)=>slot(item,l,which)+':'+(key||'missing');
+ function reviewFor(item,key=keyFor(item),l=lang,which=view){
+  const raw=reviews[reviewId(item,key,l,which)];
+  if(!raw)return {status:'pending',note:''};
+  return {...raw,status:raw.sha256===(clips[key]?.sha256||null)&&raw.expectedText===expected(item)?raw.status:'pending'};
  }
- function renderStages(){
-  $('stages').innerHTML=[{id:'',title:'Tất cả tình huống'},...script.stages].map(s=>`<button class="stage-button" data-stage="${s.id}" aria-pressed="${s.id===stage}"><span>${esc(s.title)}</span><small>${script.cues.filter(c=>!s.id||c.stage===s.id).length}</small></button>`).join('');
+ function warningsFor(item,key){
+  const notes=[...(clips[key]?.reviewWarnings||[]),...(fileNotes[key]||[])];
+  if(!key)notes.push('Chưa có audio cho ngôn ngữ này.');
+  if(view==='teams'&&lang==='km'&&!item.text.km)notes.push('Tên Khmer chuẩn của đăng ký này còn cần xác minh.');
+  return [...new Set(notes)];
+ }
+ function visible(){
+  const q=searchText($('search').value),filter=$('review-filter').value,stage=$('stage-filter').value;
+  return items().filter(item=>(view!=='cues'||!stage||item.stage===stage)&&(!q||searchText(item.id+' '+item.title+' '+item.text.vi+' '+item.text.km).includes(q))).filter(item=>!filter||filter==='issue'?(!filter||warningsFor(item,keyFor(item)).length>0):reviewFor(item).status===filter);
+ }
+ const current=()=>items().find(item=>item.id===selected[view])||null;
+ function persist(){
+  try{localStorage.setItem(storageKey,JSON.stringify({schema:2,reviews,choices,edits,view,lang,selected,advance:$('advance').checked,autoListen}));$('save-status').textContent='Đã lưu trên trình duyệt này';}
+  catch{$('save-status').textContent='Chưa lưu được. Hãy xuất JSON để giữ kết quả.';}
+ }
+ function stop(message=''){
+  playSerial++;player.pause();player.removeAttribute('src');player.load();playingKey=null;player.onended=null;player.onerror=null;
+  $('play').textContent=view==='field'?'Nghe đoạn này':'Nghe '+(lang==='km'?'Khmer':'Việt');
+  $('play-status').textContent=message||'Audio chỉ tải khi bấm nghe.';
  }
  function renderList(){
-  const query=searchText($('search').value),filter=$('status-filter').value;
-  const entries=script.cues.filter(c=>(!stage||c.stage===stage)&&(!query||searchText(c.title+' '+c.id+' '+c.text.vi+' '+c.text.km).includes(query))).filter(c=>{
-   if(filter==='edited')return edited(c);const s=['vi','km'].map(l=>rules.lineStatus(c,l,data.clips));
-   return !filter||filter==='ready'&&s.every(v=>v==='ready')||filter==='missing'&&s.some(v=>v!=='ready');
-  });
-  $('list-title').textContent=script.stages.find(s=>s.id===stage)?.title||'Toàn bộ tình huống';
-  $('list-caption').textContent=entries.length+' cảnh · chọn một cảnh để sửa lời và nghe đối chiếu';
-  $('cue-list').innerHTML=entries.map(c=>`<button class="cue-card ${c.id===selected?'selected':''}" data-cue="${esc(c.id)}" aria-pressed="${c.id===selected}"><div class="cue-card-top"><span class="code">${esc(c.id)}</span><span class="pill">P${c.priority}</span></div><h3>${esc(c.title)}</h3><p>${esc(c.when)}</p><div class="cue-flags">${['vi','km'].map(l=>{const s=rules.lineStatus(c,l,data.clips);return `<span class="pill ${s==='ready'?'ready':'missing'}">${l.toUpperCase()} · ${statusLabel(s)}</span>`;}).join('')}${edited(c)?'<span class="pill edited">Đã chỉnh</span>':''}</div></button>`).join('')||'<p class="empty">Không có tình huống phù hợp. Thử bỏ bớt bộ lọc.</p>';
+  const all=items(),entries=visible(),done=all.filter(i=>reviewFor(i).status!=='pending').length;
+  $('progress').textContent=done+'/'+all.length+' mục đã đánh dấu · '+entries.length+' đang hiện';
+  $('item-list').innerHTML=entries.map(item=>{const r=reviewFor(item),warning=warningsFor(item,keyFor(item)).length>0;return `<button class="item" data-item="${esc(item.id)}" aria-pressed="${item.id===selected[view]}"><span class="item-copy"><strong>${esc(item.title)}</strong><small>${esc(item.subtitle)}${warning?' · Có lưu ý':''}</small></span><span class="status-dot ${r.status}" aria-label="${statusName(r.status)}">${r.status==='pass'?'✓':r.status==='fix'?'!':'·'}</span></button>`;}).join('')||'<p class="empty">Không có mục phù hợp. Thử bỏ bộ lọc.</p>';
  }
- function option(value,label,actual){return `<option value="${esc(value)}" ${String(value)===String(actual)?'selected':''}>${esc(label)}</option>`;}
- function teamOptions(actual){return Object.entries(data.teams).map(([id,t])=>option(id,t.nameVi,actual)).join('');}
- function conditionCopy(c){
-  const r=c.conditions,parts=[];
-  if(r.phases)parts.push('Trạng thái: '+r.phases.join(' / '));
-  if(r.minDistance!=null||r.maxDistance!=null)parts.push('Ghe người chơi: '+(r.minDistance??0)+'–'+(r.maxDistance??1200)+' m (không gồm mốc cuối).');
-  if(r.minElapsed!=null||r.maxElapsed!=null)parts.push('Thời gian đua: '+(r.minElapsed??0)+'–'+(r.maxElapsed??'∞')+' giây.');
-  if(r.maxAbsGap!=null)parts.push('Chênh lệch ≤ '+r.maxAbsGap+' m.');
-  if(r.minAbsGap!=null)parts.push('Chênh lệch ≥ '+r.minAbsGap+' m.');
-  if(r.minCombo!=null)parts.push('Ít nhất '+r.minCombo+' nhịp đúng liên tục.');
-  if(r.maxStamina!=null)parts.push('Sức bền ≤ '+r.maxStamina+'%.');
-  if(r.surgeActive)parts.push('Đạp đang bật ngay lúc phát.');
-  if(r.leadChanged)parts.push('Đổi ngôi đã thực sự xảy ra.');
-  if(r.cupChampion)parts.push('Đã xác nhận vô địch toàn bộ cúp.');
-  if(r.teamIds)parts.push('Đúng đội: '+r.teamIds.map(id=>data.teams[id]?.nameVi||id).join(', '));
-  if(r.results)parts.push('Kết quả: '+r.results.join(' / '));
-  parts.push('Ưu tiên '+c.priority+' · cách lần phát trước '+c.cooldownSeconds+' giây · hết hạn sau '+c.maxQueueAgeSeconds+' giây chờ.');
-  return parts;
+ function variantName(key,index){
+  const c=clips[key],duration=Number.isFinite(c.duration)?' · '+c.duration.toFixed(1)+'s':'';
+  const match=key.includes('kos-thum')?' · Kos Thum 1':key.includes('tum-nup')?' · Tum Núp 2':'';
+  return (index+1)+'. '+(key.startsWith('agy-')?'AGY':sourceName(c))+(key.includes('carrier')?' · Câu dẫn':match)+duration;
+ }
+ function renderTexts(item,key){
+  const clip=clips[key];
+  $('text-km').textContent=lang==='km'&&view!=='field'?(clip?.text||'Chưa có lời chép cho đoạn này. Nghe và ghi chú bên dưới.'):(item.text.km||'Chưa có bản Khmer tương ứng.');
+  $('text-vi').textContent=lang==='vi'||view==='field'?(clip?.text||item.text.vi||'Chưa có lời chép.'):(item.text.vi||'Chưa có phần Việt để đối chiếu.');
+  $('km-label').textContent=lang==='km'?'Lời trong hồ sơ audio':'Kịch bản Khmer để đối chiếu';
+  $('vi-label').textContent=lang==='vi'?'Lời trong hồ sơ audio':'Nội dung kịch bản, chưa phải bản dịch đã duyệt';
+  $('km-panel').classList.toggle('active-language',lang==='km'&&view!=='field');
+  $('vi-panel').classList.toggle('active-language',lang==='vi'||view==='field');
+  $('km-panel').hidden=view==='field';
  }
  function renderDetail(){
-  const c=current(),status=rules.lineStatus(c,lang,data.clips),clips=c.audio[lang].map(k=>({key:k,...data.clips[k]}));
-  $('cue-detail').innerHTML=`<div class="detail-head"><p class="eyebrow">ĐANG BIÊN TẬP · ${esc(c.id)}</p><h2>${esc(c.title)}</h2><p>${esc(c.when)}</p></div><div class="detail-body"><div class="language-tabs" aria-label="Ngôn ngữ kịch bản"><button data-lang="vi" aria-pressed="${lang==='vi'}">Tiếng Việt</button><button data-lang="km" aria-pressed="${lang==='km'}">ភាសាខ្មែរ</button></div><div class="script-label"><label for="script-editor">KỊCH BẢN MUỐN DÙNG</label><span class="pill ${status==='ready'?'ready':'missing'}">${statusLabel(status)}</span></div><textarea id="script-editor" class="script-editor" lang="${lang}" maxlength="4000">${esc(c.text[lang])}</textarea><span class="source-note">Chỉnh lời lưu trên trình duyệt; audio giữ nguyên cho đến khi cắt hoặc tạo lại.</span><div class="audio-excerpt"><b>AUDIO ĐANG CÓ</b>${clips.length?clips.map(a=>`<p lang="${lang}">${esc(a.text)}</p><span class="source-note">${esc(sourceLabel(a))} · ${a.duration.toFixed(2)} s${a.dashboardOnly?' · mẫu bàn giao':''}</span>`).join(''):'<p>Chưa có bản thu cho câu này. Bộ xuất sẽ ghi yêu cầu xử lý.</p>'}<div class="action-row"><button class="secondary" data-play-cue="${esc(c.id)}" data-language="${lang}" ${clips.length?'':'disabled'}>Nghe audio hiện có</button>${clips.length?`<a class="text-link" href="${esc(clips[0].file)}" download>Tải đoạn đầu ↓</a>`:''}</div></div>${c.notes?`<p class="source-note">${esc(c.notes)}</p>`:''}<details><summary>Điều kiện phát & ưu tiên</summary><ul class="condition-list">${conditionCopy(c).map(x=>'<li>'+esc(x)+'</li>').join('')}</ul></details><div class="scenario"><h3>Thử đúng tình huống</h3><div class="scenario-fields"><label>Trạng thái<select data-state="phase">${[['ceremony','Khai mạc'],['intro','Lia máy'],['ready','Sẵn sàng'],['countdown','Đếm ngược'],['racing','Đang đua'],['paused','Tạm dừng'],['finished','Kết thúc']].map(([v,l])=>option(v,l,state.phase)).join('')}</select></label><label>Ghe bạn tại (m)<input data-state="distance" type="number" min="0" max="1200" value="${state.distance}"></label><label>Thời gian đua (s)<input data-state="elapsed" type="number" min="0" value="${state.elapsed}"></label><label>Chênh lệch (+ bạn dẫn)<input data-state="gap" type="number" value="${state.gap}"></label><label>Ghe của bạn<select data-state="player">${teamOptions(state.player)}</select></label><label>Đối thủ<select data-state="opponent">${teamOptions(state.opponent)}</select></label><label>Cách chèo<select data-state="pace">${[['recover','Giữ sức'],['steady','Đều nhịp'],['sprint','Nước rút']].map(([v,l])=>option(v,l,state.pace)).join('')}</select></label><label>Kết quả<select data-state="result">${[['win','Bạn thắng'],['loss','Đối thủ thắng'],['tie','Hòa'],['dnf','Không hoàn thành']].map(([v,l])=>option(v,l,state.result)).join('')}</select></label><label>Chuỗi nhịp<input data-state="combo" type="number" min="0" value="${state.combo}"></label><label>Sức (%)<input data-state="stamina" type="number" min="0" max="100" value="${state.stamina}"></label></div>${[['surgeActive','Đạp đang bật'],['leadChanged','Vừa đổi ngôi thật'],['cupChampion','Đã vô địch cả cúp']].map(([k,l])=>`<label class="check"><input type="checkbox" data-state="${k}" ${state[k]?'checked':''}>${l}</label>`).join('')}<button class="text-button" id="apply-scene">Áp dụng điều kiện của cảnh này ↗</button><div id="eligibility" class="eligibility" role="status"></div><button id="play-scene" class="primary">Phát thử theo trạng thái</button></div></div>`;
-  updateEligibility();
+  const item=current(),entries=visible(),index=entries.findIndex(i=>i.id===item?.id);
+  $('previous').disabled=index<=0;$('next').disabled=index<0||index>=entries.length-1;
+  $('position').textContent=item?(view==='teams'?'TÊN ĐỘI':view==='field'?'ÂM THANH NỀN':phaseName(item.stage))+' · '+(index+1)+' / '+entries.length:'';
+  $('item-title').textContent=item?.title||'Không có mục phù hợp';$('item-context').textContent=item?.when||'Thử bỏ tìm kiếm hoặc bộ lọc để tiếp tục.';
+  for(const el of document.querySelectorAll('.variant-wrap,.listen,.transcripts,.review,.more'))el.hidden=!item;
+  $('audio-note').hidden=!item;$('warning').hidden=true;if(!item)return;
+  const keys=keysFor(item),key=keyFor(item),clip=clips[key],r=reviewFor(item,key);
+  $('variant-wrap').hidden=keys.length<=1;
+  $('variant').innerHTML=keys.map((k,i)=>`<option value="${esc(k)}" ${k===key?'selected':''}>${esc(variantName(k,i))}</option>`).join('');
+  $('audio-note').textContent=key?sourceName(clip)+(Number.isFinite(clip.duration)?' · '+clip.duration.toFixed(2)+' giây':'')+(handoff.summary?' · Bản để nghe duyệt':''):'Chưa có audio';
+  const warnings=warningsFor(item,key);$('warning').textContent=warnings.join(' ');$('warning').hidden=!warnings.length;
+  $('play').disabled=!key;$('replay').disabled=!key;$('play').textContent=view==='field'?'Nghe đoạn này':'Nghe '+(lang==='km'?'Khmer':'Việt');
+  renderTexts(item,key);
+  $('review-state').textContent=statusName(r.status);$('review-note').value=r.note||'';
+  document.querySelectorAll('[data-review]').forEach(b=>{b.setAttribute('aria-pressed',b.dataset.review===r.status);b.disabled=b.dataset.review==='pass'&&!key;});
+  $('edit-fields').hidden=view!=='cues';$('edit-km').value=item.text.km;$('edit-vi').value=item.text.vi;
+  $('more').open=false;
+  $('source-detail').innerHTML=(key?`<p>${esc(key)}</p><p>File: <code>${esc(clip.file)}</code></p><p>SHA-256: <code>${esc(clip.sha256)}</code></p><a href="${esc(clip.file)}" download>Tải audio đang chọn</a>${clip.sourceUrl?`<p><a href="${esc(clip.sourceUrl)}" target="_blank" rel="noopener">Mở nguồn gốc</a>${clip.sourceStart!=null?' · từ '+clip.sourceStart+' giây':''}</p>`:''}`:'<p>Chưa có file để nghe.</p>')+(item.cue?`<p>Điều kiện phát trong game:</p><pre>${esc(JSON.stringify(item.cue.conditions,null,2))}</pre><p>Ưu tiên ${item.cue.priority} · cách lần trước ${item.cue.cooldownSeconds}s. Thử nghe ở đây không kích hoạt lời bình trong game.</p>`:'')+`<p>Đánh dấu ở dashboard là kết quả kiểm tra của người nghe. Phát âm Khmer bản ngữ chưa được xác nhận tự động.</p>`;
  }
- function updateEligibility(){
-  const c=current(),e=rules.eligibility(c,state),s=rules.selection(c,lang,data,state);
-  $('eligibility').className='eligibility'+(s.allowed?'':' blocked');
-  $('eligibility').textContent=s.allowed?'Đủ điều kiện · '+s.keys.length+' đoạn sẽ phát nối tiếp.':e.allowed?s.reasons.join(' · ')+'. Nghe bản hiện có ở phía trên để đối chiếu.':e.reasons.join(' · ');
-  $('play-scene').disabled=!s.allowed;
-  if(activeSimulation){const live=rules.selection(script.cues.find(c=>c.id===activeSimulation.cueId),activeSimulation.lang,data,state);if(!live.allowed)stop('Đã hủy lượt nghe vì trạng thái không còn đúng.');}
+ function render(){
+  const entries=visible();if(!entries.some(i=>i.id===selected[view]))selected[view]=entries[0]?.id||null;
+  document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.view===view));
+  document.querySelectorAll('[data-lang]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===lang));
+  document.querySelector('.language-tabs').hidden=view==='field';$('stage-filter').hidden=view!=='cues';
+  $('toggle-list').textContent='Chọn mục khác · '+items().length+' mục '+($('library').classList.contains('list-open')?'⌃':'⌄');
+  renderList();renderDetail();
  }
- function applyScene(){
-  const c=current(),r=c.conditions;
-  Object.assign(state,{phase:r.phases?.[0]||'racing',distance:r.minDistance??(r.maxDistance!=null?Math.min(100,r.maxDistance-1):400),elapsed:r.minElapsed??(r.maxElapsed!=null?Math.min(1,r.maxElapsed):50),gap:r.minAbsGap??0,pace:r.paces?.[0]||(c.stage==='final'?'sprint':'steady'),combo:r.minCombo??35,stamina:r.maxStamina??70,surgeActive:r.surgeActive??false,leadChanged:!!r.leadChanged,cupChampion:!!r.cupChampion,result:r.results?.[0]||'win'});
-  if(r.teamIds)state.player=r.teamIds[0];
-  if(state.player===state.opponent)state.opponent=Object.keys(data.teams).find(id=>id!==state.player);
-  renderDetail();
+ function play(restart=false){
+  const item=current(),key=item&&keyFor(item);if(!key)return;
+  if(!restart&&playingKey===key&&player.src){if(!player.paused){player.pause();return;}player.play().catch(()=>{$('play-status').textContent='Bấm Play trên thanh nghe để tiếp tục.';});return;}
+  stop();const token=playSerial;playingKey=key;player.loop=$('loop').checked;
+  player.src=clips[key].file+'?audio='+clips[key].sha256.slice(0,12);
+  player.onended=()=>{if(token===playSerial){$('play-status').textContent='Đã nghe hết. Đánh dấu hoặc nghe lại.';$('play').textContent='Nghe lại';}};
+  player.onerror=()=>{if(token===playSerial)stop('Không tải được audio. Thử lại hoặc kiểm tra file.');};
+  player.play().catch(()=>{if(token===playSerial)$('play-status').textContent='Chưa phát được. Bấm Play trong thanh nghe để thử lại.';});
  }
- function renderTeams(){
-  const q=searchText($('team-search').value);
-  $('team-list').innerHTML=Object.entries(data.teams).filter(([id,t])=>searchText(id+' '+t.nameVi+' '+t.nameKm).includes(q)).map(([id,t])=>{
-   const km=t.names.khmer.map(k=>data.clips[k]),vi=t.names.voice;
-   return `<article class="team-card"><p class="code">${esc(id)} · ${t.gender==='male'?'NAM':t.gender==='female'?'NỮ':'GIỚI TÍNH CHƯA CHỐT'}</p><h3>${esc(t.nameVi)}</h3><p class="khmer-name" lang="km">${esc(t.nameKm||km[0]?.text||'Tên Khmer chưa xác minh')}</p><p class="source-note">${vi.length?'Việt · bản thu gốc':'Việt · chưa có audio'}<br>${km.length?km.some(c=>c.sourceType==='azure-stock-neural')?'Khmer · Azure stock, chờ duyệt phát âm':'Khmer · bản thu gốc':'Khmer · chưa có audio'}</p><div class="action-row"><button class="secondary" data-team="${esc(id)}" data-language="vi" ${vi.length?'':'disabled'}>Nghe Việt</button><button class="secondary" data-team="${esc(id)}" data-language="km" ${km.length?'':'disabled'}>Nghe Khmer</button></div></article>`;
-  }).join('')||'<p class="empty">Không tìm thấy đội phù hợp.</p>';
+ player.addEventListener('play',()=>{$('play').textContent='Tạm dừng';$('play-status').textContent='Đang nghe '+(current()?.title||'audio')+'.';});
+ player.addEventListener('pause',()=>{if(playingKey&&!player.ended)$('play').textContent='Nghe tiếp';});
+ function choose(id,listen=autoListen){stop();selected[view]=id;render();persist();if(listen)play();}
+ function step(delta){const entries=visible(),i=entries.findIndex(x=>x.id===selected[view]),next=entries[i+delta];if(next)choose(next.id);}
+ function mark(status){
+  const item=current();if(!item)return;
+  const key=keyFor(item),entries=visible(),index=entries.findIndex(i=>i.id===item.id),nextId=entries[index+1]?.id;
+  reviews[reviewId(item,key)]={status,note:$('review-note').value,sha256:clips[key]?.sha256||null,expectedText:expected(item),updatedAt:new Date().toISOString()};
+  if(status!=='pending'&&$('advance').checked&&nextId)selected[view]=nextId;
+  stop();render();persist();if(autoListen&&selected[view]!==item.id)play();
+  if(selected[view]!==item.id&&innerWidth<=700)$('detail').scrollIntoView({block:'start',behavior:'auto'});
  }
- function stop(message='Đã dừng lượt nghe.'){
-  serial++;queue=[];activeSimulation=null;player.pause();player.removeAttribute('src');player.load();$('play-status').textContent=message;
- }
- function play(keys,title,detail,simulation=null){
-  stop('');if(!keys.length){$('play-status').textContent='Chưa có bản thu phù hợp.';return;}
-  activeSimulation=simulation;queue=keys.map(key=>({key,clip:data.clips[key]}));const token=serial;
-  $('playing-title').textContent=title;$('playing-detail').textContent=detail;
-  const next=()=>{
-   if(token!==serial)return;
-   if(activeSimulation&&!rules.selection(script.cues.find(c=>c.id===activeSimulation.cueId),activeSimulation.lang,data,state).allowed){stop('Trạng thái đã đổi. Bỏ audio hết ngữ cảnh.');return;}
-   const entry=queue.shift();if(!entry){activeSimulation=null;$('play-status').textContent='Đã phát hết lượt nghe.';return;}
-   const {clip,key}=entry;
-   $('player-language').textContent=clip.lang==='km'?'ភាសាខ្មែរ · KHMER':'TIẾNG VIỆT';
-   $('play-status').textContent=sourceLabel(clip)+' · '+key+' · '+(queue.length?'còn '+queue.length+' đoạn':'đoạn cuối');
-   player.src=clip.file+'?audio='+clip.sha256.slice(0,12);player.onended=()=>{if(token===serial)setTimeout(next,150);};
-   player.onerror=()=>{if(token===serial)stop('Không tải được audio. Kiểm tra file hoặc kết nối rồi thử lại.');};
-   player.play().catch(()=>{if(token===serial)$('play-status').textContent='Chưa phát được. Bấm Play trong thanh nghe để thử lại.';});
-  };next();
- }
- function selectTab(value){
-  tab=value;for(const id of ['script','teams','handoff'])$(id+'-view').hidden=id!==value;
-  document.querySelectorAll('[data-tab]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.tab===value));
-  if(value==='teams')renderTeams();
+ function exportEntries(){
+  const out=[];
+  for(const which of ['cues','teams','field'])for(const item of items(which))for(const l of which==='field'?['vi']:['vi','km']){
+   const keys=keysFor(item,l);for(const key of keys.length?keys:[null]){
+    const clip=clips[key],r=reviewFor(item,key,l,which);
+    out.push({group:which,itemId:item.id,title:item.title,language:which==='field'?'field':l,clipId:key,
+     file:clip?.file||null,sha256:clip?.sha256||null,sourceType:clip?.sourceType||null,status:r.status,note:r.note||'',
+     expectedText:item.text[l],audioTextLabel:clip?.text||'',reviewedAt:r.updatedAt||null,nativeListeningVerified:false});
+   }
+  }
+  return out;
  }
  function download(name,text,type){const url=URL.createObjectURL(new Blob([text],{type})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
- function exportScript(){return {...script,exportReview:{packageId:data.packageId,editedCueIds:script.cues.filter(edited).map(c=>c.id),audioFilesChanged:false,recheckAudioAgainstEditedText:true}};}
- function csv(){const quote=v=>'"'+String(v??'').replace(/"/g,'""')+'"';const rows=[['cue_id','stage','language','when','conditions_json','script_text','actual_audio_text','audio_keys','status']];for(const c of script.cues)for(const l of ['vi','km'])rows.push([c.id,c.stage,l,c.when,JSON.stringify(c.conditions),c.text[l],c.audio[l].map(k=>data.clips[k].text).join(' '),c.audio[l].join(';'),rules.lineStatus(c,l,data.clips)]);return '\ufeff'+rows.map(r=>r.map(quote).join(',')).join('\r\n');}
+ function exportReview(){return {schema:2,packageId:data.packageId,sourceHashes:handoff.sourceHashes||{},runtimeChanged:false,reviewType:'owner-listening-review',entries:exportEntries()};}
+ function csv(){const quote=v=>'"'+String(v??'').replace(/"/g,'""')+'"';const entries=exportEntries(),cols=['group','itemId','title','language','clipId','status','note','audioTextLabel','expectedText','file','sha256'];return '\ufeff'+[cols,...entries.map(r=>cols.map(c=>r[c]))].map(r=>r.map(quote).join(',')).join('\r\n');}
  document.addEventListener('click',event=>{
-  const b=event.target.closest('button,a');if(!b)return;
-  if(b.dataset.tab){selectTab(b.dataset.tab);return;}
-  if(b.dataset.stage!=null){stage=b.dataset.stage;renderStages();renderList();return;}
-  if(b.dataset.cue){selected=b.dataset.cue;renderList();renderDetail();if(innerWidth<=620)$('cue-detail').scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});return;}
-  if(b.dataset.lang){lang=b.dataset.lang;renderDetail();return;}
-  if(b.dataset.playCue){const c=current();play(c.audio[b.dataset.language],c.title,'Audio hiện có để đối chiếu; không giả lập đủ điều kiện.');return;}
-  if(b.dataset.team){const t=data.teams[b.dataset.team];play(t.names[b.dataset.language==='vi'?'voice':'khmer'],t.nameVi,b.dataset.team+' · chỉ tên đội được chọn');return;}
-  if(b.id==='stop-playback')stop();
-  if(b.id==='apply-scene')applyScene();
-  if(b.id==='play-scene'){const c=current(),s=rules.selection(c,lang,data,state);if(s.allowed)play(s.keys,c.title,'Đang kiểm tra điều kiện trước từng đoạn.',{cueId:c.id,lang});}
-  if(b.id==='export-json')download('audio-script.json',JSON.stringify(exportScript(),null,2)+'\n','application/json;charset=utf-8');
-  if(b.id==='export-csv')download('audio-cue-sheet.csv',csv(),'text/csv;charset=utf-8');
-  if(b.id==='reset-edits'){script=structuredClone(baseline);try{localStorage.removeItem(storageKey);}catch{}$('save-status').textContent='Đã khôi phục kịch bản gốc.';renderSummary();renderList();renderDetail();}
+  const b=event.target.closest('button');if(!b)return;
+  if(b.dataset.view){stop();view=b.dataset.view;$('search').value='';$('review-filter').value='';$('stage-filter').value='';render();persist();return;}
+  if(b.dataset.lang){stop();lang=b.dataset.lang;render();persist();return;}
+  if(b.dataset.item){choose(b.dataset.item);if(innerWidth<=700){$('library').classList.remove('list-open');$('toggle-list').setAttribute('aria-expanded','false');$('toggle-list').textContent='Chọn mục khác · '+items().length+' mục ⌄';$('detail').focus({preventScroll:true});$('detail').scrollIntoView({block:'start',behavior:'auto'});}return;}
+  if(b.dataset.review){mark(b.dataset.review);return;}
+  if(b.id==='play')play();if(b.id==='replay')play(true);if(b.id==='previous')step(-1);if(b.id==='next')step(1);
+  if(b.id==='toggle-list'){const open=$('library').classList.toggle('list-open');b.setAttribute('aria-expanded',open);b.textContent=open?'Đóng danh sách':'Chọn mục khác · '+items().length+' mục';}
+  if(b.id==='export-json')download('audio-review.json',JSON.stringify(exportReview(),null,2)+'\n','application/json;charset=utf-8');
+  if(b.id==='export-csv')download('audio-review.csv',csv(),'text/csv;charset=utf-8');
+  if(b.id==='export-script')download('audio-script.json',JSON.stringify({...script,exportReview:{packageId:data.packageId,editedCueIds:script.cues.filter(c=>JSON.stringify(c.text)!==JSON.stringify(baseline.cues.find(b=>b.id===c.id).text)).map(c=>c.id),audioFilesChanged:false,recheckAudioAgainstEditedText:true}},null,2)+'\n','application/json;charset=utf-8');
  });
- let editTimer;
  document.addEventListener('input',event=>{
   const el=event.target;
-  if(el.id==='script-editor'){current().text[lang]=el.value;save();clearTimeout(editTimer);editTimer=setTimeout(()=>{renderSummary();renderList();const s=rules.lineStatus(current(),lang,data.clips),badge=document.querySelector('.script-label .pill');badge.textContent=statusLabel(s);badge.className='pill '+(s==='ready'?'ready':'missing');updateEligibility();},200);}
-  if(el.id==='search'||el.id==='status-filter')renderList();
-  if(el.id==='team-search')renderTeams();
-  if(el.dataset.state){state[el.dataset.state]=el.type==='checkbox'?el.checked:el.type==='number'?Number(el.value):el.value;updateEligibility();}
+  if(el.id==='search'){stop();render();}
+  if(el.id==='review-note'){
+   const item=current();if(!item)return;const key=keyFor(item),r=reviewFor(item,key);
+   reviews[reviewId(item,key)]={...r,note:el.value,sha256:clips[key]?.sha256||null,expectedText:expected(item)};persist();
+  }
+  if(el.id==='edit-km'||el.id==='edit-vi'){
+   const item=current();if(!item?.cue)return;const l=el.id==='edit-km'?'km':'vi';item.cue.text[l]=el.value;
+   edits[item.id]={...item.cue.text};persist();renderList();$('review-state').textContent='Lời đã sửa · cần đối chiếu lại';
+   document.querySelectorAll('[data-review]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.review===reviewFor(item).status));
+   renderTexts(item,keyFor(item));
+  }
  });
- document.addEventListener('change',event=>{if(event.target.id==='status-filter')renderList();});
- window.addEventListener('pagehide',()=>stop(''));
+ document.addEventListener('change',event=>{
+  const el=event.target;
+  if(el.id==='stage-filter'||el.id==='review-filter'){stop();render();}
+  if(el.id==='variant'){const item=current();if(item){choices[slot(item)]=el.value;stop();renderDetail();renderList();persist();if(autoListen)play();}}
+  if(el.id==='loop')player.loop=el.checked;
+  if(el.id==='auto-listen'){autoListen=el.checked;persist();}
+  if(el.id==='advance')persist();
+ });
+ document.addEventListener('keydown',event=>{
+  if(event.key==='Escape'){const tools=document.querySelector('.tools');if(tools.open){tools.open=false;tools.querySelector('summary').focus();}return;}
+  if(event.altKey||event.ctrlKey||event.metaKey||event.target.closest('input,textarea,select,audio,button,summary'))return;
+  if(event.key==='ArrowRight'){event.preventDefault();step(1);}if(event.key==='ArrowLeft'){event.preventDefault();step(-1);}
+ });
+ document.addEventListener('click',event=>{const tools=document.querySelector('.tools');if(tools.open&&!tools.contains(event.target))tools.open=false;});
+ window.addEventListener('pagehide',()=>stop());
+ $('stage-filter').innerHTML='<option value="">Mọi giai đoạn</option>'+script.stages.map(s=>`<option value="${esc(s.id)}">${esc(s.title)}</option>`).join('');
  for(const a of document.querySelectorAll('[data-file]'))a.href=data.downloadBase+a.dataset.file;
- $('download-zip').hidden=!data.packageZip;$('local-package').hidden=!!data.packageZip;
- if(data.packageZip)$('download-zip').href=data.packageZip;
- const requests=script.cues.flatMap(c=>['vi','km'].filter(l=>['needs-audio','reference-only'].includes(rules.lineStatus(c,l,data.clips))).map(l=>c.id+' · '+l.toUpperCase()));
- $('request-summary').innerHTML='<h3>'+requests.length+' dòng còn cần xử lý</h3><p>'+requests.map(esc).join(' / ')+'</p>';
- $('waveform').innerHTML=Array.from({length:48},(_,i)=>`<i style="height:${12+Math.round((.5+.5*Math.sin(i*1.29))*Math.sin(i*.12+1)*45+10)}px"></i>`).join('');
- renderSummary();renderStages();renderList();renderDetail();
- if(script.cues.some(edited))$('save-status').textContent=script.cues.filter(edited).length+' câu chỉnh · đã khôi phục từ trình duyệt';
- // Public diagnostic surface for reproducible tests; no account or network credentials.
- window.AudioStudio={data,state,getScript:()=>structuredClone(script),stop};
+ $('download-zip').hidden=!data.packageZip;if(data.packageZip)$('download-zip').href=data.packageZip;
+ $('package-note').textContent=handoff.summary?`Đã nhận ${handoff.summary.files} file Khmer từ AGY: ${handoff.summary.reusedByHash} file trùng bản có sẵn, ${handoff.summary.newFiles} file mới. Phần tên đội có ứng viên cho ${handoff.summary.namedRegistrations} đăng ký. Chưa nhập gói này vào game; phát âm Khmer còn chờ duyệt.`:'Bộ nghe thử độc lập với game. Khmer còn cần duyệt phát âm.';
+ $('save-status').textContent=Object.keys(reviews).length?'Đã khôi phục kết quả trên trình duyệt':'Chưa có mục nào được đánh dấu';
+ render();
+ window.AudioStudio={data,getScript:()=>structuredClone(script),getReview:exportReview,getVisible:()=>visible().map(i=>i.id),stop};
 })();

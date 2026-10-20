@@ -2,3 +2,6 @@
 src/race/athlete-shirt.mjs -text
 # Generated Three.js shader strings retain upstream whitespace verbatim.
 public/assets/illustrated-v22/hybrid-boats.js -whitespace
+# Audio evidence snapshots must retain the bytes recorded in SHA-256 manifests.
+public/audio-dashboard/export/** -text -whitespace
+public/assets/race-audio/khmer-review/** -text -whitespace

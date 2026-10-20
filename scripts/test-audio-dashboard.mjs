@@ -8,7 +8,8 @@ const context={window:{}};vm.runInNewContext(await readFile(new URL('public/audi
 const data=JSON.parse(JSON.stringify(context.window.AUDIO_STUDIO_DATA));
 assert.equal(data.schema,1);assert.equal(data.runtimeChanged,false);
 assert.equal(data.script.cues.length,29);assert.equal(data.script.stages.length,10);
-assert.equal(Object.keys(data.teams).length,61);assert.equal(Object.keys(data.clips).length,213);
+assert.equal(Object.keys(data.teams).length,61);
+assert.equal(Object.keys(data.clips).length,213+(data.khmerHandoff?.summary.newFiles||0));
 assert.deepEqual(data.coverage,{nameVi:58,nameKm:56,historyVi:3,historyKm:2});
 assert.equal(new Set(data.script.cues.map(c=>c.id)).size,data.script.cues.length);
 const cue=id=>data.script.cues.find(c=>c.id===id);
@@ -55,4 +56,25 @@ assert(!rules.selection(changed,'km',data,{...state,elapsed:.5,distance:1}).allo
 const requests=JSON.parse(await readFile(new URL('public/audio-dashboard/export/requests.json',root)));
 for(const request of requests.requests){assert.equal(request.autoApprove,false);if(request.language==='vi')assert.equal(request.action,'find-and-cut-original');}
 assert.equal(requests.vietnameseTtsAllowed,false);
-console.log('Audio dashboard: 29 contextual cues, 213 hashed clips, 61 exact identities, language isolation, source/AI provenance, stale/paused/result/history gates and edited-text safeguards passed.');
+if(data.khmerHandoff){
+ const pack=data.khmerHandoff;
+ assert.equal(pack.runtimeChanged,false);assert.equal(pack.nativeListeningVerified,false);
+ assert.deepEqual(pack.summary,{files:89,reusedByHash:74,newFiles:15,cues:29,namedRegistrations:61,filesWithReviewWarnings:11});
+ assert.equal(Object.keys(pack.cues).length,29);assert.equal(Object.keys(pack.names).length,61);
+ const available=new Set();
+ for(const [id,review]of Object.entries(pack.cues)){
+  assert(cue(id));assert(review.variantKeys.includes(review.primaryKey));
+  for(const key of review.variantKeys){assert.equal(data.clips[key].lang,'km');available.add(key);}
+ }
+ for(const [id,keys]of Object.entries(pack.names)){
+  assert(data.teams[id]);for(const key of keys){assert(data.clips[key].teamIds.includes(id));available.add(key);}
+ }
+ for(const entry of Object.values(pack.files))assert(available.has(entry.clipId),'Every handed-off MP3 is reachable in the review UI');
+ assert(pack.files['audio/ai-champion-kos-thum-km.mp3'].reviewWarnings.length,'Do not hide copied variant text');
+ for(const id of ['ca_mau-04','ca_mau-10','ca_mau-13','can_tho-11','can_tho-32']){
+  const key=pack.names[id][0];assert.equal(data.clips[key].text,'','Filename is not a Khmer transcript');
+  assert(data.clips[key].reviewWarnings.length);assert.equal(data.clips[key].dashboardOnly,true);
+ }
+ console.log('AGY handoff: 89 verified file mappings, 74 reused / 15 new, all 29 cues and 61 name identities reachable; uncertain transcripts and copied variant labels stay flagged.');
+}
+console.log('Audio dashboard: contextual cues, hashed clips, exact identities, language isolation, source/AI provenance, stale/paused/result/history gates and edited-text safeguards passed.');

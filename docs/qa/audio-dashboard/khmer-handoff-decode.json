@@ -1,0 +1,539 @@
+{
+  "checked": [
+    {
+      "file": "audio/ai-ceremony-teams-km.mp3",
+      "durationDecoded": 6.936,
+      "peak": 0.57229,
+      "sha256": "93de39045dac44b02354475ab42ad8818b9925ba758b2563b7999929d34fbfd2"
+    },
+    {
+      "file": "audio/ai-champion-carrier-km.mp3",
+      "durationDecoded": 3.888,
+      "peak": 0.46212,
+      "sha256": "30cfe1165d8ed876d0715bcad1cf966cb8115be8b9006ddc5230fb039beb67f9"
+    },
+    {
+      "file": "audio/ai-champion-kos-thum-km.mp3",
+      "durationDecoded": 4.56,
+      "peak": 0.47688,
+      "sha256": "e9f9bfd849596db6d4b19dc09895c4ee078dbddfa8049b785558d3ebab6e4feb"
+    },
+    {
+      "file": "audio/ai-champion-tum-nup-km.mp3",
+      "durationDecoded": 4.512,
+      "peak": 0.47717,
+      "sha256": "7ae1036526212bf32914895e60efae472e0ef4b3cf0ee081c0307178e0f805ce"
+    },
+    {
+      "file": "audio/ai-close-race-km.mp3",
+      "durationDecoded": 2.8365,
+      "peak": 0.51568,
+      "sha256": "08531309a36ada0f6e0e0f7da1c4c08c93ee61666809809856eb6349c12e9657"
+    },
+    {
+      "file": "audio/ai-cohesion-km.mp3",
+      "durationDecoded": 2.4625,
+      "peak": 0.52204,
+      "sha256": "9eaa92c8a08bc2955a8328dddb9b01e32df614e0e3b4a94e8d310dba6be6bcbe"
+    },
+    {
+      "file": "audio/ai-cruise-context-km.mp3",
+      "durationDecoded": 5.136,
+      "peak": 0.51445,
+      "sha256": "1966009c625d38d18c552353f1cb6d5ac332759c86abec6e64bfb93baf3bda43"
+    },
+    {
+      "file": "audio/ai-cruise-km.mp3",
+      "durationDecoded": 3.175,
+      "peak": 0.48675,
+      "sha256": "e8ca41db65bbcb607b7a7195f44d525a0b5ce902090bd292a32d976fbb5d7274"
+    },
+    {
+      "file": "audio/ai-final-km.mp3",
+      "durationDecoded": 3.9697,
+      "peak": 0.49433,
+      "sha256": "4dd77c74dfdee28a4bb4c07ffb18393e2563acff5d07592b02aec3d32f10da72"
+    },
+    {
+      "file": "audio/ai-finish-dnf-km.mp3",
+      "durationDecoded": 4.3111,
+      "peak": 0.46459,
+      "sha256": "d3fc4ee4acbbf50b456b1636ec8b7ab4b432857f1176c44886ac78e2d62a49c7"
+    },
+    {
+      "file": "audio/ai-finish-loss-km.mp3",
+      "durationDecoded": 5.3965,
+      "peak": 0.53457,
+      "sha256": "3712f53d03bb299ed155caaa4d286c800c3a382aca5ade67ddd7eba58258befa"
+    },
+    {
+      "file": "audio/ai-finish-tie-km.mp3",
+      "durationDecoded": 4.9875,
+      "peak": 0.53756,
+      "sha256": "cde59cd17fcc28c78788fbc26ab9005fba44257cd3f67f30b57e7ed73c0a38fd"
+    },
+    {
+      "file": "audio/ai-finish-win-km.mp3",
+      "durationDecoded": 4.8318,
+      "peak": 0.45496,
+      "sha256": "51377872f38085e991248ddd7c8967af54a4e8d7a7f8c91a793e4e64f5313ee2"
+    },
+    {
+      "file": "audio/ai-go-km.mp3",
+      "durationDecoded": 1.82,
+      "peak": 0.48223,
+      "sha256": "7a39e55f8bd8e1aa11581e4621b4170a8028c24c6b5548bdb55bce86f418ca0d"
+    },
+    {
+      "file": "audio/ai-halfway-km.mp3",
+      "durationDecoded": 4.375,
+      "peak": 0.43957,
+      "sha256": "f6739d84bba4149dbe1bf48c8708772c0162d03b982a1a0b833ac8d51fd85ef2"
+    },
+    {
+      "file": "audio/ai-intro-carrier-km.mp3",
+      "durationDecoded": 3.816,
+      "peak": 0.4966,
+      "sha256": "84eccfca70cb606b99f22b78794066fb611eec974efb353079d8199a4ec58aab"
+    },
+    {
+      "file": "audio/ai-intro-match-tum-nup-kos-thum-km.mp3",
+      "durationDecoded": 4.896,
+      "peak": 0.50602,
+      "sha256": "3786ed0365c7574ed7071d68b2013406b3a16277ab72d8b22b96f790cb5b94b4"
+    },
+    {
+      "file": "audio/ai-last-fifty-km.mp3",
+      "durationDecoded": 2.1092,
+      "peak": 0.41976,
+      "sha256": "9203bca38d35df608d967cdf5317e2eef248f3b2ad5ecbcd66ebbcbb3d0a79a5"
+    },
+    {
+      "file": "audio/ai-last-hundred-km.mp3",
+      "durationDecoded": 2.1817,
+      "peak": 0.46097,
+      "sha256": "940a7f76d7df3ce8bf323fda98c4b88e7a1e9f1e00af5e4998cb130f60d8566b"
+    },
+    {
+      "file": "audio/ai-lead-change-km.mp3",
+      "durationDecoded": 4.2945,
+      "peak": 0.57124,
+      "sha256": "5e0aba27c5ed1508b2d114abffebd6a3380159041ae216b918a9825d92246eed"
+    },
+    {
+      "file": "audio/ai-name-ca_mau-01-km.mp3",
+      "durationDecoded": 2.525,
+      "peak": 0.49723,
+      "sha256": "b80e47b36ba720a06138a6896468e6779f81cd782ae2b13ef27cd36fdae7eeca"
+    },
+    {
+      "file": "audio/ai-name-ca_mau-03-km.mp3",
+      "durationDecoded": 2.9375,
+      "peak": 0.42189,
+      "sha256": "83c6ad304be67a766609dab7f7c86c4e375e5323c0b4a70c2ee8de68117e5b07"
+    },
+    {
+      "file": "audio/ai-name-ca_mau-04-km.mp3",
+      "durationDecoded": 2.304,
+      "peak": 0.50979,
+      "sha256": "180096fa4f34fa3ea5181dc9ad60309608107a523c35f537a07c29ef0d577527"
+    },
+    {
+      "file": "audio/ai-name-ca_mau-09-km.mp3",
+      "durationDecoded": 2.025,
+      "peak": 0.46609,
+      "sha256": "828f4846b7c9d1225a9061e4f736fbda38030d23208ce106498cf733317c9c5e"
+    },
+    {
+      "file": "audio/ai-name-ca_mau-10-km.mp3",
+      "durationDecoded": 2.4,
+      "peak": 0.4961,
+      "sha256": "26beba4b1d1d684738287ba7c86d965ba4d65772753088fd32f178d63436efdc"
+    },
+    {
+      "file": "audio/ai-name-ca_mau-11-km.mp3",
+      "durationDecoded": 2.8,
+      "peak": 0.51362,
+      "sha256": "83f6974034e414929e35f54d18398523b4d1647e8a6796957e866d0c087e54c3"
+    },
+    {
+      "file": "audio/ai-name-ca_mau-12-km.mp3",
+      "durationDecoded": 2.725,
+      "peak": 0.50975,
+      "sha256": "05a992d31d302772c9492a9e3c409c39ffc66b1f541c632d8d42dbc58b0a4141"
+    },
+    {
+      "file": "audio/ai-name-ca_mau-13-km.mp3",
+      "durationDecoded": 1.872,
+      "peak": 0.49073,
+      "sha256": "1824fad29ebcd2e34e6647c64a3976b689ad87e2be8a46b89cfc215e7de8697b"
+    },
+    {
+      "file": "audio/ai-name-can_tho-01-km.mp3",
+      "durationDecoded": 2.714,
+      "peak": 0.49258,
+      "sha256": "63cef2e1098e631e40e9c651e27fd34374f65b3a3ff1f0c49b8405b6ef9bb479"
+    },
+    {
+      "file": "audio/ai-name-can_tho-02-km.mp3",
+      "durationDecoded": 2.625,
+      "peak": 0.47534,
+      "sha256": "f117cd28f8f03639697373e303b0e09269dc79d727135a1f8bcf65c717384e98"
+    },
+    {
+      "file": "audio/ai-name-can_tho-03-km.mp3",
+      "durationDecoded": 1.85,
+      "peak": 0.50816,
+      "sha256": "2d349fa7a66e3073c1bae6b36a6b1bca79a5b653a12d8abc1712228de6db36e0"
+    },
+    {
+      "file": "audio/ai-name-can_tho-04-km.mp3",
+      "durationDecoded": 1.82,
+      "peak": 0.48816,
+      "sha256": "0172162f5f321fab8f13600908f8554033b56f373dce0d798670079371afaca3"
+    },
+    {
+      "file": "audio/ai-name-can_tho-05-km.mp3",
+      "durationDecoded": 2.9125,
+      "peak": 0.4579,
+      "sha256": "5c010d485a996b743b6847d039259f140664821cea373c31cdcca103881fd47a"
+    },
+    {
+      "file": "audio/ai-name-can_tho-06-km.mp3",
+      "durationDecoded": 2.8,
+      "peak": 0.46208,
+      "sha256": "ca633e0da6fe797a3c266b78fc829c59e0dc2d97d72da3ea72e3cd5968833c18"
+    },
+    {
+      "file": "audio/ai-name-can_tho-07-km.mp3",
+      "durationDecoded": 1.875,
+      "peak": 0.4834,
+      "sha256": "f5069c2313923683784dc6be92c2cabc23e3843ad47f3311493dfecbc0235fc8"
+    },
+    {
+      "file": "audio/ai-name-can_tho-08-km.mp3",
+      "durationDecoded": 1.875,
+      "peak": 0.47464,
+      "sha256": "91fa7d8639e122d4713fc56a10027778998d6d4cced2f98b8d1166db0af0232d"
+    },
+    {
+      "file": "audio/ai-name-can_tho-09-km.mp3",
+      "durationDecoded": 1.9875,
+      "peak": 0.43325,
+      "sha256": "d33763bcb2681b3c5a159e31c27d3ada381e42339831218a18514c26e47e955e"
+    },
+    {
+      "file": "audio/ai-name-can_tho-10-km.mp3",
+      "durationDecoded": 1.82,
+      "peak": 0.50641,
+      "sha256": "356dae546000758d0e1d40a72fab26d3257cf7da6017f83fa1f9c97c9f02f82f"
+    },
+    {
+      "file": "audio/ai-name-can_tho-11-km.mp3",
+      "durationDecoded": 2.496,
+      "peak": 0.48104,
+      "sha256": "c98cca26e5ab4fd4d66a5d86a00e8e6129927b6dae0cfd6e374bce0d8a595c11"
+    },
+    {
+      "file": "audio/ai-name-can_tho-12-km.mp3",
+      "durationDecoded": 2.5,
+      "peak": 0.48121,
+      "sha256": "c44ee64fa5260932af849ad4fbac42fad43cfc6a6b108c7ba533bfedaba778ad"
+    },
+    {
+      "file": "audio/ai-name-can_tho-14-km.mp3",
+      "durationDecoded": 1.82,
+      "peak": 0.47826,
+      "sha256": "2716e6e110deede2b1dc6e25076a1c62600230cf89cf2ba5135a8c2e27b5beb4"
+    },
+    {
+      "file": "audio/ai-name-can_tho-15-km.mp3",
+      "durationDecoded": 2.125,
+      "peak": 0.45406,
+      "sha256": "b8c0a36466355b5068a6500d2c2fe9adb3a31463cc95901da6183badc7202fdf"
+    },
+    {
+      "file": "audio/ai-name-can_tho-16-km.mp3",
+      "durationDecoded": 1.826,
+      "peak": 0.48131,
+      "sha256": "155098824a2ed3999efca77be5f5d57d8b4e13f734dc0e218f7ab80497603606"
+    },
+    {
+      "file": "audio/ai-name-can_tho-17-km.mp3",
+      "durationDecoded": 2.0,
+      "peak": 0.47904,
+      "sha256": "22a4dcdd94b5154a0f76a0e61c4339200a7ac0d67ea605a8d9d8fd5ec13a5788"
+    },
+    {
+      "file": "audio/ai-name-can_tho-18-km.mp3",
+      "durationDecoded": 1.82,
+      "peak": 0.48205,
+      "sha256": "ad4ceabe1668c56292ab57c68a27c49ebdfc2cbeb92b4ee7930df801ee216d4f"
+    },
+    {
+      "file": "audio/ai-name-can_tho-20-km.mp3",
+      "durationDecoded": 1.8625,
+      "peak": 0.41785,
+      "sha256": "52255c02d9336699a5b1399e6a940d1159498dc839fd417b4115e6a75d7c6612"
+    },
+    {
+      "file": "audio/ai-name-can_tho-21-km.mp3",
+      "durationDecoded": 1.82,
+      "peak": 0.42851,
+      "sha256": "a5bbbea9637bb7f260a0521460aa2920bc9c61976910537965358fd978d7e640"
+    },
+    {
+      "file": "audio/ai-name-can_tho-25-km.mp3",
+      "durationDecoded": 1.975,
+      "peak": 0.51447,
+      "sha256": "f6859ff36309d70ee5611984b3914104f0a99e53df8b12f174869c0a9ff60caa"
+    },
+    {
+      "file": "audio/ai-name-can_tho-26-km.mp3",
+      "durationDecoded": 1.8875,
+      "peak": 0.50291,
+      "sha256": "6b29386b06fa3b17ddb907a9d4e5e11d485c65cc92faed1205c9ce356e5ea301"
+    },
+    {
+      "file": "audio/ai-name-can_tho-27-km.mp3",
+      "durationDecoded": 1.82,
+      "peak": 0.48762,
+      "sha256": "26d30a8bdf5ab27e8538104bf8187afa5d7b2e86eef1a134c70877ae2c57536a"
+    },
+    {
+      "file": "audio/ai-name-can_tho-28-km.mp3",
+      "durationDecoded": 1.826,
+      "peak": 0.42957,
+      "sha256": "d2ec8aa6aad4e961f91b5dad35d21c46608439b1568b03251f303bbd1cdcba1e"
+    },
+    {
+      "file": "audio/ai-name-can_tho-29-km.mp3",
+      "durationDecoded": 1.9875,
+      "peak": 0.47452,
+      "sha256": "7a5c33d5f241020759a223b097c770bc47f5088e5e029a1ae88ac25ddf49d085"
+    },
+    {
+      "file": "audio/ai-name-can_tho-30-km.mp3",
+      "durationDecoded": 1.82,
+      "peak": 0.44489,
+      "sha256": "1dcf601792550d131d616d6965734bbc11e92dab48be140b1d6bdc30b4d6e11d"
+    },
+    {
+      "file": "audio/ai-name-can_tho-31-km.mp3",
+      "durationDecoded": 1.82,
+      "peak": 0.4648,
+      "sha256": "f715222b9731d9dd0a0d6e693867a5218d792780b7d0e04504e6599bab1f773a"
+    },
+    {
+      "file": "audio/ai-name-can_tho-32-km.mp3",
+      "durationDecoded": 2.328,
+      "peak": 0.49317,
+      "sha256": "dc56529bd1f1c07ae4ac5f02849f69a49d4581a1b4dc3f542daf2138fc1ddd37"
+    },
+    {
+      "file": "audio/ai-name-can_tho-33-km.mp3",
+      "durationDecoded": 1.9625,
+      "peak": 0.52305,
+      "sha256": "88df01f670f4b5c04bcc183da552104aaa81872862256e79e8f224d4bf35f529"
+    },
+    {
+      "file": "audio/ai-name-can_tho-34-km.mp3",
+      "durationDecoded": 1.9625,
+      "peak": 0.47422,
+      "sha256": "b3cc491085544a89731485ca6a6d735246500626d2ed43d3f8dc2b622be4ceb3"
+    },
+    {
+      "file": "audio/ai-name-can_tho-35-km.mp3",
+      "durationDecoded": 1.975,
+      "peak": 0.48684,
+      "sha256": "e24698cc863fbf25017b5ed01da8918b6e4cf38e53193e9730127014fbb9a46a"
+    },
+    {
+      "file": "audio/ai-name-can_tho-37-km.mp3",
+      "durationDecoded": 1.925,
+      "peak": 0.4791,
+      "sha256": "c67dbb5c83ffcf286110d964906d782332522487f5b71255017c1c78e1646c84"
+    },
+    {
+      "file": "audio/ai-name-can_tho-38-km.mp3",
+      "durationDecoded": 2.2125,
+      "peak": 0.52079,
+      "sha256": "d0f67f8d4a6f32e98085f182dbe32a8963674bb2667d9ab4cd70c1baa5ec6806"
+    },
+    {
+      "file": "audio/ai-name-can_tho-39-km.mp3",
+      "durationDecoded": 2.0625,
+      "peak": 0.48398,
+      "sha256": "23f3e2fe0d49861aa8fc999bf8f19e987339790c96a48a151ac97c2699fcd0aa"
+    },
+    {
+      "file": "audio/ai-name-can_tho-40-km.mp3",
+      "durationDecoded": 2.175,
+      "peak": 0.51706,
+      "sha256": "372ca0822b4ca3752106450c3477d15b8203ba2cc051583efc0aaa6d56b84c2e"
+    },
+    {
+      "file": "audio/ai-name-can_tho-41-km.mp3",
+      "durationDecoded": 1.82,
+      "peak": 0.46351,
+      "sha256": "a16d3fb0629209915ea7ce9eb3ccd1fd4167403c57633ab2cc7101a99ef28982"
+    },
+    {
+      "file": "audio/ai-name-can_tho-42-km.mp3",
+      "durationDecoded": 2.1625,
+      "peak": 0.51531,
+      "sha256": "81162c7fa49c70681ce5f13581fd83223aee1a989ba2a62ce3902fa505339c9d"
+    },
+    {
+      "file": "audio/ai-name-can_tho-43-km.mp3",
+      "durationDecoded": 2.0375,
+      "peak": 0.46793,
+      "sha256": "7381dc99c2087cfb6a1657a9a10e3fdec529199f873e28aeb6547cf603cf9155"
+    },
+    {
+      "file": "audio/ai-name-can_tho-44-km.mp3",
+      "durationDecoded": 1.82,
+      "peak": 0.48148,
+      "sha256": "d8267fc8f16bdf68c5dd3524b3a6452b8d6a5302329ea050b15eeb5055dc282e"
+    },
+    {
+      "file": "audio/ai-name-can_tho-46-km.mp3",
+      "durationDecoded": 1.82,
+      "peak": 0.43974,
+      "sha256": "a2bb5e89cf0100e548ba3492d78084eb1a9c3a72c5690b3ab3768772f044ccb4"
+    },
+    {
+      "file": "audio/ai-name-can_tho-47-km.mp3",
+      "durationDecoded": 1.875,
+      "peak": 0.48362,
+      "sha256": "f15288194b9bf111ab342603ee3712712bde47c581b1d04894188832d62d31bb"
+    },
+    {
+      "file": "audio/ai-name-can_tho-48-km.mp3",
+      "durationDecoded": 1.826,
+      "peak": 0.47905,
+      "sha256": "f498974f77110f8e726e282f2237623d141c03b3fa041ada1f1404ad5f8cf883"
+    },
+    {
+      "file": "audio/ai-ready-km.mp3",
+      "durationDecoded": 1.82,
+      "peak": 0.39547,
+      "sha256": "beec0f40ef882ddedf4ab9a24ea7fedc7eb164a79e49d87db8ba0a06f231bac6"
+    },
+    {
+      "file": "audio/ai-recover-km.mp3",
+      "durationDecoded": 3.737,
+      "peak": 0.56524,
+      "sha256": "9225e9ca4ef3df736eae5d858f90d73fa70c69a972b692de14dad0ff26d6ff29"
+    },
+    {
+      "file": "audio/ai-safe-margin-km.mp3",
+      "durationDecoded": 4.704,
+      "peak": 0.5377,
+      "sha256": "5f5b34dc4a02116464247ba8fa50bba7d1b6b3034c584b8e799436504234fc10"
+    },
+    {
+      "file": "audio/ai-start-drive-km.mp3",
+      "durationDecoded": 4.248,
+      "peak": 0.50734,
+      "sha256": "35922288e6e040ca3320e903e794bf0fc33169a2e6eb0de1cef66fd34fe8d50a"
+    },
+    {
+      "file": "audio/ai-surge-km.mp3",
+      "durationDecoded": 1.82,
+      "peak": 0.5025,
+      "sha256": "8827110d6f84fecc717303282ba70be595b9446f909ec6877fef68920df0d2c1"
+    },
+    {
+      "file": "audio/khmer-finish.mp3",
+      "durationDecoded": 1.92,
+      "peak": 0.7535,
+      "sha256": "37375bb2bbc3703123e098ef7b7fcbc498bcb8f7ab9ed4ccd85a176f9e8b15f6"
+    },
+    {
+      "file": "audio/khmer-full-effort.mp3",
+      "durationDecoded": 2.481,
+      "peak": 0.68184,
+      "sha256": "b0c3dfcf6072ff98fd06a1e194cc5e68b9bddec52a76659d06bb65f6666be311"
+    },
+    {
+      "file": "audio/khmer-go.mp3",
+      "durationDecoded": 2.27,
+      "peak": 0.78632,
+      "sha256": "4d9ccca7426fdead15a7264e5c1ebda67e829776dcd55497ed5b4bc7a588abf2"
+    },
+    {
+      "file": "audio/khmer-intro.mp3",
+      "durationDecoded": 1.88,
+      "peak": 0.81162,
+      "sha256": "be897d565f3b470e5d2451dbfdcffee1649653ac9469c4c1174bafbbe074d16f"
+    },
+    {
+      "file": "audio/name-cham-pa-km.mp3",
+      "durationDecoded": 0.401,
+      "peak": 0.666,
+      "sha256": "90d5d9d69ae594c876488e9dd1d3dc03a56692026362db48b262fc0fb35ecec9"
+    },
+    {
+      "file": "audio/name-day-om-pu-km.mp3",
+      "durationDecoded": 0.82,
+      "peak": 0.68279,
+      "sha256": "8385a5023933f0c3779ad63337b6bb92302e2ba44313ff9fed27f0277c1d292c"
+    },
+    {
+      "file": "audio/name-kos-thum-km.mp3",
+      "durationDecoded": 0.62,
+      "peak": 0.68405,
+      "sha256": "59e9c60858499e78c57e96235333521b3c4397ba33c4e17aeb64db1d4f9c4d3c"
+    },
+    {
+      "file": "audio/name-kos-thum-two-km.mp3",
+      "durationDecoded": 1.58,
+      "peak": 0.68405,
+      "sha256": "85699e2b7f120b32aae9a555cec6ab06eddcc36b4ac671bcfa28f11fdb2a7aac"
+    },
+    {
+      "file": "audio/name-pong-tuk-chas-km.mp3",
+      "durationDecoded": 0.72,
+      "peak": 0.68412,
+      "sha256": "abc40d32f62542ba4465fc2225eaa16cc4c50197242e5265b285ee1e5e49878f"
+    },
+    {
+      "file": "audio/name-rach-giong-km.mp3",
+      "durationDecoded": 1.14,
+      "peak": 0.67686,
+      "sha256": "dedbd65b99829bf1a22902017e5300457dc138e79598e9f7c0f46bcdd58eeba8"
+    },
+    {
+      "file": "audio/name-sang-ke-km.mp3",
+      "durationDecoded": 0.52,
+      "peak": 0.68869,
+      "sha256": "4c8f413ae7d6ebd6d417cde65664d007560bbb1731c5886957b4bfbb9fbd93dd"
+    },
+    {
+      "file": "audio/name-tum-nup-km.mp3",
+      "durationDecoded": 0.52,
+      "peak": 0.68744,
+      "sha256": "80c5fe8cdf9db1f58cb1e42e7e7167b6c22bbfe72bfed3208bff3a29780e90ba"
+    },
+    {
+      "file": "audio/trial-history-kos-thum-km.mp3",
+      "durationDecoded": 5.8907,
+      "peak": 0.57563,
+      "sha256": "94bfb492023427ee5591fb53e855096b2e98e2f5105771b3546ce04a5debaee7"
+    },
+    {
+      "file": "audio/trial-history-sro-lon-km.mp3",
+      "durationDecoded": 5.808,
+      "peak": 0.54426,
+      "sha256": "6fad0c804b1248fdef7685522ed6079fe8a62c437e9b66fe581aee28f3836650"
+    },
+    {
+      "file": "audio/trial-history-tum-nup-km.mp3",
+      "durationDecoded": 5.2583,
+      "peak": 0.54947,
+      "sha256": "04be4509b416f61b6a918d17080da7a558a424acb412a948fdc5066dc6bc3491"
+    }
+  ],
+  "nativePronunciationVerified": false
+}

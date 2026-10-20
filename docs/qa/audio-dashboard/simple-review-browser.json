@@ -1,0 +1,58 @@
+{
+  "browser": "Edge headless",
+  "viewports": [
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "reviewButtonsVisible": true,
+      "horizontalOverflow": false
+    },
+    {
+      "name": "tablet",
+      "width": 1024,
+      "height": 768,
+      "reviewButtonsVisible": true,
+      "horizontalOverflow": false
+    },
+    {
+      "name": "portrait",
+      "width": 768,
+      "height": 1024,
+      "reviewButtonsVisible": true,
+      "horizontalOverflow": false
+    },
+    {
+      "name": "landscape",
+      "width": 1180,
+      "height": 430,
+      "reviewButtonsVisible": true,
+      "horizontalOverflow": false
+    },
+    {
+      "name": "phone",
+      "width": 390,
+      "height": 844,
+      "reviewButtonsVisible": true,
+      "horizontalOverflow": false
+    },
+    {
+      "name": "small",
+      "width": 375,
+      "height": 812,
+      "reviewButtonsVisible": true,
+      "horizontalOverflow": false
+    }
+  ],
+  "noInitialAudioRequests": true,
+  "realNativePlayback": true,
+  "offlineFilePlayback": true,
+  "decodedKhmerFiles": 89,
+  "reviewPersistence": true,
+  "jsonAndCsvExport": true,
+  "editedTextInvalidatesVerdict": true,
+  "variantWarningVisible": true,
+  "languageIsolation": true,
+  "missingAudioCannotPass": true,
+  "errors": []
+}

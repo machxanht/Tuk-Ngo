@@ -1,26 +1,29 @@
-# Separate audio dashboard and Antigravity handoff
+# Audio review dashboard
 
-Canonical dashboard: https://machxanht.github.io/Tuk-Ngo/audio-dashboard/ . It is independent of the 3D game and loads no MP3 until a user presses Play. The original listening library links to this dashboard.
+Public route: `/audio-dashboard/`. Offline entry: `E:/AI/Um Tuk/audio/antigravity/dashboard/index.html`.
 
-`docs/audio-direction.json` is the authored scenario script: 29 cues over 10 stages from ceremony, flyover and the starting line to cruise, tactical events, the final 250 m and confirmed results. Each cue records the desired Vietnamese/Khmer text, existing audio keys, own-boat distance/time/state conditions, priority, cooldown and expiry. Vietnamese remains original audio. New or mismatched text becomes an explicit work request, not a claim that an old MP3 says new words. A cup championship requires the tournament champion; a heat win is insufficient.
+The interface has one selected item and one native audio player. Choose Tình huống, Tên đội or Âm thanh nền, select Khmer/Việt and listen. Previous/next buttons advance through the filtered list. Verdicts stay in a bottom bar; notes, variant choice and edited scripts save locally. On phones the list opens under Chọn mục khác. Xuất & bàn giao exports all review rows to JSON/CSV and scripts separately. No MP3 loads before playback or an explicit auto-listen action. Results are scoped to item, language, selected clip, audio hash and requested text; changing the requested text invalidates an earlier verdict.
 
-The dashboard provides stage/status/search filters, editable bilingual scripts with browser-local draft storage, source audio playback, a state simulator, 61 team profiles, revised JSON/CSV downloads, and a complete ZIP. Edited text is marked as requiring a new audio match. The simulator checks both the cue and individual recording conditions; it cancels playback if its state changes to an invalid context. One HTML audio element serializes all speech. A direct listen button remains available for reviewing audio regardless of simulated gameplay state.
+## Khmer handoff
 
-Build and export, using the project's existing Python installation:
+Source: `audio/antigravity/output/khmer/`. Import with:
 
 ```powershell
-python scripts/export-audio-dashboard.py --out 'E:/AI/Um Tuk/audio/antigravity' --zip-out 'E:/AI/Um Tuk/audio/antigravity.zip'
-node scripts/test-audio-dashboard.mjs
+python -X utf8 scripts/import-khmer-audio.py '../audio/antigravity/output/khmer'
+python -X utf8 scripts/export-audio-dashboard.py --out 'E:/AI/Um Tuk/audio/antigravity' --zip-out 'E:/AI/Um Tuk/audio/antigravity.zip'
 ```
 
-The handoff contains `manifest.json`, `script.json`, `script.md`, `cue-sheet.csv`, `teams.csv`, `requests.json`, `ANTIGRAVITY.md`, an offline dashboard and actual media. No account config, API key, executable or full source event video is copied. Local `dashboard/index.html` opens directly with file URLs and does not require a server. The full ZIP is also available at `/audio-dashboard/handoff.zip`.
+The 89 files comprise 74 byte-identical existing recordings and 15 new MP3s. Hashes resolve existing identities and source provenance; only new bytes are copied into `public/assets/race-audio/khmer-review/`. All 29 cues, variants and 61 registration name candidates are accessible in the review UI. The original source manifest/script/CSV/report remain under `khmer-review/source/`; the source output folder is not changed. Import requires safe paths, exact hashes/sizes, known cue IDs and resolvable review identities. Reimport/export is deterministic.
 
-The source manifest remains unchanged. The review package adds 44 already-rendered Khmer stock names and two Khmer history samples, with explicit AI provenance and native-review-pending status. Name coverage in the package is 58/61 Vietnamese and 56/61 Khmer. All 53 supplied Vietnamese name MP3s are preserved byte for byte. Original Khmer name clips and exact team/gender/number/history identities stay intact. Three Vietnamese and five Khmer registrations still lack a matching name recording.
+Five new name recordings have filenames in their declared text instead of Khmer transcripts. These stay without an asserted transcript and show an identity/content-review warning. Three carrier/champion variants repeat the Tum Núp text in their metadata and remain flagged. Three original name recordings are shared across multiple registrations and cannot establish number/gender by themselves. These 11 file-level warnings are not hidden by the source's 100% completion claim. All Khmer native pronunciation flags remain false.
 
-`audio/output_audio/tieng_khmer` is withheld: one sampled file is Vietnamese race commentary and another mentions Kos Thum 2 instead of its Bốn Mặt filename. The 53-file inventory and bounded machine evidence are in `docs/qa/team-audio/khmer-folder-review.json`; this is not independent native listening verification. The new name generator, `scripts/build-khmer-team-names.py`, writes only the review pack, never the game's runtime manifest. Its resumable WAV cache and Azure credentials remain outside Git. No further synthesis is needed to export the existing package.
+The game's runtime manifest and canonical script are unchanged. The dashboard overlays the supplied Khmer script only for review and preserves the Vietnamese original recordings. Asset downloads do not get added to the game startup path.
 
-Antigravity should begin at `E:/AI/Um Tuk/audio/antigravity/ANTIGRAVITY.md`. The instructions require SHA verification, exact registration IDs, contextual queue revalidation, pause/restart handling, paddle-clock whistle/drum alignment, and original Vietnamese recordings. `requests.json` lists incomplete or reference-only language lines for source selection or Khmer synthesis. This handoff does not itself run Antigravity or integrate its future output into the game.
+## Checks
 
-Browser evidence under `docs/qa/audio-dashboard/` records real Edge headless playback over HTTP and directly from the offline folder, 213 successful audio decodes, draft persistence, edited-script downloads, context-change cancellation and five viewports. Structural tests cover wrong results, stale starts, late metre calls, false lead changes, histories assigned to another registration, unresolved placeholders and edited-text mismatch. These checks do not establish native Khmer pronunciation or physical-tablet performance.
+- `node scripts/test-audio-dashboard.mjs`: cue/identity/source isolation, all 89 handoff file mappings, all 29 cues/61 name candidates, copied variant labels and missing transcripts.
+- `node scripts/test-race-audio.mjs`: unchanged game audio rules, source provenance and synchronization.
+- `docs/qa/audio-dashboard/khmer-handoff-decode.json`: actual FFmpeg decoding of all 89 input files, non-silence and peak checks; this does not certify language or pronunciation.
+- `docs/qa/audio-dashboard/simple-review-browser.json`: real Edge playback, offline file playback, 89 browser audio decodes, review persistence/export, text-change invalidation, variant warnings and six responsive viewport sizes.
 
-Published verification: Pages action `39402107800` succeeded at commit `d48a5509cff95b22aaa08b3d9f9f561c28e8d314`. The public dashboard, data, export manifest and 10,956,293-byte ZIP match the local artifacts. All 44 newly published Khmer MP3 hashes match. Public Edge playback of the Wáth Pích Khmer name passed at 1024 × 768 with no browser errors, no horizontal overflow and zero MP3 requests before a user play action. The local handoff contains 239 files; `requests.json` identifies 11 language lines across eight cues that still need audio or an exact text match.
+Generated evidence snapshots use `-text` attributes so Git cannot change their hashed line endings. Dashboard CSS/JS use a content-derived query token at the same canonical URLs to refresh cached UI assets.

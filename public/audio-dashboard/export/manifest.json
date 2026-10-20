@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "packageId": "21316553c270c077",
+  "packageId": "4eb292862781ff97",
   "scriptSha256": "7115ad1e385d8781e8b635d675b840e58fd245cce49f5435ee8fff469d3ad252",
   "clips": {
     "broadcast-ready": {
@@ -9472,6 +9472,412 @@
       },
       "sourceFile": "commentary-trial/history-kos-thum-km.mp3",
       "review": "native-review-pending"
+    },
+    "agy-ai-ceremony-teams-km": {
+      "file": "media/km/agy-ai-ceremony-teams-km.mp3",
+      "lang": "km",
+      "channel": "khmer",
+      "role": "commentary",
+      "teamIds": [],
+      "text": "ក្រុមទូកទាំងអស់បានមកជួបជុំគ្នានៅមុខវេទិកា។ ទស្សនិកជននៅតាមដងទន្លេកំពុងរង់ចាំការប្រកួត។",
+      "sourceType": "azure-stock-neural",
+      "duration": 6.936,
+      "peak": 0.5723,
+      "rms": 0.0763,
+      "bytes": 83232,
+      "sha256": "93de39045dac44b02354475ab42ad8818b9925ba758b2563b7999929d34fbfd2",
+      "dashboardOnly": true,
+      "nativeListeningVerified": false,
+      "synthesisEvidence": {
+        "voice": "km-KH-PisethNeural",
+        "manifest": "khmer-review/source/manifest.json",
+        "nativeListeningVerified": false
+      },
+      "reviewWarnings": [],
+      "textIsVerifiedTranscript": false,
+      "sourceFile": "khmer-review/ai-ceremony-teams-km.mp3",
+      "review": "native-review-pending"
+    },
+    "agy-ai-champion-carrier-km": {
+      "file": "media/km/agy-ai-champion-carrier-km.mp3",
+      "lang": "km",
+      "channel": "khmer",
+      "role": "commentary",
+      "teamIds": [],
+      "text": "សូមអបអរសាទរ ទុំនុប ២ ដែលបានឈ្នះជើងឯកពានរង្វាន់នេះ!",
+      "sourceType": "azure-stock-neural",
+      "duration": 3.888,
+      "peak": 0.4621,
+      "rms": 0.0735,
+      "bytes": 46656,
+      "sha256": "30cfe1165d8ed876d0715bcad1cf966cb8115be8b9006ddc5230fb039beb67f9",
+      "dashboardOnly": true,
+      "nativeListeningVerified": false,
+      "synthesisEvidence": {
+        "voice": "km-KH-PisethNeural",
+        "manifest": "khmer-review/source/manifest.json",
+        "nativeListeningVerified": false
+      },
+      "reviewWarnings": [
+        "Nhãn lời bị chép giống bản Tum Núp 2; cần nghe đối chiếu biến thể."
+      ],
+      "textIsVerifiedTranscript": false,
+      "sourceFile": "khmer-review/ai-champion-carrier-km.mp3",
+      "review": "native-review-pending"
+    },
+    "agy-ai-champion-kos-thum-km": {
+      "file": "media/km/agy-ai-champion-kos-thum-km.mp3",
+      "lang": "km",
+      "channel": "khmer",
+      "role": "commentary",
+      "teamIds": [],
+      "text": "សូមអបអរសាទរ ទុំនុប ២ ដែលបានឈ្នះជើងឯកពានរង្វាន់នេះ!",
+      "sourceType": "azure-stock-neural",
+      "duration": 4.56,
+      "peak": 0.4769,
+      "rms": 0.0755,
+      "bytes": 54720,
+      "sha256": "e9f9bfd849596db6d4b19dc09895c4ee078dbddfa8049b785558d3ebab6e4feb",
+      "dashboardOnly": true,
+      "nativeListeningVerified": false,
+      "synthesisEvidence": {
+        "voice": "km-KH-PisethNeural",
+        "manifest": "khmer-review/source/manifest.json",
+        "nativeListeningVerified": false
+      },
+      "reviewWarnings": [
+        "Nhãn lời bị chép giống bản Tum Núp 2; cần nghe đối chiếu biến thể."
+      ],
+      "textIsVerifiedTranscript": false,
+      "sourceFile": "khmer-review/ai-champion-kos-thum-km.mp3",
+      "review": "native-review-pending"
+    },
+    "agy-ai-champion-tum-nup-km": {
+      "file": "media/km/agy-ai-champion-tum-nup-km.mp3",
+      "lang": "km",
+      "channel": "khmer",
+      "role": "commentary",
+      "teamIds": [],
+      "text": "សូមអបអរសាទរ ទុំនុប ២ ដែលបានឈ្នះជើងឯកពានរង្វាន់នេះ!",
+      "sourceType": "azure-stock-neural",
+      "duration": 4.512,
+      "peak": 0.4772,
+      "rms": 0.0771,
+      "bytes": 54144,
+      "sha256": "7ae1036526212bf32914895e60efae472e0ef4b3cf0ee081c0307178e0f805ce",
+      "dashboardOnly": true,
+      "nativeListeningVerified": false,
+      "synthesisEvidence": {
+        "voice": "km-KH-PisethNeural",
+        "manifest": "khmer-review/source/manifest.json",
+        "nativeListeningVerified": false
+      },
+      "reviewWarnings": [],
+      "textIsVerifiedTranscript": false,
+      "sourceFile": "khmer-review/ai-champion-tum-nup-km.mp3",
+      "review": "native-review-pending"
+    },
+    "agy-ai-cruise-context-km": {
+      "file": "media/km/agy-ai-cruise-context-km.mp3",
+      "lang": "km",
+      "channel": "khmer",
+      "role": "commentary",
+      "teamIds": [],
+      "text": "ផ្លូវប្រណាំងនៅវែងទៀត។ ត្រូវរក្សាចង្វាក់ និងសន្សំកម្លាំងសម្រាប់ចុងផ្លូវ។",
+      "sourceType": "azure-stock-neural",
+      "duration": 5.136,
+      "peak": 0.5145,
+      "rms": 0.0784,
+      "bytes": 61632,
+      "sha256": "1966009c625d38d18c552353f1cb6d5ac332759c86abec6e64bfb93baf3bda43",
+      "dashboardOnly": true,
+      "nativeListeningVerified": false,
+      "synthesisEvidence": {
+        "voice": "km-KH-PisethNeural",
+        "manifest": "khmer-review/source/manifest.json",
+        "nativeListeningVerified": false
+      },
+      "reviewWarnings": [],
+      "textIsVerifiedTranscript": false,
+      "sourceFile": "khmer-review/ai-cruise-context-km.mp3",
+      "review": "native-review-pending"
+    },
+    "agy-ai-intro-carrier-km": {
+      "file": "media/km/agy-ai-intro-carrier-km.mp3",
+      "lang": "km",
+      "channel": "khmer",
+      "role": "commentary",
+      "teamIds": [],
+      "text": "ទុំនុប ២ ប្រកួតជាមួយ កោះធំ ១។ ក្រុមទាំងពីរកំពុងត្រៀមចេញដំណើរ។",
+      "sourceType": "azure-stock-neural",
+      "duration": 3.816,
+      "peak": 0.4966,
+      "rms": 0.0831,
+      "bytes": 45792,
+      "sha256": "84eccfca70cb606b99f22b78794066fb611eec974efb353079d8199a4ec58aab",
+      "dashboardOnly": true,
+      "nativeListeningVerified": false,
+      "synthesisEvidence": {
+        "voice": "km-KH-PisethNeural",
+        "manifest": "khmer-review/source/manifest.json",
+        "nativeListeningVerified": false
+      },
+      "reviewWarnings": [
+        "Nhãn lời bị chép giống bản Tum Núp 2; cần nghe đối chiếu biến thể."
+      ],
+      "textIsVerifiedTranscript": false,
+      "sourceFile": "khmer-review/ai-intro-carrier-km.mp3",
+      "review": "native-review-pending"
+    },
+    "agy-ai-intro-match-tum-nup-kos-thum-km": {
+      "file": "media/km/agy-ai-intro-match-tum-nup-kos-thum-km.mp3",
+      "lang": "km",
+      "channel": "khmer",
+      "role": "commentary",
+      "teamIds": [],
+      "text": "ទុំនុប ២ ប្រកួតជាមួយ កោះធំ ១។ ក្រុមទាំងពីរកំពុងត្រៀមចេញដំណើរ។",
+      "sourceType": "azure-stock-neural",
+      "duration": 4.896,
+      "peak": 0.506,
+      "rms": 0.0828,
+      "bytes": 58752,
+      "sha256": "3786ed0365c7574ed7071d68b2013406b3a16277ab72d8b22b96f790cb5b94b4",
+      "dashboardOnly": true,
+      "nativeListeningVerified": false,
+      "synthesisEvidence": {
+        "voice": "km-KH-PisethNeural",
+        "manifest": "khmer-review/source/manifest.json",
+        "nativeListeningVerified": false
+      },
+      "reviewWarnings": [],
+      "textIsVerifiedTranscript": false,
+      "sourceFile": "khmer-review/ai-intro-match-tum-nup-kos-thum-km.mp3",
+      "review": "native-review-pending"
+    },
+    "agy-ai-name-ca_mau-04-km": {
+      "file": "media/km/agy-ai-name-ca_mau-04-km.mp3",
+      "lang": "km",
+      "channel": "khmer",
+      "role": "team-name",
+      "teamIds": [
+        "ca_mau-04"
+      ],
+      "text": "",
+      "sourceType": "azure-stock-neural",
+      "duration": 2.304,
+      "peak": 0.5098,
+      "rms": 0.0651,
+      "bytes": 27648,
+      "sha256": "180096fa4f34fa3ea5181dc9ad60309608107a523c35f537a07c29ef0d577527",
+      "dashboardOnly": true,
+      "nativeListeningVerified": false,
+      "synthesisEvidence": {
+        "voice": "km-KH-PisethNeural",
+        "manifest": "khmer-review/source/manifest.json",
+        "nativeListeningVerified": false
+      },
+      "reviewWarnings": [
+        "Mã đội suy từ tên file; cần nghe xác nhận nội dung.",
+        "Gói chưa cung cấp lời chép Khmer cho file này."
+      ],
+      "textIsVerifiedTranscript": false,
+      "sourceFile": "khmer-review/ai-name-ca_mau-04-km.mp3",
+      "review": "native-review-pending"
+    },
+    "agy-ai-name-ca_mau-10-km": {
+      "file": "media/km/agy-ai-name-ca_mau-10-km.mp3",
+      "lang": "km",
+      "channel": "khmer",
+      "role": "team-name",
+      "teamIds": [
+        "ca_mau-10"
+      ],
+      "text": "",
+      "sourceType": "azure-stock-neural",
+      "duration": 2.4,
+      "peak": 0.4961,
+      "rms": 0.077,
+      "bytes": 28800,
+      "sha256": "26beba4b1d1d684738287ba7c86d965ba4d65772753088fd32f178d63436efdc",
+      "dashboardOnly": true,
+      "nativeListeningVerified": false,
+      "synthesisEvidence": {
+        "voice": "km-KH-PisethNeural",
+        "manifest": "khmer-review/source/manifest.json",
+        "nativeListeningVerified": false
+      },
+      "reviewWarnings": [
+        "Mã đội suy từ tên file; cần nghe xác nhận nội dung.",
+        "Gói chưa cung cấp lời chép Khmer cho file này."
+      ],
+      "textIsVerifiedTranscript": false,
+      "sourceFile": "khmer-review/ai-name-ca_mau-10-km.mp3",
+      "review": "native-review-pending"
+    },
+    "agy-ai-name-ca_mau-13-km": {
+      "file": "media/km/agy-ai-name-ca_mau-13-km.mp3",
+      "lang": "km",
+      "channel": "khmer",
+      "role": "team-name",
+      "teamIds": [
+        "ca_mau-13"
+      ],
+      "text": "",
+      "sourceType": "azure-stock-neural",
+      "duration": 1.872,
+      "peak": 0.4907,
+      "rms": 0.0648,
+      "bytes": 22464,
+      "sha256": "1824fad29ebcd2e34e6647c64a3976b689ad87e2be8a46b89cfc215e7de8697b",
+      "dashboardOnly": true,
+      "nativeListeningVerified": false,
+      "synthesisEvidence": {
+        "voice": "km-KH-PisethNeural",
+        "manifest": "khmer-review/source/manifest.json",
+        "nativeListeningVerified": false
+      },
+      "reviewWarnings": [
+        "Mã đội suy từ tên file; cần nghe xác nhận nội dung.",
+        "Gói chưa cung cấp lời chép Khmer cho file này."
+      ],
+      "textIsVerifiedTranscript": false,
+      "sourceFile": "khmer-review/ai-name-ca_mau-13-km.mp3",
+      "review": "native-review-pending"
+    },
+    "agy-ai-name-can_tho-11-km": {
+      "file": "media/km/agy-ai-name-can_tho-11-km.mp3",
+      "lang": "km",
+      "channel": "khmer",
+      "role": "team-name",
+      "teamIds": [
+        "can_tho-11"
+      ],
+      "text": "",
+      "sourceType": "azure-stock-neural",
+      "duration": 2.496,
+      "peak": 0.481,
+      "rms": 0.0724,
+      "bytes": 29952,
+      "sha256": "c98cca26e5ab4fd4d66a5d86a00e8e6129927b6dae0cfd6e374bce0d8a595c11",
+      "dashboardOnly": true,
+      "nativeListeningVerified": false,
+      "synthesisEvidence": {
+        "voice": "km-KH-PisethNeural",
+        "manifest": "khmer-review/source/manifest.json",
+        "nativeListeningVerified": false
+      },
+      "reviewWarnings": [
+        "Mã đội suy từ tên file; cần nghe xác nhận nội dung.",
+        "Gói chưa cung cấp lời chép Khmer cho file này."
+      ],
+      "textIsVerifiedTranscript": false,
+      "sourceFile": "khmer-review/ai-name-can_tho-11-km.mp3",
+      "review": "native-review-pending"
+    },
+    "agy-ai-name-can_tho-32-km": {
+      "file": "media/km/agy-ai-name-can_tho-32-km.mp3",
+      "lang": "km",
+      "channel": "khmer",
+      "role": "team-name",
+      "teamIds": [
+        "can_tho-32"
+      ],
+      "text": "",
+      "sourceType": "azure-stock-neural",
+      "duration": 2.328,
+      "peak": 0.4932,
+      "rms": 0.0686,
+      "bytes": 27936,
+      "sha256": "dc56529bd1f1c07ae4ac5f02849f69a49d4581a1b4dc3f542daf2138fc1ddd37",
+      "dashboardOnly": true,
+      "nativeListeningVerified": false,
+      "synthesisEvidence": {
+        "voice": "km-KH-PisethNeural",
+        "manifest": "khmer-review/source/manifest.json",
+        "nativeListeningVerified": false
+      },
+      "reviewWarnings": [
+        "Mã đội suy từ tên file; cần nghe xác nhận nội dung.",
+        "Gói chưa cung cấp lời chép Khmer cho file này."
+      ],
+      "textIsVerifiedTranscript": false,
+      "sourceFile": "khmer-review/ai-name-can_tho-32-km.mp3",
+      "review": "native-review-pending"
+    },
+    "agy-ai-safe-margin-km": {
+      "file": "media/km/agy-ai-safe-margin-km.mp3",
+      "lang": "km",
+      "channel": "khmer",
+      "role": "commentary",
+      "teamIds": [],
+      "text": "ទូកនាំមុខកំពុងបង្កើនគម្លាត ប៉ុន្តែការប្រកួតមិនទាន់បញ្ចប់ទេ។",
+      "sourceType": "azure-stock-neural",
+      "duration": 4.704,
+      "peak": 0.5377,
+      "rms": 0.075,
+      "bytes": 56448,
+      "sha256": "5f5b34dc4a02116464247ba8fa50bba7d1b6b3034c584b8e799436504234fc10",
+      "dashboardOnly": true,
+      "nativeListeningVerified": false,
+      "synthesisEvidence": {
+        "voice": "km-KH-PisethNeural",
+        "manifest": "khmer-review/source/manifest.json",
+        "nativeListeningVerified": false
+      },
+      "reviewWarnings": [],
+      "textIsVerifiedTranscript": false,
+      "sourceFile": "khmer-review/ai-safe-margin-km.mp3",
+      "review": "native-review-pending"
+    },
+    "agy-ai-start-drive-km": {
+      "file": "media/km/agy-ai-start-drive-km.mp3",
+      "lang": "km",
+      "channel": "khmer",
+      "role": "commentary",
+      "teamIds": [],
+      "text": "ក្រុមទាំងពីរបានចេញដំណើរហើយ។ ត្រូវចាប់ចង្វាក់ឱ្យស្មើគ្នា!",
+      "sourceType": "azure-stock-neural",
+      "duration": 4.248,
+      "peak": 0.5073,
+      "rms": 0.0766,
+      "bytes": 50976,
+      "sha256": "35922288e6e040ca3320e903e794bf0fc33169a2e6eb0de1cef66fd34fe8d50a",
+      "dashboardOnly": true,
+      "nativeListeningVerified": false,
+      "synthesisEvidence": {
+        "voice": "km-KH-PisethNeural",
+        "manifest": "khmer-review/source/manifest.json",
+        "nativeListeningVerified": false
+      },
+      "reviewWarnings": [],
+      "textIsVerifiedTranscript": false,
+      "sourceFile": "khmer-review/ai-start-drive-km.mp3",
+      "review": "native-review-pending"
+    },
+    "agy-trial-history-sro-lon-km": {
+      "file": "media/km/agy-trial-history-sro-lon-km.mp3",
+      "lang": "km",
+      "channel": "khmer",
+      "role": "commentary",
+      "teamIds": [],
+      "text": "ក្រុមទូកសរឡូន ២ បានជាប់ចំណាត់ថ្នាក់លេខបី ផ្នែកបុរស នៅឆ្នាំ ២០២៤។",
+      "sourceType": "azure-stock-neural",
+      "duration": 5.808,
+      "peak": 0.5443,
+      "rms": 0.0813,
+      "bytes": 69696,
+      "sha256": "6fad0c804b1248fdef7685522ed6079fe8a62c437e9b66fe581aee28f3836650",
+      "dashboardOnly": true,
+      "nativeListeningVerified": false,
+      "synthesisEvidence": {
+        "voice": "km-KH-PisethNeural",
+        "manifest": "khmer-review/source/manifest.json",
+        "nativeListeningVerified": false
+      },
+      "reviewWarnings": [],
+      "textIsVerifiedTranscript": false,
+      "sourceFile": "khmer-review/trial-history-sro-lon-km.mp3",
+      "review": "native-review-pending"
     }
   },
   "teams": {
@@ -11275,6 +11681,26 @@
     {
       "file": "docs/broadcast-audio-cuts.json",
       "sha256": "4c491351fe965ea2c3100495eae87e1a0df6c8af73ff670662d36c451ff73a53"
+    },
+    {
+      "file": "khmer-review/manifest.json",
+      "sha256": "d278d56c370a2eb8006be5a9ddac8454583acc07b17c80af57c0ba55ac759357"
+    },
+    {
+      "file": "khmer-review/source/manifest.json",
+      "sha256": "c572bfab414f170881f0982f21ba8a0ad9aa5a12c40606a7d13a38f6d88cfb05"
+    },
+    {
+      "file": "khmer-review/source/khmer-script.json",
+      "sha256": "a384507f7429d7dddf02846be366fbff8e8cd0d54f4df2bc290c8c0e89a5d7d2"
+    },
+    {
+      "file": "khmer-review/source/khmer-script.csv",
+      "sha256": "259a3361abc3fbdead5827121317a11152e86dc265622f633386d29ce9431f64"
+    },
+    {
+      "file": "khmer-review/source/review.md",
+      "sha256": "e78a83b84c54f84bd7de6e7179f2036ab01fcd22d770a9801af05c67b3167b6c"
     }
   ],
   "runtimeChanged": false,
@@ -11284,5 +11710,1791 @@
     "withheldFolder": "audio/output_audio/tieng_khmer",
     "withheldReason": "Prepared filenames conflict with sampled language/team content; not imported.",
     "handoffIsNotAutomaticGameIntegration": true
+  },
+  "khmerHandoff": {
+    "schema": 1,
+    "sourcePackageId": "khmer-audio-handover-2026",
+    "sourceHashes": {
+      "manifest.json": "c572bfab414f170881f0982f21ba8a0ad9aa5a12c40606a7d13a38f6d88cfb05",
+      "khmer-script.json": "a384507f7429d7dddf02846be366fbff8e8cd0d54f4df2bc290c8c0e89a5d7d2",
+      "khmer-script.csv": "259a3361abc3fbdead5827121317a11152e86dc265622f633386d29ce9431f64",
+      "review.md": "e78a83b84c54f84bd7de6e7179f2036ab01fcd22d770a9801af05c67b3167b6c"
+    },
+    "summary": {
+      "files": 89,
+      "reusedByHash": 74,
+      "newFiles": 15,
+      "cues": 29,
+      "namedRegistrations": 61,
+      "filesWithReviewWarnings": 11
+    },
+    "runtimeChanged": false,
+    "nativeListeningVerified": false,
+    "cues": {
+      "ceremony-welcome": {
+        "primaryKey": "khmer-intro",
+        "variantKeys": [
+          "khmer-intro"
+        ],
+        "text": {
+          "km": "ទស្សនិកជន ទាំងឡាយ ជា ទី មេត្រី",
+          "vi": "Quý khán giả thân mến, những hình ảnh rất là quen thuộc: khán đài và dọc bên dòng sông Maspéro đều đầy ắp khán giả."
+        },
+        "resolvedTextKm": null,
+        "conditions": {
+          "phases": [
+            "ceremony"
+          ]
+        },
+        "notes": "Tái sử dụng từ media/km/khmer-intro.mp3, đã xác thực SHA-256.",
+        "claimedStatus": "reused-verified",
+        "nativeListeningVerified": false
+      },
+      "ceremony-teams": {
+        "primaryKey": "agy-ai-ceremony-teams-km",
+        "variantKeys": [
+          "agy-ai-ceremony-teams-km"
+        ],
+        "text": {
+          "km": "ក្រុមទូកទាំងអស់បានមកជួបជុំគ្នានៅមុខវេទិកា។ ទស្សនិកជននៅតាមដងទន្លេកំពុងរង់ចាំការប្រកួត។",
+          "vi": "Các đội ghe đã hội tụ trước khán đài. Khán giả hai bờ sông đang chờ những lượt tranh tài."
+        },
+        "resolvedTextKm": null,
+        "conditions": {
+          "phases": [
+            "ceremony"
+          ]
+        },
+        "notes": "Tạo mới bằng Azure Speech km-KH-PisethNeural theo yêu cầu requests.json.",
+        "claimedStatus": "newly-synthesized",
+        "nativeListeningVerified": false
+      },
+      "flyover": {
+        "primaryKey": "khmer-intro",
+        "variantKeys": [
+          "khmer-intro"
+        ],
+        "text": {
+          "km": "ទស្សនិកជន ទាំងឡាយ ជា ទី មេត្រី",
+          "vi": "Nơi mà mỗi hội đua đều năm, sáu mươi đội tham gia. Cùng với đó là hàng chục ngàn khán giả ken dày hai bên bờ sông. Tất cả đã tạo nên những vũ điệu trên sông nước, những sắc màu của lễ hội rất khó có nơi nào có được."
+        },
+        "resolvedTextKm": null,
+        "conditions": {
+          "phases": [
+            "intro"
+          ]
+        },
+        "notes": "Tái sử dụng từ media/km/khmer-intro.mp3, đã xác thực SHA-256.",
+        "claimedStatus": "reused-verified",
+        "nativeListeningVerified": false
+      },
+      "team-introduction": {
+        "primaryKey": "agy-ai-intro-match-tum-nup-kos-thum-km",
+        "variantKeys": [
+          "agy-ai-intro-match-tum-nup-kos-thum-km",
+          "agy-ai-intro-carrier-km"
+        ],
+        "text": {
+          "km": "{player_name} ប្រកួតជាមួយ {opponent_name}។ ក្រុមទាំងពីរកំពុងត្រៀមចេញដំណើរ។",
+          "vi": "{player_name} gặp {opponent_name}. Hai đội đang chuẩn bị xuất phát."
+        },
+        "resolvedTextKm": "ទុំនុប ២ ប្រកួតជាមួយ កោះធំ ១។ ក្រុមទាំងពីរកំពុងត្រៀមចេញដំណើរ។",
+        "conditions": {
+          "phases": [
+            "intro",
+            "ready"
+          ]
+        },
+        "notes": "Đã giải quyết placeholder bằng tên đội thật: Tum Núp 2 (can_tho-23) vs Kos Thum 1 (ca_mau-05). Không đưa nguyên placeholder vào TTS.",
+        "claimedStatus": "newly-synthesized-resolved",
+        "nativeListeningVerified": false
+      },
+      "ready": {
+        "primaryKey": "ai-ready-km",
+        "variantKeys": [
+          "ai-ready-km"
+        ],
+        "text": {
+          "km": "ត្រៀមខ្លួន!",
+          "vi": "Đúng như chúng ta đã chờ đợi."
+        },
+        "resolvedTextKm": null,
+        "conditions": {
+          "phases": [
+            "countdown"
+          ]
+        },
+        "notes": "Tái sử dụng từ media/km/ai-ready-km.mp3, đã xác thực SHA-256.",
+        "claimedStatus": "reused-verified",
+        "nativeListeningVerified": false
+      },
+      "go": {
+        "primaryKey": "ai-go-km",
+        "variantKeys": [
+          "ai-go-km",
+          "khmer-go"
+        ],
+        "text": {
+          "km": "ចាប់ផ្តើមហើយ!",
+          "vi": "Hai đội vừa rời điểm xuất phát thôi."
+        },
+        "resolvedTextKm": null,
+        "conditions": {
+          "phases": [
+            "racing"
+          ],
+          "minElapsed": 0,
+          "maxElapsed": 3,
+          "minDistance": 0,
+          "maxDistance": 200
+        },
+        "notes": "Tái sử dụng từ media/km/ai-go-km.mp3 (kèm bản phát thanh khmer-go.mp3).",
+        "claimedStatus": "reused-verified",
+        "nativeListeningVerified": false
+      },
+      "start-drive": {
+        "primaryKey": "agy-ai-start-drive-km",
+        "variantKeys": [
+          "agy-ai-start-drive-km"
+        ],
+        "text": {
+          "km": "ក្រុមទាំងពីរបានចេញដំណើរហើយ។ ត្រូវចាប់ចង្វាក់ឱ្យស្មើគ្នា!",
+          "vi": "Đây chỉ là mới đoạn xuất phát thôi, đoạn đầu thôi."
+        },
+        "resolvedTextKm": null,
+        "conditions": {
+          "phases": [
+            "racing"
+          ],
+          "minElapsed": 3,
+          "maxElapsed": 15,
+          "maxDistance": 200
+        },
+        "notes": "Tạo mới bằng Azure Speech km-KH-PisethNeural theo yêu cầu requests.json.",
+        "claimedStatus": "newly-synthesized",
+        "nativeListeningVerified": false
+      },
+      "cruise": {
+        "primaryKey": "ai-cruise-km",
+        "variantKeys": [
+          "ai-cruise-km"
+        ],
+        "text": {
+          "km": "ឥឡូវត្រូវរក្សាចង្វាក់អុំឱ្យស្មើគ្នា។",
+          "vi": "Mọi việc vẫn còn có thể xảy ra. Đường đua vẫn còn khá là dài. Một nghìn hai trăm mét, thử thách thực sự cho sự dẻo dai, bền bỉ và nỗ lực cho đến những mét nước cuối cùng."
+        },
+        "resolvedTextKm": null,
+        "conditions": {
+          "phases": [
+            "racing"
+          ],
+          "minDistance": 200,
+          "maxDistance": 600
+        },
+        "notes": "Tái sử dụng từ media/km/ai-cruise-km.mp3, đã xác thực SHA-256.",
+        "claimedStatus": "reused-verified",
+        "nativeListeningVerified": false
+      },
+      "cruise-context": {
+        "primaryKey": "agy-ai-cruise-context-km",
+        "variantKeys": [
+          "agy-ai-cruise-context-km"
+        ],
+        "text": {
+          "km": "ផ្លូវប្រណាំងនៅវែងទៀត។ ត្រូវរក្សាចង្វាក់ និងសន្សំកម្លាំងសម្រាប់ចុងផ្លូវ។",
+          "vi": "Mọi việc vẫn còn có thể xảy ra. Đường đua vẫn còn khá là dài. Một nghìn hai trăm mét, thử thách thực sự cho sự dẻo dai, bền bỉ và nỗ lực cho đến những mét nước cuối cùng."
+        },
+        "resolvedTextKm": null,
+        "conditions": {
+          "phases": [
+            "racing"
+          ],
+          "minDistance": 200,
+          "maxDistance": 550
+        },
+        "notes": "Tạo mới bằng Azure Speech km-KH-PisethNeural theo yêu cầu requests.json.",
+        "claimedStatus": "newly-synthesized",
+        "nativeListeningVerified": false
+      },
+      "fatigue": {
+        "primaryKey": "ai-recover-km",
+        "variantKeys": [
+          "ai-recover-km"
+        ],
+        "text": {
+          "km": "បន្ថយចង្វាក់ ដើម្បីទុកកម្លាំងសម្រាប់ចុងផ្លូវ។",
+          "vi": "Nhẹ nhàng, nhẹ nhàng."
+        },
+        "resolvedTextKm": null,
+        "conditions": {
+          "phases": [
+            "racing"
+          ],
+          "minDistance": 200,
+          "maxDistance": 950,
+          "maxStamina": 20
+        },
+        "notes": "Tái sử dụng từ media/km/ai-recover-km.mp3, đã xác thực SHA-256.",
+        "claimedStatus": "reused-verified",
+        "nativeListeningVerified": false
+      },
+      "cohesion": {
+        "primaryKey": "ai-cohesion-km",
+        "variantKeys": [
+          "ai-cohesion-km"
+        ],
+        "text": {
+          "km": "ចង្វាក់អុំស្មើគ្នាល្អណាស់!",
+          "vi": "Nhẹ nhàng, nhẹ nhàng."
+        },
+        "resolvedTextKm": null,
+        "conditions": {
+          "phases": [
+            "racing"
+          ],
+          "minDistance": 200,
+          "maxDistance": 950,
+          "minCohesion": 80
+        },
+        "notes": "Tái sử dụng từ media/km/ai-cohesion-km.mp3, đã xác thực SHA-256.",
+        "claimedStatus": "reused-verified",
+        "nativeListeningVerified": false
+      },
+      "recover": {
+        "primaryKey": "ai-recover-km",
+        "variantKeys": [
+          "ai-recover-km"
+        ],
+        "text": {
+          "km": "បន្ថយចង្វាក់ ដើម្បីទុកកម្លាំងសម្រាប់ចុងផ្លូវ។",
+          "vi": "Nhẹ nhàng, nhẹ nhàng."
+        },
+        "resolvedTextKm": null,
+        "conditions": {
+          "phases": [
+            "racing"
+          ],
+          "minDistance": 200,
+          "maxDistance": 950,
+          "maxStamina": 35
+        },
+        "notes": "Tái sử dụng từ media/km/ai-recover-km.mp3, đã xác thực SHA-256.",
+        "claimedStatus": "reused-verified",
+        "nativeListeningVerified": false
+      },
+      "halfway": {
+        "primaryKey": "ai-halfway-km",
+        "variantKeys": [
+          "ai-halfway-km"
+        ],
+        "text": {
+          "km": "បានឆ្លងកាត់ពាក់កណ្តាលផ្លូវហើយ។ ត្រូវទុកកម្លាំងសម្រាប់ចុងផ្លូវ!",
+          "vi": "Nơi mà mỗi hội đua đều năm, sáu mươi đội tham gia. Cùng với đó là hàng chục ngàn khán giả ken dày hai bên bờ sông. Tất cả đã tạo nên những vũ điệu trên sông nước, những sắc màu của lễ hội rất khó có nơi nào có được."
+        },
+        "resolvedTextKm": null,
+        "conditions": {
+          "phases": [
+            "racing"
+          ],
+          "minDistance": 550,
+          "maxDistance": 750
+        },
+        "notes": "Tái sử dụng từ media/km/ai-halfway-km.mp3, đã xác thực SHA-256.",
+        "claimedStatus": "reused-verified",
+        "nativeListeningVerified": false
+      },
+      "close-race": {
+        "primaryKey": "ai-close-race-km",
+        "variantKeys": [
+          "ai-close-race-km"
+        ],
+        "text": {
+          "km": "ទូកទាំងពីរកំពុងប្រកៀកប្រកិតគ្នា!",
+          "vi": "Hiện tại thì cả hai vẫn đang so kè."
+        },
+        "resolvedTextKm": null,
+        "conditions": {
+          "phases": [
+            "racing"
+          ],
+          "minDistance": 200,
+          "maxDistance": 950,
+          "maxAbsGap": 3
+        },
+        "notes": "Tái sử dụng từ media/km/ai-close-race-km.mp3, đã xác thực SHA-256.",
+        "claimedStatus": "reused-verified",
+        "nativeListeningVerified": false
+      },
+      "lead-change": {
+        "primaryKey": "ai-lead-change-km",
+        "variantKeys": [
+          "ai-lead-change-km"
+        ],
+        "text": {
+          "km": "មានការវ៉ាឡើងមុខ! ទូកនាំមុខបានផ្លាស់ប្តូរហើយ!",
+          "vi": "Dẫn trước, dẫn trước"
+        },
+        "resolvedTextKm": null,
+        "conditions": {
+          "phases": [
+            "racing"
+          ],
+          "minDistance": 200,
+          "maxDistance": 950,
+          "onLeadChange": true
+        },
+        "notes": "Tái sử dụng từ media/km/ai-lead-change-km.mp3, đã xác thực SHA-256.",
+        "claimedStatus": "reused-verified",
+        "nativeListeningVerified": false
+      },
+      "safe-margin": {
+        "primaryKey": "agy-ai-safe-margin-km",
+        "variantKeys": [
+          "agy-ai-safe-margin-km"
+        ],
+        "text": {
+          "km": "ទូកនាំមុខកំពុងបង្កើនគម្លាត ប៉ុន្តែការប្រកួតមិនទាន់បញ្ចប់ទេ។",
+          "vi": "Rõ ràng là một khoảng cách an toàn."
+        },
+        "resolvedTextKm": null,
+        "conditions": {
+          "phases": [
+            "racing"
+          ],
+          "minAbsGap": 8
+        },
+        "notes": "Tạo mới bằng Azure Speech km-KH-PisethNeural theo yêu cầu requests.json.",
+        "claimedStatus": "newly-synthesized",
+        "nativeListeningVerified": false
+      },
+      "history-tum-nup": {
+        "primaryKey": "trial-history-tum-nup-km",
+        "variantKeys": [
+          "trial-history-tum-nup-km"
+        ],
+        "text": {
+          "km": "នៅឆ្នាំ ២០២៤ ក្រុមទូកទំនប់ ២ បានឈ្នះជើងឯកផ្នែកបុរស។",
+          "vi": "Tum Núp 2 là đương kim vô địch năm 2024."
+        },
+        "resolvedTextKm": null,
+        "conditions": {
+          "phases": [
+            "racing"
+          ],
+          "minDistance": 200,
+          "maxDistance": 750,
+          "teamIds": [
+            "can_tho-23"
+          ]
+        },
+        "notes": "Tái sử dụng từ media/km/trial-history-tum-nup-km.mp3, đã xác thực SHA-256.",
+        "claimedStatus": "reused-verified",
+        "nativeListeningVerified": false
+      },
+      "history-kos-thum": {
+        "primaryKey": "trial-history-kos-thum-km",
+        "variantKeys": [
+          "trial-history-kos-thum-km"
+        ],
+        "text": {
+          "km": "ក្រុមទូកកោះធំ ១ បានជាប់ចំណាត់ថ្នាក់លេខពីរ ផ្នែកបុរស នៅឆ្នាំ ២០២៤។",
+          "vi": "Kos Thum 1 là đội á quân nội dung nam năm 2024."
+        },
+        "resolvedTextKm": null,
+        "conditions": {
+          "phases": [
+            "racing"
+          ],
+          "minDistance": 200,
+          "maxDistance": 750,
+          "teamIds": [
+            "ca_mau-05"
+          ]
+        },
+        "notes": "Tái sử dụng từ media/km/trial-history-kos-thum-km.mp3, đã xác thực SHA-256.",
+        "claimedStatus": "reused-verified",
+        "nativeListeningVerified": false
+      },
+      "history-sro-lon": {
+        "primaryKey": "agy-trial-history-sro-lon-km",
+        "variantKeys": [
+          "agy-trial-history-sro-lon-km"
+        ],
+        "text": {
+          "km": "ក្រុមទូកសរឡូន ២ បានជាប់ចំណាត់ថ្នាក់លេខបី ផ្នែកបុរស នៅឆ្នាំ ២០២៤។",
+          "vi": "Sro Lôn 2 là đội hạng ba năm trước."
+        },
+        "resolvedTextKm": null,
+        "conditions": {
+          "phases": [
+            "racing"
+          ],
+          "minDistance": 200,
+          "maxDistance": 750,
+          "teamIds": [
+            "can_tho-06"
+          ]
+        },
+        "notes": "Tạo mới bằng Azure Speech km-KH-PisethNeural đồng nhất cấu trúc với Tum Núp 2 và Kos Thum 1.",
+        "claimedStatus": "newly-synthesized",
+        "nativeListeningVerified": false
+      },
+      "final": {
+        "primaryKey": "ai-final-km",
+        "variantKeys": [
+          "ai-final-km"
+        ],
+        "text": {
+          "km": "ដល់ដំណាក់កាលចុងក្រោយហើយ! បង្កើនល្បឿន!",
+          "vi": "Chúng ta thấy nhịp dầm của anh em đã được đẩy mạnh hơn rồi."
+        },
+        "resolvedTextKm": null,
+        "conditions": {
+          "phases": [
+            "racing"
+          ],
+          "minDistance": 950,
+          "maxDistance": 1100
+        },
+        "notes": "Tái sử dụng từ media/km/ai-final-km.mp3, đã xác thực SHA-256.",
+        "claimedStatus": "reused-verified",
+        "nativeListeningVerified": false
+      },
+      "sprint-effort": {
+        "primaryKey": "ai-final-km",
+        "variantKeys": [
+          "ai-final-km"
+        ],
+        "text": {
+          "km": "ដល់ដំណាក់កាលចុងក្រោយហើយ! បង្កើនល្បឿន!",
+          "vi": "Chúng ta thấy nhịp dầm của anh em đã được đẩy mạnh hơn rồi."
+        },
+        "resolvedTextKm": null,
+        "conditions": {
+          "phases": [
+            "racing"
+          ],
+          "minDistance": 950,
+          "maxDistance": 1150,
+          "requiresHardEffort": true
+        },
+        "notes": "Tái sử dụng từ media/km/ai-final-km.mp3, đã xác thực SHA-256.",
+        "claimedStatus": "reused-verified",
+        "nativeListeningVerified": false
+      },
+      "surge": {
+        "primaryKey": "ai-surge-km",
+        "variantKeys": [
+          "ai-surge-km",
+          "khmer-full-effort"
+        ],
+        "text": {
+          "km": "ប្រឹងអស់កម្លាំង!",
+          "vi": "Đạp rồi, đạp rồi"
+        },
+        "resolvedTextKm": null,
+        "conditions": {
+          "phases": [
+            "racing"
+          ],
+          "minDistance": 950,
+          "maxDistance": 1200,
+          "surgeActive": true
+        },
+        "notes": "Tái sử dụng từ media/km/ai-surge-km.mp3 (kèm bản phát thanh khmer-full-effort.mp3).",
+        "claimedStatus": "reused-verified",
+        "nativeListeningVerified": false
+      },
+      "last-hundred": {
+        "primaryKey": "ai-last-hundred-km",
+        "variantKeys": [
+          "ai-last-hundred-km"
+        ],
+        "text": {
+          "km": "១០០ ម៉ែត្រចុងក្រោយ!",
+          "vi": "Một trăm mét cuối!"
+        },
+        "resolvedTextKm": null,
+        "conditions": {
+          "phases": [
+            "racing"
+          ],
+          "minDistance": 1100,
+          "maxDistance": 1150
+        },
+        "notes": "Tái sử dụng từ media/km/ai-last-hundred-km.mp3, đã xác thực SHA-256.",
+        "claimedStatus": "reused-verified",
+        "nativeListeningVerified": false
+      },
+      "last-fifty": {
+        "primaryKey": "ai-last-fifty-km",
+        "variantKeys": [
+          "ai-last-fifty-km"
+        ],
+        "text": {
+          "km": "៥០ ម៉ែត្រចុងក្រោយ!",
+          "vi": "Năm mươi mét cuối!"
+        },
+        "resolvedTextKm": null,
+        "conditions": {
+          "phases": [
+            "racing"
+          ],
+          "minDistance": 1150,
+          "maxDistance": 1200
+        },
+        "notes": "Tái sử dụng từ media/km/ai-last-fifty-km.mp3, đã xác thực SHA-256.",
+        "claimedStatus": "reused-verified",
+        "nativeListeningVerified": false
+      },
+      "finish-win": {
+        "primaryKey": "ai-finish-win-km",
+        "variantKeys": [
+          "ai-finish-win-km",
+          "khmer-finish"
+        ],
+        "text": {
+          "km": "ដល់ទីហើយ! សូមអបអរសាទរក្រុមដែលឈ្នះជើងប្រណាំងនេះ!",
+          "vi": "Trước tiên xin chúc mừng một chiến thắng quan trọng của anh em."
+        },
+        "resolvedTextKm": null,
+        "conditions": {
+          "phases": [
+            "finished"
+          ],
+          "results": [
+            "win"
+          ],
+          "cupChampion": false
+        },
+        "notes": "Tái sử dụng từ media/km/ai-finish-win-km.mp3 (kèm bản phát thanh khmer-finish.mp3).",
+        "claimedStatus": "reused-verified",
+        "nativeListeningVerified": false
+      },
+      "finish-loss": {
+        "primaryKey": "ai-finish-loss-km",
+        "variantKeys": [
+          "ai-finish-loss-km"
+        ],
+        "text": {
+          "km": "គួរឱ្យសោកស្តាយ! គូប្រកួតបានដល់ទីមុន ក្នុងជើងប្រណាំងនេះ។",
+          "vi": "Quá tuyệt vời!"
+        },
+        "resolvedTextKm": null,
+        "conditions": {
+          "phases": [
+            "finished"
+          ],
+          "results": [
+            "loss"
+          ]
+        },
+        "notes": "Tái sử dụng từ media/km/ai-finish-loss-km.mp3, đã xác thực SHA-256.",
+        "claimedStatus": "reused-verified",
+        "nativeListeningVerified": false
+      },
+      "finish-tie": {
+        "primaryKey": "ai-finish-tie-km",
+        "variantKeys": [
+          "ai-finish-tie-km"
+        ],
+        "text": {
+          "km": "លទ្ធផលស្មើគ្នា! ទូកទាំងពីរដល់ទីប្រកៀកប្រកិតគ្នា!",
+          "vi": "Một trận đấu cực kỳ hấp dẫn."
+        },
+        "resolvedTextKm": null,
+        "conditions": {
+          "phases": [
+            "finished"
+          ],
+          "results": [
+            "tie"
+          ]
+        },
+        "notes": "Tái sử dụng từ media/km/ai-finish-tie-km.mp3, đã xác thực SHA-256.",
+        "claimedStatus": "reused-verified",
+        "nativeListeningVerified": false
+      },
+      "finish-dnf": {
+        "primaryKey": "ai-finish-dnf-km",
+        "variantKeys": [
+          "ai-finish-dnf-km"
+        ],
+        "text": {
+          "km": "គួរឱ្យសោកស្តាយ ក្រុមមួយមិនបានបញ្ចប់ជើងប្រណាំងនេះទេ។",
+          "vi": "Rất là tiếc."
+        },
+        "resolvedTextKm": null,
+        "conditions": {
+          "phases": [
+            "finished"
+          ],
+          "results": [
+            "dnf"
+          ]
+        },
+        "notes": "Tái sử dụng từ media/km/ai-finish-dnf-km.mp3, đã xác thực SHA-256.",
+        "claimedStatus": "reused-verified",
+        "nativeListeningVerified": false
+      },
+      "cup-champion": {
+        "primaryKey": "agy-ai-champion-tum-nup-km",
+        "variantKeys": [
+          "agy-ai-champion-tum-nup-km",
+          "agy-ai-champion-kos-thum-km",
+          "agy-ai-champion-carrier-km"
+        ],
+        "text": {
+          "km": "សូមអបអរសាទរ {winner_name} ដែលបានឈ្នះជើងឯកពានរង្វាន់នេះ!",
+          "vi": "Xin chúc mừng {winner_name}, đội vô địch cúp lễ hội!"
+        },
+        "resolvedTextKm": "សូមអបអរសាទរ ទុំនុប ២ ដែលបានឈ្នះជើងឯកពានរង្វាន់នេះ!",
+        "conditions": {
+          "phases": [
+            "finished"
+          ],
+          "results": [
+            "win"
+          ],
+          "cupChampion": true
+        },
+        "notes": "Đã giải quyết placeholder bằng tên đội vô địch thật (Tum Núp 2 và Kos Thum 1 kèm câu dẫn carrier). Không đưa nguyên placeholder vào TTS.",
+        "claimedStatus": "newly-synthesized-resolved",
+        "nativeListeningVerified": false
+      }
+    },
+    "names": {
+      "ca_mau-01": [
+        "ai-name-ca_mau-01-km"
+      ],
+      "ca_mau-03": [
+        "ai-name-ca_mau-03-km"
+      ],
+      "ca_mau-04": [
+        "agy-ai-name-ca_mau-04-km"
+      ],
+      "ca_mau-09": [
+        "ai-name-ca_mau-09-km"
+      ],
+      "ca_mau-10": [
+        "agy-ai-name-ca_mau-10-km"
+      ],
+      "ca_mau-11": [
+        "ai-name-ca_mau-11-km"
+      ],
+      "ca_mau-12": [
+        "ai-name-ca_mau-12-km"
+      ],
+      "ca_mau-13": [
+        "agy-ai-name-ca_mau-13-km"
+      ],
+      "can_tho-01": [
+        "ai-name-can_tho-01-km"
+      ],
+      "can_tho-02": [
+        "ai-name-can_tho-02-km"
+      ],
+      "can_tho-03": [
+        "ai-name-can_tho-03-km"
+      ],
+      "can_tho-04": [
+        "ai-name-can_tho-04-km"
+      ],
+      "can_tho-05": [
+        "ai-name-can_tho-05-km"
+      ],
+      "can_tho-06": [
+        "ai-name-can_tho-06-km"
+      ],
+      "can_tho-07": [
+        "ai-name-can_tho-07-km"
+      ],
+      "can_tho-08": [
+        "ai-name-can_tho-08-km"
+      ],
+      "can_tho-09": [
+        "ai-name-can_tho-09-km"
+      ],
+      "can_tho-10": [
+        "ai-name-can_tho-10-km"
+      ],
+      "can_tho-11": [
+        "agy-ai-name-can_tho-11-km"
+      ],
+      "can_tho-12": [
+        "ai-name-can_tho-12-km"
+      ],
+      "can_tho-14": [
+        "ai-name-can_tho-14-km"
+      ],
+      "can_tho-15": [
+        "ai-name-can_tho-15-km"
+      ],
+      "can_tho-16": [
+        "ai-name-can_tho-16-km"
+      ],
+      "can_tho-17": [
+        "ai-name-can_tho-17-km"
+      ],
+      "can_tho-18": [
+        "ai-name-can_tho-18-km"
+      ],
+      "can_tho-20": [
+        "ai-name-can_tho-20-km"
+      ],
+      "can_tho-21": [
+        "ai-name-can_tho-21-km"
+      ],
+      "can_tho-25": [
+        "ai-name-can_tho-25-km"
+      ],
+      "can_tho-26": [
+        "ai-name-can_tho-26-km"
+      ],
+      "can_tho-27": [
+        "ai-name-can_tho-27-km"
+      ],
+      "can_tho-28": [
+        "ai-name-can_tho-28-km"
+      ],
+      "can_tho-29": [
+        "ai-name-can_tho-29-km"
+      ],
+      "can_tho-30": [
+        "ai-name-can_tho-30-km"
+      ],
+      "can_tho-31": [
+        "ai-name-can_tho-31-km"
+      ],
+      "can_tho-32": [
+        "agy-ai-name-can_tho-32-km"
+      ],
+      "can_tho-33": [
+        "ai-name-can_tho-33-km"
+      ],
+      "can_tho-34": [
+        "ai-name-can_tho-34-km"
+      ],
+      "can_tho-35": [
+        "ai-name-can_tho-35-km"
+      ],
+      "can_tho-37": [
+        "ai-name-can_tho-37-km"
+      ],
+      "can_tho-38": [
+        "ai-name-can_tho-38-km"
+      ],
+      "can_tho-39": [
+        "ai-name-can_tho-39-km"
+      ],
+      "can_tho-40": [
+        "ai-name-can_tho-40-km"
+      ],
+      "can_tho-41": [
+        "ai-name-can_tho-41-km"
+      ],
+      "can_tho-42": [
+        "ai-name-can_tho-42-km"
+      ],
+      "can_tho-43": [
+        "ai-name-can_tho-43-km"
+      ],
+      "can_tho-44": [
+        "ai-name-can_tho-44-km"
+      ],
+      "can_tho-46": [
+        "ai-name-can_tho-46-km"
+      ],
+      "can_tho-47": [
+        "ai-name-can_tho-47-km"
+      ],
+      "can_tho-48": [
+        "ai-name-can_tho-48-km"
+      ],
+      "can_tho-19": [
+        "name-cham-pa-km"
+      ],
+      "can_tho-36": [
+        "name-day-om-pu-km"
+      ],
+      "ca_mau-05": [
+        "name-kos-thum-km"
+      ],
+      "ca_mau-07": [
+        "name-kos-thum-km"
+      ],
+      "ca_mau-06": [
+        "name-kos-thum-two-km"
+      ],
+      "ca_mau-08": [
+        "name-kos-thum-two-km"
+      ],
+      "can_tho-13": [
+        "name-pong-tuk-chas-km"
+      ],
+      "ca_mau-02": [
+        "name-rach-giong-km"
+      ],
+      "can_tho-45": [
+        "name-sang-ke-km"
+      ],
+      "can_tho-22": [
+        "name-tum-nup-km"
+      ],
+      "can_tho-23": [
+        "name-tum-nup-km"
+      ],
+      "can_tho-24": [
+        "name-tum-nup-km"
+      ]
+    },
+    "files": {
+      "audio/ai-ceremony-teams-km.mp3": {
+        "clipId": "agy-ai-ceremony-teams-km",
+        "declaredText": "ក្រុមទូកទាំងអស់បានមកជួបជុំគ្នានៅមុខវេទិកា។ ទស្សនិកជននៅតាមដងទន្លេកំពុងរង់ចាំការប្រកួត។",
+        "declaredTextVi": "Các đội ghe đã hội tụ trước khán đài. Khán giả hai bờ sông đang chờ những lượt tranh tài.",
+        "reviewWarnings": [],
+        "registrationIds": [],
+        "reusedByHash": false
+      },
+      "audio/ai-champion-carrier-km.mp3": {
+        "clipId": "agy-ai-champion-carrier-km",
+        "declaredText": "សូមអបអរសាទរ ទុំនុប ២ ដែលបានឈ្នះជើងឯកពានរង្វាន់នេះ!",
+        "declaredTextVi": "Xin chúc mừng {winner_name}, đội vô địch cúp lễ hội!",
+        "reviewWarnings": [
+          "Nhãn lời bị chép giống bản Tum Núp 2; cần nghe đối chiếu biến thể."
+        ],
+        "registrationIds": [],
+        "reusedByHash": false
+      },
+      "audio/ai-champion-kos-thum-km.mp3": {
+        "clipId": "agy-ai-champion-kos-thum-km",
+        "declaredText": "សូមអបអរសាទរ ទុំនុប ២ ដែលបានឈ្នះជើងឯកពានរង្វាន់នេះ!",
+        "declaredTextVi": "Xin chúc mừng {winner_name}, đội vô địch cúp lễ hội!",
+        "reviewWarnings": [
+          "Nhãn lời bị chép giống bản Tum Núp 2; cần nghe đối chiếu biến thể."
+        ],
+        "registrationIds": [],
+        "reusedByHash": false
+      },
+      "audio/ai-champion-tum-nup-km.mp3": {
+        "clipId": "agy-ai-champion-tum-nup-km",
+        "declaredText": "សូមអបអរសាទរ ទុំនុប ២ ដែលបានឈ្នះជើងឯកពានរង្វាន់នេះ!",
+        "declaredTextVi": "Xin chúc mừng {winner_name}, đội vô địch cúp lễ hội!",
+        "reviewWarnings": [],
+        "registrationIds": [],
+        "reusedByHash": false
+      },
+      "audio/ai-close-race-km.mp3": {
+        "clipId": "ai-close-race-km",
+        "declaredText": "ទូកទាំងពីរកំពុងប្រកៀកប្រកិតគ្នា!",
+        "declaredTextVi": "Hiện tại thì cả hai vẫn đang so kè.",
+        "reviewWarnings": [],
+        "registrationIds": [],
+        "reusedByHash": true
+      },
+      "audio/ai-cohesion-km.mp3": {
+        "clipId": "ai-cohesion-km",
+        "declaredText": "ចង្វាក់អុំស្មើគ្នាល្អណាស់!",
+        "declaredTextVi": "Nhẹ nhàng, nhẹ nhàng.",
+        "reviewWarnings": [],
+        "registrationIds": [],
+        "reusedByHash": true
+      },
+      "audio/ai-cruise-context-km.mp3": {
+        "clipId": "agy-ai-cruise-context-km",
+        "declaredText": "ផ្លូវប្រណាំងនៅវែងទៀត។ ត្រូវរក្សាចង្វាក់ និងសន្សំកម្លាំងសម្រាប់ចុងផ្លូវ។",
+        "declaredTextVi": "Mọi việc vẫn còn có thể xảy ra. Đường đua vẫn còn khá là dài. Một nghìn hai trăm mét, thử thách thực sự cho sự dẻo dai, bền bỉ và nỗ lực cho đến những mét nước cuối cùng.",
+        "reviewWarnings": [],
+        "registrationIds": [],
+        "reusedByHash": false
+      },
+      "audio/ai-cruise-km.mp3": {
+        "clipId": "ai-cruise-km",
+        "declaredText": "ឥឡូវត្រូវរក្សាចង្វាក់អុំឱ្យស្មើគ្នា។",
+        "declaredTextVi": "Mọi việc vẫn còn có thể xảy ra. Đường đua vẫn còn khá là dài. Một nghìn hai trăm mét, thử thách thực sự cho sự dẻo dai, bền bỉ và nỗ lực cho đến những mét nước cuối cùng.",
+        "reviewWarnings": [],
+        "registrationIds": [],
+        "reusedByHash": true
+      },
+      "audio/ai-final-km.mp3": {
+        "clipId": "ai-final-km",
+        "declaredText": "ដល់ដំណាក់កាលចុងក្រោយហើយ! បង្កើនល្បឿន!",
+        "declaredTextVi": "Chúng ta thấy nhịp dầm của anh em đã được đẩy mạnh hơn rồi.",
+        "reviewWarnings": [],
+        "registrationIds": [],
+        "reusedByHash": true
+      },
+      "audio/ai-finish-dnf-km.mp3": {
+        "clipId": "ai-finish-dnf-km",
+        "declaredText": "គួរឱ្យសោកស្តាយ ក្រុមមួយមិនបានបញ្ចប់ជើងប្រណាំងនេះទេ។",
+        "declaredTextVi": "Rất là tiếc.",
+        "reviewWarnings": [],
+        "registrationIds": [],
+        "reusedByHash": true
+      },
+      "audio/ai-finish-loss-km.mp3": {
+        "clipId": "ai-finish-loss-km",
+        "declaredText": "គួរឱ្យសោកស្តាយ! គូប្រកួតបានដល់ទីមុន ក្នុងជើងប្រណាំងនេះ។",
+        "declaredTextVi": "Quá tuyệt vời!",
+        "reviewWarnings": [],
+        "registrationIds": [],
+        "reusedByHash": true
+      },
+      "audio/ai-finish-tie-km.mp3": {
+        "clipId": "ai-finish-tie-km",
+        "declaredText": "លទ្ធផលស្មើគ្នា! ទូកទាំងពីរដល់ទីប្រកៀកប្រកិតគ្នា!",
+        "declaredTextVi": "Một trận đấu cực kỳ hấp dẫn.",
+        "reviewWarnings": [],
+        "registrationIds": [],
+        "reusedByHash": true
+      },
+      "audio/ai-finish-win-km.mp3": {
+        "clipId": "ai-finish-win-km",
+        "declaredText": "ដល់ទីហើយ! សូមអបអរសាទរក្រុមដែលឈ្នះជើងប្រណាំងនេះ!",
+        "declaredTextVi": "Trước tiên xin chúc mừng một chiến thắng quan trọng của anh em.",
+        "reviewWarnings": [],
+        "registrationIds": [],
+        "reusedByHash": true
+      },
+      "audio/ai-go-km.mp3": {
+        "clipId": "ai-go-km",
+        "declaredText": "ចាប់ផ្តើមហើយ!",
+        "declaredTextVi": "Hai đội vừa rời điểm xuất phát thôi.",
+        "reviewWarnings": [],
+        "registrationIds": [],
+        "reusedByHash": true
+      },
+      "audio/ai-halfway-km.mp3": {
+        "clipId": "ai-halfway-km",
+        "declaredText": "បានឆ្លងកាត់ពាក់កណ្តាលផ្លូវហើយ។ ត្រូវទុកកម្លាំងសម្រាប់ចុងផ្លូវ!",
+        "declaredTextVi": "Nơi mà mỗi hội đua đều năm, sáu mươi đội tham gia. Cùng với đó là hàng chục ngàn khán giả ken dày hai bên bờ sông. Tất cả đã tạo nên những vũ điệu trên sông nước, những sắc màu của lễ hội rất khó có nơi nào có được.",
+        "reviewWarnings": [],
+        "registrationIds": [],
+        "reusedByHash": true
+      },
+      "audio/ai-intro-carrier-km.mp3": {
+        "clipId": "agy-ai-intro-carrier-km",
+        "declaredText": "ទុំនុប ២ ប្រកួតជាមួយ កោះធំ ១។ ក្រុមទាំងពីរកំពុងត្រៀមចេញដំណើរ។",
+        "declaredTextVi": "{player_name} gặp {opponent_name}. Hai đội đang chuẩn bị xuất phát.",
+        "reviewWarnings": [
+          "Nhãn lời bị chép giống bản Tum Núp 2; cần nghe đối chiếu biến thể."
+        ],
+        "registrationIds": [],
+        "reusedByHash": false
+      },
+      "audio/ai-intro-match-tum-nup-kos-thum-km.mp3": {
+        "clipId": "agy-ai-intro-match-tum-nup-kos-thum-km",
+        "declaredText": "ទុំនុប ២ ប្រកួតជាមួយ កោះធំ ១។ ក្រុមទាំងពីរកំពុងត្រៀមចេញដំណើរ។",
+        "declaredTextVi": "{player_name} gặp {opponent_name}. Hai đội đang chuẩn bị xuất phát.",
+        "reviewWarnings": [],
+        "registrationIds": [],
+        "reusedByHash": false
+      },
+      "audio/ai-last-fifty-km.mp3": {
+        "clipId": "ai-last-fifty-km",
+        "declaredText": "៥០ ម៉ែត្រចុងក្រោយ!",
+        "declaredTextVi": "Năm mươi mét cuối!",
+        "reviewWarnings": [],
+        "registrationIds": [],
+        "reusedByHash": true
+      },
+      "audio/ai-last-hundred-km.mp3": {
+        "clipId": "ai-last-hundred-km",
+        "declaredText": "១០០ ម៉ែត្រចុងក្រោយ!",
+        "declaredTextVi": "Một trăm mét cuối!",
+        "reviewWarnings": [],
+        "registrationIds": [],
+        "reusedByHash": true
+      },
+      "audio/ai-lead-change-km.mp3": {
+        "clipId": "ai-lead-change-km",
+        "declaredText": "មានការវ៉ាឡើងមុខ! ទូកនាំមុខបានផ្លាស់ប្តូរហើយ!",
+        "declaredTextVi": "Dẫn trước, dẫn trước",
+        "reviewWarnings": [],
+        "registrationIds": [],
+        "reusedByHash": true
+      },
+      "audio/ai-name-ca_mau-01-km.mp3": {
+        "clipId": "ai-name-ca_mau-01-km",
+        "declaredText": "ai-name-ca_mau-01-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "ca_mau-01"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-ca_mau-03-km.mp3": {
+        "clipId": "ai-name-ca_mau-03-km",
+        "declaredText": "ai-name-ca_mau-03-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "ca_mau-03"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-ca_mau-04-km.mp3": {
+        "clipId": "agy-ai-name-ca_mau-04-km",
+        "declaredText": "ai-name-ca_mau-04-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [
+          "Mã đội suy từ tên file; cần nghe xác nhận nội dung.",
+          "Gói chưa cung cấp lời chép Khmer cho file này."
+        ],
+        "registrationIds": [
+          "ca_mau-04"
+        ],
+        "reusedByHash": false
+      },
+      "audio/ai-name-ca_mau-09-km.mp3": {
+        "clipId": "ai-name-ca_mau-09-km",
+        "declaredText": "ai-name-ca_mau-09-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "ca_mau-09"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-ca_mau-10-km.mp3": {
+        "clipId": "agy-ai-name-ca_mau-10-km",
+        "declaredText": "ai-name-ca_mau-10-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [
+          "Mã đội suy từ tên file; cần nghe xác nhận nội dung.",
+          "Gói chưa cung cấp lời chép Khmer cho file này."
+        ],
+        "registrationIds": [
+          "ca_mau-10"
+        ],
+        "reusedByHash": false
+      },
+      "audio/ai-name-ca_mau-11-km.mp3": {
+        "clipId": "ai-name-ca_mau-11-km",
+        "declaredText": "ai-name-ca_mau-11-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "ca_mau-11"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-ca_mau-12-km.mp3": {
+        "clipId": "ai-name-ca_mau-12-km",
+        "declaredText": "ai-name-ca_mau-12-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "ca_mau-12"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-ca_mau-13-km.mp3": {
+        "clipId": "agy-ai-name-ca_mau-13-km",
+        "declaredText": "ai-name-ca_mau-13-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [
+          "Mã đội suy từ tên file; cần nghe xác nhận nội dung.",
+          "Gói chưa cung cấp lời chép Khmer cho file này."
+        ],
+        "registrationIds": [
+          "ca_mau-13"
+        ],
+        "reusedByHash": false
+      },
+      "audio/ai-name-can_tho-01-km.mp3": {
+        "clipId": "ai-name-can_tho-01-km",
+        "declaredText": "ai-name-can_tho-01-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-01"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-02-km.mp3": {
+        "clipId": "ai-name-can_tho-02-km",
+        "declaredText": "ai-name-can_tho-02-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-02"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-03-km.mp3": {
+        "clipId": "ai-name-can_tho-03-km",
+        "declaredText": "ai-name-can_tho-03-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-03"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-04-km.mp3": {
+        "clipId": "ai-name-can_tho-04-km",
+        "declaredText": "ai-name-can_tho-04-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-04"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-05-km.mp3": {
+        "clipId": "ai-name-can_tho-05-km",
+        "declaredText": "ai-name-can_tho-05-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-05"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-06-km.mp3": {
+        "clipId": "ai-name-can_tho-06-km",
+        "declaredText": "ai-name-can_tho-06-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-06"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-07-km.mp3": {
+        "clipId": "ai-name-can_tho-07-km",
+        "declaredText": "ai-name-can_tho-07-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-07"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-08-km.mp3": {
+        "clipId": "ai-name-can_tho-08-km",
+        "declaredText": "ai-name-can_tho-08-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-08"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-09-km.mp3": {
+        "clipId": "ai-name-can_tho-09-km",
+        "declaredText": "ai-name-can_tho-09-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-09"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-10-km.mp3": {
+        "clipId": "ai-name-can_tho-10-km",
+        "declaredText": "ai-name-can_tho-10-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-10"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-11-km.mp3": {
+        "clipId": "agy-ai-name-can_tho-11-km",
+        "declaredText": "ai-name-can_tho-11-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [
+          "Mã đội suy từ tên file; cần nghe xác nhận nội dung.",
+          "Gói chưa cung cấp lời chép Khmer cho file này."
+        ],
+        "registrationIds": [
+          "can_tho-11"
+        ],
+        "reusedByHash": false
+      },
+      "audio/ai-name-can_tho-12-km.mp3": {
+        "clipId": "ai-name-can_tho-12-km",
+        "declaredText": "ai-name-can_tho-12-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-12"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-14-km.mp3": {
+        "clipId": "ai-name-can_tho-14-km",
+        "declaredText": "ai-name-can_tho-14-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-14"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-15-km.mp3": {
+        "clipId": "ai-name-can_tho-15-km",
+        "declaredText": "ai-name-can_tho-15-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-15"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-16-km.mp3": {
+        "clipId": "ai-name-can_tho-16-km",
+        "declaredText": "ai-name-can_tho-16-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-16"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-17-km.mp3": {
+        "clipId": "ai-name-can_tho-17-km",
+        "declaredText": "ai-name-can_tho-17-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-17"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-18-km.mp3": {
+        "clipId": "ai-name-can_tho-18-km",
+        "declaredText": "ai-name-can_tho-18-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-18"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-20-km.mp3": {
+        "clipId": "ai-name-can_tho-20-km",
+        "declaredText": "ai-name-can_tho-20-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-20"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-21-km.mp3": {
+        "clipId": "ai-name-can_tho-21-km",
+        "declaredText": "ai-name-can_tho-21-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-21"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-25-km.mp3": {
+        "clipId": "ai-name-can_tho-25-km",
+        "declaredText": "ai-name-can_tho-25-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-25"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-26-km.mp3": {
+        "clipId": "ai-name-can_tho-26-km",
+        "declaredText": "ai-name-can_tho-26-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-26"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-27-km.mp3": {
+        "clipId": "ai-name-can_tho-27-km",
+        "declaredText": "ai-name-can_tho-27-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-27"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-28-km.mp3": {
+        "clipId": "ai-name-can_tho-28-km",
+        "declaredText": "ai-name-can_tho-28-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-28"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-29-km.mp3": {
+        "clipId": "ai-name-can_tho-29-km",
+        "declaredText": "ai-name-can_tho-29-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-29"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-30-km.mp3": {
+        "clipId": "ai-name-can_tho-30-km",
+        "declaredText": "ai-name-can_tho-30-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-30"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-31-km.mp3": {
+        "clipId": "ai-name-can_tho-31-km",
+        "declaredText": "ai-name-can_tho-31-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-31"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-32-km.mp3": {
+        "clipId": "agy-ai-name-can_tho-32-km",
+        "declaredText": "ai-name-can_tho-32-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [
+          "Mã đội suy từ tên file; cần nghe xác nhận nội dung.",
+          "Gói chưa cung cấp lời chép Khmer cho file này."
+        ],
+        "registrationIds": [
+          "can_tho-32"
+        ],
+        "reusedByHash": false
+      },
+      "audio/ai-name-can_tho-33-km.mp3": {
+        "clipId": "ai-name-can_tho-33-km",
+        "declaredText": "ai-name-can_tho-33-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-33"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-34-km.mp3": {
+        "clipId": "ai-name-can_tho-34-km",
+        "declaredText": "ai-name-can_tho-34-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-34"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-35-km.mp3": {
+        "clipId": "ai-name-can_tho-35-km",
+        "declaredText": "ai-name-can_tho-35-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-35"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-37-km.mp3": {
+        "clipId": "ai-name-can_tho-37-km",
+        "declaredText": "ai-name-can_tho-37-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-37"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-38-km.mp3": {
+        "clipId": "ai-name-can_tho-38-km",
+        "declaredText": "ai-name-can_tho-38-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-38"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-39-km.mp3": {
+        "clipId": "ai-name-can_tho-39-km",
+        "declaredText": "ai-name-can_tho-39-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-39"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-40-km.mp3": {
+        "clipId": "ai-name-can_tho-40-km",
+        "declaredText": "ai-name-can_tho-40-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-40"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-41-km.mp3": {
+        "clipId": "ai-name-can_tho-41-km",
+        "declaredText": "ai-name-can_tho-41-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-41"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-42-km.mp3": {
+        "clipId": "ai-name-can_tho-42-km",
+        "declaredText": "ai-name-can_tho-42-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-42"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-43-km.mp3": {
+        "clipId": "ai-name-can_tho-43-km",
+        "declaredText": "ai-name-can_tho-43-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-43"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-44-km.mp3": {
+        "clipId": "ai-name-can_tho-44-km",
+        "declaredText": "ai-name-can_tho-44-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-44"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-46-km.mp3": {
+        "clipId": "ai-name-can_tho-46-km",
+        "declaredText": "ai-name-can_tho-46-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-46"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-47-km.mp3": {
+        "clipId": "ai-name-can_tho-47-km",
+        "declaredText": "ai-name-can_tho-47-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-47"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-name-can_tho-48-km.mp3": {
+        "clipId": "ai-name-can_tho-48-km",
+        "declaredText": "ai-name-can_tho-48-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-48"
+        ],
+        "reusedByHash": true
+      },
+      "audio/ai-ready-km.mp3": {
+        "clipId": "ai-ready-km",
+        "declaredText": "ត្រៀមខ្លួន!",
+        "declaredTextVi": "Đúng như chúng ta đã chờ đợi.",
+        "reviewWarnings": [],
+        "registrationIds": [],
+        "reusedByHash": true
+      },
+      "audio/ai-recover-km.mp3": {
+        "clipId": "ai-recover-km",
+        "declaredText": "បន្ថយចង្វាក់ ដើម្បីទុកកម្លាំងសម្រាប់ចុងផ្លូវ។",
+        "declaredTextVi": "Nhẹ nhàng, nhẹ nhàng.",
+        "reviewWarnings": [],
+        "registrationIds": [],
+        "reusedByHash": true
+      },
+      "audio/ai-safe-margin-km.mp3": {
+        "clipId": "agy-ai-safe-margin-km",
+        "declaredText": "ទូកនាំមុខកំពុងបង្កើនគម្លាត ប៉ុន្តែការប្រកួតមិនទាន់បញ្ចប់ទេ។",
+        "declaredTextVi": "Rõ ràng là một khoảng cách an toàn.",
+        "reviewWarnings": [],
+        "registrationIds": [],
+        "reusedByHash": false
+      },
+      "audio/ai-start-drive-km.mp3": {
+        "clipId": "agy-ai-start-drive-km",
+        "declaredText": "ក្រុមទាំងពីរបានចេញដំណើរហើយ។ ត្រូវចាប់ចង្វាក់ឱ្យស្មើគ្នា!",
+        "declaredTextVi": "Đây chỉ là mới đoạn xuất phát thôi, đoạn đầu thôi.",
+        "reviewWarnings": [],
+        "registrationIds": [],
+        "reusedByHash": false
+      },
+      "audio/ai-surge-km.mp3": {
+        "clipId": "ai-surge-km",
+        "declaredText": "ប្រឹងអស់កម្លាំង!",
+        "declaredTextVi": "Đạp rồi, đạp rồi",
+        "reviewWarnings": [],
+        "registrationIds": [],
+        "reusedByHash": true
+      },
+      "audio/khmer-finish.mp3": {
+        "clipId": "khmer-finish",
+        "declaredText": "ដល់ទីហើយ! សូមអបអរសាទរក្រុមដែលឈ្នះជើងប្រណាំងនេះ!",
+        "declaredTextVi": "Trước tiên xin chúc mừng một chiến thắng quan trọng của anh em.",
+        "reviewWarnings": [],
+        "registrationIds": [],
+        "reusedByHash": true
+      },
+      "audio/khmer-full-effort.mp3": {
+        "clipId": "khmer-full-effort",
+        "declaredText": "ប្រឹងអស់កម្លាំង!",
+        "declaredTextVi": "Đạp rồi, đạp rồi",
+        "reviewWarnings": [],
+        "registrationIds": [],
+        "reusedByHash": true
+      },
+      "audio/khmer-go.mp3": {
+        "clipId": "khmer-go",
+        "declaredText": "ចាប់ផ្តើមហើយ!",
+        "declaredTextVi": "Hai đội vừa rời điểm xuất phát thôi.",
+        "reviewWarnings": [],
+        "registrationIds": [],
+        "reusedByHash": true
+      },
+      "audio/khmer-intro.mp3": {
+        "clipId": "khmer-intro",
+        "declaredText": "ទស្សនិកជន ទាំងឡាយ ជា ទី មេត្រី",
+        "declaredTextVi": "Quý khán giả thân mến, những hình ảnh rất là quen thuộc: khán đài và dọc bên dòng sông Maspéro đều đầy ắp khán giả.",
+        "reviewWarnings": [],
+        "registrationIds": [],
+        "reusedByHash": true
+      },
+      "audio/name-cham-pa-km.mp3": {
+        "clipId": "name-cham-pa-km",
+        "declaredText": "name-cham-pa-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-19"
+        ],
+        "reusedByHash": true
+      },
+      "audio/name-day-om-pu-km.mp3": {
+        "clipId": "name-day-om-pu-km",
+        "declaredText": "name-day-om-pu-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-36"
+        ],
+        "reusedByHash": true
+      },
+      "audio/name-kos-thum-km.mp3": {
+        "clipId": "name-kos-thum-km",
+        "declaredText": "name-kos-thum-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [
+          "Tên chùa dùng chung; audio chưa phân biệt đội hoặc nam/nữ."
+        ],
+        "registrationIds": [
+          "ca_mau-05",
+          "ca_mau-07"
+        ],
+        "reusedByHash": true
+      },
+      "audio/name-kos-thum-two-km.mp3": {
+        "clipId": "name-kos-thum-two-km",
+        "declaredText": "name-kos-thum-two-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [
+          "Tên chùa dùng chung; audio chưa phân biệt đội hoặc nam/nữ."
+        ],
+        "registrationIds": [
+          "ca_mau-06",
+          "ca_mau-08"
+        ],
+        "reusedByHash": true
+      },
+      "audio/name-pong-tuk-chas-km.mp3": {
+        "clipId": "name-pong-tuk-chas-km",
+        "declaredText": "name-pong-tuk-chas-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-13"
+        ],
+        "reusedByHash": true
+      },
+      "audio/name-rach-giong-km.mp3": {
+        "clipId": "name-rach-giong-km",
+        "declaredText": "name-rach-giong-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "ca_mau-02"
+        ],
+        "reusedByHash": true
+      },
+      "audio/name-sang-ke-km.mp3": {
+        "clipId": "name-sang-ke-km",
+        "declaredText": "name-sang-ke-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-45"
+        ],
+        "reusedByHash": true
+      },
+      "audio/name-tum-nup-km.mp3": {
+        "clipId": "name-tum-nup-km",
+        "declaredText": "name-tum-nup-km.mp3",
+        "declaredTextVi": "",
+        "reviewWarnings": [
+          "Tên chùa dùng chung; audio chưa phân biệt đội hoặc nam/nữ."
+        ],
+        "registrationIds": [
+          "can_tho-22",
+          "can_tho-23",
+          "can_tho-24"
+        ],
+        "reusedByHash": true
+      },
+      "audio/trial-history-kos-thum-km.mp3": {
+        "clipId": "trial-history-kos-thum-km",
+        "declaredText": "ក្រុមទូកកោះធំ ១ បានជាប់ចំណាត់ថ្នាក់លេខពីរ ផ្នែកបុរស នៅឆ្នាំ ២០២៤។",
+        "declaredTextVi": "Kos Thum 1 là đội á quân nội dung nam năm 2024.",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "ca_mau-05"
+        ],
+        "reusedByHash": true
+      },
+      "audio/trial-history-sro-lon-km.mp3": {
+        "clipId": "agy-trial-history-sro-lon-km",
+        "declaredText": "ក្រុមទូកសរឡូន ២ បានជាប់ចំណាត់ថ្នាក់លេខបី ផ្នែកបុរស នៅឆ្នាំ ២០២៤។",
+        "declaredTextVi": "Sro Lôn 2 là đội hạng ba năm trước.",
+        "reviewWarnings": [],
+        "registrationIds": [],
+        "reusedByHash": false
+      },
+      "audio/trial-history-tum-nup-km.mp3": {
+        "clipId": "trial-history-tum-nup-km",
+        "declaredText": "នៅឆ្នាំ ២០២៤ ក្រុមទូកទំនប់ ២ បានឈ្នះជើងឯកផ្នែកបុរស។",
+        "declaredTextVi": "Tum Núp 2 là đương kim vô địch năm 2024.",
+        "reviewWarnings": [],
+        "registrationIds": [
+          "can_tho-23"
+        ],
+        "reusedByHash": true
+      }
+    },
+    "issues": [
+      {
+        "sourceFile": "audio/ai-champion-carrier-km.mp3",
+        "clipId": "agy-ai-champion-carrier-km",
+        "messages": [
+          "Nhãn lời bị chép giống bản Tum Núp 2; cần nghe đối chiếu biến thể."
+        ]
+      },
+      {
+        "sourceFile": "audio/ai-champion-kos-thum-km.mp3",
+        "clipId": "agy-ai-champion-kos-thum-km",
+        "messages": [
+          "Nhãn lời bị chép giống bản Tum Núp 2; cần nghe đối chiếu biến thể."
+        ]
+      },
+      {
+        "sourceFile": "audio/ai-intro-carrier-km.mp3",
+        "clipId": "agy-ai-intro-carrier-km",
+        "messages": [
+          "Nhãn lời bị chép giống bản Tum Núp 2; cần nghe đối chiếu biến thể."
+        ]
+      },
+      {
+        "sourceFile": "audio/ai-name-ca_mau-04-km.mp3",
+        "clipId": "agy-ai-name-ca_mau-04-km",
+        "messages": [
+          "Mã đội suy từ tên file; cần nghe xác nhận nội dung.",
+          "Gói chưa cung cấp lời chép Khmer cho file này."
+        ]
+      },
+      {
+        "sourceFile": "audio/ai-name-ca_mau-10-km.mp3",
+        "clipId": "agy-ai-name-ca_mau-10-km",
+        "messages": [
+          "Mã đội suy từ tên file; cần nghe xác nhận nội dung.",
+          "Gói chưa cung cấp lời chép Khmer cho file này."
+        ]
+      },
+      {
+        "sourceFile": "audio/ai-name-ca_mau-13-km.mp3",
+        "clipId": "agy-ai-name-ca_mau-13-km",
+        "messages": [
+          "Mã đội suy từ tên file; cần nghe xác nhận nội dung.",
+          "Gói chưa cung cấp lời chép Khmer cho file này."
+        ]
+      },
+      {
+        "sourceFile": "audio/ai-name-can_tho-11-km.mp3",
+        "clipId": "agy-ai-name-can_tho-11-km",
+        "messages": [
+          "Mã đội suy từ tên file; cần nghe xác nhận nội dung.",
+          "Gói chưa cung cấp lời chép Khmer cho file này."
+        ]
+      },
+      {
+        "sourceFile": "audio/ai-name-can_tho-32-km.mp3",
+        "clipId": "agy-ai-name-can_tho-32-km",
+        "messages": [
+          "Mã đội suy từ tên file; cần nghe xác nhận nội dung.",
+          "Gói chưa cung cấp lời chép Khmer cho file này."
+        ]
+      },
+      {
+        "sourceFile": "audio/name-kos-thum-km.mp3",
+        "clipId": "name-kos-thum-km",
+        "messages": [
+          "Tên chùa dùng chung; audio chưa phân biệt đội hoặc nam/nữ."
+        ]
+      },
+      {
+        "sourceFile": "audio/name-kos-thum-two-km.mp3",
+        "clipId": "name-kos-thum-two-km",
+        "messages": [
+          "Tên chùa dùng chung; audio chưa phân biệt đội hoặc nam/nữ."
+        ]
+      },
+      {
+        "sourceFile": "audio/name-tum-nup-km.mp3",
+        "clipId": "name-tum-nup-km",
+        "messages": [
+          "Tên chùa dùng chung; audio chưa phân biệt đội hoặc nam/nữ."
+        ]
+      }
+    ],
+    "notice": "Imported for listening/review. Hash matches verify bytes, not language, team identity, translation, native pronunciation or gameplay suitability."
   }
 }

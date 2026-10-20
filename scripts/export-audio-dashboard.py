@@ -30,6 +30,11 @@ EVIDENCE_FILES = {
     'docs/audio-direction.json': ROOT / 'docs/audio-direction.json',
     'docs/broadcast-audio-cuts.json': ROOT / 'docs/broadcast-audio-cuts.json',
 }
+HANDOFF = AUDIO / 'khmer-review/manifest.json'
+if HANDOFF.exists():
+    EVIDENCE_FILES['khmer-review/manifest.json'] = HANDOFF
+    for filename in ['manifest.json', 'khmer-script.json', 'khmer-script.csv', 'review.md']:
+        EVIDENCE_FILES['khmer-review/source/' + filename] = HANDOFF.parent / 'source' / filename
 
 
 def sha(raw):
@@ -50,6 +55,16 @@ def csv_bytes(header, rows):
     writer.writerow(header)
     writer.writerows(rows)
     return ('\ufeff' + stream.getvalue()).encode('utf-8')
+
+
+def dashboard_html(package_id=None):
+    raw = (DESK / 'index.html').read_bytes()
+    raw = re.sub(rb'\?build=[0-9a-f]+', b'', raw)
+    if package_id:
+        for name in ['styles.css', 'data.js', 'rules.js', 'dashboard.js']:
+            raw = raw.replace(('"' + name + '"').encode(),
+                              ('"' + name + '?build=' + package_id + '"').encode())
+    return raw
 
 
 def team_reference_files(data):
@@ -216,6 +231,17 @@ def collect():
             for key in keys:
                 if key not in clips or clips[key]['lang'] != language:
                     raise ValueError('Invalid cue/audio language: ' + cue['id'] + '/' + key)
+    handoff = read(HANDOFF) if HANDOFF.exists() else None
+    if handoff:
+        for key, clip in handoff['clips'].items():
+            if key in clips:
+                raise ValueError('Duplicate handoff clip ID')
+            clips[key] = copy.deepcopy(clip)
+        for cue_id, review in handoff['cues'].items():
+            if cue_id not in {c['id'] for c in script['cues']}:
+                raise ValueError('Unknown handoff cue')
+            if any(key not in clips or clips[key]['lang'] != 'km' for key in review['variantKeys']):
+                raise ValueError('Broken Khmer review binding')
     roster = {r['id']: r for r in read(PUBLIC / 'assets/data/roster-2025.json')['records']}
     for registration, profile in teams.items():
         profile['registrationId'] = registration
@@ -257,8 +283,10 @@ def collect():
                     ('nameKm', 'names', 'khmer'), ('historyVi', 'history', 'voice'),
                     ('historyKm', 'history', 'khmer')]}
     evidence_digest = ''.join(sha(path.read_bytes()) for path in EVIDENCE_FILES.values()).encode()
+    ui_digest = sha(dashboard_html() + b''.join((DESK / name).read_bytes()
+                    for name in ['styles.css', 'rules.js', 'dashboard.js'])).encode()
     data = {'schema': 1, 'packageId': sha(script_raw + ''.join(
-        c['sha256'] for c in clips.values()).encode() + evidence_digest)[:16], 'scriptSha256': sha(script_raw),
+        c['sha256'] for c in clips.values()).encode() + evidence_digest + ui_digest)[:16], 'scriptSha256': sha(script_raw),
         'script': script, 'clips': clips, 'teams': teams, 'coverage': coverage,
         'beds': beds, 'sources': runtime['sources'],
         'provenanceFiles': [{'file': name, 'sha256': sha(path.read_bytes())}
@@ -269,6 +297,8 @@ def collect():
             'withheldFolder': 'audio/output_audio/tieng_khmer',
             'withheldReason': 'Prepared filenames conflict with sampled language/team content; not imported.',
             'handoffIsNotAutomaticGameIntegration': True}}
+    if handoff:
+        data['khmerHandoff'] = {k: v for k, v in handoff.items() if k != 'clips'}
     return data, media
 
 
@@ -333,7 +363,7 @@ This is a separate review/export dashboard. Do not assume these files have been 
 8. The prepared folder `audio/output_audio/tieng_khmer` is withheld because sampled names/languages conflict with labels. Do not import it blindly. `rejected-khmer-review.json` explains the evidence and limits.
 9. Preserve the shared crew/hull assets, 8-boat cup, 61-team festival and tablet controls. Do not make version-suffixed source files. Run affected tests and inspect the actual playback before committing game integration.
 
-Open `dashboard/index.html` directly for offline review. The browser downloads no audio until a play button is pressed. Edits save in that browser only: use Export JSON to produce a portable revised script. The export does not silently change the live game.
+Open `dashboard/index.html` directly for offline review. The browser downloads no audio until a play button is pressed. Select Tình huống, Tên đội or Âm thanh nền, choose Khmer/Việt, listen and mark Đạt/Cần sửa. Notes and verdicts save in that browser. Use Xuất kết quả duyệt JSON/CSV to hand back the review; use Xuất kịch bản đã sửa for a portable revised script. Verdicts are scoped to the selected clip/hash and requested text. Editing the requested text invalidates an earlier verdict. The export does not silently change the live game.
 ''').encode()
     files['README.md'] = (f'''# Ghe Ngo · Audio Studio
 
@@ -341,9 +371,11 @@ Package `{data['packageId']}` · {len(script['cues'])} situations · {len(data['
 
 Open [the dashboard](dashboard/index.html). Read [the script](script.md), [Antigravity instructions](ANTIGRAVITY.md), [CSV cue sheet](cue-sheet.csv), [team list](teams.csv), and [remaining requests](requests.json).
 
+Choose Tình huống or Tên đội, then Khmer/Việt. Listen, mark Đạt/Cần sửa and optionally add a note. The three review buttons remain visible at the bottom. On phones, Chọn mục khác opens the list. Xuất & bàn giao exports listening verdicts/notes as JSON or CSV; script edits have a separate export. Results save in the current browser, not automatically across devices.
+
 For team-name verification use [the bilingual reference](team-reference.md), [CSV](team-reference.csv), [JSON](team-reference.json), and [the team-audio prompt](team-audio-prompt.md). This reference separates 45 press-attested and 10 community-attested Khmer pagoda names from six unresolved names, unverified prepared labels, and audio content review. `teams.csv` is only a legacy summary; labels there are not an independent name or pronunciation certification.
 
-Vietnamese name coverage: {data['coverage']['nameVi']}/61. Khmer name coverage in this review package: {data['coverage']['nameKm']}/61. The 44 new Khmer names are stock Azure recordings for review/handoff; the game's runtime manifest is unchanged. Do not call these a verified imitation of the original commentators.
+Vietnamese name coverage in the base package: {data['coverage']['nameVi']}/61. Khmer name coverage in the base package: {data['coverage']['nameKm']}/61. The Khmer handoff, when present, adds review candidates for all 61 registrations and 29 cues. Its original manifest, script and report are preserved under `khmer-review/source/`. Review warnings distinguish missing transcripts and variant labels. The game's runtime manifest is unchanged. Do not call these a verified imitation of the original commentators.
 
 There are {len(requests)} language/line requests still requiring audio or an exact-text match. Existing source audio is included for review, with its provenance. The package contains no Azure key, local account configuration, full event video or executable tool.
 
@@ -359,8 +391,8 @@ To serve over HTTP if preferred: `python -m http.server 4180 --bind 127.0.0.1 --
         if name == 'styles.css':
             raw = raw.replace(b'../assets/fonts/', b'./fonts/')
         if name == 'index.html':
-            raw = raw.replace(b'class="back-link" href="../"',
-                              b'class="back-link" href="https://machxanht.github.io/Tuk-Ngo/"')
+            raw = dashboard_html(data['packageId'])
+            raw = raw.replace(b'href="../"', b'href="https://machxanht.github.io/Tuk-Ngo/"', 1)
         files['dashboard/' + name] = raw
     font = PUBLIC / 'assets/fonts/NotoSansKhmer.ttf'
     files['dashboard/fonts/NotoSansKhmer.ttf'] = font.read_bytes()
@@ -382,6 +414,7 @@ def main():
     args = parser.parse_args()
     data, media = collect()
     files = bundle_files(data, media)
+    (DESK / 'index.html').write_bytes(dashboard_html(data['packageId']))
     public_data = copy.deepcopy(data)
     for clip in public_data['clips'].values():
         clip['file'] = '../assets/race-audio/' + clip['sourceFile']

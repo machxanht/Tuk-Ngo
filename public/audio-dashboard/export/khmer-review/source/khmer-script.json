@@ -1,0 +1,1091 @@
+{
+  "schema": 1,
+  "title": "Ghe Ngo · Kịch bản Bình luận Tiếng Khmer (Khmer Audio Handover)",
+  "packageId": "khmer-audio-handover-2026",
+  "language": "km",
+  "voice": "km-KH-PisethNeural",
+  "raceLengthM": 1200,
+  "summary": {
+    "totalCues": 29,
+    "reusedCues": 22,
+    "newlySynthesizedCues": 7,
+    "uncompletedCues": 0,
+    "coveragePercent": 100.0
+  },
+  "stages": [
+    {
+      "id": "ceremony",
+      "title": "Khai mạc",
+      "range": "Menu · ghe hội tụ"
+    },
+    {
+      "id": "intro",
+      "title": "Toàn cảnh & gọi đội",
+      "range": "Lia máy → xuất phát"
+    },
+    {
+      "id": "countdown",
+      "title": "Đếm ngược",
+      "range": "3 giây"
+    },
+    {
+      "id": "start",
+      "title": "Xuất phát",
+      "range": "0–200 m"
+    },
+    {
+      "id": "cruise",
+      "title": "Đường trường",
+      "range": "200–600 m"
+    },
+    {
+      "id": "halfway",
+      "title": "Nửa sau",
+      "range": "600–950 m"
+    },
+    {
+      "id": "duel",
+      "title": "So kè & vượt lên",
+      "range": "Theo diễn biến"
+    },
+    {
+      "id": "history",
+      "title": "Lịch sử từng đội",
+      "range": "200–750 m"
+    },
+    {
+      "id": "final",
+      "title": "Nước rút",
+      "range": "950–1.200 m"
+    },
+    {
+      "id": "result",
+      "title": "Kết quả",
+      "range": "Game xác nhận"
+    }
+  ],
+  "playbackPolicy": {
+    "revalidateBeforePlay": true,
+    "noAudioWhilePaused": true,
+    "stopOldMatchQueueOnRestart": true,
+    "minimumGapSeconds": 0.15,
+    "duckAmbienceDb": -8,
+    "discardExpired": true,
+    "historyNeverInterruptsAction": true,
+    "doNotSpeakMissingPlaceholders": true,
+    "finishCancelsPendingRaceSpeech": true,
+    "nameCooldownSeconds": 20
+  },
+  "cues": [
+    {
+      "id": "ceremony-welcome",
+      "stage": "ceremony",
+      "title": "Chào khán giả bên sông",
+      "when": "Sau khi người dùng bật tiếng ở menu khai mạc; không lặp liên tục.",
+      "conditions": {
+        "phases": [
+          "ceremony"
+        ]
+      },
+      "priority": 2,
+      "maxQueueAgeSeconds": 7,
+      "cooldownSeconds": 90,
+      "text": {
+        "km": "ទស្សនិកជន ទាំងឡាយ ជា ទី មេត្រី",
+        "vi": "Quý khán giả thân mến, những hình ảnh rất là quen thuộc: khán đài và dọc bên dòng sông Maspéro đều đầy ắp khán giả."
+      },
+      "audio": {
+        "primary": "audio/khmer-intro.mp3",
+        "variants": [
+          "audio/khmer-intro.mp3"
+        ],
+        "duration": 1.88,
+        "peak": 0.8116,
+        "sha256": "be897d565f3b470e5d2451dbfdcffee1649653ac9469c4c1174bafbbe074d16f",
+        "sourceType": "original-broadcast",
+        "voice": "km-KH-PisethNeural"
+      },
+      "status": "reused-verified",
+      "notes": "Tái sử dụng từ media/km/khmer-intro.mp3, đã xác thực SHA-256.",
+      "review": "Khmer drafts require native review"
+    },
+    {
+      "id": "ceremony-teams",
+      "stage": "ceremony",
+      "title": "Các đội ghe hội tụ",
+      "when": "Chỉ giới thiệu 2–3 ghe mỗi lượt. Không đọc cả 61 đội cùng lúc.",
+      "conditions": {
+        "phases": [
+          "ceremony"
+        ]
+      },
+      "priority": 2,
+      "maxQueueAgeSeconds": 7,
+      "cooldownSeconds": 90,
+      "text": {
+        "km": "ក្រុមទូកទាំងអស់បានមកជួបជុំគ្នានៅមុខវេទិកា។ ទស្សនិកជននៅតាមដងទន្លេកំពុងរង់ចាំការប្រកួត។",
+        "vi": "Các đội ghe đã hội tụ trước khán đài. Khán giả hai bờ sông đang chờ những lượt tranh tài."
+      },
+      "audio": {
+        "primary": "audio/ai-ceremony-teams-km.mp3",
+        "variants": [
+          "audio/ai-ceremony-teams-km.mp3"
+        ],
+        "duration": 6.936,
+        "peak": 0.5723,
+        "sha256": "93de39045dac44b02354475ab42ad8818b9925ba758b2563b7999929d34fbfd2",
+        "sourceType": "azure-stock-neural",
+        "voice": "km-KH-PisethNeural"
+      },
+      "status": "newly-synthesized",
+      "notes": "Tạo mới bằng Azure Speech km-KH-PisethNeural theo yêu cầu requests.json.",
+      "review": "Khmer drafts require native review"
+    },
+    {
+      "id": "flyover",
+      "stage": "intro",
+      "title": "Toàn cảnh lễ hội 1.200 m",
+      "when": "Camera lia từ khán đài qua hai bờ về xuất phát; dừng trước đếm ngược.",
+      "conditions": {
+        "phases": [
+          "intro"
+        ]
+      },
+      "priority": 1,
+      "maxQueueAgeSeconds": 7,
+      "cooldownSeconds": 25,
+      "text": {
+        "km": "ទស្សនិកជន ទាំងឡាយ ជា ទី មេត្រី",
+        "vi": "Nơi mà mỗi hội đua đều năm, sáu mươi đội tham gia. Cùng với đó là hàng chục ngàn khán giả ken dày hai bên bờ sông. Tất cả đã tạo nên những vũ điệu trên sông nước, những sắc màu của lễ hội rất khó có nơi nào có được."
+      },
+      "audio": {
+        "primary": "audio/khmer-intro.mp3",
+        "variants": [
+          "audio/khmer-intro.mp3"
+        ],
+        "duration": 1.88,
+        "peak": 0.8116,
+        "sha256": "be897d565f3b470e5d2451dbfdcffee1649653ac9469c4c1174bafbbe074d16f",
+        "sourceType": "original-broadcast",
+        "voice": "km-KH-PisethNeural"
+      },
+      "status": "reused-verified",
+      "notes": "Tái sử dụng từ media/km/khmer-intro.mp3, đã xác thực SHA-256.",
+      "review": "Khmer drafts require native review"
+    },
+    {
+      "id": "team-introduction",
+      "stage": "intro",
+      "title": "Gọi đúng hai đội trong lượt",
+      "when": "Ở vạch xuất phát, trước đếm ngược. Ghép tên từ registrationId đúng hai ghe.",
+      "conditions": {
+        "phases": [
+          "intro",
+          "ready"
+        ]
+      },
+      "priority": 2,
+      "maxQueueAgeSeconds": 7,
+      "cooldownSeconds": 25,
+      "text": {
+        "km": "{player_name} ប្រកួតជាមួយ {opponent_name}។ ក្រុមទាំងពីរកំពុងត្រៀមចេញដំណើរ។",
+        "vi": "{player_name} gặp {opponent_name}. Hai đội đang chuẩn bị xuất phát."
+      },
+      "audio": {
+        "primary": "audio/ai-intro-match-tum-nup-kos-thum-km.mp3",
+        "variants": [
+          "audio/ai-intro-match-tum-nup-kos-thum-km.mp3",
+          "audio/ai-intro-carrier-km.mp3"
+        ],
+        "duration": 4.896,
+        "peak": 0.506,
+        "sha256": "3786ed0365c7574ed7071d68b2013406b3a16277ab72d8b22b96f790cb5b94b4",
+        "sourceType": "azure-stock-neural",
+        "voice": "km-KH-PisethNeural"
+      },
+      "status": "newly-synthesized-resolved",
+      "notes": "Đã giải quyết placeholder bằng tên đội thật: Tum Núp 2 (can_tho-23) vs Kos Thum 1 (ca_mau-05). Không đưa nguyên placeholder vào TTS.",
+      "review": "Khmer drafts require native review",
+      "resolvedTextKm": "ទុំនុប ២ ប្រកួតជាមួយ កោះធំ ១។ ក្រុមទាំងពីរកំពុងត្រៀមចេញដំណើរ។"
+    },
+    {
+      "id": "ready",
+      "stage": "countdown",
+      "title": "Chuẩn bị",
+      "when": "Trong 3 giây đếm ngược; chỉ chọn một ngôn ngữ.",
+      "conditions": {
+        "phases": [
+          "countdown"
+        ]
+      },
+      "priority": 2,
+      "maxQueueAgeSeconds": 7,
+      "cooldownSeconds": 25,
+      "text": {
+        "km": "ត្រៀមខ្លួន!",
+        "vi": "Đúng như chúng ta đã chờ đợi."
+      },
+      "audio": {
+        "primary": "audio/ai-ready-km.mp3",
+        "variants": [
+          "audio/ai-ready-km.mp3"
+        ],
+        "duration": 1.82,
+        "peak": 0.3955,
+        "sha256": "beec0f40ef882ddedf4ab9a24ea7fedc7eb164a79e49d87db8ba0a06f231bac6",
+        "sourceType": "azure-stock-neural",
+        "voice": "km-KH-PisethNeural"
+      },
+      "status": "reused-verified",
+      "notes": "Tái sử dụng từ media/km/ai-ready-km.mp3, đã xác thực SHA-256.",
+      "review": "Khmer drafts require native review"
+    },
+    {
+      "id": "go",
+      "stage": "start",
+      "title": "Xuất phát",
+      "when": "Vừa hết đếm ngược, không đọc lại sau 3 giây.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minElapsed": 0,
+        "maxElapsed": 3,
+        "minDistance": 0,
+        "maxDistance": 200
+      },
+      "priority": 3,
+      "maxQueueAgeSeconds": 7,
+      "cooldownSeconds": 25,
+      "text": {
+        "km": "ចាប់ផ្តើមហើយ!",
+        "vi": "Hai đội vừa rời điểm xuất phát thôi."
+      },
+      "audio": {
+        "primary": "audio/ai-go-km.mp3",
+        "variants": [
+          "audio/ai-go-km.mp3",
+          "audio/khmer-go.mp3"
+        ],
+        "duration": 1.82,
+        "peak": 0.4822,
+        "sha256": "7a39e55f8bd8e1aa11581e4621b4170a8028c24c6b5548bdb55bce86f418ca0d",
+        "sourceType": "azure-stock-neural",
+        "voice": "km-KH-PisethNeural"
+      },
+      "status": "reused-verified",
+      "notes": "Tái sử dụng từ media/km/ai-go-km.mp3 (kèm bản phát thanh khmer-go.mp3).",
+      "review": "Khmer drafts require native review"
+    },
+    {
+      "id": "start-drive",
+      "stage": "start",
+      "title": "Bắt nhịp sau xuất phát",
+      "when": "3–15 giây đầu; không đọc lại khi đã vào đường trường.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minElapsed": 3,
+        "maxElapsed": 15,
+        "maxDistance": 200
+      },
+      "priority": 2,
+      "maxQueueAgeSeconds": 7,
+      "cooldownSeconds": 25,
+      "text": {
+        "km": "ក្រុមទាំងពីរបានចេញដំណើរហើយ។ ត្រូវចាប់ចង្វាក់ឱ្យស្មើគ្នា!",
+        "vi": "Đây chỉ là mới đoạn xuất phát thôi, đoạn đầu thôi."
+      },
+      "audio": {
+        "primary": "audio/ai-start-drive-km.mp3",
+        "variants": [
+          "audio/ai-start-drive-km.mp3"
+        ],
+        "duration": 4.248,
+        "peak": 0.5073,
+        "sha256": "35922288e6e040ca3320e903e794bf0fc33169a2e6eb0de1cef66fd34fe8d50a",
+        "sourceType": "azure-stock-neural",
+        "voice": "km-KH-PisethNeural"
+      },
+      "status": "newly-synthesized",
+      "notes": "Tạo mới bằng Azure Speech km-KH-PisethNeural theo yêu cầu requests.json.",
+      "review": "Khmer drafts require native review"
+    },
+    {
+      "id": "cruise",
+      "stage": "cruise",
+      "title": "Vào đường trường",
+      "when": "Ghe đang theo dõi qua 200 m, chưa tới 600 m.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 200,
+        "maxDistance": 600
+      },
+      "priority": 2,
+      "maxQueueAgeSeconds": 7,
+      "cooldownSeconds": 25,
+      "text": {
+        "km": "ឥឡូវត្រូវរក្សាចង្វាក់អុំឱ្យស្មើគ្នា។",
+        "vi": "Mọi việc vẫn còn có thể xảy ra. Đường đua vẫn còn khá là dài. Một nghìn hai trăm mét, thử thách thực sự cho sự dẻo dai, bền bỉ và nỗ lực cho đến những mét nước cuối cùng."
+      },
+      "audio": {
+        "primary": "audio/ai-cruise-km.mp3",
+        "variants": [
+          "audio/ai-cruise-km.mp3"
+        ],
+        "duration": 3.175,
+        "peak": 0.4867,
+        "sha256": "e8ca41db65bbcb607b7a7195f44d525a0b5ce902090bd292a32d976fbb5d7274",
+        "sourceType": "azure-stock-neural",
+        "voice": "km-KH-PisethNeural"
+      },
+      "status": "reused-verified",
+      "notes": "Tái sử dụng từ media/km/ai-cruise-km.mp3, đã xác thực SHA-256.",
+      "review": "Khmer drafts require native review"
+    },
+    {
+      "id": "cruise-context",
+      "stage": "cruise",
+      "title": "Thử thách cự ly và khán giả",
+      "when": "200–550 m, không có sự kiện vượt lên hay Đạp. Cho đoạn bình dài 10–15 giây.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 200,
+        "maxDistance": 550
+      },
+      "priority": 1,
+      "maxQueueAgeSeconds": 7,
+      "cooldownSeconds": 25,
+      "text": {
+        "km": "ផ្លូវប្រណាំងនៅវែងទៀត។ ត្រូវរក្សាចង្វាក់ និងសន្សំកម្លាំងសម្រាប់ចុងផ្លូវ។",
+        "vi": "Mọi việc vẫn còn có thể xảy ra. Đường đua vẫn còn khá là dài. Một nghìn hai trăm mét, thử thách thực sự cho sự dẻo dai, bền bỉ và nỗ lực cho đến những mét nước cuối cùng."
+      },
+      "audio": {
+        "primary": "audio/ai-cruise-context-km.mp3",
+        "variants": [
+          "audio/ai-cruise-context-km.mp3"
+        ],
+        "duration": 5.136,
+        "peak": 0.5145,
+        "sha256": "1966009c625d38d18c552353f1cb6d5ac332759c86abec6e64bfb93baf3bda43",
+        "sourceType": "azure-stock-neural",
+        "voice": "km-KH-PisethNeural"
+      },
+      "status": "newly-synthesized",
+      "notes": "Tạo mới bằng Azure Speech km-KH-PisethNeural theo yêu cầu requests.json.",
+      "review": "Khmer drafts require native review"
+    },
+    {
+      "id": "fatigue",
+      "stage": "cruise",
+      "title": "Sức bền xuống thấp",
+      "when": "Sức dưới 20%, trước 950 m. Không bịa chấn thương hoặc sự cố.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 200,
+        "maxDistance": 950,
+        "maxStamina": 20
+      },
+      "priority": 2,
+      "maxQueueAgeSeconds": 7,
+      "cooldownSeconds": 25,
+      "text": {
+        "km": "បន្ថយចង្វាក់ ដើម្បីទុកកម្លាំងសម្រាប់ចុងផ្លូវ។",
+        "vi": "Nhẹ nhàng, nhẹ nhàng."
+      },
+      "audio": {
+        "primary": "audio/ai-recover-km.mp3",
+        "variants": [
+          "audio/ai-recover-km.mp3"
+        ],
+        "duration": 3.737,
+        "peak": 0.5652,
+        "sha256": "9225e9ca4ef3df736eae5d858f90d73fa70c69a972b692de14dad0ff26d6ff29",
+        "sourceType": "azure-stock-neural",
+        "voice": "km-KH-PisethNeural"
+      },
+      "status": "reused-verified",
+      "notes": "Tái sử dụng từ media/km/ai-recover-km.mp3, đã xác thực SHA-256.",
+      "review": "Khmer drafts require native review"
+    },
+    {
+      "id": "cohesion",
+      "stage": "cruise",
+      "title": "Nhịp dầm đồng đều",
+      "when": "Nhịp đồng đều trên 80%, 200–950 m. Không chèn khi đang so kè gắt.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 200,
+        "maxDistance": 950,
+        "minCohesion": 80
+      },
+      "priority": 2,
+      "maxQueueAgeSeconds": 7,
+      "cooldownSeconds": 25,
+      "text": {
+        "km": "ចង្វាក់អុំស្មើគ្នាល្អណាស់!",
+        "vi": "Nhẹ nhàng, nhẹ nhàng."
+      },
+      "audio": {
+        "primary": "audio/ai-cohesion-km.mp3",
+        "variants": [
+          "audio/ai-cohesion-km.mp3"
+        ],
+        "duration": 2.4625,
+        "peak": 0.522,
+        "sha256": "9eaa92c8a08bc2955a8328dddb9b01e32df614e0e3b4a94e8d310dba6be6bcbe",
+        "sourceType": "azure-stock-neural",
+        "voice": "km-KH-PisethNeural"
+      },
+      "status": "reused-verified",
+      "notes": "Tái sử dụng từ media/km/ai-cohesion-km.mp3, đã xác thực SHA-256.",
+      "review": "Khmer drafts require native review"
+    },
+    {
+      "id": "recover",
+      "stage": "cruise",
+      "title": "Hồi sức giữ nhịp",
+      "when": "Sau một nhịp tăng tốc hoặc khi thể lực giảm; dặn giữ nhịp.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 200,
+        "maxDistance": 950,
+        "maxStamina": 35
+      },
+      "priority": 2,
+      "maxQueueAgeSeconds": 7,
+      "cooldownSeconds": 25,
+      "text": {
+        "km": "បន្ថយចង្វាក់ ដើម្បីទុកកម្លាំងសម្រាប់ចុងផ្លូវ។",
+        "vi": "Nhẹ nhàng, nhẹ nhàng."
+      },
+      "audio": {
+        "primary": "audio/ai-recover-km.mp3",
+        "variants": [
+          "audio/ai-recover-km.mp3"
+        ],
+        "duration": 3.737,
+        "peak": 0.5652,
+        "sha256": "9225e9ca4ef3df736eae5d858f90d73fa70c69a972b692de14dad0ff26d6ff29",
+        "sourceType": "azure-stock-neural",
+        "voice": "km-KH-PisethNeural"
+      },
+      "status": "reused-verified",
+      "notes": "Tái sử dụng từ media/km/ai-recover-km.mp3, đã xác thực SHA-256.",
+      "review": "Khmer drafts require native review"
+    },
+    {
+      "id": "halfway",
+      "stage": "halfway",
+      "title": "Qua nửa đường",
+      "when": "Đạt mốc 600 m (khoảng 550–750 m); ưu tiên hơn câu chung chung.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 550,
+        "maxDistance": 750
+      },
+      "priority": 2,
+      "maxQueueAgeSeconds": 7,
+      "cooldownSeconds": 25,
+      "text": {
+        "km": "បានឆ្លងកាត់ពាក់កណ្តាលផ្លូវហើយ។ ត្រូវទុកកម្លាំងសម្រាប់ចុងផ្លូវ!",
+        "vi": "Nơi mà mỗi hội đua đều năm, sáu mươi đội tham gia. Cùng với đó là hàng chục ngàn khán giả ken dày hai bên bờ sông. Tất cả đã tạo nên những vũ điệu trên sông nước, những sắc màu của lễ hội rất khó có nơi nào có được."
+      },
+      "audio": {
+        "primary": "audio/ai-halfway-km.mp3",
+        "variants": [
+          "audio/ai-halfway-km.mp3"
+        ],
+        "duration": 4.375,
+        "peak": 0.4396,
+        "sha256": "f6739d84bba4149dbe1bf48c8708772c0162d03b982a1a0b833ac8d51fd85ef2",
+        "sourceType": "azure-stock-neural",
+        "voice": "km-KH-PisethNeural"
+      },
+      "status": "reused-verified",
+      "notes": "Tái sử dụng từ media/km/ai-halfway-km.mp3, đã xác thực SHA-256.",
+      "review": "Khmer drafts require native review"
+    },
+    {
+      "id": "close-race",
+      "stage": "duel",
+      "title": "Hai ghe so kè",
+      "when": "Cách nhau dưới 3 m, trong khoảng 200–950 m.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 200,
+        "maxDistance": 950,
+        "maxAbsGap": 3
+      },
+      "priority": 2,
+      "maxQueueAgeSeconds": 7,
+      "cooldownSeconds": 25,
+      "text": {
+        "km": "ទូកទាំងពីរកំពុងប្រកៀកប្រកិតគ្នា!",
+        "vi": "Hiện tại thì cả hai vẫn đang so kè."
+      },
+      "audio": {
+        "primary": "audio/ai-close-race-km.mp3",
+        "variants": [
+          "audio/ai-close-race-km.mp3"
+        ],
+        "duration": 2.8365,
+        "peak": 0.5157,
+        "sha256": "08531309a36ada0f6e0e0f7da1c4c08c93ee61666809809856eb6349c12e9657",
+        "sourceType": "azure-stock-neural",
+        "voice": "km-KH-PisethNeural"
+      },
+      "status": "reused-verified",
+      "notes": "Tái sử dụng từ media/km/ai-close-race-km.mp3, đã xác thực SHA-256.",
+      "review": "Khmer drafts require native review"
+    },
+    {
+      "id": "lead-change",
+      "stage": "duel",
+      "title": "Đổi dẫn đầu",
+      "when": "Ngay khi vị trí dẫn đầu thay đổi; ưu tiên hơn so kè thường.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 200,
+        "maxDistance": 950,
+        "onLeadChange": true
+      },
+      "priority": 3,
+      "maxQueueAgeSeconds": 7,
+      "cooldownSeconds": 25,
+      "text": {
+        "km": "មានការវ៉ាឡើងមុខ! ទូកនាំមុខបានផ្លាស់ប្តូរហើយ!",
+        "vi": "Dẫn trước, dẫn trước"
+      },
+      "audio": {
+        "primary": "audio/ai-lead-change-km.mp3",
+        "variants": [
+          "audio/ai-lead-change-km.mp3"
+        ],
+        "duration": 4.2945,
+        "peak": 0.5712,
+        "sha256": "5e0aba27c5ed1508b2d114abffebd6a3380159041ae216b918a9825d92246eed",
+        "sourceType": "azure-stock-neural",
+        "voice": "km-KH-PisethNeural"
+      },
+      "status": "reused-verified",
+      "notes": "Tái sử dụng từ media/km/ai-lead-change-km.mp3, đã xác thực SHA-256.",
+      "review": "Khmer drafts require native review"
+    },
+    {
+      "id": "safe-margin",
+      "stage": "duel",
+      "title": "Khoảng cách dẫn rõ",
+      "when": "Ghe đang dẫn trên 8 m; chưa được tuyên bố thắng.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minAbsGap": 8
+      },
+      "priority": 2,
+      "maxQueueAgeSeconds": 7,
+      "cooldownSeconds": 25,
+      "text": {
+        "km": "ទូកនាំមុខកំពុងបង្កើនគម្លាត ប៉ុន្តែការប្រកួតមិនទាន់បញ្ចប់ទេ។",
+        "vi": "Rõ ràng là một khoảng cách an toàn."
+      },
+      "audio": {
+        "primary": "audio/ai-safe-margin-km.mp3",
+        "variants": [
+          "audio/ai-safe-margin-km.mp3"
+        ],
+        "duration": 4.704,
+        "peak": 0.5377,
+        "sha256": "5f5b34dc4a02116464247ba8fa50bba7d1b6b3034c584b8e799436504234fc10",
+        "sourceType": "azure-stock-neural",
+        "voice": "km-KH-PisethNeural"
+      },
+      "status": "newly-synthesized",
+      "notes": "Tạo mới bằng Azure Speech km-KH-PisethNeural theo yêu cầu requests.json.",
+      "review": "Khmer drafts require native review"
+    },
+    {
+      "id": "history-tum-nup",
+      "stage": "history",
+      "title": "Lịch sử Tum Núp 2",
+      "when": "Đúng đội nam Tum Núp 2, 200–750 m; chỉ phát khi không có sự kiện gắt.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 200,
+        "maxDistance": 750,
+        "teamIds": [
+          "can_tho-23"
+        ]
+      },
+      "priority": 0,
+      "maxQueueAgeSeconds": 7,
+      "cooldownSeconds": 90,
+      "text": {
+        "km": "នៅឆ្នាំ ២០២៤ ក្រុមទូកទំនប់ ២ បានឈ្នះជើងឯកផ្នែកបុរស។",
+        "vi": "Tum Núp 2 là đương kim vô địch năm 2024."
+      },
+      "audio": {
+        "primary": "audio/trial-history-tum-nup-km.mp3",
+        "variants": [
+          "audio/trial-history-tum-nup-km.mp3"
+        ],
+        "duration": 5.2583,
+        "peak": 0.5495,
+        "sha256": "04be4509b416f61b6a918d17080da7a558a424acb412a948fdc5066dc6bc3491",
+        "sourceType": "azure-stock-neural",
+        "voice": "km-KH-PisethNeural"
+      },
+      "status": "reused-verified",
+      "notes": "Tái sử dụng từ media/km/trial-history-tum-nup-km.mp3, đã xác thực SHA-256.",
+      "review": "Khmer drafts require native review"
+    },
+    {
+      "id": "history-kos-thum",
+      "stage": "history",
+      "title": "Lịch sử Kos Thum 1",
+      "when": "Đúng đội nam Kos Thum 1, 200–750 m; chỉ phát khi không có sự kiện gắt.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 200,
+        "maxDistance": 750,
+        "teamIds": [
+          "ca_mau-05"
+        ]
+      },
+      "priority": 0,
+      "maxQueueAgeSeconds": 7,
+      "cooldownSeconds": 90,
+      "text": {
+        "km": "ក្រុមទូកកោះធំ ១ បានជាប់ចំណាត់ថ្នាក់លេខពីរ ផ្នែកបុរស នៅឆ្នាំ ២០២៤។",
+        "vi": "Kos Thum 1 là đội á quân nội dung nam năm 2024."
+      },
+      "audio": {
+        "primary": "audio/trial-history-kos-thum-km.mp3",
+        "variants": [
+          "audio/trial-history-kos-thum-km.mp3"
+        ],
+        "duration": 5.8907,
+        "peak": 0.5756,
+        "sha256": "94bfb492023427ee5591fb53e855096b2e98e2f5105771b3546ce04a5debaee7",
+        "sourceType": "azure-stock-neural",
+        "voice": "km-KH-PisethNeural"
+      },
+      "status": "reused-verified",
+      "notes": "Tái sử dụng từ media/km/trial-history-kos-thum-km.mp3, đã xác thực SHA-256.",
+      "review": "Khmer drafts require native review"
+    },
+    {
+      "id": "history-sro-lon",
+      "stage": "history",
+      "title": "Lịch sử Sro Lôn 2",
+      "when": "Đúng đội nam Sro Lôn 2, 200–750 m; phải có khoảng trống lời bình.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 200,
+        "maxDistance": 750,
+        "teamIds": [
+          "can_tho-06"
+        ]
+      },
+      "priority": 0,
+      "maxQueueAgeSeconds": 7,
+      "cooldownSeconds": 90,
+      "text": {
+        "km": "ក្រុមទូកសរឡូន ២ បានជាប់ចំណាត់ថ្នាក់លេខបី ផ្នែកបុរស នៅឆ្នាំ ២០២៤។",
+        "vi": "Sro Lôn 2 là đội hạng ba năm trước."
+      },
+      "audio": {
+        "primary": "audio/trial-history-sro-lon-km.mp3",
+        "variants": [
+          "audio/trial-history-sro-lon-km.mp3"
+        ],
+        "duration": 5.808,
+        "peak": 0.5443,
+        "sha256": "6fad0c804b1248fdef7685522ed6079fe8a62c437e9b66fe581aee28f3836650",
+        "sourceType": "azure-stock-neural",
+        "voice": "km-KH-PisethNeural"
+      },
+      "status": "newly-synthesized",
+      "notes": "Tạo mới bằng Azure Speech km-KH-PisethNeural đồng nhất cấu trúc với Tum Núp 2 và Kos Thum 1.",
+      "review": "Khmer drafts require native review"
+    },
+    {
+      "id": "final",
+      "stage": "final",
+      "title": "Bắt đầu nước rút",
+      "when": "Từ 950 m; kích hoạt một lần duy nhất trước 1.100 m.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 950,
+        "maxDistance": 1100
+      },
+      "priority": 3,
+      "maxQueueAgeSeconds": 7,
+      "cooldownSeconds": 25,
+      "text": {
+        "km": "ដល់ដំណាក់កាលចុងក្រោយហើយ! បង្កើនល្បឿន!",
+        "vi": "Chúng ta thấy nhịp dầm của anh em đã được đẩy mạnh hơn rồi."
+      },
+      "audio": {
+        "primary": "audio/ai-final-km.mp3",
+        "variants": [
+          "audio/ai-final-km.mp3"
+        ],
+        "duration": 3.9697,
+        "peak": 0.4943,
+        "sha256": "4dd77c74dfdee28a4bb4c07ffb18393e2563acff5d07592b02aec3d32f10da72",
+        "sourceType": "azure-stock-neural",
+        "voice": "km-KH-PisethNeural"
+      },
+      "status": "reused-verified",
+      "notes": "Tái sử dụng từ media/km/ai-final-km.mp3, đã xác thực SHA-256.",
+      "review": "Khmer drafts require native review"
+    },
+    {
+      "id": "sprint-effort",
+      "stage": "final",
+      "title": "Nhịp dầm mạnh hơn",
+      "when": "950–1150 m, đang nước rút hoặc Đạp thật; tăng trống/nước theo nhịp.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 950,
+        "maxDistance": 1150,
+        "requiresHardEffort": true
+      },
+      "priority": 4,
+      "maxQueueAgeSeconds": 3,
+      "cooldownSeconds": 25,
+      "text": {
+        "km": "ដល់ដំណាក់កាលចុងក្រោយហើយ! បង្កើនល្បឿន!",
+        "vi": "Chúng ta thấy nhịp dầm của anh em đã được đẩy mạnh hơn rồi."
+      },
+      "audio": {
+        "primary": "audio/ai-final-km.mp3",
+        "variants": [
+          "audio/ai-final-km.mp3"
+        ],
+        "duration": 3.9697,
+        "peak": 0.4943,
+        "sha256": "4dd77c74dfdee28a4bb4c07ffb18393e2563acff5d07592b02aec3d32f10da72",
+        "sourceType": "azure-stock-neural",
+        "voice": "km-KH-PisethNeural"
+      },
+      "status": "reused-verified",
+      "notes": "Tái sử dụng từ media/km/ai-final-km.mp3, đã xác thực SHA-256.",
+      "review": "Khmer drafts require native review"
+    },
+    {
+      "id": "surge",
+      "stage": "final",
+      "title": "Đạp nước rút",
+      "when": "Người dùng kích hoạt Đạp ở chặng cuối (950–1.200 m).",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 950,
+        "maxDistance": 1200,
+        "surgeActive": true
+      },
+      "priority": 4,
+      "maxQueueAgeSeconds": 7,
+      "cooldownSeconds": 25,
+      "text": {
+        "km": "ប្រឹងអស់កម្លាំង!",
+        "vi": "Đạp rồi, đạp rồi"
+      },
+      "audio": {
+        "primary": "audio/ai-surge-km.mp3",
+        "variants": [
+          "audio/ai-surge-km.mp3",
+          "audio/khmer-full-effort.mp3"
+        ],
+        "duration": 1.82,
+        "peak": 0.5025,
+        "sha256": "8827110d6f84fecc717303282ba70be595b9446f909ec6877fef68920df0d2c1",
+        "sourceType": "azure-stock-neural",
+        "voice": "km-KH-PisethNeural"
+      },
+      "status": "reused-verified",
+      "notes": "Tái sử dụng từ media/km/ai-surge-km.mp3 (kèm bản phát thanh khmer-full-effort.mp3).",
+      "review": "Khmer drafts require native review"
+    },
+    {
+      "id": "last-hundred",
+      "stage": "final",
+      "title": "100 mét cuối",
+      "when": "Ghe dẫn chạm 1.100 m; ngắt các câu mô tả chung.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 1100,
+        "maxDistance": 1150
+      },
+      "priority": 4,
+      "maxQueueAgeSeconds": 7,
+      "cooldownSeconds": 25,
+      "text": {
+        "km": "១០០ ម៉ែត្រចុងក្រោយ!",
+        "vi": "Một trăm mét cuối!"
+      },
+      "audio": {
+        "primary": "audio/ai-last-hundred-km.mp3",
+        "variants": [
+          "audio/ai-last-hundred-km.mp3"
+        ],
+        "duration": 2.1817,
+        "peak": 0.461,
+        "sha256": "940a7f76d7df3ce8bf323fda98c4b88e7a1e9f1e00af5e4998cb130f60d8566b",
+        "sourceType": "azure-stock-neural",
+        "voice": "km-KH-PisethNeural"
+      },
+      "status": "reused-verified",
+      "notes": "Tái sử dụng từ media/km/ai-last-hundred-km.mp3, đã xác thực SHA-256.",
+      "review": "Khmer drafts require native review"
+    },
+    {
+      "id": "last-fifty",
+      "stage": "final",
+      "title": "50 mét cuối",
+      "when": "Ghe dẫn chạm 1.150 m; ưu tiên tuyệt đối trước khi về đích.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 1150,
+        "maxDistance": 1200
+      },
+      "priority": 4,
+      "maxQueueAgeSeconds": 7,
+      "cooldownSeconds": 25,
+      "text": {
+        "km": "៥០ ម៉ែត្រចុងក្រោយ!",
+        "vi": "Năm mươi mét cuối!"
+      },
+      "audio": {
+        "primary": "audio/ai-last-fifty-km.mp3",
+        "variants": [
+          "audio/ai-last-fifty-km.mp3"
+        ],
+        "duration": 2.1092,
+        "peak": 0.4198,
+        "sha256": "9203bca38d35df608d967cdf5317e2eef248f3b2ad5ecbcd66ebbcbb3d0a79a5",
+        "sourceType": "azure-stock-neural",
+        "voice": "km-KH-PisethNeural"
+      },
+      "status": "reused-verified",
+      "notes": "Tái sử dụng từ media/km/ai-last-fifty-km.mp3, đã xác thực SHA-256.",
+      "review": "Khmer drafts require native review"
+    },
+    {
+      "id": "finish-win",
+      "stage": "result",
+      "title": "Thắng lượt",
+      "when": "Game xác nhận người dùng thắng vòng thường (không phải chung kết cúp).",
+      "conditions": {
+        "phases": [
+          "finished"
+        ],
+        "results": [
+          "win"
+        ],
+        "cupChampion": false
+      },
+      "priority": 5,
+      "maxQueueAgeSeconds": 3,
+      "cooldownSeconds": 25,
+      "text": {
+        "km": "ដល់ទីហើយ! សូមអបអរសាទរក្រុមដែលឈ្នះជើងប្រណាំងនេះ!",
+        "vi": "Trước tiên xin chúc mừng một chiến thắng quan trọng của anh em."
+      },
+      "audio": {
+        "primary": "audio/ai-finish-win-km.mp3",
+        "variants": [
+          "audio/ai-finish-win-km.mp3",
+          "audio/khmer-finish.mp3"
+        ],
+        "duration": 4.8318,
+        "peak": 0.455,
+        "sha256": "51377872f38085e991248ddd7c8967af54a4e8d7a7f8c91a793e4e64f5313ee2",
+        "sourceType": "azure-stock-neural",
+        "voice": "km-KH-PisethNeural"
+      },
+      "status": "reused-verified",
+      "notes": "Tái sử dụng từ media/km/ai-finish-win-km.mp3 (kèm bản phát thanh khmer-finish.mp3).",
+      "review": "Khmer drafts require native review"
+    },
+    {
+      "id": "finish-loss",
+      "stage": "result",
+      "title": "Thua lượt",
+      "when": "Game xác nhận đối thủ về trước.",
+      "conditions": {
+        "phases": [
+          "finished"
+        ],
+        "results": [
+          "loss"
+        ]
+      },
+      "priority": 5,
+      "maxQueueAgeSeconds": 3,
+      "cooldownSeconds": 25,
+      "text": {
+        "km": "គួរឱ្យសោកស្តាយ! គូប្រកួតបានដល់ទីមុន ក្នុងជើងប្រណាំងនេះ។",
+        "vi": "Quá tuyệt vời!"
+      },
+      "audio": {
+        "primary": "audio/ai-finish-loss-km.mp3",
+        "variants": [
+          "audio/ai-finish-loss-km.mp3"
+        ],
+        "duration": 5.3965,
+        "peak": 0.5346,
+        "sha256": "3712f53d03bb299ed155caaa4d286c800c3a382aca5ade67ddd7eba58258befa",
+        "sourceType": "azure-stock-neural",
+        "voice": "km-KH-PisethNeural"
+      },
+      "status": "reused-verified",
+      "notes": "Tái sử dụng từ media/km/ai-finish-loss-km.mp3, đã xác thực SHA-256.",
+      "review": "Khmer drafts require native review"
+    },
+    {
+      "id": "finish-tie",
+      "stage": "result",
+      "title": "Kết quả hòa",
+      "when": "Thời gian chênh lệch dưới ngưỡng xác định thắng thua.",
+      "conditions": {
+        "phases": [
+          "finished"
+        ],
+        "results": [
+          "tie"
+        ]
+      },
+      "priority": 5,
+      "maxQueueAgeSeconds": 3,
+      "cooldownSeconds": 25,
+      "text": {
+        "km": "លទ្ធផលស្មើគ្នា! ទូកទាំងពីរដល់ទីប្រកៀកប្រកិតគ្នា!",
+        "vi": "Một trận đấu cực kỳ hấp dẫn."
+      },
+      "audio": {
+        "primary": "audio/ai-finish-tie-km.mp3",
+        "variants": [
+          "audio/ai-finish-tie-km.mp3"
+        ],
+        "duration": 4.9875,
+        "peak": 0.5376,
+        "sha256": "cde59cd17fcc28c78788fbc26ab9005fba44257cd3f67f30b57e7ed73c0a38fd",
+        "sourceType": "azure-stock-neural",
+        "voice": "km-KH-PisethNeural"
+      },
+      "status": "reused-verified",
+      "notes": "Tái sử dụng từ media/km/ai-finish-tie-km.mp3, đã xác thực SHA-256.",
+      "review": "Khmer drafts require native review"
+    },
+    {
+      "id": "finish-dnf",
+      "stage": "result",
+      "title": "Không hoàn thành",
+      "when": "Một trong hai ghe bỏ cuộc hoặc không hoàn thành.",
+      "conditions": {
+        "phases": [
+          "finished"
+        ],
+        "results": [
+          "dnf"
+        ]
+      },
+      "priority": 5,
+      "maxQueueAgeSeconds": 3,
+      "cooldownSeconds": 25,
+      "text": {
+        "km": "គួរឱ្យសោកស្តាយ ក្រុមមួយមិនបានបញ្ចប់ជើងប្រណាំងនេះទេ។",
+        "vi": "Rất là tiếc."
+      },
+      "audio": {
+        "primary": "audio/ai-finish-dnf-km.mp3",
+        "variants": [
+          "audio/ai-finish-dnf-km.mp3"
+        ],
+        "duration": 4.3111,
+        "peak": 0.4646,
+        "sha256": "d3fc4ee4acbbf50b456b1636ec8b7ab4b432857f1176c44886ac78e2d62a49c7",
+        "sourceType": "azure-stock-neural",
+        "voice": "km-KH-PisethNeural"
+      },
+      "status": "reused-verified",
+      "notes": "Tái sử dụng từ media/km/ai-finish-dnf-km.mp3, đã xác thực SHA-256.",
+      "review": "Khmer drafts require native review"
+    },
+    {
+      "id": "cup-champion",
+      "stage": "result",
+      "title": "Vô địch cả cúp",
+      "when": "Chỉ khi tournament.championId trùng đội thắng chung kết; thắng vòng thường không đủ.",
+      "conditions": {
+        "phases": [
+          "finished"
+        ],
+        "results": [
+          "win"
+        ],
+        "cupChampion": true
+      },
+      "priority": 6,
+      "maxQueueAgeSeconds": 3,
+      "cooldownSeconds": 25,
+      "text": {
+        "km": "សូមអបអរសាទរ {winner_name} ដែលបានឈ្នះជើងឯកពានរង្វាន់នេះ!",
+        "vi": "Xin chúc mừng {winner_name}, đội vô địch cúp lễ hội!"
+      },
+      "audio": {
+        "primary": "audio/ai-champion-tum-nup-km.mp3",
+        "variants": [
+          "audio/ai-champion-tum-nup-km.mp3",
+          "audio/ai-champion-kos-thum-km.mp3",
+          "audio/ai-champion-carrier-km.mp3"
+        ],
+        "duration": 4.512,
+        "peak": 0.4772,
+        "sha256": "7ae1036526212bf32914895e60efae472e0ef4b3cf0ee081c0307178e0f805ce",
+        "sourceType": "azure-stock-neural",
+        "voice": "km-KH-PisethNeural"
+      },
+      "status": "newly-synthesized-resolved",
+      "notes": "Đã giải quyết placeholder bằng tên đội vô địch thật (Tum Núp 2 và Kos Thum 1 kèm câu dẫn carrier). Không đưa nguyên placeholder vào TTS.",
+      "review": "Khmer drafts require native review",
+      "resolvedTextKm": "សូមអបអរសាទរ ទុំនុប ២ ដែលបានឈ្នះជើងឯកពានរង្វាន់នេះ!"
+    }
+  ]
+}
