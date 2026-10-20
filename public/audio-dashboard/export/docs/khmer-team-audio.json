@@ -1,0 +1,281 @@
+{
+  "schema": 1,
+  "kind": "authored-khmer-team-names",
+  "language": "km",
+  "voice": "km-KH-PisethNeural",
+  "maxSeconds": 6,
+  "rate": 0,
+  "review": {
+    "textSource": "owner-prepared teams_data.py labels matched to the existing Vietnamese registration mapping",
+    "sourceLabelsSha256": "bea87ecd725e04bad43007f7d02841df6abf7945ded635a29e3d0fc0f1c64f33",
+    "nativeListeningVerified": false,
+    "originalCommentatorsCloned": false,
+    "purpose": "Fill only missing Khmer team names; preserve original broadcast names and Vietnamese recordings."
+  },
+  "names": [
+    {
+      "registrationId": "can_tho-33",
+      "nameVi": "Bâng Tone Sa",
+      "text": "វត្តបឹងទន្សា",
+      "inputFile": "02_Bang_Ton_Sa.mp3"
+    },
+    {
+      "registrationId": "can_tho-02",
+      "nameVi": "PôThiSaThaRam (Đội 2)",
+      "text": "វត្តពោធិសត្ថាធម្មរាម ២",
+      "inputFile": "04_Pothi_Sath_Thamram_2.mp3"
+    },
+    {
+      "registrationId": "can_tho-06",
+      "nameVi": "Sro Lôn (Đội 2)",
+      "text": "វត្តសិរីរតនត្រ័យ សរឡូន ២",
+      "inputFile": "05_Sro_Lon_2.mp3"
+    },
+    {
+      "registrationId": "can_tho-14",
+      "nameVi": "Buôl Mun (Lộ Mới)",
+      "text": "វត្តពពូលមុំ",
+      "inputFile": "06_Buol_Mum.mp3"
+    },
+    {
+      "registrationId": "can_tho-47",
+      "nameVi": "Pô Thi Thlâng",
+      "text": "វត្តពោធិថ្លឹង",
+      "inputFile": "07_Pothi_Thlang.mp3"
+    },
+    {
+      "registrationId": "can_tho-37",
+      "nameVi": "Om Pou Year",
+      "text": "វត្តអុំពូយ៉ា",
+      "inputFile": "08_Om_Pu_Year.mp3"
+    },
+    {
+      "registrationId": "can_tho-05",
+      "nameVi": "Sro Lôn (Đội 1)",
+      "text": "វត្តសិរីរតនត្រ័យ សរឡូន ១",
+      "inputFile": "09_Sro_Lon_1.mp3"
+    },
+    {
+      "registrationId": "can_tho-21",
+      "nameVi": "Kom Pong Tróp A",
+      "text": "វត្តកំពង់ត្រប់",
+      "inputFile": "10_Kompong_Trop.mp3"
+    },
+    {
+      "registrationId": "can_tho-46",
+      "nameVi": "Pôthi Khsach",
+      "text": "វត្តពោធិខ្សាច់",
+      "inputFile": "11_Pothi_Khsach.mp3"
+    },
+    {
+      "registrationId": "can_tho-39",
+      "nameVi": "Prêk On Đơk (Đội 2)",
+      "text": "វត្តព្រែកអណ្តើក ២",
+      "inputFile": "12_Prek_On_Dok_2.mp3"
+    },
+    {
+      "registrationId": "can_tho-30",
+      "nameVi": "Tà On",
+      "text": "វត្តតាអុង",
+      "inputFile": "13_Ta_Ong.mp3"
+    },
+    {
+      "registrationId": "ca_mau-03",
+      "nameVi": "Đìa Muồng (Đội nam)",
+      "text": "វត្តសិរីវង្សាជយារាម (ដីមួង)",
+      "inputFile": "14_Dia_Muong.mp3"
+    },
+    {
+      "registrationId": "can_tho-34",
+      "nameVi": "Prếk Om Pu",
+      "text": "វត្តព្រែកអុំពូ",
+      "inputFile": "15_Prek_Om_Pu.mp3"
+    },
+    {
+      "registrationId": "can_tho-17",
+      "nameVi": "Tà Khvich Thmây (Trà Quýt Mới)",
+      "text": "វត្តតាខ្វិតថ្មី",
+      "inputFile": "16_Ta_Khvich_Thmay.mp3"
+    },
+    {
+      "registrationId": "can_tho-35",
+      "nameVi": "Prếk Ta Cuôl (Trà Cuôn)",
+      "text": "វត្តព្រែកតាគួល",
+      "inputFile": "17_Prek_Ta_Cuol.mp3"
+    },
+    {
+      "registrationId": "can_tho-43",
+      "nameVi": "Bâng Cro Chap Chắs",
+      "text": "វត្តបឹងក្រចាប់ចាស់",
+      "inputFile": "18_Bang_Crochap_Chas.mp3"
+    },
+    {
+      "registrationId": "can_tho-41",
+      "nameVi": "Phônô Cambốth",
+      "text": "វត្តភ្នំកំប៉ូត",
+      "inputFile": "19_Phno_Com_Pot.mp3"
+    },
+    {
+      "registrationId": "can_tho-20",
+      "nameVi": "Trà Quýt cũ (Ta Kh Vích Chăs)",
+      "text": "វត្តតាខ្វិតចាស់",
+      "inputFile": "20_Ta_Khvich_Chas.mp3"
+    },
+    {
+      "registrationId": "ca_mau-11",
+      "nameVi": "Đầu Sấu (Đội 1)",
+      "text": "វត្តរម្ភាវណ្ណ ក្បាលក្រពើ ១",
+      "inputFile": "21_Dau_Sau_1.mp3"
+    },
+    {
+      "registrationId": "ca_mau-12",
+      "nameVi": "Đầu Sấu (Đội 2)",
+      "text": "វត្តរម្ភាវណ្ណ ក្បាលក្រពើ ២",
+      "inputFile": "22_Dau_Sau_2.mp3"
+    },
+    {
+      "registrationId": "can_tho-48",
+      "nameVi": "Settodor",
+      "text": "វត្តសិទ្ធោទរ",
+      "inputFile": "24_Settodor.mp3"
+    },
+    {
+      "registrationId": "can_tho-12",
+      "nameVi": "Nô Rên Răn Sây (Ông Kho)",
+      "text": "វត្តនរិន្ទរង្សី (លោកខោ)",
+      "inputFile": "25_Noren_Rangsay_Ong_Kho.mp3"
+    },
+    {
+      "registrationId": "can_tho-16",
+      "nameVi": "Phnôrôka",
+      "text": "វត្តភ្នំរការ",
+      "inputFile": "27_Phno_Roca.mp3"
+    },
+    {
+      "registrationId": "can_tho-27",
+      "nameVi": "Bâng Khdon",
+      "text": "វត្តបឹងខ្វន់",
+      "inputFile": "29_Bang_Khdon.mp3"
+    },
+    {
+      "registrationId": "can_tho-03",
+      "nameVi": "Khleáng (Đội 1)",
+      "text": "វត្តឃ្លាំង ១",
+      "inputFile": "31_Khleang_1.mp3"
+    },
+    {
+      "registrationId": "can_tho-28",
+      "nameVi": "Đay Ta Suốs",
+      "text": "វត្តដៃតាសួស",
+      "inputFile": "33_Day_Ta_Suos.mp3"
+    },
+    {
+      "registrationId": "can_tho-10",
+      "nameVi": "Pích Măng Kol (Wáth Pích)",
+      "text": "វត្តពេជ្រ",
+      "inputFile": "34_Wath_Pich.mp3"
+    },
+    {
+      "registrationId": "can_tho-42",
+      "nameVi": "Bâng Cro Chap Thmây",
+      "text": "វត្តបឹងក្រចាប់ថ្មី",
+      "inputFile": "35_Bang_Crochap_Thmay.mp3"
+    },
+    {
+      "registrationId": "can_tho-29",
+      "nameVi": "Prếk Pinh Tuang (Bét Tôn)",
+      "text": "វត្តព្រែកពេញតូង",
+      "inputFile": "37_Prek_Pinh_Taung.mp3"
+    },
+    {
+      "registrationId": "ca_mau-01",
+      "nameVi": "Cao Dân",
+      "text": "វត្តសិរីមានជ័យ ចៅដូន",
+      "inputFile": "38_Cao_Dan.mp3"
+    },
+    {
+      "registrationId": "can_tho-38",
+      "nameVi": "Prêk On Đơk (Đội 1)",
+      "text": "វត្តព្រែកអណ្តើក ១",
+      "inputFile": "39_Prek_On_Dok_1.mp3"
+    },
+    {
+      "registrationId": "can_tho-25",
+      "nameVi": "Bâng Kók (Đội 1)",
+      "text": "វត្តបឹងកក់ ១",
+      "inputFile": "40_Bang_Cok_1.mp3"
+    },
+    {
+      "registrationId": "can_tho-08",
+      "nameVi": "Đơm Om Prul (Xẻo Me)",
+      "text": "វត្តដើមអំពិល",
+      "inputFile": "41_Dom_Umpul.mp3"
+    },
+    {
+      "registrationId": "can_tho-40",
+      "nameVi": "Phnô Kanh Chơ Thmây",
+      "text": "វត្តភ្នំកញ្ជើថ្មី",
+      "inputFile": "42_Phno_Canh_Cho_Thmay.mp3"
+    },
+    {
+      "registrationId": "can_tho-44",
+      "nameVi": "Tứk Pray",
+      "text": "វត្តទឹកប្រៃ",
+      "inputFile": "43_Tuk_Pray.mp3"
+    },
+    {
+      "registrationId": "can_tho-09",
+      "nameVi": "Sê Rây Kan Đal",
+      "text": "វត្តសិរីកណ្តាល",
+      "inputFile": "44_Serey_Kandal.mp3"
+    },
+    {
+      "registrationId": "can_tho-01",
+      "nameVi": "PôThiSaThaRam (Đội 1)",
+      "text": "វត្តពោធិសត្ថាធម្មរាម ១",
+      "inputFile": "45_Pothi_Sath_Thamram_1.mp3"
+    },
+    {
+      "registrationId": "can_tho-26",
+      "nameVi": "Bâng Kók (Đội 2)",
+      "text": "វត្តបឹងកក់ ២",
+      "inputFile": "46_Bang_Cok_2.mp3"
+    },
+    {
+      "registrationId": "can_tho-31",
+      "nameVi": "TumPokSok (Đội nam)",
+      "text": "វត្តទំពូងសុក",
+      "inputFile": "47_Tumpuk_Sok.mp3"
+    },
+    {
+      "registrationId": "can_tho-07",
+      "nameVi": "Chrôi Tưm Chắs",
+      "text": "វត្តជ្រោយទឹមចាស់",
+      "inputFile": "48_Chroi_Tum_Chas.mp3"
+    },
+    {
+      "registrationId": "can_tho-15",
+      "nameVi": "Muni Srắc Keo",
+      "text": "វត្តមុនីស្រះកែវ",
+      "inputFile": "49_Monisrackeo.mp3"
+    },
+    {
+      "registrationId": "ca_mau-09",
+      "nameVi": "Ngan Dừa (Đội nam)",
+      "text": "វត្តចាស់ ង៉ានដូង",
+      "inputFile": "51_Ngan_Dua.mp3"
+    },
+    {
+      "registrationId": "can_tho-04",
+      "nameVi": "Khleáng (Đội 2)",
+      "text": "វត្តឃ្លាំង ២",
+      "inputFile": "52_Khleang_2.mp3"
+    },
+    {
+      "registrationId": "can_tho-18",
+      "nameVi": "Bốn Mặt (Buôl Preas Phek)",
+      "text": "វត្តពពូលព្រះភក្ត្រ",
+      "inputFile": "53_Buol_Pres_Phek.mp3"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "localFolder": "E:\\AI\\Um Tuk\\audio\\antigravity",
+  "localZip": "E:\\AI\\Um Tuk\\audio\\antigravity.zip",
+  "zipBytes": 10956293,
+  "zipSha256": "b8c8f8ede0bf3de3a3d68e8438accffdf9c23dff86bbc9566c76b6d656578a44",
+  "files": 239,
+  "clips": 213,
+  "cueRows": 58,
+  "teamRows": 61,
+  "requestRows": 11,
+  "allAudioHashesMatch": true,
+  "allProvenanceHashesMatch": true,
+  "runtimeManifestUnchanged": true,
+  "credentialFilesIncluded": false
+}

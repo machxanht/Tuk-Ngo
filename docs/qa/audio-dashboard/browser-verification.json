@@ -1,0 +1,55 @@
+{
+  "browser": "Microsoft Edge headless, separate test profile",
+  "initialMp3Requests": 0,
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 1000,
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "overflow": false
+    },
+    {
+      "width": 1180,
+      "height": 430,
+      "overflow": false
+    }
+  ],
+  "scenePlayback": {
+    "source": "http://127.0.0.1:4180/assets/race-audio/commentary-trial/go-km.mp3?audio=7a39e55f8bd8",
+    "duration": 1.82,
+    "error": null
+  },
+  "teamPlayback": {
+    "source": "http://127.0.0.1:4180/assets/race-audio/team-names/km/can_tho-10.mp3?audio=356dae546000",
+    "duration": 1.819958,
+    "error": null
+  },
+  "offlinePlayback": {
+    "source": "file:///E:/AI/Um%20Tuk/audio/antigravity/media/km/ai-name-can_tho-10-km.mp3?audio=356dae546000",
+    "duration": 1.819958,
+    "error": null
+  },
+  "decodedClips": 213,
+  "draftReload": "passed",
+  "editedExport": "passed",
+  "pauseCancel": "passed",
+  "browserErrors": [],
+  "limits": [
+    "Viewport emulation; no physical-tablet performance measurement.",
+    "Decoding/playback do not establish native pronunciation quality."
+  ]
+}

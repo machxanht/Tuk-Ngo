@@ -1,0 +1,968 @@
+{
+  "schema": 1,
+  "title": "Ghe Ngo · Audio Direction",
+  "raceLengthM": 1200,
+  "languagePolicy": {
+    "vi": "original-recordings-only",
+    "km": "original-when-available-otherwise-stock-AI",
+    "simultaneousSpeakers": 1,
+    "alternateLanguages": true,
+    "pronunciationReview": "Khmer drafts require native review"
+  },
+  "stages": [
+    {
+      "id": "ceremony",
+      "title": "Khai mạc",
+      "range": "Menu · ghe hội tụ"
+    },
+    {
+      "id": "intro",
+      "title": "Toàn cảnh & gọi đội",
+      "range": "Lia máy → xuất phát"
+    },
+    {
+      "id": "countdown",
+      "title": "Đếm ngược",
+      "range": "3 giây"
+    },
+    {
+      "id": "start",
+      "title": "Xuất phát",
+      "range": "0–200 m"
+    },
+    {
+      "id": "cruise",
+      "title": "Đường trường",
+      "range": "200–600 m"
+    },
+    {
+      "id": "halfway",
+      "title": "Nửa sau",
+      "range": "600–950 m"
+    },
+    {
+      "id": "duel",
+      "title": "So kè & vượt lên",
+      "range": "Theo diễn biến"
+    },
+    {
+      "id": "history",
+      "title": "Lịch sử từng đội",
+      "range": "200–750 m"
+    },
+    {
+      "id": "final",
+      "title": "Nước rút",
+      "range": "950–1.200 m"
+    },
+    {
+      "id": "result",
+      "title": "Kết quả",
+      "range": "Game xác nhận"
+    }
+  ],
+  "playbackPolicy": {
+    "revalidateBeforePlay": true,
+    "noAudioWhilePaused": true,
+    "stopOldMatchQueueOnRestart": true,
+    "minimumGapSeconds": 0.15,
+    "duckAmbienceDb": -8,
+    "discardExpired": true,
+    "historyNeverInterruptsAction": true,
+    "doNotSpeakMissingPlaceholders": true,
+    "finishCancelsPendingRaceSpeech": true,
+    "nameCooldownSeconds": 20
+  },
+  "cues": [
+    {
+      "id": "ceremony-welcome",
+      "stage": "ceremony",
+      "title": "Chào khán giả bên sông",
+      "when": "Sau khi người dùng bật tiếng ở menu khai mạc; không lặp liên tục.",
+      "conditions": {
+        "phases": [
+          "ceremony"
+        ]
+      },
+      "priority": 2,
+      "cooldownSeconds": 90,
+      "maxQueueAgeSeconds": 7,
+      "names": null,
+      "text": {
+        "vi": "Quý khán giả thân mến, những hình ảnh rất là quen thuộc: khán đài và dọc bên dòng sông Maspéro đều đầy ắp khán giả.",
+        "km": "ទស្សនិកជន ទាំងឡាយ ជា ទី មេត្រី"
+      },
+      "audio": {
+        "vi": [
+          "broadcast-shore-paragraph"
+        ],
+        "km": [
+          "khmer-intro"
+        ]
+      },
+      "notes": "",
+      "review": "Khmer text/pronunciation pending native review."
+    },
+    {
+      "id": "ceremony-teams",
+      "stage": "ceremony",
+      "title": "Các đội ghe hội tụ",
+      "when": "Chỉ giới thiệu 2–3 ghe mỗi lượt. Không đọc cả 61 đội cùng lúc.",
+      "conditions": {
+        "phases": [
+          "ceremony"
+        ]
+      },
+      "priority": 2,
+      "cooldownSeconds": 90,
+      "maxQueueAgeSeconds": 7,
+      "names": "participants",
+      "text": {
+        "vi": "Các đội ghe đã hội tụ trước khán đài. Khán giả hai bờ sông đang chờ những lượt tranh tài.",
+        "km": "ក្រុមទូកទាំងអស់បានមកជួបជុំគ្នានៅមុខវេទិកា។ ទស្សនិកជននៅតាមដងទន្លេកំពុងរង់ចាំការប្រកួត។"
+      },
+      "audio": {
+        "vi": [],
+        "km": []
+      },
+      "notes": "Cần tìm lời Việt gốc phù hợp và tạo câu Khmer. Không gọi audio cũ là lời mới.",
+      "review": "Khmer text/pronunciation pending native review."
+    },
+    {
+      "id": "flyover",
+      "stage": "intro",
+      "title": "Toàn cảnh lễ hội 1.200 m",
+      "when": "Camera lia từ khán đài qua hai bờ về xuất phát; dừng trước đếm ngược.",
+      "conditions": {
+        "phases": [
+          "intro"
+        ]
+      },
+      "priority": 1,
+      "cooldownSeconds": 25,
+      "maxQueueAgeSeconds": 7,
+      "names": null,
+      "text": {
+        "vi": "Nơi mà mỗi hội đua đều năm, sáu mươi đội tham gia. Cùng với đó là hàng chục ngàn khán giả ken dày hai bên bờ sông. Tất cả đã tạo nên những vũ điệu trên sông nước, những sắc màu của lễ hội rất khó có nơi nào có được.",
+        "km": "ទស្សនិកជន ទាំងឡាយ ជា ទី មេត្រី"
+      },
+      "audio": {
+        "vi": [
+          "broadcast-festival-paragraph"
+        ],
+        "km": [
+          "khmer-intro"
+        ]
+      },
+      "notes": "",
+      "review": "Khmer text/pronunciation pending native review."
+    },
+    {
+      "id": "team-introduction",
+      "stage": "intro",
+      "title": "Gọi đúng hai đội trong lượt",
+      "when": "Ở vạch xuất phát, trước đếm ngược. Ghép tên từ registrationId đúng hai ghe.",
+      "conditions": {
+        "phases": [
+          "intro",
+          "ready"
+        ]
+      },
+      "priority": 2,
+      "cooldownSeconds": 25,
+      "maxQueueAgeSeconds": 7,
+      "names": "participants",
+      "text": {
+        "vi": "{player_name} gặp {opponent_name}. Hai đội đang chuẩn bị xuất phát.",
+        "km": "{player_name} ប្រកួតជាមួយ {opponent_name}។ ក្រុមទាំងពីរកំពុងត្រៀមចេញដំណើរ។"
+      },
+      "audio": {
+        "vi": [],
+        "km": []
+      },
+      "notes": "Tên đã có audio riêng. Câu dẫn chưa có bản thu đúng nguyên văn; không đọc placeholder chưa giải quyết.",
+      "review": "Khmer text/pronunciation pending native review."
+    },
+    {
+      "id": "ready",
+      "stage": "countdown",
+      "title": "Chuẩn bị",
+      "when": "Trong 3 giây đếm ngược; chỉ chọn một ngôn ngữ.",
+      "conditions": {
+        "phases": [
+          "countdown"
+        ]
+      },
+      "priority": 2,
+      "cooldownSeconds": 25,
+      "maxQueueAgeSeconds": 7,
+      "names": null,
+      "text": {
+        "vi": "Đúng như chúng ta đã chờ đợi.",
+        "km": "ត្រៀមខ្លួន!"
+      },
+      "audio": {
+        "vi": [
+          "broadcast-ready"
+        ],
+        "km": [
+          "ai-ready-km"
+        ]
+      },
+      "notes": "",
+      "review": "Khmer text/pronunciation pending native review."
+    },
+    {
+      "id": "go",
+      "stage": "start",
+      "title": "Xuất phát",
+      "when": "Vừa hết đếm ngược, không đọc lại sau 3 giây.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minElapsed": 0,
+        "maxElapsed": 3,
+        "minDistance": 0,
+        "maxDistance": 200
+      },
+      "priority": 3,
+      "cooldownSeconds": 25,
+      "maxQueueAgeSeconds": 7,
+      "names": null,
+      "text": {
+        "vi": "Hai đội vừa rời điểm xuất phát thôi.",
+        "km": "ចាប់ផ្តើមហើយ!"
+      },
+      "audio": {
+        "vi": [
+          "broadcast-go"
+        ],
+        "km": [
+          "ai-go-km"
+        ]
+      },
+      "notes": "",
+      "review": "Khmer text/pronunciation pending native review."
+    },
+    {
+      "id": "cruise",
+      "stage": "cruise",
+      "title": "Vào đường trường",
+      "when": "Ghe đang theo dõi qua 200 m, chưa tới 600 m.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 200,
+        "maxDistance": 600
+      },
+      "priority": 2,
+      "cooldownSeconds": 25,
+      "maxQueueAgeSeconds": 7,
+      "names": null,
+      "text": {
+        "vi": "Mọi việc vẫn còn có thể xảy ra. Đường đua vẫn còn khá là dài. Một nghìn hai trăm mét, thử thách thực sự cho sự dẻo dai, bền bỉ và nỗ lực cho đến những mét nước cuối cùng.",
+        "km": "ឥឡូវត្រូវរក្សាចង្វាក់អុំឱ្យស្មើគ្នា។"
+      },
+      "audio": {
+        "vi": [
+          "broadcast-course-paragraph"
+        ],
+        "km": [
+          "ai-cruise-km"
+        ]
+      },
+      "notes": "",
+      "review": "Khmer text/pronunciation pending native review."
+    },
+    {
+      "id": "halfway",
+      "stage": "halfway",
+      "title": "Qua nửa đường",
+      "when": "Ghe đang theo dõi qua 600 m; không lấy vị trí ghe đối thủ làm mốc.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 600,
+        "maxDistance": 950
+      },
+      "priority": 2,
+      "cooldownSeconds": 25,
+      "maxQueueAgeSeconds": 7,
+      "names": null,
+      "text": {
+        "vi": "Nơi mà mỗi hội đua đều năm, sáu mươi đội tham gia. Cùng với đó là hàng chục ngàn khán giả ken dày hai bên bờ sông. Tất cả đã tạo nên những vũ điệu trên sông nước, những sắc màu của lễ hội rất khó có nơi nào có được.",
+        "km": "បានឆ្លងកាត់ពាក់កណ្តាលផ្លូវហើយ។ ត្រូវទុកកម្លាំងសម្រាប់ចុងផ្លូវ!"
+      },
+      "audio": {
+        "vi": [
+          "broadcast-festival-paragraph"
+        ],
+        "km": [
+          "ai-halfway-km"
+        ]
+      },
+      "notes": "",
+      "review": "Khmer text/pronunciation pending native review."
+    },
+    {
+      "id": "close-race",
+      "stage": "duel",
+      "title": "Hai ghe so kè",
+      "when": "Chênh lệch tối đa 2 m; bỏ câu nếu khoảng cách tăng trong lúc chờ.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minElapsed": 30,
+        "maxAbsGap": 2
+      },
+      "priority": 2,
+      "cooldownSeconds": 25,
+      "maxQueueAgeSeconds": 7,
+      "names": null,
+      "text": {
+        "vi": "Hiện tại thì cả hai vẫn đang so kè.",
+        "km": "ទូកទាំងពីរកំពុងប្រកៀកប្រកិតគ្នា!"
+      },
+      "audio": {
+        "vi": [
+          "broadcast-contest-pair"
+        ],
+        "km": [
+          "ai-close-race-km"
+        ]
+      },
+      "notes": "",
+      "review": "Khmer text/pronunciation pending native review."
+    },
+    {
+      "id": "lead-change",
+      "stage": "duel",
+      "title": "Đổi dẫn đầu",
+      "when": "Có đổi ngôi thật, cách trên 3 m; câu bị hủy nếu ngôi dẫn đầu đổi tiếp.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "leadChanged": true,
+        "minAbsGap": 3.01
+      },
+      "priority": 3,
+      "cooldownSeconds": 25,
+      "maxQueueAgeSeconds": 7,
+      "names": "leader",
+      "text": {
+        "vi": "Dẫn trước, dẫn trước, dẫn trước!",
+        "km": "មានការវ៉ាឡើងមុខ! ទូកនាំមុខបានផ្លាស់ប្តូរហើយ!"
+      },
+      "audio": {
+        "vi": [
+          "broadcast-lead"
+        ],
+        "km": [
+          "ai-lead-change-km"
+        ]
+      },
+      "notes": "",
+      "review": "Khmer text/pronunciation pending native review."
+    },
+    {
+      "id": "cohesion",
+      "stage": "cruise",
+      "title": "Đều nhịp thật",
+      "when": "Ít nhất 30 nhịp đúng liên tục; không khen đều khi đang BAD/lỡ nhịp.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minCombo": 30,
+        "maxDistance": 950
+      },
+      "priority": 1,
+      "cooldownSeconds": 25,
+      "maxQueueAgeSeconds": 7,
+      "names": null,
+      "text": {
+        "vi": "Những nhịp dầm nhẹ nhàng, nhẹ nhàng, chủ yếu là giữ nhịp trong thời điểm này thôi.",
+        "km": "ចង្វាក់អុំស្មើគ្នាល្អណាស់!"
+      },
+      "audio": {
+        "vi": [
+          "broadcast-rhythm-paragraph"
+        ],
+        "km": [
+          "ai-cohesion-km"
+        ]
+      },
+      "notes": "",
+      "review": "Khmer text/pronunciation pending native review."
+    },
+    {
+      "id": "recover",
+      "stage": "cruise",
+      "title": "Giảm nhịp giữ sức",
+      "when": "Người chơi thực sự chọn giữ sức ở đường trường.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "paces": [
+          "recover"
+        ],
+        "minDistance": 200,
+        "maxDistance": 950
+      },
+      "priority": 1,
+      "cooldownSeconds": 25,
+      "maxQueueAgeSeconds": 7,
+      "names": null,
+      "text": {
+        "vi": "Những nhịp dầm nhẹ nhàng, nhẹ nhàng, chủ yếu là giữ nhịp trong thời điểm này thôi.",
+        "km": "បន្ថយចង្វាក់ ដើម្បីទុកកម្លាំងសម្រាប់ចុងផ្លូវ។"
+      },
+      "audio": {
+        "vi": [
+          "broadcast-rhythm-paragraph"
+        ],
+        "km": [
+          "ai-recover-km"
+        ]
+      },
+      "notes": "",
+      "review": "Khmer text/pronunciation pending native review."
+    },
+    {
+      "id": "history-tum-nup",
+      "stage": "history",
+      "title": "Lịch sử Tum Núp 2",
+      "when": "Đội nam Tum Núp 2 có mặt, đường trường còn khoảng trống; ghi rõ năm 2024.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 200,
+        "maxDistance": 750,
+        "teamIds": [
+          "can_tho-23"
+        ]
+      },
+      "priority": 0,
+      "cooldownSeconds": 90,
+      "maxQueueAgeSeconds": 7,
+      "names": null,
+      "text": {
+        "vi": "Tum Núp 2, nhà vô địch mùa giải 2024.",
+        "km": "នៅឆ្នាំ ២០២៤ ក្រុមទូកទំនប់ ២ បានឈ្នះជើងឯកផ្នែកបុរស។"
+      },
+      "audio": {
+        "vi": [
+          "history-tum-nup-champion-vi"
+        ],
+        "km": [
+          "trial-history-tum-nup-km"
+        ]
+      },
+      "notes": "Thành tích mùa 2024; không dùng để xác định kết quả lượt hiện tại.",
+      "review": "Khmer text/pronunciation pending native review."
+    },
+    {
+      "id": "history-kos-thum",
+      "stage": "history",
+      "title": "Lịch sử Kos Thum 1",
+      "when": "Đội nam Kos Thum 1 có mặt; không dùng thành tích này cho đội nữ.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 200,
+        "maxDistance": 750,
+        "teamIds": [
+          "ca_mau-05"
+        ]
+      },
+      "priority": 0,
+      "cooldownSeconds": 90,
+      "maxQueueAgeSeconds": 7,
+      "names": null,
+      "text": {
+        "vi": "Kos Thum 1 của Cà Mau, một chiếc ghe được đánh giá cao mùa giải năm nay, á quân mùa giải 2024.",
+        "km": "ក្រុមទូកកោះធំ ១ បានជាប់ចំណាត់ថ្នាក់លេខពីរ ផ្នែកបុរស នៅឆ្នាំ ២០២៤។"
+      },
+      "audio": {
+        "vi": [
+          "history-kos-thum-runner-up-vi"
+        ],
+        "km": [
+          "trial-history-kos-thum-km"
+        ]
+      },
+      "notes": "Thành tích mùa 2024; không dùng để xác định kết quả lượt hiện tại.",
+      "review": "Khmer text/pronunciation pending native review."
+    },
+    {
+      "id": "final",
+      "stage": "final",
+      "title": "Vào 250 m cuối",
+      "when": "950–1100 m; đây là mốc nước rút trong game, không phải cự ly mọi giải thật. Không đọc số mét còn lại cố định khi audio phát trễ.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 950,
+        "maxDistance": 1100
+      },
+      "priority": 4,
+      "cooldownSeconds": 25,
+      "maxQueueAgeSeconds": 3,
+      "names": null,
+      "text": {
+        "vi": "Sẽ là những cú nước rút để phân định thắng thua.",
+        "km": "ដល់ដំណាក់កាលចុងក្រោយហើយ! បង្កើនល្បឿន!"
+      },
+      "audio": {
+        "vi": [
+          "broadcast-final-contest"
+        ],
+        "km": [
+          "ai-final-km"
+        ]
+      },
+      "notes": "",
+      "review": "Khmer text/pronunciation pending native review."
+    },
+    {
+      "id": "surge",
+      "stage": "final",
+      "title": "Đạp đang kích hoạt",
+      "when": "Chỉ khi Đạp đang bật thật; bỏ ngay nếu hết hiệu lực trước khi phát.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 950,
+        "maxDistance": 1200,
+        "surgeActive": true
+      },
+      "priority": 4,
+      "cooldownSeconds": 25,
+      "maxQueueAgeSeconds": 3,
+      "names": null,
+      "text": {
+        "vi": "Chúng ta thấy nhịp dầm của anh em đã được đẩy mạnh hơn rồi.",
+        "km": "ប្រឹងអស់កម្លាំង!"
+      },
+      "audio": {
+        "vi": [
+          "broadcast-stroke-strength"
+        ],
+        "km": [
+          "ai-surge-km"
+        ]
+      },
+      "notes": "",
+      "review": "Khmer text/pronunciation pending native review."
+    },
+    {
+      "id": "last-hundred",
+      "stage": "final",
+      "title": "100 m cuối",
+      "when": "1100–1150 m; bỏ nếu ghe đã qua mốc 1150 m.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 1100,
+        "maxDistance": 1150
+      },
+      "priority": 4,
+      "cooldownSeconds": 25,
+      "maxQueueAgeSeconds": 3,
+      "names": null,
+      "text": {
+        "vi": "Một trăm mét cuối!",
+        "km": "១០០ ម៉ែត្រចុងក្រោយ!"
+      },
+      "audio": {
+        "vi": [],
+        "km": [
+          "ai-last-hundred-km"
+        ]
+      },
+      "notes": "Số mét phải còn đúng ngay lúc phát; không thay bằng câu nước rút chung.",
+      "review": "Khmer text/pronunciation pending native review."
+    },
+    {
+      "id": "last-fifty",
+      "stage": "final",
+      "title": "50 m cuối",
+      "when": "1150–1200 m, chỉ một câu ngắn rồi nhường kết quả.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 1150,
+        "maxDistance": 1200
+      },
+      "priority": 4,
+      "cooldownSeconds": 25,
+      "maxQueueAgeSeconds": 3,
+      "names": null,
+      "text": {
+        "vi": "Năm mươi mét cuối!",
+        "km": "៥០ ម៉ែត្រចុងក្រោយ!"
+      },
+      "audio": {
+        "vi": [],
+        "km": [
+          "ai-last-fifty-km"
+        ]
+      },
+      "notes": "Số mét phải còn đúng ngay lúc phát; không thay bằng câu nước rút chung.",
+      "review": "Khmer text/pronunciation pending native review."
+    },
+    {
+      "id": "finish-win",
+      "stage": "result",
+      "title": "Thắng lượt",
+      "when": "Game đã xác nhận thắng lượt; không tuyên bố vô địch cả giải.",
+      "conditions": {
+        "phases": [
+          "finished"
+        ],
+        "results": [
+          "win"
+        ]
+      },
+      "priority": 5,
+      "cooldownSeconds": 25,
+      "maxQueueAgeSeconds": 3,
+      "names": "winner",
+      "text": {
+        "vi": "Trước tiên xin chúc mừng một chiến thắng quan trọng của anh em.",
+        "km": "ដល់ទីហើយ! សូមអបអរសាទរក្រុមដែលឈ្នះជើងប្រណាំងនេះ!"
+      },
+      "audio": {
+        "vi": [
+          "broadcast-victory-congratulations"
+        ],
+        "km": [
+          "ai-finish-win-km"
+        ]
+      },
+      "notes": "",
+      "review": "Khmer text/pronunciation pending native review."
+    },
+    {
+      "id": "finish-loss",
+      "stage": "result",
+      "title": "Thua lượt",
+      "when": "Game xác nhận đối thủ về trước; không hẹn mùa sau vì có thể còn vòng đấu khác.",
+      "conditions": {
+        "phases": [
+          "finished"
+        ],
+        "results": [
+          "loss"
+        ]
+      },
+      "priority": 5,
+      "cooldownSeconds": 25,
+      "maxQueueAgeSeconds": 3,
+      "names": "winner",
+      "text": {
+        "vi": "Quá tuyệt vời!",
+        "km": "គួរឱ្យសោកស្តាយ! គូប្រកួតបានដល់ទីមុន ក្នុងជើងប្រណាំងនេះ។"
+      },
+      "audio": {
+        "vi": [
+          "broadcast-finish"
+        ],
+        "km": [
+          "ai-finish-loss-km"
+        ]
+      },
+      "notes": "",
+      "review": "Khmer text/pronunciation pending native review."
+    },
+    {
+      "id": "finish-tie",
+      "stage": "result",
+      "title": "Kết quả hòa",
+      "when": "Đã có kết quả hòa trong game; không phát câu đang chờ trọng tài.",
+      "conditions": {
+        "phases": [
+          "finished"
+        ],
+        "results": [
+          "tie"
+        ]
+      },
+      "priority": 5,
+      "cooldownSeconds": 25,
+      "maxQueueAgeSeconds": 3,
+      "names": null,
+      "text": {
+        "vi": "Một trận đấu cực kỳ hấp dẫn.",
+        "km": "លទ្ធផលស្មើគ្នា! ទូកទាំងពីរដល់ទីប្រកៀកប្រកិតគ្នា!"
+      },
+      "audio": {
+        "vi": [
+          "broadcast-race-appraisal"
+        ],
+        "km": [
+          "ai-finish-tie-km"
+        ]
+      },
+      "notes": "",
+      "review": "Khmer text/pronunciation pending native review."
+    },
+    {
+      "id": "finish-dnf",
+      "stage": "result",
+      "title": "Không hoàn thành",
+      "when": "Game xác nhận không hoàn thành; không bịa tai nạn hay lý do bỏ cuộc.",
+      "conditions": {
+        "phases": [
+          "finished"
+        ],
+        "results": [
+          "dnf"
+        ]
+      },
+      "priority": 5,
+      "cooldownSeconds": 25,
+      "maxQueueAgeSeconds": 3,
+      "names": null,
+      "text": {
+        "vi": "Rất là tiếc.",
+        "km": "គួរឱ្យសោកស្តាយ ក្រុមមួយមិនបានបញ្ចប់ជើងប្រណាំងនេះទេ។"
+      },
+      "audio": {
+        "vi": [
+          "broadcast-unfortunate"
+        ],
+        "km": [
+          "ai-finish-dnf-km"
+        ]
+      },
+      "notes": "",
+      "review": "Khmer text/pronunciation pending native review."
+    },
+    {
+      "id": "start-drive",
+      "stage": "start",
+      "title": "Bắt nhịp sau xuất phát",
+      "when": "3–15 giây đầu; không đọc lại khi đã vào đường trường.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minElapsed": 3,
+        "maxElapsed": 15,
+        "maxDistance": 200
+      },
+      "priority": 2,
+      "cooldownSeconds": 25,
+      "maxQueueAgeSeconds": 7,
+      "names": null,
+      "text": {
+        "vi": "Đây chỉ là mới đoạn xuất phát thôi, đoạn đầu thôi.",
+        "km": "ក្រុមទាំងពីរបានចេញដំណើរហើយ។ ត្រូវចាប់ចង្វាក់ឱ្យស្មើគ្នា!"
+      },
+      "audio": {
+        "vi": [
+          "broadcast-start-opening"
+        ],
+        "km": []
+      },
+      "notes": "",
+      "review": "Khmer text/pronunciation pending native review."
+    },
+    {
+      "id": "cruise-context",
+      "stage": "cruise",
+      "title": "Thử thách cự ly và khán giả",
+      "when": "200–550 m, không có sự kiện vượt lên hay Đạp. Cho đoạn bình dài 10–15 giây.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 200,
+        "maxDistance": 550
+      },
+      "priority": 1,
+      "cooldownSeconds": 25,
+      "maxQueueAgeSeconds": 7,
+      "names": null,
+      "text": {
+        "vi": "Mọi việc vẫn còn có thể xảy ra. Đường đua vẫn còn khá là dài. Một nghìn hai trăm mét, thử thách thực sự cho sự dẻo dai, bền bỉ và nỗ lực cho đến những mét nước cuối cùng.",
+        "km": "ផ្លូវប្រណាំងនៅវែងទៀត។ ត្រូវរក្សាចង្វាក់ និងសន្សំកម្លាំងសម្រាប់ចុងផ្លូវ។"
+      },
+      "audio": {
+        "vi": [
+          "broadcast-course-paragraph"
+        ],
+        "km": []
+      },
+      "notes": "",
+      "review": "Khmer text/pronunciation pending native review."
+    },
+    {
+      "id": "fatigue",
+      "stage": "cruise",
+      "title": "Sức bền xuống thấp",
+      "when": "Sức dưới 20%, trước 950 m. Không bịa chấn thương hoặc sự cố.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 200,
+        "maxDistance": 950,
+        "maxStamina": 20
+      },
+      "priority": 2,
+      "cooldownSeconds": 25,
+      "maxQueueAgeSeconds": 7,
+      "names": null,
+      "text": {
+        "vi": "Nhẹ nhàng, nhẹ nhàng.",
+        "km": "បន្ថយចង្វាក់ ដើម្បីទុកកម្លាំងសម្រាប់ចុងផ្លូវ។"
+      },
+      "audio": {
+        "vi": [
+          "broadcast-recover"
+        ],
+        "km": [
+          "ai-recover-km"
+        ]
+      },
+      "notes": "",
+      "review": "Khmer text/pronunciation pending native review."
+    },
+    {
+      "id": "safe-margin",
+      "stage": "duel",
+      "title": "Khoảng cách dẫn rõ",
+      "when": "Ghe đang dẫn trên 8 m; chưa được tuyên bố thắng.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minAbsGap": 8
+      },
+      "priority": 2,
+      "cooldownSeconds": 25,
+      "maxQueueAgeSeconds": 7,
+      "names": "leader",
+      "text": {
+        "vi": "Rõ ràng là một khoảng cách an toàn.",
+        "km": "ទូកនាំមុខកំពុងបង្កើនគម្លាត ប៉ុន្តែការប្រកួតមិនទាន់បញ្ចប់ទេ។"
+      },
+      "audio": {
+        "vi": [
+          "broadcast-safe-margin"
+        ],
+        "km": []
+      },
+      "notes": "",
+      "review": "Khmer text/pronunciation pending native review."
+    },
+    {
+      "id": "sprint-effort",
+      "stage": "final",
+      "title": "Nhịp dầm mạnh hơn",
+      "when": "950–1150 m, đang nước rút hoặc Đạp thật; tăng trống/nước theo nhịp.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 950,
+        "maxDistance": 1150,
+        "requiresHardEffort": true
+      },
+      "priority": 4,
+      "cooldownSeconds": 25,
+      "maxQueueAgeSeconds": 3,
+      "names": null,
+      "text": {
+        "vi": "Chúng ta thấy nhịp dầm của anh em đã được đẩy mạnh hơn rồi.",
+        "km": "ដល់ដំណាក់កាលចុងក្រោយហើយ! បង្កើនល្បឿន!"
+      },
+      "audio": {
+        "vi": [
+          "broadcast-stroke-strength"
+        ],
+        "km": [
+          "ai-final-km"
+        ]
+      },
+      "notes": "",
+      "review": "Khmer text/pronunciation pending native review."
+    },
+    {
+      "id": "history-sro-lon",
+      "stage": "history",
+      "title": "Lịch sử Sro Lôn 2",
+      "when": "Đúng đội nam Sro Lôn 2, 200–750 m; phải có khoảng trống lời bình.",
+      "conditions": {
+        "phases": [
+          "racing"
+        ],
+        "minDistance": 200,
+        "maxDistance": 750,
+        "teamIds": [
+          "can_tho-06"
+        ]
+      },
+      "priority": 0,
+      "cooldownSeconds": 90,
+      "maxQueueAgeSeconds": 7,
+      "names": null,
+      "text": {
+        "vi": "Sro Lôn 2 là đội hạng ba năm trước.",
+        "km": ""
+      },
+      "audio": {
+        "vi": [
+          "history-sro-lon-third-vi"
+        ],
+        "km": []
+      },
+      "notes": "Chưa soạn câu Khmer lịch sử khi chưa đối chiếu thêm nguồn.",
+      "review": "Khmer text/pronunciation pending native review."
+    },
+    {
+      "id": "cup-champion",
+      "stage": "result",
+      "title": "Vô địch cả cúp",
+      "when": "Chỉ khi tournament.championId trùng đội thắng chung kết; thắng vòng thường không đủ.",
+      "conditions": {
+        "phases": [
+          "finished"
+        ],
+        "results": [
+          "win"
+        ],
+        "cupChampion": true
+      },
+      "priority": 6,
+      "cooldownSeconds": 25,
+      "maxQueueAgeSeconds": 3,
+      "names": "winner",
+      "text": {
+        "vi": "Xin chúc mừng {winner_name}, đội vô địch cúp lễ hội!",
+        "km": "សូមអបអរសាទរ {winner_name} ដែលបានឈ្នះជើងឯកពានរង្វាន់នេះ!"
+      },
+      "audio": {
+        "vi": [],
+        "km": []
+      },
+      "notes": "Cần audio đúng tình huống. Không tự dùng câu thắng lượt thay câu vô địch.",
+      "review": "Khmer text/pronunciation pending native review."
+    }
+  ],
+  "review": "Authored handoff script. Desired lines and actual recorded text are separate. Preview-only Khmer stock names are not a live game change."
+}
