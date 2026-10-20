@@ -21,11 +21,18 @@ The game's runtime manifest and canonical script are unchanged. The dashboard ov
 
 ## Checks
 
+- `npm run test:audio`: runs the game-audio/data checks, decodes all 229 dashboard/music files, then exercises the browser UI. Python/FFmpeg and Playwright with Edge are used from the existing local tools; the browser test also accepts `--playwright` and `--channel` to use an explicitly installed runner elsewhere. No production runtime dependency is added.
+- `npm run test:audio:browser -- --report docs/qa/audio-dashboard/automatic-browser.json`: a reusable 13-case regression suite. It covers real playback, damaged saved data, note persistence, invalid verdicts, HTTP-404 recovery, cancelled play promises, natural-end replay, language changes, edited text, downloads and phone navigation. Simulated failure cases are identified in the report and do not certify an external service.
+- `python -X utf8 scripts/test-audio-files.py --report docs/qa/audio-dashboard/automatic-audio-files.json`: independently measures decoded duration and original-channel peak levels with FFmpeg; sources are read only.
 - `node scripts/test-audio-dashboard.mjs`: cue/identity/source isolation, all 89 handoff file mappings, all 29 cues/61 name candidates, copied variant labels and missing transcripts.
 - `node scripts/test-race-audio.mjs`: unchanged game audio rules, source provenance and synchronization.
 - `docs/qa/audio-dashboard/khmer-handoff-decode.json`: actual FFmpeg decoding of all 89 input files, non-silence and peak checks; this does not certify language or pronunciation.
 - `docs/qa/audio-dashboard/simple-review-browser.json`: real Edge playback, offline file playback, 89 browser audio decodes, review persistence/export, text-change invalidation, variant warnings and six responsive viewport sizes.
 
 Generated evidence snapshots use `-text` attributes so Git cannot change their hashed line endings. Dashboard CSS/JS use a content-derived query token at the same canonical URLs to refresh cached UI assets.
+
+The broader browser suite initially reproduced five failures: lost notes from array-shaped storage, broken variant selection from a primitive saved map, unknown verdicts accepted into exports, a failed recording remaining approvable, and a cancelled resume rejection overwriting the next item's message. `automatic-browser-before.json` preserves those reproductions; `automatic-browser.json` records the fixes. Invalid saved-map containers are normalized, their original stored bytes are retained under `tukngo-audio-review-recovery`, and valid notes/verdicts remain available. A known failed load requires a successful retry before a new pass verdict. Playback promises are scoped to the current play session.
+
+`automatic-khmer-asr.json` is an unprompted local Whisper-small diagnostic of three flagged variants. Its output failed a Khmer-script check and is unsuitable for automatic wording corrections. It is not substituted for the original transcript; native pronunciation and semantic name/history approval remain separate from the technical tests.
 
 Published verification: Pages commit `93f3f16fd492130309c084d0230821019dd3c9d2`, package `4eb292862781ff97`. The first Pages build errored; a single API rebuild succeeded. Actual playback, review auto-advance and stopping the old recording were checked on the public route. All 15 new MP3 hashes, all 19 evidence-file hashes and the 11,640,093-byte public ZIP match the local artifacts. `docs/qa/audio-dashboard/public-simple-review.json` records the result. Physical-tablet performance and native Khmer pronunciation remain unverified.

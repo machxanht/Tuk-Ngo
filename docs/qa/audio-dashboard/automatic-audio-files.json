@@ -1,0 +1,1612 @@
+{
+  "files": 229,
+  "passed": 229,
+  "failed": 0,
+  "records": [
+    {
+      "clipId": "broadcast-ready",
+      "sha256": "796be9354ec2613db6091ad9652f298fb76af0a099e3c1b23b42680cce40ee7f",
+      "status": "pass",
+      "decodedDuration": 1.95,
+      "peakDb": -2.8159
+    },
+    {
+      "clipId": "broadcast-go",
+      "sha256": "ebe4a34ec1199c94230e87afa22d25702ba019946e8da7511b6ebd76c9b80f22",
+      "status": "pass",
+      "decodedDuration": 3.13,
+      "peakDb": -3.8977
+    },
+    {
+      "clipId": "broadcast-intro",
+      "sha256": "7f5b601728db83fe3849c0b5de375f55dd3beb4ad1c44592d728dfd16ed11ae0",
+      "status": "pass",
+      "decodedDuration": 2.18,
+      "peakDb": -2.9165
+    },
+    {
+      "clipId": "broadcast-rhythm",
+      "sha256": "74665bea71713ef1db1930ab253e9ce335bde3120bc8a60e42a7a6f8707ce885",
+      "status": "pass",
+      "decodedDuration": 1.94,
+      "peakDb": -4.3429
+    },
+    {
+      "clipId": "broadcast-recover",
+      "sha256": "62a94005868b508652b0195198ea2d554e2f4801e6c433969af39c0be96ba2b0",
+      "status": "pass",
+      "decodedDuration": 1.52,
+      "peakDb": -2.8771
+    },
+    {
+      "clipId": "broadcast-close",
+      "sha256": "faab0ef7e22055635133d987d651281a7e86b3e77ed997ab0f254cd56a939c3c",
+      "status": "pass",
+      "decodedDuration": 3.04,
+      "peakDb": -5.5156
+    },
+    {
+      "clipId": "broadcast-sprint",
+      "sha256": "28e52473d26636fd4fef4e241ffd0af4fa17fe11cb5a7f941405dcb2d4f37034",
+      "status": "pass",
+      "decodedDuration": 2.3,
+      "peakDb": -4.0059
+    },
+    {
+      "clipId": "broadcast-surge",
+      "sha256": "e1fbb8d40cc3368171d4ba7d0b70de30a746f1ea2a1ba331056b517b923917be",
+      "status": "pass",
+      "decodedDuration": 0.73,
+      "peakDb": -3.3782
+    },
+    {
+      "clipId": "broadcast-finish",
+      "sha256": "87d805da8793ad2418a48f1a9600afc08650e8d42e63d6da338f63a3dfa79c87",
+      "status": "pass",
+      "decodedDuration": 0.92,
+      "peakDb": -3.2903
+    },
+    {
+      "clipId": "broadcast-loss",
+      "sha256": "8da8687e967d98e2588481af4e6e30b7e539cdf6c9ad57f19d33ed1faca898f7",
+      "status": "pass",
+      "decodedDuration": 2.11,
+      "peakDb": -3.8037
+    },
+    {
+      "clipId": "broadcast-wait",
+      "sha256": "e7f891dbf55c63b3ca83383ed65517c7a62a1862be8e1e3d3cc0d76da0f831a8",
+      "status": "pass",
+      "decodedDuration": 2.85,
+      "peakDb": -5.8006
+    },
+    {
+      "clipId": "broadcast-lead",
+      "sha256": "608aee400c97598531810fccfdee2a505a0de5e04392f83f716ee932616633dc",
+      "status": "pass",
+      "decodedDuration": 1.65,
+      "peakDb": -3.9229
+    },
+    {
+      "clipId": "khmer-intro",
+      "sha256": "be897d565f3b470e5d2451dbfdcffee1649653ac9469c4c1174bafbbe074d16f",
+      "status": "pass",
+      "decodedDuration": 1.88,
+      "peakDb": -1.8129
+    },
+    {
+      "clipId": "khmer-go",
+      "sha256": "4d9ccca7426fdead15a7264e5c1ebda67e829776dcd55497ed5b4bc7a588abf2",
+      "status": "pass",
+      "decodedDuration": 2.27,
+      "peakDb": -2.088
+    },
+    {
+      "clipId": "khmer-finish",
+      "sha256": "37375bb2bbc3703123e098ef7b7fcbc498bcb8f7ab9ed4ccd85a176f9e8b15f6",
+      "status": "pass",
+      "decodedDuration": 1.92,
+      "peakDb": -2.4584
+    },
+    {
+      "clipId": "name-pothi-satharam-vi",
+      "sha256": "d337863f8b6f9e085e9d237beb1ab4c8a98eecadf757e4b898f4fc5cf50410b1",
+      "status": "pass",
+      "decodedDuration": 1.26,
+      "peakDb": -3.3407
+    },
+    {
+      "clipId": "name-khleang-vi",
+      "sha256": "d4b50fc31f8f79d1e3b54162e4353a7d14b3fa702d80fdc280f86e696d32eca0",
+      "status": "pass",
+      "decodedDuration": 0.52,
+      "peakDb": -3.3248
+    },
+    {
+      "clipId": "name-chroi-tum-chas-vi",
+      "sha256": "d61d7a6bf59966316e949b8c9106aec18ee358bbc547bedce1913b41b2cda5cb",
+      "status": "pass",
+      "decodedDuration": 0.88,
+      "peakDb": -3.2929
+    },
+    {
+      "clipId": "name-xeo-me-vi",
+      "sha256": "0cf7692949d77128fa00f8ab03c116624a4827ae3729483b5385dda7b7039c41",
+      "status": "pass",
+      "decodedDuration": 0.88,
+      "peakDb": -3.2674
+    },
+    {
+      "clipId": "name-ong-kho-vi",
+      "sha256": "de43415a67688686a40340a99d045d2319fde3a1cb01d68b1bd34d8ab5505ce5",
+      "status": "pass",
+      "decodedDuration": 0.4,
+      "peakDb": -3.2857
+    },
+    {
+      "clipId": "name-pong-tuk-chas-vi",
+      "sha256": "0be785cadf3fd62a17526a67d98a6ba9a2e7c3f2b84ba5979b5a8ce11b330ec4",
+      "status": "pass",
+      "decodedDuration": 0.68,
+      "peakDb": -3.2589
+    },
+    {
+      "clipId": "name-lo-moi-vi",
+      "sha256": "d2651fc41e73bc64447b729be52f21a7fef4aa4f83993ae46ee9481dc88ea302",
+      "status": "pass",
+      "decodedDuration": 0.55,
+      "peakDb": -3.49
+    },
+    {
+      "clipId": "name-bon-mat-vi",
+      "sha256": "6bd738cf161425aa2f8a8c72e01a081fadeb385e555ed4288113135336dd34fb",
+      "status": "pass",
+      "decodedDuration": 0.94,
+      "peakDb": -3.3122
+    },
+    {
+      "clipId": "name-tra-quyt-cu-vi",
+      "sha256": "214e95d8f17d64b3e2712be9d8e168cdded5b40d80b5e8f38ca52ab2ce59d4d3",
+      "status": "pass",
+      "decodedDuration": 1.46,
+      "peakDb": -3.2276
+    },
+    {
+      "clipId": "name-tum-nup-vi",
+      "sha256": "edcc5ad7a579fd58771b0c45d659a20cf3d26a06d75a270922fb28a51484504e",
+      "status": "pass",
+      "decodedDuration": 0.54,
+      "peakDb": -3.1839
+    },
+    {
+      "clipId": "name-bang-kok-vi",
+      "sha256": "dcb4f507e50dfc6185257b4f2e8b250110a7cc37736e16a7bad0759ca615c6d2",
+      "status": "pass",
+      "decodedDuration": 0.58,
+      "peakDb": -3.144
+    },
+    {
+      "clipId": "name-day-ta-suos-vi",
+      "sha256": "152cbce20ac17e4759ad3939cc446894d02fbbcacb8407ae876ee3fa93232036",
+      "status": "pass",
+      "decodedDuration": 0.87,
+      "peakDb": -3.2888
+    },
+    {
+      "clipId": "name-bet-ton-vi",
+      "sha256": "2c3c69e367f57d786489b3af7af3426590ca1bc30e010d49bb24d20040bffd4e",
+      "status": "pass",
+      "decodedDuration": 0.95,
+      "peakDb": -3.2631
+    },
+    {
+      "clipId": "name-tam-soc-vi",
+      "sha256": "6e2ef77bcdd8004d694aec13f4493b71b8e90149c8d229ad479d2b873f0030e2",
+      "status": "pass",
+      "decodedDuration": 0.56,
+      "peakDb": -3.2833
+    },
+    {
+      "clipId": "name-prek-on-dok-vi",
+      "sha256": "85b52bf741b2fa43bfa9369ffaf814904678dea7d88e3c88f11f73b1f1946a54",
+      "status": "pass",
+      "decodedDuration": 0.82,
+      "peakDb": -3.315
+    },
+    {
+      "clipId": "name-day-om-pu-vi",
+      "sha256": "c95b7e9636483212565a007988fa587df062e6c4f54ab4acbb2859126b08641d",
+      "status": "pass",
+      "decodedDuration": 1.1,
+      "peakDb": -3.2764
+    },
+    {
+      "clipId": "name-om-pou-year-vi",
+      "sha256": "209d871861e30ae42ec630022e42e7ebaa081cb59f3e5bf8639462498938ac74",
+      "status": "pass",
+      "decodedDuration": 0.42,
+      "peakDb": -3.3428
+    },
+    {
+      "clipId": "name-sang-ke-vi",
+      "sha256": "dd726623f239ac6ea83d3f1cc13f8116d3271ba3018fc5a103a915033a4f2cfe",
+      "status": "pass",
+      "decodedDuration": 0.8,
+      "peakDb": -3.3001
+    },
+    {
+      "clipId": "name-pothi-khsach-vi",
+      "sha256": "ab0a483efe38201965638f9323fe90f441b8611d91f35f8c60d50b93c0f4f40a",
+      "status": "pass",
+      "decodedDuration": 0.91,
+      "peakDb": -3.2026
+    },
+    {
+      "clipId": "name-rach-giong-vi",
+      "sha256": "5b9ecadb26387da65c295ec65fae5e844aa04c00364b40370bd4d0dadc863e2d",
+      "status": "pass",
+      "decodedDuration": 0.52,
+      "peakDb": -3.2597
+    },
+    {
+      "clipId": "name-ngan-dua-vi",
+      "sha256": "030b76362b57287a4a3ec2152c780c33e97d61747dd8cf3752e8062d6cb656de",
+      "status": "pass",
+      "decodedDuration": 0.66,
+      "peakDb": -3.2718
+    },
+    {
+      "clipId": "name-dau-sau-vi",
+      "sha256": "e62f56275d67214aa8ce9e3c119dfcaabf2a058b809ab6d7e6f98291679f5c3e",
+      "status": "pass",
+      "decodedDuration": 0.55,
+      "peakDb": -3.317
+    },
+    {
+      "clipId": "name-settodor-vi",
+      "sha256": "81a1039bea686f5bcdca609aa2db914d6d0018308138af707601176b5cbe8e21",
+      "status": "pass",
+      "decodedDuration": 1.04,
+      "peakDb": -3.3159
+    },
+    {
+      "clipId": "name-phno-kambot-vi",
+      "sha256": "3c3ada95a9c5fdfffce8442ba5588cdd643b1329125596fc9713c7ebd6a2a887",
+      "status": "pass",
+      "decodedDuration": 1.76,
+      "peakDb": -3.2913
+    },
+    {
+      "clipId": "name-tum-nup-km",
+      "sha256": "80c5fe8cdf9db1f58cb1e42e7e7167b6c22bbfe72bfed3208bff3a29780e90ba",
+      "status": "pass",
+      "decodedDuration": 0.52,
+      "peakDb": -3.2554
+    },
+    {
+      "clipId": "name-kos-thum-km",
+      "sha256": "59e9c60858499e78c57e96235333521b3c4397ba33c4e17aeb64db1d4f9c4d3c",
+      "status": "pass",
+      "decodedDuration": 0.62,
+      "peakDb": -3.2982
+    },
+    {
+      "clipId": "name-sang-ke-km",
+      "sha256": "4c8f413ae7d6ebd6d417cde65664d007560bbb1731c5886957b4bfbb9fbd93dd",
+      "status": "pass",
+      "decodedDuration": 0.52,
+      "peakDb": -3.2395
+    },
+    {
+      "clipId": "name-rach-giong-km",
+      "sha256": "dedbd65b99829bf1a22902017e5300457dc138e79598e9f7c0f46bcdd58eeba8",
+      "status": "pass",
+      "decodedDuration": 1.14,
+      "peakDb": -3.3901
+    },
+    {
+      "clipId": "name-day-om-pu-km",
+      "sha256": "8385a5023933f0c3779ad63337b6bb92302e2ba44313ff9fed27f0277c1d292c",
+      "status": "pass",
+      "decodedDuration": 0.82,
+      "peakDb": -3.3143
+    },
+    {
+      "clipId": "name-pothi-satharam-two-vi",
+      "sha256": "f70c2e8b7a143f6ebce62ed8a689955f219caf8f7c7c8c3758405382930ae5e7",
+      "status": "pass",
+      "decodedDuration": 1.96,
+      "peakDb": -3.3407
+    },
+    {
+      "clipId": "name-khleang-one-vi",
+      "sha256": "727978e2196b2ee766d562cfd6bb5c75b9c509226717d5a75f60dea1914f9126",
+      "status": "pass",
+      "decodedDuration": 0.72,
+      "peakDb": -3.3248
+    },
+    {
+      "clipId": "name-sro-lon-one-vi",
+      "sha256": "15ce5b59050dd4ebc38540ac4ffba8015093f11c507816f88a7e343a0b7a4a3d",
+      "status": "pass",
+      "decodedDuration": 1.1,
+      "peakDb": -3.3376
+    },
+    {
+      "clipId": "name-sro-lon-two-vi",
+      "sha256": "1130ce1b03f247d3d6b9ccc65e3b7e7cc5df14b6eb3ec3ccf0e9020e42eeaa2f",
+      "status": "pass",
+      "decodedDuration": 0.88,
+      "peakDb": -3.3232
+    },
+    {
+      "clipId": "name-tum-nup-two-vi",
+      "sha256": "7d122a897dbd0928f8fe7d4cfaf73d76ae6f4a2e1fa1524ed64e2089998278ce",
+      "status": "pass",
+      "decodedDuration": 1.22,
+      "peakDb": -3.1839
+    },
+    {
+      "clipId": "name-bang-kok-two-vi",
+      "sha256": "fca02da4a68652e835a532b7dc1af30b3d46f5160386f7bdd71a69e722b4d014",
+      "status": "pass",
+      "decodedDuration": 1.12,
+      "peakDb": -3.144
+    },
+    {
+      "clipId": "name-prek-on-dok-two-vi",
+      "sha256": "78fc61a9e5d27c4c764cf0d48624b6dca175332f7007338bd8e0955358e9f01b",
+      "status": "pass",
+      "decodedDuration": 1.34,
+      "peakDb": -3.315
+    },
+    {
+      "clipId": "name-kos-thum-one-vi",
+      "sha256": "4e096946e5c9f8b29a0b73cabd3b1a60db0cf7caf30d46d9e37fac461d7aaee7",
+      "status": "pass",
+      "decodedDuration": 0.72,
+      "peakDb": -3.3448
+    },
+    {
+      "clipId": "name-kos-thum-two-vi",
+      "sha256": "b0fe7ccd59eb65cc81a5312beae7f013f64fda64ee79a48dcaf68725f8b53b6e",
+      "status": "pass",
+      "decodedDuration": 0.68,
+      "peakDb": -3.2766
+    },
+    {
+      "clipId": "name-kos-thum-two-km",
+      "sha256": "85699e2b7f120b32aae9a555cec6ab06eddcc36b4ac671bcfa28f11fdb2a7aac",
+      "status": "pass",
+      "decodedDuration": 1.58,
+      "peakDb": -3.2982
+    },
+    {
+      "clipId": "history-tum-nup-champion-vi",
+      "sha256": "9e745955bc46a2b48c8ba3a6c21333809579fba93dbeea6f779afcb1567daaa2",
+      "status": "pass",
+      "decodedDuration": 3.68,
+      "peakDb": -5.0663
+    },
+    {
+      "clipId": "history-kos-thum-runner-up-vi",
+      "sha256": "a1f74fc89324d728fe0a0c824830569c8696c50ce18f176c26964be870601da9",
+      "status": "pass",
+      "decodedDuration": 7.12,
+      "peakDb": -5.0596
+    },
+    {
+      "clipId": "history-sro-lon-third-vi",
+      "sha256": "19d71b17724c6e5c6829ae165b8802b9d401957c9d139126675d620deb18affb",
+      "status": "pass",
+      "decodedDuration": 1.63,
+      "peakDb": -2.3507
+    },
+    {
+      "clipId": "name-ta-on-vi",
+      "sha256": "037f70c7ff96a375527c7cd55cf23fbcddc0d9b643d638efee83f0dc48dd5817",
+      "status": "pass",
+      "decodedDuration": 1.161,
+      "peakDb": -3.4165
+    },
+    {
+      "clipId": "name-tra-quyt-moi-vi",
+      "sha256": "012f7b3a96714c44c176a7f2b573b91c10b3ca0f1693c613957bfe7e90b114c9",
+      "status": "pass",
+      "decodedDuration": 1.86,
+      "peakDb": -3.3081
+    },
+    {
+      "clipId": "name-tra-cuon-vi",
+      "sha256": "a2d4c4c172b99981e2901d137502ca958f066335efc3be9e91d17856a072ab16",
+      "status": "pass",
+      "decodedDuration": 0.68,
+      "peakDb": -3.3183
+    },
+    {
+      "clipId": "name-cham-pa-km",
+      "sha256": "90d5d9d69ae594c876488e9dd1d3dc03a56692026362db48b262fc0fb35ecec9",
+      "status": "pass",
+      "decodedDuration": 0.401,
+      "peakDb": -3.5305
+    },
+    {
+      "clipId": "name-pong-tuk-chas-km",
+      "sha256": "abc40d32f62542ba4465fc2225eaa16cc4c50197242e5265b285ee1e5e49878f",
+      "status": "pass",
+      "decodedDuration": 0.72,
+      "peakDb": -3.2974
+    },
+    {
+      "clipId": "broadcast-stroke-strength",
+      "sha256": "893cd6d67d8a31fa7fd96c74d4fe50f270dae15cd1574d02b093ecaf8c09c4e1",
+      "status": "pass",
+      "decodedDuration": 3.8,
+      "peakDb": -4.038
+    },
+    {
+      "clipId": "broadcast-final-contest",
+      "sha256": "6fbc9d574bdc4e8a596c533f35e08a9f0ca526b7b9000630f0f5d6607e3b1721",
+      "status": "pass",
+      "decodedDuration": 3.5,
+      "peakDb": -5.2721
+    },
+    {
+      "clipId": "broadcast-close-contest",
+      "sha256": "c922cb484b08ef24bf322490d53fd060ef4f0cdb044a7603c09787a550a51ae2",
+      "status": "pass",
+      "decodedDuration": 3.17,
+      "peakDb": -4.6856
+    },
+    {
+      "clipId": "broadcast-race-appraisal",
+      "sha256": "371b1646f0264ae95f355e9947aaea25e07d66f16647b314ee210690a806bfb9",
+      "status": "pass",
+      "decodedDuration": 1.49,
+      "peakDb": -3.2164
+    },
+    {
+      "clipId": "broadcast-unfortunate",
+      "sha256": "3c46ae4b370136ab3fdd66a7719049fbf4e83438d9122c5443fc7385fd452a06",
+      "status": "pass",
+      "decodedDuration": 0.992,
+      "peakDb": -3.3479
+    },
+    {
+      "clipId": "khmer-full-effort",
+      "sha256": "b0c3dfcf6072ff98fd06a1e194cc5e68b9bddec52a76659d06bb65f6666be311",
+      "status": "pass",
+      "decodedDuration": 2.481,
+      "peakDb": -3.3264
+    },
+    {
+      "clipId": "broadcast-start-pair",
+      "sha256": "d3217e85296c2b2adf46a282acd1b0d6ce662e150bb7e1b505d5e5eb1ec34ed8",
+      "status": "pass",
+      "decodedDuration": 2.86,
+      "peakDb": -4.8685
+    },
+    {
+      "clipId": "broadcast-start-opening",
+      "sha256": "aa4ffdcf63bd0e6aeae30132cf92f6631cb28c460ccab0dd314f47b3b5fb1a80",
+      "status": "pass",
+      "decodedDuration": 4.18,
+      "peakDb": -5.1438
+    },
+    {
+      "clipId": "broadcast-start-cleared",
+      "sha256": "03f72ae9ae53c85d765773bed6e683ab9a3a2272cd4de6575f66e8e814c990d7",
+      "status": "pass",
+      "decodedDuration": 2.56,
+      "peakDb": -3.9411
+    },
+    {
+      "clipId": "broadcast-long-course",
+      "sha256": "a3e2e8f3765868424095c6063fd367c726017d97289eac009ad949c8f5b64d9f",
+      "status": "pass",
+      "decodedDuration": 2.24,
+      "peakDb": -5.7396
+    },
+    {
+      "clipId": "broadcast-contest-pair",
+      "sha256": "593b5a2cf4f280749f9272b2267d9fdb07ff57f21a99d34a6f710d3db6b6c5e1",
+      "status": "pass",
+      "decodedDuration": 2.77,
+      "peakDb": -5.1215
+    },
+    {
+      "clipId": "broadcast-contest-now",
+      "sha256": "5b4dbce8e4c9dd51960ef55ad678343b32d02e6b446dd12c44a0cae81181ed0a",
+      "status": "pass",
+      "decodedDuration": 2.16,
+      "peakDb": -3.7634
+    },
+    {
+      "clipId": "broadcast-keep-accelerating",
+      "sha256": "4067c9ce2f6179503c25e101596c51fdc5c229c70f1fddd6929ce1622613bb3b",
+      "status": "pass",
+      "decodedDuration": 3.01,
+      "peakDb": -5.4831
+    },
+    {
+      "clipId": "broadcast-accelerating",
+      "sha256": "2c7c38770c79a0dd1896c1a040a6cb7e92bc9e888f3158513daebdfe6fcb8c6b",
+      "status": "pass",
+      "decodedDuration": 1.68,
+      "peakDb": -1.917
+    },
+    {
+      "clipId": "broadcast-final-effort",
+      "sha256": "aeb1cdce3c0e0c39832da05f7b62fbd05e219ee93dee7d04c99d0b4d9fe5a8e8",
+      "status": "pass",
+      "decodedDuration": 2.73,
+      "peakDb": -0.5277
+    },
+    {
+      "clipId": "broadcast-exciting-race",
+      "sha256": "95d370f14489fd403adafe54011c34eb66a3aef7d58769567a4a4507d89b529e",
+      "status": "pass",
+      "decodedDuration": 2.22,
+      "peakDb": -1.8672
+    },
+    {
+      "clipId": "broadcast-relaxed-strokes",
+      "sha256": "370f38053f0b424d8d4386c40a67cf1989983cd0dd85d633c7d09363ef2d943a",
+      "status": "pass",
+      "decodedDuration": 3.19,
+      "peakDb": -5.2637
+    },
+    {
+      "clipId": "broadcast-safe-margin",
+      "sha256": "96e9392eaa317702e0f471d0ac7f0de7db0e6e758e8fbf9c18826a45b3ff8d0a",
+      "status": "pass",
+      "decodedDuration": 1.85,
+      "peakDb": -3.1587
+    },
+    {
+      "clipId": "broadcast-race-excitement",
+      "sha256": "e20b45bc8f414107cd02cc766ded3c18614b16c18050e164eb81dab2bddcca27",
+      "status": "pass",
+      "decodedDuration": 1.12,
+      "peakDb": -3.3162
+    },
+    {
+      "clipId": "broadcast-victory-congratulations",
+      "sha256": "8ff357eb33e50c851b8ab65165a230839ddf72603c940a357fc46270d3afa5b6",
+      "status": "pass",
+      "decodedDuration": 3.15,
+      "peakDb": -5.6336
+    },
+    {
+      "clipId": "ai-ready-km",
+      "sha256": "beec0f40ef882ddedf4ab9a24ea7fedc7eb164a79e49d87db8ba0a06f231bac6",
+      "status": "pass",
+      "decodedDuration": 1.82,
+      "peakDb": -8.0578
+    },
+    {
+      "clipId": "ai-go-km",
+      "sha256": "7a39e55f8bd8e1aa11581e4621b4170a8028c24c6b5548bdb55bce86f418ca0d",
+      "status": "pass",
+      "decodedDuration": 1.82,
+      "peakDb": -6.335
+    },
+    {
+      "clipId": "ai-cruise-km",
+      "sha256": "e8ca41db65bbcb607b7a7195f44d525a0b5ce902090bd292a32d976fbb5d7274",
+      "status": "pass",
+      "decodedDuration": 3.175,
+      "peakDb": -6.2539
+    },
+    {
+      "clipId": "ai-halfway-km",
+      "sha256": "f6739d84bba4149dbe1bf48c8708772c0162d03b982a1a0b833ac8d51fd85ef2",
+      "status": "pass",
+      "decodedDuration": 4.375,
+      "peakDb": -7.1395
+    },
+    {
+      "clipId": "ai-close-race-km",
+      "sha256": "08531309a36ada0f6e0e0f7da1c4c08c93ee61666809809856eb6349c12e9657",
+      "status": "pass",
+      "decodedDuration": 2.8365,
+      "peakDb": -5.7523
+    },
+    {
+      "clipId": "ai-lead-change-km",
+      "sha256": "5e0aba27c5ed1508b2d114abffebd6a3380159041ae216b918a9825d92246eed",
+      "status": "pass",
+      "decodedDuration": 4.2945,
+      "peakDb": -4.8637
+    },
+    {
+      "clipId": "ai-cohesion-km",
+      "sha256": "9eaa92c8a08bc2955a8328dddb9b01e32df614e0e3b4a94e8d310dba6be6bcbe",
+      "status": "pass",
+      "decodedDuration": 2.4625,
+      "peakDb": -5.6459
+    },
+    {
+      "clipId": "ai-recover-km",
+      "sha256": "9225e9ca4ef3df736eae5d858f90d73fa70c69a972b692de14dad0ff26d6ff29",
+      "status": "pass",
+      "decodedDuration": 3.737,
+      "peakDb": -4.9553
+    },
+    {
+      "clipId": "ai-final-km",
+      "sha256": "4dd77c74dfdee28a4bb4c07ffb18393e2563acff5d07592b02aec3d32f10da72",
+      "status": "pass",
+      "decodedDuration": 3.9697,
+      "peakDb": -6.1197
+    },
+    {
+      "clipId": "ai-surge-km",
+      "sha256": "8827110d6f84fecc717303282ba70be595b9446f909ec6877fef68920df0d2c1",
+      "status": "pass",
+      "decodedDuration": 1.82,
+      "peakDb": -5.9773
+    },
+    {
+      "clipId": "ai-last-hundred-km",
+      "sha256": "940a7f76d7df3ce8bf323fda98c4b88e7a1e9f1e00af5e4998cb130f60d8566b",
+      "status": "pass",
+      "decodedDuration": 2.1817,
+      "peakDb": -6.7265
+    },
+    {
+      "clipId": "ai-last-fifty-km",
+      "sha256": "9203bca38d35df608d967cdf5317e2eef248f3b2ad5ecbcd66ebbcbb3d0a79a5",
+      "status": "pass",
+      "decodedDuration": 2.1092,
+      "peakDb": -7.54
+    },
+    {
+      "clipId": "ai-finish-win-km",
+      "sha256": "51377872f38085e991248ddd7c8967af54a4e8d7a7f8c91a793e4e64f5313ee2",
+      "status": "pass",
+      "decodedDuration": 4.8318,
+      "peakDb": -6.8404
+    },
+    {
+      "clipId": "ai-finish-loss-km",
+      "sha256": "3712f53d03bb299ed155caaa4d286c800c3a382aca5ade67ddd7eba58258befa",
+      "status": "pass",
+      "decodedDuration": 5.3965,
+      "peakDb": -5.4398
+    },
+    {
+      "clipId": "ai-finish-tie-km",
+      "sha256": "cde59cd17fcc28c78788fbc26ab9005fba44257cd3f67f30b57e7ed73c0a38fd",
+      "status": "pass",
+      "decodedDuration": 4.9875,
+      "peakDb": -5.3914
+    },
+    {
+      "clipId": "ai-finish-dnf-km",
+      "sha256": "d3fc4ee4acbbf50b456b1636ec8b7ab4b432857f1176c44886ac78e2d62a49c7",
+      "status": "pass",
+      "decodedDuration": 4.3111,
+      "peakDb": -6.6586
+    },
+    {
+      "clipId": "broadcast-shore-paragraph",
+      "sha256": "bfc59c0685de0f0dbea49d129afe171db90b69ed1a7f70cc3e37845752fcd136",
+      "status": "pass",
+      "decodedDuration": 6.99,
+      "peakDb": -2.3427
+    },
+    {
+      "clipId": "broadcast-course-paragraph",
+      "sha256": "a5b2acc47d1713ef7d1b936b74d42a3804a5c712884a40170b2dc322af48b713",
+      "status": "pass",
+      "decodedDuration": 13.45,
+      "peakDb": -5.6116
+    },
+    {
+      "clipId": "broadcast-rhythm-paragraph",
+      "sha256": "73a920b29f9f9b155b1b55403d23abb0746e9c8942c9ddec6f77d13e4719876f",
+      "status": "pass",
+      "decodedDuration": 5.15,
+      "peakDb": -5.6309
+    },
+    {
+      "clipId": "broadcast-festival-paragraph",
+      "sha256": "e774b88c0a753d74c24d631971f689ea84fdfa6761db3bf6c762b67447d69d66",
+      "status": "pass",
+      "decodedDuration": 15.37,
+      "peakDb": -5.0805
+    },
+    {
+      "clipId": "broadcast-coach-effort",
+      "sha256": "c79c9ae21ad0e0e21dd3e7f561980b340bb46dc01634278c9befe699816f147f",
+      "status": "pass",
+      "decodedDuration": 4.8,
+      "peakDb": -5.5487
+    },
+    {
+      "clipId": "drum-groove-recover",
+      "sha256": "61f254e77c4decaa4e800b762c88ff99cbfcd932029f1e95efd23fe3127285b2",
+      "status": "pass",
+      "decodedDuration": 6.6667,
+      "peakDb": -0.4542
+    },
+    {
+      "clipId": "drum-groove-cruise",
+      "sha256": "7d8eaa6656a76615116701968ef812751cfcc8ca83d58620bb6cb00001b146f7",
+      "status": "pass",
+      "decodedDuration": 5.7143,
+      "peakDb": -0.4198
+    },
+    {
+      "clipId": "drum-groove-gentle",
+      "sha256": "286fba93cbb7aece60816f59a78a4aa92a647499c52a0b19e1c288f5c5c2fca1",
+      "status": "pass",
+      "decodedDuration": 5.3333,
+      "peakDb": -0.4152
+    },
+    {
+      "clipId": "drum-groove-start",
+      "sha256": "bd3602ad23c19ffa4ee31c6edeeb95be80451d28061dc01198b1f25a290452ec",
+      "status": "pass",
+      "decodedDuration": 5.0,
+      "peakDb": -0.3962
+    },
+    {
+      "clipId": "drum-groove-final",
+      "sha256": "e50184ea591b3de74dd09e4ca1c449e4cf2869b6561d216a7d15381528a8fccc",
+      "status": "pass",
+      "decodedDuration": 4.706,
+      "peakDb": -0.4475
+    },
+    {
+      "clipId": "drum-groove-power",
+      "sha256": "3fde3c9c858e164b27843ef51490761370a6dad0382a236ec9ba6e1a8a1f886d",
+      "status": "pass",
+      "decodedDuration": 4.2105,
+      "peakDb": -0.3677
+    },
+    {
+      "clipId": "drum-groove-sprint",
+      "sha256": "0d816a7b64def042e097ce95f16e6bef81330bdf2c53eab8a471f78beea69474",
+      "status": "pass",
+      "decodedDuration": 4.0,
+      "peakDb": -0.4284
+    },
+    {
+      "clipId": "river-bank-bed",
+      "sha256": "616cf92c7ac324ec36f5473cfbbb237f31d5ce63c43878f362d3b4ac6ec86520",
+      "status": "pass",
+      "decodedDuration": 40.0,
+      "peakDb": -12.4555
+    },
+    {
+      "clipId": "finish-crowd-bed",
+      "sha256": "132a9948171a398854ee9a2708ce5b4f1c0d3a89c64792dda672507071475e50",
+      "status": "pass",
+      "decodedDuration": 20.0,
+      "peakDb": -11.3394
+    },
+    {
+      "clipId": "coach-whistle-short",
+      "sha256": "999307ac912f47b52ea625127310717b9a8fe05fea1840a4f916df34cd746dcf",
+      "status": "pass",
+      "decodedDuration": 0.19,
+      "peakDb": -8.4553
+    },
+    {
+      "clipId": "coach-whistle-strong",
+      "sha256": "0a0507f6b6cecbf0a03deadb9356d54aa8e9456e9c2447f4a3bcc3c403ea8333",
+      "status": "pass",
+      "decodedDuration": 0.3,
+      "peakDb": -8.2731
+    },
+    {
+      "clipId": "supplied-name-can_tho-36-vi",
+      "sha256": "2e75c1acf8f33c429a80e6268d1b9f2ce9226ca0965521b56453c3f528c2f3e7",
+      "status": "pass",
+      "decodedDuration": 2.0,
+      "peakDb": -5.1683
+    },
+    {
+      "clipId": "supplied-name-can_tho-33-vi",
+      "sha256": "00cb7fb17cea8ffec5e47c898d92d931e9273b1b0163ebef72072a7a20ba9867",
+      "status": "pass",
+      "decodedDuration": 1.0,
+      "peakDb": -6.2491
+    },
+    {
+      "clipId": "supplied-name-can_tho-13-vi",
+      "sha256": "c4b1c53014d74e1ae7446f348084539247b37ae0a0abb82b7de8c00f4cc28c1e",
+      "status": "pass",
+      "decodedDuration": 1.05,
+      "peakDb": -5.7639
+    },
+    {
+      "clipId": "supplied-name-can_tho-02-vi",
+      "sha256": "217e9f5e03efe9088480000d6fd041bd2c4b48c8d0eff1fac83c39c98cacc14b",
+      "status": "pass",
+      "decodedDuration": 1.35,
+      "peakDb": -5.5628
+    },
+    {
+      "clipId": "supplied-name-can_tho-06-vi",
+      "sha256": "0ab88e3c7be6a6a114de40d3611b8baaf00fe5e7674e5a05a2d9d93a4c09e3d9",
+      "status": "pass",
+      "decodedDuration": 0.95,
+      "peakDb": -6.0545
+    },
+    {
+      "clipId": "supplied-name-can_tho-14-vi",
+      "sha256": "9683a7aa96f7a178f2e75077ee06ed60fa7dc15bd2fa252aa44f0b6d92e69138",
+      "status": "pass",
+      "decodedDuration": 0.9,
+      "peakDb": -5.7502
+    },
+    {
+      "clipId": "supplied-name-can_tho-47-vi",
+      "sha256": "f9b0bb99a3ffaa9de889cbb57b9f92b7b61fd79e0674b46f5809f3ddad95d32e",
+      "status": "pass",
+      "decodedDuration": 0.95,
+      "peakDb": -5.4858
+    },
+    {
+      "clipId": "supplied-name-can_tho-37-vi",
+      "sha256": "bbc3c66da7d358efa96c8fecc99ced2862f88902fab11e775353d0087c4da54d",
+      "status": "pass",
+      "decodedDuration": 0.8,
+      "peakDb": -5.7884
+    },
+    {
+      "clipId": "supplied-name-can_tho-05-vi",
+      "sha256": "060734beaf6bcfcdab3f10aeb91d24e653a2c4d3e207052df15523ad0e769b88",
+      "status": "pass",
+      "decodedDuration": 0.75,
+      "peakDb": -5.1025
+    },
+    {
+      "clipId": "supplied-name-can_tho-21-vi",
+      "sha256": "c5617e5f85883ab009b4b0215810cff919bc64bfc6490635a0268236f1a717fc",
+      "status": "pass",
+      "decodedDuration": 1.15,
+      "peakDb": -4.6482
+    },
+    {
+      "clipId": "supplied-name-can_tho-46-vi",
+      "sha256": "517ad5a5b4f18fcd657bdc95854f93a452b96b34a14d9022d726d8b092ba679b",
+      "status": "pass",
+      "decodedDuration": 0.7,
+      "peakDb": -5.6386
+    },
+    {
+      "clipId": "supplied-name-can_tho-39-vi",
+      "sha256": "c58e5613886bb3d411fb53a3b8f5201f362397c38b8c5e924ccc76df6b1b573b",
+      "status": "pass",
+      "decodedDuration": 1.15,
+      "peakDb": -5.3279
+    },
+    {
+      "clipId": "supplied-name-can_tho-30-vi",
+      "sha256": "7cc1098648906b5bad659bd28f67905171d0f6825c7b342bf6474e16b5e65e2c",
+      "status": "pass",
+      "decodedDuration": 0.85,
+      "peakDb": -6.214
+    },
+    {
+      "clipId": "supplied-name-ca_mau-03-vi",
+      "sha256": "b63f55d9bedaba86feed907e0156ecc51983a4ab569a0bc0ddb32dd572acfe83",
+      "status": "pass",
+      "decodedDuration": 0.8,
+      "peakDb": -5.2238
+    },
+    {
+      "clipId": "supplied-name-can_tho-34-vi",
+      "sha256": "73fd4911c8ff807e551bdff85b3035527a4e14b9d0d62e10114f18a4e10baafb",
+      "status": "pass",
+      "decodedDuration": 1.2,
+      "peakDb": -4.8394
+    },
+    {
+      "clipId": "supplied-name-can_tho-17-vi",
+      "sha256": "205557decbb7f7dd535414182f42fbcdf0fbfd44ff63063d7c3c0f4a80130474",
+      "status": "pass",
+      "decodedDuration": 1.5,
+      "peakDb": -6.1225
+    },
+    {
+      "clipId": "supplied-name-can_tho-35-vi",
+      "sha256": "a0d51c661e0936aa0793fdec6e642a582131d378424ab95bf9a50ff44fe3530a",
+      "status": "pass",
+      "decodedDuration": 0.8,
+      "peakDb": -6.1755
+    },
+    {
+      "clipId": "supplied-name-can_tho-43-vi",
+      "sha256": "dcfaf7bb2f73932f30361ba04eb85708136f3675f481ffd2a65d58091331cb3c",
+      "status": "pass",
+      "decodedDuration": 0.85,
+      "peakDb": -6.5959
+    },
+    {
+      "clipId": "supplied-name-can_tho-41-vi",
+      "sha256": "e1175ea994623f642510fa75a1739c9376c827c79b7bf194aa92091985c08516",
+      "status": "pass",
+      "decodedDuration": 0.9,
+      "peakDb": -5.5801
+    },
+    {
+      "clipId": "supplied-name-can_tho-20-vi",
+      "sha256": "42c3b0ece46cb76c7ede6a335d0953d14143de8b219d2ebc886550c865ef5487",
+      "status": "pass",
+      "decodedDuration": 1.3,
+      "peakDb": -5.6225
+    },
+    {
+      "clipId": "supplied-name-ca_mau-11-vi",
+      "sha256": "dab0c0e7ce84351b560bab25caa5c5abc863985df3d0456d40f1bf47af8f4d2b",
+      "status": "pass",
+      "decodedDuration": 0.6,
+      "peakDb": -5.8218
+    },
+    {
+      "clipId": "supplied-name-ca_mau-12-vi",
+      "sha256": "0b0845e22b14732ee7f8d93957f50284e74a785be9de9da2201a6f3e695ee78e",
+      "status": "pass",
+      "decodedDuration": 0.95,
+      "peakDb": -6.0854
+    },
+    {
+      "clipId": "supplied-name-ca_mau-05-vi",
+      "sha256": "a686e6b38454de9d14f51eda8755f71cebeb560ae4a8495bbc2de8373342643e",
+      "status": "pass",
+      "decodedDuration": 0.85,
+      "peakDb": -6.5006
+    },
+    {
+      "clipId": "supplied-name-can_tho-48-vi",
+      "sha256": "83afde17bb62c7daa8f4591863e5bd560f8836ffaa0b8779c55525732c5a3a3f",
+      "status": "pass",
+      "decodedDuration": 0.55,
+      "peakDb": -5.7056
+    },
+    {
+      "clipId": "supplied-name-can_tho-12-vi",
+      "sha256": "b334d8e6510a1ff48189f71f3fe9fc35186e2233b8315791f808d0843d3a37a4",
+      "status": "pass",
+      "decodedDuration": 0.8,
+      "peakDb": -5.2309
+    },
+    {
+      "clipId": "supplied-name-can_tho-23-vi",
+      "sha256": "0b4ba1a408dff32022daccf3776da1f1763fbd643f477b836fb976e8b121e651",
+      "status": "pass",
+      "decodedDuration": 0.85,
+      "peakDb": -6.5324
+    },
+    {
+      "clipId": "supplied-name-can_tho-16-vi",
+      "sha256": "bbe61b713ce53ae223ddb2fb5fc353ed0afc8c72e6bd16bf957b3c4b2467d134",
+      "status": "pass",
+      "decodedDuration": 1.1,
+      "peakDb": -5.7419
+    },
+    {
+      "clipId": "supplied-name-ca_mau-02-vi",
+      "sha256": "14d078fe565a0ab5cc54c4bbfa7025a623bfcb6963cb65889cf85ec8b36231a1",
+      "status": "pass",
+      "decodedDuration": 0.7,
+      "peakDb": -5.4533
+    },
+    {
+      "clipId": "supplied-name-can_tho-27-vi",
+      "sha256": "31764bf725667e74ea0078771ce530386e5a5387402624407c2c581e64a8326c",
+      "status": "pass",
+      "decodedDuration": 0.75,
+      "peakDb": -4.4293
+    },
+    {
+      "clipId": "supplied-name-can_tho-45-vi",
+      "sha256": "effe2cd36c3e0c4edbac9e413d35725cac47cae1f2a5d327176a84f45f6daf35",
+      "status": "pass",
+      "decodedDuration": 0.55,
+      "peakDb": -5.5402
+    },
+    {
+      "clipId": "supplied-name-can_tho-03-vi",
+      "sha256": "93a81d47088d0092dd2e3c5b6d69b0f58d28b2308f9c1ed682a12879120a0903",
+      "status": "pass",
+      "decodedDuration": 0.95,
+      "peakDb": -4.9278
+    },
+    {
+      "clipId": "supplied-name-can_tho-19-vi",
+      "sha256": "3a1a5a03b319e417ac0f6da3b2cbb9c388ba717aac5aa9b243cd87ea80dc34b9",
+      "status": "pass",
+      "decodedDuration": 0.9,
+      "peakDb": -5.7317
+    },
+    {
+      "clipId": "supplied-name-can_tho-28-vi",
+      "sha256": "d0d500221a44e30426a7255b3425d74e7280b488329dc92cd939d8bf4ce9fd3f",
+      "status": "pass",
+      "decodedDuration": 0.8,
+      "peakDb": -5.2738
+    },
+    {
+      "clipId": "supplied-name-can_tho-10-vi",
+      "sha256": "60ed253ae89e57072fe8ccf8a15c9e3fd554f2e2ff51ee3603a66967fb6f2b3b",
+      "status": "pass",
+      "decodedDuration": 0.85,
+      "peakDb": -6.1534
+    },
+    {
+      "clipId": "supplied-name-can_tho-42-vi",
+      "sha256": "3b863a3d40bb1574d117bc6accbe8c01d99abe2a837816a4a480c086308e7e1b",
+      "status": "pass",
+      "decodedDuration": 1.1,
+      "peakDb": -6.0066
+    },
+    {
+      "clipId": "supplied-name-can_tho-22-vi",
+      "sha256": "4c0250f8a38bbbd6540be18921c9dda796db2455a0519bf994d8fbce377df921",
+      "status": "pass",
+      "decodedDuration": 0.75,
+      "peakDb": -5.403
+    },
+    {
+      "clipId": "supplied-name-can_tho-29-vi",
+      "sha256": "0b727fbaf65dd31735e9b073ee5160e4d92034c6b428c3f6c634e2a52f2d2851",
+      "status": "pass",
+      "decodedDuration": 0.7,
+      "peakDb": -6.4156
+    },
+    {
+      "clipId": "supplied-name-ca_mau-01-vi",
+      "sha256": "b13027bdf76162a6044aceb01b30ca8dc49cfdecc59f8ba5cd517a31bb4ddf86",
+      "status": "pass",
+      "decodedDuration": 0.95,
+      "peakDb": -5.8769
+    },
+    {
+      "clipId": "supplied-name-can_tho-38-vi",
+      "sha256": "2c419233aab80c7047040c2fc46b77dbb1ca8d9cdc307653fa99128e3d1dc256",
+      "status": "pass",
+      "decodedDuration": 1.1,
+      "peakDb": -5.7726
+    },
+    {
+      "clipId": "supplied-name-can_tho-25-vi",
+      "sha256": "cedfddff4d85bc62b239961bfec298dfc3615d4f5f7bfe614b887f5b034a3c08",
+      "status": "pass",
+      "decodedDuration": 0.85,
+      "peakDb": -5.7858
+    },
+    {
+      "clipId": "supplied-name-can_tho-08-vi",
+      "sha256": "1b28370b4e0501e78e879ab5b42ab7bbd4557288f1d6afad708eb633c1409cae",
+      "status": "pass",
+      "decodedDuration": 0.6,
+      "peakDb": -5.6233
+    },
+    {
+      "clipId": "supplied-name-can_tho-40-vi",
+      "sha256": "dbe5ac2c4367ff4bb60488015db2273b7bf29aebff075595072202b7b372a6f4",
+      "status": "pass",
+      "decodedDuration": 1.2,
+      "peakDb": -5.8635
+    },
+    {
+      "clipId": "supplied-name-can_tho-44-vi",
+      "sha256": "70e98901446cbe1c15767f1a9690ff219e63ec7f98fc4ad57c4940bca8d4d89e",
+      "status": "pass",
+      "decodedDuration": 0.7,
+      "peakDb": -5.8333
+    },
+    {
+      "clipId": "supplied-name-can_tho-09-vi",
+      "sha256": "26a6e3bf43b1893c03dc924341eb895f199e5f666488cf972852ccd656cc9066",
+      "status": "pass",
+      "decodedDuration": 0.9,
+      "peakDb": -5.862
+    },
+    {
+      "clipId": "supplied-name-can_tho-01-vi",
+      "sha256": "786372ea26c433a94d2ae7c81ce1ed85693a9c68568dbe69c11769edfaf78bde",
+      "status": "pass",
+      "decodedDuration": 1.35,
+      "peakDb": -5.5032
+    },
+    {
+      "clipId": "supplied-name-can_tho-26-vi",
+      "sha256": "4a3baff80fae3f1d67e8fdfacba476e2b2455f4a85e4bc3e867cfe656afdebe9",
+      "status": "pass",
+      "decodedDuration": 0.9,
+      "peakDb": -5.5955
+    },
+    {
+      "clipId": "supplied-name-can_tho-31-vi",
+      "sha256": "2c779a53f4e5807b2ba2c74d94c0d7642fb9f68ffbf20cc24db7b2f872590164",
+      "status": "pass",
+      "decodedDuration": 0.8,
+      "peakDb": -5.7324
+    },
+    {
+      "clipId": "supplied-name-can_tho-07-vi",
+      "sha256": "14cd117a53e612187bea386322950a9b01bc11b7d8e67ef1386dcc080145f3a3",
+      "status": "pass",
+      "decodedDuration": 1.05,
+      "peakDb": -5.6993
+    },
+    {
+      "clipId": "supplied-name-can_tho-15-vi",
+      "sha256": "7d3751b47a8a27145f74fe3d6a45302206526f4f40185693ae71b39f5e2f2242",
+      "status": "pass",
+      "decodedDuration": 0.9,
+      "peakDb": -5.1838
+    },
+    {
+      "clipId": "supplied-name-ca_mau-06-vi",
+      "sha256": "5e3035bb0ad10cecde7654c5c39a15f893513bc8d0f149783cfd3d89595d1cdd",
+      "status": "pass",
+      "decodedDuration": 1.05,
+      "peakDb": -4.9405
+    },
+    {
+      "clipId": "supplied-name-ca_mau-09-vi",
+      "sha256": "5f71540d64ff7d1fe11b6d3f212772076f5509bc16aa7259e4432f8f14b6331b",
+      "status": "pass",
+      "decodedDuration": 0.95,
+      "peakDb": -5.8545
+    },
+    {
+      "clipId": "supplied-name-can_tho-04-vi",
+      "sha256": "b2e76fd005e4c9edc14d73bca40c4ed8cc29dfce51b1005931de9fd913ebe34d",
+      "status": "pass",
+      "decodedDuration": 0.8,
+      "peakDb": -4.9813
+    },
+    {
+      "clipId": "supplied-name-can_tho-18-vi",
+      "sha256": "60224cc1a963f5d7f77648d35382001183790d153fe4fd5061deb04827fa5ce7",
+      "status": "pass",
+      "decodedDuration": 0.9,
+      "peakDb": -6.2013
+    },
+    {
+      "clipId": "ai-name-can_tho-33-km",
+      "sha256": "88df01f670f4b5c04bcc183da552104aaa81872862256e79e8f224d4bf35f529",
+      "status": "pass",
+      "decodedDuration": 1.9625,
+      "peakDb": -5.6291
+    },
+    {
+      "clipId": "ai-name-can_tho-02-km",
+      "sha256": "f117cd28f8f03639697373e303b0e09269dc79d727135a1f8bcf65c717384e98",
+      "status": "pass",
+      "decodedDuration": 2.625,
+      "peakDb": -6.46
+    },
+    {
+      "clipId": "ai-name-can_tho-06-km",
+      "sha256": "ca633e0da6fe797a3c266b78fc829c59e0dc2d97d72da3ea72e3cd5968833c18",
+      "status": "pass",
+      "decodedDuration": 2.8,
+      "peakDb": -6.7057
+    },
+    {
+      "clipId": "ai-name-can_tho-14-km",
+      "sha256": "2716e6e110deede2b1dc6e25076a1c62600230cf89cf2ba5135a8c2e27b5beb4",
+      "status": "pass",
+      "decodedDuration": 1.82,
+      "peakDb": -6.4067
+    },
+    {
+      "clipId": "ai-name-can_tho-47-km",
+      "sha256": "f15288194b9bf111ab342603ee3712712bde47c581b1d04894188832d62d31bb",
+      "status": "pass",
+      "decodedDuration": 1.875,
+      "peakDb": -6.3099
+    },
+    {
+      "clipId": "ai-name-can_tho-37-km",
+      "sha256": "c67dbb5c83ffcf286110d964906d782332522487f5b71255017c1c78e1646c84",
+      "status": "pass",
+      "decodedDuration": 1.925,
+      "peakDb": -6.3914
+    },
+    {
+      "clipId": "ai-name-can_tho-05-km",
+      "sha256": "5c010d485a996b743b6847d039259f140664821cea373c31cdcca103881fd47a",
+      "status": "pass",
+      "decodedDuration": 2.9125,
+      "peakDb": -6.7846
+    },
+    {
+      "clipId": "ai-name-can_tho-21-km",
+      "sha256": "a5bbbea9637bb7f260a0521460aa2920bc9c61976910537965358fd978d7e640",
+      "status": "pass",
+      "decodedDuration": 1.82,
+      "peakDb": -7.3607
+    },
+    {
+      "clipId": "ai-name-can_tho-46-km",
+      "sha256": "a2bb5e89cf0100e548ba3492d78084eb1a9c3a72c5690b3ab3768772f044ccb4",
+      "status": "pass",
+      "decodedDuration": 1.82,
+      "peakDb": -7.136
+    },
+    {
+      "clipId": "ai-name-can_tho-39-km",
+      "sha256": "23f3e2fe0d49861aa8fc999bf8f19e987339790c96a48a151ac97c2699fcd0aa",
+      "status": "pass",
+      "decodedDuration": 2.0625,
+      "peakDb": -6.3035
+    },
+    {
+      "clipId": "ai-name-can_tho-30-km",
+      "sha256": "1dcf601792550d131d616d6965734bbc11e92dab48be140b1d6bdc30b4d6e11d",
+      "status": "pass",
+      "decodedDuration": 1.82,
+      "peakDb": -7.035
+    },
+    {
+      "clipId": "ai-name-ca_mau-03-km",
+      "sha256": "83c6ad304be67a766609dab7f7c86c4e375e5323c0b4a70c2ee8de68117e5b07",
+      "status": "pass",
+      "decodedDuration": 2.9375,
+      "peakDb": -7.4961
+    },
+    {
+      "clipId": "ai-name-can_tho-34-km",
+      "sha256": "b3cc491085544a89731485ca6a6d735246500626d2ed43d3f8dc2b622be4ceb3",
+      "status": "pass",
+      "decodedDuration": 1.9625,
+      "peakDb": -6.4803
+    },
+    {
+      "clipId": "ai-name-can_tho-17-km",
+      "sha256": "22a4dcdd94b5154a0f76a0e61c4339200a7ac0d67ea605a8d9d8fd5ec13a5788",
+      "status": "pass",
+      "decodedDuration": 2.0,
+      "peakDb": -6.3925
+    },
+    {
+      "clipId": "ai-name-can_tho-35-km",
+      "sha256": "e24698cc863fbf25017b5ed01da8918b6e4cf38e53193e9730127014fbb9a46a",
+      "status": "pass",
+      "decodedDuration": 1.975,
+      "peakDb": -6.2523
+    },
+    {
+      "clipId": "ai-name-can_tho-43-km",
+      "sha256": "7381dc99c2087cfb6a1657a9a10e3fdec529199f873e28aeb6547cf603cf9155",
+      "status": "pass",
+      "decodedDuration": 2.0375,
+      "peakDb": -6.5965
+    },
+    {
+      "clipId": "ai-name-can_tho-41-km",
+      "sha256": "a16d3fb0629209915ea7ce9eb3ccd1fd4167403c57633ab2cc7101a99ef28982",
+      "status": "pass",
+      "decodedDuration": 1.82,
+      "peakDb": -6.6787
+    },
+    {
+      "clipId": "ai-name-can_tho-20-km",
+      "sha256": "52255c02d9336699a5b1399e6a940d1159498dc839fd417b4115e6a75d7c6612",
+      "status": "pass",
+      "decodedDuration": 1.8625,
+      "peakDb": -7.5797
+    },
+    {
+      "clipId": "ai-name-ca_mau-11-km",
+      "sha256": "83f6974034e414929e35f54d18398523b4d1647e8a6796957e866d0c087e54c3",
+      "status": "pass",
+      "decodedDuration": 2.8,
+      "peakDb": -5.7872
+    },
+    {
+      "clipId": "ai-name-ca_mau-12-km",
+      "sha256": "05a992d31d302772c9492a9e3c409c39ffc66b1f541c632d8d42dbc58b0a4141",
+      "status": "pass",
+      "decodedDuration": 2.725,
+      "peakDb": -5.8529
+    },
+    {
+      "clipId": "ai-name-can_tho-48-km",
+      "sha256": "f498974f77110f8e726e282f2237623d141c03b3fa041ada1f1404ad5f8cf883",
+      "status": "pass",
+      "decodedDuration": 1.826,
+      "peakDb": -6.3923
+    },
+    {
+      "clipId": "ai-name-can_tho-12-km",
+      "sha256": "c44ee64fa5260932af849ad4fbac42fad43cfc6a6b108c7ba533bfedaba778ad",
+      "status": "pass",
+      "decodedDuration": 2.5,
+      "peakDb": -6.3533
+    },
+    {
+      "clipId": "ai-name-can_tho-16-km",
+      "sha256": "155098824a2ed3999efca77be5f5d57d8b4e13f734dc0e218f7ab80497603606",
+      "status": "pass",
+      "decodedDuration": 1.826,
+      "peakDb": -6.3516
+    },
+    {
+      "clipId": "ai-name-can_tho-27-km",
+      "sha256": "26d30a8bdf5ab27e8538104bf8187afa5d7b2e86eef1a134c70877ae2c57536a",
+      "status": "pass",
+      "decodedDuration": 1.82,
+      "peakDb": -6.2383
+    },
+    {
+      "clipId": "ai-name-can_tho-03-km",
+      "sha256": "2d349fa7a66e3073c1bae6b36a6b1bca79a5b653a12d8abc1712228de6db36e0",
+      "status": "pass",
+      "decodedDuration": 1.85,
+      "peakDb": -5.88
+    },
+    {
+      "clipId": "ai-name-can_tho-28-km",
+      "sha256": "d2ec8aa6aad4e961f91b5dad35d21c46608439b1568b03251f303bbd1cdcba1e",
+      "status": "pass",
+      "decodedDuration": 1.826,
+      "peakDb": -7.3393
+    },
+    {
+      "clipId": "ai-name-can_tho-10-km",
+      "sha256": "356dae546000758d0e1d40a72fab26d3257cf7da6017f83fa1f9c97c9f02f82f",
+      "status": "pass",
+      "decodedDuration": 1.82,
+      "peakDb": -5.9099
+    },
+    {
+      "clipId": "ai-name-can_tho-42-km",
+      "sha256": "81162c7fa49c70681ce5f13581fd83223aee1a989ba2a62ce3902fa505339c9d",
+      "status": "pass",
+      "decodedDuration": 2.1625,
+      "peakDb": -5.7587
+    },
+    {
+      "clipId": "ai-name-can_tho-29-km",
+      "sha256": "7a5c33d5f241020759a223b097c770bc47f5088e5e029a1ae88ac25ddf49d085",
+      "status": "pass",
+      "decodedDuration": 1.9875,
+      "peakDb": -6.4749
+    },
+    {
+      "clipId": "ai-name-ca_mau-01-km",
+      "sha256": "b80e47b36ba720a06138a6896468e6779f81cd782ae2b13ef27cd36fdae7eeca",
+      "status": "pass",
+      "decodedDuration": 2.525,
+      "peakDb": -6.0689
+    },
+    {
+      "clipId": "ai-name-can_tho-38-km",
+      "sha256": "d0f67f8d4a6f32e98085f182dbe32a8963674bb2667d9ab4cd70c1baa5ec6806",
+      "status": "pass",
+      "decodedDuration": 2.2125,
+      "peakDb": -5.6668
+    },
+    {
+      "clipId": "ai-name-can_tho-25-km",
+      "sha256": "f6859ff36309d70ee5611984b3914104f0a99e53df8b12f174869c0a9ff60caa",
+      "status": "pass",
+      "decodedDuration": 1.975,
+      "peakDb": -5.7728
+    },
+    {
+      "clipId": "ai-name-can_tho-08-km",
+      "sha256": "91fa7d8639e122d4713fc56a10027778998d6d4cced2f98b8d1166db0af0232d",
+      "status": "pass",
+      "decodedDuration": 1.875,
+      "peakDb": -6.4728
+    },
+    {
+      "clipId": "ai-name-can_tho-40-km",
+      "sha256": "372ca0822b4ca3752106450c3477d15b8203ba2cc051583efc0aaa6d56b84c2e",
+      "status": "pass",
+      "decodedDuration": 2.175,
+      "peakDb": -5.7292
+    },
+    {
+      "clipId": "ai-name-can_tho-44-km",
+      "sha256": "d8267fc8f16bdf68c5dd3524b3a6452b8d6a5302329ea050b15eeb5055dc282e",
+      "status": "pass",
+      "decodedDuration": 1.82,
+      "peakDb": -6.3484
+    },
+    {
+      "clipId": "ai-name-can_tho-09-km",
+      "sha256": "d33763bcb2681b3c5a159e31c27d3ada381e42339831218a18514c26e47e955e",
+      "status": "pass",
+      "decodedDuration": 1.9875,
+      "peakDb": -7.2653
+    },
+    {
+      "clipId": "ai-name-can_tho-01-km",
+      "sha256": "63cef2e1098e631e40e9c651e27fd34374f65b3a3ff1f0c49b8405b6ef9bb479",
+      "status": "pass",
+      "decodedDuration": 2.714,
+      "peakDb": -6.1505
+    },
+    {
+      "clipId": "ai-name-can_tho-26-km",
+      "sha256": "6b29386b06fa3b17ddb907a9d4e5e11d485c65cc92faed1205c9ce356e5ea301",
+      "status": "pass",
+      "decodedDuration": 1.8875,
+      "peakDb": -5.9701
+    },
+    {
+      "clipId": "ai-name-can_tho-31-km",
+      "sha256": "f715222b9731d9dd0a0d6e693867a5218d792780b7d0e04504e6599bab1f773a",
+      "status": "pass",
+      "decodedDuration": 1.82,
+      "peakDb": -6.6546
+    },
+    {
+      "clipId": "ai-name-can_tho-07-km",
+      "sha256": "f5069c2313923683784dc6be92c2cabc23e3843ad47f3311493dfecbc0235fc8",
+      "status": "pass",
+      "decodedDuration": 1.875,
+      "peakDb": -6.3138
+    },
+    {
+      "clipId": "ai-name-can_tho-15-km",
+      "sha256": "b8c0a36466355b5068a6500d2c2fe9adb3a31463cc95901da6183badc7202fdf",
+      "status": "pass",
+      "decodedDuration": 2.125,
+      "peakDb": -6.8578
+    },
+    {
+      "clipId": "ai-name-ca_mau-09-km",
+      "sha256": "828f4846b7c9d1225a9061e4f736fbda38030d23208ce106498cf733317c9c5e",
+      "status": "pass",
+      "decodedDuration": 2.025,
+      "peakDb": -6.6306
+    },
+    {
+      "clipId": "ai-name-can_tho-04-km",
+      "sha256": "0172162f5f321fab8f13600908f8554033b56f373dce0d798670079371afaca3",
+      "status": "pass",
+      "decodedDuration": 1.82,
+      "peakDb": -6.2288
+    },
+    {
+      "clipId": "ai-name-can_tho-18-km",
+      "sha256": "ad4ceabe1668c56292ab57c68a27c49ebdfc2cbeb92b4ee7930df801ee216d4f",
+      "status": "pass",
+      "decodedDuration": 1.82,
+      "peakDb": -6.3382
+    },
+    {
+      "clipId": "trial-history-tum-nup-km",
+      "sha256": "04be4509b416f61b6a918d17080da7a558a424acb412a948fdc5066dc6bc3491",
+      "status": "pass",
+      "decodedDuration": 5.2583,
+      "peakDb": -5.2011
+    },
+    {
+      "clipId": "trial-history-kos-thum-km",
+      "sha256": "94bfb492023427ee5591fb53e855096b2e98e2f5105771b3546ce04a5debaee7",
+      "status": "pass",
+      "decodedDuration": 5.8907,
+      "peakDb": -4.7972
+    },
+    {
+      "clipId": "agy-ai-ceremony-teams-km",
+      "sha256": "93de39045dac44b02354475ab42ad8818b9925ba758b2563b7999929d34fbfd2",
+      "status": "pass",
+      "decodedDuration": 6.936,
+      "peakDb": -4.8477
+    },
+    {
+      "clipId": "agy-ai-champion-carrier-km",
+      "sha256": "30cfe1165d8ed876d0715bcad1cf966cb8115be8b9006ddc5230fb039beb67f9",
+      "status": "pass",
+      "decodedDuration": 3.888,
+      "peakDb": -6.7049
+    },
+    {
+      "clipId": "agy-ai-champion-kos-thum-km",
+      "sha256": "e9f9bfd849596db6d4b19dc09895c4ee078dbddfa8049b785558d3ebab6e4feb",
+      "status": "pass",
+      "decodedDuration": 4.56,
+      "peakDb": -6.4319
+    },
+    {
+      "clipId": "agy-ai-champion-tum-nup-km",
+      "sha256": "7ae1036526212bf32914895e60efae472e0ef4b3cf0ee081c0307178e0f805ce",
+      "status": "pass",
+      "decodedDuration": 4.512,
+      "peakDb": -6.4266
+    },
+    {
+      "clipId": "agy-ai-cruise-context-km",
+      "sha256": "1966009c625d38d18c552353f1cb6d5ac332759c86abec6e64bfb93baf3bda43",
+      "status": "pass",
+      "decodedDuration": 5.136,
+      "peakDb": -5.7731
+    },
+    {
+      "clipId": "agy-ai-intro-carrier-km",
+      "sha256": "84eccfca70cb606b99f22b78794066fb611eec974efb353079d8199a4ec58aab",
+      "status": "pass",
+      "decodedDuration": 3.816,
+      "peakDb": -6.0799
+    },
+    {
+      "clipId": "agy-ai-intro-match-tum-nup-kos-thum-km",
+      "sha256": "3786ed0365c7574ed7071d68b2013406b3a16277ab72d8b22b96f790cb5b94b4",
+      "status": "pass",
+      "decodedDuration": 4.896,
+      "peakDb": -5.9166
+    },
+    {
+      "clipId": "agy-ai-name-ca_mau-04-km",
+      "sha256": "180096fa4f34fa3ea5181dc9ad60309608107a523c35f537a07c29ef0d577527",
+      "status": "pass",
+      "decodedDuration": 2.304,
+      "peakDb": -5.8522
+    },
+    {
+      "clipId": "agy-ai-name-ca_mau-10-km",
+      "sha256": "26beba4b1d1d684738287ba7c86d965ba4d65772753088fd32f178d63436efdc",
+      "status": "pass",
+      "decodedDuration": 2.4,
+      "peakDb": -6.0886
+    },
+    {
+      "clipId": "agy-ai-name-ca_mau-13-km",
+      "sha256": "1824fad29ebcd2e34e6647c64a3976b689ad87e2be8a46b89cfc215e7de8697b",
+      "status": "pass",
+      "decodedDuration": 1.872,
+      "peakDb": -6.1832
+    },
+    {
+      "clipId": "agy-ai-name-can_tho-11-km",
+      "sha256": "c98cca26e5ab4fd4d66a5d86a00e8e6129927b6dae0cfd6e374bce0d8a595c11",
+      "status": "pass",
+      "decodedDuration": 2.496,
+      "peakDb": -6.3563
+    },
+    {
+      "clipId": "agy-ai-name-can_tho-32-km",
+      "sha256": "dc56529bd1f1c07ae4ac5f02849f69a49d4581a1b4dc3f542daf2138fc1ddd37",
+      "status": "pass",
+      "decodedDuration": 2.328,
+      "peakDb": -6.1401
+    },
+    {
+      "clipId": "agy-ai-safe-margin-km",
+      "sha256": "5f5b34dc4a02116464247ba8fa50bba7d1b6b3034c584b8e799436504234fc10",
+      "status": "pass",
+      "decodedDuration": 4.704,
+      "peakDb": -5.3891
+    },
+    {
+      "clipId": "agy-ai-start-drive-km",
+      "sha256": "35922288e6e040ca3320e903e794bf0fc33169a2e6eb0de1cef66fd34fe8d50a",
+      "status": "pass",
+      "decodedDuration": 4.248,
+      "peakDb": -5.8941
+    },
+    {
+      "clipId": "agy-trial-history-sro-lon-km",
+      "sha256": "6fad0c804b1248fdef7685522ed6079fe8a62c437e9b66fe581aee28f3836650",
+      "status": "pass",
+      "decodedDuration": 5.808,
+      "peakDb": -5.2839
+    },
+    {
+      "clipId": "menu-music",
+      "sha256": "1609f84363b210d98bcded5aecae836c54cead3974effc17872fd28f6ee76c93",
+      "status": "pass",
+      "decodedDuration": 396.0396,
+      "peakDb": -4.7617
+    }
+  ],
+  "semanticAccuracyVerified": false,
+  "nativePronunciationVerified": false
+}

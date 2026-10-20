@@ -1,0 +1,72 @@
+{
+  "suite": "Audio dashboard browser regression",
+  "cases": [
+    {
+      "name": "No MP3 preload; actual native playback",
+      "status": "pass"
+    },
+    {
+      "name": "Malformed JSON recovers without deleting its stored bytes",
+      "status": "pass"
+    },
+    {
+      "name": "Array-shaped saved reviews do not lose new notes/verdicts",
+      "status": "fail",
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ ''\n- 'Giữ ghi chú khi tải lại'\n",
+      "browserErrors": []
+    },
+    {
+      "name": "Primitive saved variant map cannot break audio selection",
+      "status": "fail",
+      "error": "The expression evaluated to a falsy value:\n\n  assert((await p.locator('#player').getAttribute('src')).includes('champion-kos-thum'))\n",
+      "browserErrors": [
+        "Cannot create property 'cues:cup-champion:km' on string 'damaged'"
+      ]
+    },
+    {
+      "name": "Unknown saved verdict becomes pending",
+      "status": "fail",
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'unexpected'\n- 'pending'\n",
+      "browserErrors": []
+    },
+    {
+      "name": "Failed audio cannot pass; retry recovers (simulated HTTP 404)",
+      "status": "fail",
+      "error": "The expression evaluated to a falsy value:\n\n  assert(await p.locator('[data-review=\"pass\"]').isDisabled())\n",
+      "browserErrors": []
+    },
+    {
+      "name": "Cancelled resume rejection cannot overwrite next item (simulated play rejection)",
+      "status": "fail",
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'Bấm Play trên thanh nghe để tiếp tục.'\n- 'Audio chỉ tải khi bấm nghe.'\n",
+      "browserErrors": []
+    },
+    {
+      "name": "Play after natural end restarts the recording",
+      "status": "pass"
+    },
+    {
+      "name": "Switching groups/languages clears the old recording",
+      "status": "pass"
+    },
+    {
+      "name": "Editing the required words invalidates the old verdict",
+      "status": "pass"
+    },
+    {
+      "name": "JSON/CSV downloads preserve notes and UTF-8",
+      "status": "pass"
+    },
+    {
+      "name": "A missing Vietnamese recording cannot be approved",
+      "status": "pass"
+    },
+    {
+      "name": "Phone drawer and empty results remain usable",
+      "status": "pass"
+    }
+  ],
+  "passed": 8,
+  "failed": 5,
+  "limits": "Simulated error cases verify recovery only. Native pronunciation and semantic correctness are not certified."
+}

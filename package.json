@@ -10,7 +10,9 @@
     "test": "node scripts/check-architecture.mjs && node scripts/test-kbach-library.mjs && node scripts/test-asset-transfer.mjs && node scripts/test-gameplay.mjs && node scripts/test-race-audio.mjs && node scripts/test-audio-dashboard.mjs && node scripts/test-tournament.mjs && node scripts/test-rowing-effort.mjs && node scripts/test-athlete.mjs && node scripts/test-rowing-pose.mjs && node --import tsx scripts/test-race-presentation.mjs",
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "test:audio:browser": "node scripts/test-audio-dashboard-browser.mjs",
+    "test:audio": "node scripts/test-race-audio.mjs && node scripts/test-audio-dashboard.mjs && python -X utf8 scripts/test-audio-files.py && npm run test:audio:browser"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",

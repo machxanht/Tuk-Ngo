@@ -1,0 +1,46 @@
+{
+  "purpose": "Unprompted ASR diagnostic only; not a corrected transcript or native pronunciation approval.",
+  "records": [
+    {
+      "file": "ai-champion-kos-thum-km.mp3",
+      "sha256": "e9f9bfd849596db6d4b19dc09895c4ee078dbddfa8049b785558d3ebab6e4feb",
+      "detectedLanguage": "km",
+      "languageProbability": 0.6202787756919861,
+      "asrText": " වහුව වුවා සස්ව෢ීස් ස්වුඁ් වවුවුඅා ඒැණි වෙින් වෙින්වුඳික් වැණිඇවිස්වු, වුවුක්වුරිර් වීක් වෙේ්මුවන් සැණිඝාත වෙණිටයය වෙණුර",
+      "model": "faster-whisper-small",
+      "initialPrompt": null,
+      "nativeListeningVerified": false,
+      "khmerLetterRatio": 0.0,
+      "usableForAutomaticTextCorrection": false,
+      "rejectionReason": "ASR output is not Khmer script despite a Khmer language prediction."
+    },
+    {
+      "file": "ai-champion-carrier-km.mp3",
+      "sha256": "30cfe1165d8ed876d0715bcad1cf966cb8115be8b9006ddc5230fb039beb67f9",
+      "detectedLanguage": "km",
+      "languageProbability": 0.8938922882080078,
+      "asrText": " වැහ ස්ිට්කාන්න්ම සිහාස්නියෙි ඦේ්සු මේ් මේ්න්මතු පළ අයමීයෙි පොොද්න්න්න එමිවහාස්මදවෙින්න්න්ියෙීු තිල්ාන්වෙින්න්න්න් තිල්ාන",
+      "model": "faster-whisper-small",
+      "initialPrompt": null,
+      "nativeListeningVerified": false,
+      "khmerLetterRatio": 0.0,
+      "usableForAutomaticTextCorrection": false,
+      "rejectionReason": "ASR output is not Khmer script despite a Khmer language prediction."
+    },
+    {
+      "file": "ai-intro-carrier-km.mp3",
+      "sha256": "84eccfca70cb606b99f22b78794066fb611eec974efb353079d8199a4ec58aab",
+      "detectedLanguage": "km",
+      "languageProbability": 0.8765360116958618,
+      "asrText": "  marketers andzooms",
+      "model": "faster-whisper-small",
+      "initialPrompt": null,
+      "nativeListeningVerified": false,
+      "khmerLetterRatio": 0.0,
+      "usableForAutomaticTextCorrection": false,
+      "rejectionReason": "ASR output is not Khmer script despite a Khmer language prediction."
+    }
+  ],
+  "reliableForAutomaticCorrections": false,
+  "audioFilesChanged": false
+}
