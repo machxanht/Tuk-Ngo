@@ -1,15 +1,95 @@
 {
-  "packageId": "ec696e987b7168bd",
-  "pagesCommit": "5cbd9b9370cd1e527c483f2d51e72eb028838e46",
-  "realPublicPlayback": true,
-  "damagedStorageRecovery": true,
-  "notePersistence": true,
-  "variantSelectionRecovery": true,
-  "cancelledPromiseIsolation": true,
-  "simulated404BlocksApproval": true,
-  "retryLoadsRealPublicAudio": true,
-  "phoneOverflow": false,
-  "zipBytes": 11640545,
-  "zipHashMatched": true,
-  "errors": []
+  "suite": "Audio dashboard browser regression",
+  "cases": [
+    {
+      "name": "No MP3 preload; actual native playback",
+      "status": "pass"
+    },
+    {
+      "name": "Malformed JSON recovers without deleting its stored bytes",
+      "status": "pass"
+    },
+    {
+      "name": "Array-shaped saved reviews do not lose new notes/verdicts",
+      "status": "pass"
+    },
+    {
+      "name": "Primitive saved variant map cannot break audio selection",
+      "status": "pass"
+    },
+    {
+      "name": "Unknown saved verdict becomes pending",
+      "status": "pass"
+    },
+    {
+      "name": "Failed audio cannot pass; retry recovers (simulated HTTP 404)",
+      "status": "pass"
+    },
+    {
+      "name": "Cancelled resume rejection cannot overwrite next item (simulated play rejection)",
+      "status": "pass"
+    },
+    {
+      "name": "Play after natural end restarts the recording",
+      "status": "pass"
+    },
+    {
+      "name": "Switching groups/languages clears the old recording",
+      "status": "pass"
+    },
+    {
+      "name": "Editing the required words invalidates the old verdict",
+      "status": "pass"
+    },
+    {
+      "name": "JSON/CSV downloads preserve notes and UTF-8",
+      "status": "pass"
+    },
+    {
+      "name": "A missing Vietnamese recording cannot be approved",
+      "status": "pass"
+    },
+    {
+      "name": "Phone drawer and empty results remain usable",
+      "status": "pass"
+    },
+    {
+      "name": "Khmer greeting shows its own short meaning, not the Vietnamese broadcast paragraph",
+      "status": "pass"
+    },
+    {
+      "name": "Resolved match and champion display exact names and scope, without literal placeholders",
+      "status": "pass"
+    },
+    {
+      "name": "Carrier is labelled as an incomplete connector and does not borrow Tum Nup wording",
+      "status": "pass"
+    },
+    {
+      "name": "Review advances through every variant before leaving the cue",
+      "status": "pass"
+    },
+    {
+      "name": "Pending filter keeps remaining variants after marking one for repair",
+      "status": "pass"
+    },
+    {
+      "name": "Shared name variants never acquire a fabricated Kos Thum 1 suffix",
+      "status": "pass"
+    },
+    {
+      "name": "Changed labels invalidate approval while retaining the listening note",
+      "status": "pass"
+    },
+    {
+      "name": "Cue navigation follows race stages and puts sprint effort before the last hundred metres",
+      "status": "pass"
+    }
+  ],
+  "passed": 21,
+  "failed": 0,
+  "limits": "Simulated error cases verify recovery only. Native pronunciation and semantic correctness are not certified.",
+  "targetUrl": "https://machxanht.github.io/Tuk-Ngo/audio-dashboard/",
+  "packageId": "b3f47826cc065358",
+  "pagesCommit": "c668be04040058c067a0360ddf7e2fa75e6292b8"
 }

@@ -1,0 +1,158 @@
+{
+  "packageId": "b3f47826cc065358",
+  "pagesCommit": "c668be04040058c067a0360ddf7e2fa75e6292b8",
+  "verifiedFiles": 25,
+  "records": [
+    {
+      "file": "audio-dashboard/export/roster.json",
+      "sha256": "3d8d846a168375cd1d0d97225d8c7b55967d691f0270a3b098980805acd652ad",
+      "bytes": 43110,
+      "status": "pass"
+    },
+    {
+      "file": "audio-dashboard/export/docs/roster.md",
+      "sha256": "b3eda44b3a199742fb1750a9f4f13a7954b74a114b7e705b39a49cfb71ed9652",
+      "bytes": 14294,
+      "status": "pass"
+    },
+    {
+      "file": "audio-dashboard/export/docs/team-name-candidates.json",
+      "sha256": "6e26c03ea3d2224f930d6e047135b8f5f558b85518829ea05a5af6a1dcf3e701",
+      "bytes": 13903,
+      "status": "pass"
+    },
+    {
+      "file": "audio-dashboard/export/team-audio-prompt.md",
+      "sha256": "e3448bd267e68960016b76022eb0ea7a71988e5fb69cd5b112dbbb6f120a6edb",
+      "bytes": 10776,
+      "status": "pass"
+    },
+    {
+      "file": "audio-dashboard/export/team-names/manifest.json",
+      "sha256": "ff0773131dc746939ee6b466e5fca2ca2f2fb17b3af06cee308fe910008fdb61",
+      "bytes": 54486,
+      "status": "pass"
+    },
+    {
+      "file": "audio-dashboard/export/team-names/khmer.json",
+      "sha256": "5d788db050307c89eadebd557c33976f29ec8ef1c8e5df761650991afb8c5050",
+      "bytes": 48607,
+      "status": "pass"
+    },
+    {
+      "file": "audio-dashboard/export/commentary-trial/manifest.json",
+      "sha256": "a057e351dac3a6fa643742313d7702669a3cd78696439520e701d4bbe691f2da",
+      "bytes": 29054,
+      "status": "pass"
+    },
+    {
+      "file": "audio-dashboard/export/commentary-script.json",
+      "sha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39",
+      "bytes": 14081,
+      "status": "pass"
+    },
+    {
+      "file": "audio-dashboard/export/field/manifest.json",
+      "sha256": "c5d99841b881f3ed8f60e19fa78a98bb957c2e523936931364881e82595aefbf",
+      "bytes": 18349,
+      "status": "pass"
+    },
+    {
+      "file": "audio-dashboard/export/menu/source.json",
+      "sha256": "3539ad0e1c8c4b31b136d3cad7e3aa20a0f06c963c96501b3fc006fedc3311a7",
+      "bytes": 619,
+      "status": "pass"
+    },
+    {
+      "file": "audio-dashboard/export/docs/team-name-audio.json",
+      "sha256": "e52923596a8ab04e1b81b0fd27f68944891d9bbf00d2f754d2ab866c97379194",
+      "bytes": 9092,
+      "status": "pass"
+    },
+    {
+      "file": "audio-dashboard/export/docs/khmer-team-audio.json",
+      "sha256": "a95fa2e51049e165d1fb53d326a70e922bccc39aa5876eb98119dd75d7d566ad",
+      "bytes": 9177,
+      "status": "pass"
+    },
+    {
+      "file": "audio-dashboard/export/docs/audio-direction.json",
+      "sha256": "7115ad1e385d8781e8b635d675b840e58fd245cce49f5435ee8fff469d3ad252",
+      "bytes": 29665,
+      "status": "pass"
+    },
+    {
+      "file": "audio-dashboard/export/docs/broadcast-audio-cuts.json",
+      "sha256": "4c491351fe965ea2c3100495eae87e1a0df6c8af73ff670662d36c451ff73a53",
+      "bytes": 142806,
+      "status": "pass"
+    },
+    {
+      "file": "audio-dashboard/export/khmer-review/manifest.json",
+      "sha256": "b910e87319cebade16d904fcc45a058a0296f712fc1a2ab88ebb7cd01dea768f",
+      "bytes": 85128,
+      "status": "pass"
+    },
+    {
+      "file": "audio-dashboard/export/docs/khmer-audio-review.json",
+      "sha256": "42a77634080636cb6311a71fde91047e0b2e18579cf74bbbd1ac8a023785a626",
+      "bytes": 14822,
+      "status": "pass"
+    },
+    {
+      "file": "audio-dashboard/export/khmer-review/repairs/manifest.json",
+      "sha256": "ea4f89b24f3b39bc424250bc12e0c0acf04ae47680cbe76e7bbe2ad24af70ea2",
+      "bytes": 4704,
+      "status": "pass"
+    },
+    {
+      "file": "audio-dashboard/export/khmer-review/source/manifest.json",
+      "sha256": "c572bfab414f170881f0982f21ba8a0ad9aa5a12c40606a7d13a38f6d88cfb05",
+      "bytes": 70451,
+      "status": "pass"
+    },
+    {
+      "file": "audio-dashboard/export/khmer-review/source/khmer-script.json",
+      "sha256": "a384507f7429d7dddf02846be366fbff8e8cd0d54f4df2bc290c8c0e89a5d7d2",
+      "bytes": 39755,
+      "status": "pass"
+    },
+    {
+      "file": "audio-dashboard/export/khmer-review/source/khmer-script.csv",
+      "sha256": "259a3361abc3fbdead5827121317a11152e86dc265622f633386d29ce9431f64",
+      "bytes": 18366,
+      "status": "pass"
+    },
+    {
+      "file": "audio-dashboard/export/khmer-review/source/review.md",
+      "sha256": "e78a83b84c54f84bd7de6e7179f2036ab01fcd22d770a9801af05c67b3167b6c",
+      "bytes": 16448,
+      "status": "pass"
+    },
+    {
+      "file": "assets/race-audio/khmer-review/repairs/champion-carrier.mp3",
+      "sha256": "86d526cd5857ece137a85ccbfae8961dbacbf3416851a939bb119509dbfc8a7b",
+      "bytes": 46988,
+      "status": "pass"
+    },
+    {
+      "file": "assets/race-audio/khmer-review/repairs/champion-kos-thum.mp3",
+      "sha256": "6dedec9e0312977d44e7bb6a6c5c0db41419e34f7b260a8a02542c19c47e9c13",
+      "bytes": 55052,
+      "status": "pass"
+    },
+    {
+      "file": "assets/race-audio/khmer-review/repairs/intro-carrier.mp3",
+      "sha256": "7071d3835230a6bd3bf6ccb6033b9be3ec32efecfc86432e9eaef5ea0f247bb2",
+      "bytes": 46124,
+      "status": "pass"
+    },
+    {
+      "file": "audio-dashboard/handoff.zip",
+      "sha256": "1501503b231b11b4a531475a9c4fbf21db369ef204d354d9b467b6983ac6e348",
+      "bytes": 11659203,
+      "status": "pass"
+    }
+  ],
+  "nativePronunciationVerified": false
+}

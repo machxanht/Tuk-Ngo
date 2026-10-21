@@ -26,7 +26,7 @@ const server=createServer(async(req,res)=>{
  }catch{res.writeHead(404).end();}
 });
 await new Promise(r=>server.listen(0,'127.0.0.1',r));
-const url=`http://127.0.0.1:${server.address().port}/audio-dashboard/`;
+const url=flag('--url')||`http://127.0.0.1:${server.address().port}/audio-dashboard/`;
 const browser=await playwright.chromium.launch({channel:flag('--channel')||'msedge',headless:true});
 const results=[];
 async function run(name,test){
