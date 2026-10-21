@@ -3,8 +3,8 @@
 <head>
  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
  <meta name="theme-color" content="#f6f7f9"><title>Kiểm tra audio · Ghe Ngo</title>
- <link rel="stylesheet" href="styles.css?build=ec696e987b7168bd">
- <script defer src="data.js?build=ec696e987b7168bd"></script><script defer src="rules.js?build=ec696e987b7168bd"></script><script defer src="dashboard.js?build=ec696e987b7168bd"></script>
+ <link rel="stylesheet" href="styles.css?build=b3f47826cc065358">
+ <script defer src="data.js?build=b3f47826cc065358"></script><script defer src="rules.js?build=b3f47826cc065358"></script><script defer src="dashboard.js?build=b3f47826cc065358"></script>
 </head>
 <body>
  <a class="skip" href="#detail">Đến mục đang nghe</a>
@@ -19,10 +19,11 @@
     <div class="detail-top"><p id="position" class="eyebrow"></p><div class="step-actions"><button id="previous" aria-label="Mục trước">← Trước</button><button id="next" aria-label="Mục tiếp theo">Sau →</button></div></div>
     <h2 id="item-title"></h2><p id="item-context" class="context"></p>
     <div id="variant-wrap" class="variant-wrap"><label for="variant">Bản audio</label><select id="variant"></select></div>
-    <p id="audio-note" class="audio-note"></p><div id="warning" class="warning" hidden></div>
+    <p id="audio-note" class="audio-note"></p><div id="warning" class="warning" role="status" hidden></div>
     <div class="listen"><div class="play-actions"><button id="play" class="primary">Nghe Khmer</button><button id="replay">Nghe lại từ đầu</button><label class="check"><input id="loop" type="checkbox">Lặp đoạn</label></div><audio id="player" controls preload="none"></audio><p id="play-status" role="status">Audio chỉ tải khi bấm nghe.</p></div>
     <div class="transcripts"><section id="km-panel"><h3>Khmer <span id="km-label">Lời trong hồ sơ audio</span></h3><p id="text-km" lang="km"></p></section><section id="vi-panel"><h3>Tiếng Việt <span id="vi-label">Nội dung để đối chiếu</span></h3><p id="text-vi" lang="vi"></p></section></div>
-    <div class="review"><div class="review-heading"><h3>Đoạn này ổn chưa?</h3><span id="review-state"></span></div><div class="review-actions" role="group" aria-label="Đánh giá đoạn đang chọn"><button data-review="pass" class="approve">✓ Đạt</button><button data-review="fix" class="needs-fix">Cần sửa</button><button data-review="pending">Chưa duyệt</button></div><label for="review-note">Ghi chú cho AGY <span>Không bắt buộc</span></label><textarea id="review-note" rows="2" maxlength="3000" placeholder="Ví dụ: sai tên đội, đọc nhanh quá, mất cuối câu…"></textarea><div class="preferences"><label class="check"><input id="advance" type="checkbox" checked>Đánh dấu rồi chuyển mục</label><label class="check"><input id="auto-listen" type="checkbox">Tự nghe khi chuyển</label></div></div>
+    <p id="transcript-note" class="context" hidden></p>
+    <div class="review"><div class="review-heading"><h3 id="review-question">Đánh giá bản đang nghe</h3><span id="review-state"></span></div><div class="review-actions" role="group" aria-label="Đánh giá đoạn đang chọn"><button data-review="pass" class="approve">✓ Đạt</button><button data-review="fix" class="needs-fix">Cần sửa</button><button data-review="pending">Chưa duyệt</button></div><label for="review-note">Ghi chú cho AGY <span>Không bắt buộc</span></label><textarea id="review-note" rows="2" maxlength="3000" placeholder="Ví dụ: sai tên đội, đọc nhanh quá, mất cuối câu…"></textarea><div class="preferences"><label class="check"><input id="advance" type="checkbox" checked>Duyệt bản kế tiếp</label><label class="check"><input id="auto-listen" type="checkbox">Tự nghe khi chuyển</label></div></div>
     <details id="more" class="more"><summary>Sửa lời & xem nguồn</summary><div id="source-detail"></div><div id="edit-fields"><label for="edit-km">Kịch bản Khmer muốn dùng</label><textarea id="edit-km" lang="km" rows="3" maxlength="4000"></textarea><label for="edit-vi">Kịch bản Việt muốn dùng</label><textarea id="edit-vi" rows="3" maxlength="4000"></textarea><p>Chỉnh chữ không thay đổi bản thu. Bản đánh giá cũ cần duyệt lại nếu lời yêu cầu thay đổi.</p></div></details>
    </section>
   </div>

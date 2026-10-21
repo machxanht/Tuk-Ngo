@@ -7,6 +7,7 @@
  const handoff=data.khmerHandoff||{},storageKey='tukngo-audio-review',player=$('player');
  const script=structuredClone(data.script),clips={...data.clips},fileNotes={};
  for(const cue of script.cues)if(handoff.cues?.[cue.id])cue.text=structuredClone(handoff.cues[cue.id].text);
+ script.cues.sort((a,b)=>script.stages.findIndex(s=>s.id===a.stage)-script.stages.findIndex(s=>s.id===b.stage)||(a.conditions.minDistance||0)-(b.conditions.minDistance||0));
  const baseline=structuredClone(script);
  const objectMap=value=>value&&typeof value==='object'&&!Array.isArray(value)?value:{};
  let saved={},savedBytes=null,recoveryNeeded=false;
@@ -40,22 +41,32 @@
  const keysFor=(item,l=lang)=>item?item.audio[l]||[]:[];
  const keyFor=(item,l=lang,which=view)=>{const keys=keysFor(item,l);return keys.includes(choices[slot(item,l,which)])?choices[slot(item,l,which)]:keys[0]||null;};
  const expected=item=>JSON.stringify(item.text);
+ const labelSignature=key=>JSON.stringify([clips[key]?.text||'',clips[key]?.meaningVi||'',clips[key]?.usage||null]);
  const reviewId=(item,key,l=lang,which=view)=>slot(item,l,which)+':'+(key||'missing');
  function reviewFor(item,key=keyFor(item),l=lang,which=view){
   const raw=objectMap(reviews[reviewId(item,key,l,which)]);
-  const valid=['pending','pass','fix'].includes(raw.status)&&raw.sha256===(clips[key]?.sha256||null)&&raw.expectedText===expected(item);
+  const valid=['pending','pass','fix'].includes(raw.status)&&raw.sha256===(clips[key]?.sha256||null)&&raw.expectedText===expected(item)&&raw.labelSignature===labelSignature(key);
   return {...raw,status:valid&&!(raw.status==='pass'&&!key)?raw.status:'pending',note:typeof raw.note==='string'?raw.note.slice(0,3000):''};
  }
  function warningsFor(item,key){
   const notes=[...(clips[key]?.reviewWarnings||[]),...(fileNotes[key]||[])];
+  notes.push(...(handoff.cueWarnings?.[item.id]?.[lang]||[]));
+  const usage=clips[key]?.usage;
+  if(usage?.kind==='fragment')notes.push('Đây là câu nối, chưa phải một lời bình hoàn chỉnh có tên đội.');
+  if(usage?.kind==='resolved-match'||usage?.kind==='resolved-winner')notes.push('Bản cố định: '+usage.label+'. Không dùng cho đội khác.');
   if(!key)notes.push('Chưa có audio cho ngôn ngữ này.');
   if(failedAudio.has(key))notes.push('Lần tải audio trước bị lỗi. Bấm Thử lại để kiểm tra kết nối hoặc file.');
   if(view==='teams'&&lang==='km'&&!item.text.km)notes.push('Tên Khmer chuẩn của đăng ký này còn cần xác minh.');
   return [...new Set(notes)];
  }
+ function itemStatus(item){
+  const keys=keysFor(item);if(!keys.length)return 'pending';
+  const states=keys.map(k=>reviewFor(item,k).status);
+  return states.includes('fix')?'fix':states.every(s=>s==='pass')?'pass':'pending';
+ }
  function visible(){
   const q=searchText($('search').value),filter=$('review-filter').value,stage=$('stage-filter').value;
-  return items().filter(item=>(view!=='cues'||!stage||item.stage===stage)&&(!q||searchText(item.id+' '+item.title+' '+item.text.vi+' '+item.text.km).includes(q))).filter(item=>!filter||filter==='issue'?(!filter||warningsFor(item,keyFor(item)).length>0):reviewFor(item).status===filter);
+  return items().filter(item=>(view!=='cues'||!stage||item.stage===stage)&&(!q||searchText(item.id+' '+item.title+' '+item.text.vi+' '+item.text.km).includes(q))).filter(item=>!filter||(filter==='issue'?(keysFor(item).length?keysFor(item).some(key=>warningsFor(item,key).length>0):warningsFor(item,null).length>0):filter==='pending'?(!keysFor(item).length||keysFor(item).some(k=>reviewFor(item,k).status==='pending')):itemStatus(item)===filter));
  }
  const current=()=>items().find(item=>item.id===selected[view])||null;
  function persist(){
@@ -68,24 +79,26 @@
   $('play-status').textContent=message||'Audio chỉ tải khi bấm nghe.';
  }
  function renderList(){
-  const all=items(),entries=visible(),done=all.filter(i=>reviewFor(i).status!=='pending').length;
-  $('progress').textContent=done+'/'+all.length+' mục đã đánh dấu · '+entries.length+' đang hiện';
-  $('item-list').innerHTML=entries.map(item=>{const r=reviewFor(item),warning=warningsFor(item,keyFor(item)).length>0;return `<button class="item" data-item="${esc(item.id)}" aria-pressed="${item.id===selected[view]}"><span class="item-copy"><strong>${esc(item.title)}</strong><small>${esc(item.subtitle)}${warning?' · Có lưu ý':''}</small></span><span class="status-dot ${r.status}" aria-label="${statusName(r.status)}">${r.status==='pass'?'✓':r.status==='fix'?'!':'·'}</span></button>`;}).join('')||'<p class="empty">Không có mục phù hợp. Thử bỏ bộ lọc.</p>';
+  const all=items(),entries=visible(),total=all.reduce((n,i)=>n+keysFor(i).length,0),done=all.reduce((n,i)=>n+keysFor(i).filter(k=>reviewFor(i,k).status!=='pending').length,0);
+  $('progress').textContent=done+'/'+total+' bản đã đánh dấu · '+entries.length+' mục đang hiện';
+  $('item-list').innerHTML=entries.map(item=>{const status=itemStatus(item),keys=keysFor(item),warning=keys.some(k=>warningsFor(item,k).length>0),done=keys.filter(k=>reviewFor(item,k).status!=='pending').length;return `<button class="item" data-item="${esc(item.id)}" aria-pressed="${item.id===selected[view]}"><span class="item-copy"><strong>${esc(item.title)}</strong><small>${esc(item.subtitle)}${keys.length>1?' · '+done+'/'+keys.length+' bản':''}${warning?' · Có lưu ý':''}</small></span><span class="status-dot ${status}" aria-label="${statusName(status)}">${status==='pass'?'✓':status==='fix'?'!':'·'}</span></button>`;}).join('')||'<p class="empty">Không có mục phù hợp. Thử bỏ bộ lọc.</p>';
  }
  function variantName(key,index){
   const c=clips[key],duration=Number.isFinite(c.duration)?' · '+c.duration.toFixed(1)+'s':'';
-  const match=key.includes('kos-thum')?' · Kos Thum 1':key.includes('tum-nup')?' · Tum Núp 2':'';
-  return (index+1)+'. '+(key.startsWith('agy-')?'AGY':sourceName(c))+(key.includes('carrier')?' · Câu dẫn':match)+duration;
+  const label=c.usage?.label||(c.role==='team-name'?(c.text||'Chưa có lời chép'):(key.startsWith('agy-')?'AGY':sourceName(c)));
+  return (index+1)+'. '+label+duration;
  }
  function renderTexts(item,key){
   const clip=clips[key];
   $('text-km').textContent=lang==='km'&&view!=='field'?(clip?.text||'Chưa có lời chép cho đoạn này. Nghe và ghi chú bên dưới.'):(item.text.km||'Chưa có bản Khmer tương ứng.');
-  $('text-vi').textContent=lang==='vi'||view==='field'?(clip?.text||item.text.vi||'Chưa có lời chép.'):(item.text.vi||'Chưa có phần Việt để đối chiếu.');
+  $('text-vi').textContent=lang==='vi'||view==='field'?(clip?.text||item.text.vi||'Chưa có lời chép.'):view==='teams'?item.text.vi:(clip?.meaningVi||'Chưa có nghĩa Việt cho chính đoạn đang chọn. Không dùng lời của bản thu Việt để thay cho bản dịch.');
   $('km-label').textContent=lang==='km'?'Lời trong hồ sơ audio':'Kịch bản Khmer để đối chiếu';
-  $('vi-label').textContent=lang==='vi'?'Lời trong hồ sơ audio':'Nội dung kịch bản, chưa phải bản dịch đã duyệt';
+  $('vi-label').textContent=lang==='vi'?'Lời trong hồ sơ audio':view==='teams'?'Tên đăng ký cần kiểm tra':'Nghĩa của lời Khmer · bản dịch nháp';
   $('km-panel').classList.toggle('active-language',lang==='km'&&view!=='field');
   $('vi-panel').classList.toggle('active-language',lang==='vi'||view==='field');
-  $('km-panel').hidden=view==='field';
+  $('km-panel').hidden=view==='field'||lang==='vi';
+  $('transcript-note').textContent=lang==='km'&&view==='cues'?'Nghĩa Việt được dịch từ lời Khmer trong hồ sơ. Phát âm và lời nghe thực tế còn cần đối chiếu.':'';
+  $('transcript-note').hidden=!(lang==='km'&&view==='cues');
  }
  function updateReviewControls(item=current()){
   if(!item)return;const key=keyFor(item),r=reviewFor(item,key);
@@ -98,9 +111,9 @@
   const item=current(),entries=visible(),index=entries.findIndex(i=>i.id===item?.id);
   $('previous').disabled=index<=0;$('next').disabled=index<0||index>=entries.length-1;
   $('position').textContent=item?(view==='teams'?'TÊN ĐỘI':view==='field'?'ÂM THANH NỀN':phaseName(item.stage))+' · '+(index+1)+' / '+entries.length:'';
-  $('item-title').textContent=item?.title||'Không có mục phù hợp';$('item-context').textContent=item?.when||'Thử bỏ tìm kiếm hoặc bộ lọc để tiếp tục.';
+  $('item-title').textContent=item?.title||'Không có mục phù hợp';$('item-context').textContent=item?.when?.replace('tournament.championId trùng đội thắng chung kết','game xác nhận đội thắng chung kết là nhà vô địch').replace('registrationId','mã đăng ký')||'Thử bỏ tìm kiếm hoặc bộ lọc để tiếp tục.';
   for(const el of document.querySelectorAll('.variant-wrap,.listen,.transcripts,.review,.more'))el.hidden=!item;
-  $('audio-note').hidden=!item;$('warning').hidden=true;if(!item)return;
+  $('audio-note').hidden=!item;$('warning').hidden=true;$('transcript-note').hidden=true;if(!item)return;
   const keys=keysFor(item),key=keyFor(item),clip=clips[key],r=reviewFor(item,key);
   $('variant-wrap').hidden=keys.length<=1;
   $('variant').innerHTML=keys.map((k,i)=>`<option value="${esc(k)}" ${k===key?'selected':''}>${esc(variantName(k,i))}</option>`).join('');
@@ -109,6 +122,7 @@
   $('play').disabled=!key;$('replay').disabled=!key;$('play').textContent=failedAudio.has(key)?'Thử lại':view==='field'?'Nghe đoạn này':'Nghe '+(lang==='km'?'Khmer':'Việt');
   renderTexts(item,key);
   $('review-state').textContent=statusName(r.status);$('review-note').value=r.note||'';
+  $('review-question').textContent=key?'Đánh giá bản '+(keys.indexOf(key)+1)+' / '+keys.length:'Chưa có bản audio';
   updateReviewControls(item);
   $('edit-fields').hidden=view!=='cues';$('edit-km').value=item.text.km;$('edit-vi').value=item.text.vi;
   $('more').open=false;
@@ -140,9 +154,14 @@
   const item=current();if(!item)return;
   const key=keyFor(item),entries=visible(),index=entries.findIndex(i=>i.id===item.id),nextId=entries[index+1]?.id;
   if(status==='pass'&&(!key||failedAudio.has(key)))return;
-  reviews[reviewId(item,key)]={status,note:$('review-note').value,sha256:clips[key]?.sha256||null,expectedText:expected(item),updatedAt:new Date().toISOString()};
-  if(status!=='pending'&&$('advance').checked&&nextId)selected[view]=nextId;
-  stop();render();persist();if(autoListen&&selected[view]!==item.id)play();
+  reviews[reviewId(item,key)]={status,note:$('review-note').value,sha256:clips[key]?.sha256||null,expectedText:expected(item),labelSignature:labelSignature(key),updatedAt:new Date().toISOString()};
+  let advanced=false;
+  if(status!=='pending'&&$('advance').checked){
+   const keys=keysFor(item),remaining=[...keys.slice(keys.indexOf(key)+1),...keys.slice(0,keys.indexOf(key))].find(k=>reviewFor(item,k).status==='pending');
+   if(remaining){choices[slot(item)]=remaining;advanced=true;}
+   else if(nextId){selected[view]=nextId;advanced=true;}
+  }
+  stop();render();persist();if(autoListen&&advanced)play();
   if(selected[view]!==item.id&&innerWidth<=700)$('detail').scrollIntoView({block:'start',behavior:'auto'});
  }
  function exportEntries(){
@@ -152,14 +171,14 @@
     const clip=clips[key],r=reviewFor(item,key,l,which);
     out.push({group:which,itemId:item.id,title:item.title,language:which==='field'?'field':l,clipId:key,
      file:clip?.file||null,sha256:clip?.sha256||null,sourceType:clip?.sourceType||null,status:r.status,note:r.note||'',
-     expectedText:item.text[l],audioTextLabel:clip?.text||'',reviewedAt:r.updatedAt||null,nativeListeningVerified:false});
+     expectedText:item.text[l],audioTextLabel:clip?.text||'',meaningVi:clip?.meaningVi||null,usage:clip?.usage||null,reviewedAt:r.updatedAt||null,nativeListeningVerified:false});
    }
   }
   return out;
  }
  function download(name,text,type){const url=URL.createObjectURL(new Blob([text],{type})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
  function exportReview(){return {schema:2,packageId:data.packageId,sourceHashes:handoff.sourceHashes||{},runtimeChanged:false,reviewType:'owner-listening-review',entries:exportEntries()};}
- function csv(){const quote=v=>'"'+String(v??'').replace(/"/g,'""')+'"';const entries=exportEntries(),cols=['group','itemId','title','language','clipId','status','note','audioTextLabel','expectedText','file','sha256'];return '\ufeff'+[cols,...entries.map(r=>cols.map(c=>r[c]))].map(r=>r.map(quote).join(',')).join('\r\n');}
+ function csv(){const quote=v=>'"'+String(v??'').replace(/"/g,'""')+'"';const entries=exportEntries(),cols=['group','itemId','title','language','clipId','status','note','audioTextLabel','meaningVi','expectedText','file','sha256'];return '\ufeff'+[cols,...entries.map(r=>cols.map(c=>r[c]))].map(r=>r.map(quote).join(',')).join('\r\n');}
  document.addEventListener('click',event=>{
   const b=event.target.closest('button');if(!b)return;
   if(b.dataset.view){stop();view=b.dataset.view;$('search').value='';$('review-filter').value='';$('stage-filter').value='';render();persist();return;}
@@ -177,7 +196,7 @@
   if(el.id==='search'){stop();render();}
   if(el.id==='review-note'){
    const item=current();if(!item)return;const key=keyFor(item),r=reviewFor(item,key);
-   reviews[reviewId(item,key)]={...r,note:el.value,sha256:clips[key]?.sha256||null,expectedText:expected(item)};persist();
+   reviews[reviewId(item,key)]={...r,note:el.value,sha256:clips[key]?.sha256||null,expectedText:expected(item),labelSignature:labelSignature(key)};persist();
   }
   if(el.id==='edit-km'||el.id==='edit-vi'){
    const item=current();if(!item?.cue)return;const l=el.id==='edit-km'?'km':'vi';item.cue.text[l]=el.value;
@@ -204,7 +223,7 @@
  $('stage-filter').innerHTML='<option value="">Mọi giai đoạn</option>'+script.stages.map(s=>`<option value="${esc(s.id)}">${esc(s.title)}</option>`).join('');
  for(const a of document.querySelectorAll('[data-file]'))a.href=data.downloadBase+a.dataset.file;
  $('download-zip').hidden=!data.packageZip;if(data.packageZip)$('download-zip').href=data.packageZip;
- $('package-note').textContent=handoff.summary?`Đã nhận ${handoff.summary.files} file Khmer từ AGY: ${handoff.summary.reusedByHash} file trùng bản có sẵn, ${handoff.summary.newFiles} file mới. Phần tên đội có ứng viên cho ${handoff.summary.namedRegistrations} đăng ký. Chưa nhập gói này vào game; phát âm Khmer còn chờ duyệt.`:'Bộ nghe thử độc lập với game. Khmer còn cần duyệt phát âm.';
+ $('package-note').textContent=handoff.summary?`Đã nhận ${handoff.summary.files} file Khmer từ AGY: ${handoff.summary.reusedByHash} file trùng bản có sẵn, ${handoff.summary.newFiles} file mới. Đã tạo lại ${handoff.repairs?.generated||0} biến thể có hồ sơ sai. Phần tên đội có ứng viên cho ${handoff.summary.namedRegistrations} đăng ký. Chưa nhập gói này vào game; phát âm Khmer còn chờ duyệt.`:'Bộ nghe thử độc lập với game. Khmer còn cần duyệt phát âm.';
  $('save-status').textContent=recoveryNeeded?'Phần lưu bị lỗi đã được phục hồi; dữ liệu gốc được giữ dự phòng.':Object.keys(reviews).length?'Đã khôi phục kết quả trên trình duyệt':'Chưa có mục nào được đánh dấu';
  render();
  window.AudioStudio={data,getScript:()=>structuredClone(script),getReview:exportReview,getVisible:()=>visible().map(i=>i.id),stop};

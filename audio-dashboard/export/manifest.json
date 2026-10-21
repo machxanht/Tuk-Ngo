@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "packageId": "ec696e987b7168bd",
+  "packageId": "b3f47826cc065358",
   "scriptSha256": "7115ad1e385d8781e8b635d675b840e58fd245cce49f5435ee8fff469d3ad252",
   "clips": {
     "broadcast-ready": {
@@ -761,6 +761,8 @@
       "processing": {
         "normalization": "loudness"
       },
+      "meaningVi": "Quý khán giả thân mến.",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified",
       "sourceFile": "khmer-intro.mp3",
       "review": "source-evidence-available"
     },
@@ -4594,6 +4596,8 @@
         "scriptSha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39",
         "nativeListeningVerified": false
       },
+      "meaningVi": "Chuẩn bị!",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified",
       "sourceFile": "commentary-trial/ready-km.mp3",
       "review": "native-review-pending"
     },
@@ -4632,6 +4636,8 @@
         "scriptSha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39",
         "nativeListeningVerified": false
       },
+      "meaningVi": "Xuất phát rồi!",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified",
       "sourceFile": "commentary-trial/go-km.mp3",
       "review": "native-review-pending"
     },
@@ -4668,6 +4674,8 @@
         "scriptSha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39",
         "nativeListeningVerified": false
       },
+      "meaningVi": "Bây giờ cần giữ nhịp chèo cho đều.",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified",
       "sourceFile": "commentary-trial/cruise-km.mp3",
       "review": "native-review-pending"
     },
@@ -4704,6 +4712,8 @@
         "scriptSha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39",
         "nativeListeningVerified": false
       },
+      "meaningVi": "Đã qua nửa đường. Hãy dành sức cho chặng cuối!",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified",
       "sourceFile": "commentary-trial/halfway-km.mp3",
       "review": "native-review-pending"
     },
@@ -4740,6 +4750,8 @@
         "scriptSha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39",
         "nativeListeningVerified": false
       },
+      "meaningVi": "Hai ghe đang bám sát nhau!",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified",
       "sourceFile": "commentary-trial/close-race-km.mp3",
       "review": "native-review-pending"
     },
@@ -4776,6 +4788,8 @@
         "scriptSha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39",
         "nativeListeningVerified": false
       },
+      "meaningVi": "Có pha vượt lên! Ghe dẫn đầu đã thay đổi!",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified",
       "sourceFile": "commentary-trial/lead-change-km.mp3",
       "review": "native-review-pending"
     },
@@ -4812,6 +4826,8 @@
         "scriptSha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39",
         "nativeListeningVerified": false
       },
+      "meaningVi": "Nhịp chèo rất đều!",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified",
       "sourceFile": "commentary-trial/cohesion-km.mp3",
       "review": "native-review-pending"
     },
@@ -4851,6 +4867,8 @@
         "scriptSha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39",
         "nativeListeningVerified": false
       },
+      "meaningVi": "Giảm nhịp để dành sức cho chặng cuối.",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified",
       "sourceFile": "commentary-trial/recover-km.mp3",
       "review": "native-review-pending"
     },
@@ -4888,6 +4906,8 @@
         "scriptSha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39",
         "nativeListeningVerified": false
       },
+      "meaningVi": "Đến chặng cuối rồi! Tăng tốc!",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified",
       "sourceFile": "commentary-trial/final-km.mp3",
       "review": "native-review-pending"
     },
@@ -4926,6 +4946,8 @@
         "scriptSha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39",
         "nativeListeningVerified": false
       },
+      "meaningVi": "Dốc hết sức!",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified",
       "sourceFile": "commentary-trial/surge-km.mp3",
       "review": "native-review-pending"
     },
@@ -4962,6 +4984,8 @@
         "scriptSha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39",
         "nativeListeningVerified": false
       },
+      "meaningVi": "Một trăm mét cuối!",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified",
       "sourceFile": "commentary-trial/last-hundred-km.mp3",
       "review": "native-review-pending"
     },
@@ -4998,6 +5022,8 @@
         "scriptSha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39",
         "nativeListeningVerified": false
       },
+      "meaningVi": "Năm mươi mét cuối!",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified",
       "sourceFile": "commentary-trial/last-fifty-km.mp3",
       "review": "native-review-pending"
     },
@@ -5035,6 +5061,8 @@
         "scriptSha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39",
         "nativeListeningVerified": false
       },
+      "meaningVi": "Về đích rồi! Chúc mừng đội thắng lượt đua này!",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified",
       "sourceFile": "commentary-trial/finish-win-km.mp3",
       "review": "native-review-pending"
     },
@@ -5072,6 +5100,8 @@
         "scriptSha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39",
         "nativeListeningVerified": false
       },
+      "meaningVi": "Thật đáng tiếc! Đối thủ đã về đích trước trong lượt đua này.",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified",
       "sourceFile": "commentary-trial/finish-loss-km.mp3",
       "review": "native-review-pending"
     },
@@ -5109,6 +5139,8 @@
         "scriptSha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39",
         "nativeListeningVerified": false
       },
+      "meaningVi": "Kết quả hòa! Hai ghe về đích sát nhau!",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified",
       "sourceFile": "commentary-trial/finish-tie-km.mp3",
       "review": "native-review-pending"
     },
@@ -5146,6 +5178,8 @@
         "scriptSha256": "5661188caf183836747400466b52dd7fbb29591520461173d2b71baed0d15d39",
         "nativeListeningVerified": false
       },
+      "meaningVi": "Đáng tiếc, một đội đã không hoàn thành lượt đua này.",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified",
       "sourceFile": "commentary-trial/finish-dnf-km.mp3",
       "review": "native-review-pending"
     },
@@ -9436,6 +9470,8 @@
         "requestSha256": "3893eece4fbb3eca019a430464c204b6a1ba624492b7f4ffd175f258fd5ac79d",
         "nativeListeningVerified": false
       },
+      "meaningVi": "Năm 2024, Tum Núp 2 vô địch nội dung nam.",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified",
       "sourceFile": "commentary-trial/history-tum-nup-km.mp3",
       "review": "native-review-pending"
     },
@@ -9470,6 +9506,8 @@
         "requestSha256": "70c8e0e85c49d3a4f7aeeb437488b801f25160acba65bc38a06e2e86404aa6f3",
         "nativeListeningVerified": false
       },
+      "meaningVi": "Kos Thum 1 xếp thứ hai nội dung nam năm 2024.",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified",
       "sourceFile": "commentary-trial/history-kos-thum-km.mp3",
       "review": "native-review-pending"
     },
@@ -9495,6 +9533,8 @@
       },
       "reviewWarnings": [],
       "textIsVerifiedTranscript": false,
+      "meaningVi": "Tất cả các đội ghe đã tập hợp trước khán đài. Khán giả dọc bờ sông đang chờ cuộc đua.",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified",
       "sourceFile": "khmer-review/ai-ceremony-teams-km.mp3",
       "review": "native-review-pending"
     },
@@ -9504,25 +9544,36 @@
       "channel": "khmer",
       "role": "commentary",
       "teamIds": [],
-      "text": "សូមអបអរសាទរ ទុំនុប ២ ដែលបានឈ្នះជើងឯកពានរង្វាន់នេះ!",
+      "text": "សូមអបអរសាទរ ដែលបានឈ្នះជើងឯកពានរង្វាន់នេះ!",
       "sourceType": "azure-stock-neural",
-      "duration": 3.888,
-      "peak": 0.4621,
-      "rms": 0.0735,
-      "bytes": 46656,
-      "sha256": "30cfe1165d8ed876d0715bcad1cf966cb8115be8b9006ddc5230fb039beb67f9",
+      "duration": 3.8375,
+      "peak": 0.462128,
+      "rms": 0.074013,
+      "bytes": 46988,
+      "sha256": "86d526cd5857ece137a85ccbfae8961dbacbf3416851a939bb119509dbfc8a7b",
       "dashboardOnly": true,
       "nativeListeningVerified": false,
       "synthesisEvidence": {
         "voice": "km-KH-PisethNeural",
-        "manifest": "khmer-review/source/manifest.json",
-        "nativeListeningVerified": false
+        "requestSha256": "2e88811867db5c64f5277c785ebca21693ba6c8f074322cc48a1177dde981a1a",
+        "sourceWavSha256": "72cccb6db008cfb171613197ece109002e2f64713f0ff07cdc3227fa50234461",
+        "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"km-KH\"><voice name=\"km-KH-PisethNeural\"><prosody rate=\"+0%\">សូមអបអរសាទរ ដែលបានឈ្នះជើងឯកពានរង្វាន់នេះ!</prosody></voice></speak>"
       },
       "reviewWarnings": [
-        "Nhãn lời bị chép giống bản Tum Núp 2; cần nghe đối chiếu biến thể."
+        "Bản tạo lại từ văn bản xác định; phát âm Khmer còn chờ nghe duyệt."
       ],
       "textIsVerifiedTranscript": false,
-      "sourceFile": "khmer-review/ai-champion-carrier-km.mp3",
+      "meaningVi": "Xin chúc mừng đã giành chức vô địch cúp này!",
+      "usage": {
+        "kind": "fragment",
+        "label": "Câu dẫn vô địch, chưa có tên đội"
+      },
+      "textEvidence": "synthesis-request",
+      "original": {
+        "file": "khmer-review/ai-champion-carrier-km.mp3",
+        "sha256": "30cfe1165d8ed876d0715bcad1cf966cb8115be8b9006ddc5230fb039beb67f9"
+      },
+      "sourceFile": "khmer-review/repairs/champion-carrier.mp3",
       "review": "native-review-pending"
     },
     "agy-ai-champion-kos-thum-km": {
@@ -9531,25 +9582,40 @@
       "channel": "khmer",
       "role": "commentary",
       "teamIds": [],
-      "text": "សូមអបអរសាទរ ទុំនុប ២ ដែលបានឈ្នះជើងឯកពានរង្វាន់នេះ!",
+      "text": "សូមអបអរសាទរ កោះធំ ១ ដែលបានឈ្នះជើងឯកពានរង្វាន់នេះ!",
       "sourceType": "azure-stock-neural",
-      "duration": 4.56,
-      "peak": 0.4769,
-      "rms": 0.0755,
-      "bytes": 54720,
-      "sha256": "e9f9bfd849596db6d4b19dc09895c4ee078dbddfa8049b785558d3ebab6e4feb",
+      "duration": 4.5,
+      "peak": 0.476868,
+      "rms": 0.076028,
+      "bytes": 55052,
+      "sha256": "6dedec9e0312977d44e7bb6a6c5c0db41419e34f7b260a8a02542c19c47e9c13",
       "dashboardOnly": true,
       "nativeListeningVerified": false,
       "synthesisEvidence": {
         "voice": "km-KH-PisethNeural",
-        "manifest": "khmer-review/source/manifest.json",
-        "nativeListeningVerified": false
+        "requestSha256": "a3accaa308b3f86664ad4543db477176551d8a07032fbb812f28eec8c6eeb2c4",
+        "sourceWavSha256": "9fb366d8ecec54c476f5b941e871834c6e2de52e9239e04a83da5a1bd4efad2c",
+        "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"km-KH\"><voice name=\"km-KH-PisethNeural\"><prosody rate=\"+0%\">សូមអបអរសាទរ កោះធំ ១ ដែលបានឈ្នះជើងឯកពានរង្វាន់នេះ!</prosody></voice></speak>"
       },
       "reviewWarnings": [
-        "Nhãn lời bị chép giống bản Tum Núp 2; cần nghe đối chiếu biến thể."
+        "Bản tạo lại từ văn bản xác định; phát âm Khmer còn chờ nghe duyệt."
       ],
       "textIsVerifiedTranscript": false,
-      "sourceFile": "khmer-review/ai-champion-kos-thum-km.mp3",
+      "meaningVi": "Chúc mừng Kos Thum 1 đã giành chức vô địch cúp này!",
+      "usage": {
+        "kind": "resolved-winner",
+        "label": "Kos Thum 1 · nam · ca_mau-05",
+        "winnerId": "ca_mau-05",
+        "teamIds": [
+          "ca_mau-05"
+        ]
+      },
+      "textEvidence": "synthesis-request",
+      "original": {
+        "file": "khmer-review/ai-champion-kos-thum-km.mp3",
+        "sha256": "e9f9bfd849596db6d4b19dc09895c4ee078dbddfa8049b785558d3ebab6e4feb"
+      },
+      "sourceFile": "khmer-review/repairs/champion-kos-thum.mp3",
       "review": "native-review-pending"
     },
     "agy-ai-champion-tum-nup-km": {
@@ -9574,6 +9640,16 @@
       },
       "reviewWarnings": [],
       "textIsVerifiedTranscript": false,
+      "meaningVi": "Chúc mừng Tum Núp 2 đã giành chức vô địch cúp này!",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified",
+      "usage": {
+        "kind": "resolved-winner",
+        "label": "Tum Núp 2 · nam · can_tho-23",
+        "winnerId": "can_tho-23",
+        "teamIds": [
+          "can_tho-23"
+        ]
+      },
       "sourceFile": "khmer-review/ai-champion-tum-nup-km.mp3",
       "review": "native-review-pending"
     },
@@ -9599,6 +9675,8 @@
       },
       "reviewWarnings": [],
       "textIsVerifiedTranscript": false,
+      "meaningVi": "Đường đua còn dài. Hãy giữ nhịp và dành sức cho chặng cuối.",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified",
       "sourceFile": "khmer-review/ai-cruise-context-km.mp3",
       "review": "native-review-pending"
     },
@@ -9608,25 +9686,36 @@
       "channel": "khmer",
       "role": "commentary",
       "teamIds": [],
-      "text": "ទុំនុប ២ ប្រកួតជាមួយ កោះធំ ១។ ក្រុមទាំងពីរកំពុងត្រៀមចេញដំណើរ។",
+      "text": "ប្រកួតជាមួយ។ ក្រុមទាំងពីរកំពុងត្រៀមចេញដំណើរ។",
       "sourceType": "azure-stock-neural",
-      "duration": 3.816,
-      "peak": 0.4966,
-      "rms": 0.0831,
-      "bytes": 45792,
-      "sha256": "84eccfca70cb606b99f22b78794066fb611eec974efb353079d8199a4ec58aab",
+      "duration": 3.75,
+      "peak": 0.496582,
+      "rms": 0.083838,
+      "bytes": 46124,
+      "sha256": "7071d3835230a6bd3bf6ccb6033b9be3ec32efecfc86432e9eaef5ea0f247bb2",
       "dashboardOnly": true,
       "nativeListeningVerified": false,
       "synthesisEvidence": {
         "voice": "km-KH-PisethNeural",
-        "manifest": "khmer-review/source/manifest.json",
-        "nativeListeningVerified": false
+        "requestSha256": "d6660144c71d868f36c995cdddc7488ef9013982c068faa032c1845ca52a99c3",
+        "sourceWavSha256": "797f5de6452b6339be16cb08d53bfaa6feae10591287fa4f3c99e9531a16a400",
+        "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"km-KH\"><voice name=\"km-KH-PisethNeural\"><prosody rate=\"+0%\">ប្រកួតជាមួយ។ ក្រុមទាំងពីរកំពុងត្រៀមចេញដំណើរ។</prosody></voice></speak>"
       },
       "reviewWarnings": [
-        "Nhãn lời bị chép giống bản Tum Núp 2; cần nghe đối chiếu biến thể."
+        "Bản tạo lại từ văn bản xác định; phát âm Khmer còn chờ nghe duyệt."
       ],
       "textIsVerifiedTranscript": false,
-      "sourceFile": "khmer-review/ai-intro-carrier-km.mp3",
+      "meaningVi": "Thi đấu với. Hai đội đang chuẩn bị xuất phát.",
+      "usage": {
+        "kind": "fragment",
+        "label": "Câu nối giới thiệu, chưa có tên đội"
+      },
+      "textEvidence": "synthesis-request",
+      "original": {
+        "file": "khmer-review/ai-intro-carrier-km.mp3",
+        "sha256": "84eccfca70cb606b99f22b78794066fb611eec974efb353079d8199a4ec58aab"
+      },
+      "sourceFile": "khmer-review/repairs/intro-carrier.mp3",
       "review": "native-review-pending"
     },
     "agy-ai-intro-match-tum-nup-kos-thum-km": {
@@ -9651,6 +9740,18 @@
       },
       "reviewWarnings": [],
       "textIsVerifiedTranscript": false,
+      "meaningVi": "Tum Núp 2 gặp Kos Thum 1. Hai đội đang chuẩn bị xuất phát.",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified",
+      "usage": {
+        "kind": "resolved-match",
+        "label": "Tum Núp 2 – Kos Thum 1 · hai đội nam",
+        "playerId": "can_tho-23",
+        "opponentId": "ca_mau-05",
+        "teamIds": [
+          "can_tho-23",
+          "ca_mau-05"
+        ]
+      },
       "sourceFile": "khmer-review/ai-intro-match-tum-nup-kos-thum-km.mp3",
       "review": "native-review-pending"
     },
@@ -9826,6 +9927,8 @@
       },
       "reviewWarnings": [],
       "textIsVerifiedTranscript": false,
+      "meaningVi": "Ghe dẫn đầu đang nới rộng khoảng cách, nhưng cuộc đua chưa kết thúc.",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified",
       "sourceFile": "khmer-review/ai-safe-margin-km.mp3",
       "review": "native-review-pending"
     },
@@ -9851,6 +9954,8 @@
       },
       "reviewWarnings": [],
       "textIsVerifiedTranscript": false,
+      "meaningVi": "Hai đội đã xuất phát. Hãy bắt nhịp cho đều!",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified",
       "sourceFile": "khmer-review/ai-start-drive-km.mp3",
       "review": "native-review-pending"
     },
@@ -9876,6 +9981,8 @@
       },
       "reviewWarnings": [],
       "textIsVerifiedTranscript": false,
+      "meaningVi": "Sro Lôn 2 xếp thứ ba nội dung nam năm 2024.",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified",
       "sourceFile": "khmer-review/trial-history-sro-lon-km.mp3",
       "review": "native-review-pending"
     }
@@ -11684,7 +11791,15 @@
     },
     {
       "file": "khmer-review/manifest.json",
-      "sha256": "d278d56c370a2eb8006be5a9ddac8454583acc07b17c80af57c0ba55ac759357"
+      "sha256": "b910e87319cebade16d904fcc45a058a0296f712fc1a2ab88ebb7cd01dea768f"
+    },
+    {
+      "file": "docs/khmer-audio-review.json",
+      "sha256": "42a77634080636cb6311a71fde91047e0b2e18579cf74bbbd1ac8a023785a626"
+    },
+    {
+      "file": "khmer-review/repairs/manifest.json",
+      "sha256": "ea4f89b24f3b39bc424250bc12e0c0acf04ae47680cbe76e7bbe2ad24af70ea2"
     },
     {
       "file": "khmer-review/source/manifest.json",
@@ -12562,7 +12677,7 @@
         "declaredText": "សូមអបអរសាទរ ទុំនុប ២ ដែលបានឈ្នះជើងឯកពានរង្វាន់នេះ!",
         "declaredTextVi": "Xin chúc mừng {winner_name}, đội vô địch cúp lễ hội!",
         "reviewWarnings": [
-          "Nhãn lời bị chép giống bản Tum Núp 2; cần nghe đối chiếu biến thể."
+          "Bản tạo lại từ văn bản xác định; phát âm Khmer còn chờ nghe duyệt."
         ],
         "registrationIds": [],
         "reusedByHash": false
@@ -12572,7 +12687,7 @@
         "declaredText": "សូមអបអរសាទរ ទុំនុប ២ ដែលបានឈ្នះជើងឯកពានរង្វាន់នេះ!",
         "declaredTextVi": "Xin chúc mừng {winner_name}, đội vô địch cúp lễ hội!",
         "reviewWarnings": [
-          "Nhãn lời bị chép giống bản Tum Núp 2; cần nghe đối chiếu biến thể."
+          "Bản tạo lại từ văn bản xác định; phát âm Khmer còn chờ nghe duyệt."
         ],
         "registrationIds": [],
         "reusedByHash": false
@@ -12678,7 +12793,7 @@
         "declaredText": "ទុំនុប ២ ប្រកួតជាមួយ កោះធំ ១។ ក្រុមទាំងពីរកំពុងត្រៀមចេញដំណើរ។",
         "declaredTextVi": "{player_name} gặp {opponent_name}. Hai đội đang chuẩn bị xuất phát.",
         "reviewWarnings": [
-          "Nhãn lời bị chép giống bản Tum Núp 2; cần nghe đối chiếu biến thể."
+          "Bản tạo lại từ văn bản xác định; phát âm Khmer còn chờ nghe duyệt."
         ],
         "registrationIds": [],
         "reusedByHash": false
@@ -13416,21 +13531,21 @@
         "sourceFile": "audio/ai-champion-carrier-km.mp3",
         "clipId": "agy-ai-champion-carrier-km",
         "messages": [
-          "Nhãn lời bị chép giống bản Tum Núp 2; cần nghe đối chiếu biến thể."
+          "Bản tạo lại từ văn bản xác định; phát âm Khmer còn chờ nghe duyệt."
         ]
       },
       {
         "sourceFile": "audio/ai-champion-kos-thum-km.mp3",
         "clipId": "agy-ai-champion-kos-thum-km",
         "messages": [
-          "Nhãn lời bị chép giống bản Tum Núp 2; cần nghe đối chiếu biến thể."
+          "Bản tạo lại từ văn bản xác định; phát âm Khmer còn chờ nghe duyệt."
         ]
       },
       {
         "sourceFile": "audio/ai-intro-carrier-km.mp3",
         "clipId": "agy-ai-intro-carrier-km",
         "messages": [
-          "Nhãn lời bị chép giống bản Tum Núp 2; cần nghe đối chiếu biến thể."
+          "Bản tạo lại từ văn bản xác định; phát âm Khmer còn chờ nghe duyệt."
         ]
       },
       {
@@ -13495,6 +13610,182 @@
         ]
       }
     ],
+    "clipReviews": {
+      "khmer-intro": {
+        "sha256": "be897d565f3b470e5d2451dbfdcffee1649653ac9469c4c1174bafbbe074d16f",
+        "meaningVi": "Quý khán giả thân mến.",
+        "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+      },
+      "agy-ai-ceremony-teams-km": {
+        "sha256": "93de39045dac44b02354475ab42ad8818b9925ba758b2563b7999929d34fbfd2",
+        "meaningVi": "Tất cả các đội ghe đã tập hợp trước khán đài. Khán giả dọc bờ sông đang chờ cuộc đua.",
+        "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+      },
+      "ai-ready-km": {
+        "sha256": "beec0f40ef882ddedf4ab9a24ea7fedc7eb164a79e49d87db8ba0a06f231bac6",
+        "meaningVi": "Chuẩn bị!",
+        "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+      },
+      "ai-go-km": {
+        "sha256": "7a39e55f8bd8e1aa11581e4621b4170a8028c24c6b5548bdb55bce86f418ca0d",
+        "meaningVi": "Xuất phát rồi!",
+        "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+      },
+      "agy-ai-start-drive-km": {
+        "sha256": "35922288e6e040ca3320e903e794bf0fc33169a2e6eb0de1cef66fd34fe8d50a",
+        "meaningVi": "Hai đội đã xuất phát. Hãy bắt nhịp cho đều!",
+        "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+      },
+      "ai-cruise-km": {
+        "sha256": "e8ca41db65bbcb607b7a7195f44d525a0b5ce902090bd292a32d976fbb5d7274",
+        "meaningVi": "Bây giờ cần giữ nhịp chèo cho đều.",
+        "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+      },
+      "agy-ai-cruise-context-km": {
+        "sha256": "1966009c625d38d18c552353f1cb6d5ac332759c86abec6e64bfb93baf3bda43",
+        "meaningVi": "Đường đua còn dài. Hãy giữ nhịp và dành sức cho chặng cuối.",
+        "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+      },
+      "ai-recover-km": {
+        "sha256": "9225e9ca4ef3df736eae5d858f90d73fa70c69a972b692de14dad0ff26d6ff29",
+        "meaningVi": "Giảm nhịp để dành sức cho chặng cuối.",
+        "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+      },
+      "ai-cohesion-km": {
+        "sha256": "9eaa92c8a08bc2955a8328dddb9b01e32df614e0e3b4a94e8d310dba6be6bcbe",
+        "meaningVi": "Nhịp chèo rất đều!",
+        "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+      },
+      "ai-halfway-km": {
+        "sha256": "f6739d84bba4149dbe1bf48c8708772c0162d03b982a1a0b833ac8d51fd85ef2",
+        "meaningVi": "Đã qua nửa đường. Hãy dành sức cho chặng cuối!",
+        "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+      },
+      "ai-close-race-km": {
+        "sha256": "08531309a36ada0f6e0e0f7da1c4c08c93ee61666809809856eb6349c12e9657",
+        "meaningVi": "Hai ghe đang bám sát nhau!",
+        "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+      },
+      "ai-lead-change-km": {
+        "sha256": "5e0aba27c5ed1508b2d114abffebd6a3380159041ae216b918a9825d92246eed",
+        "meaningVi": "Có pha vượt lên! Ghe dẫn đầu đã thay đổi!",
+        "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+      },
+      "agy-ai-safe-margin-km": {
+        "sha256": "5f5b34dc4a02116464247ba8fa50bba7d1b6b3034c584b8e799436504234fc10",
+        "meaningVi": "Ghe dẫn đầu đang nới rộng khoảng cách, nhưng cuộc đua chưa kết thúc.",
+        "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+      },
+      "trial-history-tum-nup-km": {
+        "sha256": "04be4509b416f61b6a918d17080da7a558a424acb412a948fdc5066dc6bc3491",
+        "meaningVi": "Năm 2024, Tum Núp 2 vô địch nội dung nam.",
+        "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+      },
+      "trial-history-kos-thum-km": {
+        "sha256": "94bfb492023427ee5591fb53e855096b2e98e2f5105771b3546ce04a5debaee7",
+        "meaningVi": "Kos Thum 1 xếp thứ hai nội dung nam năm 2024.",
+        "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+      },
+      "agy-trial-history-sro-lon-km": {
+        "sha256": "6fad0c804b1248fdef7685522ed6079fe8a62c437e9b66fe581aee28f3836650",
+        "meaningVi": "Sro Lôn 2 xếp thứ ba nội dung nam năm 2024.",
+        "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+      },
+      "ai-final-km": {
+        "sha256": "4dd77c74dfdee28a4bb4c07ffb18393e2563acff5d07592b02aec3d32f10da72",
+        "meaningVi": "Đến chặng cuối rồi! Tăng tốc!",
+        "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+      },
+      "ai-surge-km": {
+        "sha256": "8827110d6f84fecc717303282ba70be595b9446f909ec6877fef68920df0d2c1",
+        "meaningVi": "Dốc hết sức!",
+        "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+      },
+      "ai-last-hundred-km": {
+        "sha256": "940a7f76d7df3ce8bf323fda98c4b88e7a1e9f1e00af5e4998cb130f60d8566b",
+        "meaningVi": "Một trăm mét cuối!",
+        "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+      },
+      "ai-last-fifty-km": {
+        "sha256": "9203bca38d35df608d967cdf5317e2eef248f3b2ad5ecbcd66ebbcbb3d0a79a5",
+        "meaningVi": "Năm mươi mét cuối!",
+        "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+      },
+      "ai-finish-win-km": {
+        "sha256": "51377872f38085e991248ddd7c8967af54a4e8d7a7f8c91a793e4e64f5313ee2",
+        "meaningVi": "Về đích rồi! Chúc mừng đội thắng lượt đua này!",
+        "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+      },
+      "ai-finish-loss-km": {
+        "sha256": "3712f53d03bb299ed155caaa4d286c800c3a382aca5ade67ddd7eba58258befa",
+        "meaningVi": "Thật đáng tiếc! Đối thủ đã về đích trước trong lượt đua này.",
+        "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+      },
+      "ai-finish-tie-km": {
+        "sha256": "cde59cd17fcc28c78788fbc26ab9005fba44257cd3f67f30b57e7ed73c0a38fd",
+        "meaningVi": "Kết quả hòa! Hai ghe về đích sát nhau!",
+        "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+      },
+      "ai-finish-dnf-km": {
+        "sha256": "d3fc4ee4acbbf50b456b1636ec8b7ab4b432857f1176c44886ac78e2d62a49c7",
+        "meaningVi": "Đáng tiếc, một đội đã không hoàn thành lượt đua này.",
+        "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+      },
+      "agy-ai-champion-tum-nup-km": {
+        "sha256": "7ae1036526212bf32914895e60efae472e0ef4b3cf0ee081c0307178e0f805ce",
+        "meaningVi": "Chúc mừng Tum Núp 2 đã giành chức vô địch cúp này!",
+        "translationStatus": "authored-from-Khmer-label-not-listening-verified",
+        "usage": {
+          "kind": "resolved-winner",
+          "label": "Tum Núp 2 · nam · can_tho-23",
+          "winnerId": "can_tho-23",
+          "teamIds": [
+            "can_tho-23"
+          ]
+        }
+      },
+      "agy-ai-intro-match-tum-nup-kos-thum-km": {
+        "sha256": "3786ed0365c7574ed7071d68b2013406b3a16277ab72d8b22b96f790cb5b94b4",
+        "meaningVi": "Tum Núp 2 gặp Kos Thum 1. Hai đội đang chuẩn bị xuất phát.",
+        "translationStatus": "authored-from-Khmer-label-not-listening-verified",
+        "usage": {
+          "kind": "resolved-match",
+          "label": "Tum Núp 2 – Kos Thum 1 · hai đội nam",
+          "playerId": "can_tho-23",
+          "opponentId": "ca_mau-05",
+          "teamIds": [
+            "can_tho-23",
+            "ca_mau-05"
+          ]
+        }
+      }
+    },
+    "cueWarnings": {
+      "flyover": {
+        "km": [
+          "Đoạn hiện có chỉ là câu chào khán giả, chưa mô tả toàn cảnh lễ hội."
+        ]
+      },
+      "halfway": {
+        "vi": [
+          "Bản Việt hiện có nói về quy mô lễ hội, không báo mốc nửa đường. Cần chọn lại bản thu đúng tình huống."
+        ]
+      },
+      "finish-loss": {
+        "vi": [
+          "Bản Việt hiện có nói “Quá tuyệt vời!”, chưa diễn đạt kết quả thua. Cần chọn lại bản thu."
+        ]
+      },
+      "cohesion": {
+        "vi": [
+          "Bản Việt hiện có nói “Nhẹ nhàng, nhẹ nhàng”, không xác nhận nhịp chèo đồng đều."
+        ]
+      }
+    },
+    "repairs": {
+      "requested": 3,
+      "generated": 3
+    },
     "notice": "Imported for listening/review. Hash matches verify bytes, not language, team identity, translation, native pronunciation or gameplay suitability."
   }
 }

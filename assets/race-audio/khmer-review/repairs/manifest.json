@@ -1,0 +1,88 @@
+{
+  "schema": 1,
+  "runtimeChanged": false,
+  "repairs": [
+    {
+      "id": "intro-carrier",
+      "cueId": "team-introduction",
+      "sourceFilename": "ai-intro-carrier-km.mp3",
+      "clipId": "agy-ai-intro-carrier-km",
+      "textKm": "ប្រកួតជាមួយ។ ក្រុមទាំងពីរកំពុងត្រៀមចេញដំណើរ។",
+      "meaningVi": "Thi đấu với. Hai đội đang chuẩn bị xuất phát.",
+      "usage": {
+        "kind": "fragment",
+        "label": "Câu nối giới thiệu, chưa có tên đội"
+      },
+      "originalSha256": "84eccfca70cb606b99f22b78794066fb611eec974efb353079d8199a4ec58aab",
+      "duration": 3.75,
+      "peak": 0.496582,
+      "rms": 0.083838,
+      "bytes": 46124,
+      "file": "khmer-review/repairs/intro-carrier.mp3",
+      "sha256": "7071d3835230a6bd3bf6ccb6033b9be3ec32efecfc86432e9eaef5ea0f247bb2",
+      "sourceWavSha256": "797f5de6452b6339be16cb08d53bfaa6feae10591287fa4f3c99e9531a16a400",
+      "requestSha256": "d6660144c71d868f36c995cdddc7488ef9013982c068faa032c1845ca52a99c3",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"km-KH\"><voice name=\"km-KH-PisethNeural\"><prosody rate=\"+0%\">ប្រកួតជាមួយ។ ក្រុមទាំងពីរកំពុងត្រៀមចេញដំណើរ។</prosody></voice></speak>",
+      "voice": "km-KH-PisethNeural",
+      "sourceType": "azure-stock-neural",
+      "nativeListeningVerified": false,
+      "textEvidence": "synthesis-request"
+    },
+    {
+      "id": "champion-kos-thum",
+      "cueId": "cup-champion",
+      "sourceFilename": "ai-champion-kos-thum-km.mp3",
+      "clipId": "agy-ai-champion-kos-thum-km",
+      "textKm": "សូមអបអរសាទរ កោះធំ ១ ដែលបានឈ្នះជើងឯកពានរង្វាន់នេះ!",
+      "meaningVi": "Chúc mừng Kos Thum 1 đã giành chức vô địch cúp này!",
+      "usage": {
+        "kind": "resolved-winner",
+        "label": "Kos Thum 1 · nam · ca_mau-05",
+        "winnerId": "ca_mau-05",
+        "teamIds": [
+          "ca_mau-05"
+        ]
+      },
+      "originalSha256": "e9f9bfd849596db6d4b19dc09895c4ee078dbddfa8049b785558d3ebab6e4feb",
+      "duration": 4.5,
+      "peak": 0.476868,
+      "rms": 0.076028,
+      "bytes": 55052,
+      "file": "khmer-review/repairs/champion-kos-thum.mp3",
+      "sha256": "6dedec9e0312977d44e7bb6a6c5c0db41419e34f7b260a8a02542c19c47e9c13",
+      "sourceWavSha256": "9fb366d8ecec54c476f5b941e871834c6e2de52e9239e04a83da5a1bd4efad2c",
+      "requestSha256": "a3accaa308b3f86664ad4543db477176551d8a07032fbb812f28eec8c6eeb2c4",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"km-KH\"><voice name=\"km-KH-PisethNeural\"><prosody rate=\"+0%\">សូមអបអរសាទរ កោះធំ ១ ដែលបានឈ្នះជើងឯកពានរង្វាន់នេះ!</prosody></voice></speak>",
+      "voice": "km-KH-PisethNeural",
+      "sourceType": "azure-stock-neural",
+      "nativeListeningVerified": false,
+      "textEvidence": "synthesis-request"
+    },
+    {
+      "id": "champion-carrier",
+      "cueId": "cup-champion",
+      "sourceFilename": "ai-champion-carrier-km.mp3",
+      "clipId": "agy-ai-champion-carrier-km",
+      "textKm": "សូមអបអរសាទរ ដែលបានឈ្នះជើងឯកពានរង្វាន់នេះ!",
+      "meaningVi": "Xin chúc mừng đã giành chức vô địch cúp này!",
+      "usage": {
+        "kind": "fragment",
+        "label": "Câu dẫn vô địch, chưa có tên đội"
+      },
+      "originalSha256": "30cfe1165d8ed876d0715bcad1cf966cb8115be8b9006ddc5230fb039beb67f9",
+      "duration": 3.8375,
+      "peak": 0.462128,
+      "rms": 0.074013,
+      "bytes": 46988,
+      "file": "khmer-review/repairs/champion-carrier.mp3",
+      "sha256": "86d526cd5857ece137a85ccbfae8961dbacbf3416851a939bb119509dbfc8a7b",
+      "sourceWavSha256": "72cccb6db008cfb171613197ece109002e2f64713f0ff07cdc3227fa50234461",
+      "requestSha256": "2e88811867db5c64f5277c785ebca21693ba6c8f074322cc48a1177dde981a1a",
+      "ssml": "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xml:lang=\"km-KH\"><voice name=\"km-KH-PisethNeural\"><prosody rate=\"+0%\">សូមអបអរសាទរ ដែលបានឈ្នះជើងឯកពានរង្វាន់នេះ!</prosody></voice></speak>",
+      "voice": "km-KH-PisethNeural",
+      "sourceType": "azure-stock-neural",
+      "nativeListeningVerified": false,
+      "textEvidence": "synthesis-request"
+    }
+  ]
+}
