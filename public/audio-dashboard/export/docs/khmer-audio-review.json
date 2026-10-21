@@ -1,0 +1,252 @@
+{
+  "schema": 1,
+  "nativeListeningVerified": false,
+  "note": "Draft Vietnamese meanings are translated from Khmer text labels, not certified audio transcripts. Repairs are synthesized from explicit text with exact request/audio hashes. Original AGY inputs remain intact.",
+  "translations": {
+    "khmer-intro": {
+      "sha256": "be897d565f3b470e5d2451dbfdcffee1649653ac9469c4c1174bafbbe074d16f",
+      "textKm": "ទស្សនិកជន ទាំងឡាយ ជា ទី មេត្រី",
+      "meaningVi": "Quý khán giả thân mến.",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+    },
+    "agy-ai-ceremony-teams-km": {
+      "sha256": "93de39045dac44b02354475ab42ad8818b9925ba758b2563b7999929d34fbfd2",
+      "textKm": "ក្រុមទូកទាំងអស់បានមកជួបជុំគ្នានៅមុខវេទិកា។ ទស្សនិកជននៅតាមដងទន្លេកំពុងរង់ចាំការប្រកួត។",
+      "meaningVi": "Tất cả các đội ghe đã tập hợp trước khán đài. Khán giả dọc bờ sông đang chờ cuộc đua.",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+    },
+    "ai-ready-km": {
+      "sha256": "beec0f40ef882ddedf4ab9a24ea7fedc7eb164a79e49d87db8ba0a06f231bac6",
+      "textKm": "ត្រៀមខ្លួន!",
+      "meaningVi": "Chuẩn bị!",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+    },
+    "ai-go-km": {
+      "sha256": "7a39e55f8bd8e1aa11581e4621b4170a8028c24c6b5548bdb55bce86f418ca0d",
+      "textKm": "ចាប់ផ្តើមហើយ!",
+      "meaningVi": "Xuất phát rồi!",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+    },
+    "agy-ai-start-drive-km": {
+      "sha256": "35922288e6e040ca3320e903e794bf0fc33169a2e6eb0de1cef66fd34fe8d50a",
+      "textKm": "ក្រុមទាំងពីរបានចេញដំណើរហើយ។ ត្រូវចាប់ចង្វាក់ឱ្យស្មើគ្នា!",
+      "meaningVi": "Hai đội đã xuất phát. Hãy bắt nhịp cho đều!",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+    },
+    "ai-cruise-km": {
+      "sha256": "e8ca41db65bbcb607b7a7195f44d525a0b5ce902090bd292a32d976fbb5d7274",
+      "textKm": "ឥឡូវត្រូវរក្សាចង្វាក់អុំឱ្យស្មើគ្នា។",
+      "meaningVi": "Bây giờ cần giữ nhịp chèo cho đều.",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+    },
+    "agy-ai-cruise-context-km": {
+      "sha256": "1966009c625d38d18c552353f1cb6d5ac332759c86abec6e64bfb93baf3bda43",
+      "textKm": "ផ្លូវប្រណាំងនៅវែងទៀត។ ត្រូវរក្សាចង្វាក់ និងសន្សំកម្លាំងសម្រាប់ចុងផ្លូវ។",
+      "meaningVi": "Đường đua còn dài. Hãy giữ nhịp và dành sức cho chặng cuối.",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+    },
+    "ai-recover-km": {
+      "sha256": "9225e9ca4ef3df736eae5d858f90d73fa70c69a972b692de14dad0ff26d6ff29",
+      "textKm": "បន្ថយចង្វាក់ ដើម្បីទុកកម្លាំងសម្រាប់ចុងផ្លូវ។",
+      "meaningVi": "Giảm nhịp để dành sức cho chặng cuối.",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+    },
+    "ai-cohesion-km": {
+      "sha256": "9eaa92c8a08bc2955a8328dddb9b01e32df614e0e3b4a94e8d310dba6be6bcbe",
+      "textKm": "ចង្វាក់អុំស្មើគ្នាល្អណាស់!",
+      "meaningVi": "Nhịp chèo rất đều!",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+    },
+    "ai-halfway-km": {
+      "sha256": "f6739d84bba4149dbe1bf48c8708772c0162d03b982a1a0b833ac8d51fd85ef2",
+      "textKm": "បានឆ្លងកាត់ពាក់កណ្តាលផ្លូវហើយ។ ត្រូវទុកកម្លាំងសម្រាប់ចុងផ្លូវ!",
+      "meaningVi": "Đã qua nửa đường. Hãy dành sức cho chặng cuối!",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+    },
+    "ai-close-race-km": {
+      "sha256": "08531309a36ada0f6e0e0f7da1c4c08c93ee61666809809856eb6349c12e9657",
+      "textKm": "ទូកទាំងពីរកំពុងប្រកៀកប្រកិតគ្នា!",
+      "meaningVi": "Hai ghe đang bám sát nhau!",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+    },
+    "ai-lead-change-km": {
+      "sha256": "5e0aba27c5ed1508b2d114abffebd6a3380159041ae216b918a9825d92246eed",
+      "textKm": "មានការវ៉ាឡើងមុខ! ទូកនាំមុខបានផ្លាស់ប្តូរហើយ!",
+      "meaningVi": "Có pha vượt lên! Ghe dẫn đầu đã thay đổi!",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+    },
+    "agy-ai-safe-margin-km": {
+      "sha256": "5f5b34dc4a02116464247ba8fa50bba7d1b6b3034c584b8e799436504234fc10",
+      "textKm": "ទូកនាំមុខកំពុងបង្កើនគម្លាត ប៉ុន្តែការប្រកួតមិនទាន់បញ្ចប់ទេ។",
+      "meaningVi": "Ghe dẫn đầu đang nới rộng khoảng cách, nhưng cuộc đua chưa kết thúc.",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+    },
+    "trial-history-tum-nup-km": {
+      "sha256": "04be4509b416f61b6a918d17080da7a558a424acb412a948fdc5066dc6bc3491",
+      "textKm": "នៅឆ្នាំ ២០២៤ ក្រុមទូកទំនប់ ២ បានឈ្នះជើងឯកផ្នែកបុរស។",
+      "meaningVi": "Năm 2024, Tum Núp 2 vô địch nội dung nam.",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+    },
+    "trial-history-kos-thum-km": {
+      "sha256": "94bfb492023427ee5591fb53e855096b2e98e2f5105771b3546ce04a5debaee7",
+      "textKm": "ក្រុមទូកកោះធំ ១ បានជាប់ចំណាត់ថ្នាក់លេខពីរ ផ្នែកបុរស នៅឆ្នាំ ២០២៤។",
+      "meaningVi": "Kos Thum 1 xếp thứ hai nội dung nam năm 2024.",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+    },
+    "agy-trial-history-sro-lon-km": {
+      "sha256": "6fad0c804b1248fdef7685522ed6079fe8a62c437e9b66fe581aee28f3836650",
+      "textKm": "ក្រុមទូកសរឡូន ២ បានជាប់ចំណាត់ថ្នាក់លេខបី ផ្នែកបុរស នៅឆ្នាំ ២០២៤។",
+      "meaningVi": "Sro Lôn 2 xếp thứ ba nội dung nam năm 2024.",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+    },
+    "ai-final-km": {
+      "sha256": "4dd77c74dfdee28a4bb4c07ffb18393e2563acff5d07592b02aec3d32f10da72",
+      "textKm": "ដល់ដំណាក់កាលចុងក្រោយហើយ! បង្កើនល្បឿន!",
+      "meaningVi": "Đến chặng cuối rồi! Tăng tốc!",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+    },
+    "ai-surge-km": {
+      "sha256": "8827110d6f84fecc717303282ba70be595b9446f909ec6877fef68920df0d2c1",
+      "textKm": "ប្រឹងអស់កម្លាំង!",
+      "meaningVi": "Dốc hết sức!",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+    },
+    "ai-last-hundred-km": {
+      "sha256": "940a7f76d7df3ce8bf323fda98c4b88e7a1e9f1e00af5e4998cb130f60d8566b",
+      "textKm": "១០០ ម៉ែត្រចុងក្រោយ!",
+      "meaningVi": "Một trăm mét cuối!",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+    },
+    "ai-last-fifty-km": {
+      "sha256": "9203bca38d35df608d967cdf5317e2eef248f3b2ad5ecbcd66ebbcbb3d0a79a5",
+      "textKm": "៥០ ម៉ែត្រចុងក្រោយ!",
+      "meaningVi": "Năm mươi mét cuối!",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+    },
+    "ai-finish-win-km": {
+      "sha256": "51377872f38085e991248ddd7c8967af54a4e8d7a7f8c91a793e4e64f5313ee2",
+      "textKm": "ដល់ទីហើយ! សូមអបអរសាទរក្រុមដែលឈ្នះជើងប្រណាំងនេះ!",
+      "meaningVi": "Về đích rồi! Chúc mừng đội thắng lượt đua này!",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+    },
+    "ai-finish-loss-km": {
+      "sha256": "3712f53d03bb299ed155caaa4d286c800c3a382aca5ade67ddd7eba58258befa",
+      "textKm": "គួរឱ្យសោកស្តាយ! គូប្រកួតបានដល់ទីមុន ក្នុងជើងប្រណាំងនេះ។",
+      "meaningVi": "Thật đáng tiếc! Đối thủ đã về đích trước trong lượt đua này.",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+    },
+    "ai-finish-tie-km": {
+      "sha256": "cde59cd17fcc28c78788fbc26ab9005fba44257cd3f67f30b57e7ed73c0a38fd",
+      "textKm": "លទ្ធផលស្មើគ្នា! ទូកទាំងពីរដល់ទីប្រកៀកប្រកិតគ្នា!",
+      "meaningVi": "Kết quả hòa! Hai ghe về đích sát nhau!",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+    },
+    "ai-finish-dnf-km": {
+      "sha256": "d3fc4ee4acbbf50b456b1636ec8b7ab4b432857f1176c44886ac78e2d62a49c7",
+      "textKm": "គួរឱ្យសោកស្តាយ ក្រុមមួយមិនបានបញ្ចប់ជើងប្រណាំងនេះទេ។",
+      "meaningVi": "Đáng tiếc, một đội đã không hoàn thành lượt đua này.",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+    },
+    "agy-ai-champion-tum-nup-km": {
+      "sha256": "7ae1036526212bf32914895e60efae472e0ef4b3cf0ee081c0307178e0f805ce",
+      "textKm": "សូមអបអរសាទរ ទុំនុប ២ ដែលបានឈ្នះជើងឯកពានរង្វាន់នេះ!",
+      "meaningVi": "Chúc mừng Tum Núp 2 đã giành chức vô địch cúp này!",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+    },
+    "agy-ai-intro-match-tum-nup-kos-thum-km": {
+      "sha256": "3786ed0365c7574ed7071d68b2013406b3a16277ab72d8b22b96f790cb5b94b4",
+      "textKm": "ទុំនុប ២ ប្រកួតជាមួយ កោះធំ ១។ ក្រុមទាំងពីរកំពុងត្រៀមចេញដំណើរ។",
+      "meaningVi": "Tum Núp 2 gặp Kos Thum 1. Hai đội đang chuẩn bị xuất phát.",
+      "translationStatus": "authored-from-Khmer-label-not-listening-verified"
+    }
+  },
+  "scopes": {
+    "agy-ai-intro-match-tum-nup-kos-thum-km": {
+      "sha256": "3786ed0365c7574ed7071d68b2013406b3a16277ab72d8b22b96f790cb5b94b4",
+      "kind": "resolved-match",
+      "label": "Tum Núp 2 – Kos Thum 1 · hai đội nam",
+      "playerId": "can_tho-23",
+      "opponentId": "ca_mau-05",
+      "teamIds": [
+        "can_tho-23",
+        "ca_mau-05"
+      ]
+    },
+    "agy-ai-champion-tum-nup-km": {
+      "sha256": "7ae1036526212bf32914895e60efae472e0ef4b3cf0ee081c0307178e0f805ce",
+      "kind": "resolved-winner",
+      "label": "Tum Núp 2 · nam · can_tho-23",
+      "winnerId": "can_tho-23",
+      "teamIds": [
+        "can_tho-23"
+      ]
+    }
+  },
+  "cueWarnings": {
+    "flyover": {
+      "km": [
+        "Đoạn hiện có chỉ là câu chào khán giả, chưa mô tả toàn cảnh lễ hội."
+      ]
+    },
+    "halfway": {
+      "vi": [
+        "Bản Việt hiện có nói về quy mô lễ hội, không báo mốc nửa đường. Cần chọn lại bản thu đúng tình huống."
+      ]
+    },
+    "finish-loss": {
+      "vi": [
+        "Bản Việt hiện có nói “Quá tuyệt vời!”, chưa diễn đạt kết quả thua. Cần chọn lại bản thu."
+      ]
+    },
+    "cohesion": {
+      "vi": [
+        "Bản Việt hiện có nói “Nhẹ nhàng, nhẹ nhàng”, không xác nhận nhịp chèo đồng đều."
+      ]
+    }
+  },
+  "repairs": [
+    {
+      "id": "intro-carrier",
+      "cueId": "team-introduction",
+      "sourceFilename": "ai-intro-carrier-km.mp3",
+      "clipId": "agy-ai-intro-carrier-km",
+      "textKm": "ប្រកួតជាមួយ។ ក្រុមទាំងពីរកំពុងត្រៀមចេញដំណើរ។",
+      "meaningVi": "Thi đấu với. Hai đội đang chuẩn bị xuất phát.",
+      "usage": {
+        "kind": "fragment",
+        "label": "Câu nối giới thiệu, chưa có tên đội"
+      },
+      "originalSha256": "84eccfca70cb606b99f22b78794066fb611eec974efb353079d8199a4ec58aab"
+    },
+    {
+      "id": "champion-kos-thum",
+      "cueId": "cup-champion",
+      "sourceFilename": "ai-champion-kos-thum-km.mp3",
+      "clipId": "agy-ai-champion-kos-thum-km",
+      "textKm": "សូមអបអរសាទរ កោះធំ ១ ដែលបានឈ្នះជើងឯកពានរង្វាន់នេះ!",
+      "meaningVi": "Chúc mừng Kos Thum 1 đã giành chức vô địch cúp này!",
+      "usage": {
+        "kind": "resolved-winner",
+        "label": "Kos Thum 1 · nam · ca_mau-05",
+        "winnerId": "ca_mau-05",
+        "teamIds": [
+          "ca_mau-05"
+        ]
+      },
+      "originalSha256": "e9f9bfd849596db6d4b19dc09895c4ee078dbddfa8049b785558d3ebab6e4feb"
+    },
+    {
+      "id": "champion-carrier",
+      "cueId": "cup-champion",
+      "sourceFilename": "ai-champion-carrier-km.mp3",
+      "clipId": "agy-ai-champion-carrier-km",
+      "textKm": "សូមអបអរសាទរ ដែលបានឈ្នះជើងឯកពានរង្វាន់នេះ!",
+      "meaningVi": "Xin chúc mừng đã giành chức vô địch cúp này!",
+      "usage": {
+        "kind": "fragment",
+        "label": "Câu dẫn vô địch, chưa có tên đội"
+      },
+      "originalSha256": "30cfe1165d8ed876d0715bcad1cf966cb8115be8b9006ddc5230fb039beb67f9"
+    }
+  ]
+}

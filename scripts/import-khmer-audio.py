@@ -91,6 +91,52 @@ def main():
             'claimedStatus': cue['status'], 'nativeListeningVerified': False}
     if len(cues) != 29 or len(files) != len(list((source / 'audio').glob('*.mp3'))):
         raise ValueError('Incomplete handoff cue/file coverage')
+    # Curated meanings are bound to the precise source bytes, never to a filename
+    # guess. Keep the submitted metadata intact in source/ for comparison.
+    review = read(ROOT / 'docs/khmer-audio-review.json')
+    available = {**{k: c for k, c in previous['clips'].items()
+                   if not c.get('sourceFile', '').startswith('khmer-review/')}, **clips}
+    clip_reviews = {}
+    for key, translation in review['translations'].items():
+        clip = available[key]
+        if clip['sha256'] != translation['sha256'] or clip['text'] != translation['textKm']:
+            raise ValueError('Stale Khmer meaning: ' + key)
+        clip_reviews[key] = {'sha256': clip['sha256'], 'meaningVi': translation['meaningVi'],
+                            'translationStatus': translation['translationStatus']}
+    for key, scope in review['scopes'].items():
+        if available[key]['sha256'] != scope['sha256']:
+            raise ValueError('Stale resolved-team scope: ' + key)
+        clip_reviews.setdefault(key, {'sha256': scope['sha256']})['usage'] = {
+            k: v for k, v in scope.items() if k != 'sha256'}
+    repaired_path = target / 'repairs/manifest.json'
+    repaired = {r['clipId']: r for r in read(repaired_path)['repairs']} if repaired_path.exists() else {}
+    for definition in review['repairs']:
+        key = definition['clipId']
+        if clips[key]['sha256'] != definition['originalSha256']:
+            raise ValueError('Stale copied-label correction: ' + key)
+        repair = repaired.get(key)
+        if not repair:
+            # Known copied labels cannot be presented as the recording's words.
+            clips[key]['text'] = ''
+            continue
+        for field in ['originalSha256', 'textKm', 'meaningVi', 'usage']:
+            if repair[field] != definition[field]:
+                raise ValueError('Stale synthesized repair: ' + key)
+        audio_path = (AUDIO / repair['file']).resolve()
+        if not audio_path.is_relative_to(target / 'repairs') or sha(audio_path) != repair['sha256']:
+            raise ValueError('Changed synthesized repair: ' + key)
+        clips[key].update({k: repair[k] for k in ['file', 'sha256', 'bytes', 'duration', 'peak', 'rms']})
+        clips[key].update(text=repair['textKm'], meaningVi=repair['meaningVi'],
+            usage=repair['usage'], textEvidence='synthesis-request',
+            original={'file': 'khmer-review/' + definition['sourceFilename'],
+                      'sha256': definition['originalSha256']},
+            synthesisEvidence={k: repair[k] for k in ['voice', 'requestSha256', 'sourceWavSha256', 'ssml']},
+            reviewWarnings=['Bản tạo lại từ văn bản xác định; phát âm Khmer còn chờ nghe duyệt.'])
+    for entry in files.values():
+        if entry['clipId'] in repaired:
+            entry['reviewWarnings'] = clips[entry['clipId']]['reviewWarnings']
+    issues = [{'sourceFile': path, 'clipId': entry['clipId'], 'messages': entry['reviewWarnings']}
+              for path, entry in files.items() if entry['reviewWarnings']]
     for original, destination in transfers:
         destination.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(original, destination)
@@ -106,6 +152,8 @@ def main():
             'filesWithReviewWarnings': len(issues)},
         'runtimeChanged': False, 'nativeListeningVerified': False,
         'clips': clips, 'cues': cues, 'names': names, 'files': files, 'issues': issues,
+        'clipReviews': clip_reviews, 'cueWarnings': review['cueWarnings'],
+        'repairs': {'requested': len(review['repairs']), 'generated': len(repaired)},
         'notice': 'Imported for listening/review. Hash matches verify bytes, not language, '
                   'team identity, translation, native pronunciation or gameplay suitability.'}
     (target / 'manifest.json').write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n',

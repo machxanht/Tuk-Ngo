@@ -1503,16 +1503,16 @@
     },
     {
       "clipId": "agy-ai-champion-carrier-km",
-      "sha256": "30cfe1165d8ed876d0715bcad1cf966cb8115be8b9006ddc5230fb039beb67f9",
+      "sha256": "86d526cd5857ece137a85ccbfae8961dbacbf3416851a939bb119509dbfc8a7b",
       "status": "pass",
-      "decodedDuration": 3.888,
+      "decodedDuration": 3.8375,
       "peakDb": -6.7049
     },
     {
       "clipId": "agy-ai-champion-kos-thum-km",
-      "sha256": "e9f9bfd849596db6d4b19dc09895c4ee078dbddfa8049b785558d3ebab6e4feb",
+      "sha256": "6dedec9e0312977d44e7bb6a6c5c0db41419e34f7b260a8a02542c19c47e9c13",
       "status": "pass",
-      "decodedDuration": 4.56,
+      "decodedDuration": 4.5,
       "peakDb": -6.4319
     },
     {
@@ -1531,9 +1531,9 @@
     },
     {
       "clipId": "agy-ai-intro-carrier-km",
-      "sha256": "84eccfca70cb606b99f22b78794066fb611eec974efb353079d8199a4ec58aab",
+      "sha256": "7071d3835230a6bd3bf6ccb6033b9be3ec32efecfc86432e9eaef5ea0f247bb2",
       "status": "pass",
-      "decodedDuration": 3.816,
+      "decodedDuration": 3.75,
       "peakDb": -6.0799
     },
     {

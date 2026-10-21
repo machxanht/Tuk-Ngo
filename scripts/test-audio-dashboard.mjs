@@ -75,6 +75,26 @@ if(data.khmerHandoff){
   const key=pack.names[id][0];assert.equal(data.clips[key].text,'','Filename is not a Khmer transcript');
   assert(data.clips[key].reviewWarnings.length);assert.equal(data.clips[key].dashboardOnly,true);
  }
+ assert.deepEqual(pack.repairs,{requested:3,generated:3});
+ assert.equal(data.clips['khmer-intro'].meaningVi,'Quý khán giả thân mến.','A greeting is not a translated flyover paragraph');
+ const repairManifest=JSON.parse(await readFile(new URL('public/assets/race-audio/khmer-review/repairs/manifest.json',root)));
+ for(const repair of repairManifest.repairs){
+  const clip=data.clips[repair.clipId];
+  assert.equal(clip.sha256,repair.sha256);assert.equal(clip.text,repair.textKm);
+  assert.equal(clip.meaningVi,repair.meaningVi);assert.equal(clip.textEvidence,'synthesis-request');
+  assert.equal(createHash('sha256').update(repair.ssml).digest('hex'),repair.requestSha256);
+  assert(repair.ssml.includes(repair.textKm));assert.equal(repair.nativeListeningVerified,false);
+  assert.equal(clip.original.sha256,repair.originalSha256);
+  const original=await readFile(new URL('public/assets/race-audio/'+clip.original.file,root));
+  assert.equal(createHash('sha256').update(original).digest('hex'),repair.originalSha256,'Original retained');
+ }
+ const kos=data.clips['agy-ai-champion-kos-thum-km'];
+ assert(kos.text.includes('កោះធំ ១')&&!kos.text.includes('ទុំនុប'));
+ assert.equal(kos.usage.winnerId,'ca_mau-05');
+ assert.deepEqual(data.clips['agy-ai-intro-match-tum-nup-kos-thum-km'].usage.teamIds,['can_tho-23','ca_mau-05']);
+ for(const id of ['agy-ai-intro-carrier-km','agy-ai-champion-carrier-km']){
+  assert.equal(data.clips[id].usage.kind,'fragment');assert(!data.clips[id].text.includes('ទុំនុប'));
+ }
  console.log('AGY handoff: 89 verified file mappings, 74 reused / 15 new, all 29 cues and 61 name identities reachable; uncertain transcripts and copied variant labels stay flagged.');
 }
 console.log('Audio dashboard: contextual cues, hashed clips, exact identities, language isolation, source/AI provenance, stale/paused/result/history gates and edited-text safeguards passed.');

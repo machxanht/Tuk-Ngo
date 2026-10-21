@@ -33,6 +33,10 @@ EVIDENCE_FILES = {
 HANDOFF = AUDIO / 'khmer-review/manifest.json'
 if HANDOFF.exists():
     EVIDENCE_FILES['khmer-review/manifest.json'] = HANDOFF
+    EVIDENCE_FILES['docs/khmer-audio-review.json'] = ROOT / 'docs/khmer-audio-review.json'
+    repairs = HANDOFF.parent / 'repairs/manifest.json'
+    if repairs.exists():
+        EVIDENCE_FILES['khmer-review/repairs/manifest.json'] = repairs
     for filename in ['manifest.json', 'khmer-script.json', 'khmer-script.csv', 'review.md']:
         EVIDENCE_FILES['khmer-review/source/' + filename] = HANDOFF.parent / 'source' / filename
 
@@ -237,6 +241,10 @@ def collect():
             if key in clips:
                 raise ValueError('Duplicate handoff clip ID')
             clips[key] = copy.deepcopy(clip)
+        for key, review in handoff.get('clipReviews', {}).items():
+            if clips[key]['sha256'] != review['sha256']:
+                raise ValueError('Stale review metadata: ' + key)
+            clips[key].update({k: copy.deepcopy(v) for k, v in review.items() if k != 'sha256'})
         for cue_id, review in handoff['cues'].items():
             if cue_id not in {c['id'] for c in script['cues']}:
                 raise ValueError('Unknown handoff cue')

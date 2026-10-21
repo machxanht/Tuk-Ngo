@@ -52,9 +52,41 @@
     {
       "name": "Phone drawer and empty results remain usable",
       "status": "pass"
+    },
+    {
+      "name": "Khmer greeting shows its own short meaning, not the Vietnamese broadcast paragraph",
+      "status": "pass"
+    },
+    {
+      "name": "Resolved match and champion display exact names and scope, without literal placeholders",
+      "status": "pass"
+    },
+    {
+      "name": "Carrier is labelled as an incomplete connector and does not borrow Tum Nup wording",
+      "status": "pass"
+    },
+    {
+      "name": "Review advances through every variant before leaving the cue",
+      "status": "pass"
+    },
+    {
+      "name": "Pending filter keeps remaining variants after marking one for repair",
+      "status": "pass"
+    },
+    {
+      "name": "Shared name variants never acquire a fabricated Kos Thum 1 suffix",
+      "status": "pass"
+    },
+    {
+      "name": "Changed labels invalidate approval while retaining the listening note",
+      "status": "pass"
+    },
+    {
+      "name": "Cue navigation follows race stages and puts sprint effort before the last hundred metres",
+      "status": "pass"
     }
   ],
-  "passed": 13,
+  "passed": 21,
   "failed": 0,
   "limits": "Simulated error cases verify recovery only. Native pronunciation and semantic correctness are not certified."
 }

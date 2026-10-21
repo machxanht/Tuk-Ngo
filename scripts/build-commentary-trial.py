@@ -189,7 +189,8 @@ def synthesize(script, plan, out, config_path, budget):
         time.sleep(max(0, last_request + 3.4 - time.time()))
         last_request = time.time()
         request_clock.write_text(json.dumps({'at': last_request}), encoding='utf-8')
-        headers = {'Ocp-Apim-Subscription-Key': key, 'User-Agent': 'Tuk-Ngo-commentary-trial'}
+        headers = {'Ocp-Apim-Subscription-Key': key,
+                   'User-Agent': script.get('userAgent', 'Tuk-Ngo-commentary-trial')}
         if body is not None:
             headers.update({'Content-Type': 'application/ssml+xml; charset=utf-8', 'X-Microsoft-OutputFormat': FORMAT})
         req = urllib.request.Request(f'https://{region}.tts.speech.microsoft.com' + path, body, headers)

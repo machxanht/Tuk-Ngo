@@ -78,6 +78,42 @@ try{
  await run('JSON/CSV downloads preserve notes and UTF-8',async c=>{const p=await open(c);await p.locator('#review-note').fill('ខ្មែរ — ghi chú');await p.locator('.tools summary').click();for(const [button,kind]of [['#export-json','json'],['#export-csv','csv']]){const event=p.waitForEvent('download');await p.locator(button).click();const download=await event,text=await readFile(await download.path(),'utf8');assert(text.includes('ខ្មែរ — ghi chú'));if(kind==='json')assert.equal(JSON.parse(text).schema,2);else assert(text.startsWith('\ufeff'));}});
  await run('A missing Vietnamese recording cannot be approved',async c=>{const p=await open(c);await p.locator('[data-view="teams"]').click();await p.locator('#search').fill('can_tho-11');await p.locator('[data-lang="vi"]').click();assert(await p.locator('#play').isDisabled());assert(await p.locator('[data-review="pass"]').isDisabled());});
  await run('Phone drawer and empty results remain usable',async c=>{const p=await open(c);await p.setViewportSize({width:390,height:844});assert(await p.locator('#library').isHidden());await p.locator('#toggle-list').click();assert(await p.locator('#library').isVisible());await choose(p,'go');assert(await p.locator('#library').isHidden());await p.locator('#toggle-list').click();await p.locator('#search').fill('not-a-real-team');assert.equal(await p.locator('.item').count(),0);assert(await p.locator('.review').isHidden());assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);});
+ await run('Khmer greeting shows its own short meaning, not the Vietnamese broadcast paragraph',async c=>{
+  const p=await open(c);await choose(p,'flyover');assert.equal(await p.locator('#text-vi').textContent(),'Quý khán giả thân mến.');assert((await p.locator('#warning').textContent()).includes('chưa mô tả toàn cảnh'));await p.locator('[data-lang="vi"]').click();assert((await p.locator('#text-vi').textContent()).includes('sáu mươi đội'));assert(await p.locator('#km-panel').isHidden());
+ });
+ await run('Resolved match and champion display exact names and scope, without literal placeholders',async c=>{
+  const p=await open(c);await choose(p,'team-introduction');assert(!(await p.locator('.transcripts').textContent()).includes('{'));assert((await p.locator('#text-vi').textContent()).includes('Tum Núp 2 gặp Kos Thum 1'));assert((await p.locator('#warning').textContent()).includes('Không dùng cho đội khác'));
+  await choose(p,'cup-champion');await p.locator('#variant').selectOption('agy-ai-champion-kos-thum-km');assert((await p.locator('#text-km').textContent()).includes('កោះធំ ១'));assert(!(await p.locator('#text-km').textContent()).includes('ទុំនុប'));assert((await p.locator('#text-vi').textContent()).includes('Kos Thum 1'));await p.locator('#play').click();await p.waitForFunction(()=>document.querySelector('#player').currentTime>.1);assert((await p.locator('#player').getAttribute('src')).includes('/repairs/champion-kos-thum.mp3'));
+  if(flag('--content-screenshot')){const path=resolve(root,flag('--content-screenshot'));await mkdir(dirname(path),{recursive:true});await p.screenshot({path,fullPage:true});}
+  if(flag('--viewport-screenshots'))for(const viewport of [{width:1024,height:768},{width:768,height:1024},{width:390,height:844}]){
+   await p.setViewportSize(viewport);await p.evaluate(()=>scrollTo(0,0));assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+   const path=resolve(root,flag('--viewport-screenshots'),`corrected-${viewport.width}x${viewport.height}.png`);await mkdir(dirname(path),{recursive:true});await p.screenshot({path});
+  }
+ });
+ await run('Carrier is labelled as an incomplete connector and does not borrow Tum Nup wording',async c=>{
+  const p=await open(c);await choose(p,'team-introduction');await p.locator('#variant').selectOption('agy-ai-intro-carrier-km');assert(!(await p.locator('#text-km').textContent()).includes('ទុំនុប'));assert((await p.locator('#warning').textContent()).includes('chưa phải một lời bình hoàn chỉnh'));assert((await p.locator('#variant option:checked').textContent()).includes('chưa có tên đội'));
+ });
+ await run('Review advances through every variant before leaving the cue',async c=>{
+  const p=await open(c);await choose(p,'cup-champion');const keys=await p.locator('#variant option').evaluateAll(nodes=>nodes.map(n=>n.value));assert.equal(keys.length,3);
+  for(let i=0;i<keys.length;i++){
+   assert.equal(await p.locator('#variant').inputValue(),keys[i]);await p.locator('[data-review="pass"]').click();
+   if(i<keys.length-1){assert.equal(await p.locator('[data-item="cup-champion"]').getAttribute('aria-pressed'),'true');assert(await p.locator('[data-item="cup-champion"] .status-dot.pending').count());}
+  }
+  assert(await p.locator('[data-item="cup-champion"] .status-dot.pass').count());const rows=(await p.evaluate(()=>window.AudioStudio.getReview().entries)).filter(r=>r.itemId==='cup-champion'&&r.language==='km');assert(rows.every(r=>r.status==='pass'));
+ });
+ await run('Pending filter keeps remaining variants after marking one for repair',async c=>{
+  const p=await open(c);await p.locator('#review-filter').selectOption('pending');await choose(p,'cup-champion');await p.locator('[data-review="fix"]').click();assert.equal(await p.locator('[data-item="cup-champion"]').getAttribute('aria-pressed'),'true');assert.equal(await p.locator('#variant').inputValue(),'agy-ai-champion-kos-thum-km');assert((await p.locator('#progress').textContent()).includes('1/'));
+ });
+ await run('Shared name variants never acquire a fabricated Kos Thum 1 suffix',async c=>{
+  const p=await open(c);await p.locator('[data-view="teams"]').click();await p.locator('#search').fill('ca_mau-06');await choose(p,'ca_mau-06');const labels=await p.locator('#variant option').allTextContents();assert(labels.length);assert(labels.every(t=>!t.includes('Kos Thum 1')));
+ });
+ await run('Changed labels invalidate approval while retaining the listening note',async c=>{
+  const p=await open(c);await p.locator('#advance').uncheck();await p.locator('#review-note').fill('Ghi chú cần giữ');await p.locator('[data-review="pass"]').click();await p.evaluate(()=>{const s=JSON.parse(localStorage.getItem('tukngo-audio-review'));for(const r of Object.values(s.reviews))r.labelSignature='old copied label';localStorage.setItem('tukngo-audio-review',JSON.stringify(s));});await p.reload();await p.waitForFunction(()=>window.AudioStudio);assert.equal(await p.locator('#review-state').textContent(),'Chưa duyệt');assert.equal(await p.locator('#review-note').inputValue(),'Ghi chú cần giữ');
+ });
+ await run('Cue navigation follows race stages and puts sprint effort before the last hundred metres',async c=>{
+  const p=await open(c),order=await p.evaluate(()=>window.AudioStudio.getVisible());assert(order.indexOf('start-drive')<order.indexOf('cruise'));assert(order.indexOf('sprint-effort')<order.indexOf('last-hundred'));assert.equal(order.at(-1),'cup-champion');
+  await p.locator('[data-view="teams"]').click();await p.locator('[data-lang="vi"]').click();await p.locator('#search').fill('can_tho-11');await p.locator('#review-filter').selectOption('issue');assert.equal(await p.locator('.item').count(),1,'Missing audio remains in the issue filter');
+ });
 }finally{await browser.close();await new Promise(r=>server.close(r));}
 const report={suite:'Audio dashboard browser regression',cases:results,passed:results.filter(r=>r.status==='pass').length,failed:results.filter(r=>r.status==='fail').length,limits:'Simulated error cases verify recovery only. Native pronunciation and semantic correctness are not certified.'};
 if(flag('--report')){const path=resolve(root,flag('--report'));await mkdir(dirname(path),{recursive:true});await writeFile(path,JSON.stringify(report,null,2)+'\n');}
