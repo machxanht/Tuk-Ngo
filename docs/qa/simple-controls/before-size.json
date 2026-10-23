@@ -1,0 +1,329 @@
+{
+  "url": "https://machxanht.github.io/Tuk-Ngo/",
+  "physicalTabletTested": false,
+  "trackedWorkingBytes": 1339521645,
+  "publicBytes": 850708871,
+  "publicGroups": [
+    [
+      "assets/ghe-ngo",
+      492350765
+    ],
+    [
+      "assets/illustrated-v22",
+      165906700
+    ],
+    [
+      "assets/festival-crowd",
+      39745545
+    ],
+    [
+      "assets/coherent-v20",
+      34595985
+    ],
+    [
+      "assets/human",
+      29186234
+    ],
+    [
+      "assets/coherent-v19",
+      22866325
+    ],
+    [
+      "assets/athlete-master",
+      16634909
+    ],
+    [
+      "assets/race-audio",
+      15939479
+    ],
+    [
+      "assets/character-comparison",
+      12882371
+    ],
+    [
+      "audio-dashboard/handoff.zip",
+      11659203
+    ],
+    [
+      "assets/maps",
+      4579998
+    ],
+    [
+      "audio-dashboard/export",
+      1434816
+    ],
+    [
+      "character-comparison/viewer.js",
+      1249438
+    ],
+    [
+      "assets/fonts",
+      364680
+    ],
+    [
+      "assets/audio",
+      360801
+    ],
+    [
+      "audio-dashboard/data.js",
+      350516
+    ]
+  ],
+  "publishedTreeBytes": 878831092,
+  "menu": {
+    "networkTransferBytes": 18822049,
+    "encodedBodyBytes": 18801565,
+    "decodedBodyBytes": 27992184,
+    "requests": 50,
+    "largest": [
+      {
+        "url": "https://machxanht.github.io/Tuk-Ngo/assets/athlete-master/ceremony-crew.json?sha=631d847f53d84ddba540135145496cd7723aaa903b7ed87ed119acb81b81f519",
+        "encoded": 5166483,
+        "decoded": 8853940
+      },
+      {
+        "url": "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/athlete-rig-v27.glb",
+        "encoded": 4001354,
+        "decoded": 4230492
+      },
+      {
+        "url": "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/hull-rig-v25.glb",
+        "encoded": 2452791,
+        "decoded": 3953040
+      },
+      {
+        "url": "https://machxanht.github.io/Tuk-Ngo/assets/festival-crowd/crowd-compact.packed?sha=286bf615e7b2af5bc44787977914964cce41ff4637efe8474eed2c0514ce4b99",
+        "encoded": 3891451,
+        "decoded": 3921006
+      },
+      {
+        "url": "https://machxanht.github.io/Tuk-Ngo/assets/character-comparison/athlete-faces.glb?sha=1d7adfdb4c6e72e42ea9febb2611f826bff2ffdc1c4ecf9f4f668a8fd308c457",
+        "encoded": 889196,
+        "decoded": 1424224
+      },
+      {
+        "url": "https://machxanht.github.io/Tuk-Ngo/assets/ghe-ngo/kbach-library/fleet.webp",
+        "encoded": 1145512,
+        "decoded": 1145512
+      },
+      {
+        "url": "https://machxanht.github.io/Tuk-Ngo/assets/athlete-master/rowing-motion.glb?sha=94832f4e121b6d790045b7b3e7bb1a77b030004775e15dd975c29030403c14a6",
+        "encoded": 379501,
+        "decoded": 1139744
+      },
+      {
+        "url": "https://machxanht.github.io/Tuk-Ngo/assets/kbach-motifs-Bj2M1atI.js",
+        "encoded": 45571,
+        "decoded": 440087
+      },
+      {
+        "url": "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/teams-2025/tum-nup-2.svg",
+        "encoded": 50482,
+        "decoded": 415179
+      },
+      {
+        "url": "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/NotoSansKhmer.ttf",
+        "encoded": 173980,
+        "decoded": 359788
+      },
+      {
+        "url": "https://machxanht.github.io/Tuk-Ngo/assets/three-renderer-Xp2iZVDg.js",
+        "encoded": 89565,
+        "decoded": 357178
+      },
+      {
+        "url": "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/shirt-runtime-v32.json",
+        "encoded": 98344,
+        "decoded": 340934
+      },
+      {
+        "url": "https://machxanht.github.io/Tuk-Ngo/assets/three-core-PKyBB6wc.js",
+        "encoded": 77591,
+        "decoded": 283474
+      },
+      {
+        "url": "https://machxanht.github.io/Tuk-Ngo/assets/index-Cu3Vsi_U.js",
+        "encoded": 71169,
+        "decoded": 226020
+      },
+      {
+        "url": "https://machxanht.github.io/Tuk-Ngo/assets/athlete-master/athlete-details.glb",
+        "encoded": 67682,
+        "decoded": 162632
+      },
+      {
+        "url": "https://machxanht.github.io/Tuk-Ngo/assets/ghe-ngo/kbach-library/manifest.json",
+        "encoded": 18577,
+        "decoded": 119519
+      }
+    ]
+  },
+  "race": {
+    "networkTransferBytes": 20550104,
+    "encodedBodyBytes": 20521211,
+    "decodedBodyBytes": 29978372,
+    "requests": 84,
+    "largest": [
+      {
+        "url": "https://machxanht.github.io/Tuk-Ngo/assets/athlete-master/ceremony-crew.json?sha=631d847f53d84ddba540135145496cd7723aaa903b7ed87ed119acb81b81f519",
+        "encoded": 5166483,
+        "decoded": 8853940
+      },
+      {
+        "url": "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/athlete-rig-v27.glb",
+        "encoded": 4001354,
+        "decoded": 4230492
+      },
+      {
+        "url": "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/hull-rig-v25.glb",
+        "encoded": 2452791,
+        "decoded": 3953040
+      },
+      {
+        "url": "https://machxanht.github.io/Tuk-Ngo/assets/festival-crowd/crowd-compact.packed?sha=286bf615e7b2af5bc44787977914964cce41ff4637efe8474eed2c0514ce4b99",
+        "encoded": 3891451,
+        "decoded": 3921006
+      },
+      {
+        "url": "https://machxanht.github.io/Tuk-Ngo/assets/character-comparison/athlete-faces.glb?sha=1d7adfdb4c6e72e42ea9febb2611f826bff2ffdc1c4ecf9f4f668a8fd308c457",
+        "encoded": 889196,
+        "decoded": 1424224
+      },
+      {
+        "url": "https://machxanht.github.io/Tuk-Ngo/assets/ghe-ngo/kbach-library/fleet.webp",
+        "encoded": 1145512,
+        "decoded": 1145512
+      },
+      {
+        "url": "https://machxanht.github.io/Tuk-Ngo/assets/athlete-master/rowing-motion.glb?sha=94832f4e121b6d790045b7b3e7bb1a77b030004775e15dd975c29030403c14a6",
+        "encoded": 379501,
+        "decoded": 1139744
+      },
+      {
+        "url": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/field/river-bank-bed.mp3?clip=616cf92c7ac3",
+        "encoded": 641324,
+        "decoded": 641324
+      },
+      {
+        "url": "https://machxanht.github.io/Tuk-Ngo/assets/kbach-motifs-Bj2M1atI.js",
+        "encoded": 45571,
+        "decoded": 440087
+      },
+      {
+        "url": "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/teams-2025/tum-nup-2.svg",
+        "encoded": 50482,
+        "decoded": 415179
+      },
+      {
+        "url": "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/NotoSansKhmer.ttf",
+        "encoded": 173980,
+        "decoded": 359788
+      },
+      {
+        "url": "https://machxanht.github.io/Tuk-Ngo/assets/three-renderer-Xp2iZVDg.js",
+        "encoded": 89565,
+        "decoded": 357178
+      },
+      {
+        "url": "https://machxanht.github.io/Tuk-Ngo/assets/illustrated-v22/shirt-runtime-v32.json",
+        "encoded": 98344,
+        "decoded": 340934
+      },
+      {
+        "url": "https://machxanht.github.io/Tuk-Ngo/assets/three-core-PKyBB6wc.js",
+        "encoded": 77591,
+        "decoded": 283474
+      },
+      {
+        "url": "https://machxanht.github.io/Tuk-Ngo/assets/race-audio/manifest.json",
+        "encoded": 39995,
+        "decoded": 267766
+      },
+      {
+        "url": "https://machxanht.github.io/Tuk-Ngo/assets/index-Cu3Vsi_U.js",
+        "encoded": 71169,
+        "decoded": 226020
+      }
+    ]
+  },
+  "draw": {
+    "triangles": 5722711,
+    "calls": 911,
+    "fps": "32.0",
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1650 (0x00001F0A) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "largest": [
+      [
+        "SkinnedMesh",
+        1566984
+      ],
+      [
+        "Athlete_Faces_Batched",
+        698168
+      ],
+      [
+        "Festival_Backyard_Grove_4_details",
+        230688
+      ],
+      [
+        "Festival_Backyard_Grove_6_details",
+        204060
+      ],
+      [
+        "Festival_scooter",
+        189888
+      ],
+      [
+        "Mesh",
+        153542
+      ],
+      [
+        "Festival_motorcycle",
+        120540
+      ],
+      [
+        "Festival_Backyard_Grove_0_details",
+        112752
+      ],
+      [
+        "Festival_Backyard_Grove_8_details",
+        109620
+      ],
+      [
+        "Festival_Backyard_Grove_2_details",
+        103356
+      ],
+      [
+        "FestivalNPC_hoodie-man_LOD2",
+        97218
+      ],
+      [
+        "Connected_Shirt_V32",
+        94976
+      ],
+      [
+        "FestivalNPC_beach-man_LOD2",
+        92708
+      ],
+      [
+        "FestivalNPC_beach-man_LOD1",
+        83694
+      ],
+      [
+        "FestivalNPC_casual-man_LOD2",
+        83166
+      ],
+      [
+        "FestivalNPC_worker-woman_LOD1",
+        80584
+      ],
+      [
+        "FestivalNPC_casual-woman_LOD1",
+        78430
+      ],
+      [
+        "FestivalNPC_formal-woman_LOD2",
+        74580
+      ]
+    ]
+  }
+}

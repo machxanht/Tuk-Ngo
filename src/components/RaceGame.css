@@ -142,3 +142,20 @@
 .game-language{flex-shrink:0}.game-language button{min-width:36px}
 .game-playing .game-score{width:calc(100% - 450px)}
 @media(max-width:620px){.game-playing .game-score{width:calc(100% - 24px)}}
+
+/* Two game actions; steering belongs to the device. */
+.game-playing .game-controls.simple-controls{position:absolute;inset:0;pointer-events:none;padding:0;background:transparent;border:0}
+.game-playing .two-action-inputs{position:absolute;inset:0;pointer-events:none}
+[data-testid=festival-game].game-playing .two-action-inputs .game-stroke,
+.game-playing .two-action-inputs .simple-boost{position:absolute;bottom:max(20px,env(safe-area-inset-bottom));width:210px;min-height:96px;height:96px;padding:14px;display:flex;gap:12px;border:2px solid #ffffffad;border-radius:32px;color:white;background:#0c6975bb;backdrop-filter:none;touch-action:none;user-select:none;pointer-events:auto}
+[data-testid=festival-game].game-playing .two-action-inputs .game-stroke{left:20px;right:auto}
+.game-playing .two-action-inputs .simple-boost{right:20px;background:#b96e13b8}
+.two-action-inputs button>span{display:grid;gap:3px;text-align:left}.two-action-inputs strong{font-size:21px;line-height:1.2}.two-action-inputs small{font-size:11px;line-height:1.35}
+.game-playing .two-action-inputs button[aria-pressed=true]{background:#087b7be6;box-shadow:0 0 0 4px #c7fff755}
+.game-playing .two-action-inputs .simple-boost[aria-pressed=true]{background:#d17a0fe8}.simple-boost[data-empty=true]{filter:saturate(.4)}
+.simple-stamina{position:absolute;bottom:42px;left:50%;transform:translateX(-50%);width:min(25vw,230px);color:white;text-shadow:0 1px 4px #153f4e;pointer-events:none}.simple-stamina label{display:flex;justify-content:space-between;flex-wrap:wrap;gap:5px;font-size:12px}.simple-stamina progress{width:100%;height:9px;accent-color:#65f0b8}.simple-stamina small{font-size:11px}
+.tilt-status{position:absolute;top:148px;left:20px;color:white;text-shadow:0 1px 4px #153f4e;font-size:12px;max-width:300px;pointer-events:none}
+.game-playing .simple-pause{position:fixed;left:16px;top:16px;z-index:12;background:#123c5077;color:white;pointer-events:auto}
+.game-playing .game-score{width:calc(100% - 300px)}
+@media(max-width:620px){[data-testid=festival-game].game-playing .two-action-inputs .game-stroke,.game-playing .two-action-inputs .simple-boost{width:calc(50% - 22px);min-height:94px;height:94px;bottom:max(18px,env(safe-area-inset-bottom));padding:10px;gap:8px;border-radius:27px}.game-playing .two-action-inputs .game-stroke{left:12px}.game-playing .two-action-inputs .simple-boost{right:12px}.two-action-inputs strong{font-size:17px}.two-action-inputs small{font-size:10px}.simple-stamina{bottom:132px;width:220px}.tilt-status{left:12px;top:174px;font-size:11px;max-width:260px}.game-playing .game-score{width:calc(100% - 24px)}.game-playing .practice-coach{bottom:196px}}
+@media(max-height:550px) and (min-width:621px){.simple-stamina{bottom:35px}.tilt-status{top:132px}.game-playing .practice-coach{bottom:135px}}

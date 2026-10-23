@@ -1,0 +1,379 @@
+{
+  "url": "http://127.0.0.1:8779/Tuk-Ngo/",
+  "physicalTabletTested": false,
+  "trackedWorkingBytes": 1335414760,
+  "publicBytes": 846613413,
+  "publicGroups": [
+    [
+      "assets/ghe-ngo",
+      492350765
+    ],
+    [
+      "assets/illustrated-v22",
+      165955355
+    ],
+    [
+      "assets/festival-crowd",
+      39745545
+    ],
+    [
+      "assets/coherent-v20",
+      34595985
+    ],
+    [
+      "assets/human",
+      29186234
+    ],
+    [
+      "assets/coherent-v19",
+      22866325
+    ],
+    [
+      "assets/race-audio",
+      15939479
+    ],
+    [
+      "assets/character-comparison",
+      12882371
+    ],
+    [
+      "assets/athlete-master",
+      12490796
+    ],
+    [
+      "audio-dashboard/handoff.zip",
+      11659203
+    ],
+    [
+      "assets/maps",
+      4579998
+    ],
+    [
+      "audio-dashboard/export",
+      1434816
+    ],
+    [
+      "character-comparison/viewer.js",
+      1249438
+    ],
+    [
+      "assets/fonts",
+      364680
+    ],
+    [
+      "assets/audio",
+      360801
+    ],
+    [
+      "audio-dashboard/data.js",
+      350516
+    ]
+  ],
+  "publishedTreeBytes": 878831092,
+  "menu": {
+    "networkTransferBytes": 19716286,
+    "encodedBodyBytes": 19698466,
+    "decodedBodyBytes": 23905715,
+    "requests": 51,
+    "largest": [
+      {
+        "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/athlete-master/ceremony-crew.json?sha=22ed727f1a9fbb5d8b64aa41c951e644d9962748c5521cdc7ebd02ccff8e51d4",
+        "encoded": 2751116,
+        "decoded": 4709827
+      },
+      {
+        "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/athlete-rig-v27.glb",
+        "encoded": 4230492,
+        "decoded": 4230492
+      },
+      {
+        "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/hull-rig-v25.glb",
+        "encoded": 3953040,
+        "decoded": 3953040
+      },
+      {
+        "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival-crowd/crowd-compact.packed?sha=286bf615e7b2af5bc44787977914964cce41ff4637efe8474eed2c0514ce4b99",
+        "encoded": 3898755,
+        "decoded": 3921006
+      },
+      {
+        "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/character-comparison/athlete-faces.glb?sha=1d7adfdb4c6e72e42ea9febb2611f826bff2ffdc1c4ecf9f4f668a8fd308c457",
+        "encoded": 1424224,
+        "decoded": 1424224
+      },
+      {
+        "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/ghe-ngo/kbach-library/fleet.webp",
+        "encoded": 1145512,
+        "decoded": 1145512
+      },
+      {
+        "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/athlete-master/rowing-motion.glb?sha=94832f4e121b6d790045b7b3e7bb1a77b030004775e15dd975c29030403c14a6",
+        "encoded": 1139744,
+        "decoded": 1139744
+      },
+      {
+        "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/kbach-motifs-Bj2M1atI.js",
+        "encoded": 32813,
+        "decoded": 440087
+      },
+      {
+        "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/teams-2025/tum-nup-2.svg",
+        "encoded": 49664,
+        "decoded": 415179
+      },
+      {
+        "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/NotoSansKhmer.ttf",
+        "encoded": 359788,
+        "decoded": 359788
+      },
+      {
+        "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-Xp2iZVDg.js",
+        "encoded": 89305,
+        "decoded": 357178
+      },
+      {
+        "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/shirt-runtime-v32.json",
+        "encoded": 95843,
+        "decoded": 340934
+      },
+      {
+        "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-PKyBB6wc.js",
+        "encoded": 77611,
+        "decoded": 283474
+      },
+      {
+        "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/index-C9wVOqlv.js",
+        "encoded": 70588,
+        "decoded": 226020
+      },
+      {
+        "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/athlete-master/athlete-details.glb",
+        "encoded": 162632,
+        "decoded": 162632
+      },
+      {
+        "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-crew-CViC72oz.js",
+        "encoded": 55387,
+        "decoded": 142102
+      }
+    ]
+  },
+  "race": {
+    "networkTransferBytes": 21443046,
+    "encodedBodyBytes": 21416210,
+    "decodedBodyBytes": 25891903,
+    "requests": 85,
+    "largest": [
+      {
+        "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/athlete-master/ceremony-crew.json?sha=22ed727f1a9fbb5d8b64aa41c951e644d9962748c5521cdc7ebd02ccff8e51d4",
+        "encoded": 2751116,
+        "decoded": 4709827
+      },
+      {
+        "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/athlete-rig-v27.glb",
+        "encoded": 4230492,
+        "decoded": 4230492
+      },
+      {
+        "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/hull-rig-v25.glb",
+        "encoded": 3953040,
+        "decoded": 3953040
+      },
+      {
+        "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival-crowd/crowd-compact.packed?sha=286bf615e7b2af5bc44787977914964cce41ff4637efe8474eed2c0514ce4b99",
+        "encoded": 3898755,
+        "decoded": 3921006
+      },
+      {
+        "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/character-comparison/athlete-faces.glb?sha=1d7adfdb4c6e72e42ea9febb2611f826bff2ffdc1c4ecf9f4f668a8fd308c457",
+        "encoded": 1424224,
+        "decoded": 1424224
+      },
+      {
+        "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/ghe-ngo/kbach-library/fleet.webp",
+        "encoded": 1145512,
+        "decoded": 1145512
+      },
+      {
+        "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/athlete-master/rowing-motion.glb?sha=94832f4e121b6d790045b7b3e7bb1a77b030004775e15dd975c29030403c14a6",
+        "encoded": 1139744,
+        "decoded": 1139744
+      },
+      {
+        "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-audio/field/river-bank-bed.mp3?clip=616cf92c7ac3",
+        "encoded": 641324,
+        "decoded": 641324
+      },
+      {
+        "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/kbach-motifs-Bj2M1atI.js",
+        "encoded": 32813,
+        "decoded": 440087
+      },
+      {
+        "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/teams-2025/tum-nup-2.svg",
+        "encoded": 49664,
+        "decoded": 415179
+      },
+      {
+        "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/NotoSansKhmer.ttf",
+        "encoded": 359788,
+        "decoded": 359788
+      },
+      {
+        "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-Xp2iZVDg.js",
+        "encoded": 89305,
+        "decoded": 357178
+      },
+      {
+        "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/shirt-runtime-v32.json",
+        "encoded": 95843,
+        "decoded": 340934
+      },
+      {
+        "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-PKyBB6wc.js",
+        "encoded": 77611,
+        "decoded": 283474
+      },
+      {
+        "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-audio/manifest.json",
+        "encoded": 38627,
+        "decoded": 267766
+      },
+      {
+        "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/index-C9wVOqlv.js",
+        "encoded": 70588,
+        "decoded": 226020
+      }
+    ]
+  },
+  "draw": {
+    "triangles": 2843905,
+    "calls": 535,
+    "fps": "32.0",
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1650 (0x00001F0A) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "largestCalls": [
+      [
+        "SkinnedMesh",
+        110
+      ],
+      [
+        "Connected_Shirt_V32",
+        106
+      ],
+      [
+        "Athlete_Distant_Faces",
+        75
+      ],
+      [
+        "Mesh",
+        40
+      ],
+      [
+        "Maspero_Continuous_Bank_Surface",
+        12
+      ],
+      [
+        "Static_Hull_Fittings",
+        8
+      ],
+      [
+        "Painted_Hull",
+        2
+      ],
+      [
+        "Inner_Hull",
+        2
+      ],
+      [
+        "Rounded_Rim",
+        2
+      ],
+      [
+        "Coach_Whistle",
+        2
+      ],
+      [
+        "Bow_Caller_Whistle",
+        2
+      ],
+      [
+        "CourseSign_សូមស្វាគមន៍",
+        2
+      ]
+    ],
+    "largest": [
+      [
+        "SkinnedMesh",
+        404040
+      ],
+      [
+        "Festival_scooter",
+        198144
+      ],
+      [
+        "Mesh",
+        153542
+      ],
+      [
+        "Festival_motorcycle",
+        111720
+      ],
+      [
+        "FestivalNPC_hoodie-man_LOD2",
+        99990
+      ],
+      [
+        "FestivalNPC_beach-man_LOD2",
+        97216
+      ],
+      [
+        "Connected_Shirt_V32",
+        94976
+      ],
+      [
+        "FestivalNPC_casual-man_LOD2",
+        86005
+      ],
+      [
+        "Athlete_Distant_Faces",
+        83704
+      ],
+      [
+        "FestivalNPC_formal-woman_LOD2",
+        77385
+      ],
+      [
+        "FestivalNPC_suit-man_LOD2",
+        77274
+      ],
+      [
+        "FestivalNPC_punk-man_LOD2",
+        74292
+      ],
+      [
+        "FestivalNPC_suit-woman_LOD2",
+        70692
+      ],
+      [
+        "FestivalNPC_worker-woman_LOD2",
+        69580
+      ],
+      [
+        "FestivalNPC_casual-woman_LOD2",
+        69459
+      ],
+      [
+        "FestivalNPC_worker-man_LOD2",
+        63042
+      ],
+      [
+        "FestivalNPC_farmer-man_LOD2",
+        53312
+      ],
+      [
+        "Static_Hull_Fittings",
+        46616
+      ]
+    ]
+  }
+}

@@ -28,7 +28,7 @@ export async function buildMenuCeremony(scene,base){
   g.setAttribute('aVertexId',new T.Float32BufferAttribute(Array.from({length:data.vertices},(_,i)=>i),1));geometries.push(g);return g;
  }
  const crewGeo=crewGeometry(data.indices),farCrewGeo=crewGeometry(data.farIndices);
- const bytes=Uint8Array.from(atob(data.motion.pixels),c=>c.charCodeAt(0)),poses=new T.DataTexture(new Float32Array(bytes.buffer),data.motion.width,data.motion.height,T.RGBAFormat,T.FloatType);poses.needsUpdate=true;poses.minFilter=poses.magFilter=T.NearestFilter;poses.generateMipmaps=false;resources.push(poses);
+ const bytes=Uint8Array.from(atob(data.motion.pixels),c=>c.charCodeAt(0)),poses=new T.DataTexture(data.motion.encoding==='float16-base64'?new Uint16Array(bytes.buffer):new Float32Array(bytes.buffer),data.motion.width,data.motion.height,T.RGBAFormat,data.motion.encoding==='float16-base64'?T.HalfFloatType:T.FloatType);poses.needsUpdate=true;poses.minFilter=poses.magFilter=T.NearestFilter;poses.generateMipmaps=false;resources.push(poses);
  const crewMat=new T.MeshLambertMaterial({vertexColors:true,side:T.DoubleSide});resources.push(crewMat);
  crewMat.onBeforeCompile=s=>{
   s.uniforms.uCeremonyFar={value:0};s.uniforms.uCeremonyTime=uniform;s.uniforms.uCeremonyPoses={value:poses};

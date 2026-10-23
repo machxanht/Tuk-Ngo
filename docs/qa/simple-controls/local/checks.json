@@ -1,0 +1,144 @@
+{
+  "physicalTabletTested": false,
+  "orientation": "Chromium CDP emulation",
+  "viewports": [
+    [
+      "vi",
+      1024,
+      768
+    ],
+    [
+      "vi",
+      768,
+      1024
+    ],
+    [
+      "vi",
+      1180,
+      430
+    ],
+    [
+      "vi",
+      390,
+      844
+    ],
+    [
+      "km",
+      1024,
+      768
+    ],
+    [
+      "km",
+      768,
+      1024
+    ],
+    [
+      "km",
+      1180,
+      430
+    ],
+    [
+      "km",
+      390,
+      844
+    ],
+    [
+      "en",
+      1024,
+      768
+    ],
+    [
+      "en",
+      768,
+      1024
+    ],
+    [
+      "en",
+      1180,
+      430
+    ],
+    [
+      "en",
+      390,
+      844
+    ]
+  ],
+  "stamina": {
+    "beforeBoost": 99.36395833333349,
+    "afterBoost": 79.08916666666985,
+    "beforeRest": 77.97458333333671,
+    "afterRest": 91.24958333333973
+  },
+  "independentTwoFingerContacts": true,
+  "sensorEvents": [
+    {
+      "trusted": true,
+      "beta": 30,
+      "gamma": 0
+    },
+    {
+      "trusted": true,
+      "beta": 30,
+      "gamma": 0.2
+    },
+    {
+      "trusted": true,
+      "beta": 30,
+      "gamma": 0
+    },
+    {
+      "trusted": true,
+      "beta": 30,
+      "gamma": 0.2
+    },
+    {
+      "trusted": true,
+      "beta": 30,
+      "gamma": 0
+    },
+    {
+      "trusted": true,
+      "beta": 30,
+      "gamma": 0.2
+    },
+    {
+      "trusted": true,
+      "beta": 30,
+      "gamma": 24
+    },
+    {
+      "trusted": true,
+      "beta": 30,
+      "gamma": 24.3
+    },
+    {
+      "trusted": true,
+      "beta": 30,
+      "gamma": 24
+    },
+    {
+      "trusted": true,
+      "beta": 30,
+      "gamma": 24.3
+    },
+    {
+      "trusted": true,
+      "beta": 30,
+      "gamma": 24
+    },
+    {
+      "trusted": true,
+      "beta": 30,
+      "gamma": 24.3
+    }
+  ],
+  "landscapeSteering": true,
+  "practice": true,
+  "ai": true,
+  "cup": {
+    "races": 6,
+    "teams": 61,
+    "savedBracketRestored": true
+  },
+  "errors": []
+}

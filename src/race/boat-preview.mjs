@@ -21,7 +21,7 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
  const racing=!!settings.current.racing,rigs=[];let teamIds=[...(settings.current.teamIds||['tum-nup-2','prek-on-dok-2'])];
  let river,sky,assets,disposed=false,raf=0,observer,controls;
  try{
-  rigs.push(await createHybridBoats(base+'assets/illustrated-v22/',{onProgress}));
+  rigs.push(await createHybridBoats(base+'assets/illustrated-v22/',{onProgress,preserveDrawingBuffer:!racing,antialias:!racing,alpha:!racing}));
   if(racing)rigs.push(await createHybridBoats(base+'assets/illustrated-v22/',{sharedRenderer:rigs[0].renderer}));
   await Promise.all(rigs.map((r,i)=>r.prepareTeams([teamIds[i]])));
   if(settings.current.kbachIds)await Promise.all(rigs.map((r,i)=>settings.current.kbachIds[i]?r.kbachLibrary.load(settings.current.kbachIds[i]).then(texture=>r.previewKbach=texture):null));
@@ -40,7 +40,8 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
  scene.children.filter(o=>o.isDirectionalLight).forEach(o=>{o.color.set('#fff3d6');o.intensity=1.6;});
  const fill=new T.DirectionalLight('#d8f0ff',.7);fill.position.set(-8,9,12);scene.add(fill);
  for(const r of rigs){const mask=r.scene.children.find(o=>o.isMesh&&o.material.colorWrite===false);if(mask)mask.visible=false;scene.add(r.boat);}
- river=buildRiver(scene,.28,{detailed:true,bright:true,crowdAssets:assets,crowdOptions:{vibrant:true,middleLimit:280,farLimit:16000,radius:430}});
+ river=buildRiver(scene,.28,{detailed:true,bright:true,crowdAssets:assets,crowdOptions:{vibrant:true,middleLimit:100,farLimit:16000,radius:430}});
+ await river.prepareLods?.();
  const courseOffset=racing?0:-(raceX(COURSE.length)+15.1);river.group.position.x=courseOffset;
  const official=buildStartOfficial(scene,assets,{x:raceX(0)+8+courseOffset});
  sky=buildMasperoSky(scene);river.setBoats(rigs.map(r=>r.boat));
@@ -122,7 +123,7 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
    rigs.forEach((r,i)=>r.previewKbach=maps[i]);return true;
   },
   seek(distance){const d=T.MathUtils.clamp(distance,0,COURSE.length);race.distance.fill(d);race.speed.fill(5.1);race.countdown=0;race.elapsed=d/5.1;race.finishTimes.fill(d===COURSE.length?race.elapsed:null);race.state=d===COURSE.length?'finished':'racing';effects.forEach(e=>e.reset());place();lastView='';settings.current.onRace?.(snapshot());},
-  capture(){saveCanvas(renderer.domElement,'ghe-ngo-3d.png');},record(){return recordCanvas(renderer.domElement,'ghe-ngo-cheo-10s.webm');},
+  capture(){renderer.render(scene,camera);saveCanvas(renderer.domElement,'ghe-ngo-3d.png');},record(){return recordCanvas(renderer.domElement,'ghe-ngo-cheo-10s.webm');},
   dispose(){if(disposed)return;disposed=true;cancelAnimationFrame(raf);flowGuide.dispose();laneBuoys.removeFromParent();laneBuoys.dispose();laneGeo.dispose();laneMat.dispose();observer.disconnect();controls.dispose();ceremony?.dispose();effects.forEach(e=>e.dispose());wakes.forEach(w=>w.dispose());official.dispose();sky.dispose();river.dispose();assets.dispose();for(const r of rigs.slice(1)){r.scene.add(r.boat);r.dispose();}rig.dispose();renderer.domElement.remove();if(host.boatPreview===api)delete host.boatPreview;}
  };
  host.boatPreview=api;
@@ -131,7 +132,7 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
   if(s.playing||s.ambientPlaying)c.seconds+=dt;
   if(s.playing){if(racing){advance(dt*(s.fast?3:1));c.phase=race.phases[0];}else c.phase=(c.phase+dt*s.cadence/60)%1;}
   const quality=s.quality||'auto';const renderInterval=now-renderLast;renderLast=now;if(renderInterval<250)frameAverage=frameAverage*.96+renderInterval*.04;
-  const cap=quality==='low'?.75:quality==='balanced'?1:1.25;
+  const cap=quality==='low'?.7:quality==='balanced'?.9:1;
   if(quality!==qualityKey){qualityKey=quality;renderer.setPixelRatio(Math.min(devicePixelRatio,cap));effects.forEach(e=>e.setDpr(renderer.getPixelRatio()));qualitySince=now;}
   if(quality==='auto'&&now-qualitySince>4000){const ratio=renderer.getPixelRatio(),next=frameAverage>42?Math.max(.7,ratio-.15):frameAverage<23?Math.min(devicePixelRatio,cap,ratio+.1):ratio;if(Math.abs(next-ratio)>.01){renderer.setPixelRatio(next);effects.forEach(e=>e.setDpr(next));}qualitySince=now;}
   syncGame();const game=s.game?.snapshot(),introducing=game&&(game.phase==='intro'||game.phase==='paused'&&game.introRemaining>0);

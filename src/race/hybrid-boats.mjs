@@ -13,6 +13,7 @@ import {ROWING_LAYOUT,rowingPose} from './rowing-pose.mjs';
 import {rowingMotionDigest} from './asset-digests.mjs';
 import {profile,boatHullGeometry} from './boat.mjs';
 import {buildConstructionDetails,BOAT_CONSTRUCTIONS} from './boat-construction.mjs';
+import {displayLod} from './render-lod.mjs';
 import {createCharacterHeads} from './character-heads.mjs';
 import {athleteFacesDigest} from './asset-digests.mjs';
 
@@ -23,7 +24,7 @@ const materialCache=new WeakMap();
 function materialFrom(m){if(!materialCache.has(m))materialCache.set(m,new T.MeshLambertMaterial({color:m.color,map:m.map,vertexColors:m.vertexColors,side:T.DoubleSide,transparent:m.transparent,opacity:m.opacity,alphaTest:m.alphaTest}));return materialCache.get(m);}
 function regularAttribute(a,type=Float32Array){const array=new type(a.count*a.itemSize);for(let i=0;i<a.count;i++)for(let k=0;k<a.itemSize;k++)array[i*a.itemSize+k]=a.getComponent(i,k);return new T.BufferAttribute(array,a.itemSize);}
 
-export async function createHybridBoats(base='',{onProgress=()=>{},sharedRenderer=null,faces=true}={}){
+export async function createHybridBoats(base='',{onProgress=()=>{},sharedRenderer=null,faces=true,preserveDrawingBuffer=true,antialias=true,alpha=true}={}){
  const loader=new GLTFLoader(),roles={};
  const motionFile='../athlete-master/rowing-motion.glb?sha='+rowingMotionDigest;
  let loaded=0;
@@ -90,7 +91,7 @@ export async function createHybridBoats(base='',{onProgress=()=>{},sharedRendere
  function faceFor(id,teamId){let seed=id*0x45d9f3b;for(const c of teamId||'prototype')seed=Math.imul(seed^c.charCodeAt(0),16777619);seed=Math.imul(seed^(seed>>>16),0x7feb352d);return ((seed^(seed>>>15))>>>0)%geometryVariants.length;}
  const scene=new T.Scene(),boat=new T.Group();scene.add(boat);
  scene.add(new T.HemisphereLight('#fff8e4','#d7c5a4',2.1));const sun=new T.DirectionalLight('#ffedcd',1.05);sun.position.set(5,12,-8);scene.add(sun);
- const renderer=sharedRenderer||new T.WebGLRenderer({alpha:true,antialias:true,powerPreference:'high-performance',preserveDrawingBuffer:true});
+ const renderer=sharedRenderer||new T.WebGLRenderer({alpha,antialias,powerPreference:'high-performance',preserveDrawingBuffer});
  if(!sharedRenderer){renderer.setClearColor(0,0);renderer.outputColorSpace=T.SRGBColorSpace;renderer.toneMapping=T.NoToneMapping;renderer.setSize(1600,Math.round(1600*H/W),false);}
  const camera=new T.OrthographicCamera(-15.8,18.7,34.5*H/W/2,-34.5*H/W/2,.1,120);
  function fullCamera(){camera.left=-15.8;camera.right=18.7;camera.top=34.5*H/W/2;camera.bottom=-camera.top;camera.position.set(9,13.2,-28);camera.lookAt(0,-.8,0);camera.updateProjectionMatrix();camera.updateMatrixWorld(true);}
@@ -117,6 +118,15 @@ export async function createHybridBoats(base='',{onProgress=()=>{},sharedRendere
   if(i===0)paintedHull.push({mesh});if(i===1)hullInteriors.push({mesh,color:mesh.material.color.clone()});
  }
  hullGeometry.dispose();hull.scene.add(hullBody);hull.scene.updateMatrixWorld(true);
+ // All timber fittings are rigid: merge equal-material pieces without changing
+ // their shape, UV-painted hull, construction or positions.
+ const rigidGroups=new Map(),hullInverse=new T.Matrix4().copy(hull.scene.matrixWorld).invert();
+ hull.scene.traverseVisible(o=>{if(!o.isMesh||o.isSkinnedMesh||Array.isArray(o.material)||o.material.map||hullMaterials.includes(o.material))return;const key=o.material.uuid;if(!rigidGroups.has(key))rigidGroups.set(key,[]);rigidGroups.get(key).push(o);});
+ for(const list of rigidGroups.values()){if(list.length<2)continue;const material=list[0].material,parts=[];
+  for(const mesh of list){let g=mesh.geometry.clone().applyMatrix4(new T.Matrix4().multiplyMatrices(hullInverse,mesh.matrixWorld));if(!g.attributes.normal)g.computeVertexNormals();for(const name of Object.keys(g.attributes))if(!['position','normal','color'].includes(name))g.deleteAttribute(name);for(const name of ['position','normal'])g.setAttribute(name,regularAttribute(g.attributes[name]));if(!material.vertexColors)g.deleteAttribute('color');else if(g.attributes.color)g.setAttribute('color',regularAttribute(g.attributes.color));else g.setAttribute('color',new T.Float32BufferAttribute(new Float32Array(g.attributes.position.count*3).fill(1),3));if(g.index){const flat=g.toNonIndexed();g.dispose();g=flat;}parts.push(g);mesh.visible=false;mesh.matrixAutoUpdate=false;}
+  const merged=mergeGeometries(parts,false);parts.forEach(g=>g.dispose());if(!merged)throw Error('Cannot batch rigid hull fittings');const batch=new T.Mesh(merged,material);batch.name='Static_Hull_Fittings';batch.matrixAutoUpdate=false;hull.scene.add(batch);
+ }
+
  boat.add(hull.scene);
  const constructionDetails=buildConstructionDetails(boat);let construction='plywood';
  // Keep the real hull depth. A depth-only water plane hides submerged mesh
@@ -285,6 +295,7 @@ export async function createHybridBoats(base='',{onProgress=()=>{},sharedRendere
    actors.forEach((a,i)=>{const p=prepared[i];a.skin.material=p.skin;a.shirt.visible=!!p.palette.sleeve;a.shirt.material=p.shirt;for(const mesh of a.group.children)if(mesh.userData.oldKitPrint)mesh.visible=!p.palette.sleeve;a.teamId=teamId;a.palette=p.palette;a.variant=p.variant;a.skin.geometry=p.geometry;});
    styleKey=key;
   }
+  for(const actor of actors)actor.skin.geometry=!study&&distance>42?(bodyLods.get(geometryFor(actor.role,actor.variant))||geometryFor(actor.role,actor.variant)):geometryFor(actor.role,actor.variant);
   detail.value=T.MathUtils.clamp(skinDetail,0,1);
   helmSteering=steering;pose(strokePhase(phase,effort),t,{viewKey,frameId,distance,nearest,desyncIntensity});
   faceController?.update();
@@ -301,7 +312,7 @@ export async function createHybridBoats(base='',{onProgress=()=>{},sharedRendere
   }else{actors.forEach(a=>a.group.visible=true);boardBatch.visible=true;boards.forEach(board=>board.visible=board.userData.owner===1&&construction==='plywood');if(!externalCamera)fullCamera();}
   // Instance matrices are local to the boat. A moving/rotating race boat must
   // not apply its world transform to the paddles a second time.
-  faceController?.sync(boat,study);
+  faceController?.sync(boat,study,distance);
   boatInverse.copy(boat.matrixWorld).invert();
   for(const {batch,entries} of batches){let n=0;for(const {owner,mesh} of entries)if(owner.group.visible)batch.setMatrixAt(n++,accessoryMatrix.multiplyMatrices(boatInverse,mesh.matrixWorld));batch.count=n;batch.instanceMatrix.needsUpdate=true;}
   if(updateOnly)return renderer.domElement;
@@ -327,10 +338,13 @@ export async function createHybridBoats(base='',{onProgress=()=>{},sharedRendere
  // This does not alter any source geometry attribute or the eight pose rigs.
  let faceLibrary;
  const faceFile='../character-comparison/athlete-faces.glb?sha='+athleteFacesDigest;
- if(faces){faceLibrary=await loadModel(faceFile);faceController=createCharacterHeads(faceLibrary,actors,headId);}
+ if(faces){faceLibrary=await loadModel(faceFile);faceController=createCharacterHeads(faceLibrary,actors,headId);await faceController.prepareLod();}
+ const bodyLods=new Map();const source=geometryFor('rower',0),prototype=await displayLod(source,.26,.025);
+ for(let variant=0;variant<geometryVariants.length;variant++){const full=geometryFor('rower',variant),g=new T.BufferGeometry();for(const [name,attribute]of Object.entries(full.attributes))g.setAttribute(name,attribute);g.setIndex(prototype.index);g.boundingSphere=full.boundingSphere;bodyLods.set(full,g);}prototype.dispose();
  setConstruction('plywood');pose(0,0);faceController?.update();
  return {render,bow,waterBow,stern,tips,actors,roles,boat,scene,renderer,camera,animation,faces:faceController,setConstruction,get construction(){return construction;},kbachLibrary:liveries.library,floorAt:floor,prepareTeams:liveries.load,stats:{revision:'hybrid-v32',athletes:actors.length,geometryVariants:12,faceProfiles:FACE_PROFILES.map(p=>({name:p.name,hair:p.hair,beard:p.beard})),skinTexture:'Official MakeHuman CC0; original UVs and pixels',animation:'continuous-skinned-3d',sharedPoseRigs:roleNames.length,trianglesPerActor:merged.index.count/3,soleLiftM:soleLift},resize(width){const w=Math.min(1600,Math.max(640,Math.round(width)));renderer.setSize(w,Math.round(w*H/W),false);farImages.clear();animation.clear();},getDrawStats(){return {gpuRenders,gpuReuses,poseUpdates:animation.counters.updates,poseRestores:animation.counters.restores,poseUpdatesByView:{...animation.counters.byView},geometryCacheSize:geometryVariants.length,triangles:renderer.info.render.triangles,drawCalls:renderer.info.render.calls,teamTextures:liveries.textures.size,kitMaterials:materials.size,vertexAttributes:Math.max(...renderer.info.programs.map(p=>Object.values(p.getAttributes()).reduce((sum,a)=>sum+(a.locationSize||1),0))),vertexAttributeLimit:renderer.getContext().getParameter(renderer.getContext().MAX_VERTEX_ATTRIBS)};},dispose(){
-   animation.clear();styles.clear();for(const {canvas} of farImages.values()){canvas.width=1;canvas.height=1;}farImages.clear();for(const master of Object.values(roles)){master.mixer.stopAllAction();master.mixer.uncacheRoot(master.root);master.skeleton.dispose();}
+   for(const g of bodyLods.values())g.dispose();bodyLods.clear();
+  animation.clear();styles.clear();for(const {canvas} of farImages.values()){canvas.width=1;canvas.height=1;}farImages.clear();for(const master of Object.values(roles)){master.mixer.stopAllAction();master.mixer.uncacheRoot(master.root);master.skeleton.dispose();}
    const geometries=new Set(),meshMaterials=new Set(),maps=new Set();
    scene.traverse(o=>{if(o.isInstancedMesh)o.dispose();if(o.geometry)geometries.add(o.geometry);for(const m of Array.isArray(o.material)?o.material:o.material?[o.material]:[]){meshMaterials.add(m);for(const value of Object.values(m))if(value?.isTexture)maps.add(value);}});
    equipment.scene.traverse(o=>{if(o.geometry)geometries.add(o.geometry);if(o.material)meshMaterials.add(o.material);});
@@ -338,7 +352,7 @@ export async function createHybridBoats(base='',{onProgress=()=>{},sharedRendere
    for(const g of paddleGeometry.values())geometries.add(g);for(const d of decals)geometries.add(d.geometry);
    for(const o of boards)geometries.add(o.geometry);geometries.add(merged);for(const g of geometryVariants)geometries.add(g);
     geometries.forEach(g=>g.dispose());for(const slices of floorSlices.values())for(const {mesh}of slices)mesh.geometry.dispose();floorSlices.clear();meshMaterials.forEach(m=>m.dispose());maps.forEach(t=>t.dispose());
-   faceController?.dispose();if(faceLibrary){faceLibrary.scene.traverse(o=>{if(o.geometry)o.geometry.dispose();if(o.material)o.material.dispose();});releaseAssetBytes(base+faceFile);}
+   faceController?.dispose();if(faceLibrary){faceLibrary.scene.traverse(o=>{if(o.geometry)o.geometry.dispose();if(o.material){for(const value of Object.values(o.material))if(value?.isTexture)value.dispose();o.material.dispose();}});releaseAssetBytes(base+faceFile);}
    shirtAsset.dispose();materials.dispose();liveries.dispose();skinMap.dispose();if(!sharedRenderer)renderer.dispose();
    for(const file of ['shirt-runtime-v32.json','athlete-rig-v27.glb','hull-rig-v25.glb','../athlete-master/athlete-details.glb',motionFile])releaseAssetBytes(base+file);
    scene.clear();
