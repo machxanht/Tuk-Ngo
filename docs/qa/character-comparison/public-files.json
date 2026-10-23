@@ -1,44 +1,71 @@
-[
-  {
-    "path": "character-comparison/index.html",
-    "bytes": 3530,
-    "sha256": "4f80ba73fe71e4b537c454031dc5f98e881ead824f4f7731d51745277e28ff46",
-    "matchesLocal": true
-  },
-  {
-    "path": "character-comparison/styles.css",
-    "bytes": 3217,
-    "sha256": "6ef1dbde3cf4af3019bf6079383c7c3f2008c86f6bf59568b8ae9dd0c4e310ac",
-    "matchesLocal": true
-  },
-  {
-    "path": "character-comparison/viewer.js",
-    "bytes": 643029,
-    "sha256": "8538ce2eadd5f8e5bbf6ad19864718982a81a7ff9e181e06a991512eb6bb3ebf",
-    "matchesLocal": true
-  },
-  {
-    "path": "assets/character-comparison/manifest.json",
-    "bytes": 2017,
-    "sha256": "d6ea0da60f1f54d717c49fa47b78d92cb255f51ae1b5c39b760c4d374f55a4f7",
-    "matchesLocal": true
-  },
-  {
-    "path": "assets/character-comparison/d.glb",
-    "bytes": 1897672,
-    "sha256": "3c4cc22854e1098a4e4a3fd469748cc1e6fcffb65391abacb188845755b0e576",
-    "matchesLocal": true
-  },
-  {
-    "path": "assets/character-comparison/f.glb",
-    "bytes": 4099472,
-    "sha256": "51c81d0954b72c0c491249a04ae77ad55c9a5e2aa1f4a1cf05c74d172a7531de",
-    "matchesLocal": true
-  },
-  {
-    "path": "assets/character-comparison/CREDITS.md",
-    "bytes": 1332,
-    "sha256": "195a31e365d1a25d921d14c293e25e59bfdad82711dfb88965b81fc802a90f73",
-    "matchesLocal": true
-  }
-]
+{
+  "url": "https://machxanht.github.io/Tuk-Ngo/character-comparison/",
+  "implementationCommit": "ce593d0",
+  "pagesCommit": "c021c914ad1c0064e58bb2d9a567418d6fce8e2e",
+  "files": [
+    {
+      "file": "character-comparison/index.html",
+      "status": 200,
+      "bytes": 4332,
+      "sha256": "e0fb493e087926d9e88bb71aa6a4e8730371b1cb57fe27ef8a45b1da4478c109",
+      "matchesGitContent": true,
+      "lineEndingsNormalized": false
+    },
+    {
+      "file": "character-comparison/styles.css",
+      "status": 200,
+      "bytes": 3569,
+      "sha256": "0616410b989fd81e2249f114c96515f2c8b0fe8c0b8d00797f72f38260258e26",
+      "matchesGitContent": true,
+      "lineEndingsNormalized": true
+    },
+    {
+      "file": "character-comparison/viewer.js",
+      "status": 200,
+      "bytes": 664341,
+      "sha256": "d06e3b5c5273777963ba2a047220b6975b02fe6696df6f3b7575214d0bd5149a",
+      "matchesGitContent": true,
+      "lineEndingsNormalized": false
+    },
+    {
+      "file": "assets/character-comparison/CREDITS.md",
+      "status": 200,
+      "bytes": 1743,
+      "sha256": "7b1d5208dde47bc3a5b0efc95713701ff4edaebbb6e553cf0f52bcfd1b8a7019",
+      "matchesGitContent": true,
+      "lineEndingsNormalized": false
+    },
+    {
+      "file": "assets/character-comparison/manifest.json",
+      "status": 200,
+      "bytes": 2618,
+      "sha256": "9453df040cf05a39e742741fa1b05e5f5ad1cd8a1b359fd4be77c3437d2f6f4e",
+      "matchesGitContent": true,
+      "lineEndingsNormalized": false
+    },
+    {
+      "file": "assets/character-comparison/d.glb",
+      "status": 200,
+      "bytes": 2346168,
+      "sha256": "1df4325b52059ab3f96f52dfec63653406b43fea1c3033f2ee40c4d57d4d4f2c",
+      "matchesGitContent": true,
+      "lineEndingsNormalized": false
+    },
+    {
+      "file": "assets/character-comparison/f.glb",
+      "status": 200,
+      "bytes": 5552724,
+      "sha256": "076b2d13b474abf4780a1a63d6dc5bad4a9cea13a9e2a0334cc20555818a2b2c",
+      "matchesGitContent": true,
+      "lineEndingsNormalized": false
+    },
+    {
+      "file": "assets/character-comparison/hairstyles.glb",
+      "status": 200,
+      "bytes": 3553868,
+      "sha256": "bdedeab7c97c3ac9bc8bd809fb3f1b28166557cad2f0f81411901eab8f77acc9",
+      "matchesGitContent": true,
+      "lineEndingsNormalized": false
+    }
+  ]
+}
