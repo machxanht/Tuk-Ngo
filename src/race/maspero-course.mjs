@@ -105,7 +105,7 @@ export function buildMasperoBanks(group,waterY,crowdAssets,bankMaterials={},opti
    const inStand=side<0&&x>1025&&x<1155||side>0&&x>1000&&x<1170;
    for(let row=0;row<(inStand?1:10);row++){
     const id=100000+(side+1)*200000+col*13+row,z=side*(45.05+row*.55);
-    person(x+(row%2)*.24+Math.sin(id*12.9)*.045,1.4,z,id);if(row>=3&&id%97===0)umbrella(x,3.55,z,id);
+    person(x+(row%2)*.24+Math.sin(id*12.9)*.17,1.4,z+Math.sin(id*7.73)*.20,id);if(row>=3&&id%97===0)umbrella(x,3.55,z,id);
    }
   }
  }

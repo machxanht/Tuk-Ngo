@@ -38,7 +38,7 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
  scene.children.filter(o=>o.isDirectionalLight).forEach(o=>{o.color.set('#fff3d6');o.intensity=1.6;});
  const fill=new T.DirectionalLight('#d8f0ff',.7);fill.position.set(-8,9,12);scene.add(fill);
  for(const r of rigs){const mask=r.scene.children.find(o=>o.isMesh&&o.material.colorWrite===false);if(mask)mask.visible=false;scene.add(r.boat);}
- river=buildRiver(scene,.28,{detailed:true,bright:true,crowdAssets:assets,crowdOptions:{vibrant:true,middleLimit:280,farLimit:12000,radius:430}});
+ river=buildRiver(scene,.28,{detailed:true,bright:true,crowdAssets:assets,crowdOptions:{vibrant:true,middleLimit:280,farLimit:16000,radius:430}});
  const courseOffset=racing?0:-(raceX(COURSE.length)+15.1);river.group.position.x=courseOffset;
  const official=buildStartOfficial(scene,assets,{x:raceX(0)+8+courseOffset});
  sky=buildMasperoSky(scene);river.setBoats(rigs.map(r=>r.boat));

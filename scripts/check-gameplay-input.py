@@ -9,6 +9,7 @@ with sync_playwright() as p:
  try:
   page=browser.new_page(viewport={'width':1024,'height':768},has_touch=True)
   page.on('pageerror',lambda e:errors.append(str(e)))
+  page.on('console',lambda m:errors.append(m.text) if m.type=='error' else None)
   page.goto(args.url);page.wait_for_selector('[data-boat-count="61"]',timeout=90000)
   page.screenshot(path=str(out/'menu-logo.png'))
   # Render the actual ceremony shader/geometry near the seated hips and thighs.
@@ -16,6 +17,24 @@ with sync_playwright() as p:
   (out/'ceremony-clothing.png').write_bytes(base64.b64decode(image.split(',')[1]))
   page.get_by_role('button',name='Đua nhanh · 2 ghe',exact=True).tap();page.get_by_role('button',name='Bắt đầu đua nhanh',exact=True).tap()
   page.get_by_role('button',name='Bỏ qua giới thiệu',exact=True).tap();page.wait_for_function(boat+".game.state.phase==='racing'",timeout=20000)
+  identities=page.evaluate(boat+".rigs.map(r=>r.actors.map(a=>a.identity.model+':'+a.identity.face))")
+  assert identities[0]!=identities[1],'Both teams must have independent face selections'
+  assert all(len(set(ids))>=10 for ids in identities),'Use both existing head libraries and multiple face shapes'
+  # Default easy mode: real sustained finger contact, no timing intervention.
+  assert page.evaluate(boat+".game.state.difficulty")=='easy'
+  button=page.get_by_test_id('stroke-pad');box=button.bounding_box();x=box['x']+box['width']*.55;y=box['y']+box['height']*.5
+  cdp=page.context.new_cdp_session(page)
+  cdp.send('Input.dispatchTouchEvent',{'type':'touchStart','touchPoints':[{'x':x,'y':y,'id':1}]})
+  page.wait_for_function(boat+".game.state.perfect>=5",timeout=30000)
+  assert page.evaluate(boat+".game.state.distances[0]")>8
+  cdp.send('Input.dispatchTouchEvent',{'type':'touchEnd','touchPoints':[]})
+  held_count=page.evaluate(boat+".game.state.perfect")
+  page.wait_for_timeout(1600)
+  assert not page.evaluate(boat+".game.state.rowingHeld")
+  assert page.evaluate(boat+".game.state.perfect")==held_count
+  page.screenshot(path=str(out/'easy-hold.png'))
+  # The edge cases below deliberately exercise manual scoring.
+  page.evaluate(boat+".game.state.difficulty='normal'")
   # Freeze only the simulation clock for repeatable input-edge tests. All
   # contacts still pass through Chromium's real touchscreen and React handlers.
   page.evaluate(boat+".game.testAdvance="+boat+".game.advance;"+boat+".game.advance=()=>{}")
@@ -43,7 +62,7 @@ with sync_playwright() as p:
   page.screenshot(path=str(out/'input-receipt.png'))
   page.evaluate(boat+".game.advance="+boat+".game.testAdvance;delete "+boat+".game.testAdvance")
   assert not errors,errors
-  report={'realTouchPointerEvents':True,'scoringClockControlled':True,'earlyCorrection':True,'nonPrimaryFingerAccepted':True,'releaseDoesNotDoubleScore':True,'ceremonyClothingRender':True,'errors':errors}
+  report={'independentTeamFaces':True,'easyHeldFingerRows':True,'releaseStopsAssistance':True,'realTouchPointerEvents':True,'scoringClockControlled':True,'earlyCorrection':True,'nonPrimaryFingerAccepted':True,'releaseDoesNotDoubleScore':True,'ceremonyClothingRender':True,'errors':errors}
   (out/'input-regression.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
   print(json.dumps(report))
  finally:browser.close()

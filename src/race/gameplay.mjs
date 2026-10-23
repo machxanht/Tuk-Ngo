@@ -33,7 +33,7 @@ export function createRaceGame(){
   reset(difficulty='normal'){
    consumed=new Set();rejected=new Set();previousPhase='racing';accumulator=0;tapBeat=-1;taps=0;
    this.state={phase:'ready',difficulty:DIFFICULTIES[difficulty]?difficulty:'normal',pace:'steady',countdown:3,elapsed:0,distances:[0,0],speeds:[0,0],finishTimes:[null,null],beatPhase:0,aiPhase:.17,stamina:100,power:0,cohesion:.72,combo:0,maxCombo:0,perfect:0,good:0,missed:0,lastResolved:0,feedback:'Chạm theo vùng sáng',feedbackAt:-10,result:null,pauseReason:'',runId:0};
-    Object.assign(this.state,{surgeCharge:0,surgeRemaining:0,desync:0,lastSpamAt:-10,slipstream:false,lastJudgement:null,lastTiming:'wait',lastStrokeBeat:-1,aiStamina:100,aiSurgeCharge:0,aiSurgeRemaining:0});
+    Object.assign(this.state,{rowingHeld:false,surgeCharge:0,surgeRemaining:0,desync:0,lastSpamAt:-10,slipstream:false,lastJudgement:null,lastTiming:'wait',lastStrokeBeat:-1,aiStamina:100,aiSurgeCharge:0,aiSurgeRemaining:0});
    return this.snapshot();
   },
   start(difficulty=this.state.difficulty,{intro=false}={}){
@@ -42,19 +42,25 @@ export function createRaceGame(){
   },
   pause(reason=''){
    if(!['intro','racing','countdown'].includes(this.state.phase))return;
-   previousPhase=this.state.phase;this.state.phase='paused';this.state.pauseReason=reason;
+   this.setRowingHeld(false);previousPhase=this.state.phase;this.state.phase='paused';this.state.pauseReason=reason;
   },
   resume(){if(this.state.phase==='paused'){this.state.phase=previousPhase;this.state.pauseReason='';}},
   setPace(pace){if(PACES[pace]&&this.state.phase!=='finished')this.state.pace=pace;},
+  setRowingHeld(held){
+   const s=this.state;s.rowingHeld=!!held&&s.difficulty==='easy'&&s.phase==='racing'&&s.finishTimes[0]==null;
+   if(!s.rowingHeld)return;
+   // Start immediately, then let the fixed simulation tick schedule each beat.
+   if(!consumed.has(Math.round(s.beatPhase)))this.stroke();
+  },
   stroke(){
    const s=this.state;if(s.phase!=='racing'||s.finishTimes[0]!=null)return null;
    const timing=timingFor(s,consumed),beat=timing.beat;
    if(tapBeat!==beat){tapBeat=beat;taps=0;}taps++;
    // One harmless double tap; repeated mashing has a bounded penalty.
-   if(taps>2&&s.elapsed-s.lastSpamAt>=.5){s.lastSpamAt=s.elapsed;s.stamina=clamp(s.stamina-.8,0,100);s.desync=clamp(s.desync+.22,0,1);s.cohesion=clamp(s.cohesion-.025,.15,1);s.lastJudgement='BAD';s.lastTiming='spam';s.feedback='BAD · Dồn nhịp';s.feedbackAt=s.elapsed;}
+   if(s.difficulty!=='easy'&&taps>2&&s.elapsed-s.lastSpamAt>=.5){s.lastSpamAt=s.elapsed;s.stamina=clamp(s.stamina-.8,0,100);s.desync=clamp(s.desync+.22,0,1);s.cohesion=clamp(s.cohesion-.025,.15,1);s.lastJudgement='BAD';s.lastTiming='spam';s.feedback='BAD · Dồn nhịp';s.feedbackAt=s.elapsed;}
    if(!timing.available)return null;
    const error=timing.seconds,delta=Math.abs(error);
-   const quality=delta<=.10?'perfect':delta<=DIFFICULTIES[s.difficulty].window?'good':'missed';
+   const quality=s.difficulty==='easy'?'perfect':delta<=.10?'perfect':delta<=DIFFICULTIES[s.difficulty].window?'good':'missed';
    s.lastJudgement=quality==='missed'?'BAD':quality.toUpperCase();
    if(quality==='missed'){
     // An early press must not lock the upcoming stroke. Allow a correction
@@ -104,11 +110,12 @@ export function createRaceGame(){
    s.desync=Math.max(0,s.desync-dt*.42);s.surgeRemaining=Math.max(0,s.surgeRemaining-dt);
    if(s.finishTimes[0]==null){
     s.beatPhase+=dt*cadence/60;
+    if(s.rowingHeld&&s.difficulty==='easy'&&timingFor(s,consumed).seconds>=0&&timingFor(s,consumed).seconds<dt*1.1)this.stroke();
     // Resolve after the latest legal tap window, not at the visual beat itself.
     const resolved=Math.floor(s.beatPhase-DIFFICULTIES[s.difficulty].window*cadence/60-1e-8);
-    while(s.lastResolved<resolved){s.lastResolved++;if(s.lastResolved>0&&!consumed.has(s.lastResolved)&&!rejected.has(s.lastResolved))this.miss();consumed.delete(s.lastResolved);rejected.delete(s.lastResolved);}
+    while(s.lastResolved<resolved){s.lastResolved++;if(s.lastResolved>0&&!consumed.has(s.lastResolved)&&!rejected.has(s.lastResolved)&&s.difficulty!=='easy')this.miss();consumed.delete(s.lastResolved);rejected.delete(s.lastResolved);}
     s.power*=Math.exp(-dt*.28);
-    const drain=s.pace==='recover'?-1.4:RACE_STAGES[stage].drain+(s.pace==='sprint'?1.35:0);
+    const drain=s.difficulty==='easy'&&!s.rowingHeld?-1.8:s.pace==='recover'?-1.4:RACE_STAGES[stage].drain+(s.pace==='sprint'?1.35:0);
     s.stamina=clamp(s.stamina-dt*drain*(.25+.75*s.power)*(s.slipstream&&drain>0?.65:1)*(s.lastJudgement==='PERFECT'&&drain>0?.72:1),0,100);
    }
    const fatigue=.5+.5*clamp(s.stamina/24,0,1);
@@ -141,7 +148,7 @@ export function createRaceGame(){
    const s=this.state;if(s.phase==='finished')return;
    const [player,ai]=s.finishTimes;
    s.result=player==null?'dnf':ai==null||player<ai-.03?'win':Math.abs(player-ai)<=.03?'tie':'loss';
-   s.phase='finished';s.speeds=[0,0];
+   s.rowingHeld=false;s.phase='finished';s.speeds=[0,0];
   },
   skipIntro(){if(this.state.phase==='intro'){this.state.introRemaining=0;this.state.introElapsed=10;this.state.phase='countdown';}},
   snapshot(){

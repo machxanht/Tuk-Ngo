@@ -12,28 +12,6 @@ const art=[];
 const path=(d,fill,stroke=null,width=1)=>art.push({type:'path',d,fill,stroke,width});
 const circle=(x,y,r,fill,stroke=null,width=1)=>art.push({type:'circle',x,y,r,fill,stroke,width});
 const c=FESTIVAL_PALETTE;
-// Warm sun, water halo and sunbeams.
-circle(212,106,96,'#e3f6ec');circle(212,79,61,c.gold);circle(212,79,50,'#ffe598');
-for(let i=0;i<13;i++){const a=(i*15-180)*Math.PI/180,x=212+69*Math.cos(a),y=79+69*Math.sin(a);path(`M${x} ${y}l${Math.cos(a)*7} ${Math.sin(a)*7}`,null,'#efad38',2.6);}
-// Khmer pagoda: curved eaves, layered roof, finial and lit colonnade.
-path('M163 89 H257 V133 H163Z','#fff4ca',c.deepRed,1.8);
-for(const x of [171,188,205,222,239])path(`M${x} 91v41h7V91Z`,'#ffd575');
-path('M181 102h12v30h-12Z M222 102h12v30h-12Z',c.deepRed);
-path(FESTIVAL_MARK.temple,c.red,c.deepRed,1.8);
-path('M148 91 Q163 88 171 80 L184 77 L210 38 L236 77 L249 80 Q257 88 272 91 L267 96 H153Z',c.gold,c.deepRed,1.5);
-path('M171 75 L187 63 L210 29 L233 63 L249 75 L238 74 L210 48 L182 74Z',c.red,c.gold,2.5);
-path('M187 61L210 18L233 61L221 54L210 33L199 54Z',c.red,c.gold,2);
-path('M210 23V10 M205 19L210 7L215 19 M148 91L143 80L157 87 M272 91L277 80L263 87',null,c.gold,2.7);
-path('M157 131H263L270 137H150Z',c.gold,c.deepRed,1.4);
-// Sugar palms identify the bright southern river landscape.
-for(const [x,flip]of [[113,1],[305,-1]]){
- path(`M${x} 133 Q${x+flip*8} 101 ${x+flip*4} 67 L${x+flip*10} 67 Q${x+flip*15} 104 ${x+flip*7} 133Z`,'#9e6041');
- const ox=x+flip*7;
- for(const [dx,dy,bend]of [[-30,-12,-22],[-20,-26,-5],[0,-30,10],[24,-23,7],[35,-5,-10],[-33,8,-16],[28,10,18]])path(`M${ox} 68 Q${ox+dx*.55} ${68+dy+bend} ${ox+dx} ${68+dy} Q${ox+dx*.47} ${68+dy+10} ${ox} 68Z`,dy<0?'#099b75':'#087d6a');
- circle(ox,69,4,'#c99648');
-}
-path('M82 148Q160 124 223 137T361 136L361 185H67Z','#8ad4cb');
-path('M90 151Q150 140 199 149T301 146T357 141',null,'#effdf5',3);
 // Two crews and outboard paddles, never abstract boat-shaped ribbons.
 function boat(back){
  const start=back?100:62,end=back?324:354,count=back?13:16,base=back?134:174;
@@ -53,18 +31,10 @@ function boat(back){
  circle(back?364:405,back?90:117,1.3,c.deepRed);
 }
 boat(true);boat(false);
-// Rippling river and two lotus flowers finish the crest.
-path(FESTIVAL_MARK.water,null,c.blue,3.5);
-path('M41 201Q64 192 82 200 M346 198Q366 187 386 191',null,c.white,3);
-for(const [x,y,scale]of [[42,202,1],[376,199,.9]]){
- path(`M${x} ${y}q${-21*scale} ${4*scale} ${-25*scale} ${-7*scale}q${18*scale} ${-4*scale} ${25*scale} ${7*scale}q${12*scale} ${-11*scale} ${25*scale} ${-7*scale}q${-2*scale} ${11*scale} ${-25*scale} ${7*scale}Z`,c.jade);
- for(const [dx,dy]of [[-13,-17],[13,-17],[0,-25]])path(`M${x} ${y-2}Q${x+dx*scale} ${y-3} ${x+dx*scale} ${y+dy*scale}Q${x+dx*.15*scale} ${y+dy*.67*scale} ${x} ${y-2}Z`,dx===0?'#fa8b99':'#de4e79',c.white,.8);
- circle(x,y-3,3,c.gold);
-}
 function shapeSvg(s){const style=`fill="${s.fill||'none'}"${s.stroke?` stroke="${s.stroke}" stroke-width="${s.width}" stroke-linecap="round" stroke-linejoin="round"`:''}`;return s.type==='path'?`<path d="${s.d}" ${style}/>`:`<circle cx="${s.x}" cy="${s.y}" r="${s.r}" ${style}/>`;}
-export function festivalLogoSvg(){return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 228" role="img" aria-labelledby="title"><title id="title">Lễ hội đua ghe Ngo · ពិធីបុណ្យអុំទូក · ២០២៦</title>${art.map(shapeSvg).join('')}</svg>`;}
+export function festivalLogoSvg(){return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="15 65 405 150" role="img" aria-labelledby="title"><title id="title">Lễ hội đua ghe Ngo · ពិធីបុណ្យអុំទូក · ២០២៦</title>${art.map(shapeSvg).join('')}</svg>`;}
 export function paintFestivalMark(p,x,y,width,height){
- p.save();p.translate(x,y);p.scale(width/420,height/228);p.lineJoin='round';p.lineCap='round';
+ p.save();p.translate(x,y);p.scale(width/405,height/150);p.translate(-15,-65);p.lineJoin='round';p.lineCap='round';
  for(const s of art){p.beginPath();const shape=s.type==='path'?new Path2D(s.d):null;if(!shape)p.arc(s.x,s.y,s.r,0,Math.PI*2);if(s.fill){p.fillStyle=s.fill;shape?p.fill(shape):p.fill();}if(s.stroke){p.strokeStyle=s.stroke;p.lineWidth=s.width;shape?p.stroke(shape):p.stroke();}}
  p.restore();
 }

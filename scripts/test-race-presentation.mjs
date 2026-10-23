@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
+import {profile,section} from '../src/race/boat.mjs';
 import {createRaceGame} from '../src/race/gameplay.mjs';
 import {introShot,ceremonyShot} from '../src/race/race-camera.mjs';
 import {COURSE} from '../src/race/maspero-course.mjs';
@@ -25,13 +26,29 @@ for(const time of[0,17,300])for(let i=0;i<61;i++){const p=ceremonyPlacement(i,ti
 const raft=Array.from({length:61},(_,i)=>ceremonyPlacement(i));assert(new Set(raft.map(p=>Math.round(p.x))).size>40);assert(new Set(raft.map(p=>Math.round(p.z))).size>25);assert(Math.max(...raft.map(p=>p.yaw))-Math.min(...raft.map(p=>p.yaw))>.20);
 const angles=new Set();for(let i=0;i<=1980;i++){const p=ceremonyShot(i/60);angles.add(p.name);assert([...p.position,...p.target,p.fov].every(Number.isFinite));assert(p.position[1]>4);if(i){const prev=ceremonyShot((i-1)/60);assert(Math.hypot(...p.position.map((n,k)=>n-prev.position[k]))<3);}}assert.equal(angles.size,6);
 const crew=JSON.parse(await readFile('public/assets/athlete-master/ceremony-crew.json','utf8'));
-assert.equal(crew.wardrobe.clothingShells,1);assert(crew.wardrobe.hiddenSkinTriangles>50,'Hidden anatomy must be removed below the shorts');assert.equal(crew.wardrobe.sourceVertexMapping,'exact','Do not reattach decimated vertices by proximity');assert(crew.wardrobe.nativeShortsPreserved);assert(crew.wardrobe.shortsTriangles>=1000,'Retain native cuff and waist topology for close camera shots');
-assert(crew.farTriangles<900);assert(crew.farIndices.every(i=>i>=0&&i<crew.vertices));
+assert.equal(crew.wardrobe.clothingShells,1);assert(crew.wardrobe.hiddenSkinTriangles>50,'Hidden anatomy must be removed below the shorts');assert.equal(crew.wardrobe.sourceVertexMapping,'exact','Do not reattach decimated vertices by proximity');assert(crew.wardrobe.nativeShortsPreserved);assert.equal(crew.wardrobe.nativeJerseyTriangles,896);assert.equal(crew.wardrobe.nativeJerseyVertices,533);assert(crew.wardrobe.shortsTriangles>=1000,'Retain native cuff and waist topology for close camera shots');
+assert(crew.farTriangles<600);assert(crew.farIndices.every(i=>i>=0&&i<crew.vertices));
 assert(crew.wardrobe.shortsVertices>=30,'Seated hips and upper legs must retain shorts coverage');
-assert(crew.vertices>=200&&crew.triangles<7000);assert.equal(crew.sourceSha256,createHash('sha256').update(await readFile('public/assets/athlete-master/athlete-master.glb')).digest('hex'));
+assert(crew.vertices>=200&&crew.triangles<8000);assert.equal(crew.sourceSha256,createHash('sha256').update(await readFile('public/assets/athlete-master/athlete-master.glb')).digest('hex'));
 assert.equal(ceremonyCrewDigest,createHash('sha256').update(await readFile('public/assets/athlete-master/ceremony-crew.json')).digest('hex'));
 assert(crew.hair.vertices>=60);assert.equal(crew.hair.styles,4);assert.equal(crew.attributes.aScalp.array.length,crew.vertices*4);assert(crew.attributes.aScalp.array.some((v,i)=>i%4===3&&v>.8&&v<1.5));
-assert.equal(crew.motion.variants,2);assert.equal(crew.motion.frames,24);const samples=Buffer.from(crew.motion.pixels,'base64'),poses=new Float32Array(samples.buffer,samples.byteOffset,samples.byteLength/4);assert.equal(poses.length,crew.motion.width*crew.motion.height*4);const shortsIds=[];for(let i=0;i<crew.vertices;i++){const c=crew.attributes.color.array.slice(i*3,i*3+3);if(c[0]<.02&&c[1]>.025&&c[2]>.06)shortsIds.push(i);}assert.equal(shortsIds.length,crew.wardrobe.shortsVertices);for(let frame=1;frame<crew.motion.frames*crew.motion.variants;frame++)for(const i of shortsIds)for(let axis=0;axis<3;axis++)assert.equal(poses[(frame*crew.vertices+i)*4+axis],poses[i*4+axis],'Raising either arm must not stretch or tear the planted shorts');assert(poses.every(Number.isFinite));assert(crew.cap.triangles>30&&crew.cap.triangles<180);assert(Math.max(...crew.motion.hatFrames.map(p=>p[1]))>1.45);assert(Math.abs(crew.motion.hatFrames[0][0]-crew.motion.hatFrames[6][0])>.05);
+assert.equal(crew.motion.variants,2);assert.equal(crew.motion.frames,24);const samples=Buffer.from(crew.motion.pixels,'base64'),poses=new Float32Array(samples.buffer,samples.byteOffset,samples.byteLength/4);assert.equal(poses.length,crew.motion.width*crew.motion.height*4);const shortsIds=[];for(let i=0;i<crew.vertices;i++){const c=crew.attributes.color.array.slice(i*3,i*3+3);if(c[0]<.02&&c[1]>.025&&c[2]>.06)shortsIds.push(i);}assert.equal(shortsIds.length,crew.wardrobe.shortsVertices);for(let frame=1;frame<crew.motion.frames*crew.motion.variants;frame++)for(const i of shortsIds)for(let axis=0;axis<3;axis++)assert.equal(poses[(frame*crew.vertices+i)*4+axis],poses[i*4+axis],'Raising either arm must not stretch or tear the planted shorts');assert(poses.every(Number.isFinite));assert(crew.cap.triangles>500&&crew.cap.triangles<1200&&crew.cap.farTriangles<500);assert(Math.max(...crew.motion.hatFrames.map(p=>p[1]))>1.45);assert(Math.abs(crew.motion.hatFrames[0][0]-crew.motion.hatFrames[6][0])>.05);
+// A morph-only rowing shirt stays frozen when bones salute. Require the
+// original endpoint evaluator and actual cuff motion in BOTH salute variants.
+assert(crew.wardrobe.shirtReferenceErrorM<.00003,'Canonical cloth must match the source rowing recording');
+const jerseyIds=crew.attributes.aKit.array.map((v,i)=>v===1?i:-1).filter(i=>i>=0);assert.equal(jerseyIds.length,533);
+for(let style=0;style<2;style++){
+ let movement=0;for(let frame=1;frame<crew.motion.frames;frame++)for(const i of jerseyIds){const base=(style*crew.motion.frames*crew.vertices+i)*4,offset=((style*crew.motion.frames+frame)*crew.vertices+i)*4;movement=Math.max(movement,Math.hypot(...[0,1,2].map(a=>poses[offset+a]-poses[base+a])));}
+ assert(movement>.04,'Jersey cuffs must follow each waving arm, not remain in the rowing pose');
+}
+// Verify every below-knee vertex fits the actual hull at every ceremony seat.
+let footClearance=Infinity;
+for(let row=0;row<25;row++)for(const side of[-1,1])for(let i=0;i<crew.vertices;i++){
+ const x=poses[i*4],y=poses[i*4+1],z=poses[i*4+2];if(y>.45)continue;
+ const seatX=-11.4+row*.94,bx=seatX+z,by=profile(seatX).g-.59+y,bz=side*.21-x*side*.82,p=profile(bx);if(by>p.g)continue;
+ assert(by>p.k+.01,'Feet must remain above the wooden bottom');const s=Math.pow((by-p.k)/(p.g-p.k),1/p.p),clearance=Math.abs(section(bx,s).z)-Math.abs(bz);footClearance=Math.min(footClearance,clearance);assert(clearance>.005,'Both rows must tuck their feet inside the hull, including its narrower ends');
+}
+console.log('Ceremony minimum foot/hull clearance:',footClearance.toFixed(4),'m');
 const drift=Array.from({length:FLOTSAM_COUNTS.hyacinth+FLOTSAM_COUNTS.banana},(_,i)=>flotsamPlacement(i));assert(drift.length>150);assert(new Set(drift.map(p=>p.cluster)).size>25);assert(new Set(drift.map(p=>Math.round(Math.abs(p.z)*10))).size>60);
 for(let i=0;i<drift.length;i++){const p=drift[i],q=flotsamPlacement(i,10);assert(Math.min(...COURSE.lanes.map(lane=>Math.abs(p.z-lane)))>4,'Floating plants must clear both racing lanes');assert(Math.abs(p.x-q.x-2.4)<1e-6);}
 const waders=finishSpectatorPositions(COURSE.finishX,.28);assert(waders.length>500);assert.equal(new Set(waders.map(p=>p.cluster)).size,10);assert(waders.some(p=>p.z<0)&&waders.some(p=>p.z>0));for(const p of waders){assert(p.x>COURSE.finishX&&p.x<COURSE.finishX+100);assert(Math.abs(p.z)>21);assert.equal(p.waterY,.28);assert.equal(p.submergedHeight,.9);assert(['wave','cheer','clap'].includes(p.activity));}

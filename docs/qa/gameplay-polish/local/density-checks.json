@@ -1,0 +1,311 @@
+{
+  "spectators": 65645,
+  "traffic": {
+    "version": 21,
+    "count": 4840,
+    "types": {
+      "sedan": 336,
+      "pickup": 105,
+      "scooter": 2019,
+      "motorcycle": 1196,
+      "bicycle": 440,
+      "delivery-scooter": 625,
+      "van": 89,
+      "minibus": 30
+    },
+    "riders": 4280,
+    "drawCalls": 19,
+    "geometryTriangles": 22040,
+    "visible": 561,
+    "submittedTriangles": 2225092,
+    "roadY": 1.24,
+    "range": {
+      "bodies": 220,
+      "wheels": 220
+    },
+    "laneOffsets": {
+      "cars": 1.5,
+      "motor": [
+        3.1,
+        4.3
+      ],
+      "bicycle": 5.65
+    },
+    "streamSpeed": "Shared per direction/bank/category to preserve spacing; cyclists on outer lane",
+    "source": "Original rounded rider and vehicle geometry; sedan/pickup reused from approved V20 study",
+    "samples": [
+      {
+        "id": 61,
+        "type": "sedan",
+        "x": 909.9610341832868,
+        "y": 1.24,
+        "z": -48.01030305689214,
+        "yaw": 3.127018685517047
+      },
+      {
+        "id": 62,
+        "type": "sedan",
+        "x": 925.0079645019941,
+        "y": 1.24,
+        "z": -47.90077392483833,
+        "yaw": 3.127018685517047
+      },
+      {
+        "id": 63,
+        "type": "sedan",
+        "x": 942.4788157269131,
+        "y": 1.24,
+        "z": -47.59576593719237,
+        "yaw": 3.1413176535967446
+      },
+      {
+        "id": 65,
+        "type": "sedan",
+        "x": 1006.4841141005136,
+        "y": 1.24,
+        "z": -71.35090860352086,
+        "yaw": 3.2541790760432407
+      },
+      {
+        "id": 66,
+        "type": "sedan",
+        "x": 1048.9036567479288,
+        "y": 1.24,
+        "z": -71.48961879714923,
+        "yaw": 3.1413126535971068
+      },
+      {
+        "id": 67,
+        "type": "sedan",
+        "x": 1091.101968791243,
+        "y": 1.24,
+        "z": -71.50704610970172,
+        "yaw": 3.141332653595669
+      },
+      {
+        "id": 68,
+        "type": "sedan",
+        "x": 1137.6179635432381,
+        "y": 1.24,
+        "z": -71.47957313627953,
+        "yaw": 3.141332653595669
+      },
+      {
+        "id": 69,
+        "type": "sedan",
+        "x": 1153.110356586736,
+        "y": 1.24,
+        "z": -71.37302298003573,
+        "yaw": 3.1413093202640465
+      },
+      {
+        "id": 70,
+        "type": "sedan",
+        "x": 1189.8669176667408,
+        "y": 1.24,
+        "z": -66.16152228735763,
+        "yaw": 2.7018681618859457
+      },
+      {
+        "id": 72,
+        "type": "sedan",
+        "x": 1235.2614507822,
+        "y": 1.24,
+        "z": -47.52451044482278,
+        "yaw": 3.141317653596709
+      },
+      {
+        "id": 75,
+        "type": "sedan",
+        "x": 1301.4107609037756,
+        "y": 1.24,
+        "z": -47.367040728247986,
+        "yaw": 3.1413093202640465
+      },
+      {
+        "id": 1268,
+        "type": "sedan",
+        "x": 921.4234198776203,
+        "y": 1.24,
+        "z": -44.71918104111214,
+        "yaw": -0.014573968072745896
+      }
+    ],
+    "placement": "independent random gaps and lateral jitter; four safe lanes per bank/direction"
+  },
+  "buildings": {
+    "version": 21,
+    "houses": 397,
+    "backgroundHomes": 1116,
+    "frontageFamilies": {
+      "tin-local-house": 24,
+      "raised-wood-house": 31,
+      "modern-townhouse": 66,
+      "corner-cafe": 37,
+      "garden-veranda": 36,
+      "old-tiled-dwelling": 37,
+      "balcony-shophouse": 37,
+      "shutter-shophouse": 52,
+      "covered-market": 35,
+      "open-front-shop": 42
+    },
+    "trees": 3053,
+    "backyardTrees": 2885,
+    "placement": "seeded irregular scatter with home and lane clearance",
+    "treeSilhouettes": 9,
+    "frontageTemplates": 12,
+    "foodStalls": 44,
+    "people": 12377,
+    "roadsidePeople": 11471,
+    "activityCounts": {
+      "walk": 6932,
+      "talk": 1418,
+      "vendor": 158,
+      "eat": 1428,
+      "clap": 1177,
+      "wave": 1264
+    },
+    "drawCalls": 68,
+    "geometryTriangles": 42096,
+    "visibleHouses": 65,
+    "visibleInstances": 3671,
+    "submittedTriangles": 2307464,
+    "range": {
+      "detailedHouses": 125,
+      "distantHouses": 660,
+      "trees": 440,
+      "stalls": 180
+    },
+    "source": "Regional architectural study: 12 frontages, 9 plant silhouettes; authored dimensions"
+  },
+  "crowd": {
+    "version": 21,
+    "people": 65645,
+    "placed": 65645,
+    "variantCount": 11,
+    "activities": [
+      "idle",
+      "wave",
+      "walk",
+      "clap",
+      "cheer",
+      "indicate",
+      "seated"
+    ],
+    "activityCounts": {
+      "cheer": 7765,
+      "idle": 19253,
+      "wave": 11648,
+      "clap": 11570,
+      "indicate": 6517,
+      "seated": 1960,
+      "walk": 6932
+    },
+    "active": 16304,
+    "lodCounts": [
+      24,
+      280,
+      16000
+    ],
+    "limits": {
+      "near": 24,
+      "middle": 280,
+      "far": 16000,
+      "radius": 430
+    },
+    "drawCalls": 31,
+    "paletteBytes": 6110720,
+    "motion": "GPU bone palette interpolation; source idle/wave/walk + authored clap/cheer/indicate/seated",
+    "randomization": "independent salted placement id and coordinates, clothes/hair/skin/face proportions/age styling",
+    "peoplePerBank": [
+      33353,
+      32292
+    ],
+    "outfits": {
+      "independentTrousers": 8,
+      "independentShoes": 4,
+      "regionPolicy": "separate upper garments, trousers/skirts, footwear, hats and small trim",
+      "combinations": 384
+    },
+    "demographicCounts": {
+      "age": {
+        "adult": 46034,
+        "older adult": 14398,
+        "adolescent": 5213
+      },
+      "gender": {
+        "men": 41909,
+        "women": 23736
+      },
+      "model": {
+        "casual-man": 6063,
+        "worker-woman": 5878,
+        "suit-man": 5953,
+        "farmer-man": 5950,
+        "worker-man": 5973,
+        "punk-man": 5869,
+        "formal-woman": 5893,
+        "hoodie-man": 6057,
+        "casual-woman": 6061,
+        "beach-man": 6044,
+        "suit-woman": 5904
+      }
+    },
+    "visibleTriangles": 3268792,
+    "lastPackMs": 25.300000000279397
+  },
+  "backyardInstances": 1374,
+  "visibleOutfits": 384,
+  "visibleFaceShapes": 1001,
+  "ceremony": {
+    "boats": 61,
+    "athletes": 3050,
+    "crewTriangles": 7381,
+    "farCrewTriangles": 478,
+    "wardrobe": {
+      "strategy": "native shorts silhouette; covered skin removed; index-only LOD with exact animated source vertices",
+      "shortsVertices": 623,
+      "shortsTriangles": 1150,
+      "nativeShortsPreserved": true,
+      "nativeJerseyTriangles": 896,
+      "nativeJerseyVertices": 533,
+      "nearStrategy": "original connected jersey and native shorts with exact source skinning",
+      "farStrategy": "one continuous painted body; no separate intersecting garment shells",
+      "hiddenSkinTriangles": 100,
+      "sourceVertexMapping": "exact",
+      "clothingShells": 1
+    },
+    "maxDetailedBoats": 2,
+    "capTriangles": 704,
+    "farCapTriangles": 266,
+    "faceVariation": "seeded head width, depth, chin and hair; original athlete body",
+    "saluteVariants": 2,
+    "saluteFrames": 24,
+    "handheldCaps": 3050,
+    "capColors": 8,
+    "hair": {
+      "vertices": 121,
+      "styles": 4,
+      "strategy": "painted anatomical scalp plus raised source hair shell"
+    },
+    "kbach": {
+      "sharedAtlas": true,
+      "texture": [
+        2048,
+        2048
+      ],
+      "designs": 39,
+      "source": "https://www.tiktok.com/@karn_chinda"
+    },
+    "formation": "irregular tightly packed raft at the main grandstand",
+    "reference": "https://www.youtube.com/watch?v=hNSDABjJ6GU",
+    "drawCalls": 9,
+    "source": "MakeHuman/MPFB CC0, existing assembled athlete; derived seated hat salute",
+    "nearAthletes": 0,
+    "farAthletes": 3050,
+    "cameraShot": "fleet",
+    "cameraSeconds": 0.16669999999999985
+  },
+  "errors": [],
+  "physicalTabletTested": false
+}

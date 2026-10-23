@@ -3,19 +3,25 @@
   "ceremony": {
     "boats": 61,
     "athletes": 3050,
-    "crewTriangles": 6485,
-    "farCrewTriangles": 544,
+    "crewTriangles": 7381,
+    "farCrewTriangles": 478,
     "wardrobe": {
       "strategy": "native shorts silhouette; covered skin removed; index-only LOD with exact animated source vertices",
       "shortsVertices": 623,
       "shortsTriangles": 1150,
       "nativeShortsPreserved": true,
+      "nativeJerseyTriangles": 896,
+      "nativeJerseyVertices": 533,
+      "nearStrategy": "original connected jersey and native shorts with exact source skinning",
+      "farStrategy": "one continuous painted body; no separate intersecting garment shells",
       "hiddenSkinTriangles": 100,
       "sourceVertexMapping": "exact",
       "clothingShells": 1
     },
     "maxDetailedBoats": 2,
-    "capTriangles": 69,
+    "capTriangles": 704,
+    "farCapTriangles": 266,
+    "faceVariation": "seeded head width, depth, chin and hair; original athlete body",
     "saluteVariants": 2,
     "saluteFrames": 24,
     "handheldCaps": 3050,
@@ -36,18 +42,18 @@
     },
     "formation": "irregular tightly packed raft at the main grandstand",
     "reference": "https://www.youtube.com/watch?v=hNSDABjJ6GU",
-    "drawCalls": 7,
+    "drawCalls": 9,
     "source": "MakeHuman/MPFB CC0, existing assembled athlete; derived seated hat salute",
     "nearAthletes": 0,
     "farAthletes": 3050,
     "cameraShot": "fleet",
-    "cameraSeconds": 0.11260000000000035
+    "cameraSeconds": 0.10009999999999945
   },
   "world": {
     "crowd": {
       "version": 21,
-      "people": 60124,
-      "placed": 60124,
+      "people": 65645,
+      "placed": 65645,
       "variantCount": 11,
       "activities": [
         "idle",
@@ -59,24 +65,24 @@
         "seated"
       ],
       "activityCounts": {
-        "clap": 10403,
-        "wave": 10324,
-        "cheer": 7803,
-        "idle": 18203,
-        "indicate": 5755,
-        "seated": 1926,
-        "walk": 5710
+        "cheer": 7765,
+        "idle": 19253,
+        "wave": 11648,
+        "clap": 11570,
+        "indicate": 6517,
+        "seated": 1960,
+        "walk": 6932
       },
-      "active": 12280,
+      "active": 16280,
       "lodCounts": [
         0,
         280,
-        12000
+        16000
       ],
       "limits": {
         "near": 24,
         "middle": 280,
-        "far": 12000,
+        "far": 16000,
         "radius": 430
       },
       "drawCalls": 22,
@@ -84,8 +90,8 @@
       "motion": "GPU bone palette interpolation; source idle/wave/walk + authored clap/cheer/indicate/seated",
       "randomization": "independent salted placement id and coordinates, clothes/hair/skin/face proportions/age styling",
       "peoplePerBank": [
-        30590,
-        29534
+        33353,
+        32292
       ],
       "outfits": {
         "independentTrousers": 8,
@@ -95,36 +101,36 @@
       },
       "demographicCounts": {
         "age": {
-          "adult": 42206,
-          "adolescent": 4732,
-          "older adult": 13186
+          "adult": 46034,
+          "older adult": 14398,
+          "adolescent": 5213
         },
         "gender": {
-          "men": 38238,
-          "women": 21886
+          "men": 41909,
+          "women": 23736
         },
         "model": {
-          "worker-man": 5445,
-          "casual-woman": 5470,
-          "suit-man": 5553,
-          "punk-man": 5355,
-          "farmer-man": 5447,
-          "suit-woman": 5531,
-          "beach-man": 5489,
-          "hoodie-man": 5630,
-          "formal-woman": 5429,
-          "casual-man": 5319,
-          "worker-woman": 5456
+          "casual-man": 6063,
+          "worker-woman": 5878,
+          "suit-man": 5953,
+          "farmer-man": 5950,
+          "worker-man": 5973,
+          "punk-man": 5869,
+          "formal-woman": 5893,
+          "hoodie-man": 6057,
+          "casual-woman": 6061,
+          "beach-man": 6044,
+          "suit-woman": 5904
         }
       },
-      "visibleTriangles": 2579408,
-      "lastPackMs": 21
+      "visibleTriangles": 3210812,
+      "lastPackMs": 20.300000000279397
     },
     "reference": "OWNER_VTV10_VIDEO_2025_REAL_PHOTOS_AND_OSM_LAYOUT",
     "dimensions": "APPROXIMATE_GAME_SCALE",
-    "spectators": 60124,
+    "spectators": 65645,
     "seats": 1916,
-    "trees": 808,
+    "trees": 3053,
     "houses": 397,
     "distantBlocks": 204,
     "umbrellas": 364,
@@ -146,23 +152,27 @@
         "covered-market": 35,
         "open-front-shop": 42
       },
-      "trees": 808,
+      "trees": 3053,
+      "backyardTrees": 2885,
+      "placement": "seeded irregular scatter with home and lane clearance",
       "treeSilhouettes": 9,
       "frontageTemplates": 12,
-      "foodStalls": 10,
-      "people": 6856,
-      "roadsidePeople": 6052,
+      "foodStalls": 44,
+      "people": 12377,
+      "roadsidePeople": 11471,
       "activityCounts": {
-        "walk": 5710,
-        "talk": 577,
-        "vendor": 124,
-        "eat": 445
+        "walk": 6932,
+        "talk": 1418,
+        "vendor": 158,
+        "eat": 1428,
+        "clap": 1177,
+        "wave": 1264
       },
-      "drawCalls": 59,
+      "drawCalls": 68,
       "geometryTriangles": 42096,
       "visibleHouses": 66,
-      "visibleInstances": 2477,
-      "submittedTriangles": 647832,
+      "visibleInstances": 3544,
+      "submittedTriangles": 2226648,
       "range": {
         "detailedHouses": 125,
         "distantHouses": 660,
@@ -188,132 +198,136 @@
     "bridge30April": "concrete piers and silver arched truss, 2022 construction photo; finished decoration approximate",
     "traffic": {
       "version": 21,
-      "count": 1280,
+      "count": 4840,
       "types": {
-        "sedan": 69,
-        "pickup": 42,
-        "scooter": 560,
-        "motorcycle": 283,
-        "bicycle": 115,
-        "delivery-scooter": 142,
-        "van": 49,
-        "minibus": 20
+        "sedan": 336,
+        "pickup": 105,
+        "scooter": 2019,
+        "motorcycle": 1196,
+        "bicycle": 440,
+        "delivery-scooter": 625,
+        "van": 89,
+        "minibus": 30
       },
-      "riders": 1100,
+      "riders": 4280,
       "drawCalls": 19,
       "geometryTriangles": 22040,
-      "visible": 152,
-      "submittedTriangles": 602612,
+      "visible": 558,
+      "submittedTriangles": 2219216,
       "roadY": 1.24,
       "range": {
         "bodies": 220,
         "wheels": 220
       },
       "laneOffsets": {
-        "cars": 1.6,
-        "motor": 3.6,
-        "bicycle": 5.4
+        "cars": 1.5,
+        "motor": [
+          3.1,
+          4.3
+        ],
+        "bicycle": 5.65
       },
       "streamSpeed": "Shared per direction/bank/category to preserve spacing; cyclists on outer lane",
       "source": "Original rounded rider and vehicle geometry; sedan/pickup reused from approved V20 study",
       "samples": [
         {
-          "id": 148,
+          "id": 59,
           "type": "sedan",
-          "x": 1012.2896028115665,
+          "x": 939.4371247545405,
           "y": 1.24,
-          "z": -71.63385127920338,
+          "z": -47.5197942543847,
+          "yaw": 3.127018685517047
+        },
+        {
+          "id": 61,
+          "type": "sedan",
+          "x": 991.1716248972989,
+          "y": 1.24,
+          "z": -66.68365263456685,
+          "yaw": 3.569054692912463
+        },
+        {
+          "id": 62,
+          "type": "sedan",
+          "x": 1006.2185552160072,
+          "y": 1.24,
+          "z": -71.42960654602533,
+          "yaw": 3.2621052577728573
+        },
+        {
+          "id": 63,
+          "type": "sedan",
+          "x": 1023.6894064409262,
+          "y": 1.24,
+          "z": -71.57306894635902,
           "yaw": 3.1413093202640465
         },
         {
-          "id": 156,
+          "id": 65,
           "type": "sedan",
-          "x": 1105.2822482576976,
+          "x": 1087.6947048145266,
           "y": 1.24,
-          "z": -71.60802661545299,
+          "z": -71.53111828449467,
+          "yaw": 3.1413126535971068
+        },
+        {
+          "id": 66,
+          "type": "sedan",
+          "x": 1130.1142474619419,
+          "y": 1.24,
+          "z": -71.46768211669854,
           "yaw": 3.141332653595669
         },
         {
-          "id": 159,
+          "id": 67,
           "type": "sedan",
-          "x": 1140.360441463381,
+          "x": 1172.3125595052552,
           "y": 1.24,
-          "z": -71.5988978749187,
-          "yaw": 3.1413093202640465
+          "z": -71.39620267235195,
+          "yaw": 3.0654441939277866
         },
         {
-          "id": 466,
+          "id": 68,
           "type": "sedan",
-          "x": 990.850280840903,
+          "x": 1218.8285542572503,
           "y": 1.24,
-          "z": -63.41804329672963,
-          "yaw": 0.4312261633469132
+          "z": -51.17419838852341,
+          "yaw": 2.748806176803599
         },
         {
-          "id": 491,
+          "id": 69,
           "type": "sedan",
-          "x": 1280.5536947395067,
+          "x": 1234.3209473007482,
           "y": 1.24,
-          "z": -44.35984311982381,
-          "yaw": -0.00028333332578226556
+          "z": -47.35810260530447,
+          "yaw": 3.11842128966836
         },
         {
-          "id": 797,
+          "id": 70,
           "type": "sedan",
-          "x": 1117.9388090897683,
+          "x": 1271.077508380754,
           "y": 1.24,
-          "z": 52.696795499622866,
-          "yaw": 3.129753206809111
+          "z": -47.49471539183717,
+          "yaw": 3.1413176535967446
         },
         {
-          "id": 799,
+          "id": 1272,
           "type": "sedan",
-          "x": 1140.6463779504174,
+          "x": 909.765139402155,
           "y": 1.24,
-          "z": 52.96247078082372,
-          "yaw": 3.134676097218398
+          "z": -45.10521509659093,
+          "yaw": -0.014573968072745896
         },
         {
-          "id": 1119,
+          "id": 1275,
           "type": "sedan",
-          "x": 1141.4678641363153,
+          "x": 1029.6787335348718,
           "y": 1.24,
-          "z": 56.16815272694284,
-          "yaw": -0.006916556371395293
-        },
-        {
-          "id": 137,
-          "type": "pickup",
-          "x": 886.9852964536522,
-          "y": 1.24,
-          "z": -48.74092932131459,
-          "yaw": 3.102891986372371
-        },
-        {
-          "id": 458,
-          "type": "pickup",
-          "x": 898.1091473253764,
-          "y": 1.24,
-          "z": -45.11021381556142,
-          "yaw": -0.03870066721738648
-        },
-        {
-          "id": 1126,
-          "type": "pickup",
-          "x": 1222.0727773920553,
-          "y": 1.24,
-          "z": 51.25512723323389,
-          "yaw": 0.08511107517428305
-        },
-        {
-          "id": 136,
-          "type": "scooter",
-          "x": 874.8759760597059,
-          "y": 1.24,
-          "z": -51.20980220696819,
-          "yaw": 3.102891986372371
+          "z": -68.45402837904642,
+          "yaw": -0.00028333332574673843
         }
-      ]
+      ],
+      "placement": "independent random gaps and lateral jitter; four safe lanes per bank/direction"
     },
     "spectatorSpacingM": 0.56,
     "fullCourseCrowdRows": 10,
@@ -1641,16 +1655,16 @@
     "unlocked": true,
     "playing": true,
     "starts": 1,
-    "time": 0.514509,
+    "time": 0.509275,
     "loop": true,
     "volume": 0.30400000000000005,
     "source": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-audio/menu/festival.mp3"
   },
   "countdown": {
     "phase": "countdown",
-    "difficulty": "normal",
+    "difficulty": "easy",
     "pace": "steady",
-    "countdown": 2.9749999999999988,
+    "countdown": 2.970833333333332,
     "elapsed": 0,
     "distances": [
       0,
@@ -1680,6 +1694,7 @@
     "result": null,
     "pauseReason": "",
     "runId": 1,
+    "rowingHeld": false,
     "surgeCharge": 0,
     "surgeRemaining": 0,
     "desync": 0,
@@ -1696,7 +1711,7 @@
     "timing": {
       "beat": 0,
       "seconds": 0,
-      "window": 0.23,
+      "window": 0.26,
       "perfectWindow": 0.1,
       "available": false,
       "inWindow": false,
@@ -1722,7 +1737,7 @@
   },
   "input": {
     "acceptedBeforeRelease": true,
-    "dispatchToObservedMs": 64.31,
+    "dispatchToObservedMs": 34.92,
     "judgement": "PERFECT"
   },
   "keyboardAcceptedBeforeRelease": true,
@@ -1773,7 +1788,7 @@
     "unlocked": true,
     "playing": true,
     "starts": 2,
-    "time": 0.113648,
+    "time": 0.102175,
     "loop": true,
     "volume": 0.30400000000000005,
     "source": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-audio/menu/festival.mp3"

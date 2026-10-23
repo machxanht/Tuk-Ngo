@@ -1,25 +1,31 @@
-# Gameplay input, ceremony clothing and festival artwork
+# Festival density, opening wardrobe and easier rowing
 
-## Requested outcome
+## Delivered behavior
 
-Responsive rowing with a readable scoring cue, intact ceremony clothing, and a colorful illustrated festival logo, using the existing game and stable public URL.
+- The shared vector logo and banner mark contain only two decorated Ngo boats and their crews. The pagoda, trees, sun, river and lotus background artwork has been removed from the drawn mark.
+- Easy mode is the default: hold CHÈO or Space to row continuously with automatic timing; release to rest. A press starts immediately. Releasing, canceling a pointer, losing focus, pausing, finishing and restarting clear held input. Early presses and resting do not incur timing penalties in this mode. Normal/hard retain manual timing and their previous balance.
+- The original athlete bodies, 533-vertex / 896-triangle / four-boundary-loop shirt and eight race rigs remain unchanged. Both existing face libraries are distributed independently per team; crowd bodies use the current 11 civilian models with independently seeded face proportions, age, skin shade, clothing, activity and animation phase.
+- Traffic increased from 1,280 to 4,840 vehicles across the map: scooters, motorcycles, delivery scooters, bicycles, sedans, pickups, vans and minibuses. Independent random gaps and lateral variation replace uniform spacing. Lane speed and minimum gaps keep traffic coherent.
+- The map contains 65,645 spectator/pedestrian placements, including 11,471 roadside people, plus 2,885 additional backyard trees. These are whole-map populations, not simultaneous draw counts. Pedestrian scatter uses occupied cells and neighbor clearance; backyard planting avoids home footprints and inland lanes. GPU instancing and distance limits remain active.
 
-## Changes and evidence
+## Opening ceremony diagnosis and fix
 
-- Reproduced the input fault: at phase 0.52 an early BAD consumed beat 1; the correct press on beat 1 then returned null. Invalid early input no longer consumes its upcoming beat. The GO stroke is accepted at beat zero. Successful strokes remain limited to one per beat and spam penalties stay bounded.
-- The main pad handles pointer-down from either finger. It scores while a finger is held and never scores again on release. Keyboard and assistive click activation remain supported. Press receipt is immediate and its animation cache is canceled/reused rather than accumulating.
-- One simulation timing object drives scoring and the visible rail. The rail shows the green accepted window and gold PERFECT window. Cyclic cue colors have no delayed transition. Vietnamese/Khmer instructions refer to this same rail.
-- The ceremony's old independent 32-vertex shorts decimation deformed cuffs, while coarsened anatomy could protrude through cloth. Close shots now retain native body/shorts triangles and exact animated source vertices; covered skin triangles are omitted. The native shorts retain all 1,150 triangles. Their 623 welded vertices do not move across either 24-frame salute variant. Original GLB bytes and the eight race rigs remain untouched.
-- At most two nearby boats use the detailed ceremony mesh (up to 100 athletes). The other boats use a 544-triangle index LOD with the same animation texture. Total ceremonial athletes remain 3,050 across 61 boats. No per-frame mesh/material creation is used for LOD switching.
-- A single vector illustration now depicts two decorated Ngo boats, paddlers, a Khmer pagoda, sun, sugar palms, river ripples and lotus flowers. The shared artwork paints both the menu logo and in-world banners. Its URL uses a content hash to avoid stale cached artwork.
+The ceremony had three distinct defects: its legs sampled an outdated rowing stance; separate, heavily reduced cloth/body meshes intersected; and a 70-vertex cap simplification damaged its brim. Close views now use tucked feet from the same canonical rowing pose as the race, low cross-thwarts, native shorts and a continuous crown/curved bill for each cap. The source body and shorts keep exact animated vertices.
 
-## Verification
+A further diagnostic found that `Connected_Race_Shirt` in the exported GLB has 98 morph targets and no skin binding. It contains recordings of rowing, so its sleeves stay in a rowing pose when the body bones raise a hat. The ceremony baker now evaluates the unchanged V32 endpoint data for each salute: skin original endpoints, then interpolate barycentrically. Comparison to the original recording differs by at most 0.000023 m; all 533 vertices and 896 triangles remain. A regression requires sleeve movement in both salute styles, rather than only checking topology.
 
-- npm run lint, npm test and npm run build pass. The exact 533/896/4 shirt, protected source hashes, eight original race rigs and 61-boat tournament are preserved.
-- check-gameplay-input.py uses actual Chromium touchscreen events, including a held first finger and a non-primary second finger. Its narrow scoring-edge checks freeze only simulation time; input events still run through React. See local/input-regression.json.
-- check-race-presentation.py checks the live cinematic/menu/countdown/race/pause/music flow, actual touch-down and keyboard scoring, and eight Vietnamese/Khmer layouts (1024×768, 768×1024, 1180×430, 390×844). See local/checks.json. No JavaScript/HTTP failures. Dispatch timing includes browser automation overhead and is not physical-tablet latency.
-- Direct visual review: logo.png, local/menu-logo.png, local/ceremony-clothing.png, local/input-receipt.png and the landscape/portrait screenshots. The asset style remains stylized; real tablet FPS has not been measured.
+All 50 seating positions pass a hull containment check for below-knee vertices; the minimum measured lateral clearance is 0.0076 m. Shorts stay planted through all 48 samples. Close shots use at most two detailed boats. Distant athletes use one continuous painted 478-triangle body so separately reduced garment surfaces cannot intersect. Caps use independently authored 704/266-triangle detail levels.
 
-## Public deployment
+## Evidence and limits
 
-Published implementation f3a45bb to the existing main game URL. Pages commit 0ec0d21517bd03cfb450dbd49c4a29017effc6fe serves seven checked files that match the tested build, including root HTML, gameplay/UI chunks, the logo and ceremony animation data. The public browser repeats the real pointer-edge, two-finger, release and ceremony-render checks with no JavaScript errors. See public-files.json and public/input-regression.json.
+- `npm run lint`, `npm test`, `npm run build` pass. Protected source hashes, exact shirt math/topology, eight original race rigs, 61-team cup progression, audio and dashboard regressions remain intact.
+- `scripts/check-gameplay-input.py` checks real Chromium touch-down/hold/release, independent team faces, early correction in manual mode, non-primary contacts, keyboard-safe release and actual ceremony rendering. Simulation time is controlled only for the manual timing edge cases. See `local/input-regression.json` and `local/ceremony-clothing.png`.
+- `scripts/check-festival-density.py` inspects the real loaded instanced world, demographic/style variation and density. See `local/density-checks.json`, `local/street-density.png` and `local/backyard-canopy.png`.
+- `scripts/check-race-presentation.py` passed the cinematic/menu/countdown/race/pause/music flow and eight Vietnamese/Khmer layouts. See `local/checks.json`.
+- Easy-hold simulation completes all 1,200 m at 15, 60 and 144 FPS with identical outcomes. Native tablet frame rate and touch latency have not been measured. This remains the existing stylized asset family.
+
+## Public delivery
+
+Stable URL: https://machxanht.github.io/Tuk-Ngo/
+
+Local verification is complete. Public file hashes and live browser checks are recorded after publication in `public-files.json` and `public/`.

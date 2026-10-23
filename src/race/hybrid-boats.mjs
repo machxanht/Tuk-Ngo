@@ -271,6 +271,7 @@ export async function createHybridBoats(base='',{onProgress=()=>{},sharedRendere
   if(team&&!map)throw Error('Team livery is not loaded: '+teamId);
   const kitKey=teamId+'|'+kitColor+'|'+connectedKit,key=kitKey+'|'+referenceKbach+'|'+(kbachTexture?.uuid||'');
   if(styleKey!==key){
+   let identitySeed=2166136261;for(const ch of teamId||'prototype')identitySeed=Math.imul(identitySeed^ch.charCodeAt(0),16777619);faceController?.randomize(identitySeed>>>0);
    for(const {mesh} of paintedHull){mesh.material.map=kbachTexture||(referenceKbach||!team?liveries.reference():map);mesh.material.map.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());}
    for(const mesh of hullEnds)mesh.material.color.set(team?.pattern==='om-scroll'?'#ed6826':'#c83239');
    for(const {mesh,color} of hullInteriors)mesh.material.color.copy(construction==='dugout'?new T.Color('#a86936'):team?.interior?new T.Color(team.interior):color);

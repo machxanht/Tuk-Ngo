@@ -236,13 +236,6 @@ export function buildFestivalStreet(parent,bankMaterials={}) {
    trees.push({x,y:1.4,z:courseZ(x,side*52.3),yaw:hash(id+31)*6.28,sx:.78+hash(id+19)*.28,sy:.8+hash(id+20)*.3,sz:.8+hash(id+19)*.28,template:kind});
    if(id%3===0)trees.push({x:x+6,y:1.39,z:trafficRoad(x+6,side)+side*8.3,yaw:hash(id+2)*6.28,sx:.65,sy:.7,sz:.65,template:(kind+2)%plants.length});
  }
- // Inland canopy behind the frontages, outside streets and shop forecourts.
- // The aerial view should read as a Mekong neighborhood, not a bare land slab.
- for(const side of[-1,1])for(let row=0;row<4;row++)for(let x=859,id=0;x<2440;x+=19,id++){
-   if(nearCourseBridge(x,24))continue;const seed=9200+id+row*131+(side+1)*331;
-   const kind=[0,2,4,6,8][Math.floor(hash(seed)*5)],scale=.75+hash(seed+5)*.65;
-   trees.push({x:x+(hash(seed+2)-.5)*13,y:1.39,z:courseZ(x,side*(114+row*22+(hash(seed+3)-.5)*3)),yaw:hash(seed+4)*6.28,sx:scale,sy:scale,sz:scale,template:kind});
- }
  for(const side of[-1,1])for(let x=862,id=0;x<2430;x+=31,id++){
    if(excluded(x,side)||trees.some(t=>Math.sign(t.z)===side&&Math.abs(t.x-x)<3.5))continue;const z=courseZ(x,side*52.1);stalls.push({x,y:1.4,z,yaw:side<0?Math.PI:0,sx:1,sy:1,sz:1});
    people.push({x:x-.4,floor:1.4,z:z+side*.6,id:31000+(side+1)*700+id*8,seated:false,activity:'vendor',yaw:side<0?0:Math.PI});
@@ -251,14 +244,16 @@ export function buildFestivalStreet(parent,bankMaterials={}) {
    people.push({x:x+(side<0?-2.35:2.35),floor:1.4,z:z-.05,id:31002+(side+1)*700+id*8,seated:true,seatY:1.92,activity:'eat',yaw:side<0?Math.PI/2:-Math.PI/2});
  }
  // Two busy sidewalk corridors remain outside road lanes and frontage piers.
- for(const side of[-1,1])for(let row=0;row<3;row++)for(let x=853,id=0;x<2436;x+=1.35,id++){
-   if(nearCourseBridge(x,27))continue;
-   const seed=5000+(side+1)*1801+row*997+id,extent=1.7+hash(seed+8)*.5;
-   const px=x+(hash(seed+2)-.5)*.4,pz=trafficRoad(px,side)+side*(7.3+row*1.15)+(hash(seed+3)-.5)*.2;
-   if(trees.some(t=>Math.abs(t.z-pz)<1.35&&Math.abs(t.x-px)<extent+1.2))continue;
-   if(stalls.some(t=>Math.hypot(t.x-px,t.z-pz)<1.5))continue;
-   const walking=hash(seed+7)<.90,slope=(trafficRoad(x+.2,side)-trafficRoad(x-.2,side))/.4;
-   people.push({x:px,floor:1.4,z:pz,id:60000+seed,zone:'roadside-sidewalk',seated:false,activity:walking?'walk':hash(seed+9)<.5?'talk':'eat',yaw:walking?(hash(seed+10)<.5?Math.PI/2:-Math.PI/2):side<0?0:Math.PI,...(walking?{path:{dx:1,dz:slope,extent}}:{})});
+ // Irregular sidewalk clusters, with enough room between bodies and shops.
+ const occupied=new Map();
+ for(const side of[-1,1])for(let i=0;i<12500;i++){
+   const seed=58001+i+(side+1)*17003,px=853+hash(seed)*1583;
+   if(nearCourseBridge(px,27))continue;
+   const pz=trafficRoad(px,side)+side*(7.1+hash(seed+31)*3.05),key=Math.floor(px/.52)+':'+Math.floor(pz/.52);
+   const cellX=Math.floor(px/.52),cellZ=Math.floor(pz/.52);let blocked=false;for(let dx=-1;dx<=1;dx++)for(let dz=-1;dz<=1;dz++){const q=occupied.get((cellX+dx)+':'+(cellZ+dz));if(q&&Math.hypot(q.x-px,q.z-pz)<.50)blocked=true;}
+   if(occupied.has(key)||blocked||trees.some(t=>Math.abs(t.z-pz)<1.1&&Math.abs(t.x-px)<1.3)||stalls.some(t=>Math.hypot(t.x-px,t.z-pz)<1.5))continue;
+   occupied.set(key,{x:px,z:pz});const walking=hash(seed+7)<.58,slope=(trafficRoad(px+.2,side)-trafficRoad(px-.2,side))/.4;
+   people.push({x:px,floor:1.4,z:pz,id:60000+seed,zone:'roadside-sidewalk',seated:false,activity:walking?'walk':['talk','eat','wave','clap'][Math.floor(hash(seed+9)*4)],yaw:walking?(hash(seed+10)<.5?Math.PI/2:-Math.PI/2):hash(seed+11)*Math.PI*2,...(walking?{path:{dx:1,dz:slope,extent:.45+hash(seed+8)*.5}}:{})});
  }
  for(const p of people){p.width=.92;p.height=1;p.shirt='#c6aa7c';}
  function instance(parts,list,label,materialOverride=null,range=180){
@@ -277,6 +272,20 @@ export function buildFestivalStreet(parent,bankMaterials={}) {
   if(nearCourseBridge(x,20))continue;const seed=12000+id+row*211+(side+1)*433;
   neighborhoods.push({x:x+(hash(seed)-.5)*3,y:1.39,z:courseZ(x,side*(101+row*22)),yaw:side<0?Math.PI:0,sx:.85+hash(seed+2)*.45,sy:.58+hash(seed+3)*.35,sz:.82+hash(seed+4)*.3,template:Math.floor(hash(seed+5)*3),tint:new T.Color().setHSL(hash(seed+6)*.1,.04,.93)});
  }
+ // Backyard groves are scattered around homes, with clear inland lanes.
+ // Positions come from independent seeds, never a repeated row of trees.
+ const inlandCanopy=[];
+ for(const side of[-1,1])for(let i=0;i<2400;i++){
+  const seed=93001+i+(side+1)*3907,x=856+hash(seed)*1582,depth=108+hash(seed+3)*137;
+  if(nearCourseBridge(x,25)||Array.from({length:6},(_,r)=>98+r*22).some(lane=>Math.abs(depth-lane)<3.5))continue;
+  const z=courseZ(x,side*depth);
+  if(neighborhoods.some(p=>Math.abs(p.x-x)<4.2*p.sx&&Math.abs(p.z-z)<6.0*p.sz))continue;
+  const scale=.95+hash(seed+5)*.9,tree={x,y:1.39,z,yaw:hash(seed+4)*6.28,sx:scale,sy:scale,sz:scale,template:[0,2,4,6,8][Math.floor(hash(seed+6)*5)]};
+  trees.push(tree);inlandCanopy.push(tree);
+ }
+ // The plant batches were created before the inland roofs. Add separate
+ // instanced batches for these groves, reusing the same cached geometries.
+ plants.forEach((t,i)=>instance(t,inlandCanopy.filter(p=>p.template===i),'Festival_Backyard_Grove_'+i,plantMat,540));
  for(let variant=0;variant<3;variant++){
    const fb=builder(),height=variant===0?6.6:variant===1?3.5:4.5;
    fb.box(variant===0?'teal':variant===1?'ivory':'cream',0,height/2,3.6,6.4,height,7.2,.01);
@@ -287,7 +296,7 @@ export function buildFestivalStreet(parent,bankMaterials={}) {
  for(const b of batches)if(b.mesh.name.startsWith('Festival_Distant'))b.fade=true;
  // Shared small table and stool geometry at stall patrons, batched globally.
  const furniture=builder();furniture.add(new T.CylinderGeometry(.5,.5,.09,12),'wood',2.8,.78,0);furniture.rod('metal',[2.8,0,0],[2.8,.73,0],.055);furniture.add(new T.CylinderGeometry(.23,.23,.08,10),'clay',2.35,.43,0);for(const dx of[-.13,.13])furniture.rod('wood',[2.35+dx,0,0],[2.35+dx,.4,0],.025);const furnitureParts=furniture.finish();instance(furnitureParts,stalls,'Festival_Stall_Seats',null,150);
- const stats={version:21,houses:lots.length,backgroundHomes:neighborhoods.length,frontageFamilies:families,trees:trees.length,treeSilhouettes:plants.length,frontageTemplates:templates.length,foodStalls:stalls.length,people:people.length,roadsidePeople:people.filter(p=>p.zone==='roadside-sidewalk').length,activityCounts:people.reduce((a,p)=>(a[p.activity]=(a[p.activity]||0)+1,a),{}),drawCalls:batches.length,geometryTriangles:0,visibleHouses:0,visibleInstances:0,submittedTriangles:0,range:{detailedHouses:125,distantHouses:660,trees:440,stalls:180},source:'Regional architectural study: 12 frontages, 9 plant silhouettes; authored dimensions'};
+ const stats={version:21,houses:lots.length,backgroundHomes:neighborhoods.length,frontageFamilies:families,trees:trees.length,backyardTrees:inlandCanopy.length,placement:'seeded irregular scatter with home and lane clearance',treeSilhouettes:plants.length,frontageTemplates:templates.length,foodStalls:stalls.length,people:people.length,roadsidePeople:people.filter(p=>p.zone==='roadside-sidewalk').length,activityCounts:people.reduce((a,p)=>(a[p.activity]=(a[p.activity]||0)+1,a),{}),drawCalls:batches.length,geometryTriangles:0,visibleHouses:0,visibleInstances:0,submittedTriangles:0,range:{detailedHouses:125,distantHouses:660,trees:440,stalls:180},source:'Regional architectural study: 12 frontages, 9 plant silhouettes; authored dimensions'};
  const unique=new Set();for(const b of batches)if(!unique.has(b.mesh.geometry)){unique.add(b.mesh.geometry);stats.geometryTriangles+=(b.mesh.geometry.index?.count||b.mesh.geometry.attributes.position.count)/3;}
  function update(time,cameraX=1090,cameraZ=0){let visible=0,tri=0;for(const b of batches){let count=0;for(const p of b.list){const d=Math.hypot(p.x-cameraX,(p.z-cameraZ)*.45);if(d>b.range||(b.fade&&d<120))continue;dummy.position.set(p.x,p.y,p.z);dummy.rotation.set(0,p.yaw,0);dummy.scale.set(p.sx,p.sy,p.sz);dummy.updateMatrix();b.mesh.setMatrixAt(count,dummy.matrix);if(p.tint)b.mesh.setColorAt(count,p.tint);count++;}b.mesh.count=count;b.mesh.visible=count>0;b.mesh.instanceMatrix.needsUpdate=true;if(b.mesh.instanceColor)b.mesh.instanceColor.needsUpdate=true;visible+=count;tri+=count*(b.mesh.geometry.index?.count||b.mesh.geometry.attributes.position.count)/3;}for(const m of ownedMaterials)if(m.userData.shader)m.userData.shader.uniforms.ambientTime.value=time;stats.visibleHouses=lots.filter(p=>Math.abs(p.x-cameraX)<125).length;stats.visibleInstances=visible;stats.submittedTriangles=tri;}
  update(0,1090,0);group.userData={festivalStreet:stats};
