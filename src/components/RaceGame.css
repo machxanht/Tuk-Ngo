@@ -59,7 +59,7 @@
 [data-testid=festival-game] .festival-menu-logo{width:min(100%,272px);height:auto;aspect-ratio:20/9;margin:0 auto 8px;border-radius:0;filter:none}
 [data-testid=festival-game] .game-menu-card{border-top:4px solid var(--gold)}
 @media(max-height:600px){[data-testid=festival-game] .festival-menu-logo{width:156px;margin-bottom:3px}}
-@media(max-width:620px){[data-testid=festival-game] .festival-logo{width:60px;height:26px}[data-testid=festival-game] .festival-menu-logo{width:225px}}
+@media(max-width:620px){[data-testid=festival-game] .festival-logo{width:60px;height:26px}[data-testid=festival-game] .festival-menu-logo{width:225px}.game-browsing .game-brand{flex:0 0 60px}.game-browsing .game-brand>div{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}.game-browsing .game-heading{gap:8px}.game-browsing .game-heading-actions{gap:6px}}
 @media(max-height:550px) and (max-width:700px){[data-testid=festival-game] .festival-menu-logo{width:140px}}
 
 [data-testid=festival-game] .game-stroke{touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}

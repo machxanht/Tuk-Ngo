@@ -57,6 +57,10 @@ with sync_playwright() as p:
    assert page.locator('.festival-menu-logo').evaluate('e=>e.complete&&e.naturalWidth===1200')
    for button in page.locator('.menu-actions button').all():
     assert button.bounding_box()['height']>=44
+   for control in page.locator('.game-heading-actions>button,.game-heading-actions .game-language button,.game-heading-actions .game-audio-options>summary').all():
+    if not control.is_visible():continue
+    box=control.bounding_box();assert box['height']>=44 and box['x']>=0 and box['x']+box['width']<=width+.5,box
+    assert control.evaluate("e=>{const b=e.getBoundingClientRect(),hit=document.elementFromPoint(b.x+b.width/2,b.y+b.height/2);return hit===e||e.contains(hit)}")
    page.screenshot(path=str(out/f'menu-{width}x{height}.png'))
    result['responsive'].append([width,height])
   page.set_viewport_size({'width':1024,'height':768})
