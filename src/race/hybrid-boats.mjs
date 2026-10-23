@@ -13,6 +13,8 @@ import {ROWING_LAYOUT} from './rowing-pose.mjs';
 import {rowingMotionDigest} from './asset-digests.mjs';
 import {profile,boatHullGeometry} from './boat.mjs';
 import {buildConstructionDetails,BOAT_CONSTRUCTIONS} from './boat-construction.mjs';
+import {createCharacterHeads} from './character-heads.mjs';
+import {athleteFacesDigest} from './asset-digests.mjs';
 
 const W=2400,H=860;
 const roleNames=['seated-port','seated-starboard','standing-port','standing-starboard','caller','controller','helm','helm-starboard'];
@@ -21,12 +23,12 @@ const materialCache=new WeakMap();
 function materialFrom(m){if(!materialCache.has(m))materialCache.set(m,new T.MeshLambertMaterial({color:m.color,map:m.map,vertexColors:m.vertexColors,side:T.DoubleSide,transparent:m.transparent,opacity:m.opacity,alphaTest:m.alphaTest}));return materialCache.get(m);}
 function regularAttribute(a,type=Float32Array){const array=new type(a.count*a.itemSize);for(let i=0;i<a.count;i++)for(let k=0;k<a.itemSize;k++)array[i*a.itemSize+k]=a.getComponent(i,k);return new T.BufferAttribute(array,a.itemSize);}
 
-export async function createHybridBoats(base='',{onProgress=()=>{},sharedRenderer=null}={}){
+export async function createHybridBoats(base='',{onProgress=()=>{},sharedRenderer=null,faces=true}={}){
  const loader=new GLTFLoader(),roles={};
  const motionFile='../athlete-master/rowing-motion.glb?sha='+rowingMotionDigest;
  let loaded=0;
  const transfer={onRetry(){document.body.dataset.loadRetries=String(Number(document.body.dataset.loadRetries||0)+1);const status=document.querySelector('#status');if(status&&!document.body.dataset.loadError)status.textContent='Kết nối chậm · đang thử tải lại…';}};
- const loadModel=async file=>{const result=await loader.parseAsync(await assetBytes(base+file,transfer),T.LoaderUtils.extractUrlBase(new URL(base+file,document.baseURI).href));onProgress(++loaded,4);return result;};
+ const loadModel=async file=>{const result=await loader.parseAsync(await assetBytes(base+file,transfer),T.LoaderUtils.extractUrlBase(new URL(base+file,document.baseURI).href));onProgress(++loaded,faces?5:4);return result;};
  const [shirtData,model,hull,equipment,motions]=await Promise.all([assetBytes(base+'shirt-runtime-v32.json',transfer).then(b=>JSON.parse(new TextDecoder().decode(b))),loadModel('athlete-rig-v27.glb'),loadModel('hull-rig-v25.glb'),loadModel('../athlete-master/athlete-details.glb'),loadModel(motionFile)]);
  model.scene.updateMatrixWorld(true);
  const skins=[];model.scene.traverse(o=>{if(o.isSkinnedMesh)skins.push(o);});
@@ -83,7 +85,8 @@ export async function createHybridBoats(base='',{onProgress=()=>{},sharedRendere
  const geometryVariants=buildFaceVariants(merged,headInverse,headBind,headId);
  // Leader zone 4 and rower zone 3 already use the same shader expression;
  // kit roles differ through their cached palettes, not duplicated geometry.
- const geometryFor=(role,variant)=>geometryVariants[variant];
+ let faceController=null;
+ const geometryFor=(role,variant)=>faceController?faceController.mask(geometryVariants[variant]):geometryVariants[variant];
  function faceFor(id,teamId){let seed=id*0x45d9f3b;for(const c of teamId||'prototype')seed=Math.imul(seed^c.charCodeAt(0),16777619);seed=Math.imul(seed^(seed>>>16),0x7feb352d);return ((seed^(seed>>>15))>>>0)%geometryVariants.length;}
  const scene=new T.Scene(),boat=new T.Group();scene.add(boat);
  scene.add(new T.HemisphereLight('#fff8e4','#d7c5a4',2.1));const sun=new T.DirectionalLight('#ffedcd',1.05);sun.position.set(5,12,-8);scene.add(sun);
@@ -278,6 +281,7 @@ export async function createHybridBoats(base='',{onProgress=()=>{},sharedRendere
   }
   detail.value=T.MathUtils.clamp(skinDetail,0,1);
   pose(strokePhase(phase,effort),t,{viewKey,frameId,distance,nearest,desyncIntensity});
+  faceController?.update();
   if(study){
    const target=actors.find(a=>['seated','standing'].includes(posture)?a.role==='rower'&&a.posture===posture&&a.side===-1:a.role===posture);actors.forEach(a=>a.group.visible=a===target);
    boardBatch.visible=false;boards.forEach(board=>board.visible=board.userData.owner===target.id&&(target.id!==1||construction==='plywood'));
@@ -312,8 +316,13 @@ export async function createHybridBoats(base='',{onProgress=()=>{},sharedRendere
   }
   return renderer.domElement;
  }
- setConstruction('plywood');pose(0,0);
- return {render,bow,waterBow,stern,tips,actors,roles,boat,scene,renderer,camera,animation,setConstruction,get construction(){return construction;},kbachLibrary:liveries.library,floorAt:floor,prepareTeams:liveries.load,stats:{revision:'hybrid-v32',athletes:actors.length,geometryVariants:12,faceProfiles:FACE_PROFILES.map(p=>({name:p.name,hair:p.hair,beard:p.beard})),skinTexture:'Official MakeHuman CC0; original UVs and pixels',animation:'continuous-skinned-3d',sharedPoseRigs:roleNames.length,trianglesPerActor:merged.index.count/3,soleLiftM:soleLift},resize(width){const w=Math.min(1600,Math.max(640,Math.round(width)));renderer.setSize(w,Math.round(w*H/W),false);farImages.clear();animation.clear();},getDrawStats(){return {gpuRenders,gpuReuses,poseUpdates:animation.counters.updates,poseRestores:animation.counters.restores,poseUpdatesByView:{...animation.counters.byView},geometryCacheSize:geometryVariants.length,triangles:renderer.info.render.triangles,drawCalls:renderer.info.render.calls,teamTextures:liveries.textures.size,kitMaterials:materials.size,vertexAttributes:Math.max(...renderer.info.programs.map(p=>Object.values(p.getAttributes()).reduce((sum,a)=>sum+(a.locationSize||1),0))),vertexAttributeLimit:renderer.getContext().getParameter(renderer.getContext().MAX_VERTEX_ATTRIBS)};},dispose(){
+ // Fit feet/boards using the untouched body above, then replace head triangles.
+ // This does not alter any source geometry attribute or the eight pose rigs.
+ let faceLibrary;
+ const faceFile='../character-comparison/athlete-faces.glb?sha='+athleteFacesDigest;
+ if(faces){faceLibrary=await loadModel(faceFile);faceController=createCharacterHeads(faceLibrary,actors,headId);}
+ setConstruction('plywood');pose(0,0);faceController?.update();
+ return {render,bow,waterBow,stern,tips,actors,roles,boat,scene,renderer,camera,animation,faces:faceController,setConstruction,get construction(){return construction;},kbachLibrary:liveries.library,floorAt:floor,prepareTeams:liveries.load,stats:{revision:'hybrid-v32',athletes:actors.length,geometryVariants:12,faceProfiles:FACE_PROFILES.map(p=>({name:p.name,hair:p.hair,beard:p.beard})),skinTexture:'Official MakeHuman CC0; original UVs and pixels',animation:'continuous-skinned-3d',sharedPoseRigs:roleNames.length,trianglesPerActor:merged.index.count/3,soleLiftM:soleLift},resize(width){const w=Math.min(1600,Math.max(640,Math.round(width)));renderer.setSize(w,Math.round(w*H/W),false);farImages.clear();animation.clear();},getDrawStats(){return {gpuRenders,gpuReuses,poseUpdates:animation.counters.updates,poseRestores:animation.counters.restores,poseUpdatesByView:{...animation.counters.byView},geometryCacheSize:geometryVariants.length,triangles:renderer.info.render.triangles,drawCalls:renderer.info.render.calls,teamTextures:liveries.textures.size,kitMaterials:materials.size,vertexAttributes:Math.max(...renderer.info.programs.map(p=>Object.values(p.getAttributes()).reduce((sum,a)=>sum+(a.locationSize||1),0))),vertexAttributeLimit:renderer.getContext().getParameter(renderer.getContext().MAX_VERTEX_ATTRIBS)};},dispose(){
    animation.clear();styles.clear();for(const {canvas} of farImages.values()){canvas.width=1;canvas.height=1;}farImages.clear();for(const master of Object.values(roles)){master.mixer.stopAllAction();master.mixer.uncacheRoot(master.root);master.skeleton.dispose();}
    const geometries=new Set(),meshMaterials=new Set(),maps=new Set();
    scene.traverse(o=>{if(o.isInstancedMesh)o.dispose();if(o.geometry)geometries.add(o.geometry);for(const m of Array.isArray(o.material)?o.material:o.material?[o.material]:[]){meshMaterials.add(m);for(const value of Object.values(m))if(value?.isTexture)maps.add(value);}});
@@ -322,6 +331,7 @@ export async function createHybridBoats(base='',{onProgress=()=>{},sharedRendere
    for(const g of paddleGeometry.values())geometries.add(g);for(const d of decals)geometries.add(d.geometry);
    for(const o of boards)geometries.add(o.geometry);geometries.add(merged);for(const g of geometryVariants)geometries.add(g);
     geometries.forEach(g=>g.dispose());for(const slices of floorSlices.values())for(const {mesh}of slices)mesh.geometry.dispose();floorSlices.clear();meshMaterials.forEach(m=>m.dispose());maps.forEach(t=>t.dispose());
+   faceController?.dispose();if(faceLibrary){faceLibrary.scene.traverse(o=>{if(o.geometry)o.geometry.dispose();if(o.material)o.material.dispose();});releaseAssetBytes(base+faceFile);}
    shirtAsset.dispose();materials.dispose();liveries.dispose();skinMap.dispose();if(!sharedRenderer)renderer.dispose();
    for(const file of ['shirt-runtime-v32.json','athlete-rig-v27.glb','hull-rig-v25.glb','../athlete-master/athlete-details.glb',motionFile])releaseAssetBytes(base+file);
    scene.clear();

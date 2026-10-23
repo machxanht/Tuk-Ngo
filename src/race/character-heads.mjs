@@ -1,31 +1,30 @@
 import * as T from 'three';
+import {athleteFaceIdentity} from './character-identity.mjs';
 
-/** Cache head-only geometry in the portable head bone's bind coordinates. */
-export function createCharacterHeads(models){
- const parts={d:[],f:[]},bodies=new Map(),owned=new Set();
- for(const model of ['d','f'])models[model].scene.traverse(source=>{
-  if(!source.isSkinnedMesh||/shirt|pants/i.test(source.name))return;
-  const skeleton=source.skeleton,headId=skeleton.bones.findIndex(b=>b.name==='head');if(headId<0)return;
-  const geometry=source.geometry,indices=geometry.index?.array||Uint32Array.from({length:geometry.attributes.position.count},(_,i)=>i),joints=geometry.attributes.skinIndex,weights=geometry.attributes.skinWeight;
-  const selected=new Uint8Array(joints.count);
-  for(let i=0;i<joints.count;i++){let weight=0;for(let k=0;k<4;k++)if(joints.getComponent(i,k)===headId)weight+=weights.getComponent(i,k);selected[i]=weight>.55?1:0;}
-  const head=[],body=[];
-  for(let i=0;i<indices.length;i+=3){const target=selected[indices[i]]||selected[indices[i+1]]||selected[indices[i+2]]?head:body;target.push(indices[i],indices[i+1],indices[i+2]);}
-  if(model==='d'){const g=geometry.clone();g.setIndex(body);g.computeBoundingSphere();bodies.set(source.uuid,g);owned.add(g);}
-  if(!head.length)return;
-  const matrix=skeleton.boneInverses[headId].clone().multiply(source.bindMatrix);
-  // Fit F's broader head into the same neck/height envelope; body is unchanged.
-  if(model==='f')matrix.premultiply(new T.Matrix4().makeScale(.78,.90,.80));
-  const g=geometry.clone();g.setIndex(head);g.applyMatrix4(matrix);
-  const linear=new T.Matrix3().setFromMatrix4(matrix),normal=new T.Matrix3().getNormalMatrix(matrix),point=new T.Vector3();
-  for(const [name,attributes]of Object.entries(g.morphAttributes))for(const attribute of attributes)for(let i=0;i<attribute.count;i++){
-   point.fromBufferAttribute(attribute,i);
-   if(name==='position'){if(g.morphTargetsRelative)point.applyMatrix3(linear);else point.applyMatrix4(matrix);}
-   if(name==='normal')point.applyMatrix3(normal);
-   attribute.setXYZ(i,point.x,point.y,point.z);
-  }
-  g.deleteAttribute('skinIndex');g.deleteAttribute('skinWeight');g.computeBoundingSphere();owned.add(g);
-  parts[model].push({geometry:g,material:source.material,nativeHair:/Hair_SimpleParted|hair_base/.test(source.name),dictionary:source.morphTargetDictionary});
- });
- return{parts,bodyGeometry:source=>bodies.get(source.uuid)||source.geometry,dispose(){for(const geometry of owned)geometry.dispose();}};
+/** Heads grafted onto the old game rigs; all body attributes remain shared. */
+export function createCharacterHeads(library,actors,headId){
+ const sources=new Map(),masked=new Map(),materials=new Map(),entries=[];
+ library.scene.children.forEach(root=>sources.set(root.name,root));
+ function mask(source){
+  if(masked.has(source))return masked.get(source);
+  const g=new T.BufferGeometry();for(const [name,attribute]of Object.entries(source.attributes))g.setAttribute(name,attribute);
+  const {skinIndex:j,skinWeight:w,paintZone:z}=source.attributes,removed=new Uint8Array(j.count),indices=[];
+  for(let i=0;i<j.count;i++){let amount=0;for(let k=0;k<4;k++)if(j.getComponent(i,k)===headId)amount+=w.getComponent(i,k);removed[i]=amount>.55&&(z.getX(i)===1||z.getX(i)===0)?1:0;}
+  for(let i=0;i<source.index.count;i+=3){const a=source.index.getX(i),b=source.index.getX(i+1),c=source.index.getX(i+2);if(!removed[a]&&!removed[b]&&!removed[c])indices.push(a,b,c);}
+  g.setIndex(indices);g.boundingSphere=source.boundingSphere;g.boundingBox=source.boundingBox;g.userData={...source.userData,faceOnlyMask:true};masked.set(source,g);return g;
+ }
+ function material(source,variant){
+  const native=source.name==='Native athlete face skin',key=source.uuid+':'+(native?variant%4:0);
+  if(!materials.has(key)){
+   const m=new T.MeshLambertMaterial({name:source.name,map:source.map,color:source.color,side:source.side,transparent:source.transparent,opacity:source.opacity,alphaTest:source.alphaTest});
+   if(native)m.color.setRGB(.56,.31,.15).multiplyScalar(.89+(variant%4)*.065);
+   materials.set(key,m);
+  }return materials.get(key);
+ }
+ for(const actor of actors){const head=new T.Group();head.name='Face_Only_'+actor.id;head.matrixAutoUpdate=false;actor.group.add(head);entries.push({actor,head,bone:actor.master.skeleton.bones[headId],identity:null});actor.face=head;}
+ let seed=20261023;
+ function randomize(next=seed+7919){seed=next;for(const e of entries){e.identity=athleteFaceIdentity(seed,e.actor.id);e.actor.identity=e.identity;e.head.clear();const root=sources.get(e.identity.model.toUpperCase()+'_'+e.identity.face);if(!root)throw Error('Missing face '+JSON.stringify(e.identity));e.head.add(root.clone(true));}update();}
+ function update(){for(const e of entries){e.head.matrix.copy(e.bone.matrixWorld);e.head.matrixWorldNeedsUpdate=true;e.head.traverse(o=>{if(o.isMesh){const source=o.userData.sourceMaterial||o.material;o.userData.sourceMaterial=source;o.material=material(source,e.actor.variant);}});}}
+ randomize(seed);
+ return{mask,update,randomize,entries,get materialCount(){return materials.size;},dispose(){for(const e of entries)e.actor.group.remove(e.head);for(const g of masked.values())g.dispose();for(const m of materials.values())m.dispose();masked.clear();materials.clear();}};
 }

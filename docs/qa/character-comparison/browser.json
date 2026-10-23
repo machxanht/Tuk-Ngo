@@ -1,5 +1,5 @@
 {
-  "url": "https://machxanht.github.io/Tuk-Ngo/character-comparison/",
+  "url": "http://127.0.0.1:8778/character-comparison/",
   "results": [
     {
       "viewport": {
@@ -12,15 +12,12 @@
       "crew": {
         "crew": 54,
         "bodyModels": 1,
-        "bodyModel": "d",
+        "bodyModel": "original-game-glb",
         "faceD": 31,
         "faceF": 23,
-        "uniqueIdentities": 16,
-        "skinTones": 1,
-        "hairStyles": 1,
         "faceProfiles": 16,
         "sharedSkeletons": 8,
-        "materialVariants": 4
+        "materialVariants": 9
       },
       "npcs": {
         "people": 18,
@@ -43,10 +40,14 @@
         "hairStyles": 7,
         "materialVariants": 44
       },
-      "minimumFootClearance": -0.0021335985803423996,
+      "bodyBuffersPreserved": true,
+      "motionComparison": {
+        "poses": 768,
+        "differences": []
+      },
       "cache": {
         "skeletons": 8,
-        "materials": 4,
+        "materials": 9,
         "npcMaterials": 74
       }
     },
@@ -61,15 +62,12 @@
       "crew": {
         "crew": 54,
         "bodyModels": 1,
-        "bodyModel": "d",
+        "bodyModel": "original-game-glb",
         "faceD": 31,
         "faceF": 23,
-        "uniqueIdentities": 16,
-        "skinTones": 1,
-        "hairStyles": 1,
         "faceProfiles": 16,
         "sharedSkeletons": 8,
-        "materialVariants": 4
+        "materialVariants": 9
       },
       "npcs": {
         "people": 18,
@@ -92,10 +90,11 @@
         "hairStyles": 7,
         "materialVariants": 44
       },
-      "minimumFootClearance": -0.0021335985803423996,
+      "bodyBuffersPreserved": true,
+      "motionComparison": null,
       "cache": {
         "skeletons": 8,
-        "materials": 4,
+        "materials": 9,
         "npcMaterials": 74
       }
     },
@@ -110,15 +109,12 @@
       "crew": {
         "crew": 54,
         "bodyModels": 1,
-        "bodyModel": "d",
+        "bodyModel": "original-game-glb",
         "faceD": 31,
         "faceF": 23,
-        "uniqueIdentities": 16,
-        "skinTones": 1,
-        "hairStyles": 1,
         "faceProfiles": 16,
         "sharedSkeletons": 8,
-        "materialVariants": 4
+        "materialVariants": 9
       },
       "npcs": {
         "people": 18,
@@ -141,10 +137,11 @@
         "hairStyles": 7,
         "materialVariants": 44
       },
-      "minimumFootClearance": -0.0021335985803423996,
+      "bodyBuffersPreserved": true,
+      "motionComparison": null,
       "cache": {
         "skeletons": 8,
-        "materials": 4,
+        "materials": 9,
         "npcMaterials": 74
       }
     }

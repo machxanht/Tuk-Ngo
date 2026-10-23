@@ -8,10 +8,10 @@ export function characterIdentity(seed,index){
  const n=hash(seed+Math.imul(index+1,0x9e3779b9));
  return {model:hash(n+1)%2?'d':'f',skin:hash(n+2)%SKIN_TONES.length,hair:hash(n+3)%4,hairColor:hash(n+4)%HAIR_COLORS.length,face:hash(n+5)%FACE_IDENTITIES.length};
 }
-// The crew shares one body, kit and haircut. Only the generic face is selected.
+// Face identity only; the original game body, kit, cap and hair stay intact.
 export function athleteFaceIdentity(seed,index){
  const identity=characterIdentity(seed,index);
- return {...identity,bodyModel:'d',skin:2,hair:1,hairColor:0};
+ return {model:identity.model,face:identity.face};
 }
 export function identitySignature(identity){return[identity.model,identity.skin,identity.hair,identity.hairColor,identity.face].join(':');}
 export function faceIdentity(mesh,identity,{blink=0,effort=0,smile=0}={}){

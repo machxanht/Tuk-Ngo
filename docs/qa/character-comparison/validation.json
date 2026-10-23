@@ -3,7 +3,7 @@
     "uri": "d.glb",
     "mimeType": "model/gltf-binary",
     "validatorVersion": "2.0.0-dev.3.10",
-    "validatedAt": "2026-10-23T10:07:29.839Z",
+    "validatedAt": "2026-10-23T10:29:44.528Z",
     "issues": {
       "numErrors": 0,
       "numWarnings": 0,
@@ -151,7 +151,7 @@
     "uri": "f.glb",
     "mimeType": "model/gltf-binary",
     "validatorVersion": "2.0.0-dev.3.10",
-    "validatedAt": "2026-10-23T10:07:30.068Z",
+    "validatedAt": "2026-10-23T10:29:44.760Z",
     "issues": {
       "numErrors": 0,
       "numWarnings": 0,
@@ -296,7 +296,7 @@
     "uri": "hairstyles.glb",
     "mimeType": "model/gltf-binary",
     "validatorVersion": "2.0.0-dev.3.10",
-    "validatedAt": "2026-10-23T10:07:30.240Z",
+    "validatedAt": "2026-10-23T10:29:44.938Z",
     "issues": {
       "numErrors": 0,
       "numWarnings": 0,
@@ -328,6 +328,89 @@
       "maxUVs": 0,
       "maxInfluences": 0,
       "maxAttributes": 2
+    }
+  },
+  "athleteFaces": {
+    "uri": "athlete-faces.glb",
+    "mimeType": "model/gltf-binary",
+    "validatorVersion": "2.0.0-dev.3.10",
+    "validatedAt": "2026-10-23T10:29:44.972Z",
+    "issues": {
+      "numErrors": 0,
+      "numWarnings": 0,
+      "numInfos": 0,
+      "numHints": 0,
+      "messages": [],
+      "truncated": false
+    },
+    "info": {
+      "version": "2.0",
+      "generator": "glTF-Transform v4.5.1",
+      "extensionsUsed": [
+        "EXT_texture_webp"
+      ],
+      "extensionsRequired": [
+        "EXT_texture_webp"
+      ],
+      "resources": [
+        {
+          "pointer": "/buffers/0",
+          "mimeType": "application/gltf-buffer",
+          "storage": "glb",
+          "byteLength": 1390376
+        },
+        {
+          "pointer": "/images/0",
+          "mimeType": "image/webp",
+          "storage": "buffer-view",
+          "image": {
+            "width": 1024,
+            "height": 1024,
+            "format": "rgb",
+            "primaries": "srgb",
+            "transfer": "srgb",
+            "bits": 8
+          }
+        },
+        {
+          "pointer": "/images/1",
+          "mimeType": "image/webp",
+          "storage": "buffer-view",
+          "image": {
+            "width": 256,
+            "height": 256,
+            "format": "rgb",
+            "primaries": "srgb",
+            "transfer": "srgb",
+            "bits": 8
+          }
+        },
+        {
+          "pointer": "/images/2",
+          "mimeType": "image/webp",
+          "storage": "buffer-view",
+          "image": {
+            "width": 1024,
+            "height": 1024,
+            "format": "rgb",
+            "primaries": "srgb",
+            "transfer": "srgb",
+            "bits": 8
+          }
+        }
+      ],
+      "animationCount": 0,
+      "materialCount": 6,
+      "hasMorphTargets": false,
+      "hasSkins": false,
+      "hasTextures": true,
+      "hasDefaultScene": false,
+      "drawCallCount": 49,
+      "totalVertexCount": 41114,
+      "totalTriangleCount": 71654,
+      "maxUVs": 1,
+      "maxInfluences": 0,
+      "maxAttributes": 3
     }
   }
 }

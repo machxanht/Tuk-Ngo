@@ -56,6 +56,16 @@ const hairDoc=await io.read(root+'public/assets/character-comparison/hairstyles.
 assert.equal(hairDoc.getRoot().listMeshes().length,8);
 await writeFile(root+'docs/qa/character-comparison/validation.json',JSON.stringify(validation,null,2)+'\n');
 
+const faceBytes=await readFile(root+'public/assets/character-comparison/athlete-faces.glb');
+assert.equal(createHash('sha256').update(faceBytes).digest('hex'),manifest.athleteFaces.sha256);
+validation.athleteFaces=await validator.validateBytes(new Uint8Array(faceBytes),{uri:'athlete-faces.glb',maxIssues:100});
+assert.equal(validation.athleteFaces.issues.numErrors,0);assert.equal(validation.athleteFaces.issues.numWarnings,0);
+const faceDoc=await io.read(root+'public/assets/character-comparison/athlete-faces.glb');
+assert.equal(faceDoc.getRoot().listSkins().length,0,'Face library must not contain replacement body rigs');
+assert.equal(faceDoc.getRoot().listScenes()[0].listChildren().length,16);
+assert.equal(createHash('sha256').update(await readFile(root+'public/assets/illustrated-v22/athlete-rig-v27.glb')).digest('hex'),manifest.athleteFaces.nativeBodySha256);
+await writeFile(root+'docs/qa/character-comparison/validation.json',JSON.stringify(validation,null,2)+'\n');
+
 const require=createRequire(import.meta.url);let playwright;
 for(const candidate of [process.env.PLAYWRIGHT_MODULE,'playwright',root+'../asset-studio/browser-qa/node_modules/playwright'].filter(Boolean)){try{playwright=require(candidate);break;}catch{}}
 assert(playwright,'Set PLAYWRIGHT_MODULE to the existing Playwright installation');
@@ -71,32 +81,47 @@ try{
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
   assert.equal(await page.evaluate(()=>window.CharacterComparison.state.view),'boat');
   const initial=await page.evaluate(()=>window.CharacterComparison.crew.stats());
-  assert.equal(initial.crew,54);assert.equal(initial.bodyModels,1);assert.equal(initial.bodyModel,'d');assert(initial.faceD>15&&initial.faceF>15);
-  assert.equal(initial.skinTones,1);assert(initial.uniqueIdentities>=12);assert.equal(initial.hairStyles,1);assert(initial.faceProfiles>=12);
-  const bodyBefore=await page.evaluate(()=>CharacterComparison.crew.actors.map(a=>({geometry:a.meshes.map(m=>m.geometry.uuid),skeleton:a.master.skeleton.uuid,scale:a.group.scale.toArray()})));
+  assert.equal(initial.crew,54);assert.equal(initial.bodyModels,1);assert.equal(initial.bodyModel,'original-game-glb');assert(initial.faceD>15&&initial.faceF>15);
+  assert(initial.faceProfiles>=12);
+  const bodyBefore=await page.evaluate(()=>CharacterComparison.crew.actors.map(a=>({geometry:a.skin.geometry.uuid,shirt:a.shirt.geometry.uuid,skeleton:a.master.skeleton.uuid,scale:a.group.scale.toArray(),position:a.group.position.toArray(),variant:a.variant})));
   await page.locator('#phase').fill('0.28');await page.waitForTimeout(100);
   await page.locator('#viewport').screenshot({path:root+`docs/qa/character-comparison/crew-${viewport.width}.png`});
   await page.locator('[data-camera="upper"]').first().click();await page.waitForTimeout(100);
   await page.locator('#viewport').screenshot({path:root+`docs/qa/character-comparison/crew-detail-${viewport.width}.png`});
-  const clearances=[];
-  for(const phase of ['0','0.125','0.28','0.5','0.72','0.9']){
-   await page.locator('#phase').fill(phase);await page.waitForTimeout(80);
-   clearances.push(await page.evaluate(()=>{
-    let min=Infinity;const crew=window.CharacterComparison.crew;
-    for(const a of crew.actors)for(const mesh of a.meshes){
-     const indices=mesh.geometry.getAttribute('skinIndex'),weights=mesh.geometry.getAttribute('skinWeight');if(!indices)continue;
-     for(let i=0;i<indices.count;i+=5){let footWeight=0;for(let k=0;k<4;k++)if(/^(foot|ball)_/.test(a.master.skeleton.bones[indices.getComponent(i,k)]?.name))footWeight+=weights.getComponent(i,k);if(footWeight<.7)continue;
-      const v=mesh.getVertexPosition(i,a.group.position.clone()).applyMatrix4(mesh.matrixWorld);min=Math.min(min,v.y-crew.floorAt(v.x,v.z));
-     }
+  const preserved=await page.evaluate(()=>CharacterComparison.crew.actors.every(a=>{
+   const source=a.baseGeometry,target=a.skin.geometry;
+   if(!target.userData.faceOnlyMask)return false;
+   return Object.keys(source.attributes).every(key=>source.attributes[key]===target.attributes[key]);
+  }));assert(preserved,'Body, cap, hair, UV, color, normal and skin-weight buffers must be the original objects');
+  let motionComparison=null;
+  if(viewport.width===1440)motionComparison=await page.evaluate(async()=>{
+   const crew=CharacterComparison.crew,old=await window.createHybridBoats('../assets/illustrated-v22/',{sharedRenderer:CharacterComparison.renderer,faces:false});
+   const same=(a,b)=>a.length===b.length&&a.every((n,i)=>Math.abs(n-b[i])<1e-7);
+   let poses=0;const differences=[];
+   for(let i=0;i<96;i++){
+    const phase=i/96,t=phase*1.2;crew.update(phase,t);old.render(phase,t,{updateOnly:true,nearest:true,connectedKit:true,kitColor:'#23855e'});
+    for(const key of Object.keys(old.roles)){
+     const a=crew.roles[key].skeleton,b=old.roles[key].skeleton;
+     for(let j=0;j<a.bones.length;j++)if(!same(a.bones[j].matrixWorld.elements,b.bones[j].matrixWorld.elements))differences.push('bone '+key+':'+j);
+     poses++;
     }
-    return min;
-   }));
-  }
-  assert(Math.min(...clearances)>-.018,`feet penetrate hull: ${clearances}`);
+    for(let j=0;j<old.actors.length;j++){
+     const a=crew.actors[j],b=old.actors[j];
+     if(!same(a.group.matrix.elements,b.group.matrix.elements))differences.push('placement '+j);
+     if(a.paddle&&!same(a.paddle.matrix.elements,b.paddle.matrix.elements))differences.push('paddle '+j);
+     if(!same(a.shirt.geometry.attributes.position.array,b.shirt.geometry.attributes.position.array))differences.push('shirt '+j);
+    }
+   }
+   // Keep the diagnostic baseline until page teardown: source maps and the
+   // renderer are shared with the live preview and must not be disposed here.
+   window.characterBaseline=old;
+   return{poses,differences:[...new Set(differences)]};
+  });
+  if(motionComparison){assert.equal(motionComparison.poses,768);assert.deepEqual(motionComparison.differences,[]);}
   await page.locator('#randomize').click();
   const changed=await page.evaluate(()=>window.CharacterComparison.crew.stats());assert.notDeepEqual(changed.roster,initial.roster);assert.equal(changed.crew,54);
-  const bodyAfter=await page.evaluate(()=>CharacterComparison.crew.actors.map(a=>({geometry:a.meshes.map(m=>m.geometry.uuid),skeleton:a.master.skeleton.uuid,scale:a.group.scale.toArray()})));assert.deepEqual(bodyAfter,bodyBefore,'Changing a face must retain body geometry, skeleton and dimensions');
-  assert(await page.evaluate(()=>CharacterComparison.crew.actors.every(a=>a.faceMeshes.length>0&&a.faceMeshes.every(m=>!m.isSkinnedMesh))));
+  const bodyAfter=await page.evaluate(()=>CharacterComparison.crew.actors.map(a=>({geometry:a.skin.geometry.uuid,shirt:a.shirt.geometry.uuid,skeleton:a.master.skeleton.uuid,scale:a.group.scale.toArray(),position:a.group.position.toArray(),variant:a.variant})));assert.deepEqual(bodyAfter,bodyBefore,'Changing a face must retain body geometry, skeleton and dimensions');
+  assert(await page.evaluate(()=>CharacterComparison.crew.actors.every(a=>a.face.children.length===1)));
   for(let i=0;i<4;i++)await page.locator('#randomize').click();
   const cache=await page.evaluate(()=>window.CharacterComparison.crew.stats());assert.equal(cache.sharedSkeletons,8);assert(cache.materialVariants<15);
   await page.locator('[data-view="npcs"]').click();
@@ -129,7 +154,7 @@ try{
   await page.locator('#play').click();await page.waitForTimeout(250);
   assert.equal(await page.evaluate(()=>window.CharacterComparison.state.playing),true);
   await page.locator('#play').click();assert.deepEqual(errors,[]);
-  results.push({viewport,errors,loaded:true,controls:true,crew:{...initial,roster:undefined},npcs:npc,minimumFootClearance:Math.min(...clearances),cache:{skeletons:cache.sharedSkeletons,materials:cache.materialVariants,npcMaterials:npcCache.materialVariants}});await page.close();console.log('PASS browser '+viewport.width+'×'+viewport.height);
+  results.push({viewport,errors,loaded:true,controls:true,crew:{...initial,roster:undefined},npcs:npc,bodyBuffersPreserved:preserved,motionComparison,cache:{skeletons:cache.sharedSkeletons,materials:cache.materialVariants,npcMaterials:npcCache.materialVariants}});await page.close();console.log('PASS browser '+viewport.width+'×'+viewport.height);
  }
 }finally{await browser.close();}
 await writeFile(root+'docs/qa/character-comparison/browser.json',JSON.stringify({url:target,results},null,2)+'\n');

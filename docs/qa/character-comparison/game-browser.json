@@ -1,0 +1,22 @@
+{
+  "boats": 2,
+  "faces": [
+    54,
+    54
+  ],
+  "bodyMasks": [
+    true,
+    true
+  ],
+  "sharedRigs": [
+    8,
+    8
+  ],
+  "faceFetches": 1,
+  "finite": true,
+  "errors": [],
+  "warnings": [
+    "THREE.WebGLProgram: Program Info Log: (133,1): warning X4000: use of potentially uninitialized variable (f_bonePose)\n(141,1): warning X4000: use of potentially uninitialized variable (f_skinPose)\n(133,1): warning X4000: use of potentially uninitialized variable (f_bonePose)"
+  ],
+  "warningOrigin": "Existing unmodified festival-crowd.mjs GLSL functions bonePose/skinPose"
+}

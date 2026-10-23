@@ -49,4 +49,11 @@ header.writeUInt32LE(0x46546c67);header.writeUInt32LE(2,4);header.writeUInt32LE(
 const out=Buffer.concat([header,json,padding,binaryHeader,bin]);await writeFile('public/assets/athlete-master/rowing-motion.glb',out);console.log(`Calibrated ${doc.animations.length} shared role clips: ${out.length} bytes.`);
 const digest=bytes=>createHash('sha256').update(bytes).digest('hex');
 const ceremonyDigest=digest(await readFile('public/assets/athlete-master/ceremony-crew.json'));
-await writeFile('src/race/asset-digests.mjs',`// Generated content addresses; the page URL stays stable.\nexport const rowingMotionDigest='${digest(out)}';\nexport const athleteMasterDigest='${digest(await readFile('public/assets/athlete-master/athlete-master.glb'))}';\nexport const crowdAssetDigest='${digest(await readFile('public/assets/festival-crowd/crowd-compact.json'))}';\nexport const ceremonyCrewDigest='${ceremonyDigest}';\n`);
+// Preserve content addresses owned by other asset builders.
+const digestPath='src/race/asset-digests.mjs';
+let digestModule=await readFile(digestPath,'utf8');
+for(const [name,value]of Object.entries({rowingMotionDigest:digest(out),athleteMasterDigest:digest(await readFile('public/assets/athlete-master/athlete-master.glb')),crowdAssetDigest:digest(await readFile('public/assets/festival-crowd/crowd-compact.json')),ceremonyCrewDigest:ceremonyDigest})){
+ const line=`export const ${name}='${value}';`,pattern=new RegExp(`export const ${name}='[^']*';`);
+ digestModule=pattern.test(digestModule)?digestModule.replace(pattern,line):digestModule.trimEnd()+'\n'+line+'\n';
+}
+await writeFile(digestPath,digestModule);
