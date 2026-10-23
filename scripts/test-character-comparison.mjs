@@ -71,8 +71,9 @@ try{
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
   assert.equal(await page.evaluate(()=>window.CharacterComparison.state.view),'boat');
   const initial=await page.evaluate(()=>window.CharacterComparison.crew.stats());
-  assert.equal(initial.crew,54);assert(initial.d>15&&initial.f>15);
-  assert.equal(initial.skinTones,7);assert(initial.uniqueIdentities>45);assert(initial.hairStyles>=7);assert(initial.faceProfiles>=12);
+  assert.equal(initial.crew,54);assert.equal(initial.bodyModels,1);assert.equal(initial.bodyModel,'d');assert(initial.faceD>15&&initial.faceF>15);
+  assert.equal(initial.skinTones,1);assert(initial.uniqueIdentities>=12);assert.equal(initial.hairStyles,1);assert(initial.faceProfiles>=12);
+  const bodyBefore=await page.evaluate(()=>CharacterComparison.crew.actors.map(a=>({geometry:a.meshes.map(m=>m.geometry.uuid),skeleton:a.master.skeleton.uuid,scale:a.group.scale.toArray()})));
   await page.locator('#phase').fill('0.28');await page.waitForTimeout(100);
   await page.locator('#viewport').screenshot({path:root+`docs/qa/character-comparison/crew-${viewport.width}.png`});
   await page.locator('[data-camera="upper"]').first().click();await page.waitForTimeout(100);
@@ -94,8 +95,22 @@ try{
   assert(Math.min(...clearances)>-.018,`feet penetrate hull: ${clearances}`);
   await page.locator('#randomize').click();
   const changed=await page.evaluate(()=>window.CharacterComparison.crew.stats());assert.notDeepEqual(changed.roster,initial.roster);assert.equal(changed.crew,54);
+  const bodyAfter=await page.evaluate(()=>CharacterComparison.crew.actors.map(a=>({geometry:a.meshes.map(m=>m.geometry.uuid),skeleton:a.master.skeleton.uuid,scale:a.group.scale.toArray()})));assert.deepEqual(bodyAfter,bodyBefore,'Changing a face must retain body geometry, skeleton and dimensions');
+  assert(await page.evaluate(()=>CharacterComparison.crew.actors.every(a=>a.faceMeshes.length>0&&a.faceMeshes.every(m=>!m.isSkinnedMesh))));
   for(let i=0;i<4;i++)await page.locator('#randomize').click();
-  const cache=await page.evaluate(()=>window.CharacterComparison.crew.stats());assert(cache.sharedSkeletons<=18);assert(cache.materialVariants<80);
+  const cache=await page.evaluate(()=>window.CharacterComparison.crew.stats());assert.equal(cache.sharedSkeletons,8);assert(cache.materialVariants<15);
+  await page.locator('[data-view="npcs"]').click();
+  const npc=await page.evaluate(()=>CharacterComparison.npcs.stats());assert.equal(npc.people,18);assert.equal(npc.d,9);assert.equal(npc.f,9);assert.equal(npc.activities.length,9);assert.equal(npc.shirtColors,12);assert.equal(npc.pantsColors,8);assert(npc.skinTones>=5);assert(npc.hairStyles>=6);
+  await page.locator('#phase').fill('0.2');await page.waitForTimeout(100);
+  await page.locator('#viewport').screenshot({path:root+`docs/qa/character-comparison/npcs-${viewport.width}.png`});
+  await page.locator('[data-camera="upper"]').click();await page.waitForTimeout(100);
+  await page.locator('#viewport').screenshot({path:root+`docs/qa/character-comparison/npc-detail-${viewport.width}.png`});
+  const motionSamples=[];
+  for(const phase of ['0','0.25','0.5','0.75']){await page.locator('#phase').fill(phase);await page.waitForTimeout(80);motionSamples.push(await page.evaluate(()=>CharacterComparison.npcs.entries.map(e=>({activity:e.activity,position:e.group.position.toArray(),bones:e.skeleton.bones.flatMap(b=>b.quaternion.toArray()),phone:e.phone.visible,bench:e.bench.visible}))));}
+  for(const snapshot of motionSamples)for(const e of snapshot){assert(e.position.every(Number.isFinite));assert(e.bones.every(Number.isFinite));assert.equal(e.phone,e.activity==='phone');assert.equal(e.bench,e.activity==='seated-clap');}
+  for(let i=0;i<18;i++){assert.notDeepEqual(motionSamples[0][i].bones,motionSamples[2][i].bones,'NPC '+i+' must keep moving');if(motionSamples[0][i].activity==='walk')assert.notDeepEqual(motionSamples[0][i].position,motionSamples[2][i].position);}
+  for(let i=0;i<5;i++)await page.locator('#randomize').click();
+  const npcCache=await page.evaluate(()=>CharacterComparison.npcs.stats());assert(npcCache.materialVariants<140);
   await page.locator('[data-view="compare"]').click();
   await page.locator('#phase').fill('0.28');await page.waitForTimeout(100);
   assert.equal(await page.evaluate(()=>window.CharacterComparison.state.playing),false);
@@ -114,7 +129,7 @@ try{
   await page.locator('#play').click();await page.waitForTimeout(250);
   assert.equal(await page.evaluate(()=>window.CharacterComparison.state.playing),true);
   await page.locator('#play').click();assert.deepEqual(errors,[]);
-  results.push({viewport,errors,loaded:true,controls:true,crew:{...initial,roster:undefined},minimumFootClearance:Math.min(...clearances),cache:{skeletons:cache.sharedSkeletons,materials:cache.materialVariants}});await page.close();console.log('PASS browser '+viewport.width+'×'+viewport.height);
+  results.push({viewport,errors,loaded:true,controls:true,crew:{...initial,roster:undefined},npcs:npc,minimumFootClearance:Math.min(...clearances),cache:{skeletons:cache.sharedSkeletons,materials:cache.materialVariants,npcMaterials:npcCache.materialVariants}});await page.close();console.log('PASS browser '+viewport.width+'×'+viewport.height);
  }
 }finally{await browser.close();}
 await writeFile(root+'docs/qa/character-comparison/browser.json',JSON.stringify({url:target,results},null,2)+'\n');

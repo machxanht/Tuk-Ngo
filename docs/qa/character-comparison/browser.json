@@ -1,5 +1,5 @@
 {
-  "url": "https://machxanht.github.io/Tuk-Ngo/character-comparison/",
+  "url": "http://127.0.0.1:8778/character-comparison/",
   "results": [
     {
       "viewport": {
@@ -11,19 +11,43 @@
       "controls": true,
       "crew": {
         "crew": 54,
-        "d": 31,
-        "f": 23,
-        "uniqueIdentities": 52,
-        "skinTones": 7,
-        "hairStyles": 8,
+        "bodyModels": 1,
+        "bodyModel": "d",
+        "faceD": 31,
+        "faceF": 23,
+        "uniqueIdentities": 16,
+        "skinTones": 1,
+        "hairStyles": 1,
         "faceProfiles": 16,
-        "sharedSkeletons": 12,
-        "materialVariants": 32
+        "sharedSkeletons": 8,
+        "materialVariants": 4
       },
-      "minimumFootClearance": -0.0008996290316689581,
+      "npcs": {
+        "people": 18,
+        "d": 9,
+        "f": 9,
+        "activities": [
+          "idle",
+          "wave",
+          "clap",
+          "cheer",
+          "point",
+          "talk",
+          "phone",
+          "walk",
+          "seated-clap"
+        ],
+        "shirtColors": 12,
+        "pantsColors": 8,
+        "skinTones": 6,
+        "hairStyles": 7,
+        "materialVariants": 44
+      },
+      "minimumFootClearance": -0.0021335985803423996,
       "cache": {
-        "skeletons": 16,
-        "materials": 34
+        "skeletons": 8,
+        "materials": 4,
+        "npcMaterials": 74
       }
     },
     {
@@ -36,19 +60,43 @@
       "controls": true,
       "crew": {
         "crew": 54,
-        "d": 31,
-        "f": 23,
-        "uniqueIdentities": 52,
-        "skinTones": 7,
-        "hairStyles": 8,
+        "bodyModels": 1,
+        "bodyModel": "d",
+        "faceD": 31,
+        "faceF": 23,
+        "uniqueIdentities": 16,
+        "skinTones": 1,
+        "hairStyles": 1,
         "faceProfiles": 16,
-        "sharedSkeletons": 12,
-        "materialVariants": 32
+        "sharedSkeletons": 8,
+        "materialVariants": 4
       },
-      "minimumFootClearance": -0.0008996290316689581,
+      "npcs": {
+        "people": 18,
+        "d": 9,
+        "f": 9,
+        "activities": [
+          "idle",
+          "wave",
+          "clap",
+          "cheer",
+          "point",
+          "talk",
+          "phone",
+          "walk",
+          "seated-clap"
+        ],
+        "shirtColors": 12,
+        "pantsColors": 8,
+        "skinTones": 6,
+        "hairStyles": 7,
+        "materialVariants": 44
+      },
+      "minimumFootClearance": -0.0021335985803423996,
       "cache": {
-        "skeletons": 16,
-        "materials": 34
+        "skeletons": 8,
+        "materials": 4,
+        "npcMaterials": 74
       }
     },
     {
@@ -61,19 +109,43 @@
       "controls": true,
       "crew": {
         "crew": 54,
-        "d": 31,
-        "f": 23,
-        "uniqueIdentities": 52,
-        "skinTones": 7,
-        "hairStyles": 8,
+        "bodyModels": 1,
+        "bodyModel": "d",
+        "faceD": 31,
+        "faceF": 23,
+        "uniqueIdentities": 16,
+        "skinTones": 1,
+        "hairStyles": 1,
         "faceProfiles": 16,
-        "sharedSkeletons": 12,
-        "materialVariants": 32
+        "sharedSkeletons": 8,
+        "materialVariants": 4
       },
-      "minimumFootClearance": -0.0008996290316689581,
+      "npcs": {
+        "people": 18,
+        "d": 9,
+        "f": 9,
+        "activities": [
+          "idle",
+          "wave",
+          "clap",
+          "cheer",
+          "point",
+          "talk",
+          "phone",
+          "walk",
+          "seated-clap"
+        ],
+        "shirtColors": 12,
+        "pantsColors": 8,
+        "skinTones": 6,
+        "hairStyles": 7,
+        "materialVariants": 44
+      },
+      "minimumFootClearance": -0.0021335985803423996,
       "cache": {
-        "skeletons": 16,
-        "materials": 34
+        "skeletons": 8,
+        "materials": 4,
+        "npcMaterials": 74
       }
     }
   ]

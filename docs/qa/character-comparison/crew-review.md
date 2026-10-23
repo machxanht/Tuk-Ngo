@@ -1,27 +1,28 @@
-# Mixed D/F crew verification
+# Face-only crew and civilian NPC verification
 
-The existing character-comparison page now opens the moving 54-person crew. The initial deterministic roster contains 31 D and 23 F characters, 7 skin tones, 8 model/hair combinations, 16 model/face combinations and 52 complete identities. The identity button generates another roster while retaining the same downloaded meshes and textures.
+The existing character-comparison route now has three views: the common-body crew, varied civilians and the unchanged source D/F comparison. This follows the revised requirement to randomize only athlete faces and reserve broader appearance variation for NPCs.
 
-## Verified
+## Crew
 
-- Both final character GLBs have nine body clips. F retains its separate facial demo. All three GLBs, including the fitted hair library, validate with zero errors and zero warnings.
-- The bake records 776 poses per character: 97 samples for each side/posture/crew role. Palm contacts remain within 1 mm of their paddle targets and neither arm exceeds its measured reach. These are authored IK motions; they are not motion capture.
-- Browser checks pass at 1440×900, 1024×768 and 768×1024: default mixed crew, randomization, bounded caches, both sides/postures, facial controls, pause/play, phase scrubbing and no HTTP/console errors. Six sampled phases give minimum foot/hull clearance of approximately −0.9 mm, within the numerical tolerance used for the hull surface.
-- After five identity changes, 16 shared role skeletons and 34 cached material variants remain. Geometry and texture resources are shared.
-- At the same 1440×900 close view and phase 0.28, the renderer reports 224 draw calls / 976,744 triangles after shared support-board instances and pose-aware frustum bounds; the preceding implementation rendered 602 calls / 2,300,925 triangles. These counters are not frame-rate measurements on physical tablets.
-- Main-app `npm run lint`, `npm test` and `npm run build` pass. The architecture gate confirms the unchanged 533-vertex / 896-triangle / four-boundary-loop shirt and preserved source hashes.
-- The public page passes the same three browser layouts. All eight published files match the Git content (the CSS checkout's CRLF line endings normalize to LF); all three served GLBs match their exact local bytes. See [public file hashes](public-files.json) and [public browser results](browser.json). Implementation: `ce593d0`; Pages deployment: `c021c914ad1c0064e58bb2d9a567418d6fce8e2e`.
+- 54 athletes use one D body, the same blue kit, short haircut and common skin material. The initial roster selects 31 D faces and 23 F faces, covering 16 source/profile combinations.
+- Head-only geometry is cached in the bind coordinates of the head. F retains its facial morphs and is fitted to the common neck envelope. The corresponding original D head triangles are masked in a shared derived body geometry.
+- Changing faces preserves exact body geometry UUIDs, skeleton UUIDs and dimensions. Eight shared role skeletons and four cached identity material variants remain after repeated randomization.
+- Six sampled rowing phases give a minimum foot/hull clearance of approximately -2.14 mm, inside the hull approximation tolerance. Neither the protected V32 shirt nor the eight source rigs are edited.
 
-## Visual inspection
+## NPCs
 
-Reviewed the complete boat in landscape/portrait, bow caller, two helmsmen, close crew, native F expressions and sampled port/starboard stroke phases. D uses its own shoulder/torso surface and weights, a finished garment edge and a pelvis-weighted shorts waistband. Hair caps use radial skull clearance plus a thin target-head scalp underlay; loose locks remain visible. The cap keeps broad skulls from showing through sparse source hair panels.
+- The separate inspection shows 18 civilians: nine D and nine F bodies, 12 shirt colors, eight trouser colors, six initial skin choices and seven initial model/hair combinations. Appearance changes also change faces, hair and proportions.
+- Nine activities are sampled: idle, waving, clapping, cheering, indicating, talking, phone use, walking and seated clapping. Independent phases and speeds avoid synchronized crowd motion. Native F blink/smile and head movement remain active.
+- The arm solver uses each body's own limb lengths and palm frame. Walking positions and phone/bench visibility are verified. Every NPC's bone pose changes across sampled times. The D casual shirt has a shared longer hem fitted outside the actual waistband.
+- After five appearance changes, the material cache contains 74 variants; source geometry/textures and the derived casual shirt are shared. No new model downloads are required.
 
-- [Crew detail](crew-detail-1440.png)
-- [Tablet portrait](crew-768.png)
-- [Bow caller](crew-front.png)
-- [Two helmsmen](crew-stern.png)
-- [Port/starboard sampled cycle](cycle-contact.png)
+## Checks and visual review
 
-## Limits
+- The source D/F GLBs and hair library are unchanged and still validate with zero errors/warnings. The recorded rowing bake retains its 776 measurements per source and its palm/reach checks.
+- The viewer browser suite passes at 1440x900, 1024x768 and 768x1024: view switching, face-only invariants, NPC activities, randomization, bounded caches, phase/playback, original facial controls and no HTTP/console errors.
+- Main-app lint, architecture/source-hash checks and build pass. The architectural gate confirms the exact 533-vertex / 896-triangle / four-boundary-loop shirt and preserved source hashes.
+- Directly reviewed [crew detail](crew-detail-1440.png), [NPC detail](npc-detail-1440.png), [NPC portrait](npcs-768.png) and the sampled animation poses.
 
-The route is a mixed-crew inspection preview; it does not yet replace athletes in the cup race. The high-resolution F source remains heavier than D. Physical-tablet frame rate and a large field of these full-resolution crews have not been measured. Facial profiles are modest shape-key variations of the two approved characters, not 16 separately sculpted people.
+## Scope
+
+This is the existing asset inspection route. The cup race and its instanced map crowd are unchanged. The 18 full-resolution NPCs are a motion/appearance sample, not a replacement for thousands of map spectators. Physical-tablet frame rate has not been measured. See browser.json and public-files.json for the latest local/public verification and deployment identity.
