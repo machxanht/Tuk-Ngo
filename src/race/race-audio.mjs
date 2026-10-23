@@ -1,4 +1,5 @@
-// Original Vietnamese broadcast cuts; pre-rendered Khmer AI and original names.
+import {raceVenue,commentaryDistance} from './race-venues.mjs';
+// Original Vietnamese broadcast cuts; stock neural Khmer/English narration.
 export const DEFAULT_AUDIO_MIX={enabled:true,voice:true,khmer:true,whistle:true,drums:true,crowd:true,volume:.8};
 export function normalizeAudioMix(value={}){
  const mix={...DEFAULT_AUDIO_MIX};
@@ -113,6 +114,7 @@ export function rowingWhistleSchedule(s,lastBeat=-1,horizon=.7){
 export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{},onPreviewState=()=>{}}={}) {
  const directory=baseUrl+'assets/race-audio/',director=createCommentaryDirector();
  let mix=normalizeAudioMix(),context=null,buses=null,manifest=null,manifestPromise=null;
+ let language='mixed',english=null,englishPromise=null;
  let active=false,disposed=false,epoch=0,queue=[],speaking=false,matchSerial=0;
  let previewing=false,previewSerial=0;
  let teams=[],latest=null,lastBeat=null,crowdSource=null,crowdPending=false,voiceUntil=0,ambienceStage=0;
@@ -122,8 +124,23 @@ export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{},onP
  function fail(error){if(disposed||error?.name==='AbortError')return;const message=String(error?.message||error);if(!metrics.errors.includes(message)){metrics.errors.push(message);onError(message);}}
  function loadManifest(){
   if(!manifestPromise)manifestPromise=fetch(directory+'manifest.json',{signal:abort.signal,cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('Audio manifest: '+r.status);return r.json();}).then(m=>{if(!['broadcast','broadcast-vi-ai-km'].includes(m.mode))throw Error('Cần tải lại bộ bình luận');return manifest=m;}).catch(e=>{manifestPromise=null;throw e;});
-  return manifestPromise;
+  return manifestPromise.then(async m=>{
+   if(language==='en'){
+    englishPromise??=fetch(directory+'english/manifest.json',{signal:abort.signal}).then(r=>{if(!r.ok)throw Error('English narration: '+r.status);return r.json();}).then(data=>{english=data;Object.assign(m.clips,data.clips);return data;}).catch(e=>{englishPromise=null;throw e;});await englishPromise;
+   }return m;
+  });
  }
+ function speechSelection(cue,state=latest){
+  if(language==='en'){
+   const id=cue.id==='race-call'?(state?.raceStage==='final'?'final':Math.abs(state?.gap)<2?'close-race':'cruise'):cue.id.startsWith('lead-')?'lead':cue.id==='finish'&&['loss','tie','dnf'].includes(cue.result)?cue.result:cue.id;
+   return {voice:[],khmer:[...(english?.events[id]||[])]};
+  }
+  const selected=resolveBroadcastCue(cue,manifest,teams,state);
+  if(language==='mixed')return selected;
+  if(language==='vi')return {voice:selected.voice.filter(key=>manifest.clips[key].lang==='vi'&&manifest.clips[key].sourceType==='broadcast'&&(!(state?.venueId&&state.venueId!=='maspero')||!/Masp[eé]ro|Sóc Trăng|1[.,]200|một nghìn hai trăm/i.test(manifest.clips[key].text))),khmer:[]};
+  return {voice:[],khmer:selected.khmer.filter(key=>manifest.clips[key].lang==='km'&&/neural|synthes/i.test(manifest.clips[key].sourceType||''))};
+ }
+ function warmupKeys(keys){return keys.filter(key=>{const clip=manifest.clips[key];if(!clip)return false;if(!['voice','khmer'].includes(clip.channel))return true;if(language==='mixed')return true;if(language==='vi')return clip.lang==='vi'&&clip.sourceType==='broadcast';return clip.lang===language&&/neural|synthes/i.test(clip.sourceType||'');});}
  function load(key){
   if(!cache.has(key))cache.set(key,(async()=>{
    const m=await loadManifest(),entry=m.clips[key==='crowd'?m.ambience:key];
@@ -135,7 +152,7 @@ export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{},onP
   })().catch(e=>{cache.delete(key);throw e;}));
   return cache.get(key);
  }
- function permitted(channel){return !disposed&&active&&mix.enabled&&mix[channel]&&context?.state==='running';}
+ function permitted(channel){return !disposed&&active&&mix.enabled&&mix[channel]&&!(channel==='voice'&&!['mixed','vi'].includes(language))&&!(channel==='khmer'&&language==='vi')&&context?.state==='running';}
  function stopSources(channel){
   for(const item of [...sources])if(!channel||item.channel===channel){try{item.node.stop();}catch{/* Already ended. */}item.node.disconnect();sources.delete(item);}
   if(!channel||channel==='crowd'){crowdSource=null;crowdKey=null;}
@@ -170,11 +187,11 @@ export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{},onP
    // Try another eligible whole phrase when the first alternative is recent.
    const cooldown=key=>manifest.clips[key].role==='team-name'?8:manifest.clips[key].duration>=5?85:18;
    cue.excludedKeys=[...recentClips].filter(([key,at])=>context.currentTime-at<cooldown(key)).map(([key])=>key);
-   const selection=resolveBroadcastCue(cue,manifest,teams,latest);
+   const selection=speechSelection(cue,latest);
    const keys=[...(mix.voice?selection.voice:[]),...(mix.khmer?selection.khmer:[])].filter(key=>context.currentTime-(recentClips.get(key)??-Infinity)>=cooldown(key));
    // Fetch the phrase in parallel, then schedule it as one uninterrupted sentence.
    const buffers=await Promise.all(keys.map(load));if(token!==epoch||!active||!mix.enabled||disposed||latest.elapsed-cue.elapsed>(cue.priority>=4?20:9)||(cue.id==='ready'&&latest.phase!=='countdown'))return;
-   const current=resolveBroadcastCue(cue,manifest,teams,latest);if(keys.some(key=>!current.voice.includes(key)&&!current.khmer.includes(key)))return;
+   const current=speechSelection(cue,latest);if(keys.some(key=>!current.voice.includes(key)&&!current.khmer.includes(key)))return;
    let offset=.02;
    for(let i=0;i<keys.length;i++){
     const key=keys[i],channel=manifest.clips[key].channel;if(!permitted(channel))continue;
@@ -239,13 +256,13 @@ export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{},onP
      for(const key of ['voice','khmer','whistle','drums','crowd']){buses[key]=context.createGain();buses[key].connect(buses.master);}applyMix();
     }
     const resumed=context.resume();
-    return resumed.then(loadManifest).then(m=>warmup?Promise.allSettled(m.warmup.map(load)):undefined).catch(fail);
+    return resumed.then(loadManifest).then(m=>warmup?Promise.allSettled(warmupKeys(language==='en'?[...(english.events.ready||[]),...(english.events.go||[])]:m.warmup).map(load)):undefined).catch(fail);
    }catch(e){fail(e);return Promise.resolve();}
   },
   beginMatch(pair,{practice=false}={}){
    api.stopPreview();
    clearSpeech();captions=[];stopSources();director.reset();recentClips.clear();teams=pair;latest=null;lastBeat=null;rhythmCadence=0;lastRhythmAudio=-1;matchSerial++;
-   if(context&&mix.enabled&&!practice)void loadManifest().then(m=>{const keys=['final','surge','finish'].flatMap(id=>{const e=m.events[id];return [...e.voice,...e.khmer];});for(const team of pair){const names=resolveTeamSpeech(team,m),history=resolveTeamSpeech(team,m,'history');keys.push(...names.voice,...names.khmer,...history.voice,...history.khmer);}return Promise.allSettled([...new Set(keys)].map(load));}).catch(fail);
+   if(context&&mix.enabled&&!practice)void loadManifest().then(m=>{const keys=['final','surge','finish'].flatMap(id=>language==='en'?english.events[id]||[]:[...m.events[id].voice,...m.events[id].khmer]);for(const team of pair){const names=resolveTeamSpeech(team,m),history=resolveTeamSpeech(team,m,'history');keys.push(...names.voice,...names.khmer,...history.voice,...history.khmer);}return Promise.allSettled(warmupKeys([...new Set(keys)]).map(load));}).catch(fail);
   },
   async previewTeam(team,kind='name'){
    if(disposed||latest&&!['ready','finished'].includes(latest.phase))return {status:'busy'};
@@ -272,9 +289,11 @@ export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{},onP
    }catch(e){if(token!==previewSerial||disposed)return {status:'cancelled'};fail(e);api.stopPreview();return {status:'error'};}
   },
   stopPreview(){previewSerial++;if(!previewing)return;previewing=false;active=false;clearSpeech();captions=[];stopSources();onPreviewState(null);},
+  setLanguage(value){const next=['vi','km','en'].includes(value)?value:'mixed';if(next===language)return;language=next;api.stopPreview();clearSpeech();captions=[];},
   setMix(value){const previous=mix;mix=normalizeAudioMix(value);if(previewing&&(!mix.enabled||previous.voice!==mix.voice||previous.khmer!==mix.khmer))api.stopPreview();if(!mix.enabled){clearSpeech();captions=[];stopSources();}else{if(previous.voice!==mix.voice||previous.khmer!==mix.khmer){clearSpeech();captions=[];}if(!mix.whistle)stopSources('whistle');if(!mix.drums)stopSources('drums');if(!mix.crowd)stopSources('crowd');}applyMix();void ambient();},
   setActive(value){if(!value)api.stopPreview();if(active===value)return;active=value;if(!active){clearSpeech();captions=[];stopSources();lastBeat=null;}applyMix();if(active)void ambient();},
   update(s){
+   if(s.venueId&&s.venueId!=='maspero')s={...s,actualDistances:s.distances,distances:s.distances.map(d=>commentaryDistance(d,raceVenue(s.venueId)))};
    latest=s;if(disposed)return;
    if(!previewing&&teams.length===2){
    const intensity=s.raceStage==='final'||s.surgeActive?1:0;if(intensity!==ambienceStage){ambienceStage=intensity;applyMix();}
@@ -292,7 +311,7 @@ export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{},onP
   },
   stats(){
    let rms=0;if(context&&buses){const data=new Float32Array(buses.analyser.fftSize);buses.analyser.getFloatTimeDomainData(data);rms=Math.sqrt(data.reduce((n,v)=>n+v*v,0)/data.length);}
-   return {...metrics,groovesPlayed:[...metrics.groovesPlayed],drumBpm:rhythmCadence,ambience:crowdKey,drumKinds:{...metrics.drumKinds},cues:[...metrics.cues],played:[...metrics.played],context:context?.state||'uninitialized',audioTime:context?.currentTime||0,active,mix:{...mix},sources:sources.size,sourcesByChannel:Object.fromEntries(['voice','khmer','whistle','drums','crowd'].map(c=>[c,[...sources].filter(s=>s.channel===c).length])),queued:queue.map(c=>c.id),speaking,previewing,outputRms:rms,cached:cache.size,teams:teams.map(t=>t.id),disposed,origin:manifest?.mode||'unloaded',sourceVideo:manifest?.source.videoId||null};
+  return {...metrics,language,groovesPlayed:[...metrics.groovesPlayed],drumBpm:rhythmCadence,ambience:crowdKey,drumKinds:{...metrics.drumKinds},cues:[...metrics.cues],played:[...metrics.played],context:context?.state||'uninitialized',audioTime:context?.currentTime||0,active,mix:{...mix},sources:sources.size,sourcesByChannel:Object.fromEntries(['voice','khmer','whistle','drums','crowd'].map(c=>[c,[...sources].filter(s=>s.channel===c).length])),queued:queue.map(c=>c.id),speaking,previewing,outputRms:rms,cached:cache.size,teams:teams.map(t=>t.id),disposed,origin:manifest?.mode||'unloaded',sourceVideo:manifest?.source.videoId||null};
   },
   dispose(){if(disposed)return;api.stopPreview();active=false;clearSpeech();captions=[];stopSources();disposed=true;abort.abort();cache.clear();if(context)void context.close().catch(()=>{});},
  };

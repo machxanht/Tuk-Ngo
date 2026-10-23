@@ -1,5 +1,6 @@
 import roster from '../../public/assets/data/roster-2025.json' with {type:'json'};
 import {RACE_TEAMS_2025} from './teams.mjs';
+import {CAMBODIA_TEAMS} from './cambodia-teams.mjs';
 
 // The sourced registration roster includes men, women and unresolved labels.
 // This mixed festival cup is a game format, not the official 2025 bracket.
@@ -16,10 +17,12 @@ export const FESTIVAL_TEAMS=roster.records.map((r,i)=>{
   name:source?.name||r.nameVi,registrationId:r.id,nameVi:r.nameVi,nameKm:r.nameKm,teamNumberKm:r.teamNumberKm||'',gender:r.gender,
   appearance:source?'reference':'sample',sourceUrl:r.sourceUrl,khmerSourceUrl:r.khmerSourceUrl||null};
 });
-const byId=new Map(FESTIVAL_TEAMS.map(t=>[t.id,t]));
+const byId=new Map([...FESTIVAL_TEAMS,...CAMBODIA_TEAMS].map(t=>[t.id,t]));
+export const teamsForVenue=id=>id&&id!=='maspero'?CAMBODIA_TEAMS:FESTIVAL_TEAMS;
 export function festivalTeam(id){const team=byId.get(id);if(!team)throw Error('Unknown festival team: '+id);return team;}
-export function shuffledFestivalIds(seed){
- const ids=FESTIVAL_TEAMS.map(t=>t.id);let n=seed>>>0;
+/** @param {number} seed @param {Array<{id:string}>} teams */
+export function shuffledFestivalIds(seed,teams=FESTIVAL_TEAMS){
+ const ids=teams.map(t=>t.id);let n=seed>>>0;
  for(let i=ids.length-1;i>0;i--){n=(Math.imul(n,1664525)+1013904223)>>>0;const j=n%(i+1);[ids[i],ids[j]]=[ids[j],ids[i]];}
  return ids;
 }

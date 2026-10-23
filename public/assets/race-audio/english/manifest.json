@@ -1,0 +1,312 @@
+{
+  "schema": 1,
+  "language": "en",
+  "events": {
+    "ready": [
+      "ai-ready-en"
+    ],
+    "go": [
+      "ai-go-en"
+    ],
+    "intro": [
+      "ai-intro-en"
+    ],
+    "cruise": [
+      "ai-cruise-en"
+    ],
+    "halfway": [
+      "ai-halfway-en"
+    ],
+    "final": [
+      "ai-final-en"
+    ],
+    "last-hundred": [
+      "ai-last-hundred-en"
+    ],
+    "last-fifty": [
+      "ai-last-fifty-en"
+    ],
+    "surge": [
+      "ai-surge-en"
+    ],
+    "pace-sprint": [
+      "ai-pace-sprint-en"
+    ],
+    "recover": [
+      "ai-recover-en"
+    ],
+    "cohesion": [
+      "ai-cohesion-en"
+    ],
+    "fatigue": [
+      "ai-fatigue-en"
+    ],
+    "close-race": [
+      "ai-close-race-en"
+    ],
+    "lead": [
+      "ai-lead-en"
+    ],
+    "finish": [
+      "ai-finish-en"
+    ],
+    "loss": [
+      "ai-loss-en"
+    ],
+    "dnf": [
+      "ai-dnf-en"
+    ],
+    "tie": [
+      "ai-tie-en"
+    ]
+  },
+  "clips": {
+    "ai-ready-en": {
+      "file": "english/ready.mp3",
+      "channel": "khmer",
+      "lang": "en",
+      "text": "Both crews are ready. Watch the start.",
+      "sourceType": "azure-stock-neural",
+      "voice": "en-US-GuyNeural",
+      "requestSha256": "bbbab54a94294aa9a928be0e9b1c0b44bb97bfbf764b964066a865dcef0926bc",
+      "sha256": "bb818d8e74c0f2b6e30dcc6ce8bc3ff3ee38769c9a18fa9bb154127452b6b9c9",
+      "duration": 3.84,
+      "peak": 0.7679572105407715,
+      "bytes": 46080
+    },
+    "ai-go-en": {
+      "file": "english/go.mp3",
+      "channel": "khmer",
+      "lang": "en",
+      "text": "And they are off! Both boats launch from the line.",
+      "sourceType": "azure-stock-neural",
+      "voice": "en-US-GuyNeural",
+      "requestSha256": "f37668ebd14c1579c0aba8b333fc5c56e16c3d6c0b021a4d6827f98edd1cc822",
+      "sha256": "998436fb54d408ef0001257616181ba9623f2388add9c28ad2e7aa402b1b1e81",
+      "duration": 4.224,
+      "peak": 0.6324751377105713,
+      "bytes": 50688
+    },
+    "ai-intro-en": {
+      "file": "english/intro.mp3",
+      "channel": "khmer",
+      "lang": "en",
+      "text": "Two crews, one finish line. Stay together and find your racing rhythm.",
+      "sourceType": "azure-stock-neural",
+      "voice": "en-US-GuyNeural",
+      "requestSha256": "4fcdf3c722b1cfd1cd1be4f08389ba237710f3745eac2d2e35803b0c199ce6d3",
+      "sha256": "55f90397b8c86c2807fa05d05bb95ef3d58fe7642491e1027d9f7c9e2d70d420",
+      "duration": 5.568,
+      "peak": 0.7057784795761108,
+      "bytes": 66816
+    },
+    "ai-cruise-en": {
+      "file": "english/cruise.mp3",
+      "channel": "khmer",
+      "lang": "en",
+      "text": "The opening drive is over. Settle into the race and save enough energy for the finish.",
+      "sourceType": "azure-stock-neural",
+      "voice": "en-US-GuyNeural",
+      "requestSha256": "df120b04104a9a2eee11042db60c1cab5c6f7212c347ee4e70cd6babccc90856",
+      "sha256": "a7eea34191f7c89ede9fd9f1d9133c328bdd5b4c00437314624f45301e0f2ccf",
+      "duration": 5.928,
+      "peak": 0.5737677812576294,
+      "bytes": 71136
+    },
+    "ai-halfway-en": {
+      "file": "english/halfway.mp3",
+      "channel": "khmer",
+      "lang": "en",
+      "text": "Halfway through. This is where steady teamwork makes the difference.",
+      "sourceType": "azure-stock-neural",
+      "voice": "en-US-GuyNeural",
+      "requestSha256": "6e4e3f6d05338cdc5214c17694de6bf08415e54242078cbd193d85875f7ea814",
+      "sha256": "30987c3925bc16aeb6e0fec763829630f773da9bf1203aed86efcb208576d88a",
+      "duration": 4.92,
+      "peak": 0.7069566249847412,
+      "bytes": 59040
+    },
+    "ai-final-en": {
+      "file": "english/final.mp3",
+      "channel": "khmer",
+      "lang": "en",
+      "text": "The final sprint is on! The paddles accelerate and the crowd comes alive.",
+      "sourceType": "azure-stock-neural",
+      "voice": "en-US-GuyNeural",
+      "requestSha256": "ae4e9f64be6a44a1c2aa40ea96b0cc7605bc9271260902e57a2cea3bf5035015",
+      "sha256": "30361d52cbe2b0db704ae62203be2c0698189da03e5bf71a59fa2b2ba7bc84fc",
+      "duration": 5.448,
+      "peak": 0.8830361366271973,
+      "bytes": 65376
+    },
+    "ai-last-hundred-en": {
+      "file": "english/last-hundred.mp3",
+      "channel": "khmer",
+      "lang": "en",
+      "text": "One hundred metres to go! Both crews are pushing for the line.",
+      "sourceType": "azure-stock-neural",
+      "voice": "en-US-GuyNeural",
+      "requestSha256": "311abd673c1771bdaf14d50a4eef10daa389e4cfb95a126fba6c5040e1fa4b45",
+      "sha256": "71507c1ec282a294186b2c98411b38b6b41154f5ddcc98f331f300a54c6ecfdb",
+      "duration": 4.872,
+      "peak": 0.6470719575881958,
+      "bytes": 58464
+    },
+    "ai-last-fifty-en": {
+      "file": "english/last-fifty.mp3",
+      "channel": "khmer",
+      "lang": "en",
+      "text": "The final fifty metres! Every stroke counts now.",
+      "sourceType": "azure-stock-neural",
+      "voice": "en-US-GuyNeural",
+      "requestSha256": "d643a3230a14944cbce4fea9204d1d46eb8d573cbffe7188bc7458c80e1e4aae",
+      "sha256": "f18a707062fc25fbc16b887dfd6bc8a188ab58c8e808afe4efaa646a50064020",
+      "duration": 4.368,
+      "peak": 0.7265836596488953,
+      "bytes": 52416
+    },
+    "ai-surge-en": {
+      "file": "english/surge.mp3",
+      "channel": "khmer",
+      "lang": "en",
+      "text": "A powerful acceleration! The crew digs in and the water flies.",
+      "sourceType": "azure-stock-neural",
+      "voice": "en-US-GuyNeural",
+      "requestSha256": "5b620b0798d1e75a1314b63ae8fb818c9f0be9bed6c69f89c5a05bec9c5f6d4e",
+      "sha256": "99e48b8f35f4e172e11ec812243a8230271cd6fd03fe69b395fff9a8d053d9e9",
+      "duration": 5.136,
+      "peak": 0.6099042892456055,
+      "bytes": 61632
+    },
+    "ai-pace-sprint-en": {
+      "file": "english/pace-sprint.mp3",
+      "channel": "khmer",
+      "lang": "en",
+      "text": "The pace is rising. Watch the energy level and make this effort count.",
+      "sourceType": "azure-stock-neural",
+      "voice": "en-US-GuyNeural",
+      "requestSha256": "d2cd17d0aae7b5539774ea271c622a246e6544e0727d2d94d0fb92f58b70dfbe",
+      "sha256": "51db1f6990ed85713c0a2d23d9048ae0bfd36a47f62f9ad867a2c52fd7e58507",
+      "duration": 5.232,
+      "peak": 0.7634297013282776,
+      "bytes": 62784
+    },
+    "ai-recover-en": {
+      "file": "english/recover.mp3",
+      "channel": "khmer",
+      "lang": "en",
+      "text": "A short recovery. Gather your strength, then build the speed again.",
+      "sourceType": "azure-stock-neural",
+      "voice": "en-US-GuyNeural",
+      "requestSha256": "e58d35b4597b9a9ee3b7de6b1728266fae5c65e3924553f727cde8f24ac4b7d5",
+      "sha256": "70828892e5e40c35fc38ae1cb3a1fdb9a5794cef39ce8fb6145b84ed8761d783",
+      "duration": 4.944,
+      "peak": 0.7807447910308838,
+      "bytes": 59328
+    },
+    "ai-cohesion-en": {
+      "file": "english/cohesion.mp3",
+      "channel": "khmer",
+      "lang": "en",
+      "text": "Excellent teamwork. The paddles are moving together.",
+      "sourceType": "azure-stock-neural",
+      "voice": "en-US-GuyNeural",
+      "requestSha256": "be6848190ddf9679bd56a73fe0cf560d677758601e9c23772d3519ac98ac3796",
+      "sha256": "70cf7ed1367b1c9a0c6a1f863d4fd04ccde61a8dcd851e8e6b26e3584ec29a05",
+      "duration": 4.488,
+      "peak": 0.7192169427871704,
+      "bytes": 53856
+    },
+    "ai-fatigue-en": {
+      "file": "english/fatigue.mp3",
+      "channel": "khmer",
+      "lang": "en",
+      "text": "The crew is tiring. A brief recovery could make all the difference.",
+      "sourceType": "azure-stock-neural",
+      "voice": "en-US-GuyNeural",
+      "requestSha256": "4f1773900d29ddd8478c1cde0fec18734a37ff6097a76982c8488e5400de9191",
+      "sha256": "b20c3aad336bee0240da53164089a1cabc198d7fba88a7cb9256e000bf815796",
+      "duration": 4.968,
+      "peak": 0.6448934078216553,
+      "bytes": 59616
+    },
+    "ai-close-race-en": {
+      "file": "english/close-race.mp3",
+      "channel": "khmer",
+      "lang": "en",
+      "text": "There is almost nothing between them! This race is wide open.",
+      "sourceType": "azure-stock-neural",
+      "voice": "en-US-GuyNeural",
+      "requestSha256": "bd28bb9a2ec2df79debc4079001f9725216c861ac5f06086142623df64a655fa",
+      "sha256": "2d4942436cb586f83139aea4aa2bdb3a620218ab3e07f930829f46dfe67b47da",
+      "duration": 4.752,
+      "peak": 0.6766148209571838,
+      "bytes": 57024
+    },
+    "ai-lead-en": {
+      "file": "english/lead.mp3",
+      "channel": "khmer",
+      "lang": "en",
+      "text": "A change at the front! One crew has found an extra gear.",
+      "sourceType": "azure-stock-neural",
+      "voice": "en-US-GuyNeural",
+      "requestSha256": "a18782bd7cee53057a8afbe8243ab3da194ad47815c2c8f404f5cf4becf86366",
+      "sha256": "37b9c5b765d22e24886d285a14415ecc9f15f2f00bc6d0b41d84f81fcb5eab24",
+      "duration": 4.752,
+      "peak": 0.6095250844955444,
+      "bytes": 57024
+    },
+    "ai-finish-en": {
+      "file": "english/finish.mp3",
+      "channel": "khmer",
+      "lang": "en",
+      "text": "Across the line! A hard-earned victory after a tremendous effort.",
+      "sourceType": "azure-stock-neural",
+      "voice": "en-US-GuyNeural",
+      "requestSha256": "24225485dcd1cec667338d6a7d9849b670a9ea1d0095c726c7db54da0d70101c",
+      "sha256": "d1e322a336d5c931e98e5e66b79b4e2434881fec763ff5ab335d25c69e658994",
+      "duration": 4.992,
+      "peak": 0.7223026156425476,
+      "bytes": 59904
+    },
+    "ai-loss-en": {
+      "file": "english/loss.mp3",
+      "channel": "khmer",
+      "lang": "en",
+      "text": "The other boat reaches the finish first. A brave effort from both crews.",
+      "sourceType": "azure-stock-neural",
+      "voice": "en-US-GuyNeural",
+      "requestSha256": "477c8c5383135b5145694adfb97487c5d8c10f0cca8d56bfe71a829b06d8dbbb",
+      "sha256": "64020f4cffbeceab2f9e69bc1e39c02220ecb1f6e1408d67923e418ba1135474",
+      "duration": 5.256,
+      "peak": 0.7227466702461243,
+      "bytes": 63072
+    },
+    "ai-dnf-en": {
+      "file": "english/dnf.mp3",
+      "channel": "khmer",
+      "lang": "en",
+      "text": "The race has ended before your crew could complete the course.",
+      "sourceType": "azure-stock-neural",
+      "voice": "en-US-GuyNeural",
+      "requestSha256": "0f9ea5591281180c0b7755e4dbb4bed92d5a38c057b6c3fd626029d31529775b",
+      "sha256": "21bc7647b9d576ade2b55aa8d92e0dd94532b8e84294e81ba95752aedaea1d96",
+      "duration": 3.648,
+      "peak": 0.5959872603416443,
+      "bytes": 43776
+    },
+    "ai-tie-en": {
+      "file": "english/tie.mp3",
+      "channel": "khmer",
+      "lang": "en",
+      "text": "Too close to separate! Both boats reach the line together.",
+      "sourceType": "azure-stock-neural",
+      "voice": "en-US-GuyNeural",
+      "requestSha256": "0a711e628cb259c8422d399a70201b530fd99ec9bc122e6a8b6c9e6f3677e242",
+      "sha256": "1b6d925bb9fc27cd73a90fd54334d8e9fa288dfad166b6b1a403115ff048959a",
+      "duration": 4.752,
+      "peak": 0.6866423487663269,
+      "bytes": 57024
+    }
+  }
+}

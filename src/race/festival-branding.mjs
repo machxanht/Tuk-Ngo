@@ -46,6 +46,7 @@ export function festivalBannerLayout(text){
  const wayfinding=/^(ស្ពាន|ទីបញ្ចប់|ចំណុចចាប់ផ្តើម)|ម៉ែត្រ$/.test(text);
  return {kind:brand?'sponsor':wayfinding?'wayfinding':festival?'festival':'support',
   accent:text==='Kuon Khmer'?c.red:wayfinding?c.blue:c.jade,
+  background:brand?(text==='Kuon Khmer'?c.deepRed:'#075267'):wayfinding?'#124a75':festival?c.jade:['#00563c','#932a58','#124a75'][Array.from(text).reduce((n,ch)=>n+ch.codePointAt(0),0)%3],
   lines:brand?[text,text==='Kuon Khmer'?'កម្លាំង និងសាមគ្គីភាព':'ស្មារតីអង្គរ']:festival?[FESTIVAL.titleKm+' '+FESTIVAL.yearKm,FESTIVAL.provinceKm]:[text]};
 }
 export function festivalBannerSize(width,height){
@@ -54,14 +55,14 @@ export function festivalBannerSize(width,height){
 }
 export function paintFestivalBanner(canvas,text){
  const p=canvas.getContext('2d'),w=canvas.width,h=canvas.height,layout=festivalBannerLayout(text);
- p.clearRect(0,0,w,h);p.fillStyle=c.white;p.fillRect(0,0,w,h);
+ p.clearRect(0,0,w,h);p.fillStyle=layout.background;p.fillRect(0,0,w,h);
  p.fillStyle=layout.accent;p.fillRect(0,0,h*.09,h*.91);p.fillRect(w-h*.09,0,h*.09,h*.91);
  p.fillStyle=c.gold;p.fillRect(0,0,w,h*.025);
  // Same three flowing bands as the logo, with no per-frame canvas painting.
  p.fillStyle=c.blue;p.beginPath();p.moveTo(0,h*.93);p.bezierCurveTo(w*.28,h*.78,w*.52,h*1.08,w*.76,h*.92);p.quadraticCurveTo(w*.9,h*.83,w,h*.91);p.lineTo(w,h);p.lineTo(0,h);p.fill();
  p.fillStyle=c.gold;p.beginPath();p.moveTo(0,h*.90);p.quadraticCurveTo(w*.17,h*.76,w*.31,h*.91);p.quadraticCurveTo(w*.16,h*.84,0,h*.95);p.fill();
  const emblem=layout.kind!=='wayfinding',logoW=emblem?Math.min(h*1.9,w*.25):0;
- if(emblem)paintFestivalMark(p,h*.13,h*.035,logoW,h*.85);
+ if(emblem){p.fillStyle=c.white;p.beginPath();p.roundRect(h*.13,h*.10,logoW,h*.72,h*.065);p.fill();paintFestivalMark(p,h*.13,h*.10,logoW,h*.72);}
  const left=emblem?logoW+h*.38:h*.25,right=w-h*.25,available=right-left,cx=(left+right)/2;
  if(emblem){p.fillStyle=c.gold;p.fillRect(left-h*.12,h*.18,Math.max(1,h*.006),h*.51);}
  const lineBounds=[];p.textAlign='center';p.textBaseline='alphabetic';
@@ -71,7 +72,7 @@ export function paintFestivalBanner(canvas,text){
   const measure=()=>{p.font='800 '+size+'px "Noto Sans Khmer", sans-serif';return p.measureText(line);};m=measure();
   size*=Math.min(1,available/Math.max(1,m.width),(bottom-top)/Math.max(1,m.actualBoundingBoxAscent+m.actualBoundingBoxDescent));m=measure();
   const y=top+(bottom-top-m.actualBoundingBoxAscent-m.actualBoundingBoxDescent)/2+m.actualBoundingBoxAscent;
-  p.fillStyle=layout.kind==='sponsor'&&i===0?layout.accent:c.jade;p.fillText(line,cx,y);
+  p.fillStyle=i===0?c.white:c.gold;p.fillText(line,cx,y);
   lineBounds.push({text:line,left:cx-m.width/2,right:cx+m.width/2,top:y-m.actualBoundingBoxAscent,bottom:y+m.actualBoundingBoxDescent});
  });
  return {kind:layout.kind,lineBounds,width:w,height:h};

@@ -5,7 +5,7 @@ import {courseZ} from './maspero-layout.mjs';
 import {buildRiverFlotsam} from './river-flotsam.mjs';
 
 const V=(x,y,z)=>new T.Vector3(x,y,z);
-export function buildRiver(scene,waterY=.28,{detailed=false,crowdAssets=null,bankMaterials=null,waterOnly=false,bright=false,crowdOptions={}}={}){
+export function buildRiver(scene,waterY=.28,{detailed=false,crowdAssets=null,bankMaterials=null,waterOnly=false,bright=false,crowdOptions={},venue=null,bankBuilder=null}={}){
  const group=new T.Group();group.name='Maspero_River_And_Banks';scene.add(group);
  // The river plane must not fill the dry interior of a narrow open hull.
  // Sample the accepted hull profile; transform fragments into each moving boat.
@@ -60,8 +60,8 @@ export function buildRiver(scene,waterY=.28,{detailed=false,crowdAssets=null,ban
   const water=new T.Mesh(geo,material);water.position.set(0,waterY,-25);group.add(water);
   return {group,water,setBoats,update(time){updateBoatMasks();material.uniforms.uTime.value=time;},dispose(){sectionTexture.dispose();geo.dispose();material.dispose();scene.remove(group);}};
  }
- const geo=new T.PlaneGeometry(detailed?2800:1600,86,detailed?560:320,32);geo.rotateX(-Math.PI/2);if(detailed){const p=geo.attributes.position;for(let i=0;i<p.count;i++){const x=p.getX(i)+1150;p.setXYZ(i,x,p.getY(i),courseZ(x,p.getZ(i)));}geo.computeVertexNormals();}const water=new T.Mesh(geo,material);water.position.set(detailed?0:650,waterY,0);group.add(water);
- if(detailed){const banks=buildMasperoBanks(group,waterY,crowdAssets,bankMaterials||{},crowdOptions),flotsam=buildRiverFlotsam(group,waterY);
+ const cambodia=!!bankBuilder,geo=new T.PlaneGeometry(cambodia?venue.length+600:detailed?2800:1600,cambodia?venue.width:86,detailed?(cambodia?400:560):320,cambodia?16:32);geo.rotateX(-Math.PI/2);if(detailed){const p=geo.attributes.position;for(let i=0;i<p.count;i++){const x=p.getX(i)+(cambodia?venue.finishX+venue.length/2:1150);p.setXYZ(i,x,p.getY(i),cambodia?p.getZ(i):courseZ(x,p.getZ(i)));}geo.computeVertexNormals();}const water=new T.Mesh(geo,material);water.position.set(detailed?0:650,waterY,0);group.add(water);
+ if(detailed){const banks=(bankBuilder||buildMasperoBanks)(group,waterY,crowdAssets,bankMaterials||{},crowdOptions,venue),flotsam=cambodia?{update(){},dispose(){}}:buildRiverFlotsam(group,waterY);
   return {group,water,setBoats,flotsam,prepareLods:banks.prepareLods,update(time,cameraX=1020,cameraZ=0,visibility){updateBoatMasks();material.uniforms.uTime.value=time;banks.update(time,cameraX,cameraZ,visibility);flotsam.update(time,visibility);},dispose(){banks.dispose();flotsam.dispose();sectionTexture.dispose();const geometries=new Set(),materials=new Set(),textures=new Set();group.traverse(o=>{if(o.geometry)geometries.add(o.geometry);for(const m of Array.isArray(o.material)?o.material:o.material?[o.material]:[]){materials.add(m);if(m.map)textures.add(m.map);if(m.normalMap)textures.add(m.normalMap);}});geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());textures.forEach(t=>t.dispose());scene.remove(group);}};}
  const bankMat=new T.MeshStandardMaterial({color:'#8d958c',roughness:.96}),grassMat=new T.MeshStandardMaterial({color:'#44704b',roughness:1});
  for(const side of [-1,1]){

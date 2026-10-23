@@ -1,0 +1,16 @@
+// Sourced Khmer identities; display transliterations and colours are game art.
+const builder='https://thmeythmey.com/detail/141902';
+/** @type {Array<[string,string,string,string,string,number|null]>} */
+const records=[
+ ['kh-sovan-reachsey','សុវណ្ណរាជសី បារមីបន្ទាយមហានគរ','Sovan Reachsey Baramey Banteay Mahanokor','Banteay Meanchey','https://ams.com.kh/news/central/1167878',76],
+ ['kh-chey-samrith','ជ័យសំរឹទ្ធ','Chey Samrith','Prey Veng','https://thmeythmey.com/detail/142042',22],
+ ['kh-hanuman','កំពូលអធិរាជត្រៃភព ហនុមានសែនជ័យ','Kampul Athireach Traiphop Hanuman Senchey','Phnom Penh',builder,null],
+ ['kh-maha-tonsay','មហាទន្សាយតេជោសែនជ័យ','Maha Tonsay Techo Senchey','Cambodia',builder,null],
+ ['kh-srei-krang-youv','ស្រីក្រាំងយ៉ូវ','Srei Krang Youv','Cambodia',builder,null],
+ ['kh-sea-senchey','ស៊ាសែនជ័យបារមីតេជៈ','Sea Senchey Baramey Techo','Cambodia',builder,null],
+ ['kh-chao-pech','ចៅពេជ្រកុមារ','Chao Pech Komar','Cambodia',builder,null],
+ ['kh-sdach-damrey','ស្ដេចដំរីសភ្លុកខៀវមានជ័យ បារមីវត្តអារញ្ញសាគរ','Sdach Damrey Sa Phluk Khiev Meanchey Baramey Wat Aranh Sakor','Siem Reap','https://takeo.info.gov.kh/km/article/01a13e92-415c-767b-827c-4bf4c090200a',null],
+];
+const colours=['#f6c12e','#24ad78','#ef713e','#398dd2','#ab52b7','#e83c50','#21b5b0','#ec719d'];
+export const CAMBODIA_TEAMS=records.map(([id,nameKm,name,province,sourceUrl,crew],i)=>({id,registrationId:id,name,nameVi:name,nameKm,teamNumberKm:'',country:'KH',province,sourceUrl,season:id==='kh-sdach-damrey'?2026:2024,reportedCrew:crew,appearance:'sample',jersey:colours[i],trim:'#ffe2a1',cap:colours[(i+2)%colours.length],sleeve:colours[i],pattern:'festival-sample',gender:'unverified',transliterationVerified:false}));
+export const CAMBODIA_RESEARCH_ONLY=[{id:'kh-tepthida',nameKm:'ទេពធីតាសែនជ័យបារមីជំទាវទេព',name:'Tepthida Senchey Baramey Chumteav Tep',province:'Kampong Chhnang',season:2024,reportedCrew:46,reportedLength:29.73,reportedClass:'chev',sourceUrl:'https://kohsantepheapdaily.com.kh/article/2003391.html',playable:false,reason:'Different rowing mechanism; not attached to the paddle rig.'}];

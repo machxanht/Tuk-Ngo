@@ -2,12 +2,13 @@ import * as T from 'three';
 import {COURSE,raceX} from './maspero-course.mjs';
 import {courseZ} from './maspero-layout.mjs';
 import {ceremonyPlacement} from './ceremony-layout.mjs';
+import {raceVenue,venueRaceX} from './race-venues.mjs';
 
 const lerp=(a,b,t)=>a+(b-a)*t,smooth=t=>t*t*(3-2*t);
 // Follow course progress, never cancel the player's lateral steering. The
 // course-relative target also keeps the opponent visible during close duels.
 export function playableShot(state,aspect=1,view='race'){
- const x=raceX(state.distances[0])+15.1,other=raceX(state.distances[1])+15.1,gap=Math.abs(other-x);
+ const venue=raceVenue(state.venueId),x=venueRaceX(venue,state.distances[0])+15.1,other=venueRaceX(venue,state.distances[1])+15.1,gap=Math.abs(other-x);
  const anchor=x+(state.mode==='practice'?0:(other-x)*Math.max(0,.30-gap/140));
  const chase=view==='chase',target=[anchor+(chase?4:0),1,state.mode==='practice'?COURSE.lanes[0]:0];
  const direction=new T.Vector3(...(chase?[35,14,13]:[25,20,33])).normalize();
@@ -15,20 +16,20 @@ export function playableShot(state,aspect=1,view='race'){
  return {position:target.map((n,i)=>n+direction.getComponent(i)*distance),target,fov};
 }
 // The sequence is timed by the simulation; pausing freezes the shot as well.
-export function introShot(seconds){
- const points=[
+export function introShot(seconds,venueId='maspero'){
+ const v=raceVenue(venueId),points=venueId==='maspero'?[
   {at:0,p:[COURSE.standX+42,25,courseZ(COURSE.standX,26)],t:[COURSE.standX,8,courseZ(COURSE.standX,-56)],f:52},
   {at:2.6,p:[COURSE.standX+120,73,courseZ(COURSE.standX,105)],t:[COURSE.standX+65,4,0],f:57},
   {at:5.3,p:[raceX(470)+30,230,95],t:[raceX(500),2,0],f:58},
   {at:8.2,p:[raceX(0)+90,94,80],t:[raceX(0)+8,1,0],f:49},
   {at:10,p:[raceX(0)+55,39,39],t:[raceX(0)+15,1,0],f:36},
- ];
+ ]:[{at:0,p:[v.finishX+60,28,v.width*.15],t:[v.finishX+40,8,-v.width/2-20],f:55},{at:2.6,p:[v.finishX+150,110,v.width*.55],t:[v.finishX+80,2,0],f:56},{at:5.3,p:[v.finishX+v.length*.5,160,65],t:[v.finishX+v.length*.5,1,0],f:58},{at:8.2,p:[venueRaceX(v,0)+70,80,65],t:[venueRaceX(v,0)+15,1,0],f:50},{at:10,p:[venueRaceX(v,0)+55,39,39],t:[venueRaceX(v,0)+15,1,0],f:36}];
  const time=T.MathUtils.clamp(seconds,0,10);let i=0;while(i<points.length-2&&time>points[i+1].at)i++;
  const a=points[i],b=points[i+1],u=smooth((time-a.at)/(b.at-a.at));
  return {position:a.p.map((v,j)=>lerp(v,b.p[j],u)),target:a.t.map((v,j)=>lerp(v,b.t[j],u)),fov:lerp(a.f,b.f,u),segment:i};
 }
-export function applyIntroCamera(camera,controls,seconds){
- const shot=introShot(seconds);camera.position.fromArray(shot.position);controls.target.fromArray(shot.target);camera.fov=shot.fov;camera.lookAt(controls.target);camera.updateProjectionMatrix();return shot;
+export function applyIntroCamera(camera,controls,seconds,venueId='maspero'){
+ const shot=introShot(seconds,venueId);camera.position.fromArray(shot.position);controls.target.fromArray(shot.target);camera.fov=shot.fov;camera.lookAt(controls.target);camera.updateProjectionMatrix();return shot;
 }
 
 // Opening-film coverage: raft, VIP stand, both crowds and handheld-cap salutes.
