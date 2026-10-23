@@ -1,4 +1,7 @@
 {
+  "independentTeamFaces": true,
+  "easyHeldFingerRows": true,
+  "releaseStopsAssistance": true,
   "realTouchPointerEvents": true,
   "scoringClockControlled": true,
   "earlyCorrection": true,
