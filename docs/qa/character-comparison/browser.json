@@ -1,5 +1,5 @@
 {
-  "url": "https://machxanht.github.io/Tuk-Ngo/character-comparison/",
+  "url": "http://127.0.0.1:8778/character-comparison/",
   "results": [
     {
       "viewport": {
@@ -8,7 +8,23 @@
       },
       "errors": [],
       "loaded": true,
-      "controls": true
+      "controls": true,
+      "crew": {
+        "crew": 54,
+        "d": 31,
+        "f": 23,
+        "uniqueIdentities": 52,
+        "skinTones": 7,
+        "hairStyles": 8,
+        "faceProfiles": 16,
+        "sharedSkeletons": 12,
+        "materialVariants": 32
+      },
+      "minimumFootClearance": -0.0008996290316689581,
+      "cache": {
+        "skeletons": 16,
+        "materials": 34
+      }
     },
     {
       "viewport": {
@@ -17,7 +33,23 @@
       },
       "errors": [],
       "loaded": true,
-      "controls": true
+      "controls": true,
+      "crew": {
+        "crew": 54,
+        "d": 31,
+        "f": 23,
+        "uniqueIdentities": 52,
+        "skinTones": 7,
+        "hairStyles": 8,
+        "faceProfiles": 16,
+        "sharedSkeletons": 12,
+        "materialVariants": 32
+      },
+      "minimumFootClearance": -0.0008996290316689581,
+      "cache": {
+        "skeletons": 16,
+        "materials": 34
+      }
     },
     {
       "viewport": {
@@ -26,7 +58,23 @@
       },
       "errors": [],
       "loaded": true,
-      "controls": true
+      "controls": true,
+      "crew": {
+        "crew": 54,
+        "d": 31,
+        "f": 23,
+        "uniqueIdentities": 52,
+        "skinTones": 7,
+        "hairStyles": 8,
+        "faceProfiles": 16,
+        "sharedSkeletons": 12,
+        "materialVariants": 32
+      },
+      "minimumFootClearance": -0.0008996290316689581,
+      "cache": {
+        "skeletons": 16,
+        "materials": 34
+      }
     }
   ]
 }

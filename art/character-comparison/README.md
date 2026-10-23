@@ -1,16 +1,19 @@
 # D/F athlete comparison
 
-The standalone `/character-comparison/` page shows the actual D (Quaternius Standard Superhero Male) and F (Blender Studio Snow) characters. Both wear the same blue shirt/dark shorts and use the same seated rowing cycle, camera and light. F also exposes three baked native facial poses. Original hairstyles and proportions are preserved so that the difference between the source characters remains visible.
+The existing `/character-comparison/` page now opens a moving, 54-person crew on the canonical 30 m hull, mixing actual D (Quaternius Standard Superhero Male) and F (Blender Studio Snow) characters. It includes 8 seated pairs, 17 kneeling pairs, a bow caller, a controller facing the stern and two helmsmen. The individual comparison remains available in the same page.
 
-This is a selection prototype for one athlete, not an approved replacement for the full crew. No race modules, protected shirt geometry or master rigs are modified. The models require crew-level LOD/instancing work before replacing hundreds of athletes; a two-character browser check is not a tablet race performance benchmark.
+Deterministic identities combine seven skin tones, four hair choices per character, five dark hair colors and eight facial profiles per character. F retains native Smile/Effort/Blink poses, including independent blinking in the crew. The identity button changes the roster without downloading another character or duplicating geometry/textures. Skeletons are shared by model/role/side; material variants are cached.
+
+This crew inspection page does not replace the athletes in the cup race. No protected V32 shirt geometry or eight master rigs are modified. Hundreds of these full-resolution characters would still require LOD work; responsive browser checks are not physical-tablet frame-rate measurements.
 
 ## Files
 
 - `d.blend`, `f.blend`: derived editable body skeleton, meshes, materials and F facial shape keys. The full original Snow rig remains in the external source cache.
 - `jersey.png`: shared race-shirt artwork with the existing Khmer wordmark.
-- `public/assets/character-comparison/d.glb`, `f.glb`: animated, optimized browser assets.
+- `public/assets/character-comparison/d.glb`, `f.glb`: nine baked body clips per character; F also has a facial demonstration clip.
+- `public/assets/character-comparison/hairstyles.glb`: Quaternius hair fitted to both skulls, mounted in animated head coordinates.
 - `public/assets/character-comparison/manifest.json`: hashes, sizes, triangle counts and provenance.
-- `public/assets/character-comparison/CREDITS.md`: original licenses and adaptation credits, including Snow-derived clothes on D.
+- `public/assets/character-comparison/CREDITS.md`: licenses and adaptation credits. D's shirt uses D's own surface/weights; F's shirt and both characters' shorts derive from Snow.
 
 ## Rebuild
 
@@ -31,8 +34,10 @@ The fetch step reuses the existing Quaternius Standard ZIP at `../tools/asset-ca
 
 The bake keeps Snow's facial drivers until capture. Calling `animation_data_clear()` would also remove those drivers and break eyelid closure. Only DEF skin weights are retained; mask/corrective groups are not skeleton influences. The active **render** UV layer is used for Snow's skin instead of its tattoo-mask UV layer. Derived mesh bounds are not used to cull animated clothing at close camera distances.
 
+`src/race/athlete-rowing.mjs` measures each character's own upper/lower arms and palm contact frames. It solves both grips against the same paddle, curls fingers around the shaft/T bar and bakes separate port/starboard, seated/kneeling, caller/controller and helm clips. This is authored motion based on the existing real-video contact sheets, not captured motion. The D shirt follows D's torso/shoulder skin weights, with a finished collar/cuff/hem and a pelvis-weighted shorts waistband. Hair cap clearance uses radial skull intersections; nearest-point face projection can produce discontinuities around the ears/nose.
+
 ## Verify
 
-Serve `public/` on localhost port 8778, then run `node scripts/test-character-comparison.mjs`. Set `CHARACTER_COMPARE_URL` to test the public page and `PLAYWRIGHT_MODULE` if Playwright is not available from the existing browser-QA installation. The script checks real final GLBs, hashes, normalized weights, clothing bone influences, native blink displacement, a sampled rowing cycle, UI controls, HTTP/console errors and desktop/tablet layouts. Screenshots and reports are written to `docs/qa/character-comparison/`.
+Serve `public/` on localhost port 8778, then run `node scripts/test-character-comparison.mjs`. Set `CHARACTER_COMPARE_URL` to test the public page and `PLAYWRIGHT_MODULE` if needed. Checks cover the three final GLBs, hashes, normalized skin weights, clothing influences, native blink, 776 body-pose measurements per character, both palm contacts and arm reach. Browser checks cover the mixed roster, changing identities, bounded skeleton/material caches, sampled foot/hull clearance, both sides and postures, facial controls, playback, HTTP/console errors and three desktop/tablet layouts. Screenshots/reports go to `docs/qa/character-comparison/`; visual review remains necessary for shirt fit, finger contact and hair silhouettes.
 
 The main app's TypeScript check remains `npm run lint`. The comparison viewer is bundled independently; it is not imported by the main game and does not add a character download to the main menu.

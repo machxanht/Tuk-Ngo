@@ -3,7 +3,7 @@
     "uri": "d.glb",
     "mimeType": "model/gltf-binary",
     "validatorVersion": "2.0.0-dev.3.10",
-    "validatedAt": "2026-10-23T07:44:30.291Z",
+    "validatedAt": "2026-10-23T09:15:09.074Z",
     "issues": {
       "numErrors": 0,
       "numWarnings": 0,
@@ -20,7 +20,7 @@
           "code": "UNUSED_OBJECT",
           "message": "This object may be unused.",
           "severity": 2,
-          "pointer": "/meshes/4/primitives/0/attributes/TEXCOORD_0"
+          "pointer": "/meshes/5/primitives/0/attributes/TEXCOORD_0"
         }
       ],
       "truncated": false
@@ -39,7 +39,7 @@
           "pointer": "/buffers/0",
           "mimeType": "application/gltf-buffer",
           "storage": "glb",
-          "byteLength": 1818648
+          "byteLength": 2103120
         },
         {
           "pointer": "/images/0",
@@ -133,15 +133,15 @@
           }
         }
       ],
-      "animationCount": 2,
+      "animationCount": 9,
       "materialCount": 6,
-      "hasMorphTargets": false,
+      "hasMorphTargets": true,
       "hasSkins": true,
       "hasTextures": true,
       "hasDefaultScene": true,
       "drawCallCount": 7,
-      "totalVertexCount": 12499,
-      "totalTriangleCount": 20291,
+      "totalVertexCount": 12822,
+      "totalTriangleCount": 19796,
       "maxUVs": 2,
       "maxInfluences": 4,
       "maxAttributes": 6
@@ -151,7 +151,7 @@
     "uri": "f.glb",
     "mimeType": "model/gltf-binary",
     "validatorVersion": "2.0.0-dev.3.10",
-    "validatedAt": "2026-10-23T07:44:30.506Z",
+    "validatedAt": "2026-10-23T09:15:09.302Z",
     "issues": {
       "numErrors": 0,
       "numWarnings": 0,
@@ -223,7 +223,7 @@
           "pointer": "/buffers/0",
           "mimeType": "application/gltf-buffer",
           "storage": "glb",
-          "byteLength": 3998016
+          "byteLength": 5280328
         },
         {
           "pointer": "/images/0",
@@ -278,7 +278,7 @@
           }
         }
       ],
-      "animationCount": 3,
+      "animationCount": 10,
       "materialCount": 8,
       "hasMorphTargets": true,
       "hasSkins": true,
@@ -290,6 +290,44 @@
       "maxUVs": 2,
       "maxInfluences": 4,
       "maxAttributes": 6
+    }
+  },
+  "hair": {
+    "uri": "hairstyles.glb",
+    "mimeType": "model/gltf-binary",
+    "validatorVersion": "2.0.0-dev.3.10",
+    "validatedAt": "2026-10-23T09:15:09.476Z",
+    "issues": {
+      "numErrors": 0,
+      "numWarnings": 0,
+      "numInfos": 0,
+      "numHints": 0,
+      "messages": [],
+      "truncated": false
+    },
+    "info": {
+      "version": "2.0",
+      "generator": "Khronos glTF Blender I/O v5.2.40",
+      "resources": [
+        {
+          "pointer": "/buffers/0",
+          "mimeType": "application/gltf-buffer",
+          "storage": "glb",
+          "byteLength": 3548032
+        }
+      ],
+      "animationCount": 0,
+      "materialCount": 1,
+      "hasMorphTargets": false,
+      "hasSkins": false,
+      "hasTextures": false,
+      "hasDefaultScene": true,
+      "drawCallCount": 8,
+      "totalVertexCount": 105874,
+      "totalTriangleCount": 167842,
+      "maxUVs": 0,
+      "maxInfluences": 0,
+      "maxAttributes": 2
     }
   }
 }

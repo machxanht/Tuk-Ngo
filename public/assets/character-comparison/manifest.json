@@ -1,20 +1,27 @@
 {
   "schema": 1,
-  "purpose": "Compare the original D/F characters before choosing a race athlete",
+  "purpose": "Mixed D/F crew and individual athlete inspection",
   "liveGameChanged": false,
-  "sharedWardrobe": "Blue race jersey and dark shorts adapted from Snow, CC BY 4.0",
-  "sharedMotion": "src/race/rowing-pose.mjs",
+  "sharedWardrobe": "D body-matched shirt, Snow shirt and shorts, common blue kit",
+  "sharedMotion": "src/race/athlete-rowing.mjs",
   "models": {
     "d": {
       "label": "D · Quaternius",
       "file": "d.glb",
-      "sha256": "3c4cc22854e1098a4e4a3fd469748cc1e6fcffb65391abacb188845755b0e576",
-      "bytes": 1897672,
-      "triangles": 20291,
-      "vertices": 12499,
+      "sha256": "1df4325b52059ab3f96f52dfec63653406b43fea1c3033f2ee40c4d57d4d4f2c",
+      "bytes": 2346168,
+      "triangles": 19796,
+      "vertices": 12822,
       "bones": 65,
       "animations": [
         "seated",
+        "seated-starboard",
+        "kneeling-port",
+        "kneeling-starboard",
+        "caller",
+        "controller",
+        "helm-port",
+        "helm-starboard",
         "standing"
       ],
       "facePoses": {},
@@ -32,13 +39,20 @@
     "f": {
       "label": "F · Snow",
       "file": "f.glb",
-      "sha256": "51c81d0954b72c0c491249a04ae77ad55c9a5e2aa1f4a1cf05c74d172a7531de",
-      "bytes": 4099472,
+      "sha256": "076b2d13b474abf4780a1a63d6dc5bad4a9cea13a9e2a0334cc20555818a2b2c",
+      "bytes": 5552724,
       "triangles": 67307,
       "vertices": 43463,
       "bones": 65,
       "animations": [
         "seated",
+        "seated-starboard",
+        "kneeling-port",
+        "kneeling-starboard",
+        "caller",
+        "controller",
+        "helm-port",
+        "helm-starboard",
         "standing",
         "facial-demo"
       ],
@@ -58,5 +72,17 @@
       },
       "wardrobeCredit": "Snow Rig © Blender Foundation | studio.blender.org · CC BY 4.0"
     }
+  },
+  "hairstyles": {
+    "file": "hairstyles.glb",
+    "bytes": 3553868,
+    "sha256": "bdedeab7c97c3ac9bc8bd809fb3f1b28166557cad2f0f81411901eab8f77acc9",
+    "source": "Quaternius Standard CC0",
+    "styles": [
+      "Parted",
+      "Crop",
+      "Tied",
+      "Long"
+    ]
   }
 }

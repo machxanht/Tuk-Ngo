@@ -393,6 +393,210 @@ def add_print_uv(obj, rig):
                                 min(.99, max(.01, (p.z - lo) / (hi - lo))))
 
 
+def fitted_d_shirt(body, rig, jersey):
+    """Use D's own surface and skin weights, including the shoulder transition."""
+    mesh = body.data.copy()
+    obj = bpy.data.objects.new('Race_Shirt_D', mesh)
+    bpy.context.collection.objects.link(obj)
+    for group in body.vertex_groups:
+        obj.vertex_groups.new(name=group.name)
+    hem = rig.data.bones['pelvis'].head_local.z + .005
+    sleeve = rig.data.bones['upperarm_l'].head_local.x + .53 * (
+        rig.data.bones['lowerarm_l'].head_local.x - rig.data.bones['upperarm_l'].head_local.x)
+    neck = rig.data.bones['neck_01'].head_local.z - .035
+    bm = bmesh.new()
+    bm.from_mesh(mesh)
+    for point, normal in [((0, 0, hem), (0, 0, 1)), ((sleeve, 0, 0), (-1, 0, 0)),
+                          ((-sleeve, 0, 0), (1, 0, 0))]:
+        bmesh.ops.bisect_plane(bm, geom=list(bm.verts)+list(bm.edges)+list(bm.faces),
+            dist=.000001, plane_co=point, plane_no=normal, clear_inner=True)
+    for point, normal in [((0, 0, neck), (0, 0, 1)), ((.125, 0, 0), (1, 0, 0)), ((-.125, 0, 0), (1, 0, 0))]:
+        bmesh.ops.bisect_plane(bm, geom=list(bm.verts)+list(bm.edges)+list(bm.faces),
+            dist=.000001, plane_co=point, plane_no=normal)
+    remove = [f for f in bm.faces if f.calc_center_median().z > neck+.000001 and abs(f.calc_center_median().x) < .125001]
+    bmesh.ops.delete(bm, geom=remove, context='FACES')
+    deform = bm.verts.layers.deform.active
+    group_names = {g.index: g.name for g in body.vertex_groups}
+    group_indices = {g.name: g.index for g in body.vertex_groups}
+    for vertex in bm.verts:
+        influences = {}
+        for index, value in list(vertex[deform].items()):
+            name = group_names[index]
+            if name.startswith(('thigh_', 'calf_', 'foot_', 'ball_')): name = 'pelvis'
+            if name in ['head', 'neck_01']: name = 'spine_03'
+            target = group_indices[name]
+            influences[target] = influences.get(target, 0)+value
+        vertex[deform].clear()
+        for index, value in influences.items(): vertex[deform][index] = value
+    bm.normal_update()
+    for v in bm.verts:
+        v.co += v.normal * .012
+    # A narrow inward edge finishes the collar, cuffs and hem without exposing
+    # alternating body triangles along a face-selection boundary.
+    boundary = [e for e in bm.edges if e.is_boundary]
+    deform = bm.verts.layers.deform.active
+    inner = {}
+    for edge in boundary:
+        for v in edge.verts:
+            if v not in inner:
+                inner[v] = bm.verts.new(v.co-v.normal*.003)
+                if deform:
+                    for index, value in v[deform].items():
+                        inner[v][deform][index] = value
+        a, b = edge.verts
+        bm.faces.new((a, b, inner[b], inner[a]))
+    bm.to_mesh(mesh)
+    bm.free()
+    mesh.materials.clear()
+    mesh.materials.append(jersey)
+    for polygon in mesh.polygons:
+        polygon.material_index = 0
+        polygon.use_smooth = True
+    modifier = obj.modifiers.new('Body-matched D shirt skin weights', 'ARMATURE')
+    modifier.object = rig
+    add_print_uv(obj, rig)
+    obj['fitMethod'] = 'D surface and D weights, 12mm outward allowance'
+    # Remove precisely the covered shoulder/torso faces, leaving a small overlap
+    # at the garment edge. This cannot expose D's skin through a moving sleeve.
+    bm = bmesh.new()
+    bm.from_mesh(body.data)
+    for point, normal in [((0, 0, neck-.008), (0, 0, 1)), ((.13, 0, 0), (1, 0, 0)), ((-.13, 0, 0), (1, 0, 0))]:
+        bmesh.ops.bisect_plane(bm, geom=list(bm.verts)+list(bm.edges)+list(bm.faces),
+            dist=.000001, plane_co=point, plane_no=normal)
+    hidden = [f for f in bm.faces if hem+.004 < f.calc_center_median().z and
+        abs(f.calc_center_median().x) < sleeve-.004 and
+        not (f.calc_center_median().z > neck-.004 and abs(f.calc_center_median().x) < .13)]
+    bmesh.ops.delete(bm, geom=hidden, context='FACES')
+    bm.to_mesh(body.data)
+    bm.free()
+    return obj
+
+
+def finish_d_shorts(obj, rig):
+    bm = bmesh.new()
+    bm.from_mesh(obj.data)
+    hip = rig.data.bones['pelvis'].head_local.z
+    bmesh.ops.bisect_plane(bm, geom=list(bm.verts)+list(bm.edges)+list(bm.faces),
+        dist=.000001, plane_co=(0, 0, hip+.025), plane_no=(0, 0, -1), clear_inner=True)
+    deform = bm.verts.layers.deform.active
+    pelvis = obj.vertex_groups['pelvis'].index
+    for vertex in bm.verts:
+        if vertex.co.z > hip-.065:
+            vertex[deform].clear()
+            vertex[deform][pelvis] = 1
+    bm.to_mesh(obj.data)
+    bm.free()
+
+
+def add_face_identities(obj, rig):
+    """Small anatomical variations, below the eyes, independent of expressions."""
+    if not obj.data.shape_keys:
+        obj.shape_key_add(name='Basis')
+    head_z = rig.data.bones['head'].head_local.z
+    head_group = obj.vertex_groups.get('head')
+    for name in ['FaceWide', 'JawLean', 'NoseBroad', 'FaceLong']:
+        key = obj.shape_key_add(name=name)
+        for index, v in enumerate(obj.data.vertices):
+            try:
+                weight = head_group.weight(index) if head_group else 0
+            except RuntimeError:
+                weight = 0
+            if weight < .65:
+                continue
+            p = v.co.copy()
+            lower = max(0, min(1, (head_z+.045-p.z)/.10)) * max(0, min(1, (p.z-head_z+.10)/.035))
+            if name == 'FaceWide': p.x *= 1+.065*lower
+            if name == 'JawLean': p.x *= 1-.10*lower
+            if name == 'FaceLong': p.z -= .009*lower
+            if name == 'NoseBroad':
+                nose = max(0, 1-abs(p.x)/.045) * max(0, 1-abs(p.z-head_z-.045)/.045) * max(0, min(1, (-p.y-.075)/.055))
+                p.x *= 1+.20*nose
+                p.y -= .004*nose
+            key.data[index].co = p
+
+
+def export_hairstyles():
+    load_source('d')
+    native = next(o for o in bpy.data.objects if o.type == 'ARMATURE')
+    head = native.data.bones['Head'].matrix_local.copy()
+    body = next(o for o in bpy.data.objects if o.type == 'MESH' and 'SuperHero' in o.name)
+    d_target = capture(body)
+    targets = {'d': {'vertices': [list(head.inverted() @ Vector(v)) for v in d_target['vertices']], 'faces': d_target['faces']}}
+    parts = []
+    for label, file in [('Parted', 'Hair_SimpleParted.gltf'), ('Crop', 'Hair_Buzzed.gltf'), ('Tied', 'Hair_Buns.gltf'), ('Long', 'Hair_Long.gltf')]:
+        path = next(p for p in (CACHE/'d').rglob(file) if 'Rigged to Head Bone' in str(p))
+        before = set(bpy.data.objects)
+        bpy.ops.import_scene.gltf(filepath=str(path))
+        for obj in set(bpy.data.objects)-before:
+            if obj.type == 'MESH' and obj.vertex_groups:
+                part = capture(obj)
+                part['name'] = label
+                part['vertices'] = [list(head.inverted() @ Vector(v)) for v in part['vertices']]
+                parts.append(part)
+    # Use exactly the neutral, driver-evaluated head captured for the body GLB.
+    # Loading Snow separately leaves its demo action/modifier drivers active,
+    # which projects the replacement cap against a different head pose.
+    snow = snow_source()
+    f_target = next(p for p in snow['parts'] if p['name'] == 'GEO-snow-head')
+    portable = make_rig(snow['bones'])
+    head = portable.data.bones['head'].matrix_local.copy()
+    targets['f'] = {'vertices': [list(head.inverted() @ Vector(v)) for v in f_target['vertices']], 'faces': f_target['faces']}
+    bpy.ops.wm.read_factory_settings(use_empty=True)
+    mat = material('Hair library', (.028, .018, .012), .8)
+    for model, target in targets.items():
+        tree = BVHTree.FromPolygons([Vector(v) for v in target['vertices']], target['faces'])
+        # A thin scalp underlay closes gaps between the source's separated locks.
+        # It uses the target head itself, so a broad F skull cannot show through
+        # sparse hair triangles between otherwise clear vertices.
+        scalp = []
+        def above_hairline(v):
+            line = min(.16, .055+max(0, v[2]+.02)*.75)+max(0, abs(v[0])-.085)*.65
+            return v[1] > line
+        for face in target['faces']:
+            if all(above_hairline(target['vertices'][i]) for i in face):
+                scalp.append(face)
+        for part in parts:
+            name = model+'-'+part['name']
+            mesh = bpy.data.meshes.new(name)
+            vertices = [Vector((v[0]*1.15, v[1]*1.09+.008, v[2]*1.35+.008)) if model == 'f' else Vector(v) for v in part['vertices']]
+            mesh.from_pydata(vertices, [], part['faces'])
+            bm = bmesh.new()
+            bm.from_mesh(mesh)
+            bmesh.ops.subdivide_edges(bm, edges=list(bm.edges), cuts=2, use_grid_fill=True)
+            # A cap is star-shaped about the skull, unlike a face's nearest-point
+            # field (which jumps between nose, ears and scalp). Radial clearance
+            # keeps adjacent cap vertices adjacent and preserves outward tufts.
+            center = Vector((0, .115, .022 if model == 'f' else .005))
+            for v in bm.verts:
+                if v.co.y < .045:
+                    continue  # loose locks/bun below the cap
+                ray = v.co-center
+                radius = ray.length
+                if radius < .00001:
+                    continue
+                direction = ray/radius
+                hit, _, _, distance = tree.ray_cast(center, direction, .4)
+                if hit is not None and radius < distance+.009:
+                    v.co = center+direction*(distance+.009)
+            bmesh.ops.triangulate(bm, faces=list(bm.faces))
+            bm.to_mesh(mesh)
+            bm.free()
+            vertices = [tuple(v.co) for v in mesh.vertices]
+            faces = [tuple(p.vertices) for p in mesh.polygons]
+            used = sorted({i for f in scalp for i in f})
+            index = {old: len(vertices)+i for i, old in enumerate(used)}
+            center = Vector((0, .115, .022 if model == 'f' else .005))
+            vertices.extend(tuple(Vector(target['vertices'][i])+(Vector(target['vertices'][i])-center).normalized()*.005) for i in used)
+            faces.extend(tuple(index[i] for i in face) for face in scalp)
+            mesh.clear_geometry()
+            mesh.from_pydata(vertices, [], faces)
+            mesh.materials.append(mat)
+            for p in mesh.polygons: p.use_smooth = True
+            obj = bpy.data.objects.new(name, mesh)
+            bpy.context.collection.objects.link(obj)
+    bpy.ops.export_scene.gltf(filepath=str(OUT/'hairstyles.glb'), export_format='GLB', export_animations=False)
+
+
 def create_paddle(rig):
     # Both comparisons use precisely the same existing authored paddle mesh.
     with bpy.data.libraries.load(str(ROOT / 'art/athlete/athlete-master.blend'), link=False) as (source, target):
@@ -466,14 +670,23 @@ def build(model):
         if not any(n in part['name'] for n in ['shirt', 'pants']):
             continue
         if model == 'd':
+            if 'shirt' in part['name']:
+                continue
             part = transfer_garment(part, cloth_source_rig, rig, body)
         obj = mesh_part(part, rig, [jersey if 'shirt' in part['name'] else shorts])
         if 'pants' in part['name']:
             trim_short_pants(obj)
+            if model == 'd':
+                finish_d_shorts(obj, rig)
         else:
             add_print_uv(obj, rig)
         objects.append(obj)
+    if model == 'd':
+        objects.append(fitted_d_shirt(body, rig, jersey))
     cull_covered_body(body, rig, next((p.get('clothingMask') for p in parts if p['name'] == 'GEO-snow-body'), None))
+    for obj in objects:
+        if (model == 'd' and obj == body) or (model == 'f' and obj.name == 'GEO-snow-head'):
+            add_face_identities(obj, rig)
     if cloth_source_rig != rig:
         bpy.data.objects.remove(cloth_source_rig, do_unlink=True)
     paddle = create_paddle(rig)
@@ -509,6 +722,8 @@ def build(model):
         'vertices': sum(len(o.data.vertices) for o in objects), 'restGlbBytes': (compiled / (model + '.glb')).stat().st_size}
     (QA / (model + '-build.json')).write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
     print('COMPARISON_BUILT', json.dumps(report), flush=True)
+    if model == 'd':
+        export_hairstyles()
 
 
 def main():

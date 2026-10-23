@@ -1,7 +1,7 @@
 import {readFile,writeFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import * as T from 'three';
-import {rowingPose} from '../src/race/rowing-pose.mjs';
+import {createAthleteRowing} from '../src/race/athlete-rowing.mjs';
 import {NodeIO} from '@gltf-transform/core';
 import {ALL_EXTENSIONS} from '@gltf-transform/extensions';
 import {textureCompress,dedup,prune} from '@gltf-transform/functions';
@@ -31,44 +31,19 @@ for(const model of ['d','f']){
  const worldTurn=(bone,angle)=>{const q=bone.getWorldQuaternion(new T.Quaternion()).premultiply(new T.Quaternion().setFromAxisAngle(new T.Vector3(1,0,0),angle));bone.quaternion.copy(bone.parent.getWorldQuaternion(new T.Quaternion()).invert().multiply(q));bone.updateMatrixWorld(true);};
  const times=Array.from({length:97},(_,i)=>i/96*1.2);
  const measurements=[];
- for(const posture of ['seated','standing']){
-  reset();const options={role:'rower',posture:posture==='kneeling'?'standing':'seated',side:-1};
-  const apply=rowingPose(master,options),records=new Map();
+ const cases=[{name:'seated',side:'port',posture:'seated'},{name:'seated-starboard',side:'starboard',posture:'seated'},{name:'kneeling-port',side:'port',posture:'kneeling'},{name:'kneeling-starboard',side:'starboard',posture:'kneeling'},{name:'caller',role:'caller',posture:'seated'},{name:'controller',role:'controller',posture:'standing'},{name:'helm-port',role:'helm',side:'port',posture:'standing'},{name:'helm-starboard',role:'helm',side:'starboard',posture:'standing'},{name:'standing',posture:'standing',role:'display'}];
+ for(const spec of cases){
+  reset();const apply=createAthleteRowing(master,spec),records=new Map();
   const animated=[...master.skeleton.bones,master.paddle];
   for(let frame=0;frame<times.length;frame++){
-   reset();const phase=frame/96;
-   if(posture!=='standing'){
-    const pelvis=bones.pelvis.getWorldPosition(new T.Vector3()),rootBone=bones.root;
-    rootBone.position.y+=(posture==='seated'?.55:.70)-pelvis.y;master.root.updateMatrixWorld(true);
-    const bend=.12+.08*Math.sin(phase*Math.PI*2-.4);
-    worldTurn(bones.spine_01,bend*.45);worldTurn(bones.spine_02,bend*.35);worldTurn(bones.spine_03,bend*.20);worldTurn(bones.neck_01,-bend*.35);
-    apply(phase);
-    // Curl in the palm's anatomical plane; local X differs between the source rigs.
-    const point=n=>bones[n].getWorldPosition(new T.Vector3()),shaft=master.paddle.getWorldPosition(new T.Vector3()),shaftAxis=new T.Vector3(0,1,0).applyQuaternion(master.paddle.getWorldQuaternion(new T.Quaternion()));
-    for(const side of ['l','r']){
-     const across=point('index_01_'+side).sub(point('pinky_01_'+side)).normalize(),origin=point('middle_01_'+side),direction=point('middle_02_'+side).sub(origin).normalize();
-     const toward=shaft.clone().addScaledVector(shaftAxis,origin.clone().sub(shaft).dot(shaftAxis)).sub(origin),sign=Math.sign(across.clone().cross(direction).dot(toward))||1;
-     for(const finger of ['index','middle','ring','pinky'])for(const [i,angle]of [[1,.55],[2,1.05],[3,.70]]){
-      const bone=bones[finger+'_0'+i+'_'+side],q=bone.getWorldQuaternion(new T.Quaternion()).premultiply(new T.Quaternion().setFromAxisAngle(across,sign*angle));
-      bone.quaternion.copy(bone.parent.getWorldQuaternion(new T.Quaternion()).invert().multiply(q));bone.updateMatrixWorld(true);
-     }
-    }
-   }else{
-    // A relaxed display stance, leaving the same anatomical proportions.
-    for(const [name,sign]of [['upperarm_l',1],['upperarm_r',-1]]){
-     const bone=bones[name],rest=bone.getWorldQuaternion(new T.Quaternion()),direction=bones['lowerarm_'+name.at(-1)].getWorldPosition(new T.Vector3()).sub(bone.getWorldPosition(new T.Vector3())).normalize();
-     const target=new T.Vector3(sign*.30,-.92,.12).normalize(),q=new T.Quaternion().setFromUnitVectors(direction,target).multiply(rest);
-     bone.quaternion.copy(bone.parent.getWorldQuaternion(new T.Quaternion()).invert().multiply(q));bone.updateMatrixWorld(true);
-    }
-    master.paddle.position.set(.48,.0,.1);master.paddle.quaternion.identity();master.paddle.scale.set(0,0,0);
-   }
+   const phase=frame/96,diagnostic=apply(phase);
    master.root.updateMatrixWorld(true);
    for(const node of animated){const id=master.nodes.indexOf(node);for(const [prop,path,size]of [['position','translation',3],['quaternion','rotation',4],['scale','scale',3]]){
     const key=id+':'+path;if(!records.has(key))records.set(key,{id,path,size,values:[]});node[prop].toArray(records.get(key).values,records.get(key).values.length);
    }}
-   if(posture!=='standing')measurements.push({posture,phase,head: bones.head.getWorldPosition(new T.Vector3()).toArray(),leftHand:bones.hand_l.getWorldPosition(new T.Vector3()).toArray(),rightHand:bones.hand_r.getWorldPosition(new T.Vector3()).toArray()});
+   if(spec.name!=='standing')measurements.push({posture:spec.name,phase,leftPalmError:diagnostic.leftPalmError,rightPalmError:diagnostic.rightPalmError,maxReachError:diagnostic.maxReachError,grips:diagnostic.grips,head: bones.head.getWorldPosition(new T.Vector3()).toArray(),leftHand:bones.hand_l.getWorldPosition(new T.Vector3()).toArray(),rightHand:bones.hand_r.getWorldPosition(new T.Vector3()).toArray()});
   }
-  const animation={name:posture,samplers:[],channels:[]};
+  const animation={name:spec.name,samplers:[],channels:[]};
   for(const record of records.values()){
    let constant=true;for(let i=record.size;i<record.values.length;i++)if(Math.abs(record.values[i]-record.values[i%record.size])>1e-6){constant=false;break;}
    const input=constant?[times[0],times.at(-1)]:times,output=constant?[...record.values.slice(0,record.size),...record.values.slice(0,record.size)]:record.values;
@@ -97,6 +72,6 @@ for(const model of ['d','f']){
  await portable.transform(dedup(),textureCompress({encoder:sharp,targetFormat:'webp',resize:[2048,2048],quality:91}),prune({keepAttributes:true}));
  await io.write(base+model+'.glb',portable);
  const final=await readFile(base+model+'.glb');
- await writeFile(`docs/qa/character-comparison/${model}-motion.json`,JSON.stringify({model,sourceMotion:'src/race/rowing-pose.mjs',framesPerCycle:97,cycleSeconds:1.2,animations:doc.animations.map(a=>a.name),sha256:createHash('sha256').update(final).digest('hex'),measurements},null,2)+'\n');
+ await writeFile(`docs/qa/character-comparison/${model}-motion.json`,JSON.stringify({model,sourceMotion:'src/race/athlete-rowing.mjs',framesPerCycle:97,cycleSeconds:1.2,animations:doc.animations.map(a=>a.name),sha256:createHash('sha256').update(final).digest('hex'),measurements},null,2)+'\n');
  console.log(model.toUpperCase(),final.length,'optimized bytes',doc.animations.map(a=>a.name).join(', '));
 }
