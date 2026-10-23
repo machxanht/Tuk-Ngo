@@ -210,9 +210,14 @@ export function buildMasperoBanks(group,waterY,crowdAssets,bankMaterials={},opti
   FESTIVAL_BRANDS.forEach((brand,i)=>text(brand,17,3.2,COURSE.standX+(i?78:-78),6.4,side*45.8,i?'#832e9d':'#0e7b84','#fff1bb',side<0?0:Math.PI));
  }
  for(let z=-40,i=0;z<42;z+=2.2,i++)box(COURSE.finishX,7.68,z,.04,.55,.75,palette[i%palette.length]);
+ const leafMaterial=material.clone();leafMaterial.side=T.DoubleSide;
+ // Static batches have local bounds: a bridge behind the camera no longer
+ // forces every metal pole along the whole river through the GPU.
  for(const {type,shiny,list} of meshes.values()){
-  const mesh=new T.InstancedMesh(geometries[type],shiny?metal:material,list.length);if(type==='leaf')mesh.material=material.clone(),mesh.material.side=T.DoubleSide;mesh.name='Maspero_'+type+(shiny?'_metal':'');for(let i=0;i<list.length;i++){mesh.setMatrixAt(i,list[i].matrix);mesh.setColorAt(i,list[i].color);}mesh.computeBoundingSphere();group.add(mesh);
+  const sectors=new Map();for(const p of list){const sector=list.length>96?Math.floor(p.matrix.elements[12]/64):0;if(!sectors.has(sector))sectors.set(sector,[]);sectors.get(sector).push(p);}
+  let index=0;for(const [sector,part] of sectors){const mesh=new T.InstancedMesh(geometries[type],type==='leaf'?leafMaterial:shiny?metal:material,part.length);mesh.name='Maspero_'+type+(shiny?'_metal':'')+(index++?'_sector_'+sector:'');for(let i=0;i<part.length;i++){mesh.setMatrixAt(i,part[i].matrix);mesh.setColorAt(i,part[i].color);}mesh.computeBoundingSphere();group.add(mesh);}
  }
+
  for(const batch of signs.values()){const mesh=new T.InstancedMesh(batch.geometry,batch.material,batch.list.length);batch.list.forEach((matrix,i)=>mesh.setMatrixAt(i,matrix));mesh.name='CourseSign_'+batch.text;mesh.userData={language:'km',worldText:batch.text,width:batch.width,height:batch.height};mesh.computeBoundingSphere();group.add(mesh);}
  const street=buildFestivalStreet(group,bankMaterials),buildings=street.stats;
  totals.houses+=buildings.houses||buildings.buildings||0;totals.trees+=buildings.trees||0;
@@ -225,5 +230,5 @@ export function buildMasperoBanks(group,waterY,crowdAssets,bankMaterials={},opti
  group.userData.banners={count:signPlacements.length,textureCount:signs.size,language:'km',placements:signPlacements,railHeightM:1.55,overheadHeightM:2.4};
  group.userData.bridges={C247:{x:COURSE.bridgeStart,yaw:bridgeYaw(COURSE.bridgeStart)},'30/4':{x:COURSE.bridgeEnd,yaw:bridgeYaw(COURSE.bridgeEnd),beforeStartM:COURSE.bridgeEnd-raceX(0)},placement:'owner-corrected game placement; OSM angles retained'};
  group.userData.mainStand={bank:'right in race direction',lengthM:128,tiers:8,roofHeightM:16,roof:'shallow double pitch, pale green-grey sheet metal',reference:'https://baosoctrang.org.vn/van-hoa-the-thao-du-lich/202411/hao-huc-cho-ngay-khai-hoi-67c01d9/',measured:false};
- return {totals,update(time,cameraX,cameraZ){crowd.update(time,cameraX,cameraZ);street.update(time,cameraX,cameraZ);traffic.update(time,cameraX);shallows.update(time);},dispose(){crowd.dispose();street.dispose();traffic.dispose();shallows.dispose();}};
+ return {totals,update(time,cameraX,cameraZ,visibility){crowd.update(time,cameraX,cameraZ,visibility);street.update(time,cameraX,cameraZ,visibility);traffic.update(time,cameraX,visibility);shallows.update(time);},dispose(){crowd.dispose();street.dispose();traffic.dispose();shallows.dispose();}};
 }

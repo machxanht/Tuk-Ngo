@@ -1,0 +1,73 @@
+{
+  "physicalTabletTested": false,
+  "shortTap": {
+    "touchDurationMs": 60,
+    "lateralTravelM": 0.6134888173535,
+    "screenTravelPx": 6.759587611356537,
+    "otherFingerStillRowing": true
+  },
+  "viewports": [
+    [
+      "vi",
+      1024,
+      768
+    ],
+    [
+      "vi",
+      768,
+      1024
+    ],
+    [
+      "vi",
+      1180,
+      430
+    ],
+    [
+      "vi",
+      390,
+      844
+    ],
+    [
+      "km",
+      1024,
+      768
+    ],
+    [
+      "km",
+      768,
+      1024
+    ],
+    [
+      "km",
+      1180,
+      430
+    ],
+    [
+      "km",
+      390,
+      844
+    ],
+    [
+      "en",
+      1024,
+      768
+    ],
+    [
+      "en",
+      768,
+      1024
+    ],
+    [
+      "en",
+      1180,
+      430
+    ],
+    [
+      "en",
+      390,
+      844
+    ]
+  ],
+  "manualTimingVisible": true,
+  "errors": []
+}

@@ -10,6 +10,9 @@ import {ceremonyCrewDigest} from '../src/race/asset-digests.mjs';
 import {ceremonyHullOverlaps} from '../src/race/ceremony-layout.mjs';
 import {finishSpectatorPositions} from '../src/race/finish-spectators.mjs';
 import {FESTIVAL,FESTIVAL_BRANDS} from '../src/race/festival-branding.mjs';
+import {GAME_COPY} from '../src/race/game-language.ts';
+const copyKeys=Object.keys(GAME_COPY.vi).sort();for(const lang of ['km','en']){assert.deepEqual(Object.keys(GAME_COPY[lang]).sort(),copyKeys);assert(Object.values(GAME_COPY[lang]).every(text=>typeof text==='string'&&text.trim().length));}
+console.log('Complete VI / Khmer / English interface key parity passed.');
 globalThis.window??={};
 assert.equal(FESTIVAL.year,'2026');assert.equal(FESTIVAL.titleKm,'ពិធីបុណ្យអុំទូក');assert.equal(FESTIVAL.provinceKm,'ខេត្តឃ្លាំង');assert.deepEqual(FESTIVAL_BRANDS,['Kuon Khmer','Angkor Soul']);
 const {ceremonyPlacement}=await import('../src/race/menu-ceremony.mjs');

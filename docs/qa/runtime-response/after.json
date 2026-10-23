@@ -1,0 +1,341 @@
+{
+  "environment": "Desktop Edge headless 1024x768, GPU may be software; not tablet",
+  "scenes": {
+    "ceremony": {
+      "cost": {
+        "ceremony": {
+          "count": 147,
+          "median": 0.09999999962747097,
+          "p95": 12,
+          "total": 522.8000000026077
+        },
+        "river": {
+          "count": 147,
+          "median": 1.800000000745058,
+          "p95": 11.099999999627471,
+          "total": 563.7999999914318
+        },
+        "render": {
+          "count": 147,
+          "median": 2.600000001490116,
+          "p95": 4.799999998882413,
+          "total": 445.59999998286366
+        }
+      },
+      "triangles": 4821537,
+      "drawCalls": 177,
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1650 (0x00001F0A) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "pixelRatio": 1,
+      "crew": [
+        {
+          "gpuRenders": 0,
+          "gpuReuses": 0,
+          "poseUpdates": 1,
+          "poseRestores": 0,
+          "poseUpdatesByView": {
+            "study": 1
+          },
+          "geometryCacheSize": 12,
+          "triangles": 4821537,
+          "drawCalls": 177,
+          "teamTextures": 1,
+          "kitMaterials": 1,
+          "vertexAttributes": 14,
+          "vertexAttributeLimit": 16
+        },
+        {
+          "gpuRenders": 0,
+          "gpuReuses": 0,
+          "poseUpdates": 1,
+          "poseRestores": 0,
+          "poseUpdatesByView": {
+            "study": 1
+          },
+          "geometryCacheSize": 12,
+          "triangles": 4821537,
+          "drawCalls": 177,
+          "teamTextures": 1,
+          "kitMaterials": 1,
+          "vertexAttributes": 14,
+          "vertexAttributeLimit": 16
+        }
+      ],
+      "frames": {
+        "count": 146,
+        "median": 31.299999999999272,
+        "p95": 31.600000000000364,
+        "total": 4526.199999998882
+      },
+      "topCpu": [
+        {
+          "function": "(idle)",
+          "url": "",
+          "line": 0,
+          "selfMs": 2841.65
+        },
+        {
+          "function": "(program)",
+          "url": "",
+          "line": 0,
+          "selfMs": 232.6
+        },
+        {
+          "function": "X",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-crew-B8Amcl6F.js",
+          "line": 22,
+          "selfMs": 186.44
+        },
+        {
+          "function": "setFromEuler",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-PKyBB6wc.js",
+          "line": 5,
+          "selfMs": 164.97
+        },
+        {
+          "function": "bufferSubData",
+          "url": "",
+          "line": 0,
+          "selfMs": 153.58
+        },
+        {
+          "function": "",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-crew-B8Amcl6F.js",
+          "line": 22,
+          "selfMs": 121.52
+        },
+        {
+          "function": "lt",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/boat-preview-BXj1gg3_.js",
+          "line": 93,
+          "selfMs": 112.09
+        },
+        {
+          "function": "updateMatrixWorld",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-PKyBB6wc.js",
+          "line": 5,
+          "selfMs": 100.29
+        },
+        {
+          "function": "updateMatrix",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-PKyBB6wc.js",
+          "line": 5,
+          "selfMs": 74.06
+        },
+        {
+          "function": "multiplyMatrices",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-PKyBB6wc.js",
+          "line": 5,
+          "selfMs": 68.14
+        },
+        {
+          "function": "L",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/boat-Bvm91TIu.js",
+          "line": 1,
+          "selfMs": 66.54
+        },
+        {
+          "function": "ct",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/boat-preview-BXj1gg3_.js",
+          "line": 93,
+          "selfMs": 64.0
+        },
+        {
+          "function": "T",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/boat-Bvm91TIu.js",
+          "line": 1,
+          "selfMs": 51.78
+        },
+        {
+          "function": "object.<computed>",
+          "url": "",
+          "line": 1,
+          "selfMs": 47.93
+        },
+        {
+          "function": "N",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-crew-B8Amcl6F.js",
+          "line": 24,
+          "selfMs": 43.22
+        }
+      ]
+    },
+    "race": {
+      "cost": {
+        "simulation": {
+          "count": 147,
+          "median": 0,
+          "p95": 0.10000000149011612,
+          "total": 6.299999998882413
+        },
+        "ceremony": {
+          "count": 147,
+          "median": 0,
+          "p95": 0,
+          "total": 0.3999999985098839
+        },
+        "crew0": {
+          "count": 147,
+          "median": 1.199999999254942,
+          "p95": 1.800000000745058,
+          "total": 184.5999999921769
+        },
+        "crew1": {
+          "count": 147,
+          "median": 0.900000000372529,
+          "p95": 1.3999999985098839,
+          "total": 133.7999999988824
+        },
+        "river": {
+          "count": 147,
+          "median": 0.5,
+          "p95": 6.200000001117587,
+          "total": 140.3000000026077
+        },
+        "render": {
+          "count": 147,
+          "median": 4.5,
+          "p95": 7.200000001117587,
+          "total": 708.5000000055879
+        }
+      },
+      "triangles": 5720286,
+      "drawCalls": 910,
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1650 (0x00001F0A) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "pixelRatio": 1,
+      "crew": [
+        {
+          "gpuRenders": 0,
+          "gpuReuses": 0,
+          "poseUpdates": 282,
+          "poseRestores": 0,
+          "poseUpdatesByView": {
+            "study": 1,
+            "race-0": 281
+          },
+          "geometryCacheSize": 12,
+          "triangles": 5720286,
+          "drawCalls": 910,
+          "teamTextures": 1,
+          "kitMaterials": 4,
+          "vertexAttributes": 14,
+          "vertexAttributeLimit": 16
+        },
+        {
+          "gpuRenders": 0,
+          "gpuReuses": 0,
+          "poseUpdates": 188,
+          "poseRestores": 94,
+          "poseUpdatesByView": {
+            "study": 1,
+            "race-1": 187
+          },
+          "geometryCacheSize": 12,
+          "triangles": 5720286,
+          "drawCalls": 910,
+          "teamTextures": 2,
+          "kitMaterials": 4,
+          "vertexAttributes": 14,
+          "vertexAttributeLimit": 16
+        }
+      ],
+      "frames": {
+        "count": 146,
+        "median": 31.200000000000728,
+        "p95": 31.599999999998545,
+        "total": 4523.999999998508
+      },
+      "topCpu": [
+        {
+          "function": "(idle)",
+          "url": "",
+          "line": 0,
+          "selfMs": 3041.83
+        },
+        {
+          "function": "(program)",
+          "url": "",
+          "line": 0,
+          "selfMs": 277.32
+        },
+        {
+          "function": "updateMatrixWorld",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-PKyBB6wc.js",
+          "line": 5,
+          "selfMs": 161.8
+        },
+        {
+          "function": "updateMatrix",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-PKyBB6wc.js",
+          "line": 5,
+          "selfMs": 123.5
+        },
+        {
+          "function": "multiplyMatrices",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-PKyBB6wc.js",
+          "line": 5,
+          "selfMs": 111.36
+        },
+        {
+          "function": "bufferSubData",
+          "url": "",
+          "line": 0,
+          "selfMs": 50.94
+        },
+        {
+          "function": "Vn",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-Xp2iZVDg.js",
+          "line": 4108,
+          "selfMs": 44.33
+        },
+        {
+          "function": "X",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-crew-B8Amcl6F.js",
+          "line": 22,
+          "selfMs": 37.09
+        },
+        {
+          "function": "S",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-Xp2iZVDg.js",
+          "line": 3671,
+          "selfMs": 36.6
+        },
+        {
+          "function": "ho",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-Xp2iZVDg.js",
+          "line": 4108,
+          "selfMs": 35.02
+        },
+        {
+          "function": "Op.renderBufferDirect",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-Xp2iZVDg.js",
+          "line": 4108,
+          "selfMs": 34.67
+        },
+        {
+          "function": "update",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-crew-B8Amcl6F.js",
+          "line": 66,
+          "selfMs": 32.57
+        },
+        {
+          "function": "setFromEuler",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-PKyBB6wc.js",
+          "line": 5,
+          "selfMs": 28.95
+        },
+        {
+          "function": "N",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-crew-B8Amcl6F.js",
+          "line": 24,
+          "selfMs": 26.64
+        },
+        {
+          "function": "G",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-Xp2iZVDg.js",
+          "line": 4057,
+          "selfMs": 25.51
+        }
+      ]
+    }
+  }
+}

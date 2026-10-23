@@ -46,7 +46,7 @@
 .stroke-receipt{position:absolute;bottom:-22px;left:0;white-space:nowrap;font-size:10px;font-weight:850;opacity:0;pointer-events:none}
 [data-testid=festival-game] .game-stroke:active{box-shadow:inset 0 0 0 3px #ffffff8a;filter:brightness(1.12);transform:none}
 [data-testid=festival-game] .game-stroke[data-contact=accepted] .stroke-receipt{color:inherit}
-[data-testid=festival-game] .game-stroke[data-contact=early] .stroke-receipt{color:#fff2be}
+[data-testid=festival-game] .game-stroke[data-contact=early] .stroke-receipt,[data-testid=festival-game] .game-stroke[data-contact=late] .stroke-receipt{color:#fff2be}
 [data-testid=festival-game] .game-controls[data-hit=perfect] .stroke-receipt{color:#15364e}
 [data-testid=festival-game] .game-stroke{isolation:isolate;transition:none}
 [data-testid=festival-game] .stroke-visual>svg:first-child{position:static;inset:auto;width:32px;height:32px;overflow:visible;transition:none}
@@ -134,3 +134,11 @@
 @media(max-height:550px) and (min-width:621px){.game-playing .race-telemetry{top:73px;gap:14px}.race-water-readout{top:130px}.game-playing .race-view{top:76px}.game-playing .game-inputs .game-stamina{bottom:74px}.game-playing .game-inputs .game-steering{bottom:15px}.game-playing .game-inputs .game-stroke{bottom:15px}.game-playing .game-inputs .game-paces{bottom:15px}.game-playing .game-inputs .game-surge{bottom:136px}.game-playing .game-commentary{bottom:112px;font-size:11px}.game-playing .practice-coach{bottom:145px}.game-playing .game-controls[data-assisted=true] .game-rhythm{bottom:120px}.game-playing .game-rhythm{bottom:211px}}
 .game-playing .game-controls[data-assisted=true] .game-rhythm{display:none}.game-playing .game-feedback{max-width:none;width:100%}
 .game-playing .game-language button[aria-pressed=true]:hover:not(:disabled){background:#ffffffd9;color:#123a50}
+
+/* Diagnostics are opt-in inside Settings; the course remains unobstructed. */
+.runtime-stats{display:block;font:11px/1.6 ui-monospace,monospace;font-variant-numeric:tabular-nums;color:#254957;margin:8px 0}
+.game-audio-options select{min-height:44px;max-width:100%;border:1px solid #c5d3d2;border-radius:8px;background:#fff;color:#153e4e;padding:4px 6px}
+.game-audio-options .game-note{font-size:11px;line-height:1.4}.ruleset-note{font-size:12px;line-height:1.5}
+.game-language{flex-shrink:0}.game-language button{min-width:36px}
+.game-playing .game-score{width:calc(100% - 450px)}
+@media(max-width:620px){.game-playing .game-score{width:calc(100% - 24px)}}

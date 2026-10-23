@@ -68,7 +68,7 @@ with sync_playwright() as p:
   assert state('state.distances[1]')==0
   assert page.evaluate(api+'.audio.stats().cues')==[],'Solo practice must not announce an opponent or a match winner'
   assert all(state('snapshot().practiceTasks'))
-  assert page.evaluate("Number(localStorage.getItem('tukngo-practice-best'))")>0
+  assert page.evaluate("Number(localStorage.getItem('tukngo-practice-best-assisted'))")>0
   page.screenshot(path=str(out/'practice-result.png'));report['practice']=True
   menu()
   # Choose a distinct AI opponent; assistance is independent of AI difficulty.

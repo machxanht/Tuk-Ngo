@@ -36,8 +36,8 @@ with sync_playwright() as p:
    page.get_by_role('button',name='Góc nhìn',exact=True).click();page.wait_for_selector('[data-view='+view+']')
    page.screenshot(path=str(out/f'camera-{view}.png'))
   report['viewports']=[]
-  for language in ['vi','km']:
-   page.get_by_role('button',name='VI' if language=='vi' else 'ខ្មែរ',exact=True).click()
+  for language in ['vi','km','en']:
+   page.get_by_role('button',name={'vi':'VI','km':'ខ្មែរ','en':'EN'}[language],exact=True).click()
    for width,height in [(1024,768),(768,1024),(1180,430),(390,844)]:
     page.set_viewport_size({'width':width,'height':height});page.wait_for_timeout(120)
     canvas=page.locator('canvas').bounding_box();assert canvas['x']==0 and canvas['y']==0 and canvas['width']==width and canvas['height']==height,canvas

@@ -301,6 +301,7 @@ export async function createHybridBoats(base='',{onProgress=()=>{},sharedRendere
   }else{actors.forEach(a=>a.group.visible=true);boardBatch.visible=true;boards.forEach(board=>board.visible=board.userData.owner===1&&construction==='plywood');if(!externalCamera)fullCamera();}
   // Instance matrices are local to the boat. A moving/rotating race boat must
   // not apply its world transform to the paddles a second time.
+  faceController?.sync(boat,study);
   boatInverse.copy(boat.matrixWorld).invert();
   for(const {batch,entries} of batches){let n=0;for(const {owner,mesh} of entries)if(owner.group.visible)batch.setMatrixAt(n++,accessoryMatrix.multiplyMatrices(boatInverse,mesh.matrixWorld));batch.count=n;batch.instanceMatrix.needsUpdate=true;}
   if(updateOnly)return renderer.domElement;

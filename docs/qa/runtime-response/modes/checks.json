@@ -1,0 +1,60 @@
+{
+  "physicalTabletTested": false,
+  "steeringPalmGapM": [
+    4.868189859089255e-07,
+    3.484649149399461e-07
+  ],
+  "steeringPoseSamples": 384,
+  "practice": true,
+  "viewports": [
+    [
+      "vi",
+      1024,
+      768
+    ],
+    [
+      "vi",
+      768,
+      1024
+    ],
+    [
+      "vi",
+      1180,
+      430
+    ],
+    [
+      "vi",
+      390,
+      844
+    ],
+    [
+      "km",
+      1024,
+      768
+    ],
+    [
+      "km",
+      768,
+      1024
+    ],
+    [
+      "km",
+      1180,
+      430
+    ],
+    [
+      "km",
+      390,
+      844
+    ]
+  ],
+  "ai": true,
+  "cup": {
+    "races": 6,
+    "teams": 61,
+    "savedBracketRestored": true,
+    "champion": "tum-nup-2",
+    "tieReplayAndElimination": true
+  },
+  "errors": []
+}

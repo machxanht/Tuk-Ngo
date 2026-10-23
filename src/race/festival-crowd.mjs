@@ -21,7 +21,7 @@ export async function loadFestivalCrowd(base,{compact=false}={}){
 }
 
 export function buildFestivalCrowd(group,people,assets,{vibrant=false,middleLimit=600,farLimit=16000,radius=430}={}){
- let disposed=false,lastX=Infinity,lastZ=Infinity;
+ let disposed=false,lastX=Infinity,lastZ=Infinity,lastRevision=-1;
  const uniforms={time:{value:0}},batches=[],resources=[],dummy=new T.Object3D();
  const modelIds=new Map(assets.models.map((m,i)=>[m.meta.id,i]));
  const records=people.map((p,index)=>{const seed=((p.id|0)^Math.imul(Math.round(p.x*100),73856093)^Math.imul(Math.round(p.z*100),19349663))>>>0;
@@ -77,9 +77,15 @@ export function buildFestivalCrowd(group,people,assets,{vibrant=false,middleLimi
    batches.push({modelIndex,level,meta,mesh,geo});
   }
  }
- function pack(cameraX,cameraZ){
+ const cells=new Map();for(const r of records){const cell=Math.floor(r.p.x/32);if(!cells.has(cell))cells.set(cell,[]);cells.get(cell).push(r);}
+ function pack(cameraX,cameraZ,visibility){
   const started=performance.now();
-  const lists=[[],[],[]];const sorted=records.map(r=>({r,d:Math.hypot(cameraX-r.p.x,cameraZ-r.p.z)})).filter(q=>q.d<radius).sort((a,b)=>a.d-b.d);
+  const lists=[[],[],[]],sorted=[];
+  for(let cell=Math.floor((cameraX-radius)/32);cell<=Math.floor((cameraX+radius)/32);cell++)for(const r of cells.get(cell)||[]){
+   const d=Math.hypot(cameraX-r.p.x,cameraZ-r.p.z);
+   if(d<radius&&(!visibility||visibility.contains(r.p.x,(r.p.floor||0)+1,r.p.z,3)))sorted.push({r,d});
+  }
+  sorted.sort((a,b)=>a.d-b.d);
   for(const q of sorted){const level=q.d<13&&lists[0].length<24?0:q.d<70&&lists[1].length<middleLimit?1:2;if(level===2&&lists[2].length>=farLimit)continue;lists[level].push(q.r);}
   for(const batch of batches){const chosen=lists[batch.level].filter(r=>r.model===batch.modelIndex);batch.mesh.count=chosen.length;
    chosen.forEach((r,i)=>{const p=r.p,floor=p.waterY!=null?p.waterY-(p.submergedHeight??.9)*r.height:(p.floor||0);dummy.position.set(p.x,p.seated&&p.seatY!=null?p.seatY-.55*r.height:floor-batch.meta.ground*batch.meta.scale*r.height,p.z);dummy.rotation.set(0,r.activity===2?Math.atan2(p.path?.dx??1,p.path?.dz??0):p.yaw??(p.z<0?0:Math.PI),0);dummy.scale.set(batch.meta.scale*r.width,batch.meta.scale*r.height,batch.meta.scale*r.width);dummy.updateMatrix();batch.mesh.setMatrixAt(i,dummy.matrix);
@@ -90,5 +96,5 @@ export function buildFestivalCrowd(group,people,assets,{vibrant=false,middleLimi
   stats.lodCounts=lists.map(l=>l.length);stats.active=stats.lodCounts.reduce((s,n)=>s+n,0);stats.drawCalls=batches.filter(b=>b.mesh.count).length;stats.visibleTriangles=batches.reduce((s,b)=>s+b.mesh.count*b.meta.levels[b.level].triangles,0);
   stats.lastPackMs=performance.now()-started;
  }
- return{count:people.length,stats,update(time,cameraX,cameraZ=0){if(disposed)return;uniforms.time.value=time;if(Math.hypot(cameraX-lastX,cameraZ-lastZ)>4){pack(cameraX,cameraZ);lastX=cameraX;lastZ=cameraZ;}},dispose(){if(disposed)return;disposed=true;for(const b of batches){group.remove(b.mesh);b.geo.dispose();b.mesh.dispose();}for(const r of resources){r.texture.dispose();r.material.dispose();}}};
+ return{count:people.length,stats,update(time,cameraX,cameraZ=0,visibility){if(disposed)return;uniforms.time.value=time;if(Math.hypot(cameraX-lastX,cameraZ-lastZ)>4||(visibility?.revision??0)!==lastRevision){pack(cameraX,cameraZ,visibility);lastX=cameraX;lastZ=cameraZ;lastRevision=visibility?.revision??0;}},dispose(){if(disposed)return;disposed=true;for(const b of batches){group.remove(b.mesh);b.geo.dispose();b.mesh.dispose();}for(const r of resources){r.texture.dispose();r.material.dispose();}}};
 }

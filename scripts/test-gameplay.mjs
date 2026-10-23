@@ -7,6 +7,17 @@ import {createTournament} from '../src/race/tournament.mjs';
 const checks=[];
 const check=(name,fn)=>{fn();checks.push(name);};
 const race=()=>{const g=createRaceGame();g.start();g.advance(3);return g;};
+check('Skill rules use identical timing across AI levels; assisted strokes never claim manual accuracy',()=>{
+ for(const difficulty of Object.keys({easy:1,normal:1,hard:1})){const g=createRaceGame();g.start(difficulty,{ruleset:'ngo-skill',rowingAssist:true});g.advance(3);assert.equal(g.state.rowingAssist,false);assert.equal(g.snapshot().timing.window,.23);g.stroke();g.advance(.625+.125);g.stroke();assert.equal(g.state.manualStrokes,2);assert.equal(g.state.assistedStrokes,0);assert(g.snapshot().meanTimingErrorMs>40);assert.equal(g.snapshot().manualAccuracy,100);}
+ const g=createRaceGame();g.start('easy');g.advance(3);g.setRowingHeld(true);g.advance(4);assert(g.state.assistedStrokes>=6);assert.equal(g.state.manualStrokes,0);assert.equal(g.snapshot().meanTimingErrorMs,null);assert.equal(g.snapshot().manualAccuracy,null);
+});
+check('Bounded event queue compensation preserves skill timing without accepting an expired beat',()=>{
+ const skill=()=>{const g=createRaceGame();g.start('normal',{ruleset:'ngo-skill'});g.advance(3);return g;};
+ const delayed=skill();delayed.advance(.625+.15);assert.equal(delayed.stroke({inputDelay:.07}).judgement,'PERFECT');assert(Math.abs(delayed.snapshot().meanTimingErrorMs-80)<=5);
+ const lateGood=skill();lateGood.advance(.625+.26);assert.equal(lateGood.stroke({inputDelay:.07}).judgement,'GOOD');assert.equal(lateGood.stroke({inputDelay:.07}),null);
+ const tooLate=skill();tooLate.advance(.625+.32);assert.equal(tooLate.stroke({inputDelay:10})?.judgement??'BAD','BAD');assert.equal(tooLate.state.perfect,0);
+ const invalid=skill();invalid.advance(.625+.15);assert.equal(invalid.stroke({inputDelay:NaN}).judgement,'GOOD');
+});
 check('GO accepts a stroke; an early tap never locks the next on-time input',()=>{
  const start=race();assert.equal(start.snapshot().strokeAvailable,true);assert.equal(start.stroke().judgement,'PERFECT');assert.equal(start.state.lastStrokeBeat,0);assert.equal(start.stroke(),null);
  const g=race();g.advance(.52*.625);assert.equal(g.stroke().judgement,'BAD');assert.equal(g.state.lastStrokeBeat,-1);assert.equal(g.snapshot().strokeAvailable,true);

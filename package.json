@@ -7,7 +7,7 @@
     "dev": "vite --port=3000 --host=0.0.0.0",
     "build": "npm run build:preview && vite build",
     "build:preview": "node scripts/build-preview.mjs",
-    "test": "node scripts/check-architecture.mjs && node scripts/test-kbach-library.mjs && node scripts/test-asset-transfer.mjs && node scripts/test-gameplay.mjs && node scripts/test-race-audio.mjs && node scripts/test-audio-dashboard.mjs && node scripts/test-tournament.mjs && node scripts/test-rowing-effort.mjs && node scripts/test-athlete.mjs && node scripts/test-rowing-pose.mjs && node --import tsx scripts/test-race-presentation.mjs",
+    "test": "node scripts/check-architecture.mjs && node scripts/test-kbach-library.mjs && node scripts/test-asset-transfer.mjs && node scripts/test-gameplay.mjs && node scripts/test-race-audio.mjs && node scripts/test-audio-dashboard.mjs && node scripts/test-tournament.mjs && node scripts/test-scene-visibility.mjs && node scripts/test-rowing-effort.mjs && node scripts/test-athlete.mjs && node scripts/test-rowing-pose.mjs && node --import tsx scripts/test-race-presentation.mjs",
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit",

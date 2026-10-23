@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import * as T from 'three';
+import {createSceneVisibility} from '../src/race/scene-visibility.mjs';
+const view=createSceneVisibility(),camera=new T.PerspectiveCamera(40,1,.1,500);
+camera.position.set(0,10,0);camera.lookAt(0,10,-100);view.update(camera);
+assert(view.contains(0,10,-100));assert(!view.contains(0,10,100));
+assert(!view.contains(300,10,-100));assert(view.contains(40,10,-100),'Conservative edge padding');
+const revision=view.revision;view.update(camera);assert.equal(view.revision,revision);
+camera.aspect=4;camera.updateProjectionMatrix();view.update(camera);
+assert.equal(view.revision,revision+1);assert(view.contains(100,10,-100),'Resize invalidates cached frustum');
+camera.lookAt(0,10,100);view.update(camera);assert(view.contains(0,10,100));assert(!view.contains(0,10,-100));
+const translated=createSceneVisibility(-1000);camera.position.set(0,10,0);camera.lookAt(0,10,-100);translated.update(camera);
+assert(translated.contains(1000,10,-100));assert(!translated.contains(0,10,-100));
+console.log('Scene visibility: front/back, conservative edges, resize, rotation, translated course, unchanged-view cache passed.');

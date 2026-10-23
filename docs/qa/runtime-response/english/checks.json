@@ -1,0 +1,186 @@
+{
+  "physicalTabletTested": false,
+  "screens": [
+    [
+      "menu",
+      1024,
+      768
+    ],
+    [
+      "menu",
+      768,
+      1024
+    ],
+    [
+      "menu",
+      1180,
+      430
+    ],
+    [
+      "menu",
+      390,
+      844
+    ]
+  ],
+  "receipts": {
+    "early": {
+      "text": "Early · tap again in the bright zone",
+      "judgement": "BAD",
+      "contact": "early"
+    },
+    "perfect": {
+      "text": "STROKE RECEIVED",
+      "judgement": "PERFECT",
+      "contact": "accepted"
+    },
+    "duplicate": {
+      "text": "Already rowed · next beat",
+      "judgement": "BAD",
+      "contact": "waiting"
+    },
+    "late": {
+      "text": "Late · tap a little earlier",
+      "judgement": "BAD",
+      "contact": "late"
+    },
+    "stats": {
+      "received": 0,
+      "samples": 0,
+      "dispatchP95Ms": null,
+      "nextFrameP95Ms": null
+    }
+  },
+  "metrics": {
+    "received": 10,
+    "samples": 10,
+    "dispatchP95Ms": 68.29999999888241,
+    "nextFrameP95Ms": 32.100000001490116
+  },
+  "skillResult": {
+    "phase": "finished",
+    "difficulty": "easy",
+    "pace": "steady",
+    "countdown": 0,
+    "elapsed": 224.67916666654455,
+    "distances": [
+      1200,
+      1200
+    ],
+    "speeds": [
+      0,
+      0
+    ],
+    "finishTimes": [
+      197.0057115451142,
+      224.67770881684427
+    ],
+    "beatPhase": 295.5387499999564,
+    "aiPhase": 0.2029166666674205,
+    "stamina": 0,
+    "power": 0.9151505729293788,
+    "cohesion": 1,
+    "combo": 286,
+    "maxCombo": 286,
+    "perfect": 287,
+    "good": 3,
+    "missed": 7,
+    "lastResolved": 295,
+    "feedback": "Chạm khi vạch vào vùng sáng",
+    "feedbackAt": 196.69166666657,
+    "result": "win",
+    "pauseReason": "",
+    "runId": 1,
+    "mode": "ai",
+    "rowingAssist": false,
+    "steeringAssist": true,
+    "steeringEnabled": true,
+    "steeringInput": 0,
+    "steeringPulse": 0,
+    "steeringPulseRemaining": 0,
+    "lateralPositions": [
+      0.4003413478567706,
+      -0.3137573553405336
+    ],
+    "headings": [
+      0,
+      0.003576406770466578
+    ],
+    "rudder": 0,
+    "atLaneEdge": false,
+    "steeringSeconds": 195.69583333323752,
+    "steeringError": 58.53659159099918,
+    "manualSteeringDistance": 0,
+    "paceSwitches": 0,
+    "rowingHeld": false,
+    "surgeCharge": 1,
+    "surgeRemaining": 0,
+    "desync": 0,
+    "lastSpamAt": 193.75416666657267,
+    "slipstream": false,
+    "lastJudgement": "PERFECT",
+    "lastTiming": "perfect",
+    "lastStrokeBeat": 295,
+    "aiStamina": 10.412583333296567,
+    "aiSurgeCharge": 1,
+    "aiSurgeRemaining": 0,
+    "flowSeed": 17,
+    "flowSeconds": 68.10833333335356,
+    "flowActiveSeconds": 162.54999999993433,
+    "ruleset": "ngo-skill",
+    "assistedStrokes": 0,
+    "manualStrokes": 290,
+    "timingErrorTotal": 0.9678106438994375,
+    "introRemaining": 0,
+    "introElapsed": 10,
+    "manualAccuracy": 98,
+    "meanTimingErrorMs": 3,
+    "flow": {
+      "center": -0.8676439682723427,
+      "slope": 0.010147779652903659,
+      "alignment": 0.31734165640898115,
+      "boost": 0,
+      "crossCurrent": 0
+    },
+    "flowBonus": 0,
+    "flowMastery": 42,
+    "waitingForOpponent": false,
+    "steeringLimit": 4.2,
+    "steeringAccuracy": 93,
+    "practiceTasks": [
+      true,
+      false,
+      false,
+      true
+    ],
+    "timing": {
+      "beat": 296,
+      "seconds": -0.2713235294374151,
+      "window": 0.23,
+      "perfectWindow": 0.1,
+      "available": false,
+      "inWindow": false,
+      "quality": "wait",
+      "progress": 0.038749999956394277
+    },
+    "strokeAvailable": false,
+    "raceStage": "final",
+    "stageLabel": "Nước rút về đích",
+    "cadence": 102,
+    "aiRaceStage": "final",
+    "aiStageLabel": "Nước rút về đích",
+    "aiCadence": 102,
+    "aiSurgeActive": false,
+    "judgement": null,
+    "surgeActive": false,
+    "canSurge": false,
+    "desyncIntensity": 0,
+    "rhythmProgress": 0.038749999956394277,
+    "accuracy": 98,
+    "gap": 0,
+    "strength": 0
+  },
+  "englishPersisted": true,
+  "assistedResultHasNoManualAccuracy": true,
+  "englishCupBracket": true,
+  "errors": []
+}

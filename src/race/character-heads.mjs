@@ -3,7 +3,8 @@ import {athleteFaceIdentity} from './character-identity.mjs';
 
 /** Heads grafted onto the old game rigs; all body attributes remain shared. */
 export function createCharacterHeads(library,actors,headId){
- const sources=new Map(),masked=new Map(),materials=new Map(),entries=[];
+ const sources=new Map(),masked=new Map(),materials=new Map(),entries=[],batches=[];
+ const inverse=new T.Matrix4(),matrix=new T.Matrix4();let batchParent=null,batchDirty=true;
  library.scene.children.forEach(root=>sources.set(root.name,root));
  function mask(source){
   if(masked.has(source))return masked.get(source);
@@ -23,8 +24,21 @@ export function createCharacterHeads(library,actors,headId){
  }
  for(const actor of actors){const head=new T.Group();head.name='Face_Only_'+actor.id;head.matrixAutoUpdate=false;actor.group.add(head);entries.push({actor,head,bone:actor.master.skeleton.bones[headId],identity:null});actor.face=head;}
  let seed=20261023;
- function randomize(next=seed+7919){seed=next;for(const e of entries){e.identity=athleteFaceIdentity(seed,e.actor.id);e.actor.identity=e.identity;e.head.clear();const root=sources.get(e.identity.model.toUpperCase()+'_'+e.identity.face);if(!root)throw Error('Missing face '+JSON.stringify(e.identity));e.head.add(root.clone(true));}update();}
- function update(){for(const e of entries){e.head.matrix.copy(e.bone.matrixWorld);e.head.matrixWorldNeedsUpdate=true;e.head.traverse(o=>{if(o.isMesh){const source=o.userData.sourceMaterial||o.material;o.userData.sourceMaterial=source;o.material=material(source,e.actor.variant);}});}}
+ function randomize(next=seed+7919){seed=next;for(const e of entries){e.identity=athleteFaceIdentity(seed,e.actor.id);e.actor.identity=e.identity;e.head.clear();const root=sources.get(e.identity.model.toUpperCase()+'_'+e.identity.face);if(!root)throw Error('Missing face '+JSON.stringify(e.identity));e.head.add(root.clone(true));e.variant=null;}batchDirty=true;update();}
+ function update(){for(const e of entries){e.head.matrix.copy(e.bone.matrixWorld);e.head.matrixWorldNeedsUpdate=true;
+  if(e.variant!==e.actor.variant){e.head.traverse(o=>{if(o.isMesh){const source=o.userData.sourceMaterial||o.material;o.userData.sourceMaterial=source;o.material=material(source,e.actor.variant);}});e.variant=e.actor.variant;batchDirty=true;}
+ }}
+ function clearBatches(){for(const b of batches){b.mesh.removeFromParent();b.mesh.dispose();}batches.length=0;}
+ function sync(boat,study=false){
+  if(batchDirty||batchParent!==boat){clearBatches();batchParent=boat;const grouped=new Map();
+   for(const e of entries)e.head.traverse(o=>{if(!o.isMesh)return;const key=o.geometry.uuid+':'+o.material.uuid;if(!grouped.has(key))grouped.set(key,[]);grouped.get(key).push({entry:e,source:o});});
+   for(const list of grouped.values()){const source=list[0].source,mesh=new T.InstancedMesh(source.geometry,source.material,list.length);mesh.name='Athlete_Faces_Batched';mesh.frustumCulled=false;boat.add(mesh);batches.push({mesh,list});}batchDirty=false;
+  }
+  inverse.copy(boat.matrixWorld).invert();
+  for(const e of entries){e.head.visible=study;e.head.updateMatrixWorld(true);}
+  for(const b of batches){b.mesh.visible=!study;if(study)continue;let count=0;for(const {entry,source} of b.list)if(entry.actor.group.visible)b.mesh.setMatrixAt(count++,matrix.multiplyMatrices(inverse,source.matrixWorld));b.mesh.count=count;b.mesh.instanceMatrix.needsUpdate=true;}
+ }
+
  randomize(seed);
- return{mask,update,randomize,entries,get materialCount(){return materials.size;},dispose(){for(const e of entries)e.actor.group.remove(e.head);for(const g of masked.values())g.dispose();for(const m of materials.values())m.dispose();masked.clear();materials.clear();}};
+ return{mask,update,sync,randomize,entries,get materialCount(){return materials.size;},dispose(){clearBatches();for(const e of entries)e.actor.group.remove(e.head);for(const g of masked.values())g.dispose();for(const m of materials.values())m.dispose();masked.clear();materials.clear();}};
 }
