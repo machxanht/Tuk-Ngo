@@ -1,0 +1,50 @@
+{
+  "viewport": {
+    "width": 1024,
+    "height": 768
+  },
+  "crew": {
+    "crew": 54,
+    "bodyModels": 1,
+    "bodyModel": "original-game-glb",
+    "faceD": 31,
+    "faceF": 23,
+    "faceProfiles": 16,
+    "sharedSkeletons": 8,
+    "materialVariants": 9,
+    "originalBuffers": true
+  },
+  "npcs": {
+    "people": 18,
+    "d": 9,
+    "f": 9,
+    "activities": [
+      "idle",
+      "wave",
+      "clap",
+      "cheer",
+      "point",
+      "talk",
+      "phone",
+      "walk",
+      "seated-clap"
+    ],
+    "shirtColors": 12,
+    "pantsColors": 8,
+    "skinTones": 6,
+    "hairStyles": 7,
+    "materialVariants": 44
+  },
+  "race": {
+    "boats": 2,
+    "faces": [
+      54,
+      54
+    ],
+    "roles": [
+      8,
+      8
+    ]
+  },
+  "errors": []
+}

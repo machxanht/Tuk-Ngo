@@ -1,71 +1,62 @@
 {
   "url": "https://machxanht.github.io/Tuk-Ngo/character-comparison/",
-  "implementationCommit": "89b66bc",
-  "featureCommit": "188fd61",
-  "pagesCommit": "c5b21a848c61671085ca428b6037c969187fa367",
+  "implementationCommit": "c50a2dd",
+  "pagesCommit": "6a893e48acd4eb16eb365a8f4feec83e63153f09",
   "files": [
     {
-      "file": "character-comparison/index.html",
+      "file": "index.html",
       "status": 200,
-      "bytes": 4468,
-      "sha256": "1c1d0fe9ef2f32a4400bb31b0598c17733dd539892a63e7ff21ae28d3b55980e",
-      "matchesGitContent": true,
+      "bytes": 1307,
+      "sha256": "376db0e89862d981b8c4f084a91b3133213f736e4832802faf3f01f1eaf9ce14",
+      "matchesLocalContent": true,
       "lineEndingsNormalized": false
     },
     {
-      "file": "character-comparison/styles.css",
+      "file": "character-comparison/index.html",
       "status": 200,
-      "bytes": 3569,
-      "sha256": "0616410b989fd81e2249f114c96515f2c8b0fe8c0b8d00797f72f38260258e26",
-      "matchesGitContent": true,
+      "bytes": 4569,
+      "sha256": "ddeed8799f05de6726f07816e8ccb31ec3641aaa0d4ad206d14735c243019b75",
+      "matchesLocalContent": true,
       "lineEndingsNormalized": true
     },
     {
       "file": "character-comparison/viewer.js",
       "status": 200,
-      "bytes": 684609,
-      "sha256": "f07db1b48c066ecd7ea664e93730246473233e99bf9df2cd51e47038680ce007",
-      "matchesGitContent": true,
-      "lineEndingsNormalized": false
-    },
-    {
-      "file": "assets/character-comparison/CREDITS.md",
-      "status": 200,
-      "bytes": 2245,
-      "sha256": "80339d0387214511aaa6eebcfc9df0033a90b784474870878744bfeff1ccc3fc",
-      "matchesGitContent": true,
+      "bytes": 1249438,
+      "sha256": "90b46e16b6ed83c5b96fc0840c147aeede4d6320b2ba87ab972990d9af02d01d",
+      "matchesLocalContent": true,
       "lineEndingsNormalized": false
     },
     {
       "file": "assets/character-comparison/manifest.json",
       "status": 200,
-      "bytes": 2685,
-      "sha256": "f84bc0fed175af0245c5432a48d932224714b9297c8c4d78a5cd77b774d526ef",
-      "matchesGitContent": true,
+      "bytes": 3103,
+      "sha256": "22bfa8e1c6c7898bce8bbf8b9da9a01bc16345a641fb89bc6bbacb630c9377b3",
+      "matchesLocalContent": true,
       "lineEndingsNormalized": false
     },
     {
-      "file": "assets/character-comparison/d.glb",
+      "file": "assets/character-comparison/athlete-faces.glb",
       "status": 200,
-      "bytes": 2346168,
-      "sha256": "1df4325b52059ab3f96f52dfec63653406b43fea1c3033f2ee40c4d57d4d4f2c",
-      "matchesGitContent": true,
+      "bytes": 1424224,
+      "sha256": "1d7adfdb4c6e72e42ea9febb2611f826bff2ffdc1c4ecf9f4f668a8fd308c457",
+      "matchesLocalContent": true,
       "lineEndingsNormalized": false
     },
     {
-      "file": "assets/character-comparison/f.glb",
+      "file": "assets/illustrated-v22/hybrid-boats.js",
       "status": 200,
-      "bytes": 5552724,
-      "sha256": "076b2d13b474abf4780a1a63d6dc5bad4a9cea13a9e2a0334cc20555818a2b2c",
-      "matchesGitContent": true,
+      "bytes": 1201851,
+      "sha256": "02317df101e91f4dbbfb34038c279806d21f76a4b56f8d317e3726f189bcec14",
+      "matchesLocalContent": true,
       "lineEndingsNormalized": false
     },
     {
-      "file": "assets/character-comparison/hairstyles.glb",
+      "file": "assets/race-crew-BWlBvdL3.js",
       "status": 200,
-      "bytes": 3553868,
-      "sha256": "bdedeab7c97c3ac9bc8bd809fb3f1b28166557cad2f0f81411901eab8f77acc9",
-      "matchesGitContent": true,
+      "bytes": 95160,
+      "sha256": "6d292e3c80848da2ea608ffb3ec43ee191a7b5bedbeec59e1746b4f51c76bafc",
+      "matchesLocalContent": true,
       "lineEndingsNormalized": false
     }
   ]
