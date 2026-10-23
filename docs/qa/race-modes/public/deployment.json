@@ -1,0 +1,231 @@
+{
+  "url": "https://machxanht.github.io/Tuk-Ngo/",
+  "verifiedUtc": "2026-10-23T16:16:48.927042+00:00",
+  "sourceCommit": "9a75f690863cd7b6a1626e10784bbd35b90360cb",
+  "pagesCommit": "b091f23e596baa686d2acf99aab2d43d698cdcb4",
+  "matchedFiles": 37,
+  "files": [
+    {
+      "file": "index.html",
+      "sha256": "a51da4bb2fee16e1cd00038ceb6f4ad965b37b36ae26ff93a2e9078122e9f131",
+      "bytes": 1307,
+      "matched": true
+    },
+    {
+      "file": "assets/App-Dgq6pZhh.js",
+      "sha256": "5c7177fdd64d76f357bbc8302e534a98af4dfc424fb2cb2db442c7bf8606af46",
+      "bytes": 128090,
+      "matched": true
+    },
+    {
+      "file": "assets/art-preview-CNhJbUwh.js",
+      "sha256": "ff83588f98e4cd165a4deb3f2068700052558c580be68ad7e6a7ba09ab024d4a",
+      "bytes": 6512,
+      "matched": true
+    },
+    {
+      "file": "assets/ArtPreview-BBLLrk1R.css",
+      "sha256": "c83f5a839ac1a03dc2d40ddbf4e58aa02b1c6abe813734778e2a54da7f7bc2ba",
+      "bytes": 4721,
+      "matched": true
+    },
+    {
+      "file": "assets/ArtPreview-m81UtuMg.js",
+      "sha256": "6dceed21db4f0efcf0735280f87b8c514e65a632d7fbfffbdda1dc9f0d6e34da",
+      "bytes": 50335,
+      "matched": true
+    },
+    {
+      "file": "assets/asset-transfer-BSWTlIsv.js",
+      "sha256": "c21a1e5f795047e97344c6444bc47ab1468eb16eaa432c981cc7b28fc570a140",
+      "bytes": 6765,
+      "matched": true
+    },
+    {
+      "file": "assets/athlete-study-preview-DS39NXjO.js",
+      "sha256": "4d127ec34bfff99dc3e213901211f4b2e8f778787322b38800c522da3b662cb2",
+      "bytes": 6191,
+      "matched": true
+    },
+    {
+      "file": "assets/bank-materials-CJ_b_t9m.js",
+      "sha256": "65bb210aaded06a123abfc7b986bb783978f58202fbae0af1a5f753202a0ec37",
+      "bytes": 1115,
+      "matched": true
+    },
+    {
+      "file": "assets/boat-Bvm91TIu.js",
+      "sha256": "a6d58c0e57c42307a4fedd80aebcb534867c4b56d725f83d74c1b660cfb2a5e1",
+      "bytes": 4868,
+      "matched": true
+    },
+    {
+      "file": "assets/boat-preview-B1HME0zL.js",
+      "sha256": "78074956947f6349d5037658c4e06034acf36b9ad1e7aa560a4c2eb1bd6fe023",
+      "bytes": 84196,
+      "matched": true
+    },
+    {
+      "file": "assets/CoherentSample-B2c5mXVE.css",
+      "sha256": "86b1d5e2384829181d01e62b08044302defd243ecd959066d0d8d9d4bc20af4c",
+      "bytes": 2465,
+      "matched": true
+    },
+    {
+      "file": "assets/CoherentSample-Bu5MXvd0.js",
+      "sha256": "89d2ec510787f2f0c56d049df4bdd376b405e2713f80023d6875ca66664bc543",
+      "bytes": 24288,
+      "matched": true
+    },
+    {
+      "file": "assets/compass-DzgIOMgQ.js",
+      "sha256": "7ce455b6490c3f57cd192d515555b2cc37b1673ab65f816c355e4c66fa67f0b4",
+      "bytes": 422,
+      "matched": true
+    },
+    {
+      "file": "assets/download-BXzW3P11.js",
+      "sha256": "8d896e1705e19b0c59518fe00652748dafdb4514ad80406ae680b2fed23eae3d",
+      "bytes": 2673,
+      "matched": true
+    },
+    {
+      "file": "assets/gameplay-edr5-vnB.js",
+      "sha256": "08cfe45ab8c26c6d46134087ea34cce97bb6a7e15b9828c549df6a6460e5c795",
+      "bytes": 13151,
+      "matched": true
+    },
+    {
+      "file": "assets/index-C3WAVHcT.css",
+      "sha256": "20dd2be4324ed112a2f8150ad846e082e1856754f73e1f4d83bd54e05a88aab7",
+      "bytes": 63839,
+      "matched": true
+    },
+    {
+      "file": "assets/index-DA3hC5R_.js",
+      "sha256": "4a2399bbdbd698b80ca666cd5e67b93f7cde0348b86c130921ca668cab36bdca",
+      "bytes": 226020,
+      "matched": true
+    },
+    {
+      "file": "assets/Interactive3DBlueprint-DTHJWdes.js",
+      "sha256": "fc1e9f307052b03c33f4a8e958d602348097ce63b5d52c789c47b77aa7d801f9",
+      "bytes": 74784,
+      "matched": true
+    },
+    {
+      "file": "assets/kbach-motifs-Bj2M1atI.js",
+      "sha256": "78f66c5f2275e0a9a6da9094372bffde6129c361918a26ee6ededbfd0d198776",
+      "bytes": 440087,
+      "matched": true
+    },
+    {
+      "file": "assets/KbachPicker-6EBvprDT.js",
+      "sha256": "2701c105e6e3edeaf50d14a9c079d60840b08f397140dbe12ec67c445b9cc954",
+      "bytes": 2923,
+      "matched": true
+    },
+    {
+      "file": "assets/KbachPicker-B5pPLS1S.css",
+      "sha256": "5c6c6afb85ef650d093ce85e0ed3087ea20dfe97e95c315501fae6866a636ebb",
+      "bytes": 2566,
+      "matched": true
+    },
+    {
+      "file": "assets/MasperoRaceCourseStudio-D_Fn-Ek5.js",
+      "sha256": "ca0a5da279562b92121fe19d040e45731cbea8433d191a968a7d4af3312cc2a5",
+      "bytes": 23473,
+      "matched": true
+    },
+    {
+      "file": "assets/race-crew-DotGa7ze.js",
+      "sha256": "ac04862c57fd744230bb2e387caed663fc1a2cb9662f6ebe7ecad4e0f4172528",
+      "bytes": 97246,
+      "matched": true
+    },
+    {
+      "file": "assets/RaceGame-C2WHwscw.js",
+      "sha256": "93c1be68e73bf995ed0438e933efc42fc5bb9dcc132c9c1fb7508c5bbee02be1",
+      "bytes": 76503,
+      "matched": true
+    },
+    {
+      "file": "assets/RaceGame-DUmf-iH4.css",
+      "sha256": "a0f562534f2df92c764447b8c1c1d2bfc7b01785f54defdec47714c28ffe48cb",
+      "bytes": 36537,
+      "matched": true
+    },
+    {
+      "file": "assets/rotate-ccw-CNgLtG93.js",
+      "sha256": "4cd8372fdfe043af1c80a5f8d246d3e0e02bcd5d151104b498c16640e21647c8",
+      "bytes": 1025,
+      "matched": true
+    },
+    {
+      "file": "assets/TabletRaceDemo-CmYHu2yr.js",
+      "sha256": "1cdd671931da749e39c1c6191a08c1fd3b7b08ecfb2f1950f625f3d3a6ea38a9",
+      "bytes": 36428,
+      "matched": true
+    },
+    {
+      "file": "assets/TabletRaceDemo-DwxGRcfj.css",
+      "sha256": "300beda0b8a451a90b637b642c063af6a46e32209f580eb421c9ce1323c025cb",
+      "bytes": 19097,
+      "matched": true
+    },
+    {
+      "file": "assets/three-addons-DiBvLs_E.js",
+      "sha256": "fe9803bc77fe951d9bfe2fa8155cd2555fb5b5244254de77ffbc8b9ea21e8568",
+      "bytes": 73553,
+      "matched": true
+    },
+    {
+      "file": "assets/three-core-PKyBB6wc.js",
+      "sha256": "01f215fa7dc8b2f2d50bda1b51d8089ed9c97c74062dceb2d29aa6363f442d6c",
+      "bytes": 283474,
+      "matched": true
+    },
+    {
+      "file": "assets/three-renderer-Xp2iZVDg.js",
+      "sha256": "65ba11a7a41db22a6d05d7b2a27d6b9545b3832677cffa689174080afcd50887",
+      "bytes": 357178,
+      "matched": true
+    },
+    {
+      "file": "assets/tumNup2CrewBuilder-CDIQfUnS.js",
+      "sha256": "45b2a2c8523d5db5b4ec39a4862132e8fa931d341b2f0ce8fc0a488f43ca0bc5",
+      "bytes": 20498,
+      "matched": true
+    },
+    {
+      "file": "assets/video-BM2RId2S.js",
+      "sha256": "8171f078d0e19bf2b046a48c67c48ca206b061dcde0bb01b8ca480c4684cf242",
+      "bytes": 424,
+      "matched": true
+    },
+    {
+      "file": "assets/waves-DtLMf9L7.js",
+      "sha256": "3eea25a12015b9c0eff89407ce100e78d76511c9ca3df634ec6e58d938180552",
+      "bytes": 2329,
+      "matched": true
+    },
+    {
+      "file": "assets/x-DfZHzKC2.js",
+      "sha256": "c8fcdbd9e65dddcec67a9ccaf5f8a2ef64405021e5c26e8796dca1e5fdade84f",
+      "bytes": 330,
+      "matched": true
+    },
+    {
+      "file": "assets/illustrated-v22/game-engine.js",
+      "sha256": "fd878d95fe3cc0b3a42afc76d30f2aa3bafab6702c183a9b2b3e74e1c2b372fc",
+      "bytes": 17905,
+      "matched": true
+    },
+    {
+      "file": "assets/illustrated-v22/hybrid-boats.js",
+      "sha256": "6e50201576d8b771bd45dad0cb1f3454b885f9eb0c7e25f9fa36def22c6580ef",
+      "bytes": 1207461,
+      "matched": true
+    }
+  ]
+}
