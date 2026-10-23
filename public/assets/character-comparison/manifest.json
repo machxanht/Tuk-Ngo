@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "purpose": "Compare the original D/F characters before choosing a race athlete",
+  "liveGameChanged": false,
+  "sharedWardrobe": "Blue race jersey and dark shorts adapted from Snow, CC BY 4.0",
+  "sharedMotion": "src/race/rowing-pose.mjs",
+  "models": {
+    "d": {
+      "label": "D · Quaternius",
+      "file": "d.glb",
+      "sha256": "3c4cc22854e1098a4e4a3fd469748cc1e6fcffb65391abacb188845755b0e576",
+      "bytes": 1897672,
+      "triangles": 20291,
+      "vertices": 12499,
+      "bones": 65,
+      "animations": [
+        "seated",
+        "standing"
+      ],
+      "facePoses": {},
+      "source": {
+        "name": "Quaternius Universal Base Characters Standard / Superhero Male",
+        "page": "https://quaternius.itch.io/universal-base-characters",
+        "license": "CC0",
+        "credit": "Quaternius",
+        "archiveSha256": "fdbf1804c90dfc1ea03e992bff7da2dfd1a79318e13270a660180f9308455f40",
+        "archiveBytes": 128968391,
+        "extractedFiles": 112
+      },
+      "wardrobeCredit": "Snow Rig © Blender Foundation | studio.blender.org · CC BY 4.0"
+    },
+    "f": {
+      "label": "F · Snow",
+      "file": "f.glb",
+      "sha256": "51c81d0954b72c0c491249a04ae77ad55c9a5e2aa1f4a1cf05c74d172a7531de",
+      "bytes": 4099472,
+      "triangles": 67307,
+      "vertices": 43463,
+      "bones": 65,
+      "animations": [
+        "seated",
+        "standing",
+        "facial-demo"
+      ],
+      "facePoses": {
+        "Smile": 7993,
+        "Effort": 7528,
+        "Blink": 2648
+      },
+      "source": {
+        "name": "Snow",
+        "page": "https://studio.blender.org/characters/snow/v4/",
+        "license": "CC-BY-4.0",
+        "credit": "Snow Rig © Blender Foundation | studio.blender.org",
+        "archiveSha256": "98d58ef3a07083ede14140bc462cccb55d317062846aa0eb652d2e4a7ac422a6",
+        "archiveBytes": 111580346,
+        "extractedFiles": 34
+      },
+      "wardrobeCredit": "Snow Rig © Blender Foundation | studio.blender.org · CC BY 4.0"
+    }
+  }
+}

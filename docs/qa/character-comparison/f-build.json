@@ -1,0 +1,13 @@
+{
+  "model": "f",
+  "meshes": 13,
+  "bones": 65,
+  "source": "Snow Blender Studio",
+  "nativeFacialPoses": {
+    "Smile": 7993,
+    "Effort": 7528,
+    "Blink": 2648
+  },
+  "vertices": 34715,
+  "restGlbBytes": 4907780
+}

@@ -1,0 +1,9 @@
+{
+  "model": "d",
+  "meshes": 7,
+  "bones": 65,
+  "source": "Quaternius Standard",
+  "nativeFacialPoses": {},
+  "vertices": 11653,
+  "restGlbBytes": 9936784
+}

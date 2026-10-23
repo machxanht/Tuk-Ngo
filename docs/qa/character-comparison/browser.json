@@ -1,0 +1,32 @@
+{
+  "url": "http://127.0.0.1:8778/character-comparison/",
+  "results": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "errors": [],
+      "loaded": true,
+      "controls": true
+    },
+    {
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "errors": [],
+      "loaded": true,
+      "controls": true
+    },
+    {
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "errors": [],
+      "loaded": true,
+      "controls": true
+    }
+  ]
+}
