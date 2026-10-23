@@ -4,6 +4,16 @@ import {courseZ} from './maspero-layout.mjs';
 import {ceremonyPlacement} from './ceremony-layout.mjs';
 
 const lerp=(a,b,t)=>a+(b-a)*t,smooth=t=>t*t*(3-2*t);
+// Follow course progress, never cancel the player's lateral steering. The
+// course-relative target also keeps the opponent visible during close duels.
+export function playableShot(state,aspect=1,view='race'){
+ const x=raceX(state.distances[0])+15.1,other=raceX(state.distances[1])+15.1,gap=Math.abs(other-x);
+ const anchor=x+(state.mode==='practice'?0:(other-x)*Math.max(0,.30-gap/140));
+ const chase=view==='chase',target=[anchor+(chase?4:0),1,state.mode==='practice'?COURSE.lanes[0]:0];
+ const direction=new T.Vector3(...(chase?[35,14,13]:[25,20,33])).normalize();
+ const fov=48+(state.surgeActive?2:0),span=state.mode==='practice'?(chase?41:46):(chase?52:58),distance=span/(2*Math.tan(T.MathUtils.degToRad(fov/2))*Math.max(.55,Math.min(1.4,aspect)));
+ return {position:target.map((n,i)=>n+direction.getComponent(i)*distance),target,fov};
+}
 // The sequence is timed by the simulation; pausing freezes the shot as well.
 export function introShot(seconds){
  const points=[

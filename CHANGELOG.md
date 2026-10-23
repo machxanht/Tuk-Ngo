@@ -1,3 +1,11 @@
+# Immersive race controls and readable steering
+
+- Race canvas fills the viewport; removed the opaque header/score/footer surfaces during play. Touch targets float over the scene with transparent containers and preserved keyboard/focus controls.
+- Reproduced an ineffective 60 ms steering tap (about 4.85 cm travel), then added a short-tap rudder pulse. Row/steer contacts and cancellation remain independent. Lane assistance now protects the edge without recentering a deliberate line.
+- Added course-relative duel/chase cameras, visible water-flow guidance and a bounded 4.5% speed benefit earned by following it. AI uses the same spatial field independently of the player's gap.
+- Preserved athlete/garment assets and the existing practice/AI/cup flows. Added live touch/projection, viewport and flow-strategy regression checks.
+- Researched primary game-design and Cambodian festival sources; `docs/gameplay-direction.md` separates shipped mechanics from the planned Phnom Penh/Siem Reap expansion.
+
 # Practice, AI, cup and steering
 
 - Added solo practice with four milestones, no time penalty and a browser-local best time; competitive commentary is suppressed in this mode.

@@ -12,6 +12,8 @@ The stable entry is https://machxanht.github.io/Tuk-Ngo/. All three modes use th
 
 Default controls are deliberately forgiving: hold **CHÈO** or **Space** to keep the crew rowing. Release to rest. Hold **← / →** or **A / D** to steer while moving. Tablet players can row with one finger and steer with another; each contact releases independently. Paces and the final-stage **ĐẠP** ability remain available.
 
+The race now renders across the complete viewport, with translucent input targets floating over it. Short steering taps create a 0.8-second rudder stroke; held input remains continuous. Assistance only protects the lane edge, and the camera does not follow away the player's lateral travel. The camera button cycles duel, near-boat and full-course views. Follow the bright water chevrons for an authored flow advantage of up to 4.5% speed; the result screen reports time spent following the flow. This is a game mechanic, not measured river hydrology. See [gameplay research and Cambodia expansion](gameplay-direction.md).
+
 The preparation screen separates AI level from two assistance toggles. Turning off rowing assistance restores manual beat scoring. Turning off lane assistance leaves the player responsible for small river-current drift. Steering changes heading up to eight degrees and lateral position up to 4.2 m within the boat's corridor. Steering near the edge reduces speed and warns the player. This is an authored lane-racing mechanic, not unrestricted free navigation or a collision simulator.
 
 Pause, leaving the browser window and returning to the menu release all held inputs. Cups and practice best times are stored on this browser/device, not synchronized between devices. Practice does not play two-team/winner speech. Competitive races retain the existing bilingual audio system and its documented pronunciation/source limitations.
@@ -34,6 +36,7 @@ Run `npm run lint`, `npm test`, and `npm run build`. Start preview on port 8779,
 python scripts/check-race-modes.py
 python scripts/check-game-flow.py --url http://127.0.0.1:8779/Tuk-Ngo/ --out docs/qa/race-modes/flow
 python scripts/check-gameplay-input.py --out docs/qa/race-modes/input
+python scripts/check-immersive-race.py --url http://127.0.0.1:8779/Tuk-Ngo/
 ```
 
 Browser checks use Edge headless with a touch-capable viewport and Chromium's actual touch dispatch. They verify simultaneous two-finger input, key release, pause/reset, visible boat heading, both stern hand grips, solo audio suppression, real engine finishes, opponent selection, six cup races to champion, saved draw restore, tie replay and DNF elimination. Full-match waits are accelerated through the actual fixed-step engine; they are not human playthroughs or performance benchmarks.

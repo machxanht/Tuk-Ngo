@@ -1,4 +1,5 @@
 import {advanceSteering,STEERING} from './race-steering.mjs';
+import {riverFlow} from './race-flow.mjs';
 // Authored game balance, independent of renderer FPS and opponent position.
 // Distances are measured at the bow, including interpolated finish crossings.
 export const RACE_LENGTH = 1200;
@@ -35,11 +36,11 @@ export function createRaceGame(){
    consumed=new Set();rejected=new Set();previousPhase='racing';accumulator=0;tapBeat=-1;taps=0;
    this.state={phase:'ready',difficulty:DIFFICULTIES[difficulty]?difficulty:'normal',pace:'steady',countdown:3,elapsed:0,distances:[0,0],speeds:[0,0],finishTimes:[null,null],beatPhase:0,aiPhase:.17,stamina:100,power:0,cohesion:.72,combo:0,maxCombo:0,perfect:0,good:0,missed:0,lastResolved:0,feedback:'Chạm theo vùng sáng',feedbackAt:-10,result:null,pauseReason:'',runId:0};
     Object.assign(this.state,{mode:'ai',rowingAssist:difficulty==='easy',steeringAssist:true,steeringEnabled:false,steeringInput:0,steeringPulse:0,steeringPulseRemaining:0,lateralPositions:[0,0],headings:[0,0],rudder:0,atLaneEdge:false,steeringSeconds:0,steeringError:0,manualSteeringDistance:0,paceSwitches:0,rowingHeld:false,surgeCharge:0,surgeRemaining:0,desync:0,lastSpamAt:-10,slipstream:false,lastJudgement:null,lastTiming:'wait',lastStrokeBeat:-1,aiStamina:100,aiSurgeCharge:0,aiSurgeRemaining:0});
-   return this.snapshot();
+   Object.assign(this.state,{flowSeed:17,flowSeconds:0,flowActiveSeconds:0});return this.snapshot();
   },
-  start(difficulty=this.state.difficulty,{intro=false,mode='ai',rowingAssist=difficulty==='easy',steeringAssist=true,steeringEnabled=false}={}){
+  start(difficulty=this.state.difficulty,{intro=false,mode='ai',rowingAssist=difficulty==='easy',steeringAssist=true,steeringEnabled=false,flowSeed=17}={}){
    const id=this.state.runId+1;this.reset(difficulty);this.state.runId=id;this.state.phase=intro?'intro':'countdown';Object.assign(this.state,{mode:['practice','ai','cup'].includes(mode)?mode:'ai',rowingAssist:!!rowingAssist,steeringAssist:!!steeringAssist,steeringEnabled:!!steeringEnabled});
-   this.state.introRemaining=intro?10:0;this.state.introElapsed=0;
+   this.state.flowSeed=flowSeed>>>0;this.state.flowSeconds=0;this.state.flowActiveSeconds=0;this.state.introRemaining=intro?10:0;this.state.introElapsed=0;
   },
   pause(reason=''){
    if(!['intro','racing','countdown'].includes(this.state.phase))return;
@@ -122,9 +123,11 @@ export function createRaceGame(){
     s.stamina=clamp(s.stamina-dt*drain*(.25+.75*s.power)*(s.slipstream&&drain>0?.65:1)*(s.lastJudgement==='PERFECT'&&drain>0?.72:1),0,100);
    }
    advanceSteering(s,dt);
+   const flow=s.steeringEnabled?riverFlow(s.distances[0],s.lateralPositions[0],s.flowSeed):{boost:0};
+   if(s.finishTimes[0]==null&&s.distances[0]>100&&s.distances[0]<1140&&s.speeds[0]>1){s.flowActiveSeconds+=dt;if(flow.boost>.025)s.flowSeconds+=dt;}
    const fatigue=.5+.5*clamp(s.stamina/24,0,1);
    const steeringDrag=Math.cos(s.headings[0])*(s.atLaneEdge?.90:1);
-   const playerTarget=s.power<.025?0:steeringDrag*(cadence/84)*(1.6+5*s.power)*(.65+.35*s.cohesion)*fatigue*(1-s.desync*.22)*(s.surgeRemaining>0?1.3:1);
+   const playerTarget=s.power<.025?0:(1+flow.boost)*steeringDrag*(cadence/84)*(1.6+5*s.power)*(.65+.35*s.cohesion)*fatigue*(1-s.desync*.22)*(s.surgeRemaining>0?1.3:1);
    const aiBase=DIFFICULTIES[s.difficulty].speed;
    const aiStage=stageAt(s.distances[1]);
    // The opponent conserves energy in cruise and spends its own charge at
@@ -138,7 +141,8 @@ export function createRaceGame(){
     s.aiPhase=nextAiPhase%1;
    }
    const aiFatigue=.5+.5*clamp(s.aiStamina/24,0,1);
-   const aiTarget=aiBase*(aiStage==='start'?1.09:aiStage==='final'?1.15:1)*aiFatigue*(s.aiSurgeRemaining>0?1.13:1)+.06*Math.sin(s.elapsed*.17);
+   const aiBoost=s.steeringEnabled?riverFlow(s.distances[1],s.lateralPositions[1],s.flowSeed).boost:0;
+   const aiTarget=(1+aiBoost)*aiBase*(aiStage==='start'?1.09:aiStage==='final'?1.15:1)*aiFatigue*(s.aiSurgeRemaining>0?1.13:1)+.06*Math.sin(s.elapsed*.17);
    [playerTarget,aiTarget].forEach((target,i)=>{
     if(i===1&&s.mode==='practice'){s.speeds[1]=0;return;}
     if(s.finishTimes[i]!=null){s.speeds[i]=0;return;}
@@ -160,7 +164,8 @@ export function createRaceGame(){
   skipIntro(){if(this.state.phase==='intro'){this.state.introRemaining=0;this.state.introElapsed=10;this.state.phase='countdown';}},
   snapshot(){
    const s=this.state,total=s.perfect+s.good+s.missed,timing=timingFor(s,consumed);
-   return {...s,waitingForOpponent:s.phase==='racing'&&s.finishTimes[0]!=null&&s.finishTimes[1]==null&&s.mode!=='practice',lateralPositions:[...s.lateralPositions],headings:[...s.headings],steeringLimit:STEERING.limit,steeringAccuracy:Math.round(clamp(1-s.steeringError/Math.max(.001,s.steeringSeconds)/STEERING.limit,0,1)*100),practiceTasks:[s.perfect+s.good>=8,s.manualSteeringDistance>=.8,s.paceSwitches>0,s.finishTimes[0]!=null],timing,strokeAvailable:timing.available,distances:[...s.distances],speeds:[...s.speeds],finishTimes:[...s.finishTimes],raceStage:stageAt(s.distances[0]),stageLabel:RACE_STAGES[stageAt(s.distances[0])].label,cadence:cadenceFor(s),aiRaceStage:stageAt(s.distances[1]),aiStageLabel:RACE_STAGES[stageAt(s.distances[1])].label,aiCadence:RACE_STAGES[stageAt(s.distances[1])].cadence,aiSurgeActive:s.aiSurgeRemaining>0,judgement:s.elapsed-s.feedbackAt<1.1?s.lastJudgement:null,surgeActive:s.surgeRemaining>0,canSurge:s.phase==='racing'&&s.finishTimes[0]==null&&stageAt(s.distances[0])==='final'&&s.surgeRemaining<=0&&s.surgeCharge>=.6&&s.stamina>=24,desyncIntensity:s.desync,rhythmProgress:timing.progress,accuracy:total?Math.round((s.perfect+s.good)/total*100):0,gap:s.distances[0]-s.distances[1],strength:s.surgeRemaining>0?1:s.pace==='sprint'?clamp(s.power*s.stamina/24,0,1):0,feedback:s.elapsed-s.feedbackAt<1.1?s.feedback:'Chạm khi vạch vào vùng sáng'};
+   const flow=riverFlow(s.distances[0],s.lateralPositions[0],s.flowSeed);
+   return {...s,flow,flowBonus:s.steeringEnabled?Math.round(flow.boost*1000)/10:0,flowMastery:s.flowActiveSeconds?Math.round(s.flowSeconds/s.flowActiveSeconds*100):0,waitingForOpponent:s.phase==='racing'&&s.finishTimes[0]!=null&&s.finishTimes[1]==null&&s.mode!=='practice',lateralPositions:[...s.lateralPositions],headings:[...s.headings],steeringLimit:STEERING.limit,steeringAccuracy:Math.round(clamp(1-s.steeringError/Math.max(.001,s.steeringSeconds)/STEERING.limit,0,1)*100),practiceTasks:[s.perfect+s.good>=8,s.manualSteeringDistance>=.8,s.paceSwitches>0,s.finishTimes[0]!=null],timing,strokeAvailable:timing.available,distances:[...s.distances],speeds:[...s.speeds],finishTimes:[...s.finishTimes],raceStage:stageAt(s.distances[0]),stageLabel:RACE_STAGES[stageAt(s.distances[0])].label,cadence:cadenceFor(s),aiRaceStage:stageAt(s.distances[1]),aiStageLabel:RACE_STAGES[stageAt(s.distances[1])].label,aiCadence:RACE_STAGES[stageAt(s.distances[1])].cadence,aiSurgeActive:s.aiSurgeRemaining>0,judgement:s.elapsed-s.feedbackAt<1.1?s.lastJudgement:null,surgeActive:s.surgeRemaining>0,canSurge:s.phase==='racing'&&s.finishTimes[0]==null&&stageAt(s.distances[0])==='final'&&s.surgeRemaining<=0&&s.surgeCharge>=.6&&s.stamina>=24,desyncIntensity:s.desync,rhythmProgress:timing.progress,accuracy:total?Math.round((s.perfect+s.good)/total*100):0,gap:s.distances[0]-s.distances[1],strength:s.surgeRemaining>0?1:s.pace==='sprint'?clamp(s.power*s.stamina/24,0,1):0,feedback:s.elapsed-s.feedbackAt<1.1?s.feedback:'Chạm khi vạch vào vùng sáng'};
   },
  };
  game.reset();return game;

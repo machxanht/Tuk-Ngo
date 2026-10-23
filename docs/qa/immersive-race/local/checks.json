@@ -1,0 +1,53 @@
+{
+  "physicalTabletTested": false,
+  "shortTap": {
+    "touchDurationMs": 60,
+    "lateralTravelM": 0.6183560818193812,
+    "screenTravelPx": 7.606443857548789,
+    "otherFingerStillRowing": true
+  },
+  "viewports": [
+    [
+      "vi",
+      1024,
+      768
+    ],
+    [
+      "vi",
+      768,
+      1024
+    ],
+    [
+      "vi",
+      1180,
+      430
+    ],
+    [
+      "vi",
+      390,
+      844
+    ],
+    [
+      "km",
+      1024,
+      768
+    ],
+    [
+      "km",
+      768,
+      1024
+    ],
+    [
+      "km",
+      1180,
+      430
+    ],
+    [
+      "km",
+      390,
+      844
+    ]
+  ],
+  "manualTimingVisible": true,
+  "errors": []
+}

@@ -3,7 +3,7 @@ import {readFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {profile,section} from '../src/race/boat.mjs';
 import {createRaceGame} from '../src/race/gameplay.mjs';
-import {introShot,ceremonyShot} from '../src/race/race-camera.mjs';
+import {playableShot,introShot,ceremonyShot} from '../src/race/race-camera.mjs';
 import {COURSE} from '../src/race/maspero-course.mjs';
 import {flotsamPlacement,FLOTSAM_COUNTS} from '../src/race/river-flotsam.mjs';
 import {ceremonyCrewDigest} from '../src/race/asset-digests.mjs';
@@ -54,3 +54,7 @@ for(let i=0;i<drift.length;i++){const p=drift[i],q=flotsamPlacement(i,10);assert
 const waders=finishSpectatorPositions(COURSE.finishX,.28);assert(waders.length>500);assert.equal(new Set(waders.map(p=>p.cluster)).size,10);assert(waders.some(p=>p.z<0)&&waders.some(p=>p.z>0));for(const p of waders){assert(p.x>COURSE.finishX&&p.x<COURSE.finishX+100);assert(Math.abs(p.z)>21);assert.equal(p.waterY,.28);assert.equal(p.submergedHeight,.9);assert(['wave','cheer','clap'].includes(p.activity));}
 const music=JSON.parse(await readFile('public/assets/race-audio/menu/source.json','utf8'));assert.equal(music.id,'TCpeiecnktg');assert.equal(music.sha256,createHash('sha256').update(await readFile('public/assets/race-audio/menu/festival.mp3')).digest('hex'));
 console.log('Presentation passed: race intro, six camera angles, irregular separated 61-boat raft, scalp/hair coverage, animated handheld caps, ten final-100m spectator clusters, drifting vegetation and exact menu music.');
+
+{
+ const g=createRaceGame();g.start('easy',{steeringEnabled:true});g.advance(3);const before=playableShot(g.state,1.3);g.state.lateralPositions[0]=3;g.state.headings[0]=.1;assert.deepEqual(playableShot(g.state,1.3),before);for(const aspect of[.46,.75,1.33,2.74])for(const view of['race','chase']){const shot=playableShot(g.state,aspect,view);assert([...shot.position,...shot.target,shot.fov].every(Number.isFinite));assert(shot.position[1]>8);}
+}

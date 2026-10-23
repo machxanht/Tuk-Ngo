@@ -58,7 +58,8 @@ with sync_playwright() as p:
    page.set_viewport_size({'width':width,'height':height});page.wait_for_timeout(150)
    stage=page.locator('.game-stage').bounding_box();footer=page.locator('.game-controls').bounding_box()
    assert stage['height']>=120,(language,width,height,stage)
-   assert stage['y']+stage['height']<=footer['y']+.5
+   assert stage['y']==0 and stage['height']==height and stage['width']==width
+   assert page.locator('.game-controls').evaluate("e=>getComputedStyle(e).backgroundColor==='rgba(0, 0, 0, 0)'&&getComputedStyle(e).pointerEvents==='none'")
    assert footer['y']+footer['height']<=height+.5
    assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
    for button in page.locator('.game-inputs button').all():
@@ -71,7 +72,7 @@ with sync_playwright() as p:
  assert page.evaluate(boat+'.game.state.elapsed')==frozen
  page.get_by_role('dialog',name='Nghỉ một nhịp',exact=True).get_by_role('button',name='Tiếp tục cuộc đua',exact=True).tap()
  page.get_by_role('button',name='Góc nhìn',exact=True).tap()
- page.wait_for_selector('[data-view=banks]');page.screenshot(path=str(out/'course.png'))
+ page.wait_for_selector('[data-view=chase]');page.get_by_role('button',name='Góc nhìn',exact=True).tap();page.wait_for_selector('[data-view=banks]');page.screenshot(path=str(out/'course.png'))
  page.get_by_role('button',name='Góc nhìn',exact=True).tap()
  page.evaluate(advance,960);page.wait_for_timeout(300)
  assert page.evaluate(boat+'.game.snapshot().canSurge')

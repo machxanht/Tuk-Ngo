@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import {createRaceGame,formatRaceTime,RACE_LENGTH} from '../src/race/gameplay.mjs';
 import {createRaceControls} from '../src/race/race-controls.mjs';
+import {riverFlow} from '../src/race/race-flow.mjs';
 import {STEERING} from '../src/race/race-steering.mjs';
 import {createTournament} from '../src/race/tournament.mjs';
 const checks=[];
@@ -37,6 +38,16 @@ check('Steering changes heading and lateral travel, stays in its corridor, and r
 });
 check('Row and steer contacts survive independent finger/key release and cancellation',()=>{
  const g=createRaceGame();g.start('easy');g.advance(3);const c=createRaceControls(g);c.rowDown('pointer:1');c.steerDown('pointer:2',-1);assert(g.state.rowingHeld);assert.equal(g.state.steeringInput,-1);c.release('pointer:2');assert(g.state.rowingHeld);assert.equal(g.state.steeringInput,0);c.steerDown('key:KeyA',-1);c.steerDown('key:KeyD',1);assert.equal(g.state.steeringInput,1);c.release('key:KeyD');assert.equal(g.state.steeringInput,-1);c.releaseKeyboard();assert(g.state.rowingHeld);assert.equal(g.state.steeringInput,0);c.clear();assert(!g.state.rowingHeld);assert.equal(g.state.steeringInput,0);
+});
+check('Short steering taps move visibly; cancel/blur never add a rudder pulse',()=>{
+ const g=createRaceGame();g.start('easy',{steeringEnabled:true});g.advance(3);g.setRowingHeld(true);g.advance(8);const c=createRaceControls(g),before=g.state.lateralPositions[0];c.rowDown('row');c.steerDown('tap',1);g.advance(.06);c.release('tap');assert(g.state.steeringPulseRemaining>.7);c.release('row');assert(g.state.steeringPulseRemaining>.7,'Releasing rowing must not erase the rudder pulse');g.setRowingHeld(true);g.advance(1.25);assert(g.state.lateralPositions[0]-before>.60);c.steerDown('cancel',-1);c.release('cancel',{cancelled:true});assert.equal(g.state.steeringPulseRemaining,0);c.steerDown('key:KeyD',1);c.clear();assert.equal(g.state.steeringPulseRemaining,0);assert.equal(g.state.steeringInput,0);
+});
+check('Released steering holds its chosen line away from the edge',()=>{
+ const g=createRaceGame();g.start('easy',{steeringEnabled:true});g.advance(3);g.setRowingHeld(true);g.advance(8);g.state.lateralPositions[0]=2;g.state.headings[0]=0;g.setSteering(0);g.advance(3);assert(g.state.lateralPositions[0]>1.8,'Assistance must not recenter a deliberate racing line');
+});
+check('Reading the visible river flow gives a bounded, earned race advantage',()=>{
+ const times=[];for(const follow of[false,true]){const g=createRaceGame();g.start('easy',{steeringEnabled:true});g.advance(3);g.setRowingHeld(true);while(g.state.finishTimes[0]==null){if(follow){const f=riverFlow(g.state.distances[0],g.state.lateralPositions[0],g.state.flowSeed);g.setSteering(Math.max(-1,Math.min(1,(f.center-g.state.lateralPositions[0])*.7+f.slope/STEERING.maxHeading-g.state.headings[0])));}g.advance(1/30);assert(g.snapshot().flowBonus<=4.5);}times.push(g.state.finishTimes[0]);if(follow)assert(g.snapshot().flowMastery>90);}assert(times[0]-times[1]>2&&times[0]-times[1]<8);
+ const a=createRaceGame(),b=createRaceGame();for(const g of[a,b]){g.start('hard',{steeringEnabled:true});g.advance(3);}a.state.distances[0]=900;a.setSteering(1);a.advance(50);b.advance(50);assert.equal(a.state.distances[1],b.state.distances[1]);assert.equal(a.state.lateralPositions[1],b.state.lateralPositions[1]);
 });
 check('Steering remains deterministic across 15/60/144 FPS',()=>{
  const results=[];for(const fps of[15,60,144]){const g=createRaceGame();g.start('easy',{steeringEnabled:true});g.advance(3);g.setRowingHeld(true);for(const [seconds,input]of [[3,0],[4,-1],[7,1],[5,0]]){g.setSteering(input);for(let n=0;n<fps*seconds;n++)g.advance(1/fps);}results.push(g.snapshot());}assert.deepEqual(results[0],results[1]);assert.deepEqual(results[1],results[2]);

@@ -57,7 +57,7 @@ with sync_playwright() as p:
   cdp.send('Input.dispatchTouchEvent',{'type':'touchEnd','touchPoints':[]})
   assert not state('state.rowingHeld')
   # Keyboard contacts can overlap, and the most recently pressed rudder wins.
-  page.locator('canvas').click(position={'x':10,'y':10})
+  page.locator('canvas').click(position={'x':300,'y':300})
   page.keyboard.down('Space');page.keyboard.down('ArrowRight')
   assert state('state.rowingHeld') and state('state.steeringInput')==1
   page.keyboard.up('ArrowRight');assert state('state.rowingHeld')
@@ -97,7 +97,7 @@ with sync_playwright() as p:
     report['viewports'].append([language,width,height])
   page.set_viewport_size({'width':1024,'height':768});page.get_by_role('button',name='VI',exact=True).click()
   # Pause while both controls are held; resuming must not leave either stuck.
-  page.locator('canvas').click(position={'x':10,'y':10});page.keyboard.down('Space');page.keyboard.down('KeyD');page.keyboard.press('Escape')
+  page.locator('canvas').click(position={'x':300,'y':300});page.keyboard.down('Space');page.keyboard.down('KeyD');page.keyboard.press('Escape')
   page.get_by_role('dialog',name='Nghỉ một nhịp',exact=True).wait_for()
   assert not state('state.rowingHeld') and state('state.steeringInput')==0
   page.keyboard.up('Space');page.keyboard.up('KeyD');page.get_by_role('button',name='Tiếp tục cuộc đua',exact=True).click()
