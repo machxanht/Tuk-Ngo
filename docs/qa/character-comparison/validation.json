@@ -3,7 +3,7 @@
     "uri": "d.glb",
     "mimeType": "model/gltf-binary",
     "validatorVersion": "2.0.0-dev.3.10",
-    "validatedAt": "2026-10-23T09:59:06.711Z",
+    "validatedAt": "2026-10-23T10:04:33.511Z",
     "issues": {
       "numErrors": 0,
       "numWarnings": 0,
@@ -151,7 +151,7 @@
     "uri": "f.glb",
     "mimeType": "model/gltf-binary",
     "validatorVersion": "2.0.0-dev.3.10",
-    "validatedAt": "2026-10-23T09:59:06.953Z",
+    "validatedAt": "2026-10-23T10:04:33.767Z",
     "issues": {
       "numErrors": 0,
       "numWarnings": 0,
@@ -296,7 +296,7 @@
     "uri": "hairstyles.glb",
     "mimeType": "model/gltf-binary",
     "validatorVersion": "2.0.0-dev.3.10",
-    "validatedAt": "2026-10-23T09:59:07.130Z",
+    "validatedAt": "2026-10-23T10:04:33.946Z",
     "issues": {
       "numErrors": 0,
       "numWarnings": 0,

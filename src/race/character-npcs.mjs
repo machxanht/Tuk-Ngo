@@ -40,8 +40,10 @@ function civilianMotion(root,skeleton){
   if(seated){const delta=.56-p('pelvis').y;root.position.y+=delta;root.updateMatrixWorld(true);for(const target of Object.values(base))target.y+=delta;}
   for(const side of ['l','r']){
    hand(side,base[side]);
-   const fingers=activity==='cheer'||activity==='wave'||activity==='clap'||seated||activity==='phone'?V(.05*Math.sin(time*5),1,.05):V(0,-.25,1);
-   palm(side,fingers,activity==='clap'||seated?V(side==='l'?-1:1,0,0):V(0,0,1));
+   const relaxed=activity==='idle'||activity==='walk',clapping=activity==='clap'||seated;
+   const fingers=relaxed?V(0,-1,.12):activity==='talk'||activity==='point'?V(0,.12,1):V(.05*Math.sin(time*5),1,.05);
+   const normal=relaxed||clapping?V(side==='l'?-1:1,0,relaxed?.12:0):activity==='talk'||activity==='point'?V(0,1,0):V(0,0,1);
+   palm(side,fingers,normal);
    const sign=side==='l'?1:-1,step=Math.sin(time*6.2+(side==='l'?0:Math.PI));
    if(seated||activity==='walk'){
     const foot=V(sign*.10,seated?.10:.07+Math.max(0,step)*.07,seated?.36:Math.cos(time*6.2+(side==='l'?0:Math.PI))*.20);
