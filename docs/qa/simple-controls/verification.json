@@ -1,0 +1,191 @@
+{
+  "url": "https://machxanht.github.io/Tuk-Ngo/",
+  "sourceCommit": "604b7b4b69fcf0767f4a9d6be8691f1e847e753e",
+  "pagesCommit": "59cfed190051c530ba20ec6afd98122690e5da36",
+  "pagesWorkflow": "https://github.com/machxanht/Tuk-Ngo/actions/runs/40009923444",
+  "publicIndexMatches": true,
+  "publishedVerifiedUtc": "2026-10-23T19:17:53Z",
+  "physicalTabletTested": false,
+  "checks": {
+    "local": [
+      "npm run lint",
+      "npm test",
+      "npm run build"
+    ],
+    "public": "scripts/check-simple-race.py --url https://machxanht.github.io/Tuk-Ngo/ --out docs/qa/simple-controls/public",
+    "size": "scripts/measure-game-size.py with publishedTreeRevision pinned to the verified Pages commit",
+    "browserErrors": [],
+    "languages": [
+      "vi",
+      "km",
+      "en"
+    ],
+    "viewports": [
+      [
+        1024,
+        768
+      ],
+      [
+        768,
+        1024
+      ],
+      [
+        1180,
+        430
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "stamina": {
+      "beforeBoost": 99.37041666666681,
+      "afterBoost": 79.43437500000313,
+      "beforeRest": 78.24645833333666,
+      "afterRest": 91.49645833333967
+    },
+    "cup": {
+      "races": 6,
+      "teams": 61,
+      "savedBracketRestored": true
+    }
+  },
+  "publishedTreeBytes": 876633359,
+  "menuColdTransferBytes": 16472261,
+  "raceColdCumulativeTransferBytes": 18199861,
+  "sampledRender": {
+    "triangles": 3156845,
+    "calls": 599,
+    "fps": "32.0",
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1650 (0x00001F0A) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "largestCalls": [
+      [
+        "SkinnedMesh",
+        110
+      ],
+      [
+        "Connected_Shirt_V32",
+        106
+      ],
+      [
+        "Athlete_Faces_Batched",
+        100
+      ],
+      [
+        "Mesh",
+        40
+      ],
+      [
+        "Athlete_Distant_Faces",
+        38
+      ],
+      [
+        "Maspero_Continuous_Bank_Surface",
+        12
+      ],
+      [
+        "Static_Hull_Fittings",
+        8
+      ],
+      [
+        "Painted_Hull",
+        2
+      ],
+      [
+        "Inner_Hull",
+        2
+      ],
+      [
+        "Rounded_Rim",
+        2
+      ],
+      [
+        "Coach_Whistle",
+        2
+      ],
+      [
+        "Bow_Caller_Whistle",
+        2
+      ]
+    ],
+    "largest": [
+      [
+        "SkinnedMesh",
+        404040
+      ],
+      [
+        "Athlete_Faces_Batched",
+        349084
+      ],
+      [
+        "Festival_scooter",
+        198144
+      ],
+      [
+        "Mesh",
+        153542
+      ],
+      [
+        "Festival_motorcycle",
+        117600
+      ],
+      [
+        "FestivalNPC_hoodie-man_LOD2",
+        100188
+      ],
+      [
+        "FestivalNPC_beach-man_LOD2",
+        96824
+      ],
+      [
+        "Connected_Shirt_V32",
+        94976
+      ],
+      [
+        "FestivalNPC_casual-man_LOD2",
+        86673
+      ],
+      [
+        "FestivalNPC_suit-man_LOD2",
+        77274
+      ],
+      [
+        "FestivalNPC_formal-woman_LOD2",
+        76560
+      ],
+      [
+        "FestivalNPC_punk-man_LOD2",
+        73800
+      ],
+      [
+        "FestivalNPC_suit-woman_LOD2",
+        70144
+      ],
+      [
+        "FestivalNPC_casual-woman_LOD2",
+        69733
+      ],
+      [
+        "FestivalNPC_worker-woman_LOD2",
+        69580
+      ],
+      [
+        "FestivalNPC_worker-man_LOD2",
+        62909
+      ],
+      [
+        "FestivalNPC_farmer-man_LOD2",
+        53872
+      ],
+      [
+        "Static_Hull_Fittings",
+        46616
+      ]
+    ]
+  },
+  "limits": [
+    "Sensor and touch were emulated in Chromium; no physical tablet test.",
+    "Race finishes were accelerated with the real engine for regression checks.",
+    "Transfer and triangle counts describe the sampled route and camera, not course maxima."
+  ]
+}

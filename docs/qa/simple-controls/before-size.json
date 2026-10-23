@@ -69,7 +69,7 @@
       350516
     ]
   ],
-  "publishedTreeBytes": 878831092,
+  "publishedTreeBytes": 879747775,
   "menu": {
     "networkTransferBytes": 18822049,
     "encodedBodyBytes": 18801565,
@@ -325,5 +325,8 @@
         74580
       ]
     ]
-  }
+  },
+  "originallyCountedTreeBytes": 878831092,
+  "publishedTreeRevision": "0e47de35c8d0efbd2d327f29ef858652e4bb1742",
+  "treeInventoryCorrection": "Counted the exact live deployment commit after discovering a stale local remote-tracking ref. Browser transfer and render samples are unchanged."
 }

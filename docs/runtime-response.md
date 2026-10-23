@@ -56,12 +56,27 @@ maximum quantisation error below 1.5 mm. Source motion and shirt-fitting math
 remain unchanged. JSON drops from 8,853,940 to 4,709,827 bytes before compression.
 Near clothing and far painted-body silhouettes keep separate LODs.
 
-Before this change the published tree was 878,831,092 bytes (about 879 MB).
+Before this change the published tree was 879,747,775 bytes (about 880 MB).
 A cold menu transferred 18,822,049 bytes, and entry to an AI race reached
 20,550,104 bytes during the sampled interval. These are different measurements.
 Historical samples and assets contribute to the tree, while gameplay loads a
 subset. Tracked working files were about 1.34 GB, excluding Git and dependencies.
 Unrelated reference files are preserved.
+
+The verified public release (59cfed190051c530ba20ec6afd98122690e5da36)
+contains 876,633,359 bytes. Cold menu transfer is 16,472,261 bytes; entering an
+AI race reaches 18,199,861 bytes. Menu decoded bodies total 24,193,629 bytes.
+The current public folder is 846,613,413 bytes and tracked working files total
+1,336,442,899 bytes, excluding Git and installed dependencies. The release tree
+includes historical assets and hashed bundles that the main game does not fetch.
+The inventory reports pin exact deployment commits: local remote-tracking refs
+were stale during collection, and only the tree totals were corrected later.
+The browser transfer samples are unchanged.
+
+The public race sample submits 3,156,845 triangles in 599 draw calls, compared
+with 5,722,711 triangles in 911 calls in the baseline sample. Camera position
+and distance LOD affect these counts; they are not worst-case course budgets.
+The desktop GPU is a GTX 1650. These observations do not establish tablet FPS.
 
 The reports under docs/qa/simple-controls record full size inventories,
 transfer/decode sizes and submitted geometry. Compare public transfer with
@@ -79,3 +94,12 @@ Desktop frame measurements do not establish real tablet FPS.
   targets, canvas capture, practice/AI finishes and six cup rounds with restore.
 - Historical browser check entrypoints share this current gate instead of
   expecting the intentionally removed controls.
+
+Public verification completed after the Pages workflow succeeded and the root
+HTML SHA-256 matched the published artifact. The real website passed the same
+two-finger, native browser sensor emulation, stamina and three-mode checks with
+zero browser errors. Measured boost changed stamina from 99.37 to 79.43, and
+rest recovered 78.25 to 91.50. Practice/AI finishes and six cup rounds were
+scripted through the real engine; orientation came from Chromium CDP, not a
+physical device. Reports are in docs/qa/simple-controls/public/checks.json and
+docs/qa/simple-controls/after-size.json.

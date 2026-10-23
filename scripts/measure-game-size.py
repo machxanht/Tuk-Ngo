@@ -2,14 +2,15 @@
 import argparse,json,subprocess
 from pathlib import Path
 from playwright.sync_api import sync_playwright
-parser=argparse.ArgumentParser();parser.add_argument('--url',default='https://machxanht.github.io/Tuk-Ngo/');parser.add_argument('--out',default='docs/qa/simple-controls/before-size.json');args=parser.parse_args()
+parser=argparse.ArgumentParser();parser.add_argument('--url',default='https://machxanht.github.io/Tuk-Ngo/');parser.add_argument('--out',default='docs/qa/simple-controls/before-size.json');parser.add_argument('--published-ref',default='origin/gh-pages',help='Exact deployed commit, or a freshly fetched remote ref');args=parser.parse_args()
 root=Path.cwd();report={'url':args.url,'physicalTabletTested':False}
 tracked=subprocess.check_output(['git','ls-files','-z'],text=True).split('\0');report['trackedWorkingBytes']=sum((root/f).stat().st_size for f in tracked if f and (root/f).is_file())
 public=list((root/'public').rglob('*'));report['publicBytes']=sum(f.stat().st_size for f in public if f.is_file());groups={}
 for f in public:
  if f.is_file():key='/'.join(f.relative_to(root/'public').parts[:2]);groups[key]=groups.get(key,0)+f.stat().st_size
 report['publicGroups']=sorted(groups.items(),key=lambda p:-p[1])[:16]
-rows=subprocess.check_output(['git','ls-tree','-rl','origin/gh-pages'],text=True).splitlines();report['publishedTreeBytes']=sum(int(r.split('\t')[0].split()[-1]) for r in rows if r.split('\t')[0].split()[-1].isdigit())
+report['publishedTreeRevision']=subprocess.check_output(['git','rev-parse',args.published_ref],text=True).strip()
+rows=subprocess.check_output(['git','ls-tree','-rl',report['publishedTreeRevision']],text=True).splitlines();report['publishedTreeBytes']=sum(int(r.split('\t')[0].split()[-1]) for r in rows if r.split('\t')[0].split()[-1].isdigit())
 with sync_playwright() as p:
  b=p.chromium.launch(channel='msedge',headless=True,args=['--enable-unsafe-swiftshader'])
  try:
