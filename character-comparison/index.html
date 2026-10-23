@@ -2,18 +2,18 @@
 <html lang="vi">
 <head>
  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
- <meta name="theme-color" content="#edf3f3"><title>So sánh VĐV D và F · Ghe Ngo</title><link rel="icon" href="data:,">
- <link rel="stylesheet" href="styles.css?build=8b3064f5ffeb"><script type="module" src="viewer.js?build=8b3064f5ffeb"></script>
+ <meta name="theme-color" content="#edf3f3"><title>Vận động viên &amp; NPC · Ghe Ngo</title><link rel="icon" href="data:,">
+ <link rel="stylesheet" href="styles.css?build=d5310391e1f3"><script type="module" src="viewer.js?build=d5310391e1f3"></script>
 </head>
 <body>
  <main>
-  <header><a href="../">← Ghe Ngo</a><h1>Đội ghe · D + F</h1><p>Đội ghe dùng cả hai mẫu, nhiều màu da, tóc và khuôn mặt. Kéo để xoay, chụm hai ngón để phóng gần.</p></header>
-  <nav class="view-tabs" aria-label="Màn xem"><button data-view="boat" aria-pressed="true">Đội ghe D + F</button><button data-view="compare" aria-pressed="false">So sánh từng VĐV</button><button id="randomize" disabled>Đổi diện mạo đội</button></nav>
+  <header><a href="../">← Ghe Ngo</a><h1>Vận động viên & NPC</h1><p>VĐV cùng vóc dáng, bộ đồ và tóc ngắn; chỉ đổi khuôn mặt. NPC dùng nhiều diện mạo và hoạt động hơn.</p></header>
+  <nav class="view-tabs" aria-label="Màn xem"><button data-view="boat" aria-pressed="true">Đội ghe · đổi khuôn mặt</button><button data-view="npcs" aria-pressed="false">NPC · ngoại hình & động tác</button><button data-view="compare" aria-pressed="false">Hai mẫu gốc D/F</button><button id="randomize" disabled>Đổi khuôn mặt VĐV</button></nav>
   <div class="toolbar" aria-label="Góc nhìn"><div class="group"><button data-camera="whole" aria-pressed="true">Toàn cảnh</button><button data-camera="upper" aria-pressed="false">Cận tay bơi</button><button data-camera="face" aria-pressed="false">Khuôn mặt</button><button data-camera="front" class="boat-only" aria-pressed="false">Đầu ghe</button><button data-camera="stern" class="boat-only" aria-pressed="false">Hai người lái</button><button data-camera="top" class="boat-only" aria-pressed="false">Từ trên cao</button></div><button id="reset-view">Đặt lại góc</button></div>
   <section class="stage" aria-label="Đội ghe 3D"><div class="labels" hidden><span><b>D</b> Quaternius</span><span><b>F</b> Snow · Blender Studio</span></div><canvas id="viewport" aria-label="Đội ghe với các vận động viên D và F"></canvas><p id="status" role="status">Đang tải đội ghe…</p></section>
   <section class="controls" aria-label="Điều khiển chuyển động">
    <div class="row"><div class="group compare-only" hidden><button data-motion="seated" aria-pressed="true">Chèo ngồi</button><button data-motion="kneeling" aria-pressed="false">Chèo quỳ</button><button data-motion="standing" aria-pressed="false">Đứng kiểm tra</button></div><div class="group compare-only" hidden><button data-side="port" aria-pressed="true">Mạn trái</button><button data-side="starboard" aria-pressed="false">Mạn phải</button></div><button id="play" disabled>Tạm dừng</button></div>
-   <div class="row"><label class="timeline">Pha chèo <input id="phase" type="range" min="0" max="1" step="0.005" value="0" aria-label="Pha chuyển động"></label><label class="speed">Tốc độ <select id="speed"><option value="0.6">Chậm 0,6×</option><option value="1" selected>1×</option><option value="1.5">Nhanh 1,5×</option></select></label></div>
+   <div class="row"><label class="timeline">Pha chuyển động <input id="phase" type="range" min="0" max="1" step="0.005" value="0" aria-label="Pha chuyển động"></label><label class="speed">Tốc độ <select id="speed"><option value="0.6">Chậm 0,6×</option><option value="1" selected>1×</option><option value="1.5">Nhanh 1,5×</option></select></label></div>
    <div class="row face-controls compare-only" hidden><span>Biểu cảm F</span><div class="group"><button data-face="neutral" aria-pressed="true">Trung tính</button><button data-face="Effort" aria-pressed="false">Tập trung</button><button data-face="Smile" aria-pressed="false">Cười</button><button data-face="Blink" aria-pressed="false">Nhắm mắt</button></div></div>
    <p id="crew-detail" class="note">Đang ghép đội hình…</p>
   </section>

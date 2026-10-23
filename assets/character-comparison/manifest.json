@@ -1,8 +1,8 @@
 {
   "schema": 1,
-  "purpose": "Mixed D/F crew and individual athlete inspection",
+  "purpose": "Uniform athlete bodies with D/F faces, varied civilian NPCs and original model inspection",
   "liveGameChanged": false,
-  "sharedWardrobe": "D body-matched shirt, Snow shirt and shorts, common blue kit",
+  "sharedWardrobe": "Crew: common D body, blue kit and short hair; NPCs: both D/F bodies and varied outfits",
   "sharedMotion": "src/race/athlete-rowing.mjs",
   "models": {
     "d": {
