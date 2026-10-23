@@ -1,0 +1,169 @@
+{
+  "physicalTabletTested": false,
+  "cupFinishMethod": "Real game engine advanced faster than wall time",
+  "venues": {
+    "phnom-penh": {
+      "length": 1700,
+      "aiResult": "win",
+      "practice": true,
+      "cupRounds": 3,
+      "roster": 8,
+      "spectators": 14400,
+      "landmarks": [
+        "Royal Palace interpretation",
+        "Moonlight Pavilion",
+        "Sisowath promenade",
+        "east-bank skyline"
+      ],
+      "fpsDpr2OnPc": "21.6",
+      "buttons": [
+        {
+          "id": "stroke-pad",
+          "x": 20,
+          "y": 688,
+          "width": 142,
+          "height": 60,
+          "background": "rgba(7, 86, 92, 0.28)"
+        },
+        {
+          "id": "boost-pad",
+          "x": 862,
+          "y": 688,
+          "width": 142,
+          "height": 60,
+          "background": "rgba(154, 92, 18, 0.28)"
+        }
+      ]
+    },
+    "siem-reap": {
+      "length": 500,
+      "aiResult": "win",
+      "practice": true,
+      "cupRounds": 3,
+      "roster": 8,
+      "spectators": 7200,
+      "landmarks": [
+        "Pokambor pavilion",
+        "Royal Gardens",
+        "stone bridges",
+        "riverside markets"
+      ],
+      "fpsDpr2OnPc": "32.0",
+      "buttons": [
+        {
+          "id": "stroke-pad",
+          "x": 20,
+          "y": 688,
+          "width": 142,
+          "height": 60,
+          "background": "rgba(7, 86, 92, 0.28)"
+        },
+        {
+          "id": "boost-pad",
+          "x": 862,
+          "y": 688,
+          "width": 142,
+          "height": 60,
+          "background": "rgba(154, 92, 18, 0.28)"
+        }
+      ]
+    }
+  },
+  "audio": {
+    "vi": {
+      "keys": [
+        "broadcast-ready",
+        "broadcast-start-opening",
+        "broadcast-shore-paragraph",
+        "broadcast-intro"
+      ],
+      "rms": 0.20699366181809176,
+      "language": "vi"
+    },
+    "km": {
+      "keys": [
+        "ai-ready-km",
+        "ai-go-km"
+      ],
+      "rms": 0.0575512915547172,
+      "language": "km"
+    },
+    "en": {
+      "keys": [
+        "ai-go-en",
+        "ai-intro-en"
+      ],
+      "rms": 0.11797624651888268,
+      "language": "en"
+    }
+  },
+  "responsive": [
+    [
+      "vi",
+      1024,
+      768
+    ],
+    [
+      "vi",
+      768,
+      1024
+    ],
+    [
+      "vi",
+      1180,
+      430
+    ],
+    [
+      "vi",
+      390,
+      844
+    ],
+    [
+      "km",
+      1024,
+      768
+    ],
+    [
+      "km",
+      768,
+      1024
+    ],
+    [
+      "km",
+      1180,
+      430
+    ],
+    [
+      "km",
+      390,
+      844
+    ],
+    [
+      "en",
+      1024,
+      768
+    ],
+    [
+      "en",
+      768,
+      1024
+    ],
+    [
+      "en",
+      1180,
+      430
+    ],
+    [
+      "en",
+      390,
+      844
+    ]
+  ],
+  "resolution": {
+    "nativeDpr": 2,
+    "renderDpr": 2,
+    "antialias": true,
+    "silentDownscale": false
+  },
+  "errors": []
+}

@@ -1,0 +1,37 @@
+{
+  "physicalTabletTested": false,
+  "viewports": [
+    [
+      "phnom-penh",
+      768,
+      1024
+    ],
+    [
+      "phnom-penh",
+      1180,
+      430
+    ],
+    [
+      "phnom-penh",
+      390,
+      844
+    ],
+    [
+      "siem-reap",
+      768,
+      1024
+    ],
+    [
+      "siem-reap",
+      1180,
+      430
+    ],
+    [
+      "siem-reap",
+      390,
+      844
+    ]
+  ],
+  "indexSha256": "377d62098a47d0cc4ecd8e8eae688e10b714e377c2d2c951dee6a1f75bff5e29",
+  "errors": []
+}
