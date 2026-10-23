@@ -1,0 +1,341 @@
+{
+  "verifiedAtUtc": "2026-10-23T17:57:14.767450+00:00",
+  "sourceCommit": "12cd01849092b4fa6b7f93259e377f32ca8329ac",
+  "pagesCommit": "0e47de35c8d0efbd2d327f29ef858652e4bb1742",
+  "url": "https://machxanht.github.io/Tuk-Ngo/",
+  "publicIndexSha256": "78537323bb19c1e141ec326b21b04983cbb5218a09e3058f02166fd12bc90bd0",
+  "pagesRun": {
+    "id": 39998153420,
+    "conclusion": "success"
+  },
+  "checks": {
+    "lint": "passed",
+    "unitAndArchitectureTests": "passed",
+    "productionBuild": "passed",
+    "publicEnglishFlow": "passed",
+    "publicThreeLanguageTouchTargets": "passed",
+    "publicPracticeAiCup": "passed"
+  },
+  "publicEnglish": {
+    "physicalTabletTested": false,
+    "screens": [
+      [
+        "menu",
+        1024,
+        768
+      ],
+      [
+        "menu",
+        768,
+        1024
+      ],
+      [
+        "menu",
+        1180,
+        430
+      ],
+      [
+        "menu",
+        390,
+        844
+      ]
+    ],
+    "receipts": {
+      "early": {
+        "text": "Early · tap again in the bright zone",
+        "judgement": "BAD",
+        "contact": "early"
+      },
+      "perfect": {
+        "text": "STROKE RECEIVED",
+        "judgement": "PERFECT",
+        "contact": "accepted"
+      },
+      "duplicate": {
+        "text": "Already rowed · next beat",
+        "judgement": "BAD",
+        "contact": "waiting"
+      },
+      "late": {
+        "text": "Late · tap a little earlier",
+        "judgement": "BAD",
+        "contact": "late"
+      },
+      "stats": {
+        "received": 0,
+        "samples": 0,
+        "dispatchP95Ms": null,
+        "nextFrameP95Ms": null
+      }
+    },
+    "metrics": {
+      "received": 10,
+      "samples": 10,
+      "dispatchP95Ms": 71,
+      "nextFrameP95Ms": 38.80000000074506
+    },
+    "skillResult": {
+      "phase": "finished",
+      "difficulty": "easy",
+      "pace": "steady",
+      "countdown": 0,
+      "elapsed": 224.67916666654455,
+      "distances": [
+        1200,
+        1200
+      ],
+      "speeds": [
+        0,
+        0
+      ],
+      "finishTimes": [
+        197.95894783411433,
+        224.67770881684427
+      ],
+      "beatPhase": 297.1562499999614,
+      "aiPhase": 0.2029166666674205,
+      "stamina": 0,
+      "power": 0.9746599221076944,
+      "cohesion": 1,
+      "combo": 288,
+      "maxCombo": 288,
+      "perfect": 289,
+      "good": 3,
+      "missed": 7,
+      "lastResolved": 296,
+      "feedback": "Chạm khi vạch vào vùng sáng",
+      "feedbackAt": 197.8708333332356,
+      "result": "win",
+      "pauseReason": "",
+      "runId": 1,
+      "mode": "ai",
+      "rowingAssist": false,
+      "steeringAssist": true,
+      "steeringEnabled": true,
+      "steeringInput": 0,
+      "steeringPulse": 0,
+      "steeringPulseRemaining": 0,
+      "lateralPositions": [
+        0.41629375851941114,
+        -0.3137573553405336
+      ],
+      "headings": [
+        0,
+        0.003576406770466578
+      ],
+      "rudder": 0,
+      "atLaneEdge": false,
+      "steeringSeconds": 196.64999999990332,
+      "steeringError": 59.24701862119038,
+      "manualSteeringDistance": 0,
+      "paceSwitches": 0,
+      "rowingHeld": false,
+      "surgeCharge": 1,
+      "surgeRemaining": 0,
+      "desync": 0,
+      "lastSpamAt": 195.52083333323773,
+      "slipstream": false,
+      "lastJudgement": "PERFECT",
+      "lastTiming": "perfect",
+      "lastStrokeBeat": 297,
+      "aiStamina": 10.412583333296567,
+      "aiSurgeCharge": 1,
+      "aiSurgeRemaining": 0,
+      "flowSeed": 17,
+      "flowSeconds": 68.15416666668685,
+      "flowActiveSeconds": 163.1249999999338,
+      "ruleset": "ngo-skill",
+      "assistedStrokes": 0,
+      "manualStrokes": 292,
+      "timingErrorTotal": 1.0003616244040436,
+      "introRemaining": 0,
+      "introElapsed": 10,
+      "manualAccuracy": 98,
+      "meanTimingErrorMs": 3,
+      "flow": {
+        "center": -0.8676439682723427,
+        "slope": 0.010147779652903659,
+        "alignment": 0.2979697215103648,
+        "boost": 0,
+        "crossCurrent": 0
+      },
+      "flowBonus": 0,
+      "flowMastery": 42,
+      "waitingForOpponent": false,
+      "steeringLimit": 4.2,
+      "steeringAccuracy": 93,
+      "practiceTasks": [
+        true,
+        false,
+        false,
+        true
+      ],
+      "timing": {
+        "beat": 297,
+        "seconds": 0.09191176468317842,
+        "window": 0.23,
+        "perfectWindow": 0.1,
+        "available": false,
+        "inWindow": false,
+        "quality": "wait",
+        "progress": 0.6562499999614033
+      },
+      "strokeAvailable": false,
+      "raceStage": "final",
+      "stageLabel": "Nước rút về đích",
+      "cadence": 102,
+      "aiRaceStage": "final",
+      "aiStageLabel": "Nước rút về đích",
+      "aiCadence": 102,
+      "aiSurgeActive": false,
+      "judgement": null,
+      "surgeActive": false,
+      "canSurge": false,
+      "desyncIntensity": 0,
+      "rhythmProgress": 0.6562499999614033,
+      "accuracy": 98,
+      "gap": 0,
+      "strength": 0
+    },
+    "englishPersisted": true,
+    "assistedResultHasNoManualAccuracy": true,
+    "englishCupBracket": true,
+    "errors": []
+  },
+  "publicTouch": {
+    "physicalTabletTested": false,
+    "shortTap": {
+      "touchDurationMs": 60,
+      "lateralTravelM": 0.6173608176217908,
+      "screenTravelPx": 6.72736753612835,
+      "otherFingerStillRowing": true
+    },
+    "viewports": [
+      [
+        "vi",
+        1024,
+        768
+      ],
+      [
+        "vi",
+        768,
+        1024
+      ],
+      [
+        "vi",
+        1180,
+        430
+      ],
+      [
+        "vi",
+        390,
+        844
+      ],
+      [
+        "km",
+        1024,
+        768
+      ],
+      [
+        "km",
+        768,
+        1024
+      ],
+      [
+        "km",
+        1180,
+        430
+      ],
+      [
+        "km",
+        390,
+        844
+      ],
+      [
+        "en",
+        1024,
+        768
+      ],
+      [
+        "en",
+        768,
+        1024
+      ],
+      [
+        "en",
+        1180,
+        430
+      ],
+      [
+        "en",
+        390,
+        844
+      ]
+    ],
+    "manualTimingVisible": true,
+    "errors": []
+  },
+  "publicModes": {
+    "physicalTabletTested": false,
+    "steeringPalmGapM": [
+      4.868189859089255e-07,
+      3.484649149399461e-07
+    ],
+    "steeringPoseSamples": 384,
+    "practice": true,
+    "viewports": [
+      [
+        "vi",
+        1024,
+        768
+      ],
+      [
+        "vi",
+        768,
+        1024
+      ],
+      [
+        "vi",
+        1180,
+        430
+      ],
+      [
+        "vi",
+        390,
+        844
+      ],
+      [
+        "km",
+        1024,
+        768
+      ],
+      [
+        "km",
+        768,
+        1024
+      ],
+      [
+        "km",
+        1180,
+        430
+      ],
+      [
+        "km",
+        390,
+        844
+      ]
+    ],
+    "ai": true,
+    "cup": {
+      "races": 6,
+      "teams": 61,
+      "savedBracketRestored": true,
+      "champion": "tum-nup-2",
+      "tieReplayAndElimination": true
+    },
+    "errors": []
+  },
+  "physicalTabletTested": false,
+  "onlineMultiplayerImplemented": false,
+  "englishCommentaryCreated": false
+}

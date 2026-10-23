@@ -128,9 +128,11 @@ with sync_playwright() as p:
   # New draw, controlled real-engine tie at the line, then a no-input DNF.
   page.get_by_role('button',name='Chọn ghe · chơi giải mới',exact=True).click()
   page.get_by_role('button',name='Bốc thăm giải mới',exact=True).click()
+  page.wait_for_function(api+".game.state.phase==='intro'||"+api+".game.state.phase==='countdown'||"+api+".game.state.phase==='racing'")
   page.evaluate("""()=>{const g=document.querySelector('[data-testid=art-stage]').boatPreview.game;g.advance(13);Object.assign(g.state,{distances:[1199.99,1199.99],speeds:[6,6],power:1,cohesion:1});g.advance(.01);}""")
   page.get_by_role('button',name='Đua lại lượt hòa',exact=True).wait_for(timeout=10000)
   page.get_by_role('button',name='Đua lại lượt hòa',exact=True).click()
+  page.wait_for_function(api+".game.state.phase==='intro'||"+api+".game.state.phase==='countdown'||"+api+".game.state.phase==='racing'")
   page.evaluate(api+'.game.advance(400)')
   page.get_by_role('dialog',name='Kết quả trận đua',exact=True).wait_for(timeout=10000)
   lost=page.evaluate("JSON.parse(localStorage.getItem('tukngo-festival-cup'))")

@@ -86,10 +86,10 @@ Results are samples at a moving viewpoint, not whole-course maxima.
 
 | 1,024 × 768 desktop sample | Before | After |
 | --- | ---: | ---: |
-| Race submitted triangles | 10,720,025 | 5,720,286 |
+| Race submitted triangles | 10,720,025 | 5,720,939 |
 | Race draw calls | 1,428 | 910 |
-| River update CPU p95 | 15.7 ms | 6.2 ms |
-| Render submission CPU median | 5.4 ms | 4.5 ms |
+| River update CPU p95 | 15.7 ms | 6.3 ms |
+| Render submission CPU median | 5.4 ms | 4.9 ms |
 | rAF interval p95 | 31.6 ms | 31.6 ms |
 
 This run measured less work, not a demonstrated FPS increase. Headless frame
