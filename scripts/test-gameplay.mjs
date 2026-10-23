@@ -4,6 +4,12 @@ import {createTournament} from '../src/race/tournament.mjs';
 const checks=[];
 const check=(name,fn)=>{fn();checks.push(name);};
 const race=()=>{const g=createRaceGame();g.start();g.advance(3);return g;};
+check('GO accepts a stroke; an early tap never locks the next on-time input',()=>{
+ const start=race();assert.equal(start.snapshot().strokeAvailable,true);assert.equal(start.stroke().judgement,'PERFECT');assert.equal(start.state.lastStrokeBeat,0);assert.equal(start.stroke(),null);
+ const g=race();g.advance(.52*.625);assert.equal(g.stroke().judgement,'BAD');assert.equal(g.state.lastStrokeBeat,-1);assert.equal(g.snapshot().strokeAvailable,true);
+ g.advance(.48*.625);assert.equal(g.snapshot().timing.quality,'perfect');assert.equal(g.stroke().judgement,'PERFECT');assert.equal(g.state.lastStrokeBeat,1);assert.equal(g.stroke(),null);assert.equal(g.state.missed,1);
+ const rejected=race();rejected.advance(.52*.625);rejected.stroke();rejected.stroke();rejected.advance(.6);assert.equal(rejected.state.missed,1,'Do not count the same early miss again when its window closes');
+});
 function tap(g,offset=0){const s=g.snapshot(),next=Math.floor(s.beatPhase+1e-7)+1;g.advance((next-s.beatPhase)*60/s.cadence+1/240+offset);return g.stroke();}
 function run({difficulty='normal',pace='steady',offset=0,surge=false}={}){const g=createRaceGame();g.start(difficulty);g.advance(3);for(let n=0;g.state.phase==='racing'&&n<800;n++){g.setPace(pace);tap(g,offset);if(surge&&g.snapshot().canSurge)g.surge();}assert.equal(g.state.phase,'finished');return g.snapshot();}
 check('Countdown, pause and replay freeze and restore simulation',()=>{const g=createRaceGame();g.advance(8);assert.deepEqual(g.state.distances,[0,0]);g.start('hard');g.advance(1);g.pause();const s=g.snapshot();g.advance(100);assert.deepEqual(g.snapshot(),s);assert.equal(g.stroke(),null);assert.equal(g.surge(),false);g.resume();g.advance(2);assert.equal(g.state.phase,'racing');g.pause();const r=g.snapshot();g.advance(100);assert.deepEqual(g.snapshot(),r);g.resume();g.start();assert.equal(g.state.difficulty,'hard');assert.equal(g.state.stamina,100);assert.equal(g.state.surgeCharge,0);});

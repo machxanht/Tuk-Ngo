@@ -19,11 +19,14 @@ export async function buildMenuCeremony(scene,base){
  vMapUv.y=(aKbachRow*${catalog.atlas.cellHeight.toFixed(1)}+${catalog.atlas.padding.toFixed(1)}+vMapUv.y*${(catalog.atlas.cellHeight-2*catalog.atlas.padding).toFixed(1)})/${catalog.atlas.size[1].toFixed(1)};
  `);};resources.push(hullMat);
  const hulls=new T.InstancedMesh(hullGeo,hullMat,61);hulls.name='Ceremony_Painted_Hulls';hulls.frustumCulled=false;group.add(hulls);meshes.push(hulls);
- const crewGeo=new T.BufferGeometry();for(const [name,a]of Object.entries(data.attributes))crewGeo.setAttribute(name,new T.Float32BufferAttribute(a.array,a.size));crewGeo.setIndex(data.indices);
- const count=61*50,tints=new Float32Array(count*3),motions=new Float32Array(count*4);
+ const count=61*50,tints=new Float32Array(count*3),motions=new Float32Array(count*4),hairStyles=Float32Array.from({length:count},(_,i)=>(i*7+Math.floor(i/50))%4);
  for(let i=0;i<count;i++){new T.Color(FESTIVAL_TEAMS[Math.floor(i/50)].jersey).toArray(tints,i*3);motions.set([(i*1.713)%data.motion.duration,.86+(i%13)*.023,i%3?0:1,i%2?1:-1],i*4);}
- crewGeo.setAttribute('aTint',new T.InstancedBufferAttribute(tints,3));crewGeo.setAttribute('aMotion',new T.InstancedBufferAttribute(motions,4));crewGeo.setAttribute('aVertexId',new T.Float32BufferAttribute(Array.from({length:data.vertices},(_,i)=>i),1));geometries.push(crewGeo);
- crewGeo.setAttribute('aHairStyle',new T.InstancedBufferAttribute(Float32Array.from({length:count},(_,i)=>(i*7+Math.floor(i/50))%4),1));
+ function crewGeometry(indices){
+  const g=new T.BufferGeometry();for(const [name,a]of Object.entries(data.attributes))g.setAttribute(name,new T.Float32BufferAttribute(a.array,a.size));g.setIndex(indices);
+  g.setAttribute('aTint',new T.InstancedBufferAttribute(tints.slice(),3));g.setAttribute('aMotion',new T.InstancedBufferAttribute(motions.slice(),4));g.setAttribute('aHairStyle',new T.InstancedBufferAttribute(hairStyles.slice(),1));
+  g.setAttribute('aVertexId',new T.Float32BufferAttribute(Array.from({length:data.vertices},(_,i)=>i),1));geometries.push(g);return g;
+ }
+ const crewGeo=crewGeometry(data.indices),farCrewGeo=crewGeometry(data.farIndices);
  const bytes=Uint8Array.from(atob(data.motion.pixels),c=>c.charCodeAt(0)),poses=new T.DataTexture(new Float32Array(bytes.buffer),data.motion.width,data.motion.height,T.RGBAFormat,T.FloatType);poses.needsUpdate=true;poses.minFilter=poses.magFilter=T.NearestFilter;poses.generateMipmaps=false;resources.push(poses);
  const crewMat=new T.MeshLambertMaterial({vertexColors:true,side:T.DoubleSide});resources.push(crewMat);
  crewMat.onBeforeCompile=s=>{
@@ -42,7 +45,7 @@ export async function buildMenuCeremony(scene,base){
    diffuseColor.rgb=mix(diffuseColor.rgb,mix(vec3(.018,.014,.012),vec3(.065,.035,.020),vHairStyle/3.),hairMask);
   `);
  };
- const crew=new T.InstancedMesh(crewGeo,crewMat,count);crew.name='Ceremony_Hat_Salute_Athletes';crew.frustumCulled=false;group.add(crew);meshes.push(crew);
+ const crew=new T.InstancedMesh(crewGeo,crewMat,count),farCrew=new T.InstancedMesh(farCrewGeo,crewMat,count);crew.name='Ceremony_Hat_Salute_Athletes';farCrew.name='Ceremony_Distant_Athletes';crew.frustumCulled=farCrew.frustumCulled=false;crew.count=0;group.add(crew,farCrew);meshes.push(crew,farCrew);
  const capGeo=new T.BufferGeometry();for(const [name,a]of Object.entries(data.cap.attributes))capGeo.setAttribute(name,new T.Float32BufferAttribute(a.array,a.size));capGeo.setIndex(data.cap.indices);geometries.push(capGeo);
  const capMat=new T.MeshLambertMaterial({color:'white',side:T.DoubleSide}),caps=new T.InstancedMesh(capGeo,capMat,count);caps.name='Ceremony_Handheld_Baseball_Caps';caps.frustumCulled=false;resources.push(capMat);group.add(caps);meshes.push(caps);
  const capColors=['#ffdc42','#f9f4df','#20a96e','#f34d45','#289bd7','#ec74b0','#a570cf','#ff9c30'];for(let i=0;i<count;i++)caps.setColorAt(i,new T.Color(capColors[(Math.floor(i/50)*5+(i%17===0?1:0))%capColors.length]));
@@ -53,21 +56,26 @@ export async function buildMenuCeremony(scene,base){
  FESTIVAL_TEAMS.forEach((team,i)=>floors.setColorAt(i,new T.Color(team.interior||team.jersey).lerp(new T.Color('#c19554'),.18)));
  const dummy=new T.Object3D(),local=new T.Object3D(),hat=new T.Object3D(),m=new T.Matrix4(),personMatrix=new T.Matrix4();
  let last=-Infinity;
- function update(time){
+ function update(time,camera){
   uniform.value=time;if(!group.visible||time-last<1/20)return;last=time;
+  const placements=Array.from({length:61},(_,i)=>ceremonyPlacement(i,time)),near=new Set(camera&&camera.position.y<16?placements.map((p,i)=>({i,d:Math.hypot(p.x-camera.position.x,p.z-camera.position.z)})).filter(p=>p.d<24).sort((a,b)=>a.d-b.d).slice(0,2).map(p=>p.i):[]);
+  let nearCount=0,farCount=0;
+  function person(mesh,index,original,matrix){mesh.setMatrixAt(index,matrix);for(const [name,values,size]of [['aTint',tints,3],['aMotion',motions,4],['aHairStyle',hairStyles,1]])mesh.geometry.attributes[name].array.set(values.subarray(original*size,(original+1)*size),index*size);}
   for(let b=0;b<61;b++){
-   const p=ceremonyPlacement(b,time);dummy.position.set(p.x,p.y,p.z);dummy.rotation.set(0,p.yaw,0);dummy.scale.set(1,1,1);dummy.updateMatrix();hulls.setMatrixAt(b,dummy.matrix);
+   const p=placements[b];dummy.position.set(p.x,p.y,p.z);dummy.rotation.set(0,p.yaw,0);dummy.scale.set(1,1,1);dummy.updateMatrix();hulls.setMatrixAt(b,dummy.matrix);
    local.position.set(0,.36,0);local.rotation.set(0,0,0);local.updateMatrix();floors.setMatrixAt(b,m.multiplyMatrices(dummy.matrix,local.matrix));
    for(let j=0;j<50;j++){
     const side=j%2?1:-1,x=-11.4+Math.floor(j/2)*.94,i=b*50+j;
-    local.position.set(x,.02,side*.24);local.rotation.set(0,Math.PI/2,0);local.scale.set(1,1,1);local.updateMatrix();personMatrix.multiplyMatrices(dummy.matrix,local.matrix);crew.setMatrixAt(i,personMatrix);
+    local.position.set(x,.02,side*.24);local.rotation.set(0,Math.PI/2,0);local.scale.set(1,1,1);local.updateMatrix();personMatrix.multiplyMatrices(dummy.matrix,local.matrix);person(near.has(b)?crew:farCrew,near.has(b)?nearCount++:farCount++,i,personMatrix);
     const frame=((time*motions[i*4+1]+motions[i*4])/data.motion.duration*data.motion.frames)%data.motion.frames,f=Math.floor(frame),u=frame-f,a=data.motion.hatFrames[motions[i*4+2]*data.motion.frames+f],h=data.motion.hatFrames[motions[i*4+2]*data.motion.frames+(f+1)%data.motion.frames],value=k=>a[k]+(h[k]-a[k])*u;
     hat.position.set(value(0)*motions[i*4+3],value(1),value(2));hat.rotation.set(value(3),value(4)*motions[i*4+3],value(5)*motions[i*4+3]);hat.updateMatrix();caps.setMatrixAt(i,m.multiplyMatrices(personMatrix,hat.matrix));
    }
    for(let j=0;j<4;j++){local.position.set(-8+j*5,.60,j%2?.30:-.30);local.rotation.set(0,0,Math.PI/2);local.updateMatrix();paddles.setMatrixAt(b*4+j,m.multiplyMatrices(dummy.matrix,local.matrix));local.position.x-=.63;local.updateMatrix();blades.setMatrixAt(b*4+j,m.multiplyMatrices(dummy.matrix,local.matrix));}
   }
+  crew.count=nearCount;farCrew.count=farCount;stats.nearAthletes=nearCount;stats.farAthletes=farCount;
+  for(const mesh of [crew,farCrew])for(const name of ['aTint','aMotion','aHairStyle'])mesh.geometry.attributes[name].needsUpdate=true;
   meshes.forEach(mesh=>mesh.instanceMatrix.needsUpdate=true);
  }
- const stats={boats:61,athletes:count,crewTriangles:data.triangles,capTriangles:data.cap.triangles,saluteVariants:data.motion.variants,saluteFrames:data.motion.frames,handheldCaps:count,capColors:capColors.length,hair:data.hair,kbach:{sharedAtlas:true,texture:catalog.atlas.size,designs:catalog.items.length,source:catalog.uploader},formation:'irregular tightly packed raft at the main grandstand',reference:'https://www.youtube.com/watch?v=hNSDABjJ6GU',drawCalls:meshes.length,source:data.source};group.userData=stats;
+ const stats={boats:61,athletes:count,crewTriangles:data.triangles,farCrewTriangles:data.farTriangles,wardrobe:data.wardrobe,maxDetailedBoats:2,capTriangles:data.cap.triangles,saluteVariants:data.motion.variants,saluteFrames:data.motion.frames,handheldCaps:count,capColors:capColors.length,hair:data.hair,kbach:{sharedAtlas:true,texture:catalog.atlas.size,designs:catalog.items.length,source:catalog.uploader},formation:'irregular tightly packed raft at the main grandstand',reference:'https://www.youtube.com/watch?v=hNSDABjJ6GU',drawCalls:meshes.length,source:data.source};group.userData=stats;
  return {group,stats,update,dispose(){group.removeFromParent();meshes.forEach(m=>m.dispose());geometries.forEach(g=>g.dispose());resources.forEach(r=>r.dispose());sharedAtlas.release();}};
 }

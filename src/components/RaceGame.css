@@ -31,3 +31,33 @@
 
 /* The same festival mark appears on the UI and Khmer river banners. */
 .festival-logo{display:block;flex:none;border-radius:5px;object-fit:contain}.festival-menu-logo{display:block;width:112px;height:auto;margin:0 0 12px;border-radius:8px}.game-menu-card .game-eyebrow{display:block}@media(max-height:600px){.festival-menu-logo{width:76px;margin-bottom:6px}}@media(max-width:620px){.festival-logo{width:46px;height:25px}.festival-menu-logo{width:88px;margin-bottom:8px}}
+
+/* The scoring window and this rail share the same simulation timing. */
+[data-testid=festival-game] .game-timing-cue{display:flex;align-items:center;gap:14px;flex:1;min-width:0}
+[data-testid=festival-game] .rhythm-track{width:clamp(140px,27vw,350px);height:24px;flex:none;background:#d7e7ed;border-color:#a1bdca;overflow:hidden}
+[data-testid=festival-game] .rhythm-good{background:#65cda9}.rhythm-marker{will-change:left}
+[data-testid=festival-game] .rhythm-instruction{font-size:12px;line-height:1.4;max-width:260px}
+[data-testid=festival-game] .game-feedback{font-size:12px;max-width:32%}
+[data-testid=festival-game] .stroke-visual{width:66px;min-width:66px;height:72px;gap:3px}
+.stroke-beat-dot{position:absolute;bottom:8px;width:7px;height:7px;border-radius:50%;background:#9cc3d5}
+.game-controls[data-hit=perfect] .stroke-beat-dot{background:#15364e;box-shadow:0 0 0 5px #15364e22}
+.game-controls[data-hit=good] .stroke-beat-dot{background:#a2f1d4;box-shadow:0 0 0 5px #a2f1d422}
+[data-testid=festival-game] .stroke-label{position:relative;gap:4px;padding-right:5px}
+.stroke-receipt{position:absolute;bottom:-22px;left:0;white-space:nowrap;font-size:10px;font-weight:850;opacity:0;pointer-events:none}
+[data-testid=festival-game] .game-stroke:active{box-shadow:inset 0 0 0 3px #ffffff8a;filter:brightness(1.12);transform:none}
+[data-testid=festival-game] .game-stroke[data-contact=accepted] .stroke-receipt{color:inherit}
+[data-testid=festival-game] .game-stroke[data-contact=early] .stroke-receipt{color:#fff2be}
+[data-testid=festival-game] .game-controls[data-hit=perfect] .stroke-receipt{color:#15364e}
+[data-testid=festival-game] .game-stroke{isolation:isolate;transition:none}
+[data-testid=festival-game] .stroke-visual>svg:first-child{position:static;inset:auto;width:32px;height:32px;overflow:visible;transition:none}
+[data-testid=festival-game] .game-controls[data-available=false] .rhythm-marker{opacity:.5}
+@media(max-width:900px){[data-testid=festival-game] .game-timing-cue{gap:9px}[data-testid=festival-game] .rhythm-instruction{font-size:11px}[data-testid=festival-game] .stroke-visual{width:60px;min-width:60px}}
+@media(max-width:620px){[data-testid=festival-game] .game-timing-cue{display:grid;gap:4px}[data-testid=festival-game] .rhythm-track{width:min(55vw,260px);height:19px}[data-testid=festival-game] .rhythm-instruction{font-size:10px;max-width:none}[data-testid=festival-game] .game-feedback{font-size:10px;max-width:40%}.stroke-receipt{font-size:9px}}
+@media(max-height:550px){[data-testid=festival-game] .rhythm-track{height:18px}[data-testid=festival-game] .game-commentary{display:none}[data-testid=festival-game] .game-timing-cue{gap:8px}.stroke-receipt{bottom:-17px;font-size:9px}}
+
+[data-testid=festival-game] .festival-logo{width:76px;height:44px;object-fit:contain;border-radius:0}
+[data-testid=festival-game] .festival-menu-logo{width:min(100%,225px);height:auto;margin:0 auto 10px;border-radius:0;filter:drop-shadow(0 4px 4px #057e8815)}
+[data-testid=festival-game] .game-menu-card{border-top:4px solid #f1bb42}
+@media(max-height:600px){[data-testid=festival-game] .festival-menu-logo{width:104px;margin-bottom:3px}}
+@media(max-width:620px){[data-testid=festival-game] .festival-logo{width:49px;height:31px}[data-testid=festival-game] .festival-menu-logo{width:155px}}
+@media(max-height:550px) and (max-width:700px){[data-testid=festival-game] .festival-menu-logo{width:90px}}

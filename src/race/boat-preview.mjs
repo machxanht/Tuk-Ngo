@@ -122,7 +122,7 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
   if(s.playing||s.ambientPlaying)c.seconds+=dt;
   if(s.playing){if(racing){advance(dt*(s.fast?3:1));c.phase=race.phases[0];}else c.phase=(c.phase+dt*s.cadence/60)%1;}
   syncGame();const game=s.game?.snapshot(),introducing=game&&(game.phase==='intro'||game.phase==='paused'&&game.introRemaining>0);
-  const inCeremony=!!ceremony&&game?.phase==='ready';if(ceremony){ceremony.group.visible=inCeremony;ceremony.update(c.seconds);}rigs.forEach(r=>r.boat.visible=!inCeremony);
+  const inCeremony=!!ceremony&&game?.phase==='ready';if(ceremony){ceremony.group.visible=inCeremony;ceremony.update(c.seconds,camera);}rigs.forEach(r=>r.boat.visible=!inCeremony);
   place();
   if(inCeremony&&!wasInCeremony)menuSince=c.seconds;wasInCeremony=inCeremony;
   controls.enabled=!introducing&&!inCeremony;

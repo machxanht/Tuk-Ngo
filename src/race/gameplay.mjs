@@ -15,17 +15,23 @@ export const RACE_STAGES = {start:{label:'Xuất phát bùng nổ',cadence:96,dr
 const stageAt=distance=>distance<200?'start':distance<950?'cruise':'final';
 const cadenceFor=s=>RACE_STAGES[stageAt(s.distances[0])].cadence+(s.pace==='recover'?-12:s.pace==='sprint'?18:0);
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
+// One timing source for scoring and the visible cue. Beat zero is the GO stroke.
+function timingFor(s,consumed){
+ const beat=Math.round(s.beatPhase),seconds=(s.beatPhase-beat)*60/cadenceFor(s),window=DIFFICULTIES[s.difficulty].window;
+ const available=s.phase==='racing'&&s.finishTimes[0]==null&&!consumed.has(beat)&&(beat===0||beat>s.lastResolved);
+ return {beat,seconds,window,perfectWindow:.1,available,inWindow:available&&Math.abs(seconds)<=window,quality:!available?'wait':Math.abs(seconds)<=.1?'perfect':Math.abs(seconds)<=window?'good':'wait',progress:(s.beatPhase+.5)%1};
+}
 export function formatRaceTime(seconds){
  if(seconds==null)return '—';
  const centis=Math.round(Math.max(0,seconds)*100),minutes=Math.floor(centis/6000);
  return `${minutes}:${String(Math.floor(centis/100)%60).padStart(2,'0')}.${String(centis%100).padStart(2,'0')}`;
 }
 export function createRaceGame(){
- let consumed=new Set(),previousPhase='racing',accumulator=0,tapBeat=-1,taps=0;
+ let consumed=new Set(),rejected=new Set(),previousPhase='racing',accumulator=0,tapBeat=-1,taps=0;
  const game={
   state:null,
   reset(difficulty='normal'){
-   consumed=new Set();previousPhase='racing';accumulator=0;tapBeat=-1;taps=0;
+   consumed=new Set();rejected=new Set();previousPhase='racing';accumulator=0;tapBeat=-1;taps=0;
    this.state={phase:'ready',difficulty:DIFFICULTIES[difficulty]?difficulty:'normal',pace:'steady',countdown:3,elapsed:0,distances:[0,0],speeds:[0,0],finishTimes:[null,null],beatPhase:0,aiPhase:.17,stamina:100,power:0,cohesion:.72,combo:0,maxCombo:0,perfect:0,good:0,missed:0,lastResolved:0,feedback:'Chạm theo vùng sáng',feedbackAt:-10,result:null,pauseReason:'',runId:0};
     Object.assign(this.state,{surgeCharge:0,surgeRemaining:0,desync:0,lastSpamAt:-10,slipstream:false,lastJudgement:null,lastTiming:'wait',lastStrokeBeat:-1,aiStamina:100,aiSurgeCharge:0,aiSurgeRemaining:0});
    return this.snapshot();
@@ -42,18 +48,20 @@ export function createRaceGame(){
   setPace(pace){if(PACES[pace]&&this.state.phase!=='finished')this.state.pace=pace;},
   stroke(){
    const s=this.state;if(s.phase!=='racing'||s.finishTimes[0]!=null)return null;
-   const beat=Math.round(s.beatPhase);
+   const timing=timingFor(s,consumed),beat=timing.beat;
    if(tapBeat!==beat){tapBeat=beat;taps=0;}taps++;
    // One harmless double tap; repeated mashing has a bounded penalty.
    if(taps>2&&s.elapsed-s.lastSpamAt>=.5){s.lastSpamAt=s.elapsed;s.stamina=clamp(s.stamina-.8,0,100);s.desync=clamp(s.desync+.22,0,1);s.cohesion=clamp(s.cohesion-.025,.15,1);s.lastJudgement='BAD';s.lastTiming='spam';s.feedback='BAD · Dồn nhịp';s.feedbackAt=s.elapsed;}
-   if(beat<1||consumed.has(beat)||beat<=s.lastResolved)return null;
-   consumed.add(beat);s.lastStrokeBeat=beat;
-   const error=(s.beatPhase-beat)*60/cadenceFor(s),delta=Math.abs(error);
+   if(!timing.available)return null;
+   const error=timing.seconds,delta=Math.abs(error);
    const quality=delta<=.10?'perfect':delta<=DIFFICULTIES[s.difficulty].window?'good':'missed';
    s.lastJudgement=quality==='missed'?'BAD':quality.toUpperCase();
    if(quality==='missed'){
-    this.miss(error<0?'Sớm nhịp':'Muộn nhịp');
+    // An early press must not lock the upcoming stroke. Allow a correction
+    // inside its legal window, and count a rejected attempt at most once.
+    if(!rejected.has(beat)){rejected.add(beat);this.miss(error<0?'Sớm nhịp':'Muộn nhịp');}
    }else{
+    consumed.add(beat);s.lastStrokeBeat=beat;
     s.lastTiming=quality;s[quality]++;s.combo++;s.maxCombo=Math.max(s.maxCombo,s.combo);
     s.power=clamp(s.power+(quality==='perfect'?.64:.17),0,1);
     s.cohesion=clamp(s.cohesion+(quality==='perfect'?.065:0),.15,1);
@@ -98,7 +106,7 @@ export function createRaceGame(){
     s.beatPhase+=dt*cadence/60;
     // Resolve after the latest legal tap window, not at the visual beat itself.
     const resolved=Math.floor(s.beatPhase-DIFFICULTIES[s.difficulty].window*cadence/60-1e-8);
-    while(s.lastResolved<resolved){s.lastResolved++;if(s.lastResolved>0&&!consumed.has(s.lastResolved))this.miss();consumed.delete(s.lastResolved);}
+    while(s.lastResolved<resolved){s.lastResolved++;if(s.lastResolved>0&&!consumed.has(s.lastResolved)&&!rejected.has(s.lastResolved))this.miss();consumed.delete(s.lastResolved);rejected.delete(s.lastResolved);}
     s.power*=Math.exp(-dt*.28);
     const drain=s.pace==='recover'?-1.4:RACE_STAGES[stage].drain+(s.pace==='sprint'?1.35:0);
     s.stamina=clamp(s.stamina-dt*drain*(.25+.75*s.power)*(s.slipstream&&drain>0?.65:1)*(s.lastJudgement==='PERFECT'&&drain>0?.72:1),0,100);
@@ -137,8 +145,8 @@ export function createRaceGame(){
   },
   skipIntro(){if(this.state.phase==='intro'){this.state.introRemaining=0;this.state.introElapsed=10;this.state.phase='countdown';}},
   snapshot(){
-   const s=this.state,total=s.perfect+s.good+s.missed;
-   return {...s,strokeAvailable:s.phase==='racing'&&Math.round(s.beatPhase)>=1&&!consumed.has(Math.round(s.beatPhase))&&Math.round(s.beatPhase)>s.lastResolved,distances:[...s.distances],speeds:[...s.speeds],finishTimes:[...s.finishTimes],raceStage:stageAt(s.distances[0]),stageLabel:RACE_STAGES[stageAt(s.distances[0])].label,cadence:cadenceFor(s),aiRaceStage:stageAt(s.distances[1]),aiStageLabel:RACE_STAGES[stageAt(s.distances[1])].label,aiCadence:RACE_STAGES[stageAt(s.distances[1])].cadence,aiSurgeActive:s.aiSurgeRemaining>0,judgement:s.elapsed-s.feedbackAt<1.1?s.lastJudgement:null,surgeActive:s.surgeRemaining>0,canSurge:s.phase==='racing'&&s.finishTimes[0]==null&&stageAt(s.distances[0])==='final'&&s.surgeRemaining<=0&&s.surgeCharge>=.6&&s.stamina>=24,desyncIntensity:s.desync,rhythmProgress:(s.beatPhase+.5)%1,accuracy:total?Math.round((s.perfect+s.good)/total*100):0,gap:s.distances[0]-s.distances[1],strength:s.surgeRemaining>0?1:s.pace==='sprint'?clamp(s.power*s.stamina/24,0,1):0,feedback:s.elapsed-s.feedbackAt<1.1?s.feedback:'Chạm khi vạch vào vùng sáng'};
+   const s=this.state,total=s.perfect+s.good+s.missed,timing=timingFor(s,consumed);
+   return {...s,timing,strokeAvailable:timing.available,distances:[...s.distances],speeds:[...s.speeds],finishTimes:[...s.finishTimes],raceStage:stageAt(s.distances[0]),stageLabel:RACE_STAGES[stageAt(s.distances[0])].label,cadence:cadenceFor(s),aiRaceStage:stageAt(s.distances[1]),aiStageLabel:RACE_STAGES[stageAt(s.distances[1])].label,aiCadence:RACE_STAGES[stageAt(s.distances[1])].cadence,aiSurgeActive:s.aiSurgeRemaining>0,judgement:s.elapsed-s.feedbackAt<1.1?s.lastJudgement:null,surgeActive:s.surgeRemaining>0,canSurge:s.phase==='racing'&&s.finishTimes[0]==null&&stageAt(s.distances[0])==='final'&&s.surgeRemaining<=0&&s.surgeCharge>=.6&&s.stamina>=24,desyncIntensity:s.desync,rhythmProgress:timing.progress,accuracy:total?Math.round((s.perfect+s.good)/total*100):0,gap:s.distances[0]-s.distances[1],strength:s.surgeRemaining>0?1:s.pace==='sprint'?clamp(s.power*s.stamina/24,0,1):0,feedback:s.elapsed-s.feedbackAt<1.1?s.feedback:'Chạm khi vạch vào vùng sáng'};
   },
  };
  game.reset();return game;
