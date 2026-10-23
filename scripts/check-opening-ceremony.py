@@ -46,7 +46,7 @@ with sync_playwright() as p:
   box=page.get_by_role('button',name='Hiện menu',exact=True).bounding_box();assert box['height']>=44-.01 and box['x']>=0 and box['x']+box['width']<=w+.01
   page.screenshot(path=str(out/f'cinema-{w}x{h}.png'));page.get_by_role('button',name='Hiện menu',exact=True).tap();assert page.get_by_test_id('main-menu').is_visible();page.screenshot(path=str(out/f'menu-{w}x{h}.png'));page.get_by_role('button',name='Ẩn menu',exact=True).tap()
  page.get_by_role('button',name='Hiện menu',exact=True).tap();page.set_viewport_size({'width':1180,'height':820})
- page.get_by_role('button',name='Đua nhanh · 2 ghe',exact=True).tap();page.get_by_role('button',name='Bắt đầu đua nhanh',exact=True).tap();page.get_by_role('button',name='Bỏ qua giới thiệu',exact=True).tap();page.wait_for_function(api+".game.state.phase==='racing'")
+ page.get_by_role('button',name='Đua với AI · 2 ghe',exact=True).tap();page.get_by_role('button',name='Bắt đầu đua với AI',exact=True).tap();page.get_by_role('button',name='Bỏ qua giới thiệu',exact=True).tap();page.wait_for_function(api+".game.state.phase==='racing'")
  page.locator('.game-pause').tap();page.add_style_tag(content='.game-pause-dialog{visibility:hidden}')
  page.wait_for_timeout(180)
  for side in [-1,1]:

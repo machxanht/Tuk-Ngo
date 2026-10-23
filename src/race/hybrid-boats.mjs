@@ -9,7 +9,7 @@ import {connectedShirt} from './athlete-shirt.mjs';
 import {assetBytes,releaseAssetBytes} from './asset-transfer.mjs';
 import {crewAnimation} from './crew-animation.mjs';
 import {finishAthleteShirt} from './athlete-finish.mjs';
-import {ROWING_LAYOUT} from './rowing-pose.mjs';
+import {ROWING_LAYOUT,rowingPose} from './rowing-pose.mjs';
 import {rowingMotionDigest} from './asset-digests.mjs';
 import {profile,boatHullGeometry} from './boat.mjs';
 import {buildConstructionDetails,BOAT_CONSTRUCTIONS} from './boat-construction.mjs';
@@ -227,8 +227,13 @@ export async function createHybridBoats(base='',{onProgress=()=>{},sharedRendere
  const accessories=new Map();
  for(const a of actors)if(a.paddle)a.paddle.traverse(mesh=>{if(!mesh.isMesh)return;const key=mesh.geometry.uuid+mesh.material.uuid;if(!accessories.has(key))accessories.set(key,[]);accessories.get(key).push({owner:a,mesh});mesh.visible=false;});
  const batches=[...accessories.values()].map(entries=>{const batch=new T.InstancedMesh(entries[0].mesh.geometry,entries[0].mesh.material,entries.length);batch.frustumCulled=false;batch.instanceMatrix.setUsage(T.DynamicDrawUsage);boat.add(batch);return {batch,entries};});
+ let helmSteering=null;
+ const rudderSolvers=actors.filter(a=>a.role==='helm').map(a=>({actor:a,apply:rowingPose(a.master,{role:'helm',posture:'standing',side:a.side})}));
  function applyPose(phase,t,desyncIntensity=0){
   for(const [name,master] of Object.entries(roles)){const offset=/^(seated|standing)/.test(name)?(name.endsWith('port')?-.035:.035)*desyncIntensity:0;master.mixer.setTime((name.startsWith('helm')?((t*.4+(name==='helm-starboard'?.12:0))%1+1)%1:((phase+offset)%1+1)%1)*master.clip.duration);master.root.updateMatrixWorld(true);master.skeleton.update();}
+  // Capture steering with the complete pose so distant crews keep their
+  // existing half-rate cache, and the helmsman's torso/arms share one clock.
+  if(helmSteering!=null)for(const {actor,apply}of rudderSolvers){apply(((t*.4+(actor.side>0?.12:0))%1+1)%1,{steering:helmSteering,steeringOnly:true});actor.master.skeleton.update();}
  }
  const animation=crewAnimation(roles,applyPose,{distanceThreshold:window.TukNgoConfig?.performance?.crewDistanceThreshold??44});
  const caller=actors.find(a=>a.role==='caller'),coach=actors.find(a=>a.role==='controller');
@@ -265,7 +270,7 @@ export async function createHybridBoats(base='',{onProgress=()=>{},sharedRendere
  let styleKey,studyOverride,gpuRenders=0,gpuReuses=0;
  const styles=new Map(),farImages=new Map();
  const boatInverse=new T.Matrix4(),accessoryMatrix=new T.Matrix4();
- function render(phase,t,{study=false,posture='seated',kitColor='#23855e',teamId=null,referenceKbach=false,kbachTexture=null,faceVariant=null,skinDetail=1,focus='body',angle='three-quarter',effort=0,viewKey='study',frameId,distance=0,nearest=false,desyncIntensity=0,externalCamera=null,beforeRender=null,connectedKit=false,updateOnly=false}={}){
+ function render(phase,t,{study=false,posture='seated',kitColor='#23855e',teamId=null,referenceKbach=false,kbachTexture=null,faceVariant=null,skinDetail=1,focus='body',angle='three-quarter',effort=0,viewKey='study',frameId,distance=0,nearest=false,desyncIntensity=0,externalCamera=null,beforeRender=null,connectedKit=false,updateOnly=false,steering=null}={}){
   if(studyOverride){studyOverride.variant=faceFor(studyOverride.id,studyOverride.teamId);studyOverride.skin.geometry=geometryFor(studyOverride.role,studyOverride.variant);studyOverride=null;}
   const team=teamId?window.TukNgoTeams.get(teamId):null,map=team?liveries.get(team.id):null;
   if(team&&!map)throw Error('Team livery is not loaded: '+teamId);
@@ -281,7 +286,7 @@ export async function createHybridBoats(base='',{onProgress=()=>{},sharedRendere
    styleKey=key;
   }
   detail.value=T.MathUtils.clamp(skinDetail,0,1);
-  pose(strokePhase(phase,effort),t,{viewKey,frameId,distance,nearest,desyncIntensity});
+  helmSteering=steering;pose(strokePhase(phase,effort),t,{viewKey,frameId,distance,nearest,desyncIntensity});
   faceController?.update();
   if(study){
    const target=actors.find(a=>['seated','standing'].includes(posture)?a.role==='rower'&&a.posture===posture&&a.side===-1:a.role===posture);actors.forEach(a=>a.group.visible=a===target);

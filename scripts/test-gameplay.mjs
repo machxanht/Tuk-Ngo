@@ -1,5 +1,7 @@
 import assert from 'node:assert/strict';
 import {createRaceGame,formatRaceTime,RACE_LENGTH} from '../src/race/gameplay.mjs';
+import {createRaceControls} from '../src/race/race-controls.mjs';
+import {STEERING} from '../src/race/race-steering.mjs';
 import {createTournament} from '../src/race/tournament.mjs';
 const checks=[];
 const check=(name,fn)=>{fn();checks.push(name);};
@@ -19,6 +21,28 @@ check('Easy hold rows immediately and continuously, releases, pauses and resets 
 });
 check('Easy hold can complete a full 1200m race without timed taps at different frame rates',()=>{
  let baseline;for(const fps of[15,60,144]){const g=createRaceGame();g.start('easy');g.advance(3);g.setRowingHeld(true);for(let i=0;g.state.phase==='racing'&&i<fps*360;i++)g.advance(1/fps);assert.equal(g.state.phase,'finished');assert.equal(g.state.result,'win');assert.equal(g.state.distances[0],RACE_LENGTH);assert.equal(g.state.missed,0);assert.equal(g.state.rowingHeld,false);if(baseline)assert.deepEqual(g.snapshot(),baseline);else baseline=g.snapshot();}
+});
+check('Practice has one boat, no DNF timeout, four training milestones and an honest finish',()=>{
+ const g=createRaceGame();g.start('hard',{mode:'practice',rowingAssist:true,steeringEnabled:true});g.advance(3);g.advance(400);assert.equal(g.state.phase,'racing');assert.equal(g.state.result,null);assert.deepEqual(g.state.distances,[0,0]);assert.equal(g.state.aiPhase,.17);
+ g.setRowingHeld(true);g.advance(8);g.setSteering(-1);g.advance(4);g.setSteering(0);g.setPace('recover');g.advance(2);g.setPace('steady');assert.deepEqual(g.snapshot().practiceTasks.slice(0,3),[true,true,true]);
+ while(g.state.phase==='racing')g.advance(1/30);assert.equal(g.state.result,'complete');assert.equal(g.state.distances[1],0);assert.equal(g.state.finishTimes[1],null);assert(g.snapshot().practiceTasks.every(Boolean));
+});
+check('AI level and assisted/manual rowing are independent',()=>{
+ const g=createRaceGame();g.start('hard',{rowingAssist:true});g.advance(3);g.setRowingHeld(true);g.advance(5);assert(g.state.perfect>7);assert.equal(g.state.missed,0);assert.equal(g.state.difficulty,'hard');
+ g.start('easy',{rowingAssist:false});g.advance(3);g.setRowingHeld(true);assert.equal(g.state.rowingHeld,false);g.advance(2);assert(g.state.missed>0);
+});
+check('Steering changes heading and lateral travel, stays in its corridor, and resets on pause',()=>{
+ const g=createRaceGame();g.start('easy',{steeringEnabled:true,steeringAssist:false});g.advance(3);g.setRowingHeld(true);g.advance(5);g.setSteering(-1);g.advance(4);assert(g.state.headings[0]<-.1);assert(g.state.lateralPositions[0]<-1);g.setSteering(1);g.advance(80);assert(g.state.lateralPositions[0]<=STEERING.limit);assert(g.state.atLaneEdge);assert(Math.abs(g.state.headings[0])<=STEERING.maxHeading);
+ const p=g.snapshot();p.lateralPositions[0]=999;assert(g.state.lateralPositions[0]<=STEERING.limit);g.pause();assert.equal(g.state.steeringInput,0);assert.equal(g.state.rowingHeld,false);const frozen=g.snapshot();g.advance(10);assert.deepEqual(g.snapshot(),frozen);g.resume();g.nudgeSteering(-1);g.advance(1);assert.equal(g.state.steeringPulseRemaining,0);g.start();assert.deepEqual(g.state.lateralPositions,[0,0]);assert.equal(g.state.steeringInput,0);
+});
+check('Row and steer contacts survive independent finger/key release and cancellation',()=>{
+ const g=createRaceGame();g.start('easy');g.advance(3);const c=createRaceControls(g);c.rowDown('pointer:1');c.steerDown('pointer:2',-1);assert(g.state.rowingHeld);assert.equal(g.state.steeringInput,-1);c.release('pointer:2');assert(g.state.rowingHeld);assert.equal(g.state.steeringInput,0);c.steerDown('key:KeyA',-1);c.steerDown('key:KeyD',1);assert.equal(g.state.steeringInput,1);c.release('key:KeyD');assert.equal(g.state.steeringInput,-1);c.releaseKeyboard();assert(g.state.rowingHeld);assert.equal(g.state.steeringInput,0);c.clear();assert(!g.state.rowingHeld);assert.equal(g.state.steeringInput,0);
+});
+check('Steering remains deterministic across 15/60/144 FPS',()=>{
+ const results=[];for(const fps of[15,60,144]){const g=createRaceGame();g.start('easy',{steeringEnabled:true});g.advance(3);g.setRowingHeld(true);for(const [seconds,input]of [[3,0],[4,-1],[7,1],[5,0]]){g.setSteering(input);for(let n=0;n<fps*seconds;n++)g.advance(1/fps);}results.push(g.snapshot());}assert.deepEqual(results[0],results[1]);assert.deepEqual(results[1],results[2]);
+});
+check('Both competitors receive real finish times; result skip cannot finish an unfinished player',()=>{
+ const g=race();assert.equal(g.completeRace(),false);g.setRowingHeld(false);g.state.rowingAssist=true;g.setRowingHeld(true);while(g.state.finishTimes[0]==null)g.advance(1/60);assert(g.snapshot().waitingForOpponent);const player=g.state.finishTimes[0];assert(g.completeRace());assert.equal(g.state.result,'win');assert.equal(g.state.finishTimes[0],player);assert(g.state.finishTimes[1]>player);assert.equal(g.state.rowingHeld,false);
 });
 check('Countdown, pause and replay freeze and restore simulation',()=>{const g=createRaceGame();g.advance(8);assert.deepEqual(g.state.distances,[0,0]);g.start('hard');g.advance(1);g.pause();const s=g.snapshot();g.advance(100);assert.deepEqual(g.snapshot(),s);assert.equal(g.stroke(),null);assert.equal(g.surge(),false);g.resume();g.advance(2);assert.equal(g.state.phase,'racing');g.pause();const r=g.snapshot();g.advance(100);assert.deepEqual(g.snapshot(),r);g.resume();g.start();assert.equal(g.state.difficulty,'hard');assert.equal(g.state.stamina,100);assert.equal(g.state.surgeCharge,0);});
 check('Own-distance phases and cadence; continuous stroke boundary',()=>{const g=race();g.state.beatPhase=.37;for(const [distance,stage,cadence] of [[0,'start',96],[199.999,'start',96],[200,'cruise',84],[949.999,'cruise',84],[950,'final',102],[1200,'final',102]]){g.state.distances[0]=distance;assert.equal(g.snapshot().raceStage,stage);assert.equal(g.snapshot().cadence,cadence);assert.equal(g.state.beatPhase,.37);}g.state.distances=[201,951];assert.equal(g.snapshot().aiRaceStage,'final');assert.equal(g.snapshot().aiCadence,102);assert.equal(g.snapshot().rhythmProgress,.87);});

@@ -15,7 +15,7 @@ with sync_playwright() as p:
   # Render the actual ceremony shader/geometry near the seated hips and thighs.
   image=page.evaluate("""()=>{const a=document.querySelector('[data-testid=art-stage]').boatPreview,crew=a.ceremony.group.getObjectByName('Ceremony_Distant_Athletes'),m=a.boat.matrix.clone();crew.getMatrixAt(31*50+24,m);const e=m.elements,camera=a.camera.clone();camera.position.set(e[12]-1.8,2.1,e[14]-3.2);camera.fov=42;camera.lookAt(e[12],.70,e[14]);camera.updateProjectionMatrix();a.ceremony.update(100,camera);if(a.ceremony.stats.nearAthletes<50||a.ceremony.stats.nearAthletes>100)throw Error("Near LOD not selected");a.renderer.render(a.scene,camera);return a.renderer.domElement.toDataURL('image/png');}""")
   (out/'ceremony-clothing.png').write_bytes(base64.b64decode(image.split(',')[1]))
-  page.get_by_role('button',name='Đua nhanh · 2 ghe',exact=True).tap();page.get_by_role('button',name='Bắt đầu đua nhanh',exact=True).tap()
+  page.get_by_role('button',name='Đua với AI · 2 ghe',exact=True).tap();page.get_by_role('button',name='Bắt đầu đua với AI',exact=True).tap()
   page.get_by_role('button',name='Bỏ qua giới thiệu',exact=True).tap();page.wait_for_function(boat+".game.state.phase==='racing'",timeout=20000)
   identities=page.evaluate(boat+".rigs.map(r=>r.actors.map(a=>a.identity.model+':'+a.identity.face))")
   assert identities[0]!=identities[1],'Both teams must have independent face selections'
@@ -34,7 +34,7 @@ with sync_playwright() as p:
   assert page.evaluate(boat+".game.state.perfect")==held_count
   page.screenshot(path=str(out/'easy-hold.png'))
   # The edge cases below deliberately exercise manual scoring.
-  page.evaluate(boat+".game.state.difficulty='normal'")
+  page.evaluate(boat+".game.state.difficulty='normal';document.querySelector('[data-testid=art-stage]').boatPreview.game.state.rowingAssist=false")
   # Freeze only the simulation clock for repeatable input-edge tests. All
   # contacts still pass through Chromium's real touchscreen and React handlers.
   page.evaluate(boat+".game.testAdvance="+boat+".game.advance;"+boat+".game.advance=()=>{}")

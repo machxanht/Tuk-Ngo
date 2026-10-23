@@ -21,7 +21,7 @@ with sync_playwright() as p:
  page.get_by_role('button',name='Chạm để bật nhạc',exact=True).tap()
  page.wait_for_function(boat+'.menuMusic.stats().playing&&'+boat+'.menuMusic.stats().time>.5',timeout=15000)
  report['menuMusic']=page.evaluate(boat+'.menuMusic.stats()');assert report['menuMusic']['loop'] and report['menuMusic']['source'].endswith('/menu/festival.mp3')
- page.get_by_role('button',name='Đua nhanh · 2 ghe',exact=True).tap();page.get_by_role('button',name='Bắt đầu đua nhanh',exact=True).tap()
+ page.get_by_role('button',name='Đua với AI · 2 ghe',exact=True).tap();page.get_by_role('button',name='Bắt đầu đua với AI',exact=True).tap()
  page.get_by_test_id('race-intro').wait_for();page.wait_for_selector('[data-view=intro]')
  assert not page.evaluate(boat+'.menuMusic.stats().playing')
  assert page.evaluate(boat+'.game.state.countdown')==3 and page.evaluate(boat+'.game.state.distances')==[0,0]
@@ -63,7 +63,7 @@ with sync_playwright() as p:
  page.wait_for_function(boat+'.menuMusic.stats().playing&&'+boat+'.menuMusic.stats().time>.1')
  report['musicReturned']=page.evaluate(boat+'.menuMusic.stats()')
  page.get_by_role('button',name='Tắt âm thanh',exact=True).tap();assert not page.evaluate(boat+'.menuMusic.stats().playing')
- page.get_by_role('button',name='Đua nhanh · 2 ghe',exact=True).tap();page.get_by_role('button',name='Bắt đầu đua nhanh',exact=True).tap();page.get_by_test_id('race-intro').wait_for()
+ page.get_by_role('button',name='Đua với AI · 2 ghe',exact=True).tap();page.get_by_role('button',name='Bắt đầu đua với AI',exact=True).tap();page.get_by_test_id('race-intro').wait_for()
  page.get_by_role('button',name='Bỏ qua giới thiệu',exact=True).tap();page.wait_for_function(boat+".game.state.phase==='countdown'")
  assert page.evaluate(boat+'.game.state.elapsed')==0
  report['skipIntro']=True;report['errors']=errors;report['musicResponses']=responses

@@ -1,0 +1,12 @@
+{
+  "independentTeamFaces": true,
+  "easyHeldFingerRows": true,
+  "releaseStopsAssistance": true,
+  "realTouchPointerEvents": true,
+  "scoringClockControlled": true,
+  "earlyCorrection": true,
+  "nonPrimaryFingerAccepted": true,
+  "releaseDoesNotDoubleScore": true,
+  "ceremonyClothingRender": true,
+  "errors": []
+}

@@ -1,3 +1,12 @@
+# Practice, AI, cup and steering
+
+- Added solo practice with four milestones, no time penalty and a browser-local best time; competitive commentary is suppressed in this mode.
+- Added explicit AI opponent selection, with difficulty separate from assisted/manual rowing and lane assistance.
+- Added fixed-step steering, boat yaw/lateral travel, lane buoys and two responsive stern helmsmen. Independent pointer/key contacts allow simultaneous rowing and steering; pause, blur and finish clear held controls.
+- Kept all 61 cup entries, byes, tie replay, elimination, progression and local restore. Results wait for real crossing times; a finished player can skip the remaining opponent simulation.
+- Retained original athlete bodies, the exact connected shirt and eight original rig/motion assets. No new version-suffixed source or asset filenames were introduced.
+- Verified unit/build gates, touchscreen/keyboard input, VI/KM responsive layouts and full six-heat cup progression. See `docs/race-modes.md` for evidence and physical-device limits.
+
 # Blender athlete source and runtime integration
 
 - Added editable packed Blender source and a standard animated one-athlete GLB.

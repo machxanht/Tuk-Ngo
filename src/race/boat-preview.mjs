@@ -47,13 +47,15 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
  const effects=rigs.map(()=>buildSplashes(scene,.28)),wakes=rigs.map(()=>buildBoatWake(scene,.28));
  const crews=rigs.map(r=>({root:r.boat,athletes:r.actors.filter(a=>a.role==='rower').map(a=>{a.paddle.userData.length=a.posture==='standing'?1.75:ROWING_LAYOUT.seatedPaddleLength;return {root:a.group,paddle:a.paddle,role:'ROWER'};})}));
  rigs.forEach(r=>r.boat.userData.spec={paddleLength:ROWING_LAYOUT.seatedPaddleLength});
+ const laneGeo=new T.SphereGeometry(.14,8,5),laneMat=new T.MeshLambertMaterial({color:'#fff0a0'}),laneBuoys=new T.InstancedMesh(laneGeo,laneMat,75),buoyDummy=new T.Object3D();laneBuoys.name='Race_Lane_Buoys';
+ let buoyIndex=0;for(const z of[-15,0,15])for(let d=0;d<=1200;d+=50){buoyDummy.position.set(raceX(d),.31,z);buoyDummy.updateMatrix();laneBuoys.setMatrixAt(buoyIndex++,buoyDummy.matrix);}laneBuoys.frustumCulled=false;scene.add(laneBuoys);
  const camera=new T.PerspectiveCamera(36,1,.04,5000);
  controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.dampingFactor=.08;controls.minDistance=1.2;controls.maxDistance=3500;controls.maxPolarAngle=Math.PI*.48;controls.enablePan=true;
  renderer.setPixelRatio(Math.min(devicePixelRatio,1.25));effects.forEach(e=>e.setDpr(renderer.getPixelRatio()));
  renderer.domElement.setAttribute('aria-label',racing?'Hai ghe 3D tự đua 1.200 mét trên sông Maspéro, khán đài chính bên phải, cầu và khán giả hai bờ.':'Ghe Ngo 3D 54 người với thanh ngồi thấp trong lòng ghe, hai người lái và khán giả hai bờ.');host.appendChild(renderer.domElement);
  const race={elapsed:0,countdown:3,distance:rigs.map(()=>0),speed:rigs.map(()=>0),phases:rigs.map((_,i)=>i?.17:.28),finishTimes:rigs.map(()=>null),state:'countdown'};
  let lastView='',width=1,height=1,frames=0,frameId=0,lastStats=performance.now(),lastUi=0,menuSince=0,wasInCeremony=false;
- const center=()=>{const p=boat.position.clone();if(racing){const other=rigs[1].boat.position,gap=Math.abs(other.x-p.x);p.lerp(other,settings.current.game?.state?.phase==='ready'?.5:settings.current.game?Math.max(0,.45-gap/200):.5);}return p;};
+ const center=()=>{const p=boat.position.clone();if(racing&&settings.current.game?.state.mode!=='practice'){const other=rigs[1].boat.position,gap=Math.abs(other.x-p.x);p.lerp(other,settings.current.game?.state?.phase==='ready'?.5:settings.current.game?Math.max(0,.45-gap/200):.5);}return p;};
  function stage(distance){return distance<200?'Xuất phát':distance<950?'Đường trường':'Nước rút';}
  function snapshot(){return {...race,distance:[...race.distance],finishTimes:[...race.finishTimes],stages:race.distance.map(stage),length:COURSE.length,teams:teamIds.slice(0,rigs.length).map(id=>window.TukNgoTeams.get(id).name),game:settings.current.game?.snapshot()};}
  function syncGame(){const s=settings.current.game?.state;if(!s)return;Object.assign(race,{elapsed:s.elapsed,countdown:s.countdown,distance:[...s.distances],speed:[...s.speeds],phases:[s.beatPhase%1,s.aiPhase],finishTimes:[...s.finishTimes],state:s.phase});}
@@ -79,7 +81,7 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
    if(race.finishTimes.every(t=>t!=null))race.state='finished';
   }
  }
- function place(){rigs.forEach((r,i)=>{r.boat.rotation.y=racing?Math.PI:0;r.boat.position.set(racing?raceX(race.distance[i])+15.1:0,0,racing?COURSE.lanes[i]:0);r.boat.updateMatrixWorld(true);});}
+ function place(){const g=settings.current.game?.state;rigs.forEach((r,i)=>{const heading=g?.headings?.[i]||0;r.boat.rotation.y=racing?Math.PI-heading:0;r.boat.position.set(racing?raceX(race.distance[i])+15.1*Math.cos(heading):0,0,racing?COURSE.lanes[i]-(g?.lateralPositions?.[i]||0):0);r.boat.updateMatrixWorld(true);});}
  function setView(view){
   scene.fog.near=['banks','menu'].includes(view)?1000:280;scene.fog.far=['banks','menu'].includes(view)?3800:1000;
   camera.fov=view==='stand'?60:view==='menu'?50:36;camera.updateProjectionMatrix();
@@ -114,7 +116,7 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
   },
   seek(distance){const d=T.MathUtils.clamp(distance,0,COURSE.length);race.distance.fill(d);race.speed.fill(5.1);race.countdown=0;race.elapsed=d/5.1;race.finishTimes.fill(d===COURSE.length?race.elapsed:null);race.state=d===COURSE.length?'finished':'racing';effects.forEach(e=>e.reset());place();lastView='';settings.current.onRace?.(snapshot());},
   capture(){saveCanvas(renderer.domElement,'ghe-ngo-3d.png');},record(){return recordCanvas(renderer.domElement,'ghe-ngo-cheo-10s.webm');},
-  dispose(){if(disposed)return;disposed=true;cancelAnimationFrame(raf);observer.disconnect();controls.dispose();ceremony?.dispose();effects.forEach(e=>e.dispose());wakes.forEach(w=>w.dispose());official.dispose();sky.dispose();river.dispose();assets.dispose();for(const r of rigs.slice(1)){r.scene.add(r.boat);r.dispose();}rig.dispose();renderer.domElement.remove();if(host.boatPreview===api)delete host.boatPreview;}
+  dispose(){if(disposed)return;disposed=true;cancelAnimationFrame(raf);laneBuoys.removeFromParent();laneBuoys.dispose();laneGeo.dispose();laneMat.dispose();observer.disconnect();controls.dispose();ceremony?.dispose();effects.forEach(e=>e.dispose());wakes.forEach(w=>w.dispose());official.dispose();sky.dispose();river.dispose();assets.dispose();for(const r of rigs.slice(1)){r.scene.add(r.boat);r.dispose();}rig.dispose();renderer.domElement.remove();if(host.boatPreview===api)delete host.boatPreview;}
  };
  host.boatPreview=api;
  function frame(now){
@@ -122,7 +124,7 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
   if(s.playing||s.ambientPlaying)c.seconds+=dt;
   if(s.playing){if(racing){advance(dt*(s.fast?3:1));c.phase=race.phases[0];}else c.phase=(c.phase+dt*s.cadence/60)%1;}
   syncGame();const game=s.game?.snapshot(),introducing=game&&(game.phase==='intro'||game.phase==='paused'&&game.introRemaining>0);
-  const inCeremony=!!ceremony&&game?.phase==='ready';if(ceremony){ceremony.group.visible=inCeremony;ceremony.update(c.seconds,camera);}rigs.forEach(r=>r.boat.visible=!inCeremony);
+  const inCeremony=!!ceremony&&game?.phase==='ready';if(ceremony){ceremony.group.visible=inCeremony;ceremony.update(c.seconds,camera);}rigs.forEach((r,i)=>r.boat.visible=!inCeremony&&(game?.mode!=='practice'||i===0));laneBuoys.visible=!!game&&!inCeremony;laneBuoys.position.y=Math.sin(c.seconds*1.4)*.018;river.setBoats(rigs.filter(r=>r.boat.visible).map(r=>r.boat));
   place();
   if(inCeremony&&!wasInCeremony)menuSince=c.seconds;wasInCeremony=inCeremony;
   controls.enabled=!introducing&&!inCeremony;
@@ -132,14 +134,14 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
   else if(!['banks','stand','crowd','bridge','finish','start','official'].includes(s.view)){const delta=center().sub(previous);camera.position.add(delta);controls.target.add(delta);}
   if(!introducing&&!inCeremony)controls.update();
   frameId++;
-  rigs.forEach((r,i)=>r.render(racing?race.phases[i]:c.phase,c.seconds,{teamId:teamIds[i],referenceKbach:!racing&&!!s.referenceKbach,kbachTexture:r.previewKbach,effort:game?(i?(game.aiRaceStage==='final'?.7:.1):Math.max(game.raceStage==='final'?.65:0,game.strength)):0,desyncIntensity:game&&i===0?game.desyncIntensity:0,connectedKit:true,updateOnly:true,viewKey:'race-'+i,frameId,distance:camera.position.distanceTo(r.boat.position),nearest:i===0}));
+  rigs.forEach((r,i)=>{if(!r.boat.visible)return;r.render(racing?race.phases[i]:c.phase,c.seconds,{teamId:teamIds[i],referenceKbach:!racing&&!!s.referenceKbach,kbachTexture:r.previewKbach,effort:game?(i?(game.aiRaceStage==='final'?.7:.1):Math.max(game.raceStage==='final'?.65:0,game.strength)):0,desyncIntensity:game&&i===0?game.desyncIntensity:0,connectedKit:true,updateOnly:true,viewKey:'race-'+i,frameId,distance:camera.position.distanceTo(r.boat.position),nearest:i===0,steering:i===0?game?.rudder||0:Math.sin((game?.elapsed||0)*.11)*.03});});
   sky.update(camera);banks.update(c.seconds,inCeremony||introducing?{position:controls.target}:camera);official.update(c.seconds,racing?race:{state:'racing'},camera);
-  rigs.forEach((r,i)=>{const moving=s.playing&&(!racing||race.state==='racing'),strength=racing?(race.distance[i]>=950?.85:race.distance[i]<200?.45:.12):Math.max(0,(s.cadence-72)/24);effects[i].update(s.playing?dt:0,crews[i],racing?race.speed[i]:4.2,c.seconds,s.splash&&moving,Math.max(0,Math.min(1,strength+(game&&i===0?(game.pace==='recover'?-.18:game.pace==='sprint'?.5*game.strength:0):0)+((game&&(i?game.aiSurgeActive:game.surgeActive)) ? .15 : 0))));wakes[i].update(r.boat,c.seconds,moving);});
+  rigs.forEach((r,i)=>{const moving=r.boat.visible&&s.playing&&(!racing||race.state==='racing'),strength=racing?(race.distance[i]>=950?.85:race.distance[i]<200?.45:.12):Math.max(0,(s.cadence-72)/24);effects[i].update(s.playing?dt:0,crews[i],racing?race.speed[i]:4.2,c.seconds,s.splash&&moving,Math.max(0,Math.min(1,strength+(game&&i===0?(game.pace==='recover'?-.18:game.pace==='sprint'?.5*game.strength:0):0)+((game&&(i?game.aiSurgeActive:game.surgeActive)) ? .15 : 0))));wakes[i].update(r.boat,c.seconds,moving);});
   renderer.render(scene,camera);
   frames++;if(now-lastStats>=1000){host.dataset.fps=(frames*1000/(now-lastStats)).toFixed(1);frames=0;lastStats=now;}
   if(game)s.onGameFrame?.(game);
   if(racing&&now-lastUi>(game?100:250)){s.onRace?.(snapshot());lastUi=now;}
-  Object.assign(host.dataset,{renderMode:racing?'race':'boat',boatCount:String(inCeremony?61:rigs.length),crewCount:String(inCeremony?ceremony.stats.athletes:actors.length*rigs.length),masterRigs:String(8*rigs.length),phase:c.phase.toFixed(4),view:introducing?'intro':s.view,triangles:String(renderer.info.render.triangles),drawCalls:String(renderer.info.render.calls),splashEvents:String(effects.reduce((n,e)=>n+e.stats().events,0)),banks:'2',spectators:String(banks.stats.people),daylight:'bright',raceState:race.state,courseLength:String(COURSE.length),raceDistances:JSON.stringify(race.distance)});
+  Object.assign(host.dataset,{renderMode:racing?'race':'boat',boatCount:String(inCeremony?61:game?.mode==='practice'?1:rigs.length),crewCount:String(inCeremony?ceremony.stats.athletes:actors.length*(game?.mode==='practice'?1:rigs.length)),masterRigs:String(8*rigs.length),phase:c.phase.toFixed(4),view:introducing?'intro':s.view,triangles:String(renderer.info.render.triangles),drawCalls:String(renderer.info.render.calls),splashEvents:String(effects.reduce((n,e)=>n+e.stats().events,0)),banks:'2',spectators:String(banks.stats.people),daylight:'bright',raceState:race.state,courseLength:String(COURSE.length),raceDistances:JSON.stringify(race.distance)});
   raf=requestAnimationFrame(frame);
  }
  onReady(api);raf=requestAnimationFrame(frame);

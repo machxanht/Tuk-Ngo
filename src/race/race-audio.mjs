@@ -242,10 +242,10 @@ export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{},onP
     return resumed.then(loadManifest).then(m=>warmup?Promise.allSettled(m.warmup.map(load)):undefined).catch(fail);
    }catch(e){fail(e);return Promise.resolve();}
   },
-  beginMatch(pair){
+  beginMatch(pair,{practice=false}={}){
    api.stopPreview();
    clearSpeech();captions=[];stopSources();director.reset();recentClips.clear();teams=pair;latest=null;lastBeat=null;rhythmCadence=0;lastRhythmAudio=-1;matchSerial++;
-   if(context&&mix.enabled)void loadManifest().then(m=>{const keys=['final','surge','finish'].flatMap(id=>{const e=m.events[id];return [...e.voice,...e.khmer];});for(const team of pair){const names=resolveTeamSpeech(team,m),history=resolveTeamSpeech(team,m,'history');keys.push(...names.voice,...names.khmer,...history.voice,...history.khmer);}return Promise.allSettled([...new Set(keys)].map(load));}).catch(fail);
+   if(context&&mix.enabled&&!practice)void loadManifest().then(m=>{const keys=['final','surge','finish'].flatMap(id=>{const e=m.events[id];return [...e.voice,...e.khmer];});for(const team of pair){const names=resolveTeamSpeech(team,m),history=resolveTeamSpeech(team,m,'history');keys.push(...names.voice,...names.khmer,...history.voice,...history.khmer);}return Promise.allSettled([...new Set(keys)].map(load));}).catch(fail);
   },
   async previewTeam(team,kind='name'){
    if(disposed||latest&&!['ready','finished'].includes(latest.phase))return {status:'busy'};
@@ -279,7 +279,7 @@ export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{},onP
    if(!previewing&&teams.length===2){
    const intensity=s.raceStage==='final'||s.surgeActive?1:0;if(intensity!==ambienceStage){ambienceStage=intensity;applyMix();}
    const history=manifest?teams.map(t=>{const h=resolveTeamSpeech(t,manifest,'history');return mix.voice&&h.voice.length>0||mix.khmer&&h.khmer.length>0;}):[false,false];
-   const cues=director.update(s,{speaking:speaking&&voiceUntil>context?.currentTime,history});
+   const cues=s.mode==='practice'?[]:director.update(s,{speaking:speaking&&voiceUntil>context?.currentTime,history});
    if(!active||!mix.enabled||!context)return;
    if(s.phase==='finished'){stopSources('whistle');stopSources('drums');stopSources('crowd');}else void ambient();
    for(const cue of cues)enqueue(cue);

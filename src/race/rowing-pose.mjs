@@ -46,14 +46,14 @@ export function rowingPose(master,{role='rower',posture='seated',side=-1}={}){
   const elbow=center.addScaledVector(pole,radius),end=elbow.clone().addScaledVector(grip.clone().sub(elbow).normalize(),arm.fl),ud=elbow.clone().sub(origin).normalize(),fd=end.clone().sub(elbow).normalize(),hinge=ud.clone().cross(fd).normalize();
   setQ(arm.u,frame(hinge,ud).multiply(arm.uf));setQ(arm.f,frame(hinge,fd).multiply(arm.ff));setQ(arm.h,frame(hinge,grip.clone().sub(end)).multiply(arm.hf));
  }
- return phase=>{
+ return (phase,{steering=0,steeringOnly=false}={})=>{
   const outer=-side,hip=['controller','bow-spear'].includes(role)?.94:role==='helm'?.83:posture==='standing'?.70:.55;
-  if(posture==='seated'){
+  if(posture==='seated'&&!steeringOnly){
    // Feet tuck toward the keel beneath a cross-thwart. Raising the ankles
    // allows the seated pelvis to remain below the gunwale without hull cuts.
    for(const s of ['l','r'])leg(s,role==='caller'?.50:.06,(s==='l'?.06:-.06)+(role==='caller'?0:-outer*.13),role==='caller'?.34:.34);
   }
-  if(posture==='standing'){
+  if(posture==='standing'&&!steeringOnly){
    const pelvis=(pos('thigh_l').y+pos('thigh_r').y)/2,point=root.getWorldPosition(V()).addScaledVector(Y,hip-pelvis);root.position.copy(root.parent.worldToLocal(point));root.updateMatrixWorld(true);
    for(const s of ['l','r'])leg(s,['helm','controller','bow-spear'].includes(role)?(s==='l'?.23:-.23):(s===(outer>0?'l':'r')?-.45:.31),role==='rower'?(s==='l'?.06:-.06)-outer*.13:restPos('thigh_'+s).x);
   }
@@ -72,9 +72,9 @@ export function rowingPose(master,{role='rower',posture='seated',side=-1}={}){
   let top=V(outer*.09,hip+curve([.62,.56,.48,.59,.72,.68,.62],phase),curve([.50,.53,.32,.28,.35,.49,.50],phase));
   if(role==='helm'){
    // A nearly upright rudder makes small corrections beside the stern.
-   const spine=bones.spine_01;spine.quaternion.multiply(new T.Quaternion().setFromAxisAngle(V(1,0,0),T.MathUtils.degToRad(curve([8,10,-8,-12,-3,8,8],phase))));spine.updateMatrixWorld(true);
+   const spine=bones.spine_01;if(!steeringOnly)spine.quaternion.multiply(new T.Quaternion().setFromAxisAngle(V(1,0,0),T.MathUtils.degToRad(curve([8,10,-8,-12,-3,8,8],phase))));spine.updateMatrixWorld(true);
    top=V(outer*.19,hip+.68,curve([.39,.42,.32,.28,.33,.41,.39],phase));
-   axis=V(-outer*.22,1,curve([.08,.12,.20,.22,.15,.10,.08],phase)).normalize();
+   axis=V(-outer*.22,1,curve([.08,.12,.20,.22,.15,.10,.08],phase)).normalize();top.x+=steering*.055;axis.applyAxisAngle(Y,steering*.22);
   }
   if(role==='bow-spear'){
    top=V(.23,hip+.20,.30);axis=V(.025,1,.035).normalize();

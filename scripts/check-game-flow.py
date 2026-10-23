@@ -34,20 +34,21 @@ with sync_playwright() as p:
    report['viewports'].append({'screen':'menu','language':language,'width':width,'height':height})
   page.set_viewport_size({'width':1024,'height':768})
   page.get_by_role('button',name='Cách chơi' if language=='vi' else 'របៀបលេង',exact=True).tap()
-  assert page.locator('.help-steps li').count()==3
+  assert page.locator('.help-steps li').count()==4
   page.screenshot(path=str(out/f'help-{language}.png'))
   page.get_by_role('button',name='Quay lại' if language=='vi' else 'ត្រឡប់',exact=True).tap()
-  page.get_by_role('button',name='Đua nhanh · 2 ghe' if language=='vi' else 'ប្រណាំងរហ័ស · ២ ទូក',exact=True).tap()
+  page.get_by_role('button',name='Đua với AI · 2 ghe' if language=='vi' else 'ប្រណាំងជាមួយ AI · ២ ទូក',exact=True).tap()
   for width,height in [(1024,768),(768,1024),(1180,430),(390,844)]:
    page.set_viewport_size({'width':width,'height':height})
-   assert page.locator('.game-setup select option').count()==64
+   assert page.locator('.setup-selection select option').count()==61
+   assert page.get_by_label('Chọn đội AI' if language=='vi' else 'ជ្រើសរើសក្រុម AI',exact=True).locator('option').count()==60
    assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
    page.screenshot(path=str(out/f'setup-{language}-{width}x{height}.png'))
   if language=='vi':
    page.get_by_role('button',name='Quay lại',exact=True).tap()
  page.set_viewport_size({'width':1024,'height':768})
  page.get_by_role('listbox',name='ជ្រើសរើសក្រុមទូក',exact=True).select_option('can_tho-05')
- page.get_by_role('button',name='ចាប់ផ្ដើមប្រណាំងរហ័ស',exact=True).tap()
+ page.get_by_role('button',name='ចាប់ផ្ដើមប្រណាំងជាមួយ AI',exact=True).tap()
  page.wait_for_function(boat+".game.state.phase==='racing'")
  page.evaluate(advance,205);page.wait_for_timeout(300)
  assert page.evaluate(boat+'.game.snapshot().raceStage')=='cruise'
@@ -77,7 +78,7 @@ with sync_playwright() as p:
  page.get_by_role('button',name='ĐẠP!',exact=False).tap()
  assert page.evaluate(boat+'.game.state.surgeRemaining')>0
  page.screenshot(path=str(out/'sprint.png'))
- page.evaluate(advance,1200);page.get_by_role('dialog',name='Kết quả trận đua',exact=True).wait_for()
+ page.evaluate(advance,1200);page.evaluate(boat+'.game.completeRace()');page.get_by_role('dialog',name='Kết quả trận đua',exact=True).wait_for()
  page.wait_for_function("()=>{const a="+boat+",p=a.boat.position.clone().project(a.camera);return Math.abs(p.x)<1&&Math.abs(p.y)<1&&p.z<1&&!a.renderer.getContext().isContextLost();}")
  page.wait_for_timeout(500)
  report['quickRace']=page.evaluate(boat+'.game.snapshot()')
@@ -89,7 +90,7 @@ with sync_playwright() as p:
  page.get_by_role('button',name='Cúp lễ hội · 61 ghe',exact=True).tap()
  page.get_by_role('button',name='Bắt đầu cúp 61 ghe',exact=True).tap()
  page.wait_for_function(boat+".game.state.phase==='racing'")
- page.evaluate(advance,1200);page.get_by_role('dialog',name='Kết quả trận đua',exact=True).wait_for()
+ page.evaluate(advance,1200);page.evaluate(boat+'.game.completeRace()');page.get_by_role('dialog',name='Kết quả trận đua',exact=True).wait_for()
  saved=json.loads(page.evaluate("localStorage.getItem('tukngo-festival-cup')"));report['cupAfterHeat']=saved
  assert len(saved['history'])==1 and saved['status']=='ready'
  page.get_by_role('button',name='Đua vòng tiếp theo',exact=True).tap()
