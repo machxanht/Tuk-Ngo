@@ -1,13 +1,14 @@
 {
   "url": "https://machxanht.github.io/Tuk-Ngo/character-comparison/",
-  "implementationCommit": "ce593d0",
-  "pagesCommit": "c021c914ad1c0064e58bb2d9a567418d6fce8e2e",
+  "implementationCommit": "89b66bc",
+  "featureCommit": "188fd61",
+  "pagesCommit": "c5b21a848c61671085ca428b6037c969187fa367",
   "files": [
     {
       "file": "character-comparison/index.html",
       "status": 200,
-      "bytes": 4332,
-      "sha256": "e0fb493e087926d9e88bb71aa6a4e8730371b1cb57fe27ef8a45b1da4478c109",
+      "bytes": 4468,
+      "sha256": "1c1d0fe9ef2f32a4400bb31b0598c17733dd539892a63e7ff21ae28d3b55980e",
       "matchesGitContent": true,
       "lineEndingsNormalized": false
     },
@@ -22,24 +23,24 @@
     {
       "file": "character-comparison/viewer.js",
       "status": 200,
-      "bytes": 664341,
-      "sha256": "d06e3b5c5273777963ba2a047220b6975b02fe6696df6f3b7575214d0bd5149a",
+      "bytes": 684609,
+      "sha256": "f07db1b48c066ecd7ea664e93730246473233e99bf9df2cd51e47038680ce007",
       "matchesGitContent": true,
       "lineEndingsNormalized": false
     },
     {
       "file": "assets/character-comparison/CREDITS.md",
       "status": 200,
-      "bytes": 1743,
-      "sha256": "7b1d5208dde47bc3a5b0efc95713701ff4edaebbb6e553cf0f52bcfd1b8a7019",
+      "bytes": 2245,
+      "sha256": "80339d0387214511aaa6eebcfc9df0033a90b784474870878744bfeff1ccc3fc",
       "matchesGitContent": true,
       "lineEndingsNormalized": false
     },
     {
       "file": "assets/character-comparison/manifest.json",
       "status": 200,
-      "bytes": 2618,
-      "sha256": "9453df040cf05a39e742741fa1b05e5f5ad1cd8a1b359fd4be77c3437d2f6f4e",
+      "bytes": 2685,
+      "sha256": "f84bc0fed175af0245c5432a48d932224714b9297c8c4d78a5cd77b774d526ef",
       "matchesGitContent": true,
       "lineEndingsNormalized": false
     },
