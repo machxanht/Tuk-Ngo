@@ -19,3 +19,7 @@ Responsive rowing with a readable scoring cue, intact ceremony clothing, and a c
 - check-gameplay-input.py uses actual Chromium touchscreen events, including a held first finger and a non-primary second finger. Its narrow scoring-edge checks freeze only simulation time; input events still run through React. See local/input-regression.json.
 - check-race-presentation.py checks the live cinematic/menu/countdown/race/pause/music flow, actual touch-down and keyboard scoring, and eight Vietnamese/Khmer layouts (1024×768, 768×1024, 1180×430, 390×844). See local/checks.json. No JavaScript/HTTP failures. Dispatch timing includes browser automation overhead and is not physical-tablet latency.
 - Direct visual review: logo.png, local/menu-logo.png, local/ceremony-clothing.png, local/input-receipt.png and the landscape/portrait screenshots. The asset style remains stylized; real tablet FPS has not been measured.
+
+## Public deployment
+
+Published implementation f3a45bb to the existing main game URL. Pages commit 0ec0d21517bd03cfb450dbd49c4a29017effc6fe serves seven checked files that match the tested build, including root HTML, gameplay/UI chunks, the logo and ceremony animation data. The public browser repeats the real pointer-edge, two-finger, release and ceremony-render checks with no JavaScript errors. See public-files.json and public/input-regression.json.
