@@ -1,4 +1,5 @@
 import {useEffect,useMemo,useRef,useState} from 'react';
+import type {CSSProperties} from 'react';
 import {ArrowLeft,ArrowRight,Compass,Eye,EyeOff,Flag,HelpCircle,Home,Pause,Play,RotateCcw,Trophy,Volume2,VolumeX,Waves,Zap} from 'lucide-react';
 import {createDeviceSteering} from '../race/device-steering.mjs';
 import {createRaceControls} from '../race/race-controls.mjs';
@@ -9,9 +10,11 @@ import {createRaceAudio,DEFAULT_AUDIO_MIX,normalizeAudioMix} from '../race/race-
 import {GAME_COPY,ROUND_KEYS,readGameLanguage} from '../race/game-language';
 import {createMenuMusic} from '../race/menu-music.mjs';
 import {festivalBrandDigest} from '../race/asset-digests.mjs';
+import {FESTIVAL_PALETTE} from '../race/festival-branding.mjs';
 import './RaceGame.css';
 
 const STORAGE='tukngo-festival-cup',AUDIO_STORAGE='tukngo-race-audio';
+const brandStyle={'--teal':FESTIVAL_PALETTE.jade,'--gold':FESTIVAL_PALETTE.gold,'--paper':FESTIVAL_PALETTE.white} as CSSProperties;
 function audioPreferences(){try{return normalizeAudioMix(JSON.parse(localStorage.getItem(AUDIO_STORAGE)||'null'));}catch{return {...DEFAULT_AUDIO_MIX};}}
 const seed=()=>Math.floor(Math.random()*4294967296);
 function makeCup(){
@@ -150,9 +153,9 @@ export function RaceGame({onInspect,initialSelection}:{onInspect:(selection:{tea
 
  const languageControl=<div className="game-language" role="group" aria-label="Language / Ngôn ngữ / ភាសា"><button aria-pressed={language==='vi'} lang="vi" onClick={()=>setLanguage('vi')}>VI</button><button aria-pressed={language==='en'} lang="en" onClick={()=>setLanguage('en')}>EN</button><button aria-pressed={language==='km'} lang="km" onClick={()=>setLanguage('km')}>ខ្មែរ</button></div>;
  const audioOptions=<details className="game-audio-options"><summary aria-label={c.audioSettings}>{c.settings}</summary><div>{inRace&&languageControl}<b>{c.graphics}</b><label>{c.quality}<select aria-label={c.quality} value={quality} onChange={e=>setQuality(e.target.value)}>{['auto','balanced','low'].map(key=><option key={key} value={key}>{c['quality_'+key]}</option>)}</select></label><p className="game-note">{c.qualityHint}</p>{performanceStats&&<output className="runtime-stats">{performanceStats.fps.toFixed(0)} FPS · {Math.round(performanceStats.triangles/1000)}k △ · {performanceStats.drawCalls} draws<br/>{c.inputReceived}: {performanceStats.input.received} · {c.inputDelay}: {performanceStats.input.dispatchP95Ms?.toFixed(0)??'—'} ms<br/>{c.nextFrame}: {performanceStats.input.nextFrameP95Ms?.toFixed(0)??'—'} ms (p95)</output>}<b>{c.steering}</b><p className="game-note">{c['sensor_'+tiltStatus]||c.tiltHint}</p><button onClick={()=>void tilt.enable()}>{c.calibrateTilt}</button><label>{c.view}<select aria-label={c.view} value={view} onChange={e=>setView(e.target.value)}>{['race','chase','banks'].map(id=><option key={id} value={id}>{c[id==='race'?'follow':id==='chase'?'chase':'fullCourse']}</option>)}</select></label><b>{c.atmosphere}</b>{(['voice','khmer','whistle','drums','crowd'] as const).map(key=><label key={key}><input type="checkbox" checked={(mix as any)[key]} onChange={e=>changeMix({[key]:e.target.checked})}/>{c[key]}</label>)}<label>{c.volume}<input aria-label={c.volume} type="range" min="0" max="1" step=".05" value={mix.volume} onChange={e=>changeMix({volume:Number(e.target.value)})}/></label>{audioError&&<p role="status">{c.audioError}</p>}</div></details>;
- return <section className={'race-game'+(!inRace?' game-browsing':'')+(hud.phase!=='ready'?' game-playing':'')+(intro?' game-intro':'')+(panel==='menu'&&menuHidden?' game-cinema':'')} data-testid="festival-game" lang={language} onPointerDownCapture={e=>{if((e.target as HTMLElement).closest('.game-inputs button'))runtime.current?.noteInput(e.timeStamp);if(game.state.phase==='ready'&&mix.enabled)void music.unlock();}}>
+ return <section className={'race-game'+(!inRace?' game-browsing':'')+(hud.phase!=='ready'?' game-playing':'')+(intro?' game-intro':'')+(panel==='menu'&&menuHidden?' game-cinema':'')} data-testid="festival-game" lang={language} style={brandStyle} onPointerDownCapture={e=>{if((e.target as HTMLElement).closest('.game-inputs button'))runtime.current?.noteInput(e.timeStamp);if(game.state.phase==='ready'&&mix.enabled)void music.unlock();}}>
   <header className="game-heading">
-   <div className="game-brand"><img className="festival-logo" src={import.meta.env.BASE_URL+'assets/festival/festival-logo.svg?sha='+festivalBrandDigest} alt="" width="68" height="36"/><div><span>{c.festival}</span><h1>{c.brand} <small>{inRace?round:'1.200 m · Maspéro'}</small></h1></div></div>
+   <div className="game-brand"><img className="festival-logo" src={import.meta.env.BASE_URL+'assets/festival/festival-logo.svg?sha='+festivalBrandDigest} alt="" width="84" height="38"/><div><span>{c.festival}</span><h1>{c.brand} <small>{inRace?round:'1.200 m · Maspéro'}</small></h1></div></div>
    <div className="game-heading-actions">{!inRace&&languageControl}{inRace&&<button className="simple-pause" disabled={!live||!!panel} onClick={()=>pause()} aria-label={c.pause}><Pause size={18}/></button>}{mode==='cup'&&<button onClick={bracket} aria-label={c.bracket}><Trophy size={17}/><span>{c.bracket}</span></button>}<button onClick={()=>changeMix({enabled:!mix.enabled})} aria-label={mix.enabled?c.mute:c.unmute}>{mix.enabled?<Volume2 size={18}/>:<VolumeX size={18}/>}</button>{audioOptions}{panel==='setup'&&<button onClick={()=>{audio.stopPreview();setPanel('menu');}} aria-label={c.menu}><Home size={18}/></button>}</div>
   </header>
   {inRace&&!intro&&<div className="game-score" aria-label={c.progress}>

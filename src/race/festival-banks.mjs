@@ -2,6 +2,7 @@ import * as T from 'three';
 import {mergeGeometries} from 'three/addons/utils/BufferGeometryUtils.js';
 import {buildCoherentBank} from './river-bank.mjs';
 import {buildFestivalCrowd,loadFestivalCrowd} from './festival-crowd.mjs';
+import {festivalBannerSize,paintFestivalBanner} from './festival-branding.mjs';
 
 // A bounded, entirely 3D festival reach for inspecting the current boat.
 // River width is 61 m; a quay separates spectators from the paddle envelope.
@@ -12,19 +13,17 @@ export async function loadFestivalBanks(scene,base){
  }
  await document.fonts.load('600 64px "Noto Sans Khmer"');
  const group=new T.Group();group.name='Festival_Both_Banks';scene.add(group);
- const owned=new Set(),buckets=new Map(),people=[],banks=[],signs=[];
+ const owned=new Set(),buckets=new Map(),people=[],banks=[],signs=[],signTextures=new Map();
  const colors=['#ef6251','#f7c447','#43bbaf','#65a8dc','#ac84cb','#f09ac4'];
  function box(color,x,y,z,w,h,d,ry=0,rx=0){
   const g=new T.BoxGeometry(w,h,d);g.applyMatrix4(new T.Matrix4().compose(new T.Vector3(x,y,z),new T.Quaternion().setFromEuler(new T.Euler(rx,ry,0)),new T.Vector3(1,1,1)));
   if(!buckets.has(color))buckets.set(color,[]);buckets.get(color).push(g);
  }
- function banner(text,x,y,z,width,height,side,color='#0f786c'){
-  const canvas=document.createElement('canvas');canvas.width=2048;canvas.height=256;
-  const c=canvas.getContext('2d');c.fillStyle=color;c.fillRect(0,0,2048,256);c.fillStyle='#fff1b0';c.fillRect(18,18,2012,5);c.fillRect(18,233,2012,5);
-  c.fillStyle='#ffffff';c.font='600 110px "Noto Sans Khmer",sans-serif';c.textAlign='center';c.textBaseline='middle';c.fillText(text,1024,128,1970);
-  const texture=new T.CanvasTexture(canvas);texture.colorSpace=T.SRGBColorSpace;texture.anisotropy=4;
-  const material=new T.MeshBasicMaterial({map:texture,side:T.DoubleSide}),geometry=new T.PlaneGeometry(width,height),sign=new T.Mesh(geometry,material);
-  sign.name='Khmer_Festival_Banner';sign.position.set(x,y,z);sign.rotation.y=side===1?Math.PI:0;sign.userData={language:'km',text};group.add(sign);signs.push(sign);owned.add(texture);owned.add(material);owned.add(geometry);
+ function banner(text,x,y,z,width,height,side){
+  const size=festivalBannerSize(width,height),key=JSON.stringify([text,size.width,size.height]);let texture=signTextures.get(key);
+  if(!texture){const canvas=document.createElement('canvas');Object.assign(canvas,size);paintFestivalBanner(canvas,text);texture=new T.CanvasTexture(canvas);texture.colorSpace=T.SRGBColorSpace;texture.anisotropy=4;signTextures.set(key,texture);owned.add(texture);}
+  const material=new T.MeshBasicMaterial({map:texture,side:T.DoubleSide,toneMapped:false}),geometry=new T.PlaneGeometry(width,height),sign=new T.Mesh(geometry,material);
+  sign.name='Khmer_Festival_Banner';sign.position.set(x,y,z);sign.rotation.y=side===1?Math.PI:0;sign.userData={language:'km',text};group.add(sign);signs.push(sign);owned.add(material);owned.add(geometry);
  }
  const ground=1.0,edge=30.5,origin=32.65;
  for(const side of [-1,1]){
@@ -65,7 +64,7 @@ export async function loadFestivalBanks(scene,base){
    const z=side*(origin+1.9),color=colors[(Math.abs(x)+side+6)%colors.length];
    for(const dx of [-2,2])for(const dz of [-1.3,1.3])box('#f2e8d3',x+dx,2.25,z+dz,.07,2.5,.07);
    box(color,x,3.65,z,4.5,.13,3.1);box('#f2e2b5',x,1.58,z,3.9,1.16,.65);
-   banner('អាហារ និងភេសជ្ជៈ',x,3.20,z-side*1.42,4.1,.55,side,color);
+   banner('អាហារ និងភេសជ្ជៈ',x,3.20,z-side*1.42,4.1,.55,side);
    for(let i=0;i<9;i++)people.push({id:people.length,x:x-2.1+(i%5)*.82,floor:ground,z:z+side*(i<5?-1.9:1),activity:i<5?'eat':'vendor',yaw:side>0?Math.PI:0});
   }
   for(let i=0;i<85;i++){

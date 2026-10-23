@@ -1,5 +1,5 @@
 import * as T from 'three';
-import {FESTIVAL,FESTIVAL_BRANDS,paintFestivalBanner} from './festival-branding.mjs';
+import {FESTIVAL,FESTIVAL_BRANDS,festivalBannerSize,paintFestivalBanner} from './festival-branding.mjs';
 import {buildFestivalCrowd} from './festival-crowd.mjs';
 import {buildFestivalStreet} from './festival-street.mjs';
 import {buildFestivalTraffic} from './festival-traffic.mjs';
@@ -34,7 +34,7 @@ export function buildMasperoBanks(group,waterY,crowdAssets,bankMaterials={},opti
  const meshes=new Map(),geometries={box:new T.BoxGeometry(1,1,1),pole:new T.CylinderGeometry(1,1,1,8),head:new T.SphereGeometry(1,9,7),crown:new T.SphereGeometry(1,20,14),cone:new T.ConeGeometry(1,1,12)},dummy=new T.Object3D();
  const material=new T.MeshStandardMaterial({color:'white',roughness:.85}),metal=new T.MeshStandardMaterial({color:'white',roughness:.55,metalness:.28});
  const people=[],totals={spectators:0,seats:0,trees:0,houses:0,distantBlocks:0,umbrellas:0,stands:2,nationalFlags:0};
- let bridgeFrame=null,bankAnchor=null;const signs=new Map(),signPlacements=[];
+ let bridgeFrame=null,bankAnchor=null;const signs=new Map(),signTextures=new Map(),signPlacements=[];
  const mappedZ=(x,z)=>courseZ(bankAnchor??x,z);
  // Feathered coconut fronds and irregular broadleaf crowns, rather than solid
  // paddle-shaped leaves and five smooth balls per tree.
@@ -56,8 +56,12 @@ export function buildMasperoBanks(group,waterY,crowdAssets,bankMaterials={},opti
  }
  function beam(a,b,r,color){const d=b.clone().sub(a);dummy.quaternion.setFromUnitVectors(V(0,1,0),d.clone().normalize());const e=new T.Euler().setFromQuaternion(dummy.quaternion);add('pole',(a.x+b.x)/2,(a.y+b.y)/2,(a.z+b.z)/2,r,d.length(),r,color,e.x,e.y,e.z,true);}
  function text(text,width,height,x,y,z,background='#8c2321',fg='#f6d880',ry=0){
-  const key=JSON.stringify([text,width,height,background,fg]);let batch=signs.get(key);
-  if(!batch){const c=document.createElement('canvas');c.width=2048;c.height=Math.max(128,Math.round(c.width*height/width));paintFestivalBanner(c,text,background,fg);const tx=new T.CanvasTexture(c);tx.colorSpace=T.SRGBColorSpace;tx.anisotropy=8;batch={geometry:new T.PlaneGeometry(width,height),material:new T.MeshBasicMaterial({map:tx,side:T.FrontSide}),text,width,height,list:[]};signs.set(key,batch);}
+  const key=JSON.stringify([text,width,height]);let batch=signs.get(key);
+  if(!batch){
+   const size=festivalBannerSize(width,height),textureKey=JSON.stringify([text,size.width,size.height]);let tx=signTextures.get(textureKey);
+   if(!tx){const canvas=document.createElement('canvas');Object.assign(canvas,size);paintFestivalBanner(canvas,text);tx=new T.CanvasTexture(canvas);tx.colorSpace=T.SRGBColorSpace;tx.anisotropy=8;tx.userData.festivalBranding=true;signTextures.set(textureKey,tx);}
+   batch={geometry:new T.PlaneGeometry(width,height),material:new T.MeshBasicMaterial({map:tx,side:T.FrontSide,toneMapped:false}),text,width,height,list:[]};signs.set(key,batch);
+  }
   const o=new T.Object3D();o.position.set(x,y,bridgeFrame?z:mappedZ(x,z));o.rotation.y=ry;if(bridgeFrame){const dx=x-bridgeFrame.x;cDummyPosition(o,dx,z,bridgeFrame);o.rotation.y+=bridgeFrame.yaw;}o.updateMatrix();batch.list.push(o.matrix.clone());signPlacements.push({text,width,height,x:o.position.x,y,z:o.position.z,bank:Math.sign(z)});return o;
  }
  function cDummyPosition(o,dx,z,frame){o.position.x=frame.x+dx*Math.cos(frame.yaw)+z*Math.sin(frame.yaw);o.position.z=-dx*Math.sin(frame.yaw)+z*Math.cos(frame.yaw);}
@@ -227,7 +231,7 @@ export function buildMasperoBanks(group,waterY,crowdAssets,bankMaterials={},opti
  group.userData={...group.userData,reference:'OWNER_VTV10_VIDEO_2025_REAL_PHOTOS_AND_OSM_LAYOUT',dimensions:'APPROXIMATE_GAME_SCALE',...totals,buildings,detailRange:DETAIL_RANGE,bankSource:MASPERO_LAYOUT.source,bankLicense:MASPERO_LAYOUT.license,bankOutlineGameSpanM:400,bridgeYawSource:'OSM bridge centre-lines',continuousLand:true,pitchedRoof:'ridge above eaves; corrugation follows both slopes',npcSource:'Quaternius CC0 civilian silhouettes with independently animated festival actions',signLanguage:'km',standRoof:'VIP double pitch; opposite low single pitch',bridgeC247:'teal curved steel portals',bridge30April:'concrete piers and silver arched truss, 2022 construction photo; finished decoration approximate'};
  group.userData.traffic=traffic.stats;group.userData.spectatorSpacingM=.56;group.userData.fullCourseCrowdRows=10;
  group.userData.finishWaterCrowd=shallows.stats;
- group.userData.banners={count:signPlacements.length,textureCount:signs.size,language:'km',placements:signPlacements,railHeightM:1.55,overheadHeightM:2.4};
+ group.userData.banners={count:signPlacements.length,textureCount:signTextures.size,batchCount:signs.size,textureBytes:[...signTextures.values()].reduce((total,tx)=>total+tx.image.width*tx.image.height*4*4/3,0),branding:'festival-shared-vector',language:'km',placements:signPlacements,railHeightM:1.55,overheadHeightM:2.4};
  group.userData.bridges={C247:{x:COURSE.bridgeStart,yaw:bridgeYaw(COURSE.bridgeStart)},'30/4':{x:COURSE.bridgeEnd,yaw:bridgeYaw(COURSE.bridgeEnd),beforeStartM:COURSE.bridgeEnd-raceX(0)},placement:'owner-corrected game placement; OSM angles retained'};
  group.userData.mainStand={bank:'right in race direction',lengthM:128,tiers:8,roofHeightM:16,roof:'shallow double pitch, pale green-grey sheet metal',reference:'https://baosoctrang.org.vn/van-hoa-the-thao-du-lich/202411/hao-huc-cho-ngay-khai-hoi-67c01d9/',measured:false};
  return {totals,prepareLods:street.prepareLods,update(time,cameraX,cameraZ,visibility){crowd.update(time,cameraX,cameraZ,visibility);street.update(time,cameraX,cameraZ,visibility);traffic.update(time,cameraX,visibility);shallows.update(time);},dispose(){crowd.dispose();street.dispose();traffic.dispose();shallows.dispose();}};
