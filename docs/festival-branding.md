@@ -36,6 +36,7 @@ Measured over the unchanged 129 course-sign placements:
 
 | Measurement | Previous | Current |
 |---|---:|---:|
+| Logo SVG | 26,995 bytes | 8,300 bytes |
 | Unique sign textures | 25 | 24 |
 | Estimated RGBA texture memory, including mipmaps | 77,037,568 bytes | 53,155,157 bytes |
 
@@ -54,3 +55,11 @@ tests do not establish physical-tablet FPS or native Khmer proofreading.
 The regression gate is npm run lint, npm test, npm run build. Browser evidence
 is under docs/qa/festival-branding. Existing unrelated working files are excluded
 from staging and deployment.
+
+Public release: 2c48e27876db1d1592221b6c0ad31443d7cf9f9c, source
+34311a3decf2cd13f8e37003bdc4d07a03861eb2. Pages completed successfully and
+the public root HTML and SVG SHA-256 hashes matched the staged release. The
+public browser check passed all four menu layouts, unobscured header controls,
+SVG/canvas pixel equality, all 129 course signs, and entry into a two-button AI
+race with zero browser errors. The contact sheet and in-world close-up were
+inspected. Public evidence is in docs/qa/festival-branding/public.

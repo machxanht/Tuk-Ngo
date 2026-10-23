@@ -1,0 +1,55 @@
+{
+  "url": "https://machxanht.github.io/Tuk-Ngo/",
+  "sourceCommit": "34311a3decf2cd13f8e37003bdc4d07a03861eb2",
+  "pagesCommit": "2c48e27876db1d1592221b6c0ad31443d7cf9f9c",
+  "workflowUrl": "https://github.com/machxanht/Tuk-Ngo/actions/runs/40017365986",
+  "publishedVerifiedUtc": "2026-10-23T20:14:24Z",
+  "publicFilesMatch": {
+    "index.html": true,
+    "assets/festival/festival-logo.svg": true
+  },
+  "expectedHashes": {
+    "index.html": "230ce41788df9e01c29bb1b22b8155ad81d759a4c9881bd030756a17922d1762",
+    "assets/festival/festival-logo.svg": "9b90adfe6a97c2edf7fc68e8c4eee09485b3f1685835a7eee7196540321ef56b"
+  },
+  "svgBytes": 8300,
+  "svgCanvasMeanDifference": 0,
+  "world": {
+    "bannerCount": 129,
+    "uniqueTextures": 24,
+    "estimatedTextureBytes": 53155157.33333334,
+    "unbranded": 0,
+    "branding": "festival-shared-vector"
+  },
+  "responsive": [
+    [
+      1024,
+      768
+    ],
+    [
+      768,
+      1024
+    ],
+    [
+      1180,
+      430
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "browserErrors": [],
+  "physicalTabletTested": false,
+  "checks": [
+    "npm run lint",
+    "npm test",
+    "npm run build",
+    "vite build after compact-header CSS change",
+    "scripts/check-festival-branding.py on local build and public release"
+  ],
+  "limits": [
+    "Texture storage is an RGBA-plus-mipmaps estimate, not a GPU profiler reading.",
+    "No physical tablet FPS measurement."
+  ]
+}

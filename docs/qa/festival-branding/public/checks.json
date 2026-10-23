@@ -1,0 +1,137 @@
+{
+  "banners": [
+    {
+      "kind": "festival",
+      "lineBounds": [
+        {
+          "text": "ពិធីបុណ្យអុំទូក ២០២៦",
+          "left": 905.2382189941407,
+          "right": 1544.7017810058594,
+          "top": 18.4906137084961,
+          "bottom": 103.27938629150391
+        },
+        {
+          "text": "ខេត្តឃ្លាំង",
+          "left": 1145.727179260254,
+          "right": 1304.2128207397461,
+          "top": 113.1645294189453,
+          "bottom": 164.03547058105468
+        }
+      ],
+      "width": 2048,
+      "height": 198
+    },
+    {
+      "kind": "support",
+      "lineBounds": [
+        {
+          "text": "សូមស្វាគមន៍",
+          "left": 934.951573486328,
+          "right": 1660.5384265136718,
+          "top": 38.353025512695325,
+          "bottom": 212.8069744873047
+        }
+      ],
+      "width": 2048,
+      "height": 273
+    },
+    {
+      "kind": "sponsor",
+      "lineBounds": [
+        {
+          "text": "Kuon Khmer",
+          "left": 785.3236425781251,
+          "right": 1824.8563574218751,
+          "top": 54.19499999999999,
+          "bottom": 183.195
+        },
+        {
+          "text": "កម្លាំង និងសាមគ្គីភាព",
+          "left": 950.7068212890626,
+          "right": 1659.4731787109376,
+          "top": 220.32709808349608,
+          "bottom": 320.0729019165039
+        }
+      ],
+      "width": 2048,
+      "height": 386
+    },
+    {
+      "kind": "sponsor",
+      "lineBounds": [
+        {
+          "text": "Angkor Soul",
+          "left": 803.4975012207033,
+          "right": 1806.682498779297,
+          "top": 36.69499999999999,
+          "bottom": 200.695
+        },
+        {
+          "text": "ស្មារតីអង្គរ",
+          "left": 1126.3195684814455,
+          "right": 1483.8604315185548,
+          "top": 220.3294479370117,
+          "bottom": 320.07055206298827
+        }
+      ],
+      "width": 2048,
+      "height": 386
+    },
+    {
+      "kind": "wayfinding",
+      "lineBounds": [
+        {
+          "text": "ចំណុចចាប់ផ្តើម",
+          "left": 253.0533447265625,
+          "right": 770.9466552734375,
+          "top": 22.687838134765627,
+          "bottom": 125.43216186523438
+        }
+      ],
+      "width": 1024,
+      "height": 161
+    }
+  ],
+  "svgBytes": 8300,
+  "svgCanvasMeanDifference": 0,
+  "colouredPixels": 140516,
+  "outlined": true,
+  "palette": {
+    "red": "#e50935",
+    "deepRed": "#a21835",
+    "gold": "#f5b51b",
+    "deepGold": "#cc830d",
+    "white": "#fffdf1",
+    "teal": "#087d79",
+    "jade": "#00563c",
+    "blue": "#009bdf",
+    "coral": "#ef644b"
+  },
+  "responsive": [
+    [
+      1024,
+      768
+    ],
+    [
+      768,
+      1024
+    ],
+    [
+      1180,
+      430
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "world": {
+    "bannerCount": 129,
+    "uniqueTextures": 24,
+    "estimatedTextureBytes": 53155157.33333334,
+    "unbranded": 0,
+    "branding": "festival-shared-vector"
+  },
+  "errors": [],
+  "physicalTabletTested": false
+}
