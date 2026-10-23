@@ -1,0 +1,44 @@
+[
+  {
+    "path": "character-comparison/index.html",
+    "bytes": 3530,
+    "sha256": "4f80ba73fe71e4b537c454031dc5f98e881ead824f4f7731d51745277e28ff46",
+    "matchesLocal": true
+  },
+  {
+    "path": "character-comparison/styles.css",
+    "bytes": 3217,
+    "sha256": "6ef1dbde3cf4af3019bf6079383c7c3f2008c86f6bf59568b8ae9dd0c4e310ac",
+    "matchesLocal": true
+  },
+  {
+    "path": "character-comparison/viewer.js",
+    "bytes": 643029,
+    "sha256": "8538ce2eadd5f8e5bbf6ad19864718982a81a7ff9e181e06a991512eb6bb3ebf",
+    "matchesLocal": true
+  },
+  {
+    "path": "assets/character-comparison/manifest.json",
+    "bytes": 2017,
+    "sha256": "d6ea0da60f1f54d717c49fa47b78d92cb255f51ae1b5c39b760c4d374f55a4f7",
+    "matchesLocal": true
+  },
+  {
+    "path": "assets/character-comparison/d.glb",
+    "bytes": 1897672,
+    "sha256": "3c4cc22854e1098a4e4a3fd469748cc1e6fcffb65391abacb188845755b0e576",
+    "matchesLocal": true
+  },
+  {
+    "path": "assets/character-comparison/f.glb",
+    "bytes": 4099472,
+    "sha256": "51c81d0954b72c0c491249a04ae77ad55c9a5e2aa1f4a1cf05c74d172a7531de",
+    "matchesLocal": true
+  },
+  {
+    "path": "assets/character-comparison/CREDITS.md",
+    "bytes": 1332,
+    "sha256": "195a31e365d1a25d921d14c293e25e59bfdad82711dfb88965b81fc802a90f73",
+    "matchesLocal": true
+  }
+]
