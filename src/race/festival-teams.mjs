@@ -19,6 +19,12 @@ export const FESTIVAL_TEAMS=roster.records.map((r,i)=>{
 });
 const byId=new Map([...FESTIVAL_TEAMS,...CAMBODIA_TEAMS].map(t=>[t.id,t]));
 export const teamsForVenue=id=>id&&id!=='maspero'?CAMBODIA_TEAMS:FESTIVAL_TEAMS;
+// Cambodian cups keep eight invitations; any researched identity can enter.
+// The selector/online roster remains the full catalogue, independent of bracket size.
+export function cupTeamIds(seed,venueId,playerId){
+ const ids=shuffledFestivalIds(seed,teamsForVenue(venueId));
+ return venueId==='maspero'?ids:[playerId,...ids.filter(id=>id!==playerId).slice(0,7)];
+}
 export function festivalTeam(id){const team=byId.get(id);if(!team)throw Error('Unknown festival team: '+id);return team;}
 /** @param {number} seed @param {Array<{id:string}>} teams */
 export function shuffledFestivalIds(seed,teams=FESTIVAL_TEAMS){

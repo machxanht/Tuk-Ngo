@@ -4,7 +4,7 @@ import {profile} from './boat.mjs';
 
 // Art variants, not an assertion about the construction of a historical team.
 export const BOAT_CONSTRUCTIONS=['plywood','dugout'];
-export const constructionForLane=index=>index%2?'dugout':'plywood';
+export {constructionForLane,opponentConstruction} from './construction-rules.mjs';
 export function buildConstructionDetails(boat){
  const variants={plywood:new T.Group(),dugout:new T.Group()};
  const timber=new T.MeshLambertMaterial({color:'#b56d32'}),seam=new T.MeshLambertMaterial({color:'#75451f'}),carved=new T.MeshLambertMaterial({color:'#d99b4c'});

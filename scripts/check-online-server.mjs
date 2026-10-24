@@ -4,7 +4,7 @@ import WebSocket from 'ws';
 import {teamsForVenue} from '../src/race/festival-teams.mjs';
 
 const url=process.argv[2]||'http://127.0.0.1:8790',out=process.argv[3];
-const origin='https://machxanht.github.io',venueId='siem-reap',teams=teamsForVenue(venueId),report={url,checks:[],startedAt:new Date().toISOString()};
+const origin='https://machxanht.github.io',venueId='siem-reap',teams=teamsForVenue(venueId).slice(-2),report={url,teams:teams.map(t=>t.id),checks:[],startedAt:new Date().toISOString()};
 async function request(path,method='GET',data,guest,expected=200){const response=await fetch(url+path,{method,headers:{Origin:origin,...(data?{'Content-Type':'application/json'}:{}),...(guest?{Authorization:'Bearer '+guest.token}:{}),...(path==='/session'&&process.env.TUKNGO_QA_SECRET?{'X-QA-Token':process.env.TUKNGO_QA_SECRET}:{})},...(data?{body:JSON.stringify(data)}:{})});const value=await response.json();assert.equal(response.status,expected,JSON.stringify(value));return value;}
 const guests=await Promise.all([0,1].map(()=>request('/session','POST',{},null,201)));
 await request('/queue','POST',{venueId,teamId:teams[0].id,name:'No token'},null,401);

@@ -34,7 +34,7 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
   await document.fonts.load('700 64px "Noto Sans Khmer"');
  }catch(error){rigs.reverse().forEach(r=>r.dispose());assets?.dispose();throw error;}
  const rig=rigs[0],{scene,boat,renderer,actors}=rig;
- rigs.forEach((r,i)=>r.setConstruction(settings.current.constructionTypes?.[i]||constructionForLane(i)));
+ rigs.forEach((r,i)=>r.setConstruction(settings.current.constructionTypes?.[i]||constructionForLane(i,venue.id)));
  scene.background=new T.Color('#b9e9ff');scene.fog=new T.Fog('#d5f2fc',280,1000);
  // Broad daylight fill keeps the unlit sides readable without a post-process
  // pass, extra shadow maps, or changes to the verified athlete geometry.
@@ -117,7 +117,7 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
  const inputSamples=[];let receivedInputs=0;
  function flushInput(){const now=performance.now(),c=clock.current,s=settings.current,dt=Math.min(.25,Math.max(0,(now-c.last)/1000));c.last=now;if(s.playing){c.seconds+=dt;if(racing)advance(dt*(s.fast?3:1));}}
  const api={flushInput,noteInput(timestamp){if(settings.current.game?.state.phase!=='racing')return;const at=performance.now(),delay=timestamp>0&&timestamp<=at?at-timestamp:0;receivedInputs++;const sample={delayMs:delay,nextFrameMs:null};inputSamples.push(sample);if(inputSamples.length>64)inputSamples.shift();requestAnimationFrame(()=>sample.nextFrameMs=performance.now()-at);},get inputStats(){const percentile=key=>{const v=inputSamples.map(s=>s[key]).filter(Number.isFinite).sort((a,b)=>a-b);return v.length?v[Math.min(v.length-1,Math.floor(v.length*.95))]:null;};return{received:receivedInputs,samples:inputSamples.length,dispatchP95Ms:percentile('delayMs'),nextFrameP95Ms:percentile('nextFrameMs')};},get assetSelection(){return {teamIds:[...teamIds],constructionTypes:rigs.map(r=>r.construction)};},rig,rigs,scene,boat,camera,controls,renderer,banks,sky,river,official,effects,ceremony,game:settings.current.game,race,snapshot,advance,reset,
-  setConstruction(types){rigs.forEach((r,i)=>r.setConstruction(types[i]||constructionForLane(i)));lastView='';},
+  setConstruction(types){rigs.forEach((r,i)=>r.setConstruction(types[i]||constructionForLane(i,venue.id)));lastView='';},
   async setTeams(ids){const request=Symbol();api.teamRequest=request;await Promise.all(rigs.map((r,i)=>r.prepareTeams([ids[i]])));if(disposed||api.teamRequest!==request)return;teamIds=[...ids];effects.forEach(e=>e.reset());},
   async setKbach(ids){
    const request=Symbol();api.kbachRequest=request;

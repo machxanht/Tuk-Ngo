@@ -37,7 +37,7 @@ function passengerVehicle(type){
 }
 function wheelGeometry(radius,bicycle=false){const b=assembly(),{add,rod}=b;add(new T.TorusGeometry(radius-(bicycle?.018:.04),bicycle?.018:.04,6,20),'#293334');add(new T.TorusGeometry(radius*.78,.013,4,20),'#a6b1ad');add(new T.CylinderGeometry(.055,.055,bicycle?.10:.18,10),'#6d7774',0,0,0,Math.PI/2);for(let i=0;i<(bicycle?12:6);i++){const a=i*Math.PI*2/(bicycle?12:6);rod('#8b9793',[0,0,bicycle?.025:.08],[Math.cos(a)*radius*.78,Math.sin(a)*radius*.78,bicycle?.025:.08],bicycle?.006:.018);}return b.finish();}
 function carTemplates(){const parent=new T.Group(),source=buildCoherentVehicles(parent),result={};source.group.updateMatrixWorld(true);for(const car of source.group.children){const parts=[],wheels=[];for(const o of car.children){if(o.isMesh){o.updateMatrix();parts.push(paintGeometry(o.geometry.clone().applyMatrix4(o.matrix),o.material.color));}else if(o.isGroup&&wheels.length===0){for(const w of o.children){w.updateMatrix();wheels.push(paintGeometry(w.geometry.clone().applyMatrix4(w.matrix),w.material.color));}}}const body=mergeGeometries(parts,false),wheel=mergeGeometries(wheels,false);parts.concat(wheels).forEach(g=>g.dispose());result[car.name.includes('Pickup')?'pickup':'sedan']={body,wheel,radius:.31,axles:car.name.includes('Pickup')?[-1.48,1.37]:[-1.3,1.27]};}source.dispose();return result;}
-export function buildFestivalTraffic(parent,{road=trafficRoad,minX=-140,maxX=2440}={}){
+export function buildFestivalTraffic(parent,{road=trafficRoad,minX=-140,maxX=2440,profile='maspero'}={}){
  const group=new T.Group();group.name='Festival_Traffic_V21';parent.add(group);const material=new T.MeshStandardMaterial({vertexColors:true,roughness:.64,side:T.DoubleSide}),wheelMaterial=new T.MeshStandardMaterial({vertexColors:true,roughness:.85}),legMaterial=new T.MeshStandardMaterial({color:'#394a53',roughness:.85}),templates=carTemplates();
  for(const type of['scooter','motorcycle','bicycle']){templates[type]=motorTemplate(type);templates[type].wheel=wheelGeometry(templates[type].radius,type==='bicycle');}
  templates['delivery-scooter']=motorTemplate('delivery-scooter');templates['delivery-scooter'].wheel=wheelGeometry(templates['delivery-scooter'].radius);
@@ -46,12 +46,13 @@ export function buildFestivalTraffic(parent,{road=trafficRoad,minX=-140,maxX=244
  // Dense festival traffic uses independent, nonuniform gaps in each lane.
  // Shared lane speed preserves those gaps instead of letting vehicles collide.
  for(const side of[-1,1])for(const direction of[-1,1])for(const lane of[0,1,2,3]){
-  const count=lane===0?140:lane===3?110:480,seed=(side+1)*17003+(direction+1)*1709+lane*137;
-  const gaps=Array.from({length:count},(_,i)=>1+Math.pow(hash(seed+i*3+2),2)*5),sum=gaps.reduce((a,b)=>a+b,0),minimum=lane===0?8:lane===3?2.6:3.0;
+  const carLane=profile==='maspero'?lane===0:lane<=1;
+  const count=profile==='maspero'?(lane===0?140:lane===3?110:480):(carLane?240:lane===3?45:75),seed=(side+1)*17003+(direction+1)*1709+lane*137;
+  const gaps=Array.from({length:count},(_,i)=>1+Math.pow(hash(seed+i*3+2),2)*5),sum=gaps.reduce((a,b)=>a+b,0),minimum=carLane?8:lane===3?2.6:3.0;
   let x=MIN+hash(seed+71)*12;
   for(let i=0;i<count;i++){
-   const id=vehicles.length,r=hash(seed+i*7+17),type=lane===0?(r<.55?'sedan':r<.76?'pickup':r<.94?'van':'minibus'):lane===3?'bicycle':r<.53?'scooter':r<.84?'motorcycle':'delivery-scooter';
-   const offset=lane===0?1.5:lane===1?3.1:lane===2?4.3:5.65;
+   const id=vehicles.length,r=hash(seed+i*7+17),type=carLane?(r<.55?'sedan':r<.76?'pickup':r<.94?'van':'minibus'):lane===3?'bicycle':r<.53?'scooter':r<.84?'motorcycle':'delivery-scooter';
+   const offset=profile==='maspero'?[1.5,3.1,4.3,5.65][lane]:[1.65,4.8,6.7,7.7][lane];
    vehicles.push({id,type,side,direction,lane,tint:new T.Color().setHSL(hash(id+515)*.12,.04+hash(id+711)*.18,.77+hash(id+933)*.2),start:x,speed:lane===3?1.45+hash(seed+30)*.3:1.75+hash(seed+77)*.6,offset:offset+(hash(seed+i*5+81)-.5)*(lane===0?.26:.42),phase:hash(id+80)*Math.PI*2});
    x+=minimum+(LENGTH-count*minimum)*gaps[i]/sum;
   }
@@ -61,7 +62,8 @@ export function buildFestivalTraffic(parent,{road=trafficRoad,minX=-140,maxX=244
  const bikeCount=vehicles.filter(v=>v.type==='bicycle').length,legGeo=new T.CylinderGeometry(.055,.055,1,8),legs=new T.InstancedMesh(legGeo,legMaterial,bikeCount*4);legs.name='Festival_Bicycle_Pedal_Legs';legs.frustumCulled=false;group.add(legs);
  const footParts=assembly();footParts.add(new T.CapsuleGeometry(.055,.13,3,8),'#403a32',.06,.025,0,0,0,Math.PI/2);footParts.box('#86938e',.04,-.036,0,.18,.026,.13);const shoeGeo=footParts.finish(),shoeMaterial=new T.MeshStandardMaterial({vertexColors:true,roughness:.8}),feet=new T.InstancedMesh(shoeGeo,shoeMaterial,bikeCount*2),crankGeo=new T.CylinderGeometry(.014,.014,1,6),crankMaterial=new T.MeshStandardMaterial({color:'#737f7c',roughness:.6,metalness:.2}),cranks=new T.InstancedMesh(crankGeo,crankMaterial,bikeCount*2);feet.name='Festival_Bicycle_Shoes_Pedals';cranks.name='Festival_Bicycle_Crank_Arms';feet.frustumCulled=cranks.frustumCulled=false;group.add(feet,cranks);
  const stats={version:21,count:vehicles.length,types:Object.fromEntries(Object.keys(templates).map(t=>[t,vehicles.filter(v=>v.type===t).length])),riders:vehicles.filter(v=>!fourWheels(v.type)).length,drawCalls:batches.length*2+3,geometryTriangles:Object.values(templates).reduce((n,t)=>n+(t.body.attributes.position.count+t.wheel.attributes.position.count)/3,0)+(legGeo.index.count+crankGeo.index.count)/3+shoeGeo.attributes.position.count/3,visible:0,submittedTriangles:0,roadY:GROUND,range:{bodies:220,wheels:75},laneOffsets:{motor:2.15,bicycle:4.35},streamSpeed:'Shared per direction/bank/category to preserve spacing; cyclists on outer lane',source:'Original rounded rider and vehicle geometry; sedan/pickup reused from approved V20 study',samples:[]};
- stats.laneOffsets={cars:1.5,motor:[3.1,4.3],bicycle:5.65};stats.placement='independent random gaps and lateral jitter; four safe lanes per bank/direction';
+ stats.profile=profile;stats.carShare=vehicles.filter(v=>fourWheels(v.type)).length/vehicles.length;
+ stats.laneOffsets=profile==='maspero'?{cars:[1.5],motor:[3.1,4.3],bicycle:5.65}:{cars:[1.65,4.8],motor:[6.7],bicycle:7.7};stats.placement='independent random gaps and lateral jitter; four safe lanes per bank/direction';
  function pose(v,time){const x=MIN+((v.start-MIN+v.direction*v.speed*time)%LENGTH+LENGTH)%LENGTH,z=road(x,v.side,v.direction*v.offset),slope=(road(x+.1,v.side)-road(x-.1,v.side))/.2;return{x,y:GROUND,z,yaw:-Math.atan(slope)+(v.direction<0?Math.PI:0)};}
  function segment(a,b,parentMatrix,index){const av=new T.Vector3(...a),bv=new T.Vector3(...b),d=bv.clone().sub(av);q.setFromUnitVectors(up,d.clone().normalize());matrix.compose(av.add(bv).multiplyScalar(.5),q,new T.Vector3(1,d.length(),1));matrix.premultiply(parentMatrix);legs.setMatrixAt(index,matrix);}
  let lastUpdate=-Infinity,lastCameraX=Infinity,lastRevision=-1;

@@ -4,7 +4,9 @@ import {createHash} from 'node:crypto';
 import {createRaceGame} from '../src/race/gameplay.mjs';
 import {raceVenue,RACE_VENUES,venueRaceX,commentaryDistance} from '../src/race/race-venues.mjs';
 import {introShot,playableShot} from '../src/race/race-camera.mjs';
-import {teamsForVenue,shuffledFestivalIds,festivalTeam} from '../src/race/festival-teams.mjs';
+import {teamsForVenue,cupTeamIds,festivalTeam} from '../src/race/festival-teams.mjs';
+import {searchTeams} from '../src/race/team-search.mjs';
+import {constructionForLane,opponentConstruction} from '../src/race/construction-rules.mjs';
 import {createTournament} from '../src/race/tournament.mjs';
 import {CAMBODIA_TEAMS,CAMBODIA_RESEARCH_ONLY} from '../src/race/cambodia-teams.mjs';
 import {createCommentaryDirector} from '../src/race/race-audio.mjs';
@@ -26,10 +28,13 @@ for(const venue of Object.values(RACE_VENUES)){
  const director=createCommentaryDirector(),cues=[];for(let d=0;d<venue.length;d++)cues.push(...director.update({phase:'racing',distances:[commentaryDistance(d,venue),0],elapsed:d,pace:'steady',gap:0,stamina:80,combo:0}).map(c=>({id:c.id,d})));
  assert.equal(cues.find(c=>c.id==='last-hundred').d,venue.length-100);assert.equal(cues.find(c=>c.id==='last-fifty').d,venue.length-50);
  for(let t=0;t<=10;t+=.05){const s=introShot(t,venue.id);assert([...s.position,...s.target,s.fov].every(Number.isFinite));}
- const roster=teamsForVenue(venue.id),cup=createTournament({playerId:roster[0].id,teamIds:shuffledFestivalIds(32,roster)});let rounds=0;while(cup.currentMatch()){const match=cup.currentMatch();cup.finish({matchId:match.matchId,result:'win'});rounds++;}assert.equal(cup.snapshot().status,'champion');assert.equal(rounds,venue.id==='maspero'?6:3);assert(roster.every(t=>festivalTeam(t.id)===t));
+ const roster=teamsForVenue(venue.id),player=roster.at(-1),ids=cupTeamIds(32,venue.id,player.id),cup=createTournament({playerId:player.id,teamIds:ids});let rounds=0;while(cup.currentMatch()){const match=cup.currentMatch();cup.finish({matchId:match.matchId,result:'win'});rounds++;}assert.equal(cup.snapshot().status,'champion');assert(rounds>0&&rounds<=(venue.id==='maspero'?6:3));assert(roster.every(t=>festivalTeam(t.id)===t));assert.equal(ids.length,venue.id==='maspero'?61:8);assert.equal(new Set(ids).size,ids.length);
+ if(venue.id!=='maspero'){assert.equal(constructionForLane(0,venue.id),'dugout');assert.equal(constructionForLane(1,venue.id),'dugout');assert.equal(opponentConstruction('dugout',venue.id),'dugout');}
 }
 assert(finishes['phnom-penh'].stamina<finishes.maspero.stamina-20);assert(finishes['siem-reap'].seconds<finishes.maspero.seconds/2);
-assert.equal(raceVenue('unknown').id,'maspero');assert.equal(CAMBODIA_TEAMS.length,8);assert(CAMBODIA_RESEARCH_ONLY.every(t=>!CAMBODIA_TEAMS.some(p=>p.id===t.id)));
+assert.equal(raceVenue('unknown').id,'maspero');assert.equal(CAMBODIA_TEAMS.length,17);assert(CAMBODIA_RESEARCH_ONLY.every(t=>!CAMBODIA_TEAMS.some(p=>p.id===t.id)));
+assert(searchTeams(teamsForVenue('maspero'),'tum nup').some(t=>t.id==='tum-nup-2'));assert.equal(searchTeams(CAMBODIA_TEAMS,'សារាយ')[0].id,'kh-saray-techo');assert.equal(searchTeams(CAMBODIA_TEAMS,'keo pursat')[0].id,'kh-techo-keo-vichey');assert.equal(searchTeams(CAMBODIA_TEAMS,'not a real boat').length,0);
+const large=Array.from({length:380},(_,i)=>({id:'test-'+i,name:'Test boat '+i,nameKm:'សាកល្បង'}));assert.equal(searchTeams(large,'boat 379')[0].id,'test-379');assert.equal(searchTeams(large,'').length,380);
 const exported=JSON.parse(await readFile('public/assets/data/cambodia-teams.json'));assert.deepEqual(exported.teams,CAMBODIA_TEAMS);
 const english=JSON.parse(await readFile('public/assets/race-audio/english/manifest.json'));assert.equal(Object.keys(english.clips).length,19);
 for(const clip of Object.values(english.clips)){assert.equal(clip.lang,'en');assert.equal(clip.sourceType,'azure-stock-neural');assert(clip.peak>.01&&clip.peak<=1.01);const data=await readFile('public/assets/race-audio/'+clip.file);assert.equal(createHash('sha256').update(data).digest('hex'),clip.sha256);}

@@ -173,13 +173,18 @@
 /* The selected live boat stays above one compact selection sheet. */
 .venue-picker{display:grid;gap:5px;margin:10px 0;font-size:12px;font-weight:700;text-align:left}
 .venue-picker select{width:100%;min-height:44px;border:1px solid #9bbcb6;border-radius:12px;background:#edf6ed;color:#123e38;padding:8px;font:inherit}
-.game-dialog.game-setup.boat-selection{top:auto;bottom:12px;left:50%;right:auto;transform:translateX(-50%);width:min(620px,calc(100% - 24px));max-height:56%;display:grid;grid-template-columns:1fr auto;gap:10px;padding:16px;overflow:auto}
+.game-dialog.game-setup.boat-selection{top:auto;bottom:12px;left:50%;right:auto;transform:translateX(-50%);width:min(620px,calc(100% - 24px));max-height:66%;display:grid;grid-template-columns:1fr auto;grid-template-rows:auto minmax(0,1fr) auto;gap:10px;padding:16px;overflow:visible}
 .boat-selection .setup-header{grid-column:1/-1;margin:0;align-items:center}.boat-selection .setup-header h2{font-size:18px;margin:0}
-.boat-picker{grid-column:1/-1;display:grid;grid-template-columns:180px 1fr;gap:12px;align-items:start}
-.boat-picker label{display:grid;gap:5px;font-size:12px}.boat-picker input,.boat-picker select{width:100%;max-width:100%;border:1px solid #b5c9c2;border-radius:10px;background:#fffdf5;color:#153f39;padding:8px;font:inherit}
-.boat-picker input{min-height:44px}.boat-picker select{height:108px;padding:4px}.boat-picker option{padding:5px 8px;min-height:24px}
 .selection-options{align-self:center;min-width:0}.selection-options summary{cursor:pointer;font-size:12px;min-height:44px;display:flex;align-items:center}
 .selection-options label{display:grid;gap:4px;margin:8px 0;font-size:12px}.selection-options select{width:100%;min-height:44px}
 .selection-start{min-width:185px;align-self:end;min-height:48px}.boat-selection>p[role=alert]{grid-column:1/-1}
-@media(max-width:620px){.game-dialog.game-setup.boat-selection{bottom:8px;padding:12px;max-height:53%;gap:8px}.boat-picker{grid-template-columns:1fr;gap:6px}.boat-picker label:first-child{display:none}.boat-picker select{height:100px}.selection-start{min-width:0;font-size:12px;padding:10px}.boat-selection .setup-header h2{font-size:16px}}
-@media(max-height:550px) and (min-width:621px){.game-dialog.game-setup.boat-selection{width:470px;left:auto;right:12px;top:12px;bottom:12px;transform:none;max-height:none;align-content:start;padding:12px;gap:8px}.boat-selection .setup-header{padding:0 0 6px}.boat-picker{grid-template-columns:1fr}.boat-picker select{height:94px}.boat-picker label:first-child{display:none}.selection-start{min-width:0;font-size:12px}.boat-selection .setup-header h2{font-size:16px}}
+@media(max-width:620px){.game-dialog.game-setup.boat-selection{bottom:8px;padding:12px;max-height:53%;gap:8px}.selection-start{min-width:0;font-size:12px;padding:10px}.boat-selection .setup-header h2{font-size:16px}}
+@media(max-height:550px) and (min-width:621px){.game-dialog.game-setup.boat-selection{width:470px;left:auto;right:12px;top:12px;bottom:12px;transform:none;max-height:none;align-content:start;padding:12px;gap:8px}.boat-selection .setup-header{padding:0 0 6px}.selection-start{min-width:0;font-size:12px}.boat-selection .setup-header h2{font-size:16px}}
+.boat-selection>.team-browser{grid-column:1/-1;grid-row:2;min-height:0;grid-template-rows:auto auto auto minmax(0,1fr) auto}
+.boat-selection>.team-browser .team-choices{min-height:0}
+.boat-selection>.selection-options{grid-column:1;grid-row:3;align-self:end;position:relative}
+.boat-selection>.selection-start{grid-column:2;grid-row:3}
+.boat-selection>.selection-options[open]{max-height:190px;overflow:auto;background:#fffdf2;border:1px solid #b5c9c2;border-radius:12px;padding:8px}
+@media(max-width:620px){.game-dialog.game-setup.boat-selection{max-height:60%;bottom:8px}.boat-selection>.team-browser .team-choices{max-height:144px}.boat-selection>.selection-start{font-size:11px;padding:8px;max-width:180px}}
+@media(max-height:550px) and (min-width:621px){.game-dialog.game-setup.boat-selection{max-height:none;align-content:stretch}.boat-selection>.team-browser .team-choices{max-height:112px}.boat-selection>.selection-options[open]{max-height:130px}}
+@media(max-height:550px) and (min-width:621px){.boat-selection>.team-browser{grid-template-rows:auto minmax(52px,1fr) auto}.boat-selection>.team-browser .team-browser-heading,.boat-selection>.team-browser .team-current{display:none}.boat-selection>.team-browser .team-choices{max-height:none}}

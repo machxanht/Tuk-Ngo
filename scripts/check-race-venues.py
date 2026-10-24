@@ -51,9 +51,9 @@ with sync_playwright() as p:
    page.wait_for_timeout(5500);page.screenshot(path=str(out/(venue+'-menu.png')))
    data=evaluate('.river.group.userData');assert data['venueId']==venue and data['courseLength']==length and len(data['landmarks'])>=4
    assert data['banners']['textureCount']<=6
-   page.locator('.menu-actions .game-quick').click();select=page.get_by_label('Chọn đội ghe',exact=True)
-   ids=select.locator('option').evaluate_all('es=>es.map(e=>e.value)');assert len(ids)==8
-   select.select_option(ids[2]);page.wait_for_function(api+".assetSelection.teamIds[0]==='"+ids[2]+"'")
+   page.locator('.menu-actions .game-quick').click();select=page.locator('.boat-selection>.team-browser')
+   ids=select.locator('.team-choice').evaluate_all('es=>es.map(e=>e.dataset.teamId)');assert len(ids)==8
+   select.locator('.team-choice').nth(2).click();page.wait_for_function(api+".assetSelection.teamIds[0]==='"+ids[2]+"'")
    page.locator('.selection-start').click();page.wait_for_function(api+".game.state.phase==='intro'");page.evaluate(api+'.game.advance(3)');page.wait_for_timeout(250);page.screenshot(path=str(out/(venue+'-intro.png')))
    page.evaluate(api+'.game.skipIntro()');page.evaluate(api+'.game.advance(3)');page.wait_for_function(api+".game.state.phase==='racing'")
    page.wait_for_function("document.querySelector('[data-testid=stroke-pad]')?.disabled===false");page.get_by_test_id('stroke-pad').focus();page.keyboard.down('Space');page.wait_for_timeout(1800)
@@ -74,7 +74,7 @@ with sync_playwright() as p:
     if cup['status']=='champion':break
     page.get_by_role('button',name='Đua vòng tiếp theo',exact=True).click()
    assert rounds==3 and cup['status']=='champion';page.screenshot(path=str(out/(venue+'-cup.png')));menu()
-   report['venues'][venue]={'length':length,'aiResult':state['result'],'practice':True,'cupRounds':rounds,'roster':len(ids),'spectators':data['spectators'],'landmarks':data['landmarks'],'fpsDpr2OnPc':fps,'buttons':buttons};print('Venue passed:',venue,flush=True)
+   report['venues'][venue]={'length':length,'aiResult':state['result'],'practice':True,'cupRounds':rounds,'roster':17,'choicesPerPage':len(ids),'spectators':data['spectators'],'landmarks':data['landmarks'],'fpsDpr2OnPc':fps,'buttons':buttons};print('Venue passed:',venue,flush=True)
   page.get_by_label('Sân đấu',exact=True).select_option('maspero');page.wait_for_function('!!'+api+'&&'+api+".game.state.venueId==='maspero'",timeout=90000)
   assert not errors,errors;report['errors']=errors;(out/'checks.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');print(json.dumps(report,ensure_ascii=False))
  except Exception:

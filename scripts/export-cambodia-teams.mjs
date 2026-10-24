@@ -5,4 +5,4 @@ await writeFile('public/assets/data/cambodia-teams.json',JSON.stringify(data,nul
 const columns=['id','name','nameKm','province','season','reportedCrew','sourceUrl','appearance','transliterationVerified'];
 const rows=[columns,...CAMBODIA_TEAMS.map(t=>columns.map(key=>t[key]??''))];
 await writeFile('docs/cambodia-teams.csv','\ufeff'+rows.map(row=>row.map(value=>'"'+String(value).replaceAll('"','""')+'"').join(',')).join('\r\n'));
-console.log('Exported eight sourced invitations and one research-only chev record.');
+console.log('Exported '+CAMBODIA_TEAMS.length+' sourced identities and '+CAMBODIA_RESEARCH_ONLY.length+' research-only chev record.');

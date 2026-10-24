@@ -1,5 +1,16 @@
 # Online racing, durable rankings and festival lobby
 
+## Cambodian riverfronts and searchable boats
+
+- Distinct Phnom Penh and Siem Reap streets, inland neighbourhoods, landmark
+  interpretations, crossings and car-heavy traffic; dugout defaults on both lanes.
+- Shared searchable, paginated boat selection for local, AI opponent and online
+  modes. Latin accent folding and Khmer search; no long team dropdown.
+- Expanded Cambodian catalogue from 8 to 17 sourced identities, with year and
+  provenance preserved. Eight-team cups and saved progress remain supported.
+- The full 300+ named roster is not imported: the located 2016 committee list
+  is a low-resolution 260-entry photo scan. See docs/cambodia-roster-review.md.
+
 - Added real two-human WebSocket races, per-course matchmaking, friend-room codes, boat loading/ready flow and a shared server countdown on the existing game URL.
 - Added server-authoritative fixed-tick simulation, sanitized inputs, signed guest profiles, bounded messages, reconnect/deadman handling and durable exactly-once Elo settlement. Private rooms and pre-start cancellations do not change rankings.
 - Added a bright jade/gold lobby and leaderboard with Việt/Khmer/English copy, readable responsive layouts, keyboard focus handling, network feedback and guest-profile limitations. Existing race controls remain small and translucent.

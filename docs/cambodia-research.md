@@ -5,7 +5,7 @@ Rà soát ngày 24/10/2026. Đã bổ sung **Phnom Penh – Tonle Sap (1.700 m)*
 - **Phnom Penh:** đường trường, dòng ngang mạnh hơn, hao thể lực nhiều hơn và hồi sức chậm hơn. Bối cảnh gồm bờ hoàng cung, mái nhiều tầng, đình đón lễ, phố ven sông và đường chân trời bờ đối diện.
 - **Siem Reap:** chặng ngắn, hành lang lái hẹp, tăng tốc ít tốn sức hơn. Bối cảnh là sông trong phố, đình ven sông, cầu ngoài đoạn đua, hàng quán và cây xanh; không đặt Angkor Wat cạnh sông.
 - Cả hai có luyện tập, đua đôi với AI và cúp mời 8 đội. Về đích tính theo mũi ghe. Hòa thì đua lại; các lượt khác trong nhánh đấu được mô phỏng. Đây là luật game, chưa phải điều lệ chính thức Campuchia.
-- Đã đối chiếu **8 tên đội** để đưa vào danh sách mời, kèm chữ Khmer và nguồn từng tên trong [CSV](cambodia-teams.csv). Mẫu ghe, số VĐV hiển thị và màu áo hiện dùng bộ asset chung; chưa phải bản sao của từng đội thật. Một đội dùng kiểu chèo khác được giữ riêng trong dữ liệu nghiên cứu.
+- Đã đối chiếu **17 tên đội** để đưa vào danh sách mời, kèm chữ Khmer và nguồn từng tên trong [CSV](cambodia-teams.csv). Mẫu ghe, số VĐV hiển thị và màu áo hiện dùng bộ asset chung; chưa phải bản sao của từng đội thật. Một đội dùng kiểu chèo khác được giữ riêng trong dữ liệu nghiên cứu.
 - Số lượng được báo cáo ở Phnom Penh 2024 là **346 ghe thi đấu**; một báo cáo đăng ký ghi **348 ghe / 22.042 tay bơi**. Hai con số thuộc phạm vi báo cáo khác nhau. Siem Reap 2023 được báo cáo có **32 ghe đua**. Không gán các số này thành danh sách giải 2026.
 
 ## Tư liệu chi tiết và giới hạn xác minh
@@ -64,9 +64,9 @@ Chev boats use a different rowing mechanism, so they remain in research only
 until that rig exists. The existing paddle-crew rigs and shirt are preserved.
 No historical rank changes a player's boat speed.
 
-Eight sourced identities are exported in [cambodia-teams.csv](cambodia-teams.csv)
+17 sourced identities are exported in [cambodia-teams.csv](cambodia-teams.csv)
 and `public/assets/data/cambodia-teams.json`, with Khmer spellings and source
-URLs. Seven have 2024 identity evidence. Sdach Damrey Sa Phluk Khiev Meanchey
+URLs. Eleven have 2024 identity evidence; five retain their 2019 results evidence. Sdach Damrey Sa Phluk Khiev Meanchey
 Baramey Wat Aranh Sakor has a [2026 provincial-government report](https://takeo.info.gov.kh/km/article/01a13e92-415c-767b-827c-4bf4c090200a)
 quoting the boat's abbot after provincial races. This does not establish an
 official 2026 Phnom Penh or Siem Reap city entry. The invitational cups use
@@ -91,3 +91,33 @@ Winning means the bow crosses first. No deliberate contact; each boat stays
 inside its corridor. Countdown, ties/replays, exhaustion and elimination remain
 explicit game rules. Published reports are not a complete rulebook; no invented
 foul or tie rule is presented as an official Cambodian regulation.
+
+## Streets and catalogue update
+
+Phnom Penh now uses a wider Sisowath-style promenade, two car lanes per
+ direction, kerbs, junctions and crossings, arcaded shophouses, a west-bank
+ royal compound with gardens, and an inland east-bank skyline. Siem Reap uses
+ lower tiled shophouses, Pokambor-side pavilion/market, a Royal Gardens /
+ Residence interpretation and balustraded bridges outside the race. Both
+ retain bright daylight. These are stylised interpretations, not surveyed
+ replicas. The bridge north of the Phnom Penh start is an abbreviated steel
+ arch interpretation, not a claim about its measured span.
+
+Visual references inspected: [2024 riverfront preparation photo](https://b2b-cambodia.com/news/cambodia-water-festival-2024-what-to-know/),
+[Tourism Ministry riverfront description](https://tourismcambodia.org/public/provinces/search/detail/167/riverfront),
+[Siem Reap festival photo and announcement](https://www.information.gov.kh/articles/142214),
+and [first-hand Pokambor / bridge festival notes](https://helloangkor.com/in-pictures-the-water-festival-siem-reap-2024/).
+
+At the user's requested traffic mix, cars/vans/minibuses are 80% of the
+ simulated Cambodian traffic entries. This is an art-direction ratio, not
+ a measured Cambodian transport statistic. The original Maspéro mix is
+ preserved. The Cambodian default hull is the existing dugout art on both
+ lanes; it does not establish that each named real boat is hewn from a single
+ tree. Individual construction remains unverified where source evidence is absent.
+
+The selector is shared with online/opponent selection and supports Khmer,
+ accent-insensitive Latin and province search with bounded rendered rows.
+ Seventeen Cambodian identities are now playable; the invitation cup still
+ draws eight. See [catalogue review](cambodia-roster-review.md) for the exact
+ additions, historical years, 260-name photograph source and remaining 300+
+ roster gap. Do not describe the full 300+ import as complete.
