@@ -123,7 +123,7 @@
  function renderDetail(){
   const item=current(),entries=visible(),index=entries.findIndex(i=>i.id===item?.id);
   $('previous').disabled=index<=0;$('next').disabled=index<0||index>=entries.length-1;
-  $('position').textContent=item?(view==='teams'?'TÊN ĐỘI':view==='field'?'ÂM THANH NỀN':phaseName(item.stage))+' · '+(index+1)+' / '+entries.length:'';
+  $('position').textContent=item?(view==='teams'?'TÊN ĐỘI':view==='field'?'ÂM THANH NỀN':view==='venues'?'THEO SÂN':phaseName(item.stage))+' · '+(index+1)+' / '+entries.length:'';
   $('item-title').textContent=item?.title||'Không có mục phù hợp';$('item-context').textContent=item?.when?.replace('tournament.championId trùng đội thắng chung kết','game xác nhận đội thắng chung kết là nhà vô địch').replace('registrationId','mã đăng ký')||'Thử bỏ tìm kiếm hoặc bộ lọc để tiếp tục.';
   for(const el of document.querySelectorAll('.variant-wrap,.listen,.transcripts,.review,.more'))el.hidden=!item;
   $('audio-note').hidden=!item;$('warning').hidden=true;$('transcript-note').hidden=true;if(!item)return;

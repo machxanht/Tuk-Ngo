@@ -1,0 +1,179 @@
+{
+  "url": "https://machxanht.github.io/Tuk-Ngo/",
+  "cacheDisabled": true,
+  "audioMuted": true,
+  "physicalTabletTested": false,
+  "maps": {
+    "maspero": {
+      "readySeconds": 15.15,
+      "transferBytesIncludingHeaders": 16448006,
+      "completedRequests": 39,
+      "renderDpr": 2,
+      "largest": [
+        {
+          "path": "/Tuk-Ngo/assets/illustrated-v22/athlete-rig-v27.glb",
+          "bytes": 4003709
+        },
+        {
+          "path": "/Tuk-Ngo/assets/festival-crowd/crowd-compact.packed",
+          "bytes": 3893810
+        },
+        {
+          "path": "/Tuk-Ngo/assets/athlete-master/ceremony-crew.json",
+          "bytes": 2795609
+        },
+        {
+          "path": "/Tuk-Ngo/assets/illustrated-v22/hull-rig-v25.glb",
+          "bytes": 2454574
+        },
+        {
+          "path": "/Tuk-Ngo/assets/ghe-ngo/kbach-library/fleet.webp",
+          "bytes": 1146505
+        },
+        {
+          "path": "/Tuk-Ngo/assets/character-comparison/athlete-faces.glb",
+          "bytes": 889950
+        },
+        {
+          "path": "/Tuk-Ngo/assets/athlete-master/rowing-motion.glb",
+          "bytes": 380097
+        },
+        {
+          "path": "/Tuk-Ngo/assets/illustrated-v22/NotoSansKhmer.ttf",
+          "bytes": 174262
+        },
+        {
+          "path": "/Tuk-Ngo/assets/illustrated-v22/shirt-runtime-v32.json",
+          "bytes": 98764
+        },
+        {
+          "path": "/Tuk-Ngo/assets/three-renderer-4qsfxkIM.js",
+          "bytes": 89802
+        },
+        {
+          "path": "/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
+          "bytes": 77879
+        },
+        {
+          "path": "/Tuk-Ngo/assets/index-C_J0c7J_.js",
+          "bytes": 71432
+        }
+      ],
+      "errors": []
+    },
+    "phnom-penh": {
+      "readySeconds": 8.7,
+      "transferBytesIncludingHeaders": 13658547,
+      "completedRequests": 39,
+      "renderDpr": 2,
+      "largest": [
+        {
+          "path": "/Tuk-Ngo/assets/illustrated-v22/athlete-rig-v27.glb",
+          "bytes": 4003717
+        },
+        {
+          "path": "/Tuk-Ngo/assets/festival-crowd/crowd-compact.packed",
+          "bytes": 3893788
+        },
+        {
+          "path": "/Tuk-Ngo/assets/illustrated-v22/hull-rig-v25.glb",
+          "bytes": 2454695
+        },
+        {
+          "path": "/Tuk-Ngo/assets/ghe-ngo/kbach-library/fleet.webp",
+          "bytes": 1146368
+        },
+        {
+          "path": "/Tuk-Ngo/assets/character-comparison/athlete-faces.glb",
+          "bytes": 890083
+        },
+        {
+          "path": "/Tuk-Ngo/assets/athlete-master/rowing-motion.glb",
+          "bytes": 379978
+        },
+        {
+          "path": "/Tuk-Ngo/assets/illustrated-v22/NotoSansKhmer.ttf",
+          "bytes": 174262
+        },
+        {
+          "path": "/Tuk-Ngo/assets/illustrated-v22/shirt-runtime-v32.json",
+          "bytes": 98613
+        },
+        {
+          "path": "/Tuk-Ngo/assets/three-renderer-4qsfxkIM.js",
+          "bytes": 89788
+        },
+        {
+          "path": "/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
+          "bytes": 77890
+        },
+        {
+          "path": "/Tuk-Ngo/assets/index-C_J0c7J_.js",
+          "bytes": 71430
+        },
+        {
+          "path": "/Tuk-Ngo/assets/athlete-master/athlete-details.glb",
+          "bytes": 67875
+        }
+      ],
+      "errors": []
+    },
+    "siem-reap": {
+      "readySeconds": 10.336,
+      "transferBytesIncludingHeaders": 13658916,
+      "completedRequests": 39,
+      "renderDpr": 2,
+      "largest": [
+        {
+          "path": "/Tuk-Ngo/assets/illustrated-v22/athlete-rig-v27.glb",
+          "bytes": 4003871
+        },
+        {
+          "path": "/Tuk-Ngo/assets/festival-crowd/crowd-compact.packed",
+          "bytes": 3893942
+        },
+        {
+          "path": "/Tuk-Ngo/assets/illustrated-v22/hull-rig-v25.glb",
+          "bytes": 2454588
+        },
+        {
+          "path": "/Tuk-Ngo/assets/ghe-ngo/kbach-library/fleet.webp",
+          "bytes": 1146364
+        },
+        {
+          "path": "/Tuk-Ngo/assets/character-comparison/athlete-faces.glb",
+          "bytes": 889939
+        },
+        {
+          "path": "/Tuk-Ngo/assets/athlete-master/rowing-motion.glb",
+          "bytes": 379959
+        },
+        {
+          "path": "/Tuk-Ngo/assets/illustrated-v22/NotoSansKhmer.ttf",
+          "bytes": 174261
+        },
+        {
+          "path": "/Tuk-Ngo/assets/illustrated-v22/shirt-runtime-v32.json",
+          "bytes": 98635
+        },
+        {
+          "path": "/Tuk-Ngo/assets/three-renderer-4qsfxkIM.js",
+          "bytes": 90003
+        },
+        {
+          "path": "/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
+          "bytes": 77829
+        },
+        {
+          "path": "/Tuk-Ngo/assets/index-C_J0c7J_.js",
+          "bytes": 71421
+        },
+        {
+          "path": "/Tuk-Ngo/assets/athlete-master/athlete-details.glb",
+          "bytes": 67866
+        }
+      ],
+      "errors": []
+    }
+  }
+}

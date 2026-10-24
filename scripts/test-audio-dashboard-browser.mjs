@@ -116,7 +116,7 @@ try{
  });
  await run('Venue narration keeps all three maps and English/Khmer isolated',async c=>{
   const p=await open(c);await p.locator('[data-view="venues"]').click();await p.locator('#venue-filter').selectOption('phnom-penh');await p.waitForFunction(()=>window.AudioStudio.getVisible().length===19);
-  let ids=await p.evaluate(()=>window.AudioStudio.getVisible());assert(ids.every(id=>id.startsWith('phnom-penh-')||id.startsWith('kh-')));
+  let ids=await p.evaluate(()=>window.AudioStudio.getVisible());assert(ids.every(id=>id.startsWith('phnom-penh-')||id.startsWith('kh-')));assert((await p.locator('#position').textContent()).startsWith('THEO SÂN ·'));
   await p.locator('[data-lang="en"]').click();assert.equal((await p.evaluate(()=>window.AudioStudio.getVisible())).length,3);assert.equal(await p.locator('#text-vi').getAttribute('lang'),'en');assert((await p.locator('#vi-panel h3').textContent()).includes('English'));
   await p.locator('#play').click();await p.waitForFunction(()=>document.querySelector('#player').currentTime>.1);assert((await p.locator('#player').getAttribute('src')).includes('phnom-penh-flyover-en'));
   await p.locator('#venue-filter').selectOption('siem-reap');assert.equal(await p.locator('#player').getAttribute('src'),null);assert((await p.evaluate(()=>window.AudioStudio.getVisible())).every(id=>id.startsWith('siem-reap-')));

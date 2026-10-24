@@ -9,32 +9,32 @@
   "samples": {
     "maspero-menu": {
       "frames": 258,
-      "meanFrameMs": 31.73372093023256,
-      "p95FrameMs": 31.600000000000364,
+      "meanFrameMs": 31.85581395348837,
+      "p95FrameMs": 31.69999999999891,
       "stages": {
         "ceremony": {
           "calls": 259,
-          "ms": 1014.0999999195337,
-          "max": 16.299999997019768
+          "ms": 1148.2999999821186,
+          "max": 14.800000011920929
         },
         "river": {
           "calls": 259,
-          "ms": 730.0000000596046,
-          "max": 18.30000001192093
+          "ms": 761.4000000208616,
+          "max": 16.299999997019768
         },
         "render": {
           "calls": 259,
-          "ms": 753.0999999642372,
-          "max": 6.0999999940395355
+          "ms": 768.0999997705221,
+          "max": 9.200000002980232
         }
       },
-      "drawCalls": 172,
-      "triangles": 2710807,
+      "drawCalls": 170,
+      "triangles": 2667904,
       "memory": {
         "geometries": 201,
         "textures": 40
       },
-      "heapBytes": 229888361,
+      "heapBytes": 255632278,
       "renderDpr": 2,
       "gpu": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1650 (0x00001F0A) Direct3D11 vs_5_0 ps_5_0, D3D11)",
       "crowd": {
@@ -60,11 +60,11 @@
           "seated": 1960,
           "walk": 6932
         },
-        "active": 2902,
+        "active": 2751,
         "lodCounts": [
           24,
           100,
-          2778
+          2627
         ],
         "limits": {
           "near": 24,
@@ -72,7 +72,7 @@
           "far": 16000,
           "radius": 430
         },
-        "drawCalls": 31,
+        "drawCalls": 30,
         "paletteBytes": 6110720,
         "motion": "GPU bone palette interpolation; source idle/wave/walk + authored clap/cheer/indicate/seated",
         "randomization": "independent salted placement id and coordinates, clothes/hair/skin/face proportions/age styling",
@@ -110,8 +110,8 @@
             "suit-woman": 5904
           }
         },
-        "visibleTriangles": 747815,
-        "lastPackMs": 5.399999991059303
+        "visibleTriangles": 725518,
+        "lastPackMs": 3.300000011920929
       },
       "ceremony": {
         "boats": 61,
@@ -162,152 +162,152 @@
         "nearAthletes": 0,
         "farAthletes": 3050,
         "cameraShot": "grandstand",
-        "cameraSeconds": 9.749199999988077
+        "cameraSeconds": 9.843500000000008
       },
       "resources": [
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/index-BP4FWLKG.js",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/index-C_J0c7J_.js",
           "bytes": 70585,
           "transfer": 70885,
-          "duration": 12.400000005960464
+          "duration": 14
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/index-CZecT9IY.css",
           "bytes": 10221,
           "transfer": 10521,
-          "duration": 6.799999997019768
+          "duration": 10.200000002980232
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/ArtPreview-BwKRPoim.js",
-          "bytes": 12291,
-          "transfer": 12591,
-          "duration": 7.200000002980232
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/ArtPreview-DSU54x7l.js",
+          "bytes": 12284,
+          "transfer": 12584,
+          "duration": 4.799999997019768
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/asset-transfer-D469cGcW.js",
           "bytes": 3133,
           "transfer": 3433,
-          "duration": 6.700000002980232
+          "duration": 3.7999999970197678
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
           "bytes": 77680,
           "transfer": 77980,
-          "duration": 14.100000008940697
+          "duration": 14.200000002980232
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/rotate-ccw-DEGqTxTp.js",
-          "bytes": 437,
-          "transfer": 737,
-          "duration": 7.5
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/rotate-ccw-CyngLvRo.js",
+          "bytes": 438,
+          "transfer": 738,
+          "duration": 7.300000011920929
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/download-x25B40f0.js",
-          "bytes": 1049,
-          "transfer": 1349,
-          "duration": 7.9000000059604645
-        },
-        {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/video-CFcYz-kO.js",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/video-os8YevX6.js",
           "bytes": 424,
           "transfer": 724,
-          "duration": 7.699999988079071
+          "duration": 7.299999997019768
+        },
+        {
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/download-CJuDPp5S.js",
+          "bytes": 1047,
+          "transfer": 1347,
+          "duration": 7.399999991059303
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/ArtPreview-BBLLrk1R.css",
           "bytes": 1493,
           "transfer": 1793,
-          "duration": 8.700000002980232
+          "duration": 7.5
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/RaceGame-DuMYTIVX.js",
-          "bytes": 47833,
-          "transfer": 48133,
-          "duration": 7
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/RaceGame-4nbUNJM6.js",
+          "bytes": 47877,
+          "transfer": 48177,
+          "duration": 8.899999991059303
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/gameplay-Ctwpdevb.js",
-          "bytes": 5808,
-          "transfer": 6108,
-          "duration": 5.0999999940395355
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/gameplay-MxjgIlRE.js",
+          "bytes": 5809,
+          "transfer": 6109,
+          "duration": 4.899999991059303
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-flow-BNEF7dhE.js",
           "bytes": 1233,
           "transfer": 1533,
-          "duration": 4.200000002980232
+          "duration": 5.4000000059604645
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/x-U7oYCOGa.js",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/waves-CexHTxlo.js",
+          "bytes": 1028,
+          "transfer": 1328,
+          "duration": 5.299999997019768
+        },
+        {
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/x-e-VgqXE0.js",
           "bytes": 330,
           "transfer": 630,
-          "duration": 4
+          "duration": 4.700000002980232
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/waves-BADscktp.js",
-          "bytes": 1025,
-          "transfer": 1325,
-          "duration": 4.0999999940395355
-        },
-        {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/compass-Dfjnk5m6.js",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/compass-Ueht-5aA.js",
           "bytes": 676,
           "transfer": 976,
-          "duration": 4.299999997019768
+          "duration": 5.5999999940395355
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/runtime-report-DWncMeeA.js",
           "bytes": 1178,
           "transfer": 1478,
-          "duration": 6.399999991059303
+          "duration": 8.700000002980232
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival-branding-B7DyL_pn.js",
           "bytes": 5540,
           "transfer": 5840,
-          "duration": 6.899999991059303
+          "duration": 8.700000002980232
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/RaceGame-fDxu95HB.css",
           "bytes": 14114,
           "transfer": 14414,
-          "duration": 7.9000000059604645
+          "duration": 9.600000008940697
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival/festival-logo.svg?sha=9b90adfe6a97c2edf7fc68e8c4eee09485b3f1685835a7eee7196540321ef56b",
           "bytes": 3436,
           "transfer": 3736,
-          "duration": 2.5
+          "duration": 3
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/boat-preview-DwAj8SP-.js",
-          "bytes": 37792,
-          "transfer": 38092,
-          "duration": 5.699999988079071
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/boat-preview-1YbGFhD_.js",
+          "bytes": 37794,
+          "transfer": 38094,
+          "duration": 5.200000002980232
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-addons-BITwzI7m.js",
           "bytes": 20745,
           "transfer": 21045,
-          "duration": 5.0999999940395355
+          "duration": 5.5
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-4qsfxkIM.js",
           "bytes": 89316,
           "transfer": 89616,
-          "duration": 11.5
-        },
-        {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/art-preview-B-Y_kg9I.js",
-          "bytes": 2961,
-          "transfer": 3261,
-          "duration": 4.299999997019768
+          "duration": 11.299999997019768
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/kbach-motifs-Bj2M1atI.js",
           "bytes": 32813,
           "transfer": 33113,
-          "duration": 11.799999997019768
+          "duration": 12.099999994039536
+        },
+        {
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/art-preview-B-Y_kg9I.js",
+          "bytes": 2961,
+          "transfer": 3261,
+          "duration": 3.9000000059604645
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/boat--Sd1Ik3-.js",
@@ -319,219 +319,223 @@
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-crew-BBFLBQ_7.js",
           "bytes": 53965,
           "transfer": 54265,
-          "duration": 9.799999997019768
-        },
-        {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/NotoSansKhmer.ttf",
-          "bytes": 359788,
-          "transfer": 360088,
-          "duration": 285.20000000298023
+          "duration": 9.299999997019768
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/shirt-runtime-v32.json",
           "bytes": 95843,
           "transfer": 96143,
-          "duration": 11.799999997019768
+          "duration": 10.599999994039536
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/athlete-rig-v27.glb",
           "bytes": 4230492,
           "transfer": 4230792,
-          "duration": 23.5
+          "duration": 57.6000000089407
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/hull-rig-v25.glb",
           "bytes": 3953040,
           "transfer": 3953340,
-          "duration": 21.700000002980232
+          "duration": 50.29999999701977
+        },
+        {
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/NotoSansKhmer.ttf",
+          "bytes": 359788,
+          "transfer": 360088,
+          "duration": 33.29999999701977
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/athlete-master/athlete-details.glb",
           "bytes": 162632,
           "transfer": 162932,
-          "duration": 3
+          "duration": 5.4000000059604645
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/athlete-master/rowing-motion.glb?sha=94832f4e121b6d790045b7b3e7bb1a77b030004775e15dd975c29030403c14a6",
           "bytes": 1139744,
           "transfer": 1140044,
-          "duration": 6.799999997019768
+          "duration": 3.7000000029802322
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/NotoSansKhmer.ttf",
           "bytes": 0,
           "transfer": 300,
-          "duration": 1.7000000029802322
+          "duration": 1.5
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/character-comparison/athlete-faces.glb?sha=1d7adfdb4c6e72e42ea9febb2611f826bff2ffdc1c4ecf9f4f668a8fd308c457",
           "bytes": 1424224,
           "transfer": 1424524,
-          "duration": 5.0999999940395355
+          "duration": 5.5999999940395355
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/ghe-ngo/kbach-library/manifest.json",
           "bytes": 17650,
           "transfer": 17950,
-          "duration": 3.2999999970197678
+          "duration": 3.9000000059604645
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/ghe-ngo/kbach-library/fleet.webp",
           "bytes": 1145512,
           "transfer": 1145812,
-          "duration": 3.7999999970197678
+          "duration": 4.600000008940697
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival-crowd/crowd-compact.json?sha=f4079620e7ce9a820beefec26c24fa0fa9a3e30b1745f6ae2442d0156dcb9447",
           "bytes": 4102,
           "transfer": 4402,
-          "duration": 2.5
+          "duration": 2.7999999970197678
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival-crowd/crowd-compact.packed?sha=286bf615e7b2af5bc44787977914964cce41ff4637efe8474eed2c0514ce4b99",
           "bytes": 3898755,
           "transfer": 3899055,
-          "duration": 96.6000000089407
+          "duration": 113.59999999403954
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/athlete-master/ceremony-crew.json?sha=22ed727f1a9fbb5d8b64aa41c951e644d9962748c5521cdc7ebd02ccff8e51d4",
           "bytes": 2751116,
           "transfer": 2751416,
-          "duration": 166.70000000298023
+          "duration": 194.90000000596046
         }
       ],
-      "fps": 31.51222014583562,
+      "raceInput": {
+        "held": false,
+        "speed": 0
+      },
+      "fps": 31.391444006424297,
       "topCpu": [
         {
           "function": "(idle)",
           "url": "",
           "line": 0,
-          "selfMs": 5207.32
-        },
-        {
-          "function": "(program)",
-          "url": "",
-          "line": 0,
-          "selfMs": 272.5
-        },
-        {
-          "function": "setFromEuler",
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
-          "line": 5,
-          "selfMs": 260.09
-        },
-        {
-          "function": "At",
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/boat-preview-DwAj8SP-.js",
-          "line": 99,
-          "selfMs": 238.24
-        },
-        {
-          "function": "C",
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-crew-BBFLBQ_7.js",
-          "line": 22,
-          "selfMs": 219.67
+          "selfMs": 5034.67
         },
         {
           "function": "bufferSubData",
           "url": "",
           "line": 0,
-          "selfMs": 217.09
+          "selfMs": 250.72
+        },
+        {
+          "function": "C",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-crew-BBFLBQ_7.js",
+          "line": 22,
+          "selfMs": 247.27
+        },
+        {
+          "function": "setFromEuler",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
+          "line": 5,
+          "selfMs": 242.66
+        },
+        {
+          "function": "(program)",
+          "url": "",
+          "line": 0,
+          "selfMs": 241.47
         },
         {
           "function": "multiplyMatrices",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
           "line": 5,
-          "selfMs": 174.63
+          "selfMs": 204.55
         },
         {
-          "function": "",
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-crew-BBFLBQ_7.js",
-          "line": 22,
-          "selfMs": 169.54
+          "function": "At",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/boat-preview-1YbGFhD_.js",
+          "line": 99,
+          "selfMs": 181.78
         },
         {
           "function": "updateMatrixWorld",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
           "line": 5,
-          "selfMs": 120.4
+          "selfMs": 162.34
+        },
+        {
+          "function": "ge",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/boat-preview-1YbGFhD_.js",
+          "line": 99,
+          "selfMs": 160.76
+        },
+        {
+          "function": "",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-crew-BBFLBQ_7.js",
+          "line": 22,
+          "selfMs": 152.5
         },
         {
           "function": "L",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/boat--Sd1Ik3-.js",
           "line": 1,
-          "selfMs": 110.66
+          "selfMs": 133.86
         },
         {
           "function": "T",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/boat--Sd1Ik3-.js",
           "line": 1,
-          "selfMs": 109.45
+          "selfMs": 125.95
         },
         {
-          "function": "ge",
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/boat-preview-DwAj8SP-.js",
-          "line": 99,
-          "selfMs": 106.84
-        },
-        {
-          "function": "toArray",
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
-          "line": 5,
-          "selfMs": 93.09
+          "function": "s",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-crew-BBFLBQ_7.js",
+          "line": 24,
+          "selfMs": 107.99
         },
         {
           "function": "updateMatrix",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
           "line": 5,
-          "selfMs": 86.74
+          "selfMs": 99.48
         },
         {
           "function": "z",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/boat--Sd1Ik3-.js",
           "line": 1,
-          "selfMs": 72.12
+          "selfMs": 94.47
         }
       ]
     },
     "maspero-race": {
-      "frames": 258,
-      "meanFrameMs": 31.734883720930227,
-      "p95FrameMs": 31.600000000002183,
+      "frames": 259,
+      "meanFrameMs": 31.49227799227799,
+      "p95FrameMs": 31.700000000000728,
       "stages": {
         "ceremony": {
-          "calls": 259,
-          "ms": 1.4000000208616257,
+          "calls": 260,
+          "ms": 0.6999999731779099,
           "max": 0.10000000894069672
         },
         "crew0": {
-          "calls": 259,
-          "ms": 450.1999998688698,
+          "calls": 260,
+          "ms": 434.9999999254942,
           "max": 3.1000000089406967
         },
         "crew1": {
-          "calls": 259,
-          "ms": 397.90000009536743,
-          "max": 2.3999999910593033
+          "calls": 260,
+          "ms": 359.7000000625849,
+          "max": 2.2000000029802322
         },
         "river": {
-          "calls": 259,
-          "ms": 166.3000000566244,
-          "max": 6.399999991059303
+          "calls": 260,
+          "ms": 376.5999999642372,
+          "max": 11
         },
         "render": {
-          "calls": 259,
-          "ms": 1083.2999999970198,
-          "max": 7.100000008940697
+          "calls": 260,
+          "ms": 1044.9000000804663,
+          "max": 6.799999997019768
         }
       },
-      "drawCalls": 506,
-      "triangles": 3143923,
+      "drawCalls": 485,
+      "triangles": 3091082,
       "memory": {
-        "geometries": 478,
-        "textures": 75
+        "geometries": 461,
+        "textures": 74
       },
-      "heapBytes": 237666310,
+      "heapBytes": 243442767,
       "renderDpr": 2,
       "gpu": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1650 (0x00001F0A) Direct3D11 vs_5_0 ps_5_0, D3D11)",
       "crowd": {
@@ -557,11 +561,11 @@
           "seated": 1960,
           "walk": 6932
         },
-        "active": 5530,
+        "active": 5523,
         "lodCounts": [
           24,
           100,
-          5406
+          5399
         ],
         "limits": {
           "near": 24,
@@ -569,7 +573,7 @@
           "far": 16000,
           "radius": 430
         },
-        "drawCalls": 33,
+        "drawCalls": 30,
         "paletteBytes": 6110720,
         "motion": "GPU bone palette interpolation; source idle/wave/walk + authored clap/cheer/indicate/seated",
         "randomization": "independent salted placement id and coordinates, clothes/hair/skin/face proportions/age styling",
@@ -607,8 +611,8 @@
             "suit-woman": 5904
           }
         },
-        "visibleTriangles": 1156496,
-        "lastPackMs": 5
+        "visibleTriangles": 1150184,
+        "lastPackMs": 4.9000000059604645
       },
       "ceremony": {
         "boats": 61,
@@ -659,152 +663,152 @@
         "nearAthletes": 0,
         "farAthletes": 3050,
         "cameraShot": "grandstand",
-        "cameraSeconds": 9.842999999999998
+        "cameraSeconds": 9.937399999991067
       },
       "resources": [
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/index-BP4FWLKG.js",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/index-C_J0c7J_.js",
           "bytes": 70585,
           "transfer": 70885,
-          "duration": 12.400000005960464
+          "duration": 14
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/index-CZecT9IY.css",
           "bytes": 10221,
           "transfer": 10521,
-          "duration": 6.799999997019768
+          "duration": 10.200000002980232
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/ArtPreview-BwKRPoim.js",
-          "bytes": 12291,
-          "transfer": 12591,
-          "duration": 7.200000002980232
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/ArtPreview-DSU54x7l.js",
+          "bytes": 12284,
+          "transfer": 12584,
+          "duration": 4.799999997019768
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/asset-transfer-D469cGcW.js",
           "bytes": 3133,
           "transfer": 3433,
-          "duration": 6.700000002980232
+          "duration": 3.7999999970197678
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
           "bytes": 77680,
           "transfer": 77980,
-          "duration": 14.100000008940697
+          "duration": 14.200000002980232
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/rotate-ccw-DEGqTxTp.js",
-          "bytes": 437,
-          "transfer": 737,
-          "duration": 7.5
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/rotate-ccw-CyngLvRo.js",
+          "bytes": 438,
+          "transfer": 738,
+          "duration": 7.300000011920929
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/download-x25B40f0.js",
-          "bytes": 1049,
-          "transfer": 1349,
-          "duration": 7.9000000059604645
-        },
-        {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/video-CFcYz-kO.js",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/video-os8YevX6.js",
           "bytes": 424,
           "transfer": 724,
-          "duration": 7.699999988079071
+          "duration": 7.299999997019768
+        },
+        {
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/download-CJuDPp5S.js",
+          "bytes": 1047,
+          "transfer": 1347,
+          "duration": 7.399999991059303
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/ArtPreview-BBLLrk1R.css",
           "bytes": 1493,
           "transfer": 1793,
-          "duration": 8.700000002980232
+          "duration": 7.5
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/RaceGame-DuMYTIVX.js",
-          "bytes": 47833,
-          "transfer": 48133,
-          "duration": 7
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/RaceGame-4nbUNJM6.js",
+          "bytes": 47877,
+          "transfer": 48177,
+          "duration": 8.899999991059303
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/gameplay-Ctwpdevb.js",
-          "bytes": 5808,
-          "transfer": 6108,
-          "duration": 5.0999999940395355
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/gameplay-MxjgIlRE.js",
+          "bytes": 5809,
+          "transfer": 6109,
+          "duration": 4.899999991059303
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-flow-BNEF7dhE.js",
           "bytes": 1233,
           "transfer": 1533,
-          "duration": 4.200000002980232
+          "duration": 5.4000000059604645
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/x-U7oYCOGa.js",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/waves-CexHTxlo.js",
+          "bytes": 1028,
+          "transfer": 1328,
+          "duration": 5.299999997019768
+        },
+        {
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/x-e-VgqXE0.js",
           "bytes": 330,
           "transfer": 630,
-          "duration": 4
+          "duration": 4.700000002980232
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/waves-BADscktp.js",
-          "bytes": 1025,
-          "transfer": 1325,
-          "duration": 4.0999999940395355
-        },
-        {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/compass-Dfjnk5m6.js",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/compass-Ueht-5aA.js",
           "bytes": 676,
           "transfer": 976,
-          "duration": 4.299999997019768
+          "duration": 5.5999999940395355
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/runtime-report-DWncMeeA.js",
           "bytes": 1178,
           "transfer": 1478,
-          "duration": 6.399999991059303
+          "duration": 8.700000002980232
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival-branding-B7DyL_pn.js",
           "bytes": 5540,
           "transfer": 5840,
-          "duration": 6.899999991059303
+          "duration": 8.700000002980232
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/RaceGame-fDxu95HB.css",
           "bytes": 14114,
           "transfer": 14414,
-          "duration": 7.9000000059604645
+          "duration": 9.600000008940697
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival/festival-logo.svg?sha=9b90adfe6a97c2edf7fc68e8c4eee09485b3f1685835a7eee7196540321ef56b",
           "bytes": 3436,
           "transfer": 3736,
-          "duration": 2.5
+          "duration": 3
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/boat-preview-DwAj8SP-.js",
-          "bytes": 37792,
-          "transfer": 38092,
-          "duration": 5.699999988079071
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/boat-preview-1YbGFhD_.js",
+          "bytes": 37794,
+          "transfer": 38094,
+          "duration": 5.200000002980232
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-addons-BITwzI7m.js",
           "bytes": 20745,
           "transfer": 21045,
-          "duration": 5.0999999940395355
+          "duration": 5.5
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-4qsfxkIM.js",
           "bytes": 89316,
           "transfer": 89616,
-          "duration": 11.5
-        },
-        {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/art-preview-B-Y_kg9I.js",
-          "bytes": 2961,
-          "transfer": 3261,
-          "duration": 4.299999997019768
+          "duration": 11.299999997019768
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/kbach-motifs-Bj2M1atI.js",
           "bytes": 32813,
           "transfer": 33113,
-          "duration": 11.799999997019768
+          "duration": 12.099999994039536
+        },
+        {
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/art-preview-B-Y_kg9I.js",
+          "bytes": 2961,
+          "transfer": 3261,
+          "duration": 3.9000000059604645
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/boat--Sd1Ik3-.js",
@@ -816,220 +820,224 @@
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-crew-BBFLBQ_7.js",
           "bytes": 53965,
           "transfer": 54265,
-          "duration": 9.799999997019768
-        },
-        {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/NotoSansKhmer.ttf",
-          "bytes": 359788,
-          "transfer": 360088,
-          "duration": 285.20000000298023
+          "duration": 9.299999997019768
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/shirt-runtime-v32.json",
           "bytes": 95843,
           "transfer": 96143,
-          "duration": 11.799999997019768
+          "duration": 10.599999994039536
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/athlete-rig-v27.glb",
           "bytes": 4230492,
           "transfer": 4230792,
-          "duration": 23.5
+          "duration": 57.6000000089407
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/hull-rig-v25.glb",
           "bytes": 3953040,
           "transfer": 3953340,
-          "duration": 21.700000002980232
+          "duration": 50.29999999701977
+        },
+        {
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/NotoSansKhmer.ttf",
+          "bytes": 359788,
+          "transfer": 360088,
+          "duration": 33.29999999701977
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/athlete-master/athlete-details.glb",
           "bytes": 162632,
           "transfer": 162932,
-          "duration": 3
+          "duration": 5.4000000059604645
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/athlete-master/rowing-motion.glb?sha=94832f4e121b6d790045b7b3e7bb1a77b030004775e15dd975c29030403c14a6",
           "bytes": 1139744,
           "transfer": 1140044,
-          "duration": 6.799999997019768
+          "duration": 3.7000000029802322
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/NotoSansKhmer.ttf",
           "bytes": 0,
           "transfer": 300,
-          "duration": 1.7000000029802322
+          "duration": 1.5
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/character-comparison/athlete-faces.glb?sha=1d7adfdb4c6e72e42ea9febb2611f826bff2ffdc1c4ecf9f4f668a8fd308c457",
           "bytes": 1424224,
           "transfer": 1424524,
-          "duration": 5.0999999940395355
+          "duration": 5.5999999940395355
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/ghe-ngo/kbach-library/manifest.json",
           "bytes": 17650,
           "transfer": 17950,
-          "duration": 3.2999999970197678
+          "duration": 3.9000000059604645
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/ghe-ngo/kbach-library/fleet.webp",
           "bytes": 1145512,
           "transfer": 1145812,
-          "duration": 3.7999999970197678
+          "duration": 4.600000008940697
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival-crowd/crowd-compact.json?sha=f4079620e7ce9a820beefec26c24fa0fa9a3e30b1745f6ae2442d0156dcb9447",
           "bytes": 4102,
           "transfer": 4402,
-          "duration": 2.5
+          "duration": 2.7999999970197678
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival-crowd/crowd-compact.packed?sha=286bf615e7b2af5bc44787977914964cce41ff4637efe8474eed2c0514ce4b99",
           "bytes": 3898755,
           "transfer": 3899055,
-          "duration": 96.6000000089407
+          "duration": 113.59999999403954
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/athlete-master/ceremony-crew.json?sha=22ed727f1a9fbb5d8b64aa41c951e644d9962748c5521cdc7ebd02ccff8e51d4",
           "bytes": 2751116,
           "transfer": 2751416,
-          "duration": 166.70000000298023
+          "duration": 194.90000000596046
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/teams-2025/pothi-satharam-2.svg",
           "bytes": 6645,
           "transfer": 6945,
-          "duration": 3.9000000059604645
+          "duration": 3.7999999970197678
         }
       ],
-      "fps": 31.511065513703656,
+      "raceInput": {
+        "held": true,
+        "speed": 6.336790859950803
+      },
+      "fps": 31.753815974989273,
       "topCpu": [
         {
           "function": "(idle)",
           "url": "",
           "line": 0,
-          "selfMs": 5372.41
+          "selfMs": 5304.44
         },
         {
           "function": "updateMatrixWorld",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
           "line": 5,
-          "selfMs": 386.77
+          "selfMs": 339.03
         },
         {
           "function": "multiplyMatrices",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
           "line": 5,
-          "selfMs": 346.53
+          "selfMs": 293.33
         },
         {
           "function": "(program)",
           "url": "",
           "line": 0,
-          "selfMs": 295.38
+          "selfMs": 251.2
         },
         {
           "function": "updateMatrix",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
           "line": 5,
-          "selfMs": 169.93
+          "selfMs": 169.91
         },
         {
-          "function": "interpolate_",
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
-          "line": 9,
-          "selfMs": 76.57
-        },
-        {
-          "function": "ho",
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-4qsfxkIM.js",
-          "line": 4108,
-          "selfMs": 68.91
+          "function": "C",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-crew-BBFLBQ_7.js",
+          "line": 22,
+          "selfMs": 144.59
         },
         {
           "function": "s",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-crew-BBFLBQ_7.js",
           "line": 24,
-          "selfMs": 67.95
+          "selfMs": 116.44
         },
         {
-          "function": "update",
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-crew-BBFLBQ_7.js",
-          "line": 66,
-          "selfMs": 58.85
+          "function": "bufferSubData",
+          "url": "",
+          "line": 0,
+          "selfMs": 99.65
         },
         {
-          "function": "updateWorldMatrix",
+          "function": "interpolate_",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
-          "line": 5,
-          "selfMs": 58.65
-        },
-        {
-          "function": "Bp.renderBufferDirect",
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-4qsfxkIM.js",
-          "line": 4108,
-          "selfMs": 55.29
-        },
-        {
-          "function": "Ma",
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-crew-BBFLBQ_7.js",
-          "line": 22,
-          "selfMs": 55.23
-        },
-        {
-          "function": "Vn",
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-4qsfxkIM.js",
-          "line": 4108,
-          "selfMs": 48.35
+          "line": 9,
+          "selfMs": 84.09
         },
         {
           "function": "S",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-4qsfxkIM.js",
           "line": 3671,
-          "selfMs": 39.82
+          "selfMs": 60.66
         },
         {
-          "function": "setFromQuaternion",
+          "function": "updateWorldMatrix",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
           "line": 5,
-          "selfMs": 39.4
+          "selfMs": 56.11
+        },
+        {
+          "function": "setFromEuler",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
+          "line": 5,
+          "selfMs": 49.6
+        },
+        {
+          "function": "ho",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-4qsfxkIM.js",
+          "line": 4108,
+          "selfMs": 47.6
+        },
+        {
+          "function": "G",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-4qsfxkIM.js",
+          "line": 4057,
+          "selfMs": 46.11
+        },
+        {
+          "function": "update",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-crew-BBFLBQ_7.js",
+          "line": 66,
+          "selfMs": 42.87
         }
       ]
     },
     "phnom-penh-menu": {
-      "frames": 258,
-      "meanFrameMs": 31.734108527131788,
-      "p95FrameMs": 31.69999999999709,
+      "frames": 259,
+      "meanFrameMs": 31.612355212355222,
+      "p95FrameMs": 31.60000000000582,
       "stages": {
         "crew0": {
-          "calls": 259,
-          "ms": 453.99999998509884,
-          "max": 3.5999999940395355
+          "calls": 260,
+          "ms": 531.3000000566244,
+          "max": 4.0999999940395355
         },
         "crew1": {
-          "calls": 259,
-          "ms": 337.7000000923872,
-          "max": 2.5999999940395355
+          "calls": 260,
+          "ms": 322.9000000357628,
+          "max": 2.800000011920929
         },
         "river": {
-          "calls": 259,
-          "ms": 87.49999994039536,
+          "calls": 260,
+          "ms": 87.09999997913837,
           "max": 1
         },
         "render": {
-          "calls": 259,
-          "ms": 907.9000000208616,
-          "max": 5.5999999940395355
+          "calls": 260,
+          "ms": 972.3000000417233,
+          "max": 5.700000002980232
         }
       },
       "drawCalls": 400,
-      "triangles": 1689904,
+      "triangles": 1689059,
       "memory": {
         "geometries": 249,
         "textures": 58
       },
-      "heapBytes": 351427278,
+      "heapBytes": 370551891,
       "renderDpr": 2,
       "gpu": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1650 (0x00001F0A) Direct3D11 vs_5_0 ps_5_0, D3D11)",
       "crowd": {
@@ -1103,153 +1111,153 @@
           }
         },
         "visibleTriangles": 391221,
-        "lastPackMs": 4.5
+        "lastPackMs": 3.9000000059604645
       },
       "ceremony": null,
       "resources": [
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/index-BP4FWLKG.js",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/index-C_J0c7J_.js",
           "bytes": 70585,
           "transfer": 70885,
-          "duration": 12.400000005960464
+          "duration": 14
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/index-CZecT9IY.css",
           "bytes": 10221,
           "transfer": 10521,
-          "duration": 6.799999997019768
+          "duration": 10.200000002980232
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/ArtPreview-BwKRPoim.js",
-          "bytes": 12291,
-          "transfer": 12591,
-          "duration": 7.200000002980232
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/ArtPreview-DSU54x7l.js",
+          "bytes": 12284,
+          "transfer": 12584,
+          "duration": 4.799999997019768
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/asset-transfer-D469cGcW.js",
           "bytes": 3133,
           "transfer": 3433,
-          "duration": 6.700000002980232
+          "duration": 3.7999999970197678
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
           "bytes": 77680,
           "transfer": 77980,
-          "duration": 14.100000008940697
+          "duration": 14.200000002980232
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/rotate-ccw-DEGqTxTp.js",
-          "bytes": 437,
-          "transfer": 737,
-          "duration": 7.5
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/rotate-ccw-CyngLvRo.js",
+          "bytes": 438,
+          "transfer": 738,
+          "duration": 7.300000011920929
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/download-x25B40f0.js",
-          "bytes": 1049,
-          "transfer": 1349,
-          "duration": 7.9000000059604645
-        },
-        {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/video-CFcYz-kO.js",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/video-os8YevX6.js",
           "bytes": 424,
           "transfer": 724,
-          "duration": 7.699999988079071
+          "duration": 7.299999997019768
+        },
+        {
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/download-CJuDPp5S.js",
+          "bytes": 1047,
+          "transfer": 1347,
+          "duration": 7.399999991059303
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/ArtPreview-BBLLrk1R.css",
           "bytes": 1493,
           "transfer": 1793,
-          "duration": 8.700000002980232
+          "duration": 7.5
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/RaceGame-DuMYTIVX.js",
-          "bytes": 47833,
-          "transfer": 48133,
-          "duration": 7
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/RaceGame-4nbUNJM6.js",
+          "bytes": 47877,
+          "transfer": 48177,
+          "duration": 8.899999991059303
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/gameplay-Ctwpdevb.js",
-          "bytes": 5808,
-          "transfer": 6108,
-          "duration": 5.0999999940395355
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/gameplay-MxjgIlRE.js",
+          "bytes": 5809,
+          "transfer": 6109,
+          "duration": 4.899999991059303
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-flow-BNEF7dhE.js",
           "bytes": 1233,
           "transfer": 1533,
-          "duration": 4.200000002980232
+          "duration": 5.4000000059604645
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/x-U7oYCOGa.js",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/waves-CexHTxlo.js",
+          "bytes": 1028,
+          "transfer": 1328,
+          "duration": 5.299999997019768
+        },
+        {
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/x-e-VgqXE0.js",
           "bytes": 330,
           "transfer": 630,
-          "duration": 4
+          "duration": 4.700000002980232
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/waves-BADscktp.js",
-          "bytes": 1025,
-          "transfer": 1325,
-          "duration": 4.0999999940395355
-        },
-        {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/compass-Dfjnk5m6.js",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/compass-Ueht-5aA.js",
           "bytes": 676,
           "transfer": 976,
-          "duration": 4.299999997019768
+          "duration": 5.5999999940395355
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/runtime-report-DWncMeeA.js",
           "bytes": 1178,
           "transfer": 1478,
-          "duration": 6.399999991059303
+          "duration": 8.700000002980232
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival-branding-B7DyL_pn.js",
           "bytes": 5540,
           "transfer": 5840,
-          "duration": 6.899999991059303
+          "duration": 8.700000002980232
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/RaceGame-fDxu95HB.css",
           "bytes": 14114,
           "transfer": 14414,
-          "duration": 7.9000000059604645
+          "duration": 9.600000008940697
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival/festival-logo.svg?sha=9b90adfe6a97c2edf7fc68e8c4eee09485b3f1685835a7eee7196540321ef56b",
           "bytes": 3436,
           "transfer": 3736,
-          "duration": 2.5
+          "duration": 3
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/boat-preview-DwAj8SP-.js",
-          "bytes": 37792,
-          "transfer": 38092,
-          "duration": 5.699999988079071
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/boat-preview-1YbGFhD_.js",
+          "bytes": 37794,
+          "transfer": 38094,
+          "duration": 5.200000002980232
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-addons-BITwzI7m.js",
           "bytes": 20745,
           "transfer": 21045,
-          "duration": 5.0999999940395355
+          "duration": 5.5
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-4qsfxkIM.js",
           "bytes": 89316,
           "transfer": 89616,
-          "duration": 11.5
-        },
-        {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/art-preview-B-Y_kg9I.js",
-          "bytes": 2961,
-          "transfer": 3261,
-          "duration": 4.299999997019768
+          "duration": 11.299999997019768
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/kbach-motifs-Bj2M1atI.js",
           "bytes": 32813,
           "transfer": 33113,
-          "duration": 11.799999997019768
+          "duration": 12.099999994039536
+        },
+        {
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/art-preview-B-Y_kg9I.js",
+          "bytes": 2961,
+          "transfer": 3261,
+          "duration": 3.9000000059604645
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/boat--Sd1Ik3-.js",
@@ -1261,121 +1269,121 @@
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-crew-BBFLBQ_7.js",
           "bytes": 53965,
           "transfer": 54265,
-          "duration": 9.799999997019768
-        },
-        {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/NotoSansKhmer.ttf",
-          "bytes": 359788,
-          "transfer": 360088,
-          "duration": 285.20000000298023
+          "duration": 9.299999997019768
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/shirt-runtime-v32.json",
           "bytes": 95843,
           "transfer": 96143,
-          "duration": 11.799999997019768
+          "duration": 10.599999994039536
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/athlete-rig-v27.glb",
           "bytes": 4230492,
           "transfer": 4230792,
-          "duration": 23.5
+          "duration": 57.6000000089407
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/hull-rig-v25.glb",
           "bytes": 3953040,
           "transfer": 3953340,
-          "duration": 21.700000002980232
+          "duration": 50.29999999701977
+        },
+        {
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/NotoSansKhmer.ttf",
+          "bytes": 359788,
+          "transfer": 360088,
+          "duration": 33.29999999701977
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/athlete-master/athlete-details.glb",
           "bytes": 162632,
           "transfer": 162932,
-          "duration": 3
+          "duration": 5.4000000059604645
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/athlete-master/rowing-motion.glb?sha=94832f4e121b6d790045b7b3e7bb1a77b030004775e15dd975c29030403c14a6",
           "bytes": 1139744,
           "transfer": 1140044,
-          "duration": 6.799999997019768
+          "duration": 3.7000000029802322
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/NotoSansKhmer.ttf",
           "bytes": 0,
           "transfer": 300,
-          "duration": 1.7000000029802322
+          "duration": 1.5
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/character-comparison/athlete-faces.glb?sha=1d7adfdb4c6e72e42ea9febb2611f826bff2ffdc1c4ecf9f4f668a8fd308c457",
           "bytes": 1424224,
           "transfer": 1424524,
-          "duration": 5.0999999940395355
+          "duration": 5.5999999940395355
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/ghe-ngo/kbach-library/manifest.json",
           "bytes": 17650,
           "transfer": 17950,
-          "duration": 3.2999999970197678
+          "duration": 3.9000000059604645
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/ghe-ngo/kbach-library/fleet.webp",
           "bytes": 1145512,
           "transfer": 1145812,
-          "duration": 3.7999999970197678
+          "duration": 4.600000008940697
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival-crowd/crowd-compact.json?sha=f4079620e7ce9a820beefec26c24fa0fa9a3e30b1745f6ae2442d0156dcb9447",
           "bytes": 4102,
           "transfer": 4402,
-          "duration": 2.5
+          "duration": 2.7999999970197678
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival-crowd/crowd-compact.packed?sha=286bf615e7b2af5bc44787977914964cce41ff4637efe8474eed2c0514ce4b99",
           "bytes": 3898755,
           "transfer": 3899055,
-          "duration": 96.6000000089407
+          "duration": 113.59999999403954
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/athlete-master/ceremony-crew.json?sha=22ed727f1a9fbb5d8b64aa41c951e644d9962748c5521cdc7ebd02ccff8e51d4",
           "bytes": 2751116,
           "transfer": 2751416,
-          "duration": 166.70000000298023
+          "duration": 194.90000000596046
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/teams-2025/pothi-satharam-2.svg",
           "bytes": 6645,
           "transfer": 6945,
-          "duration": 3.9000000059604645
+          "duration": 3.7999999970197678
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/shirt-runtime-v32.json",
           "bytes": 95843,
           "transfer": 300,
-          "duration": 4.299999997019768
+          "duration": 3.1000000089406967
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/athlete-rig-v27.glb",
           "bytes": 4230492,
           "transfer": 300,
-          "duration": 12
+          "duration": 11.899999991059303
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/hull-rig-v25.glb",
           "bytes": 3953040,
           "transfer": 300,
-          "duration": 13.900000005960464
+          "duration": 13.700000002980232
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/athlete-master/athlete-details.glb",
           "bytes": 162632,
           "transfer": 300,
-          "duration": 2.2000000029802322
+          "duration": 1.6000000089406967
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/athlete-master/rowing-motion.glb?sha=94832f4e121b6d790045b7b3e7bb1a77b030004775e15dd975c29030403c14a6",
           "bytes": 1139744,
           "transfer": 300,
-          "duration": 2.2999999970197678
+          "duration": 1.699999988079071
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/character-comparison/athlete-faces.glb?sha=1d7adfdb4c6e72e42ea9febb2611f826bff2ffdc1c4ecf9f4f668a8fd308c457",
@@ -1393,148 +1401,152 @@
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival-crowd/crowd-compact.json?sha=f4079620e7ce9a820beefec26c24fa0fa9a3e30b1745f6ae2442d0156dcb9447",
           "bytes": 4102,
           "transfer": 300,
-          "duration": 1.3999999910593033
+          "duration": 1.5
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival-crowd/crowd-compact.packed?sha=286bf615e7b2af5bc44787977914964cce41ff4637efe8474eed2c0514ce4b99",
           "bytes": 3898755,
           "transfer": 300,
-          "duration": 12.799999997019768
+          "duration": 13.400000005960464
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/cambodia-course-DjDZBemg.js",
           "bytes": 6165,
           "transfer": 6465,
-          "duration": 2
+          "duration": 2.1000000089406967
         }
       ],
-      "fps": 31.511835259056593,
+      "raceInput": {
+        "held": false,
+        "speed": 0
+      },
+      "fps": 31.63320142654745,
       "topCpu": [
         {
           "function": "(idle)",
           "url": "",
           "line": 0,
-          "selfMs": 5812.01
-        },
-        {
-          "function": "multiplyMatrices",
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
-          "line": 5,
-          "selfMs": 265.41
+          "selfMs": 5688.95
         },
         {
           "function": "updateMatrixWorld",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
           "line": 5,
-          "selfMs": 251.79
+          "selfMs": 349.04
         },
         {
           "function": "(program)",
           "url": "",
           "line": 0,
-          "selfMs": 247.96
+          "selfMs": 243.4
+        },
+        {
+          "function": "multiplyMatrices",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
+          "line": 5,
+          "selfMs": 240.84
         },
         {
           "function": "updateMatrix",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
           "line": 5,
-          "selfMs": 144.88
-        },
-        {
-          "function": "interpolate_",
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
-          "line": 9,
-          "selfMs": 90.73
-        },
-        {
-          "function": "Vn",
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-4qsfxkIM.js",
-          "line": 4108,
-          "selfMs": 66.42
+          "selfMs": 202.25
         },
         {
           "function": "toArray",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
           "line": 5,
-          "selfMs": 62.58
+          "selfMs": 70.33
         },
         {
-          "function": "ho",
+          "function": "interpolate_",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
+          "line": 9,
+          "selfMs": 64.43
+        },
+        {
+          "function": "Vn",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-4qsfxkIM.js",
           "line": 4108,
-          "selfMs": 51.52
-        },
-        {
-          "function": "updateWorldMatrix",
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
-          "line": 5,
-          "selfMs": 46.25
-        },
-        {
-          "function": "setFromEuler",
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
-          "line": 5,
-          "selfMs": 43.05
+          "selfMs": 54.76
         },
         {
           "function": "setFromQuaternion",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
           "line": 5,
-          "selfMs": 38.08
+          "selfMs": 48.95
+        },
+        {
+          "function": "Bp.renderBufferDirect",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-4qsfxkIM.js",
+          "line": 4108,
+          "selfMs": 45.03
+        },
+        {
+          "function": "updateWorldMatrix",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
+          "line": 5,
+          "selfMs": 43.28
         },
         {
           "function": "setFromRotationMatrix",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
           "line": 5,
-          "selfMs": 37.71
+          "selfMs": 42.45
         },
         {
-          "function": "s",
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-crew-BBFLBQ_7.js",
-          "line": 24,
-          "selfMs": 37.38
+          "function": "ct",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/boat-preview-1YbGFhD_.js",
+          "line": 99,
+          "selfMs": 41.29
         },
         {
-          "function": "S",
+          "function": "copy",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
+          "line": 5,
+          "selfMs": 39.8
+        },
+        {
+          "function": "ho",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-4qsfxkIM.js",
-          "line": 3671,
-          "selfMs": 36.36
+          "line": 4108,
+          "selfMs": 39.75
         }
       ]
     },
     "phnom-penh-race": {
-      "frames": 259,
-      "meanFrameMs": 31.73320463320464,
-      "p95FrameMs": 31.69999999999709,
+      "frames": 258,
+      "meanFrameMs": 31.735271317829476,
+      "p95FrameMs": 31.599999999998545,
       "stages": {
         "crew0": {
-          "calls": 260,
-          "ms": 421.0000000447035,
-          "max": 3
+          "calls": 259,
+          "ms": 378.19999980926514,
+          "max": 3.2000000029802322
         },
         "crew1": {
-          "calls": 260,
-          "ms": 367.100000038743,
-          "max": 2.5999999940395355
+          "calls": 259,
+          "ms": 303.7000000923872,
+          "max": 2.5
         },
         "river": {
-          "calls": 260,
-          "ms": 77.1000000089407,
-          "max": 3
+          "calls": 259,
+          "ms": 99.29999996721745,
+          "max": 3.2000000029802322
         },
         "render": {
-          "calls": 260,
-          "ms": 969.2999999970198,
-          "max": 6
+          "calls": 259,
+          "ms": 915.4000000059605,
+          "max": 5.399999991059303
         }
       },
-      "drawCalls": 453,
-      "triangles": 1650716,
+      "drawCalls": 428,
+      "triangles": 1580197,
       "memory": {
-        "geometries": 383,
+        "geometries": 380,
         "textures": 64
       },
-      "heapBytes": 368127740,
+      "heapBytes": 374479568,
       "renderDpr": 2,
       "gpu": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1650 (0x00001F0A) Direct3D11 vs_5_0 ps_5_0, D3D11)",
       "crowd": {
@@ -1557,11 +1569,11 @@
           "wave": 3388,
           "clap": 3388
         },
-        "active": 1213,
+        "active": 1188,
         "lodCounts": [
           0,
           0,
-          1213
+          1188
         ],
         "limits": {
           "near": 24,
@@ -1607,154 +1619,154 @@
             "worker-man": 1274
           }
         },
-        "visibleTriangles": 188625,
-        "lastPackMs": 1.5999999940395355
+        "visibleTriangles": 183810,
+        "lastPackMs": 1.4000000059604645
       },
       "ceremony": null,
       "resources": [
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/index-BP4FWLKG.js",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/index-C_J0c7J_.js",
           "bytes": 70585,
           "transfer": 70885,
-          "duration": 12.400000005960464
+          "duration": 14
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/index-CZecT9IY.css",
           "bytes": 10221,
           "transfer": 10521,
-          "duration": 6.799999997019768
+          "duration": 10.200000002980232
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/ArtPreview-BwKRPoim.js",
-          "bytes": 12291,
-          "transfer": 12591,
-          "duration": 7.200000002980232
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/ArtPreview-DSU54x7l.js",
+          "bytes": 12284,
+          "transfer": 12584,
+          "duration": 4.799999997019768
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/asset-transfer-D469cGcW.js",
           "bytes": 3133,
           "transfer": 3433,
-          "duration": 6.700000002980232
+          "duration": 3.7999999970197678
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
           "bytes": 77680,
           "transfer": 77980,
-          "duration": 14.100000008940697
+          "duration": 14.200000002980232
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/rotate-ccw-DEGqTxTp.js",
-          "bytes": 437,
-          "transfer": 737,
-          "duration": 7.5
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/rotate-ccw-CyngLvRo.js",
+          "bytes": 438,
+          "transfer": 738,
+          "duration": 7.300000011920929
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/download-x25B40f0.js",
-          "bytes": 1049,
-          "transfer": 1349,
-          "duration": 7.9000000059604645
-        },
-        {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/video-CFcYz-kO.js",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/video-os8YevX6.js",
           "bytes": 424,
           "transfer": 724,
-          "duration": 7.699999988079071
+          "duration": 7.299999997019768
+        },
+        {
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/download-CJuDPp5S.js",
+          "bytes": 1047,
+          "transfer": 1347,
+          "duration": 7.399999991059303
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/ArtPreview-BBLLrk1R.css",
           "bytes": 1493,
           "transfer": 1793,
-          "duration": 8.700000002980232
+          "duration": 7.5
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/RaceGame-DuMYTIVX.js",
-          "bytes": 47833,
-          "transfer": 48133,
-          "duration": 7
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/RaceGame-4nbUNJM6.js",
+          "bytes": 47877,
+          "transfer": 48177,
+          "duration": 8.899999991059303
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/gameplay-Ctwpdevb.js",
-          "bytes": 5808,
-          "transfer": 6108,
-          "duration": 5.0999999940395355
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/gameplay-MxjgIlRE.js",
+          "bytes": 5809,
+          "transfer": 6109,
+          "duration": 4.899999991059303
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-flow-BNEF7dhE.js",
           "bytes": 1233,
           "transfer": 1533,
-          "duration": 4.200000002980232
+          "duration": 5.4000000059604645
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/x-U7oYCOGa.js",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/waves-CexHTxlo.js",
+          "bytes": 1028,
+          "transfer": 1328,
+          "duration": 5.299999997019768
+        },
+        {
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/x-e-VgqXE0.js",
           "bytes": 330,
           "transfer": 630,
-          "duration": 4
+          "duration": 4.700000002980232
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/waves-BADscktp.js",
-          "bytes": 1025,
-          "transfer": 1325,
-          "duration": 4.0999999940395355
-        },
-        {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/compass-Dfjnk5m6.js",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/compass-Ueht-5aA.js",
           "bytes": 676,
           "transfer": 976,
-          "duration": 4.299999997019768
+          "duration": 5.5999999940395355
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/runtime-report-DWncMeeA.js",
           "bytes": 1178,
           "transfer": 1478,
-          "duration": 6.399999991059303
+          "duration": 8.700000002980232
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival-branding-B7DyL_pn.js",
           "bytes": 5540,
           "transfer": 5840,
-          "duration": 6.899999991059303
+          "duration": 8.700000002980232
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/RaceGame-fDxu95HB.css",
           "bytes": 14114,
           "transfer": 14414,
-          "duration": 7.9000000059604645
+          "duration": 9.600000008940697
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival/festival-logo.svg?sha=9b90adfe6a97c2edf7fc68e8c4eee09485b3f1685835a7eee7196540321ef56b",
           "bytes": 3436,
           "transfer": 3736,
-          "duration": 2.5
+          "duration": 3
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/boat-preview-DwAj8SP-.js",
-          "bytes": 37792,
-          "transfer": 38092,
-          "duration": 5.699999988079071
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/boat-preview-1YbGFhD_.js",
+          "bytes": 37794,
+          "transfer": 38094,
+          "duration": 5.200000002980232
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-addons-BITwzI7m.js",
           "bytes": 20745,
           "transfer": 21045,
-          "duration": 5.0999999940395355
+          "duration": 5.5
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-4qsfxkIM.js",
           "bytes": 89316,
           "transfer": 89616,
-          "duration": 11.5
-        },
-        {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/art-preview-B-Y_kg9I.js",
-          "bytes": 2961,
-          "transfer": 3261,
-          "duration": 4.299999997019768
+          "duration": 11.299999997019768
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/kbach-motifs-Bj2M1atI.js",
           "bytes": 32813,
           "transfer": 33113,
-          "duration": 11.799999997019768
+          "duration": 12.099999994039536
+        },
+        {
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/art-preview-B-Y_kg9I.js",
+          "bytes": 2961,
+          "transfer": 3261,
+          "duration": 3.9000000059604645
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/boat--Sd1Ik3-.js",
@@ -1766,121 +1778,121 @@
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-crew-BBFLBQ_7.js",
           "bytes": 53965,
           "transfer": 54265,
-          "duration": 9.799999997019768
-        },
-        {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/NotoSansKhmer.ttf",
-          "bytes": 359788,
-          "transfer": 360088,
-          "duration": 285.20000000298023
+          "duration": 9.299999997019768
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/shirt-runtime-v32.json",
           "bytes": 95843,
           "transfer": 96143,
-          "duration": 11.799999997019768
+          "duration": 10.599999994039536
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/athlete-rig-v27.glb",
           "bytes": 4230492,
           "transfer": 4230792,
-          "duration": 23.5
+          "duration": 57.6000000089407
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/hull-rig-v25.glb",
           "bytes": 3953040,
           "transfer": 3953340,
-          "duration": 21.700000002980232
+          "duration": 50.29999999701977
+        },
+        {
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/NotoSansKhmer.ttf",
+          "bytes": 359788,
+          "transfer": 360088,
+          "duration": 33.29999999701977
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/athlete-master/athlete-details.glb",
           "bytes": 162632,
           "transfer": 162932,
-          "duration": 3
+          "duration": 5.4000000059604645
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/athlete-master/rowing-motion.glb?sha=94832f4e121b6d790045b7b3e7bb1a77b030004775e15dd975c29030403c14a6",
           "bytes": 1139744,
           "transfer": 1140044,
-          "duration": 6.799999997019768
+          "duration": 3.7000000029802322
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/NotoSansKhmer.ttf",
           "bytes": 0,
           "transfer": 300,
-          "duration": 1.7000000029802322
+          "duration": 1.5
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/character-comparison/athlete-faces.glb?sha=1d7adfdb4c6e72e42ea9febb2611f826bff2ffdc1c4ecf9f4f668a8fd308c457",
           "bytes": 1424224,
           "transfer": 1424524,
-          "duration": 5.0999999940395355
+          "duration": 5.5999999940395355
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/ghe-ngo/kbach-library/manifest.json",
           "bytes": 17650,
           "transfer": 17950,
-          "duration": 3.2999999970197678
+          "duration": 3.9000000059604645
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/ghe-ngo/kbach-library/fleet.webp",
           "bytes": 1145512,
           "transfer": 1145812,
-          "duration": 3.7999999970197678
+          "duration": 4.600000008940697
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival-crowd/crowd-compact.json?sha=f4079620e7ce9a820beefec26c24fa0fa9a3e30b1745f6ae2442d0156dcb9447",
           "bytes": 4102,
           "transfer": 4402,
-          "duration": 2.5
+          "duration": 2.7999999970197678
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival-crowd/crowd-compact.packed?sha=286bf615e7b2af5bc44787977914964cce41ff4637efe8474eed2c0514ce4b99",
           "bytes": 3898755,
           "transfer": 3899055,
-          "duration": 96.6000000089407
+          "duration": 113.59999999403954
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/athlete-master/ceremony-crew.json?sha=22ed727f1a9fbb5d8b64aa41c951e644d9962748c5521cdc7ebd02ccff8e51d4",
           "bytes": 2751116,
           "transfer": 2751416,
-          "duration": 166.70000000298023
+          "duration": 194.90000000596046
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/teams-2025/pothi-satharam-2.svg",
           "bytes": 6645,
           "transfer": 6945,
-          "duration": 3.9000000059604645
+          "duration": 3.7999999970197678
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/shirt-runtime-v32.json",
           "bytes": 95843,
           "transfer": 300,
-          "duration": 4.299999997019768
+          "duration": 3.1000000089406967
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/athlete-rig-v27.glb",
           "bytes": 4230492,
           "transfer": 300,
-          "duration": 12
+          "duration": 11.899999991059303
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/hull-rig-v25.glb",
           "bytes": 3953040,
           "transfer": 300,
-          "duration": 13.900000005960464
+          "duration": 13.700000002980232
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/athlete-master/athlete-details.glb",
           "bytes": 162632,
           "transfer": 300,
-          "duration": 2.2000000029802322
+          "duration": 1.6000000089406967
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/athlete-master/rowing-motion.glb?sha=94832f4e121b6d790045b7b3e7bb1a77b030004775e15dd975c29030403c14a6",
           "bytes": 1139744,
           "transfer": 300,
-          "duration": 2.2999999970197678
+          "duration": 1.699999988079071
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/character-comparison/athlete-faces.glb?sha=1d7adfdb4c6e72e42ea9febb2611f826bff2ffdc1c4ecf9f4f668a8fd308c457",
@@ -1898,148 +1910,152 @@
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival-crowd/crowd-compact.json?sha=f4079620e7ce9a820beefec26c24fa0fa9a3e30b1745f6ae2442d0156dcb9447",
           "bytes": 4102,
           "transfer": 300,
-          "duration": 1.3999999910593033
+          "duration": 1.5
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival-crowd/crowd-compact.packed?sha=286bf615e7b2af5bc44787977914964cce41ff4637efe8474eed2c0514ce4b99",
           "bytes": 3898755,
           "transfer": 300,
-          "duration": 12.799999997019768
+          "duration": 13.400000005960464
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/cambodia-course-DjDZBemg.js",
           "bytes": 6165,
           "transfer": 6465,
-          "duration": 2
+          "duration": 2.1000000089406967
         }
       ],
-      "fps": 31.512732847461333,
+      "raceInput": {
+        "held": true,
+        "speed": 6.445097932696088
+      },
+      "fps": 31.51068065512902,
       "topCpu": [
         {
           "function": "(idle)",
           "url": "",
           "line": 0,
-          "selfMs": 5657.22
-        },
-        {
-          "function": "multiplyMatrices",
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
-          "line": 5,
-          "selfMs": 332.78
-        },
-        {
-          "function": "updateMatrixWorld",
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
-          "line": 5,
-          "selfMs": 304.48
+          "selfMs": 5895.7
         },
         {
           "function": "(program)",
           "url": "",
           "line": 0,
-          "selfMs": 293.69
+          "selfMs": 276.15
+        },
+        {
+          "function": "updateMatrixWorld",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
+          "line": 5,
+          "selfMs": 271.96
+        },
+        {
+          "function": "multiplyMatrices",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
+          "line": 5,
+          "selfMs": 254.02
         },
         {
           "function": "updateMatrix",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
           "line": 5,
-          "selfMs": 173.71
+          "selfMs": 195.05
         },
         {
           "function": "interpolate_",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
           "line": 9,
-          "selfMs": 98.08
+          "selfMs": 71.53
+        },
+        {
+          "function": "bufferSubData",
+          "url": "",
+          "line": 0,
+          "selfMs": 52.03
         },
         {
           "function": "Vn",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-4qsfxkIM.js",
           "line": 4108,
-          "selfMs": 58.45
+          "selfMs": 49.82
         },
         {
-          "function": "Bp.renderBufferDirect",
+          "function": "ho",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-4qsfxkIM.js",
           "line": 4108,
-          "selfMs": 57.65
-        },
-        {
-          "function": "setValue",
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-4qsfxkIM.js",
-          "line": 4006,
-          "selfMs": 47.68
-        },
-        {
-          "function": "update",
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-crew-BBFLBQ_7.js",
-          "line": 66,
-          "selfMs": 43.05
-        },
-        {
-          "function": "s",
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-crew-BBFLBQ_7.js",
-          "line": 24,
-          "selfMs": 39.81
-        },
-        {
-          "function": "S",
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-4qsfxkIM.js",
-          "line": 3671,
-          "selfMs": 39.44
+          "selfMs": 48.82
         },
         {
           "function": "setFromQuaternion",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
           "line": 5,
-          "selfMs": 38.35
+          "selfMs": 44.83
         },
         {
-          "function": "updateWorldMatrix",
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
-          "line": 5,
-          "selfMs": 37.55
+          "function": "Bp.renderBufferDirect",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-4qsfxkIM.js",
+          "line": 4108,
+          "selfMs": 39.4
         },
         {
-          "function": "setFromRotationMatrix",
+          "function": "setFromEuler",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
           "line": 5,
-          "selfMs": 37.14
+          "selfMs": 39.07
+        },
+        {
+          "function": "S",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-4qsfxkIM.js",
+          "line": 3671,
+          "selfMs": 37.11
+        },
+        {
+          "function": "copy",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
+          "line": 5,
+          "selfMs": 36.13
+        },
+        {
+          "function": "bindVertexArray",
+          "url": "",
+          "line": 0,
+          "selfMs": 34.68
         }
       ]
     },
     "siem-reap-menu": {
-      "frames": 257,
-      "meanFrameMs": 31.492217898832685,
+      "frames": 259,
+      "meanFrameMs": 31.371428571428588,
       "p95FrameMs": 31.69999999999709,
       "stages": {
         "crew0": {
-          "calls": 258,
-          "ms": 290.60000006854534,
-          "max": 3.1000000089406967
+          "calls": 260,
+          "ms": 503.00000005960464,
+          "max": 3.5
         },
         "crew1": {
-          "calls": 258,
-          "ms": 222.8999998420477,
-          "max": 2.3999999910593033
+          "calls": 260,
+          "ms": 356.9999999552965,
+          "max": 2.7000000029802322
         },
         "river": {
-          "calls": 258,
-          "ms": 54.000000059604645,
-          "max": 0.7999999970197678
+          "calls": 260,
+          "ms": 88.60000005364418,
+          "max": 1.0999999940395355
         },
         "render": {
-          "calls": 258,
-          "ms": 755.0000000596046,
-          "max": 4.799999997019768
+          "calls": 260,
+          "ms": 966.3000000566244,
+          "max": 5.700000002980232
         }
       },
       "drawCalls": 423,
-      "triangles": 1972782,
+      "triangles": 1969818,
       "memory": {
         "geometries": 252,
         "textures": 58
       },
-      "heapBytes": 298129847,
+      "heapBytes": 268197532,
       "renderDpr": 2,
       "gpu": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1650 (0x00001F0A) Direct3D11 vs_5_0 ps_5_0, D3D11)",
       "crowd": {
@@ -2113,153 +2129,153 @@
           }
         },
         "visibleTriangles": 674423,
-        "lastPackMs": 3.9000000059604645
+        "lastPackMs": 3.2999999970197678
       },
       "ceremony": null,
       "resources": [
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/index-BP4FWLKG.js",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/index-C_J0c7J_.js",
           "bytes": 70585,
           "transfer": 70885,
-          "duration": 12.400000005960464
+          "duration": 14
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/index-CZecT9IY.css",
           "bytes": 10221,
           "transfer": 10521,
-          "duration": 6.799999997019768
+          "duration": 10.200000002980232
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/ArtPreview-BwKRPoim.js",
-          "bytes": 12291,
-          "transfer": 12591,
-          "duration": 7.200000002980232
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/ArtPreview-DSU54x7l.js",
+          "bytes": 12284,
+          "transfer": 12584,
+          "duration": 4.799999997019768
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/asset-transfer-D469cGcW.js",
           "bytes": 3133,
           "transfer": 3433,
-          "duration": 6.700000002980232
+          "duration": 3.7999999970197678
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
           "bytes": 77680,
           "transfer": 77980,
-          "duration": 14.100000008940697
+          "duration": 14.200000002980232
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/rotate-ccw-DEGqTxTp.js",
-          "bytes": 437,
-          "transfer": 737,
-          "duration": 7.5
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/rotate-ccw-CyngLvRo.js",
+          "bytes": 438,
+          "transfer": 738,
+          "duration": 7.300000011920929
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/download-x25B40f0.js",
-          "bytes": 1049,
-          "transfer": 1349,
-          "duration": 7.9000000059604645
-        },
-        {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/video-CFcYz-kO.js",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/video-os8YevX6.js",
           "bytes": 424,
           "transfer": 724,
-          "duration": 7.699999988079071
+          "duration": 7.299999997019768
+        },
+        {
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/download-CJuDPp5S.js",
+          "bytes": 1047,
+          "transfer": 1347,
+          "duration": 7.399999991059303
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/ArtPreview-BBLLrk1R.css",
           "bytes": 1493,
           "transfer": 1793,
-          "duration": 8.700000002980232
+          "duration": 7.5
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/RaceGame-DuMYTIVX.js",
-          "bytes": 47833,
-          "transfer": 48133,
-          "duration": 7
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/RaceGame-4nbUNJM6.js",
+          "bytes": 47877,
+          "transfer": 48177,
+          "duration": 8.899999991059303
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/gameplay-Ctwpdevb.js",
-          "bytes": 5808,
-          "transfer": 6108,
-          "duration": 5.0999999940395355
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/gameplay-MxjgIlRE.js",
+          "bytes": 5809,
+          "transfer": 6109,
+          "duration": 4.899999991059303
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-flow-BNEF7dhE.js",
           "bytes": 1233,
           "transfer": 1533,
-          "duration": 4.200000002980232
+          "duration": 5.4000000059604645
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/x-U7oYCOGa.js",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/waves-CexHTxlo.js",
+          "bytes": 1028,
+          "transfer": 1328,
+          "duration": 5.299999997019768
+        },
+        {
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/x-e-VgqXE0.js",
           "bytes": 330,
           "transfer": 630,
-          "duration": 4
+          "duration": 4.700000002980232
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/waves-BADscktp.js",
-          "bytes": 1025,
-          "transfer": 1325,
-          "duration": 4.0999999940395355
-        },
-        {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/compass-Dfjnk5m6.js",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/compass-Ueht-5aA.js",
           "bytes": 676,
           "transfer": 976,
-          "duration": 4.299999997019768
+          "duration": 5.5999999940395355
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/runtime-report-DWncMeeA.js",
           "bytes": 1178,
           "transfer": 1478,
-          "duration": 6.399999991059303
+          "duration": 8.700000002980232
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival-branding-B7DyL_pn.js",
           "bytes": 5540,
           "transfer": 5840,
-          "duration": 6.899999991059303
+          "duration": 8.700000002980232
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/RaceGame-fDxu95HB.css",
           "bytes": 14114,
           "transfer": 14414,
-          "duration": 7.9000000059604645
+          "duration": 9.600000008940697
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival/festival-logo.svg?sha=9b90adfe6a97c2edf7fc68e8c4eee09485b3f1685835a7eee7196540321ef56b",
           "bytes": 3436,
           "transfer": 3736,
-          "duration": 2.5
+          "duration": 3
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/boat-preview-DwAj8SP-.js",
-          "bytes": 37792,
-          "transfer": 38092,
-          "duration": 5.699999988079071
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/boat-preview-1YbGFhD_.js",
+          "bytes": 37794,
+          "transfer": 38094,
+          "duration": 5.200000002980232
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-addons-BITwzI7m.js",
           "bytes": 20745,
           "transfer": 21045,
-          "duration": 5.0999999940395355
+          "duration": 5.5
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-4qsfxkIM.js",
           "bytes": 89316,
           "transfer": 89616,
-          "duration": 11.5
-        },
-        {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/art-preview-B-Y_kg9I.js",
-          "bytes": 2961,
-          "transfer": 3261,
-          "duration": 4.299999997019768
+          "duration": 11.299999997019768
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/kbach-motifs-Bj2M1atI.js",
           "bytes": 32813,
           "transfer": 33113,
-          "duration": 11.799999997019768
+          "duration": 12.099999994039536
+        },
+        {
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/art-preview-B-Y_kg9I.js",
+          "bytes": 2961,
+          "transfer": 3261,
+          "duration": 3.9000000059604645
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/boat--Sd1Ik3-.js",
@@ -2271,121 +2287,121 @@
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-crew-BBFLBQ_7.js",
           "bytes": 53965,
           "transfer": 54265,
-          "duration": 9.799999997019768
-        },
-        {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/NotoSansKhmer.ttf",
-          "bytes": 359788,
-          "transfer": 360088,
-          "duration": 285.20000000298023
+          "duration": 9.299999997019768
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/shirt-runtime-v32.json",
           "bytes": 95843,
           "transfer": 96143,
-          "duration": 11.799999997019768
+          "duration": 10.599999994039536
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/athlete-rig-v27.glb",
           "bytes": 4230492,
           "transfer": 4230792,
-          "duration": 23.5
+          "duration": 57.6000000089407
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/hull-rig-v25.glb",
           "bytes": 3953040,
           "transfer": 3953340,
-          "duration": 21.700000002980232
+          "duration": 50.29999999701977
+        },
+        {
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/NotoSansKhmer.ttf",
+          "bytes": 359788,
+          "transfer": 360088,
+          "duration": 33.29999999701977
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/athlete-master/athlete-details.glb",
           "bytes": 162632,
           "transfer": 162932,
-          "duration": 3
+          "duration": 5.4000000059604645
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/athlete-master/rowing-motion.glb?sha=94832f4e121b6d790045b7b3e7bb1a77b030004775e15dd975c29030403c14a6",
           "bytes": 1139744,
           "transfer": 1140044,
-          "duration": 6.799999997019768
+          "duration": 3.7000000029802322
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/NotoSansKhmer.ttf",
           "bytes": 0,
           "transfer": 300,
-          "duration": 1.7000000029802322
+          "duration": 1.5
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/character-comparison/athlete-faces.glb?sha=1d7adfdb4c6e72e42ea9febb2611f826bff2ffdc1c4ecf9f4f668a8fd308c457",
           "bytes": 1424224,
           "transfer": 1424524,
-          "duration": 5.0999999940395355
+          "duration": 5.5999999940395355
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/ghe-ngo/kbach-library/manifest.json",
           "bytes": 17650,
           "transfer": 17950,
-          "duration": 3.2999999970197678
+          "duration": 3.9000000059604645
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/ghe-ngo/kbach-library/fleet.webp",
           "bytes": 1145512,
           "transfer": 1145812,
-          "duration": 3.7999999970197678
+          "duration": 4.600000008940697
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival-crowd/crowd-compact.json?sha=f4079620e7ce9a820beefec26c24fa0fa9a3e30b1745f6ae2442d0156dcb9447",
           "bytes": 4102,
           "transfer": 4402,
-          "duration": 2.5
+          "duration": 2.7999999970197678
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival-crowd/crowd-compact.packed?sha=286bf615e7b2af5bc44787977914964cce41ff4637efe8474eed2c0514ce4b99",
           "bytes": 3898755,
           "transfer": 3899055,
-          "duration": 96.6000000089407
+          "duration": 113.59999999403954
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/athlete-master/ceremony-crew.json?sha=22ed727f1a9fbb5d8b64aa41c951e644d9962748c5521cdc7ebd02ccff8e51d4",
           "bytes": 2751116,
           "transfer": 2751416,
-          "duration": 166.70000000298023
+          "duration": 194.90000000596046
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/teams-2025/pothi-satharam-2.svg",
           "bytes": 6645,
           "transfer": 6945,
-          "duration": 3.9000000059604645
+          "duration": 3.7999999970197678
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/shirt-runtime-v32.json",
           "bytes": 95843,
           "transfer": 300,
-          "duration": 4.299999997019768
+          "duration": 3.1000000089406967
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/athlete-rig-v27.glb",
           "bytes": 4230492,
           "transfer": 300,
-          "duration": 12
+          "duration": 11.899999991059303
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/hull-rig-v25.glb",
           "bytes": 3953040,
           "transfer": 300,
-          "duration": 13.900000005960464
+          "duration": 13.700000002980232
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/athlete-master/athlete-details.glb",
           "bytes": 162632,
           "transfer": 300,
-          "duration": 2.2000000029802322
+          "duration": 1.6000000089406967
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/athlete-master/rowing-motion.glb?sha=94832f4e121b6d790045b7b3e7bb1a77b030004775e15dd975c29030403c14a6",
           "bytes": 1139744,
           "transfer": 300,
-          "duration": 2.2999999970197678
+          "duration": 1.699999988079071
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/character-comparison/athlete-faces.glb?sha=1d7adfdb4c6e72e42ea9febb2611f826bff2ffdc1c4ecf9f4f668a8fd308c457",
@@ -2403,25 +2419,25 @@
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival-crowd/crowd-compact.json?sha=f4079620e7ce9a820beefec26c24fa0fa9a3e30b1745f6ae2442d0156dcb9447",
           "bytes": 4102,
           "transfer": 300,
-          "duration": 1.3999999910593033
+          "duration": 1.5
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival-crowd/crowd-compact.packed?sha=286bf615e7b2af5bc44787977914964cce41ff4637efe8474eed2c0514ce4b99",
           "bytes": 3898755,
           "transfer": 300,
-          "duration": 12.799999997019768
+          "duration": 13.400000005960464
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/cambodia-course-DjDZBemg.js",
           "bytes": 6165,
           "transfer": 6465,
-          "duration": 2
+          "duration": 2.1000000089406967
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/shirt-runtime-v32.json",
           "bytes": 95843,
           "transfer": 300,
-          "duration": 2.9000000059604645
+          "duration": 3
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/athlete-rig-v27.glb",
@@ -2433,19 +2449,19 @@
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/hull-rig-v25.glb",
           "bytes": 3953040,
           "transfer": 300,
-          "duration": 12.799999997019768
+          "duration": 12.200000002980232
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/athlete-master/athlete-details.glb",
           "bytes": 162632,
           "transfer": 300,
-          "duration": 1.3999999910593033
+          "duration": 1.5
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/athlete-master/rowing-motion.glb?sha=94832f4e121b6d790045b7b3e7bb1a77b030004775e15dd975c29030403c14a6",
           "bytes": 1139744,
           "transfer": 300,
-          "duration": 2
+          "duration": 1.699999988079071
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/character-comparison/athlete-faces.glb?sha=1d7adfdb4c6e72e42ea9febb2611f826bff2ffdc1c4ecf9f4f668a8fd308c457",
@@ -2457,148 +2473,152 @@
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/ghe-ngo/kbach-library/fleet.webp",
           "bytes": 1145512,
           "transfer": 300,
-          "duration": 2
+          "duration": 1.7000000029802322
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival-crowd/crowd-compact.json?sha=f4079620e7ce9a820beefec26c24fa0fa9a3e30b1745f6ae2442d0156dcb9447",
           "bytes": 4102,
           "transfer": 300,
-          "duration": 1.2999999970197678
+          "duration": 1.7000000029802322
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival-crowd/crowd-compact.packed?sha=286bf615e7b2af5bc44787977914964cce41ff4637efe8474eed2c0514ce4b99",
           "bytes": 3898755,
           "transfer": 300,
-          "duration": 12.599999994039536
+          "duration": 13.300000011920929
         }
       ],
-      "fps": 31.75387656761599,
+      "raceInput": {
+        "held": false,
+        "speed": 0
+      },
+      "fps": 31.876138433515464,
       "topCpu": [
         {
           "function": "(idle)",
           "url": "",
           "line": 0,
-          "selfMs": 6422.45
+          "selfMs": 5687.77
         },
         {
           "function": "updateMatrixWorld",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
           "line": 5,
-          "selfMs": 215.02
-        },
-        {
-          "function": "(program)",
-          "url": "",
-          "line": 0,
-          "selfMs": 164.59
+          "selfMs": 324.81
         },
         {
           "function": "multiplyMatrices",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
           "line": 5,
-          "selfMs": 141.59
+          "selfMs": 236.14
+        },
+        {
+          "function": "(program)",
+          "url": "",
+          "line": 0,
+          "selfMs": 179.04
         },
         {
           "function": "updateMatrix",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
           "line": 5,
-          "selfMs": 134.96
-        },
-        {
-          "function": "toArray",
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
-          "line": 5,
-          "selfMs": 67.72
+          "selfMs": 133.6
         },
         {
           "function": "interpolate_",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
           "line": 9,
-          "selfMs": 53.78
+          "selfMs": 108.39
         },
         {
-          "function": "S",
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-4qsfxkIM.js",
-          "line": 3671,
-          "selfMs": 48.71
-        },
-        {
-          "function": "Vn",
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-4qsfxkIM.js",
-          "line": 4108,
-          "selfMs": 44.17
+          "function": "toArray",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
+          "line": 5,
+          "selfMs": 77.73
         },
         {
           "function": "ho",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-4qsfxkIM.js",
           "line": 4108,
-          "selfMs": 43.9
+          "selfMs": 62.73
         },
         {
-          "function": "bindVertexArray",
-          "url": "",
-          "line": 0,
-          "selfMs": 43.08
-        },
-        {
-          "function": "updateWorldMatrix",
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
-          "line": 5,
-          "selfMs": 26.69
-        },
-        {
-          "function": "C",
+          "function": "Vn",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-4qsfxkIM.js",
-          "line": 3960,
-          "selfMs": 26.29
-        },
-        {
-          "function": "setFromQuaternion",
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
-          "line": 5,
-          "selfMs": 25.48
+          "line": 4108,
+          "selfMs": 61.65
         },
         {
           "function": "setFromRotationMatrix",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
           "line": 5,
-          "selfMs": 23.33
+          "selfMs": 57.49
+        },
+        {
+          "function": "updateWorldMatrix",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
+          "line": 5,
+          "selfMs": 53.46
+        },
+        {
+          "function": "setFromEuler",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
+          "line": 5,
+          "selfMs": 48.65
+        },
+        {
+          "function": "s",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-crew-BBFLBQ_7.js",
+          "line": 24,
+          "selfMs": 41.98
+        },
+        {
+          "function": "W",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-4qsfxkIM.js",
+          "line": 4057,
+          "selfMs": 41.89
+        },
+        {
+          "function": "Bp.renderBufferDirect",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-4qsfxkIM.js",
+          "line": 4108,
+          "selfMs": 36.95
         }
       ]
     },
     "siem-reap-race": {
-      "frames": 259,
-      "meanFrameMs": 31.37142857142856,
+      "frames": 258,
+      "meanFrameMs": 31.491860465116314,
       "p95FrameMs": 31.60000000000582,
       "stages": {
         "crew0": {
-          "calls": 260,
-          "ms": 404.0999997705221,
-          "max": 3.5
+          "calls": 259,
+          "ms": 465.4000000208616,
+          "max": 3.2000000029802322
         },
         "crew1": {
-          "calls": 260,
-          "ms": 330.6999999284744,
-          "max": 3
+          "calls": 259,
+          "ms": 411.20000003278255,
+          "max": 2.5
         },
         "river": {
-          "calls": 260,
-          "ms": 77.8999999165535,
-          "max": 3.7999999970197678
+          "calls": 259,
+          "ms": 133.00000001490116,
+          "max": 3.2000000029802322
         },
         "render": {
-          "calls": 260,
-          "ms": 928.5000001192093,
-          "max": 5.5999999940395355
+          "calls": 259,
+          "ms": 958.0000001341105,
+          "max": 5.700000002980232
         }
       },
-      "drawCalls": 388,
-      "triangles": 1590207,
+      "drawCalls": 421,
+      "triangles": 2414833,
       "memory": {
-        "geometries": 386,
+        "geometries": 385,
         "textures": 65
       },
-      "heapBytes": 303181557,
+      "heapBytes": 258067216,
       "renderDpr": 2,
       "gpu": "ANGLE (NVIDIA, NVIDIA GeForce GTX 1650 (0x00001F0A) Direct3D11 vs_5_0 ps_5_0, D3D11)",
       "crowd": {
@@ -2621,11 +2641,11 @@
           "wave": 1694,
           "clap": 1694
         },
-        "active": 1182,
+        "active": 1217,
         "lodCounts": [
           24,
           60,
-          1098
+          1133
         ],
         "limits": {
           "near": 24,
@@ -2633,7 +2653,7 @@
           "far": 16000,
           "radius": 430
         },
-        "drawCalls": 32,
+        "drawCalls": 31,
         "paletteBytes": 6110720,
         "motion": "GPU bone palette interpolation; source idle/wave/walk + authored clap/cheer/indicate/seated",
         "randomization": "independent salted placement id and coordinates, clothes/hair/skin/face proportions/age styling",
@@ -2671,154 +2691,154 @@
             "suit-man": 624
           }
         },
-        "visibleTriangles": 390048,
-        "lastPackMs": 3.199999988079071
+        "visibleTriangles": 394432,
+        "lastPackMs": 1.5999999940395355
       },
       "ceremony": null,
       "resources": [
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/index-BP4FWLKG.js",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/index-C_J0c7J_.js",
           "bytes": 70585,
           "transfer": 70885,
-          "duration": 12.400000005960464
+          "duration": 14
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/index-CZecT9IY.css",
           "bytes": 10221,
           "transfer": 10521,
-          "duration": 6.799999997019768
+          "duration": 10.200000002980232
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/ArtPreview-BwKRPoim.js",
-          "bytes": 12291,
-          "transfer": 12591,
-          "duration": 7.200000002980232
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/ArtPreview-DSU54x7l.js",
+          "bytes": 12284,
+          "transfer": 12584,
+          "duration": 4.799999997019768
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/asset-transfer-D469cGcW.js",
           "bytes": 3133,
           "transfer": 3433,
-          "duration": 6.700000002980232
+          "duration": 3.7999999970197678
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
           "bytes": 77680,
           "transfer": 77980,
-          "duration": 14.100000008940697
+          "duration": 14.200000002980232
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/rotate-ccw-DEGqTxTp.js",
-          "bytes": 437,
-          "transfer": 737,
-          "duration": 7.5
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/rotate-ccw-CyngLvRo.js",
+          "bytes": 438,
+          "transfer": 738,
+          "duration": 7.300000011920929
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/download-x25B40f0.js",
-          "bytes": 1049,
-          "transfer": 1349,
-          "duration": 7.9000000059604645
-        },
-        {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/video-CFcYz-kO.js",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/video-os8YevX6.js",
           "bytes": 424,
           "transfer": 724,
-          "duration": 7.699999988079071
+          "duration": 7.299999997019768
+        },
+        {
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/download-CJuDPp5S.js",
+          "bytes": 1047,
+          "transfer": 1347,
+          "duration": 7.399999991059303
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/ArtPreview-BBLLrk1R.css",
           "bytes": 1493,
           "transfer": 1793,
-          "duration": 8.700000002980232
+          "duration": 7.5
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/RaceGame-DuMYTIVX.js",
-          "bytes": 47833,
-          "transfer": 48133,
-          "duration": 7
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/RaceGame-4nbUNJM6.js",
+          "bytes": 47877,
+          "transfer": 48177,
+          "duration": 8.899999991059303
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/gameplay-Ctwpdevb.js",
-          "bytes": 5808,
-          "transfer": 6108,
-          "duration": 5.0999999940395355
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/gameplay-MxjgIlRE.js",
+          "bytes": 5809,
+          "transfer": 6109,
+          "duration": 4.899999991059303
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-flow-BNEF7dhE.js",
           "bytes": 1233,
           "transfer": 1533,
-          "duration": 4.200000002980232
+          "duration": 5.4000000059604645
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/x-U7oYCOGa.js",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/waves-CexHTxlo.js",
+          "bytes": 1028,
+          "transfer": 1328,
+          "duration": 5.299999997019768
+        },
+        {
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/x-e-VgqXE0.js",
           "bytes": 330,
           "transfer": 630,
-          "duration": 4
+          "duration": 4.700000002980232
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/waves-BADscktp.js",
-          "bytes": 1025,
-          "transfer": 1325,
-          "duration": 4.0999999940395355
-        },
-        {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/compass-Dfjnk5m6.js",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/compass-Ueht-5aA.js",
           "bytes": 676,
           "transfer": 976,
-          "duration": 4.299999997019768
+          "duration": 5.5999999940395355
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/runtime-report-DWncMeeA.js",
           "bytes": 1178,
           "transfer": 1478,
-          "duration": 6.399999991059303
+          "duration": 8.700000002980232
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival-branding-B7DyL_pn.js",
           "bytes": 5540,
           "transfer": 5840,
-          "duration": 6.899999991059303
+          "duration": 8.700000002980232
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/RaceGame-fDxu95HB.css",
           "bytes": 14114,
           "transfer": 14414,
-          "duration": 7.9000000059604645
+          "duration": 9.600000008940697
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival/festival-logo.svg?sha=9b90adfe6a97c2edf7fc68e8c4eee09485b3f1685835a7eee7196540321ef56b",
           "bytes": 3436,
           "transfer": 3736,
-          "duration": 2.5
+          "duration": 3
         },
         {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/boat-preview-DwAj8SP-.js",
-          "bytes": 37792,
-          "transfer": 38092,
-          "duration": 5.699999988079071
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/boat-preview-1YbGFhD_.js",
+          "bytes": 37794,
+          "transfer": 38094,
+          "duration": 5.200000002980232
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-addons-BITwzI7m.js",
           "bytes": 20745,
           "transfer": 21045,
-          "duration": 5.0999999940395355
+          "duration": 5.5
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-4qsfxkIM.js",
           "bytes": 89316,
           "transfer": 89616,
-          "duration": 11.5
-        },
-        {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/art-preview-B-Y_kg9I.js",
-          "bytes": 2961,
-          "transfer": 3261,
-          "duration": 4.299999997019768
+          "duration": 11.299999997019768
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/kbach-motifs-Bj2M1atI.js",
           "bytes": 32813,
           "transfer": 33113,
-          "duration": 11.799999997019768
+          "duration": 12.099999994039536
+        },
+        {
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/art-preview-B-Y_kg9I.js",
+          "bytes": 2961,
+          "transfer": 3261,
+          "duration": 3.9000000059604645
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/boat--Sd1Ik3-.js",
@@ -2830,121 +2850,121 @@
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-crew-BBFLBQ_7.js",
           "bytes": 53965,
           "transfer": 54265,
-          "duration": 9.799999997019768
-        },
-        {
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/NotoSansKhmer.ttf",
-          "bytes": 359788,
-          "transfer": 360088,
-          "duration": 285.20000000298023
+          "duration": 9.299999997019768
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/shirt-runtime-v32.json",
           "bytes": 95843,
           "transfer": 96143,
-          "duration": 11.799999997019768
+          "duration": 10.599999994039536
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/athlete-rig-v27.glb",
           "bytes": 4230492,
           "transfer": 4230792,
-          "duration": 23.5
+          "duration": 57.6000000089407
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/hull-rig-v25.glb",
           "bytes": 3953040,
           "transfer": 3953340,
-          "duration": 21.700000002980232
+          "duration": 50.29999999701977
+        },
+        {
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/NotoSansKhmer.ttf",
+          "bytes": 359788,
+          "transfer": 360088,
+          "duration": 33.29999999701977
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/athlete-master/athlete-details.glb",
           "bytes": 162632,
           "transfer": 162932,
-          "duration": 3
+          "duration": 5.4000000059604645
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/athlete-master/rowing-motion.glb?sha=94832f4e121b6d790045b7b3e7bb1a77b030004775e15dd975c29030403c14a6",
           "bytes": 1139744,
           "transfer": 1140044,
-          "duration": 6.799999997019768
+          "duration": 3.7000000029802322
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/NotoSansKhmer.ttf",
           "bytes": 0,
           "transfer": 300,
-          "duration": 1.7000000029802322
+          "duration": 1.5
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/character-comparison/athlete-faces.glb?sha=1d7adfdb4c6e72e42ea9febb2611f826bff2ffdc1c4ecf9f4f668a8fd308c457",
           "bytes": 1424224,
           "transfer": 1424524,
-          "duration": 5.0999999940395355
+          "duration": 5.5999999940395355
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/ghe-ngo/kbach-library/manifest.json",
           "bytes": 17650,
           "transfer": 17950,
-          "duration": 3.2999999970197678
+          "duration": 3.9000000059604645
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/ghe-ngo/kbach-library/fleet.webp",
           "bytes": 1145512,
           "transfer": 1145812,
-          "duration": 3.7999999970197678
+          "duration": 4.600000008940697
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival-crowd/crowd-compact.json?sha=f4079620e7ce9a820beefec26c24fa0fa9a3e30b1745f6ae2442d0156dcb9447",
           "bytes": 4102,
           "transfer": 4402,
-          "duration": 2.5
+          "duration": 2.7999999970197678
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival-crowd/crowd-compact.packed?sha=286bf615e7b2af5bc44787977914964cce41ff4637efe8474eed2c0514ce4b99",
           "bytes": 3898755,
           "transfer": 3899055,
-          "duration": 96.6000000089407
+          "duration": 113.59999999403954
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/athlete-master/ceremony-crew.json?sha=22ed727f1a9fbb5d8b64aa41c951e644d9962748c5521cdc7ebd02ccff8e51d4",
           "bytes": 2751116,
           "transfer": 2751416,
-          "duration": 166.70000000298023
+          "duration": 194.90000000596046
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/teams-2025/pothi-satharam-2.svg",
           "bytes": 6645,
           "transfer": 6945,
-          "duration": 3.9000000059604645
+          "duration": 3.7999999970197678
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/shirt-runtime-v32.json",
           "bytes": 95843,
           "transfer": 300,
-          "duration": 4.299999997019768
+          "duration": 3.1000000089406967
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/athlete-rig-v27.glb",
           "bytes": 4230492,
           "transfer": 300,
-          "duration": 12
+          "duration": 11.899999991059303
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/hull-rig-v25.glb",
           "bytes": 3953040,
           "transfer": 300,
-          "duration": 13.900000005960464
+          "duration": 13.700000002980232
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/athlete-master/athlete-details.glb",
           "bytes": 162632,
           "transfer": 300,
-          "duration": 2.2000000029802322
+          "duration": 1.6000000089406967
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/athlete-master/rowing-motion.glb?sha=94832f4e121b6d790045b7b3e7bb1a77b030004775e15dd975c29030403c14a6",
           "bytes": 1139744,
           "transfer": 300,
-          "duration": 2.2999999970197678
+          "duration": 1.699999988079071
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/character-comparison/athlete-faces.glb?sha=1d7adfdb4c6e72e42ea9febb2611f826bff2ffdc1c4ecf9f4f668a8fd308c457",
@@ -2962,25 +2982,25 @@
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival-crowd/crowd-compact.json?sha=f4079620e7ce9a820beefec26c24fa0fa9a3e30b1745f6ae2442d0156dcb9447",
           "bytes": 4102,
           "transfer": 300,
-          "duration": 1.3999999910593033
+          "duration": 1.5
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival-crowd/crowd-compact.packed?sha=286bf615e7b2af5bc44787977914964cce41ff4637efe8474eed2c0514ce4b99",
           "bytes": 3898755,
           "transfer": 300,
-          "duration": 12.799999997019768
+          "duration": 13.400000005960464
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/cambodia-course-DjDZBemg.js",
           "bytes": 6165,
           "transfer": 6465,
-          "duration": 2
+          "duration": 2.1000000089406967
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/shirt-runtime-v32.json",
           "bytes": 95843,
           "transfer": 300,
-          "duration": 2.9000000059604645
+          "duration": 3
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/athlete-rig-v27.glb",
@@ -2992,19 +3012,19 @@
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/illustrated-v22/hull-rig-v25.glb",
           "bytes": 3953040,
           "transfer": 300,
-          "duration": 12.799999997019768
+          "duration": 12.200000002980232
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/athlete-master/athlete-details.glb",
           "bytes": 162632,
           "transfer": 300,
-          "duration": 1.3999999910593033
+          "duration": 1.5
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/athlete-master/rowing-motion.glb?sha=94832f4e121b6d790045b7b3e7bb1a77b030004775e15dd975c29030403c14a6",
           "bytes": 1139744,
           "transfer": 300,
-          "duration": 2
+          "duration": 1.699999988079071
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/character-comparison/athlete-faces.glb?sha=1d7adfdb4c6e72e42ea9febb2611f826bff2ffdc1c4ecf9f4f668a8fd308c457",
@@ -3016,116 +3036,120 @@
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/ghe-ngo/kbach-library/fleet.webp",
           "bytes": 1145512,
           "transfer": 300,
-          "duration": 2
+          "duration": 1.7000000029802322
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival-crowd/crowd-compact.json?sha=f4079620e7ce9a820beefec26c24fa0fa9a3e30b1745f6ae2442d0156dcb9447",
           "bytes": 4102,
           "transfer": 300,
-          "duration": 1.2999999970197678
+          "duration": 1.7000000029802322
         },
         {
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/festival-crowd/crowd-compact.packed?sha=286bf615e7b2af5bc44787977914964cce41ff4637efe8474eed2c0514ce4b99",
           "bytes": 3898755,
           "transfer": 300,
-          "duration": 12.599999994039536
+          "duration": 13.300000011920929
         }
       ],
-      "fps": 31.876138433515496,
+      "raceInput": {
+        "held": true,
+        "speed": 6.413896689557652
+      },
+      "fps": 31.754236975224273,
       "topCpu": [
         {
           "function": "(idle)",
           "url": "",
           "line": 0,
-          "selfMs": 5812.84
-        },
-        {
-          "function": "multiplyMatrices",
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
-          "line": 5,
-          "selfMs": 325.58
+          "selfMs": 5533.38
         },
         {
           "function": "updateMatrixWorld",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
           "line": 5,
-          "selfMs": 272.26
+          "selfMs": 344.35
+        },
+        {
+          "function": "multiplyMatrices",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
+          "line": 5,
+          "selfMs": 289.32
         },
         {
           "function": "(program)",
           "url": "",
           "line": 0,
-          "selfMs": 214.51
+          "selfMs": 208.48
         },
         {
           "function": "updateMatrix",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
           "line": 5,
-          "selfMs": 185.36
+          "selfMs": 179.73
         },
         {
           "function": "interpolate_",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
           "line": 9,
-          "selfMs": 63.24
-        },
-        {
-          "function": "setFromQuaternion",
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
-          "line": 5,
-          "selfMs": 54.13
-        },
-        {
-          "function": "updateWorldMatrix",
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
-          "line": 5,
-          "selfMs": 47.96
-        },
-        {
-          "function": "S",
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-4qsfxkIM.js",
-          "line": 3671,
-          "selfMs": 46.21
-        },
-        {
-          "function": "bindVertexArray",
-          "url": "",
-          "line": 0,
-          "selfMs": 45.86
-        },
-        {
-          "function": "update",
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-crew-BBFLBQ_7.js",
-          "line": 66,
-          "selfMs": 44.25
-        },
-        {
-          "function": "bufferSubData",
-          "url": "",
-          "line": 0,
-          "selfMs": 42.68
-        },
-        {
-          "function": "s",
-          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-crew-BBFLBQ_7.js",
-          "line": 24,
-          "selfMs": 41.77
+          "selfMs": 126.21
         },
         {
           "function": "ho",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-4qsfxkIM.js",
           "line": 4108,
-          "selfMs": 40.23
+          "selfMs": 73.0
         },
         {
-          "function": "Bp.renderBufferDirect",
+          "function": "Vn",
           "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-4qsfxkIM.js",
           "line": 4108,
-          "selfMs": 39.4
+          "selfMs": 55.48
+        },
+        {
+          "function": "S",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-renderer-4qsfxkIM.js",
+          "line": 3671,
+          "selfMs": 49.77
+        },
+        {
+          "function": "update",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-crew-BBFLBQ_7.js",
+          "line": 66,
+          "selfMs": 46.04
+        },
+        {
+          "function": "s",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-crew-BBFLBQ_7.js",
+          "line": 24,
+          "selfMs": 43.69
+        },
+        {
+          "function": "setFromQuaternion",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
+          "line": 5,
+          "selfMs": 42.86
+        },
+        {
+          "function": "C",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/race-crew-BBFLBQ_7.js",
+          "line": 22,
+          "selfMs": 39.34
+        },
+        {
+          "function": "toArray",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
+          "line": 5,
+          "selfMs": 38.16
+        },
+        {
+          "function": "copy",
+          "url": "http://127.0.0.1:8779/Tuk-Ngo/assets/three-core-BE0cXlBh.js",
+          "line": 5,
+          "selfMs": 37.74
         }
       ]
     }
   },
   "errors": [],
-  "readySeconds": 5.307144299993524
+  "readySeconds": 3.9712900999875274
 }

@@ -22,6 +22,13 @@ Maspéro xanh ngọc/san hô và Khleang; Phnom Penh xanh hoàng gia/vàng và T
 Siem Reap đất nung/xanh lam ngọc và sông đô thị. Không coi đây là dấu hiệu,
 chứng nhận hay nhận tài trợ của ban tổ chức thật.
 
+Đã đo tải lạnh trực tiếp trên GitHub Pages bằng ba browser context mới, tắt
+cache và tắt âm thanh: Maspéro 16,45 MB; Phnom Penh 13,66 MB; Siem Reap 13,66 MB
+(tổng byte truyền gồm header). Không tải kèm ZIP bàn giao, video nghiên cứu hay
+GLB xuất nguyên đội. Đây là số đo mạng/PC của lần thử, không phải FPS hoặc thời
+gian tải bảo đảm trên tablet. Kho dist local khoảng 858 MB gồm cả tư liệu và
+mô hình để xem riêng; không phải tải ban đầu của mỗi người chơi.
+
 Các script có thể chạy lại: `check-completion-ui.py`, `check-shirt-batching.py`,
 `check-crew-integrity.py`, `check-venue-narration.py`, `check-profile-transfer.py`,
 `check-online-ui.py`, `profile-race-runtime.py` và `test-completion.mjs`.

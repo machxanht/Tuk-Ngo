@@ -1,0 +1,72 @@
+{
+  "url": "https://machxanht.github.io/Tuk-Ngo/",
+  "errors": [],
+  "physicalTabletTested": false,
+  "wrongPasswordPreservesReceiver": true,
+  "restoredServerRating": 1016,
+  "profileViewports": [
+    [
+      "vi",
+      1024,
+      768
+    ],
+    [
+      "vi",
+      768,
+      1024
+    ],
+    [
+      "vi",
+      1180,
+      430
+    ],
+    [
+      "vi",
+      390,
+      844
+    ],
+    [
+      "km",
+      1024,
+      768
+    ],
+    [
+      "km",
+      768,
+      1024
+    ],
+    [
+      "km",
+      1180,
+      430
+    ],
+    [
+      "km",
+      390,
+      844
+    ],
+    [
+      "en",
+      1024,
+      768
+    ],
+    [
+      "en",
+      768,
+      1024
+    ],
+    [
+      "en",
+      1180,
+      430
+    ],
+    [
+      "en",
+      390,
+      844
+    ]
+  ],
+  "otherVenueRankSeparate": true,
+  "encryptedExport": true,
+  "restoreSurvivesReload": true
+}

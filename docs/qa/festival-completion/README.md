@@ -38,6 +38,8 @@ in `deployment.json` after publishing. No guest export or secret is included.
 - `dashboard-regression.json`: 21 legacy browser cases. `dashboard-venues.json`:
   real playback of the new pack, venue/language filtering, stop on changes,
   persisted selection and exported review of all 42 files.
+  `dashboard-final.json` reruns all 22 together after fixing a visible undefined
+  stage label in the new tab. Its heading now explicitly reads “THEO SÂN”.
 - `rosters.json` and `scenes.json`: independent 61/16/8 rosters, search, save
   isolation, responsive VI/KM/EN picker, AI/practice/cups, six home families,
   cars/streets, venue banners with readable street-facing reverse UVs.
@@ -61,6 +63,9 @@ DPR2, Edge headless on the actual GTX1650/D3D11 GPU. These are **desktop**
 measurements, not physical-tablet FPS. Sampling reported about 31–32 FPS both
 before and after; no FPS improvement is claimed. The paired shirt comparison
 establishes draw reduction independently of camera-driven scene visibility.
+Each race sample keeps an actual keyboard contact held and asserts positive
+boat speed, recorded in `raceInput`; direct engine holds alone are cleared by
+the UI's contact reconciliation and are insufficient for a rowing benchmark.
 
 The first Maspéro menu resource log reports about 19.7 MB encoded bodies on the
 local server, with audio muted. Later venue logs are cumulative within the same
@@ -69,6 +74,13 @@ is approximately 858 MB including model exports, old studies, review media and
 offline archives. Its size is not the game's initial network download. This
 release publishes only allowlisted runtime/dashboard additions, preserving
 unrelated working GLB changes outside the release.
+
+`public-load.json` measures separate cold contexts against GitHub Pages with
+cache disabled and audio muted: 16,448,006 bytes at Maspéro, 13,658,547 at Phnom
+Penh and 13,658,916 at Siem Reap, including response headers. Ready took
+15.15 / 8.70 / 10.34 seconds on that PC/network. No team-export GLB, ZIP,
+review video or MP3 was auto-loaded. These are one-run observations, not tablet
+loading guarantees or a before/after speed improvement claim.
 
 ## Remaining external or content acceptance
 

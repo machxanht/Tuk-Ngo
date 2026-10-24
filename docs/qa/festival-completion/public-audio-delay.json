@@ -1,0 +1,22 @@
+{
+  "nativeListeningVerified": false,
+  "introFetchDelayMs": 4000,
+  "cases": [
+    {
+      "venue": "maspero",
+      "language": "en",
+      "intro": [
+        "maspero-intro-en"
+      ],
+      "keys": [
+        "maspero-flyover-en",
+        "ai-go-en",
+        "maspero-intro-en"
+      ],
+      "rms": 0.0013025082231412999,
+      "decoded": 10,
+      "actualWebAudio": true
+    }
+  ],
+  "errors": []
+}
