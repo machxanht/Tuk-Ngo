@@ -18,7 +18,16 @@
  if(saved.schema!==2)saved={};
  const reviews=objectMap(saved.reviews),choices=objectMap(saved.choices),edits=objectMap(saved.edits),failedAudio=new Set();
  for(const cue of script.cues)for(const l of ['vi','km'])if(typeof edits[cue.id]?.[l]==='string')cue.text[l]=edits[cue.id][l].slice(0,4000);
- let view=['cues','teams','field'].includes(saved.view)?saved.view:'cues',lang=saved.lang==='vi'?'vi':'km';
+ let view=['cues','teams','field','venues'].includes(saved.view)?saved.view:'cues',lang=saved.lang==='vi'?'vi':saved.lang==='en'&&saved.view==='venues'?'en':'km';
+ let venuePack=null,venueRows=[],venuePromise=null;
+ const languageName=()=>lang==='en'?'English':lang==='km'?'Khmer':'Việt';
+ async function loadVenues(){
+  if(venuePack)return;if(venuePromise)return venuePromise;
+  venuePromise=(data.venuePack?Promise.resolve(data.venuePack):fetch('../assets/race-audio/venues/manifest.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error();return r.json();})).then(pack=>{
+   venuePack=pack;const city={maspero:'Maspéro','phnom-penh':'Phnom Penh','siem-reap':'Siem Reap'},cue={flyover:'Toàn cảnh',intro:'Giới thiệu đường đua',cruise:'Giữ nhịp đường trường','team-name':'Tên đội'};
+   venueRows=Object.entries(pack.clips).map(([key,c])=>{clips[key]={...c,file:data.venuePack?c.file:'../assets/race-audio/'+c.file,reviewWarnings:c.lang==='km'?['Bản AI Khmer cần người biết tiếng Khmer nghe duyệt.']:[]};const venue=c.venueIds[0];return {id:key,venueId:venue,title:c.role==='team-name'?c.text:city[venue]+' · '+(cue[c.cueId]||c.cueId||key),subtitle:city[venue]+' · '+(c.lang==='km'?'Khmer':'English'),when:c.role==='team-name'?'Chỉ dùng cho đúng mã đội trên sân này.':'Lời bình riêng của sân. Không đưa sang map khác.',text:{vi:'',km:c.lang==='km'?c.text:'',en:c.lang==='en'?c.text:''},audio:{[c.lang]:[key]}};});render();
+  }).catch(()=>{$('save-status').textContent='Chưa tải được audio theo sân. Chọn lại mục để thử lại.';venuePromise=null;});return venuePromise;
+ }
  const selected={cues:'ceremony-teams',teams:'can_tho-23',field:null,...objectMap(saved.selected)};
  let playingKey=null,playSerial=0,autoListen=!!saved.autoListen;
  $('advance').checked=saved.advance!==false;$('auto-listen').checked=autoListen;
@@ -26,9 +35,10 @@
  if(data.beds?.menuMusic)clips['menu-music']={...data.beds.menuMusic,lang:'music',text:'Nhạc main menu · chỉ phát trước khi vào trận.',sourceType:'music',role:'menu-music'};
  const unique=arr=>[...new Set(arr||[])].filter(k=>clips[k]);
  const phaseName=id=>script.stages.find(s=>s.id===id)?.title||id;
- const sourceName=c=>c?.sourceType==='azure-stock-neural'?'AI Khmer · Azure':c?.sourceType==='user-supplied-recording'?'Bản tên đội đã cung cấp':c?.sourceType==='music'?'Nhạc menu':c?.sourceType==='licensed-recording'?'Bản thu CC0':'Bản thu gốc';
+ const sourceName=c=>c?.sourceType==='azure-stock-neural'?'AI '+(c.lang==='en'?'English':'Khmer')+' · Azure':c?.sourceType==='user-supplied-recording'?'Bản tên đội đã cung cấp':c?.sourceType==='music'?'Nhạc menu':c?.sourceType==='licensed-recording'?'Bản thu CC0':'Bản thu gốc';
  const statusName=s=>({pending:'Chưa duyệt',pass:'Đạt',fix:'Cần sửa'}[s]||'Chưa duyệt');
  function items(which=view){
+  if(which==='venues')return venueRows;
   if(which==='cues')return script.cues.map(c=>({id:c.id,title:c.title,subtitle:phaseName(c.stage),stage:c.stage,when:c.when,cue:c,text:c.text,
    audio:{vi:unique(c.audio.vi),km:unique([...(handoff.cues?.[c.id]?.variantKeys||[]),...c.audio.km])}}));
   if(which==='teams')return Object.entries(data.teams).map(([id,t])=>({id,title:t.nameVi,subtitle:(t.gender==='male'?'Nam':t.gender==='female'?'Nữ':'Chưa rõ nam/nữ')+' · '+id,
@@ -66,7 +76,7 @@
  }
  function visible(){
   const q=searchText($('search').value),filter=$('review-filter').value,stage=$('stage-filter').value;
-  return items().filter(item=>(view!=='cues'||!stage||item.stage===stage)&&(!q||searchText(item.id+' '+item.title+' '+item.text.vi+' '+item.text.km).includes(q))).filter(item=>!filter||(filter==='issue'?(keysFor(item).length?keysFor(item).some(key=>warningsFor(item,key).length>0):warningsFor(item,null).length>0):filter==='pending'?(!keysFor(item).length||keysFor(item).some(k=>reviewFor(item,k).status==='pending')):itemStatus(item)===filter));
+  return items().filter(item=>(view!=='venues'||keysFor(item).length&&(!$('venue-filter').value||item.venueId===$('venue-filter').value))&&(view!=='cues'||!stage||item.stage===stage)&&(!q||searchText(item.id+' '+item.title+' '+item.text.vi+' '+item.text.km+' '+(item.text.en||'')).includes(q))).filter(item=>!filter||(filter==='issue'?(keysFor(item).length?keysFor(item).some(key=>warningsFor(item,key).length>0):warningsFor(item,null).length>0):filter==='pending'?(!keysFor(item).length||keysFor(item).some(k=>reviewFor(item,k).status==='pending')):itemStatus(item)===filter));
  }
  const current=()=>items().find(item=>item.id===selected[view])||null;
  function persist(){
@@ -75,7 +85,7 @@
  }
  function stop(message=''){
   playSerial++;player.pause();player.removeAttribute('src');player.load();playingKey=null;player.onended=null;player.onerror=null;player.oncanplay=null;
-  $('play').textContent=view==='field'?'Nghe đoạn này':'Nghe '+(lang==='km'?'Khmer':'Việt');
+  $('play').textContent=view==='field'?'Nghe đoạn này':'Nghe '+languageName();
   $('play-status').textContent=message||'Audio chỉ tải khi bấm nghe.';
  }
  function renderList(){
@@ -90,6 +100,9 @@
  }
  function renderTexts(item,key){
   const clip=clips[key];
+  $('vi-panel').querySelector('h3').firstChild.textContent=view==='venues'&&lang==='en'?'English ':'Tiếng Việt ';
+  if(view==='venues'&&lang==='en'){$('km-panel').hidden=true;$('text-vi').textContent=clip?.text||'';$('text-vi').lang='en';$('vi-label').textContent='Lời trong hồ sơ audio';$('transcript-note').hidden=true;return;}
+  $('text-vi').lang='vi';
   $('text-km').textContent=lang==='km'&&view!=='field'?(clip?.text||'Chưa có lời chép cho đoạn này. Nghe và ghi chú bên dưới.'):(item.text.km||'Chưa có bản Khmer tương ứng.');
   $('text-vi').textContent=lang==='vi'||view==='field'?(clip?.text||item.text.vi||'Chưa có lời chép.'):view==='teams'?item.text.vi:(clip?.meaningVi||'Chưa có nghĩa Việt cho chính đoạn đang chọn. Không dùng lời của bản thu Việt để thay cho bản dịch.');
   $('km-label').textContent=lang==='km'?'Lời trong hồ sơ audio':'Kịch bản Khmer để đối chiếu';
@@ -119,7 +132,7 @@
   $('variant').innerHTML=keys.map((k,i)=>`<option value="${esc(k)}" ${k===key?'selected':''}>${esc(variantName(k,i))}</option>`).join('');
   $('audio-note').textContent=key?sourceName(clip)+(Number.isFinite(clip.duration)?' · '+clip.duration.toFixed(2)+' giây':'')+(handoff.summary?' · Bản để nghe duyệt':''):'Chưa có audio';
   renderWarnings(item,key);
-  $('play').disabled=!key;$('replay').disabled=!key;$('play').textContent=failedAudio.has(key)?'Thử lại':view==='field'?'Nghe đoạn này':'Nghe '+(lang==='km'?'Khmer':'Việt');
+  $('play').disabled=!key;$('replay').disabled=!key;$('play').textContent=failedAudio.has(key)?'Thử lại':view==='field'?'Nghe đoạn này':'Nghe '+languageName();
   renderTexts(item,key);
   $('review-state').textContent=statusName(r.status);$('review-note').value=r.note||'';
   $('review-question').textContent=key?'Đánh giá bản '+(keys.indexOf(key)+1)+' / '+keys.length:'Chưa có bản audio';
@@ -132,7 +145,7 @@
   const entries=visible();if(!entries.some(i=>i.id===selected[view]))selected[view]=entries[0]?.id||null;
   document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.view===view));
   document.querySelectorAll('[data-lang]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===lang));
-  document.querySelector('.language-tabs').hidden=view==='field';$('stage-filter').hidden=view!=='cues';
+  document.querySelector('.language-tabs').hidden=view==='field';$('stage-filter').hidden=view!=='cues';$('venue-filter').hidden=view!=='venues';document.querySelector('[data-lang=en]').hidden=view!=='venues';document.querySelector('[data-lang=vi]').hidden=view==='venues';
   $('toggle-list').textContent='Chọn mục khác · '+items().length+' mục '+($('library').classList.contains('list-open')?'⌃':'⌄');
   renderList();renderDetail();
  }
@@ -166,7 +179,7 @@
  }
  function exportEntries(){
   const out=[];
-  for(const which of ['cues','teams','field'])for(const item of items(which))for(const l of which==='field'?['vi']:['vi','km']){
+  for(const which of ['cues','teams','field','venues'])for(const item of items(which))for(const l of which==='field'?['vi']:which==='venues'?Object.keys(item.audio):['vi','km']){
    const keys=keysFor(item,l);for(const key of keys.length?keys:[null]){
     const clip=clips[key],r=reviewFor(item,key,l,which);
     out.push({group:which,itemId:item.id,title:item.title,language:which==='field'?'field':l,clipId:key,
@@ -181,7 +194,7 @@
  function csv(){const quote=v=>'"'+String(v??'').replace(/"/g,'""')+'"';const entries=exportEntries(),cols=['group','itemId','title','language','clipId','status','note','audioTextLabel','meaningVi','expectedText','file','sha256'];return '\ufeff'+[cols,...entries.map(r=>cols.map(c=>r[c]))].map(r=>r.map(quote).join(',')).join('\r\n');}
  document.addEventListener('click',event=>{
   const b=event.target.closest('button');if(!b)return;
-  if(b.dataset.view){stop();view=b.dataset.view;$('search').value='';$('review-filter').value='';$('stage-filter').value='';render();persist();return;}
+  if(b.dataset.view){stop();view=b.dataset.view;if(view==='venues'&&lang==='vi'||view!=='venues'&&lang==='en')lang='km';if(view==='venues')void loadVenues();$('search').value='';$('review-filter').value='';$('stage-filter').value='';render();persist();return;}
   if(b.dataset.lang){stop();lang=b.dataset.lang;render();persist();return;}
   if(b.dataset.item){choose(b.dataset.item);if(innerWidth<=700){$('library').classList.remove('list-open');$('toggle-list').setAttribute('aria-expanded','false');$('toggle-list').textContent='Chọn mục khác · '+items().length+' mục ⌄';$('detail').focus({preventScroll:true});$('detail').scrollIntoView({block:'start',behavior:'auto'});}return;}
   if(b.dataset.review){mark(b.dataset.review);return;}
@@ -207,7 +220,7 @@
  });
  document.addEventListener('change',event=>{
   const el=event.target;
-  if(el.id==='stage-filter'||el.id==='review-filter'){stop();render();}
+  if(el.id==='stage-filter'||el.id==='review-filter'||el.id==='venue-filter'){stop();render();}
   if(el.id==='variant'){const item=current();if(item){choices[slot(item)]=el.value;stop();renderDetail();renderList();persist();if(autoListen)play();}}
   if(el.id==='loop')player.loop=el.checked;
   if(el.id==='auto-listen'){autoListen=el.checked;persist();}
@@ -226,5 +239,6 @@
  $('package-note').textContent=handoff.summary?`Đã nhận ${handoff.summary.files} file Khmer từ AGY: ${handoff.summary.reusedByHash} file trùng bản có sẵn, ${handoff.summary.newFiles} file mới. Đã tạo lại ${handoff.repairs?.generated||0} biến thể có hồ sơ sai. Phần tên đội có ứng viên cho ${handoff.summary.namedRegistrations} đăng ký. Chưa nhập gói này vào game; phát âm Khmer còn chờ duyệt.`:'Bộ nghe thử độc lập với game. Khmer còn cần duyệt phát âm.';
  $('save-status').textContent=recoveryNeeded?'Phần lưu bị lỗi đã được phục hồi; dữ liệu gốc được giữ dự phòng.':Object.keys(reviews).length?'Đã khôi phục kết quả trên trình duyệt':'Chưa có mục nào được đánh dấu';
  render();
+ if(data.venuePack||view==='venues')void loadVenues();
  window.AudioStudio={data,getScript:()=>structuredClone(script),getReview:exportReview,getVisible:()=>visible().map(i=>i.id),stop};
 })();

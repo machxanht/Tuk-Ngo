@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "packageId": "b3f47826cc065358",
+  "packageId": "1836178966f3bff2",
   "scriptSha256": "7115ad1e385d8781e8b635d675b840e58fd245cce49f5435ee8fff469d3ad252",
   "clips": {
     "broadcast-ready": {
@@ -11790,6 +11790,182 @@
       "sha256": "4c491351fe965ea2c3100495eae87e1a0df6c8af73ff670662d36c451ff73a53"
     },
     {
+      "file": "venues/manifest.json",
+      "sha256": "44269834501325b31328ed449fcc0d7d3e6d20906adb9a8a683a04137e4e2ea7"
+    },
+    {
+      "file": "docs/venue-audio-script.json",
+      "sha256": "cc14b6f3d538a08f2e94acc1da119512d38e5c552937077cbd78dd3880f80871"
+    },
+    {
+      "file": "venues/maspero-flyover-km.mp3",
+      "sha256": "520f749e6c2f6cc67cd457967c86bc3a4a92638ea22a41db99246dbbd182a8a7"
+    },
+    {
+      "file": "venues/maspero-flyover-en.mp3",
+      "sha256": "46c9ba2ccc0de05f4c331bde4fa755cdc8c154d413d0ccbcc7f961826345c10c"
+    },
+    {
+      "file": "venues/maspero-intro-km.mp3",
+      "sha256": "03747c000bad926106127ad3e52b4f91789ec0088e75bda3bb9d61f4cf6057d2"
+    },
+    {
+      "file": "venues/maspero-intro-en.mp3",
+      "sha256": "a51206d25cf91d673c909e4d0670e4eee329b631da7fbc8ab9cb1b5841183ebd"
+    },
+    {
+      "file": "venues/maspero-cruise-km.mp3",
+      "sha256": "57df9b6b4cdbdc666c00c3dbd954be3535d274eddd613ae7cab932d8212d4dbc"
+    },
+    {
+      "file": "venues/maspero-cruise-en.mp3",
+      "sha256": "4c3360212c642f6e2dc330fcd87bae458bbe3cab90ca0dc38bdc065d795b4483"
+    },
+    {
+      "file": "venues/phnom-penh-flyover-km.mp3",
+      "sha256": "cfa6a16db057bcddf729ac42d1f732c2d3a6175d693110d5a0d66c9c494cb338"
+    },
+    {
+      "file": "venues/phnom-penh-flyover-en.mp3",
+      "sha256": "017fe79851ce51319991bcb0ef2ffecc2e33118376f9594c274af2dc1cc7f88f"
+    },
+    {
+      "file": "venues/phnom-penh-intro-km.mp3",
+      "sha256": "e536977a29f7a45ac9ea1bff75415ee324b74cb9ee8b8c7b9f4bb0463d912a37"
+    },
+    {
+      "file": "venues/phnom-penh-intro-en.mp3",
+      "sha256": "de1a163ec69390b6f43f9fe2555c66e450fedb9fdc3626cf71bba5db36acfb88"
+    },
+    {
+      "file": "venues/phnom-penh-cruise-km.mp3",
+      "sha256": "b580ad121187bf421358c2bce2979787432db4d1c0505f0d53d550b56cb824a4"
+    },
+    {
+      "file": "venues/phnom-penh-cruise-en.mp3",
+      "sha256": "53ac87d8408f661d1a49f1299b76c04b8a1321fdd6e01d4a7f15ec6cb65850df"
+    },
+    {
+      "file": "venues/siem-reap-flyover-km.mp3",
+      "sha256": "78d69f664ba0c3aef78b43ca95f324ffb3a54a8d9f5cbe7eef6be10c897e7f53"
+    },
+    {
+      "file": "venues/siem-reap-flyover-en.mp3",
+      "sha256": "3a45f7eab3e7c355c92afcbbd3b36b2550e13977e0c8adf533e4101f8f729c0e"
+    },
+    {
+      "file": "venues/siem-reap-intro-km.mp3",
+      "sha256": "de78a88c29f91dd602c0279d8a27cbe023357350a2ae14397a10bbd0a8b0cac3"
+    },
+    {
+      "file": "venues/siem-reap-intro-en.mp3",
+      "sha256": "a7b2268a0b7a6afadade7f09481f2cfff339f366c92016d6a5dc2aa632354f44"
+    },
+    {
+      "file": "venues/siem-reap-cruise-km.mp3",
+      "sha256": "469e16f1791a0faaf483a08d017f1e170c721fdafc3beac383f2e8c12ff6705a"
+    },
+    {
+      "file": "venues/siem-reap-cruise-en.mp3",
+      "sha256": "a0b189d773a5dfdf14d5af944cd3ab9feb76ecf52351b6c057bfd2d71e255b8e"
+    },
+    {
+      "file": "venues/kh-sovan-reachsey-name-km.mp3",
+      "sha256": "59323b82ce109f0c3ef0a7a1d24f0beec91353ad1ddb8b95538360477a98f6f3"
+    },
+    {
+      "file": "venues/kh-chey-samrith-name-km.mp3",
+      "sha256": "ac35703c663562fb60cdb28dc6699dd0fdf6f3c3b756e93e6430b44739f08c89"
+    },
+    {
+      "file": "venues/kh-hanuman-name-km.mp3",
+      "sha256": "f217c9abdf4106492569bc4d25be47bfe24ae1f893717ba96265c2e36edf4dd1"
+    },
+    {
+      "file": "venues/kh-maha-tonsay-name-km.mp3",
+      "sha256": "5bdcea0ee1af1a715d2716256f95150196f1833c4c704ea0e44a98bc79c3ef1d"
+    },
+    {
+      "file": "venues/kh-srei-krang-youv-name-km.mp3",
+      "sha256": "0717b6f83613f1ab69835374dde07ee3bade0bcf804d6097de21bab1c1e13d41"
+    },
+    {
+      "file": "venues/kh-sea-senchey-name-km.mp3",
+      "sha256": "4334e8e2499f87f929a912b20ec0b7ed3742d875bc835ed5ca42d081117256d5"
+    },
+    {
+      "file": "venues/kh-chao-pech-name-km.mp3",
+      "sha256": "405b32831c369b1882e68f994b337c299fd9db467e57089bc8085c2779f21f10"
+    },
+    {
+      "file": "venues/kh-techo-keo-vichey-name-km.mp3",
+      "sha256": "ec3fb2ee59d805221f1015eba37cb46599d590dd46daac89c66a66ae97611ce1"
+    },
+    {
+      "file": "venues/kh-saray-techo-name-km.mp3",
+      "sha256": "4cb9096ebe0c62dee59681739c250a985ca29bbb431e789d1d1e1b7170339394"
+    },
+    {
+      "file": "venues/kh-koh-ker-thipadei-name-km.mp3",
+      "sha256": "d932c07172bf829885afeda3744cdc74ee3c1eb9dbad0706a9f0c4e000b106f7"
+    },
+    {
+      "file": "venues/kh-narind-rangsey-name-km.mp3",
+      "sha256": "c2126a86897b68644650ed3f0428929f2c919871c4e621d901966ba72234316a"
+    },
+    {
+      "file": "venues/kh-pka-ram-name-km.mp3",
+      "sha256": "4ee482bbaf5fd8402ab7a22eaf019e4643b876a22f620fee30c473965a51a097"
+    },
+    {
+      "file": "venues/kh-rontah-pech-name-km.mp3",
+      "sha256": "ea56ff20e8f652661014027f0c9ef285cde9585dfa5355d2d85732b4a6c9b6f3"
+    },
+    {
+      "file": "venues/kh-kaek-sa-name-km.mp3",
+      "sha256": "fca42a2242aeda4219214ca804ffd7abd9ac1f14118012106f79cc796ad8a275"
+    },
+    {
+      "file": "venues/kh-vibol-panha-name-km.mp3",
+      "sha256": "58f9b051abf239cfe8715fb4e9d16e2b0389eed9f97ba582e64c7d4b6ba2df81"
+    },
+    {
+      "file": "venues/kh-kiri-vong-name-km.mp3",
+      "sha256": "0c505047932080f4697a5d8526933cb3ffc8c8a8ba47faa953ea8dab55ddff9d"
+    },
+    {
+      "file": "venues/sr-maha-kosa-name-km.mp3",
+      "sha256": "5df4301bb5c7edfc7a28a562489fbf26d02298e38c3744e253b26f47df789c50"
+    },
+    {
+      "file": "venues/sr-sotr-nikum-name-km.mp3",
+      "sha256": "7c329b234b82528b92f66b18164ad279508b0237878ca0d5a8a0bdf1a0a6a0c2"
+    },
+    {
+      "file": "venues/sr-krud-meas-name-km.mp3",
+      "sha256": "cd2c746a7832b280e890a75f5bab12502f31e82cc5477b29ef2e0da0c4915805"
+    },
+    {
+      "file": "venues/sr-peam-sameakki-name-km.mp3",
+      "sha256": "8261b5ef261be5423728220bc7b88dbaad5bb642f3c92815f975267c4885a96b"
+    },
+    {
+      "file": "venues/sr-hong-chan-name-km.mp3",
+      "sha256": "85db1d33764285e4f75fe8f90ff6f167753f8aef9a622130cf60a09f94c2ecb4"
+    },
+    {
+      "file": "venues/sr-yeay-tep-name-km.mp3",
+      "sha256": "69170bea02229c0f75ef993be577e0cf4799457ac9cdabb25e7260c81d90479e"
+    },
+    {
+      "file": "venues/sr-angkor-chum-name-km.mp3",
+      "sha256": "8fda1377dc07d180b32cd1d5ab44405026ed3eaae91410a004a804a489b24cbc"
+    },
+    {
+      "file": "venues/sr-kong-chey-name-km.mp3",
+      "sha256": "a9dc207144294b5023ec203b1e8dcdbe0c55c21f0d36f0bb1af47b5a580990c4"
+    },
+    {
       "file": "khmer-review/manifest.json",
       "sha256": "b910e87319cebade16d904fcc45a058a0296f712fc1a2ab88ebb7cd01dea768f"
     },
@@ -13787,5 +13963,1333 @@
       "generated": 3
     },
     "notice": "Imported for listening/review. Hash matches verify bytes, not language, team identity, translation, native pronunciation or gameplay suitability."
+  },
+  "venuePack": {
+    "schema": 1,
+    "review": {
+      "nativeListeningVerified": false,
+      "status": "Authored game narration; Khmer needs native listening review. Stock voices, no broadcaster cloning. No claimed historical achievements."
+    },
+    "scriptSha256": "cc14b6f3d538a08f2e94acc1da119512d38e5c552937077cbd78dd3880f80871",
+    "events": {
+      "maspero": {
+        "km": {
+          "flyover": [
+            "maspero-flyover-km"
+          ],
+          "intro": [
+            "maspero-intro-km"
+          ],
+          "cruise": [
+            "maspero-cruise-km"
+          ]
+        },
+        "en": {
+          "flyover": [
+            "maspero-flyover-en"
+          ],
+          "intro": [
+            "maspero-intro-en"
+          ],
+          "cruise": [
+            "maspero-cruise-en"
+          ]
+        }
+      },
+      "phnom-penh": {
+        "km": {
+          "flyover": [
+            "phnom-penh-flyover-km"
+          ],
+          "intro": [
+            "phnom-penh-intro-km"
+          ],
+          "cruise": [
+            "phnom-penh-cruise-km"
+          ]
+        },
+        "en": {
+          "flyover": [
+            "phnom-penh-flyover-en"
+          ],
+          "intro": [
+            "phnom-penh-intro-en"
+          ],
+          "cruise": [
+            "phnom-penh-cruise-en"
+          ]
+        }
+      },
+      "siem-reap": {
+        "km": {
+          "flyover": [
+            "siem-reap-flyover-km"
+          ],
+          "intro": [
+            "siem-reap-intro-km"
+          ],
+          "cruise": [
+            "siem-reap-cruise-km"
+          ]
+        },
+        "en": {
+          "flyover": [
+            "siem-reap-flyover-en"
+          ],
+          "intro": [
+            "siem-reap-intro-en"
+          ],
+          "cruise": [
+            "siem-reap-cruise-en"
+          ]
+        }
+      }
+    },
+    "teamProfiles": {
+      "kh-sovan-reachsey": {
+        "names": {
+          "voice": [],
+          "khmer": [
+            "kh-sovan-reachsey-name-km"
+          ]
+        },
+        "history": {
+          "voice": [],
+          "khmer": []
+        }
+      },
+      "kh-chey-samrith": {
+        "names": {
+          "voice": [],
+          "khmer": [
+            "kh-chey-samrith-name-km"
+          ]
+        },
+        "history": {
+          "voice": [],
+          "khmer": []
+        }
+      },
+      "kh-hanuman": {
+        "names": {
+          "voice": [],
+          "khmer": [
+            "kh-hanuman-name-km"
+          ]
+        },
+        "history": {
+          "voice": [],
+          "khmer": []
+        }
+      },
+      "kh-maha-tonsay": {
+        "names": {
+          "voice": [],
+          "khmer": [
+            "kh-maha-tonsay-name-km"
+          ]
+        },
+        "history": {
+          "voice": [],
+          "khmer": []
+        }
+      },
+      "kh-srei-krang-youv": {
+        "names": {
+          "voice": [],
+          "khmer": [
+            "kh-srei-krang-youv-name-km"
+          ]
+        },
+        "history": {
+          "voice": [],
+          "khmer": []
+        }
+      },
+      "kh-sea-senchey": {
+        "names": {
+          "voice": [],
+          "khmer": [
+            "kh-sea-senchey-name-km"
+          ]
+        },
+        "history": {
+          "voice": [],
+          "khmer": []
+        }
+      },
+      "kh-chao-pech": {
+        "names": {
+          "voice": [],
+          "khmer": [
+            "kh-chao-pech-name-km"
+          ]
+        },
+        "history": {
+          "voice": [],
+          "khmer": []
+        }
+      },
+      "kh-techo-keo-vichey": {
+        "names": {
+          "voice": [],
+          "khmer": [
+            "kh-techo-keo-vichey-name-km"
+          ]
+        },
+        "history": {
+          "voice": [],
+          "khmer": []
+        }
+      },
+      "kh-saray-techo": {
+        "names": {
+          "voice": [],
+          "khmer": [
+            "kh-saray-techo-name-km"
+          ]
+        },
+        "history": {
+          "voice": [],
+          "khmer": []
+        }
+      },
+      "kh-koh-ker-thipadei": {
+        "names": {
+          "voice": [],
+          "khmer": [
+            "kh-koh-ker-thipadei-name-km"
+          ]
+        },
+        "history": {
+          "voice": [],
+          "khmer": []
+        }
+      },
+      "kh-narind-rangsey": {
+        "names": {
+          "voice": [],
+          "khmer": [
+            "kh-narind-rangsey-name-km"
+          ]
+        },
+        "history": {
+          "voice": [],
+          "khmer": []
+        }
+      },
+      "kh-pka-ram": {
+        "names": {
+          "voice": [],
+          "khmer": [
+            "kh-pka-ram-name-km"
+          ]
+        },
+        "history": {
+          "voice": [],
+          "khmer": []
+        }
+      },
+      "kh-rontah-pech": {
+        "names": {
+          "voice": [],
+          "khmer": [
+            "kh-rontah-pech-name-km"
+          ]
+        },
+        "history": {
+          "voice": [],
+          "khmer": []
+        }
+      },
+      "kh-kaek-sa": {
+        "names": {
+          "voice": [],
+          "khmer": [
+            "kh-kaek-sa-name-km"
+          ]
+        },
+        "history": {
+          "voice": [],
+          "khmer": []
+        }
+      },
+      "kh-vibol-panha": {
+        "names": {
+          "voice": [],
+          "khmer": [
+            "kh-vibol-panha-name-km"
+          ]
+        },
+        "history": {
+          "voice": [],
+          "khmer": []
+        }
+      },
+      "kh-kiri-vong": {
+        "names": {
+          "voice": [],
+          "khmer": [
+            "kh-kiri-vong-name-km"
+          ]
+        },
+        "history": {
+          "voice": [],
+          "khmer": []
+        }
+      },
+      "sr-maha-kosa": {
+        "names": {
+          "voice": [],
+          "khmer": [
+            "sr-maha-kosa-name-km"
+          ]
+        },
+        "history": {
+          "voice": [],
+          "khmer": []
+        }
+      },
+      "sr-sotr-nikum": {
+        "names": {
+          "voice": [],
+          "khmer": [
+            "sr-sotr-nikum-name-km"
+          ]
+        },
+        "history": {
+          "voice": [],
+          "khmer": []
+        }
+      },
+      "sr-krud-meas": {
+        "names": {
+          "voice": [],
+          "khmer": [
+            "sr-krud-meas-name-km"
+          ]
+        },
+        "history": {
+          "voice": [],
+          "khmer": []
+        }
+      },
+      "sr-peam-sameakki": {
+        "names": {
+          "voice": [],
+          "khmer": [
+            "sr-peam-sameakki-name-km"
+          ]
+        },
+        "history": {
+          "voice": [],
+          "khmer": []
+        }
+      },
+      "sr-hong-chan": {
+        "names": {
+          "voice": [],
+          "khmer": [
+            "sr-hong-chan-name-km"
+          ]
+        },
+        "history": {
+          "voice": [],
+          "khmer": []
+        }
+      },
+      "sr-yeay-tep": {
+        "names": {
+          "voice": [],
+          "khmer": [
+            "sr-yeay-tep-name-km"
+          ]
+        },
+        "history": {
+          "voice": [],
+          "khmer": []
+        }
+      },
+      "sr-angkor-chum": {
+        "names": {
+          "voice": [],
+          "khmer": [
+            "sr-angkor-chum-name-km"
+          ]
+        },
+        "history": {
+          "voice": [],
+          "khmer": []
+        }
+      },
+      "sr-kong-chey": {
+        "names": {
+          "voice": [],
+          "khmer": [
+            "sr-kong-chey-name-km"
+          ]
+        },
+        "history": {
+          "voice": [],
+          "khmer": []
+        }
+      }
+    },
+    "clips": {
+      "maspero-flyover-km": {
+        "text": "សូមស្វាគមន៍មកកាន់ពិធីបុណ្យអុំទូក នៅដងទន្លេម៉ាស្ពេរ៉ូ ខេត្តឃ្លាំង។ ទស្សនិកជននៅសងខាងទន្លេកំពុងលើកទឹកចិត្តដល់ក្រុមទូក។",
+        "voice": "km-KH-PisethNeural",
+        "cueId": "flyover",
+        "requestSha256": "9a1b575491565295f79ccd6827b4900b86920d7aa5bc6f34ecfdc797835e614c",
+        "file": "venues/maspero-flyover-km.mp3",
+        "duration": 8.082,
+        "peak": 0.7555704116821289,
+        "rms": 0.1276059394647794,
+        "sourceWavSha256": "5ca5cf2bf1e2b8b0315feecd228c9291ba43f65d5ab5973bfd7daff9e6c49bd8",
+        "bytes": 97964,
+        "sha256": "520f749e6c2f6cc67cd457967c86bc3a4a92638ea22a41db99246dbbd182a8a7",
+        "lang": "km",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "commentary",
+        "venueIds": [
+          "maspero"
+        ]
+      },
+      "maspero-flyover-en": {
+        "text": "Welcome to the Ngo boat racing festival on the Maspero River in Soc Trang. Crowds line both banks as the crews prepare for the start.",
+        "voice": "en-US-GuyNeural",
+        "cueId": "flyover",
+        "requestSha256": "aa9e099f3808300f4a5a0ad0b78aa5699707e106573772b31234946e5524efb3",
+        "file": "venues/maspero-flyover-en.mp3",
+        "duration": 8.7494,
+        "peak": 0.757625162601471,
+        "rms": 0.1188629608897308,
+        "sourceWavSha256": "2955c69bc009e137b77f602478ecb1045c6f5ae7c1e57c6a9642467357b29ece",
+        "bytes": 106028,
+        "sha256": "46c9ba2ccc0de05f4c331bde4fa755cdc8c154d413d0ccbcc7f961826345c10c",
+        "lang": "en",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "commentary",
+        "venueIds": [
+          "maspero"
+        ]
+      },
+      "maspero-intro-km": {
+        "text": "ក្រុមទាំងពីរបានចេញដំណើរហើយ។ ចម្ងាយប្រណាំងក្នុងហ្គេមនេះ គឺមួយពាន់ពីររយម៉ែត្រ។ ត្រូវរក្សាចង្វាក់អុំ និងទុកកម្លាំងសម្រាប់ចុងផ្លូវ។",
+        "voice": "km-KH-PisethNeural",
+        "cueId": "intro",
+        "requestSha256": "7c913d7cab28cf9fad26f86f72eed57736bb2eb73701e0e477782243c24ad86b",
+        "file": "venues/maspero-intro-km.mp3",
+        "duration": 8.1903,
+        "peak": 0.7552565336227417,
+        "rms": 0.12933462168632992,
+        "sourceWavSha256": "5cfed08372fe38ddfaecd9ea927d4f9ef88d52e0c44a9f113276719da37658d3",
+        "bytes": 99404,
+        "sha256": "03747c000bad926106127ad3e52b4f91789ec0088e75bda3bb9d61f4cf6057d2",
+        "lang": "km",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "commentary",
+        "venueIds": [
+          "maspero"
+        ]
+      },
+      "maspero-intro-en": {
+        "text": "Both crews are away. This game course is twelve hundred metres. Settle into a steady stroke, watch the current, and save some strength for the finish.",
+        "voice": "en-US-GuyNeural",
+        "cueId": "intro",
+        "requestSha256": "15fa25db8d557cd2e212b48b7ac506b461240841c67d51b900d5c245bfd01b7c",
+        "file": "venues/maspero-intro-en.mp3",
+        "duration": 9.9974,
+        "peak": 0.7577217221260071,
+        "rms": 0.11673610884616484,
+        "sourceWavSha256": "5e59e99bb3f89806238f1e98c2dca1921b1369dc378580be745d56f881028c09",
+        "bytes": 121004,
+        "sha256": "a51206d25cf91d673c909e4d0670e4eee329b631da7fbc8ab9cb1b5841183ebd",
+        "lang": "en",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "commentary",
+        "venueIds": [
+          "maspero"
+        ]
+      },
+      "maspero-cruise-km": {
+        "text": "ចង្វាក់អុំត្រូវតែស្មើគ្នា។ កុំប្រើកម្លាំងអស់នៅដើមផ្លូវ។ ក្រុមដែលរក្សាកម្លាំង និងចង្កូតបានល្អ នឹងមានឱកាសបង្កើនល្បឿននៅចុងផ្លូវ។",
+        "voice": "km-KH-PisethNeural",
+        "cueId": "cruise",
+        "requestSha256": "f762e72db6e88de9d1fba3c8a177fcb47f7bb0a3dc69be9da48938bc9417a003",
+        "file": "venues/maspero-cruise-km.mp3",
+        "duration": 8.3247,
+        "peak": 0.7570109367370605,
+        "rms": 0.12839921508992727,
+        "sourceWavSha256": "e092c59ca99e122187990322b3efda5f2cc1ddbeacef959699826dac4db380e5",
+        "bytes": 100844,
+        "sha256": "57df9b6b4cdbdc666c00c3dbd954be3535d274eddd613ae7cab932d8212d4dbc",
+        "lang": "km",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "commentary",
+        "venueIds": [
+          "maspero"
+        ]
+      },
+      "maspero-cruise-en": {
+        "text": "Keep those strokes together. A steady crew can conserve strength through the middle of the course. Hold a clean line and choose the right moment to accelerate.",
+        "voice": "en-US-GuyNeural",
+        "cueId": "cruise",
+        "requestSha256": "5299acefe7d6cddb4b1833dcbe5bf16c73d064b2b7d9f17aa49d0f4320cfcac7",
+        "file": "venues/maspero-cruise-en.mp3",
+        "duration": 9.9237,
+        "peak": 0.7602185010910034,
+        "rms": 0.12047162191296279,
+        "sourceWavSha256": "6ccaa1793a35e110d5e4be438bc0ee6ecf342710d1906c22e96903beeb803fd2",
+        "bytes": 120140,
+        "sha256": "4c3360212c642f6e2dc330fcd87bae458bbe3cab90ca0dc38bdc065d795b4483",
+        "lang": "en",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "commentary",
+        "venueIds": [
+          "maspero"
+        ]
+      },
+      "phnom-penh-flyover-km": {
+        "text": "សូមស្វាគមន៍មកកាន់ពិធីបុណ្យអុំទូក នៅរាជធានីភ្នំពេញ។ នៅមុខព្រះបរមរាជវាំង ទូកទាំងពីរកំពុងត្រៀមប្រណាំងលើទន្លេសាប។",
+        "voice": "km-KH-PisethNeural",
+        "cueId": "flyover",
+        "requestSha256": "80883027ffb59f937619ff554e8b714d8a1f9275598d954aa442a59714ec9522",
+        "file": "venues/phnom-penh-flyover-km.mp3",
+        "duration": 7.7664,
+        "peak": 0.7547429800033569,
+        "rms": 0.12736378517028404,
+        "sourceWavSha256": "b50ac886c8b04177dee71c7ce3dbbb7547975b765e093ab6a1c3f4136ad3f590",
+        "bytes": 94220,
+        "sha256": "cfa6a16db057bcddf729ac42d1f732c2d3a6175d693110d5a0d66c9c494cb338",
+        "lang": "km",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "commentary",
+        "venueIds": [
+          "phnom-penh"
+        ]
+      },
+      "phnom-penh-flyover-en": {
+        "text": "Welcome to the Phnom Penh Water Festival. In front of the Royal Palace, two crews prepare to race along the broad Tonle Sap riverfront.",
+        "voice": "en-US-GuyNeural",
+        "cueId": "flyover",
+        "requestSha256": "03e76d09cc7aec7bc25099db1cabaa275a97cf18c063231d99db2a6885e519f0",
+        "file": "venues/phnom-penh-flyover-en.mp3",
+        "duration": 8.6141,
+        "peak": 0.7571343183517456,
+        "rms": 0.12540830685260593,
+        "sourceWavSha256": "48e1ba16477af80d979ac90a617091c3957a8b2283840a63dff592a541933b03",
+        "bytes": 104300,
+        "sha256": "017fe79851ce51319991bcb0ef2ffecc2e33118376f9594c274af2dc1cc7f88f",
+        "lang": "en",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "commentary",
+        "venueIds": [
+          "phnom-penh"
+        ]
+      },
+      "phnom-penh-intro-km": {
+        "text": "ក្រុមទាំងពីរបានចេញដំណើរហើយ។ ចម្ងាយប្រណាំងក្នុងហ្គេមនេះ គឺមួយពាន់ប្រាំពីររយម៉ែត្រ។ ផ្លូវនៅវែង ត្រូវរក្សាចង្វាក់ និងសន្សំកម្លាំង។",
+        "voice": "km-KH-PisethNeural",
+        "cueId": "intro",
+        "requestSha256": "4af2869f15d8fce3e2310b95088f0175caad1c5a678f3ba7baac4515bf996e24",
+        "file": "venues/phnom-penh-intro-km.mp3",
+        "duration": 8.2388,
+        "peak": 0.7535427808761597,
+        "rms": 0.13145307770296052,
+        "sourceWavSha256": "6c9fe160b578d01a071a29ed9af5c16478d0987a6e0a848666ee48d9a58f2e2f",
+        "bytes": 99980,
+        "sha256": "e536977a29f7a45ac9ea1bff75415ee324b74cb9ee8b8c7b9f4bb0463d912a37",
+        "lang": "km",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "commentary",
+        "venueIds": [
+          "phnom-penh"
+        ]
+      },
+      "phnom-penh-intro-en": {
+        "text": "The race is under way. This game course is seventeen hundred metres. It is a long contest, so keep the rhythm steady and manage your stamina through the current.",
+        "voice": "en-US-GuyNeural",
+        "cueId": "intro",
+        "requestSha256": "fc6f06ea3972ccac9ba79cff818b82fcbae90600a5462b25e3bec1c2298d7248",
+        "file": "venues/phnom-penh-intro-en.mp3",
+        "duration": 10.8217,
+        "peak": 0.7565457820892334,
+        "rms": 0.118708828171133,
+        "sourceWavSha256": "c409573d8759072bd948599587ae1fea9e4f347a972df8abd0b181834e470427",
+        "bytes": 130796,
+        "sha256": "de1a163ec69390b6f43f9fe2555c66e450fedb9fdc3626cf71bba5db36acfb88",
+        "lang": "en",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "commentary",
+        "venueIds": [
+          "phnom-penh"
+        ]
+      },
+      "phnom-penh-cruise-km": {
+        "text": "ក្រុមទាំងពីរកំពុងបន្តប្រណាំងលើទន្លេសាប។ ត្រូវប្រុងប្រយ័ត្ននឹងចរន្តទឹក រក្សាផ្លូវទូកឱ្យត្រង់ និងទុកកម្លាំងសម្រាប់ការប្រកួតនៅចុងផ្លូវ។",
+        "voice": "km-KH-PisethNeural",
+        "cueId": "cruise",
+        "requestSha256": "3bff53938d04a2a4c2a15a7c40980ab91cbb3027ad69591594dc82d98b3de5e1",
+        "file": "venues/phnom-penh-cruise-km.mp3",
+        "duration": 8.615,
+        "peak": 0.7545989751815796,
+        "rms": 0.12452024745731227,
+        "sourceWavSha256": "8448b2078f69111c78a2f31c2e9e54178d29452e20dd636db21ef04fcd39cef3",
+        "bytes": 104300,
+        "sha256": "b580ad121187bf421358c2bce2979787432db4d1c0505f0d53d550b56cb824a4",
+        "lang": "km",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "commentary",
+        "venueIds": [
+          "phnom-penh"
+        ]
+      },
+      "phnom-penh-cruise-en": {
+        "text": "Both crews continue along the Tonle Sap. The current can move the boat away from its best line. Make small steering corrections and save the hardest effort for the closing section.",
+        "voice": "en-US-GuyNeural",
+        "cueId": "cruise",
+        "requestSha256": "b1566efe048b7361a862aaa21149e1b170ece640b592cad50e224084777698ef",
+        "file": "venues/phnom-penh-cruise-en.mp3",
+        "duration": 11.3693,
+        "peak": 0.7582213878631592,
+        "rms": 0.12417339642491647,
+        "sourceWavSha256": "d6bb981a4b2b27f8ba19684f714ceedab4cb677445265c6b63596cef1e9b91e1",
+        "bytes": 137420,
+        "sha256": "53ac87d8408f661d1a49f1299b76c04b8a1321fdd6e01d4a7f15ec6cb65850df",
+        "lang": "en",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "commentary",
+        "venueIds": [
+          "phnom-penh"
+        ]
+      },
+      "siem-reap-flyover-km": {
+        "text": "សូមស្វាគមន៍មកកាន់ពិធីបុណ្យអុំទូក នៅស្ទឹងសៀមរាប។ ទស្សនិកជនកំពុងរង់ចាំនៅតាមមាត់ស្ទឹង ហើយក្រុមទាំងពីរត្រៀមខ្លួនរួចហើយ។",
+        "voice": "km-KH-PisethNeural",
+        "cueId": "flyover",
+        "requestSha256": "628958283f789c37a01ede1b48cb99381adcecd7946ddd546cc7ce48097e4f2c",
+        "file": "venues/siem-reap-flyover-km.mp3",
+        "duration": 8.3253,
+        "peak": 0.7570672035217285,
+        "rms": 0.1291153100447749,
+        "sourceWavSha256": "aa952bd0910a3ff2631c14cf4b7a9ef333d8a50f7d9ce61930828516adeb6d4a",
+        "bytes": 100844,
+        "sha256": "78d69f664ba0c3aef78b43ca95f324ffb3a54a8d9f5cbe7eef6be10c897e7f53",
+        "lang": "km",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "commentary",
+        "venueIds": [
+          "siem-reap"
+        ]
+      },
+      "siem-reap-flyover-en": {
+        "text": "Welcome to the Siem Reap Water Festival. Spectators gather beside the city river as both crews prepare for a short, fast race.",
+        "voice": "en-US-GuyNeural",
+        "cueId": "flyover",
+        "requestSha256": "6f1cd39d45d06b5f787ce19b8514f3334d5c0b61309bca89e1cad8619a6eda76",
+        "file": "venues/siem-reap-flyover-en.mp3",
+        "duration": 8.531,
+        "peak": 0.7663168907165527,
+        "rms": 0.12029186930846437,
+        "sourceWavSha256": "bbfccd44bfd8710048b68ba0df18a440f3aca55cada84a97afab5bebeabbf03f",
+        "bytes": 103436,
+        "sha256": "3a45f7eab3e7c355c92afcbbd3b36b2550e13977e0c8adf533e4101f8f729c0e",
+        "lang": "en",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "commentary",
+        "venueIds": [
+          "siem-reap"
+        ]
+      },
+      "siem-reap-intro-km": {
+        "text": "ការប្រកួតបានចាប់ផ្តើមហើយ។ ចម្ងាយប្រណាំងក្នុងហ្គេមនេះ គឺប្រាំរយម៉ែត្រ។ ផ្លូវតូច និងខ្លី ត្រូវចាប់ចង្វាក់ឱ្យលឿន ហើយរក្សាចង្កូតឱ្យបានល្អ។",
+        "voice": "km-KH-PisethNeural",
+        "cueId": "intro",
+        "requestSha256": "a3d2c2ab09820ee7be1ba40faf30af6b1d58dcbb812862fa46021a744f41947f",
+        "file": "venues/siem-reap-intro-km.mp3",
+        "duration": 8.762,
+        "peak": 0.7530781030654907,
+        "rms": 0.13075879296953685,
+        "sourceWavSha256": "46efe2906f0260590954af2df184d39e262b7d16429b4f38b113d27bd416aade",
+        "bytes": 106316,
+        "sha256": "de78a88c29f91dd602c0279d8a27cbe023357350a2ae14397a10bbd0a8b0cac3",
+        "lang": "km",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "commentary",
+        "venueIds": [
+          "siem-reap"
+        ]
+      },
+      "siem-reap-intro-en": {
+        "text": "They are away on the Siem Reap river. This game course is five hundred metres. Find the stroke quickly and keep a precise line through the narrow course.",
+        "voice": "en-US-GuyNeural",
+        "cueId": "intro",
+        "requestSha256": "386ccc7a0866b5abb2372130c7cdc7cf68479f8909e1d063724222948b4eafa9",
+        "file": "venues/siem-reap-intro-en.mp3",
+        "duration": 9.8153,
+        "peak": 0.7567991018295288,
+        "rms": 0.1202366379519223,
+        "sourceWavSha256": "325ac0f033b882453487b6614182419e685729e951c53ea34b5c26a6949150a8",
+        "bytes": 118700,
+        "sha256": "a7b2268a0b7a6afadade7f09481f2cfff339f366c92016d6a5dc2aa632354f44",
+        "lang": "en",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "commentary",
+        "venueIds": [
+          "siem-reap"
+        ]
+      },
+      "siem-reap-cruise-km": {
+        "text": "ពេលវេលាមានតិចណាស់ក្នុងការប្រណាំងនេះ។ ត្រូវអុំឱ្យស្មើគ្នា កុំឱ្យទូកបាត់ផ្លូវ។ មើលកម្លាំងដែលនៅសល់ ហើយត្រៀមបង្កើនល្បឿននៅចុងផ្លូវ។",
+        "voice": "km-KH-PisethNeural",
+        "cueId": "cruise",
+        "requestSha256": "203968c3ae1cc3afa0ec12b6531881eb7e960b9d4cfffa2fb371b5175e5e337e",
+        "file": "venues/siem-reap-cruise-km.mp3",
+        "duration": 8.3253,
+        "peak": 0.7463384866714478,
+        "rms": 0.13106855494986178,
+        "sourceWavSha256": "5b1314efa6d28faf1c0e8ee64315e3187c9a24075d1b1fd21e803a8eeb9c5197",
+        "bytes": 100844,
+        "sha256": "469e16f1791a0faaf483a08d017f1e170c721fdafc3beac383f2e8c12ff6705a",
+        "lang": "km",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "commentary",
+        "venueIds": [
+          "siem-reap"
+        ]
+      },
+      "siem-reap-cruise-en": {
+        "text": "There is little time to recover in this short race. Stay together, avoid drifting across the course, and use the stamina you have left for a strong finish.",
+        "voice": "en-US-GuyNeural",
+        "cueId": "cruise",
+        "requestSha256": "51a7b2e5af84c5d6a105e13199f964e456d6d97f5c2aa3808797355c46c77852",
+        "file": "venues/siem-reap-cruise-en.mp3",
+        "duration": 9.4897,
+        "peak": 0.7580381631851196,
+        "rms": 0.12557572857644994,
+        "sourceWavSha256": "ffa0fe5c5c55a854a59823d6c81a1f8c6f4d0581bc5a7df0929e45590d8e06d0",
+        "bytes": 114956,
+        "sha256": "a0b189d773a5dfdf14d5af944cd3ab9feb76ecf52351b6c057bfd2d71e255b8e",
+        "lang": "en",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "commentary",
+        "venueIds": [
+          "siem-reap"
+        ]
+      },
+      "kh-sovan-reachsey-name-km": {
+        "text": "សុវណ្ណរាជសី បារមីបន្ទាយមហានគរ",
+        "voice": "km-KH-PisethNeural",
+        "cueId": "team-name",
+        "requestSha256": "78341b4a8f28ae3565a45c02c758fbc63b54d1e9d9e487694c49464f97b17f78",
+        "file": "venues/kh-sovan-reachsey-name-km.mp3",
+        "duration": 3.0811,
+        "peak": 0.7534922957420349,
+        "rms": 0.14017518648643454,
+        "sourceWavSha256": "6c3fca89af26303d4658c6dfdaac4249d1dd1cc29f5ce9b69db6074a299be242",
+        "bytes": 38060,
+        "sha256": "59323b82ce109f0c3ef0a7a1d24f0beec91353ad1ddb8b95538360477a98f6f3",
+        "lang": "km",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "team-name",
+        "teamIds": [
+          "kh-sovan-reachsey"
+        ],
+        "venueIds": [
+          "phnom-penh"
+        ]
+      },
+      "kh-chey-samrith-name-km": {
+        "text": "ជ័យសំរឹទ្ធ",
+        "voice": "km-KH-PisethNeural",
+        "cueId": "team-name",
+        "requestSha256": "3efd528bb861a7b50778cd8ae7a7e63af39f78663019b7576936064dc1f3abdd",
+        "file": "venues/kh-chey-samrith-name-km.mp3",
+        "duration": 1.82,
+        "peak": 0.7591790556907654,
+        "rms": 0.09285352347572914,
+        "sourceWavSha256": "ca9a72c8a345eafd9effcefdaaba0b4649e381119d5948830ddec229a1d3b0af",
+        "bytes": 22796,
+        "sha256": "ac35703c663562fb60cdb28dc6699dd0fdf6f3c3b756e93e6430b44739f08c89",
+        "lang": "km",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "team-name",
+        "teamIds": [
+          "kh-chey-samrith"
+        ],
+        "venueIds": [
+          "phnom-penh"
+        ]
+      },
+      "kh-hanuman-name-km": {
+        "text": "កំពូលអធិរាជត្រៃភព ហនុមានសែនជ័យ",
+        "voice": "km-KH-PisethNeural",
+        "cueId": "team-name",
+        "requestSha256": "988e99a1f04ca5ad762ac6ccd73ff98359051ee8e853638c8055ce7604f91e63",
+        "file": "venues/kh-hanuman-name-km.mp3",
+        "duration": 3.2986,
+        "peak": 0.7554140090942383,
+        "rms": 0.13878015687530332,
+        "sourceWavSha256": "701b6da3b41f5370480fd32968dd205087d3e2e37b1c67d4d6ee268e366dd00a",
+        "bytes": 40652,
+        "sha256": "f217c9abdf4106492569bc4d25be47bfe24ae1f893717ba96265c2e36edf4dd1",
+        "lang": "km",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "team-name",
+        "teamIds": [
+          "kh-hanuman"
+        ],
+        "venueIds": [
+          "phnom-penh"
+        ]
+      },
+      "kh-maha-tonsay-name-km": {
+        "text": "មហាទន្សាយតេជោសែនជ័យ",
+        "voice": "km-KH-PisethNeural",
+        "cueId": "team-name",
+        "requestSha256": "9243ea1d661c10c65ebb86aa5ecd71ecfff0e394731c4ff63c36bfbe33728361",
+        "file": "venues/kh-maha-tonsay-name-km.mp3",
+        "duration": 2.5601,
+        "peak": 0.7263745665550232,
+        "rms": 0.11853014802649486,
+        "sourceWavSha256": "ce726988fea2685c2e619c151dff0c1324ef1686044d962f81aae21cfe62ad6f",
+        "bytes": 31724,
+        "sha256": "5bdcea0ee1af1a715d2716256f95150196f1833c4c704ea0e44a98bc79c3ef1d",
+        "lang": "km",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "team-name",
+        "teamIds": [
+          "kh-maha-tonsay"
+        ],
+        "venueIds": [
+          "phnom-penh"
+        ]
+      },
+      "kh-srei-krang-youv-name-km": {
+        "text": "ស្រីក្រាំងយ៉ូវ",
+        "voice": "km-KH-PisethNeural",
+        "cueId": "team-name",
+        "requestSha256": "a9a2b29468e36feb0afbc657b9da3104d4aa4f995c18ea771cc96ded9acd3e7d",
+        "file": "venues/kh-srei-krang-youv-name-km.mp3",
+        "duration": 1.82,
+        "peak": 0.6620985269546509,
+        "rms": 0.10811733332381017,
+        "sourceWavSha256": "703da33c1f59fe95130683ad137311b18a25d9b6786aba978383807deb77fc6e",
+        "bytes": 22796,
+        "sha256": "0717b6f83613f1ab69835374dde07ee3bade0bcf804d6097de21bab1c1e13d41",
+        "lang": "km",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "team-name",
+        "teamIds": [
+          "kh-srei-krang-youv"
+        ],
+        "venueIds": [
+          "phnom-penh"
+        ]
+      },
+      "kh-sea-senchey-name-km": {
+        "text": "ស៊ាសែនជ័យបារមីតេជៈ",
+        "voice": "km-KH-PisethNeural",
+        "cueId": "team-name",
+        "requestSha256": "46690862c32f28882776f653ba7c925d6940b9b93aa299afbb82297bc5ee315f",
+        "file": "venues/kh-sea-senchey-name-km.mp3",
+        "duration": 2.378,
+        "peak": 0.7510415315628052,
+        "rms": 0.11261593600688595,
+        "sourceWavSha256": "3481046a685b32f1dc167a05091ac03b68a158db9efae1777a257c83be721989",
+        "bytes": 29708,
+        "sha256": "4334e8e2499f87f929a912b20ec0b7ed3742d875bc835ed5ca42d081117256d5",
+        "lang": "km",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "team-name",
+        "teamIds": [
+          "kh-sea-senchey"
+        ],
+        "venueIds": [
+          "phnom-penh"
+        ]
+      },
+      "kh-chao-pech-name-km": {
+        "text": "ចៅពេជ្រកុមារ",
+        "voice": "km-KH-PisethNeural",
+        "cueId": "team-name",
+        "requestSha256": "fff820ee4e3e9e96afc2b233aadad3e85bc004bcb190ed9629ce05074990bbe1",
+        "file": "venues/kh-chao-pech-name-km.mp3",
+        "duration": 1.8675,
+        "peak": 0.7470369935035706,
+        "rms": 0.10989139734000729,
+        "sourceWavSha256": "2aae7d1525f811e54ae3a2a08033ae9520f39e628bc2d4d5c012496e52be75cd",
+        "bytes": 23372,
+        "sha256": "405b32831c369b1882e68f994b337c299fd9db467e57089bc8085c2779f21f10",
+        "lang": "km",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "team-name",
+        "teamIds": [
+          "kh-chao-pech"
+        ],
+        "venueIds": [
+          "phnom-penh"
+        ]
+      },
+      "kh-techo-keo-vichey-name-km": {
+        "text": "តេជោកែវវិជ័យ បារមីចៅសែន",
+        "voice": "km-KH-PisethNeural",
+        "cueId": "team-name",
+        "requestSha256": "53257a5fee8a2967a62e835058a7bdb08dade66fa1c1d5cb886f0aae9d22c6d7",
+        "file": "venues/kh-techo-keo-vichey-name-km.mp3",
+        "duration": 2.8392,
+        "peak": 0.7117080688476562,
+        "rms": 0.11960274171302623,
+        "sourceWavSha256": "bc127dbbe8096277977409d638cb74041c6cf24f9c81a65baf5a67dea2d59b5c",
+        "bytes": 35180,
+        "sha256": "ec3fb2ee59d805221f1015eba37cb46599d590dd46daac89c66a66ae97611ce1",
+        "lang": "km",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "team-name",
+        "teamIds": [
+          "kh-techo-keo-vichey"
+        ],
+        "venueIds": [
+          "phnom-penh"
+        ]
+      },
+      "kh-saray-techo-name-km": {
+        "text": "សារាយតេជោសែនជ័យ",
+        "voice": "km-KH-PisethNeural",
+        "cueId": "team-name",
+        "requestSha256": "8dc6b3ad069d80700f59749497e7360bac8bac0db9e4b0f4409e37604d7462ed",
+        "file": "venues/kh-saray-techo-name-km.mp3",
+        "duration": 2.2931,
+        "peak": 0.7157066464424133,
+        "rms": 0.11340943764940459,
+        "sourceWavSha256": "87890d8e4cc6d3820b99364fb61dcfff8a737f7514814e2e11fbe361785d9dab",
+        "bytes": 28556,
+        "sha256": "4cb9096ebe0c62dee59681739c250a985ca29bbb431e789d1d1e1b7170339394",
+        "lang": "km",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "team-name",
+        "teamIds": [
+          "kh-saray-techo"
+        ],
+        "venueIds": [
+          "phnom-penh"
+        ]
+      },
+      "kh-koh-ker-thipadei-name-km": {
+        "text": "កោះកេរធិបតី",
+        "voice": "km-KH-PisethNeural",
+        "cueId": "team-name",
+        "requestSha256": "5d8b13f9cc64d799d639e0488155350533e67394ffb5d6cc270e6738dddd5b35",
+        "file": "venues/kh-koh-ker-thipadei-name-km.mp3",
+        "duration": 1.8684,
+        "peak": 0.7507328391075134,
+        "rms": 0.08463861296205302,
+        "sourceWavSha256": "737a4d993ddec1aa90a000f6138ab44e33f56e67d13877f08957ef41cbe4acf0",
+        "bytes": 23372,
+        "sha256": "d932c07172bf829885afeda3744cdc74ee3c1eb9dbad0706a9f0c4e000b106f7",
+        "lang": "km",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "team-name",
+        "teamIds": [
+          "kh-koh-ker-thipadei"
+        ],
+        "venueIds": [
+          "phnom-penh"
+        ]
+      },
+      "kh-narind-rangsey-name-km": {
+        "text": "នរិន្ទរង្សីពិជ័យចិត្របុត្រ",
+        "voice": "km-KH-PisethNeural",
+        "cueId": "team-name",
+        "requestSha256": "d39c03acbafe9667d8a6b05edbed7842b76b5919d4047773c48cc451108dd670",
+        "file": "venues/kh-narind-rangsey-name-km.mp3",
+        "duration": 2.354,
+        "peak": 0.7403907179832458,
+        "rms": 0.11016918573571743,
+        "sourceWavSha256": "539d4e5499391475b5eaff1f4ada4352561a10d44dc86396a20cb113f5a6ce73",
+        "bytes": 29420,
+        "sha256": "c2126a86897b68644650ed3f0428929f2c919871c4e621d901966ba72234316a",
+        "lang": "km",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "team-name",
+        "teamIds": [
+          "kh-narind-rangsey"
+        ],
+        "venueIds": [
+          "phnom-penh"
+        ]
+      },
+      "kh-pka-ram-name-km": {
+        "text": "ផ្ការាំស័ក្តិសិទ្ធិ",
+        "voice": "km-KH-PisethNeural",
+        "cueId": "team-name",
+        "requestSha256": "55e822d5d686e6058714b7634a2f68c80f61cbe73fb526299c4eb984f61ae6af",
+        "file": "venues/kh-pka-ram-name-km.mp3",
+        "duration": 1.82,
+        "peak": 0.756050169467926,
+        "rms": 0.08538843817765367,
+        "sourceWavSha256": "8a2878a027ce771a4c3eba91b1fcc2927936a51c84d4db6af778e86357acf0b5",
+        "bytes": 22796,
+        "sha256": "4ee482bbaf5fd8402ab7a22eaf019e4643b876a22f620fee30c473965a51a097",
+        "lang": "km",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "team-name",
+        "teamIds": [
+          "kh-pka-ram"
+        ],
+        "venueIds": [
+          "phnom-penh"
+        ]
+      },
+      "kh-rontah-pech-name-km": {
+        "text": "រន្ទះពេជ្រសែនជ័យ",
+        "voice": "km-KH-PisethNeural",
+        "cueId": "team-name",
+        "requestSha256": "3d6e3c1a26f94bbfc906bdcad44727402f6b9c8aa3539f090410cbf71375f45f",
+        "file": "venues/kh-rontah-pech-name-km.mp3",
+        "duration": 2.1354,
+        "peak": 0.7580944299697876,
+        "rms": 0.11005446160602939,
+        "sourceWavSha256": "318c58c128745d51c8e0de82f311d42d661e130080bf1dccc19141e3cd5e3071",
+        "bytes": 26540,
+        "sha256": "ea56ff20e8f652661014027f0c9ef285cde9585dfa5355d2d85732b4a6c9b6f3",
+        "lang": "km",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "team-name",
+        "teamIds": [
+          "kh-rontah-pech"
+        ],
+        "venueIds": [
+          "phnom-penh"
+        ]
+      },
+      "kh-kaek-sa-name-km": {
+        "text": "ក្អែកសតេជោសែនជ័យ",
+        "voice": "km-KH-PisethNeural",
+        "cueId": "team-name",
+        "requestSha256": "eb26ddfa6e67ea7309173d28bfa5d71b5d8641ce8ae3bd3940174de4232d5399",
+        "file": "venues/kh-kaek-sa-name-km.mp3",
+        "duration": 2.2194,
+        "peak": 0.7503973841667175,
+        "rms": 0.1083480422766452,
+        "sourceWavSha256": "ff545389e78df5d688ee9bfad13b073d42dbcd251af8ab06f665ebe9b443386a",
+        "bytes": 27692,
+        "sha256": "fca42a2242aeda4219214ca804ffd7abd9ac1f14118012106f79cc796ad8a275",
+        "lang": "km",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "team-name",
+        "teamIds": [
+          "kh-kaek-sa"
+        ],
+        "venueIds": [
+          "phnom-penh"
+        ]
+      },
+      "kh-vibol-panha-name-km": {
+        "text": "សម្តេចវិបុលបញ្ញាបារមីមានជ័យ",
+        "voice": "km-KH-PisethNeural",
+        "cueId": "team-name",
+        "requestSha256": "ba69621d21b3c5bb905454b8a5a25c217a9ba434a13b76b3359ec6c270a225d7",
+        "file": "venues/kh-vibol-panha-name-km.mp3",
+        "duration": 2.9485,
+        "peak": 0.7497774958610535,
+        "rms": 0.11909074640363208,
+        "sourceWavSha256": "6c40fab614e48001199e4d991c59ff7f5002840251778b780d4e5cc881dd93ac",
+        "bytes": 36332,
+        "sha256": "58f9b051abf239cfe8715fb4e9d16e2b0389eed9f97ba582e64c7d4b6ba2df81",
+        "lang": "km",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "team-name",
+        "teamIds": [
+          "kh-vibol-panha"
+        ],
+        "venueIds": [
+          "phnom-penh"
+        ]
+      },
+      "kh-kiri-vong-name-km": {
+        "text": "គិរីវង់សុខសែនជ័យ",
+        "voice": "km-KH-PisethNeural",
+        "cueId": "team-name",
+        "requestSha256": "6fb0b159e25fcec6a71e6a2ffe61789a49d45ffd931f29eaf511d5343e6c126e",
+        "file": "venues/kh-kiri-vong-name-km.mp3",
+        "duration": 2.2185,
+        "peak": 0.6591914296150208,
+        "rms": 0.11450427540307126,
+        "sourceWavSha256": "e8f40f96fb456d42496faa9215eadb42177edacc9576d96d45516ffce9aec1e9",
+        "bytes": 27692,
+        "sha256": "0c505047932080f4697a5d8526933cb3ffc8c8a8ba47faa953ea8dab55ddff9d",
+        "lang": "km",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "team-name",
+        "teamIds": [
+          "kh-kiri-vong"
+        ],
+        "venueIds": [
+          "phnom-penh"
+        ]
+      },
+      "sr-maha-kosa-name-km": {
+        "text": "មហាកោសាមានជ័យ",
+        "voice": "km-KH-PisethNeural",
+        "cueId": "team-name",
+        "requestSha256": "d280337ae1af3a8b0876e58174c80c523304180d88574f6b0a194ef36c6e3a68",
+        "file": "venues/sr-maha-kosa-name-km.mp3",
+        "duration": 2.21,
+        "peak": 0.7533593773841858,
+        "rms": 0.1166874081283054,
+        "sourceWavSha256": "7cf77b0cf2b288f90b5abecff6a5f3f3757cf7989fa8683bf5966c3a0c8dfac3",
+        "bytes": 27692,
+        "sha256": "5df4301bb5c7edfc7a28a562489fbf26d02298e38c3744e253b26f47df789c50",
+        "lang": "km",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "team-name",
+        "teamIds": [
+          "sr-maha-kosa"
+        ],
+        "venueIds": [
+          "siem-reap"
+        ]
+      },
+      "sr-sotr-nikum-name-km": {
+        "text": "សូទ្រនិគមសែនជ័យបារមីតាពេទ្រ",
+        "voice": "km-KH-PisethNeural",
+        "cueId": "team-name",
+        "requestSha256": "5e235eae11a0b1aa4cfa737042b26b6a83da9945914feb79f510607f88ca1e55",
+        "file": "venues/sr-sotr-nikum-name-km.mp3",
+        "duration": 2.8392,
+        "peak": 0.7496613264083862,
+        "rms": 0.12210105151995011,
+        "sourceWavSha256": "34aff01941e052b7dec3420a98b3ff4cd9e54a3f646d7921de8cb473a680b451",
+        "bytes": 35180,
+        "sha256": "7c329b234b82528b92f66b18164ad279508b0237878ca0d5a8a0bdf1a0a6a0c2",
+        "lang": "km",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "team-name",
+        "teamIds": [
+          "sr-sotr-nikum"
+        ],
+        "venueIds": [
+          "siem-reap"
+        ]
+      },
+      "sr-krud-meas-name-km": {
+        "text": "គ្រុឌមាសតេជោសែនជ័យ",
+        "voice": "km-KH-PisethNeural",
+        "cueId": "team-name",
+        "requestSha256": "c67c31722cf0261445be05b52c1ef92923e97de4f5065dd71afd9e50e74700d8",
+        "file": "venues/sr-krud-meas-name-km.mp3",
+        "duration": 2.2931,
+        "peak": 0.6815841197967529,
+        "rms": 0.11676487476391519,
+        "sourceWavSha256": "836df8385c49fc0a6472bf56b6fe26317fb57aa7d4b21ea828815a4000f575d7",
+        "bytes": 28556,
+        "sha256": "cd2c746a7832b280e890a75f5bab12502f31e82cc5477b29ef2e0da0c4915805",
+        "lang": "km",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "team-name",
+        "teamIds": [
+          "sr-krud-meas"
+        ],
+        "venueIds": [
+          "siem-reap"
+        ]
+      },
+      "sr-peam-sameakki-name-km": {
+        "text": "ពាមសាមគ្គីសែនជ័យ",
+        "voice": "km-KH-PisethNeural",
+        "cueId": "team-name",
+        "requestSha256": "8de9920430f809dc2cc9473760389aaa00b6e99cce3f7bcf35005cc0376c7284",
+        "file": "venues/sr-peam-sameakki-name-km.mp3",
+        "duration": 2.1709,
+        "peak": 0.7248249053955078,
+        "rms": 0.1141880385050775,
+        "sourceWavSha256": "68d485cc99d08de003efd10dfe53e2d8e86e315004752ed2b94481ad405b3d97",
+        "bytes": 27116,
+        "sha256": "8261b5ef261be5423728220bc7b88dbaad5bb642f3c92815f975267c4885a96b",
+        "lang": "km",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "team-name",
+        "teamIds": [
+          "sr-peam-sameakki"
+        ],
+        "venueIds": [
+          "siem-reap"
+        ]
+      },
+      "sr-hong-chan-name-km": {
+        "text": "ហង្សច័ន្ទមានជ័យបារមីមហានគរ",
+        "voice": "km-KH-PisethNeural",
+        "cueId": "team-name",
+        "requestSha256": "4ec0ab6f590fb5cb1770cd8c305e4de78c3629a9567aaf31df83e6070bf70628",
+        "file": "venues/sr-hong-chan-name-km.mp3",
+        "duration": 2.8141,
+        "peak": 0.7520555853843689,
+        "rms": 0.1204697754079743,
+        "sourceWavSha256": "2b42ec2850f415a89ec7e68fbcf7b65c1611e2c901ac06e746860dbe9ddfffa0",
+        "bytes": 34892,
+        "sha256": "85db1d33764285e4f75fe8f90ff6f167753f8aef9a622130cf60a09f94c2ecb4",
+        "lang": "km",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "team-name",
+        "teamIds": [
+          "sr-hong-chan"
+        ],
+        "venueIds": [
+          "siem-reap"
+        ]
+      },
+      "sr-yeay-tep-name-km": {
+        "text": "យាយទេពសំដែងរិទ្ធ",
+        "voice": "km-KH-PisethNeural",
+        "cueId": "team-name",
+        "requestSha256": "0b8c1cbe6504d99e1693a718bcfb718e4ef7e72401d3671781339632fed51fe3",
+        "file": "venues/sr-yeay-tep-name-km.mp3",
+        "duration": 1.8666,
+        "peak": 0.7485997676849365,
+        "rms": 0.11421917608235103,
+        "sourceWavSha256": "94ef61e081d7c64d874a4f7ca834e27328c68269c069e163a8c05a4339bacd77",
+        "bytes": 23372,
+        "sha256": "69170bea02229c0f75ef993be577e0cf4799457ac9cdabb25e7260c81d90479e",
+        "lang": "km",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "team-name",
+        "teamIds": [
+          "sr-yeay-tep"
+        ],
+        "venueIds": [
+          "siem-reap"
+        ]
+      },
+      "sr-angkor-chum-name-km": {
+        "text": "អង្គរជុំមានជ័យ",
+        "voice": "km-KH-PisethNeural",
+        "cueId": "team-name",
+        "requestSha256": "a71355c1adb944c50163b2e54c6b4a6d7b5259078e0167160463405c99997d92",
+        "file": "venues/sr-angkor-chum-name-km.mp3",
+        "duration": 2.0747,
+        "peak": 0.6629272103309631,
+        "rms": 0.11313680985481839,
+        "sourceWavSha256": "47b7e165da665be3bba555c4d23ae9f3d2c7b4b6056dfab92241400293a23745",
+        "bytes": 25964,
+        "sha256": "8fda1377dc07d180b32cd1d5ab44405026ed3eaae91410a004a804a489b24cbc",
+        "lang": "km",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "team-name",
+        "teamIds": [
+          "sr-angkor-chum"
+        ],
+        "venueIds": [
+          "siem-reap"
+        ]
+      },
+      "sr-kong-chey-name-km": {
+        "text": "គង់ជ័យបារមីស្រីខ្ទុម",
+        "voice": "km-KH-PisethNeural",
+        "cueId": "team-name",
+        "requestSha256": "970871e801322629e33f2cf911ae1a0cfc10332cfde038d9d37c5b7b7e34a2db",
+        "file": "venues/sr-kong-chey-name-km.mp3",
+        "duration": 2.3422,
+        "peak": 0.7551318407058716,
+        "rms": 0.11501210823917667,
+        "sourceWavSha256": "c246ec1f9618501ea8d508fa5be38c84dbc35ca988fc84b25dab5a7ff0af2704",
+        "bytes": 29132,
+        "sha256": "a9dc207144294b5023ec203b1e8dcdbe0c55c21f0d36f0bb1af47b5a580990c4",
+        "lang": "km",
+        "channel": "khmer",
+        "sourceType": "azure-stock-neural",
+        "nativeListeningVerified": false,
+        "role": "team-name",
+        "teamIds": [
+          "sr-kong-chey"
+        ],
+        "venueIds": [
+          "siem-reap"
+        ]
+      }
+    }
   }
 }
