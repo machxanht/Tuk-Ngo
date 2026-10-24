@@ -1,0 +1,19 @@
+{
+  "beforeTriangles": 3055494,
+  "after": {
+    "frame": 34,
+    "calls": 332,
+    "triangles": 1971770,
+    "points": 0,
+    "lines": 0
+  },
+  "viewport": [
+    1180,
+    430
+  ],
+  "dpr": 1,
+  "sameView": "Phnom Penh boat selection, opening team",
+  "physicalTabletTested": false,
+  "triangleReductionPercent": 35.5,
+  "limit": "Single rendered frame comparison in the same view; does not prove physical-tablet frame rate."
+}

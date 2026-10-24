@@ -1,0 +1,207 @@
+{
+  "changed": [
+    "assets/App-Dh6S4FCb.js",
+    "assets/ArtPreview-C5vBum-O.js",
+    "assets/CoherentSample-BGR8AYwo.js",
+    "assets/Interactive3DBlueprint-DmCxUWRe.js",
+    "assets/KbachPicker-C3piTWrw.js",
+    "assets/MasperoRaceCourseStudio-BLfKvevF.js",
+    "assets/RaceGame-Bb5fJLh-.css",
+    "assets/RaceGame-DTQonLdp.js",
+    "assets/TabletRaceDemo-mwx4UPdZ.js",
+    "assets/boat-preview-CkMM6EpN.js",
+    "assets/cambodia-course-Crv40sXa.js",
+    "assets/compass-DGRrxlKt.js",
+    "assets/construction-rules-CWk6GsM6.js",
+    "assets/data/cambodia-teams.json",
+    "assets/download-B3GV8gAK.js",
+    "assets/gameplay-C37Kjju5.js",
+    "assets/illustrated-v22/hybrid-boats.js",
+    "assets/index-CZecT9IY.css",
+    "assets/index-CvS0uDRK.js",
+    "assets/race-crew-DPZLyxNW.js",
+    "assets/rotate-ccw-CQqSUzj5.js",
+    "assets/video-BqhEEwzt.js",
+    "assets/waves-Dw5PE7Pe.js",
+    "assets/x-DwF2fth9.js",
+    "index.html"
+  ],
+  "commit": "01e2b3aa10f278932362af370fc3ac6fd1b9d4c0",
+  "files": [
+    "index.html",
+    "online-config.json",
+    "assets/data/cambodia-teams.json",
+    "assets/illustrated-v22/hybrid-boats.js",
+    "assets/App-Dh6S4FCb.js",
+    "assets/art-preview-CNhJbUwh.js",
+    "assets/ArtPreview-BBLLrk1R.css",
+    "assets/ArtPreview-C5vBum-O.js",
+    "assets/asset-transfer-D469cGcW.js",
+    "assets/athlete-study-preview-DCJaIbAf.js",
+    "assets/bank-materials-CJ_b_t9m.js",
+    "assets/boat-Bvm91TIu.js",
+    "assets/boat-preview-CkMM6EpN.js",
+    "assets/cambodia-course-Crv40sXa.js",
+    "assets/CoherentSample-B2c5mXVE.css",
+    "assets/CoherentSample-BGR8AYwo.js",
+    "assets/compass-DGRrxlKt.js",
+    "assets/construction-rules-CWk6GsM6.js",
+    "assets/download-B3GV8gAK.js",
+    "assets/festival-branding-7IqSjdon.js",
+    "assets/gameplay-C37Kjju5.js",
+    "assets/index-CvS0uDRK.js",
+    "assets/index-CZecT9IY.css",
+    "assets/Interactive3DBlueprint-DmCxUWRe.js",
+    "assets/kbach-motifs-Bj2M1atI.js",
+    "assets/KbachPicker-B5pPLS1S.css",
+    "assets/KbachPicker-C3piTWrw.js",
+    "assets/MasperoRaceCourseStudio-BLfKvevF.js",
+    "assets/race-crew-DPZLyxNW.js",
+    "assets/race-flow-BNEF7dhE.js",
+    "assets/RaceGame-Bb5fJLh-.css",
+    "assets/RaceGame-DTQonLdp.js",
+    "assets/rotate-ccw-CQqSUzj5.js",
+    "assets/TabletRaceDemo-DwxGRcfj.css",
+    "assets/TabletRaceDemo-mwx4UPdZ.js",
+    "assets/three-addons-DiBvLs_E.js",
+    "assets/three-core-PKyBB6wc.js",
+    "assets/three-renderer-Xp2iZVDg.js",
+    "assets/tumNup2CrewBuilder-CDIQfUnS.js",
+    "assets/video-BqhEEwzt.js",
+    "assets/waves-Dw5PE7Pe.js",
+    "assets/x-DwF2fth9.js"
+  ],
+  "backend": "https://tuk-ngo-online.oliverkhang.workers.dev",
+  "parent": "abece221cb6d4bbbba2e21dbf9c0d50f04799ba2",
+  "sourceCommit": "823a8543b3b6a400e012364781e3dc6b6330530e",
+  "workerVersion": "d45ce567-9add-486a-ab8b-202e4b382ae2",
+  "verifiedFiles": [
+    {
+      "path": "assets/App-Dh6S4FCb.js",
+      "bytes": 126871,
+      "sha256": "711f7052712a8ede29785dbb49abe7412fcfeb74c294b9aebceab20efde74418"
+    },
+    {
+      "path": "assets/Interactive3DBlueprint-DmCxUWRe.js",
+      "bytes": 74542,
+      "sha256": "e35073e917c8afa07b784a5820a35745e2970766b060792e8824f6440e81dcc1"
+    },
+    {
+      "path": "assets/KbachPicker-C3piTWrw.js",
+      "bytes": 2923,
+      "sha256": "3e153833497570fe047ba8c255bc34ee18de8b16c20f7641b6bcdf91c9304086"
+    },
+    {
+      "path": "assets/MasperoRaceCourseStudio-BLfKvevF.js",
+      "bytes": 23473,
+      "sha256": "6d0f8ac914fc1190ce3600844cca0774068133e154e79ebc55111f45a068d3d4"
+    },
+    {
+      "path": "assets/RaceGame-Bb5fJLh-.css",
+      "bytes": 71204,
+      "sha256": "bdfca720f8ccd361a5d88e8614f37ad1595feed2b5ab2e7b2b1d82e37f0afb53"
+    },
+    {
+      "path": "assets/RaceGame-DTQonLdp.js",
+      "bytes": 136229,
+      "sha256": "8cf8e4319da22e42c24c4907ef4ca550ce92e355c719f81c830cdcf0d89b22ab"
+    },
+    {
+      "path": "assets/CoherentSample-BGR8AYwo.js",
+      "bytes": 24328,
+      "sha256": "492294ff7b51163fc350e408da2db9e38233411ba5a35d2506ae28f966121184"
+    },
+    {
+      "path": "assets/boat-preview-CkMM6EpN.js",
+      "bytes": 95451,
+      "sha256": "db71f0b82fe11481919054f588b85cd48345273ad0eca2e647d2d1d963f2fa32"
+    },
+    {
+      "path": "assets/TabletRaceDemo-mwx4UPdZ.js",
+      "bytes": 36445,
+      "sha256": "c2a7935c2269d300896cff5615fddd1a98879834797f766d8a08751a31233e64"
+    },
+    {
+      "path": "assets/ArtPreview-C5vBum-O.js",
+      "bytes": 53911,
+      "sha256": "9acd12c1bc5ef5cf19668b1372eb2647ab6d1e9521a7048b9464f0495f8978cc"
+    },
+    {
+      "path": "assets/cambodia-course-Crv40sXa.js",
+      "bytes": 10327,
+      "sha256": "57eca8eec3a86f44754f5821582dcd1593f0f2e9246b4dbb4bf452c72ec41709"
+    },
+    {
+      "path": "assets/construction-rules-CWk6GsM6.js",
+      "bytes": 159,
+      "sha256": "b36dbd9525680d08f912596922cd8e4e56f1ba0716b53c0dab818889d06c053d"
+    },
+    {
+      "path": "assets/data/cambodia-teams.json",
+      "bytes": 16113,
+      "sha256": "e5ad3559bc3e79b8d4950940e911ed49dd2aac27a7246ec33b71d21a2ed84c17"
+    },
+    {
+      "path": "assets/download-B3GV8gAK.js",
+      "bytes": 2673,
+      "sha256": "87436b0b41a214dd872730f9a257ff5976616800c6d1ff8a80f4f0da280c36ac"
+    },
+    {
+      "path": "assets/gameplay-C37Kjju5.js",
+      "bytes": 16600,
+      "sha256": "2a3146972e711f7f47f54ee4d772bc1def3237dd2508531e641774f888fac483"
+    },
+    {
+      "path": "assets/compass-DGRrxlKt.js",
+      "bytes": 676,
+      "sha256": "0908c0b5d3b58297c57ae64023d39b2bb1970da3bc40c029f4473ed4ac969dd0"
+    },
+    {
+      "path": "assets/index-CZecT9IY.css",
+      "bytes": 63868,
+      "sha256": "79af3e02606dbace557fa4d783545378d06fab1a305b978508bccbd30952d066"
+    },
+    {
+      "path": "assets/index-CvS0uDRK.js",
+      "bytes": 226020,
+      "sha256": "becac232224695669afcbdfda283268fba10b38d94b62cec1368a6ab384242d9"
+    },
+    {
+      "path": "assets/illustrated-v22/hybrid-boats.js",
+      "bytes": 1260252,
+      "sha256": "8269cbcb3008932d6ab873898ef62711d6afb11f809bd0601167fc3829765c9c"
+    },
+    {
+      "path": "assets/rotate-ccw-CQqSUzj5.js",
+      "bytes": 1025,
+      "sha256": "2bc5714a5cd08c0cede0398a03f1a7a4c9757658bb40f615ad97e30101f6a867"
+    },
+    {
+      "path": "assets/race-crew-DPZLyxNW.js",
+      "bytes": 139804,
+      "sha256": "ed058b19cdd02c8e536abab6335d0ab74fa879961db7206c59266478d751a8de"
+    },
+    {
+      "path": "assets/video-BqhEEwzt.js",
+      "bytes": 424,
+      "sha256": "01ff1b66df2a4299a36e3191ac8d59c548c7c6bcdd100f920831ff13200601ad"
+    },
+    {
+      "path": "assets/waves-Dw5PE7Pe.js",
+      "bytes": 3665,
+      "sha256": "802de71105c39347ae0e231d4a27fb702111364fa770ac6f24e9169e209e1316"
+    },
+    {
+      "path": "assets/x-DwF2fth9.js",
+      "bytes": 330,
+      "sha256": "dbe27bf53ecadd045405d725ff3cdbfd30d9b2cf112aa769261fff534031897c"
+    },
+    {
+      "path": "index.html",
+      "bytes": 1307,
+      "sha256": "6923161d9c09f8636c79863b1fe28c3043e65a7e332917c73d493194e0d717e1"
+    }
+  ],
+  "workflow": "https://github.com/machxanht/Tuk-Ngo/actions/runs/40076283232",
+  "workflowConclusion": "success"
+}

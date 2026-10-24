@@ -1,0 +1,39 @@
+{
+  "url": "https://tuk-ngo-online.oliverkhang.workers.dev",
+  "teams": [
+    "kh-vibol-panha",
+    "kh-kiri-vong"
+  ],
+  "checks": [
+    "authentication and origin enforcement",
+    "two guest matchmaking and shared room",
+    "forged distance/time/result ignored",
+    "reconnection within grace and input sequence resume",
+    "full human race, authoritative finish and exactly-once persisted Elo",
+    "private room creation/join/cancellation does not change rank"
+  ],
+  "startedAt": "2026-10-24T07:52:17.168Z",
+  "result": {
+    "winner": 0,
+    "times": [
+      74.94008140519375,
+      79.5256611096847
+    ],
+    "changes": [
+      {
+        "id": "fc5cce1a-ab28-414a-9480-a433d4216ef9",
+        "before": 1000,
+        "after": 1016,
+        "change": 16
+      },
+      {
+        "id": "2093b8d4-6083-412c-9e59-b5207ddfd713",
+        "before": 1000,
+        "after": 984,
+        "change": -16
+      }
+    ],
+    "networkPackets": 1841,
+    "elapsedSeconds": 97.951
+  }
+}
