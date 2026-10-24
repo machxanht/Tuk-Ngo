@@ -1,0 +1,39 @@
+{
+  "url": "https://tuk-ngo-online.oliverkhang.workers.dev",
+  "teams": [
+    "sr-angkor-chum",
+    "sr-kong-chey"
+  ],
+  "checks": [
+    "authentication and origin enforcement",
+    "two guest matchmaking and shared room",
+    "forged distance/time/result ignored",
+    "reconnection within grace and input sequence resume",
+    "full human race, authoritative finish and exactly-once persisted Elo",
+    "private room creation/join/cancellation does not change rank"
+  ],
+  "startedAt": "2026-10-24T09:15:59.634Z",
+  "result": {
+    "winner": 0,
+    "times": [
+      73.8874441086004,
+      78.80110688831066
+    ],
+    "changes": [
+      {
+        "id": "d93d7682-51f8-4f71-ae10-77d62ff60ecc",
+        "before": 1000,
+        "after": 1016,
+        "change": 16
+      },
+      {
+        "id": "33951c56-cfeb-424d-b1dc-6373c84e8dd8",
+        "before": 1000,
+        "after": 984,
+        "change": -16
+      }
+    ],
+    "networkPackets": 1828,
+    "elapsedSeconds": 96.448
+  }
+}

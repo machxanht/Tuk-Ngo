@@ -1,0 +1,30 @@
+{
+  "endpoint": "http://127.0.0.1:8790",
+  "checks": [
+    "foreign teams rejected by queue/create/join on all three maps",
+    "room code cannot override the selected venue",
+    "private rooms contain only their venue roster",
+    "queues on different maps do not pair",
+    "rejected choices and cancelled rooms do not change Elo"
+  ],
+  "venues": {
+    "maspero": {
+      "roster": 61,
+      "foreignTeamRejected": "kh-sovan-reachsey",
+      "privateRoomOwnTeamsOnly": true,
+      "noRatingChange": true
+    },
+    "phnom-penh": {
+      "roster": 16,
+      "foreignTeamRejected": "sr-maha-kosa",
+      "privateRoomOwnTeamsOnly": true,
+      "noRatingChange": true
+    },
+    "siem-reap": {
+      "roster": 8,
+      "foreignTeamRejected": "can_tho-01",
+      "privateRoomOwnTeamsOnly": true,
+      "noRatingChange": true
+    }
+  }
+}
