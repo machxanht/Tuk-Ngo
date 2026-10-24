@@ -1,6 +1,36 @@
 {
   "reviewed": "2026-10-24",
-  "scope": "Sourced identities for game invitations, not a complete official entry list. Romanisations and colours are game art. The common paddle rig is not a replica of each real crew.",
+  "scope": "Separate historical event catalogues, not complete official 2026 entry lists. Unassigned records are not playable. Romanisations, uniforms and hull construction remain game art.",
+  "venues": {
+    "phnom-penh": [
+      "kh-sovan-reachsey",
+      "kh-chey-samrith",
+      "kh-hanuman",
+      "kh-maha-tonsay",
+      "kh-srei-krang-youv",
+      "kh-sea-senchey",
+      "kh-chao-pech",
+      "kh-techo-keo-vichey",
+      "kh-saray-techo",
+      "kh-koh-ker-thipadei",
+      "kh-narind-rangsey",
+      "kh-pka-ram",
+      "kh-rontah-pech",
+      "kh-kaek-sa",
+      "kh-vibol-panha",
+      "kh-kiri-vong"
+    ],
+    "siem-reap": [
+      "sr-maha-kosa",
+      "sr-sotr-nikum",
+      "sr-krud-meas",
+      "sr-peam-sameakki",
+      "sr-hong-chan",
+      "sr-yeay-tep",
+      "sr-angkor-chum",
+      "sr-kong-chey"
+    ]
+  },
   "teams": [
     {
       "id": "kh-sovan-reachsey",
@@ -25,7 +55,10 @@
       "construction": "dugout",
       "constructionEvidence": "Game art default; original timber construction not verified",
       "identityEvidence": "published-name",
-      "entryScope": "Cambodian reporting 2024"
+      "entryScope": "Cambodian reporting 2024",
+      "venueIds": [
+        "phnom-penh"
+      ]
     },
     {
       "id": "kh-chey-samrith",
@@ -50,7 +83,10 @@
       "construction": "dugout",
       "constructionEvidence": "Game art default; original timber construction not verified",
       "identityEvidence": "published-name",
-      "entryScope": "Cambodian reporting 2024"
+      "entryScope": "Cambodian reporting 2024",
+      "venueIds": [
+        "phnom-penh"
+      ]
     },
     {
       "id": "kh-hanuman",
@@ -75,7 +111,10 @@
       "construction": "dugout",
       "constructionEvidence": "Game art default; original timber construction not verified",
       "identityEvidence": "published-name",
-      "entryScope": "Cambodian reporting 2024"
+      "entryScope": "Cambodian reporting 2024",
+      "venueIds": [
+        "phnom-penh"
+      ]
     },
     {
       "id": "kh-maha-tonsay",
@@ -100,7 +139,10 @@
       "construction": "dugout",
       "constructionEvidence": "Game art default; original timber construction not verified",
       "identityEvidence": "published-name",
-      "entryScope": "Cambodian reporting 2024"
+      "entryScope": "Cambodian reporting 2024",
+      "venueIds": [
+        "phnom-penh"
+      ]
     },
     {
       "id": "kh-srei-krang-youv",
@@ -125,7 +167,10 @@
       "construction": "dugout",
       "constructionEvidence": "Game art default; original timber construction not verified",
       "identityEvidence": "published-name",
-      "entryScope": "Cambodian reporting 2024"
+      "entryScope": "Cambodian reporting 2024",
+      "venueIds": [
+        "phnom-penh"
+      ]
     },
     {
       "id": "kh-sea-senchey",
@@ -150,7 +195,10 @@
       "construction": "dugout",
       "constructionEvidence": "Game art default; original timber construction not verified",
       "identityEvidence": "published-name",
-      "entryScope": "Cambodian reporting 2024"
+      "entryScope": "Cambodian reporting 2024",
+      "venueIds": [
+        "phnom-penh"
+      ]
     },
     {
       "id": "kh-chao-pech",
@@ -175,7 +223,10 @@
       "construction": "dugout",
       "constructionEvidence": "Game art default; original timber construction not verified",
       "identityEvidence": "published-name",
-      "entryScope": "Cambodian reporting 2024"
+      "entryScope": "Cambodian reporting 2024",
+      "venueIds": [
+        "phnom-penh"
+      ]
     },
     {
       "id": "kh-sdach-damrey",
@@ -200,7 +251,8 @@
       "construction": "dugout",
       "constructionEvidence": "Game art default; original timber construction not verified",
       "identityEvidence": "published-name",
-      "entryScope": "Provincial event 2026"
+      "entryScope": "Provincial event 2026",
+      "venueIds": []
     },
     {
       "id": "kh-techo-keo-vichey",
@@ -225,7 +277,10 @@
       "construction": "dugout",
       "constructionEvidence": "Game art default; original timber construction not verified",
       "identityEvidence": "published-name",
-      "entryScope": "Cambodian reporting 2024"
+      "entryScope": "Cambodian reporting 2024",
+      "venueIds": [
+        "phnom-penh"
+      ]
     },
     {
       "id": "kh-saray-techo",
@@ -250,7 +305,10 @@
       "construction": "dugout",
       "constructionEvidence": "Game art default; original timber construction not verified",
       "identityEvidence": "published-name",
-      "entryScope": "Cambodian reporting 2024"
+      "entryScope": "Cambodian reporting 2024",
+      "venueIds": [
+        "phnom-penh"
+      ]
     },
     {
       "id": "kh-koh-ker-thipadei",
@@ -275,7 +333,10 @@
       "construction": "dugout",
       "constructionEvidence": "Game art default; original timber construction not verified",
       "identityEvidence": "published-name",
-      "entryScope": "Cambodian reporting 2024"
+      "entryScope": "Cambodian reporting 2024",
+      "venueIds": [
+        "phnom-penh"
+      ]
     },
     {
       "id": "kh-narind-rangsey",
@@ -300,7 +361,10 @@
       "construction": "dugout",
       "constructionEvidence": "Game art default; original timber construction not verified",
       "identityEvidence": "published-name",
-      "entryScope": "Cambodian reporting 2024"
+      "entryScope": "Cambodian reporting 2024",
+      "venueIds": [
+        "phnom-penh"
+      ]
     },
     {
       "id": "kh-pka-ram",
@@ -325,7 +389,10 @@
       "construction": "dugout",
       "constructionEvidence": "Game art default; original timber construction not verified",
       "identityEvidence": "published-name",
-      "entryScope": "Phnom Penh 2019"
+      "entryScope": "Phnom Penh 2019",
+      "venueIds": [
+        "phnom-penh"
+      ]
     },
     {
       "id": "kh-rontah-pech",
@@ -350,7 +417,10 @@
       "construction": "dugout",
       "constructionEvidence": "Game art default; original timber construction not verified",
       "identityEvidence": "published-name",
-      "entryScope": "Phnom Penh 2019"
+      "entryScope": "Phnom Penh 2019",
+      "venueIds": [
+        "phnom-penh"
+      ]
     },
     {
       "id": "kh-kaek-sa",
@@ -375,7 +445,10 @@
       "construction": "dugout",
       "constructionEvidence": "Game art default; original timber construction not verified",
       "identityEvidence": "published-name",
-      "entryScope": "Phnom Penh 2019"
+      "entryScope": "Phnom Penh 2019",
+      "venueIds": [
+        "phnom-penh"
+      ]
     },
     {
       "id": "kh-vibol-panha",
@@ -400,7 +473,10 @@
       "construction": "dugout",
       "constructionEvidence": "Game art default; original timber construction not verified",
       "identityEvidence": "published-name",
-      "entryScope": "Phnom Penh 2019"
+      "entryScope": "Phnom Penh 2019",
+      "venueIds": [
+        "phnom-penh"
+      ]
     },
     {
       "id": "kh-kiri-vong",
@@ -425,7 +501,234 @@
       "construction": "dugout",
       "constructionEvidence": "Game art default; original timber construction not verified",
       "identityEvidence": "published-name",
-      "entryScope": "Phnom Penh 2019"
+      "entryScope": "Phnom Penh 2019",
+      "venueIds": [
+        "phnom-penh"
+      ]
+    },
+    {
+      "id": "sr-maha-kosa",
+      "registrationId": "sr-maha-kosa",
+      "name": "Maha Kosa Meanchey",
+      "nameVi": "Maha Kosa Meanchey",
+      "nameKm": "មហាកោសាមានជ័យ",
+      "teamNumberKm": "",
+      "country": "KH",
+      "province": "Siem Reap",
+      "sourceUrl": "https://ams.com.kh/news/central/161417",
+      "season": 2018,
+      "reportedCrew": null,
+      "appearance": "sample",
+      "jersey": "#f6c12e",
+      "trim": "#ffe2a1",
+      "cap": "#ef713e",
+      "sleeve": "#f6c12e",
+      "pattern": "festival-sample",
+      "gender": "men",
+      "transliterationVerified": false,
+      "construction": "dugout",
+      "constructionEvidence": "Game art default; original timber construction not verified",
+      "identityEvidence": "published-event-results",
+      "entryScope": "Siem Reap city river 2018",
+      "venueIds": [
+        "siem-reap"
+      ]
+    },
+    {
+      "id": "sr-sotr-nikum",
+      "registrationId": "sr-sotr-nikum",
+      "name": "Sotr Nikum Senchey Baramey Ta Petr",
+      "nameVi": "Sotr Nikum Senchey Baramey Ta Petr",
+      "nameKm": "សូទ្រនិគមសែនជ័យបារមីតាពេទ្រ",
+      "teamNumberKm": "",
+      "country": "KH",
+      "province": "Siem Reap",
+      "sourceUrl": "https://ams.com.kh/news/central/161417",
+      "season": 2018,
+      "reportedCrew": null,
+      "appearance": "sample",
+      "jersey": "#24ad78",
+      "trim": "#ffe2a1",
+      "cap": "#398dd2",
+      "sleeve": "#24ad78",
+      "pattern": "festival-sample",
+      "gender": "men",
+      "transliterationVerified": false,
+      "construction": "dugout",
+      "constructionEvidence": "Game art default; original timber construction not verified",
+      "identityEvidence": "published-event-results",
+      "entryScope": "Siem Reap city river 2018",
+      "venueIds": [
+        "siem-reap"
+      ]
+    },
+    {
+      "id": "sr-krud-meas",
+      "registrationId": "sr-krud-meas",
+      "name": "Krud Meas Techo Senchey",
+      "nameVi": "Krud Meas Techo Senchey",
+      "nameKm": "គ្រុឌមាសតេជោសែនជ័យ",
+      "teamNumberKm": "",
+      "country": "KH",
+      "province": "Siem Reap",
+      "sourceUrl": "https://ams.com.kh/news/central/161417",
+      "season": 2018,
+      "reportedCrew": null,
+      "appearance": "sample",
+      "jersey": "#ef713e",
+      "trim": "#ffe2a1",
+      "cap": "#ab52b7",
+      "sleeve": "#ef713e",
+      "pattern": "festival-sample",
+      "gender": "men",
+      "transliterationVerified": false,
+      "construction": "dugout",
+      "constructionEvidence": "Game art default; original timber construction not verified",
+      "identityEvidence": "published-event-results",
+      "entryScope": "Siem Reap city river 2018",
+      "venueIds": [
+        "siem-reap"
+      ]
+    },
+    {
+      "id": "sr-peam-sameakki",
+      "registrationId": "sr-peam-sameakki",
+      "name": "Peam Sameakki Senchey",
+      "nameVi": "Peam Sameakki Senchey",
+      "nameKm": "ពាមសាមគ្គីសែនជ័យ",
+      "teamNumberKm": "",
+      "country": "KH",
+      "province": "Siem Reap",
+      "sourceUrl": "https://ams.com.kh/news/central/161417",
+      "season": 2018,
+      "reportedCrew": null,
+      "appearance": "sample",
+      "jersey": "#398dd2",
+      "trim": "#ffe2a1",
+      "cap": "#e83c50",
+      "sleeve": "#398dd2",
+      "pattern": "festival-sample",
+      "gender": "men",
+      "transliterationVerified": false,
+      "construction": "dugout",
+      "constructionEvidence": "Game art default; original timber construction not verified",
+      "identityEvidence": "published-event-results",
+      "entryScope": "Siem Reap city river 2018",
+      "venueIds": [
+        "siem-reap"
+      ]
+    },
+    {
+      "id": "sr-hong-chan",
+      "registrationId": "sr-hong-chan",
+      "name": "Hong Chan Meanchey Baramey Mahanokor",
+      "nameVi": "Hong Chan Meanchey Baramey Mahanokor",
+      "nameKm": "ហង្សច័ន្ទមានជ័យបារមីមហានគរ",
+      "teamNumberKm": "",
+      "country": "KH",
+      "province": "Siem Reap",
+      "sourceUrl": "https://ams.com.kh/news/central/161417",
+      "season": 2018,
+      "reportedCrew": null,
+      "appearance": "sample",
+      "jersey": "#ab52b7",
+      "trim": "#ffe2a1",
+      "cap": "#21b5b0",
+      "sleeve": "#ab52b7",
+      "pattern": "festival-sample",
+      "gender": "women",
+      "transliterationVerified": false,
+      "construction": "dugout",
+      "constructionEvidence": "Game art default; original timber construction not verified",
+      "identityEvidence": "published-event-results",
+      "entryScope": "Siem Reap city river 2018",
+      "venueIds": [
+        "siem-reap"
+      ]
+    },
+    {
+      "id": "sr-yeay-tep",
+      "registrationId": "sr-yeay-tep",
+      "name": "Yeay Tep Samdeng Rith",
+      "nameVi": "Yeay Tep Samdeng Rith",
+      "nameKm": "យាយទេពសំដែងរិទ្ធ",
+      "teamNumberKm": "",
+      "country": "KH",
+      "province": "Siem Reap",
+      "sourceUrl": "https://ams.com.kh/news/central/161417",
+      "season": 2018,
+      "reportedCrew": null,
+      "appearance": "sample",
+      "jersey": "#e83c50",
+      "trim": "#ffe2a1",
+      "cap": "#ec719d",
+      "sleeve": "#e83c50",
+      "pattern": "festival-sample",
+      "gender": "women",
+      "transliterationVerified": false,
+      "construction": "dugout",
+      "constructionEvidence": "Game art default; original timber construction not verified",
+      "identityEvidence": "published-event-results",
+      "entryScope": "Siem Reap city river 2018",
+      "venueIds": [
+        "siem-reap"
+      ]
+    },
+    {
+      "id": "sr-angkor-chum",
+      "registrationId": "sr-angkor-chum",
+      "name": "Angkor Chum Meanchey",
+      "nameVi": "Angkor Chum Meanchey",
+      "nameKm": "អង្គរជុំមានជ័យ",
+      "teamNumberKm": "",
+      "country": "KH",
+      "province": "Siem Reap",
+      "sourceUrl": "https://ams.com.kh/news/central/161417",
+      "season": 2018,
+      "reportedCrew": null,
+      "appearance": "sample",
+      "jersey": "#21b5b0",
+      "trim": "#ffe2a1",
+      "cap": "#f6c12e",
+      "sleeve": "#21b5b0",
+      "pattern": "festival-sample",
+      "gender": "women",
+      "transliterationVerified": false,
+      "construction": "dugout",
+      "constructionEvidence": "Game art default; original timber construction not verified",
+      "identityEvidence": "published-event-results",
+      "entryScope": "Siem Reap city river 2018",
+      "venueIds": [
+        "siem-reap"
+      ]
+    },
+    {
+      "id": "sr-kong-chey",
+      "registrationId": "sr-kong-chey",
+      "name": "Kong Chey Baramey Srei Khtum",
+      "nameVi": "Kong Chey Baramey Srei Khtum",
+      "nameKm": "គង់ជ័យបារមីស្រីខ្ទុម",
+      "teamNumberKm": "",
+      "country": "KH",
+      "province": "Siem Reap",
+      "sourceUrl": "https://ams.com.kh/news/central/161417",
+      "season": 2018,
+      "reportedCrew": null,
+      "appearance": "sample",
+      "jersey": "#ec719d",
+      "trim": "#ffe2a1",
+      "cap": "#24ad78",
+      "sleeve": "#ec719d",
+      "pattern": "festival-sample",
+      "gender": "women",
+      "transliterationVerified": false,
+      "construction": "dugout",
+      "constructionEvidence": "Game art default; original timber construction not verified",
+      "identityEvidence": "published-event-results",
+      "entryScope": "Siem Reap city river 2018",
+      "venueIds": [
+        "siem-reap"
+      ]
     }
   ],
   "researchOnly": [
