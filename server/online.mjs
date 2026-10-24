@@ -1,7 +1,7 @@
 import {DurableObject} from 'cloudflare:workers';
 import {createOnlineSimulation,cleanPlayerName,cleanInput,ratingChange,disconnectDecision,departureWinner,ONLINE_PROTOCOL} from '../src/race/online-rules.mjs';
 import {RACE_VENUES} from '../src/race/race-venues.mjs';
-import {teamsForVenue} from '../src/race/festival-teams.mjs';
+import {isVenueTeam,roomTeamsMatchVenue} from '../src/race/festival-teams.mjs';
 
 const prefixes={maspero:'M','phnom-penh':'P','siem-reap':'S'},alphabet='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
 const json=(data,status=200)=>Response.json(data,{status,headers:{'Cache-Control':'no-store'}});
@@ -10,7 +10,7 @@ const directoryFor=(env,venue,qa=false)=>env.DIRECTORIES.getByName(venue+(qa?':q
 const venueFor=code=>Object.keys(prefixes).find(id=>prefixes[id]===code?.[0]);
 function roomCode(venue){return prefixes[venue]+[...crypto.getRandomValues(new Uint8Array(7))].map(n=>alphabet[n%alphabet.length]).join('');}
 function venueId(value){if(!Object.hasOwn(RACE_VENUES,value))fail('invalid-venue');return value;}
-function choice(value,profile){const venue=venueId(value.venueId);if(!teamsForVenue(venue).some(team=>team.id===value.teamId))fail('invalid-team');return {...profile,name:cleanPlayerName(value.name),teamId:value.teamId,construction:value.construction==='dugout'?'dugout':'plywood',venueId:venue};}
+function choice(value,profile){const venue=venueId(value.venueId);if(!isVenueTeam(venue,value.teamId))fail('invalid-team');return {...profile,name:cleanPlayerName(value.name),teamId:value.teamId,construction:value.construction==='dugout'?'dugout':'plywood',venueId:venue};}
 function base64(bytes){return btoa(String.fromCharCode(...new Uint8Array(bytes))).replaceAll('+','-').replaceAll('/','_').replaceAll('=','');}
 function bytes(value){return Uint8Array.from(atob(value.replaceAll('-','+').replaceAll('_','/')),c=>c.charCodeAt(0));}
 async function key(env){if(!env.SESSION_SECRET)fail('server-not-configured',503);return crypto.subtle.importKey('raw',new TextEncoder().encode(env.SESSION_SECRET),{name:'HMAC',hash:'SHA-256'},false,['sign','verify']);}
@@ -56,7 +56,7 @@ export default {
      const match=url.pathname.match(/^\/rooms\/([MPS][A-Z2-9]{7})(\/join|\/socket)?$/);
      if(!match)fail('not-found',404);
      const code=match[1],venue=venueFor(code),room=env.ROOMS.getByName(code);
-     if(match[2]==='/join'&&request.method==='POST')response=json(await directoryFor(env,venue,profile.qa).joinRoom(code,choice({...await body(request),venueId:venue},profile)));
+     if(match[2]==='/join'&&request.method==='POST'){const value=await body(request);if(value.venueId!==venue)fail('wrong-map');response=json(await directoryFor(env,venue,profile.qa).joinRoom(code,choice(value,profile)));}
      else if(match[2]==='/socket'&&request.headers.get('Upgrade')?.toLowerCase()==='websocket'){
       const forwarded=new Request(request);forwarded.headers.set('X-Player-ID',profile.id);return room.fetch(forwarded);
      }else if(!match[2]&&request.method==='GET')response=json(await room.inspect(profile.id));
@@ -84,7 +84,9 @@ export class RaceDirectory extends DurableObject {
   this.prune();const current=this.sql.exec('SELECT room FROM queue WHERE id=?',player.id).toArray()[0];
   if(current?.room)return {roomCode:current.room};
   this.sql.exec('INSERT INTO queue(id,player,room,touched) VALUES(?,?,NULL,?) ON CONFLICT(id) DO UPDATE SET player=excluded.player,touched=excluded.touched',player.id,JSON.stringify(player),Date.now());
-  const other=this.sql.exec('SELECT * FROM queue WHERE id<>? AND room IS NULL ORDER BY touched LIMIT 1',player.id).toArray()[0];
+  let other=this.sql.exec('SELECT * FROM queue WHERE id<>? AND room IS NULL ORDER BY touched LIMIT 1',player.id).toArray()[0];
+  // An old browser can still be polling a queue created before a roster split.
+  while(other&&!roomTeamsMatchVenue({venueId:player.venueId,players:[JSON.parse(other.player)]})){this.sql.exec('DELETE FROM queue WHERE id=?',other.id);other=this.sql.exec('SELECT * FROM queue WHERE id<>? AND room IS NULL ORDER BY touched LIMIT 1',player.id).toArray()[0];}
   if(!other)return {queued:true};
   const code=roomCode(player.venueId),opponent=JSON.parse(other.player);
   this.sql.exec('UPDATE queue SET room=?,touched=? WHERE id IN (?,?)',code,Date.now(),player.id,opponent.id);
@@ -112,15 +114,16 @@ export class RaceDirectory extends DurableObject {
 
 export class RaceRoom extends DurableObject {
  constructor(ctx,env){super(ctx,env);this.room=null;this.simulation=null;this.timer=null;this.saving=false;this.tickCount=0;this.lastTick=Date.now();
-  ctx.blockConcurrencyWhile(async()=>{this.room=await ctx.storage.get('room');if(this.room?.checkpoints){this.simulation=createOnlineSimulation(this.room.venueId,this.room.seed);this.simulation.restore(this.room.checkpoints);if(this.room.status==='running'){this.lastTick=Date.now();this.ensureTimer();}}});
+  ctx.blockConcurrencyWhile(async()=>{this.room=await ctx.storage.get('room');if(this.room&&!roomTeamsMatchVenue(this.room)&&['waiting','running'].includes(this.room.status)){await this.finish(null,'cancelled');return;}if(this.room?.checkpoints){this.simulation=createOnlineSimulation(this.room.venueId,this.room.seed);this.simulation.restore(this.room.checkpoints);if(this.room.status==='running'){this.lastTick=Date.now();this.ensureTimer();}}});
  }
- async initialize(code,venueId,players,ranked){if(this.room)fail('room-exists',409);this.room={code,venueId,players:players.map(p=>({...p,ready:false,connected:false,lastSeen:Date.now(),lastInput:0,sequence:-1})),ranked,status:'waiting',created:Date.now(),seed:crypto.getRandomValues(new Uint32Array(1))[0],result:null,changes:[],settled:false};await this.save();await this.ctx.storage.setAlarm(Date.now()+600000);}
+ async initialize(code,venueId,players,ranked){if(this.room)fail('room-exists',409);if(!roomTeamsMatchVenue({venueId,players}))fail('invalid-team');this.room={code,venueId,players:players.map(p=>({...p,ready:false,connected:false,lastSeen:Date.now(),lastInput:0,sequence:-1})),ranked,status:'waiting',created:Date.now(),seed:crypto.getRandomValues(new Uint32Array(1))[0],result:null,changes:[],settled:false};await this.save();await this.ctx.storage.setAlarm(Date.now()+600000);}
  async save(){if(!this.room)return;if(this.simulation)this.room.checkpoints=this.simulation.checkpoint();await this.ctx.storage.put('room',this.room);}
  publicRoom(id){const room=this.room;return {code:room.code,venueId:room.venueId,ranked:room.ranked,status:room.status,playerIndex:room.players.findIndex(p=>p.id===id),inputSequence:room.players.find(p=>p.id===id)?.sequence??-1,players:room.players.map(({id,name,teamId,construction,ready,connected})=>({id,name,teamId,construction,ready,connected})),result:room.result,changes:room.changes,settled:room.settled,protocol:ONLINE_PROTOCOL};}
  inspect(id){if(!this.room)fail('room-not-found',404);if(!this.room.players.some(p=>p.id===id))fail('not-in-room',403);return this.publicRoom(id);}
- async join(player){if(!this.room)fail('room-not-found',404);if(this.room.players.some(p=>p.id===player.id))return {roomCode:this.room.code};if(this.room.status!=='waiting'||this.room.players.length>=2||this.room.ranked||!!player.qa!==!!this.room.players[0].qa)fail('room-full',409);this.room.players.push({...player,ready:false,connected:false,lastSeen:Date.now(),lastInput:0,sequence:-1});await this.save();this.broadcast();return {roomCode:this.room.code};}
+ async join(player){if(!this.room)fail('room-not-found',404);if(player.venueId!==this.room.venueId)fail('wrong-map');if(!isVenueTeam(this.room.venueId,player.teamId))fail('invalid-team');if(!roomTeamsMatchVenue(this.room)&&['waiting','running'].includes(this.room.status))await this.finish(null,'cancelled');if(this.room.players.some(p=>p.id===player.id))return {roomCode:this.room.code};if(this.room.status!=='waiting'||this.room.players.length>=2||this.room.ranked||!!player.qa!==!!this.room.players[0].qa)fail('room-full',409);this.room.players.push({...player,ready:false,connected:false,lastSeen:Date.now(),lastInput:0,sequence:-1});await this.save();this.broadcast();return {roomCode:this.room.code};}
  async fetch(request){
   const id=request.headers.get('X-Player-ID');if(!this.room||!this.room.players.some(p=>p.id===id))return json({error:'not-in-room'},403);
+  if(!roomTeamsMatchVenue(this.room)&&['waiting','running'].includes(this.room.status))await this.finish(null,'cancelled');
   const player=this.room.players.find(p=>p.id===id);for(const old of this.ctx.getWebSockets(id))old.close(4001,'Replaced by a new connection');
   const [client,server]=Object.values(new WebSocketPair());this.ctx.acceptWebSocket(server,[id]);server.serializeAttachment({id,rateAt:Date.now(),rate:0});player.connected=true;player.lastSeen=Date.now();player.lastInput=0;
   await this.save();this.broadcast();server.send(JSON.stringify({type:'room',room:this.publicRoom(id)}));if(this.room.status==='running')this.ensureTimer();
@@ -131,6 +134,7 @@ export class RaceRoom extends DurableObject {
   if(now-attachment.rateAt>1000){attachment.rateAt=now;attachment.rate=0;}if(++attachment.rate>50){ws.close(1008,'Rate limited');return;}ws.serializeAttachment(attachment);
   let value;try{value=JSON.parse(message);}catch{return;}
   const index=this.room?.players.findIndex(p=>p.id===attachment.id),player=this.room?.players[index];if(!player)return;player.lastSeen=now;
+  if(!roomTeamsMatchVenue(this.room)&&['waiting','running'].includes(this.room.status)){await this.finish(null,'cancelled');return;}
   if(value.type==='ping'){ws.send(JSON.stringify({type:'pong',at:value.at}));return;}
   if(value.type==='ready'&&this.room.status==='waiting'){
    player.ready=value.ready===true;await this.save();this.broadcast();

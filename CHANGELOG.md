@@ -1,5 +1,17 @@
 # Online racing, durable rankings and festival lobby
 
+## Separate venue rosters
+
+- Maspéro keeps its 61 Vietnamese registrations. Phnom Penh uses 16 historical
+  identities; Siem Reap uses eight published 2018 city-river identities. A
+  provincial-only identity stays unassigned instead of being inferred from home province.
+- Shared eligibility rules now cover selection, AI opponents, local cups and
+  online queue/create/join/socket paths. A room code cannot override the chosen map.
+- Preserve valid venue saves and rankings. Back up incompatible old local cups;
+  cancel active online rooms with foreign teams without changing Elo.
+- Track the remaining roster, asset, gameplay, audio, performance and online
+  release work in docs/game-completion-plan.md. The full 300+ roster is still incomplete.
+
 ## Cambodian riverfronts and searchable boats
 
 - Distinct Phnom Penh and Siem Reap streets, inland neighbourhoods, landmark

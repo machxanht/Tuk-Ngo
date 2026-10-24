@@ -25,7 +25,7 @@ function audioPreferences(){try{return normalizeAudioMix(JSON.parse(localStorage
 const seed=()=>Math.floor(Math.random()*4294967296);
 function makeCup(venueId:string){
  const roster=teamsForVenue(venueId),n=seed(),cup=createTournament({playerId:roster[0].id,seed:n,teamIds:cupTeamIds(n,venueId,roster[0].id)});
- try{const saved=JSON.parse(localStorage.getItem(venueId==='maspero'?STORAGE:STORAGE+'-'+venueId)||'null');if(saved?.teamIds?.length===(venueId==='maspero'?roster.length:8)&&saved.teamIds.every((id:string)=>roster.some(t=>t.id===id)))cup.restore(saved);}catch{/* Invalid or unavailable storage starts a fresh cup. */}
+ try{const key=venueId==='maspero'?STORAGE:STORAGE+'-'+venueId,raw=localStorage.getItem(key),saved=JSON.parse(raw||'null');if(saved?.teamIds?.length===(venueId==='maspero'?roster.length:8)&&saved.teamIds.every((id:string)=>roster.some(t=>t.id===id)))cup.restore(saved);else if(saved&&raw&&!localStorage.getItem(key+'-roster-backup'))localStorage.setItem(key+'-roster-backup',raw);}catch{/* Invalid or unavailable storage starts a fresh cup. */}
  return cup;
 }
 export function RaceGame({onInspect,initialSelection}:{onInspect:(selection:{teamIds:string[];constructionTypes:string[]})=>void;initialSelection?:{teamIds:string[];constructionTypes:string[]}}){

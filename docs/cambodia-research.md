@@ -5,7 +5,7 @@ Rà soát ngày 24/10/2026. Đã bổ sung **Phnom Penh – Tonle Sap (1.700 m)*
 - **Phnom Penh:** đường trường, dòng ngang mạnh hơn, hao thể lực nhiều hơn và hồi sức chậm hơn. Bối cảnh gồm bờ hoàng cung, mái nhiều tầng, đình đón lễ, phố ven sông và đường chân trời bờ đối diện.
 - **Siem Reap:** chặng ngắn, hành lang lái hẹp, tăng tốc ít tốn sức hơn. Bối cảnh là sông trong phố, đình ven sông, cầu ngoài đoạn đua, hàng quán và cây xanh; không đặt Angkor Wat cạnh sông.
 - Cả hai có luyện tập, đua đôi với AI và cúp mời 8 đội. Về đích tính theo mũi ghe. Hòa thì đua lại; các lượt khác trong nhánh đấu được mô phỏng. Đây là luật game, chưa phải điều lệ chính thức Campuchia.
-- Đã đối chiếu **17 tên đội** để đưa vào danh sách mời, kèm chữ Khmer và nguồn từng tên trong [CSV](cambodia-teams.csv). Mẫu ghe, số VĐV hiển thị và màu áo hiện dùng bộ asset chung; chưa phải bản sao của từng đội thật. Một đội dùng kiểu chèo khác được giữ riêng trong dữ liệu nghiên cứu.
+- Danh sách tách theo sân: **Maspéro 61 đăng ký, Phnom Penh 16 tên đội, Siem Reap 8 tên đội**. Phnom Penh dùng tư liệu 2019/2024; Siem Reap dùng kết quả giải sông đô thị 2018. Chữ Khmer và nguồn từng tên ở [CSV](cambodia-teams.csv). Mẫu ghe, số VĐV hiển thị và màu áo hiện dùng bộ asset chung; chưa phải bản sao của từng đội thật. Một tên mới chỉ có chứng cứ giải cấp tỉnh và một đội chèo kiểu chev được giữ ngoài danh sách chơi.
 - Số lượng được báo cáo ở Phnom Penh 2024 là **346 ghe thi đấu**; một báo cáo đăng ký ghi **348 ghe / 22.042 tay bơi**. Hai con số thuộc phạm vi báo cáo khác nhau. Siem Reap 2023 được báo cáo có **32 ghe đua**. Không gán các số này thành danh sách giải 2026.
 
 ## Tư liệu chi tiết và giới hạn xác minh
@@ -50,9 +50,10 @@ The exact modern course length and full official local entry list are not
 verified. Do not label these old rules as the 2026 regulations.
 
 The [2025 AKP report](https://vps.akp.gov.kh/post/detail/352616) records a friendship
-race and activities along the river and Royal Residence Park. The game is a
-festival interpretation with invited Cambodian teams, not a verified Siem Reap
-entry list. Royal Gardens and a modest riverside pavilion are appropriate;
+race and activities along the river and Royal Residence Park. Eight local
+identities come from the [2018 technical committee results reported by AMS](https://ams.com.kh/news/central/161417),
+four men's boats and four women's boats. This is a historical selection,
+not a complete or current Siem Reap entry list. Royal Gardens and a modest riverside pavilion are appropriate;
 Angkor Wat on the riverbank is not.
 
 ## Team identity and rules limits
@@ -64,12 +65,16 @@ Chev boats use a different rowing mechanism, so they remain in research only
 until that rig exists. The existing paddle-crew rigs and shirt are preserved.
 No historical rank changes a player's boat speed.
 
-17 sourced identities are exported in [cambodia-teams.csv](cambodia-teams.csv)
+25 sourced identities are exported in [cambodia-teams.csv](cambodia-teams.csv)
 and `public/assets/data/cambodia-teams.json`, with Khmer spellings and source
 URLs. Eleven have 2024 identity evidence; five retain their 2019 results evidence. Sdach Damrey Sa Phluk Khiev Meanchey
 Baramey Wat Aranh Sakor has a [2026 provincial-government report](https://takeo.info.gov.kh/km/article/01a13e92-415c-767b-827c-4bf4c090200a)
 quoting the boat's abbot after provincial races. This does not establish an
-official 2026 Phnom Penh or Siem Reap city entry. The invitational cups use
+official 2026 Phnom Penh or Siem Reap city entry, so this identity is unassigned
+and excluded from play. Sixteen identities are assigned to Phnom Penh;
+eight additional 2018 city-event identities are assigned only to Siem Reap.
+Event membership is explicit; a team's home province is not used to infer it.
+The invitational cups use
 eight equal game hulls; actual crew sizes, class divisions, uniforms and hulls
 are not reproduced. The 46-rower Tepthida record remains research-only because
 its reported chev mechanism needs a different rig.
@@ -117,7 +122,8 @@ At the user's requested traffic mix, cars/vans/minibuses are 80% of the
 
 The selector is shared with online/opponent selection and supports Khmer,
  accent-insensitive Latin and province search with bounded rendered rows.
- Seventeen Cambodian identities are now playable; the invitation cup still
- draws eight. See [catalogue review](cambodia-roster-review.md) for the exact
+ Each map's picker, opponent, cup, online queue and friend room are isolated
+ to its own roster; neither Cambodian map shares the other's teams. Each
+ invitation cup still draws eight. See [catalogue review](cambodia-roster-review.md) for the exact
  additions, historical years, 260-name photograph source and remaining 300+
  roster gap. Do not describe the full 300+ import as complete.

@@ -4,7 +4,7 @@ import {createHash} from 'node:crypto';
 import {createRaceGame} from '../src/race/gameplay.mjs';
 import {raceVenue,RACE_VENUES,venueRaceX,commentaryDistance} from '../src/race/race-venues.mjs';
 import {introShot,playableShot} from '../src/race/race-camera.mjs';
-import {teamsForVenue,cupTeamIds,festivalTeam} from '../src/race/festival-teams.mjs';
+import {teamsForVenue,cupTeamIds,festivalTeam,isVenueTeam,roomTeamsMatchVenue} from '../src/race/festival-teams.mjs';
 import {searchTeams} from '../src/race/team-search.mjs';
 import {constructionForLane,opponentConstruction} from '../src/race/construction-rules.mjs';
 import {createTournament} from '../src/race/tournament.mjs';
@@ -32,10 +32,21 @@ for(const venue of Object.values(RACE_VENUES)){
  if(venue.id!=='maspero'){assert.equal(constructionForLane(0,venue.id),'dugout');assert.equal(constructionForLane(1,venue.id),'dugout');assert.equal(opponentConstruction('dugout',venue.id),'dugout');}
 }
 assert(finishes['phnom-penh'].stamina<finishes.maspero.stamina-20);assert(finishes['siem-reap'].seconds<finishes.maspero.seconds/2);
-assert.equal(raceVenue('unknown').id,'maspero');assert.equal(CAMBODIA_TEAMS.length,17);assert(CAMBODIA_RESEARCH_ONLY.every(t=>!CAMBODIA_TEAMS.some(p=>p.id===t.id)));
+assert.equal(raceVenue('unknown').id,'maspero');assert.equal(CAMBODIA_TEAMS.length,25);assert(CAMBODIA_RESEARCH_ONLY.every(t=>!CAMBODIA_TEAMS.some(p=>p.id===t.id)));
+assert.deepEqual(Object.keys(RACE_VENUES).map(id=>teamsForVenue(id).length),[61,16,8]);
+assert.deepEqual(teamsForVenue('unknown'),[]);
+for(const id of Object.keys(RACE_VENUES)){
+ const roster=teamsForVenue(id);
+ for(const team of roster){const ids=cupTeamIds(91,id,team.id);assert(ids.every(t=>isVenueTeam(id,t)));assert(ids.includes(team.id));assert(roomTeamsMatchVenue({venueId:id,players:[{venueId:id,teamId:team.id}]}));}
+ for(const foreign of Object.keys(RACE_VENUES).filter(other=>other!==id))for(const team of teamsForVenue(foreign)){
+  assert(!isVenueTeam(id,team.id));assert.throws(()=>cupTeamIds(91,id,team.id));assert(!roomTeamsMatchVenue({venueId:id,players:[{venueId:id,teamId:team.id}]}));
+ }
+ assert(!isVenueTeam(id,'kh-sdach-damrey'),'Province alone is not city-event entry evidence');
+}
+assert(!roomTeamsMatchVenue({venueId:'siem-reap',players:[{venueId:'phnom-penh',teamId:teamsForVenue('siem-reap')[0].id}]}));
 assert(searchTeams(teamsForVenue('maspero'),'tum nup').some(t=>t.id==='tum-nup-2'));assert.equal(searchTeams(CAMBODIA_TEAMS,'សារាយ')[0].id,'kh-saray-techo');assert.equal(searchTeams(CAMBODIA_TEAMS,'keo pursat')[0].id,'kh-techo-keo-vichey');assert.equal(searchTeams(CAMBODIA_TEAMS,'not a real boat').length,0);
 const large=Array.from({length:380},(_,i)=>({id:'test-'+i,name:'Test boat '+i,nameKm:'សាកល្បង'}));assert.equal(searchTeams(large,'boat 379')[0].id,'test-379');assert.equal(searchTeams(large,'').length,380);
-const exported=JSON.parse(await readFile('public/assets/data/cambodia-teams.json'));assert.deepEqual(exported.teams,CAMBODIA_TEAMS);
+const exported=JSON.parse(await readFile('public/assets/data/cambodia-teams.json'));assert.deepEqual(exported.teams,CAMBODIA_TEAMS);for(const id of ['phnom-penh','siem-reap'])assert.deepEqual(exported.venues[id],teamsForVenue(id).map(t=>t.id));
 const english=JSON.parse(await readFile('public/assets/race-audio/english/manifest.json'));assert.equal(Object.keys(english.clips).length,19);
 for(const clip of Object.values(english.clips)){assert.equal(clip.lang,'en');assert.equal(clip.sourceType,'azure-stock-neural');assert(clip.peak>.01&&clip.peak<=1.01);const data=await readFile('public/assets/race-audio/'+clip.file);assert.equal(createHash('sha256').update(data).digest('hex'),clip.sha256);}
 console.log('Venue courses, both finish times, 15/60/144 FPS determinism, boost/rest/pause, narrow steering, exact audio milestones, 61/8-team cups and 19 hashed English AI clips passed.',finishes);

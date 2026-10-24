@@ -1,6 +1,6 @@
 import roster from '../../public/assets/data/roster-2025.json' with {type:'json'};
 import {RACE_TEAMS_2025} from './teams.mjs';
-import {CAMBODIA_TEAMS} from './cambodia-teams.mjs';
+import {CAMBODIA_TEAMS,PHNOM_PENH_TEAMS,SIEM_REAP_TEAMS} from './cambodia-teams.mjs';
 
 // The sourced registration roster includes men, women and unresolved labels.
 // This mixed festival cup is a game format, not the official 2025 bracket.
@@ -18,10 +18,13 @@ export const FESTIVAL_TEAMS=roster.records.map((r,i)=>{
   appearance:source?'reference':'sample',sourceUrl:r.sourceUrl,khmerSourceUrl:r.khmerSourceUrl||null};
 });
 const byId=new Map([...FESTIVAL_TEAMS,...CAMBODIA_TEAMS].map(t=>[t.id,t]));
-export const teamsForVenue=id=>id&&id!=='maspero'?CAMBODIA_TEAMS:FESTIVAL_TEAMS;
-// Cambodian cups keep eight invitations; any researched identity can enter.
-// The selector/online roster remains the full catalogue, independent of bracket size.
+export const VENUE_TEAMS=Object.freeze({maspero:FESTIVAL_TEAMS,'phnom-penh':PHNOM_PENH_TEAMS,'siem-reap':SIEM_REAP_TEAMS});
+export const teamsForVenue=(id='maspero')=>VENUE_TEAMS[id]||[];
+export const isVenueTeam=(venueId,teamId)=>teamsForVenue(venueId).some(team=>team.id===teamId);
+export const roomTeamsMatchVenue=room=>!!room&&Array.isArray(room.players)&&room.players.length>0&&room.players.length<=2&&room.players.every(player=>(player.venueId==null||player.venueId===room.venueId)&&isVenueTeam(room.venueId,player.teamId));
+// Cambodian cups keep eight teams from the selected venue only.
 export function cupTeamIds(seed,venueId,playerId){
+ if(!isVenueTeam(venueId,playerId))throw Error('Team is not registered for this venue');
  const ids=shuffledFestivalIds(seed,teamsForVenue(venueId));
  return venueId==='maspero'?ids:[playerId,...ids.filter(id=>id!==playerId).slice(0,7)];
 }

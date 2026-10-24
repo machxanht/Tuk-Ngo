@@ -33,10 +33,11 @@ with sync_playwright() as p:
    assert picker.locator('.team-choice').count()<=8
    # Accent-insensitive Latin, Khmer, province and no-results searches.
    search=picker.locator('input[type=search]')
-   for query,expected in [('keo pursat','Techo Keo'),('សារាយ','Saray'),('narind','Narind')]:
+   queries=[('keo pursat','Techo Keo'),('សារាយ','Saray'),('narind','Narind')] if venue=='phnom-penh' else [('maha kosa','Maha Kosa'),('អង្គរជុំ','Angkor Chum'),('yeay tep','Yeay Tep')]
+   for query,expected in queries:
     search.fill(query);assert picker.locator('.team-choice').count()==1
     assert expected in picker.locator('.team-choice').inner_text()
-   picker.locator('.team-choice').click();page.wait_for_function(api+".assetSelection.teamIds[0]==='kh-narind-rangsey'")
+   picker.locator('.team-choice').click();chosen='kh-narind-rangsey' if venue=='phnom-penh' else 'sr-yeay-tep';page.wait_for_function(api+".assetSelection.teamIds[0]==='"+chosen+"'")
    search.fill('zzzzzz');assert picker.locator('.team-choice').count()==0;picker.get_by_role('status').wait_for();search.fill('')
    for language,label in [('vi','VI'),('km','ខ្មែរ'),('en','EN')]:
     page.get_by_role('button',name=label,exact=True).click()
@@ -54,8 +55,8 @@ with sync_playwright() as p:
      report['viewports'].append([venue,language,width,height])
    page.set_viewport_size({'width':1024,'height':768});page.get_by_role('button',name='VI',exact=True).click()
    # All catalogue pages are reachable without a select/dropdown.
-   picker.get_by_role('button',name='Trang sau',exact=True).click();assert picker.locator('.team-choice').count()==8
-   picker.get_by_role('button',name='Trang sau',exact=True).click();assert picker.locator('.team-choice').count()==1
+   if venue=='phnom-penh':picker.get_by_role('button',name='Trang sau',exact=True).click();assert picker.locator('.team-choice').count()==8
+   else:assert picker.locator('.team-pages').count()==0
    page.locator('.selection-start').click();page.wait_for_function(api+".game.state.phase==='intro'",timeout=15000)
    value('.game.skipIntro()');value('.game.advance(3)');page.wait_for_function(api+".game.state.phase==='racing'")
    page.get_by_test_id('stroke-pad').focus();page.keyboard.down('Space');page.wait_for_timeout(1200);assert value('.game.state.distances[0]')>0;page.keyboard.up('Space')
@@ -68,12 +69,12 @@ with sync_playwright() as p:
     if cup['status']=='champion':break
     page.get_by_role('button',name='Đua vòng tiếp theo',exact=True).click()
    assert rounds==3 and len(cup['teamIds'])==8
-   report['scenes'][venue]={'traffic':data['traffic']['types'],'carShare':data['traffic']['carShare'],'landmarks':data['landmarks'],'roster':17,'cupTeams':8,'cupRounds':rounds,'dugoutDefault':True}
+   report['scenes'][venue]={'traffic':data['traffic']['types'],'carShare':data['traffic']['carShare'],'landmarks':data['landmarks'],'roster':16 if venue=='phnom-penh' else 8,'cupTeams':8,'cupRounds':rounds,'dugoutDefault':True}
    page.locator('.game-result button').last.click()
    # The same search component is used in the online lobby; no live writes here.
    page.get_by_role('button',name='Đấu online',exact=True).click();online=page.locator('.online-profile .team-browser');online.wait_for()
-   online.locator('input[type=search]').fill('kiri');assert online.locator('.team-choice').count()==1
-   online.locator('.team-choice').click();assert 'Kiri' in online.locator('.team-choice[aria-pressed=true]').inner_text()
+   online.locator('input[type=search]').fill('kiri' if venue=='phnom-penh' else 'kong chey');assert online.locator('.team-choice').count()==1
+   online.locator('.team-choice').click();assert ('Kiri' if venue=='phnom-penh' else 'Kong Chey') in online.locator('.team-choice[aria-pressed=true]').inner_text()
    page.locator('.online-back').click()
    print(venue,'passed',flush=True)
   assert not report['errors'],report['errors']

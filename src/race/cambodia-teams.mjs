@@ -25,3 +25,21 @@ const records=[
 const colours=['#f6c12e','#24ad78','#ef713e','#398dd2','#ab52b7','#e83c50','#21b5b0','#ec719d'];
 export const CAMBODIA_TEAMS=records.map(([id,nameKm,name,province,sourceUrl,crew],i)=>({id,registrationId:id,name,nameVi:name,nameKm,teamNumberKm:'',country:'KH',province,sourceUrl,season:sourceUrl===results2019?2019:id==='kh-sdach-damrey'?2026:2024,reportedCrew:crew,appearance:'sample',jersey:colours[i%colours.length],trim:'#ffe2a1',cap:colours[(i+2)%colours.length],sleeve:colours[i%colours.length],pattern:'festival-sample',gender:id==='kh-rontah-pech'?'women':'unverified',transliterationVerified:false,construction:'dugout',constructionEvidence:'Game art default; original timber construction not verified',identityEvidence:'published-name',entryScope:sourceUrl===results2019?'Phnom Penh 2019':id==='kh-sdach-damrey'?'Provincial event 2026':'Cambodian reporting 2024'}));
 export const CAMBODIA_RESEARCH_ONLY=[{id:'kh-tepthida',nameKm:'ទេពធីតាសែនជ័យបារមីជំទាវទេព',name:'Tepthida Senchey Baramey Chumteav Tep',province:'Kampong Chhnang',season:2024,reportedCrew:46,reportedLength:29.73,reportedClass:'chev',sourceUrl:'https://kohsantepheapdaily.com.kh/article/2003391.html',playable:false,reason:'Different rowing mechanism; not attached to the paddle rig.'}];
+
+// Event membership is explicit. A boat's home province does not prove that it
+// entered the city-river event; the provincial 2026 record remains unassigned.
+CAMBODIA_TEAMS.forEach(team=>{team.venueIds=team.id==='kh-sdach-damrey'?[]:['phnom-penh'];});
+const siemSource='https://ams.com.kh/news/central/161417';
+const siemRecords=[
+ ['sr-maha-kosa','មហាកោសាមានជ័យ','Maha Kosa Meanchey','men'],
+ ['sr-sotr-nikum','សូទ្រនិគមសែនជ័យបារមីតាពេទ្រ','Sotr Nikum Senchey Baramey Ta Petr','men'],
+ ['sr-krud-meas','គ្រុឌមាសតេជោសែនជ័យ','Krud Meas Techo Senchey','men'],
+ ['sr-peam-sameakki','ពាមសាមគ្គីសែនជ័យ','Peam Sameakki Senchey','men'],
+ ['sr-hong-chan','ហង្សច័ន្ទមានជ័យបារមីមហានគរ','Hong Chan Meanchey Baramey Mahanokor','women'],
+ ['sr-yeay-tep','យាយទេពសំដែងរិទ្ធ','Yeay Tep Samdeng Rith','women'],
+ ['sr-angkor-chum','អង្គរជុំមានជ័យ','Angkor Chum Meanchey','women'],
+ ['sr-kong-chey','គង់ជ័យបារមីស្រីខ្ទុម','Kong Chey Baramey Srei Khtum','women'],
+];
+export const SIEM_REAP_TEAMS=siemRecords.map(([id,nameKm,name,gender],i)=>({id,registrationId:id,name,nameVi:name,nameKm,teamNumberKm:'',country:'KH',province:'Siem Reap',sourceUrl:siemSource,season:2018,reportedCrew:null,appearance:'sample',jersey:colours[i],trim:'#ffe2a1',cap:colours[(i+2)%colours.length],sleeve:colours[i],pattern:'festival-sample',gender,transliterationVerified:false,construction:'dugout',constructionEvidence:'Game art default; original timber construction not verified',identityEvidence:'published-event-results',entryScope:'Siem Reap city river 2018',venueIds:['siem-reap']}));
+CAMBODIA_TEAMS.push(...SIEM_REAP_TEAMS);
+export const PHNOM_PENH_TEAMS=CAMBODIA_TEAMS.filter(team=>team.venueIds.includes('phnom-penh'));

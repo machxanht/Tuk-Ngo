@@ -74,7 +74,7 @@ with sync_playwright() as p:
     if cup['status']=='champion':break
     page.get_by_role('button',name='Đua vòng tiếp theo',exact=True).click()
    assert rounds==3 and cup['status']=='champion';page.screenshot(path=str(out/(venue+'-cup.png')));menu()
-   report['venues'][venue]={'length':length,'aiResult':state['result'],'practice':True,'cupRounds':rounds,'roster':17,'choicesPerPage':len(ids),'spectators':data['spectators'],'landmarks':data['landmarks'],'fpsDpr2OnPc':fps,'buttons':buttons};print('Venue passed:',venue,flush=True)
+   report['venues'][venue]={'length':length,'aiResult':state['result'],'practice':True,'cupRounds':rounds,'roster':16 if venue=='phnom-penh' else 8,'choicesPerPage':len(ids),'spectators':data['spectators'],'landmarks':data['landmarks'],'fpsDpr2OnPc':fps,'buttons':buttons};print('Venue passed:',venue,flush=True)
   page.get_by_label('Sân đấu',exact=True).select_option('maspero');page.wait_for_function('!!'+api+'&&'+api+".game.state.venueId==='maspero'",timeout=90000)
   assert not errors,errors;report['errors']=errors;(out/'checks.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');print(json.dumps(report,ensure_ascii=False))
  except Exception:

@@ -1,17 +1,28 @@
 # Cambodian boat catalogue review
 
-Reviewed 24 October 2026. **17 named Cambodian identities are playable**, up
-from eight. Along with the existing 61 Maspéro registrations, the game has 78
-selectable identities. This is **not a complete 300+ boat entry list**.
+Reviewed 24 October 2026. Playable rosters are now separate: **61 Maspéro
+registrations, 16 Phnom Penh identities and 8 Siem Reap city-river identities**.
+No picker, AI opponent, cup or online room can draw from another venue.
+This is **not a complete 300+ boat entry list**.
 
-The Cambodian menu is a game invitational catalogue spanning 2019, 2024 and
-2026 evidence. Neither it nor the eight-boat game cup is an official 2026
+The Phnom Penh menu is a historical game invitational catalogue spanning 2019
+and 2024 evidence. Siem Reap uses eight published city-event results from 2018.
+Neither menu nor either eight-boat game cup is an official 2026
 entry list. Each record retains its source URL, evidence season, entry scope,
 Khmer source spelling and unverified display romanisation. Historical ranks
 do not affect boat performance. Colours and the common dugout art are game
 interpretations, not verified replicas of these teams' kits or timber hulls.
 
 ## Reviewed additions
+
+- Siem Reap 2018: four men's and four women's boats named in the technical
+  committee results reported by [AMS, 23 November 2018](https://ams.com.kh/news/central/161417).
+  The export preserves each boat's division and source spelling. The mixed
+  eight-team game cup does not reproduce the separate real divisions.
+- The 2026 provincial report for Sdach Damrey establishes an identity, but
+  neither a Phnom Penh entry nor a Siem Reap city-river entry. It is retained
+  in the exported catalogue with an empty `venueIds`, excluded from play.
+  A home province alone is not event membership evidence.
 
 - 2024: Techo Keo Vichey Baramey Chao Sen, Saray Techo Senchey and Koh Ker
   Thipadei, named in the [2024 results report](https://kohsantepheapdaily.com.kh/article/2007453.html).
@@ -48,6 +59,13 @@ compact online/opponent panels). More than 300 entries do not cause 300 DOM
 rows or 300 GLB downloads. A 380-record synthetic fixture verifies search
 capacity only; it is not an imported real roster.
 
-Cambodian cups retain eight participants and can include any selected
-catalogue team plus seven seeded opponents. Practice, AI and online use the
-full researched catalogue. Existing eight-team saves remain valid.
+Cambodian cups retain eight participants: the selected venue's team plus
+seven seeded opponents from that same venue. Practice, AI and online also use
+only that venue's roster. Server queue/create/join/socket guards enforce this
+independently of the browser. Rankings remain partitioned by venue.
+
+Valid saved cups are restored. A saved cup containing teams outside its venue
+is copied once to its storage key plus `-roster-backup`, then starts a clean
+venue-specific cup. Other venues' progress is unchanged. Old online rooms
+with invalid venue membership are cancelled without ranked settlement;
+finished match history is preserved.
