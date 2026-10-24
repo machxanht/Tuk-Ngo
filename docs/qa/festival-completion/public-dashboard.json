@@ -1,0 +1,12 @@
+{
+  "suite": "Audio dashboard browser regression",
+  "cases": [
+    {
+      "name": "Venue narration keeps all three maps and English/Khmer isolated",
+      "status": "pass"
+    }
+  ],
+  "passed": 1,
+  "failed": 0,
+  "limits": "Simulated error cases verify recovery only. Native pronunciation and semantic correctness are not certified."
+}

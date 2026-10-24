@@ -5,6 +5,17 @@ acceptance work tracked in [the completion plan](../../game-completion-plan.md).
 The source release and exact public-file verification are recorded separately
 in `deployment.json` after publishing. No guest export or secret is included.
 
+Published runtime source: `48e7d34`; Pages:
+`c830a5bbf76859022094e9ebb6e3af0dc61c793b`.
+[Pages Actions run 40090096833](https://github.com/machxanht/Tuk-Ngo/actions/runs/40090096833)
+completed successfully. Final verification fetched the seven changed dashboard
+artifacts; 128 unchanged files retain the previous successful full public hash
+verification and match the new commit byte-for-byte. `deployment.json` identifies
+reused evidence explicitly. Public audio nine-case and slow-fetch regressions
+cover the unchanged game runtime; `public-dashboard.json` verifies the last
+dashboard update, with actual wide/phone screenshots. The stable game and
+dashboard URLs did not change.
+
 ## Gates and evidence
 
 - `npm run lint`, `npm test`, `npm run build` passed. The architecture gate
