@@ -1,0 +1,93 @@
+{
+  "url": "https://machxanht.github.io/Tuk-Ngo/",
+  "endpoint": "https://tuk-ngo-online.oliverkhang.workers.dev",
+  "configurationOverridden": false,
+  "physicalTabletTested": false,
+  "viewports": [
+    [
+      "vi",
+      1024,
+      768
+    ],
+    [
+      "vi",
+      768,
+      1024
+    ],
+    [
+      "vi",
+      1180,
+      430
+    ],
+    [
+      "vi",
+      390,
+      844
+    ],
+    [
+      "km",
+      1024,
+      768
+    ],
+    [
+      "km",
+      768,
+      1024
+    ],
+    [
+      "km",
+      1180,
+      430
+    ],
+    [
+      "km",
+      390,
+      844
+    ],
+    [
+      "en",
+      1024,
+      768
+    ],
+    [
+      "en",
+      768,
+      1024
+    ],
+    [
+      "en",
+      1180,
+      430
+    ],
+    [
+      "en",
+      390,
+      844
+    ]
+  ],
+  "errors": [],
+  "onlineDoesNotPause": true,
+  "reloadTimingMs": {
+    "firstServerState": 5876,
+    "graphicsReady": 13052
+  },
+  "reloadAndReconnect": true,
+  "results": [
+    {
+      "result": "loss",
+      "times": [
+        88.41852553574765,
+        79.0390689700268
+      ]
+    },
+    {
+      "result": "win",
+      "times": [
+        79.0390689700268,
+        88.41852553574765
+      ]
+    }
+  ],
+  "ownRankRow": "12\t\nTablet QA 1\nBạn\n1 Trận\n\t984\t0\t1:28.42",
+  "selectedTabContrast": 8.584791032428702
+}

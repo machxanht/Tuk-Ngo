@@ -1,0 +1,174 @@
+{
+  "commit": "abece221cb6d4bbbba2e21dbf9c0d50f04799ba2",
+  "files": [
+    "index.html",
+    "online-config.json",
+    "assets/illustrated-v22/game-engine.js",
+    "assets/App-DzC5ktUv.js",
+    "assets/art-preview-CNhJbUwh.js",
+    "assets/ArtPreview-BBLLrk1R.css",
+    "assets/ArtPreview-DQV7T3sE.js",
+    "assets/asset-transfer-D469cGcW.js",
+    "assets/athlete-study-preview-DCJaIbAf.js",
+    "assets/bank-materials-CJ_b_t9m.js",
+    "assets/boat-Bvm91TIu.js",
+    "assets/boat-preview-Dh5O9zZb.js",
+    "assets/cambodia-course-h4GhXqaC.js",
+    "assets/CoherentSample-B2c5mXVE.css",
+    "assets/CoherentSample-fRyKjy6v.js",
+    "assets/compass-CpXZ2GC0.js",
+    "assets/download-CzMUkiSp.js",
+    "assets/festival-branding-7IqSjdon.js",
+    "assets/gameplay-B3sIepgx.js",
+    "assets/index-C3WAVHcT.css",
+    "assets/index-fblvuET9.js",
+    "assets/Interactive3DBlueprint-h9SxdYp7.js",
+    "assets/kbach-motifs-Bj2M1atI.js",
+    "assets/KbachPicker-B5pPLS1S.css",
+    "assets/KbachPicker-DOP-KWak.js",
+    "assets/MasperoRaceCourseStudio-ttQ7JWw_.js",
+    "assets/race-crew-BAluZHVq.js",
+    "assets/race-flow-BNEF7dhE.js",
+    "assets/RaceGame-BS6ZVBAB.css",
+    "assets/RaceGame-DdFJj9ug.js",
+    "assets/rotate-ccw-Bb_tPbe_.js",
+    "assets/TabletRaceDemo-B7CQ3wr5.js",
+    "assets/TabletRaceDemo-DwxGRcfj.css",
+    "assets/three-addons-DiBvLs_E.js",
+    "assets/three-core-PKyBB6wc.js",
+    "assets/three-renderer-Xp2iZVDg.js",
+    "assets/tumNup2CrewBuilder-CDIQfUnS.js",
+    "assets/video-DaPcU50O.js",
+    "assets/waves-Wu2M2Wi0.js",
+    "assets/x-UJ3u3c7j.js"
+  ],
+  "changed": [
+    "assets/App-DzC5ktUv.js",
+    "assets/ArtPreview-DQV7T3sE.js",
+    "assets/CoherentSample-fRyKjy6v.js",
+    "assets/Interactive3DBlueprint-h9SxdYp7.js",
+    "assets/KbachPicker-DOP-KWak.js",
+    "assets/MasperoRaceCourseStudio-ttQ7JWw_.js",
+    "assets/RaceGame-DdFJj9ug.js",
+    "assets/TabletRaceDemo-B7CQ3wr5.js",
+    "assets/boat-preview-Dh5O9zZb.js",
+    "assets/compass-CpXZ2GC0.js",
+    "assets/download-CzMUkiSp.js",
+    "assets/gameplay-B3sIepgx.js",
+    "assets/index-fblvuET9.js",
+    "assets/rotate-ccw-Bb_tPbe_.js",
+    "assets/video-DaPcU50O.js",
+    "assets/waves-Wu2M2Wi0.js",
+    "assets/x-UJ3u3c7j.js",
+    "index.html"
+  ],
+  "sourceCommit": "9e0249b4ef2e19ec2e85d1cddec7116b26040423",
+  "parent": "beb4dba647906e1a04f0d73edfa04610ccf0be9e",
+  "backend": "https://tuk-ngo-online.oliverkhang.workers.dev",
+  "workerVersion": "9726448b-b5d6-4b2e-b69a-0d7649bd5634",
+  "verifiedFiles": [
+    {
+      "path": "assets/App-DzC5ktUv.js",
+      "bytes": 127154,
+      "sha256": "36516c8d0c5d8b0d873d8aae6e89086e87682a280b570526c4d590d641ed7de3"
+    },
+    {
+      "path": "assets/ArtPreview-DQV7T3sE.js",
+      "bytes": 52206,
+      "sha256": "459334c841cc5e8d41621218bbbfa6b2d8df0176747d016568f7e67973b3c43e"
+    },
+    {
+      "path": "assets/CoherentSample-fRyKjy6v.js",
+      "bytes": 24328,
+      "sha256": "4812239580f39b537330313a250c03ac366101834315012154872efcf6436b85"
+    },
+    {
+      "path": "assets/Interactive3DBlueprint-h9SxdYp7.js",
+      "bytes": 74784,
+      "sha256": "a4e794110cfa9829ac8578bcc13851b779bfa9e3c8dbed84ceb49fa08a27ac4b"
+    },
+    {
+      "path": "assets/KbachPicker-DOP-KWak.js",
+      "bytes": 2923,
+      "sha256": "29ab431144a00fadac093e22b3d4c4731e2e12ed68c57bc1e8514457b9e69719"
+    },
+    {
+      "path": "assets/MasperoRaceCourseStudio-ttQ7JWw_.js",
+      "bytes": 23473,
+      "sha256": "b48b5f7e4802e3b069378fc49bee929e6c3d2d171b985a55e22256887bd23ff2"
+    },
+    {
+      "path": "assets/RaceGame-DdFJj9ug.js",
+      "bytes": 133140,
+      "sha256": "c42bfa457de0c1696a7ef310d88407eed820faf607a63b001b337675f2f88134"
+    },
+    {
+      "path": "assets/TabletRaceDemo-B7CQ3wr5.js",
+      "bytes": 36445,
+      "sha256": "92eb0d3c3f9cddcbfc85dfb0258e645c90663aca2262f66fe388a4693ad35cb8"
+    },
+    {
+      "path": "assets/boat-preview-Dh5O9zZb.js",
+      "bytes": 95416,
+      "sha256": "9a45a4ac81c43534c56a1b90ea79e5fa35d3434962de8ae6f1e266b6c8f5fa1f"
+    },
+    {
+      "path": "assets/compass-CpXZ2GC0.js",
+      "bytes": 422,
+      "sha256": "c04218de5b2e9839a2641196170fe6e0b9aee622428813f60a9a2c265ea5a8d4"
+    },
+    {
+      "path": "assets/download-CzMUkiSp.js",
+      "bytes": 2673,
+      "sha256": "8bd93ae8fd3e2cd7c21084fc7c5dde05b5225f6f111384d8cef86af65241db74"
+    },
+    {
+      "path": "assets/gameplay-B3sIepgx.js",
+      "bytes": 16600,
+      "sha256": "17944a922808d7f187569bdfd32705965939eec870aab02a714f73cbc9caf454"
+    },
+    {
+      "path": "assets/index-fblvuET9.js",
+      "bytes": 226020,
+      "sha256": "5f9dea66f59a254fd97941d12f3cfd7fb9a4ee7bfe8acab104b642fc849b1c06"
+    },
+    {
+      "path": "assets/rotate-ccw-Bb_tPbe_.js",
+      "bytes": 1025,
+      "sha256": "d0d8615c2d783605780ee28e259526ff416512ead4c633aa769d7a9a9765a089"
+    },
+    {
+      "path": "assets/video-DaPcU50O.js",
+      "bytes": 424,
+      "sha256": "df2ba7a5ce492a20d14dc289e24ad2a063840dc99f368a16799a13d6f44c4130"
+    },
+    {
+      "path": "assets/waves-Wu2M2Wi0.js",
+      "bytes": 3367,
+      "sha256": "fcf31caccb6f2c414b6e334d7f73f5ff8faf3aaaf87779fd363fea06875855a1"
+    },
+    {
+      "path": "assets/x-UJ3u3c7j.js",
+      "bytes": 330,
+      "sha256": "d5c93d72f5a961143c4399c0f4cd2150c8ff6624afd0046843766203e1dfa5ea"
+    },
+    {
+      "path": "index.html",
+      "bytes": 1307,
+      "sha256": "3056ff0b64c8a4ca0ea10468003306d4b66b6c7eedbef79c6c30f98a77debd9c"
+    }
+  ],
+  "workflow": "https://github.com/machxanht/Tuk-Ngo/actions/runs/40067000162",
+  "workflowStatus": "success",
+  "verifiedAt": "2026-10-24T05:45:49.836403+00:00",
+  "checks": {
+    "lint": "passed",
+    "offlineUnitSuite": "passed",
+    "onlineUnitSuite": "passed",
+    "productionBuild": "passed",
+    "twoBrowsersAgainstPublicPages": "passed",
+    "configurationOverridden": false,
+    "physicalTabletTested": false,
+    "loadTested": false
+  }
+}
