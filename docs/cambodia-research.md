@@ -105,8 +105,7 @@ Phnom Penh now uses a wider Sisowath-style promenade, two car lanes per
  lower tiled shophouses, Pokambor-side pavilion/market, a Royal Gardens /
  Residence interpretation and balustraded bridges outside the race. Both
  retain bright daylight. These are stylised interpretations, not surveyed
- replicas. The bridge north of the Phnom Penh start is an abbreviated steel
- arch interpretation, not a claim about its measured span.
+ replicas. The earlier invented Phnom Penh steel arch has been removed in the mapped-layout update below.
 
 Visual references inspected: [2024 riverfront preparation photo](https://b2b-cambodia.com/news/cambodia-water-festival-2024-what-to-know/),
 [Tourism Ministry riverfront description](https://tourismcambodia.org/public/provinces/search/detail/167/riverfront),
@@ -144,3 +143,43 @@ balcony. Heights, shutters, verandas and roofs vary within bounded plots. Coconu
 fronds use a small feathered mesh, and broadleaf crowns vary between trees. These
 families extend the references above; their exact distribution and dimensions
 remain authored scenery. Road/river access corridors are preserved.
+
+
+## Mapped riverfront and field-photo rebuild
+
+The user approved maps and field photos after local Google Maps browser control
+was unavailable. Google Maps 3D was **not** inspected. The current scene now uses
+[a compact ODbL dataset](../public/assets/maps/cambodia-layout.json), derived
+from official OSM map extracts. The full [sources and limitations](../public/assets/maps/cambodia-sources.md)
+ship with the game and are linked from its settings.
+
+Phnom Penh separates the west-bank Royal Palace, Moonlight Pavilion, Throne Hall,
+Silver Pagoda and National Museum. The opposite bank follows mapped transverse
+river extents rather than mirroring a 180 m channel. In the playable region its
+width varies approximately 360–520 m, after straightening. The 59 m Throne Hall
+spire is supported by the Tourism Ministry; most other dimensions are estimates.
+The pavilion uses an open colonnade and gold/green layered roofs based on a
+verified front photograph. Palace auxiliary structures use mapped locations.
+
+Siem Reap places the Royal Residence, Royal Gardens and shrine by NR6 near the
+start, FCC Angkor downstream, and the Tep Vong bridge near the finish. The low
+white/red residence replaces the pair of generic houses. The two bridges are
+outside the game crossing lines. No Angkor Wat temple is placed on this bank.
+
+The river is straightened to preserve existing boat dynamics. Longitudinal
+coordinates are normalised to game length; Siem Reap is widened to a minimum
+38 m paddle/steering corridor. The start/finish anchors and current festival
+street closures have not been surveyed. Facades and incidental streets remain
+stylised; this is an improvement in sourced layout, not a digital twin.
+
+Cambodian national flags use the public-domain 3:2 SVG with a shared texture and
+shader cloth animation. Landmark details are batched; the original shirt math,
+eight master athlete rigs, rosters, audio and race rules are unchanged.
+
+Reproduce the data extraction with `python scripts/build-cambodia-layout.py
+--source-dir <folder-containing-the-two-official-map.xml-extracts>`. The generator
+contains the exact feature IDs and projection assumptions. `test-cambodia-geography.mjs`
+checks landmark ordering, both shores, camera framing and bridge clearance;
+`check-cambodia-map.py` renders the actual game and verifies flag loading and
+animation. Physical-tablet FPS and a numeric visual-match percentage remain
+unverified.

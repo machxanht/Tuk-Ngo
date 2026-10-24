@@ -3,6 +3,7 @@ import {COURSE,raceX} from './maspero-course.mjs';
 import {courseZ} from './maspero-layout.mjs';
 import {ceremonyPlacement} from './ceremony-layout.mjs';
 import {raceVenue,venueRaceX} from './race-venues.mjs';
+import {cambodiaFeature} from './cambodia-geography.mjs';
 
 const lerp=(a,b,t)=>a+(b-a)*t,smooth=t=>t*t*(3-2*t);
 // Follow course progress, never cancel the player's lateral steering. The
@@ -17,13 +18,13 @@ export function playableShot(state,aspect=1,view='race'){
 }
 // The sequence is timed by the simulation; pausing freezes the shot as well.
 export function introShot(seconds,venueId='maspero'){
- const v=raceVenue(venueId),points=venueId==='maspero'?[
+ const v=raceVenue(venueId),landmark=venueId==='maspero'?null:cambodiaFeature(venueId,venueId==='phnom-penh'?'moonlight':'royal-residence'),points=venueId==='maspero'?[
   {at:0,p:[COURSE.standX+42,25,courseZ(COURSE.standX,26)],t:[COURSE.standX,8,courseZ(COURSE.standX,-56)],f:52},
   {at:2.6,p:[COURSE.standX+120,73,courseZ(COURSE.standX,105)],t:[COURSE.standX+65,4,0],f:57},
   {at:5.3,p:[raceX(470)+30,230,95],t:[raceX(500),2,0],f:58},
   {at:8.2,p:[raceX(0)+90,94,80],t:[raceX(0)+8,1,0],f:49},
   {at:10,p:[raceX(0)+55,39,39],t:[raceX(0)+15,1,0],f:36},
- ]:[{at:0,p:[v.finishX+60,28,v.width*.15],t:[v.finishX+40,8,-v.width/2-20],f:55},{at:2.6,p:[v.finishX+150,110,v.width*.55],t:[v.finishX+80,2,0],f:56},{at:5.3,p:[v.finishX+v.length*.5,160,65],t:[v.finishX+v.length*.5,1,0],f:58},{at:8.2,p:[venueRaceX(v,0)+70,80,65],t:[venueRaceX(v,0)+15,1,0],f:50},{at:10,p:[venueRaceX(v,0)+55,39,39],t:[venueRaceX(v,0)+15,1,0],f:36}];
+ ]:[{at:0,p:[landmark.x+(venueId==='siem-reap'?90:25),32,landmark.z+(venueId==='siem-reap'?50:120)],t:[landmark.x,12,landmark.z],f:55},{at:2.6,p:[landmark.x+120,160,120],t:[landmark.x,2,landmark.z*.5],f:56},{at:5.3,p:[v.finishX+v.length*.5,160,65],t:[v.finishX+v.length*.5,1,0],f:58},{at:8.2,p:[venueRaceX(v,0)+70,80,65],t:[venueRaceX(v,0)+15,1,0],f:50},{at:10,p:[venueRaceX(v,0)+55,39,39],t:[venueRaceX(v,0)+15,1,0],f:36}];
  const time=T.MathUtils.clamp(seconds,0,10);let i=0;while(i<points.length-2&&time>points[i+1].at)i++;
  const a=points[i],b=points[i+1],u=smooth((time-a.at)/(b.at-a.at));
  return {position:a.p.map((v,j)=>lerp(v,b.p[j],u)),target:a.t.map((v,j)=>lerp(v,b.t[j],u)),fov:lerp(a.f,b.f,u),segment:i};

@@ -44,7 +44,7 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
  const fill=new T.DirectionalLight('#d8f0ff',.7);fill.position.set(-8,9,12);scene.add(fill);
  for(const r of rigs){const mask=r.scene.children.find(o=>o.isMesh&&o.material.colorWrite===false);if(mask)mask.visible=false;scene.add(r.boat);}
  const bankBuilder=venue.id==='maspero'?null:(await import('./cambodia-course.mjs')).buildCambodiaBanks;
- river=buildRiver(scene,.28,{detailed:true,bright:true,crowdAssets:assets,venue,bankBuilder,crowdOptions:{vibrant:true,middleLimit:100,farLimit:16000,radius:430}});
+ river=buildRiver(scene,.28,{detailed:true,bright:true,crowdAssets:assets,venue,bankBuilder,crowdOptions:{baseUrl:base,vibrant:true,middleLimit:100,farLimit:16000,radius:430}});
  await river.prepareLods?.();
  const courseOffset=racing?0:-(raceX(venue.length)+15.1);river.group.position.x=courseOffset;
  const official=buildStartOfficial(scene,assets,{x:raceX(0)+8+courseOffset});
@@ -91,12 +91,12 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
    if(race.finishTimes.every(t=>t!=null))race.state='finished';
   }
  }
- function place(){const g=settings.current.game?.state,menu=g?.phase==='ready'&&venue.id!=='maspero'&&!settings.current.setupPreview;rigs.forEach((r,i)=>{const heading=g?.headings?.[i]||0;r.boat.rotation.y=racing?Math.PI-heading:0;r.boat.position.set(racing?(menu?venue.finishX+110+i*34:raceX(race.distance[i]))+15.1*Math.cos(heading):0,0,racing?COURSE.lanes[i]-(g?.lateralPositions?.[i]||0):0);r.boat.updateMatrixWorld(true);});}
+ function place(){const g=settings.current.game?.state,menu=g?.phase==='ready'&&venue.id!=='maspero'&&!settings.current.setupPreview;rigs.forEach((r,i)=>{const heading=g?.headings?.[i]||0;r.boat.rotation.y=racing?Math.PI-heading:0;r.boat.position.set(racing?(menu?venue.finishX+(venue.id==='siem-reap'?venue.length-90:110)+i*34:raceX(race.distance[i]))+15.1*Math.cos(heading):0,0,racing?COURSE.lanes[i]-(g?.lateralPositions?.[i]||0):0);r.boat.updateMatrixWorld(true);});}
  function setView(view){
   scene.fog.near=['banks','menu'].includes(view)?1000:280;scene.fog.far=['banks','menu'].includes(view)?3800:1000;
   camera.fov=view==='stand'?60:view==='menu'?50:36;camera.updateProjectionMatrix();
   const anchor=center(),local=(x,y,z)=>new T.Vector3(x,y,z).applyMatrix4(boat.matrixWorld);
-  const views={menu:{target:new T.Vector3(venue.id==='maspero'?1395:venue.finishX+120,1,0),offset:[120,venue.id==='maspero'?220:100,venue.width*.7],span:venue.id==='maspero'?690:venue.width+230},selection:{target:local(0,1,0),offset:[24,18,30],span:40},race:{target:anchor.clone().setY(1),offset:settings.current.game?[40,30,40]:[40,50,50],span:settings.current.game?72:86},boat:{target:local(0,.65,0),offset:[24,20,26],span:39},top:{target:local(0,.65,0),offset:[0,30,.02],span:33},crew:{target:local(7.5,.9,0),offset:[2,1.5,5],span:5.3},coach:{target:local(ROWING_LAYOUT.controllerX,1.18,0),offset:[-3,1.2,5],span:4.1},kneel:{target:local(-3.2,.9,0),offset:[.8,1.3,4.8],span:4.8},bow:{target:local(12,rig.construction==='dugout'?1.5:.95,0),offset:[2.8,1.9,5.5],span:rig.construction==='dugout'?7:6},stern:{target:local(-11.3,1,0),offset:[-3,2,-6.5],span:8},
+  const views={menu:{target:new T.Vector3(venue.id==='maspero'?1395:venue.finishX+(venue.id==='siem-reap'?venue.length-55:120),1,venue.id==='maspero'?0:venue.id==='phnom-penh'?-120:-70),offset:[120,venue.id==='maspero'?220:145,venue.id==='phnom-penh'?240:venue.width*3],span:venue.id==='maspero'?690:venue.id==='phnom-penh'?620:400},selection:{target:local(0,1,0),offset:[24,18,30],span:40},race:{target:anchor.clone().setY(1),offset:settings.current.game?[40,30,40]:[40,50,50],span:settings.current.game?72:86},boat:{target:local(0,.65,0),offset:[24,20,26],span:39},top:{target:local(0,.65,0),offset:[0,30,.02],span:33},crew:{target:local(7.5,.9,0),offset:[2,1.5,5],span:5.3},coach:{target:local(ROWING_LAYOUT.controllerX,1.18,0),offset:[-3,1.2,5],span:4.1},kneel:{target:local(-3.2,.9,0),offset:[.8,1.3,4.8],span:4.8},bow:{target:local(12,rig.construction==='dugout'?1.5:.95,0),offset:[2.8,1.9,5.5],span:rig.construction==='dugout'?7:6},stern:{target:local(-11.3,1,0),offset:[-3,2,-6.5],span:8},
    kbach:{target:local(1,.35,0),offset:[0,.28,-3],span:3.8},
    banks:{target:new T.Vector3(raceX(venue.length/2),1,0),offset:[70,1000,560],span:venue.length+200},
    stand:{target:new T.Vector3(COURSE.standX,7.5,courseZ(COURSE.standX,-55)),offset:[50,3,100],span:150},
@@ -119,7 +119,7 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
  const resetFrameSampling=()=>{sampleFrameReady=false;};document.addEventListener('visibilitychange',resetFrameSampling);
  function flushInput(){const now=performance.now(),c=clock.current,s=settings.current,dt=Math.min(.25,Math.max(0,(now-c.last)/1000));c.last=now;if(s.playing){c.seconds+=dt;if(racing)advance(dt*(s.fast?3:1));}}
  const api={flushInput,noteInput(timestamp){if(settings.current.game?.state.phase!=='racing')return;const at=performance.now(),delay=timestamp>0&&timestamp<=at?at-timestamp:0;receivedInputs++;const sample={delayMs:delay,nextFrameMs:null};inputSamples.push(sample);if(inputSamples.length>64)inputSamples.shift();requestAnimationFrame(()=>sample.nextFrameMs=performance.now()-at);},get inputStats(){const percentile=key=>{const v=inputSamples.map(s=>s[key]).filter(Number.isFinite).sort((a,b)=>a-b);return v.length?v[Math.min(v.length-1,Math.floor(v.length*.95))]:null;};return{received:receivedInputs,samples:inputSamples.length,dispatchP95Ms:percentile('delayMs'),nextFrameP95Ms:percentile('nextFrameMs')};},get assetSelection(){return {teamIds:[...teamIds],constructionTypes:rigs.map(r=>r.construction)};},rig,rigs,scene,boat,camera,controls,renderer,banks,sky,river,official,effects,ceremony,game:settings.current.game,race,snapshot,advance,reset,
-  setConstruction(types){rigs.forEach((r,i)=>r.setConstruction(types[i]||constructionForLane(i,venue.id)));lastView='';},
+  setConstruction(types){const resolved=rigs.map((r,i)=>types[i]||constructionForLane(i,venue.id));if(rigs.every((r,i)=>r.construction===resolved[i]))return;rigs.forEach((r,i)=>r.setConstruction(resolved[i]));lastView='';},
   async setTeams(ids){const request=Symbol();api.teamRequest=request;await Promise.all(rigs.map((r,i)=>r.prepareTeams([ids[i]])));if(disposed||api.teamRequest!==request)return;teamIds=[...ids];effects.forEach(e=>e.reset());},
   async setKbach(ids){
    const request=Symbol();api.kbachRequest=request;
