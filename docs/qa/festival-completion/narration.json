@@ -1,0 +1,148 @@
+{
+  "nativeListeningVerified": false,
+  "cases": [
+    {
+      "venue": "maspero",
+      "language": "vi",
+      "intro": [
+        "broadcast-shore-paragraph",
+        "broadcast-intro"
+      ],
+      "keys": [
+        "broadcast-ready",
+        "broadcast-start-opening",
+        "broadcast-shore-paragraph",
+        "broadcast-intro"
+      ],
+      "rms": 0.03191588565460653,
+      "decoded": 21,
+      "actualWebAudio": true
+    },
+    {
+      "venue": "maspero",
+      "language": "km",
+      "intro": [
+        "maspero-intro-km"
+      ],
+      "keys": [
+        "maspero-flyover-km",
+        "maspero-intro-km"
+      ],
+      "rms": 0.06386286631212713,
+      "decoded": 12,
+      "actualWebAudio": true
+    },
+    {
+      "venue": "maspero",
+      "language": "en",
+      "intro": [
+        "maspero-intro-en"
+      ],
+      "keys": [
+        "maspero-flyover-en",
+        "ai-go-en",
+        "maspero-intro-en"
+      ],
+      "rms": 0.0435866039395398,
+      "decoded": 10,
+      "actualWebAudio": true
+    },
+    {
+      "venue": "phnom-penh",
+      "language": "vi",
+      "intro": [
+        "broadcast-intro"
+      ],
+      "keys": [
+        "broadcast-ready",
+        "broadcast-start-cleared",
+        "broadcast-intro"
+      ],
+      "rms": 0.006299111078207185,
+      "decoded": 21,
+      "actualWebAudio": true
+    },
+    {
+      "venue": "phnom-penh",
+      "language": "km",
+      "intro": [
+        "kh-sovan-reachsey-name-km",
+        "kh-chey-samrith-name-km",
+        "phnom-penh-intro-km"
+      ],
+      "keys": [
+        "phnom-penh-flyover-km",
+        "kh-sovan-reachsey-name-km",
+        "kh-chey-samrith-name-km",
+        "phnom-penh-intro-km"
+      ],
+      "rms": 0.0045053236899739914,
+      "decoded": 14,
+      "actualWebAudio": true
+    },
+    {
+      "venue": "phnom-penh",
+      "language": "en",
+      "intro": [
+        "phnom-penh-intro-en"
+      ],
+      "keys": [
+        "phnom-penh-flyover-en",
+        "ai-go-en",
+        "phnom-penh-intro-en"
+      ],
+      "rms": 0.002435772868553138,
+      "decoded": 10,
+      "actualWebAudio": true
+    },
+    {
+      "venue": "siem-reap",
+      "language": "vi",
+      "intro": [
+        "broadcast-intro"
+      ],
+      "keys": [
+        "broadcast-ready",
+        "broadcast-start-opening",
+        "broadcast-intro"
+      ],
+      "rms": 0.004106457218177065,
+      "decoded": 21,
+      "actualWebAudio": true
+    },
+    {
+      "venue": "siem-reap",
+      "language": "km",
+      "intro": [
+        "sr-maha-kosa-name-km",
+        "sr-sotr-nikum-name-km",
+        "siem-reap-intro-km"
+      ],
+      "keys": [
+        "siem-reap-flyover-km",
+        "sr-maha-kosa-name-km",
+        "sr-sotr-nikum-name-km",
+        "siem-reap-intro-km"
+      ],
+      "rms": 0.032072923872304954,
+      "decoded": 14,
+      "actualWebAudio": true
+    },
+    {
+      "venue": "siem-reap",
+      "language": "en",
+      "intro": [
+        "siem-reap-intro-en"
+      ],
+      "keys": [
+        "siem-reap-flyover-en",
+        "ai-go-en",
+        "siem-reap-intro-en"
+      ],
+      "rms": 0.02493988259463131,
+      "decoded": 10,
+      "actualWebAudio": true
+    }
+  ],
+  "errors": []
+}

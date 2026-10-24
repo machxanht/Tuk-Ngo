@@ -1,5 +1,6 @@
 import {createRaceGame} from './gameplay.mjs';
 import {ONLINE_PROTOCOL,cleanPlayerName} from './online-rules.mjs';
+import {sealGuestProfile,openGuestProfile} from './profile-transfer.mjs';
 
 const read=key=>{try{return JSON.parse(localStorage.getItem(key)||'null');}catch{return null;}};
 const write=(key,value)=>{try{value==null?localStorage.removeItem(key):localStorage.setItem(key,JSON.stringify(value));}catch{/* A guest can still play for this page session. */}};
@@ -37,9 +38,9 @@ export function createOnlineClient({baseUrl,venueId,endpointUrl='',onChange=(_st
  let credential=read(credentialKey),state={status:'idle',room:null,leaderboard:null,ping:null,error:'',busy:false,name:read('tukngo-online-name')||'',queued:false},endpoint='',configuration=null,sessionPromise=null,pendingAction=null,leavePromise=null,socket=null,roomCode='',disposed=false,generation=0,operation=0,retry=0,retryTimer=null,poll=null,heartbeat=null,inputTimer=null,sequence=0,input={row:false,boost:false,steer:0},dirty=false;
  const emit=patch=>{state={...state,...patch};onChange(state);};
  async function configure(){if(endpoint)return;if(configuration)return configuration;configuration=(async()=>{let address=endpointUrl;if(!address){const response=await fetch(baseUrl+'online-config.json',{cache:'no-cache'});if(!response.ok)throw new Error('server-not-configured');address=(await response.json()).url;}const url=new URL(address);if(url.protocol!=='https:'&&!['127.0.0.1','localhost'].includes(url.hostname))throw new Error('server-not-configured');endpoint=url.origin;})();try{await configuration;}catch(error){configuration=null;throw error;}}
- async function request(path,method='GET',data,authenticated=true){
+ async function request(path,method='GET',data,authenticated=true,token=credential?.token){
   await configure();const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),8000);
-  try{const response=await fetch(endpoint+path,{method,signal:controller.signal,headers:{...(authenticated&&credential?{Authorization:'Bearer '+credential.token}:{}),...(data?{'Content-Type':'application/json'}:{})},...(data?{body:JSON.stringify(data)}:{})});const result=await response.json();if(!response.ok)throw new Error(result.error||'connection-error');return result;}finally{clearTimeout(timeout);}
+  try{const response=await fetch(endpoint+path,{method,signal:controller.signal,headers:{...(authenticated&&token?{Authorization:'Bearer '+token}:{}),...(data?{'Content-Type':'application/json'}:{})},...(data?{body:JSON.stringify(data)}:{})});const result=await response.json();if(!response.ok)throw new Error(result.error||'connection-error');return result;}finally{clearTimeout(timeout);}
  }
  async function session(){if(credential)return credential;if(!sessionPromise)sessionPromise=request('/session','POST',{},false).then(value=>{credential=value;write(credentialKey,credential);return credential;}).finally(()=>{sessionPromise=null;});return sessionPromise;}
  function handleError(error){emit({error:error.message==='Failed to fetch'||error.name==='AbortError'?'connection-error':error.message,busy:false});}
@@ -65,6 +66,18 @@ export function createOnlineClient({baseUrl,venueId,endpointUrl='',onChange=(_st
  }
  const api={
   get state(){return state;},get playerId(){return credential?.id;},get savedRoom(){return read(roomKey);},
+  async exportProfile(password){await session();return sealGuestProfile({...credential,name:state.name},password);},
+  async importProfile(bytes,password){
+   if(state.busy||state.queued||state.room&&!['finished','cancelled'].includes(state.room.status))throw Error('already-in-room');
+   const current=++operation;emit({busy:true});
+   try{const candidate=await openGuestProfile(bytes,password);
+    const leaderboard=await request('/leaderboard?venueId='+venueId,'GET',null,true,candidate.token);
+    if(current!==operation||disposed)return false;
+    // Apply only after local decryption and real server verification succeed.
+    ++generation;socket?.close();socket=null;clearInterval(heartbeat);clearInterval(inputTimer);write(roomKey,null);roomCode='';
+    credential={id:candidate.id,token:candidate.token};write(credentialKey,credential);api.setName(cleanPlayerName(candidate.name));emit({room:null,leaderboard,status:'available',error:'',ping:null});return true;
+   }finally{if(current===operation)emit({busy:false});}
+  },
   async open(){const current=++operation;if(leavePromise)await leavePromise;if(current!==operation||disposed)return;emit({busy:true,error:''});try{await session();const health=await request('/health','GET',null,false);if(current!==operation||disposed)return;if(!health.ok||health.protocol!==ONLINE_PROTOCOL)throw new Error('server-not-configured');emit({status:'available',busy:false});const previous=read(roomKey);if(previous&&current===operation){try{const room=await request('/rooms/'+previous);if(current!==operation||disposed)return;if(room.status!=='cancelled')connect(previous);else {write(roomKey,null);emit({room});}}catch{write(roomKey,null);}}await api.refresh();}catch(error){if(current===operation)handleError(error);}},
   setName(name){emit({name});write('tukngo-online-name',name);},
   async refresh(){try{await session();const leaderboard=await request('/leaderboard?venueId='+venueId);emit({leaderboard,error:''});}catch(error){handleError(error);}},

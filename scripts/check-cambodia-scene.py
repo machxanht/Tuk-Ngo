@@ -25,6 +25,8 @@ with sync_playwright() as p:
    if venue=='siem-reap':page.get_by_label('Sân đấu',exact=True).select_option(venue);wait(venue)
    page.wait_for_timeout(1000)
    data=value('.river.group.userData');assert data['traffic']['profile']==venue
+   assert value(".river.group.children.filter(m=>m.name==='Cambodia_Banner').every(m=>m.geometry.type==='BoxGeometry'&&m.userData.readableBothSides&&m.material.side===0)")
+   assert len(data['homeFamilies'])==6
    assert data['traffic']['carShare']>.75
    assert data['street']['roadWidth']/2>data['traffic']['laneOffsets']['bicycle']+.5
    assert value('.assetSelection.constructionTypes')==['dugout','dugout']

@@ -1,0 +1,10 @@
+{
+  "url": "http://127.0.0.1:8779/Tuk-Ngo/",
+  "errors": [],
+  "physicalTabletTested": false,
+  "wrongPasswordPreservesReceiver": true,
+  "restoredServerRating": 1016,
+  "otherVenueRankSeparate": true,
+  "encryptedExport": true,
+  "restoreSurvivesReload": true
+}

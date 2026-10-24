@@ -15,6 +15,7 @@ export function createCommentaryDirector(){
   update(s,options={}){
    const cues=[],emit=(id,priority=1)=>cues.push({id,priority,elapsed:s.elapsed,result:s.result||null,state:{phase:s.phase,raceStage:s.raceStage,distance:s.distances?.[0]||0,gap:s.gap,pace:s.pace,surgeActive:s.surgeActive,elapsed:s.elapsed,combo:s.combo,stamina:s.stamina}});
    const once=(id,priority=1)=>{if(!seen.has(id)){seen.add(id);emit(id,priority);}};
+   if(s.phase==='intro')once('flyover',1);
    if(s.phase==='countdown')once('ready',2);
    if(s.phase==='finished')once('finish',5);
    else if(s.phase==='racing'){
@@ -55,6 +56,19 @@ export function resolveTeamSpeech(team,manifest,kind='name'){
  const role=kind==='history'?'team-history':'team-name',selection={voice:[],khmer:[]};
  for(const channel of ['voice','khmer'])selection[channel]=(entry?.[channel]||[]).filter(key=>{const c=manifest.clips[key];return c?.role===role&&c.channel===channel&&c.teamIds?.includes(registration);});
  return selection;
+}
+export function clipMatchesVenue(clip,venueId='maspero'){
+ if(clip?.venueIds&&!clip.venueIds.includes(venueId))return false;
+ return venueId==='maspero'||!/Masp[eé]ro|Sóc Trăng|1[.,]200|một nghìn hai trăm|ម៉ាស្ពេរ៉ូ|ខេត្តឃ្លាំង/i.test(clip?.text||'');
+}
+export function resolveVenueSpeech(cue,pack,language,teams,state){
+ if(!pack||!['km','en'].includes(language))return null;
+ const id=cue.id==='race-call'&&state?.raceStage==='cruise'?'cruise':cue.id;
+ const options=pack.events?.[state?.venueId||'maspero']?.[language]?.[id];if(!options)return null;
+ const keys=options.filter(key=>!cue.excludedKeys?.includes(key));if(!keys.length)return null;
+ if(id==='flyover'&&state?.phase!=='intro'||id!=='flyover'&&(state?.phase!=='racing'||id==='cruise'&&state?.raceStage!=='cruise'))return {voice:[],khmer:[]};
+ const names=language==='km'&&id==='intro'?teams.flatMap(t=>resolveTeamSpeech(t,pack).khmer):[];
+ return {voice:[],khmer:[...names,...keys].filter(key=>pack.clips[key]?.lang===language&&clipMatchesVenue(pack.clips[key],state?.venueId))};
 }
 export function isBroadcastClipApplicable(clip,cue,state=cue.state){
  const rules=clip?.conditions;if(!rules)return true;
@@ -114,7 +128,7 @@ export function rowingWhistleSchedule(s,lastBeat=-1,horizon=.7){
 export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{},onPreviewState=()=>{}}={}) {
  const directory=baseUrl+'assets/race-audio/',director=createCommentaryDirector();
  let mix=normalizeAudioMix(),context=null,buses=null,manifest=null,manifestPromise=null;
- let language='mixed',english=null,englishPromise=null;
+ let language='mixed',english=null,englishPromise=null,venuePack=null,venuePromise=null;
  let active=false,disposed=false,epoch=0,queue=[],speaking=false,matchSerial=0;
  let previewing=false,previewSerial=0;
  let teams=[],latest=null,lastBeat=null,crowdSource=null,crowdPending=false,voiceUntil=0,ambienceStage=0;
@@ -127,17 +141,22 @@ export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{},onP
   return manifestPromise.then(async m=>{
    if(language==='en'){
     englishPromise??=fetch(directory+'english/manifest.json',{signal:abort.signal}).then(r=>{if(!r.ok)throw Error('English narration: '+r.status);return r.json();}).then(data=>{english=data;Object.assign(m.clips,data.clips);return data;}).catch(e=>{englishPromise=null;throw e;});await englishPromise;
+   }
+   if(language!=='vi'){
+    venuePromise??=fetch(directory+'venues/manifest.json',{signal:abort.signal,cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('Venue narration: '+r.status);return r.json();}).then(data=>venuePack=data).catch(e=>{venuePromise=null;throw e;});
+    const pack=await venuePromise;Object.assign(m.clips,pack.clips);Object.assign(m.teamProfiles,pack.teamProfiles);
    }return m;
   });
  }
  function speechSelection(cue,state=latest){
+  const local=resolveVenueSpeech(cue,venuePack,language,teams,state);if(local)return local;
   if(language==='en'){
    const id=cue.id==='race-call'?(state?.raceStage==='final'?'final':Math.abs(state?.gap)<2?'close-race':'cruise'):cue.id.startsWith('lead-')?'lead':cue.id==='finish'&&['loss','tie','dnf'].includes(cue.result)?cue.result:cue.id;
    return {voice:[],khmer:[...(english?.events[id]||[])]};
   }
   const selected=resolveBroadcastCue(cue,manifest,teams,state);
   if(language==='mixed')return selected;
-  if(language==='vi')return {voice:selected.voice.filter(key=>manifest.clips[key].lang==='vi'&&manifest.clips[key].sourceType==='broadcast'&&(!(state?.venueId&&state.venueId!=='maspero')||!/Masp[eé]ro|Sóc Trăng|1[.,]200|một nghìn hai trăm/i.test(manifest.clips[key].text))),khmer:[]};
+  if(language==='vi')return {voice:selected.voice.filter(key=>manifest.clips[key].lang==='vi'&&manifest.clips[key].sourceType==='broadcast'&&clipMatchesVenue(manifest.clips[key],state?.venueId)),khmer:[]};
   return {voice:[],khmer:selected.khmer.filter(key=>manifest.clips[key].lang==='km'&&/neural|synthes/i.test(manifest.clips[key].sourceType||''))};
  }
  function warmupKeys(keys){return keys.filter(key=>{const clip=manifest.clips[key];if(!clip)return false;if(!['voice','khmer'].includes(clip.channel))return true;if(language==='mixed')return true;if(language==='vi')return clip.lang==='vi'&&clip.sourceType==='broadcast';return clip.lang===language&&/neural|synthes/i.test(clip.sourceType||'');});}
@@ -295,6 +314,7 @@ export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{},onP
   update(s){
    if(s.venueId&&s.venueId!=='maspero')s={...s,actualDistances:s.distances,distances:s.distances.map(d=>commentaryDistance(d,raceVenue(s.venueId)))};
    latest=s;if(disposed)return;
+   if(!active||!mix.enabled||!context)return;
    if(!previewing&&teams.length===2){
    const intensity=s.raceStage==='final'||s.surgeActive?1:0;if(intensity!==ambienceStage){ambienceStage=intensity;applyMix();}
    const history=manifest?teams.map(t=>{const h=resolveTeamSpeech(t,manifest,'history');return mix.voice&&h.voice.length>0||mix.khmer&&h.khmer.length>0;}):[false,false];

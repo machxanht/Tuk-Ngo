@@ -1,0 +1,21 @@
+{
+  "voices":{"km":{"name":"km-KH-PisethNeural","locale":"km-KH"},"en":{"name":"en-US-GuyNeural","locale":"en-US"}},
+  "review":{"nativeListeningVerified":false,"status":"Authored game narration; Khmer needs native listening review. Stock voices, no broadcaster cloning. No claimed historical achievements."},
+  "venues":{
+    "maspero":{
+      "flyover":{"km":"សូមស្វាគមន៍មកកាន់ពិធីបុណ្យអុំទូក នៅដងទន្លេម៉ាស្ពេរ៉ូ ខេត្តឃ្លាំង។ ទស្សនិកជននៅសងខាងទន្លេកំពុងលើកទឹកចិត្តដល់ក្រុមទូក។","en":"Welcome to the Ngo boat racing festival on the Maspero River in Soc Trang. Crowds line both banks as the crews prepare for the start."},
+      "intro":{"km":"ក្រុមទាំងពីរបានចេញដំណើរហើយ។ ចម្ងាយប្រណាំងក្នុងហ្គេមនេះ គឺមួយពាន់ពីររយម៉ែត្រ។ ត្រូវរក្សាចង្វាក់អុំ និងទុកកម្លាំងសម្រាប់ចុងផ្លូវ។","en":"Both crews are away. This game course is twelve hundred metres. Settle into a steady stroke, watch the current, and save some strength for the finish."},
+      "cruise":{"km":"ចង្វាក់អុំត្រូវតែស្មើគ្នា។ កុំប្រើកម្លាំងអស់នៅដើមផ្លូវ។ ក្រុមដែលរក្សាកម្លាំង និងចង្កូតបានល្អ នឹងមានឱកាសបង្កើនល្បឿននៅចុងផ្លូវ។","en":"Keep those strokes together. A steady crew can conserve strength through the middle of the course. Hold a clean line and choose the right moment to accelerate."}
+    },
+    "phnom-penh":{
+      "flyover":{"km":"សូមស្វាគមន៍មកកាន់ពិធីបុណ្យអុំទូក នៅរាជធានីភ្នំពេញ។ នៅមុខព្រះបរមរាជវាំង ទូកទាំងពីរកំពុងត្រៀមប្រណាំងលើទន្លេសាប។","en":"Welcome to the Phnom Penh Water Festival. In front of the Royal Palace, two crews prepare to race along the broad Tonle Sap riverfront."},
+      "intro":{"km":"ក្រុមទាំងពីរបានចេញដំណើរហើយ។ ចម្ងាយប្រណាំងក្នុងហ្គេមនេះ គឺមួយពាន់ប្រាំពីររយម៉ែត្រ។ ផ្លូវនៅវែង ត្រូវរក្សាចង្វាក់ និងសន្សំកម្លាំង។","en":"The race is under way. This game course is seventeen hundred metres. It is a long contest, so keep the rhythm steady and manage your stamina through the current."},
+      "cruise":{"km":"ក្រុមទាំងពីរកំពុងបន្តប្រណាំងលើទន្លេសាប។ ត្រូវប្រុងប្រយ័ត្ននឹងចរន្តទឹក រក្សាផ្លូវទូកឱ្យត្រង់ និងទុកកម្លាំងសម្រាប់ការប្រកួតនៅចុងផ្លូវ។","en":"Both crews continue along the Tonle Sap. The current can move the boat away from its best line. Make small steering corrections and save the hardest effort for the closing section."}
+    },
+    "siem-reap":{
+      "flyover":{"km":"សូមស្វាគមន៍មកកាន់ពិធីបុណ្យអុំទូក នៅស្ទឹងសៀមរាប។ ទស្សនិកជនកំពុងរង់ចាំនៅតាមមាត់ស្ទឹង ហើយក្រុមទាំងពីរត្រៀមខ្លួនរួចហើយ។","en":"Welcome to the Siem Reap Water Festival. Spectators gather beside the city river as both crews prepare for a short, fast race."},
+      "intro":{"km":"ការប្រកួតបានចាប់ផ្តើមហើយ។ ចម្ងាយប្រណាំងក្នុងហ្គេមនេះ គឺប្រាំរយម៉ែត្រ។ ផ្លូវតូច និងខ្លី ត្រូវចាប់ចង្វាក់ឱ្យលឿន ហើយរក្សាចង្កូតឱ្យបានល្អ។","en":"They are away on the Siem Reap river. This game course is five hundred metres. Find the stroke quickly and keep a precise line through the narrow course."},
+      "cruise":{"km":"ពេលវេលាមានតិចណាស់ក្នុងការប្រណាំងនេះ។ ត្រូវអុំឱ្យស្មើគ្នា កុំឱ្យទូកបាត់ផ្លូវ។ មើលកម្លាំងដែលនៅសល់ ហើយត្រៀមបង្កើនល្បឿននៅចុងផ្លូវ។","en":"There is little time to recover in this short race. Stay together, avoid drifting across the course, and use the stamina you have left for a strong finish."}
+    }
+  }
+}

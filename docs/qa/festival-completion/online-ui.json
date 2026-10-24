@@ -1,0 +1,94 @@
+{
+  "url": "http://127.0.0.1:8779/Tuk-Ngo/",
+  "endpoint": "https://tuk-ngo-online.oliverkhang.workers.dev",
+  "configurationOverridden": false,
+  "physicalTabletTested": false,
+  "viewports": [
+    [
+      "vi",
+      1024,
+      768
+    ],
+    [
+      "vi",
+      768,
+      1024
+    ],
+    [
+      "vi",
+      1180,
+      430
+    ],
+    [
+      "vi",
+      390,
+      844
+    ],
+    [
+      "km",
+      1024,
+      768
+    ],
+    [
+      "km",
+      768,
+      1024
+    ],
+    [
+      "km",
+      1180,
+      430
+    ],
+    [
+      "km",
+      390,
+      844
+    ],
+    [
+      "en",
+      1024,
+      768
+    ],
+    [
+      "en",
+      768,
+      1024
+    ],
+    [
+      "en",
+      1180,
+      430
+    ],
+    [
+      "en",
+      390,
+      844
+    ]
+  ],
+  "errors": [],
+  "onlineDoesNotPause": true,
+  "reloadTimingMs": {
+    "connectionBootstrap": 397,
+    "firstServerState": 3144,
+    "graphicsReady": 3313
+  },
+  "reloadAndReconnect": true,
+  "results": [
+    {
+      "result": "loss",
+      "times": [
+        80.8694391704771,
+        78.99141556206928
+      ]
+    },
+    {
+      "result": "win",
+      "times": [
+        78.99141556206928,
+        80.8694391704771
+      ]
+    }
+  ],
+  "ownRankRow": "16\t\nTablet QA 1\nBạn\n1 Trận\n\t984\t0\t1:20.87",
+  "selectedTabContrast": 8.584791032428702
+}

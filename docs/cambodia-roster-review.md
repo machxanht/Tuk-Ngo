@@ -51,6 +51,18 @@ committee start/result PDF or verified transcription is required for a safe
 bulk import. Do not fill the missing entries with numbered duplicates or
 fabricated temple names.
 
+An additional source pass located the [Siem Reap 2023 committee results reported
+by Kampuchea Thmey](https://www.kampucheathmey.com/local-news/618996): 32 boats,
+with seven prize-winning names printed in the article. Those include
+សៀមរាបក្រុងមរតកអង្គរ, សូទ្រនិគមសែនជ័យបារមីតាពេជ្រ,
+រំដួលសែនជ័យបារមីអង្គរ, នាគអង្គរមានជ័យ, យាយទេពសំដែងរិទ្ធិ,
+តេជោធិបតីបារមីបាគង and ហង្សចន្ទមានជ័យបារមីមហានគរ.
+This is a candidate evidence source for season expansion, not seven automatically
+new identities: Sotr Nikum, Yeay Tep and Hong Chan already resemble catalogue
+entries, so continuity/renaming must be checked first. The article does not
+supply the other 25 names or a 300-entry national starting list. No playable
+record or audio mapping was changed on the strength of uncertain name matching.
+
 ## Runtime scope
 
 The shared picker searches Việt/Khmer names, province, aliases and ID, folds

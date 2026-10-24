@@ -1,0 +1,229 @@
+{
+  "rows": [
+    {
+      "type": "plywood",
+      "phase": 0,
+      "nativeCalls": 364,
+      "batchedCalls": 318,
+      "changedFraction": 1.7789373814041745e-06,
+      "meanPixelError": 2.431214421252372e-05,
+      "maxPixelError": 23
+    },
+    {
+      "type": "plywood",
+      "phase": 0.08333333333333333,
+      "nativeCalls": 364,
+      "batchedCalls": 318,
+      "changedFraction": 0,
+      "meanPixelError": 2.3719165085388996e-06,
+      "maxPixelError": 1
+    },
+    {
+      "type": "plywood",
+      "phase": 0.16666666666666666,
+      "nativeCalls": 364,
+      "batchedCalls": 318,
+      "changedFraction": 0,
+      "meanPixelError": 5.929791271347249e-07,
+      "maxPixelError": 1
+    },
+    {
+      "type": "plywood",
+      "phase": 0.25,
+      "nativeCalls": 364,
+      "batchedCalls": 318,
+      "changedFraction": 0,
+      "meanPixelError": 4.150853889943074e-06,
+      "maxPixelError": 2
+    },
+    {
+      "type": "plywood",
+      "phase": 0.3333333333333333,
+      "nativeCalls": 364,
+      "batchedCalls": 318,
+      "changedFraction": 0,
+      "meanPixelError": 8.301707779886148e-06,
+      "maxPixelError": 1
+    },
+    {
+      "type": "plywood",
+      "phase": 0.4166666666666667,
+      "nativeCalls": 364,
+      "batchedCalls": 318,
+      "changedFraction": 5.929791271347249e-07,
+      "meanPixelError": 5.336812144212523e-06,
+      "maxPixelError": 3
+    },
+    {
+      "type": "plywood",
+      "phase": 0.5,
+      "nativeCalls": 364,
+      "batchedCalls": 318,
+      "changedFraction": 1.1859582542694498e-06,
+      "meanPixelError": 2.6091081593927895e-05,
+      "maxPixelError": 28
+    },
+    {
+      "type": "plywood",
+      "phase": 0.5833333333333334,
+      "nativeCalls": 364,
+      "batchedCalls": 318,
+      "changedFraction": 0,
+      "meanPixelError": 0,
+      "maxPixelError": 0
+    },
+    {
+      "type": "plywood",
+      "phase": 0.6666666666666666,
+      "nativeCalls": 364,
+      "batchedCalls": 318,
+      "changedFraction": 0,
+      "meanPixelError": 2.9648956356736243e-06,
+      "maxPixelError": 1
+    },
+    {
+      "type": "plywood",
+      "phase": 0.75,
+      "nativeCalls": 364,
+      "batchedCalls": 318,
+      "changedFraction": 2.9648956356736243e-06,
+      "meanPixelError": 3.795066413662239e-05,
+      "maxPixelError": 29
+    },
+    {
+      "type": "plywood",
+      "phase": 0.8333333333333334,
+      "nativeCalls": 364,
+      "batchedCalls": 318,
+      "changedFraction": 0,
+      "meanPixelError": 2.9648956356736243e-06,
+      "maxPixelError": 1
+    },
+    {
+      "type": "plywood",
+      "phase": 0.9166666666666666,
+      "nativeCalls": 364,
+      "batchedCalls": 318,
+      "changedFraction": 1.7789373814041745e-06,
+      "meanPixelError": 1.7789373814041745e-05,
+      "maxPixelError": 19
+    },
+    {
+      "type": "dugout",
+      "phase": 0,
+      "nativeCalls": 363,
+      "batchedCalls": 317,
+      "changedFraction": 1.7789373814041745e-06,
+      "meanPixelError": 2.431214421252372e-05,
+      "maxPixelError": 23
+    },
+    {
+      "type": "dugout",
+      "phase": 0.08333333333333333,
+      "nativeCalls": 363,
+      "batchedCalls": 317,
+      "changedFraction": 0,
+      "meanPixelError": 2.3719165085388996e-06,
+      "maxPixelError": 1
+    },
+    {
+      "type": "dugout",
+      "phase": 0.16666666666666666,
+      "nativeCalls": 363,
+      "batchedCalls": 317,
+      "changedFraction": 0,
+      "meanPixelError": 5.929791271347249e-07,
+      "maxPixelError": 1
+    },
+    {
+      "type": "dugout",
+      "phase": 0.25,
+      "nativeCalls": 363,
+      "batchedCalls": 317,
+      "changedFraction": 0,
+      "meanPixelError": 4.150853889943074e-06,
+      "maxPixelError": 2
+    },
+    {
+      "type": "dugout",
+      "phase": 0.3333333333333333,
+      "nativeCalls": 363,
+      "batchedCalls": 317,
+      "changedFraction": 0,
+      "meanPixelError": 8.301707779886148e-06,
+      "maxPixelError": 1
+    },
+    {
+      "type": "dugout",
+      "phase": 0.4166666666666667,
+      "nativeCalls": 363,
+      "batchedCalls": 317,
+      "changedFraction": 5.929791271347249e-07,
+      "meanPixelError": 5.336812144212523e-06,
+      "maxPixelError": 3
+    },
+    {
+      "type": "dugout",
+      "phase": 0.5,
+      "nativeCalls": 363,
+      "batchedCalls": 317,
+      "changedFraction": 1.1859582542694498e-06,
+      "meanPixelError": 2.6091081593927895e-05,
+      "maxPixelError": 28
+    },
+    {
+      "type": "dugout",
+      "phase": 0.5833333333333334,
+      "nativeCalls": 363,
+      "batchedCalls": 317,
+      "changedFraction": 0,
+      "meanPixelError": 0,
+      "maxPixelError": 0
+    },
+    {
+      "type": "dugout",
+      "phase": 0.6666666666666666,
+      "nativeCalls": 363,
+      "batchedCalls": 317,
+      "changedFraction": 0,
+      "meanPixelError": 2.9648956356736243e-06,
+      "maxPixelError": 1
+    },
+    {
+      "type": "dugout",
+      "phase": 0.75,
+      "nativeCalls": 363,
+      "batchedCalls": 317,
+      "changedFraction": 2.9648956356736243e-06,
+      "meanPixelError": 3.795066413662239e-05,
+      "maxPixelError": 29
+    },
+    {
+      "type": "dugout",
+      "phase": 0.8333333333333334,
+      "nativeCalls": 363,
+      "batchedCalls": 317,
+      "changedFraction": 0,
+      "meanPixelError": 2.9648956356736243e-06,
+      "maxPixelError": 1
+    },
+    {
+      "type": "dugout",
+      "phase": 0.9166666666666666,
+      "nativeCalls": 363,
+      "batchedCalls": 317,
+      "changedFraction": 1.7789373814041745e-06,
+      "meanPixelError": 1.7789373814041745e-05,
+      "maxPixelError": 19
+    }
+  ],
+  "shirtCoverage": 0.054800759013282734,
+  "vertexAttributeLimit": 16,
+  "batches": {
+    "drawCalls": 6,
+    "shirts": 52,
+    "sourceVertices": 533,
+    "sourceTriangles": 896
+  },
+  "errors": []
+}

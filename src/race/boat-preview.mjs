@@ -15,6 +15,7 @@ import {applyIntroCamera,applyCeremonyCamera,playableShot} from './race-camera.m
 import {buildFlowGuide} from './race-water.mjs';
 import {raceVenue,venueRaceX} from './race-venues.mjs';
 import {createSceneVisibility} from './scene-visibility.mjs';
+import {runtimeReport,saveRuntimeReport} from './runtime-report.mjs';
 
 // Both boats use the current continuous 3D athletes, independent role clocks,
 // one scene and one renderer. The old cup entry remains independently usable.
@@ -114,7 +115,8 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
  function resize(){width=Math.max(1,host.clientWidth);height=Math.max(1,host.clientHeight);renderer.setSize(width,height);camera.aspect=width/height;camera.updateProjectionMatrix();lastView='';}
  observer=new ResizeObserver(resize);observer.observe(host);place();resize();
  function reset(){inputSamples.length=0;receivedInputs=0;if(settings.current.game){settings.current.game.reset(settings.current.game.state.difficulty);syncGame();}else Object.assign(race,{elapsed:0,countdown:3,distance:rigs.map(()=>0),speed:rigs.map(()=>0),phases:rigs.map((_,i)=>i?.17:.28),finishTimes:rigs.map(()=>null),state:'countdown'});effects.forEach(e=>e.reset());place();lastView='';settings.current.onRace?.(snapshot());}
- const inputSamples=[];let receivedInputs=0;
+ const inputSamples=[],frameSamples=[];let receivedInputs=0,sampleFrameReady=false;
+ const resetFrameSampling=()=>{sampleFrameReady=false;};document.addEventListener('visibilitychange',resetFrameSampling);
  function flushInput(){const now=performance.now(),c=clock.current,s=settings.current,dt=Math.min(.25,Math.max(0,(now-c.last)/1000));c.last=now;if(s.playing){c.seconds+=dt;if(racing)advance(dt*(s.fast?3:1));}}
  const api={flushInput,noteInput(timestamp){if(settings.current.game?.state.phase!=='racing')return;const at=performance.now(),delay=timestamp>0&&timestamp<=at?at-timestamp:0;receivedInputs++;const sample={delayMs:delay,nextFrameMs:null};inputSamples.push(sample);if(inputSamples.length>64)inputSamples.shift();requestAnimationFrame(()=>sample.nextFrameMs=performance.now()-at);},get inputStats(){const percentile=key=>{const v=inputSamples.map(s=>s[key]).filter(Number.isFinite).sort((a,b)=>a-b);return v.length?v[Math.min(v.length-1,Math.floor(v.length*.95))]:null;};return{received:receivedInputs,samples:inputSamples.length,dispatchP95Ms:percentile('delayMs'),nextFrameP95Ms:percentile('nextFrameMs')};},get assetSelection(){return {teamIds:[...teamIds],constructionTypes:rigs.map(r=>r.construction)};},rig,rigs,scene,boat,camera,controls,renderer,banks,sky,river,official,effects,ceremony,game:settings.current.game,race,snapshot,advance,reset,
   setConstruction(types){rigs.forEach((r,i)=>r.setConstruction(types[i]||constructionForLane(i,venue.id)));lastView='';},
@@ -127,14 +129,17 @@ export async function startBoatPreview(host,settings,clock,base,onReady,onProgre
   },
   seek(distance){const d=T.MathUtils.clamp(distance,0,venue.length);race.distance.fill(d);race.speed.fill(5.1);race.countdown=0;race.elapsed=d/5.1;race.finishTimes.fill(d===venue.length?race.elapsed:null);race.state=d===venue.length?'finished':'racing';effects.forEach(e=>e.reset());place();lastView='';settings.current.onRace?.(snapshot());},
   capture(){renderer.render(scene,camera);saveCanvas(renderer.domElement,'ghe-ngo-3d.png');},record(){return recordCanvas(renderer.domElement,'ghe-ngo-cheo-10s.webm');},
-  dispose(){if(disposed)return;disposed=true;cancelAnimationFrame(raf);flowGuide.dispose();laneBuoys.removeFromParent();laneBuoys.dispose();laneGeo.dispose();laneMat.dispose();observer.disconnect();controls.dispose();ceremony?.dispose();effects.forEach(e=>e.dispose());wakes.forEach(w=>w.dispose());official.dispose();sky.dispose();river.dispose();assets.dispose();for(const r of rigs.slice(1)){r.scene.add(r.boat);r.dispose();}rig.dispose();renderer.domElement.remove();if(host.boatPreview===api)delete host.boatPreview;}
+  dispose(){if(disposed)return;disposed=true;document.removeEventListener('visibilitychange',resetFrameSampling);cancelAnimationFrame(raf);flowGuide.dispose();laneBuoys.removeFromParent();laneBuoys.dispose();laneGeo.dispose();laneMat.dispose();observer.disconnect();controls.dispose();ceremony?.dispose();effects.forEach(e=>e.dispose());wakes.forEach(w=>w.dispose());official.dispose();sky.dispose();river.dispose();assets.dispose();for(const r of rigs.slice(1)){r.scene.add(r.boat);r.dispose();}rig.dispose();renderer.domElement.remove();if(host.boatPreview===api)delete host.boatPreview;}
  };
  host.boatPreview=api;
+ api.diagnostics=()=>runtimeReport({renderer,host,venueId:venue.id,quality:settings.current.quality||'auto',frames:frameSamples,input:api.inputStats});
+ api.saveDiagnostics=()=>saveRuntimeReport(api.diagnostics());
  function frame(now){
   if(disposed)return;now=performance.now();const s=settings.current,c=clock.current,dt=Math.min(.25,Math.max(0,(now-c.last)/1000));c.last=now;const previous=center();
   if(s.playing||s.ambientPlaying)c.seconds+=dt;
   if(s.playing){if(racing){advance(dt*(s.fast?3:1));c.phase=race.phases[0];}else c.phase=(c.phase+dt*s.cadence/60)%1;}
   const quality=s.quality||'auto';const renderInterval=now-renderLast;renderLast=now;if(renderInterval<250)frameAverage=frameAverage*.96+renderInterval*.04;
+  if(sampleFrameReady&&!document.hidden&&renderInterval>0){frameSamples.push(renderInterval);if(frameSamples.length>900)frameSamples.shift();}sampleFrameReady=!document.hidden;
   const cap=quality==='low'?1:quality==='balanced'?1.25:quality==='sharp'?2:1.5;
   if(quality!==qualityKey){qualityKey=quality;renderer.setPixelRatio(Math.min(devicePixelRatio,cap));effects.forEach(e=>e.setDpr(renderer.getPixelRatio()));qualitySince=now;}
   // Never silently lower the framebuffer below CSS resolution. Sharp mode

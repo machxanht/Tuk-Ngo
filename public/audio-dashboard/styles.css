@@ -9,3 +9,5 @@ body{padding-bottom:calc(85px + env(safe-area-inset-bottom))}.mobile-list-toggle
 @media(max-width:700px){.mobile-list-toggle{display:flex;width:100%;justify-content:space-between;margin-bottom:12px;font-size:13px}.library{display:none}.library.list-open{display:block}.review-actions{padding:10px 16px calc(10px + env(safe-area-inset-bottom));gap:8px}.review-actions button{font-size:13px;min-width:0}.preferences .check,.play-actions .check{min-height:44px}.detail{scroll-margin-top:10px}}
 html{scroll-padding-bottom:calc(90px + env(safe-area-inset-bottom))}
 .transcripts:has(#km-panel[hidden]){grid-template-columns:minmax(0,1fr)}
+.view-tabs{flex-wrap:wrap}.language-tabs button[hidden]{display:none}.filters select[hidden]{display:none}
+@media(max-width:700px){.view-tabs{grid-template-columns:1fr 1fr}.filters:has(#venue-filter:not([hidden])){grid-template-columns:1fr 1fr}}

@@ -1,0 +1,201 @@
+{
+  "url": "http://127.0.0.1:8779/Tuk-Ngo/",
+  "physicalTabletTested": false,
+  "scenes": {
+    "phnom-penh": {
+      "traffic": {
+        "sedan": 1071,
+        "pickup": 383,
+        "scooter": 165,
+        "motorcycle": 93,
+        "bicycle": 180,
+        "delivery-scooter": 42,
+        "van": 343,
+        "minibus": 123
+      },
+      "carShare": 0.8,
+      "landmarks": [
+        "Royal Palace interpretation",
+        "Moonlight Pavilion",
+        "Sisowath promenade",
+        "east-bank skyline",
+        "arcaded riverfront shophouses"
+      ],
+      "roster": 16,
+      "cupTeams": 8,
+      "cupRounds": 3,
+      "dugoutDefault": true
+    },
+    "siem-reap": {
+      "traffic": {
+        "sedan": 1071,
+        "pickup": 383,
+        "scooter": 165,
+        "motorcycle": 93,
+        "bicycle": 180,
+        "delivery-scooter": 42,
+        "van": 343,
+        "minibus": 123
+      },
+      "carShare": 0.8,
+      "landmarks": [
+        "Pokambor pavilion",
+        "Royal Gardens and Royal Residence interpretation",
+        "stone bridges",
+        "riverside markets",
+        "low-rise Khmer shophouses"
+      ],
+      "roster": 8,
+      "cupTeams": 8,
+      "cupRounds": 3,
+      "dugoutDefault": true
+    }
+  },
+  "viewports": [
+    [
+      "phnom-penh",
+      "vi",
+      1024,
+      768
+    ],
+    [
+      "phnom-penh",
+      "vi",
+      768,
+      1024
+    ],
+    [
+      "phnom-penh",
+      "vi",
+      1180,
+      430
+    ],
+    [
+      "phnom-penh",
+      "vi",
+      390,
+      844
+    ],
+    [
+      "phnom-penh",
+      "km",
+      1024,
+      768
+    ],
+    [
+      "phnom-penh",
+      "km",
+      768,
+      1024
+    ],
+    [
+      "phnom-penh",
+      "km",
+      1180,
+      430
+    ],
+    [
+      "phnom-penh",
+      "km",
+      390,
+      844
+    ],
+    [
+      "phnom-penh",
+      "en",
+      1024,
+      768
+    ],
+    [
+      "phnom-penh",
+      "en",
+      768,
+      1024
+    ],
+    [
+      "phnom-penh",
+      "en",
+      1180,
+      430
+    ],
+    [
+      "phnom-penh",
+      "en",
+      390,
+      844
+    ],
+    [
+      "siem-reap",
+      "vi",
+      1024,
+      768
+    ],
+    [
+      "siem-reap",
+      "vi",
+      768,
+      1024
+    ],
+    [
+      "siem-reap",
+      "vi",
+      1180,
+      430
+    ],
+    [
+      "siem-reap",
+      "vi",
+      390,
+      844
+    ],
+    [
+      "siem-reap",
+      "km",
+      1024,
+      768
+    ],
+    [
+      "siem-reap",
+      "km",
+      768,
+      1024
+    ],
+    [
+      "siem-reap",
+      "km",
+      1180,
+      430
+    ],
+    [
+      "siem-reap",
+      "km",
+      390,
+      844
+    ],
+    [
+      "siem-reap",
+      "en",
+      1024,
+      768
+    ],
+    [
+      "siem-reap",
+      "en",
+      768,
+      1024
+    ],
+    [
+      "siem-reap",
+      "en",
+      1180,
+      430
+    ],
+    [
+      "siem-reap",
+      "en",
+      390,
+      844
+    ]
+  ],
+  "errors": []
+}

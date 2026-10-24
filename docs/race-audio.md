@@ -228,6 +228,30 @@ checks; the listening and automatic-CC limitations above still apply.
 
 ## Team names and historical commentary
 
+### Venue narration and review additions
+
+`assets/race-audio/venues/manifest.json` adds 42 clips: 18 full Khmer/English
+paragraphs (flyover, participant setup and cruise context for each of three
+venues) and 24 Khmer names for the active Cambodian registrations. The authored
+script is `docs/venue-audio-script.json`; `scripts/build-venue-audio.py` uses the
+existing Azure F0 setup with cache reuse and bounded sequential requests. Source
+WAVs and credentials stay outside the repository. The manifest records source,
+request/WAV hashes, voice, duration, decoded peak and MP3 hash. This addition uses
+stock neural voices, not a cloned commentator.
+
+The venue manifest loads lazily for Khmer/English. Name clips require the exact
+registration and venue; the three venue phrases override generic geographic
+statements only for their own map. Vietnamese continues to select original
+broadcast recordings. Foreign Maspéro/Sóc Trăng/1,200 m statements are filtered
+from Cambodian commentary. Muted/inactive audio does not consume the intro cue.
+
+The dashboard **Theo sân** tab filters venue and Khmer/English, shows the actual
+transcript, stops the previous recording on selection changes, and exports review
+decisions. Its offline handoff contains the same 42 files. Technical decoding and
+browser playback are verified separately from pronunciation:
+`nativeListeningVerified` remains **false** for the new pack until a Khmer
+speaker listens. Do not describe stock TTS as the original broadcast voice.
+
 `teamProfiles` in the same canonical manifest uses registration IDs, which differ
 from race bib numbers and from the eight appearance preset IDs. Runtime resolves
 `team.registrationId`; it never guesses a name from a kit, lane or colour.

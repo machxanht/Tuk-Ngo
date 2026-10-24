@@ -1,11 +1,31 @@
 # Kế hoạch hoàn thiện game
 
-Cập nhật 24/10/2026. Đây là danh sách việc cần làm tiếp sau lần tách đội theo sân,
+Cập nhật 24/10/2026. Theo dõi cả phần đã triển khai và phần còn phải nghiệm thu;
 không phải tuyên bố toàn bộ game đã hoàn thiện. Thứ tự ưu tiên đi từ trải nghiệm
 chơi ổn định đến mở rộng nội dung. Giữ một link chính và các module hiện có;
 không tạo thêm những bản demo hoặc bản có hậu tố phiên bản.
 
 ## Đã xử lý trong lần này
+
+| Nhóm công việc | Thay đổi đã triển khai | Giới hạn còn lại |
+| --- | --- | --- |
+| Hiệu năng | Gộp áo dùng chung skeleton/material thành instanced draw; so sánh ảnh 24 tư thế ở hai loại ghe. Có nút xuất báo cáo hiệu năng ngay trong Tùy chỉnh. Giữ DPR 2 trong kiểm thử. | Giảm 46 draw calls/ghe ở phép thử cùng cảnh; chưa xác nhận cải thiện FPS trên tablet thật. Không tự hạ độ phân giải. |
+| Hai nút và lái | Nhận giữ nút trong giây cuối đếm ngược, phản hồi nhấn ngay; release/cancel độc lập. Cảm biến ngừng gửi khi đang lái được trả về trung tính sau 1,5 giây và tự nhận lại khi có mẫu mới. | Touch/cảm biến đã giả lập; vẫn cần cầm tablet thật để duyệt cảm giác. |
+| Ghe và VĐV | Giữ mesh và tám rig đã duyệt. Kiểm tra mesh thật 96 pha/hai kiểu thân ghe, chân và dằm theo ngưỡng kiểm tra hiện có. | Đây là kiểm tra hình học, không thay cho duyệt cận hình ảnh mọi đội và đối chiếu áo/kbach từng đội thật. |
+| Roster | 61/16/8 tên riêng theo ba sân, có năm/nguồn; loại chev không có rig và tên chưa xác định sân khỏi thi đấu. | Chưa đủ 300+ tên đã đối chiếu; không biến OCR mờ thành tên chính thức. |
+| Bối cảnh và banner | Bộ màu, địa danh Khmer, họa tiết và banner lớn riêng từng sân; thêm sáu họ nhà hậu cảnh và tán dừa lá xẻ cho Campuchia. | Bối cảnh là diễn họa có tham khảo, chưa phải bản đo đạc chính xác ngoài đời. |
+| Audio và dashboard | 18 câu KM/EN theo sân và 24 tên đội Khmer; 42 MP3 có hash/nguồn/kiểm tra giải mã. Tab “Theo sân” lọc đúng map/ngôn ngữ, một player, có trạng thái duyệt/xuất yêu cầu. Tiếng Việt vẫn dùng bản thu nguồn. | Cờ duyệt người nghe Khmer vẫn false; không tuyên bố mọi tên/phát âm đã chuẩn bản ngữ. |
+| Online và UI | Hai trình duyệt đua thật, reload/reconnect, Elo một lần; file hồ sơ mã hóa có thể chuyển điểm sang trình duyệt khác sau khi máy chủ xác nhận. VI/KM/EN cho thao tác mới. | Chuyển file thủ công, chưa phải tài khoản đăng nhập tự đồng bộ; chưa đo mạng di động và sức chứa nhiều người đồng thời. |
+
+Banner dùng thiết kế chung của game nhưng có bộ nhận diện riêng:
+Maspéro xanh ngọc/san hô và Khleang; Phnom Penh xanh hoàng gia/vàng và Tonlé Sap;
+Siem Reap đất nung/xanh lam ngọc và sông đô thị. Không coi đây là dấu hiệu,
+chứng nhận hay nhận tài trợ của ban tổ chức thật.
+
+Các script có thể chạy lại: `check-completion-ui.py`, `check-shirt-batching.py`,
+`check-crew-integrity.py`, `check-venue-narration.py`, `check-profile-transfer.py`,
+`check-online-ui.py`, `profile-race-runtime.py` và `test-completion.mjs`.
+Phần bằng chứng công khai được ghi ở `docs/qa/festival-completion/` sau phát hành.
 
 | Sân | Danh sách chơi hiện tại | Phạm vi tư liệu |
 | --- | --- | --- |

@@ -26,7 +26,7 @@ export function createDeviceSteering({host=globalThis.window,onInput=(_value=0)=
   // Listen before requesting permission: the first valid sample can arrive
   // before the permission promise settles, even on a stationary device.
   enabled=true;calibrate();lastSample=host.performance.now();host.addEventListener('deviceorientation',receive);host.screen?.orientation?.addEventListener('change',rotate);host.addEventListener('orientationchange',rotate);
-  timer=host.setInterval(()=>{if(baseline===null&&host.performance.now()-lastSample>1500){onInput(0);filtered=0;state('unsupported');}},300);
+  timer=host.setInterval(()=>{if(host.performance.now()-lastSample>1500&&(baseline===null||Math.abs(filtered)>.01)){onInput(0);filtered=0;last=0;state('unsupported');}},300);
   // Must run directly in the start-button gesture, before loading team assets.
   try{if(typeof Sensor.requestPermission==='function'&&await Sensor.requestPermission()!=='granted'){stop();state('denied');return status;}}
   catch{stop();state('denied');return status;}

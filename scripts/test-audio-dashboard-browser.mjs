@@ -114,6 +114,16 @@ try{
   const p=await open(c),order=await p.evaluate(()=>window.AudioStudio.getVisible());assert(order.indexOf('start-drive')<order.indexOf('cruise'));assert(order.indexOf('sprint-effort')<order.indexOf('last-hundred'));assert.equal(order.at(-1),'cup-champion');
   await p.locator('[data-view="teams"]').click();await p.locator('[data-lang="vi"]').click();await p.locator('#search').fill('can_tho-11');await p.locator('#review-filter').selectOption('issue');assert.equal(await p.locator('.item').count(),1,'Missing audio remains in the issue filter');
  });
+ await run('Venue narration keeps all three maps and English/Khmer isolated',async c=>{
+  const p=await open(c);await p.locator('[data-view="venues"]').click();await p.locator('#venue-filter').selectOption('phnom-penh');await p.waitForFunction(()=>window.AudioStudio.getVisible().length===19);
+  let ids=await p.evaluate(()=>window.AudioStudio.getVisible());assert(ids.every(id=>id.startsWith('phnom-penh-')||id.startsWith('kh-')));
+  await p.locator('[data-lang="en"]').click();assert.equal((await p.evaluate(()=>window.AudioStudio.getVisible())).length,3);assert.equal(await p.locator('#text-vi').getAttribute('lang'),'en');assert((await p.locator('#vi-panel h3').textContent()).includes('English'));
+  await p.locator('#play').click();await p.waitForFunction(()=>document.querySelector('#player').currentTime>.1);assert((await p.locator('#player').getAttribute('src')).includes('phnom-penh-flyover-en'));
+  await p.locator('#venue-filter').selectOption('siem-reap');assert.equal(await p.locator('#player').getAttribute('src'),null);assert((await p.evaluate(()=>window.AudioStudio.getVisible())).every(id=>id.startsWith('siem-reap-')));
+  await p.locator('[data-lang="km"]').click();assert.equal((await p.evaluate(()=>window.AudioStudio.getVisible())).length,11);
+  const exported=await p.evaluate(()=>window.AudioStudio.getReview().entries.filter(e=>e.group==='venues'));assert.equal(exported.length,42);assert(exported.every(e=>e.nativeListeningVerified===false));
+  await p.reload();await p.waitForFunction(()=>window.AudioStudio&&window.AudioStudio.getVisible().length===33);assert.equal(await p.locator('[data-view="venues"]').getAttribute('aria-pressed'),'true');
+ });
 }finally{await browser.close();await new Promise(r=>server.close(r));}
 const report={suite:'Audio dashboard browser regression',cases:results,passed:results.filter(r=>r.status==='pass').length,failed:results.filter(r=>r.status==='fail').length,limits:'Simulated error cases verify recovery only. Native pronunciation and semantic correctness are not certified.'};
 if(flag('--report')){const path=resolve(root,flag('--report'));await mkdir(dirname(path),{recursive:true});await writeFile(path,JSON.stringify(report,null,2)+'\n');}

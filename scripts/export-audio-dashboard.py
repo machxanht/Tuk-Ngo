@@ -31,6 +31,12 @@ EVIDENCE_FILES = {
     'docs/broadcast-audio-cuts.json': ROOT / 'docs/broadcast-audio-cuts.json',
 }
 HANDOFF = AUDIO / 'khmer-review/manifest.json'
+VENUE_PACK = AUDIO / 'venues/manifest.json'
+if VENUE_PACK.exists():
+    EVIDENCE_FILES['venues/manifest.json'] = VENUE_PACK
+    EVIDENCE_FILES['docs/venue-audio-script.json'] = ROOT / 'docs/venue-audio-script.json'
+    for entry in json.loads(VENUE_PACK.read_text(encoding='utf-8'))['clips'].values():
+        EVIDENCE_FILES[entry['file']] = AUDIO / entry['file']
 if HANDOFF.exists():
     EVIDENCE_FILES['khmer-review/manifest.json'] = HANDOFF
     EVIDENCE_FILES['docs/khmer-audio-review.json'] = ROOT / 'docs/khmer-audio-review.json'
@@ -405,6 +411,9 @@ To serve over HTTP if preferred: `python -m http.server 4180 --bind 127.0.0.1 --
     font = PUBLIC / 'assets/fonts/NotoSansKhmer.ttf'
     files['dashboard/fonts/NotoSansKhmer.ttf'] = font.read_bytes()
     local = copy.deepcopy(data)
+    if local.get('venuePack'):
+        for clip in local['venuePack']['clips'].values():
+            clip['file'] = '../' + clip['file']
     for clip in local['clips'].values():
         clip['file'] = '../' + clip['file']
     local['beds']['menuMusic']['file'] = '../media/music/menu.mp3'
@@ -421,9 +430,14 @@ def main():
     parser.add_argument('--zip-out', type=Path, help='Optional explicit copy of the complete ZIP')
     args = parser.parse_args()
     data, media = collect()
+    if VENUE_PACK.exists():
+        data['venuePack'] = json.loads(VENUE_PACK.read_text(encoding='utf-8'))
     files = bundle_files(data, media)
     (DESK / 'index.html').write_bytes(dashboard_html(data['packageId']))
     public_data = copy.deepcopy(data)
+    if public_data.get('venuePack'):
+        for clip in public_data['venuePack']['clips'].values():
+            clip['file'] = '../assets/race-audio/' + clip['file']
     for clip in public_data['clips'].values():
         clip['file'] = '../assets/race-audio/' + clip['sourceFile']
     public_data['beds']['menuMusic']['file'] = '../assets/race-audio/menu/' + next(

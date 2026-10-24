@@ -171,6 +171,11 @@
 @media(max-width:620px){[data-testid=festival-game].game-playing .two-action-inputs .game-stroke,.game-playing .two-action-inputs .simple-boost{width:128px;max-width:calc(50% - 22px);height:58px;min-height:58px;padding:8px;gap:6px}.two-action-inputs strong{font-size:13px}.simple-stamina{bottom:94px;width:180px}.game-playing .practice-coach{bottom:155px}}
 
 /* The selected live boat stays above one compact selection sheet. */
+.race-game .menu-actions .menu-online,.race-game .online-lobby .online-primary,.race-game .online-tabs button[aria-pressed=true]{background:var(--teal);border-color:var(--teal)}
+.race-game .menu-actions .menu-online:hover,.race-game .online-lobby .online-primary:hover:not(:disabled){background:var(--teal);filter:brightness(1.14)}
+.game-playing .two-action-inputs button[data-held=true]{background:#087b7b9c;box-shadow:inset 0 0 0 2px #baffdb9c;transform:translateY(1px)}
+.game-playing .two-action-inputs .simple-boost[data-held=true]{background:#b16c18a3}
+@media(prefers-reduced-motion:reduce){.game-playing .two-action-inputs button[data-held=true]{transform:none}}
 .venue-picker{display:grid;gap:5px;margin:10px 0;font-size:12px;font-weight:700;text-align:left}
 .venue-picker select{width:100%;min-height:44px;border:1px solid #9bbcb6;border-radius:12px;background:#edf6ed;color:#123e38;padding:8px;font:inherit}
 .game-dialog.game-setup.boat-selection{top:auto;bottom:12px;left:50%;right:auto;transform:translateX(-50%);width:min(620px,calc(100% - 24px));max-height:66%;display:grid;grid-template-columns:1fr auto;grid-template-rows:auto minmax(0,1fr) auto;gap:10px;padding:16px;overflow:visible}

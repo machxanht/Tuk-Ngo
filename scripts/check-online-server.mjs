@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import {writeFile,mkdir} from 'node:fs/promises';
 import WebSocket from 'ws';
 import {teamsForVenue} from '../src/race/festival-teams.mjs';
+import {sealGuestProfile} from '../src/race/profile-transfer.mjs';
 
 const url=process.argv[2]||'http://127.0.0.1:8790',out=process.argv[3];
 const origin='https://machxanht.github.io',venueId='siem-reap',teams=teamsForVenue(venueId).slice(-2),report={url,teams:teams.map(t=>t.id),checks:[],startedAt:new Date().toISOString()};
@@ -35,5 +36,5 @@ try{
  await new Promise(resolve=>setTimeout(resolve,1000));const duplicate=await request('/leaderboard?venueId='+venueId,'GET',null,guests[0]);assert.deepEqual(duplicate.viewer,after.viewer);report.checks.push('full human race, authoritative finish and exactly-once persisted Elo');
  const friendly=await request('/rooms','POST',{venueId,teamId:teams[0].id,name:'River QA A'},guests[0],201);await request('/rooms/'+friendly.roomCode+'/join','POST',{venueId,teamId:teams[1].id,name:'River QA B'},guests[1]);await request('/queue?venueId='+venueId,'DELETE',null,guests[0]);const privateRoom=await request('/rooms/'+friendly.roomCode,'GET',null,guests[1]);assert.equal(privateRoom.ranked,false);assert.equal(privateRoom.status,'cancelled');const unchanged=await request('/leaderboard?venueId='+venueId,'GET',null,guests[0]);assert.deepEqual(unchanged.viewer,after.viewer);report.checks.push('private room creation/join/cancellation does not change rank');
  report.result={winner:result.result.winner,times:result.result.times,changes:result.changes,networkPackets:networked,elapsedSeconds:(Date.now()-start)/1000};
- if(out){await mkdir(out,{recursive:true});await writeFile(out+'/server.json',JSON.stringify(report,null,2)+'\n');}console.log(JSON.stringify(report,null,2));
+ if(out){await mkdir(out,{recursive:true});await writeFile(out+'/server.json',JSON.stringify(report,null,2)+'\n');if(process.env.TUKNGO_QA_EXPORT_PASSWORD)await writeFile(out+'/profile.tuk',await sealGuestProfile({...guests[0],name:'River QA A'},process.env.TUKNGO_QA_EXPORT_PASSWORD));}console.log(JSON.stringify(report,null,2));
 }finally{clearInterval(controls);clearTimeout(timeout);sockets.forEach(socket=>socket.close());}

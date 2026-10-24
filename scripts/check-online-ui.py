@@ -80,9 +80,14 @@ with sync_playwright() as p:
   reload_started=time.monotonic();resume_times={}
   def resumed_socket(socket):socket.on('framereceived',lambda _:resume_times.setdefault('firstState',time.monotonic()))
   a.on('websocket',resumed_socket)
+  a.on('request',lambda request:resume_times.setdefault('bootstrap',time.monotonic())if request.url==endpoint+'/health'else None)
   a.reload();a.wait_for_function('!!'+api,timeout=120000);graphics_ready=time.monotonic()
-  assert resume_times.get('firstState',float('inf'))<graphics_ready
-  report['reloadTimingMs']={'firstServerState':round((resume_times['firstState']-reload_started)*1000),'graphicsReady':round((graphics_ready-reload_started)*1000)}
+  # Connection bootstrap must run independently of model loading. Network RTT
+  # can make the first server packet arrive after an already-cached scene.
+  assert resume_times.get('bootstrap',float('inf'))<graphics_ready
+  a.wait_for_function(api+'.game.online',timeout=20000)
+  assert 'firstState'in resume_times
+  report['reloadTimingMs']={'connectionBootstrap':round((resume_times['bootstrap']-reload_started)*1000),'firstServerState':round((resume_times['firstState']-reload_started)*1000),'graphicsReady':round((graphics_ready-reload_started)*1000)}
   a.wait_for_function(api+".game.online&&"+api+".game.state.phase==='racing'",timeout=20000);a.keyboard.up('Space');a.keyboard.down('Space');a.wait_for_timeout(1200)
   assert a.evaluate(api+'.game.state.rowingHeld');report['reloadAndReconnect']=True
   for page in pages:page.get_by_role('dialog',name='Kết quả trận đua',exact=True).wait_for(timeout=140000)
@@ -102,7 +107,7 @@ with sync_playwright() as p:
   values=sorted([luminance(color) for color in colors]);report['selectedTabContrast']=(values[1]+.05)/(values[0]+.05);assert report['selectedTabContrast']>=4.5
   a.screenshot(path=str(out/'leaderboard.png'))
   a.emulate_media(reduced_motion='reduce');a.set_viewport_size({'width':390,'height':844});a.screenshot(path=str(out/'leaderboard-phone-reduced-motion.png'))
-  assert not report['errors'],report['errors'];(out/'checks.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');print(json.dumps(report,ensure_ascii=False))
+  assert not report['errors'],report['errors'];(out/'checks.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');print(json.dumps(report,ensure_ascii=True))
  except Exception:
   for i,page in enumerate(pages):
    try:page.screenshot(path=str(out/f'failure-{i}.png'));(out/f'failure-{i}.json').write_text(json.dumps({'text':page.locator('body').inner_text(),'errors':report['errors'],'game':page.evaluate(api+'.game.snapshot()') if page.evaluate('!!'+api) else None},ensure_ascii=False,indent=2),encoding='utf-8')

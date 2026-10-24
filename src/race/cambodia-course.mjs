@@ -1,7 +1,8 @@
 import * as T from 'three';
 import {buildFestivalCrowd} from './festival-crowd.mjs';
 import {buildFestivalTraffic} from './festival-traffic.mjs';
-import {FESTIVAL_BRANDS,paintFestivalBanner,festivalBannerSize} from './festival-branding.mjs';
+import {FESTIVAL,FESTIVAL_BRANDS,paintFestivalBanner,festivalBannerSize} from './festival-branding.mjs';
+import {venueIdentity} from './venue-identity.mjs';
 
 // Approximate playable interpretations of the documented riverfronts.
 // See docs/cambodia-research.md; no press photograph is used as a game texture.
@@ -12,16 +13,39 @@ export function buildCambodiaBanks(group,waterY,assets,_materials,options,venue)
  const gable=new T.Shape();gable.moveTo(-.5,-.5);gable.lineTo(.5,-.5);gable.lineTo(0,.5);gable.closePath();
  const roofGeometry=new T.ExtrudeGeometry(gable,{depth:1,bevelEnabled:false});roofGeometry.translate(0,0,-.5);
  const geometries={box:new T.BoxGeometry(1,1,1),pole:new T.CylinderGeometry(1,1,1,7),crown:new T.SphereGeometry(1,10,7),roof:roofGeometry,spire:new T.ConeGeometry(1,1,8)};
+ // Feathered coconut leaves use fewer triangles than the old oval leaf balls.
+ const frond=new T.BufferGeometry(),vertices=[];
+ for(let i=1;i<12;i++){const t=i/12,y=-.65*t*t,z=t*2.5,length=Math.sin(t*Math.PI)*.65;for(const side of[-1,1])vertices.push(0,y,z,side*length,y-.10,z+.18,0,y-.02,z+.10);}
+ frond.setAttribute('position',new T.Float32BufferAttribute(vertices,3));frond.computeVertexNormals();geometries.frond=frond;
+ const crown=geometries.crown.attributes.position;for(let i=0;i<crown.count;i++){const x=crown.getX(i),y=crown.getY(i),z=crown.getZ(i),r=1+.09*Math.sin(x*9+y*5)*Math.cos(z*12);crown.setXYZ(i,x*r,y*r,z*r);}geometries.crown.computeVertexNormals();
  const material=new T.MeshLambertMaterial({color:'white'}),buckets=new Map(),dummy=new T.Object3D(),people=[],maps=new Map();let id=0;
+ const frondMaterial=new T.MeshLambertMaterial({color:'white',side:T.DoubleSide});
  function add(type,x,y,z,w,h,d,colour,ry=0){if(!buckets.has(type))buckets.set(type,[]);dummy.position.set(x,y,z);dummy.scale.set(w,h,d);dummy.rotation.set(0,ry,0);dummy.updateMatrix();buckets.get(type).push({matrix:dummy.matrix.clone(),colour:new T.Color(colour)});}
  const box=(x,y,z,w,h,d,c)=>add('box',x,y,z,w,h,d,c);
  function lamp(x,z){add('pole',x,5.3,z,.07,8,.07,'#445c52');box(x,9.25,z,1.8,.08,.09,'#445c52');for(const dx of[-.8,.8]){add('crown',x+dx,9.0,z,.22,.32,.22,'#ffedb2');add('spire',x+dx,9.38,z,.3,.2,.3,'#6a7e6c');}}
  function tree(x,z,seed,palm=false){
   const height=5+hash(seed)*4;add('pole',x,1+height/2,z,.18,height,.18,'#8e7755');
-  if(palm){for(let j=0;j<8;j++){const a=j*Math.PI/4;add('crown',x+Math.cos(a)*1.5,height+1-Math.abs(j%2)*.3,z+Math.sin(a)*1.5,2.2,.35,.6,j%2?'#399654':'#4cac54',-a);}}
+  if(palm){for(let j=0;j<9;j++)add('frond',x,height+1,z,1,.9+(j%3)*.12,1.1,j%2?'#399654':'#4cac54',j*Math.PI*2/9);}
   else for(let j=0;j<4;j++)add('crown',x+Math.sin(j*2.4)*1.1,height+.5+(j%2),z+Math.cos(j*2.4)*1.1,1.8,1.9,1.7,['#47994d','#67af52','#328b4d'][j%3]);
  }
  function roof(x,y,z,w,d,height,colour){add('roof',x,y+height/2,z,d,height,w,colour,Math.PI/2);}
+ const homeFamilies=['shutter-townhouse','raised-timber-home','courtyard-home','flat-roof-home','tiled-veranda-home','colonial-balcony-home'],homeCounts={};
+ function inlandHome(x,z,seed,w,h,side){
+  const family=Math.floor(hash(seed+71)*homeFamilies.length),floor=family===1?2.1:1,depth=family===2?9:11,wall=['#e6d9be','#e0d6c4','#d2e0cf','#d8e2df','#efdbb6'][seed%5];homeCounts[homeFamilies[family]]=(homeCounts[homeFamilies[family]]||0)+1;
+  h=Math.min(h,family===1?4.2:family===2?5.6:family===4?5:12);
+  box(x,floor+h/2,z,w,h,depth,family===1?'#a88660':wall);
+  if(family===3){box(x,floor+h+.15,z,w+.5,.3,depth+.5,'#eadfc9');for(const dz of[-depth/2,depth/2])box(x,floor+h+.6,z+dz,w,.7,.2,wall);}
+  else roof(x,floor+h,z,w+1,depth+1,family===1?3.6:2.8,seed%2?'#b6663f':'#a76e49');
+  const front=z-side*(depth/2+.1);
+  for(let level=1.6;level<h;level+=3.3)for(const dx of[-w*.28,w*.28]){box(x+dx,floor+level,front,1.6,Math.min(2.1,h*.5),.10,'#527d78');if(family===0||family===5)for(const shutter of[-1,1])box(x+dx+shutter*.92,floor+level,front-side*.15,.32,Math.min(2.1,h*.5),.12,'#7e9b84');}
+  if([1,4,5].includes(family)){
+   const veranda=z-side*(depth/2+1.3),y=family===5?floor+h*.5:floor;box(x,y+.05,veranda,w+.4,.18,2.6,'#d5b58a');
+   for(const dx of[-w*.44,0,w*.44]){add('pole',x+dx,y+1.55,veranda-side,.10,3,.10,family===1?'#987652':'#f0e4c9');box(x+dx,y+.6,veranda-side*1.25,w*.25,.08,.08,'#ae9473');}
+   roof(x,y+3.1,veranda,w+.8,3.2,.75,seed%2?'#b6663f':'#8e9a8a');
+  }
+  if(family===1){for(const dx of[-w*.4,w*.4])for(const dz of[-depth*.38,depth*.38])add('pole',x+dx,1.55,z+dz,.14,1.2,.14,'#7d6951');for(let s=0;s<4;s++)box(x+w*.35,1+s*.25,front-side*(1+s*.3),1.8,.22,.5,'#b49a75');}
+  if(family===2){const wingX=x+w*.32;box(wingX,2.1,z+side*8,w*.42,2.2,5,wall);roof(wingX,3.2,z+side*8,w*.42+1,6,1.7,'#b6663f');}
+ }
  function pavilion(x,z,w=25,d=13,royal=false){
   box(x,1.8,z,w+3,1.8,d+3,'#ead9b4');
   for(let a=-1;a<=1;a++)for(const b of[-1,1])add('pole',x+a*w*.37,5,z+b*d*.36,.18,5,.18,royal?'#ead58b':'#e5c79e');
@@ -32,10 +56,14 @@ export function buildCambodiaBanks(group,waterY,assets,_materials,options,venue)
   }
   add('spire',x,17.3,z,.55,5,.55,'#e9b94b');
  }
+ const bannerMaterials=new Map(),bannerGeometry=new Map();
  function banner(text,x,y,z,w,h,side){
   const size=festivalBannerSize(w,h),key=JSON.stringify([text,size]);let map=maps.get(key);
-  if(!map){const canvas=document.createElement('canvas');Object.assign(canvas,size);paintFestivalBanner(canvas,text);map=new T.CanvasTexture(canvas);map.colorSpace=T.SRGBColorSpace;map.anisotropy=8;map.userData.festivalBranding=true;maps.set(key,map);}
-  const mesh=new T.Mesh(new T.PlaneGeometry(w,h),new T.MeshBasicMaterial({map,toneMapped:false,side:T.DoubleSide}));mesh.name='Cambodia_Banner';mesh.position.set(x,y,z);mesh.rotation.y=side<0?0:Math.PI;group.add(mesh);
+  if(!map){const canvas=document.createElement('canvas');Object.assign(canvas,size);paintFestivalBanner(canvas,text,venue.id);map=new T.CanvasTexture(canvas);map.colorSpace=T.SRGBColorSpace;map.anisotropy=8;map.userData.festivalBranding=true;map.userData.venueId=venue.id;maps.set(key,map);}
+  // Box faces carry independently oriented UVs: street-side text never mirrors.
+  if(!bannerMaterials.has(map))bannerMaterials.set(map,new T.MeshBasicMaterial({map,toneMapped:false}));
+  const dimensions=w+':'+h;if(!bannerGeometry.has(dimensions))bannerGeometry.set(dimensions,new T.BoxGeometry(w,h,.035));
+  const mesh=new T.Mesh(bannerGeometry.get(dimensions),bannerMaterials.get(map));mesh.name='Cambodia_Banner';mesh.userData.readableBothSides=true;mesh.position.set(x,y,z);mesh.rotation.y=side<0?0:Math.PI;group.add(mesh);
  }
  const shopSigns=['អង្គរសូល','កូនខ្មែរ','ភោជនីយដ្ឋាន','ផ្សាររាត្រី','សូមស្វាគមន៍'];
  function shophouse(x,side,k){
@@ -83,7 +111,7 @@ export function buildCambodiaBanks(group,waterY,assets,_materials,options,venue)
     const junction=((x-from-85+90)%180+180)%180-90;
     if(Math.abs(junction)<15)continue;
     const seed=11000+row*210+n+side*441,xx=x+(hash(seed)-.5)*7,royal=side<0&&Math.abs(xx-(venue.finishX+(pp?150:115)))<(pp?148:80)&&row<=(pp?1:0);
-    if(!royal){const w=13+hash(seed+4)*5,h=pp?7+hash(seed+9)*12:4+hash(seed+9)*5,z=side*depth;box(xx,1+h/2,z,w,h,11,['#e6d9be','#e0d6c4','#d2e0cf'][n%3]);if(!pp||n%3)roof(xx,1+h,z,w+1,12,2.8,n%2?'#b6663f':'#a76e49');for(const dx of[-w*.25,w*.25])box(xx+dx,2.7,side*(depth-5.55),1.6,1.8,.07,'#527d78');}
+    if(!royal){const w=13+hash(seed+4)*5,h=pp?7+hash(seed+9)*12:4+hash(seed+9)*5;inlandHome(xx,side*depth,seed,w,h,side);}
     for(let j=0;j<3;j++)tree(xx-11+hash(seed+j*38)*3,side*(depth-10-j*3),seed+j,pp&&j===0);
    }
   }
@@ -95,7 +123,7 @@ export function buildCambodiaBanks(group,waterY,assets,_materials,options,venue)
   }
   for(let x=from+35,n=0;x<to;x+=50,n++){
    const z=side*(edge+street.promenade+2.4);box(x,2.1,z,5,2.2,2.5,['#d04460','#338d95','#e3ad37'][n%3]);roof(x,3.3,z,6,3,1.2,['#e65c43','#e4b52e','#3f9f86'][n%3]);
-   banner(n%3===0?FESTIVAL_BRANDS[n%2]:'សូមស្វាគមន៍',x,4.8,side*(edge+.5),14,1.8,side);
+   banner(n%3===0?FESTIVAL_BRANDS[n%2]:n%3===1?FESTIVAL.titleKm:'សូមស្វាគមន៍',x,4.8,side*(edge+.5),14,1.8,side);
   }
  }
  if(pp){
@@ -115,8 +143,10 @@ export function buildCambodiaBanks(group,waterY,assets,_materials,options,venue)
   // Palace gardens and a lower city backdrop keep the royal roof silhouette clear.
   for(let n=0;n<130;n++){const xx=x-160+hash(n+700)*320,zz=edge+100+hash(n+820)*85;tree(xx,-zz,n+900,n%5===0);}
   pavilion(venue.finishX+8,-(edge+7),36,10,true);
+  banner(FESTIVAL.titleKm,venue.finishX+8,7.3,-(edge+1),34,3.3,-1);
  }else{
   pavilion(venue.finishX+60,-(edge+5),23,8,false);
+  banner(FESTIVAL.titleKm,venue.finishX+60,6.3,-(edge+1),23,3.0,-1);
   // Royal Gardens sit inland of Pokambor Avenue; no Angkor Wat beside this river.
   box(venue.finishX+115,1.1,-(edge+72),120,.25,55,'#94bf61');
   for(const dx of[-28,28]){box(venue.finishX+115+dx,2.8,-(edge+78),23,3.5,14,'#f3e5c3');roof(venue.finishX+115+dx,4.6,-(edge+78),28,18,4.6,'#b65f35');}
@@ -142,11 +172,11 @@ export function buildCambodiaBanks(group,waterY,assets,_materials,options,venue)
  for(const[type,list]of buckets){
   const cells=new Map();
   for(const p of list){const e=p.matrix.elements,macro=Math.max(Math.abs(e[0]),Math.abs(e[5]),Math.abs(e[10]))>160,key=macro?'long-surface':Math.floor(e[12]/128)+':'+Math.floor(e[14]/96);if(!cells.has(key))cells.set(key,[]);cells.get(key).push(p);}
-  for(const[key,items]of cells){const mesh=new T.InstancedMesh(geometries[type],material,items.length);items.forEach((p,i)=>{mesh.setMatrixAt(i,p.matrix);mesh.setColorAt(i,p.colour);});mesh.computeBoundingSphere();mesh.name=(pp?'PhnomPenh_':'SiemReap_')+type+'_'+key;group.add(mesh);staticBatches++;}
+  for(const[key,items]of cells){const mesh=new T.InstancedMesh(geometries[type],type==='frond'?frondMaterial:material,items.length);items.forEach((p,i)=>{mesh.setMatrixAt(i,p.matrix);mesh.setColorAt(i,p.colour);});mesh.computeBoundingSphere();mesh.name=(pp?'PhnomPenh_':'SiemReap_')+type+'_'+key;group.add(mesh);staticBatches++;}
  }
  const crowd=buildFestivalCrowd(group,people,assets,{...options,middleLimit:60,farLimit:16000,radius:430});
  const traffic=buildFestivalTraffic(group,{road:(_x,side,lane=0)=>side*(edge+street.roadCenter)+lane,minX:from,maxX:to,profile:venue.id});
  crowd.stats.peoplePerBank=[people.length/2,people.length/2];
- group.userData={...group.userData,venueId:venue.id,spectators:people.length,crowd:crowd.stats,traffic:traffic.stats,street,staticBatches,banners:{branding:'festival-shared-vector',language:'km',textureCount:maps.size},courseLength:venue.length,reference:'docs/cambodia-research.md',measured:false,landmarks:pp?['Royal Palace interpretation','Moonlight Pavilion','Sisowath promenade','east-bank skyline','arcaded riverfront shophouses']:['Pokambor pavilion','Royal Gardens and Royal Residence interpretation','stone bridges','riverside markets','low-rise Khmer shophouses']};
+ group.userData={...group.userData,venueId:venue.id,spectators:people.length,crowd:crowd.stats,traffic:traffic.stats,street,homeFamilies:homeCounts,staticBatches,banners:{branding:'venue-event',venueId:venue.id,place:venueIdentity(venue.id).place,language:'km',textureCount:maps.size},courseLength:venue.length,reference:'docs/cambodia-research.md',measured:false,landmarks:pp?['Royal Palace interpretation','Moonlight Pavilion','Sisowath promenade','east-bank skyline','arcaded riverfront shophouses']:['Pokambor pavilion','Royal Gardens and Royal Residence interpretation','stone bridges','riverside markets','low-rise Khmer shophouses']};
  return {update(time,cameraX,cameraZ,visibility){crowd.update(time,cameraX,cameraZ,visibility);traffic.update(time,cameraX,visibility);floats.forEach((p,i)=>{dummy.position.set(from+((p.x-from+time*.2)%(to-from)),waterY+.03,p.z);dummy.rotation.set(0,hash(i)*6+Math.sin(time*.1+i)*.08,0);dummy.scale.set(.3+hash(i)*.8,.06,.35+hash(i+1)*.5);dummy.updateMatrix();floating.setMatrixAt(i,dummy.matrix);});floating.instanceMatrix.needsUpdate=true;},dispose(){crowd.dispose();traffic.dispose();}};
 }

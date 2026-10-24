@@ -15,3 +15,8 @@ export function onlineError(code:string,c:typeof ONLINE_COPY.vi){
  if(code==='rate-limited')return c.tooMany;
  return c.serviceError;
 }
+export const PROFILE_COPY={
+ vi:{title:'Chuyển hồ sơ sang máy khác',hint:'Lưu file có mật khẩu rồi mở file đó trên tablet/PC để dùng cùng hồ sơ và thứ hạng. Giữ riêng file và mật khẩu.',password:'Mật khẩu bảo vệ · ít nhất 8 ký tự',save:'Lưu hồ sơ',restore:'Mở hồ sơ',working:'Đang xử lý…',exported:'Đã lưu file hồ sơ được mã hóa.',imported:'Đã khôi phục cùng hồ sơ và xếp hạng.',passwordError:'Mật khẩu cần từ 8 đến 256 ký tự.',fileError:'Không mở được hồ sơ. Kiểm tra file, mật khẩu và kết nối mạng.'},
+ en:{title:'Move profile to another device',hint:'Save a password-protected file, then open it on your tablet or PC to use the same profile and rankings. Keep the file and password private.',password:'Protection password · at least 8 characters',save:'Save profile',restore:'Open profile',working:'Working…',exported:'Encrypted profile file saved.',imported:'Profile and rankings restored.',passwordError:'Use a password from 8 to 256 characters.',fileError:'Could not open the profile. Check the file, password and connection.'},
+ km:{title:'ផ្ទេរប្រវត្តិរូបទៅឧបករណ៍ផ្សេង',hint:'រក្សាទុកឯកសារដែលការពារដោយពាក្យសម្ងាត់ រួចបើកនៅឧបករណ៍ផ្សេង ដើម្បីប្រើប្រវត្តិរូប និងចំណាត់ថ្នាក់ដដែល។ រក្សាឯកសារ និងពាក្យសម្ងាត់ជាឯកជន។',password:'ពាក្យសម្ងាត់ · យ៉ាងតិច ៨ តួអក្សរ',save:'រក្សាទុកប្រវត្តិរូប',restore:'បើកប្រវត្តិរូប',working:'កំពុងដំណើរការ…',exported:'បានរក្សាទុកឯកសារប្រវត្តិរូបដែលបានអ៊ិនគ្រីប។',imported:'បានស្ដារប្រវត្តិរូប និងចំណាត់ថ្នាក់។',passwordError:'ប្រើពាក្យសម្ងាត់ពី ៨ ដល់ ២៥៦ តួអក្សរ។',fileError:'មិនអាចបើកបានទេ។ សូមពិនិត្យឯកសារ ពាក្យសម្ងាត់ និងការតភ្ជាប់។'},
+};

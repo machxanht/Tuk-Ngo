@@ -10,6 +10,23 @@ Each course has its own Elo leaderboard. Ratings start at 1,000, with K=32; equa
 
 Identity is currently a signed **guest profile stored in this browser**, not an email account. It survives page reloads. Clearing browser storage loses access to that guest profile. Automatic cross-device account recovery is not implemented. Never expose or publish its bearer token.
 
+### Moving a guest profile between devices
+
+In the online lobby, expand **Move profile to another device**, enter a password
+of at least eight characters, then save the `.tuk` file. On the other device,
+open the same section, supply that password and restore the file. This transfers
+the same server identity and its per-venue ratings; it does not merge two guests.
+An active race or matchmaking operation blocks import. The destination verifies
+the candidate session with the real server before replacing any local identity;
+a wrong password, invalid file or failed request leaves its profile unchanged.
+
+The bounded binary file uses PBKDF2-SHA256 (210,000 iterations), a random salt,
+AES-256-GCM and a random IV. It contains no unencrypted bearer token. Keep the
+file and password private. Losing both browser storage and the exported file
+still loses the guest. This is manual portability, not automatic account sync.
+Crypto implementation: `src/race/profile-transfer.mjs`; actual second-browser
+restore/ratings checks: `scripts/check-profile-transfer.py`.
+
 ## Authority and lifecycle
 
 - Each race has an independent `RaceRoom` Durable Object. Per-course `RaceDirectory` objects coordinate queues and store rankings. There is no central simulation loop for all rooms.
@@ -28,6 +45,7 @@ Identity is currently a signed **guest profile stored in this browser**, not an 
 | `wrangler.jsonc` | Existing-account free Worker deployment and SQLite DO bindings |
 | `src/race/online-rules.mjs` | Shared physics adapter, input sanitation and Elo rules |
 | `src/race/online-client.mjs` | Network lifecycle, cancellation, session deduplication, game adapter |
+| `src/race/profile-transfer.mjs` / `src/components/ProfileTransfer.tsx` | Encrypted guest export/import and localized controls |
 | `src/components/OnlineLobby.tsx` / `.css` | Responsive lobby, friend rooms and live leaderboard |
 | `src/race/online-language.ts` | Việt, Khmer and English online interface copy |
 | `public/online-config.json` | Public backend URL; contains no credential |

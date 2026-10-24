@@ -1,5 +1,24 @@
 # Online racing, durable rankings and festival lobby
 
+## Festival completion pass
+
+- Separate event palettes, Khmer place lines and large pavilion banners for
+  Maspéro, Phnom Penh and Siem Reap; six Cambodian inland home families and
+  lightweight coconut fronds.
+- Batch the approved connected shirts without modifying their topology, skinning
+  math or master rigs; paired rendered-pose checks save 46 draws per visible boat.
+  Add an on-device performance report, retaining native sharp rendering.
+- Buffer held controls in the final countdown second, immediate pressed feedback,
+  and neutral steering on stale nonzero sensor samples.
+- Add 42 scoped Khmer/English audio clips, real playback checks and the dashboard
+  venue-review tab. Keep original Vietnamese broadcast selection and explicit
+  unreviewed native pronunciation flags.
+- Add encrypted manual guest-profile portability with server validation before
+  replacing local data. Verify real two-browser races, reconnect and durable Elo.
+- Preserve the separate 61/16/8 rosters and all offline modes. The full Cambodian
+  300+ catalogue, physical-tablet performance, native listening, surveyed scenery
+  and multi-user capacity validation remain open in the completion plan.
+
 ## Separate venue rosters
 
 - Maspéro keeps its 61 Vietnamese registrations. Phnom Penh uses 16 historical

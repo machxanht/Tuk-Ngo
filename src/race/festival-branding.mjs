@@ -1,4 +1,5 @@
 import {FESTIVAL_WORDMARK} from './festival-wordmark.mjs';
+import {venueIdentity} from './venue-identity.mjs';
 
 export const FESTIVAL={titleVi:'Lễ hội đua ghe Ngo',titleKm:'ពិធីបុណ្យអុំទូក',year:'2026',yearKm:'២០២៦',provinceVi:'Tỉnh Sóc Trăng',provinceKm:'ខេត្តឃ្លាំង'};
 export const FESTIVAL_BRANDS=['Kuon Khmer','Angkor Soul'];
@@ -41,25 +42,33 @@ export function paintFestivalMark(p,x,y,width,height){
  art.forEach((s,i)=>{p.save();if(s.transform)p.transform(...s.transform);p.fillStyle=s.fill;p.fill(canvasPaths[i]);if(s.stroke){p.strokeStyle=s.stroke;p.lineWidth=s.width;p.lineJoin='round';p.stroke(canvasPaths[i]);}p.restore();});p.restore();
 }
 
-export function festivalBannerLayout(text){
+export function festivalBannerLayout(text,venueId='maspero'){
+ const event=venueIdentity(venueId);
  const brand=FESTIVAL_BRANDS.includes(text),festival=text===FESTIVAL.titleKm;
  const wayfinding=/^(ស្ពាន|ទីបញ្ចប់|ចំណុចចាប់ផ្តើម)|ម៉ែត្រ$/.test(text);
- return {kind:brand?'sponsor':wayfinding?'wayfinding':festival?'festival':'support',
-  accent:text==='Kuon Khmer'?c.red:wayfinding?c.blue:c.jade,
-  background:brand?(text==='Kuon Khmer'?c.deepRed:'#075267'):wayfinding?'#124a75':festival?c.jade:['#00563c','#932a58','#124a75'][Array.from(text).reduce((n,ch)=>n+ch.codePointAt(0),0)%3],
-  lines:brand?[text,text==='Kuon Khmer'?'កម្លាំង និងសាមគ្គីភាព':'ស្មារតីអង្គរ']:festival?[FESTIVAL.titleKm+' '+FESTIVAL.yearKm,FESTIVAL.provinceKm]:[text]};
+ return {kind:brand?'sponsor':wayfinding?'wayfinding':festival?'festival':'support',venueId:event.id,motif:event.motif,gold:event.gold,water:event.water,
+  accent:text==='Kuon Khmer'?c.red:wayfinding?event.water:event.accent,
+  background:brand?(text==='Kuon Khmer'?c.deepRed:event.background):wayfinding?'#124a75':event.background,
+  lines:brand?[text,text==='Kuon Khmer'?'កម្លាំង និងសាមគ្គីភាព':'ស្មារតីអង្គរ']:festival?[event.title+' '+FESTIVAL.yearKm,event.place]:wayfinding?[text,event.short]:[text,event.place]};
 }
 export function festivalBannerSize(width,height){
  const pixels=width>=12?2048:1024;
  return {width:pixels,height:Math.min(512,Math.max(128,Math.round(pixels*height/width)))};
 }
-export function paintFestivalBanner(canvas,text){
- const p=canvas.getContext('2d'),w=canvas.width,h=canvas.height,layout=festivalBannerLayout(text);
+export function paintFestivalBanner(canvas,text,venueId='maspero'){
+ const p=canvas.getContext('2d'),w=canvas.width,h=canvas.height,layout=festivalBannerLayout(text,venueId);
  p.clearRect(0,0,w,h);p.fillStyle=layout.background;p.fillRect(0,0,w,h);
  p.fillStyle=layout.accent;p.fillRect(0,0,h*.09,h*.91);p.fillRect(w-h*.09,0,h*.09,h*.91);
- p.fillStyle=c.gold;p.fillRect(0,0,w,h*.025);
+ p.fillStyle=layout.gold;p.fillRect(0,0,w,h*.025);
+ // Small repeated event motifs stay clear of the shaped Khmer lettering.
+ p.save();p.globalAlpha=.16;p.fillStyle=layout.gold;
+ for(let x=h*.4;x<w;x+=h*.48){p.beginPath();const y=h*.89;
+  if(layout.motif==='royal'){p.moveTo(x-h*.16,y);p.lineTo(x,y-h*.26);p.lineTo(x+h*.16,y);}
+  else if(layout.motif==='lotus'){p.moveTo(x,y);p.bezierCurveTo(x-h*.25,y-h*.06,x-h*.12,y-h*.23,x,y-h*.27);p.bezierCurveTo(x+h*.12,y-h*.23,x+h*.25,y-h*.06,x,y);}
+  else {p.moveTo(x-h*.2,y);p.quadraticCurveTo(x,y+h*.1,x+h*.2,y-h*.12);p.quadraticCurveTo(x,y+h*.18,x-h*.2,y);}
+  p.fill();}p.restore();
  // Same three flowing bands as the logo, with no per-frame canvas painting.
- p.fillStyle=c.blue;p.beginPath();p.moveTo(0,h*.93);p.bezierCurveTo(w*.28,h*.78,w*.52,h*1.08,w*.76,h*.92);p.quadraticCurveTo(w*.9,h*.83,w,h*.91);p.lineTo(w,h);p.lineTo(0,h);p.fill();
+ p.fillStyle=layout.water;p.beginPath();p.moveTo(0,h*.93);p.bezierCurveTo(w*.28,h*.78,w*.52,h*1.08,w*.76,h*.92);p.quadraticCurveTo(w*.9,h*.83,w,h*.91);p.lineTo(w,h);p.lineTo(0,h);p.fill();
  p.fillStyle=c.gold;p.beginPath();p.moveTo(0,h*.90);p.quadraticCurveTo(w*.17,h*.76,w*.31,h*.91);p.quadraticCurveTo(w*.16,h*.84,0,h*.95);p.fill();
  const emblem=layout.kind!=='wayfinding',logoW=emblem?Math.min(h*1.9,w*.25):0;
  if(emblem){p.fillStyle=c.white;p.beginPath();p.roundRect(h*.13,h*.10,logoW,h*.72,h*.065);p.fill();paintFestivalMark(p,h*.13,h*.10,logoW,h*.72);}
@@ -75,5 +84,5 @@ export function paintFestivalBanner(canvas,text){
   p.fillStyle=i===0?c.white:c.gold;p.fillText(line,cx,y);
   lineBounds.push({text:line,left:cx-m.width/2,right:cx+m.width/2,top:y-m.actualBoundingBoxAscent,bottom:y+m.actualBoundingBoxDescent});
  });
- return {kind:layout.kind,lineBounds,width:w,height:h};
+ return {kind:layout.kind,venueId:layout.venueId,motif:layout.motif,lineBounds,width:w,height:h};
 }

@@ -127,3 +127,20 @@ The selector is shared with online/opponent selection and supports Khmer,
  invitation cup still draws eight. See [catalogue review](cambodia-roster-review.md) for the exact
  additions, historical years, 260-name photograph source and remaining 300+
  roster gap. Do not describe the full 300+ import as complete.
+
+## Per-venue event identity and inland variety
+
+`venue-identity.mjs` provides separate event names, Khmer place lines and palettes.
+Phnom Penh uses royal navy/gold and the Tonlé Sap place line; Siem Reap uses
+terracotta/teal and its city-river place line. Banner textures are shared within
+each venue instead of generated once per pole. Both pavilions carry a larger
+dedicated event panel; sponsor art remains the two requested fictional placements.
+These are original game identities, not copies of official seals or a claim to
+2026 tournament sponsorship.
+
+The Cambodian inland area now mixes six light instanced building families:
+shutter townhouse, raised timber, courtyard, flat roof, tiled veranda and colonial
+balcony. Heights, shutters, verandas and roofs vary within bounded plots. Coconut
+fronds use a small feathered mesh, and broadleaf crowns vary between trees. These
+families extend the references above; their exact distribution and dimensions
+remain authored scenery. Road/river access corridors are preserved.
