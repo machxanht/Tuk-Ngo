@@ -19,3 +19,12 @@ Maps 3D control. See [source list](../../../public/assets/maps/cambodia-sources.
 The images are rendered game frames, not generated reference illustrations.
 These checks do not establish physical-tablet FPS, a numerical visual-match
 percentage, current official 2026 course boundaries or a Google 3D replica.
+
+## Published verification
+
+Pages commit `39de6f6a24b854e188116487a74e71c2d5e2a45f` deployed successfully
+([workflow](https://github.com/machxanht/Tuk-Ngo/actions/runs/40112841507)). All 42
+allowlisted published files were fetched and compared byte-for-byte with the
+Pages commit. Both public venue scenes passed the real browser map check with
+loaded flag textures, advancing animation time and no page/shader errors.
+See `deployment.json` and `public-checks.json`.
