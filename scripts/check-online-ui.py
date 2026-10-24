@@ -2,19 +2,22 @@
 QA session credentials use the live worker's isolated ranking namespace.
 No game time, position, result or network transport is mocked.
 """
-import argparse,json,time
+import argparse,json,time,urllib.request,urllib.parse,re
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 parser=argparse.ArgumentParser()
 parser.add_argument('--url',default='http://127.0.0.1:8779/Tuk-Ngo/')
-parser.add_argument('--endpoint',default='https://tuk-ngo-online.oliverkhang.workers.dev')
+parser.add_argument('--endpoint')
 parser.add_argument('--secrets-file',required=True)
 parser.add_argument('--out',required=True)
 args=parser.parse_args();out=Path(args.out);out.mkdir(parents=True,exist_ok=True)
+if args.endpoint:endpoint=args.endpoint
+else:
+ with urllib.request.urlopen(urllib.parse.urljoin(args.url,'online-config.json')) as response:endpoint=json.load(response)['url']
 qa=json.loads(Path(args.secrets_file).read_text(encoding='utf-8'))['QA_SECRET']
 api="document.querySelector('[data-testid=art-stage]')?.boatPreview"
-report={'url':args.url,'endpoint':args.endpoint,'physicalTabletTested':False,'viewports':[],'errors':[]}
+report={'url':args.url,'endpoint':endpoint,'configurationOverridden':bool(args.endpoint),'physicalTabletTested':False,'viewports':[],'errors':[]}
 with sync_playwright() as p:
  browsers=[];pages=[];contexts=[]
  try:
@@ -22,11 +25,11 @@ with sync_playwright() as p:
    browser=p.chromium.launch(channel='msedge',headless=True,args=['--enable-unsafe-swiftshader']);browsers.append(browser)
    context=browser.new_context(viewport={'width':1024,'height':768},device_scale_factor=1,has_touch=True);contexts.append(context)
    context.add_init_script("localStorage.setItem('tukngo-language','vi');localStorage.setItem('tukngo-venue','siem-reap');localStorage.setItem('tukngo-quality','balanced');localStorage.setItem('tukngo-race-audio',JSON.stringify({enabled:false}));")
-   context.route('**/online-config.json',lambda route:route.fulfill(json={'url':args.endpoint}))
+   if args.endpoint:context.route('**/online-config.json',lambda route:route.fulfill(json={'url':endpoint}))
    def session_header(route):
     if route.request.method=='POST':route.continue_(headers={**route.request.headers,'X-QA-Token':qa})
     else:route.continue_()
-   context.route(args.endpoint+'/session',session_header)
+   context.route(endpoint+'/session',session_header)
    page=context.new_page();pages.append(page);page.on('pageerror',lambda e:report['errors'].append(str(e)))
    page.goto(args.url);page.wait_for_function('!!'+api,timeout=120000)
    page.get_by_role('button',name='Đấu online',exact=True).click()
@@ -74,7 +77,12 @@ with sync_playwright() as p:
   # Disconnect / reconnect, then reload: input counters and room survive.
   contexts[0].set_offline(True);a.wait_for_timeout(2300);contexts[0].set_offline(False)
   a.wait_for_function(api+".game.state.phase==='racing'",timeout=12000);a.wait_for_timeout(2000);a.keyboard.up('Space');a.keyboard.down('Space')
-  a.reload();a.wait_for_function('!!'+api,timeout=120000);a.get_by_role('button',name='Đấu online',exact=True).click()
+  reload_started=time.monotonic();resume_times={}
+  def resumed_socket(socket):socket.on('framereceived',lambda _:resume_times.setdefault('firstState',time.monotonic()))
+  a.on('websocket',resumed_socket)
+  a.reload();a.wait_for_function('!!'+api,timeout=120000);graphics_ready=time.monotonic()
+  assert resume_times.get('firstState',float('inf'))<graphics_ready
+  report['reloadTimingMs']={'firstServerState':round((resume_times['firstState']-reload_started)*1000),'graphicsReady':round((graphics_ready-reload_started)*1000)}
   a.wait_for_function(api+".game.online&&"+api+".game.state.phase==='racing'",timeout=20000);a.keyboard.up('Space');a.keyboard.down('Space');a.wait_for_timeout(1200)
   assert a.evaluate(api+'.game.state.rowingHeld');report['reloadAndReconnect']=True
   for page in pages:page.get_by_role('dialog',name='Kết quả trận đua',exact=True).wait_for(timeout=140000)
@@ -85,7 +93,14 @@ with sync_playwright() as p:
   report['results']=[{'result':s['result'],'times':s['finishTimes']} for s in results]
   a.screenshot(path=str(out/'online-result.png'));a.get_by_role('button',name='Về phòng chờ',exact=True).click()
   a.get_by_role('button',name='Xếp hạng',exact=True).click();a.locator('.online-table tr.is-you').wait_for(timeout=15000)
-  report['ownRankRow']=a.locator('.online-table tr.is-you').inner_text();a.screenshot(path=str(out/'leaderboard.png'))
+  report['ownRankRow']=a.locator('.online-table tr.is-you').inner_text()
+  current_tab=a.locator('.online-tabs button[aria-pressed=true]');current_tab.hover()
+  colors=current_tab.evaluate('e=>{const s=getComputedStyle(e);return [s.color,s.backgroundColor]}')
+  def luminance(color):
+   values=[float(v)/255 for v in re.findall(r'[\d.]+',color)[:3]];values=[v/12.92 if v<=.04045 else ((v+.055)/1.055)**2.4 for v in values]
+   return sum(v*w for v,w in zip(values,[.2126,.7152,.0722]))
+  values=sorted([luminance(color) for color in colors]);report['selectedTabContrast']=(values[1]+.05)/(values[0]+.05);assert report['selectedTabContrast']>=4.5
+  a.screenshot(path=str(out/'leaderboard.png'))
   a.emulate_media(reduced_motion='reduce');a.set_viewport_size({'width':390,'height':844});a.screenshot(path=str(out/'leaderboard-phone-reduced-motion.png'))
   assert not report['errors'],report['errors'];(out/'checks.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');print(json.dumps(report,ensure_ascii=False))
  except Exception:
