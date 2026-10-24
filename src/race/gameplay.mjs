@@ -172,6 +172,10 @@ export function createRaceGame({venueId='maspero'}={}){
    s.boostHeld=false;s.boostActive=false;s.rowingHeld=false;this.setSteering(0);s.phase='finished';s.speeds=[0,0];
   },
   skipIntro(){if(this.state.phase==='intro'){this.state.introRemaining=0;this.state.introElapsed=10;this.state.phase='countdown';}},
+  // Trusted server checkpoints retain beat bookkeeping across a worker restart.
+  // No public online endpoint accepts a checkpoint or a client race result.
+  checkpoint(){return {state:structuredClone(this.state),consumed:[...consumed],rejected:[...rejected],previousPhase,accumulator,tapBeat,taps};},
+  restoreCheckpoint(value){this.state=structuredClone(value.state);consumed=new Set(value.consumed);rejected=new Set(value.rejected);previousPhase=value.previousPhase;accumulator=value.accumulator;tapBeat=value.tapBeat;taps=value.taps;},
   snapshot(){
    const s=this.state,total=s.perfect+s.good+s.missed,timing=timingFor(s,consumed);
    const flow=riverFlow(s.distances[0],s.lateralPositions[0],s.flowSeed,s.venueId);

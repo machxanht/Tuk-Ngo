@@ -1,0 +1,35 @@
+{
+  "url": "https://tuk-ngo-online.oliverkhang.workers.dev",
+  "checks": [
+    "authentication and origin enforcement",
+    "two guest matchmaking and shared room",
+    "forged distance/time/result ignored",
+    "reconnection within grace and input sequence resume",
+    "full human race, authoritative finish and exactly-once persisted Elo",
+    "private room creation/join/cancellation does not change rank"
+  ],
+  "startedAt": "2026-10-24T05:05:46.858Z",
+  "result": {
+    "winner": 0,
+    "times": [
+      74.48797586223428,
+      79.5915561699282
+    ],
+    "changes": [
+      {
+        "id": "40ec897b-9678-406c-8183-c26fa738c44f",
+        "before": 1000,
+        "after": 1016,
+        "change": 16
+      },
+      {
+        "id": "6c253116-d6dd-4b83-8439-d5841b77eec3",
+        "before": 1000,
+        "after": 984,
+        "change": -16
+      }
+    ],
+    "networkPackets": 1848,
+    "elapsedSeconds": 99.776
+  }
+}

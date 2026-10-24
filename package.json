@@ -7,12 +7,15 @@
     "dev": "vite --port=3000 --host=0.0.0.0",
     "build": "npm run build:preview && vite build",
     "build:preview": "node scripts/build-preview.mjs",
-    "test": "node scripts/check-architecture.mjs && node scripts/test-kbach-library.mjs && node scripts/test-asset-transfer.mjs && node scripts/test-gameplay.mjs && node scripts/test-simple-controls.mjs && node scripts/test-race-audio.mjs && node scripts/test-audio-dashboard.mjs && node scripts/test-tournament.mjs && node scripts/test-scene-visibility.mjs && node scripts/test-rowing-effort.mjs && node scripts/test-athlete.mjs && node scripts/test-rowing-pose.mjs && node --import tsx scripts/test-race-presentation.mjs && node --import tsx scripts/test-race-venues.mjs",
+    "test": "node scripts/check-architecture.mjs && node scripts/test-kbach-library.mjs && node scripts/test-asset-transfer.mjs && node scripts/test-gameplay.mjs && node scripts/test-simple-controls.mjs && node scripts/test-race-audio.mjs && node scripts/test-audio-dashboard.mjs && node scripts/test-tournament.mjs && node scripts/test-scene-visibility.mjs && node scripts/test-rowing-effort.mjs && node scripts/test-athlete.mjs && node scripts/test-rowing-pose.mjs && node --import tsx scripts/test-race-presentation.mjs && node --import tsx scripts/test-race-venues.mjs && node --import tsx scripts/test-online.mjs",
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit",
     "test:audio:browser": "node scripts/test-audio-dashboard-browser.mjs",
-    "test:audio": "node scripts/test-race-audio.mjs && node scripts/test-audio-dashboard.mjs && python -X utf8 scripts/test-audio-files.py && npm run test:audio:browser"
+    "test:audio": "node scripts/test-race-audio.mjs && node scripts/test-audio-dashboard.mjs && python -X utf8 scripts/test-audio-files.py && npm run test:audio:browser",
+    "test:online": "node --import tsx scripts/test-online.mjs",
+    "dev:online": "wrangler dev --ip 127.0.0.1 --port 8790",
+    "deploy:online": "wrangler deploy"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
@@ -41,6 +44,8 @@
     "tailwindcss": "^4.1.14",
     "tsx": "^4.21.0",
     "typescript": "~5.8.2",
-    "vite": "^6.2.3"
+    "vite": "^6.2.3",
+    "wrangler": "4.152.0",
+    "ws": "8.22.0"
   }
 }

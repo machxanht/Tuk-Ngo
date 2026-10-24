@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "tuk-ngo-online",
+  "main": "server/online.mjs",
+  "compatibility_date": "2026-10-24",
+  "workers_dev": true,
+  "preview_urls": false,
+  "vars": {"ALLOWED_ORIGINS": "https://machxanht.github.io,http://localhost:3000,http://127.0.0.1:3000,http://127.0.0.1:8779,http://127.0.0.1:8782"},
+  "durable_objects": {"bindings": [
+    {"name": "DIRECTORIES", "class_name": "RaceDirectory"},
+    {"name": "ROOMS", "class_name": "RaceRoom"}
+  ]},
+  "migrations": [{"tag": "online", "new_sqlite_classes": ["RaceDirectory", "RaceRoom"]}],
+  "observability": {"enabled": true, "head_sampling_rate": 0.1}
+}

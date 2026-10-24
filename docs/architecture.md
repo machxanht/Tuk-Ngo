@@ -68,3 +68,8 @@ The current inventory has **no truly unreferenced race module** across the autho
 | `bake-sprites.mjs` | root `art-bake.html` |
 
 This gate checks source dependencies and preservation invariants. It does not establish that a generated bundle is fresh, a network service is working, or a renderer is visually correct. Build, affected behavior tests and direct browser inspection remain separate acceptance evidence.
+
+
+## Online runtime
+
+`server/online.mjs` is a separate Worker entry, configured by `wrangler.jsonc`. A Durable Object owns each live race; per-course directory objects own queues and durable Elo tables. The browser's canonical `online-client.mjs` adapter forwards offline methods to the existing game and accepts online snapshots only from the authenticated socket. `online-rules.mjs` reuses the original player physics for both human lanes. No 3D asset generation or schema migration of the offline cup is involved. See [online lifecycle and external verification](online.md).

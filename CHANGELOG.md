@@ -1,3 +1,11 @@
+# Online racing, durable rankings and festival lobby
+
+- Added real two-human WebSocket races, per-course matchmaking, friend-room codes, boat loading/ready flow and a shared server countdown on the existing game URL.
+- Added server-authoritative fixed-tick simulation, sanitized inputs, signed guest profiles, bounded messages, reconnect/deadman handling and durable exactly-once Elo settlement. Private rooms and pre-start cancellations do not change rankings.
+- Added a bright jade/gold lobby and leaderboard with Việt/Khmer/English copy, readable responsive layouts, keyboard focus handling, network feedback and guest-profile limitations. Existing race controls remain small and translucent.
+- Kept the protected athlete rigs, connected shirt, all 3D assets, practice/AI/local cups and audio selection. QA users are isolated from public rankings.
+- Added real Worker/browser checks for two-player starts, input, finish, rankings, reconnect/reload, private rooms and disconnect outcomes. See `docs/online.md` and the recorded QA evidence for verification scope; physical tablet and load testing remain separate.
+
 # Immersive race controls and readable steering
 
 - Race canvas fills the viewport; removed the opaque header/score/footer surfaces during play. Touch targets float over the scene with transparent containers and preserved keyboard/focus controls.

@@ -1,0 +1,8 @@
+{
+  "url": "https://tuk-ngo-online.oliverkhang.workers.dev",
+  "venueId": "phnom-penh",
+  "checks": [
+    "Both sockets close 900 ms apart: cancellation without a false winner or rating",
+    "One socket stays live: opponent forfeit after grace, exactly one win and +16 Elo"
+  ]
+}

@@ -5,5 +5,8 @@ coverage/
 .DS_Store
 *.log
 .env*
+.dev.vars*
+.wrangler/
+server/worker-configuration.d.ts
 !.env.example
 __pycache__/
