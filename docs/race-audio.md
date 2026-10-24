@@ -244,6 +244,10 @@ registration and venue; the three venue phrases override generic geographic
 statements only for their own map. Vietnamese continues to select original
 broadcast recordings. Foreign Maspéro/Sóc Trăng/1,200 m statements are filtered
 from Cambodian commentary. Muted/inactive audio does not consume the intro cue.
+Participant introduction has a 22-second queue allowance to survive the end of
+a skipped flyover, the GO sentence and a slow media fetch. It is still rejected
+outside the start stage, so a late response cannot introduce teams during cruise
+or after a finish. Other short cues keep their existing nine-second lifetime.
 
 The dashboard **Theo sân** tab filters venue and Khmer/English, shows the actual
 transcript, stops the previous recording on selection changes, and exports review

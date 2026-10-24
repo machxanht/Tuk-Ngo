@@ -66,7 +66,7 @@ export function resolveVenueSpeech(cue,pack,language,teams,state){
  const id=cue.id==='race-call'&&state?.raceStage==='cruise'?'cruise':cue.id;
  const options=pack.events?.[state?.venueId||'maspero']?.[language]?.[id];if(!options)return null;
  const keys=options.filter(key=>!cue.excludedKeys?.includes(key));if(!keys.length)return null;
- if(id==='flyover'&&state?.phase!=='intro'||id!=='flyover'&&(state?.phase!=='racing'||id==='cruise'&&state?.raceStage!=='cruise'))return {voice:[],khmer:[]};
+ if(id==='flyover'&&state?.phase!=='intro'||id!=='flyover'&&(state?.phase!=='racing'||id==='cruise'&&state?.raceStage!=='cruise'||id==='intro'&&state?.raceStage!=='start'))return {voice:[],khmer:[]};
  const names=language==='km'&&id==='intro'?teams.flatMap(t=>resolveTeamSpeech(t,pack).khmer):[];
  return {voice:[],khmer:[...names,...keys].filter(key=>pack.clips[key]?.lang===language&&clipMatchesVenue(pack.clips[key],state?.venueId))};
 }
@@ -91,6 +91,7 @@ export function isBroadcastClipApplicable(clip,cue,state=cue.state){
  return true;
 }
 export function resolveBroadcastCue(cue,manifest,teams=[],state=cue.state){
+ if(cue.id==='intro'&&state&&(state.phase!=='racing'||(state.distances?.[0]??state.distance??0)>=200||state.raceStage&&state.raceStage!=='start'))return {voice:[],khmer:[]};
  if(['team-history','opponent-history'].includes(cue.id)){
   if(state&&(state.phase!=='racing'||(state.distances?.[0]??state.distance)>=950))return {voice:[],khmer:[]};
   return resolveTeamSpeech(teams[cue.id==='team-history'?0:1],manifest,'history');
@@ -135,6 +136,9 @@ export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{},onP
  let crowdKey=null,grooveKey=null,groovePending=false,lastWhistleBeat=-1,rhythmCadence=0,lastRhythmAudio=-1;
  const cache=new Map(),recentClips=new Map(),sources=new Set(),abort=new AbortController();
  const metrics={drumHits:0,drumKinds:{'drum-low':0,'drum-open':0,'drum-rim':0},drumLoops:0,groovesPlayed:[],whistleBlows:0,strongWhistles:0,voiceClips:0,khmerClips:0,cues:[],played:[],errors:[],decoded:0};
+ // A skipped flyover can still be finishing before GO. Allow the participant
+ // introduction to survive that sentence and a slow fetch, within start only.
+ const cueMaxAge=cue=>cue.id==='intro'?22:cue.priority>=4?20:9;
  function fail(error){if(disposed||error?.name==='AbortError')return;const message=String(error?.message||error);if(!metrics.errors.includes(message)){metrics.errors.push(message);onError(message);}}
  function loadManifest(){
   if(!manifestPromise)manifestPromise=fetch(directory+'manifest.json',{signal:abort.signal,cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('Audio manifest: '+r.status);return r.json();}).then(m=>{if(!['broadcast','broadcast-vi-ai-km'].includes(m.mode))throw Error('Cần tải lại bộ bình luận');return manifest=m;}).catch(e=>{manifestPromise=null;throw e;});
@@ -198,7 +202,7 @@ export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{},onP
  }
  async function pump(){
   if(speaking||!active||!mix.enabled||disposed)return;
-  queue=queue.filter(c=>latest&&latest.elapsed-c.elapsed<(c.priority>=4?20:9));
+  queue=queue.filter(c=>latest&&latest.elapsed-c.elapsed<cueMaxAge(c));
   const cue=queue.shift();if(!cue)return;
   speaking=true;const token=epoch;
   try{
@@ -209,7 +213,7 @@ export function createRaceAudio({baseUrl='/',onCaption=()=>{},onError=()=>{},onP
    const selection=speechSelection(cue,latest);
    const keys=[...(mix.voice?selection.voice:[]),...(mix.khmer?selection.khmer:[])].filter(key=>context.currentTime-(recentClips.get(key)??-Infinity)>=cooldown(key));
    // Fetch the phrase in parallel, then schedule it as one uninterrupted sentence.
-   const buffers=await Promise.all(keys.map(load));if(token!==epoch||!active||!mix.enabled||disposed||latest.elapsed-cue.elapsed>(cue.priority>=4?20:9)||(cue.id==='ready'&&latest.phase!=='countdown'))return;
+   const buffers=await Promise.all(keys.map(load));if(token!==epoch||!active||!mix.enabled||disposed||latest.elapsed-cue.elapsed>cueMaxAge(cue)||(cue.id==='ready'&&latest.phase!=='countdown'))return;
    const current=speechSelection(cue,latest);if(keys.some(key=>!current.voice.includes(key)&&!current.khmer.includes(key)))return;
    let offset=.02;
    for(let i=0;i<keys.length;i++){

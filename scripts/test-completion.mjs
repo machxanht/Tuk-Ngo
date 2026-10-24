@@ -16,7 +16,7 @@ for(const [key,clip]of Object.entries(pack.clips)){const bytes=await readFile('p
 const backgrounds=new Set();for(const venueId of ['maspero','phnom-penh','siem-reap']){
  const identity=venueIdentity(venueId),layout=festivalBannerLayout('ពិធីបុណ្យអុំទូក',venueId);assert.equal(layout.venueId,venueId);assert(layout.lines[1].includes(identity.short));backgrounds.add(layout.background);
  const teams=teamsForVenue(venueId).slice(0,2),state={phase:'racing',venueId,raceStage:'start'},cue={id:'intro'};
- for(const language of ['km','en']){const result=resolveVenueSpeech(cue,pack,language,teams,state);assert(result.khmer.length>0);for(const key of result.khmer){assert.equal(pack.clips[key].lang,language);assert(clipMatchesVenue(pack.clips[key],venueId));}assert.deepEqual(resolveVenueSpeech({id:'flyover'},pack,language,teams,state),{voice:[],khmer:[]});}
+ for(const language of ['km','en']){const result=resolveVenueSpeech(cue,pack,language,teams,state);assert(result.khmer.length>0);for(const key of result.khmer){assert.equal(pack.clips[key].lang,language);assert(clipMatchesVenue(pack.clips[key],venueId));}assert.deepEqual(resolveVenueSpeech({id:'flyover'},pack,language,teams,state),{voice:[],khmer:[]});assert.deepEqual(resolveVenueSpeech(cue,pack,language,teams,{...state,raceStage:'cruise'}),{voice:[],khmer:[]});}
  if(venueId!=='maspero')for(const team of teams)assert(pack.teamProfiles[team.id]?.names.khmer.length===1);
  const foreign=teamsForVenue(venueId==='phnom-penh'?'siem-reap':'phnom-penh').slice(0,2);assert.equal(resolveVenueSpeech(cue,pack,'km',foreign,state).khmer.length,1,'Never announce foreign team names');
 }

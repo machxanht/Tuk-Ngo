@@ -18,12 +18,23 @@ with sync_playwright()as tool:
   page.goto(args.url);page.wait_for_function("!!document.querySelector('[data-testid=art-stage]')?.boatPreview",timeout=120000);opened();page.locator('.profile-transfer summary').click()
   password().fill('wrong password');page.locator('.profile-transfer input[type=file]').set_input_files(args.source);page.get_by_text('Không mở được hồ sơ. Kiểm tra file, mật khẩu và kết nối mạng.',exact=True).wait_for();assert profile_id()==original['id'];report['wrongPasswordPreservesReceiver']=True
   password().fill('Fixture profile transfer only');page.locator('.profile-transfer input[type=file]').set_input_files(args.source);page.get_by_text('Đã khôi phục cùng hồ sơ và xếp hạng.',exact=True).wait_for(timeout=20000);assert profile_id()==expected;assert page.locator('.online-profile-rank strong').inner_text()=='1.016';report['restoredServerRating']=1016
-  password().fill('Fixture profile transfer only')
+  report['profileViewports']=[]
+  for language,label in [('vi','VI'),('km','ខ្មែរ'),('en','EN')]:
+   page.get_by_role('button',name=label,exact=True).click()
+   for width,height in [(1024,768),(768,1024),(1180,430),(390,844)]:
+    page.set_viewport_size({'width':width,'height':height});page.locator('.profile-transfer').scroll_into_view_if_needed()
+    assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
+    for button in page.locator('.profile-transfer button').all():
+     box=button.bounding_box();assert box['height']>=44 and 0<=box['x'] and box['x']+box['width']<=width+.5,box
+    report['profileViewports'].append([language,width,height])
+  page.set_viewport_size({'width':1024,'height':768});page.get_by_role('button',name='VI',exact=True).click();password().fill('Fixture profile transfer only')
   with page.expect_download()as result:page.get_by_role('button',name='Lưu hồ sơ',exact=True).click()
   file=out/'profile.tuk';result.value.save_as(file);assert file.stat().st_size<4096 and file.read_bytes().startswith(b'TUKNGO\x00\x01');assert b'token'not in file.read_bytes();page.screenshot(path=str(out/'restored-profile.png'))
   page.reload();page.wait_for_function("!!document.querySelector('[data-testid=art-stage]')?.boatPreview",timeout=120000);opened();assert profile_id()==expected;page.wait_for_function("document.querySelector('.online-profile-rank strong')?.textContent==='1.016'",timeout=15000);page.locator('.online-back').click()
   page.get_by_label('Sân đấu',exact=True).select_option('phnom-penh');page.wait_for_function("document.querySelector('[data-testid=art-stage]')?.boatPreview?.game.state.venueId==='phnom-penh'",timeout=120000);opened();assert page.locator('.online-profile-rank strong').inner_text()=='—';report['otherVenueRankSeparate']=True
   report['encryptedExport']=True;report['restoreSurvivesReload']=True
+ except Exception:
+  report['visibleStatus']=page.locator('.profile-transfer [role=status]').all_text_contents();report['onlineStatus']=page.locator('.online-status').all_text_contents();page.screenshot(path=str(out/'failure.png'));raise
  finally:
   (out/'checks.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8');browser.close()
  assert not report['errors'],report['errors']

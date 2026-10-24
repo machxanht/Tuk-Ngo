@@ -27,6 +27,14 @@ in `deployment.json` after publishing. No guest export or secret is included.
   venues. Correct language, original Vietnamese broadcast provenance, scoped
   team names and venue paragraphs, decoded audio and nonzero output RMS.
   All 42 new file hashes/technical levels are also checked by the unit gate.
+- A public playback pass exposed a missed English introduction after skipping
+  the camera. A controlled four-second delay of the real intro MP3 reproduced
+  it locally: the cue was emitted, audio decoded without errors, but the old
+  nine-second queue deadline rejected it after the prior sentences. The fix
+  gives participant introductions 22 seconds while limiting them to the start
+  stage. `check-venue-narration.py --intro-delay-ms 4000 --venue maspero
+  --language en` retains that regression. Delayed network transport is simulated;
+  the fetched MP3 and Web Audio decoding/playback are real.
 - `dashboard-regression.json`: 21 legacy browser cases. `dashboard-venues.json`:
   real playback of the new pack, venue/language filtering, stop on changes,
   persisted selection and exported review of all 42 files.

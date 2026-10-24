@@ -1,0 +1,264 @@
+{
+  "nativeListeningVerified": false,
+  "introFetchDelayMs": 4000,
+  "cases": [],
+  "errors": [],
+  "failure": {
+    "venue": "maspero",
+    "language": "en",
+    "audio": {
+      "drumHits": 0,
+      "drumKinds": {
+        "drum-low": 0,
+        "drum-open": 0,
+        "drum-rim": 0
+      },
+      "drumLoops": 1,
+      "groovesPlayed": [
+        {
+          "key": "drum-groove-start",
+          "bpm": 96,
+          "at": 3.671655328798186
+        }
+      ],
+      "whistleBlows": 50,
+      "strongWhistles": 0,
+      "voiceClips": 0,
+      "khmerClips": 3,
+      "cues": [
+        "flyover",
+        "ready",
+        "go",
+        "intro",
+        "race-call"
+      ],
+      "played": [
+        {
+          "key": "maspero-flyover-en",
+          "cue": "flyover",
+          "sourceId": null,
+          "duration": 8.749410430839003,
+          "at": 0.4321541950113379,
+          "match": [
+            "can_tho-01",
+            "pothi-satharam-2"
+          ],
+          "state": {
+            "phase": "intro",
+            "distance": 0,
+            "gap": 0,
+            "pace": "steady",
+            "surgeActive": false,
+            "result": null
+          }
+        },
+        {
+          "key": "ai-go-en",
+          "cue": "go",
+          "sourceId": null,
+          "duration": 4.223990929705216,
+          "at": 9.281859410430839,
+          "match": [
+            "can_tho-01",
+            "pothi-satharam-2"
+          ],
+          "state": {
+            "phase": "racing",
+            "distance": 0,
+            "gap": -28.972949878568645,
+            "pace": "steady",
+            "surgeActive": false,
+            "result": null
+          }
+        },
+        {
+          "key": "ai-cruise-en",
+          "cue": "race-call",
+          "sourceId": null,
+          "duration": 5.927981859410431,
+          "at": 21.672607709750565,
+          "match": [
+            "can_tho-01",
+            "pothi-satharam-2"
+          ],
+          "state": {
+            "phase": "racing",
+            "distance": 0,
+            "gap": -97.87513803920073,
+            "pace": "steady",
+            "surgeActive": false,
+            "result": null
+          }
+        }
+      ],
+      "errors": [],
+      "decoded": 11,
+      "language": "en",
+      "drumBpm": 96,
+      "ambience": "river-bank-bed",
+      "context": "running",
+      "audioTime": 33.671836734693876,
+      "active": true,
+      "mix": {
+        "enabled": true,
+        "voice": true,
+        "khmer": true,
+        "whistle": true,
+        "drums": true,
+        "crowd": true,
+        "volume": 0.8
+      },
+      "sources": 4,
+      "sourcesByChannel": {
+        "voice": 0,
+        "khmer": 0,
+        "whistle": 2,
+        "drums": 1,
+        "crowd": 1
+      },
+      "queued": [],
+      "speaking": false,
+      "previewing": false,
+      "outputRms": 0.06426382924757666,
+      "cached": 11,
+      "teams": [
+        "can_tho-01",
+        "pothi-satharam-2"
+      ],
+      "disposed": false,
+      "origin": "broadcast-vi-ai-km",
+      "sourceVideo": "crZF3hghbgQ"
+    },
+    "game": {
+      "phase": "racing",
+      "difficulty": "easy",
+      "pace": "steady",
+      "countdown": 0,
+      "elapsed": 30.062499999998657,
+      "distances": [
+        0,
+        164.09889016770876
+      ],
+      "speeds": [
+        0,
+        5.534077257444666
+      ],
+      "finishTimes": [
+        null,
+        null
+      ],
+      "beatPhase": 48.100000000004336,
+      "aiPhase": 0.27000000000018703,
+      "stamina": 100,
+      "power": 0,
+      "cohesion": 0.72,
+      "combo": 0,
+      "maxCombo": 0,
+      "perfect": 0,
+      "good": 0,
+      "missed": 0,
+      "lastResolved": 47,
+      "feedback": "Chạm khi vạch vào vùng sáng",
+      "feedbackAt": -10,
+      "result": null,
+      "pauseReason": "",
+      "runId": 1,
+      "mode": "ai",
+      "rowingAssist": true,
+      "steeringAssist": true,
+      "steeringEnabled": true,
+      "steeringInput": 0,
+      "steeringPulse": 0,
+      "steeringPulseRemaining": 0,
+      "lateralPositions": [
+        0,
+        0.6825215515088079
+      ],
+      "headings": [
+        0,
+        -0.003968463620347352
+      ],
+      "rudder": 0,
+      "atLaneEdge": false,
+      "steeringSeconds": 0,
+      "steeringError": 0,
+      "manualSteeringDistance": 0,
+      "paceSwitches": 0,
+      "rowingHeld": false,
+      "surgeCharge": 0,
+      "surgeRemaining": 0,
+      "desync": 0,
+      "lastSpamAt": -10,
+      "slipstream": false,
+      "lastJudgement": null,
+      "lastTiming": "wait",
+      "lastStrokeBeat": -1,
+      "aiStamina": 85.57000000003362,
+      "aiSurgeCharge": 0.8640000000000004,
+      "aiSurgeRemaining": 0,
+      "venueId": "maspero",
+      "raceLength": 1200,
+      "flowSeed": 17,
+      "flowSeconds": 0,
+      "flowActiveSeconds": 0,
+      "simpleControls": true,
+      "boostHeld": false,
+      "boostActive": false,
+      "boostExhausted": false,
+      "boostSeconds": 0,
+      "restSeconds": 30.062499999998657,
+      "ruleset": "ngo-assisted",
+      "assistedStrokes": 0,
+      "manualStrokes": 0,
+      "timingErrorTotal": 0,
+      "introRemaining": 0,
+      "introElapsed": 10,
+      "manualAccuracy": null,
+      "meanTimingErrorMs": null,
+      "flow": {
+        "center": 0.27431020341523704,
+        "slope": 0.0328066965945856,
+        "alignment": 1,
+        "boost": 0,
+        "crossCurrent": 0
+      },
+      "flowBonus": 0,
+      "flowMastery": 0,
+      "waitingForOpponent": false,
+      "steeringLimit": 4.2,
+      "steeringAccuracy": 100,
+      "practiceTasks": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "timing": {
+        "beat": 48,
+        "seconds": 0.06250000000270983,
+        "window": 0.26,
+        "perfectWindow": 0.1,
+        "available": true,
+        "inWindow": true,
+        "quality": "perfect",
+        "progress": 0.6000000000043357
+      },
+      "strokeAvailable": true,
+      "raceStage": "start",
+      "stageLabel": "Xuất phát bùng nổ",
+      "cadence": 96,
+      "aiRaceStage": "start",
+      "aiStageLabel": "Xuất phát bùng nổ",
+      "aiCadence": 96,
+      "aiSurgeActive": false,
+      "judgement": null,
+      "surgeActive": false,
+      "canSurge": false,
+      "desyncIntensity": 0,
+      "rhythmProgress": 0.6000000000043357,
+      "accuracy": 0,
+      "gap": -164.09889016770876,
+      "strength": 0.1
+    }
+  }
+}
